@@ -1,22 +1,25 @@
 # NEXT ACTION
 
-Codex: execute `SECOND_SPRINT.md` now.
+Codex: execute `THIRD_SPRINT.md` now.
 
 Read in this order:
 1. `README.md`
 2. `PRINCIPLES.md`
 3. `BRAIN_PROTOCOL.md`
 4. `BRAIN_REVIEW_V1.md`
-5. `SECOND_SPRINT.md`
+5. `BRAIN_REVIEW_V2.md`
+6. `THIRD_SPRINT.md`
 
 Do not redesign the business model. Do not expand scope.
 
-V1 proved the basic money-board loop, but it also exposed signal-quality failures: stale leads can enter `DO NOW`, evidence/payment scoring is too easy to inflate, competition and fulfillment capability are not grounded enough, product signals are not clustered, information edges are not truly current, and outcome feedback is not yet consumed by ranking.
+V2 passed the trustworthiness check: it correctly uses primary evidence, hard freshness gates, competition/capability controls, product-cluster restraint, current-edge restraint and outcome-aware ranking. It also correctly returned `DO NOW = 0` instead of backfilling stale leads.
 
-Fix those issues before adding architecture.
+The remaining bottleneck is discovery quality. The latest live store contains mostly SELLER / PROBLEM_OBSERVER / NEWS records and almost no explicit commercial buyers. GitHub/HN problem feeds are useful for PRODUCT_SIGNAL and INFO_EDGE, but they are not sufficient primary DIRECT_LEAD sources.
 
-The goal of this round is not “finish V2.” The goal is to make the system trustworthy enough that the human can use its top recommendation to contact a real person today without wasting time on stale, overcrowded, or undeliverable opportunities.
+Fix buyer-intent discovery before doing more scoring optimization.
 
-A `DO NOW` section with zero items is acceptable if no opportunity satisfies the hard freshness and actionability gates. Never fill the board with stale leads merely to produce output.
+Execute `THIRD_SPRINT.md`: diversify lawful public buyer-intent sources, require explicit machine-readable commercial intent for DIRECT_LEAD, preserve exact buyer-authored quotes and legitimate contact paths, keep ordinary bug reporters out of sales recommendations, and regenerate all required reports.
 
-When complete, return the mandatory handoff specified in `SECOND_SPRINT.md` and `BRAIN_PROTOCOL.md`.
+A `DO NOW` section with zero items is still acceptable. Never substitute a pain observer for a buyer merely to create an action.
+
+When complete, return the mandatory handoff specified in `THIRD_SPRINT.md` and `BRAIN_PROTOCOL.md`.
