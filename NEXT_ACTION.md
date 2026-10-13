@@ -1,6 +1,6 @@
 # NEXT ACTION
 
-Codex: execute `THIRD_SPRINT.md` now.
+Codex: execute `FOURTH_SPRINT.md` now.
 
 Read in this order:
 1. `README.md`
@@ -8,18 +8,17 @@ Read in this order:
 3. `BRAIN_PROTOCOL.md`
 4. `BRAIN_REVIEW_V1.md`
 5. `BRAIN_REVIEW_V2.md`
-6. `THIRD_SPRINT.md`
+6. `BRAIN_REVIEW_V3.md`
+7. `FOURTH_SPRINT.md`
 
-Do not redesign the business model. Do not expand scope.
+Do not redesign the business model. Do not loosen the buyer, freshness, competition or capability gates just to create output.
 
-V2 passed the trustworthiness check: it correctly uses primary evidence, hard freshness gates, competition/capability controls, product-cluster restraint, current-edge restraint and outcome-aware ranking. It also correctly returned `DO NOW = 0` instead of backfilling stale leads.
+Third sprint succeeded at finding explicit commercial intent: it found verified buyers with budgets, paid trials, hiring and vendor requests. It also correctly refused to promote stale, highly competitive or capability-mismatched leads into `DO NOW`.
 
-The remaining bottleneck is discovery quality. The latest live store contains mostly SELLER / PROBLEM_OBSERVER / NEWS records and almost no explicit commercial buyers. GitHub/HN problem feeds are useful for PRODUCT_SIGNAL and INFO_EDGE, but they are not sufficient primary DIRECT_LEAD sources.
+The remaining bottleneck is **source-market fit**. The current strongest buyer source is the n8n Jobs community, but visible provider competition is often very high. The next round must stop optimizing scoring and instead test where the operator has a structural advantage, especially China-local research/sourcing/communication needs plus bounded remote technical work.
 
-Fix buyer-intent discovery before doing more scoring optimization.
+Execute `FOURTH_SPRINT.md`: diversify at least four additional lawful public buyer source families, measure source yield, add grounded operator-advantage evidence, keep broad PRODUCT_SIGNAL clusters restrained, preserve INFO_EDGE discipline, and regenerate the required reports.
 
-Execute `THIRD_SPRINT.md`: diversify lawful public buyer-intent sources, require explicit machine-readable commercial intent for DIRECT_LEAD, preserve exact buyer-authored quotes and legitimate contact paths, keep ordinary bug reporters out of sales recommendations, and regenerate all required reports.
+A `DO NOW` section with zero items remains acceptable. Never downgrade competition or capability standards to manufacture a lead.
 
-A `DO NOW` section with zero items is still acceptable. Never substitute a pain observer for a buyer merely to create an action.
-
-When complete, return the mandatory handoff specified in `THIRD_SPRINT.md` and `BRAIN_PROTOCOL.md`.
+When complete, return the mandatory handoff in `FOURTH_SPRINT.md` and `BRAIN_PROTOCOL.md`.
