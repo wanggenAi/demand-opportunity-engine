@@ -1,35 +1,54 @@
-from __future__ import annotations
+from collections import Counter
 from datetime import datetime, timezone
-from urllib.parse import urlparse
-from .models import Opportunity
+from hashlib import sha256
+from pathlib import Path
+from .models import age
+from .board import selections
+from .signals import payment_truth
+from .clusters import observation_eligible
 
-def quality_report(opportunities: list[Opportunity], now: datetime | None = None) -> str:
+def quality_report(opportunities, now=None, events=(), discovery=None):
     now = now or datetime.now(timezone.utc)
-    unique_urls = len({op.source_url for op in opportunities})
-    https_urls = sum(urlparse(op.source_url).scheme == "https" for op in opportunities)
-    evidence = sum(bool(op.evidence_text.strip()) for op in opportunities)
-    payment = sum(bool(op.payment_intent_evidence.strip()) for op in opportunities)
-    reachable = sum(bool(op.contact_path.strip()) and op.reachability >= 3 for op in opportunities)
-    observed_dates = [datetime.fromisoformat(op.observed_at.replace("Z", "+00:00")) for op in opportunities]
-    published_dates = [datetime.fromisoformat(op.published_at.replace("Z", "+00:00")) for op in opportunities]
-    published_dates = [date.replace(tzinfo=timezone.utc) if date.tzinfo is None else date for date in published_dates]
-    ages = [(now - published).days for published in published_dates]
-    fresh_7d = sum(age <= 7 for age in ages)
-    lines = [
-        "# Source and evidence quality check", "",
-        f"Checked at: {now.isoformat()}",
-        f"- Candidates: {len(opportunities)}; unique source URLs: {unique_urls}/{len(opportunities)}",
-        f"- HTTPS provenance present: {https_urls}/{len(opportunities)}",
-        f"- Evidence text present: {evidence}/{len(opportunities)}",
-        f"- Payment-intent statement present: {payment}/{len(opportunities)}",
-        f"- Reachable contact/validation path present (reachability >= 3): {reachable}/{len(opportunities)}",
-        f"- Observed timestamps parseable: {len(observed_dates)}/{len(opportunities)}",
-        f"- Fresh evidence published within 7 days: {fresh_7d}/{len(opportunities)}",
-        "",
-        "Authenticity note: URLs are public Reddit/Hacker News source pages captured from search results; the report preserves the exact URL and quoted evidence for manual click-through. A URL alone is not treated as proof of payment.",
-        "Time note: published_at is the source date returned by discovery; observed_at is the collection timestamp. Older items are demoted by information-decay scoring.",
-        "Payment note: explicit fee/budget/hire/payment language receives the strongest deterministic evidence score; product launches and generic discussion remain lower-confidence signals.",
-        "Reachability note: only records with a public reply, DM, email or product contact path can enter the board; human verification is still required before outreach.",
-        "",
-    ]
-    return "\n".join(lines)
+    buckets, rejected = selections(opportunities, now, events)
+    dates = {"0–7 days": 0, "7–14 days": 0, "14–30 days": 0, ">30 days": 0, "future": 0}
+    for op in opportunities:
+        a = age(op.published_at, now)
+        dates["future" if a < 0 else "0–7 days" if a <= 7 else "7–14 days" if a <= 14 else "14–30 days" if a <= 30 else ">30 days"] += 1
+    eligible = [o for o in opportunities if observation_eligible(o)]
+    checksums = 0
+    api_snapshots = 0
+    for op in opportunities:
+        if "#sha256=" in op.source_snapshot:
+            api_snapshots += 1
+            path, digest = op.source_snapshot.split("#sha256=")
+            if Path(path).exists() and sha256(Path(path).read_bytes()).hexdigest() == digest:
+                checksums += 1
+    lines = ["# Source quality report", "", f"Checked at: {now.isoformat()}", "",
+             f"- Live observations: {len(opportunities)}; unique URLs: {len({o.source_url for o in opportunities})}",
+             f"- Source distribution: {dict(Counter(o.source_platform for o in opportunities))}",
+             f"- Published date distribution: {dates}",
+             f"- Source roles: {dict(Counter(o.buyer_role for o in opportunities))}",
+             f"- Demand/problem observations after noise rejection: {len(eligible)}; rejected: {len(rejected)}",
+             f"- Candidate routes (not validated money claims): {dict(Counter(r for o in eligible for r in o.routes))}",
+             f"- Primary payment signals among demand observations: {dict(Counter(payment_truth(o)[0] for o in eligible))}",
+             f"- Concrete public profiles: {sum(bool(o.target_profile_url) for o in opportunities)}",
+             f"- Full competition replies collected: {sum(o.comments_complete for o in opportunities)}",
+             f"- API evidence snapshot SHA256 checks: {checksums}/{api_snapshots}; web edge provenance kept separately",
+             f"- Verified OP revival evidence: {sum(bool(o.buyer_activity_url and o.buyer_activity_quote) for o in opportunities)}",
+             f"- DO NOW / VALIDATE / WATCH: { {k: len(v) for k,v in buckets.items()} }",
+             "- V1 seed: data/opportunities.json retained only as historical audit fixture; excluded from live ranking.",
+             "- updated_at, seller comments, collection time and vendor launches never revive a buyer request.",
+             "- Open bug reports are pain observations, not automatically paying buyers. Public author identity does not verify a business or buying authority.",
+             "- Competition counts are observed lower bounds; private DMs and off-platform quotes remain unknown.",
+             "", "## Sources refreshed", ""]
+    if discovery:
+        for item in discovery.get("adapters", []):
+            lines.append(f"- {item['source']}: refreshed={item['refreshed']}; records={item['collected']}; errors={len(item['errors'])}")
+            for error in item["errors"]:
+                lines.append(f"  - {error['url']}: {error['error']}")
+        for blocked in discovery.get("blocked_sources", []):
+            lines.append(f"- Unavailable: {blocked['source']}: {blocked['reason']}")
+    lines += ["", "## Rejections / DO NOW gate failures", ""]
+    for op, score in sorted(rejected + [x for v in buckets.values() for x in v], key=lambda p:p[0].id):
+        lines.append(f"- {op.id} {op.source_url}: {'; '.join(score['do_now_rejections']) or 'no hard-gate failures'}; eligible_observation={observation_eligible(op)}")
+    return "\n".join(lines) + "\n"

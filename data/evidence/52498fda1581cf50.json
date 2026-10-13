@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50056723",
+  "collected_at": "2026-10-13T03:31:35.944679+00:00",
+  "source": {
+    "author": "fus3r",
+    "children": [],
+    "created_at": "2026-10-12T14:10:15.000Z",
+    "created_at_i": 1791814215,
+    "id": 50056723,
+    "options": [],
+    "parent_id": null,
+    "points": 2,
+    "story_id": 50056723,
+    "text": "I built Lemma while working through The Elements of Statistical Learning (using the Preview app). Kept running into references like &quot;(3.41)&quot; or &quot;by Theorem 2.3&quot; forcing me to scroll back through the entire book. And whenever a proof wasn’t detailed enough, I&#x27;d screenshot it, ask ChatGPT to explain, then go back to the PDF to add manual notes. Got pretty annoying.<p>That led me to Lemma: it reads a PDF once (locally), lets you jump around between equations, theorems, etc. without constantly scrolling. I gave it a VS Code look because yes, I&#x27;m addicted to VS Code (there are other themes for normal people).<p>A non-exhaustive list of things it can do (right now):<p>- References to theorems, equations, figures, citations and index entries are all clickable (you can peek at them without leaving the page)<p>- You can ask an agent or ChatGPT Web for explanations, longer proofs with one click, save the output in Lemma<p>- When the pdf says “it is easy to show” or “proof left to the reader”, you can write the missing steps in LaTeX, and Lemma checks it on random numerical inputs and gives counterexamples if it’s wrong.<p>You can also fold proofs to try them yourself first, and keep notes attached to specific passages (with exports to Markdown, Anki and Jupyter).<p>Built in Swift&#x2F;SwiftUI using PDFKit. The analysis runs in a helper process at low priority. No account, no telemetry, and it&#x27;s GPL.\nIt’s for macOS 15+ only for now (unless a lot of people find it useful, then I’ll probably do it for other OSes).\nIt still struggles with some PDFs (scanned ones, other languages, different numbering, etc.)<p>If you try it on whatever you&#x27;re reading and encounter some problems, feel free to open an issue!",
+    "title": "Show HN: Lemma, an IDE for reading mathematics (macOS, open source)",
+    "type": "story",
+    "url": "https://github.com/fus3r/lemma"
+  },
+  "comments": [],
+  "comments_complete": true
+}

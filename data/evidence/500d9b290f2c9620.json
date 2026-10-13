@@ -1,0 +1,405 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/49972125",
+  "collected_at": "2026-10-13T03:31:35.944679+00:00",
+  "source": {
+    "author": "onemiketwelve",
+    "children": [
+      {
+        "author": "narrationbox",
+        "children": [
+          {
+            "author": "chr15m",
+            "children": [],
+            "created_at": "2026-10-07T00:37:20.000Z",
+            "created_at_i": 1791333440,
+            "id": 49986308,
+            "options": [],
+            "parent_id": 49985830,
+            "points": null,
+            "story_id": 49972125,
+            "text": "Sound effects are completely different to voice, which those models are trained to output.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-06T23:46:54.000Z",
+        "created_at_i": 1791330414,
+        "id": 49985830,
+        "options": [],
+        "parent_id": 49972125,
+        "points": null,
+        "story_id": 49972125,
+        "text": "Plenty of models take in text + audio and spits out audio. It&#x27;s the format of most newer generation accent conversion&#x2F;voice cloning models.<p>What&#x27;s your exact use case?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "xg15",
+        "children": [
+          {
+            "author": "Buttons840",
+            "children": [],
+            "created_at": "2026-10-07T00:09:59.000Z",
+            "created_at_i": 1791331799,
+            "id": 49986054,
+            "options": [],
+            "parent_id": 49985976,
+            "points": null,
+            "story_id": 49972125,
+            "text": "I wouldn&#x27;t call it a dumb idea, but there&#x27;s soooo much subtlety to sound that wont be visible in any reasonably sized image.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          },
+          {
+            "author": "0x20cowboy",
+            "children": [],
+            "created_at": "2026-10-07T01:11:14.000Z",
+            "created_at_i": 1791335474,
+            "id": 49986617,
+            "options": [],
+            "parent_id": 49985976,
+            "points": null,
+            "story_id": 49972125,
+            "text": "<a href=\"https:&#x2F;&#x2F;huggingface.co&#x2F;docs&#x2F;transformers&#x2F;model_doc&#x2F;audio-spectrogram-transformer\" rel=\"nofollow\">https:&#x2F;&#x2F;huggingface.co&#x2F;docs&#x2F;transformers&#x2F;model_doc&#x2F;audio-spe...</a>",
+            "title": null,
+            "type": "comment",
+            "url": null
+          },
+          {
+            "author": "narrationbox",
+            "children": [],
+            "created_at": "2026-10-07T01:26:35.000Z",
+            "created_at_i": 1791336395,
+            "id": 49986760,
+            "options": [],
+            "parent_id": 49985976,
+            "points": null,
+            "story_id": 49972125,
+            "text": "Could be interesting, though spectrogram voice gen is a step back in terms of advancement. Vocoder models that take in Mel Specs suffer from a lot of issues like hissing due to Griffin Lim issues. Would be curious to see if diffusion models can work on neural codecs directly.<p>I think Google had one called riffusion (the first version was designed for specs)",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-07T00:00:44.000Z",
+        "created_at_i": 1791331244,
+        "id": 49985976,
+        "options": [],
+        "parent_id": 49972125,
+        "points": null,
+        "story_id": 49972125,
+        "text": "Maybe a dumb idea, but how good are image models with manipulating spectrogram images? Then a workaround could be: convert input audio to spectrogram -&gt; pass spectrogram + prompt to an image model -&gt; convert modified spectrogram back to audio waveform.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "chr15m",
+        "children": [],
+        "created_at": "2026-10-07T00:41:33.000Z",
+        "created_at_i": 1791333693,
+        "id": 49986355,
+        "options": [],
+        "parent_id": 49972125,
+        "points": null,
+        "story_id": 49972125,
+        "text": "Apparently the AudioX and AudioLDM(2) models do this but I think you&#x27;ve found a genuine gap.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "moonu",
+        "children": [],
+        "created_at": "2026-10-07T00:43:39.000Z",
+        "created_at_i": 1791333819,
+        "id": 49986375,
+        "options": [],
+        "parent_id": 49972125,
+        "points": null,
+        "story_id": 49972125,
+        "text": "Even though they&#x27;re technically trained for music, it might be worth testing Suno&#x2F;Lyria to see if they&#x27;re able to do this. You might have to isolate it afterwards, but seems like it could be viable",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "thangalin",
+        "children": [
+          {
+            "author": "ninininino",
+            "children": [],
+            "created_at": "2026-10-07T01:49:33.000Z",
+            "created_at_i": 1791337773,
+            "id": 49986966,
+            "options": [],
+            "parent_id": 49986598,
+            "points": null,
+            "story_id": 49972125,
+            "text": "KeenLore is really cool.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-07T01:09:20.000Z",
+        "created_at_i": 1791335360,
+        "id": 49986598,
+        "options": [],
+        "parent_id": 49972125,
+        "points": null,
+        "story_id": 49972125,
+        "text": "<a href=\"https:&#x2F;&#x2F;github.com&#x2F;OpenMOSS&#x2F;MOSS-TTS\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;OpenMOSS&#x2F;MOSS-TTS</a><p>KeenLore is my locally hosted full-cast emotive audiobook generator I&#x27;m developing for my novel:<p><a href=\"https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=WAeHgE94rVo\" rel=\"nofollow\">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=WAeHgE94rVo</a><p>Another HN user suggested embedding sound effects. The lead author of MOSS-TTS emailed me that the next version will have a SOTA voice designer. Poke around the voice design space, you&#x27;ll find text-to-effects here and there. I certainly have my eyes on this space.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "jallmann",
+        "children": [],
+        "created_at": "2026-10-07T01:26:54.000Z",
+        "created_at_i": 1791336414,
+        "id": 49986761,
+        "options": [],
+        "parent_id": 49972125,
+        "points": null,
+        "story_id": 49972125,
+        "text": "Daydream Music - <a href=\"https:&#x2F;&#x2F;daydream.live\" rel=\"nofollow\">https:&#x2F;&#x2F;daydream.live</a><p>The DEMON realtime engine is open source. The hosted service has a number of integrations with popular audio tools. (I&#x27;m on the team)",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "soundworlds",
+        "children": [
+          {
+            "author": "SyneRyder",
+            "children": [],
+            "created_at": "2026-10-07T07:55:28.000Z",
+            "created_at_i": 1791359728,
+            "id": 49989651,
+            "options": [],
+            "parent_id": 49987197,
+            "points": null,
+            "story_id": 49972125,
+            "text": "I&#x27;ve had some luck with that approach - giving a frontier LLM a reference sound, asking it to replicate the sound via code (basically asking it to create a physical model, I guess) and being able to steer the output by talking with the LLM.<p>I was working with very simple elements, but I was surprised by some of the outputs.<p>I would have also suggested Waves Illugen, but it turns out that is text-only, you can&#x27;t give it an audio reference.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          },
+          {
+            "author": "dmos62",
+            "children": [],
+            "created_at": "2026-10-07T20:26:07.000Z",
+            "created_at_i": 1791404767,
+            "id": 49998333,
+            "options": [],
+            "parent_id": 49987197,
+            "points": null,
+            "story_id": 49972125,
+            "text": "Great video!",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-07T02:15:42.000Z",
+        "created_at_i": 1791339342,
+        "id": 49987197,
+        "options": [],
+        "parent_id": 49972125,
+        "points": null,
+        "story_id": 49972125,
+        "text": "You should look into using AI to generate code that synthesizes sounds. Not exactly what you asked for, but I do think it is an approach worth considering: <a href=\"https:&#x2F;&#x2F;m.youtube.com&#x2F;watch?v=1-i45X5aj94\" rel=\"nofollow\">https:&#x2F;&#x2F;m.youtube.com&#x2F;watch?v=1-i45X5aj94</a>",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "bobosha",
+        "children": [],
+        "created_at": "2026-10-07T12:21:52.000Z",
+        "created_at_i": 1791375712,
+        "id": 49991759,
+        "options": [],
+        "parent_id": 49972125,
+        "points": null,
+        "story_id": 49972125,
+        "text": "Not exactly what you asked for, but are you aware of CLAP?\n<a href=\"https:&#x2F;&#x2F;github.com&#x2F;LAION-AI&#x2F;CLAP\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;LAION-AI&#x2F;CLAP</a><p>This generates audio embeddings - much like CLIP does for visual inputs.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "jajazheng",
+        "children": [],
+        "created_at": "2026-10-07T12:44:20.000Z",
+        "created_at_i": 1791377060,
+        "id": 49991975,
+        "options": [],
+        "parent_id": 49972125,
+        "points": null,
+        "story_id": 49972125,
+        "text": "Hi! I’m unsure if this is what you were looking for, QWEN3 TTS has a “clone” feature. You can use the local version, give it a voice reference and text and it will read the text with your instructions with the sample voice you selected. I used this combo to make a customised “audiobook” for my mother. It worked quite well.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "ruiqingcn",
+        "children": [],
+        "created_at": "2026-10-08T01:35:26.000Z",
+        "created_at_i": 1791423326,
+        "id": 50000994,
+        "options": [],
+        "parent_id": 49972125,
+        "points": null,
+        "story_id": 49972125,
+        "text": "INDEX TTS2",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "brudgers",
+        "children": [],
+        "created_at": "2026-10-08T18:31:15.000Z",
+        "created_at_i": 1791484275,
+        "id": 50009940,
+        "options": [],
+        "parent_id": 49972125,
+        "points": null,
+        "story_id": 49972125,
+        "text": "Sometimes doing the work is easier than shopping for a tool that does the work for us.<p>Particularly when the application is a corner case or requires aesthetic judgment.<p>Of course in the case of sound effects shopping is a well established practice. Sound libraries and foley artists are widely available.<p>Finally, sound is much harder than images because psychoacoustics are more complex than the mechanical descriptions while human visual experience is a massively filtered set of stimuli.<p>We chunk the visible into symbols&#x2F;archetypes like chairs and trees to a much much greater degree than we chunk sounds into symbols.<p>What is the sound of a chair? Of a tree?<p>LLM music is heavily dependent on genre. There is no genre for SFX. Good luck.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-10-05T23:24:44.000Z",
+    "created_at_i": 1791242684,
+    "id": 49972125,
+    "options": [],
+    "parent_id": null,
+    "points": 35,
+    "story_id": 49972125,
+    "text": "I&#x27;ve been having a hard time finding a solution. Is there really no commercialized model that I can feed in a reference sound and text instruction and get another sound out?<p>Right now having a multimodal inputs to image or text output is a commodotized, solved problem. IE you can put a prompt for some image and use a reference image to guide the model on what you want. After all, a picture is worth a thousand words right?<p>Ive also used a text and audio input in order to get a text description or classification out.<p>I cannot for the life of me find a solution for Audio + text -&gt; Audio<p>My usecase is that I&#x27;m trying to generate new sound effects based on a source that doesn&#x27;t have that many clean examples and thought this would be just another solved workflow but I&#x27;m not finding much. Tried elevenlabs SFX but it&#x27;s only text-&gt;audio and without the reference, it&#x27;s hard to guide with just text and recreate a sound with any accuracy. I tried the Stable Audio 3 model which is supposed to do what I want but the results were terrible. This modality seems to be stuck where image generation was in 2016. Is there something else or is this just not a common need?",
+    "title": "Ask HN: Are there AI models for generating sounds based on a text and reference?",
+    "type": "story",
+    "url": null
+  },
+  "comments": [
+    {
+      "author": "narrationbox",
+      "text": "Plenty of models take in text + audio and spits out audio. It's the format of most newer generation accent conversion/voice cloning models. What's your exact use case?",
+      "at": "2026-10-06T23:46:54.000Z",
+      "url": "https://news.ycombinator.com/item?id=49985830"
+    },
+    {
+      "author": "chr15m",
+      "text": "Sound effects are completely different to voice, which those models are trained to output.",
+      "at": "2026-10-07T00:37:20.000Z",
+      "url": "https://news.ycombinator.com/item?id=49986308"
+    },
+    {
+      "author": "xg15",
+      "text": "Maybe a dumb idea, but how good are image models with manipulating spectrogram images? Then a workaround could be: convert input audio to spectrogram -> pass spectrogram + prompt to an image model -> convert modified spectrogram back to audio waveform.",
+      "at": "2026-10-07T00:00:44.000Z",
+      "url": "https://news.ycombinator.com/item?id=49985976"
+    },
+    {
+      "author": "Buttons840",
+      "text": "I wouldn't call it a dumb idea, but there's soooo much subtlety to sound that wont be visible in any reasonably sized image.",
+      "at": "2026-10-07T00:09:59.000Z",
+      "url": "https://news.ycombinator.com/item?id=49986054"
+    },
+    {
+      "author": "0x20cowboy",
+      "text": "https://huggingface.co/docs/transformers/model_doc/audio-spe...",
+      "at": "2026-10-07T01:11:14.000Z",
+      "url": "https://news.ycombinator.com/item?id=49986617"
+    },
+    {
+      "author": "narrationbox",
+      "text": "Could be interesting, though spectrogram voice gen is a step back in terms of advancement. Vocoder models that take in Mel Specs suffer from a lot of issues like hissing due to Griffin Lim issues. Would be curious to see if diffusion models can work on neural codecs directly. I think Google had one called riffusion (the first version was designed for specs)",
+      "at": "2026-10-07T01:26:35.000Z",
+      "url": "https://news.ycombinator.com/item?id=49986760"
+    },
+    {
+      "author": "chr15m",
+      "text": "Apparently the AudioX and AudioLDM(2) models do this but I think you've found a genuine gap.",
+      "at": "2026-10-07T00:41:33.000Z",
+      "url": "https://news.ycombinator.com/item?id=49986355"
+    },
+    {
+      "author": "moonu",
+      "text": "Even though they're technically trained for music, it might be worth testing Suno/Lyria to see if they're able to do this. You might have to isolate it afterwards, but seems like it could be viable",
+      "at": "2026-10-07T00:43:39.000Z",
+      "url": "https://news.ycombinator.com/item?id=49986375"
+    },
+    {
+      "author": "thangalin",
+      "text": "https://github.com/OpenMOSS/MOSS-TTS  KeenLore is my locally hosted full-cast emotive audiobook generator I'm developing for my novel:  https://www.youtube.com/watch?v=WAeHgE94rVo  Another HN user suggested embedding sound effects. The lead author of MOSS-TTS emailed me that the next version will have a SOTA voice designer. Poke around the voice design space, you'll find text-to-effects here and there. I certainly have my eyes on this space.",
+      "at": "2026-10-07T01:09:20.000Z",
+      "url": "https://news.ycombinator.com/item?id=49986598"
+    },
+    {
+      "author": "ninininino",
+      "text": "KeenLore is really cool.",
+      "at": "2026-10-07T01:49:33.000Z",
+      "url": "https://news.ycombinator.com/item?id=49986966"
+    },
+    {
+      "author": "jallmann",
+      "text": "Daydream Music -  https://daydream.live  The DEMON realtime engine is open source. The hosted service has a number of integrations with popular audio tools. (I'm on the team)",
+      "at": "2026-10-07T01:26:54.000Z",
+      "url": "https://news.ycombinator.com/item?id=49986761"
+    },
+    {
+      "author": "soundworlds",
+      "text": "You should look into using AI to generate code that synthesizes sounds. Not exactly what you asked for, but I do think it is an approach worth considering:  https://m.youtube.com/watch?v=1-i45X5aj94",
+      "at": "2026-10-07T02:15:42.000Z",
+      "url": "https://news.ycombinator.com/item?id=49987197"
+    },
+    {
+      "author": "SyneRyder",
+      "text": "I've had some luck with that approach - giving a frontier LLM a reference sound, asking it to replicate the sound via code (basically asking it to create a physical model, I guess) and being able to steer the output by talking with the LLM. I was working with very simple elements, but I was surprised by some of the outputs. I would have also suggested Waves Illugen, but it turns out that is text-only, you can't give it an audio reference.",
+      "at": "2026-10-07T07:55:28.000Z",
+      "url": "https://news.ycombinator.com/item?id=49989651"
+    },
+    {
+      "author": "dmos62",
+      "text": "Great video!",
+      "at": "2026-10-07T20:26:07.000Z",
+      "url": "https://news.ycombinator.com/item?id=49998333"
+    },
+    {
+      "author": "bobosha",
+      "text": "Not exactly what you asked for, but are you aware of CLAP?\n https://github.com/LAION-AI/CLAP  This generates audio embeddings - much like CLIP does for visual inputs.",
+      "at": "2026-10-07T12:21:52.000Z",
+      "url": "https://news.ycombinator.com/item?id=49991759"
+    },
+    {
+      "author": "jajazheng",
+      "text": "Hi! I’m unsure if this is what you were looking for, QWEN3 TTS has a “clone” feature. You can use the local version, give it a voice reference and text and it will read the text with your instructions with the sample voice you selected. I used this combo to make a customised “audiobook” for my mother. It worked quite well.",
+      "at": "2026-10-07T12:44:20.000Z",
+      "url": "https://news.ycombinator.com/item?id=49991975"
+    },
+    {
+      "author": "ruiqingcn",
+      "text": "INDEX TTS2",
+      "at": "2026-10-08T01:35:26.000Z",
+      "url": "https://news.ycombinator.com/item?id=50000994"
+    },
+    {
+      "author": "brudgers",
+      "text": "Sometimes doing the work is easier than shopping for a tool that does the work for us. Particularly when the application is a corner case or requires aesthetic judgment. Of course in the case of sound effects shopping is a well established practice. Sound libraries and foley artists are widely available. Finally, sound is much harder than images because psychoacoustics are more complex than the mechanical descriptions while human visual experience is a massively filtered set of stimuli. We chunk the visible into symbols/archetypes like chairs and trees to a much much greater degree than we chunk sounds into symbols. What is the sound of a chair? Of a tree? LLM music is heavily dependent on genre. There is no genre for SFX. Good luck.",
+      "at": "2026-10-08T18:31:15.000Z",
+      "url": "https://news.ycombinator.com/item?id=50009940"
+    }
+  ],
+  "comments_complete": true
+}

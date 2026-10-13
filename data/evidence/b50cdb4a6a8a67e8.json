@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/40885",
+  "collected_at": "2026-10-13T03:31:35.944679+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/40885",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/40885/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/40885/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/40885/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/40885",
+    "id": 5814192555,
+    "node_id": "I_kwDOC4Q8Qs8AAAABWo2Jqw",
+    "number": 40885,
+    "title": "create-pr skill suggests package names as PR title scopes, which check-pr-title rejects",
+    "user": {
+      "login": "bookingminds",
+      "id": 236186253,
+      "node_id": "U_kgDODhPqjQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/236186253?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bookingminds",
+      "html_url": "https://github.com/bookingminds",
+      "followers_url": "https://api.github.com/users/bookingminds/followers",
+      "following_url": "https://api.github.com/users/bookingminds/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bookingminds/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bookingminds/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bookingminds/subscriptions",
+      "organizations_url": "https://api.github.com/users/bookingminds/orgs",
+      "repos_url": "https://api.github.com/users/bookingminds/repos",
+      "events_url": "https://api.github.com/users/bookingminds/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bookingminds/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-12T13:02:31Z",
+    "updated_at": "2026-10-12T13:04:55Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Summary\n\nAgent-authored PRs fail `check-pr-title` about two times as often as other PRs. This PR aligns the `n8n:create-pr` skill and the title conventions with the validator that CI runs (`n8n-io/validate-n8n-pull-request-title` at `8aad045`, v2.5.0).\n\n**Data.** PRs opened from 1 April to 30 September 2026, from public GitHub data:\n\n- 1,129 PRs have the \"Generated with Claude Code\" footer. Each one is matched with one \"n8n team\" PR without an AI marker, from the same month and size bucket.\n- `check-pr-title` failed on the first red commit of 52 agent PRs and 27 matched PRs.\n- In the 52 agent failures, the causes in the first title are:\n  - a scope that the validator does not accept (29);\n  - a lowercase first letter in the summary (27);\n  - a past-tense first verb (4);\n  - a ticket or PR number (3).\n\n  One title can have more than one cause.\n- The rejected scopes are package names: `instance-ai` (7), `cli` (3), `evals` (3), `docker` (2), `playwright` (2), and others.\n\n**Causes in the skill.**\n\n- Step 4 asks \"Scope: Which package/area is affected?\". Agents answer with a package name.\n- The scope list does not include `ai-builder`. The validator accepts it, and 247 merged PRs in this period use it.\n- The validation regex accepts any scope without a hyphen. The validator rejects unknown scopes. The old regex accepts 9 of the 36 agent titles that CI rejected.\n- The same regex is cached in `.agents/skills/community-pr-readiness-check/reference/checks.md`.\n\n**Changes.**\n\n- `.agents/skills/create-pr/SKILL.md`:\n  - Add `ai-builder`.\n  - Say that only the listed scopes pass, and that a package name is not a scope.\n  - Change step 4: pick a scope from the list, or omit it.\n  - Replace the scope part of the regex with the validator's scope list.\n  - Add the rules that were missing: past tense, ticket and PR numbers, and the position of `(no-changelog)`.\n- `.github/pull_request_title_conventions.md`:\n  - Add `ai-builder` to the scope list and to the diagram.\n  - Correct the `* Node` note. The validator matches the node display name (`getAllNodesDisplayNames`), and the examples already show display names.\n- `.agents/skills/community-pr-readiness-check/reference/checks.md`:\n  - Use the same scope list in both cached regexes.\n  - Describe the scope list in the recap below the regexes. The recap still said that scopes exclude hyphens.\n\n**Not changed: `revert`.** The conventions and the readiness check describe `revert:` titles. The pinned validator (`src/constants.js` at `8aad045`) does not have `revert` in `TYPES`, so a `revert:` title can fail `check-pr-title`. This PR keeps `revert` as it is. The team can decide which source is correct.\n\n## How to test\n\n- Compare the scope list with `SCOPES` in `src/constants.js` of `n8n-io/validate-n8n-pull-request-title` at `8aad045`. This is the version pinned in `.github/workflows/ci-check-pr-title.yml`.\n- The new regex was compared with the validator rules on 10,012 PR titles. These are the titles of the PRs above, plus the first titles of renamed PRs.\n  - The new regex agrees on 98.1% of the titles; the old regex agrees on 94.1%.\n  - Most of the remaining differences are titles with a leading space, or titles with text after `(no-changelog)`.\n- The new regex rejects 33 of the 36 agent titles that CI rejected. The titles come from rename events.\n\n## Related Linear tickets, Github issues, and Community forum posts\n\nCloses #40885\n\n## Review / Merge checklist\n\n- [ ] I have seen this code, I have run this code, and I take responsibility for this code.\n- [x] PR title and summary are descriptive. ([conventions](../blob/master/.github/pull_request_title_conventions.md))\n- [ ] [Docs updated](https://github.com/n8n-io/n8n-docs) or follow-up ticket created.\n- [ ] Tests included.\n- [ ] PR Labeled with `Backport to Beta`, `Backport to Stable`, or `Backport to v1` (if the PR is an urgent fix that needs to be backported)\n\n🤖 PR Summary generated by AI",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/40885/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/40885/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @bookingminds,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9578\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9578](https://linear.app/n8n/issue/GHC-9578)",
+      "at": "2026-10-12T13:02:45Z",
+      "url": "https://github.com/n8n-io/n8n/issues/40885#issuecomment-6124811948"
+    }
+  ],
+  "comments_complete": true
+}

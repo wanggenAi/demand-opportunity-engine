@@ -1,72 +1,115 @@
-from __future__ import annotations
-from dataclasses import dataclass, asdict
-from typing import Any
+"""Source truth is separate from the operator's interpretation."""
+from dataclasses import dataclass, field, asdict
+from datetime import datetime, timezone
 from urllib.parse import urlparse
 
 ROUTES = {"DIRECT_LEAD", "PRODUCT_SIGNAL", "INFO_EDGE"}
+EVENTS = {"DISCOVERED", "CONTACTED", "REPLIED", "QUALIFIED", "QUOTED", "WON", "LOST", "REVENUE"}
+MODES = {"REMOTE_NOW", "PARTNER_REQUIRED", "SPECIALIST_REQUIRED", "LOCAL_PHYSICAL"}
+
+def timestamp(value):
+    parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    return parsed.replace(tzinfo=timezone.utc) if parsed.tzinfo is None else parsed.astimezone(timezone.utc)
+
+def age(value, now):
+    return (now - timestamp(value)).total_seconds() / 86400 if value else None
+
+def https(value):
+    p = urlparse(value)
+    return p.scheme == "https" and bool(p.netloc)
 
 @dataclass
 class Opportunity:
     id: str
-    routes: list[str]
     title: str
-    problem: str
     source_platform: str
     source_url: str
     published_at: str
     observed_at: str
-    evidence_text: str
-    payment_intent_evidence: str
-    urgency: int
-    reachability: int
-    operator_fit: int
-    repeatability: int
-    competition_gap: int
-    information_decay_risk: int
-    confidence: int
-    suggested_next_action: str
-    suggested_offer: str
-    estimated_effort: str
-    risk: str
-    contact_path: str
+    raw_evidence_quote: str
+    source_text: str
+    buyer_id: str
+    target_profile_url: str
+    routes: list[str] = field(default_factory=lambda: ["DIRECT_LEAD"])
+    community: str = ""
+    source_api_url: str = ""
+    source_verified: bool = False
+    source_snapshot: str = ""
+    buyer_role: str = "UNKNOWN"
+    source_open: bool = True
+    buyer_activity_at: str | None = None
+    buyer_activity_url: str = ""
+    buyer_activity_verified: bool = False
+    buyer_activity_author_id: str = ""
+    buyer_activity_quote: str = ""
+    last_activity_at: str | None = None
+    payment_signal_type: str = "INFERRED"
+    payment_evidence_quote: str = ""
+    derived_interpretation: str = ""
+    comment_count: int | None = None
+    seller_competition_count: int | None = None
+    comments_complete: bool = False
+    competition_pressure: str = "UNKNOWN"
+    competition_evidence: list[str] = field(default_factory=list)
+    mature_quote_present: bool = False
+    many_dms_reported: bool = False
+    commodity_market: bool = True
+    differentiation: str = ""
+    fulfillment_mode: str = "REMOTE_NOW"
+    required_capabilities: list[str] = field(default_factory=list)
+    cluster_name: str = "unclassified"
+    suggested_offer: str = ""
+    suggested_price_range: str = ""
+    first_message: str = ""
+    effort: str = ""
+    risk: str = ""
+    why_now: str = ""
+    next_action: str = ""
+    confidence: int = 2
+    contact_channel: str = ""
+    info_edge: dict = field(default_factory=dict)
 
-    def validate(self) -> None:
-        if not self.id or not self.title:
-            raise ValueError("id and title are required")
+    def validate(self):
+        if not self.id or not self.title or not https(self.source_url):
+            raise ValueError("id/title/HTTPS source required")
         if not self.routes or not set(self.routes) <= ROUTES:
-            raise ValueError(f"routes must be a non-empty subset of {ROUTES}")
-        parsed = urlparse(self.source_url)
-        if parsed.scheme != "https" or not parsed.netloc:
-            raise ValueError("source_url must be an https URL")
-        required = {
-            "evidence_text": self.evidence_text,
-            "payment_intent_evidence": self.payment_intent_evidence,
-            "suggested_next_action": self.suggested_next_action,
-            "suggested_offer": self.suggested_offer,
-            "contact_path": self.contact_path,
-        }
-        if any(not str(v).strip() for v in required.values()):
-            raise ValueError("evidence, payment intent, next action, offer and contact path are required")
-        for field in ("urgency", "reachability", "operator_fit", "repeatability", "competition_gap", "information_decay_risk", "confidence"):
-            value = getattr(self, field)
-            if not isinstance(value, int) or not 0 <= value <= 5:
-                raise ValueError(f"{field} must be an integer in [0, 5]")
+            raise ValueError("invalid routes")
+        if not self.raw_evidence_quote.strip() or self.raw_evidence_quote not in self.source_text:
+            raise ValueError("raw quote must be preserved in source_text")
+        if self.payment_evidence_quote and self.payment_evidence_quote not in self.source_text:
+            raise ValueError("payment quote must come from source_text")
+        for value in (self.published_at, self.observed_at, self.buyer_activity_at, self.last_activity_at):
+            if value:
+                timestamp(value)
+        if self.fulfillment_mode not in MODES or not 0 <= self.confidence <= 5:
+            raise ValueError("invalid capability/confidence")
+        for count in (self.comment_count, self.seller_competition_count):
+            if count is not None and (not isinstance(count, int) or count < 0):
+                raise ValueError("invalid reply count")
 
-    def to_dict(self) -> dict[str, Any]:
+    def to_dict(self):
         return asdict(self)
 
 @dataclass
 class Outcome:
+    event_id: str
     opportunity_id: str
-    contacted_at: str
-    channel: str
-    reply: str = "unknown"
-    qualified: str = "unknown"
-    quoted_amount: float | None = None
+    event_type: str
+    occurred_at: str
+    channel: str = ""
+    amount: float | None = None
     currency: str | None = None
-    status: str = "open"
-    revenue: float = 0.0
     loss_reason: str = ""
 
-    def to_dict(self) -> dict[str, Any]:
+    def validate(self):
+        if not self.event_id or self.event_type not in EVENTS:
+            raise ValueError("invalid outcome event")
+        timestamp(self.occurred_at)
+        if self.event_type in {"QUOTED", "REVENUE"}:
+            if self.amount is None or self.amount < 0 or not self.currency:
+                raise ValueError("money events require nonnegative amount and currency")
+        if self.event_type == "LOST" and not self.loss_reason:
+            raise ValueError("LOST requires reason")
+
+    def to_dict(self):
         return asdict(self)

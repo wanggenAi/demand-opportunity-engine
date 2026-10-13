@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/40870",
+  "collected_at": "2026-10-13T03:31:35.944679+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/40870",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/40870/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/40870/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/40870/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/40870",
+    "id": 5812033354,
+    "node_id": "I_kwDOC4Q8Qs8AAAABWmyXSg",
+    "number": 40870,
+    "title": "Instance-level MCP: `search_workflow_executions` always fails output-schema validation after upgrading to 2.42.6",
+    "user": {
+      "login": "aromero-gh",
+      "id": 337435310,
+      "node_id": "U_kgDOFBzarg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/337435310?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/aromero-gh",
+      "html_url": "https://github.com/aromero-gh",
+      "followers_url": "https://api.github.com/users/aromero-gh/followers",
+      "following_url": "https://api.github.com/users/aromero-gh/following{/other_user}",
+      "gists_url": "https://api.github.com/users/aromero-gh/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/aromero-gh/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/aromero-gh/subscriptions",
+      "organizations_url": "https://api.github.com/users/aromero-gh/orgs",
+      "repos_url": "https://api.github.com/users/aromero-gh/repos",
+      "events_url": "https://api.github.com/users/aromero-gh/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/aromero-gh/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-12T10:15:03Z",
+    "updated_at": "2026-10-12T10:15:14Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nAfter upgrading a self-hosted instance from 2.39.8 to 2.42.6, the instance-level MCP tool `search_workflow_executions` fails on every call from Claude (claude.ai custom connector) with:\n\n```\nStructured content does not match the tool's output schema: data must NOT have additional properties\n```\n\nIt fails even with a filter that returns zero executions (a workflow with no executions), so the extra property seems to be on the root object of the structured response, not on individual execution rows. Other read tools work on the same connection: `search_workflows`, `get_workflow_details`, `get_workflow_execution` (metadata only), `search_nodes`, `get_node_types`. Refreshing the client's tool list does not help (same 13 tools, same schema). The same call worked on 2.39.8 with the same client and scopes (`workflow:read` + `execution:read`).\n\n**Additional context**\nProbably related to a change in the response shape (pagination or count fields) that was not reflected in the tool's `outputSchema` with `additionalProperties: false`. Clients that don't validate structured content may not notice.\n\n### To Reproduce\n\n1. Self-hosted n8n 2.42.6 (Docker, Postgres, `n8nio/runners` external), Instance-level MCP enabled, OAuth client with `workflow:read` + `execution:read`.\n2. From an MCP client that validates `structuredContent` against `outputSchema` (Claude), call `search_workflow_executions` with any arguments, e.g. `{ \"workflowId\": \"<any exposed workflow>\", \"limit\": 5 }`.\n3. The client rejects the result with the error above.\n\n### Expected behavior\n\nThe tool's `structuredContent` matches its declared `outputSchema` (or the schema declares the new property), as in 2.39.8.\n\n### Debug Info\n\n- n8n version: 2.42.6 (self-hosted, Docker), upgraded from 2.39.8\n- Database: Postgres 16\n- Execution mode: regular (main) + external task runners\n- MCP client: Claude (claude.ai custom connector), OAuth\n- Hosting: Coolify\n\n### Operating System\n\nUbuntu Linux 24.04 (Docker, Coolify)\n\n### n8n Version\n\n2.42.6\n\n### Node.js Version\n\nv26.7.0\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/40870/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/40870/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @aromero-gh,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9577\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9577](https://linear.app/n8n/issue/GHC-9577)",
+      "at": "2026-10-12T10:15:13Z",
+      "url": "https://github.com/n8n-io/n8n/issues/40870#issuecomment-6122219795"
+    }
+  ],
+  "comments_complete": true
+}

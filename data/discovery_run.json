@@ -1,0 +1,29 @@
+{
+  "observed_at": "2026-10-13T03:31:35.944679+00:00",
+  "config": "data/discovery_config.json",
+  "adapters": [
+    {
+      "source": "Hacker News",
+      "refreshed": true,
+      "collected": 23,
+      "errors": []
+    },
+    {
+      "source": "GitHub",
+      "refreshed": true,
+      "collected": 24,
+      "errors": []
+    }
+  ],
+  "blocked_sources": [
+    {
+      "source": "Reddit public JSON",
+      "reason": "HTTP 403 on r/forhire/new.json; no evasion attempted"
+    },
+    {
+      "source": "Reddit browser",
+      "reason": "browser-harness default daemon unavailable; not treated as refreshed"
+    }
+  ],
+  "unique_refreshed": 47
+}

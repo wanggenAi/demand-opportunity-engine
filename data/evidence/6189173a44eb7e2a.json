@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50004683",
+  "collected_at": "2026-10-13T03:31:35.944679+00:00",
+  "source": {
+    "author": "luvmakin",
+    "children": [],
+    "created_at": "2026-10-08T11:47:16.000Z",
+    "created_at_i": 1791460036,
+    "id": 50004683,
+    "options": [],
+    "parent_id": null,
+    "points": 4,
+    "story_id": 50004683,
+    "text": "Coding agents start every session from zero. Ask Claude Code for a change like one it made last week and it reads the same files again, falls into the same test traps again, and you pay for all of it again.<p>Singularity learns from your finished sessions (change committed, tests passing): where each kind of change goes in this repo, how it gets checked, and the mistakes made along the way. When the next task starts, a hook hands the agent the workflows that fit, pointed at the code as it is today. Picking them is plain text matching with no model call. It stores where to edit, never the code itself.<p>Results, medians of 3–4 runs per side, hidden tests decide pass&#x2F;fail, every run passed. On excalidraw:<p>- A long task with four changes, all of kinds memory had learned: 1.9M → 423k tokens, $0.81 → $0.30, 28.5 → 9.5 turns.<p>- The same kind of task, but two of the four changes were bugs it had never seen: 39% fewer tokens, 38% lower cost. The unseen bugs cost the same with or without memory.<p>- Where it doesn&#x27;t help: small tasks in validator.js and one-off bug fixes. The difference there is about zero, within noise.<p>Each measurement was written down before it was run. The plans and results are in the repo.<p>Caveats: 3–4 runs per side, mostly one repo. Only Claude Code sessions are learned from; Codex, Gemini CLI and Droid get the hand-over through their hooks. Learning uses your Claude account (about $0.25 a round, capped at $1 a day, and only if you opt in). Everything is stored locally in ~&#x2F;.singularity.<p>Install (Windows PowerShell and more options in the README):<p><pre><code>  curl -fsSL https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;pandacover&#x2F;singularity&#x2F;main&#x2F;install.sh | sh\n</code></pre>\nI&#x27;d love to hear where it breaks on your repos, and what memory should carry for one-off work like bug fixes.",
+    "title": "Show HN: Singularity – memory that makes coding agents cheaper on repeat work",
+    "type": "story",
+    "url": "https://github.com/pandacover/singularity"
+  },
+  "comments": [],
+  "comments_complete": true
+}

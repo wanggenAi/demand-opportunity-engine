@@ -1,0 +1,65 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50036565",
+  "collected_at": "2026-10-13T03:31:35.944679+00:00",
+  "source": {
+    "author": "Kamabz",
+    "children": [
+      {
+        "author": "silenc3d_sage",
+        "children": [],
+        "created_at": "2026-10-11T20:29:46.000Z",
+        "created_at_i": 1791750586,
+        "id": 50047497,
+        "options": [],
+        "parent_id": 50036565,
+        "points": null,
+        "story_id": 50036565,
+        "text": "If it is as described it would seems to me like poor due diligence either on Cloudflare or Googles part.<p>I mean how hard would it be for a regional CDN to run a resource get request on the server and confirm the reported page is as described in the report themselves, that could be done in a completely automated fashion (without any AI, or attention needed, and in the case of false abuse reports pinning decisions [which depend quite a bit on the legislative region]).<p>Sorry you are having to deal with this.<p>There are sometimes instances where fake abuse reports aren&#x27;t actually fake but by all appearances they appeared fake from the perspective of the person asking for help. This doesn&#x27;t sound like the case here, but I thought I&#x27;d mention it since thanks in large part to the the large adoption of CDNs; its quite possible to have different pages displayed in different regions if one hasn&#x27;t pre-emptively locked that down in a number of ways.<p>There are configuration and security mitigations that can help quash that when bad actors are exploiting this, but it doesn&#x27;t sound like this is the case given what you described.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "dolorian",
+        "children": [],
+        "created_at": "2026-10-12T16:26:20.000Z",
+        "created_at_i": 1791822380,
+        "id": 50058752,
+        "options": [],
+        "parent_id": 50036565,
+        "points": null,
+        "story_id": 50036565,
+        "text": "Step 1: Run proxy service to protect websites from denial of service attacks<p>Step 2: Give DoS attackers a &quot;report&quot; button they can use to deny service to websites, and provide a hosting service for the DoS attackers<p>Step 3: ????<p>Step 4: Profit!",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-10-10T19:58:46.000Z",
+    "created_at_i": 1791662326,
+    "id": 50036565,
+    "options": [],
+    "parent_id": null,
+    "points": 8,
+    "story_id": 50036565,
+    "text": "I run a small site on Cloudflare&#x27;s Pro plan. Since 26 September, someone has filed the same fake abuse report against it six times. Each time, Cloudflare automatically puts a &quot;Suspected Malware&quot; warning on my homepage and login pages, and it stays until a person reviews it.<p>The reports are word for word identical. They describe an &quot;order&quot; and product pages that have never existed on my site (they return 404). The file hash in the report doesn&#x27;t match the hash in its own VirusTotal link, which returns &quot;Item not found&quot;. Only the date changes, and twice it&#x27;s been misspelled (&quot;October 52026&quot;, &quot;Octoboer 8 2026&quot;). Cloudflare&#x27;s team has cleared four of them. The reporter pastes the same text again within a day.<p>The result is that my homepage has been blocked for most of two weeks, my traffic has halved, and Google is indexing the warning page instead of my site. I&#x27;ve opened support cases and requested reviews each time. I&#x27;ve had one reply, on 5 October, and nothing on a lasting fix.<p>I&#x27;m not asking for special treatment. I&#x27;d like to know:\n1. Is there a way to stop automatic mitigations from a reporter or text that has already been shown to be false?\n2. Is there a manual-review setting for a domain?\n3. Has anyone else seen the abuse form used like this, and how did it end?<p>The same problem is described in my open case with Cloudflare (#02370521). Thanks for any pointers, and if anyone from Cloudflare&#x27;s abuse team reads this, I&#x27;d welcome a reply.",
+    "title": "Ask HN: Fake abuse reports keep auto-blocking my site on Cloudflare",
+    "type": "story",
+    "url": null
+  },
+  "comments": [
+    {
+      "author": "silenc3d_sage",
+      "text": "If it is as described it would seems to me like poor due diligence either on Cloudflare or Googles part. I mean how hard would it be for a regional CDN to run a resource get request on the server and confirm the reported page is as described in the report themselves, that could be done in a completely automated fashion (without any AI, or attention needed, and in the case of false abuse reports pinning decisions [which depend quite a bit on the legislative region]). Sorry you are having to deal with this. There are sometimes instances where fake abuse reports aren't actually fake but by all appearances they appeared fake from the perspective of the person asking for help. This doesn't sound like the case here, but I thought I'd mention it since thanks in large part to the the large adoption of CDNs; its quite possible to have different pages displayed in different regions if one hasn't pre-emptively locked that down in a number of ways. There are configuration and security mitigations that can help quash that when bad actors are exploiting this, but it doesn't sound like this is the case given what you described.",
+      "at": "2026-10-11T20:29:46.000Z",
+      "url": "https://news.ycombinator.com/item?id=50047497"
+    },
+    {
+      "author": "dolorian",
+      "text": "Step 1: Run proxy service to protect websites from denial of service attacks Step 2: Give DoS attackers a \"report\" button they can use to deny service to websites, and provide a hosting service for the DoS attackers Step 3: ???? Step 4: Profit!",
+      "at": "2026-10-12T16:26:20.000Z",
+      "url": "https://news.ycombinator.com/item?id=50058752"
+    }
+  ],
+  "comments_complete": true
+}

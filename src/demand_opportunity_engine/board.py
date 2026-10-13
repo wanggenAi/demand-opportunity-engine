@@ -1,54 +1,97 @@
-from __future__ import annotations
 from datetime import datetime, timezone
-from .models import Opportunity
+from zoneinfo import ZoneInfo
+from .models import timestamp
 from .scoring import score_opportunity
+from .clusters import clusters, observation_eligible
 
-def rank(opportunities: list[Opportunity], now: datetime | None = None) -> list[tuple[Opportunity, dict]]:
-    scored = [(op, score_opportunity(op, now)) for op in opportunities]
+CAPS = {"DO NOW": 3, "VALIDATE": 3, "WATCH": 5}
+
+def rank(opportunities, now=None, events=()):
+    scored = []
+    cs = {c["cluster_name"]: c for c in clusters(opportunities)}
+    for op in opportunities:
+        score = score_opportunity(op, now, events, opportunities)
+        c = cs.get(op.cluster_name)
+        bonus = min(5, max(0, c["independent_demand_count"] - 1)) if c else 0
+        score["components"]["repeatability"] = bonus
+        score["score"] += bonus
+        scored.append((op, score))
     return sorted(scored, key=lambda pair: (-pair[1]["score"], pair[0].id))
 
-def classify(score: int, evidence: int, reachability: int) -> str:
-    if score >= 105 and evidence >= 4 and reachability >= 4:
+def classify(op, score):
+    if score["source_age_days"] < 0:
+        return "REJECTED"
+    if "INFO_EDGE" in op.routes:
+        if not score["info_edge_rejections"] and op.fulfillment_mode == "REMOTE_NOW":
+            return "VALIDATE"
+        return "WATCH" if 0 <= score["source_age_days"] <= 14 else "REJECTED"
+    if not observation_eligible(op):
+        return "REJECTED"
+    if not score["do_now_rejections"] and score["score"] >= 65:
         return "DO NOW"
-    if score >= 78 and evidence >= 3:
+    # Current problem observations may be validated, but do not get an outreach recommendation.
+    if score["source_age_days"] <= 14 and op.fulfillment_mode == "REMOTE_NOW" and score["score"] >= 40:
         return "VALIDATE"
     return "WATCH"
 
-def build_board(opportunities: list[Opportunity], generated_at: str | None = None) -> str:
-    now = datetime.now(timezone.utc)
-    ranked = rank(opportunities, now)
-    buckets = {"DO NOW": [], "VALIDATE": [], "WATCH": []}
-    for op, score in ranked:
-        bucket = classify(int(score["score"]), int(score["evidence_strength"]), op.reachability)
-        if len(buckets[bucket]) < {"DO NOW": 3, "VALIDATE": 3, "WATCH": 5}[bucket]:
-            buckets[bucket].append((op, score))
-    generated_at = generated_at or now.isoformat()
+def selections(opportunities, now=None, events=()):
+    buckets = {key: [] for key in CAPS}
+    rejected = []
+    for op, score in rank(opportunities, now, events):
+        section = classify(op, score)
+        if section == "REJECTED":
+            rejected.append((op, score))
+        elif len(buckets[section]) < CAPS[section]:
+            buckets[section].append((op, score))
+    return buckets, rejected
+
+def build_board(opportunities, generated_at=None, events=()):
+    now = timestamp(generated_at) if generated_at else datetime.now(timezone.utc)
+    buckets, rejected = selections(opportunities, now, events)
     lines = [
         "# TODAY MONEY BOARD", "",
-        f"Generated: {generated_at}", "",
-        "Scoring: payment/evidence, reachability, urgency, fit, repeatability, competition gap, freshness and confidence; stale information edges are penalized.", "",
+        f"Generated: {now.astimezone(ZoneInfo('Asia/Shanghai')).isoformat()} (Asia/Shanghai)", "",
+        "Decision rule: 0–7-day buyer demand first. 7–14-day demand is VALIDATE without renewed buyer activity. Older leads require verified OP activity <=7 days. Payment must be buyer-authored; unknown/high competition and uncontrolled fulfillment block DO NOW.",
+        "Amounts below are suggested test prices, never observed buyer budgets. VALIDATE means confirm need/payment first; it does not authorize pitching bug reporters.",
+        f"Live store: {len(opportunities)} observations; {len(rejected)} seller/news/noise records rejected. V1 seeds excluded.", "",
     ]
-    for bucket in ("DO NOW", "VALIDATE", "WATCH"):
-        lines += [f"## {bucket}", ""]
-        if not buckets[bucket]:
-            lines += ["_None._", ""]
-            continue
-        for index, (op, score) in enumerate(buckets[bucket], 1):
+    for section, entries in buckets.items():
+        lines += [f"## {section}", ""]
+        if not entries:
+            lines += ["None. No candidate passed the hard gates; do not backfill with stale leads.", ""]
+        for i, (op, score) in enumerate(entries, 1):
             lines += [
-                f"### {index}. {op.title} ({op.id}) — score {score['score']}",
-                f"- Route(s): {', '.join(op.routes)}",
-                f"- Buyer/problem: {op.problem}",
-                f"- Source: [{op.source_platform}]({op.source_url}) (published {op.published_at}; observed {op.observed_at})",
-                f"- Evidence: “{op.evidence_text}”",
-                f"- Why payment is plausible: {op.payment_intent_evidence}",
-                f"- Reach / validation: {op.contact_path}; next action: {op.suggested_next_action}",
+                f"### {i}. {op.title} ({op.id})", "",
+                f"- Source URL: {op.source_url}",
+                f"- published_at: {op.published_at}; last_activity_at: {op.last_activity_at or 'unknown'}",
+                f"- Buyer activity: {op.buyer_activity_at or 'no verified buyer follow-up'}; source age {score['source_age_days']} days; buyer activity age {score['buyer_activity_age_days']}",
+                f"- Buyer/problem: {op.buyer_id} ({op.buyer_role}); {op.derived_interpretation}",
+                "- Exact evidence:\n\n> " + op.raw_evidence_quote.replace("\n", "\n> "),
+                f"- Payment evidence: {score['payment_signal_type']} — {score['payment_evidence_quote'] or 'no verified willingness-to-pay statement'}",
+                f"- Competition pressure: {op.competition_pressure}; comments={op.comment_count}, distinct service providers={op.seller_competition_count}, complete={op.comments_complete}; mature quote={op.mature_quote_present}; many DMs={op.many_dms_reported}; commodity market={op.commodity_market}",
+                f"- Competition evidence: {', '.join(op.competition_evidence) or 'no service pitch detected in collected replies; off-platform DMs unknown'}",
+                f"- Delivery capability: {op.fulfillment_mode}; dependencies: {'; '.join(op.required_capabilities) or 'remote only; access and exact scope still require consent'}",
+                f"- Contact path: {op.target_profile_url}; source reply URL: {op.source_url}",
+                f"- First message angle/draft (human review): {op.first_message}",
                 f"- Suggested offer: {op.suggested_offer}",
-                f"- Effort / risk: {op.estimated_effort}; {op.risk}",
-                f"- Why this rank: evidence strength {score['evidence_strength']}/5, freshness {score['freshness']}/5, reachability {op.reachability}/5. It outranks lower items because it has a clearer buyer request and a nearer validation step.",
-                "",
+                f"- Suggested price range: {op.suggested_price_range}",
+                f"- Effort: {op.effort}; risk: {op.risk}",
+                f"- Freshness / why now: {op.why_now or 'current change; target-buyer demand still unverified'}",
+                f"- Why us: {op.differentiation or 'no verified advantage yet; measure before offering'}",
+                f"- Score {score['score']}; components: {score['components']}",
+                f"- Why this rank: deterministic component total, then ID for ties. Failed DO NOW gates: {'; '.join(score['do_now_rejections']) or 'none'}.",
+                f"- Next action: {op.next_action}", "",
             ]
-    lines += [
-        "## Outcome feedback", "",
-        "Append contact, reply, qualification, quote, win/loss and revenue events to data/outcomes.jsonl; the next run can use these aggregates when prioritizing.", "",
-    ]
-    return "\n".join(lines)
+    lines += ["## One human action", ""]
+    if buckets["DO NOW"]:
+        op, _ = buckets["DO NOW"][0]
+        lines += [f"Contact {op.buyer_id} via {op.target_profile_url}. Test {op.suggested_offer}; {op.suggested_price_range}.", ""]
+    elif buckets["VALIDATE"]:
+        op, _ = buckets["VALIDATE"][0]
+        lines += [f"No qualified paid lead today. If one validation action is available, read {op.source_url} and ask {op.buyer_id} through the permitted source channel whether the problem is still open and whether a scoped paid diagnostic would be considered. Do not represent this as confirmed sales demand.", ""]
+    else:
+        lines += ["No verified buyer to contact today. Seek one current, buyer-authored paid request; do not spend human outreach time on stale/seller records.", ""]
+    lines += ["## Outcome feedback", "",
+              f"Read {len(events)} append-only events from data/outcomes.jsonl. DISCOVERED has zero conversion weight; no invented contact/reply/win/revenue events.",
+              "Scoring consumes platform, planned contact channel and cluster outcomes; details: OUTCOME_FEEDBACK.md.", ""]
+    return "\n".join(line.rstrip() for line in "\n".join(lines).splitlines()) + "\n"

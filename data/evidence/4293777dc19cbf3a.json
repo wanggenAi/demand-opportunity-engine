@@ -1,0 +1,123 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/40850",
+  "collected_at": "2026-10-13T03:31:35.944679+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/40850",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/40850/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/40850/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/40850/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/40850",
+    "id": 5807328896,
+    "node_id": "I_kwDOC4Q8Qs8AAAABWiTOgA",
+    "number": 40850,
+    "title": "MCP Server Trigger v2: tools/call right after session re-initialize succeeds but response is never delivered (hangs until 524)",
+    "user": {
+      "login": "steveermish",
+      "id": 22263812,
+      "node_id": "MDQ6VXNlcjIyMjYzODEy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22263812?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/steveermish",
+      "html_url": "https://github.com/steveermish",
+      "followers_url": "https://api.github.com/users/steveermish/followers",
+      "following_url": "https://api.github.com/users/steveermish/following{/other_user}",
+      "gists_url": "https://api.github.com/users/steveermish/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/steveermish/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/steveermish/subscriptions",
+      "organizations_url": "https://api.github.com/users/steveermish/orgs",
+      "repos_url": "https://api.github.com/users/steveermish/repos",
+      "events_url": "https://api.github.com/users/steveermish/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/steveermish/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582010757,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cXhQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:nodes",
+        "name": "team:nodes",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Nodes team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-12T02:05:18Z",
+    "updated_at": "2026-10-12T02:12:41Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "<div data-raw-markdown-html-block=\"\" contenteditable=\"false\" class=\"raw-markdown-html-block\" data-pm-slice=\"0 0 []\"><pre>&lt;!-- Please follow the template below. Skip the questions that are not relevant to you. --&gt;</pre></div><h2>Describe the problem/error/question</h2><p><strong>MCP Server Trigger (v2): a <code>tools/call</code> sent right after a session re-initialize runs successfully, but its response is never delivered, so the request hangs until Cloudflare returns 524.</strong></p><p>When an MCP session expires, n8n answers the next <code>tools/call</code> with <code>404</code> (session not found). The client (Claude Code, using <code>@modelcontextprotocol/sdk</code>, streamable HTTP) then sends <code>initialize</code> and <code>notifications/initialized</code> and immediately re-sends the same <code>tools/call</code>. n8n runs the tool and it succeeds in 2–5 s, but <strong>no response headers are ever written to that POST</strong>. The request hangs until n8n Cloud's Cloudflare front end returns <code>524</code>. The execution stays open about 125 s and is recorded with status <code>success</code> at the moment the connection drops.</p><p>This happened on <strong>9 of 17</strong> session-expiry retries over five days (2026-10-05 to 2026-10-09). It never happened on any other tool call: 0 of the other 226 tool executions on the same workflow.</p><p><strong>Request sequence</strong> (one representative case; all nine match):</p>\nt (UTC) | Request | Response\n-- | -- | --\n14:20:37.9 | POST tools/call (old session id) | 404 session not found\n14:20:38.6 | POST initialize | 200, new mcp-session-id\n14:20:39.0 | POST notifications/initialized | 202\n14:20:39.2 | POST notifications/initialized (client sends it twice) | 202\n~14:20:39 | POST tools/call (same tool, new session id) | nothing until 14:22:44.6, then 524\n14:20:41.4 | POST tools/list | 200\n14:20:48.2 | POST tools/call (same tool, same new session, client sends it again) | 200 in ~2 s\n\n<p><strong>Expected:</strong> a <code>tools/call</code> on a freshly initialized session returns its JSON-RPC result, as a JSON body or an SSE event on the POST, as soon as the tool finishes. That is what happens for every other call, including the client's own second attempt a few seconds later on the same session.</p><p><strong>Actual:</strong> the tool runs and succeeds, but the result never reaches the POST that asked for it. The request gets no response headers at all, and the execution stays open until the connection is cut.</p><p><strong>What we have not established:</strong> the hung call arrives within ~0.5 s of <code>initialize</code>, alongside the <code>notifications/initialized</code> posts and before <code>tools/list</code>. The 8 retries that succeeded were sent slightly later. A race between session setup and the first request on the new session would fit this (for example, the response being written to a transport other than the one the POST is waiting on), but we have not confirmed it.</p><p><strong>Our workaround:</strong> the proxy in front of n8n now answers any POST that has no response headers after 30 s with a retryable error, so the client re-sends instead of waiting for the <code>524</code>.</p><p><strong>Reproduction outline</strong> (not yet tried in isolation):</p><ol><li><p>MCP Server Trigger v2 with any fast tool attached, published.</p></li><li><p>Open a streamable-HTTP MCP session, then let it expire so the next <code>tools/call</code> gets <code>404</code>.</p></li><li><p>Immediately <code>initialize</code> a new session, send <code>notifications/initialized</code>, and <strong>without waiting for <code>tools/list</code></strong> send the <code>tools/call</code> again.</p></li><li><p>The tool node runs and succeeds in the execution log, but the POST never receives response headers.</p></li></ol><h2>What is the error message (if any)?</h2><p>No n8n error. The execution is marked <code>success</code>. The client receives HTTP <code>524</code> from Cloudflare after ~100 s with no response headers from n8n.</p><h2>Please share your workflow/screenshots/recording</h2><p>The workflow is one <strong>MCP Server Trigger</strong> (<code>@n8n/n8n-nodes-langchain.mcpTrigger</code>, typeVersion 2, streamable HTTP, header authentication) with read-only tools attached: <code>httpRequestTool</code> (typeVersion 4.4) and built-in app tool nodes. Every tool returns in seconds. The workflow JSON contains internal endpoints, so we have not pasted it here. We can share it, with execution ids and exact timestamps, privately with the n8n team.</p><p>The client reaches the trigger through a stateless reverse proxy, one replica, that forwards <code>mcp-session-id</code>, <code>mcp-protocol-version</code>, <code>content-type</code>, <code>accept</code> and <code>last-event-id</code> unchanged, so requests arrive in the order the client sends them.</p><h2>Share the output returned by the last node</h2><p>For the hung call in the table above, the execution shows:</p><ul><li><p>Tool node: <code>startTime</code> 14:20:39, <code>executionTime</code> 1,926 ms, <code>executionStatus</code> <code>success</code>, about 18 KB of output.</p></li><li><p>MCP Server Trigger node: run recorded at 14:22:44 (0 ms). The execution's <code>startedAt</code>/<code>stoppedAt</code> are 14:22:44.69 / 14:22:44.72, so it was recorded only when the connection closed, about 125 s after the tool finished.</p></li></ul><p>Across all nine hung calls: tool runtime 1.9–5.0 s (all <code>success</code>), tool start to execution close 125 s every time, response size 7–64 KB. Every other tool execution in the period closed within ~2 s of its tool finishing; the slowest tool runtime of all 235 was 11.9 s.</p><h2>Debug info</h2><h3>core</h3><ul><li><p>n8nVersion: 2.43.3 (the exact version at the time of each incident was not recorded)</p></li><li><p>platform: docker (cloud)</p></li><li><p>nodeJsVersion: 26.7.0</p></li><li><p>nodeEnv: production</p></li><li><p>database: sqlite</p></li><li><p>executionMode: regular</p></li><li><p>concurrency: 50</p></li><li><p>license: enterprise (sandbox)</p></li></ul><h3>storage</h3><ul><li><p>success: all</p></li><li><p>error: all</p></li><li><p>progress: false</p></li><li><p>manual: true</p></li><li><p>binaryMode: filesystem</p></li></ul><h3>pruning</h3><ul><li><p>enabled: true</p></li><li><p>maxAge: 720 hours</p></li><li><p>maxCount: 25000 executions</p></li></ul><h3>client</h3><ul><li><p>userAgent: mozilla/5.0 (macintosh; intel mac os x 10_15_7) applewebkit/537.36 (khtml, like gecko) chrome/155.0.0.0 safari/537.36</p></li><li><p>isTouchDevice: false</p></li></ul><p>Generated at: 2026-10-12T01:58:46.670Z</p>",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/40850/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/40850/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @steveermish,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9574\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9574](https://linear.app/n8n/issue/GHC-9574)",
+      "at": "2026-10-12T02:05:30Z",
+      "url": "https://github.com/n8n-io/n8n/issues/40850#issuecomment-6116459288"
+    }
+  ],
+  "comments_complete": true
+}

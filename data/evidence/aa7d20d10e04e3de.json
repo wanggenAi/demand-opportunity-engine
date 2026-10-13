@@ -1,0 +1,168 @@
+{
+  "source_api_url": "https://api.github.com/repos/yasirkolathur/menafoods/issues/26",
+  "collected_at": "2026-10-13T03:31:35.944679+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/yasirkolathur/menafoods/issues/26",
+    "repository_url": "https://api.github.com/repos/yasirkolathur/menafoods",
+    "labels_url": "https://api.github.com/repos/yasirkolathur/menafoods/issues/26/labels{/name}",
+    "comments_url": "https://api.github.com/repos/yasirkolathur/menafoods/issues/26/comments",
+    "events_url": "https://api.github.com/repos/yasirkolathur/menafoods/issues/26/events",
+    "html_url": "https://github.com/yasirkolathur/menafoods/issues/26",
+    "id": 5806253240,
+    "node_id": "I_kwDOTQnyA88AAAABWhRkuA",
+    "number": 26,
+    "title": "Department 2 — Catalyst Core, Auth & Data Security",
+    "user": {
+      "login": "yasirkolathur",
+      "id": 83835575,
+      "node_id": "MDQ6VXNlcjgzODM1NTc1",
+      "avatar_url": "https://avatars.githubusercontent.com/u/83835575?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/yasirkolathur",
+      "html_url": "https://github.com/yasirkolathur",
+      "followers_url": "https://api.github.com/users/yasirkolathur/followers",
+      "following_url": "https://api.github.com/users/yasirkolathur/following{/other_user}",
+      "gists_url": "https://api.github.com/users/yasirkolathur/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/yasirkolathur/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/yasirkolathur/subscriptions",
+      "organizations_url": "https://api.github.com/users/yasirkolathur/orgs",
+      "repos_url": "https://api.github.com/users/yasirkolathur/repos",
+      "events_url": "https://api.github.com/users/yasirkolathur/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/yasirkolathur/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 5,
+    "created_at": "2026-10-11T23:30:01Z",
+    "updated_at": "2026-10-12T17:45:17Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Mission\nStabilize and secure exactly **one existing Catalyst backend**: project 17990000000237407, function mf_zoho_gateway. This is a coordination issue; do not create or deploy a parallel backend.\n## Current observed blockers (2026-10-12)\nGateway registered but metadata says `is_deployed=false`; code in GitHub PR #14 and #23 is draft/not merged into authoritative live source. Sensitive credentials are present as readable Catalyst function environment values. Previous audits reported overbroad Datastore App User access. Treat all as release blockers.\n## P0 tasks\n- Recover and diff actual current function/client source; branch carefully and produce SHA/source manifest (#15).\n- Audit and rotate exposed/old secrets through secure administrative flow without copying secrets into issues/chats/logs; remove secret leakage from all tool-facing logs and traces.\n- Audit/lock tenant/customer/outlet access, role-based permissions, session boundaries, webhook signature verification, atomic idempotency/replay handling, Datastore ACL least privilege (#16).\n- Validate Development API Gateway auth protected paths, deployed function/web client build, health, error handling, trace IDs, rollback (#17).\n- Keep credit mode OBSERVE and production writes gated until pilot passes.\n## Done only when\nVerified Development gateway release identifier, green tests (including cross-tenant probes), confirmed source equivalence, credential/ACL review evidence, and tested sign-in/profile/logout/role boundaries; owner approval for any production promotion.\n## Links\n#15 #16 #17 #20; draft PRs #14 and #23.",
+    "reactions": {
+      "url": "https://api.github.com/repos/yasirkolathur/menafoods/issues/26/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/yasirkolathur/menafoods/issues/26/timeline",
+    "performed_via_github_app": {
+      "id": 1144995,
+      "client_id": "Iv23liVemv8A9if9v0F2",
+      "slug": "chatgpt-codex-connector",
+      "node_id": "A_kwHOAOQ6Gs4AEXij",
+      "owner": {
+        "login": "openai",
+        "id": 14957082,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjE0OTU3MDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/14957082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/openai",
+        "html_url": "https://github.com/openai",
+        "followers_url": "https://api.github.com/users/openai/followers",
+        "following_url": "https://api.github.com/users/openai/following{/other_user}",
+        "gists_url": "https://api.github.com/users/openai/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/openai/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/openai/subscriptions",
+        "organizations_url": "https://api.github.com/users/openai/orgs",
+        "repos_url": "https://api.github.com/users/openai/repos",
+        "events_url": "https://api.github.com/users/openai/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/openai/received_events",
+        "type": "Organization",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "name": "ChatGPT Codex Connector",
+      "description": "Bring ChatGPT and Codex to your GitHub repositories.",
+      "external_url": "https://www.chatgpt.com",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "created_at": "2025-02-14T01:37:05Z",
+      "updated_at": "2026-09-23T18:52:59Z",
+      "permissions": {
+        "actions": "write",
+        "checks": "read",
+        "contents": "write",
+        "emails": "read",
+        "issues": "write",
+        "metadata": "read",
+        "pull_requests": "write",
+        "statuses": "read",
+        "workflows": "write"
+      },
+      "events": [
+        "check_run",
+        "check_suite",
+        "commit_comment",
+        "issues",
+        "issue_comment",
+        "pull_request",
+        "pull_request_review",
+        "pull_request_review_comment",
+        "pull_request_review_thread",
+        "repository",
+        "status",
+        "sub_issues"
+      ]
+    },
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "yasirkolathur",
+      "text": "Department 2 verification — 2026-10-12 (Development only; no production deployment)\n\n**Project/runtime inspected:** menafoodscustomermiddleware `17990000000237407`, sole listed function `mf_zoho_gateway` / `17990000000231926` (Node 24). Catalyst reports `is_deployed=false`; no verified live deployment receipt or source equivalence. All five backend API entries resolve to that existing function.\n\n**Private source recovery:** original v12.3.23 gateway ZIP SHA-256 `5d3cf524477708a37fc147e42e914bddf98dec62d26f33ced5b0631088c703d9`; newer private staging cannot be asserted equal to current runtime. Offline baseline: `npm test` 165/165. A locally staged v12.3.24 *candidate* patches fail-open SalesIQ webhook signature checking (missing secret -> fail closed, invalid signature -> reject) and adds two regressions; `npm run check && npm test` 167/167. Staged candidate SHA-256 `c6e51d7213d2201c04b4e1f9af093b08882eb66df4317802cd7da1bf2cd4c1b7`. Private source was **not** pushed to public GitHub or uploaded to Catalyst.\n\n**Development Datastore ACLs fixed and read-back verified 14/14:** Removed global App User SELECT from `MF_Webhook_Events`, `MF_Customer_Branches`, `MF_Supplier_Quotes`, `MF_Business_Locations`, `MF_Deliveries`, `MF_Delivery_Events`, `MF_Drivers`, `MF_Favourites`, `MF_Account_Managers`, `MF_App_Settings`, `MF_Supplier_Fulfilments`, `MF_Sourcing_Recommendations`, `MF_Sourcing_Requests`, `MF_Supplier_Capabilities`. Preserved App Administrator privileges. Public-oriented `MF_Product_Category_Map` unchanged pending field/security review. Test signed-in client flows after ACL changes; direct Datastore client readers may now be denied as intended.\n\n**Review:** PR #14 head `9ebaa132c15c42785ff2442755e039cd1b19ff3a` and PR #23 head `dc7a56d30c3a3e33a5f1270688ac906409a9cb3a` both remain drafts/unmerged. Their GitHub CI checks passed at those SHAs; this proves only scaffold test status, not runtime security. No new commit, PR merge, second backend, Replit, Books write or secret rotation.\n\n**RELEASE BLOCKED:** (1) secure source-to-runtime diff and deployment receipt; (2) metadata surfaces credential values: authorize a controlled secret rotation without publishing values; (3) SalesIQ fail-closed fix not deployed; (4) authenticated Development cross-tenant, branch, logout, role and webhook probes, including after ACL changes; (5) durable idempotency/exactly-one Books order pilot & rollback receipt. `MF_CREDIT_ENFORCEMENT_MODE=OBSERVE` retained.",
+      "at": "2026-10-12T11:53:23Z",
+      "url": "https://github.com/yasirkolathur/menafoods/issues/26#issuecomment-6123726651"
+    },
+    {
+      "author": "yasirkolathur",
+      "text": "12 Oct independent release evidence for Department 2:\n\n- Private staged `mf_zoho_gateway v12.3.24 DEPT2_SECURITY` was recovered and tested without deployment.\n- It contains fail-closed SalesIQ webhook signing, prior fail-closed customer order gate, server-cart/idempotency, pre-POST verification, Inventory/Commerce health and protected sourcing-status controls.\n- `npm run check` PASS; **167/167 tests PASS**.\n- A Department 3 compatibility extension, private v12.3.25, was built directly on this v12.3.24 security source and also preserves the full security suite; **173/173 PASS**.\n- Simple source secret-artifact scan found no .env/private-key/log artifacts or token-like values in the staged source tree.\n- No production deployment or secret rotation performed in this QA pass.\n\nObserved live Development is currently gateway **v12.3.20** / client **v12.5.14**, so the staged security build is still not demonstrated as live. Keep source-equivalence/deployment receipt as a release gate.",
+      "at": "2026-10-12T12:23:20Z",
+      "url": "https://github.com/yasirkolathur/menafoods/issues/26#issuecomment-6124189785"
+    },
+    {
+      "author": "yasirkolathur",
+      "text": "### Read-only Catalyst API Gateway finding — 12 Oct 2026 (Department 4 coordination)\n\nI inspected **only** Development metadata for the existing Catalyst project `menafoodscustomermiddleware` (`17990000000237407`), org `809407193`, gateway `mf_zoho_gateway`.\n\n- Route **MFAPI** (`/mf-api/{path1:(.*)}` → `/server/mf_zoho_gateway/{path1}`, ANY) returned **no explicit `authentication` field** in Get_API_route.\n- Route **MFUser** (`/mf-user/{path1:(.*)}`, ANY) does show `authentication: [\"CatalystUserManagement\"]`.\n- The direct gateway route likewise returned no explicit auth requirement. This is **not proof of exploitation**, because gateway code may enforce sessions, but must be tested with anonymous 401 / non-tenant 403 probes before release.\n- The function list still reports `is_deployed:false`, and I could not directly verify the remote Development /mf-api/health endpoint.\n- A connected read-only function metadata view exposes sensitive environment configuration values. **No values or tokens are copied here.** Restrict access/observability and review credential rotation through the existing owner-approved security process.\n\n**Request to Department 2:** Confirm actual deployed version/source, enforce session/role/customer/branch checks on all sensitive MFAPI paths, verify signature/replay/auth behavior, reconcile API Gateway auth semantics with web/Android clients, and document sanitized Dev 200/401/403 results. Do not change route targets or secrets blindly; do not create another backend or deploy Production.\n\nCross-reference Department 4 draft PR #30 and issue #28.",
+      "at": "2026-10-12T12:25:09Z",
+      "url": "https://github.com/yasirkolathur/menafoods/issues/26#issuecomment-6124216514"
+    },
+    {
+      "author": "yasirkolathur",
+      "text": "### Cross-department source reconciliation — 12 Oct 2026\n\nA parallel-development conflict was found and resolved **offline/source-only** before any Development deployment.\n\n**Finding:** the staged Department 3 v12.3.25 canonical-Creator candidate was built from the Department 2 security line and did **not** contain the newer v12.3.21 Books active-customer checkout gate or the currently observed v12.3.22 business-identity/Books-mapping guard. Deploying v12.3.25 as-is would have regressed those protections.\n\n**Unified candidate prepared:** `mf_zoho_gateway v12.3.26 UNIFIED_LAUNCH_GUARDS`\n- preserves Department 2 fail-closed SalesIQ/security work;\n- preserves v12.3.25 canonical Creator `Sales_Order_ZBooks` reconciliation after a verified Books SO;\n- restores v12.3.21 requirement that every payment method, including CASH/COD, has a mapped/reachable/active Books customer before the order writer;\n- restores v12.3.22 PROFILE↔BUSINESS_ACCOUNT CR/VAT drift blocking, account-scoped Books mapping reuse, business↔membership Books mapping mismatch blocking, and explicit admin identity confirmation;\n- corrects runtime/package version metadata to 12.3.26.\n\n**Verification:** `node --check index.js` PASS; full suite **184/184 PASS**; source secret/artifact preflight PASS; ZIP integrity PASS. SHA-256: `4465b6fe05d9ba248a47af5c92e464e07526640e20b5948614490079e63836e6`.\n\n**Live state during reconciliation:** Development health reported v12.3.22. Therefore v12.3.24/v12.3.25 must not be deployed independently over it. v12.3.26 is STAGED ONLY, not proof of live deployment. No Production action and no Books/Creator financial write occurred.\n\nNext gate: secure source review/rollback snapshot → coordinated Development deployment of the single unified candidate → anonymous/authenticated smoke + cross-business 401/403/200 probes → Inventory item/warehouse read proof → owner-approved low-value COD pilot with exactly one Books SO and one canonical Creator mapping.\n\n**Department 2 coordination:** treat v12.3.26 as the superseding security candidate for review; do not deploy standalone v12.3.24. Secret rotation and API Gateway/session/role probes remain separate release gates.",
+      "at": "2026-10-12T17:38:16Z",
+      "url": "https://github.com/yasirkolathur/menafoods/issues/26#issuecomment-6129415551"
+    },
+    {
+      "author": "yasirkolathur",
+      "text": "### Live anonymous auth probe — 12 Oct 2026\n\nRead-only probe against current Catalyst Development:\n- `GET /mf-api/customer/profile` → **401**\n- `GET /mf-api/customer/books-pricing?skus=CR1658` → **401**\n- `GET /mf-api/customer/orders` → **401**\n- `GET /mf-api/admin/integrations/health` → **401**\n- intended public `GET /mf-api/mobile/catalog/products?per_page=1` → **200** with live Commerce data\n- `GET /mf-api/sourcing/status` → **404** (route not live in current runtime)\n\nLive health during this sequence reported gateway **v12.3.22**. This provides evidence that sensitive MFAPI customer/admin routes are currently session-gated in code even though API Gateway metadata did not show explicit auth on MFAPI. Still pending: authenticated wrong-business/role 403 probes, logout/session invalidation, SalesIQ signature live proof, and source/deployment equivalence.",
+      "at": "2026-10-12T17:45:17Z",
+      "url": "https://github.com/yasirkolathur/menafoods/issues/26#issuecomment-6129521754"
+    }
+  ],
+  "comments_complete": true
+}

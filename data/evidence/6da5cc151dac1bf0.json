@@ -1,0 +1,107 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/40910",
+  "collected_at": "2026-10-13T03:31:35.944679+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/40910",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/40910/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/40910/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/40910/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/40910",
+    "id": 5815869272,
+    "node_id": "I_kwDOC4Q8Qs8AAAABWqcfWA",
+    "number": 40910,
+    "title": "AI Assistant workflow save fails with empty sourceCode, overwrites SDK file, and enters retry loop",
+    "user": {
+      "login": "bluebird00",
+      "id": 18460398,
+      "node_id": "MDQ6VXNlcjE4NDYwMzk4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/18460398?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bluebird00",
+      "html_url": "https://github.com/bluebird00",
+      "followers_url": "https://api.github.com/users/bluebird00/followers",
+      "following_url": "https://api.github.com/users/bluebird00/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bluebird00/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bluebird00/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bluebird00/subscriptions",
+      "organizations_url": "https://api.github.com/users/bluebird00/orgs",
+      "repos_url": "https://api.github.com/users/bluebird00/repos",
+      "events_url": "https://api.github.com/users/bluebird00/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bluebird00/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-10-12T15:00:23Z",
+    "updated_at": "2026-10-12T15:03:56Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nThe AI Assistant repeatedly failed to save changes to an existing workflow, despite successful TypeScript SDK validation.\n\nThe captured build-workflow calls included both a valid filePath and sourceCode: \"\". After a failed build, the referenced source file was confirmed to be 0 bytes.\n\nThe build returned:\n\nDefault export is not a workflow. Make sure your file has: export default workflow(...)\n\nThe Assistant retried the same approach multiple times, including after stating that it would omit sourceCode. The requested changes were never saved.\n\nImpact\nThe requested scheduling and lookback changes were not saved. The existing live workflow remained unchanged, and no workflow execution was attempted.\n\n### To Reproduce\n\nObserved sequence:\n\nAsk the AI Assistant to modify an existing workflow.\nThe Assistant exports it to a .workflow.ts workspace file and applies scoped edits.\nSDK validation succeeds with “no issues found”.\nThe Assistant calls build-workflow with the file path and an empty sourceCode string.\nThe build fails with the error above.\nInspecting the workspace file shows that it is now 0 bytes.\nThe Assistant re-exports, edits, validates, and retries, but encounters the same failure.\n\n\n### Expected behavior\n\nWhen building from filePath, the Assistant should omit sourceCode and preserve the existing source file.\n\nIf an empty sourceCode value is supplied, the tool should reject it without overwriting the file, or otherwise handle it safely. After repeated identical failures, the Assistant should stop rather than repeat the same save approach.\n\n### Debug Info\n\n# Debug info\n\n## core\n\n- n8nVersion: 2.43.4\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.7.0\n- nodeEnv: production\n- database: sqlite\n- executionMode: regular\n- concurrency: 1\n- license: enterprise (production)\n- consumerId: 22a7d126-67aa-431d-aefc-817f52daf164\n\n## storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n## pruning\n\n- enabled: true\n- maxAge: 336 hours\n- maxCount: 10000 executions\n\n## client\n\n- userAgent: mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/155.0.0.0 safari/537.36\n- isTouchDevice: false\n\n## cluster\n\n- instanceCount: 1\n- versions: 2.43.4\n- instances:\n  - instanceKey: 4d5e0355-3910-45ec-880e-14cd5a3ac0b3, hostId: main-e9d9b8cd09ea, instanceType: main, instanceRole: leader, version: 2.43.4\n- checks:\n  - check: hostid-clash, status: succeeded, warnings: -\n  - check: lifecycle, status: succeeded, warnings: -\n  - check: split-brain, status: succeeded, warnings: -\n  - check: version-mismatch, status: succeeded, warnings: -\n\nGenerated at: 2026-10-12T14:56:47.374Z\n\n### Operating System\n\nWindows 11\n\n### n8n Version\n\n2.43.4\n\n### Node.js Version\n\n26.7.0\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/40910/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/40910/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @bluebird00,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9581\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9581](https://linear.app/n8n/issue/GHC-9581)",
+      "at": "2026-10-12T15:00:33Z",
+      "url": "https://github.com/n8n-io/n8n/issues/40910#issuecomment-6126853622"
+    },
+    {
+      "author": "bluebird00",
+      "text": "If it helps here is the call the assistant made:\n\n\"{\n  \"filePath\": \"src/workflows/p1-email-statistik-log-emails.workflow.ts\",\n  \"sourceCode\": \"\",\n  \"workflowId\": \"\",\n  \"name\": \"P1 - Email Statistik | Log emails\",\n  \"approvalSummary\": \"Schedule email sync Monday–Friday at 16:00 and look back four days on Mondays, keeping two days on other weekdays\",\n  \"workItemId\": \"\",\n  \"isSupportingWorkflow\": false,\n  \"preferNewCredentials\": [],\n  \"executionIntent\": \"reusable\",\n  \"groupingDecision\": \"grouped\",\n  \"groupingReason\": \"\",\n  \"folderPath\": \"\"\n}\"\n\nResponse:\n\n\"{\n  \"success\": false,\n  \"filePath\": \"src/workflows/p1-email-statistik-log-emails.workflow.ts\",\n  \"sourceHash\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\n  \"workflowId\": \"qGUglmAF2Puybuv0\",\n  \"workItemId\": \"\",\n  \"errors\": [\n    \"Default export is not a workflow. Make sure your file has: export default workflow(...)\",\n    \"You already tried this and it failed with the same error. Do not repeat the same approach. Use a different repair strategy for this work item.\"\n  ],\n  \"remediation\": {\n    \"category\": \"code_fixable\",\n    \"shouldEdit\": true,\n    \"reason\": \"workflow_source_build_failed\",\n    \"guidance\": \"Edit the workspace source file using filePath, then call build-workflow again with the same filePath.\"\n  }\n}\"",
+      "at": "2026-10-12T15:03:56Z",
+      "url": "https://github.com/n8n-io/n8n/issues/40910#issuecomment-6126917016"
+    }
+  ],
+  "comments_complete": true
+}

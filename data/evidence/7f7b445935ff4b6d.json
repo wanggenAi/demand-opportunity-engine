@@ -1,0 +1,129 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/40862",
+  "collected_at": "2026-10-13T03:31:35.944679+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/40862",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/40862/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/40862/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/40862/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/40862",
+    "id": 5810862124,
+    "node_id": "I_kwDOC4Q8Qs8AAAABWlq4LA",
+    "number": 40862,
+    "title": "Tool calling with Azure AI Foundry Chat Model node does not work with GPT-6 Luna",
+    "user": {
+      "login": "marlis-tiefengraber",
+      "id": 323577275,
+      "node_id": "U_kgDOE0lluw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/323577275?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/marlis-tiefengraber",
+      "html_url": "https://github.com/marlis-tiefengraber",
+      "followers_url": "https://api.github.com/users/marlis-tiefengraber/followers",
+      "following_url": "https://api.github.com/users/marlis-tiefengraber/following{/other_user}",
+      "gists_url": "https://api.github.com/users/marlis-tiefengraber/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/marlis-tiefengraber/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/marlis-tiefengraber/subscriptions",
+      "organizations_url": "https://api.github.com/users/marlis-tiefengraber/orgs",
+      "repos_url": "https://api.github.com/users/marlis-tiefengraber/repos",
+      "events_url": "https://api.github.com/users/marlis-tiefengraber/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/marlis-tiefengraber/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8811645809,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACDTcLcQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:ai",
+        "name": "team:ai",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the AI team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-10-12T08:42:55Z",
+    "updated_at": "2026-10-12T17:54:13Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "\n<!-- Please follow the template below. Skip the questions that are not relevant to you. -->\n\n## Describe the problem/error/question\n\nWhen using the Azure AI Foundry Chat Model node with an AI Agent and connected function tools, requests for a GPT‑6 Luna deployment go to /v1/chat/completions and fail because the request uses reasoning effort (default medium). Azure’s error says to use /v1/responses or set reasoning_effort to none.\n\nThe Azure model node does not appear to expose an endpoint selector or a reasoning-effort setting, meaning GPT-6 Luna cannot be used with Tools via the  Azure AI Foundry Chat Model node at the moment. \n\nAzure documents the constraint and workaround in [Tool calling with reasoning models](https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/reasoning#tool-calling-with-reasoning-models).\n\n\n## What is the error message (if any)?\n\nFunction tools with reasoning_effort are not supported for gpt-6-luna in /v1/chat/completions. To use function tools, use /v1/responses or set reasoning_effort to 'none'.\n\n## Please share your workflow/screenshots/recording\n\nMinimal reproduction: an AI Agent using an Azure AI Foundry Chat Model configured with a GPT‑6 Luna deployment, with a function tool connected to the Agent. The Agent fails when it attempts a tool call.\n\n\n{\n  \"nodes\": [\n    {\n      \"parameters\": {\n        \"pollTimes\": {\n          \"item\": [\n            {\n              \"mode\": \"everyHour\"\n            }\n          ]\n        },\n        \"feedUrl\": \"https://github.blog/changelog/feed/\"\n      },\n      \"id\": \"bf0deb9d-4e19-49db-adc0-656db959011c\",\n      \"name\": \"Github RSS Feed Trigger\",\n      \"type\": \"n8n-nodes-base.rssFeedReadTrigger\",\n      \"typeVersion\": 1,\n      \"position\": [\n        -480,\n        -48\n      ]\n    },\n    {\n      \"parameters\": {\n        \"options\": {\n          \"systemMessage\": \"# <redacted>\"\n        }\n      },\n      \"id\": \"2bc68e99-6751-42ce-82e7-a37863fc84b9\",\n      \"name\": \"AI Agent\",\n      \"type\": \"@n8n/n8n-nodes-langchain.agent\",\n      \"typeVersion\": 3.1,\n      \"position\": [\n        112,\n        -32\n      ]\n    },\n    {\n      \"parameters\": {\n        \"method\": \"POST\",\n        \"url\": \"=https://gateway<redacted>/sendEmail\",\n        \"authentication\": \"genericCredentialType\",\n        \"genericAuthType\": \"httpHeaderAuth\",\n        \"sendBody\": true,\n        \"specifyBody\": \"json\",\n        \"jsonBody\": \"={\\n    \\\"recipients\\\": [\\n        \\\"<redacted mail>\\\",\\n        \\\"<redacted mail>\\\"\\n    ],\\n    \\\"blindCarbonCopyTo\\\": [],\\n    \\\"carbonCopyTo\\\": [],\\n    \\\"replyTo\\\": [],\\n    \\\"sender\\\": \\\"n8n@noreply.com\\\",\\n    \\\"sendBy\\\": \\\"n8n\\\",\\n    \\\"subject\\\": \\\"Github RSS Feed\\\",\\n    \\\"content\\\": \\\"{{ $json.output }}\\\",\\n    \\\"attachments\\\": [],\\n    \\\"inlineAttachment\\\": false,\\n    \\\"contentType\\\": \\\"text/html\\\",\\n    \\\"priority\\\": \\\"DEFAULT\\\"\\n}\",\n        \"options\": {}\n      },\n      \"id\": \"628f3d4f-0c29-4a26-9d0a-b88d7a0b4d50\",\n      \"name\": \"Send Mail\",\n      \"type\": \"n8n-nodes-base.httpRequest\",\n      \"typeVersion\": 4.4,\n      \"position\": [\n        688,\n        -32\n      ],\n      \"credentials\": {\n        \"httpHeaderAuth\": {\n          \"id\": \"<redacted>\",\n          \"name\": \"<redacted>\"\n        }\n      }\n    },\n    {\n      \"parameters\": {\n        \"toolDescription\": \"Jira ticket creation tool. When creating tickets, you MUST always structure the request body using exactly this JSON format:\\n\\n{\\n  \\\"fields\\\": {\\n    \\\"project\\\": {\\n      \\\"key\\\": \\\"<PROJECT_KEY>\\\"\\n    },\\n    \\\"assignee\\\": {\\n       \\\"name\\\": \\\"<ASSIGNEE_NAME>\\\"\\n    }\\n    \\\"issuetype\\\": {\\n      \\\"name\\\": \\\"<ISSUE_TYPE_NAME>\\\"\\n    },\\n    \\\"summary\\\": \\\"<SUMMARY>\\\",\\n    \\\"description\\\": \\\"<DESCRIPTION>\\\"\\n  }\\n}\\n\\nRules:\\n- \\\"project.key\\\" must always be \\\"\\\".\\n- \\\"issuetype.name\\\" must always be \\\"\\\"\\n- \\\"summary\\\" is a concise one-line title for the ticket.\\n- \\\"description\\\" contains the full detail, acceptance criteria, or context.\\n- Never add, omit, or rename any of these four top-level fields inside \\\"fields\\\".\",\n        \"method\": \"POST\",\n        \"url\": \"https://jira<redacted>/rest/api/2/issue\",\n        \"authentication\": \"predefinedCredentialType\",\n        \"nodeCredentialType\": \"jiraSoftwareServerPatApi\",\n        \"sendBody\": true,\n        \"specifyBody\": \"json\",\n        \"jsonBody\": \"={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('JSON', ``, 'json') }}\",\n        \"options\": {}\n      },\n      \"id\": \"e28fcc25-8349-4508-aa8b-4bff49c4d6dd\",\n      \"name\": \"Create Jira Ticket\",\n      \"type\": \"n8n-nodes-base.httpRequestTool\",\n      \"typeVersion\": 4.4,\n      \"position\": [\n        320,\n        256\n      ],\n      \"credentials\": {\n        \"jiraSoftwareServerPatApi\": {\n          \"id\": \"<redacted>\",\n          \"name\": \"<redacted>\"\n        }\n      }\n    },\n    {\n      \"parameters\": {\n        \"jsCode\": \"const raw = $json.output || '';\\n// Strip everything before the first HTML tag\\nconst htmlStart = raw.indexOf('<');\\nlet cleaned = htmlStart >= 0 ? raw.substring(htmlStart) : `<p>${raw}</p>`;\\n// Remove all control characters (newlines, tabs, carriage returns)\\ncleaned = cleaned.replace(/[\\\\n\\\\r\\\\t]/g, '');\\nreturn [{ json: { ...$json, output: cleaned } }];\"\n      },\n      \"id\": \"9bc64f8e-f1a3-417b-acc1-a49d0c73aa4c\",\n      \"name\": \"parse mail code\",\n      \"type\": \"n8n-nodes-base.code\",\n      \"typeVersion\": 2,\n      \"position\": [\n        464,\n        0\n      ]\n    },\n    {\n      \"parameters\": {\n        \"jsCode\": \"return items.map(item => ({\\n  json: {\\n    chatInput: `[${item.json[\\\"pubDate\\\"] || \\\"\\\"}] ${item.json[\\\"content:encodedSnippet\\\"] || \\\"\\\"}\\\\nLink: ${item.json[\\\"link\\\"] || \\\"\\\"}`\\n  }\\n}));\"\n      },\n      \"id\": \"51d2ad40-2043-498d-9691-b99928f5fab0\",\n      \"name\": \"prepare RSS input\",\n      \"type\": \"n8n-nodes-base.code\",\n      \"typeVersion\": 2,\n      \"position\": [\n        -160,\n        -16\n      ]\n    },\n    {\n      \"parameters\": {\n        \"model\": \"gpt-6-luna\",\n        \"options\": {}\n      },\n      \"type\": \"@n8n/n8n-nodes-langchain.lmChatAzureOpenAi\",\n      \"typeVersion\": 1,\n      \"position\": [\n        -32,\n        176\n      ],\n      \"id\": \"792c3bd4-be1c-43b2-84c8-2e9cbae0fa35\",\n      \"name\": \"Azure OpenAI Chat Model\",\n      \"credentials\": {\n        \"azureOpenAiApi\": {\n          \"id\": \"<redacted>\",\n          \"name\": \"<redacted>\"\n        }\n      }\n    }\n  ],\n  \"connections\": {\n    \"Github RSS Feed Trigger\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"prepare RSS input\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"AI Agent\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"parse mail code\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Send Mail\": {\n      \"main\": [\n        []\n      ]\n    },\n    \"Create Jira Ticket\": {\n      \"ai_tool\": [\n        [\n          {\n            \"node\": \"AI Agent\",\n            \"type\": \"ai_tool\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"parse mail code\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Send Mail\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"prepare RSS input\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"AI Agent\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Azure OpenAI Chat Model\": {\n      \"ai_languageModel\": [\n        [\n          {\n            \"node\": \"AI Agent\",\n            \"type\": \"ai_languageModel\",\n            \"index\": 0\n          }\n        ]\n      ]\n    }\n  },\n  \"pinData\": {},\n  \"meta\": {\n    \"instanceId\": \"<redacted>\"\n  }\n}\n\n\n\n## Share the output returned by the last node\n<!-- If you need help with data transformations, please also share your expected output. -->\n\nThe execution fails at the Agent’s model request, so the last node returns no output. The error is included above.\n\n## Debug info\n\n### core\n\n- n8nVersion: 2.39.8\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.7.0\n- nodeEnv: production\n- database: postgres\n- executionMode: scaling (single-main)\n- concurrency: -1\n- license: enterprise (production)\n\n### storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: memory\n\n### pruning\n\n- enabled: true\n- maxAge: 336 hours\n- maxCount: 10000 executions\n\n### client\n\n- userAgent: mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/154.0.0.0 safari/537.36 edg/154.0.0.0\n- isTouchDevice: false\n\nGenerated at: 2026-10-12T08:12:05.703Z",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/40862/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/40862/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @marlis-tiefengraber,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9576\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9576](https://linear.app/n8n/issue/GHC-9576)",
+      "at": "2026-10-12T08:43:10Z",
+      "url": "https://github.com/n8n-io/n8n/issues/40862#issuecomment-6120797606"
+    },
+    {
+      "author": "jackeddisciple",
+      "text": "Hey, I'd like to work on this issue. I noticed it's assigned to the team , is someone already working on it, or would it be okay for me to take it up?",
+      "at": "2026-10-12T17:54:13Z",
+      "url": "https://github.com/n8n-io/n8n/issues/40862#issuecomment-6129657519"
+    }
+  ],
+  "comments_complete": true
+}

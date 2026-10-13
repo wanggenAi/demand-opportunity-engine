@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50046981",
+  "collected_at": "2026-10-13T03:31:35.944679+00:00",
+  "source": {
+    "author": "allocate",
+    "children": [],
+    "created_at": "2026-10-11T19:35:33.000Z",
+    "created_at_i": 1791747333,
+    "id": 50046981,
+    "options": [],
+    "parent_id": null,
+    "points": 1,
+    "story_id": 50046981,
+    "text": "My Claude Code workflow usually involves... a lot of subagents. I make one Opus model coordinate work as my tech lead, it dispatches subagents using models appropriate for the task into their own git worktrees, and then I try to multitask and do something else while they run.<p>I&#x27;d been finding lately (particularly with Opus 5.5) that there was a ton of drift and instances of subagents not doing anything and it was evading the attention of the TL despite the instructions I gave it to have them report in at a regular cadence.<p>Running tracon in a split terminal is my new personal workflow. It gives me early indicators when things start going off the rails (ex. blocked on a prompt, idle, looping on a failing command, simultaneous edits to files other subagents are editing, drifting off the brief, etc.) and I can interrogate the subagent&#x27;s workflow and by pressing n the main agent gets a note to make a call on how and if to correct it.<p>Read-only and runs on your machine: it tails transcripts in ~&#x2F;.claude&#x2F;projects&#x2F; and checks each worktree with ps, lsof, and git -- only thing that leaves your machine is what the Haiku judge reads for classification (or optionally you can turn that off with --no-judge).<p>I&#x27;ve found it super useful for the game I&#x27;m building and figured others in the community might also find it useful.<p>If you just want to give it a spin without committing:<p><pre><code>  uvx tracon --demo\n</code></pre>\nmacOS and Linux, Python 3.12+, MIT. (Not affiliated with Anthropic.)",
+    "title": "Show HN: Tracon (air traffic control for subagents)",
+    "type": "story",
+    "url": "https://github.com/phalladar/tracon"
+  },
+  "comments": [],
+  "comments_complete": true
+}

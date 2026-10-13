@@ -1,0 +1,31 @@
+{
+  "lookback_days": 30,
+  "per_query": 8,
+  "hn_queries": [
+    "Ask HN automate",
+    "Ask HN workflow",
+    "sourcing",
+    "automation",
+    "Haiku"
+  ],
+  "github_queries": [
+    "is:open repo:n8n-io/n8n workflow",
+    "is:open automation \"bounty\"",
+    "is:open \"supplier\" \"sourcing\""
+  ],
+  "blocked_sources": [
+    {
+      "source": "Reddit public JSON",
+      "reason": "HTTP 403 on r/forhire/new.json; no evasion attempted"
+    },
+    {
+      "source": "Reddit browser",
+      "reason": "browser-harness default daemon unavailable; not treated as refreshed"
+    }
+  ],
+  "hn_request_queries": [
+    "SEEKING FREELANCER",
+    "willing to pay automation",
+    "looking to hire"
+  ]
+}

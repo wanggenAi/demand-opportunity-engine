@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/40905",
+  "collected_at": "2026-10-13T03:31:35.944679+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/40905",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/40905/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/40905/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/40905/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/40905",
+    "id": 5815598723,
+    "node_id": "I_kwDOC4Q8Qs8AAAABWqL-gw",
+    "number": 40905,
+    "title": "Microsoft Teams Trigger silently stops receiving messages after ~3 days (Graph subscription is never renewed)",
+    "user": {
+      "login": "FlaviusPetrusBHL",
+      "id": 200266734,
+      "node_id": "U_kgDOC-_T7g",
+      "avatar_url": "https://avatars.githubusercontent.com/u/200266734?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/FlaviusPetrusBHL",
+      "html_url": "https://github.com/FlaviusPetrusBHL",
+      "followers_url": "https://api.github.com/users/FlaviusPetrusBHL/followers",
+      "following_url": "https://api.github.com/users/FlaviusPetrusBHL/following{/other_user}",
+      "gists_url": "https://api.github.com/users/FlaviusPetrusBHL/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/FlaviusPetrusBHL/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/FlaviusPetrusBHL/subscriptions",
+      "organizations_url": "https://api.github.com/users/FlaviusPetrusBHL/orgs",
+      "repos_url": "https://api.github.com/users/FlaviusPetrusBHL/repos",
+      "events_url": "https://api.github.com/users/FlaviusPetrusBHL/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/FlaviusPetrusBHL/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-12T14:40:47Z",
+    "updated_at": "2026-10-12T14:40:58Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nThe **Microsoft Teams Trigger** (channel messages) creates a Microsoft Graph change-notification subscription when the workflow is published/activated, but nothing ever renews it. Graph caps `channelMessage` subscriptions at 4320 minutes (3 days), so the trigger stops receiving messages roughly 3 days after each activation or n8n restart. The workflow still shows as **Active**, no execution fails and no error is raised: the trigger is simply silent. In our case it went unnoticed for 12 days (messages with photos were not processed).\n\nWhat we observed (delegated OAuth credential `microsoftTeamsOAuth2Api`; first seen on 2.39.10, same node code on 2.42.6):\n\n1. After re-publishing the workflow, `GET /v1.0/subscriptions` listed one subscription for `/teams/{teamId}/channels/{channelId}/messages` with `expirationDateTime` exactly 72 h after creation (2026-10-09T17:13:25Z -> 2026-10-12T17:13:25Z). It was unchanged 3 days later, i.e. no renewal happened.\n2. Graph lifecycle notifications (`@odata.type: \"#microsoft.graph.subscription\"`, only the subscription id present) are delivered to the workflow as normal trigger items shortly before expiry. Nothing handles them (no PATCH, no re-authorize, no re-create); users have to filter them out manually.\n3. From reading `MicrosoftTeamsTrigger.node.ts`: `checkExists()` only lists subscriptions and keeps those valid for more than 5 minutes; `create()` creates them and `delete()` removes them. We could not find renewal logic or handling of `reauthorizationRequired` / `subscriptionRemoved`.\n\nRelated (not GitHub issues): https://community.n8n.io/t/problem-teams-trigger-webhook/147354 (users report the same ~3 day expiry; workarounds: nightly PATCH or nightly unpublish/publish).\n\n### To Reproduce\n\n1. Create a workflow with **Microsoft Teams Trigger** on a channel (resource: channel message) using a delegated OAuth credential.\n2. Publish it and post a message in the channel: the workflow executes.\n3. Wait more than 72 hours without republishing the workflow or restarting n8n.\n4. Post a message in the channel: no execution is created. `GET https://graph.microsoft.com/v1.0/subscriptions` no longer lists a valid subscription for the channel.\n5. Unpublish + publish again: it works for another ~3 days.\n\n### Expected behavior\n\nThe trigger keeps working indefinitely while the workflow is active, as Microsoft requires apps to renew subscriptions before expiry (https://learn.microsoft.com/en-us/graph/api/resources/subscription). Either renew the subscription periodically (`PATCH /subscriptions/{id}` with a new `expirationDateTime`, which also re-authorizes it), and/or handle the lifecycle notifications Graph sends (`reauthorizationRequired` -> PATCH; `subscriptionRemoved` -> re-create) instead of passing them to the workflow as items. At the very least, failing to keep the subscription alive should be visible (workflow status, execution error or log), since today the workflow looks healthy while it receives nothing.\n\nWorkaround we use: a separate scheduled workflow (twice a day) that does `GET /v1.0/subscriptions` with the same credential, picks the subscription whose `resource` matches the channel, and `PATCH`es its `expirationDateTime` to now + 4300 min; it alerts if none exists or the PATCH fails.\n\n### Debug Info\n\n# Debug info\n\n## core\n\n- n8nVersion: 2.42.6\n- platform: npm\n- nodeJsVersion: 24.21.0\n- nodeEnv: undefined\n- database: sqlite\n- executionMode: regular\n- concurrency: -1\n- license: enterprise (production)\n\n## storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n## pruning\n\n- enabled: true\n- maxAge: 87600 hours\n- maxCount: 100000 executions\n\n(consumerId, client and security sections removed before posting)\n\nGenerated at: 2026-10-12T14:38:06.309Z\n\n### Operating System\n\nNot recorded (self-hosted, npm install)\n\n### n8n Version\n\n2.42.6\n\n### Node.js Version\n\n24.21.0\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/40905/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/40905/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @FlaviusPetrusBHL,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9580\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9580](https://linear.app/n8n/issue/GHC-9580)",
+      "at": "2026-10-12T14:40:56Z",
+      "url": "https://github.com/n8n-io/n8n/issues/40905#issuecomment-6126508985"
+    }
+  ],
+  "comments_complete": true
+}

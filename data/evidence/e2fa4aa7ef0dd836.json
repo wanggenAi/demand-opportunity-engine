@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50035826",
+  "collected_at": "2026-10-13T03:19:31.705486+00:00",
+  "source": {
+    "author": "triwats",
+    "children": [],
+    "created_at": "2026-10-10T18:42:44.000Z",
+    "created_at_i": 1791657764,
+    "id": 50035826,
+    "options": [],
+    "parent_id": null,
+    "points": 2,
+    "story_id": 50035826,
+    "text": "Hello!<p>I built Flopper to make it easier to compare GPUs and understand the tradeoffs for workloads for AI and beyond.<p>When researching GPUs from say Nvidia, AMD, and Huawei, I kept running into the same problem: specs were scattered across datasheets, and matching them to available configurations, vendors, and prices was cumbersome and a bit weird and frankly annoyingggg! AMD made me make an account :(<p>So I started a place to bring that information together.<p>Flopper lets you compare GPU specs, including TDP and compute throughput in terms of flops&#x2F;tops, alongside estimates for AI workloads or other compute workloads (say, ~FP32 based) I recently added pricing data from dozens of providers to help track how prices change over time. Getting reliable quotes for systems like the NVL72 is still particularly difficult tbh, not sure how I can tell you how much that costs easily due to them being behind large procurement contracts and big multi-nationals.<p>One thing that&#x27;s become fairlyyyy clear is the interest in consumer cards and local LLMs.<p>The bigger challenge is connecting advertised specs to real-world performance. In our testing so far, I’ve seen roughly 85% of advertised throughput, but that’s a ballpark observation for the workloads I’ve tested, not a general rule and so variable (power, cooling, workload etc).<p>I&#x27;m considering a CLI that lets people run benchmarks and submit results, potentially using MLPerf as an automation? That way, we can all compare quoted performance with the workload, configuration etc.<p>I&#x27;d love feedback: what information is missing, how can I improve it? And what would you need to see to trust a community-submitted benchmark?<p>Corrections and additions also very welcome - some of the measurements are best efforts (and simple multiplications) but I hope it&#x27;s of some use.<p>Thanks for looking :)",
+    "title": "Show HN: Flopper is a hardware explorer for AI infrastructure and beyond",
+    "type": "story",
+    "url": "https://flopper.io/"
+  },
+  "comments": [],
+  "comments_complete": true
+}

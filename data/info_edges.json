@@ -1,0 +1,78 @@
+[
+  {
+    "id": "edge-haiku-2026-10-07",
+    "title": "Haiku 5.5 launch: cost-sensitive automation model evaluation",
+    "source_platform": "Official web + independent benchmark",
+    "source_url": "https://www.anthropic.com/claude-haiku-5-5",
+    "published_at": "2026-10-07T00:00:00Z",
+    "observed_at": "2026-10-13T03:18:47.998362+00:00",
+    "raw_evidence_quote": "On average, it now costs around 75% less to run.",
+    "source_text": "On average, it now costs around 75% less to run.",
+    "buyer_id": "Anthropic:announcement",
+    "target_profile_url": "",
+    "routes": [
+      "INFO_EDGE"
+    ],
+    "community": "AI pricing",
+    "source_api_url": "",
+    "source_verified": true,
+    "source_snapshot": "data/info_edge_provenance.json",
+    "buyer_role": "NEWS",
+    "source_open": true,
+    "buyer_activity_at": null,
+    "buyer_activity_url": "",
+    "buyer_activity_verified": false,
+    "buyer_activity_author_id": "",
+    "buyer_activity_quote": "",
+    "last_activity_at": null,
+    "payment_signal_type": "INFERRED",
+    "payment_evidence_quote": "",
+    "derived_interpretation": "Current verified technical change, not yet verified information asymmetry.",
+    "comment_count": null,
+    "seller_competition_count": null,
+    "comments_complete": false,
+    "competition_pressure": "UNKNOWN",
+    "competition_evidence": [],
+    "mature_quote_present": false,
+    "many_dms_reported": false,
+    "commodity_market": true,
+    "differentiation": "",
+    "fulfillment_mode": "REMOTE_NOW",
+    "required_capabilities": [],
+    "cluster_name": "model_cost_audit",
+    "suggested_offer": "Remote model-cost and quality audit",
+    "suggested_price_range": "USD 100–200 test audit; no buyer budget verified",
+    "first_message": "Are you still using Haiku 4.5 for repetitive classification? Would a measured cost/quality comparison help?",
+    "effort": "2–4 hours after sample approval",
+    "risk": "No evidence that few target buyers know; tokenization, long prompts, quality, retry and migration costs may erase savings.",
+    "why_now": "",
+    "next_action": "In 24–48 hours ask three consenting operators about current model/spend/awareness; test 30 anonymized cases before proposing a paid audit.",
+    "confidence": 3,
+    "contact_channel": "",
+    "info_edge": {
+      "novelty": "Model released 2026-10-07 with materially lower listed token prices; task-level savings require evaluation.",
+      "information_gap": "Hypothesis only: some Chinese automation operators may still budget for Haiku 4.5. No buyer-awareness interviews or adoption measurements yet.",
+      "gap_verified": false,
+      "monetization_path": "Proposed paid cost/quality audit on anonymized high-volume classification or extraction workloads; never promise benchmark savings.",
+      "target_buyer": "Agencies/operators already paying for high-volume LLM classification and extraction.",
+      "decay_window": "Validate by 2026-10-15; hard expiry 2026-10-21 (14 days from launch).",
+      "verification_sources": [
+        {
+          "url": "https://www.anthropic.com/claude-haiku-5-5",
+          "quote": "On average, it now costs around 75% less to run.",
+          "verified": true,
+          "independent": true,
+          "method": "web source read 2026-10-13; launch dated 2026-10-07"
+        },
+        {
+          "url": "https://artificialanalysis.ai/models/claude-haiku-5-5",
+          "quote": "In $0.10 Out $0.50 Cache Discount 90%",
+          "verified": true,
+          "independent": true,
+          "method": "web source read 2026-10-13; independent benchmark and price table"
+        }
+      ],
+      "legality_check": "Use public published pricing and authorized/anonymized workload samples; no account resale, quota abuse or credential transfer."
+    }
+  }
+]

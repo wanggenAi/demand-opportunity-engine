@@ -1,0 +1,87 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/49981900",
+  "collected_at": "2026-10-13T03:31:35.944679+00:00",
+  "source": {
+    "author": "mattm",
+    "children": [
+      {
+        "author": "mattm",
+        "children": [],
+        "created_at": "2026-10-06T18:17:01.000Z",
+        "created_at_i": 1791310621,
+        "id": 49982086,
+        "options": [],
+        "parent_id": 49981900,
+        "points": null,
+        "story_id": 49981900,
+        "text": "@haukebri your comment is flagged as dead so replying here.<p>&gt; Do you keep a fresh context per agent?<p>Yes I&#x27;ve run into the same problem of trying to stuff too much into one session.  So Delegator uses a fresh session for each task.  For larger workflows, I&#x27;ll do the same where I&#x27;ll have a design or feature doc and then the tickets may refer to that if necessary for additional context.<p>&gt; The part that eats my time isn&#x27;t the delegation, it&#x27;s the review. I trust an agent now on mechanical work with a crisp &quot;done&quot; definition, and a lot less where the acceptance criteria are fuzzy, so those tickets tend to take me longer than doing them myself.\n&gt; Between the queue and your review, where do you actually get bottlenecked? That&#x27;s my constraint right now.<p>Yes, I&#x27;m bottlenecked on the review.  I think everyone has this problem now.  I&#x27;m trying to solve that by bringing the task into a ticket system so you can easily look up what it was trying to do.  From some research I did, context switching isn&#x27;t so bad if you are presented with the context clearly and succinctly when coming back to the task.  I&#x27;ll admit I don&#x27;t think I have a perfect solution for this yet but I&#x27;m trying to work towards that.  I do think this is the biggest issue with AI-assisted development - reviewing the code and output.  What have you tried that&#x27;s been working?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "christopheromar",
+        "children": [
+          {
+            "author": "mattm",
+            "children": [],
+            "created_at": "2026-10-07T16:51:22.000Z",
+            "created_at_i": 1791391882,
+            "id": 49995416,
+            "options": [],
+            "parent_id": 49990567,
+            "points": null,
+            "story_id": 49981900,
+            "text": "Your other comment is flagged as dead so I&#x27;ll reply here:<p>&gt; I like the idea of using a “local inbox for agent sessions” because switching between different contexts can be more frustrating than the actual time it takes the agent to run.<p>&gt; But I’m curious about how you see the inbox being useful beyond simply storing and replaying conversations.<p>&gt; A few things would help me understand the practical value:<p>&gt; What does a session actually contain? Is it just the conversation, or does it also include things like prompts, code changes, test results, Git commits, and other context? Can you reliably replay a session? Ideally, someone should be able to see what task was given, what the agent changed, what tests were run, and whether the task actually passed. What happens when work gets interrupted? If I pause one task and start another, can I come back later without losing the context or putting the project into a confusing state? How do you prove the work was completed? For example, can the system show the tests that were run, the changes made, and whether they passed? How is everything kept safe? If everything runs locally, that&#x27;s great, but I&#x27;d still want to know how filesystem, network access, and logs are controlled.<p>&gt; Even a small example showing something like how long it takes to go from starting a task to getting a working result, compared with the current workflow, would make the benefits much easier to understand.<p>---<p>Thanks for the questions!  I like your suggestion about providing a small example.  I&#x27;ll put that together.  Email me at matt@alcubi.ai and I will send it to you when it&#x27;s ready.  In the meantime, this page from the documentation may help to provide some of the details you&#x27;re looking for <a href=\"https:&#x2F;&#x2F;alcubi.ai&#x2F;delegator&#x2F;docs&#x2F;dev&#x2F;concepts&#x2F;ticket-lifecycle&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;alcubi.ai&#x2F;delegator&#x2F;docs&#x2F;dev&#x2F;concepts&#x2F;ticket-lifecyc...</a><p>A session includes the scoped task request (ticket) and the code changes that are made on a separate git branch in a new worktree.  You can enter the agent session at anytime with the &quot;dg chat&quot; command.  That will allow you to look into the details of how the agent accomplished its work.  So even though the runs execute in the background, the agent session is always available if you want to jump into it.  I&#x27;ll use this command when something was unclear to ask for follow-up changes.  The agent will still have all the context in its session from the work it previously did so there&#x27;s no extra context loading needed in these case.<p>If works gets interrupted, the ticket status moves to the Failed inbox.  You&#x27;ll see that clearly from the output of the &quot;dg&quot; command which shows the various inboxes.  When this happens I&#x27;ll use &quot;dg chat&quot; to attach to the agent session to understand what went wrong.  Usually, this is something like the Claude&#x2F;Codex API being down.  When the API is back up, I run &quot;dg restart&quot; to restart the processing from where it left off.  Since all work is done in separate branches and worktrees there&#x27;s no ability for your project&#x27;s main branch to be left in a confusing state.<p>The agents will run your test suite that&#x27;s setup.  delegator is just the orchestration layer.  You can customize any steps you&#x27;d like the agents to follow via your AGENTS.md file.  That will be taken into account when the agents run.  So for example, you could add in your AGENTS.md file that for any delegator ticket they work on to include details in the commit of tests that were run.  It&#x27;s very flexible like that so you can customize it for your setup.<p>For safety, I&#x27;ve gotten to the point where I trust that agents are only accessing data that they need so there are currently no guardrails in place.  This is something you could add to your AGENTS.md file to get information about but that&#x27;s not deterministic.  I could add in features to support this.  Please email me at my email above to let me know a bit more about what you&#x27;d like to see and I can work on that.<p>Hope this helps and thanks for taking a look!",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-07T10:03:40.000Z",
+        "created_at_i": 1791367420,
+        "id": 49990567,
+        "options": [],
+        "parent_id": 49981900,
+        "points": null,
+        "story_id": 49981900,
+        "text": "Thanks",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-10-06T18:00:19.000Z",
+    "created_at_i": 1791309619,
+    "id": 49981900,
+    "options": [],
+    "parent_id": null,
+    "points": 1,
+    "story_id": 49981900,
+    "text": "I wanted to share Delegator with the HN community.  delegator gives you a personal inbox to manage your tasks that is completely local to your machine.<p>Backstory: Like everyone else, I&#x27;ve been experimenting with different AI-assisted development workflows.  I realized I was having difficulty with all the context switching between tasks.  Asking agents to develop code ends up taking about 5-10 minutes usually for well-scoped tasks.  At the beginning I would read the AI output as it went along and sometimes interrupt to guide it.  But as LLMs have gotten better, there&#x27;s less need to do that.  So I would spin up another task during the latency and then another.  (I wrote a little bit about this previously here <a href=\"https:&#x2F;&#x2F;mattmccormick.ca&#x2F;we-re-all-managers-now-my-journey-into-ai-assisted-development&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;mattmccormick.ca&#x2F;we-re-all-managers-now-my-journey-i...</a> )<p>Jumping back and forth between terminals with the Agent being at different stages was mentally taxing.  I experimented with some different options and ended up realizing that to avoid the drain of context-switching, what I really needed was a queue.<p>Delegator works by putting all scoped tasks through the system.  It stops when the ready queue has reached your configured limit.  This is to prevent too much work from piling up waiting for review.  It also presents the work from getting too far ahead in case any issues are found as part of development.<p>I also realized that for most tasks, agents can be treated as a background process.  You pass in the work to the process.  It processes it and then gives you an output to review.  All changes are made in git worktrees for safety.<p>Who&#x27;s it for?  Delegator is for engineers who still want to understand the code and changes.  It&#x27;s not for vibe-coding or exploratory work.  Don&#x27;t get me wrong, I&#x27;ll still spin up an agent session for brainstorming design options.  But once I&#x27;m aligned on a direction, I&#x27;ll then ask the agent to break down the work into &quot;dg tickets&quot;.  Since Delegator is a local program, agents can interact with it quickly and seamlessly.<p>Right now it&#x27;s just CLI based but I&#x27;m looking to expand this into a GUI&#x2F;Desktop App so I would be interested in any feedback you have.  Let me know if you have any questions and I&#x27;ll respond.  The code is source available so you can check it out at <a href=\"https:&#x2F;&#x2F;github.com&#x2F;alcubie&#x2F;delegator\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;alcubie&#x2F;delegator</a> if you want to check anything.",
+    "title": "Show HN: Delegator – Stop juggling coding-agent sessions",
+    "type": "story",
+    "url": "https://alcubi.ai/delegator/"
+  },
+  "comments": [
+    {
+      "author": "mattm",
+      "text": "@haukebri your comment is flagged as dead so replying here. > Do you keep a fresh context per agent? Yes I've run into the same problem of trying to stuff too much into one session.  So Delegator uses a fresh session for each task.  For larger workflows, I'll do the same where I'll have a design or feature doc and then the tickets may refer to that if necessary for additional context. > The part that eats my time isn't the delegation, it's the review. I trust an agent now on mechanical work with a crisp \"done\" definition, and a lot less where the acceptance criteria are fuzzy, so those tickets tend to take me longer than doing them myself.\n> Between the queue and your review, where do you actually get bottlenecked? That's my constraint right now. Yes, I'm bottlenecked on the review.  I think everyone has this problem now.  I'm trying to solve that by bringing the task into a ticket system so you can easily look up what it was trying to do.  From some research I did, context switching isn't so bad if you are presented with the context clearly and succinctly when coming back to the task.  I'll admit I don't think I have a perfect solution for this yet but I'm trying to work towards that.  I do think this is the biggest issue with AI-assisted development - reviewing the code and output.  What have you tried that's been working?",
+      "at": "2026-10-06T18:17:01.000Z",
+      "url": "https://news.ycombinator.com/item?id=49982086"
+    },
+    {
+      "author": "christopheromar",
+      "text": "Thanks",
+      "at": "2026-10-07T10:03:40.000Z",
+      "url": "https://news.ycombinator.com/item?id=49990567"
+    },
+    {
+      "author": "mattm",
+      "text": "Your other comment is flagged as dead so I'll reply here: > I like the idea of using a “local inbox for agent sessions” because switching between different contexts can be more frustrating than the actual time it takes the agent to run. > But I’m curious about how you see the inbox being useful beyond simply storing and replaying conversations. > A few things would help me understand the practical value: > What does a session actually contain? Is it just the conversation, or does it also include things like prompts, code changes, test results, Git commits, and other context? Can you reliably replay a session? Ideally, someone should be able to see what task was given, what the agent changed, what tests were run, and whether the task actually passed. What happens when work gets interrupted? If I pause one task and start another, can I come back later without losing the context or putting the project into a confusing state? How do you prove the work was completed? For example, can the system show the tests that were run, the changes made, and whether they passed? How is everything kept safe? If everything runs locally, that's great, but I'd still want to know how filesystem, network access, and logs are controlled. > Even a small example showing something like how long it takes to go from starting a task to getting a working result, compared with the current workflow, would make the benefits much easier to understand. --- Thanks for the questions!  I like your suggestion about providing a small example.  I'll put that together.  Email me at matt@alcubi.ai and I will send it to you when it's ready.  In the meantime, this page from the documentation may help to provide some of the details you're looking for  https://alcubi.ai/delegator/docs/dev/concepts/ticket-lifecyc...  A session includes the scoped task request (ticket) and the code changes that are made on a separate git branch in a new worktree.  You can enter the agent session at anytime with the \"dg chat\" command.  That will allow you to look into the details of how the agent accomplished its work.  So even though the runs execute in the background, the agent session is always available if you want to jump into it.  I'll use this command when something was unclear to ask for follow-up changes.  The agent will still have all the context in its session from the work it previously did so there's no extra context loading needed in these case. If works gets interrupted, the ticket status moves to the Failed inbox.  You'll see that clearly from the output of the \"dg\" command which shows the various inboxes.  When this happens I'll use \"dg chat\" to attach to the agent session to understand what went wrong.  Usually, this is something like the Claude/Codex API being down.  When the API is back up, I run \"dg restart\" to restart the processing from where it left off.  Since all work is done in separate branches and worktrees there's no ability for your project's main branch to be left in a confusing state. The agents will run your test suite that's setup.  delegator is just the orchestration layer.  You can customize any steps you'd like the agents to follow via your AGENTS.md file.  That will be taken into account when the agents run.  So for example, you could add in your AGENTS.md file that for any delegator ticket they work on to include details in the commit of tests that were run.  It's very flexible like that so you can customize it for your setup. For safety, I've gotten to the point where I trust that agents are only accessing data that they need so there are currently no guardrails in place.  This is something you could add to your AGENTS.md file to get information about but that's not deterministic.  I could add in features to support this.  Please email me at my email above to let me know a bit more about what you'd like to see and I can work on that. Hope this helps and thanks for taking a look!",
+      "at": "2026-10-07T16:51:22.000Z",
+      "url": "https://news.ycombinator.com/item?id=49995416"
+    }
+  ],
+  "comments_complete": true
+}

@@ -1,0 +1,107 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/40851",
+  "collected_at": "2026-10-13T03:31:35.944679+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/40851",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/40851/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/40851/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/40851/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/40851",
+    "id": 5807909223,
+    "node_id": "I_kwDOC4Q8Qs8AAAABWi2pZw",
+    "number": 40851,
+    "title": "Microsoft SharePoint node (v1): `Return All` silently drops `$filter` and `$expand=fields` on `Item → Get Many`",
+    "user": {
+      "login": "Wusulijiang13",
+      "id": 129172745,
+      "node_id": "U_kgDOB7MFCQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/129172745?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Wusulijiang13",
+      "html_url": "https://github.com/Wusulijiang13",
+      "followers_url": "https://api.github.com/users/Wusulijiang13/followers",
+      "following_url": "https://api.github.com/users/Wusulijiang13/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Wusulijiang13/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Wusulijiang13/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Wusulijiang13/subscriptions",
+      "organizations_url": "https://api.github.com/users/Wusulijiang13/orgs",
+      "repos_url": "https://api.github.com/users/Wusulijiang13/repos",
+      "events_url": "https://api.github.com/users/Wusulijiang13/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Wusulijiang13/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-10-12T03:25:34Z",
+    "updated_at": "2026-10-12T05:06:42Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\n### Environment\n\n- n8n version: 2.27.4 (self-hosted)\n- Node: `n8n-nodes-base.microsoftSharePoint`, typeVersion 1\n- Resource: `Item`, Operation: `Get Many`\n- Credential: Microsoft SharePoint OAuth2 API\n\n### Summary\n\nWhen `Return All` is enabled on the SharePoint node's `Item → Get Many` operation, the generated request silently ignores:\n1. The `Filter by Formula` field (no `$filter` is sent to the API), and\n2. The `Options → Fields` selection (no `$expand=fields` is sent), even on **what should be the first page** of results.\n\nBoth work correctly when `Return All` is disabled and `Limit` is used instead. There is no error, warning, or any indication in the UI that these parameters were dropped — the node just returns the full, unfiltered list with metadata-only objects (no `fields` property at all).\n\n### To Reproduce\n\n1. Add a Microsoft SharePoint node, Resource = `Item`, Operation = `Get Many`.\n2. Pick a Site and a List (a SharePoint document library with a few thousand items works best to reproduce).\n3. In **Options → Fields**, select `Fields`.\n4. In **Filter by Formula**, enter a condition on a non-indexed column, e.g.:\n   ```\n   fields/FileLeafRef eq 'some-exact-file-name.xlsx'\n   ```\n5. Enable **Return All**. Execute the node.\n6. Observe: the node returns **every** item in the list (e.g. 4063 items in our case), not just the one matching the filter. No `fields` object is present on any returned item.\n7. Now disable **Return All**, set **Limit** to e.g. 100, keep the same filter. Execute again.\n8. Observe: the node now correctly returns a `400 Bad Request` from the Graph/SharePoint API:\n   ```\n   Field 'FileLeafRef' cannot be referenced in filter or orderby as it is not indexed.\n   Provide the 'Prefer: HonorNonIndexedQueriesWarningMayFailRandomly' header to allow this...\n   ```\n   This proves the `$filter` parameter **is** correctly sent to the API when `Return All` is off.\n9. Now disable **Return All**, set **Limit** to 50, remove the filter, keep **Fields** selected. Execute again.\n10. Observe: the response correctly contains a `fields` object per item (e.g. `fields.FileLeafRef`, `fields.FileDirRef`, etc.), confirming `$expand=fields` **is** correctly sent when `Return All` is off.\n\n### Expected behavior\n\nWith `Return All` enabled, the `$filter` and `$expand=fields` parameters configured via the UI should be sent on every page of the paginated request (at minimum, on the first page), exactly as they are when `Return All` is off and a manual `Limit` is used instead.\n\n### Debug Info\n\n### Actual Behavior\n\nWith `Return All` enabled:\n- `$filter` is never applied — the server-side filter condition that reliably produces a `400` error when `Return All` is off produces **no error at all** and returns the full unfiltered dataset when `Return All` is on. This strongly suggests `$filter` is not being sent at all (not even on the first request), since the SharePoint API would reject the filtered query regardless of pagination state if it ever reached the server.\n- `$expand=fields` is also missing from **every** returned item, including what should be the first page — not just subsequent pages fetched via `@odata.nextLink`.\n\n### Evidence Table\n\n| Return All | Limit | Filter set | Fields option | Result |\n|---|---|---|---|---|\n| ON | — | No | Yes | All 4063 items returned, **no `fields` key present on any item** |\n| ON | — | Yes (`FileLeafRef eq '...'`) | Yes | All 4063 items returned (unfiltered), **no error** |\n| OFF | 100 | Yes (`FileLeafRef eq '...'`) | Yes | **400 Bad Request** — \"field not indexed\" (proves filter *was* sent) |\n| OFF | 50 | No | Yes | 50 items returned, **`fields` object correctly present** on each |\n\n### Root Cause (hypothesis, not confirmed against source)\n\nLooking at `packages/nodes-base/nodes/Microsoft/SharePoint/v1/descriptions/item/getAll.operation.ts`, the `returnAll` property's routing config defines a `pagination.request` override:\n\n```ts\npagination: {\n  type: 'generic',\n  properties: {\n    continue: '={{ !!$response.body?.[\"@odata.nextLink\"] }}',\n    request: {\n      url: '={{ $response.body?.[\"@odata.nextLink\"] ?? $request.url }}',\n      qs: {\n        $select: '={{ !!$response.body?.[\"@odata.nextLink\"] ? undefined : $request.qs?.$select }}',\n      },\n    },\n  },\n},\n```\n\nThis `request.qs` object only ever defines `$select`. If n8n's generic pagination engine uses this object to *replace* (rather than merge into) the full query-string for **every** request in the paginated sequence — including the first one, once `paginate` is truthy — then `$filter` (set via a separate `routing.send` on the `filter` field) and `$expand` (injected via a `preSend` hook on `simplify`/`options.fields`) would both be silently dropped whenever `Return All` is on, regardless of page number. This matches 100% of the observed behavior above.\n\nWe have not confirmed this against n8n core's `RoutingNode`/generic-pagination implementation directly — flagging as hypothesis for the n8n team to verify against the actual merge logic.\n\n### Workaround Used\n\nSince neither `Return All` + `Filter` nor `Return All` + `Fields` work together reliably, we worked around this by:\n- Avoiding `Item → Get Many` + `Return All` entirely for this use case.\n- Downloading a specific file directly via `File → Download`, addressing it with the Graph `{parentFolderId}:/{fileName}:` syntax, which does not depend on `Get Many`/pagination at all.\n\n### Operating System\n\nLinux\n\n### n8n Version\n\n2.27.4\n\n### Node.js Version\n\n24.0.0\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/40851/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/40851/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @Wusulijiang13,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9575\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9575](https://linear.app/n8n/issue/GHC-9575)",
+      "at": "2026-10-12T03:25:45Z",
+      "url": "https://github.com/n8n-io/n8n/issues/40851#issuecomment-6117185136"
+    },
+    {
+      "author": "ardaerturk",
+      "text": "Your replacement hypothesis matches the 2.27.4 source at commit `a4d0dfc`. In [RoutingNode's generic pagination loop](https://github.com/n8n-io/n8n/blob/a4d0dfce294064026be1a6a246e6da348fea1485/packages/core/src/execution-engine/routing-node.ts#L619-L650), the pagination request is evaluated inside the `do` block, before the first HTTP request. The merge is:\n\n```ts\n{ ...requestData, options: { ...requestData.options, ...paginateRequestData } }\n```\n\nThat replaces `options.qs` as a whole. The [SharePoint override](https://github.com/n8n-io/n8n/blob/a4d0dfce294064026be1a6a246e6da348fea1485/packages/nodes-base/nodes/Microsoft/SharePoint/descriptions/item/getAll.operation.ts#L48-L60) supplies only `$select`, so the original `$filter` and `$expand` disappear on the first paginated request. The path in this tag has no `v1/` segment.\n\nThere is a useful regression starting point already in the repository: [getAll.workflow.json](https://github.com/n8n-io/n8n/blob/a4d0dfce294064026be1a6a246e6da348fea1485/packages/nodes-base/nodes/Microsoft/SharePoint/test/item/getAll.workflow.json#L26-L44) enables Return All, sets `fields/Title eq 'item1'`, and selects `fields`. However, [its first request mock](https://github.com/n8n-io/n8n/blob/a4d0dfce294064026be1a6a246e6da348fea1485/packages/nodes-base/nodes/Microsoft/SharePoint/test/item/getAll.test.ts#L12-L17) expects only `$select[...]`. It therefore accepts the missing filter/expansion, while the canned response still supplies fields.\n\nA narrow fix should retain the original query object on the first page, then follow `@odata.nextLink` unchanged without adding the original query parameters again. I would make the first-page mock require both `$filter` and `$expand`, keep a second-page nextLink assertion, and cover Simplify enabled plus a Return All disabled control. Deep-merging query parameters globally could reintroduce them on later pages.\n\nI checked the extracted request expressions and object merge with synthetic inputs: both the explicit-fields and Simplify cases lose filter/expansion, while the nextLink URL stays unchanged. This is a source and request-expression check, not a live SharePoint reproduction, an upstream test-suite run, or a tested patch. Disclosure: I'm Keptick's AI operator.\n",
+      "at": "2026-10-12T05:06:42Z",
+      "url": "https://github.com/n8n-io/n8n/issues/40851#issuecomment-6118114876"
+    }
+  ],
+  "comments_complete": true
+}

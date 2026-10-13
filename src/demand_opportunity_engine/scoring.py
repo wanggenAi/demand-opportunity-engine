@@ -1,48 +1,106 @@
-from __future__ import annotations
 from datetime import datetime, timezone
-from .models import Opportunity
+import re
+from urllib.parse import urlparse
+from .models import age, https
+from .signals import payment_truth
+from .feedback import feedback_adjustment
 
-WEIGHTS = {
-    "payment": 5, "reachability": 4, "urgency": 3, "operator_fit": 3,
-    "evidence": 4, "repeatability": 2, "competition_gap": 2,
-    "decay": 2, "confidence": 2,
-}
+def source_age(op, now):
+    return age(op.published_at, now)
 
-def evidence_strength(opportunity: Opportunity) -> int:
-    text = (opportunity.payment_intent_evidence + " " + opportunity.evidence_text).lower()
-    if any(token in text for token in ("budget", "$", "pay", "fee", "commission", "quoted", "hire", "paid")):
-        return 5
-    if any(token in text for token in ("looking for", "need", "require", "seeking", "help me", "requests", "wants", "want")):
-        return 4
-    if any(token in text for token in ("bottleneck", "manual", "repeated", "time-consuming")):
-        return 3
-    if any(token in text for token in ("search", "research", "trend")):
-        return 2
-    return 1
+def verified_activity_age(op, now):
+    if not (op.buyer_activity_verified and op.buyer_activity_author_id == op.buyer_id
+            and https(op.buyer_activity_url) and op.buyer_activity_quote):
+        return None
+    return age(op.buyer_activity_at, now)
 
-def freshness_score(observed_at: str, decay_risk: int, now: datetime | None = None) -> int:
+def edge_rejections(op, now):
+    edge = op.info_edge
+    reasons = []
+    a = source_age(op, now)
+    if a is None or not 0 <= a <= 14:
+        reasons.append("INFO_EDGE event is outside 14-day window")
+    sources = edge.get("verification_sources", [])
+    domains = {urlparse(s["url"]).netloc for s in sources
+               if s.get("verified") and s.get("quote") and s.get("independent")}
+    if len(domains) < 2:
+        reasons.append("fewer than two independent verified evidence points")
+    for key in ("novelty", "information_gap", "monetization_path", "target_buyer", "decay_window", "legality_check"):
+        if not edge.get(key):
+            reasons.append(f"missing {key}")
+    if not edge.get("gap_verified"):
+        reasons.append("target-buyer information gap remains unverified")
+    return reasons
+
+def do_now_rejections(op, now):
+    reasons = []
+    a = source_age(op, now)
+    activity = verified_activity_age(op, now)
+    if not op.source_verified:
+        reasons.append("source not verified")
+    observed_age = age(op.observed_at, now)
+    if observed_age < 0 or observed_age > 7:
+        reasons.append("source verification is future-dated or older than 7 days")
+    if op.buyer_role != "BUYER":
+        reasons.append("not a verified buyer request")
+    if not op.source_open:
+        reasons.append("source closed/removed")
+    if not https(op.target_profile_url) or not op.buyer_id:
+        reasons.append("missing concrete target profile")
+    if a is None or a < 0 or (a > 14 and not (activity is not None and 0 <= activity <= 7)):
+        reasons.append("freshness gate failed: >14 days without verified buyer activity <=7 days")
+    if a is not None and 7 < a <= 14 and not (activity is not None and 0 <= activity <= 7):
+        reasons.append("7–14-day demand is VALIDATE until buyer activity is renewed")
+    if op.fulfillment_mode != "REMOTE_NOW":
+        reasons.append("partner/specialist capability not currently controlled")
+    if op.competition_pressure in {"HIGH", "UNKNOWN"}:
+        reasons.append("competition high or unmeasured")
+    kind, _, _ = payment_truth(op)
+    if kind == "INFERRED":
+        reasons.append("payment intent not verified in buyer's primary words")
+    if not all((op.suggested_offer, op.suggested_price_range, op.first_message, op.differentiation, op.next_action)):
+        reasons.append("incomplete actionable offer")
+    if "INFO_EDGE" in op.routes:
+        reasons.extend(edge_rejections(op, now))
+    return reasons
+
+def score_opportunity(op, now=None, events=(), opportunities=()):
+    op.validate()
     now = now or datetime.now(timezone.utc)
-    observed = datetime.fromisoformat(observed_at.replace("Z", "+00:00"))
-    if observed.tzinfo is None:
-        observed = observed.replace(tzinfo=timezone.utc)
-    age_days = max(0, (now - observed).days)
-    return max(0, 5 - min(5, age_days // max(1, 8 - decay_risk)))
-
-def score_opportunity(opportunity: Opportunity, now: datetime | None = None) -> dict[str, int]:
-    opportunity.validate()
-    evidence = evidence_strength(opportunity)
-    freshness = freshness_score(opportunity.published_at, opportunity.information_decay_risk, now)
-    raw = (
-        opportunity.payment_intent_evidence.lower().count("explicit") * 2
-        + WEIGHTS["payment"] * min(5, evidence)
-        + WEIGHTS["reachability"] * opportunity.reachability
-        + WEIGHTS["urgency"] * opportunity.urgency
-        + WEIGHTS["operator_fit"] * opportunity.operator_fit
-        + WEIGHTS["evidence"] * evidence
-        + WEIGHTS["repeatability"] * opportunity.repeatability
-        + WEIGHTS["competition_gap"] * opportunity.competition_gap
-        + WEIGHTS["decay"] * freshness
-        + WEIGHTS["confidence"] * opportunity.confidence
-        - WEIGHTS["decay"] * opportunity.information_decay_risk
-    )
-    return {"score": raw, "evidence_strength": evidence, "freshness": freshness}
+    a = source_age(op, now)
+    activity = verified_activity_age(op, now)
+    effective = min(a, activity) if activity is not None and 0 <= activity <= 7 else a
+    payment_type, payment_quote, payment = payment_truth(op)
+    # Components are separate. One payment signal is counted once.
+    budget = re.search(r"[$€£]\s*(\d+(?:[,.]\d+)?)", payment_quote) if payment_type == "EXPLICIT_BUDGET" else None
+    ticket = min(5, int(float(budget[1].replace(",", "")) / 100)) if budget else 0
+    components = {
+        "source_authenticity": 15 if op.source_verified and op.raw_evidence_quote in op.source_text else 0,
+        "payment_intent": payment,
+        "urgency": 5 if re.search(r"\bdeadline\b|\basap\b|\burgent\b", op.source_text, re.I) else 0,
+        "reachability": 10 if https(op.target_profile_url) and op.buyer_id else 0,
+        "freshness": 15 if 0 <= effective <= 7 else (7 if 7 < effective <= 14 else 0),
+        "capability": {"REMOTE_NOW": 15, "PARTNER_REQUIRED": 3, "LOCAL_PHYSICAL": 0, "SPECIALIST_REQUIRED": -8}[op.fulfillment_mode],
+        "competition": {"LOW": 0, "MEDIUM": -8, "HIGH": -20, "UNKNOWN": -12}[op.competition_pressure],
+        "commodity_risk": -4 if op.commodity_market else 0,
+        "expected_ticket": ticket,  # primary buyer budget only; NEVER proposal price
+        "measurable_cost": 4 if re.search(r"(?:unnoticed|not processed|lost|blocked).{0,80}\d+ (?:days|hours)|\d+ (?:hours|days).{0,80}(?:not processed|manual|lost)", op.source_text, re.I | re.S) else 0,
+        "repeatability": 0,  # populated only by verified independent clusters
+        "confidence": min(op.confidence, 5),
+    }
+    events = [e for e in events if age(e.occurred_at, now) >= 0]
+    feedback, groups = feedback_adjustment(op, events, opportunities)
+    components["outcome_feedback"] = feedback
+    closed = any(e.opportunity_id == op.id and e.event_type in {"WON", "LOST"} for e in events)
+    contacted = any(e.opportunity_id == op.id and e.event_type == "CONTACTED" for e in events)
+    reasons = do_now_rejections(op, now)
+    if closed or contacted:
+        reasons.append("already contacted or closed: use outcome follow-up")
+    return {
+        "score": round(sum(components.values()), 2), "components": components,
+        "payment_signal_type": payment_type, "payment_evidence_quote": payment_quote,
+        "source_age_days": round(a, 2), "buyer_activity_age_days": round(activity, 2) if activity is not None else None,
+        "do_now_rejections": reasons, "feedback_groups": groups,
+        "info_edge_rejections": edge_rejections(op, now) if "INFO_EDGE" in op.routes else [],
+        "evidence_strength": 5 if op.source_verified else 0,
+    }

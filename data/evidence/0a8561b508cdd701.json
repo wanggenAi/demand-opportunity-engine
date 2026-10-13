@@ -1,0 +1,66 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/49991829",
+  "collected_at": "2026-10-13T03:31:35.944679+00:00",
+  "source": {
+    "author": "konradkeck",
+    "children": [
+      {
+        "author": "jvrpl",
+        "children": [
+          {
+            "author": "konradkeck",
+            "children": [],
+            "created_at": "2026-10-07T12:40:23.000Z",
+            "created_at_i": 1791376823,
+            "id": 49991940,
+            "options": [],
+            "parent_id": 49991933,
+            "points": null,
+            "story_id": 49991829,
+            "text": "Thanks! Feel free to test, there will be lots of new improvements soon and panel as well.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-07T12:39:10.000Z",
+        "created_at_i": 1791376750,
+        "id": 49991933,
+        "options": [],
+        "parent_id": 49991829,
+        "points": null,
+        "story_id": 49991829,
+        "text": "Looks interesting. I like the idea of giving AI agents a controlled hosting environment instead of full root access. The permissions model and built-in backups&#x2F;monitoring are especially useful.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-10-07T12:28:51.000Z",
+    "created_at_i": 1791376131,
+    "id": 49991829,
+    "options": [],
+    "parent_id": null,
+    "points": 2,
+    "story_id": 49991829,
+    "text": "PanelAlpha Engine is an open-source hosting environment for your VPS, programmable through MCP, API and CLI.<p>After ~2 years in the making (we started back in the non-ai era) we&#x27;ve decided to open source our Docker-based Engine. So far, we&#x27;ve used it as a back-end environment for WordPress sites and we have been distributing it through web hosting providers and larger agencies. It&#x27;s been tested on a few thousand sites already.<p>Now people are vibe coding, using AI for everything and building agentic workflows, while at the same time open source projects are getting through a reinassaince. So, not only we have open-sourced it ourselves, but we&#x27;ve also expanded it to support any web application and tested it against over a thousand repositories (and soon will be much more).<p>You can use it with MCP, API or CLI to:\n- deploy projects from files or git\n- get a preview URL or use your own domain with automatic SSL\n- restrict access with a password\n- get built-in monitoring and visitor stats (no need for Google Analytics)\n- manage databases, SFTP&#x2F;FTP, CRON, firewall rules\n- read through logs and debug\n- create or restore backups (locally or remotely via S3&#x2F;FTP)\n- connect with Cloudflare (for tunnels and DNS)\n... and much more (see docs).<p>You install it with one command (you can also define a repo to be installed together with it) and then with another command connect your AI with it. Done. Your agent gets a hosting environment on your server without unrestricted root SSH access. You can even define its permissions.<p>Our early users have asked us about the visual&#x2F;panel - it will be available soon too (and also open source).<p>Feel free to roast, we&#x27;re open for feedback!",
+    "title": "Show HN: PanelAlpha Engine – Turn your VPS into a programmable hosting layer",
+    "type": "story",
+    "url": "https://engine.panelalpha.com/"
+  },
+  "comments": [
+    {
+      "author": "jvrpl",
+      "text": "Looks interesting. I like the idea of giving AI agents a controlled hosting environment instead of full root access. The permissions model and built-in backups/monitoring are especially useful.",
+      "at": "2026-10-07T12:39:10.000Z",
+      "url": "https://news.ycombinator.com/item?id=49991933"
+    },
+    {
+      "author": "konradkeck",
+      "text": "Thanks! Feel free to test, there will be lots of new improvements soon and panel as well.",
+      "at": "2026-10-07T12:40:23.000Z",
+      "url": "https://news.ycombinator.com/item?id=49991940"
+    }
+  ],
+  "comments_complete": true
+}

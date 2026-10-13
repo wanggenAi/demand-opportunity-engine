@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50063600",
+  "collected_at": "2026-10-13T03:31:35.944679+00:00",
+  "source": {
+    "author": "keks0r",
+    "children": [],
+    "created_at": "2026-10-12T21:55:54.000Z",
+    "created_at_i": 1791842154,
+    "id": 50063600,
+    "options": [],
+    "parent_id": null,
+    "points": 6,
+    "story_id": 50063600,
+    "text": "Hey HN, im Marc, co-founder of ObsessionDB.\nWe are open sourcing ChKit, our tooling to manage schemas, migrations and backfills for clickhouse.<p>I am a big fan of the type safety drizzle provides for the database. Manage the schema in typescript and generate migrations from it is a powerful workflow. I always wished something like it would exist for clickhouse, so we could manage our analytical workloads the same way. It didn&#x27;t exist, so we build it.<p>We build it after running ClickHouse at petabyte scale in our previous company, were we managed hundreds of tables, MVs and endpoints reading from them.<p>The way it works:<p>1. You define your schema in typescript, with typed helpers for tables, mv, column types etc..\n2. You generate the migration, that contains the DDL, to get your clickhouse instance from status quo to what your current typescript schema defines\n3. Your CI can check for drift\n4. You run the generated migration against production\n5. You use the defined types in your code, to ingest your data while making sure it has the correct type.\n   Bonus: if your schema change was BC breaking, we generate the sequence on how to backfill the data, into the intermediate table to migrate (this is quite the hard problem with large tables and schema evolution)<p>In case you have already a clickhouse instance with a schema, you can pull it down and start using ChKit from where you are.<p>Run our generator to setup the boilerplate:<p><pre><code>  npm create chkit@latest\n</code></pre>\nIf you folks are running clickhouse in production, I am curious to hear what other challenges you are running into.",
+    "title": "Show HN: Chkit – Schema, migrations and backfills for ClickHouse (like Drizzle)",
+    "type": "story",
+    "url": "https://github.com/obsessiondb/chkit"
+  },
+  "comments": [],
+  "comments_complete": true
+}

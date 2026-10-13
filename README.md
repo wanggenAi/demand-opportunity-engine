@@ -39,3 +39,14 @@ Everything else stays in the opportunity store.
 The system may watch thousands of opportunities in parallel, but the human actively pursues only **one primary money problem plus one small experiment** at a time.
 
 Read `PRINCIPLES.md` and `CODEX_BOOTSTRAP.md` before implementation.
+
+## Run signal-quality discovery
+
+Python standard library only. See [EXECUTION.md](EXECUTION.md) for discovery, reports and real outcome recording.
+
+~~~sh
+PYTHONPATH=src python3 -m demand_opportunity_engine.cli discover
+PYTHONPATH=src python3 -m unittest discover -s tests -v
+~~~
+
+V1 data/opportunities.json is an audit seed; live ranking uses data/live_opportunities.json. See reports/SCORING_POLICY.md for hard gates and score weights.
