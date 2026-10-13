@@ -27,7 +27,10 @@ def main():
         if not args.event:
             parser.error("outcome requires --event")
         event = Outcome(**json.loads(Path(args.event).read_text()))
-        changed = append_outcome(args.outcomes, event, load_opportunities(args.data))
+        known = load_opportunities(args.data)
+        if Path(args.edges).exists():
+            known += load_opportunities(args.edges)
+        changed = append_outcome(args.outcomes, event, known)
         print("appended" if changed else "already recorded")
         return
     if args.command == "discover":
@@ -52,7 +55,7 @@ def main():
     product, grouped = product_report(opportunities)
     (output.parent / "PRODUCT_THESIS.md").write_text(product)
     (output.parent / "INFO_EDGE_BOARD.md").write_text(edge_report(edges, now))
-    (output.parent / "OUTCOME_FEEDBACK.md").write_text(feedback_report(opportunities, events))
+    (output.parent / "OUTCOME_FEEDBACK.md").write_text(feedback_report(opportunities + edges, events))
     (output.parent / "ranking.json").write_text(json.dumps(
         [{"id": o.id, **s} for o, s in rank(opportunities + edges, now, events)],
         ensure_ascii=False, indent=2) + "\\n")

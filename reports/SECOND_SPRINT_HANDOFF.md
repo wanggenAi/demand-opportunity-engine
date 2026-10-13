@@ -6,7 +6,7 @@ Starting remote main: 7cdcabb7843224d9cd367ac2b65f6e7ea2373a34. Read README, PRI
 
 V2 uses exact primary evidence, preserved public authors, buyer-only activity, hard freshness gates, measured public reply competition, explicit delivery capability, independent problem clusters and outcome-driven ranking. V1 seed is excluded. Two free public API adapters, a rerunnable discover command and append-only outcome command are implemented. Proposed scoring weights and gate choices are visible in SCORING_POLICY.md; no business/product subsystem was built.
 
-Tests: 27 passed. No dashboard, SaaS, login, payment, vector database or speculative product implementation.
+Tests: 28 passed. No dashboard, SaaS, login, payment, vector database or speculative product implementation.
 
 ## Evidence collected
 

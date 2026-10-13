@@ -179,6 +179,22 @@ class ProductEdgeTests(unittest.TestCase):
         self.assertTrue(edge_rejections(unknown, NOW))
 
 class FeedbackTests(unittest.TestCase):
+    def test_cli_accepts_outcomes_for_information_edge_store(self):
+        import subprocess
+        import sys
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            upsert(root / "live.json", [opportunity()])
+            upsert(root / "edges.json", [opportunity("edge", routes=["INFO_EDGE"])])
+            (root / "event.json").write_text(json.dumps(event("edge", "CONTACTED").to_dict()))
+            done = subprocess.run([
+                sys.executable, "-m", "demand_opportunity_engine.cli", "outcome",
+                "--data", str(root / "live.json"), "--edges", str(root / "edges.json"),
+                "--outcomes", str(root / "outcomes.jsonl"), "--event", str(root / "event.json"),
+            ], capture_output=True, text=True)
+            self.assertEqual(done.returncode, 0, done.stderr)
+            self.assertEqual(load_outcomes(root / "outcomes.jsonl")[0].opportunity_id, "edge")
+
     def test_neutral_without_human_data_and_discovery_events(self):
         op = opportunity()
         self.assertEqual(result(op)["components"]["outcome_feedback"], 0)

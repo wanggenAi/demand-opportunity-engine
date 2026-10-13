@@ -1,6 +1,6 @@
 # TODAY MONEY BOARD
 
-Generated: 2026-10-13T11:37:26.719595+08:00 (Asia/Shanghai)
+Generated: 2026-10-13T11:39:01.705513+08:00 (Asia/Shanghai)
 
 Decision rule: 0–7-day buyer demand first. 7–14-day demand is VALIDATE without renewed buyer activity. Older leads require verified OP activity <=7 days. Payment must be buyer-authored; unknown/high competition and uncontrolled fulfillment block DO NOW.
 Amounts below are suggested test prices, never observed buyer budgets. VALIDATE means confirm need/payment first; it does not authorize pitching bug reporters.
