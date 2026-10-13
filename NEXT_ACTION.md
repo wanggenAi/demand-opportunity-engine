@@ -1,14 +1,22 @@
 # NEXT ACTION
 
-Codex: execute `FIRST_SPRINT.md` now.
+Codex: execute `SECOND_SPRINT.md` now.
 
 Read in this order:
 1. `README.md`
 2. `PRINCIPLES.md`
 3. `BRAIN_PROTOCOL.md`
-4. `CODEX_BOOTSTRAP.md`
-5. `FIRST_SPRINT.md`
+4. `BRAIN_REVIEW_V1.md`
+5. `SECOND_SPRINT.md`
 
-Do not redesign the business model. Do not expand scope. Build the minimum implementation required to satisfy the sprint acceptance criteria, run it on real evidence-bearing opportunities, and return the mandatory handoff defined in `BRAIN_PROTOCOL.md`.
+Do not redesign the business model. Do not expand scope.
 
-The goal of this execution round is not “finish V1.” The goal is to produce a board that tells the human what to do next to get closer to the first real payment.
+V1 proved the basic money-board loop, but it also exposed signal-quality failures: stale leads can enter `DO NOW`, evidence/payment scoring is too easy to inflate, competition and fulfillment capability are not grounded enough, product signals are not clustered, information edges are not truly current, and outcome feedback is not yet consumed by ranking.
+
+Fix those issues before adding architecture.
+
+The goal of this round is not “finish V2.” The goal is to make the system trustworthy enough that the human can use its top recommendation to contact a real person today without wasting time on stale, overcrowded, or undeliverable opportunities.
+
+A `DO NOW` section with zero items is acceptable if no opportunity satisfies the hard freshness and actionability gates. Never fill the board with stale leads merely to produce output.
+
+When complete, return the mandatory handoff specified in `SECOND_SPRINT.md` and `BRAIN_PROTOCOL.md`.
