@@ -7,7 +7,7 @@ from dataclasses import replace
 from pathlib import Path
 
 from demand_opportunity_engine.models import Opportunity, Outcome
-from demand_opportunity_engine.signals import payment_truth, competition, cluster_for
+from demand_opportunity_engine.signals import payment_truth, competition, cluster_for, normalize_intent
 from demand_opportunity_engine.scoring import score_opportunity, edge_rejections
 from demand_opportunity_engine.board import classify, selections, build_board, rank
 from demand_opportunity_engine.clusters import clusters
@@ -30,7 +30,8 @@ def opportunity(id="buyer", **changes):
         suggested_offer="One supplier desk memo", suggested_price_range="USD 100–250 proposal",
         first_message="Which supplier and deadline?", differentiation="One bounded remote memo",
         effort="2 hours", next_action="Confirm scope and budget", contact_channel="email")
-    return replace(op, **changes)
+    changes.setdefault("contact_path", op.source_url)
+    return normalize_intent(replace(op, **changes))
 
 def result(op, events=(), population=()):
     return score_opportunity(op, NOW, events, population or [op])

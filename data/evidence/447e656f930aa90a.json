@@ -1,0 +1,228 @@
+{
+  "source_api_url": "https://api.github.com/repos/shunai394-hash/tracer/issues/484",
+  "collected_at": "2026-10-13T09:43:09.605326+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/shunai394-hash/tracer/issues/484",
+    "repository_url": "https://api.github.com/repos/shunai394-hash/tracer",
+    "labels_url": "https://api.github.com/repos/shunai394-hash/tracer/issues/484/labels{/name}",
+    "comments_url": "https://api.github.com/repos/shunai394-hash/tracer/issues/484/comments",
+    "events_url": "https://api.github.com/repos/shunai394-hash/tracer/issues/484/events",
+    "html_url": "https://github.com/shunai394-hash/tracer/issues/484",
+    "id": 5825724735,
+    "node_id": "I_kwDOUhdMWc8AAAABWz2BPw",
+    "number": 484,
+    "title": "TRACERを正本に統一：Shopify・BASE同期と自動受発注の安全な復旧",
+    "user": {
+      "login": "shunai394-hash",
+      "id": 300428130,
+      "node_id": "U_kgDOEegrYg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/300428130?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/shunai394-hash",
+      "html_url": "https://github.com/shunai394-hash",
+      "followers_url": "https://api.github.com/users/shunai394-hash/followers",
+      "following_url": "https://api.github.com/users/shunai394-hash/following{/other_user}",
+      "gists_url": "https://api.github.com/users/shunai394-hash/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/shunai394-hash/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/shunai394-hash/subscriptions",
+      "organizations_url": "https://api.github.com/users/shunai394-hash/orgs",
+      "repos_url": "https://api.github.com/users/shunai394-hash/repos",
+      "events_url": "https://api.github.com/users/shunai394-hash/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/shunai394-hash/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 12265017401,
+        "node_id": "LA_kwDOUhdMWc8AAAAC2w1QOQ",
+        "url": "https://api.github.com/repos/shunai394-hash/tracer/labels/bug",
+        "name": "bug",
+        "color": "d73a4a",
+        "default": true,
+        "description": "Something isn't working",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 13,
+    "created_at": "2026-10-13T06:34:43Z",
+    "updated_at": "2026-10-13T07:24:59Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## 目的\nTRACERを唯一の正本（商品・仕入先・バリエーション・原価/通貨・在庫・販売可否・注文/発注状態）にし、ShopifyとBASEを同一の判定・同期・注文処理で運用できる状態にする。データを無条件に消去せず、既存IDと履歴を保持する。\n\n## 現在確認できている本番状態\n- products: 1,618 rows\n- supplier_listings: 57,125 rows\n- shop_listings: 106 rows\n- shop_orders / shop_order_items / purchase_orders / purchase_order_items: 各0 rows\n- shop_listingsはバックアップ済み（2026-10-13、106 rows）。products 1,618、supplier_listings 57,125、注文/発注関連テーブルも同日バックアップあり。\n- shop_listingsの6件がShopifyまたはBASEの外部IDを持っていた。\n- 6件すべて、listing currency=JPYに対しsupplier currency=USD。TRACER側の6件をpublished=false、orderable=false、BLOCKEDにし、ShopifyでACTIVEだった2件をDRAFTへ変更・再取得して確認済み。BASE側の外部状態は未確認。\n- 仕入先リストには大多数の未検証データがある。identity/variant/orderabilityの証拠なしに公開・発注してはならない。\n\n## 作業\n1. コードの実経路を追い、shopify-publish / base-publish、shopify-orders / base-orders、inventory refresh、dropship execution、supplier order jobsの副作用と共通ゲートを図示する。\n2. ShopifyとBASE双方で、TRACERの商品ID・SKU・variant IDを確実に照合する。曖昧/欠落/重複したマッピングは隔離し、勝手に新規商品を作らない。\n3. 仕入原価通貨・送料・FXレート・レート日時・売価・粗利の一貫したモデルを定義。USD原価をJPYとして扱わず、JPY原価に換算できない商品は公開/発注不可にする。String(null)等の暗黙変換を禁止。\n4. 単一の販売適格ゲートを実装し、両チャネルの公開、在庫更新、注文後の発注で再利用する。少なくとも日本語タイトル/説明、画像、JPY販売価格、原価通貨/換算証拠、利益>0、正規仕入先ID、実際のvariant ID、在庫確認、orderable=true、配送追跡要件、同期可能性を検証。\n5. ShopifyとBASEの注文を共通のshop_orders/shop_order_itemsモデルに冪等に取り込み、同一の安全なpurchase order経路へ流す。外部注文IDとチャネルを一意キーにし、再実行/同時実行で二重発注しない。人間の承認・既存ライブ発注ゲートを迂回しない。\n6. 販売停止/在庫切れが片方のチャネルだけに反映される問題を防ぐ。TRACERの停止状態を両チャネルに反映し、停止済み商品をcronが再公開しないようにする。\n7. 外部APIはモックを用いたintegration testを追加し、実際のアプリ経路を通す。必須ケース：identity missing/ambiguous/mismatch、variant missing/mismatch、USD/JPY mismatch、FX unavailable/stale、margin <=0、out-of-stock、channel API failure、duplicate order webhook/polling、concurrent run、save failure、already-drafted/unpublished item。実データに対するdry-run結果と件数一致を提示する。\n8. Cronは、共通ゲートと冪等性テストが通るまで公開/発注の書き込みを増やさない。既存の本番cronを一律停止せず、どのジョブが書き込むか確認し、必要最小限の制御を行う。\n9. DB migration/データ変更はバックアップを保持し、まずdry-run、次に検証済みの対象だけに限定して適用する。Shopify/BASEの実商品や顧客注文、履歴を一括削除しない。\n\n## 受け入れ条件\n- unit + integration tests pass; build/lint/typecheck pass\n- 正常系だけでなく全ブロッカーのテストが実際の経路で通る\n- Shopify/BASEの公開候補件数、照合成功/失敗件数、在庫/原価/利益の根拠、dry-runとDBの差分が説明可能\n- 外部店舗の実状態をAPIで再取得し、停止/公開の結果を確認\n- PRはDraftのまま、証拠とCIがそろうまでmerge/deployしない\n- 公開/発注できる商品数が0件なら0件と報告し、数字を捏造しない\n\n## 制約\n- 本番商品・顧客注文・履歴を削除しない\n- 不確実な商品を自動公開しない\n- 仕入先注文を無承認で実行しない\n- 英語の顧客向けタイトル/説明を出さない\n- Orosyを新規仕入れ経路として追加しない",
+    "reactions": {
+      "url": "https://api.github.com/repos/shunai394-hash/tracer/issues/484/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/shunai394-hash/tracer/issues/484/timeline",
+    "performed_via_github_app": {
+      "id": 1144995,
+      "client_id": "Iv23liVemv8A9if9v0F2",
+      "slug": "chatgpt-codex-connector",
+      "node_id": "A_kwHOAOQ6Gs4AEXij",
+      "owner": {
+        "login": "openai",
+        "id": 14957082,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjE0OTU3MDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/14957082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/openai",
+        "html_url": "https://github.com/openai",
+        "followers_url": "https://api.github.com/users/openai/followers",
+        "following_url": "https://api.github.com/users/openai/following{/other_user}",
+        "gists_url": "https://api.github.com/users/openai/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/openai/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/openai/subscriptions",
+        "organizations_url": "https://api.github.com/users/openai/orgs",
+        "repos_url": "https://api.github.com/users/openai/repos",
+        "events_url": "https://api.github.com/users/openai/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/openai/received_events",
+        "type": "Organization",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "name": "ChatGPT Codex Connector",
+      "description": "Bring ChatGPT and Codex to your GitHub repositories.",
+      "external_url": "https://www.chatgpt.com",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "created_at": "2025-02-14T01:37:05Z",
+      "updated_at": "2026-09-23T18:52:59Z",
+      "permissions": {
+        "actions": "write",
+        "checks": "read",
+        "contents": "write",
+        "emails": "read",
+        "issues": "write",
+        "metadata": "read",
+        "pull_requests": "write",
+        "statuses": "read",
+        "workflows": "write"
+      },
+      "events": [
+        "check_run",
+        "check_suite",
+        "commit_comment",
+        "issues",
+        "issue_comment",
+        "pull_request",
+        "pull_request_review",
+        "pull_request_review_comment",
+        "pull_request_review_thread",
+        "repository",
+        "status",
+        "sub_issues"
+      ]
+    },
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "shunai394-hash",
+      "text": "## 2026-10-13 実経路監査（着手時点）\n\n### 確認済みの構造\n- `vercel.json` には Shopify公開、BASE注文取込、在庫更新、dropship実行、Shopify注文取込、仕入先発注、sales-test-publication が別cronとして存在する。既存の `patrol-ai` も維持されている。\n- Shopify公開経路は `app/api/cron/shopify-publish/route.ts` → `lib/shopify/sync-published-listings.ts`。\n- BASE公開経路は `app/api/cron/base-publish/route.ts` → `lib/channels/base-publisher.ts`。\n- Shopify注文取込は `app/api/cron/shopify-orders/route.ts` → `lib/shopify/sync-orders.ts` → `runAutonomousOrderControl`。\n- BASE注文取込は `app/api/cron/base-orders/route.ts` → `lib/channels/base-orders.ts`。dropship実行cronもBASE注文取込を実行してから注文制御へ進む。\n- 既存の `lib/market/sales-test-gate.ts` と `lib/ordering/dropship-gate.ts` は存在するが、公開・在庫・注文取込・発注の全経路で単一の共通ポリシーが強制されていることは、現時点では未証明。\n- `package.json` には多くの回帰テストが定義されている。現セッションの実行環境からGitHubを直接cloneできず、ここではローカル実行・CI結果を捏造しない。\n\n### 本番データの既知の基準値（Issue本文の記録）\nproducts 1,618、supplier_listings 57,125、shop_listings 106。注文・発注関連テーブルは各0件と記録されている。外部IDを持つ6件でlisting通貨JPYと仕入先通貨USDの不一致が確認され、TRACER側で停止、ShopifyのACTIVE 2件はDRAFTへ変更・再取得済みと記録されている。BASE外部状態、最新の全件件数一致は未確認。\n\n### 継続方針\n- 本番商品・注文・履歴は削除しない。\n- 公開/発注の本番書き込みを行わず、実アプリ経路のモック統合テストと読み取り専用dry-runを先行。\n- ID/variant/通貨・FX/利益/在庫/販売停止/冪等性を閉じた状態で検証し、CI・typecheck・lint・build・外部状態再取得が揃うまでDraft維持。\n- 完了条件未達のままIssue/PRを完了扱いにしない。",
+      "at": "2026-10-13T06:42:20Z",
+      "url": "https://github.com/shunai394-hash/tracer/issues/484#issuecomment-6139889463"
+    },
+    {
+      "author": "shunai394-hash",
+      "text": "## 2026-10-13 追加実装（Draft PR #492）\n\nPR: https://github.com/shunai394-hash/tracer/pull/492\n\n### 変更した内容\n- `lib/shopify/sync-published-listings.ts`: 実際のShopify書き込み判定で canonical product ID、supplier product ID、supplier variant ID、正の販売価格、HTTP(S)画像URLを必須化。従来は variant の欠落チェックが preview 側にしかなかった。\n- `lib/channels/base-publisher.ts`: BASE公開前に販売通貨JPY、正の仕入原価、正の粗利・粗利率を検証。証拠が欠ける/不正なら公開対象から外し、既存BASE商品は削除せず在庫0・非表示を試行。非表示APIが失敗した場合は成功扱いしない。\n- `scripts/test-canonical-channel-safety-contract.mjs`: cron→サービス経路と安全ゲートの回帰契約を追加し、prebuildから実行。\n- `package.json`: prebuildに明示的な `tsc --noEmit` と `npm run lint` を追加。既存の `patrol-ai` cronが残ることもテストする。\n\n### 検証状況\n- 新しい回帰契約はVercel build log上で成功：`Canonical channel safety contracts passed.`\n- 既存の prebuild 回帰群も少なくともログ上で多数成功（Shopify live-stock 18 assertions、Sales Test Gate 8 cases、BASE identity repair 8 assertions、BASE create-ID recovery 7 assertions 等）。\n- 最新コミット `7d44abad937118adfc8ffe7f54fa833ca68b624a` では `tsc --noEmit` と lint を含むビルドを再実行中。結果は未確定のため、まだ成功とは記録しない。\n- 先行コミット `c7366ac` のビルドは新しいテストのcron文字列判定が厳しすぎて失敗。JSON parse方式に修正し、後続コミットで回帰テストが成功した。\n\n### 未解決（Issue完了を妨げる）\n- listing.currency=JPYだけでは仕入元通貨を証明できない。supplier listing通貨、FXレートと観測時刻の検証が未実装。\n- Shopify/BASEの注文取込・発注を共通の永続的な冪等性キーで統合した並行実行テストは未完了。\n- 在庫更新・販売停止が両チャネルの実状態に反映されたこと、BASE/Shopifyの全件照合と件数一致は未確認。\n- 実アプリ経路のモック統合テスト一式、CI成功、実データdry-run証拠はまだ揃っていない。\n\n本番の公開・発注は実行していない。本番商品・注文履歴の削除もしていない。PR #492はDraftのまま維持する。",
+      "at": "2026-10-13T06:45:30Z",
+      "url": "https://github.com/shunai394-hash/tracer/issues/484#issuecomment-6139932467"
+    },
+    {
+      "author": "shunai394-hash",
+      "text": "## 2026-10-13 検証更新（PR #492）\n\n最新コミット `7d44abad937118adfc8ffe7f54fa833ca68b624a` のVercel Preview deploymentは **READY**。ビルドログで次を確認した。\n- `npx tsc --noEmit` と `npm run lint` を実行し、後続の回帰テストまで進行（失敗で停止した記録なし）。\n- 追加テスト `Canonical channel safety contracts passed.`\n- 既存prebuildテスト群が完走し、Next.jsの `Compiled successfully`、`Finished TypeScript`、`Build Completed in /vercel/output [41s]` を確認。\n- Vercel commit status: success.\n- GitHub Actions workflow runはこのSHAで取得できず、GitHub Actions CI自体の成功とは扱わない。\n\n### 重要な制限\nこの成功はDraftブランチのPreview build/testのみ。本番DB・BASE・Shopifyの実状態照合、件数一致、FXの通貨/鮮度証拠、実アプリ経路を通す注文→発注の並行統合テストは未完了。したがってIssue #484の受け入れ条件は未達で、PR #492はDraftのまま。公開・発注の本番実行はしていない。",
+      "at": "2026-10-13T06:46:23Z",
+      "url": "https://github.com/shunai394-hash/tracer/issues/484#issuecomment-6139944937"
+    },
+    {
+      "author": "shunai394-hash",
+      "text": "## 2026-10-13 追加安全ゲート（Draft PR #492、検証中）\n\n公開前の照合をさらに強化した。\n- 新しい `getExactlyEligibleSupplierListingIds` は、`supplier_listings.identity_status=linked` だけでは許可せず、canonical `product_id`、仕入先商品ID、正確なバリエーションID、仕入元通貨と販売通貨の一致をすべて要求する。\n- 同じ supplier_listing_id を複数の異なる掲載候補が共有している場合は曖昧として拒否する。\n- Shopifyの実同期・プレビューとBASE公開の両方で同じ判定を使う。\n- pure policy `lib/catalog/supplier-identity-policy.ts` を抽出し、ID欠落/重複/不一致、variant不一致、USD/JPY不一致、通貨欠落を拒否する振る舞いテストを追加した。\n\n最新コミット `b9e6bf709f1b8e95800bdd2604f7209f4cb1fac1` はVercel Preview buildで `tsc`、lint、回帰テストを再実行中。最新の結果が確定するまでは成功扱いにしない。\n\nUSD→JPYのFX換算を許可するには、レート値・観測時刻・鮮度・換算後原価の保存と照合を別途実装する必要がある。現在は通貨が一致しない商品を保守的にブロックしている。注文/発注統合、DBと外部ストアの実状態照合、件数一致も未完了。PRはDraftを維持する。",
+      "at": "2026-10-13T06:49:53Z",
+      "url": "https://github.com/shunai394-hash/tracer/issues/484#issuecomment-6139993479"
+    },
+    {
+      "author": "shunai394-hash",
+      "text": "## 2026-10-13 read-only reconciliation checkpoint\n\nSupabase production `shop_listings` was queried read-only. Results:\n- Canonical `shop_listings`: 106 rows.\n- `shopify_product_id` linked: 6; `base_item_id` linked: 5; all 5 BASE-linked rows are also Shopify-linked.\n- Duplicate non-null Shopify IDs: 0; duplicate non-null BASE item IDs: 0.\n- `published=true`: 0; `pipeline_status=blocked`: 106; `orderable=true`: 2 (inconsistent with all rows blocked and must be investigated, not published).\n- The 6 linked rows include English/invalid customer-facing copy and supplier identity/currency issues. Examples include the garment steamer (English title; reason `supplier_identity_unlinked`), pet grooming comb (English title; `supplier_identity_unlinked`), retractable car-wash mop (English title; `supplier_identity_unlinked`), phone case (supplier cost/shipping values 1.8/3.5 while listing currency is JPY; `supplier_currency_mismatch`), and an air purifier (`japanese_catalog_copy_invalid`). These are blocked in TRACER; this query did not verify external BASE status.\n- Connected Shopify Admin API reports 1,600 products total, with multiple DRAFT/ARCHIVED products visible in its first page; do not treat this as 1,600 sale-ready or published items. Shopify IDs need complete pagination and exact normalization against TRACER IDs.\n\nNext implementation/evidence requirements:\n1. Paginate the full Shopify catalog and fetch BASE catalog through its actual authenticated API; compare external IDs, status, SKU/variant IDs, titles, price/currency and inventory against all 106 canonical rows. Output explicit matched/missing/duplicate/orphan counts and quarantine candidates without deleting anything.\n2. Explain why 2 rows have `orderable=true` while every row is `pipeline_status=blocked`; make eligibility derive from one shared fail-closed predicate.\n3. Trace actual order import/payment/cancel/refund/PO/supplier-send paths and add integration tests for duplicate delivery, concurrent import, cancel/refund races, supplier timeout/unknown result, idempotent retry, and human-approval gates.\n4. CJ candidate audit must validate exact supplier identity and variant, Japanese title/description, usable image, source currency and FX timestamp, landed cost including shipping, positive contribution profit/margin, verified stock/orderability and tracking before any publication.\n\nNo product/order deletions, no mass publishing, and no supplier order submissions were performed by this audit. Keep the PR Draft until actual-path tests and external API evidence pass.",
+      "at": "2026-10-13T06:50:13Z",
+      "url": "https://github.com/shunai394-hash/tracer/issues/484#issuecomment-6139998132"
+    },
+    {
+      "author": "shunai394-hash",
+      "text": "## Follow-up audit: order pipeline + supplier evidence (read-only, 2026-10-13)\n\n### Order pipeline state\n- `shop_orders`: 0 rows; Shopify-linked 0; BASE-linked 0; paid 0; cancelled/refunded 0.\n- `shop_order_items`: 0 rows.\n- `purchase_orders`: 0 rows.\n- `purchase_order_items`: 0 rows.\n- `supplier_order_attempts`: 0 rows.\n\nThis establishes that these TRACER tables currently contain no order/PO execution history; it does NOT establish that the external stores have no orders. Before declaring auto-ordering operational, fetch external Shopify and BASE orders through their authenticated APIs and reconcile totals, financial statuses, cancellations/refunds, line items, variants and timestamps into a dry-run report. Then test actual application ingestion with duplicate webhook/cron delivery, concurrent processing, cancellation/refund race, and ambiguous supplier timeout without issuing live supplier orders.\n\n### Supplier evidence\n- `supplier_listings` total: 57,125 rows.\n- CJ variants are split across many states. Read-only grouped query returned 504 CJ rows `verified + supply_discovered + orderable=true + price_confirmed + inventory_confirmed + tracking_available`; another 44 rows have the same positive flags but `verification_status=retryable`; 76 verified rows are explicitly `orderable=false`. These counts are supplier-listing records, NOT unique products or publication-ready listings; they still need exact identity/variant, Japanese copy/image, JPY conversion/FX timestamp, landed cost/profit and active inventory checks.\n- Existing `orosy` supplier records: 1,249 rows (`unknown`/`unverified` identity states). User requirement is no Orosy sourcing route. Do not delete these records or use them for new sourcing; identify every ingestion/cron/publish path that can reintroduce/use Orosy and gate it off safely, with regression tests.\n\n### Required fail-closed acceptance gates\n1. A `retryable` listing is not treated as verified/orderable just because boolean flags are true.\n2. One shared eligibility predicate must reject `identity_status` other than explicitly verified/linked, currency without a recorded conversion basis, missing variant mapping, stale/unconfirmed inventory, invalid Japanese customer copy, missing image, or non-positive contribution profit.\n3. No supplier API submission until a unique idempotency key, human approval, exact supplier variant snapshot and safe retry/unknown-result reconciliation are verified.\n4. Keep all live supplier submissions and mass publication paused during this audit; no production data deletions performed.",
+      "at": "2026-10-13T06:51:39Z",
+      "url": "https://github.com/shunai394-hash/tracer/issues/484#issuecomment-6140018487"
+    },
+    {
+      "author": "shunai394-hash",
+      "text": "## 追加監査：Orosy経路がまだ稼働設定に残っている（2026-10-13）\n\nGitHub default branch `main` の実ファイルを確認しました。\n\n- `vercel.json` は `/api/cron/orosy-bulk-import` を毎日2回（UTC 12:10 / 18:10）登録しています。\n- `app/api/cron/orosy-bulk-import/route.ts` は実際にOrosy検索・商品詳細取得・`products` へのinsert/upsert相当の作成処理を行い、さらにShopify同期関数 `syncPublishedListingsToShopify` をimportしています。\n- `.github/workflows/tracer-autonomous-commerce-cycle.yml` の手動ワークフローも同じOrosyエンドポイントを呼び出します。さらに、同ワークフロー内のBASE URLは `https://tracer-pied-alpha.vercel.app` で、現在の本番URLとして把握している `https://tracer-self.vercel.app` と一致しません。ワークフローの末尾コメントは「push-triggered」と書かれていますが、実際のトリガーは `workflow_dispatch` のみです。\n\n### 次の修正条件（まだ変更・実行はしていません）\n1. Orosyを仕入れ経路として使わない方針に合わせ、Orosy cron登録と呼び出し元を除去または明示的に無効化する。DBの既存データは削除しない。\n2. 仕入れ元の許可リストを設け、Orosy由来レコードが仕入れ調査・商品掲載・自動発注へ流れないことを実際の呼び出し経路でテストする。\n3. 旧ワークフローのBASE URLとトリガーコメントを修正し、誤った本番環境を呼ばないようにする。\n4. `vercel.json`、GitHub Actions、アプリ内の全呼び出し元をまとめて検索し、Orosy経路が残っていないことをCIで検証する。\n5. 変更後はビルド・回帰テスト・cron一覧を確認する。外部発注・商品公開はテスト成功と証拠確認まで行わない。\n\n根拠ファイル：\n- https://github.com/shunai394-hash/tracer/blob/main/vercel.json\n- https://github.com/shunai394-hash/tracer/blob/main/app/api/cron/orosy-bulk-import/route.ts\n- https://github.com/shunai394-hash/tracer/blob/main/.github/workflows/tracer-autonomous-commerce-cycle.yml",
+      "at": "2026-10-13T06:53:18Z",
+      "url": "https://github.com/shunai394-hash/tracer/issues/484#issuecomment-6140042916"
+    },
+    {
+      "author": "shunai394-hash",
+      "text": "## 追加追跡：Orosyの参照元はcronだけではない\n\nリポジトリ検索で、少なくとも次の参照元を確認しました。\n\n- `app/api/intelligence/orosy-search/route.ts` — Orosy検索APIを公開するアプリ経路\n- `lib/procurement/orosy-adapter.ts` — 仕入れアダプター登録候補。調達レジストリから呼ばれるか確認が必要\n- `lib/intelligence/product-api.ts` — 商品情報/供給インテリジェンス側のOrosy検索・詳細取得\n- `lib/suppliers/investigate-dropship.ts` — 仕入先調査経路でOrosy詳細・送料・検索を参照\n- `.github/workflows/tracer-one-shot-supply-recovery.yml` — 手動リカバリーworkflowからもOrosy bulk importを呼び出す\n- `app/api/health/route.ts` と `lib/config/env.ts` — Orosyの接続状態をヘルス表示・設定管理に含む（これ自体は発注経路の証拠ではない）\n\nしたがって、`vercel.json` のcron2件だけを外して完了扱いにするのは不十分です。修正時は「既存履歴を残すこと」と「新規の探索・掲載・発注経路からOrosyを外すこと」を分け、少なくとも procurement registry、intelligence、supplier investigation、API route、両workflow、cron設定を確認してください。\n\n現時点で行ったのはソースコードの読み取りとIssueへの記録のみです。コード変更、デプロイ、外部商品公開、仕入先への発注は実行していません。",
+      "at": "2026-10-13T06:53:31Z",
+      "url": "https://github.com/shunai394-hash/tracer/issues/484#issuecomment-6140045854"
+    },
+    {
+      "author": "shunai394-hash",
+      "text": "## 2026-10-13 第4・第5段階の候補選定監査（更新）\n\n### 実装した修正\n- 仕入先タイトルだけでなく、商品マスターの正規タイトルも別々に検査。仕入先側が具体名でも、商品マスターが「トレンド・seeded_dueアイテム」等の汎用タイトルなら候補を拒否する。\n- 女性向け候補の順位を **バッグ → ビューティーツール → ヘアアクセサリー** に固定。これは並び順だけで、商品同一性・在庫・価格・利益ゲートを迂回しない。\n- 利益計算で国内送料が未確認のときにゼロ扱いしない。商品マスターの `metadata.domestic_shipping_jpy` が欠落・不正なら `domestic_shipping_unknown_or_invalid` で候補を拒否する。\n- Shopifyの読み取り専用プレビューが共通の仕入先照合に販売通貨を渡していなかった型エラーを修正。\n- 候補タイトル・国内送料・カテゴリ順位の回帰チェックを追加し、プレビューbuildの事前テストにも組み込んだ。\n\n### 検証状況\n- 直前コミット `36aab5b30597478c1b2c59f867ea11706ba4aa1a` は Vercel Preview の型チェック・Lint・既存事前テスト・Next.js build が成功（READY）。\n- 上記の候補選定テストをbuild内でも実行する最新コミット `fef8360fd302c53637ddcb381b39c99fcc697cec` は、現在Preview buildを確認中。これを成功扱いにはしていない。\n- GitHub Actionsのworkflow runは現時点で取得できておらず、CI成功とは判定していない。\n- 今回の接続済みSupabase一覧ではTRACER本番プロジェクトを確認できず、提示されたCJ 450件の数値をこちらから再照合できていない。450件の再集計、商品別利益の実データドライラン、BASE/Shopifyの外部状態・件数一致は未完了。\n\n本番公開・発注・外部書き込み・商品/注文履歴の削除は実行していない。PR #492 はDraftのまま維持し、注文取込と発注の共通冪等性、FX証拠の鮮度、在庫停止伝播、外部実状態照合が終わるまでIssue #484は未完了とする。",
+      "at": "2026-10-13T06:57:25Z",
+      "url": "https://github.com/shunai394-hash/tracer/issues/484#issuecomment-6140104957"
+    },
+    {
+      "author": "shunai394-hash",
+      "text": "## 2026-10-13 候補選定の追加監査\n\n追加で、代替経路 `lib/market/select-sales-tests.ts` も確認・修正しました。ここが国内送料不明でも利益計算を通して `shop_listings.published=true` を作れる余地があったためです。\n\n- 通常の供給候補経路と代替sales-test経路の両方で、商品マスター/候補タイトルの汎用カテゴリ名を拒否。\n- 両経路で `metadata.domestic_shipping_jpy` が未設定・不正なら候補を拒否し、国内送料をゼロとみなして利益合格にしない。\n- 両経路にバッグ → ビューティーツール → ヘアアクセサリーの優先順位を適用。\n- 追加した回帰テストは、これらの両経路への配線、カテゴリのみのタイトル、英語タイトルの大小文字差を検査する。テストは `prebuild` から実行する構成。\n\nコミット `773a3028fc75520f1592a1bdf2efa86c7e90638e` はPreview build READY。現在の最新コミット `f86f48d716eb77fe99291c55f3ce6374e30e26e1` は、上記の代替経路修正を含むPreview buildの結果待ちです。最新コミットを成功とはまだ判定していません。\n\nSupabase接続からTRACER本番プロジェクトを取得できていないため、CJ候補450件の実ドライラン件数と商品別利益は未検証です。GitHub Actionsも実行結果を取得できていません。本番公開・発注・外部書き込みは行っていません。PR #492はDraftを維持します。",
+      "at": "2026-10-13T07:01:11Z",
+      "url": "https://github.com/shunai394-hash/tracer/issues/484#issuecomment-6140161373"
+    },
+    {
+      "author": "shunai394-hash",
+      "text": "## 検証結果更新 — 2026-10-13\n\n最新head `f86f48d716eb77fe99291c55f3ce6374e30e26e1` のVercel Previewが **READY** になりました。TypeScript、ESLint、prebuild回帰テスト一式（候補タイトル品質・国内送料・両sales-test経路の配線確認を含む）、Next.js buildまで完了しています。ビルド中に以前見つかったShopifyプレビューの通貨項目欠落も修正済みです。\n\n今回の候補選定修正:\n- 仕入先名が具体的でも、商品マスター側が汎用タイトルなら除外。\n- バッグ → ビューティーツール → ヘアアクセサリーの順位を両方のsales-test選定経路に適用。\n- 国内送料の証拠がなければ利益をゼロ送料で通さず、候補から除外。\n- カテゴリ名だけのタイトルを候補選定前に拒否。\n\nただし、Vercel Previewの成功はGitHub Actions CI成功や本番復旧の証拠ではありません。GitHub Actionsのrunは取得できず、接続済みSupabase一覧にもTRACER本番プロジェクトがないため、450候補の本番ドライラン・商品別利益・BASE/Shopify実状態と件数の一致は未確認です。Issue #484は未完了、PR #492はDraftのまま維持します。本番公開・発注・書き込みは行っていません。",
+      "at": "2026-10-13T07:01:59Z",
+      "url": "https://github.com/shunai394-hash/tracer/issues/484#issuecomment-6140173092"
+    },
+    {
+      "author": "shunai394-hash",
+      "text": "## 実装\nTRACERの商品行を公開・店頭・在庫更新の共通判定にしました。販売通貨はJPYのみ、仕入通貨は文字列の3文字コードだけを使い、欠落をUSDやJPYへ補完しません。JPY同士はレート1で利益を再計算します。それ以外は `fx_rate` と24時間以内の `fx_observed_at` があるときだけ換算し、期限切れ・欠落・非正の利益は公開しません。在庫未確認、バリエーション空欄、識別子不足も同じ判定で拒否します。\n\n- Shopifyプレビューと同期、BASE公開、店頭一覧、注文前チェック、在庫更新が `evaluateShopListingRecord` を通ります。仕入通貨は `supplier_listings` から読み、保存済みの `contribution_profit` は使いません。\n- 在庫更新で販売不可になった商品は、Shopify商品IDがあり設定があるときだけ非公開にします。公開処理は追加していません。未設定は成功にせず `shopifyStopSkipped` に数えます。\n- Shopifyの同一variant、BASEの同一itemが複数行に分かれる場合は取り込み前に失敗します。Shopifyの一意制約競合は既存注文を読み直してスキップし、勝った行は削除しません。明細挿入に失敗した、その呼び出しで作った行だけの補償削除は従来どおりです。\n- 仕入発注の意図は、保存済み為替証拠で利益を再計算できたときだけレートを渡します。実行時の為替取得では通過させません。二重キーは既存の `dropship:{shop_order_item.id}` と一意索引の再読込のままです。\n\n本番商品・注文の削除、公開、仕入発注は実行していません。\n\n## ローカル検証\n- `scripts/test-issue-484-commerce.mjs` 5/5 終了コード0\n- storefront終了コード0、channel safety 10件終了コード0、supplier order終了コード0、cron終了コード0、demand 58/58終了コード0\n- `npx tsc --noEmit` 終了コード0\n- `npm run lint` 終了コード0（既存警告10件、エラー0）\n- `npm run build` 終了コード0\n\n## 未確認\n- 本番DBの件数、Shopify・BASEの実状態、公開可能件数は未測定です。`.env.local` は存在しますが、このプロセスには `NEXT_PUBLIC_SUPABASE_URL` と `SUPABASE_SERVICE_ROLE_KEY` が入っておらず、認証情報ファイルは読んでいません。読み取り専用スクリプト `scripts/issue-484-readonly-reconcile.mjs` は `db: unconfigured` で終了コード2です。0件や一致とは扱っていません。\n- BASEはアクセストークンが無い場合にリフレッシュを呼ばないようにしています。外部状態は未確認です。\n- アプリ関数を本番Postgresへ接続した並行発注は未実施です。\n- CIは Draft PR #502 の実行待ちです。成功するまでこのIssueは完了にしません。PRはDraftのままです。",
+      "at": "2026-10-13T07:23:44Z",
+      "url": "https://github.com/shunai394-hash/tracer/issues/484#issuecomment-6140495517"
+    },
+    {
+      "author": "shunai394-hash",
+      "text": "追記です。Draft PR #502 のコミット `1688184f` に対する GitHub Actions の `TRACER CI` は実行一覧が0件でした。完了しているチェックは Vercel Preview Comments の success だけです。これはリポジトリCI（型検査、需要証拠、Postgresスクリプト、lint、build）の成功ではありません。Vercelのプレビュー作成はPR作成に伴って検出されました。本番公開・仕入発注・商品削除は実行していません。Issue #484 は開いたまま、PR #502 はDraftのままです。",
+      "at": "2026-10-13T07:24:59Z",
+      "url": "https://github.com/shunai394-hash/tracer/issues/484#issuecomment-6140513951"
+    }
+  ],
+  "comments_complete": true
+}

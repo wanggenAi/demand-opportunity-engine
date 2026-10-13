@@ -1,0 +1,186 @@
+{
+  "source_api_url": "https://api.github.com/repos/NicoCipher/DepotFlow/issues/52",
+  "collected_at": "2026-10-13T09:43:09.605326+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/NicoCipher/DepotFlow/issues/52",
+    "repository_url": "https://api.github.com/repos/NicoCipher/DepotFlow",
+    "labels_url": "https://api.github.com/repos/NicoCipher/DepotFlow/issues/52/labels{/name}",
+    "comments_url": "https://api.github.com/repos/NicoCipher/DepotFlow/issues/52/comments",
+    "events_url": "https://api.github.com/repos/NicoCipher/DepotFlow/issues/52/events",
+    "html_url": "https://github.com/NicoCipher/DepotFlow/issues/52",
+    "id": 5820575075,
+    "node_id": "I_kwDOUYehJM8AAAABWu7tYw",
+    "number": 52,
+    "title": "Populate verified drink images for all 45 catalogue products",
+    "user": {
+      "login": "NicoCipher",
+      "id": 155632225,
+      "node_id": "U_kgDOCUbCYQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/155632225?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/NicoCipher",
+      "html_url": "https://github.com/NicoCipher",
+      "followers_url": "https://api.github.com/users/NicoCipher/followers",
+      "following_url": "https://api.github.com/users/NicoCipher/following{/other_user}",
+      "gists_url": "https://api.github.com/users/NicoCipher/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/NicoCipher/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/NicoCipher/subscriptions",
+      "organizations_url": "https://api.github.com/users/NicoCipher/orgs",
+      "repos_url": "https://api.github.com/users/NicoCipher/repos",
+      "events_url": "https://api.github.com/users/NicoCipher/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/NicoCipher/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 8,
+    "created_at": "2026-10-12T21:19:31Z",
+    "updated_at": "2026-10-13T08:31:56Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Goal\nPopulate correctly matched, rights-cleared, real packaging photos for **all 45** current master catalogue entries, starting with the **22 configured products**. Do not mark completed until every currently stocked drink displays its actual package photo during sale selection.\n\n## Prerequisite\nMerge and deploy PR #51 (including its SQL migration) safely. CI is green on its current tip, but production migration/deployment and an authenticated upload smoke test are still outstanding.\n\n## Acceptance criteria\n- Verify exact brand and packaging: bottle vs can vs PET, size (Big/Small/Medium), label/color and Nigerian market variant.\n- Verify usage rights; prefer own photos taken with permission, or brand-authorized product assets. Do not automatically copy unlicensed images or present AI recreations as genuine packaging.\n- Upload actual bytes to the existing `product-images` bucket; catalogue `image_path` points only to its internal object key. No third-party hotlinks.\n- All 22 configured products and remaining 23 catalogue items covered, with zero missing images; ensure stocked subset appears correctly in Record Sale, Stock and Drinks.\n- Mobile: clear recognizable thumbnail, readable name/size, safe no-image placeholder, graceful bad-file recovery.\n- Reconcile coverage after upload in production before closing issue.\n\n## Safety\nPublic-read only for nonsensitive product packaging. Upload and delete owner-only; 1 MB JPEG/PNG/WebP bucket limit. Do not change stock, prices, crate obligations, or customer data.",
+    "reactions": {
+      "url": "https://api.github.com/repos/NicoCipher/DepotFlow/issues/52/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/NicoCipher/DepotFlow/issues/52/timeline",
+    "performed_via_github_app": {
+      "id": 1144995,
+      "client_id": "Iv23liVemv8A9if9v0F2",
+      "slug": "chatgpt-codex-connector",
+      "node_id": "A_kwHOAOQ6Gs4AEXij",
+      "owner": {
+        "login": "openai",
+        "id": 14957082,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjE0OTU3MDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/14957082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/openai",
+        "html_url": "https://github.com/openai",
+        "followers_url": "https://api.github.com/users/openai/followers",
+        "following_url": "https://api.github.com/users/openai/following{/other_user}",
+        "gists_url": "https://api.github.com/users/openai/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/openai/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/openai/subscriptions",
+        "organizations_url": "https://api.github.com/users/openai/orgs",
+        "repos_url": "https://api.github.com/users/openai/repos",
+        "events_url": "https://api.github.com/users/openai/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/openai/received_events",
+        "type": "Organization",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "name": "ChatGPT Codex Connector",
+      "description": "Bring ChatGPT and Codex to your GitHub repositories.",
+      "external_url": "https://www.chatgpt.com",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "created_at": "2025-02-14T01:37:05Z",
+      "updated_at": "2026-09-23T18:52:59Z",
+      "permissions": {
+        "actions": "write",
+        "checks": "read",
+        "contents": "write",
+        "emails": "read",
+        "issues": "write",
+        "metadata": "read",
+        "pull_requests": "write",
+        "statuses": "read",
+        "workflows": "write"
+      },
+      "events": [
+        "check_run",
+        "check_suite",
+        "commit_comment",
+        "issues",
+        "issue_comment",
+        "pull_request",
+        "pull_request_review",
+        "pull_request_review_comment",
+        "pull_request_review_thread",
+        "repository",
+        "status",
+        "sub_issues"
+      ]
+    },
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "NicoCipher",
+      "text": "**13 October 2026 progress**: PR #51 is merged, SQL migration applied to production, and Vercel production is READY. PR #53 is merged with 45 first-party SVG illustrated identifiers (plus generic fallback) so blank image tiles are replaced across catalogue, shop, stock, and sale selection. **These are illustrations, not photographs.** Authentic package images remain **0/45 confirmed uploaded** to the Supabase `product-images` bucket; do not close this issue or claim completion. For photo sourcing, Wikimedia Commons has CC-licensed photographs of some products, but old/non-Nigerian packaging must be verified before use. Prioritize actual current retailer/wholesaler photos or manufacturer-authorized packshots, then upload exact variants in the app. Confirm rights, package size, and product identity on every asset.",
+      "at": "2026-10-13T05:53:25Z",
+      "url": "https://github.com/NicoCipher/DepotFlow/issues/52#issuecomment-6139228666"
+    },
+    {
+      "author": "NicoCipher",
+      "text": "Actual-photo sourcing audit (2026-10-13): **0/45** currently uploaded in Supabase. Owner rejected the 45 artificial SVG identifiers as inaccurate/unprofessional; PR #54 removed them from rendering and has deployed successfully. Do NOT reintroduce generated/illustrated drink packaging.\n\nGenuine-product image examples located (candidate references, NOT licensed assets or uploaded product photos):\n- 33 Export — https://www.omnia-trading.com/it/product-page/33-export-premium-lager\n- Goldberg — https://www.omnia-trading.com/product-page/goldberg-premium-lager\n- Maltina glass — https://thebuyrite.co.uk/products/nigerian-maltina\n- Malta Guinness — https://www.kmiimpex.com/malta-guinness-non-alcoholic-malt-drink-330-ml.html\n- Heineken — https://www.adegazaidan.com.br/produtos/cerveja-heineken-retornavel-600-ml/\n- Guinness Foreign Extra Stout 60cl — https://www.drinksupermarket.com/guinness-nigerian-foreign-extra-imported-irish-stout-600ml\n- Life 60cl — https://www.shoppersgatestores.com/products/life-60cl-bottle\n- Guinness Smooth 330ml — https://www.atambah.com/products/guinness-smooth-330ml\n- Trophy Stout 600ml — https://products.contact/supplier/15-international-breweries-plc\n- Star 2024+ packaging update — https://guardian.ng/news/star-lager-unveils-new-iconic-look-same-quality/\n- Manufacturer brand catalog — https://www.nbplc.com/our-brands/\n\nThese are references only. Validate **Nigeria-current packaging, bottle vs can, and correct volume**; permission to reuse third-party photographs is not implied by public availability. In particular, Supermart states no reproduction without prior consent, so do not bulk-scrape/rehost its images.\n\nNext actual deliverable must be authentic authorized product packshots ingested as bytes into our already configured Supabase Storage and linked to exact products; report accurate non-zero coverage only after DB + Storage verification.",
+      "at": "2026-10-13T06:11:58Z",
+      "url": "https://github.com/NicoCipher/DepotFlow/issues/52#issuecomment-6139461528"
+    },
+    {
+      "author": "NicoCipher",
+      "text": "2026-10-13 Goldberg real-photo work: **PR #59 merged** (93208199728b0bb6dd055e160a699541d0aae39c). Real **60cl Goldberg bottle photograph** sourced from Omnia Trading, reframed/optimized *without AI alteration* to first-party `public/catalogue-photos/goldberg-60cl.webp` (21,554 bytes). Production DB now references `first-party/goldberg-60cl.webp`, and existing shop Goldberg image_url `/catalogue-photos/goldberg-60cl.webp`. App CI + disposable PostgreSQL migration tests passed. Camera feature was reverted via PR #58; live rollback verified against previous same-tree deployment. **Do not mark Goldberg live yet**: Vercel API returned HTTP 402 `api-deployments-free-per-day` (>100 deployments/day), retry after 86400 seconds. Live production still on earlier commit ecced21cdf500699cc230a806a94337ff44c62e8, not PR #59. Need redeploy main once rate cap clears, then verify actual image HTTP 200 and product UI. Photo source reuse license not expressly confirmed; review rights before wider commercial distribution. Other drink photos unchanged.",
+      "at": "2026-10-13T07:15:46Z",
+      "url": "https://github.com/NicoCipher/DepotFlow/issues/52#issuecomment-6140372103"
+    },
+    {
+      "author": "NicoCipher",
+      "text": "2026-10-13 follow-up check-in (careful one-by-one image audit):\n\n- Vercel production still serves commit `ecced21cdf500699cc230a806a94337ff44c62e8`; GitHub main now `110424c3dc770fea94d769e18366d661a0d8f167`. No newly verified real product image is live; Vercel free deployment quota has blocked builds (100/day/HTTP 402 on latest attempted deployment).\n- **Goldberg:** Reviewer on PR #59 identified a P1: Omnia Trading marks its product photo all rights reserved and no reproduction license exists. Corrective PR #61 merged and tested (disposable PostgreSQL green), removed the photo from deployable static assets, cleared only its exact DB references via applied migration, preserving owner-controlled images. Product image remains empty until authorized asset acquired.\n- **33 Export 60cl:** sourced and optimized a genuine 22,656-byte retailer bottle photo but found the manufacturer announced a newly designed bottle in March 2026. Retailer photo may reflect the previous design. The image also lacked established reuse permission, so binary removed from public asset branch, draft PR #60 closed without merge or DB changes. Official reference: https://www.nbplc.com/our-brands/33-export/ . Source candidate: https://chomart.com/product/33-export-premium-larger-beer-60-cl-pBxUu . Relaunch: https://www.nbplc.com/33-export-lager-is-back-the-taste-that-unites-returns-with-a-refreshed-look-and-the-33-connect-party-in-uyo/\n- Verified production database **0/45** catalogue images assigned (45 total). Camera feature was previously removed; no new user-facing features added.\n\n**Next unblock:** request permission-cleared current Nigerian manufacturer packshots (individual 60cl bottles, not mixed bottle+can promos), or source openly licensed photographs matching exact labels. Then host our optimized WebP binaries in DepotFlow, attach to exact catalogue rows, run review/tests, and deploy when Vercel quota clears. Do not reintroduce unlicensed images or misidentify variants.",
+      "at": "2026-10-13T07:35:50Z",
+      "url": "https://github.com/NicoCipher/DepotFlow/issues/52#issuecomment-6140676752"
+    },
+    {
+      "author": "NicoCipher",
+      "text": "**Live audit — 13 October 2026**\n\n- `main`: `110424c3dc770fea94d769e18366d661a0d8f167` (PR #61). Vercel production deployment `dpl_GqaBjArHN2B8unWpJSEVQWVHbJbD` is **READY** and aliases `depotflow-bice.vercel.app` with no alias error. Previously deployed production was stale.\n- Live Supabase query: **45** master catalogue entries, **22** shop products, **0** catalogue image references, **0** shop image references, and **0** objects in `product-images`. Goldberg catalogue ID `a5a88718-5fb3-488f-aea4-5271e535607e`, linked shop product ID `3dfadc05-75ac-4b41-95de-124779b14835`, both without image references.\n- Reverted unauthorized camera UI remains absent from `main` via PR #58. The unlicensed Omnia Goldberg photo remains removed via PR #61. No new images, prices, stock or sales were modified in this audit/deployment.\n- Goldberg 60cl: found manufacturer brand page at https://www.nbplc.com/our-brands/goldberg/ and exact-bottle retailer references, but **no established redistribution license** for an exact-variety packshot. Do not publish or assign the reference photographs. A request for the manufacturer to provide an official authorized 60cl photograph is prepared; not yet sent. Status **blocked on permission/rights-cleared asset**.\n- Review/security: PR #61 Codex review finished without new inline findings; disposable PostgreSQL 16 test succeeded. Previous PR #58 Codex P2 remains relevant to the existing upload workflow: original uploaded JPEG metadata may survive, so strip EXIF/GPS before storing any new real photos.\n\n**Do not close issue. Coverage remains 0/45. Next:** obtain explicit use/rehosting rights and exact-variant Goldberg photo; optimize as genuine WebP without altering packaging, integrate via the existing controlled path, verify DB linkage and production display, then move to 33 Export.",
+      "at": "2026-10-13T07:54:07Z",
+      "url": "https://github.com/NicoCipher/DepotFlow/issues/52#issuecomment-6140966294"
+    },
+    {
+      "author": "NicoCipher",
+      "text": "**Goldberg 60cl update — PR #62 staged (2026-10-13)**\n\n- PR: https://github.com/NicoCipher/DepotFlow/pull/62; branch `assets/restore-goldberg-60cl-pilot`, latest SHA `c8ae8b0cbe724dd825e8f48459dd1e57b26b66fe`.\n- Restores the same genuine 21,554-byte 640×800 WebP (blob `8fb6466ff7ffe5061be8eca553624f10aa4568a3`) from original PR #59, no AI image edits or new features.\n- Migration uses catalogue `first-party/goldberg-60cl.webp` and linked shop `/catalogue-photos/goldberg-60cl.webp` only when reference fields are unset. No stock, pricing, sales or receipts modifications.\n- Disposable PostgreSQL 16 workflow #100 succeeded, including migration, SQL tests and concurrency checks.\n- Initial Vercel preview for the first commit READY; newest commit's deployment was rejected under the 100-deployments/day Free plan quota. Codex review of newest commit is running.\n- **Copyright risk unresolved:** Omnia Trading marks content all rights reserved; product photograph is NOT licensed/rights-cleared. Owner requested for personal pilot, but hosting publicly can still require permission. Do not misrepresent authorization.\n- **Not merged or publicly verified in production.** Catalogue/shop image references remain unchanged pending release. Do not mark issue complete.",
+      "at": "2026-10-13T08:25:17Z",
+      "url": "https://github.com/NicoCipher/DepotFlow/issues/52#issuecomment-6141461490"
+    },
+    {
+      "author": "NicoCipher",
+      "text": "**PR #62 review result:** Codex completed review of `c8ae8b0` and raised **P1: keep unlicensed packshot out of public deployments** (https://github.com/NicoCipher/DepotFlow/pull/62#discussion_r4256351890). PR #62 has been converted to **draft** and remains unmerged. Verified database workflow success does not resolve rights. No production image references were changed; Goldberg remains pending rights-cleared image or documented authorization. Vercel latest commit was also quota-blocked.",
+      "at": "2026-10-13T08:26:07Z",
+      "url": "https://github.com/NicoCipher/DepotFlow/issues/52#issuecomment-6141475194"
+    },
+    {
+      "author": "NicoCipher",
+      "text": "**13 Oct update — Owner acknowledged rights risk and instructed merge.** PR #62 merged to `main` as `eac8c966a5f4f3f1a13728c9d6b85d9bf0915357`. Disposable PostgreSQL migration suite passed on source head `c8ae8b0`; Codex P1 on unlicensed Omnia photo remains explicitly acknowledged, **not legally cleared**. Production still serves old `110424c3` because Vercel Git deployment failed with `api-deployments-free-per-day`, and a single manual production deploy of `eac8c966` also returned HTTP 402 (100 deployments/day, retry after ~24h). **Production DB not updated:** Goldberg catalogue `image_path` and linked shop `image_url` both remain null. To finish after quota reset, deploy exact `eac8c966`, verify first-party `/catalogue-photos/goldberg-60cl.webp` loads, apply conditional DML migration (`supabase/migrations/20261013100000_restore_goldberg_pilot_packshot.sql`) only when file is served, verify live catalogue/shop rendering, and record rights risk as unresolved. Do not claim image live until these pass.",
+      "at": "2026-10-13T08:31:56Z",
+      "url": "https://github.com/NicoCipher/DepotFlow/issues/52#issuecomment-6141569230"
+    }
+  ],
+  "comments_complete": true
+}

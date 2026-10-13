@@ -2,7 +2,7 @@ from datetime import datetime, timezone
 import re
 from urllib.parse import urlparse
 from .models import age, https
-from .signals import payment_truth
+from .signals import payment_truth, commercial_truth
 from .feedback import feedback_adjustment
 
 def source_age(op, now):
@@ -43,6 +43,12 @@ def do_now_rejections(op, now):
         reasons.append("source verification is future-dated or older than 7 days")
     if op.buyer_role != "BUYER":
         reasons.append("not a verified buyer request")
+    intent, quote = commercial_truth(op)
+    if (op.commercial_intent_type == "NONE" or intent != op.commercial_intent_type
+            or not op.commercial_intent_quote or op.commercial_intent_quote != quote):
+        reasons.append("commercial-intent gate failed: NONE or unsupported primary quote/type")
+    if not https(op.contact_path):
+        reasons.append("missing legitimate source contact/application path")
     if not op.source_open:
         reasons.append("source closed/removed")
     if not https(op.target_profile_url) or not op.buyer_id:
@@ -72,14 +78,14 @@ def score_opportunity(op, now=None, events=(), opportunities=()):
     effective = min(a, activity) if activity is not None and 0 <= activity <= 7 else a
     payment_type, payment_quote, payment = payment_truth(op)
     # Components are separate. One payment signal is counted once.
-    budget = re.search(r"[$€£]\s*(\d+(?:[,.]\d+)?)", payment_quote) if payment_type == "EXPLICIT_BUDGET" else None
+    budget = re.search(r"[$€£]\s*\[?(\d+(?:[,.]\d+)?)", payment_quote) if payment_type == "EXPLICIT_BUDGET" else None
     ticket = min(5, int(float(budget[1].replace(",", "")) / 100)) if budget else 0
     components = {
         "source_authenticity": 15 if op.source_verified and op.raw_evidence_quote in op.source_text else 0,
         "payment_intent": payment,
         "urgency": 5 if re.search(r"\bdeadline\b|\basap\b|\burgent\b", op.source_text, re.I) else 0,
         "reachability": 10 if https(op.target_profile_url) and op.buyer_id else 0,
-        "freshness": 15 if 0 <= effective <= 7 else (7 if 7 < effective <= 14 else 0),
+        "freshness": 18 if 0 <= effective <= 3 else (15 if 3 < effective <= 7 else (7 if 7 < effective <= 14 else 0)),
         "capability": {"REMOTE_NOW": 15, "PARTNER_REQUIRED": 3, "LOCAL_PHYSICAL": 0, "SPECIALIST_REQUIRED": -8}[op.fulfillment_mode],
         "competition": {"LOW": 0, "MEDIUM": -8, "HIGH": -20, "UNKNOWN": -12}[op.competition_pressure],
         "commodity_risk": -4 if op.commodity_market else 0,

@@ -24,3 +24,7 @@ DO NOW requires every hard gate plus score >=65: verified buyer, open source, pr
 INFO_EDGE requires event age <=14 days, two independent verified evidence points, a verified target-buyer information gap, a lawful monetization path and a stated decay window. Current public pricing without verified awareness gap is only a validation candidate.
 
 PRODUCT OPPORTUNITY requires >=5 independent observations, >=2 communities, >=2 primary payment signals, a narrow standardized job and a distribution path. A repeated pain cluster is not yet a product opportunity; no product build without a validation experiment.
+
+## Third sprint buyer-intent gate
+
+A BUYER needs a machine-readable supported commercial_intent_type and exact primary quote. NONE or mismatched type/quote never enters DO NOW. Source-role classification rejects service ads and echoed hiring requests; generated issue digests are not buyers. A legitimate source contact/application URL is required. This gate adds no payment points. 0–3 days receive 18 freshness points; 4–7 days receive 15; 8–14 days receive 7 and require renewed buyer activity for DO NOW. Ordinary problem observers are excluded from all sales board sections and remain product research only.

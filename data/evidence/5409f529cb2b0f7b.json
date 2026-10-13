@@ -1,0 +1,726 @@
+{
+  "source_api_url": "https://community.n8n.io/t/318075.json",
+  "collected_at": "2026-10-13T09:44:24.513316+00:00",
+  "source": {
+    "post_stream": {
+      "posts": [
+        {
+          "id": 593905,
+          "name": "Ophir Prusak",
+          "username": "Ophir_Prusak",
+          "avatar_template": "/user_avatar/community.n8n.io/ophir_prusak/{size}/114204_2.png",
+          "created_at": "2026-10-01T12:01:16.610Z",
+          "cooked": "<p>Starting today, if you’re on n8n Cloud (Starter or Pro) and you run out of Assistant credits, you can buy more and keep building.</p>\n<p>Being able to top up has been one of the most common requests we’ve heard since we launched n8n Assistant. Until now, running out meant waiting for your allowance to reset on the 1st of the month, or upgrading your plan. Neither is a great option when you’re halfway through building a workflow.</p>\n<p><div class=\"lightbox-wrapper\"><a class=\"lightbox\" href=\"https://europe1.discourse-cdn.com/n8n/original/3X/0/3/03ff0c2407fbcc4bb5da6a5f93dd801b93459cee.png\" data-download-href=\"/uploads/short-url/zlRSqKDyabIFhKvfGxrCSF3hNk.png?dl=1\" title=\"image-1\"><img src=\"https://europe1.discourse-cdn.com/n8n/optimized/3X/0/3/03ff0c2407fbcc4bb5da6a5f93dd801b93459cee_2_690x402.png\" alt=\"image-1\" data-base62-sha1=\"zlRSqKDyabIFhKvfGxrCSF3hNk\" width=\"690\" height=\"402\" srcset=\"https://europe1.discourse-cdn.com/n8n/optimized/3X/0/3/03ff0c2407fbcc4bb5da6a5f93dd801b93459cee_2_690x402.png, https://europe1.discourse-cdn.com/n8n/optimized/3X/0/3/03ff0c2407fbcc4bb5da6a5f93dd801b93459cee_2_1035x603.png 1.5x, https://europe1.discourse-cdn.com/n8n/optimized/3X/0/3/03ff0c2407fbcc4bb5da6a5f93dd801b93459cee_2_1380x804.png 2x\" data-dominant-color=\"F0EFF2\"><div class=\"meta\"><svg class=\"fa d-icon d-icon-far-image svg-icon\" aria-hidden=\"true\"><use href=\"#far-image\"></use></svg><span class=\"filename\">image-1</span><span class=\"informations\">1600×934 206 KB</span><svg class=\"fa d-icon d-icon-discourse-expand svg-icon\" aria-hidden=\"true\"><use href=\"#discourse-expand\"></use></svg></div></a></div></p>\n<p><em>The new Assistant credits tab</em></p>\n<h2><a name=\"p-593905-how-top-ups-work-1\" class=\"anchor\" href=\"#p-593905-how-top-ups-work-1\" aria-label=\"Heading link\"></a>How top-ups work</h2>\n<p>Your plan still includes a monthly allowance of Assistant credits that resets on the 1st of the month. Top-ups are extra credits on top of that, and they’re optional.</p>\n<p>You can add extra credits in two ways:</p>\n<ul>\n<li><strong>Top up manually.</strong> Pick a credit package whenever you need one.</li>\n<li><strong>Turn on auto top-up.</strong> Choose the extra-credit balance that triggers a top-up and the balance to refill to. A monthly limit, on by default, caps how much auto top-up can charge in a month.</li>\n</ul>\n<p>The Assistant always uses your included credits first, and only moves on to extra credits once those run out. Extra credits carry over from month to month and expire 12 months after you buy them.</p>\n<p><div class=\"lightbox-wrapper\"><a class=\"lightbox\" href=\"https://europe1.discourse-cdn.com/n8n/original/3X/b/7/b79a10b0b9eef5c01fe471a02f4224a200959135.png\" data-download-href=\"/uploads/short-url/qcdsxdkfz1rdYoEmB428fpGCBeJ.png?dl=1\" title=\"image-2\"><img src=\"https://europe1.discourse-cdn.com/n8n/optimized/3X/b/7/b79a10b0b9eef5c01fe471a02f4224a200959135_2_690x397.png\" alt=\"image-2\" data-base62-sha1=\"qcdsxdkfz1rdYoEmB428fpGCBeJ\" width=\"690\" height=\"397\" srcset=\"https://europe1.discourse-cdn.com/n8n/optimized/3X/b/7/b79a10b0b9eef5c01fe471a02f4224a200959135_2_690x397.png, https://europe1.discourse-cdn.com/n8n/optimized/3X/b/7/b79a10b0b9eef5c01fe471a02f4224a200959135_2_1035x595.png 1.5x, https://europe1.discourse-cdn.com/n8n/optimized/3X/b/7/b79a10b0b9eef5c01fe471a02f4224a200959135_2_1380x794.png 2x\" data-dominant-color=\"979699\"><div class=\"meta\"><svg class=\"fa d-icon d-icon-far-image svg-icon\" aria-hidden=\"true\"><use href=\"#far-image\"></use></svg><span class=\"filename\">image-2</span><span class=\"informations\">1600×922 217 KB</span><svg class=\"fa d-icon d-icon-discourse-expand svg-icon\" aria-hidden=\"true\"><use href=\"#discourse-expand\"></use></svg></div></a></div></p>\n<p><em>Manual Top Up</em></p>\n<h2><a name=\"p-593905-see-where-your-credits-go-2\" class=\"anchor\" href=\"#p-593905-see-where-your-credits-go-2\" aria-label=\"Heading link\"></a>See where your credits go</h2>\n<p>The new <strong>Assistant credits</strong> tab in the Cloud admin dashboard shows:</p>\n<ul>\n<li>Your balance, split into included and extra credits</li>\n<li>A spend chart for the last 24 hours, 7 days, or 30 days</li>\n<li>Which users on your instance use the most credits</li>\n<li>Your top-up history</li>\n</ul>\n<p>In the editor, the Assistant panel shows how many credits the current conversation has used, and warns you when you’re down to 10%.</p>\n<p><div class=\"lightbox-wrapper\"><a class=\"lightbox\" href=\"https://europe1.discourse-cdn.com/n8n/original/3X/1/2/12dcf667ed8cb1c1b6e62344dd5bb882ef253eae.png\" data-download-href=\"/uploads/short-url/2GS0hgjDRPhRquWtYUv1VufIXhk.png?dl=1\" title=\"\"><img src=\"https://europe1.discourse-cdn.com/n8n/optimized/3X/1/2/12dcf667ed8cb1c1b6e62344dd5bb882ef253eae_2_690x229.png\" alt=\"\" data-base62-sha1=\"2GS0hgjDRPhRquWtYUv1VufIXhk\" width=\"690\" height=\"229\" role=\"presentation\" srcset=\"https://europe1.discourse-cdn.com/n8n/optimized/3X/1/2/12dcf667ed8cb1c1b6e62344dd5bb882ef253eae_2_690x229.png, https://europe1.discourse-cdn.com/n8n/optimized/3X/1/2/12dcf667ed8cb1c1b6e62344dd5bb882ef253eae_2_1035x343.png 1.5x, https://europe1.discourse-cdn.com/n8n/optimized/3X/1/2/12dcf667ed8cb1c1b6e62344dd5bb882ef253eae_2_1380x458.png 2x\" data-dominant-color=\"FCFCFC\"><div class=\"meta\"><svg class=\"fa d-icon d-icon-far-image svg-icon\" aria-hidden=\"true\"><use href=\"#far-image\"></use></svg><span class=\"filename\"></span><span class=\"informations\">2000×664 107 KB</span><svg class=\"fa d-icon d-icon-discourse-expand svg-icon\" aria-hidden=\"true\"><use href=\"#discourse-expand\"></use></svg></div></a></div></p>\n<h2><a name=\"p-593905-weve-updated-your-monthly-credits-3\" class=\"anchor\" href=\"#p-593905-weve-updated-your-monthly-credits-3\" aria-label=\"Heading link\"></a>We’ve updated your monthly credits</h2>\n<p>If you’re on Starter or Pro, you’ll notice that your monthly credit allowance has changed.</p>\n<p>For most people, the updated allowance will go further than before. That comes down to some improvements we’ve made:</p>\n<ol>\n<li><strong>A newer, more capable model.</strong> We’ve moved everyone to a newer model, so the Assistant needs fewer credits to do the same work.</li>\n<li><strong>One standard credit value.</strong> Now that you can buy credits, a credit needs a fixed price. We recalibrated credits so they’re worth the same on every paid plan, and set each plan’s allowance to match.</li>\n<li><strong>Improvements under the hood.</strong> We’ve optimized how the Assistant works internally, so it gets more done with each request.</li>\n</ol>\n<h2><a name=\"p-593905-how-many-credits-does-it-take-to-build-a-workflow-4\" class=\"anchor\" href=\"#p-593905-how-many-credits-does-it-take-to-build-a-workflow-4\" aria-label=\"Heading link\"></a>How many credits does it take to build a workflow?</h2>\n<p>That’s the question we get most often, and there’s no single answer. It depends on the request: longer conversations, more complex workflows, and debugging sessions use more credits than short, focused requests. No two prompts will cost the same, due to non-deterministic LLM behavior and different surrounding context.</p>\n<p>What we can provide is a is a sense of the range to expect. Here are what a few typical requests use today:</p>\n<ul>\n<li><strong>A quick question</strong> [10-20 Credits]\n<ul>\n<li>“What authentication methods for Slack does n8n Support?”</li>\n</ul>\n</li>\n<li><strong>A simple workflow or fix from one prompt</strong> [50-100 credits]\n<ul>\n<li>“Once a day, check the weather in Berlin using a free weather API and email me the forecast.”</li>\n</ul>\n</li>\n<li><strong>A larger build with explicit testing, or a longer debugging session</strong> [300-600 credits]\n<ul>\n<li>“Before building, research the current docs for free keyless APIs for geocoding, weather forecasts, country info and exchange rates, and pick three real destinations with very different weather this week so each one lands in a different trip category. Then build a “Travel Weather Briefing” workflow: a form asks for a city, travel dates and home currency, the APIs above gather the data, writes packing tips, labels the trip Hot, Cold, Wet or Mild, and each briefing is saved to a Data Table. Post the briefing to a Slack channel, show it on the form’s completion page. Ensure you handle errors such as unknown cities or currencies, and test the workflow with the three cities you researched.”</li>\n</ul>\n</li>\n</ul>\n<p>These ranges will change as we keep improving the Assistant and the models behind it, so treat them as a rough guide. One tip that definitely helps: specific prompts use fewer credits than open-ended ones.</p>\n<h2><a name=\"p-593905-a-few-things-to-know-5\" class=\"anchor\" href=\"#p-593905-a-few-things-to-know-5\" aria-label=\"Heading link\"></a>A few things to know</h2>\n<ul>\n<li><strong>Credits are shared across your instance.</strong> Everyone on the instance draws from the same balance. If five people on your team use the Assistant, they’re all using the same pool, and the top users view shows who’s using what.</li>\n<li><strong>Only the instance owner can top up.</strong> Topping up also requires an active paid plan.</li>\n<li><strong>Your workflows keep running.</strong> Running a workflow never uses Assistant credits, even if the Assistant built it. Only your conversations with the Assistant do.</li>\n<li><strong>Assistant credits and Gateway credits are separate.</strong> Assistant credits pay for your conversations with the Assistant. Gateway credits pay for the AI model calls your workflows and agents make when they run. Topping up one doesn’t add to the other.</li>\n<li><strong>Free trials include a one-time allowance.</strong> Free trials get 800 credits. Top-ups aren’t available during a trial, so you’ll need to upgrade to a paid plan to get more.</li>\n<li><strong>Self-hosted n8n doesn’t use Assistant credits.</strong> The Assistant runs on your own model provider account instead.</li>\n</ul>\n<p>For all the details, check out the <a href=\"https://docs.n8n.io/deploy/use-n8n-cloud/assistant-credits\">Assistant credits docs</a>.</p>\n<p>Feel free to reply to this post with questions …</p>",
+          "post_number": 1,
+          "post_type": 1,
+          "posts_count": 1,
+          "updated_at": "2026-10-01T12:09:29.681Z",
+          "reply_count": 0,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 89,
+          "reads": 56,
+          "readers_count": 55,
+          "score": 323.0,
+          "yours": false,
+          "topic_id": 318075,
+          "topic_slug": "assistant-credits-top-up-now-available",
+          "display_username": "Ophir Prusak",
+          "primary_group_name": "n8n_Team",
+          "flair_name": "n8n_Team",
+          "flair_url": "https://europe1.discourse-cdn.com/n8n/original/2X/4/4429de47116c2122388acdf61087c1d1ee1eae5f.png",
+          "flair_bg_color": "",
+          "flair_color": "",
+          "flair_group_id": 46,
+          "badges_granted": [],
+          "version": 4,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "link_counts": [
+            {
+              "url": "https://docs.n8n.io/deploy/use-n8n-cloud/assistant-credits",
+              "internal": false,
+              "reflection": false,
+              "title": "Assistant credits | Deploy | n8n Docs",
+              "clicks": 2
+            },
+            {
+              "url": "https://community.n8n.io/t/new-to-building-workflows-used-up-all-ai-credits-in-a-few-hours-use-claude-instead/317313/14",
+              "internal": true,
+              "reflection": true,
+              "title": "New to building workflows - Used up all AI credits in a few hours/Use Claude instead?",
+              "clicks": 2
+            },
+            {
+              "url": "https://community.n8n.io/t/trial-ended-getting-additional-days/317993/8",
+              "internal": true,
+              "reflection": true,
+              "title": "Trial ended getting additional days",
+              "clicks": 0
+            }
+          ],
+          "read": true,
+          "user_title": "n8n Team",
+          "title_is_group": true,
+          "bookmarked": false,
+          "actions_summary": [
+            {
+              "id": 2,
+              "count": 3
+            }
+          ],
+          "moderator": true,
+          "admin": false,
+          "staff": true,
+          "user_id": 86453,
+          "hidden": false,
+          "trust_level": 4,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "mentioned_users": [],
+          "post_url": "/t/assistant-credits-top-up-now-available/318075/1",
+          "locale": null,
+          "is_localized": false,
+          "reactions": [
+            {
+              "id": "heart",
+              "type": "emoji",
+              "count": 2
+            },
+            {
+              "id": "+1",
+              "type": "emoji",
+              "count": 1
+            }
+          ],
+          "current_user_reaction": null,
+          "reaction_users_count": 3,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null,
+          "can_vote": false
+        }
+      ],
+      "stream": [
+        593905
+      ]
+    },
+    "timeline_lookup": [
+      [
+        1,
+        12
+      ]
+    ],
+    "suggested_topics": [],
+    "tags": [
+      {
+        "id": 380,
+        "name": "featured",
+        "slug": "featured"
+      }
+    ],
+    "tags_descriptions": {},
+    "fancy_title": "Assistant credits top up - now available",
+    "fancy_title_localized": false,
+    "locale": null,
+    "id": 318075,
+    "title": "Assistant credits top up - now available",
+    "posts_count": 1,
+    "created_at": "2026-10-01T12:01:16.538Z",
+    "views": 227,
+    "reply_count": 0,
+    "like_count": 3,
+    "last_posted_at": "2026-10-01T12:01:16.610Z",
+    "visible": true,
+    "closed": false,
+    "archived": false,
+    "has_summary": false,
+    "archetype": "regular",
+    "slug": "assistant-credits-top-up-now-available",
+    "category_id": 38,
+    "word_count": 933,
+    "deleted_at": null,
+    "user_id": 86453,
+    "featured_link": null,
+    "pinned_globally": false,
+    "pinned_at": null,
+    "pinned_until": null,
+    "image_url": "https://europe1.discourse-cdn.com/n8n/optimized/3X/0/3/03ff0c2407fbcc4bb5da6a5f93dd801b93459cee_2_1024x597.png",
+    "slow_mode_seconds": 0,
+    "draft": null,
+    "draft_key": "topic_318075",
+    "draft_sequence": null,
+    "unpinned": null,
+    "pinned": false,
+    "current_post_number": 1,
+    "highest_post_number": 1,
+    "deleted_by": null,
+    "actions_summary": [
+      {
+        "id": 4,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 8,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 10,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 7,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      }
+    ],
+    "chunk_size": 20,
+    "bookmarked": false,
+    "topic_timer": null,
+    "message_bus_last_id": 27,
+    "participant_count": 1,
+    "show_read_indicator": false,
+    "thumbnails": [
+      {
+        "max_width": null,
+        "max_height": null,
+        "width": 1600,
+        "height": 934,
+        "url": "https://europe1.discourse-cdn.com/n8n/original/3X/0/3/03ff0c2407fbcc4bb5da6a5f93dd801b93459cee.png"
+      },
+      {
+        "max_width": 1024,
+        "max_height": 1024,
+        "width": 1024,
+        "height": 597,
+        "url": "https://europe1.discourse-cdn.com/n8n/optimized/3X/0/3/03ff0c2407fbcc4bb5da6a5f93dd801b93459cee_2_1024x597.png"
+      },
+      {
+        "max_width": 800,
+        "max_height": 800,
+        "width": 800,
+        "height": 467,
+        "url": "https://europe1.discourse-cdn.com/n8n/optimized/3X/0/3/03ff0c2407fbcc4bb5da6a5f93dd801b93459cee_2_800x467.png"
+      },
+      {
+        "max_width": 600,
+        "max_height": 600,
+        "width": 600,
+        "height": 350,
+        "url": "https://europe1.discourse-cdn.com/n8n/optimized/3X/0/3/03ff0c2407fbcc4bb5da6a5f93dd801b93459cee_2_600x350.png"
+      },
+      {
+        "max_width": 400,
+        "max_height": 400,
+        "width": 400,
+        "height": 233,
+        "url": "https://europe1.discourse-cdn.com/n8n/optimized/3X/0/3/03ff0c2407fbcc4bb5da6a5f93dd801b93459cee_2_400x233.png"
+      },
+      {
+        "max_width": 300,
+        "max_height": 300,
+        "width": 300,
+        "height": 175,
+        "url": "https://europe1.discourse-cdn.com/n8n/optimized/3X/0/3/03ff0c2407fbcc4bb5da6a5f93dd801b93459cee_2_300x175.png"
+      },
+      {
+        "max_width": 200,
+        "max_height": 200,
+        "width": 200,
+        "height": 116,
+        "url": "https://europe1.discourse-cdn.com/n8n/optimized/3X/0/3/03ff0c2407fbcc4bb5da6a5f93dd801b93459cee_2_200x116.png"
+      }
+    ],
+    "slow_mode_enabled_until": null,
+    "has_localized_content": false,
+    "related_topics": [
+      {
+        "fancy_title": "One-off AI Workflow Builder credit purchases to avoid blocking active projects",
+        "fancy_title_localized": false,
+        "locale": null,
+        "id": 307741,
+        "title": "One-off AI Workflow Builder credit purchases to avoid blocking active projects",
+        "slug": "one-off-ai-workflow-builder-credit-purchases-to-avoid-blocking-active-projects",
+        "posts_count": 3,
+        "reply_count": 1,
+        "highest_post_number": 3,
+        "image_url": null,
+        "created_at": "2026-08-15T05:29:55.898Z",
+        "last_posted_at": "2026-08-20T06:01:20.243Z",
+        "bumped": true,
+        "bumped_at": "2026-08-20T06:01:20.243Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "thumbnails": null,
+        "tags": [
+          {
+            "id": 363,
+            "name": "ai",
+            "slug": "ai"
+          }
+        ],
+        "tags_descriptions": {
+          "ai": ""
+        },
+        "like_count": 2,
+        "views": 97,
+        "category_id": 5,
+        "featured_link": null,
+        "op_like_count": 1,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": "latest",
+            "description": "Original Poster, Most Recent Poster",
+            "user": {
+              "id": 187231,
+              "username": "leonhunter",
+              "name": "Leon",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/l/47e85d/{size}.png",
+              "trust_level": 0
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": 116811,
+              "username": "Walter_Humphrey",
+              "name": "Walter Humphrey",
+              "avatar_template": "/user_avatar/community.n8n.io/walter_humphrey/{size}/59826_2.png",
+              "trust_level": 0
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "How do I get more AI Workflow Builder credits after I used my 150?",
+        "fancy_title_localized": false,
+        "locale": null,
+        "id": 266851,
+        "title": "How do I get more AI Workflow Builder credits after I used my 150?",
+        "slug": "how-do-i-get-more-ai-workflow-builder-credits-after-i-used-my-150",
+        "posts_count": 7,
+        "reply_count": 3,
+        "highest_post_number": 7,
+        "image_url": null,
+        "created_at": "2026-02-18T17:20:18.506Z",
+        "last_posted_at": "2026-02-26T07:18:07.226Z",
+        "bumped": true,
+        "bumped_at": "2026-02-26T07:18:07.226Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "visible": true,
+        "closed": true,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "thumbnails": null,
+        "tags": [],
+        "tags_descriptions": {},
+        "like_count": 3,
+        "views": 700,
+        "category_id": 12,
+        "featured_link": null,
+        "op_like_count": 1,
+        "has_accepted_answer": true,
+        "posters": [
+          {
+            "extras": "latest",
+            "description": "Original Poster, Most Recent Poster, Accepted Answer",
+            "user": {
+              "id": 147069,
+              "username": "viktor_malka",
+              "name": "viktor malka",
+              "avatar_template": "/user_avatar/community.n8n.io/viktor_malka/{size}/71954_2.png",
+              "trust_level": 0
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 126207,
+              "username": "A_A4",
+              "name": "A A",
+              "avatar_template": "/user_avatar/community.n8n.io/a_a4/{size}/58794_2.png",
+              "flair_name": "Lv_2_Course_Complete",
+              "flair_url": "https://europe1.discourse-cdn.com/n8n/original/2X/8/830d900b5a1b012113f1f87098b00578e50f04ec.png",
+              "flair_group_id": 43,
+              "primary_group_name": "Lv_2_Course_Complete",
+              "trust_level": 2
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": -1,
+              "username": "system",
+              "name": "system",
+              "avatar_template": "/user_avatar/community.n8n.io/system/{size}/36532_2.png",
+              "admin": true,
+              "moderator": true,
+              "trust_level": 4
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": 121982,
+              "username": "Anshul_Namdev",
+              "name": "Anshul Namdev",
+              "avatar_template": "/user_avatar/community.n8n.io/anshul_namdev/{size}/178229_2.png",
+              "flair_name": "community_moderators",
+              "flair_url": "https://europe1.discourse-cdn.com/n8n/original/3X/b/9/b9ca5b00b2e403de7a33377204b286981596782b.png",
+              "flair_group_id": 58,
+              "primary_group_name": "community_moderators",
+              "moderator": true,
+              "trust_level": 3
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "I need additional n8n credits",
+        "fancy_title_localized": false,
+        "locale": null,
+        "id": 235978,
+        "title": "I need additional n8n credits",
+        "slug": "i-need-additional-n8n-credits",
+        "posts_count": 4,
+        "reply_count": 2,
+        "highest_post_number": 4,
+        "image_url": null,
+        "created_at": "2025-12-15T01:28:12.188Z",
+        "last_posted_at": "2025-12-15T09:19:34.462Z",
+        "bumped": true,
+        "bumped_at": "2025-12-15T09:19:34.462Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "visible": true,
+        "closed": true,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "thumbnails": null,
+        "tags": [],
+        "tags_descriptions": {},
+        "like_count": 1,
+        "views": 215,
+        "category_id": 12,
+        "featured_link": null,
+        "op_like_count": 0,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 126632,
+              "username": "senior_dev",
+              "name": "senior dev",
+              "avatar_template": "/user_avatar/community.n8n.io/senior_dev/{size}/72370_2.png",
+              "trust_level": 0
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": -1,
+              "username": "system",
+              "name": "system",
+              "avatar_template": "/user_avatar/community.n8n.io/system/{size}/36532_2.png",
+              "admin": true,
+              "moderator": true,
+              "trust_level": 4
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 65124,
+              "username": "Parintele_Damaskin",
+              "name": "",
+              "avatar_template": "/user_avatar/community.n8n.io/parintele_damaskin/{size}/139243_2.png",
+              "primary_group_name": "Lv_2_Course_Complete",
+              "trust_level": 2
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "Starter Plan AI Credits Still Unavailable After Upgrade – Support Option 2 Pending",
+        "fancy_title_localized": false,
+        "locale": "en",
+        "id": 308524,
+        "title": "Starter Plan AI Credits Still Unavailable After Upgrade – Support Option 2 Pending",
+        "slug": "starter-plan-ai-credits-still-unavailable-after-upgrade-support-option-2-pending",
+        "posts_count": 2,
+        "reply_count": 0,
+        "highest_post_number": 2,
+        "image_url": null,
+        "created_at": "2026-08-20T04:56:11.374Z",
+        "last_posted_at": "2026-08-20T05:02:20.929Z",
+        "bumped": true,
+        "bumped_at": "2026-08-20T05:02:20.929Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "thumbnails": null,
+        "tags": [],
+        "tags_descriptions": {},
+        "like_count": 0,
+        "views": 69,
+        "category_id": 12,
+        "featured_link": null,
+        "op_like_count": 0,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 188049,
+              "username": "ghallab.ksa",
+              "name": "غلاب ظافر",
+              "avatar_template": "/user_avatar/community.n8n.io/ghallab.ksa/{size}/186450_2.png",
+              "trust_level": 0
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 121982,
+              "username": "Anshul_Namdev",
+              "name": "Anshul Namdev",
+              "avatar_template": "/user_avatar/community.n8n.io/anshul_namdev/{size}/178229_2.png",
+              "flair_name": "community_moderators",
+              "flair_url": "https://europe1.discourse-cdn.com/n8n/original/3X/b/9/b9ca5b00b2e403de7a33377204b286981596782b.png",
+              "flair_group_id": 58,
+              "primary_group_name": "community_moderators",
+              "moderator": true,
+              "trust_level": 3
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "New to building workflows - Used up all AI credits in a few hours/Use Claude instead?",
+        "fancy_title_localized": false,
+        "locale": "en",
+        "id": 317313,
+        "title": "New to building workflows - Used up all AI credits in a few hours/Use Claude instead?",
+        "slug": "new-to-building-workflows-used-up-all-ai-credits-in-a-few-hours-use-claude-instead",
+        "posts_count": 15,
+        "reply_count": 7,
+        "highest_post_number": 15,
+        "image_url": null,
+        "created_at": "2026-09-28T13:43:39.805Z",
+        "last_posted_at": "2026-10-02T20:29:15.953Z",
+        "bumped": true,
+        "bumped_at": "2026-10-01T20:20:44.256Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "thumbnails": null,
+        "tags": [
+          {
+            "id": 409,
+            "name": "bug:unconfirmed",
+            "slug": "bug-unconfirmed"
+          }
+        ],
+        "tags_descriptions": {
+          "bug:unconfirmed": "We have not been able to reproduce this issue and it is likely to not be a bug."
+        },
+        "like_count": 4,
+        "views": 159,
+        "category_id": 12,
+        "featured_link": null,
+        "op_like_count": 0,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 195922,
+              "username": "Nicom",
+              "name": "Nico",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/n/958977/{size}.png",
+              "trust_level": 0
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 142564,
+              "username": "Deepankar",
+              "name": "",
+              "avatar_template": "/user_avatar/community.n8n.io/deepankar/{size}/174793_2.png",
+              "trust_level": 2
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 187695,
+              "username": "Lopez",
+              "name": "Hema Lopez",
+              "avatar_template": "/user_avatar/community.n8n.io/lopez/{size}/192785_2.png",
+              "trust_level": 2
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": 155731,
+              "username": "kjooleng",
+              "name": "Kjooleng",
+              "avatar_template": "/user_avatar/community.n8n.io/kjooleng/{size}/184045_2.png",
+              "flair_name": "Lv_2_Course_Complete",
+              "flair_url": "https://europe1.discourse-cdn.com/n8n/original/2X/8/830d900b5a1b012113f1f87098b00578e50f04ec.png",
+              "flair_group_id": 43,
+              "primary_group_name": "Lv_2_Course_Complete",
+              "trust_level": 3
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 189795,
+              "username": "vanssha",
+              "name": "Vans Sha",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/v/59ef9b/{size}.png",
+              "trust_level": 1
+            }
+          }
+        ]
+      }
+    ],
+    "summarizable": false,
+    "has_cached_summary": false,
+    "valid_reactions": [
+      "heart",
+      "+1",
+      "laughing",
+      "open_mouth",
+      "clap",
+      "confetti_ball",
+      "hugs"
+    ],
+    "has_accepted_answer": false,
+    "can_create_shared_issue": false,
+    "shared_issue_visible": false,
+    "can_vote": false,
+    "vote_count": 0,
+    "user_voted": false,
+    "discourse_zendesk_plugin_zendesk_id": null,
+    "discourse_zendesk_plugin_zendesk_url": "https://your-url.zendesk.com/agent/tickets/",
+    "details": {
+      "can_edit": false,
+      "notification_level": 1,
+      "participants": [
+        {
+          "id": 86453,
+          "username": "Ophir_Prusak",
+          "name": "Ophir Prusak",
+          "avatar_template": "/user_avatar/community.n8n.io/ophir_prusak/{size}/114204_2.png",
+          "post_count": 1,
+          "primary_group_name": "n8n_Team",
+          "flair_name": "n8n_Team",
+          "flair_url": "https://europe1.discourse-cdn.com/n8n/original/2X/4/4429de47116c2122388acdf61087c1d1ee1eae5f.png",
+          "flair_color": "",
+          "flair_bg_color": "",
+          "flair_group_id": 46,
+          "moderator": true,
+          "trust_level": 4
+        }
+      ],
+      "created_by": {
+        "id": 86453,
+        "username": "Ophir_Prusak",
+        "name": "Ophir Prusak",
+        "avatar_template": "/user_avatar/community.n8n.io/ophir_prusak/{size}/114204_2.png"
+      },
+      "last_poster": {
+        "id": 86453,
+        "username": "Ophir_Prusak",
+        "name": "Ophir Prusak",
+        "avatar_template": "/user_avatar/community.n8n.io/ophir_prusak/{size}/114204_2.png"
+      },
+      "links": [
+        {
+          "url": "https://community.n8n.io/t/new-to-building-workflows-used-up-all-ai-credits-in-a-few-hours-use-claude-instead/317313/14",
+          "title": "New to building workflows - Used up all AI credits in a few hours/Use Claude instead?",
+          "internal": true,
+          "attachment": false,
+          "reflection": true,
+          "clicks": 2,
+          "user_id": 155731,
+          "domain": "community.n8n.io",
+          "root_domain": "n8n.io"
+        },
+        {
+          "url": "https://docs.n8n.io/deploy/use-n8n-cloud/assistant-credits",
+          "title": "Assistant credits | Deploy | n8n Docs",
+          "internal": false,
+          "attachment": false,
+          "reflection": false,
+          "clicks": 2,
+          "user_id": 86453,
+          "domain": "docs.n8n.io",
+          "root_domain": "n8n.io"
+        }
+      ]
+    },
+    "bookmarks": []
+  }
+}

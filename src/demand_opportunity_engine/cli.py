@@ -7,7 +7,8 @@ from .store import load_opportunities, load_outcomes, append_outcome
 from .discovery import discover
 from .board import build_board, rank
 from .quality import quality_report
-from .reports import product_report, edge_report, feedback_report
+from .reports import product_report, edge_report, feedback_report, buyer_report
+from .signals import normalize_intent
 from .clusters import clusters
 from .store import upsert
 
@@ -39,6 +40,15 @@ def main():
     else:
         opportunities = load_opportunities(args.data)
         run = json.loads(Path("data/discovery_run.json").read_text()) if Path("data/discovery_run.json").exists() else None
+    for op in opportunities:
+        if op.source_platform == "n8n Community":
+            op.buyer_role = "BUYER"  # recompute, then conservatively reject supply/NONE
+        normalize_intent(op)
+        if op.source_platform == "n8n Community":
+            if op.commercial_intent_type == "NONE" and op.buyer_role != "SELLER":
+                op.buyer_role = "PROBLEM_OBSERVER"
+            from .buyer_discovery import fit_job
+            fit_job(op)
     cluster_index = {c["cluster_name"]: c for c in clusters(opportunities)}
     for op in opportunities:
         c = cluster_index.get(op.cluster_name)
@@ -56,9 +66,10 @@ def main():
     (output.parent / "PRODUCT_THESIS.md").write_text(product)
     (output.parent / "INFO_EDGE_BOARD.md").write_text(edge_report(edges, now))
     (output.parent / "OUTCOME_FEEDBACK.md").write_text(feedback_report(opportunities + edges, events))
+    (output.parent / "BUYER_INTENT_DISCOVERY.md").write_text(buyer_report(opportunities, now, run))
     (output.parent / "ranking.json").write_text(json.dumps(
         [{"id": o.id, **s} for o, s in rank(opportunities + edges, now, events)],
-        ensure_ascii=False, indent=2) + "\\n")
+        ensure_ascii=False, indent=2) + "\n")
     print(f"generated reports from {len(opportunities)} live observations, {len(events)} outcome events, {len(grouped)} clusters")
 
 if __name__ == "__main__":

@@ -1,0 +1,52 @@
+{
+  "observed_at": "2026-10-13T09:53:57.944673+00:00",
+  "method": "Public search tool queries and underlying page opens; supplement to repeatable HTTP adapters, NOT an automated search-engine adapter. Index date is not buyer renewal.",
+  "queries": [
+    "site:reddit.com/r/Business_China \"looking for\" \"agent\" after:2026-10-06",
+    "site:reddit.com/r/forhire \"[Hiring]\" \"automation\" after:2026-10-06",
+    "\"China sourcing\" \"budget\" after:2026-10-06",
+    "\"RFQ\" \"supplier sourcing\" October 2026"
+  ],
+  "limitations": [
+    "Search date filter returned historical threads. No fresh qualified sourcing buyer found in the inspected results.",
+    "Direct Reddit JSON blocked (403); public indexed pages were used lawfully. Browser-harness doctor: daemon unavailable, zero browser connections. No bypass attempted."
+  ],
+  "records": [
+    {
+      "url": "https://www.reddit.com/r/Business_China/comments/1qlskkj/looking_for_a_reliable_sourcing_agent_in_china/",
+      "role": "BUYER",
+      "commercial_intent_type": "AGENT_OR_VENDOR_REQUEST",
+      "exact_quote": "I’m currently looking for a China-based sourcing agent (or someone with strong connections to the Chinese market) for a medium to long-term collaboration.",
+      "published_date_from_index": "2026-01-24",
+      "verification": "Underlying public page opened; exact date from search result, not verified timestamp API.",
+      "decision": "Rejected: stale, many service pitches, on-site requirements. New seller replies do not renew buyer need."
+    },
+    {
+      "url": "https://www.reddit.com/r/Business_China/comments/1w5bpbb/looking_for_sourcing_agent_in_china/",
+      "role": "BUYER",
+      "commercial_intent_type": "QUOTE_REQUESTED",
+      "exact_quote": "Please DM us with your company profile, experience, services, location, and sourcing charges/commission structure.",
+      "published_date_from_index": "2026-09-02",
+      "verification": "INDEX_ONLY: underlying page not opened this run.",
+      "decision": "No promotion: stale, inspection/QC dependencies; Oct 9 reply was a service provider."
+    },
+    {
+      "url": "https://www.reddit.com/r/Business_China/comments/1vyu90w/looking_for_reliable_china_clothing_suppliers/",
+      "role": "BUYER",
+      "commercial_intent_type": "PROCUREMENT_REQUEST",
+      "exact_quote": "Target price around **US$2–$4 per T-shirt**",
+      "published_date_from_index": "2026-08-26",
+      "verification": "INDEX_ONLY: underlying page not opened this run.",
+      "decision": "No promotion: stale; product unit target price is NOT service budget. Recent shipping-service reply is not buyer renewal."
+    },
+    {
+      "url": "https://www.reddit.com/r/devjobs/comments/1uc3n4g/n8n_ai_automation_developer_remote_ukraine_only/",
+      "role": "BUYER",
+      "commercial_intent_type": "BUDGET_STATED",
+      "exact_quote": "it's a remote gig, pays $1,000 USD a month, payments go out via Wise only so keep that in mind",
+      "published_date_from_index": "2026-06-21",
+      "verification": "Public indexed source; underlying page-open attempt via search tool, timestamp API unavailable.",
+      "decision": "No promotion: stale, Ukraine-only eligibility; not a China-based operator lead."
+    }
+  ]
+}

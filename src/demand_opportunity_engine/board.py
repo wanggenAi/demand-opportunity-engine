@@ -27,6 +27,8 @@ def classify(op, score):
         return "WATCH" if 0 <= score["source_age_days"] <= 14 else "REJECTED"
     if not observation_eligible(op):
         return "REJECTED"
+    if op.buyer_role != "BUYER" or op.commercial_intent_type == "NONE":
+        return "REJECTED"  # Observers belong in PRODUCT_THESIS, never sales actions.
     if not score["do_now_rejections"] and score["score"] >= 65:
         return "DO NOW"
     # Current problem observations may be validated, but do not get an outreach recommendation.
@@ -53,7 +55,7 @@ def build_board(opportunities, generated_at=None, events=()):
         f"Generated: {now.astimezone(ZoneInfo('Asia/Shanghai')).isoformat()} (Asia/Shanghai)", "",
         "Decision rule: 0–7-day buyer demand first. 7–14-day demand is VALIDATE without renewed buyer activity. Older leads require verified OP activity <=7 days. Payment must be buyer-authored; unknown/high competition and uncontrolled fulfillment block DO NOW.",
         "Amounts below are suggested test prices, never observed buyer budgets. VALIDATE means confirm need/payment first; it does not authorize pitching bug reporters.",
-        f"Live store: {len(opportunities)} observations; {len(rejected)} seller/news/noise records rejected. V1 seeds excluded.", "",
+        f"Live store: {len(opportunities)} observations; {len(rejected)} seller/news/pain-only/unqualified records excluded from sales. V1 seeds excluded.", "",
     ]
     for section, entries in buckets.items():
         lines += [f"## {section}", ""]
@@ -68,10 +70,12 @@ def build_board(opportunities, generated_at=None, events=()):
                 f"- Buyer/problem: {op.buyer_id} ({op.buyer_role}); {op.derived_interpretation}",
                 "- Exact evidence:\n\n> " + op.raw_evidence_quote.replace("\n", "\n> "),
                 f"- Payment evidence: {score['payment_signal_type']} — {score['payment_evidence_quote'] or 'no verified willingness-to-pay statement'}",
+                f"- Commercial intent: {op.commercial_intent_type} — {op.commercial_intent_quote or 'NONE'}",
                 f"- Competition pressure: {op.competition_pressure}; comments={op.comment_count}, distinct service providers={op.seller_competition_count}, complete={op.comments_complete}; mature quote={op.mature_quote_present}; many DMs={op.many_dms_reported}; commodity market={op.commodity_market}",
                 f"- Competition evidence: {', '.join(op.competition_evidence) or 'no service pitch detected in collected replies; off-platform DMs unknown'}",
                 f"- Delivery capability: {op.fulfillment_mode}; dependencies: {'; '.join(op.required_capabilities) or 'remote only; access and exact scope still require consent'}",
-                f"- Contact path: {op.target_profile_url}; source reply URL: {op.source_url}",
+                f"- Contact path: {op.contact_path or 'not verified'}; profile: {op.target_profile_url}",
+                f"- Contact channel/rules: {op.contact_channel}",
                 f"- First message angle/draft (human review): {op.first_message}",
                 f"- Suggested offer: {op.suggested_offer}",
                 f"- Suggested price range: {op.suggested_price_range}",
@@ -85,10 +89,10 @@ def build_board(opportunities, generated_at=None, events=()):
     lines += ["## One human action", ""]
     if buckets["DO NOW"]:
         op, _ = buckets["DO NOW"][0]
-        lines += [f"Contact {op.buyer_id} via {op.target_profile_url}. Test {op.suggested_offer}; {op.suggested_price_range}.", ""]
+        lines += [f"PRIMARY OUTREACH: Contact {op.buyer_id} via {op.contact_path}. Test {op.suggested_offer}; {op.suggested_price_range}.", ""]
     elif buckets["VALIDATE"]:
         op, _ = buckets["VALIDATE"][0]
-        lines += [f"No qualified paid lead today. If one validation action is available, read {op.source_url} and ask {op.buyer_id} through the permitted source channel whether the problem is still open and whether a scoped paid diagnostic would be considered. Do not represent this as confirmed sales demand.", ""]
+        lines += [f"No qualified DO NOW lead today. Optional validation only: read {op.source_url}, assess the stated gate failures, and verify {op.buyer_id}'s current need through {op.contact_path}. Do not pitch until fit and competition are resolved.", ""]
     else:
         lines += ["No verified buyer to contact today. Seek one current, buyer-authored paid request; do not spend human outreach time on stale/seller records.", ""]
     lines += ["## Outcome feedback", "",

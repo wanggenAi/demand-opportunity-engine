@@ -1,11 +1,11 @@
 {
-  "observed_at": "2026-10-13T03:31:35.944679+00:00",
+  "observed_at": "2026-10-13T09:43:09.605326+00:00",
   "config": "data/discovery_config.json",
   "adapters": [
     {
       "source": "Hacker News",
       "refreshed": true,
-      "collected": 23,
+      "collected": 26,
       "errors": []
     },
     {
@@ -15,15 +15,130 @@
       "errors": []
     }
   ],
-  "blocked_sources": [
+  "blocked_sources": [],
+  "buyer_sources": [
     {
-      "source": "Reddit public JSON",
-      "reason": "HTTP 403 on r/forhire/new.json; no evasion attempted"
+      "source_family": "public founder/operator job community",
+      "access_method": "Discourse public category/topic JSON",
+      "url": "https://community.n8n.io/c/jobs/13.json?order=created",
+      "records_inspected": 60,
+      "primary_pages_opened": 29,
+      "verified_buyer_requests": 7,
+      "explicit_commercial_signals": 7,
+      "collected": 29,
+      "errors": [],
+      "limitations": [
+        "Two newest-topic pages, not complete market coverage; max 200 extra replies per topic. Incomplete competition remains UNKNOWN unless observed high.",
+        "Last activity is not publication time. Only substantive buyer-authored follow-ups can renew a lead."
+      ],
+      "evidence_snapshots": [
+        "data/evidence/f5663f332d6bc9b1.json#sha256=a6885e984f5c9e3d60cb3d33c8e472c4a10444453630cd165daa598ec53ae4f2",
+        "data/evidence/d9f0be47fa047f2c.json#sha256=a483768245150a2f1f6618ae8b62846bec524c88accfa51efae046c98a60c4fd"
+      ]
     },
     {
-      "source": "Reddit browser",
-      "reason": "browser-harness default daemon unavailable; not treated as refreshed"
+      "source_family": "public freelance/job listings",
+      "access_method": "Remotive public JSON API; attributed source links",
+      "url": "https://remotive.com/api/remote-jobs?search=automation&limit=20",
+      "records_inspected": 15,
+      "primary_pages_opened": 0,
+      "verified_buyer_requests": 0,
+      "explicit_commercial_signals": 0,
+      "collected": 0,
+      "errors": [],
+      "limitations": [
+        "Employer application pages not verified. No employer-authored quote invented from aggregator job labels.",
+        "Legal warning - Hey, thanks for using Remotive's API, we appreciate it! Please note that API documentation and access is granted so that developers can share our jobs further. Please do not submit Remotive jobs to third Party websites, including but not limited to: Jooble, Neuvoo, Google Jobs, LinkedIn Jobs. Please link back to the URL found on Remotive AND mention Remotive as a source in order to Remotive to get traffic from your listing. If you don't do that, we'll terminate your API access, sorry! Jobs displayed are delayed by 24 hours, the goal being that jobs are attributed to Remotive on various platforms. Displaying our jobs in order to collect signups/email addresses to show a listing constitutes a breach of our terms of services. We offer a private, paid-for API, please email us at hello(at)remotive(dot)io for more information (starting budget is $5k/mo). Please find out terms of services on https://remotive.com/api-documentation. Please note that there is absolutely no need to request Remotive Job data too frequently. Typically, you only need to GET Remotive job data through this API a couple of times a day (we advise max. 4 times a day). Our data is not changing much faster than that anyway. Note that excessive requests will be blocked. Many thanks (Rodolphe & the Remotive team!)"
+      ],
+      "evidence_snapshots": [
+        "data/evidence/071898d5d7cef09e.json#sha256=5671c0924e69786f416e0158551eca3d930691f7d7d1bb8e2024f7e6a5163dc0"
+      ]
+    },
+    {
+      "source_family": "public procurement/RFQ",
+      "access_method": "bounded public HTTP page inspection",
+      "url": "https://www.contractsfinder.service.gov.uk/Search/Results?keywords=automation",
+      "records_inspected": 20,
+      "primary_pages_opened": 0,
+      "verified_buyer_requests": 0,
+      "explicit_commercial_signals": 0,
+      "collected": 0,
+      "errors": [
+        {
+          "url": "https://www.contractsfinder.service.gov.uk/notice/7f87b68a-57a0-46fa-bc1c-64e8e412379f",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        },
+        {
+          "url": "https://www.contractsfinder.service.gov.uk/notice/94f3087a-9077-493c-aac3-5b67f856fa17",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        },
+        {
+          "url": "https://www.contractsfinder.service.gov.uk/notice/6d6b9f4f-ccbd-41b3-a56f-ae7f12f4a656",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        }
+      ],
+      "limitations": [
+        "Search returned procurement notices; up to three detail pages attempted. No buyer request promoted: eligibility, exact remote scope, submission deadline and award status require manual verification."
+      ],
+      "evidence_snapshots": [
+        "data/evidence/50e3af0542f19c3a.json#sha256=6626715b3716578952deba85295eb26b90a466676f2e78cf655a9e5e78c716c2"
+      ]
+    },
+    {
+      "source_family": "public bounty/paid task",
+      "access_method": "bounded public HTTP page inspection",
+      "url": "https://algora.io/bounties",
+      "records_inspected": 0,
+      "primary_pages_opened": 0,
+      "verified_buyer_requests": 0,
+      "explicit_commercial_signals": 0,
+      "collected": 0,
+      "errors": [
+        {
+          "url": "https://algora.io/bounties",
+          "error": "HTTPError: HTTP Error 404: Not Found"
+        }
+      ],
+      "limitations": [],
+      "evidence_snapshots": []
+    },
+    {
+      "source_family": "public Reddit buyer requests",
+      "access_method": "bounded public HTTP page inspection",
+      "url": "https://www.reddit.com/r/forhire/new.json?limit=20",
+      "records_inspected": 0,
+      "primary_pages_opened": 0,
+      "verified_buyer_requests": 0,
+      "explicit_commercial_signals": 0,
+      "collected": 0,
+      "errors": [
+        {
+          "url": "https://www.reddit.com/r/forhire/new.json?limit=20",
+          "error": "HTTPError: HTTP Error 403: Blocked"
+        }
+      ],
+      "limitations": [],
+      "evidence_snapshots": []
+    },
+    {
+      "source_family": "public bounty/paid task",
+      "access_method": "bounded public HTTP page inspection",
+      "url": "https://algora.io",
+      "records_inspected": 0,
+      "primary_pages_opened": 0,
+      "verified_buyer_requests": 0,
+      "explicit_commercial_signals": 0,
+      "collected": 0,
+      "errors": [],
+      "limitations": [
+        "No structured primary buyer requests extracted; static shell is not commercial proof. No login or anti-bot evasion."
+      ],
+      "evidence_snapshots": [
+        "data/evidence/b5d67d420401a4bb.json#sha256=c330658f4cd77d99a419787f385b0f1758d1746167054b8c9f45cefca7540185"
+      ]
     }
   ],
-  "unique_refreshed": 47
+  "unique_refreshed": 79,
+  "buyer_refresh_at": "2026-10-13T09:53:56.857422+00:00",
+  "buyer_refresh_reason": "Final source-only seller/echo rejection and scoped delivery mapping applied on real API refresh. Remotive retained earlier run to respect max four calls/day."
 }

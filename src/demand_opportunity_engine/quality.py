@@ -5,6 +5,7 @@ from pathlib import Path
 from .models import age
 from .board import selections
 from .signals import payment_truth
+from .signals import commercial_truth
 from .clusters import observation_eligible
 
 def quality_report(opportunities, now=None, events=(), discovery=None):
@@ -28,9 +29,11 @@ def quality_report(opportunities, now=None, events=(), discovery=None):
              f"- Source distribution: {dict(Counter(o.source_platform for o in opportunities))}",
              f"- Published date distribution: {dates}",
              f"- Source roles: {dict(Counter(o.buyer_role for o in opportunities))}",
-             f"- Demand/problem observations after noise rejection: {len(eligible)}; rejected: {len(rejected)}",
+             f"- Demand/problem observations after noise rejection: {len(eligible)}; sales board exclusions: {len(rejected)}",
              f"- Candidate routes (not validated money claims): {dict(Counter(r for o in eligible for r in o.routes))}",
              f"- Primary payment signals among demand observations: {dict(Counter(payment_truth(o)[0] for o in eligible))}",
+             f"- Verified primary commercial buyers: {sum(o.source_verified and commercial_truth(o)[0] != 'NONE' for o in opportunities)}; fresh <=7 days: {sum(o.source_verified and commercial_truth(o)[0] != 'NONE' and 0 <= age(o.published_at,now) <= 7 for o in opportunities)}",
+             f"- Buyer intent types: {dict(Counter(o.commercial_intent_type for o in opportunities))}",
              f"- Concrete public profiles: {sum(bool(o.target_profile_url) for o in opportunities)}",
              f"- Full competition replies collected: {sum(o.comments_complete for o in opportunities)}",
              f"- API evidence snapshot SHA256 checks: {checksums}/{api_snapshots}; web edge provenance kept separately",
@@ -48,6 +51,8 @@ def quality_report(opportunities, now=None, events=(), discovery=None):
                 lines.append(f"  - {error['url']}: {error['error']}")
         for blocked in discovery.get("blocked_sources", []):
             lines.append(f"- Unavailable: {blocked['source']}: {blocked['reason']}")
+        for item in discovery.get("buyer_sources", []):
+            lines.append(f"- {item['source_family']}: inspected={item['records_inspected']}; primary pages={item['primary_pages_opened']}; verified buyers={item['verified_buyer_requests']}; errors={len(item['errors'])}; details in BUYER_INTENT_DISCOVERY.md")
     lines += ["", "## Rejections / DO NOW gate failures", ""]
     for op, score in sorted(rejected + [x for v in buckets.values() for x in v], key=lambda p:p[0].id):
         lines.append(f"- {op.id} {op.source_url}: {'; '.join(score['do_now_rejections']) or 'no hard-gate failures'}; eligible_observation={observation_eligible(op)}")

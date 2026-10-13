@@ -64,3 +64,54 @@ def feedback_report(opportunities, events):
         lines.append(f"- {op.id}: components.outcome_feedback={s['components']['outcome_feedback']}; consumed groups={list(s['feedback_groups'])}")
     lines += ["", "For a positive/negative controlled demonstration use tests.test_engine feedback tests; those fixtures are never production outcomes.", ""]
     return "\n".join(lines)
+
+
+def buyer_report(opportunities, now, discovery):
+    from collections import Counter
+    from .signals import commercial_truth
+    from .scoring import do_now_rejections
+    buyers = [o for o in opportunities if o.source_verified and commercial_truth(o)[0] != 'NONE']
+    fresh = [o for o in buyers if 0 <= age(o.published_at, now) <= 7]
+    lines = ['# BUYER INTENT DISCOVERY', '', f'Checked: {now.isoformat()}', '',
+             f'Verified explicit commercial buyers: {len(buyers)}; published within 7 days: {len(fresh)}.',
+             f'Intent types: {dict(Counter(o.commercial_intent_type for o in buyers))}',
+             'Commercial intent is not a verified budget or a promise of purchase. Exact buyer-authored sentences and legitimate source paths are mandatory. No outbound messages sent.', '',
+             '## Independent source strategies', '',
+             '- DIRECT_LEAD: public jobs/requests, sourcing/procurement, bounties, Reddit request pages and HN hiring comments. Exact primary commercial gate required.',
+             '- PRODUCT_SIGNAL: GitHub bugs, HN pain discussions and independently repeated commercial needs. Observers are excluded from sales recommendations.',
+             '- INFO_EDGE: official event announcements plus corroboration; separately maintained verified edge evidence. No launch automatically promotes.', '',
+             '## Additional public source families', '']
+    attempts = (discovery or {}).get('buyer_sources', [])
+    lines.append(f'Additional families attempted this run: {len({a["source_family"] for a in attempts})}.')
+    for a in attempts:
+        lines += ['', f'### {a["source_family"]}', '', f'- Access: {a["access_method"]}; {a["url"]}',
+                  f'- Records inspected: {a["records_inspected"]}; primary pages opened: {a["primary_pages_opened"]}; collected observations: {a["collected"]}',
+                  f'- Verified buyer requests: {a["verified_buyer_requests"]}; explicit commercial signals: {a["explicit_commercial_signals"]}',
+                  f'- Limitations: {"; ".join(a["limitations"]) or "none reported"}',
+                  f'- Errors: {json.dumps(a["errors"], ensure_ascii=False)}',
+                  f'- Audit snapshots: {", ".join(a["evidence_snapshots"])}']
+    lines += ['', '## Primary commercial evidence (distinct source URLs)', '']
+    for op in sorted(buyers, key=lambda o:o.published_at, reverse=True):
+        lines += [f'### {op.title}', '', f'- Source: {op.source_url}',
+                  f'- Buyer: {op.buyer_id}; published_at: {op.published_at}; last_activity_at: {op.last_activity_at}',
+                  f'- Intent: {op.commercial_intent_type}; exact quote: {op.commercial_intent_quote}',
+                  f'- Need (primary text): {op.raw_evidence_quote}',
+                  f'- Contact/application: {op.contact_path}; public profile: {op.target_profile_url}',
+                  f'- Competition: {op.competition_pressure}; replies={op.comment_count}; providers={op.seller_competition_count}; complete={op.comments_complete}',
+                  f'- REMOTE_NOW scope: {op.suggested_offer}; proposed price: {op.suggested_price_range}',
+                  f'- Dependencies: {op.required_capabilities}; effort: {op.effort}; risk: {op.risk}',
+                  f'- First-message angle: {op.first_message}',
+                  f'- DO NOW gate failures: {"; ".join(do_now_rejections(op,now)) or "none"}', '']
+    if not buyers:
+        lines.append('No verified explicit commercial buyer. Do not substitute pain observers.')
+    from pathlib import Path
+    supplement = Path('data/search_discovery_audit.json')
+    if supplement.exists():
+        audit = json.loads(supplement.read_text())
+        lines += ['', '## Search-index fallback (separate audit, not live qualified counts)', '',
+                  f'- Method: {audit["method"]}; checked: {audit["observed_at"]}',
+                  f'- Queries: {json.dumps(audit["queries"],ensure_ascii=False)}',
+                  f'- Limitations: {"; ".join(audit["limitations"])}']
+        for row in audit['records']:
+            lines += [f'- {row["url"]}: {row["verification"]}; original date from index={row["published_date_from_index"]}; primary snippet={row["exact_quote"]}; decision={row["decision"]}']
+    return '\n'.join(lines).rstrip()+'\n'

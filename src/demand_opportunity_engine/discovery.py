@@ -8,7 +8,7 @@ import urllib.parse
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from .models import Opportunity, timestamp
-from .signals import SELLER, REQUEST, PAIN, payment_truth, cluster_for, competition
+from .signals import SELLER, REQUEST, PAIN, payment_truth, cluster_for, competition, commercial_truth, normalize_intent
 from .store import upsert, append_outcome, load_outcomes
 from .models import Outcome
 
@@ -51,13 +51,11 @@ def make_op(platform, community, url, api_url, title, body, author, profile, pub
     role = "SELLER" if seller else ("BUYER" if buying else "PROBLEM_OBSERVER")
     if not seller and platform == "Hacker News" and not re.match(r"ask(?: hn)?[: ]", title, re.I) and not buying:
         role = "NEWS"
-    if platform == "GitHub" and community == "n8n-io/n8n":
-        role = "PROBLEM_OBSERVER"  # reporting a bug does not establish purchase intent
     if "who wants to be hired" in community.lower():
         role = "SELLER"
     activity = relevant_buyer_activity(comments, author)
     sellers = [c for c in comments if c["author"] != author]
-    n, pressure, mature, dms, evidence = competition(sellers, complete, source_text)
+    n, pressure, mature, dms, evidence = competition(sellers, complete, source_text, applications=platform == "n8n Community")
     requirements = []
     if re.search(r"on.site|factory visit|warehous|ddp|freight|quality inspection", source_text, re.I):
         requirements.append("PARTNER_REQUIRED: on-site QC, warehouse or freight execution")
@@ -92,7 +90,19 @@ def make_op(platform, community, url, api_url, title, body, author, profile, pub
         why_now="Recently published problem; only contact if payment, competition and capability gates pass.",
         next_action="Read the exact source and author profile, confirm active need and willingness to pay before delivery.",
         confidence=3, contact_channel=platform,
+        contact_path=url,
     )
+    # Evaluate primary commercial sentences before assigning a BUYER role.
+    # Generic requests/bug reports remain observers, not potential sales targets.
+    if role not in {"SELLER", "NEWS"}:
+        op.buyer_role = "BUYER"
+        if commercial_truth(op)[0] == "NONE":
+            op.buyer_role = "PROBLEM_OBSERVER"
+    normalize_intent(op)
+    if op.buyer_role == "SELLER":
+        op.buyer_activity_at = None
+        op.buyer_activity_url = op.buyer_activity_quote = op.buyer_activity_author_id = ""
+        op.buyer_activity_verified = False
     kind, quote, _ = payment_truth(op)
     op.payment_signal_type, op.payment_evidence_quote = kind, quote
     return op
@@ -181,6 +191,10 @@ def discover(config_path, store_path, outcomes_path, now):
         rows, errors = adapter(config, now, "data/evidence")
         results.extend(rows)
         summary["adapters"].append({"source": name, "refreshed": bool(rows), "collected": len(rows), "errors": errors})
+    from .buyer_discovery import buyer_sources
+    buyer_rows, attempts = buyer_sources(config, now, "data/evidence")
+    results.extend(buyer_rows)
+    summary["buyer_sources"] = attempts
     # Retained for audit, but unrefreshed records cannot get freshness from this run.
     result = upsert(store_path, results)
     known = {e.opportunity_id for e in load_outcomes(outcomes_path) if e.event_type == "DISCOVERED"}
