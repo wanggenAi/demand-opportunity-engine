@@ -5,7 +5,7 @@ from pathlib import Path
 from .models import Outcome, Opportunity, timestamp
 from .store import load_opportunities, load_outcomes, append_outcome
 from .discovery import discover
-from .board import build_board, rank
+from .board import rank
 from .quality import quality_report
 from .reports import product_report, edge_report, feedback_report, buyer_report
 from .signals import normalize_intent
@@ -22,6 +22,7 @@ def main():
     parser.add_argument("--output", default="reports/TODAY_MONEY_BOARD.md")
     parser.add_argument("--as-of", help="ISO UTC timestamp for reproducible audit; defaults to current time")
     parser.add_argument("--event", help="Path to one real outcome JSON event; used by outcome command")
+    parser.add_argument("--portfolio-state", default="data/portfolio_state.json", help="Optional human-reported active build/delivery IDs")
     args = parser.parse_args()
     now = timestamp(args.as_of) if args.as_of else datetime.now(timezone.utc)
     if args.command == "outcome":
@@ -60,9 +61,24 @@ def main():
     upsert(args.data, opportunities)
     events = load_outcomes(args.outcomes)
     edges = load_opportunities(args.edges) if Path(args.edges).exists() else []
+    if args.command == "discover":
+        from .reports import refresh_known_edges
+        run["info_edge_refresh"] = refresh_known_edges(edges, now)
+        Path("data/discovery_run.json").write_text(json.dumps(run, ensure_ascii=False, indent=2) + "\n")
+        if edges:
+            upsert(args.edges, edges)
     output = Path(args.output)
     output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_text(build_board(opportunities + edges, now.isoformat(), events))
+    from .portfolio import daily_portfolio, render_portfolio
+    tools_path = Path("data/tool_opportunities.json")
+    tools = json.loads(tools_path.read_text()) if tools_path.exists() else []
+    state_path = Path(args.portfolio_state)
+    state = json.loads(state_path.read_text()) if state_path.exists() else {}
+    portfolio = daily_portfolio(opportunities + edges, now, events, tools, state)
+    document = render_portfolio(portfolio)
+    output.write_text(document)
+    (output.parent / "DAILY_MONEY_PORTFOLIO.md").write_text(document)
+    (output.parent / "DAILY_PORTFOLIO.json").write_text(json.dumps(portfolio, ensure_ascii=False, indent=2) + "\n")
     (output.parent / "SOURCE_QUALITY_CHECK.md").write_text(quality_report(opportunities + edges, now, events, run))
     product, grouped = product_report(opportunities)
     (output.parent / "PRODUCT_THESIS.md").write_text(product)
@@ -71,9 +87,8 @@ def main():
     (output.parent / "BUYER_INTENT_DISCOVERY.md").write_text(buyer_report(opportunities, now, run))
     from .action_reports import source_yield_report, tool_report
     (output.parent / "SOURCE_YIELD.md").write_text(source_yield_report(opportunities, now, run, events))
-    tools_path = Path("data/tool_opportunities.json")
     if tools_path.exists():
-        (output.parent / "TOOL_OPPORTUNITIES.md").write_text(tool_report(json.loads(tools_path.read_text()), now))
+        (output.parent / "TOOL_OPPORTUNITIES.md").write_text(tool_report(tools, now))
     (output.parent / "ranking.json").write_text(json.dumps(
         [{"id": o.id, **s} for o, s in rank(opportunities + edges, now, events)],
         ensure_ascii=False, indent=2) + "\n")

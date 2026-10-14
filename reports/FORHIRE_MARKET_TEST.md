@@ -1,0 +1,30 @@
+# R/FORHIRE BOUNDED ZERO-COST MARKET TEST
+
+Checked 2026-10-14T02:28:16Z against main `3166fc9721f06552d106fc9a3cee8dcd7e79d02f`.
+
+PRIMARY OUTREACH = 0. STOP: ten original [Hiring] URLs attempted, nine bodies readable, one timeout. No eleventh original was opened. No message/application sent; no CONTACTED, REPLIED or REVENUE recorded.
+
+- Public new.json returned HTTP 403; no bypass.
+- Four original bodies found via reader's New listing, four via cached Hiring/New flair listing, two via related technical suggestions. This is not ten verified latest posts.
+- Relative publication ages are preserved at reader crawl; exact published_at unavailable. Two/three-week cache does not prove fresh demand.
+- Competition UNKNOWN for all ten: private DMs not observable.
+- Operator account eligibility/US residency/German fluency/3D portfolio not assumed.
+
+Dates below are source-relative ages at crawl, not invented exact timestamps. ZERO describes the free first PM channel, not guaranteed account/application eligibility. Community rules require private applications, not public comment bids; no bot outreach. Rules: https://www.reddit.com/r/forhire/about/
+
+| # / title / URL | Publication evidence | Paid evidence | Acquisition cost | Competition | Fit | Decision | Reason |
+|---|---|---|---|---|---|---|---|
+| 1. [[Hiring]Unity like game](https://www.reddit.com/r/forhire/comments/1x4wlsu/hiringunity_like_game/) | 5m ago; crawl today | Budget less than 800 usd | ZERO | UNKNOWN | NO | REJECT | Requires Unreal architectural visualization and 4–5 real walkthrough samples; those capabilities/portfolio are not verified. |
+| 2. [[Hiring] (Online) Bilingual Chinese-English speakers for AI training (up to $20/hour)](https://www.reddit.com/r/forhire/comments/1wo2rbw/hiring_online_bilingual_chineseenglish_speakers/) | 1h ago; crawl 2 weeks ago | Up to $5 per accepted task, paid per approved recording | UNKNOWN | UNKNOWN | UNVERIFIED | REJECT | Cached primary cannot prove <=7-day publication. Listed country/native bilingual eligibility is not established for the operator; paid approval-dependent tasks, not guaranteed pilot. |
+| 3. [[Hiring] for an automation specialist](https://www.reddit.com/r/forhire/comments/1tn8ykn/hiring_for_an_automation_specialist/) | 5mo ago; crawl today | Estimate hourly rate is $30 - $50 USD/hr. | ZERO | UNKNOWN | PARTIAL | REJECT | Five months old, no verified buyer renewal. Requires truthful prior builds; no bounded single project defined. |
+| 4. [[Hiring] US college student to film 1 casual selfie video about an investing app (remote, $150)](https://www.reddit.com/r/forhire/comments/1x4x1w8/hiring_us_college_student_to_film_1_casual_selfie/) | 2h ago; crawl today | Pay: $150 flat via PayPal or Venmo, paid on delivery. | ZERO | UNKNOWN | NO | REJECT | Requires US college enrollment and native American-accent delivery; operator eligibility not established. |
+| 5. [[HIRING] 3D Model artist for website and animations](https://www.reddit.com/r/forhire/comments/1x4v0h5/hiring_3d_model_artist_for_website_and_animations/) | 2h ago; crawl today | $20 USD per p | ZERO | UNKNOWN | NO | REJECT | Specialist 3D work and software not verified; budget unit and deliverable unclear. |
+| 6. [[Hiring] Earn Up to $400+ in a Multi-App Data Study (USA)](https://www.reddit.com/r/forhire/comments/1x4pcr6/hiring_earn_up_to_400_in_a_multiapp_data_study_usa/) | 8h ago; crawl today | Pay: Up to $400+, with earnings scaling based on the number of valid apps submitted | ZERO | UNKNOWN | NO | REJECT | US residence and qualifying personal accounts with >=12 months history required; eligibility not established. Compensation depends on valid personal data archives. |
+| 7. [[Hiring] Experienced German-Speaking WordPress Developer for Long-Term White-Label Agency Partnership](https://www.reddit.com/r/forhire/comments/1wp0t5c/hiring_experienced_germanspeaking_wordpress/) | 31m ago; crawl 2 weeks ago | your usual pricing or hourly rate | ZERO | UNKNOWN | NO | REJECT | Fluent German and real WordPress client portfolio required, neither verified. Publication freshness cannot be established from two-week-old cache. |
+| 8. [[Hiring] Lead Monitoring and Observability Engineer (IC3) -Remote US](https://www.reddit.com/r/forhire/comments/1wnf6s5/hiring_lead_monitoring_and_observability_engineer/) | UNVERIFIED; crawl failed | UNVERIFIED | UNKNOWN | UNKNOWN | UNVERIFIED | WATCH | UNVERIFIED_PRIMARY_SOURCE: original page fetch timed out; buyer/date/payment/contact/competition not verified. Listing title is discovery only. |
+| 9. [[HIRING] Electronics -- coaster/puck where if item is lifted, it triggers bright light — ~$100 + parts/shipping](https://www.reddit.com/r/forhire/comments/1wo82iy/hiring_electronics_coasterpuck_where_if_item_is/) | 37m ago; crawl 2 weeks ago | Budget roughly $100 plus reasonable parts and shipping, but I'm open to quotes. | ZERO | UNKNOWN | NO | REJECT | Needs four fabricated battery-powered finished devices shipped to New Orleans, not remote desk/software delivery. Cached publication freshness unverified. |
+| 10. [[HIRING] Automation Dev](https://www.reddit.com/r/forhire/comments/1v7ni61/hiring_automation_dev/) | 2mo ago; crawl 3 weeks ago | Budget : $50-200 usd | ZERO | UNKNOWN | PARTIAL | REJECT | Already two months old at crawl; no verified buyer renewal. Booking platform, authorization and policy compliance unspecified. |
+
+Main failures: current New candidates require unverified US eligibility or 3D skills; relevant technical requests are stale or cannot be reverified; private applicant competition is unknown. This small access-limited sample does not prove the entire community lacks buyers. No outreach package is recommended.
+
+The original market test is complete and stopped. The subsequent human instruction authorizes a separate portfolio policy/generation update; it does not retroactively qualify these rejected requests. Details and original page excerpts are in data/forhire_market_test.json and data/evidence/forhire_market_*.txt.

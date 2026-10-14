@@ -45,6 +45,8 @@ def quality_report(opportunities, now=None, events=(), discovery=None):
              "- Competition counts are observed lower bounds; private DMs and off-platform quotes remain unknown.",
              "", "## Sources refreshed", ""]
     if discovery:
+        for item in discovery.get("info_edge_refresh", []):
+            lines.append(f"- INFO_EDGE primary recheck {item['url']}: refreshed={item['refreshed']}; {item.get('error', item.get('reason', 'known quote verified; event date unchanged'))}")
         for item in discovery.get("adapters", []):
             lines.append(f"- {item['source']}: refreshed={item['refreshed']}; records={item['collected']}; errors={len(item['errors'])}")
             for error in item["errors"]:

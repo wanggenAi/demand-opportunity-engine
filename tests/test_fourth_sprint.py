@@ -97,7 +97,7 @@ class FourthSprintTests(unittest.TestCase):
         candidate['demand_evidence'] = [dict(primary_verified=True,author_key='one')]*2
         self.assertNotEqual(tool_decision(candidate, NOW)[0], 'BUILD NOW')
         candidate['demand_evidence'].append(dict(primary_verified=True,author_key='two'))
-        self.assertEqual(tool_decision(candidate, NOW)[0], 'BUILD NOW')
+        self.assertNotEqual(tool_decision(candidate, NOW)[0], 'BUILD NOW')  # No tester, prices or cross-platform paid proof.
         candidate['checked_at'] = '2026-09-01T00:00:00Z'
         self.assertNotEqual(tool_decision(candidate, NOW)[0], 'BUILD NOW')
         candidate['checked_at'] = NOW.isoformat()

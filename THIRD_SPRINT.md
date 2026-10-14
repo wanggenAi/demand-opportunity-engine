@@ -1,3 +1,5 @@
+> Historical sprint brief. Its single-bet/old display caps are superseded by BRAIN_REVIEW_V4.md and PRINCIPLES.md.
+
 # THIRD SPRINT — BUYER INTENT DISCOVERY
 
 ## Goal

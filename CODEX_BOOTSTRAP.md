@@ -15,17 +15,14 @@ Read `README.md` and `PRINCIPLES.md` before changing anything.
 - Do not optimize for commit count, crawler count, lines of code, or scraped-row volume.
 
 ## V0 objective
-Produce one daily artifact: `reports/TODAY_MONEY_BOARD.md`.
+Produce `reports/DAILY_MONEY_PORTFOLIO.md` and its TODAY_MONEY_BOARD compatibility copy. BRAIN_REVIEW_V4.md supersedes the original single-bet limits.
 
 It must rank all three routes together:
 1. DIRECT_LEAD
 2. PRODUCT_SIGNAL
 3. INFO_EDGE
 
-Human attention is globally limited to:
-- DO NOW: max 3
-- VALIDATE: max 3
-- WATCH: max 5
+Human WIP is bounded by the portfolio policy: up to 5 first contacts and 5 follow-ups/day; up to 15 combined validations; product BUILD <=2; heavy DELIVERY <=3. WATCH can exceed 50. Do not fill quotas or lower truth gates.
 
 ## Phase 1 sources
 Implement only sources that can be collected legally and reliably without paid infrastructure. Start with:

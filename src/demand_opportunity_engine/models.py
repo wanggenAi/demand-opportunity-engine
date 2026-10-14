@@ -117,6 +117,7 @@ class Outcome:
     amount: float | None = None
     currency: str | None = None
     loss_reason: str = ""
+    human_minutes: float | None = None  # Actual time reported by the human, never an estimate.
 
     def validate(self):
         if not self.event_id or self.event_type not in EVENTS:
@@ -127,6 +128,10 @@ class Outcome:
                 raise ValueError("money events require nonnegative amount and currency")
         if self.event_type == "LOST" and not self.loss_reason:
             raise ValueError("LOST requires reason")
+        if self.human_minutes is not None:
+            import math
+            if not math.isfinite(self.human_minutes) or self.human_minutes < 0:
+                raise ValueError("human_minutes must be finite and nonnegative")
 
     def to_dict(self):
         return asdict(self)

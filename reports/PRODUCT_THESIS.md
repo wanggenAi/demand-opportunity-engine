@@ -3,7 +3,7 @@
 Repeated observations are not automatically product opportunities. Promotion requires >=5 independent buyers/problems, >=2 communities, >=2 primary payment signals, a narrow standardized job and a distribution path.
 Identity dedup: platform-author plus normalized exact-content fingerprint. Cross-platform identity linkage is unresolved; duplicate records and seller displays cannot increase counts.
 Anonymous marketplace employers are excluded from independent demand/payment cluster counts; seven project pages do not prove seven independent buyers.
-No product was implemented.
+Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, even while product promotion remains blocked. A cluster score never grants BUILD; verified competitor prices and a willing tester/preorder are required. No product was implemented.
 
 ## workflow_reliability — UNVALIDATED CLUSTER
 

@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50081311",
+  "collected_at": "2026-10-14T02:53:32.171751+00:00",
+  "source": {
+    "author": "dgunay",
+    "children": [],
+    "created_at": "2026-10-14T01:34:13.000Z",
+    "created_at_i": 1791941653,
+    "id": 50081311,
+    "options": [],
+    "parent_id": 50076575,
+    "points": null,
+    "story_id": 50076575,
+    "text": "We still do code review but it does bottleneck how much we can ship.<p>I&#x27;m looking at what we can do to alleviate this. Here&#x27;s what I think the near future may look like, as far as getting more value per time spent out of human code review. I&#x27;m coming at this from the POV of an org that still mandates human code review and I think a lot of this advice doesn&#x27;t hold if you are all-in on the black box software factory approach.<p>If you&#x27;re reviewing code you&#x27;re responsible for, your job now is to provide stewardship of its long term technical direction even if you are not personally reading and writing every line of code. This means preserving the coherence of designs past and present, and ensuring that they are not being worked around in service of a short-term goal.<p>Stop reading every line of every file to look for minor gotchas. Focus on core business logic and whether invariants are modeled well &amp; to the fullest extent possible by the type system. Agents are better than most humans now at spotting insane gotchas. At least one frontier model should review most PRs.<p>In the before times, you could argue that TODO comments and small nits on PRs should be addressed, because most likely they&#x27;d never get attention again once the PR merges. Now, small issues should instead be automatically recorded and followed up on quickly by another agent. Minor code quality issues should become rules, and old code should be constantly revisited by agents to bring it up to par with new code.<p>Provide the transcripts of the session with the PR. Look for evidence of thoughtful direction &amp; solid premise behind the conversation that led to the PR being made. In addition to providing more mentorship opportunities to the author, this also discourages meat proxying&#x2F;low-value-added uses of AI. Asking someone to rewrite or completely discard a PR that&#x27;s just a bad idea should no longer be the ego bruising event it once was (at least with respect to the cost sunk to make the PR).<p>Require a higher bar for proving that code works and stays working. The testing pyramid IMO should now be more of a testing hourglass. Or an upside-down pyramid, even. Automated E2E tests should be abundant. Every feature should receive adequate manual testing by an agent, with proof of work.<p>In the vein of &quot;stays working,&quot; look for good observability and guardrails around a feature. If you&#x27;re doing a good job of leveraging agents to keep code up to par, this means adding (and cycling out) feature flags, ensuring that there&#x27;s adequate logging, having a cohesive monitoring solution with good coverage, and a plan for what to do if there&#x27;s an issue in prod.",
+    "title": null,
+    "type": "comment",
+    "url": null
+  },
+  "comments": [],
+  "comments_complete": true
+}

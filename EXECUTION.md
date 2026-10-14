@@ -42,7 +42,7 @@ Scoring actually reads the log. Only DISCOVERED exists so far, giving zero conve
 
 ## Human limit
 
-One primary money action and one small experiment. DO NOW may be empty. VALIDATE means confirm need, permission and payment; it does not authorize pitching every bug reporter. Price ranges are test proposals for Brain/human review, never buyer budgets. No warehouse, QC, freight or specialist capacity is assumed.
+MANY VALIDATIONS, FEW HEAVY COMMITMENTS. Up to five independent CONTACT_TODAY candidates plus real due FOLLOW_UPs; DO NOW may be empty. VALIDATE means confirm need, permission and payment; it does not authorize pitching every bug reporter. Price ranges are test proposals for Brain/human review, never buyer budgets. No warehouse, QC, freight or specialist capacity is assumed.
 
 Discovery is rerunnable on demand; no scheduler is installed this sprint. Reddit returned HTTP 403 and browser-harness initialization failed; no Reddit refresh is claimed.
 
@@ -50,7 +50,7 @@ Discovery is rerunnable on demand; no scheduler is installed this sprint. Reddit
 
 DIRECT_LEAD requires BUYER plus one supported commercial_intent_type and an exact author-written commercial_intent_quote, matching the deterministic source-only classifier. NONE, service ads, quoted hiring references, generated task digests and ordinary bug reports cannot become sales recommendations. Labels and derived prose add no second payment score. Source contact/application paths are mandatory. 0–3-day requests rank ahead of 4–7-day requests; 8–14 days require buyer renewal for DO NOW. Unknown/high competition and uncontrolled capabilities still block immediate action. Ordinary observers remain available in PRODUCT_THESIS only.
 
-The primary human action is selected only from DO NOW. If it is empty, there is no qualified PRIMARY OUTREACH; VALIDATE is an optional permission/fit check, not a sales commitment. A real CONTACTED event must use the actual opportunity ID and actual channel; only then does the next report consume it.
+CONTACT_TODAY is selected only from unchanged DO NOW hard gates. If empty, there is no qualified buyer; independent product/info validations continue. VALIDATE_FIRST is a bounded desk permission/fit check, not a sales commitment. A real CONTACTED event must use the actual opportunity ID and actual channel; only then does the next report consume it.
 
 ## Fourth sprint: bounded markets and stop rule
 
@@ -61,3 +61,15 @@ Reports now include SOURCE_YIELD.md and TOOL_OPPORTUNITIES.md. Tools are PRODUCT
 `.github/workflows/daily-discovery.yml` schedules one daily run at 02:15 UTC (10:15 Shanghai), plus workflow_dispatch. Push runs tests only. Source errors are audited individually; artifacts are retained before normal data/report pushes. No forced pushes. The old "no scheduler installed" sentence above describes the third sprint only.
 
 Outcome ranking additionally consumes source family, opportunity type and offer cohorts. Actual grouped realized ticket/cycle metrics inform source and price assumptions; absent sales events remain neutral. No claimed revenue from proposed prices. After a bounded source test yields no qualified outreach or build, stop. Do not use the first high-competition VALIDATE item as an automatic outreach recommendation.
+
+## Daily portfolio execution
+
+The report/discover commands write DAILY_MONEY_PORTFOLIO.md, a matching TODAY_MONEY_BOARD.md and DAILY_PORTFOLIO.json. FIRST CONTACT <=5, FOLLOW_UP <=5; product validation <=5 and info validation <=5; total validation <=15. Heavy build/delivery caps are 2/3. Qualified contacts sort by portfolio_priority after truth gates; missing financial history stays UNKNOWN with neutral factors. Due intervals: CONTACTED/QUOTED 2 days, REPLIED/QUALIFIED 1 day; timestamps are UTC, future events ignored, WON/LOST conversations excluded.
+
+Optional human state file data/portfolio_state.json has active_builds (tool candidate IDs) and active_deliveries (opportunity IDs). Absent file means no active work reported. Listing an ID does not bypass gates: build needs verified tester commitment, competitor pricing, five independent demands on >=2 platforms and >=2 primary payment signals; delivery needs real WON. Real overflow is disclosed and pauses new contacts, not silently hidden. WON without reported delivery status remains explicitly unconfirmed.
+
+Build evidence in data/tool_opportunities.json: build_evidence.competitor_prices and .tester_commitment each require verified=true, source_url and exact_quote; standardized_delivery must be confirmed. Demand items retain platform, primary_verified, author_key and primary payment_quote/payment_primary_verified. Never manufacture these fields to pass a gate.
+
+Optional outcome human_minutes is actual reported time per event; do not enter planning estimates. Price learning shows real QUOTED ranges separately from realized REVENUE by currency. Realized revenue/hour uses recorded time only, so missing time stays unknown. No account creation, outreach sending, charging or payments are performed by discovery/report generation.
+
+Existing INFO_EDGE primary URLs are rechecked during discover using the existing public HTTP fetcher. A matching primary quote refreshes verification only; event dates, awareness gaps and buyer intent are never renewed. Each failure is audited and leaves the previous verification time unchanged; expired events are not refetched or rejuvenated. New information windows still need independent primary evidence and awareness/payment validation.

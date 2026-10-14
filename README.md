@@ -2,7 +2,7 @@
 
 A revenue-first opportunity intelligence system.
 
-Current acquisition budget = 0. Paid application channels are not primary execution channels. Only an evidenced ZERO-cost lawful contact path may enter DO NOW / PRIMARY OUTREACH; see PRINCIPLES.md and NEXT_ACTION.md. Development is paused; the current test is bounded to ten original zero-cost buyer-request candidates.
+Current acquisition budget = 0. Paid application channels are not primary execution channels. Only an evidenced ZERO-cost lawful contact path may enter DO NOW / PRIMARY OUTREACH; see PRINCIPLES.md and NEXT_ACTION.md. MANY VALIDATIONS, FEW HEAVY COMMITMENTS. The prior bounded market tests are complete; current execution follows the daily portfolio policy in BRAIN_REVIEW_V4.md.
 
 ## Mission
 Continuously discover, verify, rank, and act on opportunities that can produce real revenue for a solo operator using AI/Codex as leverage.
@@ -27,18 +27,13 @@ Continuously discover, verify, rank, and act on opportunities that can produce r
 
 Not metrics: commit count, crawler count, lines of code, dashboards, total scraped rows.
 
-## First product artifact
-`reports/TODAY_MONEY_BOARD.md`
+## Daily output
+`reports/DAILY_MONEY_PORTFOLIO.md` is the primary output; `reports/TODAY_MONEY_BOARD.md` contains the same portfolio. Machine-readable details: `reports/DAILY_PORTFOLIO.json`.
 
-The board must contain no more than:
-- 3 DO NOW actions
-- 3 VALIDATE opportunities
-- 5 WATCH items
+DIRECT_LEAD, PRODUCT_SIGNAL and INFO_EDGE remain independent and run together. Recommend up to 5 qualified CONTACT_TODAY objects and 5 due FOLLOW_UPs, not just Top 1. Empty sections are honest results, never quotas.
 
-Everything else stays in the opportunity store.
-
-## Rule
-The system may watch thousands of opportunities in parallel, but the human actively pursues only **one primary money problem plus one small experiment** at a time.
+## Human WIP
+One human can run many small bets, but only a few heavy commitments. Defaults: 10–15 validations total; product validations <=5, presell/interviews <=3, info validations <=5; open quotes <=5; active product builds <=2; heavy deliveries <=3. WATCH can exceed 50. No build without repeated paying demand, current alternatives/prices, controlled delivery, distribution and a verified willing tester/preorder.
 
 Read `PRINCIPLES.md` and `CODEX_BOOTSTRAP.md` before implementation.
 

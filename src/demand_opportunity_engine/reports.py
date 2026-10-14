@@ -4,13 +4,41 @@ from .feedback import grouped_metrics
 from .models import age
 from .scoring import edge_rejections
 
+def refresh_known_edges(edges, now, fetch=None):
+    """Recheck existing primary URLs; never invent new events, gaps or buyers."""
+    from .markets import fetch_public, visible
+    from .discovery import snapshot
+    import hashlib
+    fetch = fetch or fetch_public
+    audits = []
+    for op in edges:
+        audit = {"id": op.id, "url": op.source_url, "checked_at": now.isoformat(), "refreshed": False}
+        if not 0 <= age(op.published_at, now) <= 14:
+            audit["reason"] = "event expired; no publication rejuvenation"
+        else:
+            try:
+                body = visible(fetch(op.source_url))
+                if visible(op.raw_evidence_quote) not in body:
+                    raise ValueError("known primary quote absent; no fresh verification")
+                path, digest = snapshot({"url": op.source_url, "checked_at": now.isoformat(),
+                                         "matched_quote": op.raw_evidence_quote,
+                                         "primary_text_sha256": hashlib.sha256(body.encode()).hexdigest()}, "data/evidence/info-rechecks", op.source_url)
+                op.observed_at = now.isoformat()
+                op.info_edge["primary_rechecked_at"] = now.isoformat()
+                op.info_edge["primary_recheck_snapshot"] = path + "#sha256=" + digest
+                audit.update(refreshed=True, snapshot=op.info_edge["primary_recheck_snapshot"])
+            except Exception as exc:
+                audit["error"] = str(exc)  # Preserve last verification time; no bypass/retry loop.
+        audits.append(audit)
+    return audits
+
 def product_report(opportunities):
     results = clusters(opportunities)
     lines = ["# PRODUCT THESIS", "",
              "Repeated observations are not automatically product opportunities. Promotion requires >=5 independent buyers/problems, >=2 communities, >=2 primary payment signals, a narrow standardized job and a distribution path.",
              "Identity dedup: platform-author plus normalized exact-content fingerprint. Cross-platform identity linkage is unresolved; duplicate records and seller displays cannot increase counts.",
              "Anonymous marketplace employers are excluded from independent demand/payment cluster counts; seven project pages do not prove seven independent buyers.",
-             "No product was implemented.", ""]
+             "Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, even while product promotion remains blocked. A cluster score never grants BUILD; verified competitor prices and a willing tester/preorder are required. No product was implemented.", ""]
     for c in results:
         lines += [f"## {c['cluster_name']} — {c['status']}", ""]
         for key in ("independent_demand_count", "payment_evidence_count", "platforms", "communities", "repeated_pain",
@@ -29,7 +57,7 @@ def edge_report(edges, now):
     lines = ["# INFO EDGE BOARD", "", f"Checked: {now.isoformat()}", "",
              "Only current, corroborated changes are candidates. Target-buyer awareness and paid validation are separate requirements; public availability is not scarcity.", ""]
     accepted = []
-    for op in edges[:3]:
+    for op in edges:
         reasons = edge_rejections(op, now)
         if not reasons:
             accepted.append(op)

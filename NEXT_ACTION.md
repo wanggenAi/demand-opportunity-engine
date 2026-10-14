@@ -1,23 +1,29 @@
-# NEXT ACTION
+# NEXT ACTION — DAILY MONEY PORTFOLIO
+
+MANY VALIDATIONS, FEW HEAVY COMMITMENTS.
+One human can run many small bets, but only a few heavy commitments.
 
 Current acquisition budget = 0.
 Paid application channels are not primary execution channels.
-The next objective is one qualified ZERO-COST PRIMARY OUTREACH, not another development sprint.
+The next objective is a portfolio of qualified zero-cost contacts, real follow-ups and bounded product/info validations, not another engineering sprint.
 
-System development is paused. FOURTH_SPRINT is complete. Upwork is removed from the PRIMARY MARKET TEST; the previous instruction to log in to Upwork is superseded.
+Human: execute the seven evidence-linked tasks in reports/DAILY_MONEY_PORTFOLIO.md (about 180 minutes), record validation findings and only actual sales outcomes. No account creation, messages or payments have been performed by Codex.
 
-Never buy Connects, bids/membership, proposal boosts, job credits, contact unlocks, lead databases or SEO APIs, or recharge to search/apply. Existing genuinely free application credits can be occasional opportunities only, never the core acquisition channel. If contact requires payment, mark BLOCKED_BY_PAID_ACQUISITION and do not ask the human to pay.
+## Current state — 2026-10-14
 
-For any future human-authorized zero-cost test, inspect no more than ten original requests, preferring Chinese-language supplier research/communication, 1688/Alibaba/manufacturer research, RFQ/shortlists, China market/competitor research, remote coordination or bounded technical/data work. Use buyer-posted email, invited DM, permitted free forum reply, explicit paid/bounty requests or official vendor/application channels. A seller ad or ordinary pain post is not a buyer. The current test has already stopped; see the result below.
+- CONTACT_TODAY = 0; FOLLOW_UP = 0; VALIDATE_FIRST = 0. No verified free-contact buyer passed all unchanged gates. Do not contact rejected high-competition or stale requests.
+- PRODUCT VALIDATIONS = 4: workflow reliability, lead research, marketing reporting automation, voice-agent QA. Each is a 30-minute hypothesis check; NO BUILD. Current competitor pricing and tester commitment remain unverified.
+- INFO EDGE VALIDATIONS = 2: Assistant credit top-up versus upgrade (Oct 1 event; 14-day discovery expiry), Haiku 5.5 task cost/quality audit (Oct 7 event; Oct 21 hard expiry). Read public sources and prepare awareness questions; no purchased credits/API tests. No verified information-gap exploitation.
+- Active presell, builds and deliveries = 0. All 125 production outcome events are DISCOVERED; real CONTACTED/REPLIED/QUOTED/WON/REVENUE = 0.
 
-Only acquisition_cost = ZERO may enter DO NOW / PRIMARY OUTREACH. Require original publication <=7 days, buyer-authored paid intent, a legitimate free contact path, evidenced LOW/MEDIUM competition, controlled remote capability and a bounded paid deliverable. UNKNOWN, OPTIONAL_PAID and REQUIRED_PAID cannot be the first action.
+The seven tasks are four narrow product checks, two dated information-window checks and one real-feedback review. The system does not fill a 4–6-hour day with fabricated prospects or unnecessary engineering. Use remaining time only for consent-based conversations if a real eligible respondent is available; don't claim that one has been found.
 
-Stop at the first qualified request and hand the human its original evidence, free contact path, offer, proposed price and truthful first message. If no qualified buyer is found within the bounded test, stop and identify only the next best zero-cost manual channel. Do not expand crawlers, scoring architecture, tools or sources; keep the scheduler unchanged.
+## Standing boundaries
 
-CONTACTED is recorded only after a real application/message is submitted; all further outcomes require real events. No sending is authorized by finding a lead.
+CONTACT_TODAY <=5/day; FOLLOW_UP <=5/day; total validations <=15 (product <=5, info <=5, direct desk checks <=5); product presell/interviews <=3; open quotes <=5; active BUILD <=2; heavy DELIVERY <=3. WATCH can exceed 50; these are caps, not quotas. Real WIP overflow pauses new commitments.
 
-## Current bounded test result / STOP
+Only evidenced acquisition_cost = ZERO can qualify for first contact. Keep original buyer-authored payment evidence, freshness, LOW/MEDIUM competition, a lawful channel, controlled capability and a bounded deliverable. Never buy Connects, bids, membership, boosts, credits, contact unlocks, lead databases or SEO APIs. No fake portfolio or credentials.
 
-2026-10-14: ten original candidate pages inspected; six commercial service/vendor requests, one unspecified partnership and three non-buyers. Qualified ZERO-COST PRIMARY OUTREACH = 0. See reports/ZERO_COST_MARKET_TEST.md. No application/message was sent and no sales outcome was recorded.
+The prior general zero-cost test is stopped. The r/forhire test is also stopped at ten original URLs: nine readable bodies, one UNVERIFIED_PRIMARY_SOURCE; PRIMARY OUTREACH = 0. See reports/FORHIRE_MARKET_TEST.md. No eleventh Reddit original is authorized by that completed scan. The new human policy instruction separately authorized this portfolio update and one real refresh using existing configured sources; it does not require a new crawler or further scan.
 
-The current test is stopped. Do not automatically search an eleventh page or begin development. Await the human's next bounded-market-test decision. The single proposed zero-cost manual channel is r/forhire's new [Hiring] posts with buyer-invited free contact; verify current rules and actual paid scope. This is not an already qualified buyer.
+Record CONTACTED only after the human actually sends; REPLIED/QUALIFIED/QUOTED/WON/LOST/REVENUE only after real events. Optional human_minutes records actual time, never portfolio estimates. Re-run the report after new facts; preserve zero-cost acquisition and heavy WIP, and let the unchanged scheduler refresh existing sources. No automatic new development sprint, tool build, source expansion or outreach sending.

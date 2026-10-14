@@ -1,6 +1,6 @@
 # TOOL / MICRO-SAAS OPPORTUNITIES (PRODUCT_SIGNAL)
 
-Evaluated: 2026-10-14T01:10:59.923613+00:00
+Evaluated: 2026-10-14T03:02:21.186565+00:00
 
 Keyword/demand phrases are hypotheses, not search-volume measurements. No fabricated CPC, traffic or Trends volume. Public SERPs discover alternatives; primary user posts prove pain separately. No paid SEO API required.
 
@@ -24,7 +24,7 @@ Keyword/demand phrases are hypotheses, not search-volume measurements. No fabric
 - pricing_hypothesis: USD 9 export / USD 49 desk-comparison pilot; proposed hypothesis, no observed buyer tool budget
 - validation_24h: No build today. Ask consenting relevant operators about a real recent task, current method and payment for the exact deliverable
 - kill_7d: Stop if no two independent relevant users and no one agrees to pay for a scoped pilot; do not count likes or free signups
-- Failed BUILD gates: manageable_competition; clear_differentiator; monetization_path; distribution_path; no independently attributable primary demand; repeated independent demand unproven
+- Failed BUILD gates: manageable_competition; clear_differentiator; monetization_path; distribution_path; no independently attributable primary demand; repeated independent demand unproven; BUILD requires five independent demands; BUILD requires cross-platform demand; BUILD requires two primary paying demands; BUILD missing verified competitor_prices; BUILD missing verified tester_commitment; BUILD missing standardized delivery
 - Rejection reason: Strong free direct substitutes; no proved switch reason or distribution advantage
 - Demand evidence:
   - https://www.freelancer.com/projects/sourcing/china-industrial-electronics-sourcing-40759402 — I need an experienced, on-the-ground China-based sourcing agent to secure reliable industrial-grade electronics for my production line—specifically PCBs, electronic modules, and any closely related components that fall under the industrial electronics umbrella ( TPU injection molding manufacturers , gateway components, SS inserts ) . The process will start with samples for field testing in my country, followed by; primary=True; published=2026-10-09T15:21:24+00:00; paid tool evidence=False
@@ -52,7 +52,7 @@ Keyword/demand phrases are hypotheses, not search-volume measurements. No fabric
 - pricing_hypothesis: USD 9 report / USD 49 authorized review; proposed hypothesis, no observed buyer tool budget
 - validation_24h: No build today. Ask consenting relevant operators about a real recent task, current method and payment for the exact deliverable
 - kill_7d: Stop if no two independent relevant users and no one agrees to pay for a scoped pilot; do not count likes or free signups
-- Failed BUILD gates: real_demand; manageable_competition; clear_differentiator; monetization_path; distribution_path; repeated independent demand unproven
+- Failed BUILD gates: real_demand; manageable_competition; clear_differentiator; monetization_path; distribution_path; repeated independent demand unproven; BUILD requires five independent demands; BUILD requires cross-platform demand; BUILD requires two primary paying demands; BUILD missing verified competitor_prices; BUILD missing verified tester_commitment; BUILD missing standardized delivery
 - Rejection reason: Generic checker overlaps existing products; observed runtime bugs do not prove unmet static-lint demand
 - Demand evidence:
   - https://github.com/n8n-io/n8n/issues/40905 — Microsoft Teams Trigger silently stops receiving messages after ~3 days (Graph subscription is never renewed) ### Bug Description The **Microsoft Teams Trigger** (channel messages) creates a Microsoft Graph change-notification subscription when the workflow is published/activated, but nothing ever; primary=True; published=2026-10-12T14:40:47Z; paid tool evidence=False
@@ -79,7 +79,7 @@ Keyword/demand phrases are hypotheses, not search-volume measurements. No fabric
 - pricing_hypothesis: USD 49 authorized workflow audit; USD 9 checklist only after repeat paid demand; proposed hypothesis, no observed buyer tool budget
 - validation_24h: No build today. Ask consenting relevant operators about a real recent task, current method and payment for the exact deliverable
 - kill_7d: Stop if no two independent relevant users and no one agrees to pay for a scoped pilot; do not count likes or free signups
-- Failed BUILD gates: clear_differentiator; monetization_path; distribution_path; controlled_dependencies; repeated independent demand unproven
+- Failed BUILD gates: clear_differentiator; monetization_path; distribution_path; controlled_dependencies; repeated independent demand unproven; BUILD requires five independent demands; BUILD requires cross-platform demand; BUILD requires two primary paying demands; BUILD missing verified competitor_prices; BUILD missing verified tester_commitment; BUILD missing standardized delivery
 - Rejection reason: not rejected; assumptions unresolved
 - Demand evidence:
   - https://community.shopify.com/t/shopify-flow-inventoryadjustquantities-idempotency-error-handling-for-subscription-bundles/694301 — Hello Shopify Community! I’m looking for technical guidance on a Shopify Flow workflow we’ve built for our small soap business. We’ve completed the workflow, but we’re holding off on activating it until we can confirm that inventory adjustments will execute reliably. Our setup: Shopify Basic plan Appstle Subscriptions for recurring orders Easify Product Options for customer soap selections 13 individual soap products with Shopify; primary=True; published=2026-10-08T03:21:31.468Z; paid tool evidence=False

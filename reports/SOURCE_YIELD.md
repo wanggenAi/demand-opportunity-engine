@@ -1,6 +1,6 @@
 # SOURCE YIELD
 
-Observed: 2026-10-14T00:55:53.262448+00:00; evaluated: 2026-10-14T01:10:59.923613+00:00
+Observed: 2026-10-14T02:53:32.171751+00:00; evaluated: 2026-10-14T03:02:21.186565+00:00
 
 Four NEW independent ecosystems: Freelancer project marketplace, Shopify commerce operators, Indie Hackers founders, TradeKey RFQs. Two Freelancer categories count as one family. Existing n8n/Remotive/procurement/Reddit/Algora paths remain separately audited.
 Inspected = distinct listing records where keys are available; otherwise adapter listing inspections. Resolved buyer pages = primary pages with explicit commercial buyers, including physical-goods RFQs. Fresh column is original publication <=7 days, not recent seller replies. All yields are from this run only; retained old observations do not inflate them.
@@ -12,14 +12,14 @@ Inspected = distinct listing records where keys are available; otherwise adapter
 | public procurement/RFQ | 20 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0.0 | 0.0 | Search returned procurement notices; up to three detail pages attempted. No buyer request promoted: eligibility, exact remote scope, submission deadline and award status require manual verification.; HTTPError: HTTP Error 403: Forbidden |
 | public bounty/paid task | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0.0 | 0.0 | No structured primary buyer requests extracted; static shell is not commercial proof. No login or anti-bot evasion.; HTTPError: HTTP Error 404: Not Found |
 | public Reddit buyer requests | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0.0 | 0.0 | HTTPError: HTTP Error 403: Blocked |
-| freelance project marketplace (Freelancer) | 66 | 7 | 7 | 7 | 1 | 1 | 7 | 0 | 10.6 | 0.0 | A different query/category on Freelancer does not count as another independent family.; Later pipeline listing connection failed. These raw original pages were fetched successfully earlier in the same round; observed_at preserves actual cache file mtime. Not a fixture or a new network refresh.; RemoteDisconnected: Remote end closed connection without response |
+| freelance project marketplace (Freelancer) | 67 | 7 | 7 | 7 | 1 | 1 | 7 | 0 | 10.4 | 0.0 | Public bidCount includes competitors; only first 20 proposals may be visible. Employer identity often unresolved. Task budget is not agreement to our pilot.; A different query/category on Freelancer does not count as another independent family. |
 | commerce operator community (Shopify) | 30 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0.0 | 0.0 | Latest activity is not original publication; support questions are PRODUCT_SIGNAL, not SALES. No more than four primary topics per run. |
 | founder community (Indie Hackers) | 23 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0.0 | 0.0 | Only server-rendered public pages. robots disallows /api/ and sign-in; neither used. Founder self-promotion is not a buyer. |
 | international physical-goods RFQ (TradeKey) | 25 | 2 | 2 | 2 | 0 | 0 | 0 | 0 | 8.0 | 0.0 | Physical goods buyers do not automatically buy research. Contact requires platform sign-in; no access bypass. No bid-count visibility => UNKNOWN. |
 
 ## Tomorrow's budget
 
-Current acquisition budget = 0. The Upwork recommendation is superseded; paid application channels are not primary execution channels. The bounded ZERO-cost test has stopped after ten original candidate pages, with no qualified buyer. See ZERO_COST_MARKET_TEST.md / data/zero_cost_market_test.json for the separate audit; the historical source-yield table above is not a new pipeline run. The next single manual channel to consider is r/forhire's new [Hiring] posts with explicit bounded paid work and invited free contact, subject to its rules. Wait for a bounded test decision; do not expand crawlers or buy credits.
+Current acquisition budget = 0. No newly tested buyer passed current hard gates. Do not lower gates or buy acquisition access. Use the portfolio's bounded product/edge validation tasks; no invented outreach or automatic source expansion.
 
 ## Actual outcome learning
 

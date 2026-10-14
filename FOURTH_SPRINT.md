@@ -1,3 +1,5 @@
+> Historical sprint completed. Current portfolio policy and WIP: BRAIN_REVIEW_V4.md; no rerun or source expansion implied.
+
 # Fourth Sprint — find lower-competition buyers where we have an advantage
 
 ## Objective
@@ -110,7 +112,7 @@ For each top buyer, show:
 
 The board must distinguish `PRIMARY OUTREACH`, `VALIDATE`, and `WATCH`.
 
-Only one `PRIMARY OUTREACH` may be recommended.
+The original single-outreach limit is superseded by BRAIN_REVIEW_V4.md: CONTACT_TODAY may contain up to five independently qualified zero-cost buyers, with separate real FOLLOW_UPs.
 
 ## 7. Product signal narrowing
 
@@ -189,6 +191,6 @@ Return:
 9. Blockers / uncertainty
 10. Revenue impact hypothesis
 
-Finally answer one question directly:
+Historical fourth-round acceptance question (current daily handoff uses BRAIN_REVIEW_V4.md):
 
 > If the human can make only one revenue-oriented move today, is there a defensible person/company to contact now? If yes, identify the exact buyer, source, offer, price basis, contact path, competition level and why we have a real advantage. If not, say no and identify which source family should be scanned next. Do not invent a lead.

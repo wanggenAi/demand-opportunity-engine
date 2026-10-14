@@ -52,22 +52,16 @@ Owns:
 ## Mandatory handoff format from Codex
 Every meaningful execution round must end with:
 
-### What changed
-Only material implementation/data changes.
+1. What changed
+2. Current DIRECT_LEAD portfolio
+3. Current PRODUCT_SIGNAL portfolio
+4. Current INFO_EDGE portfolio
+5. Follow-ups
+6. Active builds
+7. Active deliveries
+8. Today's recommended action portfolio
+9. Estimated total human time
+10. Blockers
+11. Revenue impact hypothesis
 
-### Evidence collected
-Counts by source and route, with freshness and provenance quality.
-
-### Money board result
-Top DO NOW / VALIDATE / WATCH items.
-
-### Human action required
-Concrete next actions that require a real person.
-
-### Blockers / uncertainty
-Sources that failed, assumptions, stale evidence, or gaps.
-
-### Revenue impact hypothesis
-Why this round should increase replies, quotes, wins, or revenue.
-
-Do not end a round with only “tests pass” or “implementation complete.”
+Include primary evidence/provenance, test/discovery status and actual outcome counts. Finish with the concrete 5–10 actions supported by evidence for a human with 4–6 available hours. Do not invent actions to fill time, sales outcomes, budgets or expected revenue. Multiple small validations/outreaches are allowed; heavy WIP remains bounded. No handoff consisting only of code/test completion.

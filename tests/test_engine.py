@@ -142,8 +142,8 @@ class GateTests(unittest.TestCase):
     def test_attention_caps_all_sections_and_empty_do_now(self):
         ops = [opportunity(str(i)) for i in range(20)]
         buckets, _ = selections(ops, NOW)
-        self.assertEqual(len(buckets["DO NOW"]), 3)
-        self.assertLessEqual(sum(map(len, buckets.values())), 11)
+        self.assertEqual(len(buckets["DO NOW"]), 5)
+        self.assertLessEqual(sum(map(len, buckets.values())), 60)
         stale = [replace(o, published_at="2025-01-01") for o in ops]
         self.assertEqual(len(selections(stale, NOW)[0]["DO NOW"]), 0)
 

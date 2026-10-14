@@ -4,7 +4,7 @@ from .models import timestamp
 from .scoring import score_opportunity
 from .clusters import clusters, observation_eligible
 
-CAPS = {"DO NOW": 3, "VALIDATE": 3, "WATCH": 5}
+CAPS = {"DO NOW": 5, "VALIDATE": 5, "WATCH": 50}
 
 def rank(opportunities, now=None, events=()):
     scored = []
@@ -92,12 +92,12 @@ def build_board(opportunities, generated_at=None, events=()):
                 f"- Why this rank: deterministic component total, then ID for ties. Failed DO NOW gates: {'; '.join(score['do_now_rejections']) or 'none'}.",
                 f"- Next action: {op.next_action}", "",
             ]
-    lines += ["## One human action", ""]
+    lines += ["## Human action portfolio", ""]
     if buckets["DO NOW"]:
-        op, _ = buckets["DO NOW"][0]
-        lines += [f"PRIMARY OUTREACH: Contact {op.buyer_id} via {op.contact_path}. Test {op.suggested_offer}; {op.suggested_price_range}.", ""]
+        for op, _ in buckets["DO NOW"]:
+            lines += [f"CONTACT_TODAY: Contact {op.buyer_id} via {op.contact_path}. Test {op.suggested_offer}; {op.suggested_price_range}.", ""]
     elif buckets["VALIDATE"]:
-        lines += ["No qualified ZERO-COST PRIMARY OUTREACH. VALIDATE entries are not today's money recommendation. Stop after at most ten original requests; see ZERO_COST_MARKET_TEST.md and NEXT_ACTION.md. Do not buy application credits or expand the engine.", ""]
+        lines += ["No qualified ZERO-COST contact today. Use DAILY_MONEY_PORTFOLIO.md for bounded product/edge validations and real follow-ups. Do not buy application access or lower gates.", ""]
     else:
         lines += ["No verified buyer to contact today. Seek one current, buyer-authored paid request; do not spend human outreach time on stale/seller records.", ""]
     lines += ["## PRODUCT_SIGNAL tool decisions", "",

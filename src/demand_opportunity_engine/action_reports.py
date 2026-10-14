@@ -40,7 +40,7 @@ def source_yield_report(opportunities, now, run, events=()):
         limitations += [e["error"] for a in audits for e in a["errors"]]
         lines.append(f"| {family} | {n} | {commercial} | {commercial} | {fresh} | {low} | {fit} | {contact} | {actionable} | {100*commercial/n if n else 0:.1f} | {100*actionable/n if n else 0:.1f} | {'; '.join(dict.fromkeys(limitations)) or 'none reported'} |")
     lines += ["", "## Tomorrow's budget", "",
-              ("STOP: a buyer passed current hard gates. Use the board's one ZERO-COST PRIMARY OUTREACH; no further source expansion today." if total_actionable else "Current acquisition budget = 0. No newly tested buyer passed current hard gates. Upwork is not the primary market test. Stop after at most ten original requests with buyer-posted email, invited DM or permitted free contact; see ZERO_COST_MARKET_TEST.md / NEXT_ACTION.md. No credits, memberships or source expansion."),
+              ("Use up to five qualified ZERO-COST CONTACT_TODAY candidates, with real follow-ups and independent product/edge validations. No source expansion needed." if total_actionable else "Current acquisition budget = 0. No newly tested buyer passed current hard gates. Do not lower gates or buy acquisition access. Use the portfolio's bounded product/edge validation tasks; no invented outreach or automatic source expansion."),
               "", "## Actual outcome learning", "",
               "No sales history means neutral source/offer/price assumptions. After real contacts, source-family/type/cluster/offer cohort reply/quote/win rates and realized tickets should decide tomorrow's allocation; no fake revenue-based priority."]
     for name, metric in groups.items():
@@ -62,6 +62,20 @@ def tool_decision(candidate, now):
     # Repeated paid pains are required by the Brain; keyword candidates cannot bypass them.
     if len(independent) < 2:
         failures.append("repeated independent demand unproven")
+    if len(independent) < 5:
+        failures.append("BUILD requires five independent demands")
+    verified = [e for e in evidence if e.get("primary_verified") and e.get("author_key")]
+    if len({e.get("platform") for e in verified if e.get("platform")}) < 2:
+        failures.append("BUILD requires cross-platform demand")
+    if len({e["author_key"] for e in verified if e.get("payment_quote") and e.get("payment_primary_verified")}) < 2:
+        failures.append("BUILD requires two primary paying demands")
+    proof = candidate.get("build_evidence", {})
+    for key in ("competitor_prices", "tester_commitment"):
+        item = proof.get(key, {})
+        if not (item.get("verified") and item.get("source_url", "").startswith("https://") and item.get("exact_quote")):
+            failures.append("BUILD missing verified " + key)
+    if not proof.get("standardized_delivery"):
+        failures.append("BUILD missing standardized delivery")
     checked = candidate.get("checked_at")
     if not checked or not 0 <= age(checked, now) <= 7:
         failures.append("current supply assessment missing/stale")
