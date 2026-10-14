@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50080299",
+  "collected_at": "2026-10-14T00:55:53.262448+00:00",
+  "source": {
+    "author": "tennysont",
+    "children": [],
+    "created_at": "2026-10-13T23:15:19.000Z",
+    "created_at_i": 1791933319,
+    "id": 50080299,
+    "options": [],
+    "parent_id": 50052030,
+    "points": null,
+    "story_id": 50048312,
+    "text": "&gt; for both a format and secure protocol<p>No, there is a working draft of a protocol. The &quot;format&quot; is only for use in the protocol, not a separate thing. Thus, giving the user a file is disallowed under the spec as per §5.1.1.1 which reads<p><pre><code>  &gt; Explicitly state that the orchestrating party only transmits the credential exchange data between the exporting provider and importing provider.\n</code></pre>\nAnd, in accordance with the spec, 1Password refuses to export passkeys directly to users for manual import on another platform or app. FIDO developers have complained about Keepassxc violating the spec and threatened to blacklist them as a result[1].<p>Furthermore, 1Password (who is apparently leading the way on the FIDO exchange protocol design) has not implemented _any_ passkey export on _any_ desktop platform.<p>It is interesting that you listed Bitwarden, since I believe that FIDO developers have specifically disavowed Bitwarden&#x27;s behavior of allowing users to access their passkeys.<p>[1] <a href=\"https:&#x2F;&#x2F;github.com&#x2F;keepassxreboot&#x2F;keepassxc&#x2F;issues&#x2F;10407\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;keepassxreboot&#x2F;keepassxc&#x2F;issues&#x2F;10407</a><p>[2] <a href=\"https:&#x2F;&#x2F;github.com&#x2F;keepassxreboot&#x2F;keepassxc&#x2F;issues&#x2F;10407#issuecomment-1994923493\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;keepassxreboot&#x2F;keepassxc&#x2F;issues&#x2F;10407#iss...</a>",
+    "title": null,
+    "type": "comment",
+    "url": null
+  },
+  "comments": [],
+  "comments_complete": true
+}

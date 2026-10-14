@@ -1,0 +1,162 @@
+[
+  {
+    "checked_at": "2026-10-14T01:00:56.801574+00:00",
+    "frequency": "Repeated operational job; repetition for this exact tool is not independently established",
+    "platform_dominance": "No measured market-share data; compare direct alternatives instead of inventing dominance",
+    "why_switch": "Not proved by any user interview or paid switch",
+    "api_cost": "A local rules/CSV MVP can avoid paid APIs; OCR/LLM automation would add unverified costs",
+    "legal_policy_risk": "Use only buyer-authorized files; keep proprietary supplier/workflow data local; no inspection/certification guarantee",
+    "distribution": "No proven channel. Invited operator discussions/consenting users only; SEO traffic unmeasured",
+    "pricing_hypothesis": "USD 9 export / USD 49 desk-comparison pilot; proposed hypothesis, no observed buyer tool budget",
+    "validation_24h": "No build today. Ask consenting relevant operators about a real recent task, current method and payment for the exact deliverable",
+    "kill_7d": "Stop if no two independent relevant users and no one agrees to pay for a scoped pilot; do not count likes or free signups",
+    "name": "Supplier quote comparison / bilingual RFQ export",
+    "demand_phrase": "supplier quote comparison; China supplier comparison spreadsheet",
+    "search_intent": "Compare received supplier offers; practical template/tool intent, not measured volume",
+    "target_user": "Small importers with actual quotes for one SKU",
+    "direct_competitors": "MESH Works free quote analysis; QuoteStack free CSV template; spreadsheets; sourcing providers",
+    "observed_gap": "No verified gap versus current free comparison and CSV tools; bilingual provenance might matter but is an untested hypothesis",
+    "one_day_mvp": "CSV import, unit/MOQ/lead-time validation, missing-field flags, source links and bilingual CSV export. PDF extraction and supplier certification excluded",
+    "monetization": "Hypothesis: USD 9 paid export or USD 49 desk-comparison service upsell; no confirmed tool buyer",
+    "first_dollar": "Would require one importer paying for a real comparison; current task budget covers end-to-end sourcing, not software",
+    "demand_evidence": [
+      {
+        "url": "https://www.freelancer.com/projects/sourcing/china-industrial-electronics-sourcing-40759402",
+        "quote": "I need an experienced, on-the-ground China-based sourcing agent to secure reliable industrial-grade electronics for my production line—specifically PCBs, electronic modules, and any closely related components that fall under the industrial electronics umbrella  ( TPU injection molding manufacturers , gateway components, SS inserts  ) .  The process will start with samples for field testing in my country, followed by ",
+        "published_at": "2026-10-09T15:21:24+00:00",
+        "author_key": "",
+        "primary_verified": true,
+        "paid_tool_evidence": false,
+        "snapshot": "data/evidence/tool-demand/2ed47d8e9f761456.json#sha256=745e25fe34e9045e0f3d58ac10d3d3c32e8b7b63cdfd605fb664dcd8a624f432"
+      }
+    ],
+    "supply_evidence": [
+      {
+        "url": "https://www.meshworks.com/free-tools/quote-analysis",
+        "snapshot": "data/evidence/b37081df864496a0.json#sha256=1deba903e5b37c4217a2aaa121b96bd79e2908476cc32c7a8910442f9a9a52bb",
+        "verified": true,
+        "finding": "Public page explicitly offers free AI comparison of up to five quotations"
+      },
+      {
+        "url": "https://quotestack.app/supplier-quote-comparison-template",
+        "snapshot": "data/evidence/8e3e1a18fd9cf342.json#sha256=645ddbfdec22077d50e7fbcaea8eebf4a2ee229cfaccf053c6e0a2602658d714",
+        "verified": true,
+        "finding": "Public page offers a no-signup CSV quote comparison template"
+      }
+    ],
+    "reject_reason": "Strong free direct substitutes; no proved switch reason or distribution advantage",
+    "gates": {
+      "real_demand": true,
+      "manageable_competition": false,
+      "clear_differentiator": false,
+      "buildable_by_us": true,
+      "monetization_path": false,
+      "distribution_path": false,
+      "low_initial_cost": true,
+      "controlled_dependencies": true
+    }
+  },
+  {
+    "checked_at": "2026-10-14T01:00:56.801574+00:00",
+    "frequency": "Repeated operational job; repetition for this exact tool is not independently established",
+    "platform_dominance": "No measured market-share data; compare direct alternatives instead of inventing dominance",
+    "why_switch": "Not proved by any user interview or paid switch",
+    "api_cost": "A local rules/CSV MVP can avoid paid APIs; OCR/LLM automation would add unverified costs",
+    "legal_policy_risk": "Use only buyer-authorized files; keep proprietary supplier/workflow data local; no inspection/certification guarantee",
+    "distribution": "No proven channel. Invited operator discussions/consenting users only; SEO traffic unmeasured",
+    "pricing_hypothesis": "USD 9 report / USD 49 authorized review; proposed hypothesis, no observed buyer tool budget",
+    "validation_24h": "No build today. Ask consenting relevant operators about a real recent task, current method and payment for the exact deliverable",
+    "kill_7d": "Stop if no two independent relevant users and no one agrees to pay for a scoped pilot; do not count likes or free signups",
+    "name": "n8n workflow JSON preflight linter",
+    "demand_phrase": "n8n workflow JSON linter; n8n error handling check",
+    "search_intent": "Find defects before deploying a workflow; developer tool intent",
+    "target_user": "Operators deploying n8n workflow exports",
+    "direct_competitors": "FlowLint (official public shell observed, feature/pricing verification limited); jan-nikolov/n8nlint; native validation and manual code review",
+    "observed_gap": "Bug evidence does not establish that another generic static checker would detect the actual bugs or beat existing tools",
+    "one_day_mvp": "Local JSON import, a few deterministic missing-node/retry/error-branch checks, report download. Cannot claim integration runtime or voice QA coverage",
+    "monetization": "Hypothesis USD 9 report export / USD 49 authorized review; no demonstrated demand to pay over existing alternatives",
+    "first_dollar": "One consenting operator paying for a narrow review; ordinary bug reporters have not invited sales",
+    "demand_evidence": [
+      {
+        "url": "https://github.com/n8n-io/n8n/issues/40905",
+        "quote": "Microsoft Teams Trigger silently stops receiving messages after ~3 days (Graph subscription is never renewed)\n### Bug Description\n\nThe **Microsoft Teams Trigger** (channel messages) creates a Microsoft Graph change-notification subscription when the workflow is published/activated, but nothing ever ",
+        "published_at": "2026-10-12T14:40:47Z",
+        "author_key": "GitHub:FlaviusPetrusBHL",
+        "primary_verified": true,
+        "paid_tool_evidence": false,
+        "snapshot": "data/evidence/tool-demand/4ebe79a500323122.json#sha256=97e85cb7f0520c0fa2adb6a40f8a10305a670e6e77bbaf9a23fd26c18f553333"
+      }
+    ],
+    "supply_evidence": [
+      {
+        "url": "https://flowlint.dev/",
+        "snapshot": "data/evidence/72184214421164a1.json#sha256=4260ceee108adf33e72dc0a3190d19ff2e80a87803be5c54364c4c1d804e000c",
+        "verified": false,
+        "limitation": "Public HTML is a loading shell; browser-harness daemon unavailable. No current feature or pricing claim from this fetch.",
+        "finding": "HTML is a loading shell; no current feature or pricing claim verified. Browser-harness unavailable"
+      }
+    ],
+    "reject_reason": "Generic checker overlaps existing products; observed runtime bugs do not prove unmet static-lint demand",
+    "gates": {
+      "real_demand": false,
+      "manageable_competition": false,
+      "clear_differentiator": false,
+      "buildable_by_us": true,
+      "monetization_path": false,
+      "distribution_path": false,
+      "low_initial_cost": true,
+      "controlled_dependencies": true
+    }
+  },
+  {
+    "checked_at": "2026-10-14T01:00:56.801574+00:00",
+    "frequency": "Repeated operational job; repetition for this exact tool is not independently established",
+    "platform_dominance": "No measured market-share data; compare direct alternatives instead of inventing dominance",
+    "why_switch": "Not proved by any user interview or paid switch",
+    "api_cost": "A local rules/CSV MVP can avoid paid APIs; OCR/LLM automation would add unverified costs",
+    "legal_policy_risk": "Use only buyer-authorized files; keep proprietary supplier/workflow data local; no inspection/certification guarantee",
+    "distribution": "No proven channel. Invited operator discussions/consenting users only; SEO traffic unmeasured",
+    "pricing_hypothesis": "USD 49 authorized workflow audit; USD 9 checklist only after repeat paid demand; proposed hypothesis, no observed buyer tool budget",
+    "validation_24h": "No build today. Ask consenting relevant operators about a real recent task, current method and payment for the exact deliverable",
+    "kill_7d": "Stop if no two independent relevant users and no one agrees to pay for a scoped pilot; do not count likes or free signups",
+    "name": "Shopify Flow inventory-adjustment QA checklist tool",
+    "demand_phrase": "Shopify Flow inventoryAdjustQuantities idempotency userErrors",
+    "search_intent": "Validate inventory side effects before enabling a subscription-bundle workflow; exact phrase from an operator problem, not keyword volume",
+    "target_user": "Small Shopify merchants using bundle subscription workflows",
+    "direct_competitors": "Shopify official idempotency documentation, native Flow logs, Appstle/Easify support, custom-app developers",
+    "observed_gap": "One operator cannot simulate inventory mutations or inspect partial failures; no evidence a standalone paid checklist solves this reliably",
+    "one_day_mvp": "Local workflow checklist/test-case planner and safe sandbox replay instructions. Live inventory writes excluded; cannot promise store correctness without authorized staging",
+    "monetization": "Hypothesis USD 49 authorized workflow audit, then USD 9 reusable checklist only if repetition and payment are confirmed",
+    "first_dollar": "Buyer-invited paid audit of one real workflow; current author requests technical guidance and has not invited paid service",
+    "demand_evidence": [
+      {
+        "url": "https://community.shopify.com/t/shopify-flow-inventoryadjustquantities-idempotency-error-handling-for-subscription-bundles/694301",
+        "quote": "Hello Shopify Community! \n I’m looking for technical guidance on a Shopify Flow workflow we’ve built for our small soap business. We’ve completed the workflow, but we’re holding off on activating it until we can confirm that inventory adjustments will execute reliably. \n  Our setup:  \n \n Shopify Basic plan \n Appstle Subscriptions for recurring orders \n Easify Product Options for customer soap selections \n 13 individual soap products with Shopify ",
+        "published_at": "2026-10-08T03:21:31.468Z",
+        "author_key": "Shopify:OldGeezerSoap",
+        "primary_verified": true,
+        "paid_tool_evidence": false,
+        "snapshot": "data/evidence/tool-demand/15a2f6ab1ff3500e.json#sha256=99e7648dc2e7a31e531d185f3746af0b988d6fd8c33b06ca796b37a129479016"
+      }
+    ],
+    "supply_evidence": [
+      {
+        "url": "https://shopify.dev/docs/api/usage/idempotent-requests",
+        "snapshot": "data/evidence/0a9e9ce7ea0c600f.json#sha256=d3d00508b50d3a72216097b7c7d676709eeb47d524cdee899a7fd691126894ec",
+        "verified": true,
+        "finding": "Official docs describe GraphQL @idempotent key mechanics; documentation is already available"
+      }
+    ],
+    "reject_reason": "",
+    "gates": {
+      "real_demand": true,
+      "manageable_competition": true,
+      "clear_differentiator": false,
+      "buildable_by_us": true,
+      "monetization_path": false,
+      "distribution_path": false,
+      "low_initial_cost": true,
+      "controlled_dependencies": false
+    }
+  }
+]

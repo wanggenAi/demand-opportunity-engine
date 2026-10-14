@@ -49,6 +49,8 @@ def main():
                 op.buyer_role = "PROBLEM_OBSERVER"
             from .buyer_discovery import fit_job
             fit_job(op)
+        from .markets import advantage
+        advantage(op)
     cluster_index = {c["cluster_name"]: c for c in clusters(opportunities)}
     for op in opportunities:
         c = cluster_index.get(op.cluster_name)
@@ -67,6 +69,11 @@ def main():
     (output.parent / "INFO_EDGE_BOARD.md").write_text(edge_report(edges, now))
     (output.parent / "OUTCOME_FEEDBACK.md").write_text(feedback_report(opportunities + edges, events))
     (output.parent / "BUYER_INTENT_DISCOVERY.md").write_text(buyer_report(opportunities, now, run))
+    from .action_reports import source_yield_report, tool_report
+    (output.parent / "SOURCE_YIELD.md").write_text(source_yield_report(opportunities, now, run, events))
+    tools_path = Path("data/tool_opportunities.json")
+    if tools_path.exists():
+        (output.parent / "TOOL_OPPORTUNITIES.md").write_text(tool_report(json.loads(tools_path.read_text()), now))
     (output.parent / "ranking.json").write_text(json.dumps(
         [{"id": o.id, **s} for o, s in rank(opportunities + edges, now, events)],
         ensure_ascii=False, indent=2) + "\n")

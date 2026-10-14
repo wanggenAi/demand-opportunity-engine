@@ -82,6 +82,8 @@ def build_board(opportunities, generated_at=None, events=()):
                 f"- Effort: {op.effort}; risk: {op.risk}",
                 f"- Freshness / why now: {op.why_now or 'current change; target-buyer demand still unverified'}",
                 f"- Why us: {op.differentiation or 'no verified advantage yet; measure before offering'}",
+                f"- Grounded operator advantage: {op.operator_advantage}",
+                f"- Observed source budget: {op.observed_budget or 'not stated/verified; proposed offer price is separate'}",
                 f"- Score {score['score']}; components: {score['components']}",
                 f"- Why this rank: deterministic component total, then ID for ties. Failed DO NOW gates: {'; '.join(score['do_now_rejections']) or 'none'}.",
                 f"- Next action: {op.next_action}", "",
@@ -91,10 +93,11 @@ def build_board(opportunities, generated_at=None, events=()):
         op, _ = buckets["DO NOW"][0]
         lines += [f"PRIMARY OUTREACH: Contact {op.buyer_id} via {op.contact_path}. Test {op.suggested_offer}; {op.suggested_price_range}.", ""]
     elif buckets["VALIDATE"]:
-        op, _ = buckets["VALIDATE"][0]
-        lines += [f"No qualified DO NOW lead today. Optional validation only: read {op.source_url}, assess the stated gate failures, and verify {op.buyer_id}'s current need through {op.contact_path}. Do not pitch until fit and competition are resolved.", ""]
+        lines += ["No qualified PRIMARY OUTREACH. VALIDATE entries have unresolved gates; they are not today's money recommendation. STOP after the bounded source test. Next single source to verify is an original China supplier/Chinese-language desk-research request on Upwork via legitimate human access, at most five briefs; see SOURCE_YIELD.md.", ""]
     else:
         lines += ["No verified buyer to contact today. Seek one current, buyer-authored paid request; do not spend human outreach time on stale/seller records.", ""]
+    lines += ["## PRODUCT_SIGNAL tool decisions", "",
+              "See TOOL_OPPORTUNITIES.md for BUILD NOW / VALIDATE / WATCH / REJECT and the twelve demand, competition, delivery and monetization checks. A keyword hypothesis is not measured traffic or payment evidence.", ""]
     lines += ["## Outcome feedback", "",
               f"Read {len(events)} append-only events from data/outcomes.jsonl. DISCOVERED has zero conversion weight; no invented contact/reply/win/revenue events.",
               "Scoring consumes platform, planned contact channel and cluster outcomes; details: OUTCOME_FEEDBACK.md.", ""]

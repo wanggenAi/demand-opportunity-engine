@@ -4,6 +4,18 @@ from collections import defaultdict
 from .signals import payment_truth
 
 CLUSTER_DETAILS = {
+    "voice_agent_qa": {
+        "repeated_pain": "Test an existing voice agent's failure paths before client demonstration.",
+        "current_alternatives": "Manual call tests, platform logs, voice-agent test services and freelancers.",
+        "potential": "One-agent test matrix and evidence report; repeat paid buyers not yet established.",
+        "form": "Workflow + Service package", "distribution": "Only buyer-invited QA requests; no proven scalable channel yet", "narrow": True,
+    },
+    "marketing_report_automation": {
+        "repeated_pain": "Collect paid-ad/GA4 data into an existing template and deliver a weekly summary.",
+        "current_alternatives": "Native exports, reporting connectors, spreadsheets, automation freelancers.",
+        "potential": "A bounded reporting workflow; do not equate full marketing retainers with this job.",
+        "form": "Workflow + Template", "distribution": "Paid reporting requests, subject to API access and actual portfolio fit", "narrow": True,
+    },
     "workflow_reliability": {
         "repeated_pain": "Operators cannot trust workflow execution status; triggers, responses or saved definitions fail.",
         "current_alternatives": "Vendor bug tracker and native fixes (free), internal engineering, n8n support, freelance automation providers.",
@@ -46,14 +58,14 @@ def observation_eligible(op):
     if op.source_platform == "GitHub":
         # Broad issue-search matches often contain autonomous task logs or ads.
         genuine = re.search(r"\bbug description\b|\bto reproduce\b|\bfeature request\b|\bi need\b|\bwe need\b|looking to hire|willing to pay", op.source_text, re.I)
-        if not genuine or re.search(r"weekly digest|newsletter|seo daily|commit.monitor|market summary|zero.upfront.cost distribution", op.title + " " + op.source_text, re.I):
+        if not genuine or re.search(r"weekly digest|newsletter|seo daily|commit.monitor|market summary|zero.upfront.cost distribution|zero.cost first.customer acquisition sprint", op.title + " " + op.source_text, re.I):
             return False
     return True
 
 def clusters(opportunities):
     grouped = defaultdict(list)
     for op in opportunities:
-        if observation_eligible(op):
+        if observation_eligible(op) and "unresolved-employer" not in op.buyer_id:
             grouped[op.cluster_name].append(op)
     result = []
     for name, rows in grouped.items():

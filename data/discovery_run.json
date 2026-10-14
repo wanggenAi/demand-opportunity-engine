@@ -1,18 +1,71 @@
 {
-  "observed_at": "2026-10-13T09:43:09.605326+00:00",
+  "observed_at": "2026-10-14T00:55:53.262448+00:00",
   "config": "data/discovery_config.json",
   "adapters": [
     {
       "source": "Hacker News",
       "refreshed": true,
-      "collected": 26,
+      "collected": 29,
       "errors": []
     },
     {
       "source": "GitHub",
       "refreshed": true,
       "collected": 24,
-      "errors": []
+      "errors": [
+        {
+          "url": "https://api.github.com/repos/n8n-io/n8n/issues/40910/comments",
+          "error": "HTTP Error 403: rate limit exceeded"
+        },
+        {
+          "url": "https://api.github.com/repos/n8n-io/n8n/issues/40905/comments",
+          "error": "HTTP Error 403: rate limit exceeded"
+        },
+        {
+          "url": "https://api.github.com/repos/n8n-io/n8n/issues/40901/comments",
+          "error": "HTTP Error 403: rate limit exceeded"
+        },
+        {
+          "url": "https://api.github.com/repos/n8n-io/n8n/issues/40885/comments",
+          "error": "HTTP Error 403: rate limit exceeded"
+        },
+        {
+          "url": "https://api.github.com/repos/n8n-io/n8n/issues/40870/comments",
+          "error": "HTTP Error 403: rate limit exceeded"
+        },
+        {
+          "url": "https://api.github.com/repos/n8n-io/n8n/issues/40862/comments",
+          "error": "HTTP Error 403: rate limit exceeded"
+        },
+        {
+          "url": "https://api.github.com/repos/n8n-io/n8n/issues/40851/comments",
+          "error": "HTTP Error 403: rate limit exceeded"
+        },
+        {
+          "url": "https://api.github.com/repos/n8n-io/n8n/issues/40850/comments",
+          "error": "HTTP Error 403: rate limit exceeded"
+        },
+        {
+          "url": "https://api.github.com/repos/dotnet/wpf/issues/12021/comments",
+          "error": "HTTP Error 403: rate limit exceeded"
+        },
+        {
+          "url": "https://api.github.com/repos/amillimatrix-eng/CARBON-Creation-Hub/issues/34/comments",
+          "error": "HTTP Error 403: rate limit exceeded"
+        },
+        {
+          "url": "https://api.github.com/repos/mohameddtrabelsiiii-crypto/hamma/issues/11/comments",
+          "error": "HTTP Error 403: rate limit exceeded"
+        },
+        {
+          "url": "https://api.github.com/repos/CartShift/CartShift-Studio/issues/57/comments",
+          "error": "HTTP Error 403: rate limit exceeded"
+        },
+        {
+          "url": "https://api.github.com/repos/Luminous-Dynamics/mycelix-health/issues/273/comments",
+          "error": "HTTP Error 403: rate limit exceeded"
+        }
+      ]
     }
   ],
   "blocked_sources": [],
@@ -22,25 +75,25 @@
       "access_method": "Discourse public category/topic JSON",
       "url": "https://community.n8n.io/c/jobs/13.json?order=created",
       "records_inspected": 60,
-      "primary_pages_opened": 29,
+      "primary_pages_opened": 28,
       "verified_buyer_requests": 7,
       "explicit_commercial_signals": 7,
-      "collected": 29,
+      "collected": 28,
       "errors": [],
       "limitations": [
         "Two newest-topic pages, not complete market coverage; max 200 extra replies per topic. Incomplete competition remains UNKNOWN unless observed high.",
         "Last activity is not publication time. Only substantive buyer-authored follow-ups can renew a lead."
       ],
       "evidence_snapshots": [
-        "data/evidence/f5663f332d6bc9b1.json#sha256=a6885e984f5c9e3d60cb3d33c8e472c4a10444453630cd165daa598ec53ae4f2",
-        "data/evidence/d9f0be47fa047f2c.json#sha256=a483768245150a2f1f6618ae8b62846bec524c88accfa51efae046c98a60c4fd"
+        "data/evidence/f5663f332d6bc9b1.json#sha256=539ecde25cf44ec81c86d810b5ff667fd14eaab21d7072bcb9b5879772ea2743",
+        "data/evidence/d9f0be47fa047f2c.json#sha256=42cb11d07ce462d6aad1b3594129bca6587620103ea4c2fe4035c2cc1acc2542"
       ]
     },
     {
       "source_family": "public freelance/job listings",
       "access_method": "Remotive public JSON API; attributed source links",
       "url": "https://remotive.com/api/remote-jobs?search=automation&limit=20",
-      "records_inspected": 15,
+      "records_inspected": 16,
       "primary_pages_opened": 0,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
@@ -51,7 +104,7 @@
         "Legal warning - Hey, thanks for using Remotive's API, we appreciate it! Please note that API documentation and access is granted so that developers can share our jobs further. Please do not submit Remotive jobs to third Party websites, including but not limited to: Jooble, Neuvoo, Google Jobs, LinkedIn Jobs. Please link back to the URL found on Remotive AND mention Remotive as a source in order to Remotive to get traffic from your listing. If you don't do that, we'll terminate your API access, sorry! Jobs displayed are delayed by 24 hours, the goal being that jobs are attributed to Remotive on various platforms. Displaying our jobs in order to collect signups/email addresses to show a listing constitutes a breach of our terms of services. We offer a private, paid-for API, please email us at hello(at)remotive(dot)io for more information (starting budget is $5k/mo). Please find out terms of services on https://remotive.com/api-documentation. Please note that there is absolutely no need to request Remotive Job data too frequently. Typically, you only need to GET Remotive job data through this API a couple of times a day (we advise max. 4 times a day). Our data is not changing much faster than that anyway. Note that excessive requests will be blocked. Many thanks (Rodolphe & the Remotive team!)"
       ],
       "evidence_snapshots": [
-        "data/evidence/071898d5d7cef09e.json#sha256=5671c0924e69786f416e0158551eca3d930691f7d7d1bb8e2024f7e6a5163dc0"
+        "data/evidence/071898d5d7cef09e.json#sha256=b7ca5a0abb9c51e3d485208754000d8c01e9467a13a7ff0b5ab5d04369b0e09a"
       ]
     },
     {
@@ -65,15 +118,15 @@
       "collected": 0,
       "errors": [
         {
-          "url": "https://www.contractsfinder.service.gov.uk/notice/7f87b68a-57a0-46fa-bc1c-64e8e412379f",
+          "url": "https://www.contractsfinder.service.gov.uk/notice/066979f0-fee1-44e9-a5d5-78346e4edd3c",
           "error": "HTTPError: HTTP Error 403: Forbidden"
         },
         {
-          "url": "https://www.contractsfinder.service.gov.uk/notice/94f3087a-9077-493c-aac3-5b67f856fa17",
+          "url": "https://www.contractsfinder.service.gov.uk/notice/50592118-07a4-434c-8974-aa769613ad8d",
           "error": "HTTPError: HTTP Error 403: Forbidden"
         },
         {
-          "url": "https://www.contractsfinder.service.gov.uk/notice/6d6b9f4f-ccbd-41b3-a56f-ae7f12f4a656",
+          "url": "https://www.contractsfinder.service.gov.uk/notice/fc433cb3-2937-4529-bc28-99cda7e8017f",
           "error": "HTTPError: HTTP Error 403: Forbidden"
         }
       ],
@@ -81,7 +134,7 @@
         "Search returned procurement notices; up to three detail pages attempted. No buyer request promoted: eligibility, exact remote scope, submission deadline and award status require manual verification."
       ],
       "evidence_snapshots": [
-        "data/evidence/50e3af0542f19c3a.json#sha256=6626715b3716578952deba85295eb26b90a466676f2e78cf655a9e5e78c716c2"
+        "data/evidence/50e3af0542f19c3a.json#sha256=4c5516147a67ea1b4f4709fcf1d08f12826f43dec1f432dbba14efa2ff596e15"
       ]
     },
     {
@@ -134,11 +187,409 @@
         "No structured primary buyer requests extracted; static shell is not commercial proof. No login or anti-bot evasion."
       ],
       "evidence_snapshots": [
-        "data/evidence/b5d67d420401a4bb.json#sha256=c330658f4cd77d99a419787f385b0f1758d1746167054b8c9f45cefca7540185"
+        "data/evidence/b5d67d420401a4bb.json#sha256=4c8da1da4610b848b8f4878466fc5f8ae96636a644a0ed13f348e7ecb7dae969"
+      ]
+    },
+    {
+      "source_family": "freelance project marketplace (Freelancer)",
+      "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
+      "url": "https://www.freelancer.com/jobs/product-sourcing/",
+      "records_inspected": 0,
+      "primary_pages_opened": 0,
+      "verified_buyer_requests": 0,
+      "explicit_commercial_signals": 0,
+      "collected": 0,
+      "errors": [
+        {
+          "url": "https://www.freelancer.com/jobs/product-sourcing/",
+          "error": "RemoteDisconnected: Remote end closed connection without response"
+        }
+      ],
+      "limitations": [],
+      "evidence_snapshots": [],
+      "records": [],
+      "opportunity_ids": [],
+      "inspected_keys": []
+    },
+    {
+      "source_family": "freelance project marketplace (Freelancer)",
+      "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
+      "url": "https://www.freelancer.com/jobs/api-integration/",
+      "records_inspected": 50,
+      "primary_pages_opened": 3,
+      "verified_buyer_requests": 3,
+      "explicit_commercial_signals": 3,
+      "collected": 3,
+      "errors": [],
+      "limitations": [
+        "A different query/category on Freelancer does not count as another independent family."
+      ],
+      "evidence_snapshots": [
+        "data/evidence/eb34b643617bda88.json#sha256=2960181c90cae095dd20b9a51215febc028a085b3cabf8a955e1288ebe74e0b4",
+        "data/evidence/e5de20279ef56cbd.json#sha256=1e2f11c41dac90aa6a92fe59dfa7aed133cd990e299f0251ec31221e8be7b1f7",
+        "data/evidence/d971d1ad05852cea.json#sha256=786700f3c32d1823f104fed0307b6ce532c31363bca6ab9640ae49e9809e7a57",
+        "data/evidence/c6074dc7b6b98c99.json#sha256=94a6ca0219f0ba4b9d16674b221d44b244cff42d5246662c8937be019e93aa58"
+      ],
+      "records": [],
+      "opportunity_ids": [
+        "e5de20279ef56cbd",
+        "d971d1ad05852cea",
+        "c6074dc7b6b98c99"
+      ],
+      "inspected_keys": [
+        "/projects/facebook-ads/meta-lead-generation-automation",
+        "/projects/app-development/deploy-android-app-aws",
+        "/projects/analytics/python-dev-digital-marketing-for",
+        "/projects/technical-support/meta-business-manager-expert-needed",
+        "/projects/web-development/bold-community-video-submission-site",
+        "/projects/php/advanced-paytm-phonepe-integration-php",
+        "/projects/woocommerce/build-payhip-digital-store",
+        "/projects/web-development/universal-coupon-finder-plugin",
+        "/projects/flutter/powered-personal-learning-mobile-app",
+        "/projects/api-integration/binance-api-trading-performance",
+        "/projects/automation/junior-python-llm-bot-developer",
+        "/projects/android-app-development/android-login-shop-integration-40764926",
+        "/projects/api-integration/fix-kyc-option-app",
+        "/projects/api-integration/python-api-integration-bot",
+        "/projects/api-integration/shopify-overhaul-faire-integration",
+        "/projects/nodejs/powered-commercial-driver-recruitment",
+        "/projects/web-development/travel-esim-website-development",
+        "/projects/api/comprehensive-whatsapp-api-integration-40764291",
+        "/projects/n8n/powered-lead-management-system",
+        "/projects/automation/study-abroad-automation-workflow",
+        "/projects/shopify-development/shopify-app-integrations-customizations",
+        "/projects/ai-automation/claude-business-automation-setup",
+        "/projects/api-integration/hana-specialist-for-tms-api",
+        "/projects/full-stack-development/auto-trader-style-vehicle-marketplace",
+        "/projects/ai-app-development/enhance-launch-driven-educational-app",
+        "/projects/react-native/mobile-app-developer-jaipur",
+        "/projects/airtable/airtable-product-development-system",
+        "/projects/stripe/meta-api-stripe-escrow-integration",
+        "/projects/web-development/dristipat-online-eyewear-store-creation",
+        "/projects/android-app-development/android-login-shop-integration",
+        "/projects/software-development/custom-retail-platform-development",
+        "/projects/saas-development/saas-document-automation-platform",
+        "/projects/gps/cmsv-cmsv-integration-for-gps",
+        "/projects/api/dynamics-crm-integration-with-aws",
+        "/projects/react-native/react-native-developer-needed-fintech",
+        "/projects/api-developmet/api-verification-platform-creation",
+        "/projects/python/debug-enhance-python-trading-platform",
+        "/projects/zapier/asynchronous-consulting-business-model",
+        "/projects/web-development/occult-services-website-development",
+        "/projects/api-integration/intraday-nifty-banknifty-sensex-algo",
+        "/projects/odoo/meta-odoo-whatsapp-integration-setup",
+        "/projects/app-development/app-design",
+        "/projects/ai-automation/automation-40761449",
+        "/projects/odoo/meta-business-api",
+        "/projects/amazon/funky-shirt-ecommerce-site",
+        "/projects/risk-management/tradetron-algo-trading-developer-wanted",
+        "/projects/n8n/telegram-google-sheets-automation",
+        "/projects/zoho/full-zoho-one-implementation",
+        "/projects/flutter/endorse-account-creation-revamp",
+        "/projects/c-programming/unity-developer-freelancer"
+      ]
+    },
+    {
+      "source_family": "commerce operator community (Shopify)",
+      "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
+      "url": "https://community.shopify.com/latest.json",
+      "records_inspected": 30,
+      "primary_pages_opened": 4,
+      "verified_buyer_requests": 0,
+      "explicit_commercial_signals": 0,
+      "collected": 4,
+      "errors": [],
+      "limitations": [
+        "Latest activity is not original publication; support questions are PRODUCT_SIGNAL, not SALES. No more than four primary topics per run."
+      ],
+      "evidence_snapshots": [
+        "data/evidence/bda5dc3c1eb46ea5.json#sha256=ab91a25455c4ff39be24be664b59fda6460903903d504c94bed1b8a7ada18605",
+        "data/evidence/15a2f6ab1ff3500e.json#sha256=aa916e70ed5956fe759184490c1ce4b689697e12f6cde6dabe4895dfbbf9db36",
+        "data/evidence/8a58b5708173a224.json#sha256=6f59173702280df7d51d7ab382ed3372357ebbab01d2e9338db1a0fbc0d2ec5f",
+        "data/evidence/7a7c682427aea2ae.json#sha256=1f670e2d6c05b60ebaf233822fd1ec475ecd11480fc0b46d86c96d29ddbc1172",
+        "data/evidence/2540c8d4fe92de97.json#sha256=e768acee438e4e71717620b7e5fa569a9b7abfc1e1b81f4679598573860580cc"
+      ],
+      "records": [],
+      "opportunity_ids": [
+        "731cba908d39103a",
+        "01afc69a813d45bf",
+        "25ccebe70df21516",
+        "aec26506cc03028c"
+      ],
+      "inspected_keys": [
+        "355460",
+        "651104",
+        "579365",
+        "568436",
+        "303723",
+        "694301",
+        "690115",
+        "681975",
+        "697443",
+        "697417",
+        "697430",
+        "684967",
+        "697049",
+        "30008",
+        "697387",
+        "693011",
+        "608148",
+        "588982",
+        "567008",
+        "556956",
+        "554938",
+        "697406",
+        "275162",
+        "697422",
+        "684511",
+        "697050",
+        "696954",
+        "696957",
+        "683904",
+        "336928"
+      ]
+    },
+    {
+      "source_family": "founder community (Indie Hackers)",
+      "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
+      "url": "https://www.indiehackers.com/",
+      "records_inspected": 23,
+      "primary_pages_opened": 3,
+      "verified_buyer_requests": 0,
+      "explicit_commercial_signals": 0,
+      "collected": 0,
+      "errors": [],
+      "limitations": [
+        "Only server-rendered public pages. robots disallows /api/ and sign-in; neither used. Founder self-promotion is not a buyer."
+      ],
+      "evidence_snapshots": [
+        "data/evidence/6548833164b0e7c9.json#sha256=98f33213d341b0d70ce2b4046992185bb1fe82ca5e1a566d95c41ad0d4adfb55",
+        "data/evidence/b68f2fbaa7623432.json#sha256=656233a88985e7065d2331ab7f91fba8b32604b113e08e9f39f29f42aa8930c7",
+        "data/evidence/5cba4047a0e09c72.json#sha256=0484e3dfe3788f535794e25e79298affcee63586e0e27c507e881f1a213028e6",
+        "data/evidence/238aab6e08c10bd5.json#sha256=91eb128e12390eed73d7610e0acdf56d6cf3c663a4a1c18ae944ca347b732e29"
+      ],
+      "records": [
+        {
+          "url": "https://www.indiehackers.com/post/8-signups-3-people-scanned-0-came-back-how-did-you-get-your-first-users-to-stick-69fdb25dd9",
+          "author_body": "I'm building GazeRank, a website audit tool for SEO, performance, accessibility, and AI search readiness. I'm a solo founder. The app has been online since August, but I only started sharing it publicly on October 1. The numbers so far • 12 signups in the database (4 are my own test accounts) • 3 users ran a scan • 0 came back on a different day • ~30 tracked visits since October 1, probably an undercount Five of the eight non-test signups never ran a scan. Traffic is still tiny, so I can't blame everything on activation. But activation is something I can work on this week. What I've tried • X: A pinned post and a thread sharing data from 285 website scans. A handful of comments. • LinkedIn: 292 impressions, 7 clicks, 0 reactions, and 2 comments on the company page. • Directories: Submitted to 8, including SaaSHub, AlternativeTo, and BetaList. • Product Hunt: Preparing for launch. The directories haven't had enough time to tell me much yet. One interesting finding I scanned 285 websites, mostly SaaS, developer-tool, and marketing sites. • 54% had no content freshness signal. • 52% had low readability. • 51% were missing at least one security header. These findings suggest the issues are common. They don't tell me whether people care enough to scan their own sites, let alone pay to fix them. Full methodology and data: https://www.gazerank.com/reports/benchmark One lesson from building the product Scanning my own site once showed a Performance score of 100 next to a poor Largest Contentful Paint (LCP). I fixed it and wrote about the experience. It reminded me that an audit tool needs to earn trust through evidence, not just scores. What I'm trying this week Email the five people who signed up but never scanned and ask what stopped them. Post from my personal LinkedIn profile instead of only the company page. Reply to every relevant comment with something useful, offering a scan where it makes sense. I'll share what I learn, including if none of it works. Two questions for founders who've been here What got your early signups to actually use your product? Was it a change to onboarding, a personal email, a demo, or something else? What was the first channel that brought you a user who returned the following week? What did you actually do that week? Concrete examples would help more than general advice. And if you'd like a GazeRank scan, drop your URL. I'll run it and share up to three useful findings where possible.",
+          "metadata": [
+            {
+              "@context": "https://schema.org",
+              "@type": "BlogPosting",
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://www.indiehackers.com/post/8-signups-3-people-scanned-0-came-back-how-did-you-get-your-first-users-to-stick-69fdb25dd9"
+              },
+              "headline": "8 signups, 3 people scanned, 0 came back. How did you get your first users to stick?",
+              "datePublished": "2026-10-12T19:30:56.916Z",
+              "dateModified": "2026-10-12T19:30:56.916Z",
+              "author": [
+                {
+                  "@type": "Person",
+                  "name": "prasibv",
+                  "sameAs": [
+                    "https://www.indiehackers.com/prasibv"
+                  ]
+                }
+              ]
+            }
+          ],
+          "decision": "Discussion/seller/product research only; no paid buyer or complete competition/contact evidence"
+        },
+        {
+          "url": "https://www.indiehackers.com/post/i-spent-weeks-improving-my-startups-recommendations-now-i-need-to-find-out-if-they-re-actually-useful-f9479215f6",
+          "author_body": "I've been building Zaivy, a platform designed to help people figure out which business or side hustle fits their situation and what to do next. One of the biggest problems I ran into was that recommendations could sound personalized without actually explaining much. Someone might receive five opportunities with high fit percentages, but that doesn't necessarily mean they understand why those opportunities were recommended. So I've spent the past few weeks improving that. Zaivy can now collect activity-specific experience, compare it against reviewed opportunity requirements, and explain why someone's reported experience may be relevant to a particular opportunity. I've also worked on making the explanations more transparent about missing information and what the system can't confidently determine. The automated tests are passing, but I know that doesn't prove the recommendations are actually useful. That's what I want to figure out next. I'm preparing a small usability round with five people to answer three questions: Do people understand why an opportunity was recommended? Does the recommendation actually reflect their situation? Can they identify a realistic next step after using Zaivy? I'm also questioning whether displaying precise fit percentages is the right approach when the underlying model hasn't been validated against real-world outcomes. My question for other founders: When you're building a product that makes personalized recommendations, how do you determine whether users genuinely trust the reasoning instead of just trusting the numbers? Also, if anyone is interested in trying Zaivy and giving critical feedback, I'd appreciate it. I'm specifically looking for people who are unsure what kind of business or side hustle they want to pursue.",
+          "metadata": [
+            {
+              "@context": "https://schema.org",
+              "@type": "BlogPosting",
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://www.indiehackers.com/post/i-spent-weeks-improving-my-startups-recommendations-now-i-need-to-find-out-if-they-re-actually-useful-f9479215f6"
+              },
+              "headline": "I spent weeks improving my startup's recommendations. Now I need to find out if they're actually useful.",
+              "datePublished": "2026-10-12T03:12:04.039Z",
+              "dateModified": "2026-10-12T03:12:04.039Z",
+              "author": [
+                {
+                  "@type": "Person",
+                  "name": "Zach Bowie",
+                  "sameAs": [
+                    "https://www.indiehackers.com/zachbowie"
+                  ]
+                }
+              ]
+            }
+          ],
+          "decision": "Discussion/seller/product research only; no paid buyer or complete competition/contact evidence"
+        },
+        {
+          "url": "https://www.indiehackers.com/post/accountants-spend-weeks-chasing-client-documents-im-trying-to-make-that-boring-d2d95e2d15",
+          "author_body": "Hi IH, I'm Vadym and I'm building Upperdoc in public. The problem that got me started: small firms send a client a list of documents, half come back, and then someone spends the next two weeks writing polite follow-up emails. It's not hard work, it's just endless. So Upperdoc does one thing. You create a request with a checklist, send the client one branded link, and they upload straight from it. No account, no password. Reminders go out on their own at 3, 7 and 14 days until the checklist is complete, and a green/amber/red dashboard shows what's still missing per client. There's optional AI that checks uploads against what you asked for, but it only suggests. It never approves or rejects anything by itself. That felt important for people who are professionally responsible for the paperwork. It's early access: self-serve signup and a 14-day trial work, no paying customers yet. My question for accountants and bookkeepers here: how do you chase documents today? Email threads, a portal from your practice software, a spreadsheet? And what makes clients actually upload on time? https://upperdoc.io",
+          "metadata": [
+            {
+              "@context": "https://schema.org",
+              "@type": "BlogPosting",
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://www.indiehackers.com/post/accountants-spend-weeks-chasing-client-documents-im-trying-to-make-that-boring-d2d95e2d15"
+              },
+              "headline": "Accountants spend weeks chasing client documents. I'm trying to make that boring",
+              "datePublished": "2026-10-12T14:13:27.113Z",
+              "dateModified": "2026-10-12T14:13:27.113Z",
+              "author": [
+                {
+                  "@type": "Person",
+                  "name": "Vadym",
+                  "sameAs": [
+                    "https://www.indiehackers.com/vadymlazariev"
+                  ]
+                }
+              ]
+            }
+          ],
+          "decision": "Discussion/seller/product research only; no paid buyer or complete competition/contact evidence"
+        }
+      ],
+      "opportunity_ids": [],
+      "inspected_keys": [
+        "/post/how-do-you-grow-your-product-saas-without-paying-for-ads-372c3404ab",
+        "/post/8-signups-3-people-scanned-0-came-back-how-did-you-get-your-first-users-to-stick-69fdb25dd9",
+        "/post/i-emailed-135-dating-event-organizers-here-s-what-actually-happened-d4bc4cfe66",
+        "/post/i-spent-weeks-improving-my-startups-recommendations-now-i-need-to-find-out-if-they-re-actually-useful-f9479215f6",
+        "/post/accountants-spend-weeks-chasing-client-documents-im-trying-to-make-that-boring-d2d95e2d15",
+        "/post/plain-text-beat-ai-images-10x-what-a-week-of-posting-taught-me-about-followers-50d4937ede",
+        "/post/i-built-a-chrome-extension-that-shows-one-ai-picked-deal-a-day-heres-what-i-m-learning-so-far-25815ce4a0",
+        "/post/tech/how-rasty-turek-built-vaultaire-in-three-weeks-and-grew-it-to-40k-month-1BjFvs2akwfIVjMGYO54",
+        "/post/tech/turning-an-agency-into-a-12k-mo-product-portfolio-13QkMY561jAQxsiA0LSg",
+        "/post/tech/starting-from-scratch-and-hitting-9-5k-mrr-in-two-months-j5pMaED5FEbKw8qmeyj9",
+        "/post/tech/building-a-3m-yr-company-without-launching-publicly-tacryeGIH66SCtD2an4r",
+        "/post/tech/using-custom-infrastructure-as-a-competitive-advantage-and-hitting-31k-mrr-KgfHz813vyyWeszqJMIi",
+        "/post/tech/hitting-60k-mrr-by-building-an-sdk-instead-of-an-app-0B3bsTvvOG0wqf8cAx1v",
+        "/post/ai-answers-cited-us-67-770-times-we-traced-21-visitors-371c505585",
+        "/post/stripe-and-google-play-both-write-one-row-in-my-database-heres-what-i-learned-fd8e8e3dc2",
+        "/post/my-tiktok-hit-69k-views-and-got-me-20-followers-what-i-learned-88cadb0493",
+        "/post/i-changed-one-line-in-my-cold-outreach-reply-rates-went-from-3-to-14-57b5ac106c",
+        "/post/i-listed-my-saas-on-6-software-directories-5-spent-0-real-visits-so-far-c23cf71643",
+        "/post/what-i-learned-building-a-revenue-leakage-tool-keep-the-ai-out-of-the-matching-3252451330",
+        "/post/what-are-your-methods-for-staying-disciplined-when-building-your-own-projects-38b1d2e80a",
+        "/post/whats-in-your-first-screenshot-86620e6593",
+        "/post/my-app-trusted-the-phone-with-money-twice-0cd6dbbcf7",
+        "/post/i-put-a-real-week-1-page-in-the-gumroad-preview-heres-what-i-m-watching-before-i-rewrite-the-first-screen-again-79eef418b9"
+      ]
+    },
+    {
+      "source_family": "international physical-goods RFQ (TradeKey)",
+      "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
+      "url": "https://www1.tradekey.com/buyoffer_search/start_date/3/page_no/3.htm",
+      "records_inspected": 25,
+      "primary_pages_opened": 2,
+      "verified_buyer_requests": 2,
+      "explicit_commercial_signals": 2,
+      "collected": 0,
+      "errors": [],
+      "limitations": [
+        "Physical goods buyers do not automatically buy research. Contact requires platform sign-in; no access bypass. No bid-count visibility => UNKNOWN."
+      ],
+      "evidence_snapshots": [
+        "data/evidence/3914e4f508c84945.json#sha256=e358a492b84086ff9bcd0343c5968609fa76eb75185e5dd93d8dea3ed936dd24",
+        "data/evidence/b6fd1053fde4b890.json#sha256=58dd760d3440c38e8c523126d14b97da7041b6c11f8e587db939790476173ba8",
+        "data/evidence/0390931f4de189d1.json#sha256=c20aac359578d7729cce1bcb2ce4651cf946945d625e2638dc5036f6b5879480"
+      ],
+      "records": [
+        {
+          "url": "https://importer1.tradekey.com/buyoffer/Sea-Moss-By-Species-Form-And-Moisture-Level-3876037.html",
+          "primary_excerpt": "Last Updated: Posted on: 12 Oct 2026 Time Left: 28D 22H Payment Terms: T/T, L/C, D/A, D/P, Western Union, Money Gram Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details Good day, I am sourcing sea moss. Please identify the species and harvest area, and quote dried, raw or processed form separately. State moisture, sand/salt residue, colour, drying method and pack weight; include current-lot photos and storage guidance. Regards, Mathias Refine by popular tags sea moss dried seaweed Irish moss Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.11795 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French Guiana French Polynesia Gabon Gambia Georgia Germany Ghana Gibraltar Greece Greenland Grenada Guadeloupe Guam Guatemala Guernsey Guinea Guinea-Bissau Guyana Haiti Honduras Hong Kong Hungary Iceland India Indonesia Iraq Ireland Isle o",
+          "decision": "Physical goods RFQ; not a commissioned China research service; contact gated and competition unknown",
+          "buyer": true,
+          "published_at": "2026-10-12T00:00:00+00:00",
+          "date_precision": "day; original posted date, not crawl date"
+        },
+        {
+          "url": "https://importer1.tradekey.com/buyoffer/Palm-Oil-By-Grade-FFA-And-Bulk-Packing-3876035.html",
+          "primary_excerpt": "Last Updated: Posted on: 12 Oct 2026 Time Left: 28D 22H Payment Terms: T/T, L/C, D/A, D/P, Western Union, Money Gram Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details Hi, Please quote palm oil and specify crude or refined grade, and olein/stearin if fractionated. Include FFA, moisture/impurities, DOBI if crude, iodine value and cloud point. State drum or bulk packing, available tonnage and a recent analysis. Regards, Ahmed Alafif Refine by popular tags palm oil refined palm oil crude palm oil Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.17568 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French Guiana French Polynesia Gabon Gambia Georgia Germany Ghana Gibraltar Greece Greenland Grenada Guadeloupe Guam Guatemala Guernsey Guinea Guinea-Bissau Guyana Haiti Honduras Hong Kong Hungary Iceland India Indonesia Iraq Ireland Isl",
+          "decision": "Physical goods RFQ; not a commissioned China research service; contact gated and competition unknown",
+          "buyer": true,
+          "published_at": "2026-10-12T00:00:00+00:00",
+          "date_precision": "day; original posted date, not crawl date"
+        }
+      ],
+      "opportunity_ids": [],
+      "inspected_keys": [
+        "https://importer1.tradekey.com/buyoffer/Sea-Moss-By-Species-Form-And-Moisture-Level-3876037.html",
+        "https://importer1.tradekey.com/buyoffer/Palm-Oil-By-Grade-FFA-And-Bulk-Packing-3876035.html",
+        "https://importer1.tradekey.com/buyoffer/Sportswear-By-Garment-Type-Fabric-GSM-And-Size-Ratio-3876033.html",
+        "https://importer1.tradekey.com/buyoffer/Mottura-Security-Locks-By-Model-And-Door-Application-3876031.html",
+        "https://importer1.tradekey.com/buyoffer/Sunflower-Oil-By-Refining-Grade-And-Fatty-Acid-Profile-3876029.html",
+        "https://importer1.tradekey.com/buyoffer/LABSA-96-With-Active-Matter-And-Acid-Value-3876027.html",
+        "https://importer1.tradekey.com/buyoffer/Winson-Printing-Ink-By-Process-Substrate-And-Viscosity-3876025.html",
+        "https://importer1.tradekey.com/buyoffer/6N-Ultrafine-Copper-Powder-With-Particle-And-Assay-Data-3876023.html",
+        "https://importer1.tradekey.com/buyoffer/Women-s-Clothing-By-Cut-Fabric-Weight-And-Measurements-3876021.html",
+        "https://importer1.tradekey.com/buyoffer/Calcium-Carbonate-By-Purity-Whiteness-And-Particle-Size-3876019.html",
+        "https://importer1.tradekey.com/buyoffer/Fish-Oil-By-Species-EPA-DHA-And-Oxidation-Values-3876017.html",
+        "https://importer1.tradekey.com/buyoffer/Cutlery-Sets-By-Steel-Grade-Piece-Count-And-Finish-3876015.html",
+        "https://importer1.tradekey.com/buyoffer/Herbal-Incense-By-Ingredients-Stick-Size-And-Burn-Time-3876013.html",
+        "https://importer1.tradekey.com/buyoffer/Goat-Meat-By-Cut-Chilled-Or-Frozen-Condition-3876011.html",
+        "https://importer1.tradekey.com/buyoffer/Portable-Power-Station-By-Battery-Capacity-And-Output-3876009.html",
+        "https://importer1.tradekey.com/buyoffer/Rice-By-Variety-Milling-Grade-And-Broken-Percentage-3876001.html",
+        "https://importer1.tradekey.com/buyoffer/Marvis-Toothpaste-By-Flavour-And-Retail-Pack-Size-3875999.html",
+        "https://importer1.tradekey.com/buyoffer/Women-s-Apparel-By-Style-Fabric-And-Size-Chart-3875997.html",
+        "https://importer1.tradekey.com/buyoffer/Knitted-Garments-By-Style-Fibre-Blend-And-GSM-3875995.html",
+        "https://importer1.tradekey.com/buyoffer/Used-Shoes-Sorted-By-Type-Grade-And-Bale-Weight-3875993.html",
+        "https://importer1.tradekey.com/buyoffer/Cottonseed-Cake-For-Animal-Feed-By-Protein-And-Fibre-3875991.html",
+        "https://importer1.tradekey.com/buyoffer/TPD-6-Single-Punch-Tablet-Press-With-Tooling-Details-3875989.html",
+        "https://importer1.tradekey.com/buyoffer/Fresh-Onions-By-Variety-Bulb-Size-And-Curing-3875987.html",
+        "https://importer1.tradekey.com/buyoffer/Palm-Kernel-Expeller-For-Feed-By-Protein-And-Moisture-3875985.html",
+        "https://importer1.tradekey.com/buyoffer/Oil-Filters-By-Thread-Dimensions-And-Vehicle-Fitment-3875983.html"
+      ]
+    },
+    {
+      "source_family": "freelance project marketplace (Freelancer)",
+      "url": "https://www.freelancer.com/jobs/product-sourcing/",
+      "access_method": "Earlier same-round successful public HTTP listing/primary fetches; replay raw cache, no retry/evasion after refresh failure",
+      "records_inspected": 16,
+      "inspected_keys": [
+        "/projects/3d-visualization/modern-living-bedroom-interior-design",
+        "/projects/sourcing/canton-fair-industrial-electronics",
+        "/projects/sourcing/source-cellulose-acetate-straw",
+        "/projects/sourcing/brazil-agate-gemstone-sourcing-agent",
+        "/projects/sourcing/cosmetics-sourcing-agent-asia-required",
+        "/projects/graphic-design/retailer-focused-sales-pitch-deck",
+        "/projects/amazon/source-amazon-wholesale-products",
+        "/projects/virtual-assistant/virtual-assistant-needed-for-christmas",
+        "/projects/sourcing/china-industrial-electronics-sourcing-40759402",
+        "/projects/dropshipping/gothic-alternative-fashion-dropshipping",
+        "/projects/dropshipping/uae-ksa-region-shopify-dropshipping",
+        "/projects/logistics-shipping/local-help-slovenia-based-sim",
+        "/projects/sourcing/china-sourcing-raquet-game-toys",
+        "/projects/dropshipping/west-bengal-dropshipping-mentor-needed",
+        "/projects/fashion-consulting/dubai-party-dress-wholesaler-guide",
+        "/projects/excel/project-40762768"
+      ],
+      "primary_pages_opened": 4,
+      "verified_buyer_requests": 4,
+      "explicit_commercial_signals": 4,
+      "collected": 4,
+      "errors": [],
+      "limitations": [
+        "Later pipeline listing connection failed. These raw original pages were fetched successfully earlier in the same round; observed_at preserves actual cache file mtime. Not a fixture or a new network refresh."
+      ],
+      "evidence_snapshots": [
+        "data/evidence/fourth-audit/abf73d1fa5782498.json#sha256=cb930903b627d6a4a61e295db5085c105d391bacc1d6b4a0c9c86fe4586263cc",
+        "data/evidence/3adde8bb3e84f849.json#sha256=13106eb42f3b2e39c442a6010e879281da8f6b54742e48e623f2760146973d31",
+        "data/evidence/1dc2b31945045284.json#sha256=66f0ec2701c7552e3d230c16d9912e370f593c284b1e8df973c5a5549158ae94",
+        "data/evidence/2ed47d8e9f761456.json#sha256=6c57365d479ba68dcc7d630dcdb07e0c01e1f6b631487cc4dc428306f9d6a9ce",
+        "data/evidence/0faf6e230b4ab006.json#sha256=53fa7c26f6e5358d24548d5d82a51f2a3a95a9275b85960692cc15f9e138a004"
+      ],
+      "opportunity_ids": [
+        "3adde8bb3e84f849",
+        "1dc2b31945045284",
+        "2ed47d8e9f761456",
+        "0faf6e230b4ab006"
       ]
     }
   ],
-  "unique_refreshed": 79,
-  "buyer_refresh_at": "2026-10-13T09:53:56.857422+00:00",
-  "buyer_refresh_reason": "Final source-only seller/echo rejection and scoped delivery mapping applied on real API refresh. Remotive retained earlier run to respect max four calls/day."
+  "unique_refreshed": 88,
+  "same_round_cache_supplement_at": "2026-10-14T01:03:23.971877+00:00",
+  "same_round_cache_supplement_count": 4
 }

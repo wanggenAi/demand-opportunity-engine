@@ -1,0 +1,46 @@
+name: Daily money action discovery
+on:
+  schedule:
+    - cron: '15 2 * * *'
+  workflow_dispatch:
+  push:
+    paths: ['src/**', 'tests/**', '.github/workflows/**']
+permissions:
+  contents: write
+concurrency:
+  group: daily-discovery-main
+  cancel-in-progress: false
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Tests
+        run: PYTHONPATH=src python -m unittest discover -s tests -q
+      - name: Bounded public discovery and reports
+        if: github.event_name != 'push'
+        run: PYTHONPATH=src python -m demand_opportunity_engine.cli discover
+      - name: Save audit artifact
+        if: always() && github.event_name != 'push'
+        uses: actions/upload-artifact@v4
+        with:
+          name: money-action-audit
+          path: |
+            reports/
+            data/discovery_run.json
+      - name: Publish refreshed evidence and board
+        if: github.event_name != 'push'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/live_opportunities.json data/outcomes.jsonl data/discovery_run.json data/evidence reports
+          if ! git diff --cached --quiet; then
+            git commit -m 'Refresh public discovery and daily money board'
+            git push origin HEAD:main
+          fi

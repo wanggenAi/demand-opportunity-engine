@@ -61,5 +61,56 @@
     "INFO_EDGE": [
       "official changes with independent corroboration in data/info_edges.json"
     ]
-  }
+  },
+  "market_sources": [
+    {
+      "family": "freelance project marketplace (Freelancer)",
+      "kind": "freelancer",
+      "url": "https://www.freelancer.com/jobs/product-sourcing/",
+      "target_pattern": "china|canton|cellulose",
+      "max_pages": 4,
+      "limitations": [
+        "Public bidCount includes competitors; only first 20 proposals may be visible. Employer identity often unresolved. Task budget is not agreement to our pilot."
+      ]
+    },
+    {
+      "family": "freelance project marketplace (Freelancer)",
+      "kind": "freelancer",
+      "url": "https://www.freelancer.com/jobs/api-integration/",
+      "target_pattern": "python-api|junior-python|meta-lead",
+      "max_pages": 3,
+      "limitations": [
+        "A different query/category on Freelancer does not count as another independent family."
+      ]
+    },
+    {
+      "family": "commerce operator community (Shopify)",
+      "kind": "shopify",
+      "url": "https://community.shopify.com/latest.json",
+      "target_pattern": "Flow|supplier|wholesale|inventory|CSV|spreadsheet",
+      "max_pages": 4,
+      "limitations": [
+        "Latest activity is not original publication; support questions are PRODUCT_SIGNAL, not SALES. No more than four primary topics per run."
+      ]
+    },
+    {
+      "family": "founder community (Indie Hackers)",
+      "kind": "founder",
+      "url": "https://www.indiehackers.com/",
+      "target_pattern": "need|supplier|looking|automat|chasing|first-users",
+      "max_pages": 3,
+      "limitations": [
+        "Only server-rendered public pages. robots disallows /api/ and sign-in; neither used. Founder self-promotion is not a buyer."
+      ]
+    },
+    {
+      "family": "international physical-goods RFQ (TradeKey)",
+      "kind": "rfq",
+      "url": "https://www1.tradekey.com/buyoffer_search/start_date/3/page_no/3.htm",
+      "max_pages": 2,
+      "limitations": [
+        "Physical goods buyers do not automatically buy research. Contact requires platform sign-in; no access bypass. No bid-count visibility => UNKNOWN."
+      ]
+    }
+  ]
 }

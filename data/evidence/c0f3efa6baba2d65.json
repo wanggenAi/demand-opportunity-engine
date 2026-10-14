@@ -1,0 +1,324 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50073471",
+  "collected_at": "2026-10-14T00:55:53.262448+00:00",
+  "source": {
+    "author": "ericmags",
+    "children": [
+      {
+        "author": "runamuck",
+        "children": [
+          {
+            "author": "ericmags",
+            "children": [],
+            "created_at": "2026-10-13T16:11:17.000Z",
+            "created_at_i": 1791907877,
+            "id": 50074033,
+            "options": [],
+            "parent_id": 50073905,
+            "points": null,
+            "story_id": 50073471,
+            "text": "Correct. We have contractual agreements to ensure no data that passes through our platform will be used for model training purposes. In addition, we have in our contracts that we (Consus) will also not use any data for training purposes. We couldn&#x27;t if we wanted to since we do not store any prompt data.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-13T16:04:48.000Z",
+        "created_at_i": 1791907488,
+        "id": 50073905,
+        "options": [],
+        "parent_id": 50073471,
+        "points": null,
+        "story_id": 50073471,
+        "text": "I love this.  Will this guarantee that proprietary&#x2F; sensitive&#x2F; CUI data won&#x27;t leak to model training or other parties?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "projectescape",
+        "children": [
+          {
+            "author": "ericmags",
+            "children": [
+              {
+                "author": "projectescape",
+                "children": [
+                  {
+                    "author": "ericmags",
+                    "children": [],
+                    "created_at": "2026-10-13T17:34:15.000Z",
+                    "created_at_i": 1791912855,
+                    "id": 50075520,
+                    "options": [],
+                    "parent_id": 50075188,
+                    "points": null,
+                    "story_id": 50073471,
+                    "text": "Great call. We already block certain tool schemas and flag URLs in tool-call arguments, and since we enforce org allowlists for models on every request, extending that to tools&#x2F;MCP is a natural next step.",
+                    "title": null,
+                    "type": "comment",
+                    "url": null
+                  }
+                ],
+                "created_at": "2026-10-13T17:12:50.000Z",
+                "created_at_i": 1791911570,
+                "id": 50075188,
+                "options": [],
+                "parent_id": 50075039,
+                "points": null,
+                "story_id": 50073471,
+                "text": "Food for thought, tool and MCP calls run locally, but every request carries the tool list and every response carries the model&#x27;s tool calls, both of which pass through you. You could strip non-approved tools from the request and block calls to them in the response, based on an org allowlist. That gives you org-approved MCP&#x2F;tool calls without touching the dev&#x27;s machine.",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-10-13T17:04:51.000Z",
+            "created_at_i": 1791911091,
+            "id": 50075039,
+            "options": [],
+            "parent_id": 50074972,
+            "points": null,
+            "story_id": 50073471,
+            "text": "We do give our customers guidance to make sure they are thinking about this properly. This typically happens during on-boarding.<p>We also built out pre-defined controls for common tools so they can click a button and not think about it.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          },
+          {
+            "author": "liquado",
+            "children": [
+              {
+                "author": "skinfaxi",
+                "children": [],
+                "created_at": "2026-10-13T19:17:44.000Z",
+                "created_at_i": 1791919064,
+                "id": 50077104,
+                "options": [],
+                "parent_id": 50076491,
+                "points": null,
+                "story_id": 50073471,
+                "text": "Seems like a pretty crowded space.",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-10-13T18:37:07.000Z",
+            "created_at_i": 1791916627,
+            "id": 50076491,
+            "options": [],
+            "parent_id": 50074972,
+            "points": null,
+            "story_id": 50073471,
+            "text": "We had a lot of problems letting finding a balance giving technical coworkers acces to live data and AI tools. And there are multiple companies  in this space that solve things in multiple ways, we happen to use <a href=\"https:&#x2F;&#x2F;gluondb.com\" rel=\"nofollow\">https:&#x2F;&#x2F;gluondb.com</a> which is what you describe plus BI.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-13T17:00:56.000Z",
+        "created_at_i": 1791910856,
+        "id": 50074972,
+        "options": [],
+        "parent_id": 50073471,
+        "points": null,
+        "story_id": 50073471,
+        "text": "This is great, question though, since you support coding agents like Claude Code and Codex, they run MCP servers, plugins, web search&#x2F;fetch and their own telemetry from the dev&#x27;s machine. Do you give customers guidance or controls for that side, or is it out of scope for the gateway?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "skinfaxi",
+        "children": [
+          {
+            "author": "ericmags",
+            "children": [],
+            "created_at": "2026-10-13T17:32:08.000Z",
+            "created_at_i": 1791912728,
+            "id": 50075486,
+            "options": [],
+            "parent_id": 50075148,
+            "points": null,
+            "story_id": 50073471,
+            "text": "The infra providers call this &quot;abuse monitoring&quot; or &quot;abuse detection&quot; and we&#x27;ve worked with them to turn it off. We don&#x27;t serve models like Fable that require it.  We have one case remaining for OpenAI&#x27;s GPT-5.x models in AWS. AWS&#x27;s automated classifier can retain a flagged request for up to 30 days. Per AWS, that review is automated with no human access, the data stays in AWS GovCloud, and it&#x27;s never shared with OpenAI. We are actively working to turn that off as well. Everything else is covered.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-13T17:10:38.000Z",
+        "created_at_i": 1791911438,
+        "id": 50075148,
+        "options": [],
+        "parent_id": 50073471,
+        "points": null,
+        "story_id": 50073471,
+        "text": "How does ZDR work with requests that trip security measures in the model provider? Do the providers retain those requests for analysis or is that too guaranteed?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "jayonsoftware",
+        "children": [
+          {
+            "author": "ericmags",
+            "children": [],
+            "created_at": "2026-10-13T17:41:31.000Z",
+            "created_at_i": 1791913291,
+            "id": 50075638,
+            "options": [],
+            "parent_id": 50075201,
+            "points": null,
+            "story_id": 50073471,
+            "text": "We&#x27;ve been focused on defense, so we haven&#x27;t set up HIPAA (BAAs) yet. The underlying controls are essentially FedRAMP High, so it wouldn&#x27;t be a big lift on our side. If you have a specific use case in mind, drop me a note at founders@consusindustries.co and we can talk more about it.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-13T17:13:35.000Z",
+        "created_at_i": 1791911615,
+        "id": 50075201,
+        "options": [],
+        "parent_id": 50073471,
+        "points": null,
+        "story_id": 50073471,
+        "text": "Does this work with HIPAA data ?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "popkoren",
+        "children": [],
+        "created_at": "2026-10-13T18:46:01.000Z",
+        "created_at_i": 1791917161,
+        "id": 50076632,
+        "options": [],
+        "parent_id": 50073471,
+        "points": null,
+        "story_id": 50073471,
+        "text": "Compliance at the gateway is necessary, but the apps those teams deploy still need the same skepticism on the other side of the fence. Auth bypasses, open storage and loose table rules do not show up in a FedRAMP checklist the way a missing control on the model path does. What has helped on small stacks is hitting the live URL as an anonymous visitor and as a second user. I built <a href=\"https:&#x2F;&#x2F;rowly.me\" rel=\"nofollow\">https:&#x2F;&#x2F;rowly.me</a> to run that pass on AI-built apps automatically (sign-in, APIs, storage, database rules).",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "armegaddon",
+        "children": [],
+        "created_at": "2026-10-13T21:14:05.000Z",
+        "created_at_i": 1791926045,
+        "id": 50078867,
+        "options": [],
+        "parent_id": 50073471,
+        "points": null,
+        "story_id": 50073471,
+        "text": "Interesting that the pitch is density: $0.37&#x2F;month per sandbox implies a lot of them packed onto shared hardware. My sandbox experience is the malware kind: at Fortinet I ran NSS Labs testing on a sandbox engine, and a key question was whether results held as throughput tiers went up, with sample loss tracked per tier. Same question seems worth asking here: do isolation and agent performance hold at peak packing, not just average utilization?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-10-13T15:41:00.000Z",
+    "created_at_i": 1791906060,
+    "id": 50073471,
+    "options": [],
+    "parent_id": null,
+    "points": 33,
+    "story_id": 50073471,
+    "text": "Hey Hacker News! I&#x27;m Eric, the founder of Consus. We route all AI requests to ITAR restricted and controlled unclassified information (CUI) compliant infrastructure.\nConsus itself satisfies ITAR restrictions, and we recently completed our FedRAMP equivalency audit against the 410 FedRAMP High controls. FedRAMP High is the U.S. government’s strictest security baseline for cloud services handling sensitive unclassified data. A breach of this data could cause severe or catastrophic harm. Achieving FedRAMP equivalency, or authorization, is required before processing CUI information.<p>Demo: <a href=\"https:&#x2F;&#x2F;youtu.be&#x2F;6MYxJe6P4oY\" rel=\"nofollow\">https:&#x2F;&#x2F;youtu.be&#x2F;6MYxJe6P4oY</a><p>Aerospace and defense is experiencing rapid growth. Unfortunately, most companies are struggling to use AI because of necessary data protections &amp; compliance risk. These companies can move even faster if they could use the AI tools that most other industries take for granted.<p>I spent most of my career prior to Consus in aerospace &amp; defense. I launched national security payloads at SpaceX, and was an early employee at Castelion. I’ve watched first hand how compliance red-tape makes it difficult for companies to adopt new technologies and trust vendors that touch their sensitive data. For example, I worked with a satellite manufacturer that doesn’t allow any AI tools, even for non-sensitive work.<p>Even as AI has become extremely useful over the past 9-12 months, I was surprised by how many aerospace &amp; defense companies refused to touch it. They could see how it could be helpful, but they were scared about model providers training on their data, violating an ITAR rule, or risk losing new business because of a failed cyber assessment. These are all rational fears.<p>There were a lot of ways to solve some&#x2F;all of these problems, but we focused on building a compliant AI inference layer that can &quot;plug&quot; into any AI tool or workflow. Just as OpenRouter integrates with most tools, Consus can connect to tools like ChatGPT or Claude, open source tools including the Pi coding agent or Open WebUI, or integrate with applications built and maintained by individual organizations.<p>Almost no aerospace &amp; defense company lives in all three major GovClouds (AWS, Azure, Google). When I mapped where frontier models can legally run for ITAR and CUI work, each provider had some subset of models, and each model achieved varying levels of compliance. Our customers don’t think in terms of cloud providers. They think about the data controls they require, and the model they want to use.\nThat is why we built the compliance suffix. Under the hood, every request hits a single OpenAI-compatible endpoint, where keys are verified and policy is enforced before anything touches inference. Every model name must carry a compliance suffix, such as gpt-5.6-sol:fedramp-high or claude-opus-5-5:itar, and any bare model name is rejected. We never proxy to the standard commercial endpoints.<p>Our customers are also able to build an allowlist of models, and assign spend &amp; model restrictions to individual users in the organization. This is all handled through our Consus Portal where teams can manage spend, keys, and policies.<p>A typical question we hear is why not just use Bedrock in AWS GovCloud or Azure Government directly. For small teams, just getting access to these platforms is difficult. For larger organizations, GovCloud lets you inherit some but not all of the controls needed to handle sensitive data. Also, models are split across providers: GPT-5.6 Sol is only available in Azure Government, while Claude Opus 5.5 is served through Bedrock in AWS GovCloud. If you want both, you are standing up and securing two separate government cloud environments. We run all of them behind one endpoint so customers don’t have to pick a cloud, and we handle the compliance work for each one.<p>Given the data sensitivities, Consus does not store any customer data at rest. All prompts and completions stay in memory only for the length of the request and are never logged or written to disk. Zero data retention is strictly enforced both on ourselves and the infrastructure&#x2F;model providers. We do keep metadata on each request and response for billing and audit purposes.<p>Consus is not self-serve by design. ITAR requires us to know exactly who is on the other end of every key, so we verify every organization and put a contract in place before issuing API keys. We charge our customers a compliance fee starting at $40&#x2F;mo&#x2F;seat plus AI tokens at cost.<p>We are actively serving customers, and would love any feedback from security experts, or developers&#x2F;engineers working in highly regulated industries!<p>References:\nAPI Documentation: <a href=\"https:&#x2F;&#x2F;gateway.consus.io&#x2F;overview\">https:&#x2F;&#x2F;gateway.consus.io&#x2F;overview</a>\nSecurity &amp; Architecture: <a href=\"https:&#x2F;&#x2F;gateway.consus.io&#x2F;security\">https:&#x2F;&#x2F;gateway.consus.io&#x2F;security</a>\nCompliance Details: <a href=\"https:&#x2F;&#x2F;consus.io&#x2F;compliance\">https:&#x2F;&#x2F;consus.io&#x2F;compliance</a>",
+    "title": "Launch HN: Consus (YC F24) – LLM gateway for companies handling sensitive data",
+    "type": "story",
+    "url": null
+  },
+  "comments": [
+    {
+      "author": "runamuck",
+      "text": "I love this.  Will this guarantee that proprietary/ sensitive/ CUI data won't leak to model training or other parties?",
+      "at": "2026-10-13T16:04:48.000Z",
+      "url": "https://news.ycombinator.com/item?id=50073905"
+    },
+    {
+      "author": "ericmags",
+      "text": "Correct. We have contractual agreements to ensure no data that passes through our platform will be used for model training purposes. In addition, we have in our contracts that we (Consus) will also not use any data for training purposes. We couldn't if we wanted to since we do not store any prompt data.",
+      "at": "2026-10-13T16:11:17.000Z",
+      "url": "https://news.ycombinator.com/item?id=50074033"
+    },
+    {
+      "author": "projectescape",
+      "text": "This is great, question though, since you support coding agents like Claude Code and Codex, they run MCP servers, plugins, web search/fetch and their own telemetry from the dev's machine. Do you give customers guidance or controls for that side, or is it out of scope for the gateway?",
+      "at": "2026-10-13T17:00:56.000Z",
+      "url": "https://news.ycombinator.com/item?id=50074972"
+    },
+    {
+      "author": "ericmags",
+      "text": "We do give our customers guidance to make sure they are thinking about this properly. This typically happens during on-boarding. We also built out pre-defined controls for common tools so they can click a button and not think about it.",
+      "at": "2026-10-13T17:04:51.000Z",
+      "url": "https://news.ycombinator.com/item?id=50075039"
+    },
+    {
+      "author": "projectescape",
+      "text": "Food for thought, tool and MCP calls run locally, but every request carries the tool list and every response carries the model's tool calls, both of which pass through you. You could strip non-approved tools from the request and block calls to them in the response, based on an org allowlist. That gives you org-approved MCP/tool calls without touching the dev's machine.",
+      "at": "2026-10-13T17:12:50.000Z",
+      "url": "https://news.ycombinator.com/item?id=50075188"
+    },
+    {
+      "author": "ericmags",
+      "text": "Great call. We already block certain tool schemas and flag URLs in tool-call arguments, and since we enforce org allowlists for models on every request, extending that to tools/MCP is a natural next step.",
+      "at": "2026-10-13T17:34:15.000Z",
+      "url": "https://news.ycombinator.com/item?id=50075520"
+    },
+    {
+      "author": "liquado",
+      "text": "We had a lot of problems letting finding a balance giving technical coworkers acces to live data and AI tools. And there are multiple companies  in this space that solve things in multiple ways, we happen to use  https://gluondb.com  which is what you describe plus BI.",
+      "at": "2026-10-13T18:37:07.000Z",
+      "url": "https://news.ycombinator.com/item?id=50076491"
+    },
+    {
+      "author": "skinfaxi",
+      "text": "Seems like a pretty crowded space.",
+      "at": "2026-10-13T19:17:44.000Z",
+      "url": "https://news.ycombinator.com/item?id=50077104"
+    },
+    {
+      "author": "skinfaxi",
+      "text": "How does ZDR work with requests that trip security measures in the model provider? Do the providers retain those requests for analysis or is that too guaranteed?",
+      "at": "2026-10-13T17:10:38.000Z",
+      "url": "https://news.ycombinator.com/item?id=50075148"
+    },
+    {
+      "author": "ericmags",
+      "text": "The infra providers call this \"abuse monitoring\" or \"abuse detection\" and we've worked with them to turn it off. We don't serve models like Fable that require it.  We have one case remaining for OpenAI's GPT-5.x models in AWS. AWS's automated classifier can retain a flagged request for up to 30 days. Per AWS, that review is automated with no human access, the data stays in AWS GovCloud, and it's never shared with OpenAI. We are actively working to turn that off as well. Everything else is covered.",
+      "at": "2026-10-13T17:32:08.000Z",
+      "url": "https://news.ycombinator.com/item?id=50075486"
+    },
+    {
+      "author": "jayonsoftware",
+      "text": "Does this work with HIPAA data ?",
+      "at": "2026-10-13T17:13:35.000Z",
+      "url": "https://news.ycombinator.com/item?id=50075201"
+    },
+    {
+      "author": "ericmags",
+      "text": "We've been focused on defense, so we haven't set up HIPAA (BAAs) yet. The underlying controls are essentially FedRAMP High, so it wouldn't be a big lift on our side. If you have a specific use case in mind, drop me a note at founders@consusindustries.co and we can talk more about it.",
+      "at": "2026-10-13T17:41:31.000Z",
+      "url": "https://news.ycombinator.com/item?id=50075638"
+    },
+    {
+      "author": "popkoren",
+      "text": "Compliance at the gateway is necessary, but the apps those teams deploy still need the same skepticism on the other side of the fence. Auth bypasses, open storage and loose table rules do not show up in a FedRAMP checklist the way a missing control on the model path does. What has helped on small stacks is hitting the live URL as an anonymous visitor and as a second user. I built  https://rowly.me  to run that pass on AI-built apps automatically (sign-in, APIs, storage, database rules).",
+      "at": "2026-10-13T18:46:01.000Z",
+      "url": "https://news.ycombinator.com/item?id=50076632"
+    },
+    {
+      "author": "armegaddon",
+      "text": "Interesting that the pitch is density: $0.37/month per sandbox implies a lot of them packed onto shared hardware. My sandbox experience is the malware kind: at Fortinet I ran NSS Labs testing on a sandbox engine, and a key question was whether results held as throughput tiers went up, with sample loss tracked per tier. Same question seems worth asking here: do isolation and agent performance hold at peak packing, not just average utilization?",
+      "at": "2026-10-13T21:14:05.000Z",
+      "url": "https://news.ycombinator.com/item?id=50078867"
+    }
+  ],
+  "comments_complete": true
+}

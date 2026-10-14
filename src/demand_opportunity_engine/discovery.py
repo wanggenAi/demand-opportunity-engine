@@ -194,6 +194,10 @@ def discover(config_path, store_path, outcomes_path, now):
     from .buyer_discovery import buyer_sources
     buyer_rows, attempts = buyer_sources(config, now, "data/evidence")
     results.extend(buyer_rows)
+    from .markets import market_sources
+    market_rows, market_attempts = market_sources(config, now, "data/evidence")
+    results.extend(market_rows)
+    attempts.extend(market_attempts)
     summary["buyer_sources"] = attempts
     # Retained for audit, but unrefreshed records cannot get freshness from this run.
     result = upsert(store_path, results)

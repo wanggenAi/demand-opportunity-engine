@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50073004",
+  "collected_at": "2026-10-14T00:55:53.262448+00:00",
+  "source": {
+    "author": "akdapunk",
+    "children": [],
+    "created_at": "2026-10-13T15:13:19.000Z",
+    "created_at_i": 1791904399,
+    "id": 50073004,
+    "options": [],
+    "parent_id": null,
+    "points": 2,
+    "story_id": 50073004,
+    "text": "Hi HN, I’m a security engineer focused on Android anti-malware and reverse engineering.\nWhen reversing hardened Android apps or wild malware, one of the most tedious parts is crossing the Java-to-Native (JNI) boundary when `.so` binaries are stripped, methods are bound dynamically via `RegisterNatives` inside an OLLVM-flattened `JNI_OnLoad`, and `JNIEnv<i>` vtable calls decompile as raw pointer offsets like `(*(code *)(</i>param_1 + 0x548))`.\nI built JNISleuth-MCP to automate that workflow:\n1. It parses multi-DEX APKs for `native` declarations and sweeps `.rodata` &#x2F; `.data.rel.ro` (or section-header-stripped `PT_LOAD` segments) for `(char* name, char* sig, void* fnPtr)` triplets.\n2. It statically resolves ARM64 OLLVM `CSEL` + `BR X8` indirect branches and `.rodata` jump tables in `JNI_OnLoad` (and can patch them in-place with direct `B.cond` &#x2F; `B` instructions).\n3. For runtime-packed samples that detect Frida, it includes a C++&#x2F;NDK Dobby collector that hooks `RegisterNatives` mid-function.\n4. It syncs the full 233-slot `JNIEnv*` vtable types and recovered C signatures into headless Ghidra and IDA Pro 9.0 (`idalib`&#x2F;`idat64`), and exposes a model-agnostic MCP server + OpenAI&#x2F;Gemini&#x2F;Ollama tool schemas.\nThe repo includes a synthetic multi-DEX + stripped ARM64 `.so` crackme so you can test the entire pipeline in 30 seconds without needing a live malware sample. Would love feedback from anyone doing mobile RE or binary analysis!",
+    "title": "JNISleuth-MCP – Recover Stripped JNI Bindings and Ollvm Branches for Ghidra/Ida",
+    "type": "story",
+    "url": null
+  },
+  "comments": [],
+  "comments_complete": true
+}

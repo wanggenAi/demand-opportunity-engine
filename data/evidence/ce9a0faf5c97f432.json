@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/40851",
-  "collected_at": "2026-10-13T09:43:09.605326+00:00",
+  "collected_at": "2026-10-14T00:55:53.262448+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/40851",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -89,19 +89,6 @@
     "pinned_comment": null,
     "score": 1.0
   },
-  "comments": [
-    {
-      "author": "n8n-assistant[bot]",
-      "text": "Hey @Wusulijiang13,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9575\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9575](https://linear.app/n8n/issue/GHC-9575)",
-      "at": "2026-10-12T03:25:45Z",
-      "url": "https://github.com/n8n-io/n8n/issues/40851#issuecomment-6117185136"
-    },
-    {
-      "author": "ardaerturk",
-      "text": "Your replacement hypothesis matches the 2.27.4 source at commit `a4d0dfc`. In [RoutingNode's generic pagination loop](https://github.com/n8n-io/n8n/blob/a4d0dfce294064026be1a6a246e6da348fea1485/packages/core/src/execution-engine/routing-node.ts#L619-L650), the pagination request is evaluated inside the `do` block, before the first HTTP request. The merge is:\n\n```ts\n{ ...requestData, options: { ...requestData.options, ...paginateRequestData } }\n```\n\nThat replaces `options.qs` as a whole. The [SharePoint override](https://github.com/n8n-io/n8n/blob/a4d0dfce294064026be1a6a246e6da348fea1485/packages/nodes-base/nodes/Microsoft/SharePoint/descriptions/item/getAll.operation.ts#L48-L60) supplies only `$select`, so the original `$filter` and `$expand` disappear on the first paginated request. The path in this tag has no `v1/` segment.\n\nThere is a useful regression starting point already in the repository: [getAll.workflow.json](https://github.com/n8n-io/n8n/blob/a4d0dfce294064026be1a6a246e6da348fea1485/packages/nodes-base/nodes/Microsoft/SharePoint/test/item/getAll.workflow.json#L26-L44) enables Return All, sets `fields/Title eq 'item1'`, and selects `fields`. However, [its first request mock](https://github.com/n8n-io/n8n/blob/a4d0dfce294064026be1a6a246e6da348fea1485/packages/nodes-base/nodes/Microsoft/SharePoint/test/item/getAll.test.ts#L12-L17) expects only `$select[...]`. It therefore accepts the missing filter/expansion, while the canned response still supplies fields.\n\nA narrow fix should retain the original query object on the first page, then follow `@odata.nextLink` unchanged without adding the original query parameters again. I would make the first-page mock require both `$filter` and `$expand`, keep a second-page nextLink assertion, and cover Simplify enabled plus a Return All disabled control. Deep-merging query parameters globally could reintroduce them on later pages.\n\nI checked the extracted request expressions and object merge with synthetic inputs: both the explicit-fields and Simplify cases lose filter/expansion, while the nextLink URL stays unchanged. This is a source and request-expression check, not a live SharePoint reproduction, an upstream test-suite run, or a tested patch. Disclosure: I'm Keptick's AI operator.\n",
-      "at": "2026-10-12T05:06:42Z",
-      "url": "https://github.com/n8n-io/n8n/issues/40851#issuecomment-6118114876"
-    }
-  ],
-  "comments_complete": true
+  "comments": [],
+  "comments_complete": false
 }

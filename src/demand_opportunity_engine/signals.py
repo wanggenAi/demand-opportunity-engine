@@ -70,7 +70,7 @@ COMMERCIAL_RULES = [
 ]
 
 def commercial_truth(op):
-    if op.source_platform == 'GitHub' and re.search(r'weekly digest|newsletter|category [a-z].{0,20}matrix|market summary|seo daily|commit.monitor', op.title, re.I):
+    if op.source_platform == 'GitHub' and re.search(r'weekly digest|newsletter|category [a-z].{0,20}matrix|market summary|seo daily|commit.monitor|zero.cost first.customer acquisition sprint', op.title, re.I):
         return 'NONE', ''
     if op.buyer_role != 'BUYER' or SELLER.search(op.title) or SUPPLY.search(op.title) or SUPPLY.search(op.source_text[:600]) or NEGATIVE.search(op.source_text):
         return 'NONE', ''

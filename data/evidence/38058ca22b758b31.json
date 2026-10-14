@@ -1,0 +1,44 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50069498",
+  "collected_at": "2026-10-14T00:55:53.262448+00:00",
+  "source": {
+    "author": "theonly1me",
+    "children": [
+      {
+        "author": "africandev254",
+        "children": [],
+        "created_at": "2026-10-13T12:13:20.000Z",
+        "created_at_i": 1791893600,
+        "id": 50070437,
+        "options": [],
+        "parent_id": 50069498,
+        "points": null,
+        "story_id": 50069498,
+        "text": "I usually use opencode, and antigravity. Can this help?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-10-13T10:26:52.000Z",
+    "created_at_i": 1791887212,
+    "id": 50069498,
+    "options": [],
+    "parent_id": null,
+    "points": 3,
+    "story_id": 50069498,
+    "text": "shadowclone reads the coding-agent sessions already on your disk, finds where you corrected the agent and turns those corrections into skills your agents load next time. It supports Claude Code, Codex, Cursor, Pi, and Antigravity. Every capture source is off by default and has its own consent setting.<p>Why I&#x27;m building it?<p>I use multiple harnesses and agents, I extensively use Claud Code and Codex, but I also use Cursor and Antigravity every now and then. I didn&#x27;t want to have to teach every harness or model the things I taught the other ones between my last session and the current one. I also cannot have my personal rules and preferences in all the repositories I work on because my collaborators may have varying levels of trust with AI and their own preferences. shadowclone helps me build and improve trust with my agents so I can give them more autonomy while running multiple sessions in parallel.<p>---<p>Who is this for?<p>If you only use Claude or Codex or any one of these, you may not need the shadowclone CLI and the harness and agent you use might already be sufficient. But, if you are like me and work across harnesses and agents, shadowclone will help you avoid repeating your preferences each time.<p>---<p>Built-in skills and skill builds<p>shadowclone is also great for someone who is just now adopting AI into their coding workflows because it ships with several skills that they can use to customize their agent&#x27;s behavior. They can equip all the skills, or just some of them, they&#x27;ll see the &quot;personality&quot; their agent gets from equipping those skills from the `shadowclone wizard`.<p>---<p>Setup is extremely easy, just ask your Claude Code, or Codex, or another agent -<p>&quot;Set up shadowclone: <a href=\"https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;theonly1me&#x2F;shadowclone&#x2F;main&#x2F;plugins&#x2F;shadowclone&#x2F;skills&#x2F;setup-shadowclone&#x2F;SKILL.md\" rel=\"nofollow\">https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;theonly1me&#x2F;shadowclone&#x2F;mai...</a>&quot;<p>---<p>Privacy<p>shadowclone is free and open source, it uses the MIT license. It doesn&#x27;t have a subscription, or a server. It just uses your existing agent subscription i.e. Claude Code, Codex, Cursor, Antigravity, or even your local model via Pi. You can explicitly disable sources, it also redacts any and all sensitive information it uses for learning.<p>---<p>PR reviews and Cloud bots<p>It can review PRs with the `shadowclone review` command, it ships a guided review skill that will perform a deep review of your code (or someone else&#x27;s) and produce an HTML document you can annotate, add comments to and submit so your agent can stage a draft review on the PR you are reviewing.<p>---<p>Evals<p>I performed several evals, I won&#x27;t describe them here, all of them are available in the repository - <a href=\"https:&#x2F;&#x2F;github.com&#x2F;theonly1me&#x2F;shadowclone&#x2F;tree&#x2F;main&#x2F;evals\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;theonly1me&#x2F;shadowclone&#x2F;tree&#x2F;main&#x2F;evals</a><p>---<p>Comparison to other tools?<p>You can also see how it compares to other tools here - <a href=\"https:&#x2F;&#x2F;github.com&#x2F;theonly1me&#x2F;shadowclone&#x2F;tree&#x2F;main#how-shadowclone-compares-to-other-tools\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;theonly1me&#x2F;shadowclone&#x2F;tree&#x2F;main#how-shad...</a>",
+    "title": "Show HN: shadowclone, skills learned from your coding agent corrections",
+    "type": "story",
+    "url": "https://github.com/theonly1me/shadowclone"
+  },
+  "comments": [
+    {
+      "author": "africandev254",
+      "text": "I usually use opencode, and antigravity. Can this help?",
+      "at": "2026-10-13T12:13:20.000Z",
+      "url": "https://news.ycombinator.com/item?id=50070437"
+    }
+  ],
+  "comments_complete": true
+}

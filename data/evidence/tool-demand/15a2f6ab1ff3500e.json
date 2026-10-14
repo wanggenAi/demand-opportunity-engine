@@ -1,0 +1,1338 @@
+{
+  "post_stream": {
+    "posts": [
+      {
+        "id": 1909012,
+        "username": "OldGeezerSoap",
+        "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/o/848f3c/{size}.png",
+        "created_at": "2026-10-08T03:21:31.468Z",
+        "cooked": "<p>Hello Shopify Community!</p>\n<p>I’m looking for technical guidance on a Shopify Flow workflow we’ve built for our small soap business. We’ve completed the workflow, but we’re holding off on activating it until we can confirm that inventory adjustments will execute reliably.</p>\n<p><strong>Our setup:</strong></p>\n<ul>\n<li>Shopify Basic plan</li>\n<li>Appstle Subscriptions for recurring orders</li>\n<li>Easify Product Options for customer soap selections</li>\n<li>13 individual soap products with Shopify inventory tracking enabled</li>\n<li>Three subscription bundles containing 4, 8, or 12 customer-selected bars</li>\n</ul>\n<p><strong>How our workflow operates:</strong></p>\n<ol>\n<li>Trigger: <code>Order created</code></li>\n<li>Check whether the order has the <code>FPC-Inventory-Processed</code> tag.</li>\n<li>Identify orders containing a Front Porch Club subscription product.</li>\n<li>Loop through the order’s line items.</li>\n<li>Identify the subscription line item.</li>\n<li>Loop through its custom attributes (<code>Bar #1</code>, <code>Bar #2</code>, etc.).</li>\n<li>Match each selected soap name against 13 predefined conditions.</li>\n<li>Use Shopify’s built-in <strong>Send Admin API request</strong> action with <code>inventoryAdjustQuantities</code> to deduct one unit from the corresponding product’s inventory.</li>\n</ol>\n<p>Each soap is mapped to its Shopify Inventory Item ID and our fulfillment Location ID.</p>\n<p>We’ve tested the workflow using Shopify Flow’s simulation. The conditions correctly identify the selected soaps and reach the appropriate API action. However, the API mutations cannot be simulated, so we haven’t verified the actual inventory adjustments.</p>\n<p><strong>We have three technical questions:</strong></p>\n<p><strong>1. Idempotency</strong></p>\n<p>Our workflow uses API version <code>2026-07</code>.</p>\n<p>The <code>inventoryAdjustQuantities</code> mutation requires an idempotency key using the <code>@idempotent</code> directive.</p>\n<p>However, Flow’s built-in Send Admin API request action generates the GraphQL mutation automatically and only exposes an editor for the JSON mutation inputs.</p>\n<p>Is there a supported way to provide the required idempotency key through this built-in action?</p>\n<p>If not, does that mean <code>inventoryAdjustQuantities</code> cannot be reliably executed through Flow’s standard Admin API request action?</p>\n<p><strong>2. Accessing mutation errors</strong></p>\n<p>We understand that a GraphQL mutation can return <code>userErrors</code> even when the HTTP request itself succeeds.</p>\n<p>We attempted to add a Condition immediately after the API request, but <code>userErrors</code> wasn’t available as a variable.</p>\n<p>Can Shopify Flow access the <code>userErrors</code> returned by <code>inventoryAdjustQuantities</code>?</p>\n<p>If so, what is the correct variable path or configuration?</p>\n<p><strong>3. Handling partial inventory adjustments</strong></p>\n<p>For a subscription containing multiple soaps, some adjustments could succeed before a subsequent request fails.</p>\n<p>We want to avoid:</p>\n<ul>\n<li>Deducting the same soap twice.</li>\n<li>Marking an order processed when some adjustments failed.</li>\n<li>Incorrect inventory counts when a workflow is retried.</li>\n<li>Problems processing recurring Appstle subscription orders.</li>\n</ul>\n<p>What is the recommended approach for safely handling these situations within Shopify Flow?</p>\n<p><strong>Our goal</strong></p>\n<p>Ideally, we’d like to keep this automation within Shopify Flow on our Basic plan rather than upgrade our plan or purchase another app.</p>\n<p>We’re also open to a lightweight custom integration if the built-in Flow action cannot safely accomplish this.</p>\n<p>Any guidance from developers familiar with Shopify Flow and the Admin GraphQL API would be greatly appreciated.</p>\n<p><strong>Thank you!</strong></p>",
+        "post_number": 1,
+        "post_type": 1,
+        "posts_count": 6,
+        "updated_at": "2026-10-08T03:21:31.468Z",
+        "reply_count": 0,
+        "reply_to_post_number": null,
+        "quote_count": 0,
+        "incoming_link_count": 13,
+        "reads": 14,
+        "readers_count": 13,
+        "score": 82.8,
+        "yours": false,
+        "topic_id": 694301,
+        "topic_slug": "shopify-flow-inventoryadjustquantities-idempotency-error-handling-for-subscription-bundles",
+        "primary_group_name": null,
+        "flair_name": null,
+        "flair_url": null,
+        "flair_bg_color": null,
+        "flair_color": null,
+        "flair_group_id": null,
+        "badges_granted": [],
+        "version": 1,
+        "can_edit": false,
+        "can_delete": false,
+        "can_recover": false,
+        "can_see_hidden_post": false,
+        "can_wiki": false,
+        "read": true,
+        "user_title": null,
+        "bookmarked": false,
+        "actions_summary": [
+          {
+            "id": 2,
+            "count": 1
+          }
+        ],
+        "moderator": false,
+        "admin": false,
+        "staff": false,
+        "user_id": 1645193,
+        "hidden": false,
+        "trust_level": 0,
+        "deleted_at": null,
+        "user_deleted": false,
+        "edit_reason": null,
+        "can_view_edit_history": true,
+        "wiki": false,
+        "post_url": "/t/shopify-flow-inventoryadjustquantities-idempotency-error-handling-for-subscription-bundles/694301/1",
+        "category_expert_approved_group": null,
+        "needs_category_expert_approval": null,
+        "can_manage_category_expert_posts": false,
+        "event": null,
+        "calendar_details": [],
+        "reactions": [
+          {
+            "id": "heart",
+            "type": "emoji",
+            "count": 1
+          }
+        ],
+        "current_user_reaction": null,
+        "reaction_users_count": 1,
+        "current_user_used_main_reaction": false,
+        "can_accept_answer": false,
+        "can_unaccept_answer": false,
+        "accepted_answer": false,
+        "topic_accepted_answer": null,
+        "can_vote": false
+      },
+      {
+        "id": 1909020,
+        "username": "jowel-66",
+        "avatar_template": "/user_avatar/community.shopify.com/jowel-66/{size}/414973_2.png",
+        "created_at": "2026-10-08T03:50:01.140Z",
+        "cooked": "<p>Hi, some things from my side:</p>\n<p>From API 2026-04, inventoryAdjustQuantities need changeFromQuantity in every change. You can send null, but if you skip it the mutation fail. Your flow use 2026-07 so you need it.</p>\n<p>For idempotency, i not see any field for key in Flow “Send Admin API request” in docs. Better test with hidden test product and one test order, then check run history. If it not work, small webhook app with key from order ID is more safe.</p>\n<p>For partial problem, dont do one call per soap. Do one call per line item and put all soaps in changes array. Same soap 2 times = delta -2. And add your Processed tag after the API step, so if step fail the tag not added and the order not run twice.</p>\n<p>userErrors is not Node, so Flow can’t give it to next step. If mutation fail the step fail and you see the message in run history.</p>\n<p>Example inputs:</p>\n<pre><code class=\"lang-auto\">{\n  \"input\": {\n    \"reason\": \"correction\",\n    \"name\": \"available\",\n    \"referenceDocumentUri\": \"{{ order.id }}\",\n    \"changes\": [\n      {\n        \"delta\": -1,\n        \"inventoryItemId\": \"gid://shopify/InventoryItem/YOUR_ID\",\n        \"locationId\": \"gid://shopify/Location/YOUR_LOCATION_ID\",\n        \"changeFromQuantity\": null\n      }\n    ]\n  }\n}\n</code></pre>\n<p>Please test before live.</p>",
+        "post_number": 2,
+        "post_type": 1,
+        "posts_count": 6,
+        "updated_at": "2026-10-08T03:50:01.140Z",
+        "reply_count": 0,
+        "reply_to_post_number": null,
+        "quote_count": 0,
+        "incoming_link_count": 2,
+        "reads": 12,
+        "readers_count": 11,
+        "score": 42.4,
+        "yours": false,
+        "topic_id": 694301,
+        "topic_slug": "shopify-flow-inventoryadjustquantities-idempotency-error-handling-for-subscription-bundles",
+        "primary_group_name": null,
+        "flair_name": null,
+        "flair_url": null,
+        "flair_bg_color": null,
+        "flair_color": null,
+        "flair_group_id": null,
+        "badges_granted": [],
+        "version": 1,
+        "can_edit": false,
+        "can_delete": false,
+        "can_recover": false,
+        "can_see_hidden_post": false,
+        "can_wiki": false,
+        "read": true,
+        "user_title": null,
+        "bookmarked": false,
+        "actions_summary": [
+          {
+            "id": 2,
+            "count": 2
+          }
+        ],
+        "moderator": false,
+        "admin": false,
+        "staff": false,
+        "user_id": 1642476,
+        "hidden": false,
+        "trust_level": 1,
+        "deleted_at": null,
+        "user_deleted": false,
+        "edit_reason": null,
+        "can_view_edit_history": true,
+        "wiki": false,
+        "post_url": "/t/shopify-flow-inventoryadjustquantities-idempotency-error-handling-for-subscription-bundles/694301/2",
+        "category_expert_approved_group": null,
+        "needs_category_expert_approval": null,
+        "can_manage_category_expert_posts": false,
+        "event": null,
+        "reactions": [
+          {
+            "id": "heart",
+            "type": "emoji",
+            "count": 2
+          }
+        ],
+        "current_user_reaction": null,
+        "reaction_users_count": 2,
+        "current_user_used_main_reaction": false,
+        "can_accept_answer": false,
+        "can_unaccept_answer": false,
+        "accepted_answer": false,
+        "topic_accepted_answer": null
+      },
+      {
+        "id": 1909045,
+        "username": "BundleKit-Marianne",
+        "avatar_template": "/user_avatar/community.shopify.com/bundlekit-marianne/{size}/412647_2.png",
+        "created_at": "2026-10-08T05:11:35.289Z",
+        "cooked": "<p>Hi there,</p>\n<p>I’d be cautious about activating this workflow until you’ve tested the failure cases, because the main risk here isn’t the matching logic — it’s what happens if only part of the inventory update succeeds.</p>\n<p>A few things I’d validate:</p>\n<ul>\n<li>For <code>inventoryAdjustQuantities</code>, make sure every change includes the fields required by the API version you’re using. If <code>changeFromQuantity</code> is expected, don’t rely on simply omitting it without testing the actual Flow request.</li>\n<li>I wouldn’t treat the <code>FPC-Inventory-Processed</code> tag alone as full idempotency protection. It helps prevent normal re-processing, but if the inventory request partially succeeds and the workflow fails before the tag is added, a retry could deduct the same component again.</li>\n<li>If possible, send the component adjustments for a subscription item together in one mutation rather than making a separate request for every soap. That reduces the number of partial-failure points.</li>\n<li>Only add the processed tag after the inventory mutation has completed successfully.</li>\n<li>Test with a hidden product/order first, then intentionally create a failure condition so you can see exactly how Flow behaves on retry.</li>\n</ul>\n<p>The <code>userErrors</code> part is also worth verifying carefully. Even if the HTTP/API request itself completes, GraphQL can still return mutation-level errors, so I wouldn’t assume “request completed” always means “inventory adjusted successfully.”</p>\n<p>For this kind of workflow, I’d specifically test these three cases before going live:</p>\n<ol>\n<li>Full success</li>\n<li>One invalid inventory item/location</li>\n<li>Workflow retry after a partial or failed mutation</li>\n</ol>\n<p>If those behave predictably, then the automation is much safer to trust for recurring subscription orders.</p>",
+        "post_number": 3,
+        "post_type": 1,
+        "posts_count": 6,
+        "updated_at": "2026-10-08T05:11:35.289Z",
+        "reply_count": 0,
+        "reply_to_post_number": null,
+        "quote_count": 0,
+        "incoming_link_count": 0,
+        "reads": 8,
+        "readers_count": 7,
+        "score": 16.6,
+        "yours": false,
+        "topic_id": 694301,
+        "topic_slug": "shopify-flow-inventoryadjustquantities-idempotency-error-handling-for-subscription-bundles",
+        "primary_group_name": null,
+        "flair_name": null,
+        "flair_url": null,
+        "flair_bg_color": null,
+        "flair_color": null,
+        "flair_group_id": null,
+        "badges_granted": [],
+        "version": 1,
+        "can_edit": false,
+        "can_delete": false,
+        "can_recover": false,
+        "can_see_hidden_post": false,
+        "can_wiki": false,
+        "read": true,
+        "user_title": "",
+        "bookmarked": false,
+        "actions_summary": [
+          {
+            "id": 2,
+            "count": 1
+          }
+        ],
+        "moderator": false,
+        "admin": false,
+        "staff": false,
+        "user_id": 1638248,
+        "hidden": false,
+        "trust_level": 1,
+        "deleted_at": null,
+        "user_deleted": false,
+        "edit_reason": null,
+        "can_view_edit_history": true,
+        "wiki": false,
+        "post_url": "/t/shopify-flow-inventoryadjustquantities-idempotency-error-handling-for-subscription-bundles/694301/3",
+        "category_expert_approved_group": null,
+        "needs_category_expert_approval": null,
+        "can_manage_category_expert_posts": false,
+        "event": null,
+        "reactions": [
+          {
+            "id": "heart",
+            "type": "emoji",
+            "count": 1
+          }
+        ],
+        "current_user_reaction": null,
+        "reaction_users_count": 1,
+        "current_user_used_main_reaction": false,
+        "can_accept_answer": false,
+        "can_unaccept_answer": false,
+        "accepted_answer": false,
+        "topic_accepted_answer": null
+      },
+      {
+        "id": 1909091,
+        "username": "oldrobot",
+        "avatar_template": "/user_avatar/community.shopify.com/oldrobot/{size}/416152_2.png",
+        "created_at": "2026-10-08T07:12:18.528Z",
+        "cooked": "<p>If you move this to a small webhook app, the order ID key stops the double deduct but not the miss. A failed delivery gets 8 retries over about 4 hours and then Shopify drops it, so one <code>orders/create</code> delivery is all you ever get. A sweep that runs every few hours and looks for orders with the Front Porch Club line item and no processed tag closes that gap, and the key is what makes the sweep safe to run that often.</p>\n<p>Same reason the tag goes after the mutation rather than before. an order that failed stays untagged and the sweep picks it up. A tag written first makes the miss permanent.</p>",
+        "post_number": 4,
+        "post_type": 1,
+        "posts_count": 6,
+        "updated_at": "2026-10-08T07:12:18.528Z",
+        "reply_count": 0,
+        "reply_to_post_number": null,
+        "quote_count": 0,
+        "incoming_link_count": 1,
+        "reads": 6,
+        "readers_count": 5,
+        "score": 6.2,
+        "yours": false,
+        "topic_id": 694301,
+        "topic_slug": "shopify-flow-inventoryadjustquantities-idempotency-error-handling-for-subscription-bundles",
+        "primary_group_name": null,
+        "flair_name": null,
+        "flair_url": null,
+        "flair_bg_color": null,
+        "flair_color": null,
+        "flair_group_id": null,
+        "badges_granted": [],
+        "version": 1,
+        "can_edit": false,
+        "can_delete": false,
+        "can_recover": false,
+        "can_see_hidden_post": false,
+        "can_wiki": false,
+        "read": true,
+        "user_title": null,
+        "bookmarked": false,
+        "actions_summary": [],
+        "moderator": false,
+        "admin": false,
+        "staff": false,
+        "user_id": 1644502,
+        "hidden": false,
+        "trust_level": 1,
+        "deleted_at": null,
+        "user_deleted": false,
+        "edit_reason": null,
+        "can_view_edit_history": true,
+        "wiki": false,
+        "post_url": "/t/shopify-flow-inventoryadjustquantities-idempotency-error-handling-for-subscription-bundles/694301/4",
+        "category_expert_approved_group": null,
+        "needs_category_expert_approval": null,
+        "can_manage_category_expert_posts": false,
+        "event": null,
+        "reactions": [],
+        "current_user_reaction": null,
+        "reaction_users_count": 0,
+        "current_user_used_main_reaction": false,
+        "can_accept_answer": false,
+        "can_unaccept_answer": false,
+        "accepted_answer": false,
+        "topic_accepted_answer": null
+      },
+      {
+        "id": 1909545,
+        "username": "ShopIntegrations",
+        "avatar_template": "/user_avatar/community.shopify.com/shopintegrations/{size}/395638_2.png",
+        "created_at": "2026-10-08T11:00:49.855Z",
+        "cooked": "<p>Flow’s built-in “Send Admin API request” action hits a hard limit for this use case:</p>\n<ol>\n<li><strong>Idempotency:</strong> Flow abstracts the GraphQL query envelope entirely, so you cannot pass the <code>@idempotent</code> directive or custom idempotency headers through the input editor.</li>\n<li><strong>Response errors:</strong> Flow treated this action as fire-and-forget. It does not return the GraphQL response body (including <code>userErrors</code>) as variables to downstream steps.</li>\n<li><strong>Partial failures:</strong> Because each loop iteration fires a separate request without rollback or response capture, Flow cannot guarantee atomic adjustments across multi-bar bundles.</li>\n</ol>\n<p>To handle inventory deduction safely without duplicate deductions or partial syncs, you need an endpoint (such as a Cloudflare Worker or AWS Lambda) listening to the <code>orders/create</code> webhook. That lets you pass all bar adjustments in a single atomic <code>inventoryAdjustQuantities</code> call, handle <code>userErrors</code>, and tag the order once confirmed.</p>",
+        "post_number": 5,
+        "post_type": 1,
+        "posts_count": 6,
+        "updated_at": "2026-10-08T11:00:49.855Z",
+        "reply_count": 0,
+        "reply_to_post_number": null,
+        "quote_count": 0,
+        "incoming_link_count": 3,
+        "reads": 6,
+        "readers_count": 5,
+        "score": 31.2,
+        "yours": false,
+        "topic_id": 694301,
+        "topic_slug": "shopify-flow-inventoryadjustquantities-idempotency-error-handling-for-subscription-bundles",
+        "primary_group_name": null,
+        "flair_name": null,
+        "flair_url": null,
+        "flair_bg_color": null,
+        "flair_color": null,
+        "flair_group_id": null,
+        "badges_granted": [],
+        "version": 1,
+        "can_edit": false,
+        "can_delete": false,
+        "can_recover": false,
+        "can_see_hidden_post": false,
+        "can_wiki": false,
+        "read": true,
+        "user_title": null,
+        "bookmarked": false,
+        "actions_summary": [
+          {
+            "id": 2,
+            "count": 1
+          }
+        ],
+        "moderator": false,
+        "admin": false,
+        "staff": false,
+        "user_id": 1612567,
+        "hidden": false,
+        "trust_level": 1,
+        "deleted_at": null,
+        "user_deleted": false,
+        "edit_reason": null,
+        "can_view_edit_history": true,
+        "wiki": false,
+        "post_url": "/t/shopify-flow-inventoryadjustquantities-idempotency-error-handling-for-subscription-bundles/694301/5",
+        "category_expert_approved_group": null,
+        "needs_category_expert_approval": null,
+        "can_manage_category_expert_posts": false,
+        "event": null,
+        "reactions": [
+          {
+            "id": "heart",
+            "type": "emoji",
+            "count": 1
+          }
+        ],
+        "current_user_reaction": null,
+        "reaction_users_count": 1,
+        "current_user_used_main_reaction": false,
+        "can_accept_answer": false,
+        "can_unaccept_answer": false,
+        "accepted_answer": false,
+        "topic_accepted_answer": null
+      },
+      {
+        "id": 1913551,
+        "username": "NovaRiftLabs",
+        "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/n/f9ae1b/{size}.png",
+        "created_at": "2026-10-13T23:46:59.257Z",
+        "cooked": "<p>Good on you for not just flicking it on. One thing that might help while you test: make a saved view in Orders using the Not tagged with filter set to FPC-Inventory-Processed, plus the Product filter for your Front Porch Club item, and check it once a day. Anything sitting in there is an order the flow missed or choked on, so you catch it before your stock counts drift. Run it alongside your manual process for a week or two and compare. Out of curiosity, how are you doing the deductions by hand right now, straight in the product pages or from a spreadsheet?</p>",
+        "post_number": 6,
+        "post_type": 1,
+        "posts_count": 6,
+        "updated_at": "2026-10-13T23:46:59.257Z",
+        "reply_count": 0,
+        "reply_to_post_number": null,
+        "quote_count": 0,
+        "incoming_link_count": 0,
+        "reads": 1,
+        "readers_count": 0,
+        "score": 0.2,
+        "yours": false,
+        "topic_id": 694301,
+        "topic_slug": "shopify-flow-inventoryadjustquantities-idempotency-error-handling-for-subscription-bundles",
+        "primary_group_name": null,
+        "flair_name": null,
+        "flair_url": null,
+        "flair_bg_color": null,
+        "flair_color": null,
+        "flair_group_id": null,
+        "badges_granted": [],
+        "version": 1,
+        "can_edit": false,
+        "can_delete": false,
+        "can_recover": false,
+        "can_see_hidden_post": false,
+        "can_wiki": false,
+        "read": true,
+        "user_title": null,
+        "bookmarked": false,
+        "actions_summary": [],
+        "moderator": false,
+        "admin": false,
+        "staff": false,
+        "user_id": 1645190,
+        "hidden": false,
+        "trust_level": 0,
+        "deleted_at": null,
+        "user_deleted": false,
+        "edit_reason": null,
+        "can_view_edit_history": true,
+        "wiki": false,
+        "post_url": "/t/shopify-flow-inventoryadjustquantities-idempotency-error-handling-for-subscription-bundles/694301/6",
+        "category_expert_approved_group": null,
+        "needs_category_expert_approval": null,
+        "can_manage_category_expert_posts": false,
+        "event": null,
+        "reactions": [],
+        "current_user_reaction": null,
+        "reaction_users_count": 0,
+        "current_user_used_main_reaction": false,
+        "can_accept_answer": false,
+        "can_unaccept_answer": false,
+        "accepted_answer": false,
+        "topic_accepted_answer": null
+      }
+    ],
+    "stream": [
+      1909012,
+      1909020,
+      1909045,
+      1909091,
+      1909545,
+      1913551
+    ]
+  },
+  "timeline_lookup": [
+    [
+      1,
+      6
+    ],
+    [
+      6,
+      0
+    ]
+  ],
+  "user_badges": {
+    "users": {
+      "1612567": {
+        "id": 1612567,
+        "badge_ids": [
+          110,
+          117,
+          124
+        ]
+      },
+      "1642476": {
+        "id": 1642476,
+        "badge_ids": [
+          108
+        ]
+      }
+    },
+    "badges": {
+      "131": {
+        "id": 131,
+        "name": "1000 Accepted Solutions",
+        "slug": "1000-accepted-solutions",
+        "description": "You're a member of the 1000 accepted solutions club!",
+        "icon": "check",
+        "image_url": null,
+        "badge_grouping_id": 9,
+        "badge_type_id": 1
+      },
+      "7": {
+        "id": 7,
+        "name": "Good Post",
+        "slug": "good-reply",
+        "description": "Received 25 likes on a reply",
+        "icon": "reply",
+        "image_url": null,
+        "badge_grouping_id": 3,
+        "badge_type_id": 2
+      },
+      "110": {
+        "id": 110,
+        "name": "50 Posts",
+        "slug": "50-posts",
+        "description": "Way to go! You've posted 50 times in the Shopify Community",
+        "icon": "file-signature",
+        "image_url": null,
+        "badge_grouping_id": 7,
+        "badge_type_id": 3
+      },
+      "19": {
+        "id": 19,
+        "name": "Good Topic",
+        "slug": "good-topic",
+        "description": "Received 25 likes on a topic",
+        "icon": "file-signature",
+        "image_url": null,
+        "badge_grouping_id": 3,
+        "badge_type_id": 2
+      },
+      "114": {
+        "id": 114,
+        "name": "1000 Posts",
+        "slug": "1000-posts",
+        "description": "You're a member of the 1000 posts club!",
+        "icon": "file-signature",
+        "image_url": null,
+        "badge_grouping_id": 7,
+        "badge_type_id": 1
+      },
+      "32": {
+        "id": 32,
+        "name": "Gives Back",
+        "slug": "gives-back",
+        "description": "Has 100 liked posts and gave 100 likes",
+        "icon": "heart",
+        "image_url": null,
+        "badge_grouping_id": 2,
+        "badge_type_id": 2
+      },
+      "113": {
+        "id": 113,
+        "name": "500 Posts",
+        "slug": "500-posts",
+        "description": "Congratulations on reaching the 500 post milestone!",
+        "icon": "file-signature",
+        "image_url": null,
+        "badge_grouping_id": 7,
+        "badge_type_id": 1
+      },
+      "112": {
+        "id": 112,
+        "name": "250 Posts",
+        "slug": "250-posts",
+        "description": "250 posts! Thanks for being an engaged member of the Shopify Community",
+        "icon": "file-signature",
+        "image_url": null,
+        "badge_grouping_id": 7,
+        "badge_type_id": 2
+      },
+      "111": {
+        "id": 111,
+        "name": "100 Posts",
+        "slug": "100-posts",
+        "description": "100 posts! Thanks for being an engaged member of the Shopify Community",
+        "icon": "file-signature",
+        "image_url": null,
+        "badge_grouping_id": 7,
+        "badge_type_id": 2
+      },
+      "46": {
+        "id": 46,
+        "name": "Aficionado",
+        "slug": "aficionado",
+        "description": "Visited 100 consecutive days",
+        "icon": "far-eye",
+        "image_url": null,
+        "badge_grouping_id": 2,
+        "badge_type_id": 2
+      },
+      "109": {
+        "id": 109,
+        "name": "25 Posts",
+        "slug": "25-posts",
+        "description": "With 25 posts submitted, you help keep the conversations going",
+        "icon": "file-signature",
+        "image_url": null,
+        "badge_grouping_id": 7,
+        "badge_type_id": 3
+      },
+      "122": {
+        "id": 122,
+        "name": "1000 Likes",
+        "slug": "1000-likes",
+        "description": "You're a member of the 1000 likes club!",
+        "icon": "thumbs-up",
+        "image_url": null,
+        "badge_grouping_id": 8,
+        "badge_type_id": 1
+      },
+      "129": {
+        "id": 129,
+        "name": "250 Accepted Solutions",
+        "slug": "250-accepted-solutions",
+        "description": "250 accepted solutions! Thank you for being so helpful",
+        "icon": "check",
+        "image_url": null,
+        "badge_grouping_id": 9,
+        "badge_type_id": 2
+      },
+      "121": {
+        "id": 121,
+        "name": "500 Likes",
+        "slug": "500-likes",
+        "description": "Congratulations on obtaining 500 likes!",
+        "icon": "thumbs-up",
+        "image_url": null,
+        "badge_grouping_id": 8,
+        "badge_type_id": 1
+      },
+      "135": {
+        "id": 135,
+        "name": "Power User 2024",
+        "slug": "power-user-2024",
+        "description": "Most participating users within 2024",
+        "icon": "ranking-star",
+        "image_url": null,
+        "badge_grouping_id": 6,
+        "badge_type_id": 3
+      },
+      "119": {
+        "id": 119,
+        "name": "100 Likes",
+        "slug": "100-likes",
+        "description": "Your contributions have earned you 100 likes",
+        "icon": "thumbs-up",
+        "image_url": null,
+        "badge_grouping_id": 8,
+        "badge_type_id": 2
+      },
+      "126": {
+        "id": 126,
+        "name": "50 Accepted Solutions",
+        "slug": "50-accepted-solutions",
+        "description": "Your knowledge has resulted in 50 accepted solutions",
+        "icon": "check",
+        "image_url": null,
+        "badge_grouping_id": 9,
+        "badge_type_id": 3
+      },
+      "125": {
+        "id": 125,
+        "name": "25 Accepted Solutions",
+        "slug": "25-accepted-solutions",
+        "description": "Your guidance has resulted in 25 accepted solutions",
+        "icon": "check",
+        "image_url": null,
+        "badge_grouping_id": 9,
+        "badge_type_id": 3
+      },
+      "3": {
+        "id": 3,
+        "name": "Regular",
+        "slug": "regular",
+        "description": "Awarded at Trust Level 3. Recognized for regular contributions as a trusted user.",
+        "icon": "user",
+        "image_url": null,
+        "badge_grouping_id": 4,
+        "badge_type_id": 2
+      },
+      "120": {
+        "id": 120,
+        "name": "250 Likes",
+        "slug": "250-likes",
+        "description": "Your expertise has earned you 250 likes!",
+        "icon": "thumbs-up",
+        "image_url": null,
+        "badge_grouping_id": 8,
+        "badge_type_id": 2
+      },
+      "127": {
+        "id": 127,
+        "name": "75 Accepted Solutions",
+        "slug": "75-accepted-solutions",
+        "description": "Your expertise has resulted in 75 accepted solutions",
+        "icon": "check",
+        "image_url": null,
+        "badge_grouping_id": 9,
+        "badge_type_id": 2
+      },
+      "130": {
+        "id": 130,
+        "name": "500 Accepted Solutions",
+        "slug": "500-accepted-solutions",
+        "description": "Your valuable contributions have resulted in 500 accepted solutions",
+        "icon": "check",
+        "image_url": null,
+        "badge_grouping_id": 9,
+        "badge_type_id": 1
+      },
+      "116": {
+        "id": 116,
+        "name": "10 Likes",
+        "slug": "10-likes",
+        "description": "You've received 10 likes",
+        "icon": "thumbs-up",
+        "image_url": null,
+        "badge_grouping_id": 8,
+        "badge_type_id": 3
+      },
+      "118": {
+        "id": 118,
+        "name": "50 Likes",
+        "slug": "50-likes",
+        "description": "Your contributions have earned you 50 likes",
+        "icon": "thumbs-up",
+        "image_url": null,
+        "badge_grouping_id": 8,
+        "badge_type_id": 3
+      },
+      "128": {
+        "id": 128,
+        "name": "100 Accepted Solutions",
+        "slug": "100-accepted-solutions",
+        "description": "Congratulations! You've provided 100 accepted solutions",
+        "icon": "check",
+        "image_url": null,
+        "badge_grouping_id": 9,
+        "badge_type_id": 2
+      },
+      "108": {
+        "id": 108,
+        "name": "10 Posts",
+        "slug": "10-posts",
+        "description": "Thanks for being an active member and posting 10 times",
+        "icon": "file-signature",
+        "image_url": null,
+        "badge_grouping_id": 7,
+        "badge_type_id": 3
+      },
+      "117": {
+        "id": 117,
+        "name": "25 Likes",
+        "slug": "25-likes",
+        "description": "With 25 likes, your posts are popular",
+        "icon": "thumbs-up",
+        "image_url": null,
+        "badge_grouping_id": 8,
+        "badge_type_id": 3
+      },
+      "124": {
+        "id": 124,
+        "name": "10 Accepted Solutions",
+        "slug": "10-accepted-solutions",
+        "description": "10 of your replies have been accepted as solutions",
+        "icon": "check",
+        "image_url": null,
+        "badge_grouping_id": 9,
+        "badge_type_id": 3
+      }
+    }
+  },
+  "suggested_topics": [],
+  "tags": [],
+  "tags_descriptions": {},
+  "fancy_title": "Shopify Flow: inventoryAdjustQuantities, Idempotency &amp; Error Handling for Subscription Bundles",
+  "id": 694301,
+  "title": "Shopify Flow: inventoryAdjustQuantities, Idempotency & Error Handling for Subscription Bundles",
+  "posts_count": 6,
+  "created_at": "2026-10-08T03:21:31.180Z",
+  "views": 115,
+  "reply_count": 0,
+  "like_count": 5,
+  "last_posted_at": "2026-10-13T23:46:59.257Z",
+  "visible": true,
+  "closed": false,
+  "archived": false,
+  "has_summary": false,
+  "archetype": "regular",
+  "slug": "shopify-flow-inventoryadjustquantities-idempotency-error-handling-for-subscription-bundles",
+  "category_id": 304,
+  "word_count": 1320,
+  "deleted_at": null,
+  "user_id": 1645193,
+  "featured_link": null,
+  "pinned_globally": false,
+  "pinned_at": null,
+  "pinned_until": null,
+  "image_url": null,
+  "slow_mode_seconds": 0,
+  "draft": null,
+  "draft_key": "topic_694301",
+  "draft_sequence": null,
+  "unpinned": null,
+  "pinned": false,
+  "current_post_number": 1,
+  "highest_post_number": 6,
+  "deleted_by": null,
+  "actions_summary": [
+    {
+      "id": 8,
+      "count": 0,
+      "hidden": false,
+      "can_act": false
+    },
+    {
+      "id": 1002,
+      "count": 0,
+      "hidden": false,
+      "can_act": false
+    },
+    {
+      "id": 4,
+      "count": 0,
+      "hidden": false,
+      "can_act": false
+    },
+    {
+      "id": 7,
+      "count": 0,
+      "hidden": false,
+      "can_act": false
+    },
+    {
+      "id": 1001,
+      "count": 0,
+      "hidden": false,
+      "can_act": false
+    },
+    {
+      "id": 10,
+      "count": 0,
+      "hidden": false,
+      "can_act": false
+    }
+  ],
+  "chunk_size": 20,
+  "bookmarked": false,
+  "topic_timer": {
+    "id": 1552,
+    "execute_at": "2027-04-06T03:21:31.000Z",
+    "duration_minutes": null,
+    "based_on_last_post": false,
+    "status_type": "close",
+    "category_id": null
+  },
+  "message_bus_last_id": 49,
+  "participant_count": 6,
+  "show_read_indicator": false,
+  "thumbnails": null,
+  "slow_mode_enabled_until": null,
+  "related_topics": [
+    {
+      "fancy_title": "How can I update product quantity using Shopify Flow?",
+      "id": 186644,
+      "title": "How can I update product quantity using Shopify Flow?",
+      "slug": "how-can-i-update-product-quantity-using-shopify-flow",
+      "posts_count": 27,
+      "reply_count": 25,
+      "highest_post_number": 27,
+      "image_url": null,
+      "created_at": "2023-01-26T04:03:23.000Z",
+      "last_posted_at": "2024-08-23T13:58:20.000Z",
+      "bumped": true,
+      "bumped_at": "2024-08-23T13:58:20.000Z",
+      "archetype": "regular",
+      "unseen": false,
+      "pinned": false,
+      "unpinned": null,
+      "excerpt": "Hi, \nIs there any way to update the quantity of specific products using Shopify Flow? not looking to use any 3rd part apps. \ne.g. Trigger happened &gt;&gt; set the quantity for a specific product to 100. \nI don’t want to hide/&hellip;",
+      "visible": true,
+      "closed": false,
+      "archived": false,
+      "bookmarked": null,
+      "liked": null,
+      "tags": [
+        {
+          "id": 5145,
+          "name": "Setting-Up",
+          "slug": "setting-up"
+        },
+        {
+          "id": 1073,
+          "name": "flow",
+          "slug": "flow"
+        },
+        {
+          "id": 5152,
+          "name": "Tacking-Tools",
+          "slug": "tacking-tools"
+        }
+      ],
+      "tags_descriptions": {},
+      "like_count": 10,
+      "views": 1326,
+      "category_id": 88,
+      "featured_link": null,
+      "op_like_count": 0,
+      "has_accepted_answer": true,
+      "posters": [
+        {
+          "extras": null,
+          "description": "Original Poster, Accepted Answer",
+          "user": {
+            "id": 788040,
+            "username": "Ram_A",
+            "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/r/b77776/{size}.png",
+            "primary_group_name": "merchant",
+            "trust_level": 1
+          }
+        },
+        {
+          "extras": null,
+          "description": "Frequent Poster",
+          "user": {
+            "id": 565454,
+            "username": "lilyliward",
+            "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/l/e9bcb4/{size}.png",
+            "flair_name": "shopifystaff",
+            "flair_group_id": 51,
+            "primary_group_name": "shopifystaff",
+            "trust_level": 4
+          }
+        },
+        {
+          "extras": null,
+          "description": "Frequent Poster",
+          "user": {
+            "id": 1069324,
+            "username": "BBPT",
+            "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/b/dfb087/{size}.png",
+            "primary_group_name": "shopifyplus",
+            "trust_level": 1
+          }
+        },
+        {
+          "extras": null,
+          "description": "Recent Poster",
+          "user": {
+            "id": 1209506,
+            "username": "Glow_Up_Fits",
+            "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/g/74df32/{size}.png",
+            "primary_group_name": "shopifystaff",
+            "trust_level": 1
+          }
+        },
+        {
+          "extras": "latest",
+          "description": "Most Recent Poster",
+          "user": {
+            "id": 420715,
+            "username": "paul_n",
+            "avatar_template": "/user_avatar/community.shopify.com/paul_n/{size}/372547_2.png",
+            "flair_name": "shopifystaff",
+            "flair_group_id": 51,
+            "primary_group_name": "shopifystaff",
+            "admin": true,
+            "moderator": true,
+            "trust_level": 4
+          }
+        }
+      ]
+    },
+    {
+      "fancy_title": "Flow to reduce inventory for orders - need help with inventoryAdjustQuantities call",
+      "id": 600994,
+      "title": "Flow to reduce inventory for orders - need help with inventoryAdjustQuantities call",
+      "slug": "flow-to-reduce-inventory-for-orders-need-help-with-inventoryadjustquantities-call",
+      "posts_count": 2,
+      "reply_count": 0,
+      "highest_post_number": 2,
+      "image_url": null,
+      "created_at": "2026-04-07T02:05:18.140Z",
+      "last_posted_at": "2026-04-07T02:27:23.166Z",
+      "bumped": true,
+      "bumped_at": "2026-04-07T02:27:23.166Z",
+      "archetype": "regular",
+      "unseen": false,
+      "pinned": false,
+      "unpinned": null,
+      "excerpt": "Hey all, \nI’ve got orders coming into Shopify through a third party tool from a 3rd party POS (Clover).  The orders come into Shopify unfulfilled, even though they represent instances where a customer bought product and &hellip;",
+      "visible": true,
+      "closed": false,
+      "archived": false,
+      "bookmarked": null,
+      "liked": null,
+      "tags": [
+        {
+          "id": 4021,
+          "name": "troubleshooting",
+          "slug": "troubleshooting"
+        },
+        {
+          "id": 1073,
+          "name": "flow",
+          "slug": "flow"
+        }
+      ],
+      "tags_descriptions": {},
+      "like_count": 1,
+      "views": 85,
+      "category_id": 211,
+      "featured_link": null,
+      "op_like_count": 0,
+      "has_accepted_answer": false,
+      "posters": [
+        {
+          "extras": "latest single",
+          "description": "Original Poster, Most Recent Poster",
+          "user": {
+            "id": 1619239,
+            "username": "mstaplet87",
+            "avatar_template": "/user_avatar/community.shopify.com/mstaplet87/{size}/400023_2.png",
+            "trust_level": 0
+          }
+        }
+      ]
+    },
+    {
+      "fancy_title": "Product variants subtract more than one unit from inventory",
+      "id": 335725,
+      "title": "Product variants subtract more than one unit from inventory",
+      "slug": "product-variants-subtract-more-than-one-unit-from-inventory",
+      "posts_count": 14,
+      "reply_count": 11,
+      "highest_post_number": 0,
+      "image_url": null,
+      "created_at": "2024-06-30T18:40:48.000Z",
+      "last_posted_at": "2024-08-14T09:39:15.000Z",
+      "bumped": true,
+      "bumped_at": "2024-08-14T09:39:15.000Z",
+      "archetype": "regular",
+      "unseen": false,
+      "pinned": false,
+      "unpinned": null,
+      "excerpt": "Hey All, \nI did some googling and I could not find any solution to this aside from getting a paid app. \nI have a product with multiple variants. The only “variant” is qty of the product, so I want them to pull from the s&hellip;",
+      "visible": true,
+      "closed": false,
+      "archived": false,
+      "bookmarked": null,
+      "liked": null,
+      "tags": [
+        {
+          "id": 1721,
+          "name": "seo",
+          "slug": "seo"
+        },
+        {
+          "id": 5152,
+          "name": "Tacking-Tools",
+          "slug": "tacking-tools"
+        }
+      ],
+      "tags_descriptions": {},
+      "like_count": 0,
+      "views": 359,
+      "category_id": 88,
+      "featured_link": null,
+      "op_like_count": 0,
+      "has_accepted_answer": false,
+      "posters": [
+        {
+          "extras": null,
+          "description": "Original Poster",
+          "user": {
+            "id": 1214081,
+            "username": "wasay-a99",
+            "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/w/4491bb/{size}.png",
+            "primary_group_name": "shopifypartner",
+            "trust_level": 1
+          }
+        },
+        {
+          "extras": null,
+          "description": "Frequent Poster",
+          "user": {
+            "id": 420715,
+            "username": "paul_n",
+            "avatar_template": "/user_avatar/community.shopify.com/paul_n/{size}/372547_2.png",
+            "flair_name": "shopifystaff",
+            "flair_group_id": 51,
+            "primary_group_name": "shopifystaff",
+            "admin": true,
+            "moderator": true,
+            "trust_level": 4
+          }
+        },
+        {
+          "extras": null,
+          "description": "Recent Poster",
+          "user": {
+            "id": 984592,
+            "username": "Kalen_Jordan",
+            "avatar_template": "/user_avatar/community.shopify.com/kalen_jordan/{size}/264748_2.png",
+            "primary_group_name": "shopifypartner",
+            "trust_level": 2
+          }
+        },
+        {
+          "extras": "latest",
+          "description": "Most Recent Poster",
+          "user": {
+            "id": 1146764,
+            "username": "EasifyApps",
+            "avatar_template": "/user_avatar/community.shopify.com/easifyapps/{size}/11565_2.png",
+            "primary_group_name": "shopifypartner",
+            "trust_level": 1
+          }
+        }
+      ]
+    },
+    {
+      "fancy_title": "Decrase inventory of product y when product x is bought",
+      "id": 171607,
+      "title": "Decrase inventory of product y when product x is bought",
+      "slug": "decrase-inventory-of-product-y-when-product-x-is-bought",
+      "posts_count": 7,
+      "reply_count": 5,
+      "highest_post_number": 7,
+      "image_url": null,
+      "created_at": "2022-11-28T12:40:40.000Z",
+      "last_posted_at": "2022-12-02T14:41:43.000Z",
+      "bumped": true,
+      "bumped_at": "2022-12-02T14:41:43.000Z",
+      "archetype": "regular",
+      "unseen": false,
+      "pinned": false,
+      "unpinned": null,
+      "excerpt": "Hello, \nwe recently made a new Product. The product variants contain another product. So we have product X which contains product Y. If product X is bought the product Y stock should be decreased by 1 either. But if prod&hellip;",
+      "visible": true,
+      "closed": false,
+      "archived": false,
+      "bookmarked": null,
+      "liked": null,
+      "tags": [],
+      "tags_descriptions": {},
+      "like_count": 0,
+      "views": 111,
+      "category_id": 88,
+      "featured_link": null,
+      "op_like_count": 0,
+      "has_accepted_answer": false,
+      "posters": [
+        {
+          "extras": null,
+          "description": "Original Poster",
+          "user": {
+            "id": 621772,
+            "username": "NicHydroSmoke",
+            "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/n/87869e/{size}.png",
+            "primary_group_name": "merchant",
+            "trust_level": 1
+          }
+        },
+        {
+          "extras": "latest",
+          "description": "Most Recent Poster",
+          "user": {
+            "id": 420715,
+            "username": "paul_n",
+            "avatar_template": "/user_avatar/community.shopify.com/paul_n/{size}/372547_2.png",
+            "flair_name": "shopifystaff",
+            "flair_group_id": 51,
+            "primary_group_name": "shopifystaff",
+            "admin": true,
+            "moderator": true,
+            "trust_level": 4
+          }
+        }
+      ]
+    },
+    {
+      "fancy_title": "How to adjust stock quantity when certain orders are created",
+      "id": 275971,
+      "title": "How to adjust stock quantity when certain orders are created",
+      "slug": "how-to-adjust-stock-quantity-when-certain-orders-are-created",
+      "posts_count": 4,
+      "reply_count": 2,
+      "highest_post_number": 0,
+      "image_url": null,
+      "created_at": "2023-12-09T16:51:27.000Z",
+      "last_posted_at": "2023-12-23T10:47:51.000Z",
+      "bumped": true,
+      "bumped_at": "2023-12-23T10:47:51.000Z",
+      "archetype": "regular",
+      "unseen": false,
+      "pinned": false,
+      "unpinned": null,
+      "excerpt": "Hi everyone, \nI’ll be grateful if someone can tell me if I can accomplish the following via code and how to do it. I have a rental business and customers can keep the items for as long as they want therefore I have a sub&hellip;",
+      "visible": true,
+      "closed": false,
+      "archived": false,
+      "bookmarked": null,
+      "liked": null,
+      "tags": [
+        {
+          "id": 1103,
+          "name": "inventory",
+          "slug": "inventory"
+        }
+      ],
+      "tags_descriptions": {},
+      "like_count": 0,
+      "views": 116,
+      "category_id": 217,
+      "featured_link": null,
+      "op_like_count": 0,
+      "has_accepted_answer": false,
+      "posters": [
+        {
+          "extras": null,
+          "description": "Original Poster",
+          "user": {
+            "id": 391826,
+            "username": "Mike5241",
+            "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/m/bc8723/{size}.png",
+            "primary_group_name": "merchant",
+            "trust_level": 1
+          }
+        },
+        {
+          "extras": "latest",
+          "description": "Most Recent Poster",
+          "user": {
+            "id": 780965,
+            "username": "gr_trading",
+            "avatar_template": "/user_avatar/community.shopify.com/gr_trading/{size}/208440_2.png",
+            "primary_group_name": "shopifypartner",
+            "trust_level": 2
+          }
+        }
+      ]
+    }
+  ],
+  "summarizable": true,
+  "has_cached_summary": true,
+  "ai_summary": {
+    "id": 1827119,
+    "summarized_text": "A soap business is delaying a Shopify Flow workflow that deducts customer-selected bars from inventory for Appstle subscription bundles, pending confidence that retries and failures will not cause stock errors. The workflow uses `inventoryAdjustQuantities` and a processed-order tag, but its simulation cannot verify actual mutations.\n\nReplies say the mutation in API version 2026-07 may require `changeFromQuantity` on every change, and recommend validating the exact request with test orders. They also caution that Flow’s built-in Admin API action appears unable to accept an idempotency key or expose GraphQL `userErrors` to later steps; a successful HTTP request may not mean the inventory adjustment succeeded. Adding the processed tag only after the mutation and grouping bar changes into fewer requests can reduce risk, but the tag alone does not prevent duplicate deductions after partial failure.\n\nSeveral replies recommend a small webhook integration to handle idempotency, mutation responses, and retries, with a periodic sweep for unprocessed orders to catch missed webhook deliveries. Before going live, test success, invalid inventory/location data, and retries after failure. A saved Orders view for eligible orders lacking the processed tag can support monitoring. No final implementation decision or verified test result is reported.",
+    "algorithm": "gpt-6-luna",
+    "outdated": false,
+    "created_at": "2026-10-08T03:24:44.270Z",
+    "updated_at": "2026-10-13T23:48:27.338Z"
+  },
+  "is_category_expert_question": null,
+  "has_livestream": null,
+  "valid_reactions": [
+    "heart",
+    "+1",
+    "laughing",
+    "open_mouth",
+    "clap",
+    "confetti_ball",
+    "hugs"
+  ],
+  "has_accepted_answer": false,
+  "can_create_shared_issue": false,
+  "shared_issue_visible": false,
+  "can_vote": false,
+  "vote_count": 0,
+  "user_voted": false,
+  "discourse_zendesk_plugin_zendesk_id": null,
+  "discourse_zendesk_plugin_zendesk_url": "https://your-url.zendesk.com/agent/tickets/",
+  "details": {
+    "can_edit": false,
+    "notification_level": 1,
+    "participants": [
+      {
+        "id": 1638248,
+        "username": "BundleKit-Marianne",
+        "avatar_template": "/user_avatar/community.shopify.com/bundlekit-marianne/{size}/412647_2.png",
+        "post_count": 1,
+        "primary_group_name": null,
+        "flair_name": null,
+        "flair_url": null,
+        "flair_color": null,
+        "flair_bg_color": null,
+        "flair_group_id": null,
+        "trust_level": 1
+      },
+      {
+        "id": 1645193,
+        "username": "OldGeezerSoap",
+        "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/o/848f3c/{size}.png",
+        "post_count": 1,
+        "primary_group_name": null,
+        "flair_name": null,
+        "flair_url": null,
+        "flair_color": null,
+        "flair_bg_color": null,
+        "flair_group_id": null,
+        "trust_level": 0
+      },
+      {
+        "id": 1644502,
+        "username": "oldrobot",
+        "avatar_template": "/user_avatar/community.shopify.com/oldrobot/{size}/416152_2.png",
+        "post_count": 1,
+        "primary_group_name": null,
+        "flair_name": null,
+        "flair_url": null,
+        "flair_color": null,
+        "flair_bg_color": null,
+        "flair_group_id": null,
+        "trust_level": 1
+      },
+      {
+        "id": 1645190,
+        "username": "NovaRiftLabs",
+        "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/n/f9ae1b/{size}.png",
+        "post_count": 1,
+        "primary_group_name": null,
+        "flair_name": null,
+        "flair_url": null,
+        "flair_color": null,
+        "flair_bg_color": null,
+        "flair_group_id": null,
+        "trust_level": 0
+      },
+      {
+        "id": 1612567,
+        "username": "ShopIntegrations",
+        "avatar_template": "/user_avatar/community.shopify.com/shopintegrations/{size}/395638_2.png",
+        "post_count": 1,
+        "primary_group_name": null,
+        "flair_name": null,
+        "flair_url": null,
+        "flair_color": null,
+        "flair_bg_color": null,
+        "flair_group_id": null,
+        "trust_level": 1
+      },
+      {
+        "id": 1642476,
+        "username": "jowel-66",
+        "avatar_template": "/user_avatar/community.shopify.com/jowel-66/{size}/414973_2.png",
+        "post_count": 1,
+        "primary_group_name": null,
+        "flair_name": null,
+        "flair_url": null,
+        "flair_color": null,
+        "flair_bg_color": null,
+        "flair_group_id": null,
+        "trust_level": 1
+      }
+    ],
+    "created_by": {
+      "id": 1645193,
+      "username": "OldGeezerSoap",
+      "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/o/848f3c/{size}.png"
+    },
+    "last_poster": {
+      "id": 1645190,
+      "username": "NovaRiftLabs",
+      "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/n/f9ae1b/{size}.png"
+    }
+  },
+  "bookmarks": []
+}

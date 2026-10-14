@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/40910",
-  "collected_at": "2026-10-13T09:43:09.605326+00:00",
+  "collected_at": "2026-10-14T00:55:53.262448+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/40910",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -89,19 +89,6 @@
     "pinned_comment": null,
     "score": 1.0
   },
-  "comments": [
-    {
-      "author": "n8n-assistant[bot]",
-      "text": "Hey @bluebird00,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9581\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9581](https://linear.app/n8n/issue/GHC-9581)",
-      "at": "2026-10-12T15:00:33Z",
-      "url": "https://github.com/n8n-io/n8n/issues/40910#issuecomment-6126853622"
-    },
-    {
-      "author": "bluebird00",
-      "text": "If it helps here is the call the assistant made:\n\n\"{\n  \"filePath\": \"src/workflows/p1-email-statistik-log-emails.workflow.ts\",\n  \"sourceCode\": \"\",\n  \"workflowId\": \"\",\n  \"name\": \"P1 - Email Statistik | Log emails\",\n  \"approvalSummary\": \"Schedule email sync Monday–Friday at 16:00 and look back four days on Mondays, keeping two days on other weekdays\",\n  \"workItemId\": \"\",\n  \"isSupportingWorkflow\": false,\n  \"preferNewCredentials\": [],\n  \"executionIntent\": \"reusable\",\n  \"groupingDecision\": \"grouped\",\n  \"groupingReason\": \"\",\n  \"folderPath\": \"\"\n}\"\n\nResponse:\n\n\"{\n  \"success\": false,\n  \"filePath\": \"src/workflows/p1-email-statistik-log-emails.workflow.ts\",\n  \"sourceHash\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\n  \"workflowId\": \"qGUglmAF2Puybuv0\",\n  \"workItemId\": \"\",\n  \"errors\": [\n    \"Default export is not a workflow. Make sure your file has: export default workflow(...)\",\n    \"You already tried this and it failed with the same error. Do not repeat the same approach. Use a different repair strategy for this work item.\"\n  ],\n  \"remediation\": {\n    \"category\": \"code_fixable\",\n    \"shouldEdit\": true,\n    \"reason\": \"workflow_source_build_failed\",\n    \"guidance\": \"Edit the workspace source file using filePath, then call build-workflow again with the same filePath.\"\n  }\n}\"",
-      "at": "2026-10-12T15:03:56Z",
-      "url": "https://github.com/n8n-io/n8n/issues/40910#issuecomment-6126917016"
-    }
-  ],
-  "comments_complete": true
+  "comments": [],
+  "comments_complete": false
 }

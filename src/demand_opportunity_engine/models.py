@@ -74,6 +74,8 @@ class Opportunity:
     confidence: int = 2
     contact_channel: str = ""
     info_edge: dict = field(default_factory=dict)
+    operator_advantage: dict = field(default_factory=dict)
+    observed_budget: dict = field(default_factory=dict)
 
     def validate(self):
         if not self.id or not self.title or not https(self.source_url):

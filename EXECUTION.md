@@ -51,3 +51,13 @@ Discovery is rerunnable on demand; no scheduler is installed this sprint. Reddit
 DIRECT_LEAD requires BUYER plus one supported commercial_intent_type and an exact author-written commercial_intent_quote, matching the deterministic source-only classifier. NONE, service ads, quoted hiring references, generated task digests and ordinary bug reports cannot become sales recommendations. Labels and derived prose add no second payment score. Source contact/application paths are mandatory. 0–3-day requests rank ahead of 4–7-day requests; 8–14 days require buyer renewal for DO NOW. Unknown/high competition and uncontrolled capabilities still block immediate action. Ordinary observers remain available in PRODUCT_THESIS only.
 
 The primary human action is selected only from DO NOW. If it is empty, there is no qualified PRIMARY OUTREACH; VALIDATE is an optional permission/fit check, not a sales commitment. A real CONTACTED event must use the actual opportunity ID and actual channel; only then does the next report consume it.
+
+## Fourth sprint: bounded markets and stop rule
+
+`market_sources` now tests four independent public ecosystems, with explicit per-family page caps. Server-rendered Freelancer startTime, budget and bidCount are primary source fields; unknown employers never inflate independent clusters. Shopify support requests stay product pain unless the author explicitly invites paid work. Indie Hackers self-promotion and physical RFQs are audited separately from service leads. Raw same-round cache replay is disclosed in discovery_run, not called a fresh network read.
+
+Reports now include SOURCE_YIELD.md and TOOL_OPPORTUNITIES.md. Tools are PRODUCT_SIGNAL, with BUILD NOW / VALIDATE / WATCH / REJECT; keyword hypotheses are not volume. Current manually reviewed tool assessments retain original evidence/check dates, so scheduled reports cannot silently refresh their freshness or assert new SEO demand. Future supply/demand research must update actual evidence before promotion.
+
+`.github/workflows/daily-discovery.yml` schedules one daily run at 02:15 UTC (10:15 Shanghai), plus workflow_dispatch. Push runs tests only. Source errors are audited individually; artifacts are retained before normal data/report pushes. No forced pushes. The old "no scheduler installed" sentence above describes the third sprint only.
+
+Outcome ranking additionally consumes source family, opportunity type and offer cohorts. Actual grouped realized ticket/cycle metrics inform source and price assumptions; absent sales events remain neutral. No claimed revenue from proposed prices. After a bounded source test yields no qualified outreach or build, stop. Do not use the first high-competition VALIDATE item as an automatic outreach recommendation.

@@ -33,7 +33,8 @@ def grouped_metrics(events, opportunities):
         op = index.get(event.opportunity_id)
         if not op:
             continue
-        for key in (f"platform:{op.source_platform}", f"cluster:{op.cluster_name}", f"channel:{event.channel}"):
+        for key in (f"platform:{op.source_platform}", f"cluster:{op.cluster_name}", f"channel:{event.channel}",
+                    f"source:{op.source_family}", f"type:{op.discovery_route}", f"offer:{op.suggested_offer}"):
             if not key.endswith(":"):
                 groups.setdefault(key, []).append(event)
     return {key: metrics(group) for key, group in sorted(groups.items())}
@@ -41,7 +42,8 @@ def grouped_metrics(events, opportunities):
 def feedback_adjustment(op, events, opportunities):
     groups = grouped_metrics(events, opportunities)
     chosen = {k: groups[k] for k in (
-        f"platform:{op.source_platform}", f"cluster:{op.cluster_name}", f"channel:{op.contact_channel or op.source_platform}")
+        f"platform:{op.source_platform}", f"cluster:{op.cluster_name}", f"channel:{op.contact_channel or op.source_platform}",
+        f"source:{op.source_family}", f"type:{op.discovery_route}", f"offer:{op.suggested_offer}")
               if k in groups and groups[k]["contacted"] >= 2}
     baseline = metrics(events)
     adjustments = []

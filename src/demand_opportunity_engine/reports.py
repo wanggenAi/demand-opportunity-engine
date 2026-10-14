@@ -9,13 +9,15 @@ def product_report(opportunities):
     lines = ["# PRODUCT THESIS", "",
              "Repeated observations are not automatically product opportunities. Promotion requires >=5 independent buyers/problems, >=2 communities, >=2 primary payment signals, a narrow standardized job and a distribution path.",
              "Identity dedup: platform-author plus normalized exact-content fingerprint. Cross-platform identity linkage is unresolved; duplicate records and seller displays cannot increase counts.",
+             "Anonymous marketplace employers are excluded from independent demand/payment cluster counts; seven project pages do not prove seven independent buyers.",
              "No product was implemented.", ""]
-    for c in results[:3]:
+    for c in results:
         lines += [f"## {c['cluster_name']} — {c['status']}", ""]
         for key in ("independent_demand_count", "payment_evidence_count", "platforms", "communities", "repeated_pain",
                     "current_alternatives", "productization_potential", "suggested_product_form", "distribution"):
             lines.append(f"- {key}: {c[key]}")
         lines += [f"- Promotion blockers: {'; '.join(c['gates_failed']) or 'none'}",
+                  f"- Action: {'VALIDATE (paid pilot first; build/distribution assumptions remain unverified)' if not c['gates_failed'] else 'WATCH (no standardized product build authorized by evidence)'}",
                   f"- Pre-build validation: {c['prebuild_validation']}", "- Representative evidence:"]
         lines += [f"  - {url}" for url in c["evidence_urls"][:6]]
         lines.append("")
@@ -114,4 +116,4 @@ def buyer_report(opportunities, now, discovery):
                   f'- Limitations: {"; ".join(audit["limitations"])}']
         for row in audit['records']:
             lines += [f'- {row["url"]}: {row["verification"]}; original date from index={row["published_date_from_index"]}; primary snippet={row["exact_quote"]}; decision={row["decision"]}']
-    return '\n'.join(lines).rstrip()+'\n'
+    return '\n'.join(line.rstrip() for line in '\n'.join(lines).splitlines()).rstrip()+'\n'

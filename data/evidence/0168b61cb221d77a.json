@@ -1,0 +1,108 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50076985",
+  "collected_at": "2026-10-14T00:55:53.262448+00:00",
+  "source": {
+    "author": "iwebdevfromhome",
+    "children": [
+      {
+        "author": "kay_o",
+        "children": [
+          {
+            "author": "iwebdevfromhome",
+            "children": [],
+            "created_at": "2026-10-13T19:26:56.000Z",
+            "created_at_i": 1791919616,
+            "id": 50077252,
+            "options": [],
+            "parent_id": 50077148,
+            "points": null,
+            "story_id": 50076985,
+            "text": "I guess so, more AI is always a solution. I still like to review what the agents produce from time to time.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          },
+          {
+            "author": "dabinat",
+            "children": [],
+            "created_at": "2026-10-13T19:38:58.000Z",
+            "created_at_i": 1791920338,
+            "id": 50077437,
+            "options": [],
+            "parent_id": 50077148,
+            "points": null,
+            "story_id": 50076985,
+            "text": "But if you never review it, how do you know it’s correct, secure, maintainable, performant, etc? You just trust it’s correct because you told the agent to make it correct?",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-13T19:20:17.000Z",
+        "created_at_i": 1791919217,
+        "id": 50077148,
+        "options": [],
+        "parent_id": 50076985,
+        "points": null,
+        "story_id": 50076985,
+        "text": "Not supposed to edit or touch any code, or review. Other agent reviews and approves. You only write prompt.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "battery_staple_",
+        "children": [],
+        "created_at": "2026-10-13T20:21:59.000Z",
+        "created_at_i": 1791922919,
+        "id": 50078108,
+        "options": [],
+        "parent_id": 50076985,
+        "points": null,
+        "story_id": 50076985,
+        "text": "My hobby project gets much less of my time than I would prefer.  I&#x27;ve got the strongest model I have access to, on a cheap subscription, running --yolo in a VM with a fairly locked down firewall.  I found that a tree (i.e. the filesystem) isn&#x27;t really enough, for representing my thoughts, so I&#x27;ve built a graph datastore of sorts with a query layer that basically consists of a view (fitting the graph onto a tree) and a filter (for the root of that tree).  Technically I&#x27;ve got a review process for the graph, but in practice I just approve it.  I&#x27;m planning to build out an automated review process, kinda like unit tests, where I give a given prompt ownership over a specific cluster of nodes (and the code paths owned by them), and that prompt has to approve changes before I see them, but I haven&#x27;t done that yet.<p>To answer your question, the actual review I do, is when the agent asks me questions.  I tell it to resume a task, it asks questions, I answer them.  If those questions are off-the-rails, I stop, pop the conceptual stack, and come at the whole thing from a different angle.<p>I&#x27;m basically trusting the model to do a good job, and fixing forward, always annealing the project toward what I want.  And the rejection criteria is when the questions that it&#x27;s asking are _questions I don&#x27;t care about_.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-10-13T19:09:15.000Z",
+    "created_at_i": 1791918555,
+    "id": 50076985,
+    "options": [],
+    "parent_id": null,
+    "points": 2,
+    "story_id": 50076985,
+    "text": "Just as title says, in the world of ai accelerated code production, when you&#x27;re in charge of a repo or project, how do you usually look at code from proposed changes ?<p>I&#x27;m interested to find what your workflows look like these days.",
+    "title": "Ask HN: In the new AI world, what's the best way to review code?",
+    "type": "story",
+    "url": null
+  },
+  "comments": [
+    {
+      "author": "kay_o",
+      "text": "Not supposed to edit or touch any code, or review. Other agent reviews and approves. You only write prompt.",
+      "at": "2026-10-13T19:20:17.000Z",
+      "url": "https://news.ycombinator.com/item?id=50077148"
+    },
+    {
+      "author": "iwebdevfromhome",
+      "text": "I guess so, more AI is always a solution. I still like to review what the agents produce from time to time.",
+      "at": "2026-10-13T19:26:56.000Z",
+      "url": "https://news.ycombinator.com/item?id=50077252"
+    },
+    {
+      "author": "dabinat",
+      "text": "But if you never review it, how do you know it’s correct, secure, maintainable, performant, etc? You just trust it’s correct because you told the agent to make it correct?",
+      "at": "2026-10-13T19:38:58.000Z",
+      "url": "https://news.ycombinator.com/item?id=50077437"
+    },
+    {
+      "author": "battery_staple_",
+      "text": "My hobby project gets much less of my time than I would prefer.  I've got the strongest model I have access to, on a cheap subscription, running --yolo in a VM with a fairly locked down firewall.  I found that a tree (i.e. the filesystem) isn't really enough, for representing my thoughts, so I've built a graph datastore of sorts with a query layer that basically consists of a view (fitting the graph onto a tree) and a filter (for the root of that tree).  Technically I've got a review process for the graph, but in practice I just approve it.  I'm planning to build out an automated review process, kinda like unit tests, where I give a given prompt ownership over a specific cluster of nodes (and the code paths owned by them), and that prompt has to approve changes before I see them, but I haven't done that yet. To answer your question, the actual review I do, is when the agent asks me questions.  I tell it to resume a task, it asks questions, I answer them.  If those questions are off-the-rails, I stop, pop the conceptual stack, and come at the whole thing from a different angle. I'm basically trusting the model to do a good job, and fixing forward, always annealing the project toward what I want.  And the rejection criteria is when the questions that it's asking are _questions I don't care about_.",
+      "at": "2026-10-13T20:21:59.000Z",
+      "url": "https://news.ycombinator.com/item?id=50078108"
+    }
+  ],
+  "comments_complete": true
+}
