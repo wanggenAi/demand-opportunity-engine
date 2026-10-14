@@ -1,24 +1,21 @@
 # NEXT ACTION
 
-Codex: execute `FOURTH_SPRINT.md` now.
+System development is paused. FOURTH_SPRINT is complete; do not execute it again or start another development sprint.
 
-Read in this order:
-1. `README.md`
-2. `PRINCIPLES.md`
-3. `BRAIN_PROTOCOL.md`
-4. `BRAIN_REVIEW_V1.md`
-5. `BRAIN_REVIEW_V2.md`
-6. `BRAIN_REVIEW_V3.md`
-7. `FOURTH_SPRINT.md`
+Human: log in to Upwork using your own legitimate account. The bounded market test is pending access; zero original job briefs have been inspected. Do not run another development sprint.
 
-Do not redesign the business model. Do not loosen the buyer, freshness, competition or capability gates just to create output.
+On 2026-10-14, public Upwork search returned HTTP 403 and no usable logged-in browser session could be confirmed. This is an access blocker, not five rejected jobs or a completed market test. See `reports/UPWORK_MARKET_TEST.md`.
 
-Third sprint succeeded at finding explicit commercial intent: it found verified buyers with budgets, paid trials, hiring and vendor requests. It also correctly refused to promote stale, highly competitive or capability-mismatched leads into `DO NOW`.
+After legitimate access is available, resume only the bounded Upwork test for China supplier research, Chinese supplier communication, supplier comparison or RFQ preparation that can be delivered remotely.
 
-The remaining bottleneck is **source-market fit**. The current strongest buyer source is the n8n Jobs community, but visible provider competition is often very high. The next round must stop optimizing scoring and instead test where the operator has a structural advantage, especially China-local research/sourcing/communication needs plus bounded remote technical work.
+The goal is one real paid task with a lawful application path, not further engine optimization. Inspect at most five original buyer-authored job briefs. Stop immediately at the first qualified buyer, after five unsuccessful briefs, or at a login/access boundary that requires the human.
 
-Execute `FOURTH_SPRINT.md`: diversify at least four additional lawful public buyer source families, measure source yield, add grounded operator-advantage evidence, keep broad PRODUCT_SIGNAL clusters restrained, preserve INFO_EDGE discipline, and regenerate the required reports.
+Require original publication <=7 days, explicit paid work, LOW/MEDIUM evidenced competition, controlled remote delivery, a truthful Chinese-language/research advantage and a clearly scoped paid pilot. Reject inspection, certification, legal/customs, freight/DDP, warehousing, funds custody, invented portfolio and high-competition tasks.
 
-A `DO NOW` section with zero items remains acceptable. Never downgrade competition or capability standards to manufacture a lead.
+Do not add crawlers, scoring, tools, SEO research or architecture. Keep the current scheduler unchanged. If no qualified task is found, do not expand the engine.
 
-When complete, return the mandatory handoff in `FOURTH_SPRINT.md` and `BRAIN_PROTOCOL.md`.
+Record CONTACTED only after the human actually submits an application; REPLIED, QUALIFIED, QUOTED, WON and REVENUE require their respective real outcomes. Finding a task is not CONTACTED.
+
+After the first qualified buyer, set the next action to: "Human: apply to the selected buyer now. Do not run another development sprint before a real outcome is recorded."
+
+Only after five original briefs have actually been inspected without a qualified buyer, set it to: "Human market test completed with no qualified buyer. Do not expand the engine. Wait for the next bounded market test decision."
