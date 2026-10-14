@@ -1,21 +1,23 @@
 # NEXT ACTION
 
-System development is paused. FOURTH_SPRINT is complete; do not execute it again or start another development sprint.
+Current acquisition budget = 0.
+Paid application channels are not primary execution channels.
+The next objective is one qualified ZERO-COST PRIMARY OUTREACH, not another development sprint.
 
-Human: log in to Upwork using your own legitimate account. The bounded market test is pending access; zero original job briefs have been inspected. Do not run another development sprint.
+System development is paused. FOURTH_SPRINT is complete. Upwork is removed from the PRIMARY MARKET TEST; the previous instruction to log in to Upwork is superseded.
 
-On 2026-10-14, public Upwork search returned HTTP 403 and no usable logged-in browser session could be confirmed. This is an access blocker, not five rejected jobs or a completed market test. See `reports/UPWORK_MARKET_TEST.md`.
+Never buy Connects, bids/membership, proposal boosts, job credits, contact unlocks, lead databases or SEO APIs, or recharge to search/apply. Existing genuinely free application credits can be occasional opportunities only, never the core acquisition channel. If contact requires payment, mark BLOCKED_BY_PAID_ACQUISITION and do not ask the human to pay.
 
-After legitimate access is available, resume only the bounded Upwork test for China supplier research, Chinese supplier communication, supplier comparison or RFQ preparation that can be delivered remotely.
+For any future human-authorized zero-cost test, inspect no more than ten original requests, preferring Chinese-language supplier research/communication, 1688/Alibaba/manufacturer research, RFQ/shortlists, China market/competitor research, remote coordination or bounded technical/data work. Use buyer-posted email, invited DM, permitted free forum reply, explicit paid/bounty requests or official vendor/application channels. A seller ad or ordinary pain post is not a buyer. The current test has already stopped; see the result below.
 
-The goal is one real paid task with a lawful application path, not further engine optimization. Inspect at most five original buyer-authored job briefs. Stop immediately at the first qualified buyer, after five unsuccessful briefs, or at a login/access boundary that requires the human.
+Only acquisition_cost = ZERO may enter DO NOW / PRIMARY OUTREACH. Require original publication <=7 days, buyer-authored paid intent, a legitimate free contact path, evidenced LOW/MEDIUM competition, controlled remote capability and a bounded paid deliverable. UNKNOWN, OPTIONAL_PAID and REQUIRED_PAID cannot be the first action.
 
-Require original publication <=7 days, explicit paid work, LOW/MEDIUM evidenced competition, controlled remote delivery, a truthful Chinese-language/research advantage and a clearly scoped paid pilot. Reject inspection, certification, legal/customs, freight/DDP, warehousing, funds custody, invented portfolio and high-competition tasks.
+Stop at the first qualified request and hand the human its original evidence, free contact path, offer, proposed price and truthful first message. If no qualified buyer is found within the bounded test, stop and identify only the next best zero-cost manual channel. Do not expand crawlers, scoring architecture, tools or sources; keep the scheduler unchanged.
 
-Do not add crawlers, scoring, tools, SEO research or architecture. Keep the current scheduler unchanged. If no qualified task is found, do not expand the engine.
+CONTACTED is recorded only after a real application/message is submitted; all further outcomes require real events. No sending is authorized by finding a lead.
 
-Record CONTACTED only after the human actually submits an application; REPLIED, QUALIFIED, QUOTED, WON and REVENUE require their respective real outcomes. Finding a task is not CONTACTED.
+## Current bounded test result / STOP
 
-After the first qualified buyer, set the next action to: "Human: apply to the selected buyer now. Do not run another development sprint before a real outcome is recorded."
+2026-10-14: ten original candidate pages inspected; six commercial service/vendor requests, one unspecified partnership and three non-buyers. Qualified ZERO-COST PRIMARY OUTREACH = 0. See reports/ZERO_COST_MARKET_TEST.md. No application/message was sent and no sales outcome was recorded.
 
-Only after five original briefs have actually been inspected without a qualified buyer, set it to: "Human market test completed with no qualified buyer. Do not expand the engine. Wait for the next bounded market test decision."
+The current test is stopped. Do not automatically search an eleventh page or begin development. Await the human's next bounded-market-test decision. The single proposed zero-cost manual channel is r/forhire's new [Hiring] posts with buyer-invited free contact; verify current rules and actual paid scope. This is not an already qualified buyer.

@@ -19,7 +19,7 @@ Inspected = distinct listing records where keys are available; otherwise adapter
 
 ## Tomorrow's budget
 
-No newly tested buyer passed current hard gates. Do not spend another day expanding crawlers. Next single test: buyer-authored Upwork China supplier-research/Chinese-language desk-research briefs, manually in the human's legitimate account if public access fails. Stop after five original briefs; require <=7d, visible competition, remote scope and an invited application path. No subscription/API purchase needed for this test.
+Current acquisition budget = 0. The Upwork recommendation is superseded; paid application channels are not primary execution channels. The bounded ZERO-cost test has stopped after ten original candidate pages, with no qualified buyer. See ZERO_COST_MARKET_TEST.md / data/zero_cost_market_test.json for the separate audit; the historical source-yield table above is not a new pipeline run. The next single manual channel to consider is r/forhire's new [Hiring] posts with explicit bounded paid work and invited free contact, subject to its rules. Wait for a bounded test decision; do not expand crawlers or buy credits.
 
 ## Actual outcome learning
 

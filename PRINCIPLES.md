@@ -1,5 +1,15 @@
 # Operating Principles
 
+## ZERO-COST ACQUISITION RULE — current highest-priority commercial constraint
+
+Current acquisition budget = 0. Only evidenced `acquisition_cost = ZERO` can enter DO NOW / PRIMARY OUTREACH. Values are ZERO / OPTIONAL_PAID / REQUIRED_PAID / UNKNOWN; missing evidence defaults to UNKNOWN. A free contact channel still requires lawful account/forum eligibility.
+
+Do not buy Connects, bids, memberships, proposal boosts, job credits, contact unlocks, SEO APIs or lead databases, or recharge to seek customers. REQUIRED_PAID is BLOCKED_BY_PAID_ACQUISITION. Existing genuinely free credits are occasional exceptions only; such platforms are not core acquisition channels. Upwork may supply market intelligence but is removed from the primary execution test.
+
+Inspect at most ten original requests in the current zero-cost test. Stop at the first qualified buyer or at the bound; no new development sprint. Buyer-posted email, invited DM and permitted free replies/applications take priority. Ordinary pain, seller ads and bounty inquiries are not paid buyers.
+
+## Standing principles
+
 1. **Revenue before architecture.**
 2. **No building without demand evidence.**
 3. **Conversation beats code.** If 20 prospects can be contacted faster than a feature can be built, contact them first.

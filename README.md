@@ -2,6 +2,8 @@
 
 A revenue-first opportunity intelligence system.
 
+Current acquisition budget = 0. Paid application channels are not primary execution channels. Only an evidenced ZERO-cost lawful contact path may enter DO NOW / PRIMARY OUTREACH; see PRINCIPLES.md and NEXT_ACTION.md. Development is paused; the current test is bounded to ten original zero-cost buyer-request candidates.
+
 ## Mission
 Continuously discover, verify, rank, and act on opportunities that can produce real revenue for a solo operator using AI/Codex as leverage.
 

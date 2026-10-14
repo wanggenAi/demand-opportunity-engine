@@ -7,6 +7,7 @@ ROUTES = {"DIRECT_LEAD", "PRODUCT_SIGNAL", "INFO_EDGE"}
 EVENTS = {"DISCOVERED", "CONTACTED", "REPLIED", "QUALIFIED", "QUOTED", "WON", "LOST", "REVENUE"}
 MODES = {"REMOTE_NOW", "PARTNER_REQUIRED", "SPECIALIST_REQUIRED", "LOCAL_PHYSICAL"}
 COMMERCIAL_INTENTS = {"BUDGET_STATED", "QUOTE_REQUESTED", "HIRING", "PAID_TASK", "BOUNTY", "AGENT_OR_VENDOR_REQUEST", "PROCUREMENT_REQUEST", "WILLING_TO_PAY", "NONE"}
+ACQUISITION_COSTS = {"ZERO", "OPTIONAL_PAID", "REQUIRED_PAID", "UNKNOWN"}
 
 def timestamp(value):
     parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
@@ -48,6 +49,8 @@ class Opportunity:
     commercial_intent_type: str = "NONE"
     commercial_intent_quote: str = ""
     contact_path: str = ""
+    acquisition_cost: str = "UNKNOWN"
+    acquisition_cost_evidence: str = ""
     source_family: str = ""
     discovery_route: str = "PRODUCT_SIGNAL"
     payment_evidence_quote: str = ""
@@ -88,6 +91,8 @@ class Opportunity:
             raise ValueError("payment quote must come from source_text")
         if self.commercial_intent_type not in COMMERCIAL_INTENTS:
             raise ValueError("invalid commercial intent")
+        if self.acquisition_cost not in ACQUISITION_COSTS:
+            raise ValueError("invalid acquisition cost")
         if self.commercial_intent_quote and self.commercial_intent_quote not in self.source_text:
             raise ValueError("commercial quote must come from source_text")
         for value in (self.published_at, self.observed_at, self.buyer_activity_at, self.last_activity_at):

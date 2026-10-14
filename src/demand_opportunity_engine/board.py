@@ -29,6 +29,8 @@ def classify(op, score):
         return "REJECTED"
     if op.buyer_role != "BUYER" or op.commercial_intent_type == "NONE":
         return "REJECTED"  # Observers belong in PRODUCT_THESIS, never sales actions.
+    if op.acquisition_cost == "REQUIRED_PAID":
+        return "WATCH"  # Market intelligence only; never ask the human to buy access.
     if not score["do_now_rejections"] and score["score"] >= 65:
         return "DO NOW"
     # Current problem observations may be validated, but do not get an outreach recommendation.
@@ -53,6 +55,7 @@ def build_board(opportunities, generated_at=None, events=()):
     lines = [
         "# TODAY MONEY BOARD", "",
         f"Generated: {now.astimezone(ZoneInfo('Asia/Shanghai')).isoformat()} (Asia/Shanghai)", "",
+        "Current acquisition budget = 0. Only evidenced ZERO-cost contact can enter DO NOW / PRIMARY OUTREACH. Paid application channels are not primary execution channels.",
         "Decision rule: 0–7-day buyer demand first. 7–14-day demand is VALIDATE without renewed buyer activity. Older leads require verified OP activity <=7 days. Payment must be buyer-authored; unknown/high competition and uncontrolled fulfillment block DO NOW.",
         "Amounts below are suggested test prices, never observed buyer budgets. VALIDATE means confirm need/payment first; it does not authorize pitching bug reporters.",
         f"Live store: {len(opportunities)} observations; {len(rejected)} seller/news/pain-only/unqualified records excluded from sales. V1 seeds excluded.", "",
@@ -75,6 +78,7 @@ def build_board(opportunities, generated_at=None, events=()):
                 f"- Competition evidence: {', '.join(op.competition_evidence) or 'no service pitch detected in collected replies; off-platform DMs unknown'}",
                 f"- Delivery capability: {op.fulfillment_mode}; dependencies: {'; '.join(op.required_capabilities) or 'remote only; access and exact scope still require consent'}",
                 f"- Contact path: {op.contact_path or 'not verified'}; profile: {op.target_profile_url}",
+                f"- acquisition_cost: {op.acquisition_cost}; evidence: {op.acquisition_cost_evidence or 'free contact not verified'}",
                 f"- Contact channel/rules: {op.contact_channel}",
                 f"- First message angle/draft (human review): {op.first_message}",
                 f"- Suggested offer: {op.suggested_offer}",
@@ -93,7 +97,7 @@ def build_board(opportunities, generated_at=None, events=()):
         op, _ = buckets["DO NOW"][0]
         lines += [f"PRIMARY OUTREACH: Contact {op.buyer_id} via {op.contact_path}. Test {op.suggested_offer}; {op.suggested_price_range}.", ""]
     elif buckets["VALIDATE"]:
-        lines += ["No qualified PRIMARY OUTREACH. VALIDATE entries have unresolved gates; they are not today's money recommendation. STOP after the bounded source test. Next single source to verify is an original China supplier/Chinese-language desk-research request on Upwork via legitimate human access, at most five briefs; see SOURCE_YIELD.md.", ""]
+        lines += ["No qualified ZERO-COST PRIMARY OUTREACH. VALIDATE entries are not today's money recommendation. Stop after at most ten original requests; see ZERO_COST_MARKET_TEST.md and NEXT_ACTION.md. Do not buy application credits or expand the engine.", ""]
     else:
         lines += ["No verified buyer to contact today. Seek one current, buyer-authored paid request; do not spend human outreach time on stale/seller records.", ""]
     lines += ["## PRODUCT_SIGNAL tool decisions", "",

@@ -30,6 +30,8 @@ def opportunity(id="buyer", **changes):
         suggested_offer="One supplier desk memo", suggested_price_range="USD 100–250 proposal",
         first_message="Which supplier and deadline?", differentiation="One bounded remote memo",
         effort="2 hours", next_action="Confirm scope and budget", contact_channel="email")
+    op.acquisition_cost = "ZERO"
+    op.acquisition_cost_evidence = "Fixture buyer explicitly invites email; no application fee."
     changes.setdefault("contact_path", op.source_url)
     return normalize_intent(replace(op, **changes))
 
@@ -41,6 +43,26 @@ def event(oid, kind, day=8, amount=None, currency=None, channel="email"):
                    channel, amount, currency, "not a fit" if kind == "LOST" else "")
 
 class GateTests(unittest.TestCase):
+    def test_only_evidenced_zero_cost_can_be_primary(self):
+        for cost in ("UNKNOWN", "OPTIONAL_PAID", "REQUIRED_PAID"):
+            op = opportunity(acquisition_cost=cost)
+            self.assertNotEqual(classify(op, result(op)), "DO NOW")
+        op = opportunity(acquisition_cost_evidence="")
+        self.assertNotEqual(classify(op, result(op)), "DO NOW")
+        paid = opportunity(acquisition_cost="REQUIRED_PAID")
+        self.assertTrue(any("BLOCKED_BY_PAID_ACQUISITION" in r for r in result(paid)["do_now_rejections"]))
+        self.assertEqual(classify(paid, result(paid)), "WATCH")
+
+    def test_old_records_default_to_unknown_and_bad_cost_is_rejected(self):
+        row = opportunity().to_dict()
+        del row['acquisition_cost']
+        del row['acquisition_cost_evidence']
+        old = Opportunity(**row)
+        self.assertEqual(old.acquisition_cost, "UNKNOWN")
+        self.assertNotEqual(classify(old, result(old)), "DO NOW")
+        with self.assertRaises(ValueError):
+            opportunity(acquisition_cost="FREE_CREDITS").validate()
+
     def test_fresh_primary_demand_can_pass(self):
         op = opportunity()
         self.assertEqual(classify(op, result(op)), "DO NOW")

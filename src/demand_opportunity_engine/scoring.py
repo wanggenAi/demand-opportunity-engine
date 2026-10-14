@@ -34,6 +34,12 @@ def edge_rejections(op, now):
 
 def do_now_rejections(op, now):
     reasons = []
+    if op.acquisition_cost == "REQUIRED_PAID":
+        reasons.append("BLOCKED_BY_PAID_ACQUISITION: current acquisition budget = 0")
+    elif op.acquisition_cost != "ZERO":
+        reasons.append("zero-cost acquisition not verified: " + op.acquisition_cost)
+    elif not op.acquisition_cost_evidence.strip():
+        reasons.append("missing evidence for legitimate free contact")
     a = source_age(op, now)
     activity = verified_activity_age(op, now)
     if not op.source_verified:

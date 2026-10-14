@@ -1,5 +1,7 @@
 # Bounded Upwork market test — access blocked
 
+**Superseded by ZERO-COST ACQUISITION RULE:** Upwork is removed from the primary market test. The historical login recommendation below is no longer a current action. Do not buy Connects or unlock contact; required paid acquisition is BLOCKED_BY_PAID_ACQUISITION. See NEXT_ACTION.md / ZERO_COST_MARKET_TEST.md.
+
 Date: 2026-10-14 (Asia/Shanghai).
 Live main baseline fetched before work: `a598776be6546d2e1fdb43aab89ca65a813010dc`.
 
