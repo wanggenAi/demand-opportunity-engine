@@ -1,6 +1,6 @@
 # DAILY MONEY PORTFOLIO
 
-Generated: 2026-10-14T03:02:21.186565+00:00
+Generated: 2026-10-14T07:35:01.987802+00:00
 
 MANY VALIDATIONS, FEW HEAVY COMMITMENTS
 Current acquisition budget = 0. No quota filling. Only verified free-contact qualified buyers enter CONTACT_TODAY.
@@ -19,11 +19,11 @@ None. No verified qualifying record; no invented action.
 ### workflow_reliability
 
 - cluster_name: workflow_reliability
-- independent_demand_count: 21
+- independent_demand_count: 22
 - payment_evidence_count: 3
 - platforms: ["GitHub", "Hacker News", "Shopify Community", "n8n Community"]
 - communities: ["Ask/Show HN", "Commerce operator forum", "n8n Jobs", "n8n-io/n8n"]
-- evidence_urls: ["https://news.ycombinator.com/item?id=50076985", "https://news.ycombinator.com/item?id=50072103", "https://github.com/n8n-io/n8n/issues/40910", "https://github.com/n8n-io/n8n/issues/40905"]
+- evidence_urls: ["https://github.com/n8n-io/n8n/issues/41041", "https://news.ycombinator.com/item?id=50076985", "https://news.ycombinator.com/item?id=50072103", "https://github.com/n8n-io/n8n/issues/40910"]
 - repeated_pain: Operators cannot trust workflow execution status; triggers, responses or saved definitions fail.
 - current_alternatives: Vendor bug tracker and native fixes (free), internal engineering, n8n support, freelance automation providers.
 - productization_potential: Standardize reproduction, health checks and recovery runbooks; current category still too broad for one packaged product.
@@ -171,7 +171,7 @@ Full records and rejection reasons: DAILY_PORTFOLIO.json. WATCH has no forced qu
 
 ## G. TODAY ACTION PLAN
 
-1. Validate workflow_reliability: Select one execution-status failure in the primary evidence; write five diagnostic acceptance checks. Compare native logs/manual diagnosis with paid support prices. Ask what one failure costs, not whether someone likes a broad tool. Evidence: https://news.ycombinator.com/item?id=50076985 (30 min)
+1. Validate workflow_reliability: Select one execution-status failure in the primary evidence; write five diagnostic acceptance checks. Compare native logs/manual diagnosis with paid support prices. Ask what one failure costs, not whether someone likes a broad tool. Evidence: https://github.com/n8n-io/n8n/issues/41041 (30 min)
 2. Validate Assistant credits top up - now available: Before the Oct 15 discovery expiry, distinguish Assistant versus Gateway credits and top-up versus upgrade in one comparison note. Prepare an awareness question for an existing consenting Cloud operator; do not buy credits or assume a paying buyer. Source: https://community.n8n.io/t/assistant-credits-top-up-now-available/318075 (25 min)
 3. Validate lead_research: Extract the required lead fields from the primary paid brief. Specify a 20-company research sample with evidence URLs and no spam/private data. Compare manual research with two public-priced alternatives; prepare one question about paying for the sample. Evidence: https://community.n8n.io/t/looking-for-a-b2b-lead-generation-sales-partner-for-n8n-ai-automation-revenue-share/319139 (30 min)
 4. Validate Haiku 5.5 launch: cost-sensitive automation model evaluation: Using the official <=100k versus >100k price tiers, draft an offline before/after cost sheet for one extraction workload. Include tokenizer/retry/quality uncertainty; prepare an awareness question for consenting existing LLM users. No API spend or promised savings. Source: https://www.anthropic.com/claude-haiku-5-5 (25 min)

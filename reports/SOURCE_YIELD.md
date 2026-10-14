@@ -1,6 +1,6 @@
 # SOURCE YIELD
 
-Observed: 2026-10-14T02:53:32.171751+00:00; evaluated: 2026-10-14T03:02:21.186565+00:00
+Observed: 2026-10-14T07:35:01.987802+00:00; evaluated: 2026-10-14T07:35:01.987802+00:00
 
 Four NEW independent ecosystems: Freelancer project marketplace, Shopify commerce operators, Indie Hackers founders, TradeKey RFQs. Two Freelancer categories count as one family. Existing n8n/Remotive/procurement/Reddit/Algora paths remain separately audited.
 Inspected = distinct listing records where keys are available; otherwise adapter listing inspections. Resolved buyer pages = primary pages with explicit commercial buyers, including physical-goods RFQs. Fresh column is original publication <=7 days, not recent seller replies. All yields are from this run only; retained old observations do not inflate them.
@@ -12,9 +12,9 @@ Inspected = distinct listing records where keys are available; otherwise adapter
 | public procurement/RFQ | 20 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0.0 | 0.0 | Search returned procurement notices; up to three detail pages attempted. No buyer request promoted: eligibility, exact remote scope, submission deadline and award status require manual verification.; HTTPError: HTTP Error 403: Forbidden |
 | public bounty/paid task | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0.0 | 0.0 | No structured primary buyer requests extracted; static shell is not commercial proof. No login or anti-bot evasion.; HTTPError: HTTP Error 404: Not Found |
 | public Reddit buyer requests | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0.0 | 0.0 | HTTPError: HTTP Error 403: Blocked |
-| freelance project marketplace (Freelancer) | 67 | 7 | 7 | 7 | 1 | 1 | 7 | 0 | 10.4 | 0.0 | Public bidCount includes competitors; only first 20 proposals may be visible. Employer identity often unresolved. Task budget is not agreement to our pilot.; A different query/category on Freelancer does not count as another independent family. |
+| freelance project marketplace (Freelancer) | 67 | 7 | 7 | 7 | 0 | 1 | 7 | 0 | 10.4 | 0.0 | Public bidCount includes competitors; only first 20 proposals may be visible. Employer identity often unresolved. Task budget is not agreement to our pilot.; A different query/category on Freelancer does not count as another independent family. |
 | commerce operator community (Shopify) | 30 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0.0 | 0.0 | Latest activity is not original publication; support questions are PRODUCT_SIGNAL, not SALES. No more than four primary topics per run. |
-| founder community (Indie Hackers) | 23 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0.0 | 0.0 | Only server-rendered public pages. robots disallows /api/ and sign-in; neither used. Founder self-promotion is not a buyer. |
+| founder community (Indie Hackers) | 22 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0.0 | 0.0 | Only server-rendered public pages. robots disallows /api/ and sign-in; neither used. Founder self-promotion is not a buyer. |
 | international physical-goods RFQ (TradeKey) | 25 | 2 | 2 | 2 | 0 | 0 | 0 | 0 | 8.0 | 0.0 | Physical goods buyers do not automatically buy research. Contact requires platform sign-in; no access bypass. No bid-count visibility => UNKNOWN. |
 
 ## Tomorrow's budget

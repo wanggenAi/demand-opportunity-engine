@@ -1,6 +1,6 @@
 {
   "source_url": "https://community.shopify.com/t/697417.json",
-  "collected_at": "2026-10-14T02:53:32.171751+00:00",
+  "collected_at": "2026-10-14T07:35:01.987802+00:00",
   "source": {
     "post_stream": {
       "posts": [
@@ -12,15 +12,15 @@
           "cooked": "<p>I’m trying to understand how smaller brands handle wholesale orders when they’re not on Plus or don’t use a full B2B portal.</p>\n<p>From what I’ve read here, a lot of stockists still send orders by email, a PDF order form or even a photo of a handwritten list, and someone types them into Shopify as a draft order.</p>\n<p>If that’s you, I’d love to hear how it actually works day to day:</p>\n<ol>\n<li>Roughly how many wholesale orders came in by email or PDF last month?</li>\n<li>Who enters them, and how long does one take?</li>\n<li>What goes wrong most often (SKU mix-ups, case vs unit quantities, PO numbers, prices)?</li>\n<li>What have you tried to make it easier, and did it stick?</li>\n</ol>\n<p>I’m researching this, not selling anything. I’ll post a summary of the answers back in this thread so everyone can compare setups.</p>",
           "post_number": 1,
           "post_type": 1,
-          "posts_count": 3,
+          "posts_count": 5,
           "updated_at": "2026-10-13T18:46:53.694Z",
           "reply_count": 0,
           "reply_to_post_number": null,
           "quote_count": 0,
-          "incoming_link_count": 0,
-          "reads": 12,
-          "readers_count": 11,
-          "score": 2.4,
+          "incoming_link_count": 1,
+          "reads": 15,
+          "readers_count": 14,
+          "score": 38.0,
           "yours": false,
           "topic_id": 697417,
           "topic_slug": "wholesale-on-a-regular-shopify-plan-how-do-your-b2b-orders-actually-get-into-shopify",
@@ -40,7 +40,12 @@
           "read": true,
           "user_title": null,
           "bookmarked": false,
-          "actions_summary": [],
+          "actions_summary": [
+            {
+              "id": 2,
+              "count": 2
+            }
+          ],
           "moderator": false,
           "admin": false,
           "staff": false,
@@ -58,9 +63,15 @@
           "can_manage_category_expert_posts": false,
           "event": null,
           "calendar_details": [],
-          "reactions": [],
+          "reactions": [
+            {
+              "id": "heart",
+              "type": "emoji",
+              "count": 2
+            }
+          ],
           "current_user_reaction": null,
-          "reaction_users_count": 0,
+          "reaction_users_count": 2,
           "current_user_used_main_reaction": false,
           "can_accept_answer": false,
           "can_unaccept_answer": false,
@@ -76,15 +87,15 @@
           "cooked": "<p>I would suggest a simple workflow for brands on regular Shopify plans: collect wholesale orders through a standardized form or spreadsheet, validate SKUs, case quantities, wholesale pricing, and PO numbers, then use the information to create draft orders in Shopify. For recurring orders, a small automation can handle product matching and draft order creation, leaving staff to review exceptions before sending invoices.</p>\n<p>The key is to standardize the incoming order data first. Automating inconsistent emails and PDFs without that step can create more errors instead of saving time. This approach can work without Shopify Plus or a full B2B portal, and it gives merchants a clear starting point before investing in a larger system.</p>",
           "post_number": 2,
           "post_type": 1,
-          "posts_count": 3,
+          "posts_count": 5,
           "updated_at": "2026-10-13T18:55:03.948Z",
           "reply_count": 0,
           "reply_to_post_number": null,
           "quote_count": 0,
           "incoming_link_count": 0,
-          "reads": 11,
-          "readers_count": 10,
-          "score": 2.2,
+          "reads": 14,
+          "readers_count": 13,
+          "score": 2.8,
           "yours": false,
           "topic_id": 697417,
           "topic_slug": "wholesale-on-a-regular-shopify-plan-how-do-your-b2b-orders-actually-get-into-shopify",
@@ -138,15 +149,15 @@
           "cooked": "<p>From the implementation side, I’d make the review screen show both the quantity on the incoming order and the quantity that will go into Shopify. For example, <strong>2 cases × 12 units = 24 units</strong>. Keeping “cases” as an explicit field avoids turning that into an order for two individual items.</p>\n<p>I’d also flag a SKU that matches more than one variant, instead of choosing the first match. And if the same customer sends the same PO reference again, show the existing draft and let someone decide whether it’s a resend or a revision. That’s a useful check before automating email/PDF intake.</p>\n<p>One Shopify detail: saving a draft and holding the stock are separate decisions. If those units need to be held while the stockist reviews the invoice, use <strong>Reserve inventory</strong> with an expiry; otherwise they remain available to other customers. <a href=\"https://help.shopify.com/en/manual/fulfillment/managing-orders/create-orders/create-draft\">Shopify’s draft-order guide</a>.</p>\n<p>Are you seeing more unit/case mistakes, or repeated and amended orders?</p>",
           "post_number": 3,
           "post_type": 1,
-          "posts_count": 3,
+          "posts_count": 5,
           "updated_at": "2026-10-13T23:22:27.452Z",
           "reply_count": 0,
           "reply_to_post_number": null,
           "quote_count": 0,
           "incoming_link_count": 0,
-          "reads": 4,
-          "readers_count": 3,
-          "score": 0.8,
+          "reads": 6,
+          "readers_count": 5,
+          "score": 1.2,
           "yours": false,
           "topic_id": 697417,
           "topic_slug": "wholesale-on-a-regular-shopify-plan-how-do-your-b2b-orders-actually-get-into-shopify",
@@ -200,22 +211,167 @@
           "can_unaccept_answer": false,
           "accepted_answer": false,
           "topic_accepted_answer": null
+        },
+        {
+          "id": 1913627,
+          "username": "Zeeshan6236",
+          "avatar_template": "/user_avatar/community.shopify.com/zeeshan6236/{size}/416004_2.png",
+          "created_at": "2026-10-14T05:59:25.008Z",
+          "cooked": "<p>Hi <a class=\"mention\" href=\"/u/markriplabs\">@markriplabs</a> — I can’t share order numbers, but on a non-Plus plan the draft order screen covers a lot of it. Each line has a custom price field, so wholesale rates don’t need discount codes, and the PO can go in the order notes. For regulars, use Duplicate on an existing draft and just change quantities. What native Shopify won’t enforce is case packs, a customer can still order one unit, so it’s either variant names like Case of 12 or an app. Which part do you want compared across stores?</p>",
+          "post_number": 4,
+          "post_type": 1,
+          "posts_count": 5,
+          "updated_at": "2026-10-14T05:59:25.008Z",
+          "reply_count": 0,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 2,
+          "readers_count": 1,
+          "score": 0.4,
+          "yours": false,
+          "topic_id": 697417,
+          "topic_slug": "wholesale-on-a-regular-shopify-plan-how-do-your-b2b-orders-actually-get-into-shopify",
+          "primary_group_name": "shopifypartner",
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": "Shopify Partner",
+          "title_is_group": true,
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 638729,
+          "hidden": false,
+          "trust_level": 2,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/wholesale-on-a-regular-shopify-plan-how-do-your-b2b-orders-actually-get-into-shopify/697417/4",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        },
+        {
+          "id": 1913652,
+          "username": "ahsandoesntcare",
+          "avatar_template": "/user_avatar/community.shopify.com/ahsandoesntcare/{size}/415687_2.png",
+          "created_at": "2026-10-14T07:03:25.782Z",
+          "cooked": "<p>Hi <a class=\"mention\" href=\"/u/markriplabs\">@markriplabs</a> — most of that manual pain is fixable inside draft orders rather than with a portal. In Orders &gt; Drafts, when you add a product you can type the SKU straight into the search, then edit the unit price on the line to the wholesale price. Case vs unit mix-ups usually come from the variant itself, so if a case of 12 is a separate variant with its own SKU, staff can’t pick the wrong one. Put the PO number in Notes or a custom attribute so it carries through to the invoice. It’s the cleanest place to start before automating anything.</p>",
+          "post_number": 5,
+          "post_type": 1,
+          "posts_count": 5,
+          "updated_at": "2026-10-14T07:03:25.782Z",
+          "reply_count": 0,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 1,
+          "readers_count": 0,
+          "score": 0.2,
+          "yours": false,
+          "topic_id": 697417,
+          "topic_slug": "wholesale-on-a-regular-shopify-plan-how-do-your-b2b-orders-actually-get-into-shopify",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": "",
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1640284,
+          "hidden": false,
+          "trust_level": 2,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/wholesale-on-a-regular-shopify-plan-how-do-your-b2b-orders-actually-get-into-shopify/697417/5",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
         }
       ],
       "stream": [
         1913486,
         1913488,
-        1913546
+        1913546,
+        1913627,
+        1913652
       ]
     },
     "timeline_lookup": [
       [
         1,
+        1
+      ],
+      [
+        3,
         0
       ]
     ],
     "user_badges": {
       "users": {
+        "638729": {
+          "id": 638729,
+          "badge_ids": [
+            110,
+            119
+          ]
+        },
+        "1640284": {
+          "id": 1640284,
+          "badge_ids": [
+            111,
+            116
+          ]
+        },
         "1645706": {
           "id": 1645706,
           "badge_ids": [
@@ -523,12 +679,12 @@
     "fancy_title": "Wholesale on a regular Shopify plan: how do your B2B orders actually get into Shopify?",
     "id": 697417,
     "title": "Wholesale on a regular Shopify plan: how do your B2B orders actually get into Shopify?",
-    "posts_count": 3,
+    "posts_count": 5,
     "created_at": "2026-10-13T18:46:53.497Z",
-    "views": 45,
+    "views": 53,
     "reply_count": 0,
-    "like_count": 0,
-    "last_posted_at": "2026-10-13T23:22:27.452Z",
+    "like_count": 2,
+    "last_posted_at": "2026-10-14T07:03:25.782Z",
     "visible": true,
     "closed": false,
     "archived": false,
@@ -536,7 +692,7 @@
     "archetype": "regular",
     "slug": "wholesale-on-a-regular-shopify-plan-how-do-your-b2b-orders-actually-get-into-shopify",
     "category_id": 95,
-    "word_count": 443,
+    "word_count": 644,
     "deleted_at": null,
     "user_id": 1646161,
     "featured_link": null,
@@ -551,7 +707,7 @@
     "unpinned": null,
     "pinned": false,
     "current_post_number": 1,
-    "highest_post_number": 3,
+    "highest_post_number": 5,
     "deleted_by": null,
     "actions_summary": [
       {
@@ -595,14 +751,14 @@
     "bookmarked": false,
     "topic_timer": {
       "id": 1701,
-      "execute_at": "2027-04-11T23:22:27.452Z",
+      "execute_at": "2027-04-12T07:03:25.782Z",
       "duration_minutes": 259200,
       "based_on_last_post": true,
       "status_type": "close",
       "category_id": null
     },
-    "message_bus_last_id": 32,
-    "participant_count": 3,
+    "message_bus_last_id": 47,
+    "participant_count": 5,
     "show_read_indicator": false,
     "thumbnails": null,
     "slow_mode_enabled_until": null,
@@ -834,100 +990,6 @@
         ]
       },
       {
-        "fancy_title": "Wholesale/B2B Help",
-        "id": 402131,
-        "title": "Wholesale/B2B Help",
-        "slug": "wholesale-b2b-help",
-        "posts_count": 10,
-        "reply_count": 2,
-        "highest_post_number": 10,
-        "image_url": null,
-        "created_at": "2025-03-21T00:19:24.000Z",
-        "last_posted_at": "2026-06-05T16:11:29.070Z",
-        "bumped": true,
-        "bumped_at": "2026-06-05T16:11:29.070Z",
-        "archetype": "regular",
-        "unseen": false,
-        "pinned": false,
-        "unpinned": null,
-        "excerpt": "Working on a project where the client needs: \n\nPage on website for them to enter a portal to order, etc.\nPage should include a form for others to apply to be wholesalers\nContact Name\nContact E-Mail and Phone Number\nCompa&hellip;",
-        "visible": true,
-        "closed": false,
-        "archived": false,
-        "bookmarked": null,
-        "liked": null,
-        "tags": [
-          {
-            "id": 1417,
-            "name": "sales-channels",
-            "slug": "sales-channels"
-          }
-        ],
-        "tags_descriptions": {},
-        "like_count": 3,
-        "views": 471,
-        "category_id": 211,
-        "featured_link": null,
-        "op_like_count": 0,
-        "has_accepted_answer": false,
-        "posters": [
-          {
-            "extras": null,
-            "description": "Original Poster",
-            "user": {
-              "id": 1472170,
-              "username": "AnonymouUser020",
-              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/a/b5a626/{size}.png",
-              "primary_group_name": "shopifyplus",
-              "trust_level": 1
-            }
-          },
-          {
-            "extras": null,
-            "description": "Frequent Poster",
-            "user": {
-              "id": 1613665,
-              "username": "peerjakobsen",
-              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/p/3d9bf3/{size}.png",
-              "trust_level": 1
-            }
-          },
-          {
-            "extras": null,
-            "description": "Frequent Poster",
-            "user": {
-              "id": 509871,
-              "username": "Ravish1",
-              "avatar_template": "/user_avatar/community.shopify.com/ravish1/{size}/351488_2.png",
-              "primary_group_name": "shopifypartner",
-              "trust_level": 2
-            }
-          },
-          {
-            "extras": null,
-            "description": "Recent Poster",
-            "user": {
-              "id": 81139,
-              "username": "Sufio",
-              "avatar_template": "/user_avatar/community.shopify.com/sufio/{size}/36794_2.png",
-              "primary_group_name": "shopifypartner",
-              "trust_level": 2
-            }
-          },
-          {
-            "extras": "latest",
-            "description": "Most Recent Poster",
-            "user": {
-              "id": 1108328,
-              "username": "Maxime_Obius",
-              "avatar_template": "/user_avatar/community.shopify.com/maxime_obius/{size}/372677_2.png",
-              "primary_group_name": "shopifypartner",
-              "trust_level": 2
-            }
-          }
-        ]
-      },
-      {
         "fancy_title": "B2B order processing without a Wholesale area",
         "id": 332292,
         "title": "B2B order processing without a Wholesale area",
@@ -1015,17 +1077,111 @@
             }
           }
         ]
+      },
+      {
+        "fancy_title": "Wholesale/B2B Help",
+        "id": 402131,
+        "title": "Wholesale/B2B Help",
+        "slug": "wholesale-b2b-help",
+        "posts_count": 10,
+        "reply_count": 2,
+        "highest_post_number": 10,
+        "image_url": null,
+        "created_at": "2025-03-21T00:19:24.000Z",
+        "last_posted_at": "2026-06-05T16:11:29.070Z",
+        "bumped": true,
+        "bumped_at": "2026-06-05T16:11:29.070Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Working on a project where the client needs: \n\nPage on website for them to enter a portal to order, etc.\nPage should include a form for others to apply to be wholesalers\nContact Name\nContact E-Mail and Phone Number\nCompa&hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [
+          {
+            "id": 1417,
+            "name": "sales-channels",
+            "slug": "sales-channels"
+          }
+        ],
+        "tags_descriptions": {},
+        "like_count": 3,
+        "views": 472,
+        "category_id": 211,
+        "featured_link": null,
+        "op_like_count": 0,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 1472170,
+              "username": "AnonymouUser020",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/a/b5a626/{size}.png",
+              "primary_group_name": "shopifyplus",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 1613665,
+              "username": "peerjakobsen",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/p/3d9bf3/{size}.png",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 509871,
+              "username": "Ravish1",
+              "avatar_template": "/user_avatar/community.shopify.com/ravish1/{size}/351488_2.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 2
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": 81139,
+              "username": "Sufio",
+              "avatar_template": "/user_avatar/community.shopify.com/sufio/{size}/36794_2.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 2
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 1108328,
+              "username": "Maxime_Obius",
+              "avatar_template": "/user_avatar/community.shopify.com/maxime_obius/{size}/372677_2.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 2
+            }
+          }
+        ]
       }
     ],
     "summarizable": true,
     "has_cached_summary": true,
     "ai_summary": {
       "id": 1836322,
-      "summarized_text": "The discussion examines how smaller brands on standard Shopify plans handle wholesale orders that arrive by email, PDF, spreadsheets, or handwritten lists, often entering them manually as draft orders. The opening post asks about order volumes, staff time, common errors, and tools that have helped, but no merchants have yet shared concrete figures or day-to-day experiences.\n\nReplies recommend standardizing order details before automating intake: validate SKUs, wholesale prices, case quantities, and purchase-order (PO) numbers, then create draft orders for staff review. Suggested safeguards include displaying the conversion from cases to units (for example, 2 cases × 12 units = 24), flagging ambiguous SKU matches, and checking whether a repeated PO is a resend or an amendment. One Shopify-specific point is that draft orders do not automatically reserve inventory; merchants can reserve stock separately with an expiry if needed.\n\nThe thread remains open, with no decision or shared outcome yet. The main unanswered questions are how common these workflows and errors are in practice, and whether unit/case mistakes or duplicate and amended orders cause more problems.",
+      "summarized_text": "The discussion examines how smaller wholesale brands on standard Shopify plans enter stockist orders without a full B2B portal. The original question asks about order volumes, staff time, common errors, and tools tried, but no one provides order counts or time estimates, so those comparisons remain unanswered.\n\nPractical suggestions focus on standardizing order information before automating intake. A form or spreadsheet can capture SKUs, quantities, case packs, wholesale prices, and PO numbers; staff can then create Shopify draft orders and review exceptions. Draft orders allow custom line prices, SKU search, and PO details in notes or attributes, while existing drafts can be duplicated for repeat customers.\n\nSeveral safeguards are recommended: represent cases as distinct variants with their own SKUs, clearly show case-to-unit conversions, flag ambiguous SKU matches, and check for duplicate or revised PO references. Drafting an order does not reserve inventory; merchants must separately use Shopify’s inventory-reservation option if stock needs to be held. No shared workflow or final decision emerges, and the discussion remains open for actual merchant experiences.",
       "algorithm": "gpt-6-luna",
       "outdated": false,
       "created_at": "2026-10-13T18:51:37.235Z",
-      "updated_at": "2026-10-13T23:23:16.034Z"
+      "updated_at": "2026-10-14T07:04:09.232Z"
     },
     "is_category_expert_question": null,
     "has_livestream": null,
@@ -1052,6 +1208,19 @@
       "notification_level": 1,
       "participants": [
         {
+          "id": 1640284,
+          "username": "ahsandoesntcare",
+          "avatar_template": "/user_avatar/community.shopify.com/ahsandoesntcare/{size}/415687_2.png",
+          "post_count": 1,
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 2
+        },
+        {
           "id": 1646161,
           "username": "markriplabs",
           "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/m/90db22/{size}.png",
@@ -1063,6 +1232,19 @@
           "flair_bg_color": null,
           "flair_group_id": null,
           "trust_level": 0
+        },
+        {
+          "id": 638729,
+          "username": "Zeeshan6236",
+          "avatar_template": "/user_avatar/community.shopify.com/zeeshan6236/{size}/416004_2.png",
+          "post_count": 1,
+          "primary_group_name": "shopifypartner",
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 2
         },
         {
           "id": 1645706,
@@ -1097,9 +1279,9 @@
         "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/m/90db22/{size}.png"
       },
       "last_poster": {
-        "id": 1645706,
-        "username": "Maciej_Lektoro",
-        "avatar_template": "/user_avatar/community.shopify.com/maciej_lektoro/{size}/416951_2.png"
+        "id": 1640284,
+        "username": "ahsandoesntcare",
+        "avatar_template": "/user_avatar/community.shopify.com/ahsandoesntcare/{size}/415687_2.png"
       }
     },
     "bookmarks": []

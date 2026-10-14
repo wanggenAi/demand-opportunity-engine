@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/40901",
-  "collected_at": "2026-10-14T02:53:32.171751+00:00",
+  "collected_at": "2026-10-14T07:35:01.987802+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/40901",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -89,6 +89,19 @@
     "pinned_comment": null,
     "score": 1.0
   },
-  "comments": [],
-  "comments_complete": false
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @CentigradePatrickAndre,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9579\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9579](https://linear.app/n8n/issue/GHC-9579)",
+      "at": "2026-10-12T14:30:16Z",
+      "url": "https://github.com/n8n-io/n8n/issues/40901#issuecomment-6126327782"
+    },
+    {
+      "author": "nakulmaurya",
+      "text": "Hi n8n team, would this issue be available for a community contribution? I'd like to investigate GHC-9579 if nobody is already working on it.\n\nProposed scope: reproduce the supplied main/sub-workflow example on the current release, trace the item-linking failure when every item follows the IF node's false output, and add regression coverage comparing all-false, all-true, and mixed branches. If a bug is confirmed, I'd propose the smallest fix preserving earlier-node .item references, rather than substituting .first() or .all()[0].\n\nThis may touch workflow execution or packages/core, so I am explicitly asking for your approval and scope guidance before starting. If the team prefers to keep the implementation in-house, would a reproduction and regression test contribution be useful instead?\n\nI have not reproduced the issue or started implementation yet and will wait for a team member's confirmation, per CONTRIBUTING.md. I use AI assistance and will review and validate any submitted changes.",
+      "at": "2026-10-13T16:36:44Z",
+      "url": "https://github.com/n8n-io/n8n/issues/40901#issuecomment-6150379809"
+    }
+  ],
+  "comments_complete": true
 }

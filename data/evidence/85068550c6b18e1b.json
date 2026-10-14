@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/40870",
-  "collected_at": "2026-10-14T02:53:32.171751+00:00",
+  "collected_at": "2026-10-14T07:35:01.987802+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/40870",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -89,6 +89,19 @@
     "pinned_comment": null,
     "score": 1.0
   },
-  "comments": [],
-  "comments_complete": false
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @aromero-gh,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9577\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9577](https://linear.app/n8n/issue/GHC-9577)",
+      "at": "2026-10-12T10:15:13Z",
+      "url": "https://github.com/n8n-io/n8n/issues/40870#issuecomment-6122219795"
+    },
+    {
+      "author": "nakulmaurya",
+      "text": "Hi n8n team, I'd like to investigate this issue and contribute a community fix if it is available. Is anyone already working on GHC-9577, and would you be happy for me to take it?\n\nProposed scope: reproduce the mismatch between search_workflow_executions structuredContent and its declared outputSchema, make the smallest correction to the response or schema based on the intended contract, and add strict schema-validation regression tests for both empty and populated results, including pagination where applicable. I would keep authentication, permissions, and credential handling unchanged.\n\nI have not reproduced the issue or started implementation yet. I'll wait for your confirmation before picking it up, per CONTRIBUTING.md. I use AI assistance and will personally review and validate any submitted changes.",
+      "at": "2026-10-13T16:34:01Z",
+      "url": "https://github.com/n8n-io/n8n/issues/40870#issuecomment-6150329981"
+    }
+  ],
+  "comments_complete": true
 }

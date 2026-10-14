@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/CartShift/CartShift-Studio/issues/57",
-  "collected_at": "2026-10-14T02:53:32.171751+00:00",
+  "collected_at": "2026-10-14T07:35:01.987802+00:00",
   "source": {
     "url": "https://api.github.com/repos/CartShift/CartShift-Studio/issues/57",
     "repository_url": "https://api.github.com/repos/CartShift/CartShift-Studio",
@@ -134,6 +134,25 @@
     "pinned_comment": null,
     "score": 1.0
   },
-  "comments": [],
-  "comments_complete": false
+  "comments": [
+    {
+      "author": "yotamon",
+      "text": "## Implementation slices linked to this design proposal\n\n- #58 **P0 / first release:** private prospects workspace, manual/CSV import, deduplication, owner/next-action triage and role-safety. Can help Adi within the current sales window.\n- #59 **P1:** bounded Shopify store audit with observable evidence, crawler policy and SSRF/robots protections.\n- #60 **P2:** official business-contact discovery, cited sources, human eligibility review, suppression/deletion and no outbound automation.\n- #61 **P3:** Adi's work queue, founder technical review, proposal/paid-revenue handoff and funnel analytics.\n\n**Release order:** P0 → P1 → P2 → P3. Start the *commercial* pilot from the existing spreadsheet while building P0; do not block client acquisition on new automation. P1/P2 may share the same safe page-fetch layer. Each slice has independent tests. Design review is required before product code or external scans begin.\n\n**Cost envelope:** existing Next.js/Firebase/React Query stack; no new paid enrichment, automatic scheduled crawling, mass emailing, Vercel previews or CI reruns in planning.",
+      "at": "2026-10-13T23:44:03Z",
+      "url": "https://github.com/CartShift/CartShift-Studio/issues/57#issuecomment-6157565953"
+    },
+    {
+      "author": "yotamon",
+      "text": "### Implementation started — branch-only MVP\nFeature branch: [feat/prospect-intelligence-mcp-mvp](https://github.com/CartShift/CartShift-Studio/tree/feat/prospect-intelligence-mcp-mvp). Added server-owned `agency_prospects` and distinct `prospects:read/write` MCP scopes; existing inbound marketing leads and email automations are untouched. Added bilingual agency Prospects list/manual create and sourcing/evidence UI. Technical findings and business-contact candidates remain **unverified** with **no outreach approval**. See #62 for MCP work; #59 safe scanner and automatic business-contact discovery still blocked on safety/verification. No merge/deploy or direct outbound actions. Checked syntax for 13 TypeScript files using local Node; full tests not yet run.",
+      "at": "2026-10-14T00:12:10Z",
+      "url": "https://github.com/CartShift/CartShift-Studio/issues/57#issuecomment-6157914121"
+    },
+    {
+      "author": "yotamon",
+      "text": "### Updated implementation handoff — 2026-10-14\nBranch: https://github.com/CartShift/CartShift-Studio/tree/feat/prospect-intelligence-mcp-mvp\nThe intended P0–P3 workflow now exists on the feature branch: private domain-deduped leads, bounded HTTPS/robots on-demand scans, source-backed candidate findings and public business contacts, founder verification + legal eligibility gates, Adi assignment/next action, and linkage to existing real proposal records. No automated outbound marketing. The implementation has not been merged or deployed; operator/launch gates: docs/PROSPECT_INTELLIGENCE_OPERATIONS.md. Local verification: 56 focused Vitest tests passed (12 files); TypeScript and focused ESLint clean after fixing JSX and missing ownerUid. Not yet done: live canary, Firestore emulator, visual agency QA, legal/retention and OAuth reauthorization. Avoid preview/CI until release review.",
+      "at": "2026-10-14T01:04:26Z",
+      "url": "https://github.com/CartShift/CartShift-Studio/issues/57#issuecomment-6158546794"
+    }
+  ],
+  "comments_complete": true
 }

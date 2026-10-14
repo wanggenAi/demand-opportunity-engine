@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50073471",
-  "collected_at": "2026-10-14T02:53:32.171751+00:00",
+  "collected_at": "2026-10-14T07:35:01.987802+00:00",
   "source": {
     "author": "ericmags",
     "children": [
@@ -220,6 +220,36 @@
         "title": null,
         "type": "comment",
         "url": null
+      },
+      {
+        "author": "pueding",
+        "children": [],
+        "created_at": "2026-10-14T05:44:42.000Z",
+        "created_at_i": 1791956682,
+        "id": 50082887,
+        "options": [],
+        "parent_id": 50073471,
+        "points": null,
+        "story_id": 50073471,
+        "text": "Does it offer a self-hosted or air-gapped option for customers who cannot send data to any outside service?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "christopheromar",
+        "children": [],
+        "created_at": "2026-10-14T07:04:02.000Z",
+        "created_at_i": 1791961442,
+        "id": 50083533,
+        "options": [],
+        "parent_id": 50073471,
+        "points": null,
+        "story_id": 50073471,
+        "text": "These are some pretty significant compliance claims, especially around ITAR, CUI, and FedRAMP High equivalency. I think the technology sounds interesting, but I&#x27;d like to understand what&#x27;s actually happening behind the scenes before taking those claims at face value.<p>A few things I&#x27;d be curious about:<p>- *ITAR compliance:* What does that mean in practice for Consus? Are there specific controls around personnel access, data residency, subcontractors, and handling export-controlled information?<p>- *FedRAMP equivalency:* Was there an independent assessment covering all 410 FedRAMP High controls, or is this based on internal control mapping? Also, is there any publicly available documentation showing the assessment scope or authorization status?<p>- *Data handling:* Where do prompts and responses go? Are they stored, and if so, for how long? Can customers disable retention? I&#x27;d also be interested in how logging works and whether downstream model providers can retain data for training.<p>- *Customer isolation:* Are customers running in separate environments with dedicated encryption keys, or is isolation handled logically within shared infrastructure?<p>- *Security enforcement:* How does the system handle prompt injection or attempts to generate restricted technical information? Is there an additional security layer beyond the model itself, and can customers audit those decisions?<p>- *Encryption and key management:* Who manages the encryption keys, how often are they rotated, and what safeguards prevent unauthorized access?<p>I understand that not every security detail can be made public, but even a high-level explanation of the assessment scope, control coverage, and how data moves through the system would help.<p>There&#x27;s definitely value in making AI accessible for regulated environments. I just think the distinction between claiming compliance and demonstrating how it&#x27;s enforced matters a lot, especially for organizations dealing with sensitive information.<p>Would be interested to hear how the team approaches these challenges.",
+        "title": null,
+        "type": "comment",
+        "url": null
       }
     ],
     "created_at": "2026-10-13T15:41:00.000Z",
@@ -318,6 +348,18 @@
       "text": "Interesting that the pitch is density: $0.37/month per sandbox implies a lot of them packed onto shared hardware. My sandbox experience is the malware kind: at Fortinet I ran NSS Labs testing on a sandbox engine, and a key question was whether results held as throughput tiers went up, with sample loss tracked per tier. Same question seems worth asking here: do isolation and agent performance hold at peak packing, not just average utilization?",
       "at": "2026-10-13T21:14:05.000Z",
       "url": "https://news.ycombinator.com/item?id=50078867"
+    },
+    {
+      "author": "pueding",
+      "text": "Does it offer a self-hosted or air-gapped option for customers who cannot send data to any outside service?",
+      "at": "2026-10-14T05:44:42.000Z",
+      "url": "https://news.ycombinator.com/item?id=50082887"
+    },
+    {
+      "author": "christopheromar",
+      "text": "These are some pretty significant compliance claims, especially around ITAR, CUI, and FedRAMP High equivalency. I think the technology sounds interesting, but I'd like to understand what's actually happening behind the scenes before taking those claims at face value. A few things I'd be curious about: - *ITAR compliance:* What does that mean in practice for Consus? Are there specific controls around personnel access, data residency, subcontractors, and handling export-controlled information? - *FedRAMP equivalency:* Was there an independent assessment covering all 410 FedRAMP High controls, or is this based on internal control mapping? Also, is there any publicly available documentation showing the assessment scope or authorization status? - *Data handling:* Where do prompts and responses go? Are they stored, and if so, for how long? Can customers disable retention? I'd also be interested in how logging works and whether downstream model providers can retain data for training. - *Customer isolation:* Are customers running in separate environments with dedicated encryption keys, or is isolation handled logically within shared infrastructure? - *Security enforcement:* How does the system handle prompt injection or attempts to generate restricted technical information? Is there an additional security layer beyond the model itself, and can customers audit those decisions? - *Encryption and key management:* Who manages the encryption keys, how often are they rotated, and what safeguards prevent unauthorized access? I understand that not every security detail can be made public, but even a high-level explanation of the assessment scope, control coverage, and how data moves through the system would help. There's definitely value in making AI accessible for regulated environments. I just think the distinction between claiming compliance and demonstrating how it's enforced matters a lot, especially for organizations dealing with sensitive information. Would be interested to hear how the team approaches these challenges.",
+      "at": "2026-10-14T07:04:02.000Z",
+      "url": "https://news.ycombinator.com/item?id=50083533"
     }
   ],
   "comments_complete": true

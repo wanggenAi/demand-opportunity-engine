@@ -1,6 +1,6 @@
 # BUYER INTENT DISCOVERY
 
-Checked: 2026-10-14T03:02:21.186565+00:00
+Checked: 2026-10-14T07:35:01.987802+00:00
 
 Verified explicit commercial buyers: 14; published within 7 days: 8.
 Intent types: {'PAID_TASK': 1, 'AGENT_OR_VENDOR_REQUEST': 3, 'BUDGET_STATED': 8, 'HIRING': 2}
@@ -23,7 +23,7 @@ Additional families attempted this run: 9.
 - Verified buyer requests: 7; explicit commercial signals: 7
 - Limitations: Two newest-topic pages, not complete market coverage; max 200 extra replies per topic. Incomplete competition remains UNKNOWN unless observed high.; Last activity is not publication time. Only substantive buyer-authored follow-ups can renew a lead.
 - Errors: []
-- Audit snapshots: data/evidence/f5663f332d6bc9b1.json#sha256=bbaadb692c5d6e1794f209be47bf5842b8d71731d69c49d6ae2f8620cf1c654c, data/evidence/d9f0be47fa047f2c.json#sha256=f5d86c9c546107dc3ba7206729f92a398c2e43518a0504d8bf37d566438deff3
+- Audit snapshots: data/evidence/f5663f332d6bc9b1.json#sha256=69a4cfe9a62c43ebeeb3e407268800e727504d8f3edcaeada03de1ceb832cb45, data/evidence/d9f0be47fa047f2c.json#sha256=fd3cfc8e7419495ae2a732a209745b51bc2b7420ed31204a03bc127d2e8be7c8
 
 ### public freelance/job listings
 
@@ -32,7 +32,7 @@ Additional families attempted this run: 9.
 - Verified buyer requests: 0; explicit commercial signals: 0
 - Limitations: Employer application pages not verified. No employer-authored quote invented from aggregator job labels.; Legal warning - Hey, thanks for using Remotive's API, we appreciate it! Please note that API documentation and access is granted so that developers can share our jobs further. Please do not submit Remotive jobs to third Party websites, including but not limited to: Jooble, Neuvoo, Google Jobs, LinkedIn Jobs. Please link back to the URL found on Remotive AND mention Remotive as a source in order to Remotive to get traffic from your listing. If you don't do that, we'll terminate your API access, sorry! Jobs displayed are delayed by 24 hours, the goal being that jobs are attributed to Remotive on various platforms. Displaying our jobs in order to collect signups/email addresses to show a listing constitutes a breach of our terms of services. We offer a private, paid-for API, please email us at hello(at)remotive(dot)io for more information (starting budget is $5k/mo). Please find out terms of services on https://remotive.com/api-documentation. Please note that there is absolutely no need to request Remotive Job data too frequently. Typically, you only need to GET Remotive job data through this API a couple of times a day (we advise max. 4 times a day). Our data is not changing much faster than that anyway. Note that excessive requests will be blocked. Many thanks (Rodolphe & the Remotive team!)
 - Errors: []
-- Audit snapshots: data/evidence/071898d5d7cef09e.json#sha256=41b02c121c124f4ca06ec4ec14e5b6f7f6bd593f2b96bb5917c95e190f20a136
+- Audit snapshots: data/evidence/071898d5d7cef09e.json#sha256=aa8a830fc236087120bb154c443b99d5f893feef5cd1b01578993c79a65dbd65
 
 ### public procurement/RFQ
 
@@ -41,7 +41,7 @@ Additional families attempted this run: 9.
 - Verified buyer requests: 0; explicit commercial signals: 0
 - Limitations: Search returned procurement notices; up to three detail pages attempted. No buyer request promoted: eligibility, exact remote scope, submission deadline and award status require manual verification.
 - Errors: [{"url": "https://www.contractsfinder.service.gov.uk/notice/066979f0-fee1-44e9-a5d5-78346e4edd3c", "error": "HTTPError: HTTP Error 403: Forbidden"}, {"url": "https://www.contractsfinder.service.gov.uk/notice/50592118-07a4-434c-8974-aa769613ad8d", "error": "HTTPError: HTTP Error 403: Forbidden"}, {"url": "https://www.contractsfinder.service.gov.uk/notice/fc433cb3-2937-4529-bc28-99cda7e8017f", "error": "HTTPError: HTTP Error 403: Forbidden"}]
-- Audit snapshots: data/evidence/50e3af0542f19c3a.json#sha256=5227220664d9bcce81c7cf8c4704ac44866512dfa7393a5bdb029abff27157c8
+- Audit snapshots: data/evidence/50e3af0542f19c3a.json#sha256=8867b7e85b47bdc1f51385d07d851c6b8a47c20bba6dcf44b4dfee81ba538e2b
 
 ### public bounty/paid task
 
@@ -68,7 +68,7 @@ Additional families attempted this run: 9.
 - Verified buyer requests: 0; explicit commercial signals: 0
 - Limitations: No structured primary buyer requests extracted; static shell is not commercial proof. No login or anti-bot evasion.
 - Errors: []
-- Audit snapshots: data/evidence/b5d67d420401a4bb.json#sha256=8fc6b6b467c09642b57fa0641feefdd226d01db4e6b256be2321a6efd797691c
+- Audit snapshots: data/evidence/b5d67d420401a4bb.json#sha256=2d15fa2817b05e636a3514c2b36be8e532a43ac2109c747ba994c7e3f0776ab4
 
 ### freelance project marketplace (Freelancer)
 
@@ -77,7 +77,7 @@ Additional families attempted this run: 9.
 - Verified buyer requests: 4; explicit commercial signals: 4
 - Limitations: Public bidCount includes competitors; only first 20 proposals may be visible. Employer identity often unresolved. Task budget is not agreement to our pilot.
 - Errors: []
-- Audit snapshots: data/evidence/abf73d1fa5782498.json#sha256=bee3e02860da8124b2e4290e318ef8e02affc89994d298e575363c2a86764a26, data/evidence/3adde8bb3e84f849.json#sha256=5ad3ce00dbdf19d2c6dde87a40be86d6d7a32c16f90b03b135026c32905ad5bd, data/evidence/1dc2b31945045284.json#sha256=6fe61505c57162637019bbe2428e1d863c43ab2279a9bb4897741ef10381529a, data/evidence/2ed47d8e9f761456.json#sha256=5e42513d1c7ace25ce6ae141ded0f055b761043b3e5575f926d0502b8c4b9782, data/evidence/0faf6e230b4ab006.json#sha256=5bb8715d61b36df9de9bbba6122357560e537b64437f5492ec65ee19dda4a29b
+- Audit snapshots: data/evidence/abf73d1fa5782498.json#sha256=9bbd63a05f3b556118c94282a0d87849b7700cc28d3936687fabcb97c2b6415d, data/evidence/3adde8bb3e84f849.json#sha256=e8d4e0a79078c58ec68328949aadf9844708ac8e217dbc0321f771d4e493b399, data/evidence/1dc2b31945045284.json#sha256=b81781b913c609d33dac62bd47d1ee14406004ea1e75995fec68f669d0e7a5ee, data/evidence/2ed47d8e9f761456.json#sha256=12e1d9609a77ac39b7152bcc1ad3446a9f5f4ccef3a0e410379146177928d481, data/evidence/0faf6e230b4ab006.json#sha256=2d0b06c05102688ac83f4614940130d368ce3fb889f559e99ea7706f7c9be716
 
 ### freelance project marketplace (Freelancer)
 
@@ -86,25 +86,25 @@ Additional families attempted this run: 9.
 - Verified buyer requests: 3; explicit commercial signals: 3
 - Limitations: A different query/category on Freelancer does not count as another independent family.
 - Errors: []
-- Audit snapshots: data/evidence/eb34b643617bda88.json#sha256=60221b7170e1641afe87595240ba26448c80fd20c92808e606c75b84c1dac0d6, data/evidence/e5de20279ef56cbd.json#sha256=da1f08e99b6c20c8baa96dcc336d0ab8f417751b2ec79904343a50c67a9361e5, data/evidence/d971d1ad05852cea.json#sha256=3c203c67e6816d389fd06085d2f9d93762da6559cd9eb5d13517688b99b15b28, data/evidence/c6074dc7b6b98c99.json#sha256=f04f009c557f8f054dfe61f5c9a2e233f51187b2af133bbb914e9a36bf54947e
+- Audit snapshots: data/evidence/eb34b643617bda88.json#sha256=cb77a0c5f9a5480834387551a3d42e68a4d0d16331e91d600b8ebc119aa09526, data/evidence/e5de20279ef56cbd.json#sha256=9e97a812160332aebc45092e4313bd3c40b6a312126d051b1bd797a899c3a518, data/evidence/d971d1ad05852cea.json#sha256=283befa1a352bf853032f3ae6dba30cf20172423a971f4d52a30d815f0dcd70c, data/evidence/c6074dc7b6b98c99.json#sha256=edbe72b3dea4f30a32dfbe9e3bb51c655fb45b66ae8e59639fb88eb2aa2693f1
 
 ### commerce operator community (Shopify)
 
 - Access: bounded public HTTP/JSON; no authenticated endpoint; https://community.shopify.com/latest.json
-- Records inspected: 30; primary pages opened: 3; collected observations: 3
+- Records inspected: 30; primary pages opened: 2; collected observations: 2
 - Verified buyer requests: 0; explicit commercial signals: 0
 - Limitations: Latest activity is not original publication; support questions are PRODUCT_SIGNAL, not SALES. No more than four primary topics per run.
 - Errors: []
-- Audit snapshots: data/evidence/bda5dc3c1eb46ea5.json#sha256=be5a4d7c84aa0fe79148bcce9a04984722669a08fbc2d84e594896e08fe575a0, data/evidence/15a2f6ab1ff3500e.json#sha256=01630dd410819a6e8a72c6d9a8710947c15260bd4005a527490dcea0dc25acca, data/evidence/8a58b5708173a224.json#sha256=3b6820e07192b8f40852808eccc83f23c897853bcecac91406a3afd380a8973c, data/evidence/7a7c682427aea2ae.json#sha256=adf5ddf506abdef30273b31424a30f811412eede91a96da87450b6ff9bc130e2
+- Audit snapshots: data/evidence/bda5dc3c1eb46ea5.json#sha256=d1654c67c94ecd6647b46eea2ecbaffccccf211b556cdc15745019e666b6e40b, data/evidence/8a58b5708173a224.json#sha256=5c1e1191b914fbb9bed4542b934d188f27cf517fd36445d5368f458eef6dd2b6, data/evidence/15a2f6ab1ff3500e.json#sha256=27cb20338ff149947ae6719e37c3898ac8ecbf7b46c145d5186b00ae95c440a0
 
 ### founder community (Indie Hackers)
 
 - Access: bounded public HTTP/JSON; no authenticated endpoint; https://www.indiehackers.com/
-- Records inspected: 23; primary pages opened: 3; collected observations: 0
+- Records inspected: 22; primary pages opened: 1; collected observations: 0
 - Verified buyer requests: 0; explicit commercial signals: 0
 - Limitations: Only server-rendered public pages. robots disallows /api/ and sign-in; neither used. Founder self-promotion is not a buyer.
 - Errors: []
-- Audit snapshots: data/evidence/6548833164b0e7c9.json#sha256=c21242a5eb3292737f6d5b6e70a8dfd2f5efb43a25cbb4707c5e31ca59ca4d34, data/evidence/b68f2fbaa7623432.json#sha256=3d0333dec85b937a21b9b93f74c4045460b98e1742aa45c30a10fdabb9aa9f07, data/evidence/238aab6e08c10bd5.json#sha256=43a61fe74dc5b8793de96e02e0d4dc4cb4256bf8a2a474385ac4458d5557914c, data/evidence/5cba4047a0e09c72.json#sha256=03e137aaf903b4421a8cf1ab27b9e59cbc9bede504c8d27905a21a6970a6a235
+- Audit snapshots: data/evidence/6548833164b0e7c9.json#sha256=90a1a9d3202bd9b1586a0af9746a9f8bb9537e861fc5143699e3e38c4f02baa1, data/evidence/b68f2fbaa7623432.json#sha256=2707e0f962178d30e84cb7194832a15562a6089252122c836055441582ffe5a3
 
 ### international physical-goods RFQ (TradeKey)
 
@@ -113,21 +113,21 @@ Additional families attempted this run: 9.
 - Verified buyer requests: 2; explicit commercial signals: 2
 - Limitations: Physical goods buyers do not automatically buy research. Contact requires platform sign-in; no access bypass. No bid-count visibility => UNKNOWN.
 - Errors: []
-- Audit snapshots: data/evidence/3914e4f508c84945.json#sha256=6a77cb55d01c8b8f5461f46559d4798e4aade918f9d6d799b5bb9c8320259768, data/evidence/b6fd1053fde4b890.json#sha256=b2ae9009b98cd938b8bbbc6800495366793e6a90cae891671c7c5ae6c5945960, data/evidence/0390931f4de189d1.json#sha256=6d9b498426f1b2a87cc8a1af884146e51dd7102d642c24f6d7452a18703e108c
+- Audit snapshots: data/evidence/3914e4f508c84945.json#sha256=2493d7dafa6bec5495fdfe223b6e8c1570df794d6f653bb5c72c66638e92a1a5, data/evidence/b6fd1053fde4b890.json#sha256=89520950e5646a563931b1f1aed20a305c828b1ce99461fc8db8e1cbe9dde27f, data/evidence/0390931f4de189d1.json#sha256=34265ec7c6df574a31e698476465d279ac6dd324c744661acb04c823443b765c
 
 ## Primary commercial evidence (distinct source URLs)
 
 ### Meta Lead Generation Automation
 
 - Source: https://www.freelancer.com/projects/facebook-ads/meta-lead-generation-automation
-- Buyer: Freelancer:unresolved-employer; published_at: 2026-10-13T19:23:38+00:00; last_activity_at: 2026-10-13T21:35:07+00:00
+- Buyer: Freelancer:unresolved-employer; published_at: 2026-10-13T19:23:38+00:00; last_activity_at: 2026-10-14T05:20:23+00:00
 - Intent: BUDGET_STATED; exact quote: Budget: ₹1500-12500 INR
 - Need (primary text): Meta Lead Generation Automation
 I’m ready to launch a lead-driven advertising push across Meta and need someone who can build, optimise, and automate the entire process. The goal is simple: generate a steady flow of qualified leads. Ads will run on Facebook and Instagram, and all traffic will be directed to an external landing page that I will provide. I need you to set up the campaigns, wire up tracking so every form submission is captured inside Ads Manager, and create the automations that keep performance improving even when no one is watching.
 
 Please handle the full funnel—from structuring ad sets and audiences to installing pixels, crafting compelling copy, and putting in place automat
 - Contact/application: https://www.freelancer.com/projects/facebook-ads/meta-lead-generation-automation; public profile:
-- Competition: HIGH; replies=21; providers=17; complete=False
+- Competition: HIGH; replies=28; providers=20; complete=False
 - REMOTE_NOW scope: Remote diagnosis of one failing workflow, with reproduction and recovery checklist; proposed price: USD 100–200 diagnostic; USD 300–600 implementation only after scope agreement (proposal, not budget)
 - Dependencies: ['Employer identity unresolved publicly; required portfolio must be truthful; confirm exact scope and milestone before accepting']; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports.; Project budget covers original full scope, not our narrower research. No assumed permission to substitute deliverables.
 - First-message angle: Is this still blocking your workflow? I can scope a remote reproduction and recovery audit; what is the daily volume and cost of failures?
@@ -136,30 +136,30 @@ Please handle the full funnel—from structuring ad sets and audiences to instal
 ### Canton Fair Industrial Electronics Sourcing
 
 - Source: https://www.freelancer.com/projects/sourcing/canton-fair-industrial-electronics
-- Buyer: Freelancer:unresolved-employer; published_at: 2026-10-13T08:54:02+00:00; last_activity_at: None
+- Buyer: Freelancer:unresolved-employer; published_at: 2026-10-13T08:54:02+00:00; last_activity_at: 2026-10-13T14:05:36+00:00
 - Intent: BUDGET_STATED; exact quote: Budget: €30-250 EUR
 - Need (primary text): Canton Fair Industrial Electronics Sourcing
 I will be in Guangzhou for the Autumn Canton Fair, and I want a local sourcing partner who truly speaks the language of industrial-grade electronics manufacturing. Your role starts on the show floor: walk the Industrial Electronics halls with me, quickly spot booths whose datasheets, process capabilities and certifications match my specs, and capture clear photos, contacts and technical notes. When a sample is offered, I will depend on you to give an on-the-spot quality check, PCB workmanship, component selection, enclosure tolerances, compliance marks.
 
 I expect an advanced understanding of electronics: you should be comfortable discussing SMT lin
 - Contact/application: https://www.freelancer.com/projects/sourcing/canton-fair-industrial-electronics; public profile:
-- Competition: LOW; replies=0; providers=0; complete=True
+- Competition: HIGH; replies=2; providers=2; complete=True
 - REMOTE_NOW scope: Remote supplier verification / RFQ comparison for one SKU; proposed price: USD 100–250 (proposed discovery pilot; buyer budget unverified)
 - Dependencies: ['SPECIALIST_REQUIRED: compliance/customs/category expertise', 'Employer identity unresolved publicly; required portfolio must be truthful; confirm exact scope and milestone before accepting']; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports. SPECIALIST_REQUIRED: compliance/customs/category expertise; Project budget covers original full scope, not our narrower research. No assumed permission to substitute deliverables.
 - First-message angle: Which SKU, destination and supplier are you evaluating? I can scope a remote verification memo; physical QC is separate.
-- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; missing concrete target profile; partner/specialist capability not currently controlled
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; missing concrete target profile; partner/specialist capability not currently controlled; competition high or unmeasured
 
 ### Junior Python LLM Bot Developer
 
 - Source: https://www.freelancer.com/projects/automation/junior-python-llm-bot-developer
-- Buyer: Freelancer:unresolved-employer; published_at: 2026-10-13T07:01:06+00:00; last_activity_at: 2026-10-13T19:36:40+00:00
+- Buyer: Freelancer:unresolved-employer; published_at: 2026-10-13T07:01:06+00:00; last_activity_at: 2026-10-14T06:53:56+00:00
 - Intent: BUDGET_STATED; exact quote: Budget: ₹1500-12500 INR
 - Need (primary text): Junior Python LLM Bot Developer
 I need a junior-level Python developer who is excited about building automation bots powered by both offline and online large-language models. The immediate task is to create bots that streamline routine processes for my company and then connect those bots seamlessly to our existing web apps, a couple of legacy desktop tools, and several cloud services we already use.
 
 You should already be comfortable spinning up SaaS-style back ends (FastAPI, Django, or a similar stack is fine) and have at least tinkered with frameworks such as LangChain, [login to view URL], or the OpenAI API so you can switch between local and hosted LLMs when needed. A solid grasp of co
 - Contact/application: https://www.freelancer.com/projects/automation/junior-python-llm-bot-developer; public profile:
-- Competition: HIGH; replies=79; providers=20; complete=False
+- Competition: HIGH; replies=80; providers=20; complete=False
 - REMOTE_NOW scope: Remote diagnosis of one failing workflow, with reproduction and recovery checklist; proposed price: USD 100–200 diagnostic; USD 300–600 implementation only after scope agreement (proposal, not budget)
 - Dependencies: ['Employer identity unresolved publicly; required portfolio must be truthful; confirm exact scope and milestone before accepting']; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports.; Project budget covers original full scope, not our narrower research. No assumed permission to substitute deliverables.
 - First-message angle: Is this still blocking your workflow? I can scope a remote reproduction and recovery audit; what is the daily volume and cost of failures?
@@ -192,7 +192,7 @@ Budget: $250-750 AUD
 ### Python API Integration Bot
 
 - Source: https://www.freelancer.com/projects/api-integration/python-api-integration-bot
-- Buyer: Freelancer:unresolved-employer; published_at: 2026-10-13T03:20:34+00:00; last_activity_at: 2026-10-13T21:49:08+00:00
+- Buyer: Freelancer:unresolved-employer; published_at: 2026-10-13T03:20:34+00:00; last_activity_at: 2026-10-14T01:18:40+00:00
 - Intent: BUDGET_STATED; exact quote: Budget: ₹1500-12500 INR
 - Need (primary text): Python API Integration Bot
 I need a reliable Python-based bot whose single purpose is to integrate several external APIs and keep the data flowing between them without manual intervention. The core of the job is to build clean, well-structured code that can:
@@ -204,7 +204,7 @@ I need a reliable Python-based bot whose single purpose is to integrate several 
 
 If asynchronous techniques (aiohttp, asyncio) or task queues (Celery, RQ) would improve performance, feel free to include them. Well-writt
 - Contact/application: https://www.freelancer.com/projects/api-integration/python-api-integration-bot; public profile:
-- Competition: HIGH; replies=99; providers=20; complete=False
+- Competition: HIGH; replies=100; providers=20; complete=False
 - REMOTE_NOW scope: Remote diagnosis of one failing workflow, with reproduction and recovery checklist; proposed price: USD 100–200 diagnostic; USD 300–600 implementation only after scope agreement (proposal, not budget)
 - Dependencies: ['Employer identity unresolved publicly; required portfolio must be truthful; confirm exact scope and milestone before accepting']; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports.; Project budget covers original full scope, not our narrower research. No assumed permission to substitute deliverables.
 - First-message angle: Is this still blocking your workflow? I can scope a remote reproduction and recovery audit; what is the daily volume and cost of failures?
@@ -230,7 +230,7 @@ AI Marketing & n8n Automation Specialist for chill life — Potential Long-Term 
 ### China Industrial Electronics Sourcing
 
 - Source: https://www.freelancer.com/projects/sourcing/china-industrial-electronics-sourcing-40759402
-- Buyer: Freelancer:unresolved-employer; published_at: 2026-10-09T15:21:24+00:00; last_activity_at: 2026-10-12T10:31:13+00:00
+- Buyer: Freelancer:unresolved-employer; published_at: 2026-10-09T15:21:24+00:00; last_activity_at: 2026-10-13T15:09:07+00:00
 - Intent: BUDGET_STATED; exact quote: Budget: $250-750 USD
 - Need (primary text): China Industrial Electronics Sourcing
 I need an experienced, on-the-ground China-based sourcing agent to secure reliable industrial-grade electronics for my production line—specifically PCBs, electronic modules, and any closely related components that fall under the industrial electronics umbrella  ( TPU injection molding manufacturers , gateway components, SS inserts  ) .  The process will start with samples for field testing in my country, followed by purchases that will gradually increase in volume.
@@ -239,7 +239,7 @@ Your role starts at supplier identification and finishes only once the goods are
 
 • Build a short-list of vetted factories or distributors able
 - Contact/application: https://www.freelancer.com/projects/sourcing/china-industrial-electronics-sourcing-40759402; public profile:
-- Competition: HIGH; replies=32; providers=20; complete=False
+- Competition: HIGH; replies=34; providers=20; complete=False
 - REMOTE_NOW scope: Remote supplier verification / RFQ comparison for one SKU; proposed price: USD 100–250 (proposed discovery pilot; buyer budget unverified)
 - Dependencies: ['PARTNER_REQUIRED: on-site QC, warehouse or freight execution', 'SPECIALIST_REQUIRED: compliance/customs/category expertise', 'Employer identity unresolved publicly; required portfolio must be truthful; confirm exact scope and milestone before accepting']; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports. PARTNER_REQUIRED: on-site QC, warehouse or freight execution; SPECIALIST_REQUIRED: compliance/customs/category expertise; Project budget covers original full scope, not our narrower research. No assumed permission to substitute deliverables.
 - First-message angle: Which SKU, destination and supplier are you evaluating? I can scope a remote verification memo; physical QC is separate.
@@ -248,7 +248,7 @@ Your role starts at supplier identification and finishes only once the goods are
 ### China Sourcing: Raquet Game Toys
 
 - Source: https://www.freelancer.com/projects/sourcing/china-sourcing-raquet-game-toys
-- Buyer: Freelancer:unresolved-employer; published_at: 2026-10-07T09:38:14+00:00; last_activity_at: 2026-10-13T15:18:18+00:00
+- Buyer: Freelancer:unresolved-employer; published_at: 2026-10-07T09:38:14+00:00; last_activity_at: 2026-10-14T06:42:06+00:00
 - Intent: BUDGET_STATED; exact quote: Budget: $30-250 USD
 - Need (primary text): China Sourcing: Raquet Game Toys
 I need an experienced sourcing professional on the ground in China to help me launch a new line of raquet game toys. Because this is a consumer-grade toy product, I’m counting on you to identify factories that already manufacture similar paddle-and-ball or racket-style games, verify their credentials, and secure competitive pricing without sacrificing safety or quality.
@@ -258,7 +258,7 @@ Here’s what I’d like from you:
 • Compile a shortlist of at least three reliable suppliers that already produce raquet game toys, including their core product specs, MOQ, lead time, and initial price quotes.
 • Arrange sample orders, oversee dispatch to my address, and document any variation
 - Contact/application: https://www.freelancer.com/projects/sourcing/china-sourcing-raquet-game-toys; public profile:
-- Competition: HIGH; replies=21; providers=18; complete=False
+- Competition: HIGH; replies=24; providers=20; complete=False
 - REMOTE_NOW scope: Remote supplier verification / RFQ comparison for one SKU; proposed price: USD 100–250 (proposed discovery pilot; buyer budget unverified)
 - Dependencies: ['Employer identity unresolved publicly; required portfolio must be truthful; confirm exact scope and milestone before accepting']; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports.; Project budget covers original full scope, not our narrower research. No assumed permission to substitute deliverables.
 - First-message angle: Which SKU, destination and supplier are you evaluating? I can scope a remote verification memo; physical QC is separate.
@@ -267,7 +267,7 @@ Here’s what I’d like from you:
 ### Looking for n8n / AI Automation Specialist – Paid QA & Stress Testing
 
 - Source: https://community.n8n.io/t/looking-for-n8n-ai-automation-specialist-paid-qa-stress-testing/319256
-- Buyer: n8n Community:cobasuyi; published_at: 2026-10-06T21:10:54.270Z; last_activity_at: 2026-10-14T00:27:59.776Z
+- Buyer: n8n Community:cobasuyi; published_at: 2026-10-06T21:10:54.270Z; last_activity_at: 2026-10-14T05:49:29.943Z
 - Intent: PAID_TASK; exact quote: Looking for n8n / AI Automation Specialist – Paid QA & Stress Testing
 - Need (primary text): Looking for n8n / AI Automation Specialist – Paid QA & Stress Testing
 Hi everyone,
@@ -277,7 +277,7 @@ Hi everyone,
   I’m not looking for the agents to be rebuilt from scratch.
  I’d like to start with  one agent as a paid trial , with ongoing work available if we’re a good
 - Contact/application: https://community.n8n.io/u/cobasuyi; public profile: https://community.n8n.io/u/cobasuyi
-- Competition: HIGH; replies=201; providers=133; complete=True
+- Competition: HIGH; replies=202; providers=133; complete=True
 - REMOTE_NOW scope: QA one existing n8n agent: agreed test cases, edge-case/error-handling report and prioritized fixes; no rebuild; proposed price: USD 150–250 fixed QA pilot (test proposal, not stated buyer budget); fixes scoped separately
 - Dependencies: ['Buyer-authorized sandbox/export and test credentials; call/API test costs agreed in advance', 'Human must evidence actual relevant n8n/voice integration experience before applying']; effort: 4–6 hours for one bounded QA pilot; integration fixes require separate estimate; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports. Platform reply/application rules apply; private DM competition is unobservable.
 - First-message angle: For your one-agent paid trial, which agent and acceptance cases matter first? I can scope a sandbox QA report before any fixes. I will state my actual Vapi/Twilio/ElevenLabs experience rather than claim unverified projects.

@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50049588",
-  "collected_at": "2026-10-13T09:43:09.605326+00:00",
+  "collected_at": "2026-10-14T07:35:01.987802+00:00",
   "source": {
     "author": "SaarthRanka",
     "children": [
@@ -87,7 +87,23 @@
         "children": [
           {
             "author": "SaarthRanka",
-            "children": [],
+            "children": [
+              {
+                "author": "FindlayH",
+                "children": [],
+                "created_at": "2026-10-13T22:39:02.000Z",
+                "created_at_i": 1791931142,
+                "id": 50079918,
+                "options": [],
+                "parent_id": 50064901,
+                "points": null,
+                "story_id": 50049588,
+                "text": "It went so smooth it was actually a little silly, I also added in some homelab services that it can connect with to give voice commands to arr stack and a few other systems. This is awesome and I would not have done any of it without you starting!",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
             "created_at": "2026-10-13T00:18:49.000Z",
             "created_at_i": 1791850729,
             "id": 50064901,
@@ -148,6 +164,37 @@
                 "title": null,
                 "type": "comment",
                 "url": null
+              },
+              {
+                "author": "car",
+                "children": [
+                  {
+                    "author": "car",
+                    "children": [],
+                    "created_at": "2026-10-13T19:55:28.000Z",
+                    "created_at_i": 1791921328,
+                    "id": 50077702,
+                    "options": [],
+                    "parent_id": 50069978,
+                    "points": null,
+                    "story_id": 50049588,
+                    "text": "I should add that Llama.app and Unsloth Studio provide OpenAI-compatible API endpoints (both use Llama.cpp as their backend).<p><a href=\"https:&#x2F;&#x2F;llama.app&#x2F;docs&#x2F;api\" rel=\"nofollow\">https:&#x2F;&#x2F;llama.app&#x2F;docs&#x2F;api</a><p><a href=\"https:&#x2F;&#x2F;unsloth.ai&#x2F;docs&#x2F;new&#x2F;studio#unsloth-as-an-api-endpoint\">https:&#x2F;&#x2F;unsloth.ai&#x2F;docs&#x2F;new&#x2F;studio#unsloth-as-an-api-endpoin...</a>",
+                    "title": null,
+                    "type": "comment",
+                    "url": null
+                  }
+                ],
+                "created_at": "2026-10-13T11:28:13.000Z",
+                "created_at_i": 1791890893,
+                "id": 50069978,
+                "options": [],
+                "parent_id": 50064951,
+                "points": null,
+                "story_id": 50049588,
+                "text": "The choice of model could be up to the user, depending on the available RAM on their M class Mac. Newer and bigger usually being smarter.<p>Llama.app&#x2F;.cpp and Unsloth Studio on Mac already provide guidance to pick the optimal model for the available memory, all model wheights hosted by huggingface. Both apps can use the local huggingface model cache locally.<p>If you make it configurable, the user could also run a separate machine with an NVidia card and Linux to serve tokens on the LAN. Or use OpenRouter or any other cloud hosted model offering (DeepSeek, Z.ai, etc.).",
+                "title": null,
+                "type": "comment",
+                "url": null
               }
             ],
             "created_at": "2026-10-13T00:25:17.000Z",
@@ -180,7 +227,23 @@
         "children": [
           {
             "author": "SaarthRanka",
-            "children": [],
+            "children": [
+              {
+                "author": "joertemple",
+                "children": [],
+                "created_at": "2026-10-14T02:33:29.000Z",
+                "created_at_i": 1791945209,
+                "id": 50081672,
+                "options": [],
+                "parent_id": 50066929,
+                "points": null,
+                "story_id": 50049588,
+                "text": "That makes sense. And old version is still saved in history after rebuild or it is overwriten? I can imagine, that updates and rollback can make it flip-flop",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
             "created_at": "2026-10-13T04:59:13.000Z",
             "created_at_i": 1791867553,
             "id": 50066929,
@@ -211,7 +274,23 @@
         "children": [
           {
             "author": "pprotas",
-            "children": [],
+            "children": [
+              {
+                "author": "pkthunder",
+                "children": [],
+                "created_at": "2026-10-13T11:50:37.000Z",
+                "created_at_i": 1791892237,
+                "id": 50070186,
+                "options": [],
+                "parent_id": 50066971,
+                "points": null,
+                "story_id": 50049588,
+                "text": "Wasn’t everyone born on Jan 01, 1970?",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
             "created_at": "2026-10-13T05:04:36.000Z",
             "created_at_i": 1791867876,
             "id": 50066971,
@@ -242,7 +321,23 @@
         "children": [
           {
             "author": "SaarthRanka",
-            "children": [],
+            "children": [
+              {
+                "author": "car",
+                "children": [],
+                "created_at": "2026-10-13T11:39:11.000Z",
+                "created_at_i": 1791891551,
+                "id": 50070061,
+                "options": [],
+                "parent_id": 50067143,
+                "points": null,
+                "story_id": 50049588,
+                "text": "Please make this more generic, using the OpenAI API standard with model discovery. That way it works against a bare Llama.cpp instance out of the box, the local inference server that many others wrap around (like Ollama and LM Studio).",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
             "created_at": "2026-10-13T05:28:08.000Z",
             "created_at_i": 1791869288,
             "id": 50067143,
@@ -285,7 +380,23 @@
       },
       {
         "author": "aavisangle",
-        "children": [],
+        "children": [
+          {
+            "author": "car",
+            "children": [],
+            "created_at": "2026-10-13T11:29:13.000Z",
+            "created_at_i": 1791890953,
+            "id": 50069990,
+            "options": [],
+            "parent_id": 50067562,
+            "points": null,
+            "story_id": 50049588,
+            "text": "This uses the new onboard TTS model from Apple, which is amazing, even with background noise.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
         "created_at": "2026-10-13T06:25:54.000Z",
         "created_at_i": 1791872754,
         "id": 50067562,
@@ -297,6 +408,36 @@
         "title": null,
         "type": "comment",
         "url": null
+      },
+      {
+        "author": "abikg",
+        "children": [],
+        "created_at": "2026-10-13T23:33:59.000Z",
+        "created_at_i": 1791934439,
+        "id": 50080444,
+        "options": [],
+        "parent_id": 50049588,
+        "points": null,
+        "story_id": 50049588,
+        "text": "this looks cool man, close experience like : YC app HeyClicky for free &lt;3",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "abikg",
+        "children": [],
+        "created_at": "2026-10-13T23:39:01.000Z",
+        "created_at_i": 1791934741,
+        "id": 50080477,
+        "options": [],
+        "parent_id": 50049588,
+        "points": null,
+        "story_id": 50049588,
+        "text": "Hey, this was commented by Atticus, from the abikg account. Atticus is the Mac assistant from this post, and this comment was posted using Atticus itself.",
+        "title": null,
+        "type": "comment",
+        "url": null
       }
     ],
     "created_at": "2026-10-12T00:15:12.000Z",
@@ -304,7 +445,7 @@
     "id": 50049588,
     "options": [],
     "parent_id": null,
-    "points": 105,
+    "points": 114,
     "story_id": 50049588,
     "text": "Hi HN! I&#x27;m Saarth. I&#x27;m in 9th grade, and I built Atticus.<p>Atticus is a fast and cheap Mac assistant that can do tasks for you. You hold down Control-Option-Space, speak or type your task, be it complex or a simple browser search, and Atticus will get on it.<p>The interesting part is that simple tasks, like opening apps, playing a Spotify playlist, or web queries, don&#x27;t touch AI, and instead are processed locally and typically finish in under a second. For example, prompting Atticus to open apps takes around 0.08 seconds, sometimes even finishing before you finish your sentence, sort of like Jev.<p>Any tasks that are more complicated will be sent to Claude via claude -p, meaning you never need an API key and Atticus will run on your existing Claude Pro or Max plan. By using this approach, costs are also cut down immensely, with, on average, tasks costing a fraction of a cent.<p>To achieve Atticus&#x27; speed, it remembers shortcuts from each task it completes. When it does a task right for the first time, it saves its steps and replays them the next time without AI. For example, a workflow of creating a new meeting took about 30 seconds the first time around. Atticus then logs the exact steps to memory and takes 5-8 seconds on the next pass. To add to this, Atticus also learns about you as you use it more and from what&#x27;s on your computer, including your name, your apps, and things you want it to remember, personalizing its answers to you.<p>To combat the safety concerns over giving an AI unrestricted access to your device, Atticus has toggleable restrictions, so before anything is deleted, sent, bought, or written to a file, the user is prompted before that action.<p>Some features I&#x27;m currently working on include a meeting copilot that capitalizes on Atticus&#x27; speed, allowing Atticus to listen in on meetings and answer questions in real time as they come in, personalized to the context of the meeting and what it knows about you.<p>To run Atticus, macOS 26 or higher is required for its voice transcription features. The voice transcription is also done locally by macOS.<p>Atticus is free, open source, and also very fresh, and I&#x27;m completely aware of its many rough edges, which is why I&#x27;d love to hear from everyone about what breaks and what you guys would like to see Atticus do!",
     "title": "Show HN: Atticus – Hold-to-talk voice assistant for macOS that runs on Claude -p",
@@ -355,6 +496,12 @@
       "url": "https://news.ycombinator.com/item?id=50064901"
     },
     {
+      "author": "FindlayH",
+      "text": "It went so smooth it was actually a little silly, I also added in some homelab services that it can connect with to give voice commands to arr stack and a few other systems. This is awesome and I would not have done any of it without you starting!",
+      "at": "2026-10-13T22:39:02.000Z",
+      "url": "https://news.ycombinator.com/item?id=50079918"
+    },
+    {
       "author": "blakeashleyjr",
       "text": "I have been looking for this kind of thing on Linux. Any one have anything that works well?",
       "at": "2026-10-12T16:38:22.000Z",
@@ -379,6 +526,18 @@
       "url": "https://news.ycombinator.com/item?id=50065940"
     },
     {
+      "author": "car",
+      "text": "The choice of model could be up to the user, depending on the available RAM on their M class Mac. Newer and bigger usually being smarter. Llama.app/.cpp and Unsloth Studio on Mac already provide guidance to pick the optimal model for the available memory, all model wheights hosted by huggingface. Both apps can use the local huggingface model cache locally. If you make it configurable, the user could also run a separate machine with an NVidia card and Linux to serve tokens on the LAN. Or use OpenRouter or any other cloud hosted model offering (DeepSeek, Z.ai, etc.).",
+      "at": "2026-10-13T11:28:13.000Z",
+      "url": "https://news.ycombinator.com/item?id=50069978"
+    },
+    {
+      "author": "car",
+      "text": "I should add that Llama.app and Unsloth Studio provide OpenAI-compatible API endpoints (both use Llama.cpp as their backend).  https://llama.app/docs/api   https://unsloth.ai/docs/new/studio#unsloth-as-an-api-endpoin...",
+      "at": "2026-10-13T19:55:28.000Z",
+      "url": "https://news.ycombinator.com/item?id=50077702"
+    },
+    {
       "author": "joertemple",
       "text": "Clever to record-once and replay without AI. How do you notice when a saved shortcut has gone stale? If app update moves button or change other UI elements, maybe some new alert dialog? Does it detect failure and put it back to claude to record it again?",
       "at": "2026-10-13T01:34:54.000Z",
@@ -389,6 +548,12 @@
       "text": "Yeah, that's pretty much how it goes. It doesn't continuously check if a shortcut has gone stale. Instead, if a shortcut is called and fails, most of the time Claude will have already added a check to see if a shortcut was successfully completed, and if it does fail, it'll check why and rebuild it. The user can also point out the failure, and the same thing will happen.",
       "at": "2026-10-13T04:59:13.000Z",
       "url": "https://news.ycombinator.com/item?id=50066929"
+    },
+    {
+      "author": "joertemple",
+      "text": "That makes sense. And old version is still saved in history after rebuild or it is overwriten? I can imagine, that updates and rollback can make it flip-flop",
+      "at": "2026-10-14T02:33:29.000Z",
+      "url": "https://news.ycombinator.com/item?id=50081672"
     },
     {
       "author": "trollbridge",
@@ -403,6 +568,12 @@
       "url": "https://news.ycombinator.com/item?id=50066971"
     },
     {
+      "author": "pkthunder",
+      "text": "Wasn’t everyone born on Jan 01, 1970?",
+      "at": "2026-10-13T11:50:37.000Z",
+      "url": "https://news.ycombinator.com/item?id=50070186"
+    },
+    {
       "author": "jmathai",
       "text": "Can this work against a cheaper cloud LLM like Deepseek?  https://api-docs.deepseek.com/quick_start/agent_integrations...  Screencast looks great btw.",
       "at": "2026-10-13T01:42:05.000Z",
@@ -415,6 +586,12 @@
       "url": "https://news.ycombinator.com/item?id=50067143"
     },
     {
+      "author": "car",
+      "text": "Please make this more generic, using the OpenAI API standard with model discovery. That way it works against a bare Llama.cpp instance out of the box, the local inference server that many others wrap around (like Ollama and LM Studio).",
+      "at": "2026-10-13T11:39:11.000Z",
+      "url": "https://news.ycombinator.com/item?id=50070061"
+    },
+    {
       "author": "nitroedge",
       "text": "Windows version fork here too:\n https://github.com/FindlayHi/atticus-windows",
       "at": "2026-10-13T04:11:40.000Z",
@@ -425,6 +602,24 @@
       "text": "I liked the idea and I'm impressed, but here's what I'm thinking—what if the voice transcription gets it wrong? Like, voice can pick up similar-sounding words and transcribe them differently, you know?",
       "at": "2026-10-13T06:25:54.000Z",
       "url": "https://news.ycombinator.com/item?id=50067562"
+    },
+    {
+      "author": "car",
+      "text": "This uses the new onboard TTS model from Apple, which is amazing, even with background noise.",
+      "at": "2026-10-13T11:29:13.000Z",
+      "url": "https://news.ycombinator.com/item?id=50069990"
+    },
+    {
+      "author": "abikg",
+      "text": "this looks cool man, close experience like : YC app HeyClicky for free <3",
+      "at": "2026-10-13T23:33:59.000Z",
+      "url": "https://news.ycombinator.com/item?id=50080444"
+    },
+    {
+      "author": "abikg",
+      "text": "Hey, this was commented by Atticus, from the abikg account. Atticus is the Mac assistant from this post, and this comment was posted using Atticus itself.",
+      "at": "2026-10-13T23:39:01.000Z",
+      "url": "https://news.ycombinator.com/item?id=50080477"
     }
   ],
   "comments_complete": true

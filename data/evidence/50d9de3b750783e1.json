@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/donetick/donetick/issues/885",
-  "collected_at": "2026-10-14T02:53:32.171751+00:00",
+  "collected_at": "2026-10-14T07:35:01.987802+00:00",
   "source": {
     "url": "https://api.github.com/repos/donetick/donetick/issues/885",
     "repository_url": "https://api.github.com/repos/donetick/donetick",
@@ -38,9 +38,9 @@
     "locked": false,
     "assignees": [],
     "milestone": null,
-    "comments": 1,
+    "comments": 2,
     "created_at": "2026-10-13T21:22:41Z",
-    "updated_at": "2026-10-14T02:52:58Z",
+    "updated_at": "2026-10-14T05:34:09Z",
     "closed_at": null,
     "assignee": null,
     "author_association": "NONE",
@@ -77,6 +77,19 @@
     "pinned_comment": null,
     "score": 1.0
   },
-  "comments": [],
-  "comments_complete": false
+  "comments": [
+    {
+      "author": "tuananh4865",
+      "text": "Hi @Novapixel1010 and maintainers, I'd like to work on this. Before I start, could a maintainer confirm this feature is welcome upstream? My plan: custom XP categories, per-task XP and category assignment, a Points/XP display toggle, plus `GET /api/v1/users/{userID}/xp` and `GET /api/v1/circles/{circleID}/xp`. I'd also open a matching PR on the frontend repo. Happy to adjust the scope or data model to fit your direction. Thanks!",
+      "at": "2026-10-14T02:52:58Z",
+      "url": "https://github.com/donetick/donetick/issues/885#issuecomment-6159816520"
+    },
+    {
+      "author": "lucasmariano003-wq",
+      "text": "Hi @Novapixel1010 and maintainers. I’m interested in this feature and would use disclosed AI assistance, with tested code and human-account responsibility for the contribution.\n\nI saw @tuananh4865’s offer, so I do not want to duplicate work already underway. Is there still an available scope for another contributor, and is the proposed USD 100 bounty still available? If so, what payout method can you support for a contributor based in Brazil?\n\nBefore implementation, I would propose a small backend/frontend plan that preserves the existing points mode: circle-scoped XP categories, optional category assignment on chores, additive migration, authorized XP totals endpoints, and tests for completion and undo so totals cannot be awarded twice. I would confirm the data model and UI scope with maintainers before coding.\n\nIf someone is already taking the complete feature, I’m happy to leave it with them or discuss a clearly separated part rather than submit a competing implementation. Thanks!\n",
+      "at": "2026-10-14T05:34:09Z",
+      "url": "https://github.com/donetick/donetick/issues/885#issuecomment-6161669676"
+    }
+  ],
+  "comments_complete": true
 }

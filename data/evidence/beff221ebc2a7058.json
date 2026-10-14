@@ -1,0 +1,119 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41041",
+  "collected_at": "2026-10-14T07:35:01.987802+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/41041",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/41041/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/41041/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/41041/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/41041",
+    "id": 5843579598,
+    "node_id": "I_kwDOC4Q8Qs8AAAABXE3yzg",
+    "number": 41041,
+    "title": "Unrecognized node type for community packages with a dot in the npm scope",
+    "user": {
+      "login": "cl77",
+      "id": 33660027,
+      "node_id": "MDQ6VXNlcjMzNjYwMDI3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/33660027?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/cl77",
+      "html_url": "https://github.com/cl77",
+      "followers_url": "https://api.github.com/users/cl77/followers",
+      "following_url": "https://api.github.com/users/cl77/following{/other_user}",
+      "gists_url": "https://api.github.com/users/cl77/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/cl77/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/cl77/subscriptions",
+      "organizations_url": "https://api.github.com/users/cl77/orgs",
+      "repos_url": "https://api.github.com/users/cl77/repos",
+      "events_url": "https://api.github.com/users/cl77/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/cl77/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 4,
+    "created_at": "2026-10-14T07:13:26Z",
+    "updated_at": "2026-10-14T07:23:17Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nCommunity node packages whose npm scope contains a dot (for example `@seven.io/n8n-nodes-seven` or `@explorium.ai/n8n-nodes-explorium`) can be installed and their nodes show up in the node panel, but executing a workflow that uses one of these nodes fails with:\n\n```\nUnrecognized node type: @seven.io/n8n-nodes-seven\n```\n\nRoot cause: the backend derives the package of a full node type with `fullNodeType.split(\".\")`. For `@seven.io/n8n-nodes-seven.seven` this yields package `@seven` and node `io/n8n-nodes-seven`, so no loader is found. Affected places on current master:\n\n- `packages/cli/src/load-nodes-and-credentials.ts`: `recognizesNode`, `getNode`, `resolveNodeSourcePath`\n- `packages/cli/src/modules/type-availability-policies/policy-evaluator.ts`: `nodeTypePackageResolver` (`split(\".\")[0]`), so a `package` policy rule for such a package never matches its nodes\n\nThe same pattern exists in `packages/core`, which the n8n team maintains in-house:\n\n- `packages/core/src/nodes-loader/directory-loader.ts`: `extractNodeTypes`, used for `NODES_INCLUDE` / `NODES_EXCLUDE`\n- `packages/core/nodes-testing/load-nodes-and-credentials.ts`: `getNode`\n\nNode names never contain a dot, while npm package names may contain dots in the scope and in the name, so splitting at the last dot fixes all of these.\n\nHistory: reported before in #15574 (closed by the stale bot), fixed in #25018 (closed as stale) and #41033 (closed because it touched `packages/core`). I will open a PR limited to `packages/cli` and `packages/workflow`; the `packages/core` sites above would need to be handled by the n8n team.\n\n### To Reproduce\n\n1. Start a self-hosted n8n instance.\n2. Go to Settings > Community nodes and install `@seven.io/n8n-nodes-seven@0.2.0`.\n3. Create a workflow with a Manual Trigger and add the seven node (it is listed in the node panel).\n4. Execute the workflow.\n5. See the error `Unrecognized node type: @seven.io/n8n-nodes-seven`.\n\n### Expected behavior\n\nNodes from a community package with a dot in its npm scope execute like nodes from any other community package, and `NODES_INCLUDE` / `NODES_EXCLUDE` as well as `package` rules of type availability policies work for them.\n\n### Debug Info\n\nNot attached from a running instance. The behavior was checked against current master (commit 46761a60, n8n 2.44.0) with unit tests on `LoadNodesAndCredentials.recognizesNode` / `getNode`: `@seven.io/n8n-nodes-seven.seven` is not recognized and `getNode` throws `UnrecognizedNodeTypeError`, while `n8n-nodes-base.httpRequest`, `@n8n/n8n-nodes-langchain.agent` and `n8n-nodes-foo.bar` resolve correctly.\n\n## Environment\n\n### Operating System\n\nmacOS 26.6.2\n\n### n8n Version\n\n2.44.0 (master)\n\n### Node.js Version\n\n26.7.0\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/41041/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/41041/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @cl77,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9588\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9588](https://linear.app/n8n/issue/GHC-9588)",
+      "at": "2026-10-14T07:13:35Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41041#issuecomment-6162994033"
+    },
+    {
+      "author": "Joffcom",
+      "text": "@cl77 I think this was reported before, I thought we had fixed it I will dig out the old issue and see what happened.",
+      "at": "2026-10-14T07:14:49Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41041#issuecomment-6163011764"
+    },
+    {
+      "author": "Joffcom",
+      "text": "Quick update, the other issue was with the cli tool not allowing a . in the scope name, this is a new report. ",
+      "at": "2026-10-14T07:20:04Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41041#issuecomment-6163092819"
+    },
+    {
+      "author": "cl77",
+      "text": "Thanks for checking! Right, #34949 / #35221 are about the node-cli name validation. This one is the runtime side: `split('.')` in `load-nodes-and-credentials.ts` (closest older report is #15574, closed by the stale bot). #41042 fixes the cli/workflow part; the remaining `packages/core` sites are listed in the issue description.",
+      "at": "2026-10-14T07:23:05Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41041#issuecomment-6163139131"
+    }
+  ],
+  "comments_complete": true
+}
