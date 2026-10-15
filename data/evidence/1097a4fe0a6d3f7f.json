@@ -1,0 +1,135 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/40984",
+  "collected_at": "2026-10-15T07:23:41.904032+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/40984",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/40984/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/40984/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/40984/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/40984",
+    "id": 5830432641,
+    "node_id": "I_kwDOC4Q8Qs8AAAABW4VXgQ",
+    "number": 40984,
+    "title": "Gemini Node error with tool calls",
+    "user": {
+      "login": "r-buc",
+      "id": 218251540,
+      "node_id": "U_kgDODQJBFA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/218251540?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/r-buc",
+      "html_url": "https://github.com/r-buc",
+      "followers_url": "https://api.github.com/users/r-buc/followers",
+      "following_url": "https://api.github.com/users/r-buc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/r-buc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/r-buc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/r-buc/subscriptions",
+      "organizations_url": "https://api.github.com/users/r-buc/orgs",
+      "repos_url": "https://api.github.com/users/r-buc/repos",
+      "events_url": "https://api.github.com/users/r-buc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/r-buc/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582010757,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cXhQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:nodes",
+        "name": "team:nodes",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Nodes team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 3,
+    "created_at": "2026-10-13T12:37:44Z",
+    "updated_at": "2026-10-14T14:17:52Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nThe Google Gemini node \"Message a model\" fails with this error message, when connected tool nodes are being used:\n\nBad request - please check your parameters\n_Role 'tool' is not supported. Please use a valid role: SYSTEM, SYSTEM_1, USER, ASSISTANT, DEVELOPER, CONTEXT, USER_CONTEXT, MODEL, USER._\n\n### To Reproduce\n\n1. Add Gemini Node \"Message a Model\"\n2. Connect tool, e.g. PGSQL Vector Search\n3. Instruct the model to use the tool\n4. Experience the error message\n\n### Expected behavior\n\nOutput without error\n\n### Debug Info\n\n# Debug info\n\n## core\n\n- n8nVersion: 2.41.4\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.7.0\n- nodeEnv: production\n- database: postgres\n- executionMode: regular\n- concurrency: -1\n- license: enterprise (production)\n- consumerId: 990f5d0b-5879-4eb6-9a36-1835512129db\n\n## storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n## pruning\n\n- enabled: true\n- maxAge: 168 hours\n- maxCount: 1000000000 executions\n\n## client\n\n- userAgent: mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/155.0.0.0 safari/537.36\n- isTouchDevice: false\n\n## cluster\n\n- instanceCount: 1\n- versions: 2.41.4\n- instances:\n  - instanceKey: b89d84fa-117d-41ea-91bf-054da264950b, hostId: main-n8n, instanceType: main, instanceRole: leader, version: 2.41.4\n- checks:\n  - check: hostid-clash, status: succeeded, warnings: -\n  - check: lifecycle, status: succeeded, warnings: -\n  - check: split-brain, status: succeeded, warnings: -\n  - check: version-mismatch, status: succeeded, warnings: -\n\nGenerated at: 2026-10-13T08:27:36.415Z\n\n### Operating System\n\nn8n container\n\n### n8n Version\n\n2.41.4\n\n### Node.js Version\n\n 26.7.0\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/40984/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/40984/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @r-buc,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9585\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9585](https://linear.app/n8n/issue/GHC-9585)",
+      "at": "2026-10-13T12:37:51Z",
+      "url": "https://github.com/n8n-io/n8n/issues/40984#issuecomment-6145712816"
+    },
+    {
+      "author": "WilliamAyad",
+      "text": "The error message points directly to the root cause: Google's Gemini API layout does not natively support the 'tool' role for historical message sources in the way other providers might. It strictly expects roles to match its validated schema parameters (such as USER, ASSISTANT, or MODEL).\n\nWhen building multi-node workflows or agentic tool-calling setups in n8n, any downstream or connected sub-node passing chat history must explicitly map or coerce the source role to 'user' or 'assistant' before feeding it back into the Gemini \"Message a Model\" node. \n\nI actually got tired of manually hunting for these architectural mismatches and hidden payload traps during staging, so I automated this rule along with several production-readiness checks into a lightweight, browser-only validator. You can drop your exported workflow JSON into it to catch configuration bugs instantly: [tools.triggerworkflow.com/free-audit](url) (full disclosure: I built it).\n\nUntil the core node natively serializes or strips the 'tool' role for Gemini, custom role-mapping or structuring your agent's history is the safest way to prevent production runtime crashes!\n",
+      "at": "2026-10-14T09:57:51Z",
+      "url": "https://github.com/n8n-io/n8n/issues/40984#issuecomment-6165745192"
+    },
+    {
+      "author": "r-buc",
+      "text": "@WilliamAyad so you're saying it can be worked around in the node configuration? I just did the simple fix in the core code.",
+      "at": "2026-10-14T14:17:37Z",
+      "url": "https://github.com/n8n-io/n8n/issues/40984#issuecomment-6170490280"
+    }
+  ],
+  "comments_complete": true
+}

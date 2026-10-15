@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50036565",
-  "collected_at": "2026-10-14T07:35:01.987802+00:00",
+  "collected_at": "2026-10-15T07:23:41.904032+00:00",
   "source": {
     "author": "Kamabz",
     "children": [
@@ -40,7 +40,7 @@
     "id": 50036565,
     "options": [],
     "parent_id": null,
-    "points": 8,
+    "points": 9,
     "story_id": 50036565,
     "text": "I run a small site on Cloudflare&#x27;s Pro plan. Since 26 September, someone has filed the same fake abuse report against it six times. Each time, Cloudflare automatically puts a &quot;Suspected Malware&quot; warning on my homepage and login pages, and it stays until a person reviews it.<p>The reports are word for word identical. They describe an &quot;order&quot; and product pages that have never existed on my site (they return 404). The file hash in the report doesn&#x27;t match the hash in its own VirusTotal link, which returns &quot;Item not found&quot;. Only the date changes, and twice it&#x27;s been misspelled (&quot;October 52026&quot;, &quot;Octoboer 8 2026&quot;). Cloudflare&#x27;s team has cleared four of them. The reporter pastes the same text again within a day.<p>The result is that my homepage has been blocked for most of two weeks, my traffic has halved, and Google is indexing the warning page instead of my site. I&#x27;ve opened support cases and requested reviews each time. I&#x27;ve had one reply, on 5 October, and nothing on a lasting fix.<p>I&#x27;m not asking for special treatment. I&#x27;d like to know:\n1. Is there a way to stop automatic mitigations from a reporter or text that has already been shown to be false?\n2. Is there a manual-review setting for a domain?\n3. Has anyone else seen the abuse form used like this, and how did it end?<p>The same problem is described in my open case with Cloudflare (#02370521). Thanks for any pointers, and if anyone from Cloudflare&#x27;s abuse team reads this, I&#x27;d welcome a reply.",
     "title": "Ask HN: Fake abuse reports keep auto-blocking my site on Cloudflare",

@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/40905",
-  "collected_at": "2026-10-14T07:35:01.987802+00:00",
+  "collected_at": "2026-10-15T07:23:41.904032+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/40905",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -50,9 +50,9 @@
     "locked": false,
     "assignees": [],
     "milestone": null,
-    "comments": 1,
+    "comments": 2,
     "created_at": "2026-10-12T14:40:47Z",
-    "updated_at": "2026-10-12T14:40:58Z",
+    "updated_at": "2026-10-14T11:28:58Z",
     "closed_at": null,
     "assignee": null,
     "author_association": "NONE",
@@ -95,6 +95,12 @@
       "text": "Hey @FlaviusPetrusBHL,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9580\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9580](https://linear.app/n8n/issue/GHC-9580)",
       "at": "2026-10-12T14:40:56Z",
       "url": "https://github.com/n8n-io/n8n/issues/40905#issuecomment-6126508985"
+    },
+    {
+      "author": "areej123-wq",
+      "text": "Hi team, is #40905 available for a community contribution? I reviewed the current Teams Trigger subscription methods. I would first reproduce expiry and confirm the supported renewal approach with you. Then I would prepare one focused fix with regression tests for renewal, failure handling, and continued message delivery. Can this stay within nodes-base, or does it need an internal core change? I have not started implementation. I will wait for your confirmation. I use Codex assistance and will review and test any submitted change.",
+      "at": "2026-10-14T11:28:58Z",
+      "url": "https://github.com/n8n-io/n8n/issues/40905#issuecomment-6167303529"
     }
   ],
   "comments_complete": true

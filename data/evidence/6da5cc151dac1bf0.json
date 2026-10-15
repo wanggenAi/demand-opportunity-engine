@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/40910",
-  "collected_at": "2026-10-14T07:35:01.987802+00:00",
+  "collected_at": "2026-10-15T07:23:41.904032+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/40910",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -50,9 +50,9 @@
     "locked": false,
     "assignees": [],
     "milestone": null,
-    "comments": 3,
+    "comments": 4,
     "created_at": "2026-10-12T15:00:23Z",
-    "updated_at": "2026-10-14T04:01:58Z",
+    "updated_at": "2026-10-14T11:23:53Z",
     "closed_at": null,
     "assignee": null,
     "author_association": "NONE",
@@ -107,6 +107,12 @@
       "text": "Hi team, I would like to take this one if it is still available.\n\nMy planned approach: in `build-workflow.tool.ts`, treat an empty `sourceCode` string as \"not provided\" — refuse the write and return a code-fixable remediation telling the agent to omit `sourceCode` to build the existing file content (matching the schema description \"Omit to build the existing file content\"). Nothing would be written, so the workspace file survives. I would also add a unit test covering the empty-string case.\n\nIs this direction acceptable to you?",
       "at": "2026-10-14T04:01:58Z",
       "url": "https://github.com/n8n-io/n8n/issues/40910#issuecomment-6160599278"
+    },
+    {
+      "author": "areej123-wq",
+      "text": "I’d like to contribute to this fix if help is still needed. I see another contributor has offered to work on it. Is it available, or is there a related issue you recommend? My proposed scope is to preserve the existing source file when sourceCode is empty and add a regression test. I’ll wait for your confirmation before implementation.",
+      "at": "2026-10-14T11:23:53Z",
+      "url": "https://github.com/n8n-io/n8n/issues/40910#issuecomment-6167222368"
     }
   ],
   "comments_complete": true

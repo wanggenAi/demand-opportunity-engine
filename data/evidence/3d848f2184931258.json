@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/bitaxeorg/bonanzaDisplay/issues/17",
+  "collected_at": "2026-10-15T07:23:41.904032+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/bitaxeorg/bonanzaDisplay/issues/17",
+    "repository_url": "https://api.github.com/repos/bitaxeorg/bonanzaDisplay",
+    "labels_url": "https://api.github.com/repos/bitaxeorg/bonanzaDisplay/issues/17/labels{/name}",
+    "comments_url": "https://api.github.com/repos/bitaxeorg/bonanzaDisplay/issues/17/comments",
+    "events_url": "https://api.github.com/repos/bitaxeorg/bonanzaDisplay/issues/17/events",
+    "html_url": "https://github.com/bitaxeorg/bonanzaDisplay/issues/17",
+    "id": 5854541321,
+    "node_id": "I_kwDOSVRnCc8AAAABXPU2CQ",
+    "number": 17,
+    "title": "[C2] Firmware and final assembly outputs remain outside this review",
+    "user": {
+      "login": "skot",
+      "id": 140785,
+      "node_id": "MDQ6VXNlcjE0MDc4NQ==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/140785?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/skot",
+      "html_url": "https://github.com/skot",
+      "followers_url": "https://api.github.com/users/skot/followers",
+      "following_url": "https://api.github.com/users/skot/following{/other_user}",
+      "gists_url": "https://api.github.com/users/skot/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/skot/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/skot/subscriptions",
+      "organizations_url": "https://api.github.com/users/skot/orgs",
+      "repos_url": "https://api.github.com/users/skot/repos",
+      "events_url": "https://api.github.com/users/skot/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/skot/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 12692811637,
+        "node_id": "LA_kwDOSVRnCc8AAAAC9IzvdQ",
+        "url": "https://api.github.com/repos/bitaxeorg/bonanzaDisplay/labels/v3-pre-PCBA",
+        "name": "v3-pre-PCBA",
+        "color": "1D76DB",
+        "default": false,
+        "description": "bonanzaDisplay v3 pre-PCBA review findings and follow-up",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-14T19:48:25Z",
+    "updated_at": "2026-10-15T00:55:17Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "Review finding **C2** — firmware and final assembly confirmation for bonanzaDisplay v3.1.\n\n**Current status:** Local fabrication/assembly review package regenerated from pushed commit `0fab1cac237adbfad9c7c31abaaa868e837f4df0`, including the approved R12 substitution to C270615. ERC, DRC, schematic parity and manufacturing preflight pass. Only R12 part metadata changed; connectivity and geometry are unchanged. The package is **for upload review, not approved for ordering**. Firmware source and assembled-hardware test evidence have not been supplied; JLCPCB's actual preview has not been viewed.\n\n**Local package:** `Manufacturing Files/bonanzaDisplay-v3.1-r12-review/` (ignored local outputs).\n\n- `Gerbers-JLCPCB.zip`: six copper layers, both mask/silk/paste layers, outline, separate PTH/NPTH drills and Gerber job.\n- `BOM-JLCPCB.csv`: 27 exact LCSC selections, 52 fitted components.\n- `CPL-JLCPCB.csv`: exactly the same 52 references, all Bottom. Excludes J2/J15, 11 test pads and four fiducials. Retains SW3 despite its through-hole footprint attribute. USB remains fitted as in the current design.\n- `placement-audit.csv`, `source-metadata-review.csv`, `parts-review.csv`, `excluded-components.csv`, source/output hash manifest, schematic/assembly PDFs and visual-review images.\n- `RELEASE-REVIEW.md` and `firmware-checklist.md` document the remaining checks.\n\n**Placement conventions:** Gerber/drill/CPL share the absolute origin. CPL uses positive X right and positive Y up. Existing Fabrication Toolkit manual offsets and bottom-side rotation conversion are applied, with auto-translate off. Native KiCad pad bounds are used for J6/SW3 center-origin placement. Existing corrections still require supplier model verification.\n\n**Firmware requirements confirmed from schematic:** BS1=1 / BS0=0 selects 8-bit 8080 parallel. D0–D7=GPIO0–7, RES=GPIO8, CS=GPIO9, DC=GPIO10, WR=GPIO11, RD=GPIO12. Encoder B/CW=GPIO13, push=GPIO14, A/CCW=GPIO15, common=GND; pullups/debounce must be enabled in firmware. OLED internal VDD-regulator/reset and external VSL configuration must match the fitted module. Hardware testing must cover crystal/USB startup, ROM BOOT and display/encoder operation. H4 power sequencing remains explicitly deferred under #7.\n\n**Completion criteria:**\n\n- [x] Generate a local BOM/CPL review package with deliberate exclusions and matching reference sets.\n- [x] Apply and audit existing placement offsets and coordinate conventions.\n- [x] Run local checks and visually review generated Gerbers and native board rendering.\n- [ ] Reconcile remaining source metadata and approve supplier pickup/rotation mapping (#13).\n- [x] Apply the stocked R12 alternative (#10): C270615 / 0402WGF3092TCE; live stock 83,348 when checked. Confirm quantity/reservation in the actual order.\n- [ ] Validate firmware implementation against display and encoder requirements.\n- [ ] Validate crystal/USB/BOOT/display behavior on assembled hardware over intended conditions.\n- [ ] Confirm actual six-layer filled-and-capped via order options and supplier stencil/CAM review (#12).\n- [ ] Review and approve JLCPCB component matches, rotations, polarity and pickup offsets before ordering.\n\n**Evidence:** `review/c2-release/` contains export script/command log, native IPC snapshots, catalog responses and checks. Sources: [EA OLED datasheet](https://www.lcd-module.de/fileadmin/html-seiten/eng/pdf/grafik/W256064-XALG.pdf), [JLCPCB BOM/CPL guidance](https://jlcpcb.com/help/article/advice-for-bom-and-cpl-files-preparation), [Fabrication Toolkit conversion implementation](https://github.com/bennymeg/Fabrication-Toolkit/blob/7f627b6be76081b962161b9eb9fe3a326a18c915/plugins/process.py).\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/bitaxeorg/bonanzaDisplay/issues/17/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/bitaxeorg/bonanzaDisplay/issues/17/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "skot",
+      "text": "Local release-package preparation completed against `57bda588457781f5eb5f50349efcc6c145367529`, without design changes. **52 fitted components / 27 BOM lines / 52 matching CPL entries**, with the 17 non-fitted items deliberately excluded. Existing J1/U4 corrections and J6/SW3 center origins are applied and audited.\n\nERC: 0 errors/warnings. PCB DRC: 0 violations/unconnected items. Independent stock KiCad schematic parity: 0 findings. The selected Backplane build reproduces its known schematic-connectivity parity defect, so the independent stock build supplies the parity evidence. Gerbers were rendered using PyGerber API v2 and visually reviewed, including nine U1 paste windows; native 3D placement was also inspected.\n\n**Still open:** actual JLCPCB preview/process confirmation; R12 sourcing (#10, live stock still 4); native BOM metadata reconciliation (#13); firmware source inspection and assembled-hardware startup/functional tests. The exact LCSC MPNs are used in the generated upload BOM, while conflicting native metadata is documented separately. No substitution, USB DNP decision, upload or order was made.\n\nThe owner has been asked for firmware location, assembly quantity and any existing JLCPCB draft-order link. The issue remains open until those release checks have evidence.\n",
+      "at": "2026-10-15T00:22:19Z",
+      "url": "https://github.com/bitaxeorg/bonanzaDisplay/issues/17#issuecomment-6181453588"
+    }
+  ],
+  "comments_complete": true
+}

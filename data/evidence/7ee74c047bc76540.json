@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50081857",
-  "collected_at": "2026-10-14T07:35:01.987802+00:00",
+  "collected_at": "2026-10-15T07:23:41.904032+00:00",
   "source": {
     "author": "sid_ships",
     "children": [
@@ -21,7 +21,23 @@
       },
       {
         "author": "27medkamal",
-        "children": [],
+        "children": [
+          {
+            "author": "sid_ships",
+            "children": [],
+            "created_at": "2026-10-14T08:55:19.000Z",
+            "created_at_i": 1791968119,
+            "id": 50084483,
+            "options": [],
+            "parent_id": 50082841,
+            "points": null,
+            "story_id": 50081857,
+            "text": "We kept the 2 tools separate as we wanted to allow users to use either independently. If someone just wants to use session intelligence in their product, they can integrate it in their workflow&#x2F;prodiuct with UI optional<p>Fair feedback on the agent desk having a prebuilt download as it would make it easier to try while preserving separation",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
         "created_at": "2026-10-14T05:38:54.000Z",
         "created_at_i": 1791956334,
         "id": 50082841,
@@ -40,7 +56,7 @@
     "id": 50081857,
     "options": [],
     "parent_id": null,
-    "points": 3,
+    "points": 4,
     "story_id": 50081857,
     "text": "Hi HN, excited to be open sourcing two tools that we have built over past few months which helps to understand your own work with AI coding agents<p>Agent Desk is a local macOS app which allows you to browse your sessions across all top coding agents - Claude code, cursor, codex, github copilot, Kiro, Antigravity. You can find sessions by your projects, revisit those conversations, understand and inspect your entire harness - rules, skills, hooks, subagents.<p><a href=\"https:&#x2F;&#x2F;github.com&#x2F;tetriz-ai&#x2F;agent-desk\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;tetriz-ai&#x2F;agent-desk</a><p>Session Intelligence is a go library which helps structure and analyse your session transcripts using your own LLM. It can help understand missing context, repeated corrections, if session reached its goal and where is effort being wasted. It can also surface leaked credentials and PII.<p><a href=\"https:&#x2F;&#x2F;github.com&#x2F;tetriz-ai&#x2F;session-intelligence\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;tetriz-ai&#x2F;session-intelligence</a><p>Both are MIT-licensed.<p>You can also combine both together and understanding your agent steering habits better.<p>Excited about the community using it.",
     "title": "Show HN: Evaluate and improve your agent steering",
@@ -59,6 +75,12 @@
       "text": "Why no prebuilt version?",
       "at": "2026-10-14T05:38:54.000Z",
       "url": "https://news.ycombinator.com/item?id=50082841"
+    },
+    {
+      "author": "sid_ships",
+      "text": "We kept the 2 tools separate as we wanted to allow users to use either independently. If someone just wants to use session intelligence in their product, they can integrate it in their workflow/prodiuct with UI optional Fair feedback on the agent desk having a prebuilt download as it would make it easier to try while preserving separation",
+      "at": "2026-10-14T08:55:19.000Z",
+      "url": "https://news.ycombinator.com/item?id=50084483"
     }
   ],
   "comments_complete": true

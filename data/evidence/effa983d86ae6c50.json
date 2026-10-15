@@ -1,0 +1,66 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50088088",
+  "collected_at": "2026-10-15T07:23:41.904032+00:00",
+  "source": {
+    "author": "dottchen",
+    "children": [
+      {
+        "author": "jeffrusiewicz",
+        "children": [
+          {
+            "author": "dottchen",
+            "children": [],
+            "created_at": "2026-10-15T01:06:59.000Z",
+            "created_at_i": 1792026419,
+            "id": 50097878,
+            "options": [],
+            "parent_id": 50089637,
+            "points": null,
+            "story_id": 50088088,
+            "text": "Merlin runs as a background service on your device and keeps an outbound websocket open to the server, and when a task is initiated the app starts your own locally installed, signed-in claude or codex CLI on the task. So it&#x27;s the same experience as using your local Codex&#x2F;Claude instances.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-14T15:52:39.000Z",
+        "created_at_i": 1791993159,
+        "id": 50089637,
+        "options": [],
+        "parent_id": 50088088,
+        "points": null,
+        "story_id": 50088088,
+        "text": "How does Merlin get Claude and Codex to wake so it kicks it off?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-10-14T14:13:33.000Z",
+    "created_at_i": 1791987213,
+    "id": 50088088,
+    "options": [],
+    "parent_id": null,
+    "points": 1,
+    "story_id": 50088088,
+    "text": "Hi HN, I built Merlin to let you use your own Claude Code and Codex subscription from Slack, Linear, and GitHub.<p>There is a desktop app for macOS and Windows, and a CLI daemon for Linux. When someone mentions Merlin in a Slack thread or Linear issue comment, the task runs on that team member&#x27;s machine, using their own Claude Code or Codex runtime, and progress and results come back to the original thread. Teammates can steer the agent mid-run. Merlin also has schedules, shared skills, and memory.<p>I know you&#x27;ve probably heard about Claude Tag. Merlin is similar to that but also different. The model usage goes to the Claude Code or Codex subscription instead of API bill, and you can use Merlin across different surfaces to streamline workflow instead of just in Slack (Linear&#x27;s agent session works particularly well with Merlin. You can just leverage Linear as your control panel for agentic work using Merlin). Merlin also runs on your local machines, which means that you can use your local context including MCPs, skills and local files instead of in a cloud sandbox.<p>Merlin does not upload your working directory, and provider credentials stay on the device. The request and the context it needs pass through Merlin. Runtimes start private, and an owner can make one public so teammates, including non-engineers, can use it.<p>But there&#x27;re also some limits, and we&#x27;ll probably deal with them in future updates:\n- An offline or sleeping machine can&#x27;t take work. The same issue as OpenClaw. But if you have a mac mini or ec2 setup it should be fine.\n- Linux is CLI only. We may later add desktop for Linux.\n- While runtime delegation isn&#x27;t a problem for now, we&#x27;re still working on how to make the best use of each team member&#x27;s local runtime and let them work together cohesively.<p>We&#x27;ve been internally using Merlin for quite some time. It really helps when you&#x27;re trying to add some AI juice to the conversation or just delegate things to your agents. I think it reduces the friction of having to do the copying &amp; pasting and switch to another app to ask for AI&#x27;s input when you&#x27;re having a discussion in a collaborative environment like Slack or Linear. It&#x27;s really the fastest way from intent to execution.<p>Pricing: free for up to 5 active users and 1,000 requests&#x2F;month. We think this should get small teams started and get real value from it. Team is $59&#x2F;mo and Scale is $99&#x2F;mo, with a 14-day Team trial and no credit card required.<p>I&#x27;m here all day to answer questions, and I&#x27;d especially like to hear whether non-engineers on your team would actually use this.",
+    "title": "Show HN: Merlin, Run Your Claude Code and Codex from Slack, Linear and GitHub",
+    "type": "story",
+    "url": "https://usemerlin.ai"
+  },
+  "comments": [
+    {
+      "author": "jeffrusiewicz",
+      "text": "How does Merlin get Claude and Codex to wake so it kicks it off?",
+      "at": "2026-10-14T15:52:39.000Z",
+      "url": "https://news.ycombinator.com/item?id=50089637"
+    },
+    {
+      "author": "dottchen",
+      "text": "Merlin runs as a background service on your device and keeps an outbound websocket open to the server, and when a task is initiated the app starts your own locally installed, signed-in claude or codex CLI on the task. So it's the same experience as using your local Codex/Claude instances.",
+      "at": "2026-10-15T01:06:59.000Z",
+      "url": "https://news.ycombinator.com/item?id=50097878"
+    }
+  ],
+  "comments_complete": true
+}

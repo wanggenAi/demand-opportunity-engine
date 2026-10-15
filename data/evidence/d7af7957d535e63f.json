@@ -1,0 +1,129 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41100",
+  "collected_at": "2026-10-15T07:23:41.904032+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/41100",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/41100/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/41100/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/41100/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/41100",
+    "id": 5848389597,
+    "node_id": "I_kwDOC4Q8Qs8AAAABXJdX3Q",
+    "number": 41100,
+    "title": "Freshservice credential type not selectable",
+    "user": {
+      "login": "giulianonora",
+      "id": 81854649,
+      "node_id": "MDQ6VXNlcjgxODU0NjQ5",
+      "avatar_url": "https://avatars.githubusercontent.com/u/81854649?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/giulianonora",
+      "html_url": "https://github.com/giulianonora",
+      "followers_url": "https://api.github.com/users/giulianonora/followers",
+      "following_url": "https://api.github.com/users/giulianonora/following{/other_user}",
+      "gists_url": "https://api.github.com/users/giulianonora/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/giulianonora/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/giulianonora/subscriptions",
+      "organizations_url": "https://api.github.com/users/giulianonora/orgs",
+      "repos_url": "https://api.github.com/users/giulianonora/repos",
+      "events_url": "https://api.github.com/users/giulianonora/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/giulianonora/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582010757,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cXhQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:nodes",
+        "name": "team:nodes",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Nodes team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-10-14T13:08:56Z",
+    "updated_at": "2026-10-14T13:16:20Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "\n<!-- Please follow the template below. Skip the questions that are not relevant to you. -->\n\n## Describe the problem/error/question\nYou can create a credential of type Freshservice, but when you insert a \"http request\" node and select \"Predefined credential type\", \"Freshservice API\" is not present in the list\n\n## What is the error message (if any)?\n\n\n## Please share your workflow/screenshots/recording\n\n<img width=\"497\" height=\"419\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/96cf26cb-0341-474f-bda7-dcb03fa047e6\" />\n\n```\n(Select the nodes on your canvas and use the keyboard shortcuts CMD+C/CTRL+C and CMD+V/CTRL+V to copy and paste the workflow.)\n⚠️ WARNING ⚠️ If you have sensitive data in your workflow (like API keys), please remove it before sharing.\n```\n{\n  \"nodes\": [\n    {\n      \"parameters\": {\n        \"url\": \"={{ $json.Value }}agents?active=true\",\n        \"authentication\": \"predefinedCredentialType\",\n        \"sendQuery\": true,\n        \"queryParameters\": {\n          \"parameters\": [\n            {\n              \"name\": \"page\",\n              \"value\": \"={{$pageCount + 1}}\"\n            },\n            {\n              \"name\": \"per_page\",\n              \"value\": \"30\"\n            }\n          ]\n        },\n        \"options\": {\n          \"pagination\": {\n            \"pagination\": {\n              \"parameters\": {\n                \"parameters\": [\n                  {\n                    \"name\": \"page\",\n                    \"value\": \"={{ $pageCount + 1 }}\"\n                  }\n                ]\n              },\n              \"paginationCompleteWhen\": \"other\",\n              \"completeExpression\": \"={{ $response.body.length == 0 }}\"\n            }\n          }\n        }\n      },\n      \"type\": \"n8n-nodes-base.httpRequest\",\n      \"typeVersion\": 4.5,\n      \"position\": [\n        -848,\n        416\n      ],\n      \"id\": \"6db5a3df-8c18-415f-941e-6075d0df799c\",\n      \"name\": \"HTTP Request - Read Freshservice Agents\"\n    }\n  ],\n  \"connections\": {\n    \"HTTP Request - Read Freshservice Agents\": {\n      \"main\": [\n        []\n      ]\n    }\n  },\n  \"pinData\": {},\n  \"meta\": {\n    \"templateCredsSetupCompleted\": true,\n    \"instanceId\": \"593d35d67fd3c1e4c16aa8d0c097770287f7403925019cf9dbb3374bcb71f148\"\n  }\n}\n\n## Share the output returned by the last node\n<!-- If you need help with data transformations, please also share your expected output. -->\n\n\n## Debug info\n\n### core\n\n- n8nVersion: 2.42.5\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.7.0\n- nodeEnv: production\n- database: postgres\n- executionMode: regular\n- concurrency: -1\n- license: enterprise (production)\n\n### storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n### pruning\n\n- enabled: true\n- maxAge: 336 hours\n- maxCount: 10000 executions\n\n### client\n\n- userAgent: mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/155.0.0.0 safari/537.36 edg/155.0.0.0\n- isTouchDevice: false\n\nGenerated at: 2026-10-14T13:03:25.620Z",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/41100/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/41100/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @giulianonora,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9589\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9589](https://linear.app/n8n/issue/GHC-9589)",
+      "at": "2026-10-14T13:09:07Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41100#issuecomment-6169108781"
+    },
+    {
+      "author": "Joffcom",
+      "text": "@giulianonora this looks to be expected at the moment as the nodes credential is one of a few that is not exposed to the http request node at the moment. ",
+      "at": "2026-10-14T13:15:58Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41100#issuecomment-6169241663"
+    }
+  ],
+  "comments_complete": true
+}

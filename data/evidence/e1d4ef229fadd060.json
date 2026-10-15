@@ -1,0 +1,123 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41152",
+  "collected_at": "2026-10-15T07:23:41.904032+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/41152",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/41152/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/41152/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/41152/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/41152",
+    "id": 5861534625,
+    "node_id": "I_kwDOC4Q8Qs8AAAABXV_roQ",
+    "number": 41152,
+    "title": "AI Agent: Anthropic thinking block is duplicated across parallel tool calls, Anthropic API rejects the next turn with 400 \"Invalid `signature` in `thinking` block\"",
+    "user": {
+      "login": "josiasmontag",
+      "id": 1945577,
+      "node_id": "MDQ6VXNlcjE5NDU1Nzc=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1945577?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/josiasmontag",
+      "html_url": "https://github.com/josiasmontag",
+      "followers_url": "https://api.github.com/users/josiasmontag/followers",
+      "following_url": "https://api.github.com/users/josiasmontag/following{/other_user}",
+      "gists_url": "https://api.github.com/users/josiasmontag/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/josiasmontag/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/josiasmontag/subscriptions",
+      "organizations_url": "https://api.github.com/users/josiasmontag/orgs",
+      "repos_url": "https://api.github.com/users/josiasmontag/repos",
+      "events_url": "https://api.github.com/users/josiasmontag/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/josiasmontag/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8811645809,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACDTcLcQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:ai",
+        "name": "team:ai",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the AI team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-15T06:49:43Z",
+    "updated_at": "2026-10-15T06:52:51Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nWhen an Anthropic Chat Model with thinking enabled (explicitly, or by default on Claude Sonnet 5 / Opus 5.x, which think adaptively when no `thinking` field is sent) returns **one `thinking` block followed by two or more `tool_use` blocks in the same response**, the AI Agent node (Tools Agent V3) fails on the very next model call:\n\n```\n400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"messages.1.content.3: Invalid `signature` in `thinking` block. The block is bound to a different conversation. Remove the block, or set `thinking.block_binding.prefix_mismatch_behavior` to \\\"drop_block\\\". That setting requires the `thinking-binding-controls-2026-08-01` value in the `anthropic-beta` header. This request has content before this block that was not present when it was created, first at `messages.1`.\"}}\n```\n\nSurfaced in n8n as `NodeOperationError: Bad request - please check your parameters` on the AI Agent node, thrown from `ToolsAgent/V3/helpers/executeBatch.ts`.\n\nTurns with a single tool call work. The failure only happens when the model issues parallel tool calls, so it is intermittent and depends on the model's choice.\n\n### Root cause (verified in source on master @ 40094e3, 2026-10-15; reproduced on 2.42.7)\n\nThe model returns a single assistant turn shaped like `[thinking, tool_use A, tool_use B]`. The thinking block carries a signature that Anthropic binds to that exact turn.\n\nWhen the agent rebuilds the history after running the tools:\n\n1. `createEngineRequests.ts` → `extractThinkingMetadata()` (line 43) copies the same `thinkingContent` / `thinkingSignature` into the metadata of **every** tool action of the batch. In the saved execution both actions carry an identical `metadata.anthropic.thinkingSignature`.\n2. `buildSteps.ts` → `buildSteps()` (line 345) builds the steps. For Gemini it detects parallel calls sharing a thought signature and merges them into one assistant message via `buildSharedGeminiAIMessage()` (lines 288 and 389–412). There is no equivalent branch for Anthropic. Each Anthropic tool call goes through `buildIndividualAIMessage()` (line 236) → `buildAnthropicContentBlocks()` (line 93), which always returns `[thinkingBlock, toolUseBlock]` (line 126).\n\nThe history sent on the next call is therefore:\n\n```\nHuman: ...\nAI:   [thinking(sig S), tool_use A]\nTool: result A\nAI:   [thinking(sig S), tool_use B]      <- same signature S, replayed under a different prefix\nTool: result B\n```\n\nAnthropic now validates that a signed thinking block is replayed under the prefix it was created with. The second copy is preceded by `tool_use A` and `result A`, which did not exist when the signature was minted, so the request is rejected. The comment above the Gemini branch in `buildSteps.ts` describes exactly this problem (\"Splitting into separate model turns invalidates the signature\"); the Anthropic path simply never got the same handling.\n\n### Related\n\n- #40360 (open) touches the same Anthropic replay path in `buildSteps.ts`.\n- #38302 (merged) made empty-text thinking blocks survive the round-trip. This report is the next failure after that fix: the block survives, but it is duplicated.\n- #37730 / #37954: explain why thinking is on by default for Sonnet 5 / Opus 5 when Thinking Mode is unset.\n\n### To Reproduce\n\n1. Workflow: Manual Trigger → **AI Agent** (Tools Agent, typeVersion 3.1).\n2. Chat model: **Anthropic Chat Model** (typeVersion 1.6), model `claude-opus-5-5` (or `claude-sonnet-5`), **no Thinking Mode option set** (so the model thinks adaptively), or Thinking Mode: Adaptive.\n3. Attach two independent tools, e.g. two HTTP Request Tool nodes, or one MCP Client Tool exposing several tools.\n4. Prompt with something that invites two lookups at once, e.g. \"Look up the user with email X AND search for similar tickets about Y, then summarise.\"\n5. When the model answers with one thinking block and two `tool_use` blocks, both tools run, and the next Anthropic Chat Model call fails with the 400 above. Open the execution → Anthropic Chat Model → second run → input: the history shows `AI: [thinking][tool_use]` twice with the same signature.\n6. Prompt it so that it only calls one tool per turn: works.\n7. Set Thinking Mode: Disabled, or switch to the OpenAI Chat Model: works.\n\nIn my instance this hit 5 production runs in ~24 h on a support-ticket agent with an MCP Client Tool (`get-user` + `find-users`, `get-user` + `get-invoices`, `find-users` + `find-teams`, …). In every failing run, both actions in `subNodeExecutionData.actions[].action.metadata.anthropic` had the identical `thinkingSignature`.\n\n### Expected behavior\n\nParallel Anthropic tool calls from a single thinking turn should be replayed as **one** assistant message `[thinking, tool_use A, tool_use B]` followed by the tool results, the same way `buildSharedGeminiAIMessage()` already does for Gemini thought signatures. Alternatively, the thinking block should be attached only to the first tool call of the batch and omitted on the others.\n\n### Workarounds\n\n- Set **Thinking Mode: Disabled** on the Anthropic Chat Model node (works since #37954; not possible on models that cannot disable thinking).\n- Use a different chat model node.\n\n### Debug Info\n\n#### Debug info\n\n### core\n\n- n8nVersion: 2.42.7\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.7.0\n- nodeEnv: production\n- database: sqlite\n- executionMode: regular\n- concurrency: -1\n- license: community\n- consumerId: 4555422e-d04a-4115-8548-13ea023c0348\n\n### storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n### client\n\n- userAgent: mozilla/5.0 (macintosh; intel mac os x 10_15_7) applewebkit/537.36 (khtml, like gecko) chrome/152.0.0.0 safari/537.36\n- isTouchDevice: false\n\nGenerated at: 2026-10-15\n\n### Operating System\n\nDocker on Linux\n\n### n8n Version\n\n2.42.7 (stable)\n\n### Node.js Version\n\n26.7.0\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nDocker (self-hosted)\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/41152/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/41152/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @josiasmontag,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9590\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9590](https://linear.app/n8n/issue/GHC-9590)",
+      "at": "2026-10-15T06:49:51Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41152#issuecomment-6186273774"
+    }
+  ],
+  "comments_complete": true
+}

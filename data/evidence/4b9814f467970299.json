@@ -1,0 +1,129 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41029",
+  "collected_at": "2026-10-15T07:23:41.904032+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/41029",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/41029/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/41029/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/41029/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/41029",
+    "id": 5838152443,
+    "node_id": "I_kwDOC4Q8Qs8AAAABW_si-w",
+    "number": 41029,
+    "title": "Corrupted decrypted content in asymmetric mode from the crypto Node when dealing with the MS Graph Subscription resource",
+    "user": {
+      "login": "barn4k",
+      "id": 15629670,
+      "node_id": "MDQ6VXNlcjE1NjI5Njcw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15629670?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/barn4k",
+      "html_url": "https://github.com/barn4k",
+      "followers_url": "https://api.github.com/users/barn4k/followers",
+      "following_url": "https://api.github.com/users/barn4k/following{/other_user}",
+      "gists_url": "https://api.github.com/users/barn4k/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/barn4k/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/barn4k/subscriptions",
+      "organizations_url": "https://api.github.com/users/barn4k/orgs",
+      "repos_url": "https://api.github.com/users/barn4k/repos",
+      "events_url": "https://api.github.com/users/barn4k/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/barn4k/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582010757,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cXhQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:nodes",
+        "name": "team:nodes",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Nodes team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-10-13T21:40:34Z",
+    "updated_at": "2026-10-14T10:02:17Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nMS Graph API has a Subscription endpoint to receive email messages with the content. The content is encrypted according to [this](https://learn.microsoft.com/en-us/graph/api/resources/changenotificationencryptedcontent?view=graph-rest-1.0) schema.\n\nGeneral flow for decryption:\n1. Decrypt the `body.dataKey` with the PEM key file (asymmetric mode).\n2. Decrypt the `body.data` with the symmetric key from the step above (symmetric mode). The key is in RAW bytes format.\n\nThe Decryption process is described in detail [here](https://learn.microsoft.com/en-us/graph/change-notifications-with-resource-data?tabs=csharp#example-decrypting-resource-data).\n\nThe node successfully decrypts the symmetric key; however, it tries to output the result as a [UTF-8 string](https://github.com/n8n-io/n8n/blob/bb45bca5ff7ef7d2cd2b2f2e98812d96a5971b01/packages/nodes-base/nodes/Crypto/v2/CryptoV2.node.ts#L823), but the key is raw bytes, so it returns a corrupted key.\n\nThe next issue is that it's not possible to use this key in the node in the second step. I have to use an n8n credentials API method to update the symmetric key (passphrase) before I can use the crypto node.\n\n<img width=\"1864\" height=\"706\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8cac46c9-7447-4027-9445-c5942c9ac2ac\" />\n\nI can update the node and create a PR to fix the issue and make it possible to use the raw symmetric key.\n\n### To Reproduce\n\n1. Create a new PEM key + cert pair (even self-signed works fine)\n2. Create a [new subscription](https://learn.microsoft.com/en-us/graph/outlook-change-notifications-overview#example-3-create-a-subscription-to-get-change-notifications-with-resource-data-when-the-user-receives-a-new-message) in MS Graph with the `includeResourceData: true` option.\n3. Receive a message according to the subscription settings\n4. Try to decrypt it with the crypto node.\n\nThe decryption works, but the data is corrupted.\n\n### Expected behavior\n\nThe decryption (asymmetric mode) returns decrypted data in the proper format (e.g., as a base64 string)\n\n### Debug Info\n\n# Debug info\n\n## core\n\n- n8nVersion: 2.43.4\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.7.0\n- nodeEnv: production\n- database: sqlite\n- executionMode: regular\n- concurrency: -1\n- license: community\n- consumerId: unknown\n\n## storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n## pruning\n\n- enabled: true\n- maxAge: 336 hours\n- maxCount: 10000 executions\n\n## client\n\n- userAgent: mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/155.0.0.0 safari/537.36 edg/155.0.0.0\n- isTouchDevice: false\n\n## cluster\n\n- instanceCount: 1\n- versions: 2.43.4\n- instances:\n  - instanceKey: acf02571-b810-45e2-8a39-6fe4036e58c5, hostId: main-3cbc14ae041c, instanceType: main, instanceRole: leader, version: 2.43.4\n- checks:\n  - check: hostid-clash, status: succeeded, warnings: -\n  - check: lifecycle, status: succeeded, warnings: -\n  - check: split-brain, status: succeeded, warnings: -\n  - check: version-mismatch, status: succeeded, warnings: -\n\nGenerated at: 2026-10-13T21:36:27.781Z\n\n### Operating System\n\ndocker\n\n### n8n Version\n\n2.43.4\n\n### Node.js Version\n\n26.7.0\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/41029/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/41029/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @barn4k,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9587\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9587](https://linear.app/n8n/issue/GHC-9587)",
+      "at": "2026-10-13T21:40:42Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41029#issuecomment-6155778351"
+    },
+    {
+      "author": "WilliamAyad",
+      "text": "You've hit a very precise and critical limitation of the Crypto node's core serialization logic. Forcing the output of an asymmetric decryption step into a standard UTF-8 string is a classic silent killer when handling downstream symmetric operations that strictly require raw, uncoerced bytes (like MS Graph's multi-layered encryption schema).\n\nSince the Crypto node currently lacks an option to output the asymmetric result directly as raw bytes or a clean Base64/Hex string, string-coercion will inevitably corrupt binary-encoded keys. \n\nYour willingness to submit a PR to allow raw binary handling or dynamic encoding outputs (like Base64) for asymmetric mode would be a massive win for enterprise integrations relying on MS Graph Subscriptions!\n\nDealing with these structural layout bugs and data-type coercion mismatches during staging is a nightmare, which is why I ended up automating structural integrity checks into a lightweight, browser-only pre-flight validator. If you want to benchmark your workflow layout or scan for hidden export pitfalls before deploying your upcoming fix, you can drop your JSON here: [tools.triggerworkflow.com/free-audit](url) (full disclosure: I built it).\n\nLooking forward to seeing your PR get merged—this is exactly the type of reliability enhancement the community needs!\n",
+      "at": "2026-10-14T10:02:17Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41029#issuecomment-6165823705"
+    }
+  ],
+  "comments_complete": true
+}

@@ -1,0 +1,113 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/40924",
+  "collected_at": "2026-10-15T07:23:41.904032+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/40924",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/40924/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/40924/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/40924/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/40924",
+    "id": 5818011405,
+    "node_id": "I_kwDOC4Q8Qs8AAAABWsfPDQ",
+    "number": 40924,
+    "title": "OpenAI-Compatible Endpoint Returns 500 on Responses API, Should Fall Back to Chat Completions (n8n agents)",
+    "user": {
+      "login": "t3sla",
+      "id": 40067793,
+      "node_id": "MDQ6VXNlcjQwMDY3Nzkz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/40067793?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/t3sla",
+      "html_url": "https://github.com/t3sla",
+      "followers_url": "https://api.github.com/users/t3sla/followers",
+      "following_url": "https://api.github.com/users/t3sla/following{/other_user}",
+      "gists_url": "https://api.github.com/users/t3sla/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/t3sla/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/t3sla/subscriptions",
+      "organizations_url": "https://api.github.com/users/t3sla/orgs",
+      "repos_url": "https://api.github.com/users/t3sla/repos",
+      "events_url": "https://api.github.com/users/t3sla/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/t3sla/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 3,
+    "created_at": "2026-10-12T17:43:04Z",
+    "updated_at": "2026-10-14T11:14:00Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\n  Summary\n\n  When using a custom OpenAI-compatible endpoint, n8n's agent runtime attempts to use the Responses API by default. If the endpoint returns an HTTP 500 error for Responses API requests\n  (instead of 404/405), the automatic fallback to Chat Completions does not trigger, causing agent execution to fail after exhausting retries.\n\n  Environment\n\n  - n8n version: 2.32.3+ (self-hosted)\n  - Agent module: Enabled\n  - Model provider: OpenAI-compatible (custom endpoint)\n\n  Expected Behavior\n\n  According to the code in openai-api-style.ts, n8n should automatically fall back to Chat Completions (/v1/chat/completions) when the Responses API (/v1/responses) is not available. This\n  fallback is triggered by:\n  - HTTP 404 or 405 status codes\n  - Error types: unknown_url\n  - Error codes/messages containing model or deployment\n\n  Actual Behavior\n\n  When a custom OpenAI-compatible endpoint returns HTTP 500 with a validation-style error for Responses API requests, the fallback logic does not recognize this as a \"Responses API not\n  supported\" signal. The request is retried 3 times and then fails.\n\n  Example error from endpoint:\n  {\n    \"error\": {\n      \"message\": \"'role'\",\n      \"type\": \"InternalServerError\",\n      \"code\": 500\n    }\n  }\n\n  Root Cause Analysis\n\n  The fallback decision logic in openai-api-style.ts (lines 177-191) checks servesNoResponsesApi(error) which only handles:\n\n  1. Missing route indicators: HTTP 404/405 status, unknown_url error type, or body containing route-specific messages\n  2. Working route indicators: Error codes containing model/deployment or param errors\n\n  HTTP 500 errors with generic validation failures (like missing/invalid fields) are not classified as either case, so they're treated as transient failures and retried.\n\n  // Current logic (simplified)\n  function servesNoResponsesApi(error: unknown): boolean {\n    if (MISSING_ROUTE_STATUSES.has(error.statusCode))\n      return !reportsWorkingRoute(error.data);\n    if (ROUTE_BODY_STATUSES.has(error.statusCode))\n      return reportsMissingRoute(error.data ?? errorBody(error));\n    // HTTP 500 falls through and returns false\n    return false;\n  }\n\n  Reproduction Steps\n\n  1. Configure an OpenAI-compatible credential pointing to a custom endpoint\n  2. Configure an agent to use that credential\n  3. Execute the agent with a request that triggers a model call\n  4. If the endpoint's Responses API implementation has validation issues, observe 500 errors and retry exhaustion\n\n  Proposed Solutions\n\n  Option 1: Expand Fallback Conditions (Recommended)\n\n  Add HTTP 500 errors with specific error patterns to the fallback conditions:\n\n  // In servesNoResponsesApi()\n  if (error.statusCode === 500) {\n    const body = error.data ?? errorBody(error);\n    if (isRecord(body?.error)) {\n      const { message, type } = body.error;\n      // Field validation errors that indicate Responses API incompatibility\n      if (message === \"'role'\" || message?.includes(\"missing required field\")) {\n        return true;\n      }\n      // Internal server errors with OpenAI-compatible error structure\n      if (type === \"InternalServerError\" && !hasValidRouteIndicators(body)) {\n        return true;\n      }\n    }\n  }\n\n  Option 2: Add Explicit API Style Configuration\n\n  Expose the apiStyle field ('chat' | 'responses' | undefined) in the OpenAI credential UI so users can explicitly choose which API to use, bypassing auto-detection entirely.\n\n  Currently, apiStyle exists in the credential schema (provider-credentials.ts) but is not exposed in the credential editor UI.\n\n  Option 3: Add Configuration for Fallback Behavior\n\n  Allow users to configure fallback behavior via:\n  - Environment variable: N8N_OPENAI_FALLBACK_ENABLED=false\n  - Credential setting: \"Disable Responses API fallback\"\n\n  Workaround\n\n  Until this is fixed, users can manually add apiStyle: 'chat' to the credential JSON in the database:\n\n  UPDATE credential\n  SET data = jsonb_set(data, '{apiStyle}', '\"chat\"')\n    }\n  }\n\n  Option 2: Add Explicit API Style Configuration\n\n  Expose the apiStyle field ('chat' | 'responses' | undefined) in the OpenAI credential UI so users can explicitly\n  choose which API to use, bypassing auto-detection entirely.\n\n  Currently, apiStyle exists in the credential schema (provider-credentials.ts) but is not exposed in the credential\n  editor UI.\n\n  Option 3: Add Configuration for Fallback Behavior\n\n  Allow users to configure fallback behavior via:\n  - Environment variable: N8N_OPENAI_FALLBACK_ENABLED=false\n  - Credential setting: \"Disable Responses API fallback\"\n\n  Workaround\n\n  Until this is fixed, users can manually add apiStyle: 'chat' to the credential JSON in the database:\n\n  UPDATE credential\n      if (message === \"'role'\" || message?.includes(\"missing required field\")) {\n        return true;\n      }\n      // Internal server errors with OpenAI-compatible error structure\n      if (type === \"InternalServerError\" && !hasValidRouteIndicators(body)) {\n        return true;\n      }\n    }\n  }\n\n  Option 2: Add Explicit API Style Configuration\n\n  Expose the apiStyle field ('chat' | 'responses' | undefined) in the OpenAI credential UI so users can explicitly choose which API to use, bypassing auto-detection entirely.\n\n  Currently, apiStyle exists in the credential schema (provider-credentials.ts) but is not exposed in the credential editor UI.\n\n  Option 3: Add Configuration for Fallback Behavior\n\n  Allow users to configure fallback behavior via:\n  - Environment variable: N8N_OPENAI_FALLBACK_ENABLED=false\n  - Credential setting: \"Disable Responses API fallback\"\n\n  Workaround\n\n  Until this is fixed, users can manually add apiStyle: 'chat' to the credential JSON in the database:\n\n  UPDATE credential\n  SET data = jsonb_set(data, '{apiStyle}', '\"chat\"')\n  WHERE id = 'YOUR_CREDENTIAL_ID';\n\n  Impact\n\n  - Affects all self-hosted n8n instances using custom OpenAI-compatible endpoints\n  - Prevents agent functionality when Responses API is partially implemented or has validation bugs\n  - No impact on official OpenAI API usage (which properly supports Responses API)\n\n  Related Files\n\n  - packages/@n8n/agents/src/runtime/model/openai-api-style.ts - Fallback logic\n  - packages/@n8n/agents/src/runtime/model/model-factory.ts - Credential handling\n  - packages/@n8n/agents/src/runtime/model/provider-credentials.ts - Credential schema\n\n### To Reproduce\n\n  1. Configure an OpenAI-compatible credential pointing to a custom endpoint\n  2. Configure an agent to use that credential\n  3. Execute the agent with a request that triggers a model call\n  4. If the endpoint's Responses API implementation has validation issues, observe 500 errors and retry exhaustion\n\n\n### Expected behavior\n\n  According to the code in openai-api-style.ts, n8n should automatically fall back to Chat Completions (/v1/chat/completions) when the Responses API (/v1/responses) is not available. This\n  fallback is triggered by:\n  - HTTP 404 or 405 status codes\n  - Error types: unknown_url\n  - Error codes/messages containing model or deployment\n\n\n### Debug Info\n\n  Option 1: Expand Fallback Conditions (Recommended)\n\n  Add HTTP 500 errors with specific error patterns to the fallback conditions:\n\n  // In servesNoResponsesApi()\n  if (error.statusCode === 500) {\n    const body = error.data ?? errorBody(error);\n    if (isRecord(body?.error)) {\n      const { message, type } = body.error;\n      // Field validation errors that indicate Responses API incompatibility\n      if (message === \"'role'\" || message?.includes(\"missing required field\")) {\n        return true;\n      }\n      // Internal server errors with OpenAI-compatible error structure\n      if (type === \"InternalServerError\" && !hasValidRouteIndicators(body)) {\n        return true;\n      }\n    }\n  }\n\n  Option 2: Add Explicit API Style Configuration\n\n  Expose the apiStyle field ('chat' | 'responses' | undefined) in the OpenAI credential UI so users can explicitly choose which API to use, bypassing auto-detection entirely.\n\n  Currently, apiStyle exists in the credential schema (provider-credentials.ts) but is not exposed in the credential editor UI.\n\n  Option 3: Add Configuration for Fallback Behavior\n\n  Allow users to configure fallback behavior via:\n  - Environment variable: N8N_OPENAI_FALLBACK_ENABLED=false\n  - Credential setting: \"Disable Responses API fallback\"\n\n  Workaround\n\n  Until this is fixed, users can manually add apiStyle: 'chat' to the credential JSON in the database:\n\n  UPDATE credential\n  SET data = jsonb_set(data, '{apiStyle}', '\"chat\"')\n    }\n  }\n\n  Option 2: Add Explicit API Style Configuration\n\n  Expose the apiStyle field ('chat' | 'responses' | undefined) in the OpenAI credential UI so users can explicitly\n  choose which API to use, bypassing auto-detection entirely.\n\n  Currently, apiStyle exists in the credential schema (provider-credentials.ts) but is not exposed in the credential\n  editor UI.\n\n  Option 3: Add Configuration for Fallback Behavior\n\n  Allow users to configure fallback behavior via:\n  - Environment variable: N8N_OPENAI_FALLBACK_ENABLED=false\n  - Credential setting: \"Disable Responses API fallback\"\n\n  Workaround\n\n  Until this is fixed, users can manually add apiStyle: 'chat' to the credential JSON in the database:\n\n  UPDATE credential\n      if (message === \"'role'\" || message?.includes(\"missing required field\")) {\n        return true;\n      }\n      // Internal server errors with OpenAI-compatible error structure\n      if (type === \"InternalServerError\" && !hasValidRouteIndicators(body)) {\n        return true;\n      }\n    }\n  }\n\n  Option 2: Add Explicit API Style Configuration\n\n  Expose the apiStyle field ('chat' | 'responses' | undefined) in the OpenAI credential UI so users can explicitly choose which API to use, bypassing auto-detection entirely.\n\n  Currently, apiStyle exists in the credential schema (provider-credentials.ts) but is not exposed in the credential editor UI.\n\n  Option 3: Add Configuration for Fallback Behavior\n\n  Allow users to configure fallback behavior via:\n  - Environment variable: N8N_OPENAI_FALLBACK_ENABLED=false\n  - Credential setting: \"Disable Responses API fallback\"\n\n  Workaround\n\n  Until this is fixed, users can manually add apiStyle: 'chat' to the credential JSON in the database:\n\n  UPDATE credential\n  SET data = jsonb_set(data, '{apiStyle}', '\"chat\"')\n  WHERE id = 'YOUR_CREDENTIAL_ID';\n\n  Impact\n\n  - Affects all self-hosted n8n instances using custom OpenAI-compatible endpoints\n  - Prevents agent functionality when Responses API is partially implemented or has validation bugs\n  - No impact on official OpenAI API usage (which properly supports Responses API)\n\n  Related Files\n\n  - packages/@n8n/agents/src/runtime/model/openai-api-style.ts - Fallback logic\n  - packages/@n8n/agents/src/runtime/model/model-factory.ts - Credential handling\n  - packages/@n8n/agents/src/runtime/model/provider-credentials.ts - Credential schema\n\n### Operating System\n\nn8nio/n8n docker image\n\n### n8n Version\n\n2.32.3+ (self-hosted)\n\n### Node.js Version\n\n24.0.0\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/40924/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/40924/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @t3sla,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9582\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9582](https://linear.app/n8n/issue/GHC-9582)",
+      "at": "2026-10-12T17:43:16Z",
+      "url": "https://github.com/n8n-io/n8n/issues/40924#issuecomment-6129490501"
+    },
+    {
+      "author": "jackeddisciple",
+      "text": "Hey, I'd like to work on this issue. Is someone already working on it, or would it be okay for me to take it up?",
+      "at": "2026-10-12T18:37:00Z",
+      "url": "https://github.com/n8n-io/n8n/issues/40924#issuecomment-6130337582"
+    },
+    {
+      "author": "michaelmanly",
+      "text": "I tested n8n's actual fallback classifier on the error shape reported here. An HTTP 500 with the `InternalServerError` / `'role'` body did not select Chat Completions fallback, while a tested `unknown_url` control did.\n\nFunction-level reproduction: https://aibadgr.com/evidence/n8n-40924-responses-500-does-not-fall-back-to-chat-completions\n\nThis was **not** an end-to-end n8n agent test, and I haven't verified that Badgr AI API resolves this particular integration yet. I'm building Badgr's AI API routing/validation layer and would be interested in testing the exact endpoint behavior with you. If we can establish a working route, I can offer $5 in eligible trial credits for a real agent workflow. Would that be useful?",
+      "at": "2026-10-14T11:14:00Z",
+      "url": "https://github.com/n8n-io/n8n/issues/40924#issuecomment-6167059062"
+    }
+  ],
+  "comments_complete": true
+}

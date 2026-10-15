@@ -1,0 +1,103 @@
+{
+  "source_api_url": "https://api.github.com/repos/Rdha904/techstyles/issues/14",
+  "collected_at": "2026-10-15T07:23:41.904032+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/Rdha904/techstyles/issues/14",
+    "repository_url": "https://api.github.com/repos/Rdha904/techstyles",
+    "labels_url": "https://api.github.com/repos/Rdha904/techstyles/issues/14/labels{/name}",
+    "comments_url": "https://api.github.com/repos/Rdha904/techstyles/issues/14/comments",
+    "events_url": "https://api.github.com/repos/Rdha904/techstyles/issues/14/events",
+    "html_url": "https://github.com/Rdha904/techstyles/issues/14",
+    "id": 5858095701,
+    "node_id": "I_kwDOVGpAWc8AAAABXStyVQ",
+    "number": 14,
+    "title": "Bring README up to date with the current app",
+    "user": {
+      "login": "Rdha904",
+      "id": 187396906,
+      "node_id": "U_kgDOCytzKg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/187396906?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Rdha904",
+      "html_url": "https://github.com/Rdha904",
+      "followers_url": "https://api.github.com/users/Rdha904/followers",
+      "following_url": "https://api.github.com/users/Rdha904/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Rdha904/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Rdha904/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Rdha904/subscriptions",
+      "organizations_url": "https://api.github.com/users/Rdha904/orgs",
+      "repos_url": "https://api.github.com/users/Rdha904/repos",
+      "events_url": "https://api.github.com/users/Rdha904/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Rdha904/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 12657378679,
+        "node_id": "LA_kwDOVGpAWc8AAAAC8nBFdw",
+        "url": "https://api.github.com/repos/Rdha904/techstyles/labels/documentation",
+        "name": "documentation",
+        "color": "0075ca",
+        "default": true,
+        "description": "Improvements or additions to documentation",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 12675593889,
+        "node_id": "LA_kwDOVGpAWc8AAAAC84Y2oQ",
+        "url": "https://api.github.com/repos/Rdha904/techstyles/labels/ready-for-agent",
+        "name": "ready-for-agent",
+        "color": "BFDADC",
+        "default": false,
+        "description": "",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2026-10-15T00:50:24Z",
+    "updated_at": "2026-10-15T00:50:24Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Problem\n\n`README.md` describes the app as it was before PRs #1–#3:\n- \"Dashboard with actual product counts and recent products\": the dashboard is now the single Workspace dashboard at `/` (`docs/plans/dashboard-cleanup.md`).\n- \"category/project/supplier/stage filters\" and \"Read-only live supplier links\": the product-level supplier became a Manufacturer (`GLOSSARY.md`: Manufacturer vs Supplier; ADR 0001).\n- Manufacturers & Quotes (directory, Quote Requests, Quotes, comparison, Sourcing panel) is not mentioned.\n\n## Acceptance criteria\n\n- \"Available workflows\" matches the app on `main`, using `GLOSSARY.md` terms (Workspace, Brand Profile, Tech Pack, Manufacturer, Quote Request, Quote). Check each claim against the code.\n- It says sourcing data is never in the share link, PDF or versions (ADR 0001).\n- Sections that are still true (Run, Brand Profile, AI, Storage and sharing, Checks, Known differences) stay, except for supplier → Manufacturer wording where it means the garment maker.\n- No code changes.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/Rdha904/techstyles/issues/14/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/Rdha904/techstyles/issues/14/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [],
+  "comments_complete": true
+}
