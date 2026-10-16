@@ -7,10 +7,10 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## workflow_reliability — UNVALIDATED CLUSTER
 
-- independent_demand_count: 27
+- independent_demand_count: 28
 - payment_evidence_count: 5
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community', 'n8n Community']
-- communities: ['Ask/Show HN', 'Commerce operator forum', 'n8n Jobs', 'n8n-io/n8n']
+- communities: ['Ask/Show HN', 'Commerce operator forum', 'n8n Jobs', 'n8n-io/n8n', 'useagenthq/useagent']
 - repeated_pain: Operators cannot trust workflow execution status; triggers, responses or saved definitions fail.
 - current_alternatives: Vendor bug tracker and native fixes (free), internal engineering, n8n support, freelance automation providers.
 - productization_potential: Standardize reproduction, health checks and recovery runbooks; current category still too broad for one packaged product.
@@ -20,12 +20,12 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://github.com/useagenthq/useagent/issues/176
   - https://github.com/n8n-io/n8n/issues/41152
   - https://community.n8n.io/t/exploring-n8n-implementation-partnerships-for-saas-workflow-plans-no-active-project-yet/321496
   - https://community.n8n.io/t/hiring-ai-n8n-builders-in-sea-for-small-paid-sme-automation-jobs-singapore/321311
   - https://github.com/n8n-io/n8n/issues/41041
   - https://community.n8n.io/t/looking-for-founding-n8n-automation-creators-osmium/321244
-  - https://news.ycombinator.com/item?id=50076985
 
 ## lead_research — UNVALIDATED CLUSTER
 
@@ -67,19 +67,20 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## browser_automation — UNVALIDATED CLUSTER
 
-- independent_demand_count: 1
+- independent_demand_count: 2
 - payment_evidence_count: 0
 - platforms: ['GitHub']
-- communities: ['96loveslife/big_model_radar']
+- communities: ['96loveslife/big_model_radar', 'useagenthq/useagent']
 - repeated_pain: Repeated manual browser work is costly or brittle.
 - current_alternatives: Playwright, Selenium, vendor APIs and open-source browser agents.
 - productization_potential: Needs one repeated workflow and paying buyers before standardization.
 - suggested_product_form: Workflow + Service package
 - distribution: Authorized workflow audit and referrals.
-- Promotion blockers: fewer than 5 independent observations; only one community; cross-source validation missing; fewer than 2 primary payment/commercial signals; paid-market proof not independently verified; problem too broad to standardize
+- Promotion blockers: fewer than 5 independent observations; fewer than 2 primary payment/commercial signals; paid-market proof not independently verified; problem too broad to standardize
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://github.com/useagenthq/useagent/issues/188
   - https://github.com/96loveslife/big_model_radar/issues/642
 
 ## marketing_report_automation — UNVALIDATED CLUSTER
@@ -98,3 +99,20 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
   - https://community.n8n.io/t/hiring-n8n-looker-studio-builder-for-marketing-reporting-meta-ads-google-ads-ga4-paid-test-ongoing-india-ist/317595
+
+## supplier_sourcing — UNVALIDATED CLUSTER
+
+- independent_demand_count: 1
+- payment_evidence_count: 0
+- platforms: ['GitHub']
+- communities: ['zack-hum/coffee-intelligence-v1.1']
+- repeated_pain: supplier sourcing
+- current_alternatives: Manual research, spreadsheets and existing service providers.
+- productization_potential: Needs a narrower job-to-be-done and payment evidence.
+- suggested_product_form: Service package
+- distribution: Not yet demonstrated
+- Promotion blockers: fewer than 5 independent observations; only one community; cross-source validation missing; fewer than 2 primary payment/commercial signals; paid-market proof not independently verified; problem too broad to standardize
+- Action: WATCH (no standardized product build authorized by evidence)
+- Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
+- Representative evidence:
+  - https://github.com/zack-hum/coffee-intelligence-v1.1/issues/11

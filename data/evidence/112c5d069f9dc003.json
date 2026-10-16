@@ -1,0 +1,129 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41215",
+  "collected_at": "2026-10-16T07:07:16.259711+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/41215",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/41215/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/41215/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/41215/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/41215",
+    "id": 5871341154,
+    "node_id": "I_kwDOC4Q8Qs8AAAABXfWOYg",
+    "number": 41215,
+    "title": "SFTP Credentials: Port field clears value and incorrectly formats large port numbers",
+    "user": {
+      "login": "smonty-nf",
+      "id": 276454608,
+      "node_id": "U_kgDOEHpc0A",
+      "avatar_url": "https://avatars.githubusercontent.com/u/276454608?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/smonty-nf",
+      "html_url": "https://github.com/smonty-nf",
+      "followers_url": "https://api.github.com/users/smonty-nf/followers",
+      "following_url": "https://api.github.com/users/smonty-nf/following{/other_user}",
+      "gists_url": "https://api.github.com/users/smonty-nf/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/smonty-nf/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/smonty-nf/subscriptions",
+      "organizations_url": "https://api.github.com/users/smonty-nf/orgs",
+      "repos_url": "https://api.github.com/users/smonty-nf/repos",
+      "events_url": "https://api.github.com/users/smonty-nf/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/smonty-nf/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 11654110784,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACtqOeQA",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:identity",
+        "name": "team:identity",
+        "color": "ededed",
+        "default": false,
+        "description": null,
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-10-15T18:01:00Z",
+    "updated_at": "2026-10-15T22:18:13Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "\n<!-- Please follow the template below. Skip the questions that are not relevant to you. -->\n\n## Describe the problem/error/question\nWhen creating or updating the SSH/SFTP Connection Port in a credential (for example, setting it to `100222`), the interface misbehaves in two ways:\n1. The field validation claims the value is missing/empty even though a value has been entered, or it simply erases/clears the value automatically upon saving or switching fields.\n2. The UI incorrectly formats large port numbers by automatically adding a thousand separator comma (e.g., displaying `100222` as `100,222`), treating a network port number like a standard formatted integer.\n\n## What is the error message (if any)?\nThis field is required [Open docs](https://docs.n8n.io/integrations/builtin/credentials/ftp/?utm_source=n8n_app&utm_medium=credential_settings&utm_campaign=create_new_credentials_modal)\n\n## Please share your workflow/screenshots/recording\n\n<img width=\"629\" height=\"550\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7cc3c14e-0797-47a8-b805-50b5cdf72293\" />\n\n```\n(Select the nodes on your canvas and use the keyboard shortcuts CMD+C/CTRL+C and CMD+V/CTRL+V to copy and paste the workflow.)\n⚠️ WARNING ⚠️ If you have sensitive data in your workflow (like API keys), please remove it before sharing.\n```\n\n\n## Share the output returned by the last node\n<!-- If you need help with data transformations, please also share your expected output. -->\n\n\n## Debug info\n\n### core\n\n- n8nVersion: 2.38.7\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.7.0\n- nodeEnv: production\n- database: postgres\n- executionMode: regular\n- concurrency: -1\n- license: enterprise (production)\n\n### storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n### pruning\n\n- enabled: true\n- maxAge: 336 hours\n- maxCount: 10000 executions\n\n### client\n\n- userAgent: mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/155.0.0.0 safari/537.36\n- isTouchDevice: false\n\nGenerated at: 2026-10-15T17:51:06.667Z",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/41215/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/41215/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @smonty-nf,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9593\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9593](https://linear.app/n8n/issue/GHC-9593)",
+      "at": "2026-10-15T18:01:14Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41215#issuecomment-6198811123"
+    },
+    {
+      "author": "arsalanyavari",
+      "text": "duplicate of https://github.com/n8n-io/n8n/issues/40803\n\nit seems this problem has been resolved in the latest version of code",
+      "at": "2026-10-15T22:18:13Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41215#issuecomment-6203434818"
+    }
+  ],
+  "comments_complete": true
+}

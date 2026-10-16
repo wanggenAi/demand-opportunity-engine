@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/49966816",
+  "collected_at": "2026-10-16T07:07:16.259711+00:00",
+  "source": {
+    "author": "mariagorskikh",
+    "children": [],
+    "created_at": "2026-10-05T16:15:36.000Z",
+    "created_at_i": 1791216936,
+    "id": 49966816,
+    "options": [],
+    "parent_id": null,
+    "points": 1,
+    "story_id": 49966816,
+    "text": "We’ve all heard that Instinct raised $1 billion to bring personal AI agents to everyone.<p>But I think anyone can build their own Instinct for a specific group of people. You know your audience, understand what they need, and know how to reach them.<p>So I built an open-source version.<p>It can make purchases online, coordinate with other people’s agents, use a computer, connect to MCP tools, manage permissions + everything else instinct wants to do.<p>Here’s the stack:<p>- Pi, the open-source agent framework used by openclaw - Maritime for each agent’s VM and computer access (cheapest infra) - Composio for app integrations and managed Google OAuth - Inkbox for imessege + email<p>If you want to start selling your own personal AI agent, you can host the backend on a platform like railway&#x2F;vercel (around $20 a month). Maritime handles provisioning each agent’s VM and the infrastructure behind it ($1 a month per agent)<p>I’m open-sourcing this so we can build on it together: add more services and tools, better permissions, different payment strategies, better prompts...<p>The goal is to make it easy and affordable for anyone to launch a startup selling agents so that the world isnt ruled by openai dots and meta muses<p>Check it out and let me know what you think!",
+    "title": "Show HN: Open-Source Instinct",
+    "type": "story",
+    "url": "https://github.com/mariagorskikh/open-instinct"
+  },
+  "comments": [],
+  "comments_complete": true
+}

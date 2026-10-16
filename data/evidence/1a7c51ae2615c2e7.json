@@ -1,0 +1,162 @@
+{
+  "source_api_url": "https://api.github.com/repos/shunai394-hash/tracer/issues/809",
+  "collected_at": "2026-10-16T07:07:16.259711+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/shunai394-hash/tracer/issues/809",
+    "repository_url": "https://api.github.com/repos/shunai394-hash/tracer",
+    "labels_url": "https://api.github.com/repos/shunai394-hash/tracer/issues/809/labels{/name}",
+    "comments_url": "https://api.github.com/repos/shunai394-hash/tracer/issues/809/comments",
+    "events_url": "https://api.github.com/repos/shunai394-hash/tracer/issues/809/events",
+    "html_url": "https://github.com/shunai394-hash/tracer/issues/809",
+    "id": 5873185055,
+    "node_id": "I_kwDOUhdMWc8AAAABXhGxHw",
+    "number": 809,
+    "title": "P0: Complete and prove the TRACER supply-to-sale-to-tracking pipeline",
+    "user": {
+      "login": "shunai394-hash",
+      "id": 300428130,
+      "node_id": "U_kgDOEegrYg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/300428130?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/shunai394-hash",
+      "html_url": "https://github.com/shunai394-hash",
+      "followers_url": "https://api.github.com/users/shunai394-hash/followers",
+      "following_url": "https://api.github.com/users/shunai394-hash/following{/other_user}",
+      "gists_url": "https://api.github.com/users/shunai394-hash/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/shunai394-hash/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/shunai394-hash/subscriptions",
+      "organizations_url": "https://api.github.com/users/shunai394-hash/orgs",
+      "repos_url": "https://api.github.com/users/shunai394-hash/repos",
+      "events_url": "https://api.github.com/users/shunai394-hash/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/shunai394-hash/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 12265017401,
+        "node_id": "LA_kwDOUhdMWc8AAAAC2w1QOQ",
+        "url": "https://api.github.com/repos/shunai394-hash/tracer/labels/bug",
+        "name": "bug",
+        "color": "d73a4a",
+        "default": true,
+        "description": "Something isn't working",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-10-15T20:11:41Z",
+    "updated_at": "2026-10-15T20:42:08Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Objective\nFinish the TRACER supply-to-sale-to-fulfillment pipeline with evidence-backed end-to-end verification. A passing build or configured status alone is not completion.\n\n## Workstreams and acceptance criteria\n\n- [ ] **Bright Data MCP collection** — merge and deploy the end-to-end ingest fix; run the authenticated production smoke and verify provider=`brightdata_mcp`, accepted candidates (1–30), and at least one persisted observation. Do not count fallback providers as MCP success.\n  - Related PR: #806 (currently open; mergeability/conflict must be resolved).\n- [ ] **Child variants persisted** — run the deployed collection and verify child variant rows are actually present in `marketplace_bestseller_variants`, with explicit parent-child evidence and dimensions; record attempted/fetched/persisted/error counts. A zero-row table means this is not done.\n  - Related PR: #806.\n- [ ] **Supplier matching and landed economics** — verify exact supplier product + child variant/SKU, fresh stock, source currency, cost, confirmed Japan shipping, orderability, tracking capability and positive contribution profit. Marketplace demand evidence must never be treated as supplier proof. Amazon/Rakuten are not supplier sources; Yahoo Shopping is demand research only.\n  - Related PR: #808 (currently open; Vercel check pending).\n- [ ] **TRACER ↔ BASE ↔ Shopify reconciliation** — take complete paginated snapshots and reconcile stable product/listing IDs, product/variant IDs, SKU, price/currency, stock, published/hidden state and sync acknowledgements. Report matched/unmatched/conflicting/incomplete counts; never infer a match from title/image/price. Resolve BASE stable `TRC-<listing UUID>` recovery and Shopify pagination completeness.\n  - Related PRs: #756 and #742 (both currently Draft/non-mergeable; resolve base conflicts before review).\n- [ ] **Order → supplier purchase → tracking lifecycle** — first prove a sandbox/no-charge supplier order with fresh evidence and idempotency; then verify supplier acknowledgement/order ID, status transitions and tracking number persist back to TRACER and channel fulfillment. Confirm required Shopify fulfillment scopes. Do not enable paid live auto-ordering before this passes.\n  - Related work: #723 sandbox quota window; existing order/procurement safety PRs.\n- [ ] **Sales/profit feedback loop** — persist per-product sales, returns/refunds, landed cost, shipping, fees and contribution profit; rank by actual net profit and demand, suppress stale/out-of-stock/negative-margin products, and run a bounded repeatable evaluation report.\n\n## Execution order\n1. Resolve conflicts and get CI/Preview green on #806, then deploy and run its production MCP smoke.\n2. Verify child-variant rows exist in production; fix persistence/schema issues if they do not.\n3. Refresh CJ supplier evidence and persist child SKU/freight only after successful live reads (#808).\n4. Run read-only, complete three-site reconciliation and fix exact-ID mappings.\n5. Run the guarded sandbox lifecycle proof; verify tracking and channel fulfilment.\n6. Start the sales/profit feedback loop only from reconciled, trustworthy order/cost data.\n\n## Safety and reporting\n- Do not relax identity, stock, shipping, currency, image, Japanese-copy or positive-profit gates merely to raise listing counts.\n- Do not bulk-publish, bulk-unpublish/delete, make a paid supplier purchase, or claim auto-ordering works without the relevant explicit approval and observed evidence.\n- Report deployed commit, workflow/run links, counts, and failures for each step. Keep code/CI status separate from production/provider readiness.",
+    "reactions": {
+      "url": "https://api.github.com/repos/shunai394-hash/tracer/issues/809/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/shunai394-hash/tracer/issues/809/timeline",
+    "performed_via_github_app": {
+      "id": 1144995,
+      "client_id": "Iv23liVemv8A9if9v0F2",
+      "slug": "chatgpt-codex-connector",
+      "node_id": "A_kwHOAOQ6Gs4AEXij",
+      "owner": {
+        "login": "openai",
+        "id": 14957082,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjE0OTU3MDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/14957082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/openai",
+        "html_url": "https://github.com/openai",
+        "followers_url": "https://api.github.com/users/openai/followers",
+        "following_url": "https://api.github.com/users/openai/following{/other_user}",
+        "gists_url": "https://api.github.com/users/openai/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/openai/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/openai/subscriptions",
+        "organizations_url": "https://api.github.com/users/openai/orgs",
+        "repos_url": "https://api.github.com/users/openai/repos",
+        "events_url": "https://api.github.com/users/openai/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/openai/received_events",
+        "type": "Organization",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "name": "ChatGPT Codex Connector",
+      "description": "Bring ChatGPT and Codex to your GitHub repositories.",
+      "external_url": "https://www.chatgpt.com",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "created_at": "2025-02-14T01:37:05Z",
+      "updated_at": "2026-09-23T18:52:59Z",
+      "permissions": {
+        "actions": "write",
+        "checks": "read",
+        "contents": "write",
+        "emails": "read",
+        "issues": "write",
+        "metadata": "read",
+        "pull_requests": "write",
+        "statuses": "read",
+        "workflows": "write"
+      },
+      "events": [
+        "check_run",
+        "check_suite",
+        "commit_comment",
+        "issues",
+        "issue_comment",
+        "pull_request",
+        "pull_request_review",
+        "pull_request_review_comment",
+        "pull_request_review_thread",
+        "repository",
+        "status",
+        "sub_issues"
+      ]
+    },
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "shunai394-hash",
+      "text": "## 最新確認（2026-10-16）\n\n実際にGitHub上で確認した現状：\n- #806（Bright Data MCP＋子バリエーション復旧）：open、**mergeable=false**。Vercel check は **failure**。この状態では main へ統合・本番検証へ進めない。\n- #808（CJ子SKU・仕入先証拠更新）：open、mergeable=true だが、現在のHEAD `646e610f3033b308093efa211eef7aec6f130d4e` の Vercel check は **failure**。再実行／ログ確認と修正が必要。\n- #742（Shopify照合の完全性）と #756（BASEの安定ID照合）は Draft かつ mergeable=false。\n- 本番で子バリエーションが実際に保存されたこと、仕入先との確定照合、3サイトの完全一致、注文→仕入先発注→追跡番号の往復は、この確認ではまだ証明されていない。\n\n### 次にやる順番\n1. #806 の競合と Vercel failure を解消し、CI/Previewを通す。\n2. #808 の現HEADの失敗ログを確認して修正し、CI/Previewを通す。\n3. デプロイ後、認証済みMCP smokeを実行し、provider・accepted・observationsCreatedと本番の子バリエーション保存件数を確認する。\n4. その証拠を使って仕入先在庫・原価・日本向け送料・利益を再検証し、3サイトの完全ページング照合へ進む。\n5. 無課金のsandbox注文で注文ID・状態・追跡番号の往復を確認する。ライブ発注や公開ゲートは、証拠なしに解除しない。\n\nCI failureの詳細ログと本番実行結果が確認できるまでは「修正完了」とは扱わない。",
+      "at": "2026-10-15T20:11:55Z",
+      "url": "https://github.com/shunai394-hash/tracer/issues/809#issuecomment-6201314999"
+    },
+    {
+      "author": "shunai394-hash",
+      "text": "Production read-only follow-up (logs/deployments, 2026-10-16): latest visible production deployment is READY on main at commit `def35fade2eaa8083b1cd59a3c7151acabb15b0f` (`fix: recognize Bright Data MCP custom URL configuration (#813)`). Earlier production logs do show successful Bright Data MCP `scrape_as_html` calls, but the 2026-10-15 patrol report still had `publishedListings=0`, `eligibleForBase=0`, `autoProcurementEligibleListings=0`, `orders=0`; it skipped marketplace sourcing as `marketplace_sourcing_disabled_supplier_native_only`. The CJ identity reverify logs repeatedly report `checked=0`, `errors=1`, with a quota cooldown timestamp; progress remained `linkedCjSupplierListings=0`, `saleableCatalogProducts=0`, `linkedInStockCatalogVariants=0`, `publishedOrderableListings=0`. This confirms provider calls alone are not the blocker: supplier-native CJ discovery/identity/economics still has no verified sellable rows, and live current state needs a fresh run after cooldown/config update. Do not enable paid orders or bulk publication. Next: inspect the specific CJ reverify error category in runtime logs, check current env presence without decrypting secrets, then run a bounded authenticated read-only CJ catalog/detail/freight check with a newly rotated credential and verify DB writes/counts.",
+      "at": "2026-10-15T20:42:08Z",
+      "url": "https://github.com/shunai394-hash/tracer/issues/809#issuecomment-6201856645"
+    }
+  ],
+  "comments_complete": true
+}

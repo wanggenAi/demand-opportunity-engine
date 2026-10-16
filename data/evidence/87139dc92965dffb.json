@@ -1,0 +1,162 @@
+{
+  "source_api_url": "https://api.github.com/repos/gHashTag/trinity/issues/1658",
+  "collected_at": "2026-10-16T07:07:16.259711+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/gHashTag/trinity/issues/1658",
+    "repository_url": "https://api.github.com/repos/gHashTag/trinity",
+    "labels_url": "https://api.github.com/repos/gHashTag/trinity/issues/1658/labels{/name}",
+    "comments_url": "https://api.github.com/repos/gHashTag/trinity/issues/1658/comments",
+    "events_url": "https://api.github.com/repos/gHashTag/trinity/issues/1658/events",
+    "html_url": "https://github.com/gHashTag/trinity/issues/1658",
+    "id": 5879643610,
+    "node_id": "I_kwDORFX9EM8AAAABXnQ92g",
+    "number": 1658,
+    "title": "T27G Epic: Trinity Game — guided onboarding quests, player progression and achievements",
+    "user": {
+      "login": "dharmarooms",
+      "id": 33027199,
+      "node_id": "MDQ6VXNlcjMzMDI3MTk5",
+      "avatar_url": "https://avatars.githubusercontent.com/u/33027199?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dharmarooms",
+      "html_url": "https://github.com/dharmarooms",
+      "followers_url": "https://api.github.com/users/dharmarooms/followers",
+      "following_url": "https://api.github.com/users/dharmarooms/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dharmarooms/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dharmarooms/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dharmarooms/subscriptions",
+      "organizations_url": "https://api.github.com/users/dharmarooms/orgs",
+      "repos_url": "https://api.github.com/users/dharmarooms/repos",
+      "events_url": "https://api.github.com/users/dharmarooms/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dharmarooms/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 4,
+    "created_at": "2026-10-16T06:43:44Z",
+    "updated_at": "2026-10-16T06:49:45Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "# T27G — Trinity Game / Quest System (Epic)\n\n## Vision\nCreate the global game/quest layer for Trinity. The game teaches new participants how the product works through welcome screens and interactive gameplay, then tracks verified progression so each player can see their level, achievements and contribution history.\n\nThis is a system-level responsibility and should have a dedicated game agent/team, proposed code **T27G** (confirm naming against the existing 27-team registry before registering). T27G owns game design, onboarding quests, progression rules, badges/credentials and the integration contract between gameplay and real Trinity activity. It works under Queen's coordination and cooperates with T27U (University) rather than duplicating curriculum ownership.\n\n## Core experience\n1. A newcomer enters the Trinity world and starts a guided welcome quest.\n2. Each quest step introduces one real product concept through the existing map/honeycomb and focused interactive scenes.\n3. The player performs a meaningful action: explore a spec, complete a lesson, inspect a dependency, run a test, open or complete a task, or make a reviewed contribution.\n4. The system records verified completion and advances quest/level progress.\n5. The player sees a profile showing level, completed quests, earned badges and evidence-backed contributions.\n6. Achievements can be shared through a stable public profile/achievement URL, with privacy controls.\n\n## Agent boundary\n- **T27G Game Agent:** game loop, onboarding, quest graph, progression/level rules, achievement criteria, badge/credential metadata, UX narrative and game telemetry.\n- **T27U University Scientist:** canonical teaching content, course structure, learning objectives, theory modules and educational correctness.\n- **Queen:** global coordination, assignment and cross-agent orchestration.\n- Engineering agents: implement product capabilities and provide tests/evidence.\nAvoid a second course engine, task tracker, profile store or orchestration framework. Reuse existing systems after auditing them.\n\n## Progression and credentials\n- A level must be derived from explicit, versioned rules and persisted quest events, not a decorative counter.\n- A badge requires a defined criterion and evidence (completed lesson, passing test, reviewed contribution, etc.).\n- Keep learning completion, contribution status, reputation and rewards as separate dimensions.\n- Non-transferable on-chain credentials / soulbound tokens are a possible future delivery mechanism, not an assumed existing feature. First define a platform-neutral achievement schema and verify feasibility, privacy, wallet/account binding, revocation/correction, sybil resistance, cost and applicable chain standards. Do not promise token issuance or financial value before a tested implementation and approved policy.\n- Avoid exposing private user activity. Public sharing must be opt-in and only expose approved evidence.\n\n## Technical plan\n### Phase 0 — audit\n- Inspect existing game/Arena/map UI, welcome flow, course system, player identity/profile, task/test status, monitoring, agent registry and any token/credential code.\n- Identify canonical event sources and persistence; document what exists vs missing.\n- Reuse existing visual design and square-cell map; do not create a parallel game frontend.\n\n### Phase 1 — vertical slice\n- One first-time-user onboarding quest with 5–7 short steps.\n- At least one step links to a real honeycomb cell/spec and one step to a T27U course/lesson.\n- At least one practical step is verified against a real task/test/event rather than self-reported click completion.\n- Persist quest progress and derive a level from explicit rules.\n- Award one test badge with criterion, timestamp/version and evidence reference.\n- Display a progress view and a shareable achievement page, with privacy-safe defaults.\n- Include skip/resume/replay paths, accessibility, mobile layout and reduced-motion support.\n\n### Phase 2 — extensible game system\n- Data-driven quest definitions and prerequisites.\n- Reusable quest-step types and validation handlers.\n- Versioned levels/badge rules and migration strategy.\n- Admin/agent-authoring workflow with review and safe publication.\n- Optional credential adapter after platform-neutral badge model is validated.\n\n## Acceptance criteria\n- New participant can complete onboarding without prior knowledge and understand the map, specs, agents and how to make a useful contribution.\n- Quest completion and level are reproducible from persisted events and documented rules.\n- At least one achievement is awarded only after evidence validation.\n- T27G and T27U responsibilities are clear and integrated without duplicate systems.\n- Existing map/course/task systems are reused; no parallel dashboard or fake progress.\n- Security/privacy review covers shared profiles, forged events, replay, identity binding and any future token mechanism.\n- Tests, telemetry, known limitations and a next-phase roadmap are included.\n\n## Explicit non-goals for MVP\n- No token price, financial reward or GPU payout promises.\n- No requirement to deploy a blockchain credential in the first slice.\n- No arbitrary scripts embedded in social posts; shared links open a safe Trinity-hosted quest.\n- No redesign of the existing honeycomb map.\n\n## Deliverables\n1. Architecture audit and component reuse map.\n2. T27G agent/team definition using the actual registry convention.\n3. Quest schema, progression rules and badge evidence model.\n4. Working onboarding vertical slice and tests.\n5. Documented credential adapter proposal, including trade-offs and decision gate.",
+    "reactions": {
+      "url": "https://api.github.com/repos/gHashTag/trinity/issues/1658/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/gHashTag/trinity/issues/1658/timeline",
+    "performed_via_github_app": {
+      "id": 1144995,
+      "client_id": "Iv23liVemv8A9if9v0F2",
+      "slug": "chatgpt-codex-connector",
+      "node_id": "A_kwHOAOQ6Gs4AEXij",
+      "owner": {
+        "login": "openai",
+        "id": 14957082,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjE0OTU3MDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/14957082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/openai",
+        "html_url": "https://github.com/openai",
+        "followers_url": "https://api.github.com/users/openai/followers",
+        "following_url": "https://api.github.com/users/openai/following{/other_user}",
+        "gists_url": "https://api.github.com/users/openai/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/openai/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/openai/subscriptions",
+        "organizations_url": "https://api.github.com/users/openai/orgs",
+        "repos_url": "https://api.github.com/users/openai/repos",
+        "events_url": "https://api.github.com/users/openai/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/openai/received_events",
+        "type": "Organization",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "name": "ChatGPT Codex Connector",
+      "description": "Bring ChatGPT and Codex to your GitHub repositories.",
+      "external_url": "https://www.chatgpt.com",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "created_at": "2025-02-14T01:37:05Z",
+      "updated_at": "2026-09-23T18:52:59Z",
+      "permissions": {
+        "actions": "write",
+        "checks": "read",
+        "contents": "write",
+        "emails": "read",
+        "issues": "write",
+        "metadata": "read",
+        "pull_requests": "write",
+        "statuses": "read",
+        "workflows": "write"
+      },
+      "events": [
+        "check_run",
+        "check_suite",
+        "commit_comment",
+        "issues",
+        "issue_comment",
+        "pull_request",
+        "pull_request_review",
+        "pull_request_review_comment",
+        "pull_request_review_thread",
+        "repository",
+        "status",
+        "sub_issues"
+      ]
+    },
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "dharmarooms",
+      "text": "## Clarification: the first onboarding quest starts with agent-token setup\n\nThe first T27G onboarding quest begins when a participant adds the token needed to connect/run their agent. The game must explain the purpose before asking for it: without a valid provider credential or another configured execution route, the agent cannot perform real work.\n\n### Suggested first-quest flow\n1. **Welcome to Trinity** — explain that the participant is setting up an agent that can perform tasks.\n2. **Why a token is needed** — explain in plain language what the token authorizes, what service it connects to, and whether usage may incur provider charges.\n3. **Get or choose a connection** — guide the participant to the provider's official token setup; if they do not have a token yet, show safe setup guidance and a clearly marked demo/offline path if supported.\n4. **Add token securely** — use the existing secrets/credential infrastructure; never expose the full secret in logs, UI, quest events, analytics, or achievement pages.\n5. **Verify connection** — perform a minimal safe validation and show actionable errors without leaking credential details.\n6. **First agent action** — let the connected agent perform one bounded, observable action in Trinity.\n7. **Unlock next quest** — persist verified progress and unlock the next step only when the required check succeeds; explain how to recover from failure.\n\n### Product and security rules\n- Token setup is a connection prerequisite, not a game reward or a token that the participant must earn.\n- Do not block all learning on paid API access if a safe demo/mock path is feasible; label the limitations honestly.\n- Request only the minimum required permissions; warn about possible provider costs before use.\n- Reuse existing credential storage, identity/profile, task-status and telemetry systems rather than creating parallel stores.\n- Store quest outcomes and non-sensitive evidence, never the credential itself.\n- Make the connection state explicit: not configured, validation pending, connected, or failed.\n- T27G owns the onboarding/game loop; Queen coordinates; T27U supplies the educational explanation and learning content.\n",
+      "at": "2026-10-16T06:45:39Z",
+      "url": "https://github.com/gHashTag/trinity/issues/1658#issuecomment-6209774186"
+    },
+    {
+      "author": "dharmarooms",
+      "text": "## Core reward mechanic: novel reusable T27 specifications\n\nT27G rewards should prioritize contributions that expand the shared, reusable specification space—not merely writing code or completing repetitive tasks.\n\n### Intended model\n- A participant proposes a T27 specification for a capability/problem not already adequately covered by the shared catalogue.\n- The platform searches for overlap against Trinity specifications and, where feasible, external repositories and publications. Phrase novelty as a confidence/evidence-based assessment, not an absolute guarantee that “nothing like this exists anywhere in the world.”\n- The specification is reviewed and validated against explicit criteria: clear contract, reproducibility, tests/reference implementation where applicable, provenance, and useful documentation.\n- Once accepted, it becomes a discoverable reusable building block. Others can implement it themselves or reuse the reference implementation, with attribution and version/provenance retained.\n- Rewards reflect verified novelty, quality, validation, and downstream reuse—not raw submission count. Revisions, forks, and near-duplicates must not automatically earn full novelty rewards.\n\n### Distinguish the artifacts\n1. **Specification** — the portable contract/standard describing expected behavior.\n2. **Reference implementation** — example code that demonstrates the specification.\n3. **Conformance tests/oracle** — evidence that an implementation satisfies the contract.\n4. **Reward record** — the auditable reason and evidence for credit awarded.\n\nA specification can be valuable even when someone else writes the implementation; users should be able to choose between implementing it themselves and reusing the shared reference code. Preserve licensing, attribution, versioning, and contribution provenance.\n\n### MVP implications\n- Add a novelty/overlap check before accepting a specification as a novel contribution.\n- Require review plus reproducible validation evidence before awarding the novelty badge/reward.\n- Record the exact specification version, validation result, reviewer/automation evidence, and reward rationale.\n- Track reuse separately from authorship so useful specifications gain recognition over time.\n- Do not promise that every submission is globally unique or attach monetary/token value until the reward rules and anti-abuse model are defined.\n\nThis should guide the T27G quest/reward loop and connect to the existing T27 specification catalogue and conformance/testing infrastructure rather than creating a parallel repository.\n",
+      "at": "2026-10-16T06:46:48Z",
+      "url": "https://github.com/gHashTag/trinity/issues/1658#issuecomment-6209791576"
+    },
+    {
+      "author": "dharmarooms",
+      "text": "## Research update: X-first viral onboarding and portable T27G game widget (2026-10-16)\n\n### Important competitor finding: playable games inside X posts are technically possible\nRosebud published an engineering write-up on 2026-10-10 describing playable browser games inside X posts using X Player Cards. Their page provides `twitter:card=player`, `twitter:player` pointing at a dedicated embed route, and width/height metadata; the embed route must allow framing by x.com/twitter.com, be isolated from the full site layout, handle touch sizing/loading/failure, and account for X card caching. Inline playback depends on X and the viewer's client; elsewhere the link is a normal web link.\nSource: https://lab.rosebud.ai/engineering/making-ai-built-browser-games-playable-in-x-posts\n\nThis materially changes the product exploration: do not assume X can only be a link-out. Prototype an X Player Card for a small, read-only/anonymous T27G first-quest preview. However, treat support as client-dependent and retain a robust standalone web fallback. Test the actual target clients and production card crawler before claiming universal inline play.\n\n### Research and competitor patterns\n- X APIs support posts, account-related operations and embedded content, but the API documentation alone does not guarantee an arbitrary interactive app in every timeline client: https://help.x.com/en/rules-and-policies/x-api\n- X OAuth should be used for X identity, with narrowly scoped permissions and explicit consent; it is not a replacement for an LLM provider API key. Users should be able to review/revoke app access: https://help.x.com/en/managing-your-account/connect-or-revoke-access-to-third-party-apps\n- OpenRouter illustrates low-friction model access via one API across many providers; its docs also advise setting credit limits on keys and keeping them out of client-side code: https://openrouter.ai/developers and https://github.com/OpenRouterTeam/docs/blob/main/api_reference/authentication.mdx\n- Gitcoin provides a useful reference for funding open-source public goods and contributor impact, but T27's differentiator should be accepted, validated, reusable specifications rather than generic bounties alone: https://gitcoin.co/about\n- Research caution: the GitHub streak-removal natural experiment found streak counters changed developer behavior, but also risked low-value activity and unhealthy pressure. Avoid rewarding daily activity or submission count alone; reward verified novelty, conformance, documentation and reuse: https://arxiv.org/abs/2006.02371\n- Growth principle: make the output itself shareable, let recipients inspect value before signup, and ask for invites after a real success moment rather than at the start. Instrument time-to-first-value and referral cohorts. This is a product hypothesis to test, not a guaranteed conversion rate: https://mvpfactory.io/blog/viral-loops-for-developer-tools-engineering-referral-and-plg-mechanics-that/\n\n### Proposed T27G experience\n1. **X post → playable card:** a compact, instantly legible T27 world/quest card, with a real action rather than a static ad. Start with an anonymous sandbox task or spec-exploration preview.\n2. **Connect in context:** first offer provider options and explain the purpose. User explicitly selects a provider and adds their API key through a secure credential flow. Do not ask users to paste secrets into a public post, X reply, query string, analytics, browser storage or shareable URL. If X Player Card iframe restrictions make secure input impractical, use the card for preview and open a dedicated HTTPS connection flow.\n3. **Verify connection:** server-side validation with minimum permissions and clear provider-cost/credit-limit warnings. Never treat an unvalidated key as a completed quest.\n4. **First quest:** after successful validation, complete a tiny bounded agent action; persist the completion and show a visible achievement immediately. Keep onboarding under a few minutes where feasible.\n5. **World widget anywhere:** every quest/agent/spec produces a portable URL and embeddable state snapshot. Support standalone responsive web, X Player Card where available, and later other approved surfaces. Shared public views must be read-only or use scoped capabilities, not expose account secrets or private task data.\n6. **Viral artifact:** generate a beautiful, evidence-backed achievement/spec card: unique spec ID/version, short result, validation status, attribution, and a “fork/reuse/continue quest” link. Make the result the marketing surface, not an empty referral badge.\n7. **Cooperative loop:** challenge another engineer to reproduce a conformance test, implement the spec, or find a missing capability. Track independent validation and reuse, not vanity clicks.\n8. **Widget adapts to context:** the same persistent game state can render as a compact card, full world view, spec detail, or active task panel; the server is authoritative for progress.\n\n### Security and product constraints\n- Distinguish X OAuth identity, AI-provider API credentials, and in-game achievements/credits; never conflate these token types.\n- API credentials must be submitted only to a trusted HTTPS origin and stored server-side encrypted (or in an existing secure secret manager); never sent to the X card renderer or embedded client.\n- Inline card playback is a prototype hypothesis until tested across desktop web, iOS and Android X clients; card caching and iframe policy require explicit tests.\n- The first quest can complete on valid connection if that is the chosen rule, but show the difference between “provider connected” and “agent successfully executed a task.” Recommend two milestones: **Connected** immediately after validation, **First Action** after the agent completes a bounded task.\n- Do not promise monetary token rewards, GPU access, or global uniqueness unless the respective mechanisms exist and are verified.\n\n### MVP acceptance criteria\n- One X Player Card prototype for a safe public/demo quest plus a standalone fallback.\n- One clear connection path for at least one provider, using the existing secure credential system.\n- First successful action and persistent progress; recoverable invalid-key/provider-error states.\n- A shareable evidence-backed achievement/spec page with attribution and a continuation link.\n- Analytics for card impressions (where available), click-through, connection-start/completion, first-action completion, time-to-value, share creation, referred-user activation, and quest abandonment.\n- Test that no secret appears in URLs, logs, telemetry, client bundles, embeds or public achievement pages.\n",
+      "at": "2026-10-16T06:48:45Z",
+      "url": "https://github.com/gHashTag/trinity/issues/1658#issuecomment-6209819030"
+    },
+    {
+      "author": "dharmarooms",
+      "text": "## Critical correction after auditing the existing Trinity widgets/player\n\nThe earlier proposal incorrectly framed an X-native player as a future capability to prototype from scratch. The repository already has it. Reuse and extend this implementation; do not create a competing player or a parallel widget framework.\n\n### Confirmed from current repository sources\n- `apps/website/specs/x/player.t27` is the source of truth for the X Player Card, generated by `scripts/play-from-spec.mjs`.\n- Existing public player pages (for example `public/play/tnf17/index.html`, `golden-sieve/index.html`, `gfternary/index.html`) carry `twitter:card=player`, `twitter:player` pointing to `play/embed.html`, and 1200×675 metadata. The embedded page compiles and runs a .t27 spec in the reader's browser via the existing WebAssembly compiler.\n- The documented X behavior is specific: on x.com, clicking the Player Card swaps the still image for an iframe; mobile X apps show the image and open the page in their own browser. So do not claim every client provides inline gameplay.\n- `apps/website/specs/widgets/gallery.t27` is the source of truth for the Queen WIDGETS tab and currently declares 252 widgets across FPGA bench, Compiler, and Agent game. The generated gallery exposes each widget's page, click-to-load preview, iframe/Markdown embed code, and X/Telegram share links.\n- Existing game-related widgets/entry points include `wars`, `tri-game-tick`, `tri-game-vault`, `race-the-bee`, `gatle`, and `tri-game-selftest`. The gallery and course already reference the live game/agent arena and related artifacts.\n- `QueenWidgets.tsx` is a gallery/view over the generated spec; `queenWidgets.generated.ts` is generated output. Modify the source specs/generators and existing routes/contracts rather than hand-editing generated output.\n\n### Revised product direction\nThe opportunity is not “build a player for X.” It is **turn the existing X Player Card + existing game/arena + existing shareable widget gallery into one coherent first-run quest and contribution loop**.\n\n1. Pick the right existing player/game surface as the entry point; retain its current route and embed contract.\n2. Add an onboarding state to the existing game flow: explore/preview → explain provider connection → secure token setup → validate → first bounded action → persist quest completion.\n3. Link game progression to accepted, validated T27 specifications and their conformance evidence; use existing spec/player/testing surfaces.\n4. Turn successful outcomes into evidence-backed share artifacts using the existing gallery/page/OG/Player Card pipeline.\n5. Reuse existing identity/parent bridge behavior where needed; distinguish game identity token, provider API key, and achievement record.\n6. Audit the current implementations of `wars`, `tri-game-tick`, `tri-game-vault`, `race-the-bee`, `gatle`, and `tri-game-selftest` before deciding which screen becomes the first quest. Do not infer that an item is fully interactive or production-ready from its presence in the gallery alone.\n7. Test X desktop web and iOS/Android separately. Keep the existing standalone route as the fallback.\n\n### Required audit deliverable before implementation\nProduce a table with each existing surface's route, source spec/component, real behavior, persistence, identity/credential requirements, mobile state, Player Card metadata, tests, and what can be reused for onboarding. Mark each claim implemented/partial/proposed and link to code/tests. This is an integration task on existing capabilities, not a greenfield widget/player build.\n",
+      "at": "2026-10-16T06:49:45Z",
+      "url": "https://github.com/gHashTag/trinity/issues/1658#issuecomment-6209832754"
+    }
+  ],
+  "comments_complete": true
+}

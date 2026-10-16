@@ -1,11 +1,11 @@
 {
-  "observed_at": "2026-10-15T07:23:41.904032+00:00",
+  "observed_at": "2026-10-16T07:07:16.259711+00:00",
   "config": "data/discovery_config.json",
   "adapters": [
     {
       "source": "Hacker News",
       "refreshed": true,
-      "collected": 31,
+      "collected": 30,
       "errors": []
     },
     {
@@ -32,15 +32,15 @@
         "Last activity is not publication time. Only substantive buyer-authored follow-ups can renew a lead."
       ],
       "evidence_snapshots": [
-        "data/evidence/f5663f332d6bc9b1.json#sha256=a4bc2de3431e5457a3718fcbed33b29421c77a4ceb5a41f042a0a31f34725744",
-        "data/evidence/d9f0be47fa047f2c.json#sha256=75b2eb97a1c166616fd27d3bcef9ee2392acba4560fc40aab51068f095893b2b"
+        "data/evidence/f5663f332d6bc9b1.json#sha256=ea56ae863164ff6fa5827374731e26e59f3bfd987f0540fb74bfab5f9069eff1",
+        "data/evidence/d9f0be47fa047f2c.json#sha256=8348011719a637c087e10cdf37c3c79d4253bbd81057a7b6ff5db9ffe589d640"
       ]
     },
     {
       "source_family": "public freelance/job listings",
       "access_method": "Remotive public JSON API; attributed source links",
       "url": "https://remotive.com/api/remote-jobs?search=automation&limit=20",
-      "records_inspected": 15,
+      "records_inspected": 14,
       "primary_pages_opened": 0,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
@@ -51,7 +51,7 @@
         "Legal warning - Hey, thanks for using Remotive's API, we appreciate it! Please note that API documentation and access is granted so that developers can share our jobs further. Please do not submit Remotive jobs to third Party websites, including but not limited to: Jooble, Neuvoo, Google Jobs, LinkedIn Jobs. Please link back to the URL found on Remotive AND mention Remotive as a source in order to Remotive to get traffic from your listing. If you don't do that, we'll terminate your API access, sorry! Jobs displayed are delayed by 24 hours, the goal being that jobs are attributed to Remotive on various platforms. Displaying our jobs in order to collect signups/email addresses to show a listing constitutes a breach of our terms of services. We offer a private, paid-for API, please email us at hello(at)remotive(dot)io for more information (starting budget is $5k/mo). Please find out terms of services on https://remotive.com/api-documentation. Please note that there is absolutely no need to request Remotive Job data too frequently. Typically, you only need to GET Remotive job data through this API a couple of times a day (we advise max. 4 times a day). Our data is not changing much faster than that anyway. Note that excessive requests will be blocked. Many thanks (Rodolphe & the Remotive team!)"
       ],
       "evidence_snapshots": [
-        "data/evidence/071898d5d7cef09e.json#sha256=262d99a3b3401f478a3644537d260d70f3d2735d49ad8fcb8d39fda65382f764"
+        "data/evidence/071898d5d7cef09e.json#sha256=e5ad7511c40d993dd05a04fbb193314cc7f292fe719f51a3db56778cfd796663"
       ]
     },
     {
@@ -65,15 +65,15 @@
       "collected": 0,
       "errors": [
         {
-          "url": "https://www.contractsfinder.service.gov.uk/notice/803958c2-b9c6-4928-81cd-d69dfd53730d",
+          "url": "https://www.contractsfinder.service.gov.uk/notice/82e41f78-1f07-46c5-93c2-750d31f0a2ef",
           "error": "HTTPError: HTTP Error 403: Forbidden"
         },
         {
-          "url": "https://www.contractsfinder.service.gov.uk/notice/cab39ee0-c192-4fb2-9253-472214e58ca7",
+          "url": "https://www.contractsfinder.service.gov.uk/notice/56f3a7e8-fba0-46cd-b133-f3f200942fd2",
           "error": "HTTPError: HTTP Error 403: Forbidden"
         },
         {
-          "url": "https://www.contractsfinder.service.gov.uk/notice/e5324961-6c04-4fd7-9c5b-14fb46adb1ce",
+          "url": "https://www.contractsfinder.service.gov.uk/notice/c03b2271-0895-40b8-9ff1-fc3cc4d94058",
           "error": "HTTPError: HTTP Error 403: Forbidden"
         }
       ],
@@ -81,7 +81,7 @@
         "Search returned procurement notices; up to three detail pages attempted. No buyer request promoted: eligibility, exact remote scope, submission deadline and award status require manual verification."
       ],
       "evidence_snapshots": [
-        "data/evidence/50e3af0542f19c3a.json#sha256=e4834d2be2b005c283afb3be9620f617e748ab139726feb4bbd60e025af80714"
+        "data/evidence/50e3af0542f19c3a.json#sha256=6c5c48d0bcea9ecf60ad357f9ff3cd9ddccd7767192a909fe5a48983f69498e7"
       ]
     },
     {
@@ -134,7 +134,7 @@
         "No structured primary buyer requests extracted; static shell is not commercial proof. No login or anti-bot evasion."
       ],
       "evidence_snapshots": [
-        "data/evidence/b5d67d420401a4bb.json#sha256=2a1f25ff3c4021f808c55a75e799f27df725508b3e5b245c87b73155858af1e2"
+        "data/evidence/b5d67d420401a4bb.json#sha256=9805a03b67a05400955a1b10811e6e3be6dd68380f21fd7db2cdfba3d459f4a7"
       ]
     },
     {
@@ -151,10 +151,10 @@
         "Public bidCount includes competitors; only first 20 proposals may be visible. Employer identity often unresolved. Task budget is not agreement to our pilot."
       ],
       "evidence_snapshots": [
-        "data/evidence/abf73d1fa5782498.json#sha256=8ed3156506bd4eebd46dd42a74ec5c54ac17c7926c7b9baa182d588ebb3cf639",
-        "data/evidence/3adde8bb3e84f849.json#sha256=2c9bfff487954b7763768d2a8c6d11c7e3c351a97ea46dc8cb7e5d43bf0aaf7d",
-        "data/evidence/1dc2b31945045284.json#sha256=832d86a34e2d84e9d3cc15bb892be399ce17db32ea4465882f04cf1863834552",
-        "data/evidence/2ed47d8e9f761456.json#sha256=25f1cbd8ace196ae1fd24efa3f2a8a37e065c97647f94bbe138f8332aedd88fd"
+        "data/evidence/abf73d1fa5782498.json#sha256=2f96a3caea37451557b4da06e333bf53f7371d66d015bbd4ff09bf07e1782388",
+        "data/evidence/3adde8bb3e84f849.json#sha256=29715ff0f83371d4ac3a78d9933b77e3b0c78710cfbdf50a47b8511695c2fcac",
+        "data/evidence/1dc2b31945045284.json#sha256=0d9db78d218fafdfcd8838d0d909d0c4c53f6c68a95dc526c31b7bb1e8f129ce",
+        "data/evidence/2ed47d8e9f761456.json#sha256=777852af0bcc612c6ac8721a246ad6417762897c73851a3de5c0ab82544497b9"
       ],
       "records": [],
       "opportunity_ids": [
@@ -163,6 +163,7 @@
         "2ed47d8e9f761456"
       ],
       "inspected_keys": [
+        "/projects/dropshipping/dropshipping-supplier-needed-resort",
         "/projects/project-management/agate-gemstone-sourcing-agent",
         "/projects/sourcing/warehouse-dropship-sourcing",
         "/projects/project-management/brazil-agate-gemstone-sourcing-agent",
@@ -177,7 +178,6 @@
         "/projects/amazon/source-amazon-wholesale-products",
         "/projects/virtual-assistant/virtual-assistant-needed-for-christmas",
         "/projects/sourcing/china-industrial-electronics-sourcing-40759402",
-        "/projects/dropshipping/gothic-alternative-fashion-dropshipping",
         "/projects/excel/project-40762768"
       ]
     },
@@ -185,7 +185,7 @@
       "source_family": "freelance project marketplace (Freelancer)",
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://www.freelancer.com/jobs/api-integration/",
-      "records_inspected": 50,
+      "records_inspected": 49,
       "primary_pages_opened": 3,
       "verified_buyer_requests": 3,
       "explicit_commercial_signals": 3,
@@ -195,10 +195,10 @@
         "A different query/category on Freelancer does not count as another independent family."
       ],
       "evidence_snapshots": [
-        "data/evidence/eb34b643617bda88.json#sha256=37065d5ab2d240117ffd433b7b58cb3ec48315252ffbf927fcfe1e4d13394456",
-        "data/evidence/e5de20279ef56cbd.json#sha256=7eb827a6cddc8f6b56c776228b07e01069958c9edb9b51325f6fa5835a6f4c64",
-        "data/evidence/d971d1ad05852cea.json#sha256=9dce43b1f67d630a7ca06370e8ff93d5adf1ee9d72b435c692887844ce7f9ee5",
-        "data/evidence/c6074dc7b6b98c99.json#sha256=af93d902c6e08c4b5f9b14369a61e9ad4fa6b8d7bed06bdd6842b9b35def9678"
+        "data/evidence/eb34b643617bda88.json#sha256=a0ad5914f0eb27d4788289bab7b53c7135568d3c43e629f0800aaad009632447",
+        "data/evidence/e5de20279ef56cbd.json#sha256=cf43e172c0e00f1f9a3f0142695c45dfac62b4054d60f371a5ddb7af15f66db4",
+        "data/evidence/d971d1ad05852cea.json#sha256=fcfcc3b1bffb328af11963925831e862d07b71fc732bda22d5b128fb7f2413ce",
+        "data/evidence/c6074dc7b6b98c99.json#sha256=b5578b848531256bce44fcdbff3773a2464e7e30e3a1d1619c144216a5da5f75"
       ],
       "records": [],
       "opportunity_ids": [
@@ -207,11 +207,28 @@
         "c6074dc7b6b98c99"
       ],
       "inspected_keys": [
+        "/projects/web-development/cost-effective-local-electronics",
+        "/projects/saas-development/complete-sociovik-creative-social-media",
+        "/projects/full-stack-development/build-prestia-conversion-driven-saas",
+        "/projects/full-stack-development/full-stack-dev-for-prestia",
+        "/projects/go-high-level/ongoing-gohighlevel-crm-management",
+        "/projects/solidity/launch-erc-utility-payment-token",
+        "/projects/n8n/automation-workflow-build",
+        "/projects/web-development/domain-stripe-web-integration",
+        "/projects/api-integration/postnl-perishable-order-fulfillment",
+        "/projects/email-marketing/website-fixes-email-verification-setup",
+        "/projects/business-development/business-growth-client-relations-partner",
+        "/projects/api-developmet/figma-functional-commerce-site",
+        "/projects/full-stack-development/email-automation-warmup-system",
+        "/projects/react-native/route-planner-app",
+        "/projects/ai-automation/driven-seo-content-system-for",
+        "/projects/digital-marketing/build-marketing-agent-system-connected",
+        "/projects/database-management/desktop-management-software-development",
+        "/projects/cloud-computing/need-solution-for-project-regarding",
         "/projects/graphql/whatsapp-business-api-specialist",
         "/projects/ai-automation/business-automation-expert",
         "/projects/google-cloud-platform/digital-asset-audit-api-mapping",
         "/projects/ai-chatbot/receptionist-quotation-automation",
-        "/projects/api-integration/integrate-sunsky-api-woocommerce",
         "/projects/frontend-development/frontend-development-engineer-needed",
         "/projects/api-integration/seeking-australian-dev-for-custom",
         "/projects/facebook-ads/fix-facebook-whatsapp-lead-transfer",
@@ -238,25 +255,7 @@
         "/projects/api-integration/fix-kyc-option-app",
         "/projects/api-integration/python-api-integration-bot",
         "/projects/api-integration/shopify-overhaul-faire-integration",
-        "/projects/nodejs/powered-commercial-driver-recruitment",
-        "/projects/web-development/travel-esim-website-development",
-        "/projects/api/comprehensive-whatsapp-api-integration-40764291",
-        "/projects/n8n/powered-lead-management-system",
-        "/projects/automation/study-abroad-automation-workflow",
-        "/projects/shopify-development/shopify-app-integrations-customizations",
-        "/projects/ai-automation/claude-business-automation-setup",
-        "/projects/api-integration/hana-specialist-for-tms-api",
-        "/projects/full-stack-development/auto-trader-style-vehicle-marketplace",
-        "/projects/ai-app-development/enhance-launch-driven-educational-app",
-        "/projects/react-native/mobile-app-developer-jaipur",
-        "/projects/airtable/airtable-product-development-system",
-        "/projects/stripe/meta-api-stripe-escrow-integration",
-        "/projects/web-development/dristipat-online-eyewear-store-creation",
-        "/projects/android-app-development/android-login-shop-integration",
-        "/projects/software-development/custom-retail-platform-development",
-        "/projects/saas-development/saas-document-automation-platform",
-        "/projects/gps/cmsv-cmsv-integration-for-gps",
-        "/projects/api/dynamics-crm-integration-with-aws"
+        "/projects/nodejs/powered-commercial-driver-recruitment"
       ]
     },
     {
@@ -264,57 +263,62 @@
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://community.shopify.com/latest.json",
       "records_inspected": 30,
-      "primary_pages_opened": 0,
+      "primary_pages_opened": 2,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
-      "collected": 0,
+      "collected": 2,
       "errors": [],
       "limitations": [
         "Latest activity is not original publication; support questions are PRODUCT_SIGNAL, not SALES. No more than four primary topics per run."
       ],
       "evidence_snapshots": [
-        "data/evidence/bda5dc3c1eb46ea5.json#sha256=b2e0df3d4f07f829275db171b7d01fdfef86748ac7cdfe386e6a4148dffe1b50"
+        "data/evidence/bda5dc3c1eb46ea5.json#sha256=bca38b540c86c4a6fb71c8b2f6976a3b847dd27c949cad0e541baf48729f3542",
+        "data/evidence/404339b0024b3531.json#sha256=c26ecf9775d5074deb58c89598b920e65889bd894869c1f63653274b867df954",
+        "data/evidence/7a7c682427aea2ae.json#sha256=13c00bd312dd2a5f37a333c8626c426a05505f94ae3e7ba301a5c6c552138b57"
       ],
       "records": [],
-      "opportunity_ids": [],
+      "opportunity_ids": [
+        "b17bd2b0cd12b91c",
+        "25ccebe70df21516"
+      ],
       "inspected_keys": [
         "355460",
-        "674774",
+        "698791",
+        "696405",
+        "698779",
+        "698844",
+        "698790",
+        "698862",
         "696954",
-        "698203",
-        "698200",
-        "687704",
-        "698231",
-        "271100",
-        "568400",
-        "697430",
-        "698208",
-        "698134",
-        "698155",
+        "673367",
+        "697462",
+        "677002",
+        "409978",
+        "588814",
+        "697047",
+        "698797",
+        "698860",
+        "588987",
+        "557285",
+        "698831",
+        "346374",
+        "684967",
+        "608148",
+        "698856",
+        "698855",
         "698205",
-        "682403",
-        "698210",
-        "697474",
-        "600137",
-        "331349",
-        "296086",
-        "332074",
-        "385346",
-        "698206",
-        "639357",
-        "628728",
-        "697498",
-        "691864",
-        "574186",
-        "698193",
-        "679334"
+        "698854",
+        "698853",
+        "650420",
+        "614680",
+        "577959"
       ]
     },
     {
       "source_family": "founder community (Indie Hackers)",
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://www.indiehackers.com/",
-      "records_inspected": 21,
+      "records_inspected": 24,
       "primary_pages_opened": 1,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
@@ -324,30 +328,30 @@
         "Only server-rendered public pages. robots disallows /api/ and sign-in; neither used. Founder self-promotion is not a buyer."
       ],
       "evidence_snapshots": [
-        "data/evidence/6548833164b0e7c9.json#sha256=41d60f43a64a0257e6bc22f3d9463cd0d0accbbb49f5f28b8aa8173fee0c6abd",
-        "data/evidence/b68f2fbaa7623432.json#sha256=d87bdaae7ab92c7f7186e2b6e823586786458afb63a2b008fc3c90ed26d2085b"
+        "data/evidence/6548833164b0e7c9.json#sha256=28b1f5dc120b12a98fbeec3b2270b5b421db018a7f62bcf44029ec381e028a7d",
+        "data/evidence/26921d64a2f3b177.json#sha256=227da52ae2973e0a34193c8a693c71222aa3a49f3e1584093d08ed87610d9099"
       ],
       "records": [
         {
-          "url": "https://www.indiehackers.com/post/8-signups-3-people-scanned-0-came-back-how-did-you-get-your-first-users-to-stick-69fdb25dd9",
-          "author_body": "I'm building GazeRank, a website audit tool for SEO, performance, accessibility, and AI search readiness. I'm a solo founder. The app has been online since August, but I only started sharing it publicly on October 1. The numbers so far • 12 signups in the database (4 are my own test accounts) • 3 users ran a scan • 0 came back on a different day • ~30 tracked visits since October 1, probably an undercount Five of the eight non-test signups never ran a scan. Traffic is still tiny, so I can't blame everything on activation. But activation is something I can work on this week. What I've tried • X: A pinned post and a thread sharing data from 285 website scans. A handful of comments. • LinkedIn: 292 impressions, 7 clicks, 0 reactions, and 2 comments on the company page. • Directories: Submitted to 8, including SaaSHub, AlternativeTo, and BetaList. • Product Hunt: Preparing for launch. The directories haven't had enough time to tell me much yet. One interesting finding I scanned 285 websites, mostly SaaS, developer-tool, and marketing sites. • 54% had no content freshness signal. • 52% had low readability. • 51% were missing at least one security header. These findings suggest the issues are common. They don't tell me whether people care enough to scan their own sites, let alone pay to fix them. Full methodology and data: https://www.gazerank.com/reports/benchmark One lesson from building the product Scanning my own site once showed a Performance score of 100 next to a poor Largest Contentful Paint (LCP). I fixed it and wrote about the experience. It reminded me that an audit tool needs to earn trust through evidence, not just scores. What I'm trying this week Email the five people who signed up but never scanned and ask what stopped them. Post from my personal LinkedIn profile instead of only the company page. Reply to every relevant comment with something useful, offering a scan where it makes sense. I'll share what I learn, including if none of it works. Two questions for founders who've been here What got your early signups to actually use your product? Was it a change to onboarding, a personal email, a demo, or something else? What was the first channel that brought you a user who returned the following week? What did you actually do that week? Concrete examples would help more than general advice. And if you'd like a GazeRank scan, drop your URL. I'll run it and share up to three useful findings where possible.",
+          "url": "https://www.indiehackers.com/post/10k-mrr-needs-32-sales-conversations-a-day-ive-never-had-a-single-day-like-that-a03c7f4bb4",
+          "author_body": "If I want $10k MRR by April, how many people do I actually have to talk to? I did the maths properly for once, instead of dividing by my price and feeling good. $10k at $29 a month is 345 customers. Fine. But about 5% of customers cancel every month. So over six months I don't win 345, I win 391. 46 of them only replace people who left. That's 16 new paying customers every single week. If 1 in 10 sales conversations becomes a customer (a guess, I don't know my real rate yet), that's 160 conversations a week. 32 a day, every weekday, starting Monday, for six months. I've never come close. At $99 it drops to 50 a week. Price fixes more of this than effort does. I put the sum in a free calculator so you can run yours: https://kasspian.com/tools/mrr-target-planner (I built it. It's part of Kasspian. No sign-up.) What's your real conversation-to-customer rate? Mine's a guess, and the whole plan hangs on it.",
           "metadata": [
             {
               "@context": "https://schema.org",
               "@type": "BlogPosting",
               "mainEntityOfPage": {
                 "@type": "WebPage",
-                "@id": "https://www.indiehackers.com/post/8-signups-3-people-scanned-0-came-back-how-did-you-get-your-first-users-to-stick-69fdb25dd9"
+                "@id": "https://www.indiehackers.com/post/10k-mrr-needs-32-sales-conversations-a-day-ive-never-had-a-single-day-like-that-a03c7f4bb4"
               },
-              "headline": "8 signups, 3 people scanned, 0 came back. How did you get your first users to stick?",
-              "datePublished": "2026-10-12T19:30:56.916Z",
-              "dateModified": "2026-10-12T19:30:56.916Z",
+              "headline": "$10k MRR needs 32 sales conversations a day. I've never had a single day like that.",
+              "datePublished": "2026-10-15T15:00:29.415Z",
+              "dateModified": "2026-10-15T15:00:29.415Z",
               "author": [
                 {
                   "@type": "Person",
-                  "name": "prasibv",
+                  "name": "Isaac Harold",
                   "sameAs": [
-                    "https://www.indiehackers.com/prasibv"
+                    "https://www.indiehackers.com/izhonline"
                   ]
                 }
               ]
@@ -358,27 +362,30 @@
       ],
       "opportunity_ids": [],
       "inspected_keys": [
+        "/post/i-launched-my-first-mac-app-today-a-text-expander-with-plain-text-snippets-7ee42de7dd",
+        "/post/0-77-in-api-bills-to-read-89-000-planning-pdfs-19ce97c6b5",
         "/post/i-listed-my-saas-on-6-software-directories-5-spent-0-real-visits-so-far-c23cf71643",
         "/post/66-days-0-then-my-first-customer-skipped-my-cheapest-plan-9526cdfef2",
-        "/post/how-do-you-grow-your-product-saas-without-paying-for-ads-372c3404ab",
-        "/post/8-signups-3-people-scanned-0-came-back-how-did-you-get-your-first-users-to-stick-69fdb25dd9",
-        "/post/what-i-learned-building-a-revenue-leakage-tool-keep-the-ai-out-of-the-matching-3252451330",
-        "/post/i-tried-submitting-to-91-free-startup-directories-here-is-what-free-actually-means-now-08098dedde",
-        "/post/what-are-your-methods-for-staying-disciplined-when-building-your-own-projects-38b1d2e80a",
+        "/post/you-didn-t-run-out-of-motivation-you-ran-out-of-feedback-ef87a5789c",
+        "/post/founders-your-users-are-telling-you-when-theyre-ready-to-upgrade-here-s-how-to-listen-3ec0c216ea",
+        "/post/112-browser-based-pdf-tools-0-paying-customers-what-would-you-do-4ecc43af2a",
         "/post/tech/focusing-on-audience-first-and-hitting-30k-mrr-in-8-months-ootKyp98moigKLdaOON4",
         "/post/tech/how-rasty-turek-built-vaultaire-in-three-weeks-and-grew-it-to-40k-month-1BjFvs2akwfIVjMGYO54",
         "/post/tech/turning-an-agency-into-a-12k-mo-product-portfolio-13QkMY561jAQxsiA0LSg",
         "/post/tech/starting-from-scratch-and-hitting-9-5k-mrr-in-two-months-j5pMaED5FEbKw8qmeyj9",
         "/post/tech/building-a-3m-yr-company-without-launching-publicly-tacryeGIH66SCtD2an4r",
         "/post/tech/using-custom-infrastructure-as-a-competitive-advantage-and-hitting-31k-mrr-KgfHz813vyyWeszqJMIi",
-        "/post/i-ran-ai-citation-audits-on-my-own-product-chatgpt-refused-to-recommend-it-1010be06bf",
-        "/post/chatgpt-is-sending-you-visitors-do-they-buy-d73e65a492",
-        "/post/an-agent-can-suggest-a-lesson-should-it-become-a-rule-cf1c148124",
-        "/post/i-launched-an-ai-powered-job-platform-how-would-you-get-the-first-100-users-2b8dd17726",
-        "/post/how-did-you-find-your-first-3-5-paying-b2b-saas-customers-3148ef1615",
-        "/post/founders-your-users-are-telling-you-when-theyre-ready-to-upgrade-here-s-how-to-listen-3ec0c216ea",
-        "/post/112-browser-based-pdf-tools-0-paying-customers-what-would-you-do-4ecc43af2a",
-        "/post/tech/hitting-60k-mrr-by-building-an-sdk-instead-of-an-app-0B3bsTvvOG0wqf8cAx1v"
+        "/post/seeing-the-context-before-asking-an-ai-agent-to-work-e2f8fbdbf7",
+        "/post/we-checked-38-693-app-store-search-results-keyword-stuffing-your-listing-works-but-only-if-you-already-have-reviews-f31ad2addc",
+        "/post/the-awkward-part-of-ai-coding-deciding-when-the-work-is-actually-done-78fcecf830",
+        "/post/one-anonymous-browser-id-zero-first-edits-why-i-can-t-judge-conversion-yet-bced708bd7",
+        "/post/collecting-emails-before-launch-the-consent-basics-gdpr-can-spam-double-opt-in-8cbca84bed",
+        "/post/what-are-your-thoughts-on-my-notion-product-6a32acf562",
+        "/post/10k-mrr-needs-32-sales-conversations-a-day-ive-never-had-a-single-day-like-that-a03c7f4bb4",
+        "/post/an-accessibility-checker-for-small-shops-236-cold-emails-0-sales-15-days-left-82053d9455",
+        "/post/week-2-of-selling-ai-kits-to-consultants-0-sales-what-im-changing-fae4b0fa12",
+        "/post/first-paying-customer-and-the-2-000-backlinks-i-shouldnt-have-bought-month-3-of-the-kinetixseo-bet-1601820187",
+        "/post/creators/buying-chess-com-for-56k-and-growing-it-to-200m-in-annual-revenue-GkkdbA1ibyb3KUxKhFyT"
       ]
     },
     {
@@ -395,73 +402,73 @@
         "Physical goods buyers do not automatically buy research. Contact requires platform sign-in; no access bypass. No bid-count visibility => UNKNOWN."
       ],
       "evidence_snapshots": [
-        "data/evidence/3914e4f508c84945.json#sha256=b02f7057a112b3155c03cc34fa9f6482ace397589a211fce94baf2ef9721aa6d",
-        "data/evidence/c97a831f42e0c7ae.json#sha256=75c04238ad559e0dfa8dcb02275f3bd65125b94b36a008503c449ac73c4a5707",
-        "data/evidence/d839d7ca3e4f7481.json#sha256=0f43070e7aa03ff4c67f32e1957a600189e524005d8727761bb4f2dbc50af244"
+        "data/evidence/3914e4f508c84945.json#sha256=04a63a69453db9342a46dc5f3f13343734da0465774f1d5d35500fd7d7ca0222",
+        "data/evidence/b2b72e8cb0ec9b85.json#sha256=ba2bcdf38eb1f4f58b80b2abd5a781bb2bbe020949cdb603982f0305f784e890",
+        "data/evidence/beb2f53bfd0a4add.json#sha256=2c14eb5bfa939a7010d7b337149852c2ea6fa2f6dad7075db03d17e7497247fb"
       ],
       "records": [
         {
-          "url": "https://importer1.tradekey.com/buyoffer/Liquid-Peat-Derived-Humate-Concentrate-3876131.html",
-          "primary_excerpt": "Last Updated: Posted on: 13 Oct 2026 Time Left: 28D 16H Payment Terms: T/T, L/C, D/A, D/P, Western Union, Money Gram Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details Good day, I am looking for a liquid humate concentrate derived from peat. Please state humic and fulvic acid content, pH, density, solubility, dilution rate and any added nutrients. Include concentrate volume per drum/IBC, batch analysis and application instructions. Regards, Konstantin Kotovsky Refine by popular tags liquid humate peat humate concentrate humic acid Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.09864 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French Guiana French Polynesia Gabon Gambia Georgia Germany Ghana Gibraltar Greece Greenland Grenada Guadeloupe Guam Guatemala Guernsey Guinea Guinea-Bissau Guyana Haiti Honduras Hong Kong Hungary Ic",
+          "url": "https://importer1.tradekey.com/buyoffer/Icumsa-45-Refined-Sugar-3876253.html",
+          "primary_excerpt": "Last Updated: Posted on: 15 Oct 2026 Time Left: 2M 29D Buying Frequency: Monthly Payment Terms: L/C Shipping Terms: CIF Destination Port: Senegal Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details I'm actively looking for Icumsa 45 refined sugar to be shipped to Senegal on a monthly basis Refine by popular tags sugar Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.09931 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French Guiana French Polynesia Gabon Gambia Georgia Germany Ghana Gibraltar Greece Greenland Grenada Guadeloupe Guam Guatemala Guernsey Guinea Guinea-Bissau Guyana Haiti Honduras Hong Kong Hungary Iceland India Indonesia Iraq Ireland Isle of Man Israel Italy Jamaica Japan Jersey Jordan Kazakhstan Kenya Kiribati Kuwait Kyrgyzstan Laos Latvia Lebanon Lesotho Liberia Libya Liechtenstein Lithuania Luxembourg Macao SAR",
           "decision": "Physical goods RFQ; not a commissioned China research service; contact gated and competition unknown",
           "buyer": true,
-          "published_at": "2026-10-13T00:00:00+00:00",
+          "published_at": "2026-10-15T00:00:00+00:00",
           "date_precision": "day; original posted date, not crawl date"
         },
         {
-          "url": "https://importer1.tradekey.com/buyoffer/Blue-Crab-By-Species-Size-And-Pack-Format-3876125.html",
-          "primary_excerpt": "Last Updated: Posted on: 13 Oct 2026 Time Left: 28D 16H Payment Terms: T/T, L/C, D/A, D/P, Western Union, Money Gram Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details Good day, I am sourcing blue crab. Please identify the species and quote live, chilled or frozen condition separately. State size/count grade, meat yield if processed, glazing if frozen, net pack weight and harvest/packing date. Include handling temperature and current-lot photos. Regards, Derin Refine by popular tags blue crab fresh crab frozen crab blue crab supplier Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.09829 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French Guiana French Polynesia Gabon Gambia Georgia Germany Ghana Gibraltar Greece Greenland Grenada Guadeloupe Guam Guatemala Guernsey Guinea Guinea-Bissau Guyana Haiti Honduras Hong Kong Hungary",
+          "url": "https://importer1.tradekey.com/buyoffer/Refined-Sunflower-Oil-100-Refined-Food-Grade-Bulk-3876251.html",
+          "primary_excerpt": "Last Updated: Posted on: 15 Oct 2026 Time Left: 5M 29D Buying Frequency: Monthly Payment Terms: L/C Shipping Terms: CIF Destination Port: Lisbon (Lisboa, Portugal) Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details LTA ï¿½\" Local Trade Alliance is seeking suppliers of 100% Refined Sunflower Oil for food industry use. Product must be fully refined, food grade, with FFA max 0.1%, Peroxide Value max 10 meq/kg, and free of impurities. Packaging in bulk (flexitank in 20' DV containers). Initial order: 25 containers (approx. 575 MT). Destination port: Lisbon, Portugal. Potential for recurring monthly orders. COA, MSDS and phytosanitary certificate required. DLC payment accepted. Refine by popular tags refined sunflower oil sunflower oil bulk edible sunflower oil food grade sunflower oil vegetable oil Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.10507 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritre",
           "decision": "Physical goods RFQ; not a commissioned China research service; contact gated and competition unknown",
           "buyer": true,
-          "published_at": "2026-10-13T00:00:00+00:00",
+          "published_at": "2026-10-15T00:00:00+00:00",
           "date_precision": "day; original posted date, not crawl date"
         }
       ],
       "opportunity_ids": [],
       "inspected_keys": [
-        "https://importer1.tradekey.com/buyoffer/Liquid-Peat-Derived-Humate-Concentrate-3876131.html",
-        "https://importer1.tradekey.com/buyoffer/Blue-Crab-By-Species-Size-And-Pack-Format-3876125.html",
-        "https://importer1.tradekey.com/buyoffer/Server-Systems-By-Form-Factor-And-Configuration-3876123.html",
-        "https://importer1.tradekey.com/buyoffer/Electrical-Cable-By-Conductor-Voltage-And-Cross-Section-3876121.html",
-        "https://importer1.tradekey.com/buyoffer/Tilapia-By-Size-Grade-And-Frozen-Processing-Details-3876119.html",
-        "https://importer1.tradekey.com/buyoffer/Perfume-Bottles-By-Capacity-Neck-Finish-And-Decoration-3876117.html",
-        "https://importer1.tradekey.com/buyoffer/Diesel-Fuel-By-Sulphur-Cetane-And-Bulk-Quantity-3876115.html",
-        "https://importer1.tradekey.com/buyoffer/PPGI-Sheets-By-Coating-Gauge-And-Sheet-Size-3876113.html",
-        "https://importer1.tradekey.com/buyoffer/Printed-Newspapers-By-Edition-Language-And-Quantity-3876111.html",
-        "https://importer1.tradekey.com/buyoffer/Built-In-Track-Storage-Shelves-By-Rail-And-Load-Rating-3876109.html",
-        "https://importer1.tradekey.com/buyoffer/Bitumen-By-Grade-Test-Values-And-Delivery-Form-3876107.html",
-        "https://importer1.tradekey.com/buyoffer/Shoes-By-Type-Material-And-Size-Run-3876105.html",
-        "https://importer1.tradekey.com/buyoffer/14-17-Inch-NDT-Industrial-Film-By-Type-And-Sensitivity-3876103.html",
-        "https://importer1.tradekey.com/buyoffer/Refrigeration-Spare-Parts-By-Equipment-Model-3876099.html",
-        "https://importer1.tradekey.com/buyoffer/Aluminium-Ingots-By-Alloy-And-Chemical-Analysis-3876097.html",
-        "https://importer1.tradekey.com/buyoffer/Kinder-Joy-Eggs-With-Authenticity-And-Case-Details-3876095.html",
-        "https://importer1.tradekey.com/buyoffer/Top-Entry-Off-Centre-Agitators-For-Dispersal-Tanks-3876093.html",
-        "https://importer1.tradekey.com/buyoffer/Laptops-By-Processor-Memory-And-Condition-3876087.html",
-        "https://importer1.tradekey.com/buyoffer/Shawls-By-Fibre-Dimensions-And-Weave-3876085.html",
-        "https://importer1.tradekey.com/buyoffer/Cafco-Fendolite-MII-Fireproofing-Mortar-3876083.html",
-        "https://importer1.tradekey.com/buyoffer/Ice-Cream-By-Flavour-Pack-Size-And-Cold-Chain-Format-3876081.html",
-        "https://importer1.tradekey.com/buyoffer/Quartz-Sand-By-SiO-Grain-Size-And-Iron-Limit-3876079.html",
-        "https://importer1.tradekey.com/buyoffer/32-Mm-Steel-Couplers-With-Thread-And-Tensile-Data-3876077.html",
-        "https://importer1.tradekey.com/buyoffer/Sulphur-Lump-By-Assay-And-Lump-Size-3876075.html",
-        "https://importer1.tradekey.com/buyoffer/Generator-Sets-By-Output-Fuel-And-Operating-Data-3876073.html"
+        "https://importer1.tradekey.com/buyoffer/Icumsa-45-Refined-Sugar-3876253.html",
+        "https://importer1.tradekey.com/buyoffer/Refined-Sunflower-Oil-100-Refined-Food-Grade-Bulk-3876251.html",
+        "https://importer1.tradekey.com/buyoffer/Smoke-Shop-CH-3876249.html",
+        "https://importer1.tradekey.com/buyoffer/Colin-Coatings-Des-Moines-3876247.html",
+        "https://importer1.tradekey.com/buyoffer/Bagomatic-Bladder-Scrap-By-Rubber-Type-And-Condition-3876243.html",
+        "https://importer1.tradekey.com/buyoffer/Chickpeas-By-Kabuli-Or-Desi-Grade-And-Count-3876241.html",
+        "https://importer1.tradekey.com/buyoffer/Embroidered-Or-Printed-Patches-By-Size-And-Backing-3876239.html",
+        "https://importer1.tradekey.com/buyoffer/Leather-Purses-By-Hide-Type-Size-And-Closure-3876237.html",
+        "https://importer1.tradekey.com/buyoffer/Bathroom-Accessories-By-Material-And-Mounting-Type-3876233.html",
+        "https://importer1.tradekey.com/buyoffer/Old-Newspapers-For-Recycling-By-Grade-And-Bale-Weight-3876231.html",
+        "https://importer1.tradekey.com/buyoffer/Powder-Coating-Paint-By-Resin-Cure-And-Particle-Size-3876229.html",
+        "https://importer1.tradekey.com/buyoffer/Paper-Barrier-Film-By-Structure-And-Barrier-Performance-3876227.html",
+        "https://importer1.tradekey.com/buyoffer/Oud-Perfumes-By-Concentration-And-Bottle-Size-3876225.html",
+        "https://importer1.tradekey.com/buyoffer/Used-Cooking-Oil-By-FFA-Moisture-And-Collection-Grade-3876223.html",
+        "https://importer1.tradekey.com/buyoffer/Kunkle-Safety-Relief-Valves-By-Model-And-Set-Pressure-3876221.html",
+        "https://importer1.tradekey.com/buyoffer/Coffee-Seedlings-By-Species-Variety-And-Plant-Size-3876219.html",
+        "https://importer1.tradekey.com/buyoffer/Pine-Bark-Mulch-By-Particle-Size-And-Moisture-3876217.html",
+        "https://importer1.tradekey.com/buyoffer/HMS-Steel-Scrap-By-Grade-And-Contamination-Limit-3876215.html",
+        "https://importer1.tradekey.com/buyoffer/Ostrich-Eggs-By-Intended-Use-Weight-And-Handling-3876213.html",
+        "https://importer1.tradekey.com/buyoffer/Cellular-Blankets-By-Size-GSM-And-Fibre-Blend-3876209.html",
+        "https://importer1.tradekey.com/buyoffer/Living-Room-Sofa-By-Dimensions-Frame-And-Upholstery-3876207.html",
+        "https://importer1.tradekey.com/buyoffer/Elemental-Sulphur-By-Form-Purity-And-Particle-Size-3876205.html",
+        "https://importer1.tradekey.com/buyoffer/Suits-By-Fabric-Construction-And-Size-Run-3876203.html",
+        "https://importer1.tradekey.com/buyoffer/Natural-Latex-Scrap-By-Form-And-Contamination-Level-3876201.html",
+        "https://importer1.tradekey.com/buyoffer/Fresh-Jasmine-Flowers-By-Variety-And-Stem-Grade-3876199.html"
       ]
     }
   ],
-  "unique_refreshed": 90,
+  "unique_refreshed": 91,
   "info_edge_refresh": [
     {
       "id": "5409f529cb2b0f7b",
       "url": "https://community.n8n.io/t/assistant-credits-top-up-now-available/318075",
-      "checked_at": "2026-10-15T07:23:41.904032+00:00",
-      "refreshed": true,
-      "snapshot": "data/evidence/info-rechecks/5409f529cb2b0f7b.json#sha256=67902499639346ceac31c2899ed9488a7d89990c1aa60b8799d3f552d47e3bbf"
+      "checked_at": "2026-10-16T07:07:16.259711+00:00",
+      "refreshed": false,
+      "reason": "event expired; no publication rejuvenation"
     },
     {
       "id": "edge-haiku-2026-10-07",
       "url": "https://www.anthropic.com/claude-haiku-5-5",
-      "checked_at": "2026-10-15T07:23:41.904032+00:00",
+      "checked_at": "2026-10-16T07:07:16.259711+00:00",
       "refreshed": true,
-      "snapshot": "data/evidence/info-rechecks/cdb1d51fae043110.json#sha256=707996586d8f48df9184b715950adf976ab6ad7cb631ef9751e4e7da1f9e08c2"
+      "snapshot": "data/evidence/info-rechecks/cdb1d51fae043110.json#sha256=7ed6900a390356c5a275c37c6279561d6cd16bd5278ea11ac65f3f5f4bf91287"
     }
   ]
 }

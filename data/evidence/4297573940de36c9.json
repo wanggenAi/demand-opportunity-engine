@@ -1,0 +1,186 @@
+{
+  "source_api_url": "https://api.github.com/repos/beyourlovercom/YBY-Core/issues/135",
+  "collected_at": "2026-10-16T07:07:16.259711+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/beyourlovercom/YBY-Core/issues/135",
+    "repository_url": "https://api.github.com/repos/beyourlovercom/YBY-Core",
+    "labels_url": "https://api.github.com/repos/beyourlovercom/YBY-Core/issues/135/labels{/name}",
+    "comments_url": "https://api.github.com/repos/beyourlovercom/YBY-Core/issues/135/comments",
+    "events_url": "https://api.github.com/repos/beyourlovercom/YBY-Core/issues/135/events",
+    "html_url": "https://github.com/beyourlovercom/YBY-Core/issues/135",
+    "id": 5878155047,
+    "node_id": "I_kwDOTP-dws8AAAABXl2HJw",
+    "number": 135,
+    "title": "US Wholesale pilot — page-only Production release gate & paused Search campaign 24355649904",
+    "user": {
+      "login": "beyourlovercom",
+      "id": 203355932,
+      "node_id": "U_kgDODB73HA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/203355932?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/beyourlovercom",
+      "html_url": "https://github.com/beyourlovercom",
+      "followers_url": "https://api.github.com/users/beyourlovercom/followers",
+      "following_url": "https://api.github.com/users/beyourlovercom/following{/other_user}",
+      "gists_url": "https://api.github.com/users/beyourlovercom/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/beyourlovercom/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/beyourlovercom/subscriptions",
+      "organizations_url": "https://api.github.com/users/beyourlovercom/orgs",
+      "repos_url": "https://api.github.com/users/beyourlovercom/repos",
+      "events_url": "https://api.github.com/users/beyourlovercom/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/beyourlovercom/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 8,
+    "created_at": "2026-10-16T04:08:05Z",
+    "updated_at": "2026-10-16T07:02:26Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## US Wholesale Pilot — Owner authorized Production page + Google Search launch\nRequested 2026-10-16. **Use yesterday's Germany Wholesale page/style, not the older US Solution page.** Google Ads account 502-024-8458; CNY100/day as explicitly approved (part of CNY20k/month all-country budget).\n\n### Completed today — Windsor.ai Ads write confirmations\n- Created **PAUSED** Search campaign `24355649904`: `IRR | Search | Wholesale | US`, CNY100/day, Manual CPC, non-EU political category.\n- Budget name `YBY_US_Wholesale_100CNY_Daily_202610`.\n- Added positive US geo criterion **2840** (United States) and target language **en** using Windsor.ai, both action success.\n- Created two **PAUSED** ad groups (manual CPC default CNY15):\n  - `201247717836` `US | Wholesale & Distributors | EN`\n  - `198379915342` `US | Bulk Irrigation Components | EN`.\n- Added **20 positive** phrase/exact B2B keywords (10 to each group; wholesale irrigation suppliers, irrigation equipment distributors, bulk tape and fittings, import/contractor purchasing); all two write responses SUCCESS.\n- Added **18 campaign-level negatives** (small plots, DIY, home/garden, jobs, used/free, retail purchase locations), write SUCCESS. Kept generic 'price' available (real wholesalers also inquire on bulk price).\n- No RSAs created because **US Production Wholesale final URL is not yet confirmed live**. Campaign/ad groups remain paused, no spend should be generated.\n- **Independent Google Ads API readback of this new campaign was not completed:** further remote API call was **blocked by the platform safety gate**. Write results are Windsor provider confirmations only, not independently verified. No attempt to bypass protection.\n\n### Website evidence and blocking issue\n- Production `ybyirrigation.com` read-only WordPress post list verified:\n  - Germany **Wholesale** `#824` **PUBLISHED** at `/lp/irrigation-wholesale-germany/`, Owner visual UAT PASS (2026-10-15); primary 100%-fidelity style reference.\n  - `#798` **US SOLUTION draft**, not suitable for Wholesale, do not reuse/publish.\n  - `#215` canonical Wholesale master PUBLISHED, protected.\n  - `#310` Wholesale Thank You PUBLISHED, protected.\n  - No US Wholesale Production page was found in the returned site list.\n- Dev-only US Wholesale draft `#821`, Dev project `#820` from M6 PASS, as documented in `docs/project-studio/WHOLESALE-COUNTRY-CLONE-V2-M0-M8-OWNER-UAT-2026-10-15.md` on feature branch `feature/irrigation-wholesale-country-clone-v2-20261015`. PR #121 Draft, UNMERGED.\n- Attempt to run additional read-only Production Bricks signature/content preflight through the remote terminal **was BLOCKED by OpenAI platform safety review**. Do not evade this check or claim release. This prevents safe automated page-only Production clone/publish in this turn.\n- The proposed public URL `https://ybyirrigation.com/lp/irrigation-wholesale-united-states/` is **NOT verified live**. Web fetch was inaccessible (including the known Germany page), so no 404/200 claim from web fetch.\n\n### REQUIRED remaining steps before any US spend\n1. Once access is normally permitted, inspect actual Germany Production #824 Bricks structure/signatures and exact country substitutions with a bounded read-only, authorized path. Copy only to a NEW US Wholesale page; preserve source, canonical mother, Thank You, old US Solution, existing inquiries. No blanket plugin overwrite, no PR merge.\n2. Restore authorized safe path for new page create/publish (or have Owner perform explicit reviewed manual page-only operation). Use proper Bricks signatures on target; create independent WP Landing `irrigation-wholesale-united-states`, verify desktop 1440px & M14 390px, exact Germany fidelity and USA copy. Validate public HTTP200, 17 inquiry CTA/modal controls, `irrigation_wholesale` preset and Case ID success contract without unsolicited real lead.\n3. Ensure Google Ads US geo location criterion only United States **AND** set positive geo targeting to **PRESENCE** (actual US location) rather than default PRESENCE_OR_INTEREST. Disable Search Partners. Neither option is exposed by Windsor.ai current action schema; Google Ads official API single-campaign update only after approved safety gate.\n4. Add 2 US RSA creatives paused, 9 headlines + 4 descriptions each, US Wholesale confirmed Production final URL **only** (no invented local inventory, US warehouse or domestic shipping claims). Before enabling, check Google Ads ad policy and child eligibility.\n5. Enable US ad groups / RSAs / campaign only when all checks PASS. Independent provider readback; monitor 24-72h real impressions, clicks, cost and **successful, unique WP case IDs**, not inflated Google form conversions. No other country Ads changes.\n\n### Status\nUS AD STRUCTURE = **CREATED, PAUSED**. US LIVE LANDING = **NOT PUBLISHED/VERIFIED**. US ADS DELIVERING = **NO**. OWNER LAUNCH INTENT CONFIRMED but release blocked by safety/access/landing gate. Safe next action is complete US page-only Owner/technical UAT and advanced US-only geo controls when permitted.",
+    "reactions": {
+      "url": "https://api.github.com/repos/beyourlovercom/YBY-Core/issues/135/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/beyourlovercom/YBY-Core/issues/135/timeline",
+    "performed_via_github_app": {
+      "id": 1144995,
+      "client_id": "Iv23liVemv8A9if9v0F2",
+      "slug": "chatgpt-codex-connector",
+      "node_id": "A_kwHOAOQ6Gs4AEXij",
+      "owner": {
+        "login": "openai",
+        "id": 14957082,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjE0OTU3MDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/14957082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/openai",
+        "html_url": "https://github.com/openai",
+        "followers_url": "https://api.github.com/users/openai/followers",
+        "following_url": "https://api.github.com/users/openai/following{/other_user}",
+        "gists_url": "https://api.github.com/users/openai/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/openai/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/openai/subscriptions",
+        "organizations_url": "https://api.github.com/users/openai/orgs",
+        "repos_url": "https://api.github.com/users/openai/repos",
+        "events_url": "https://api.github.com/users/openai/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/openai/received_events",
+        "type": "Organization",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "name": "ChatGPT Codex Connector",
+      "description": "Bring ChatGPT and Codex to your GitHub repositories.",
+      "external_url": "https://www.chatgpt.com",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "created_at": "2025-02-14T01:37:05Z",
+      "updated_at": "2026-09-23T18:52:59Z",
+      "permissions": {
+        "actions": "write",
+        "checks": "read",
+        "contents": "write",
+        "emails": "read",
+        "issues": "write",
+        "metadata": "read",
+        "pull_requests": "write",
+        "statuses": "read",
+        "workflows": "write"
+      },
+      "events": [
+        "check_run",
+        "check_suite",
+        "commit_comment",
+        "issues",
+        "issue_comment",
+        "pull_request",
+        "pull_request_review",
+        "pull_request_review_comment",
+        "pull_request_review_thread",
+        "repository",
+        "status",
+        "sub_issues"
+      ]
+    },
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "beyourlovercom",
+      "text": "US B2B RSA DRAFTS ONLY — NOT created inside Google Ads, because US Production landing URL is not yet verified live. All 9 headlines/ad and 4 descriptions/ad stay within Google Ads 30/90-character limits.\n\n**Ad group 201247717836 — US Wholesale & Distributors EN:**\nHeadlines:\n- Wholesale Irrigation Parts\n- Irrigation Parts for Dealers\n- Bulk Drip Irrigation Supply\n- Irrigation Distributor Supply\n- Request a Wholesale Quote\n- Supplier for US Importers\n- Wholesale Irrigation Quote\n- B2B Irrigation Procurement\n- Supply for Large Projects\nDescriptions:\n- Source irrigation parts for wholesale buyers and projects. Request a B2B quote.\n- Send your product list and quantities for a tailored bulk irrigation quotation.\n- Wholesale irrigation components for distributors and project buyers. Contact us.\n- Sourcing irrigation products in bulk? Submit your requirements to our team.\n\n**Ad group 198379915342 — US Bulk Irrigation Components EN:**\nHeadlines:\n- Wholesale Drip Irrigation\n- Bulk Irrigation Components\n- Drip Tape & Fittings in Bulk\n- Wholesale Irrigation Fittings\n- Irrigation Parts for Projects\n- Bulk Drip Tape Supply\n- Irrigation Pipe & Fittings\n- Request a Bulk Supply Quote\n- Wholesale Irrigation Supplier\nDescriptions:\n- Request bulk irrigation tape, fittings and components for your business needs.\n- Sourcing irrigation components by quantity? Tell our team what products you need.\n- Wholesale drip irrigation supplies for dealers and project buyers. Get a quote.\n- Submit your parts list and estimated volumes to discuss bulk sourcing options.\n\nProposed display paths: `/wholesale/usa` and `/bulk/usa`. Publish and independently verify `https://ybyirrigation.com/lp/irrigation-wholesale-united-states/` FIRST; only then create paused RSAs with this exact final URL. Avoid invented US manufacturing, domestic inventory, or freight claims.",
+      "at": "2026-10-16T04:09:23Z",
+      "url": "https://github.com/beyourlovercom/YBY-Core/issues/135#issuecomment-6207872211"
+    },
+    {
+      "author": "beyourlovercom",
+      "text": "2026-10-16 — NEXT STAGE: REUSABLE USA WHOLESALE PAGE RELEASE CANDIDATE PREPARED (GitHub only, NO Production deployment).\n\n**Draft PR #136:** https://github.com/beyourlovercom/YBY-Core/pull/136 on branch `feature/us-wholesale-production-page-v1-20261016`, based on main, current exact head `1419ac71a730bf678773ce424f19eda3c2b41970`.\n\nChange allowlist exactly 2 new files:\n1. `scripts/wholesale-us-production-page-release.php`: target-only page clone based on final Owner-approved Production **Germany #824**, preserving mobile CSS (NOT the outdated original mother layout); US slug `irrigation-wholesale-united-states`, unique US marker, host/environment guard, source fingerprint two-phase `plan -> create DRAFT -> publish`, native Bricks ID regeneration + 4/4 code signing, 17 triggers, H1 `... Project Buyers in the United States`, no German code text. Mother #215 / Germany #824 / Thank You #310 / prior US Solution #798 protected; rollback affects US target only.\n2. `.github/workflows/us-wholesale-release-lint.yml`: PHP syntax lint / no implicit deploy. **GitHub Actions run #38850200373 COMPLETED SUCCESS**. Other baseline PR checks were still IN_PROGRESS at this note and must not be claimed PASS until complete.\n\n**Deployment / Ads status truth:** No Production source audit/deploy attempt resumed after OpenAI platform safety check blocked remote WordPress preflight. No security bypass attempted; no Production code executed. Production US Wholesale page still not verified as published or HTTP200; Ads Campaign `24355649904` remains intended PAUSED at approved CNY100/day (last confirmed through Windsor write, but Windsor read connector Free plan gives false placeholders and cannot be used as real-time read). No US RSAs/enable operations were performed. US Ads launch remains blocked until authorized Production release gate, M14+desktop visual UAT, successful CTA/pop-up & attribution, USA-only PRESENCE and Search Partners OFF actual verification, final URL and Ads approval.\n\n**Next permission-cleared actions (not performed):** authorized source fingerprint review, US draft create/publish page-only, real browser UAT, then two US ad creative creation and enable only for new US campaign. Keep PR Draft/unmerged, existing campaigns unchanged.",
+      "at": "2026-10-16T04:22:16Z",
+      "url": "https://github.com/beyourlovercom/YBY-Core/issues/135#issuecomment-6208017890"
+    },
+    {
+      "author": "beyourlovercom",
+      "text": "CI update for Draft PR #136 at exact-head `1419ac71a730bf678773ce424f19eda3c2b41970`: **GitHub Actions 5/5 SUCCESS** — Release Package Validation, Andy Core Regression, US Wholesale release PHP lint, Newsletter M1 Disposable WordPress MySQL, Inquiry Inbox WordPress MySQL Validation. This is a **code-level gate only**; Production USA page-only release and real M14 / desktop visual UAT have NOT occurred. US Ads Campaign #24355649904 remains PAUSED; no Ads delivery. No main merge, no website deployment, no production data or old Ads changed.",
+      "at": "2026-10-16T04:23:05Z",
+      "url": "https://github.com/beyourlovercom/YBY-Core/issues/135#issuecomment-6208026766"
+    },
+    {
+      "author": "beyourlovercom",
+      "text": "2026-10-16 NEXT-STAGE REVIEW / HOLD: Draft PR #136 head `1419ac71a730bf678773ce424f19eda3c2b41970` CI five workflows 5/5 SUCCESS; 2 allowlisted new files, Draft/unmerged. Germany Production #824 remains the reviewed styling source, US new landing slug `irrigation-wholesale-united-states` remains not independently verified live. Attempted independent public URL checks but both Germany and US URLs were inaccessible through public web in this environment; do not infer 404/200 or release status from a network error. Prior platform safety gate explicitly blocked private Production WordPress terminal preflight; have **not** attempted alternative remote methods to work around it. US Ads Campaign `24355649904` (100 CNY/day) was created PAUSED per prior provider write; no approval to claim current serving status without real provider readback. No website deployment, PR merge, US ad activation, old Ads changes or CRM writes occurred here.\n\n**Next release gate (once approved access available):** (1) exact Production read-only source fingerprint check of German #824 and protected #215/#310, check collision for US page; (2) approved page-only US DRAFT creation with native Bricks signer and target-only rollback; (3) M14/desktop UAT and popup behavior, no real test inquiry; (4) controlled US publication and public HTTP200 verification; (5) US-only GEO=PRESENCE, Search Partners OFF, US ads final URL and approval check; (6) only then enable the new US campaign. Avoid any workaround for platform tool safety refusal.",
+      "at": "2026-10-16T04:33:11Z",
+      "url": "https://github.com/beyourlovercom/YBY-Core/issues/135#issuecomment-6208142342"
+    },
+    {
+      "author": "beyourlovercom",
+      "text": "2026-10-16 — Owner requested smaller independently auditable tasks and an upgraded handling policy for remote platform safety blocks. Safe actions done:\n- Project governance **Draft PR #139**: https://github.com/beyourlovercom/YBY-Core/pull/139 at exact-head `c2e462312e36409a72ab244dc4f5d323883e919e`, one new document `docs/governance/REMOTE-EXECUTION-SAFETY-BLOCK-HANDLING-V1.md`, unmerged. Rule: atomic tasks, least privilege, isolate dependencies, classify transient/permission/validation/safety errors, continue independent authorized tasks, NO bypass of platform safety denial via repeated fragmentation/tool switching.\n- Self-built DC safe connectivity only: Windows YST-241030SSD **pong**, US Mac mini **pong**; other devices not restarted. Official OAuth MCP read-only device status reported READY.\n- Previous US page candidate **PR #136** Draft (CI 5/5 SUCCESS); no repeat deployment.\n- Site Production source audit step US-S03 classified `BLOCKED_SECURITY` from prior call. Not reattempted through different channel because safety denial is not an instruction to probe alternative paths. US-S04…S08 correctly `SKIPPED_DEPENDENCY`; owner may arrange authorized normal WordPress administrative workflow / support review.\n- America Google Ads #24355649904 budget CNY100/day intended PAUSED from earlier write. No fresh ad read evidence this turn, no enabling or ad edits.\nGitHub is the intended canonical document source after review/merge of #139; until then governance V1 is a proposed rule and cannot be claimed enforced across projects.\n\nOne owner input only if needed: confirm a policy-approved Production page-only release route or have a duly authorized site administrator execute and report the required US source fingerprint & independent page publication using normal WordPress processes. No credentials should be supplied to the chat.",
+      "at": "2026-10-16T05:59:55Z",
+      "url": "https://github.com/beyourlovercom/YBY-Core/issues/135#issuecomment-6209155210"
+    },
+    {
+      "author": "beyourlovercom",
+      "text": "2026-10-16 — OWNER CREATED USA WHOLESALE BRICKS DRAFT MANUALLY. **Critical state change: DO NOT RUN PR #136 `create`**, since the target page already exists and executing a create flow could conflict.\n\nDirect read-only evidence from Owner's authenticated WordPress Landing Pages browser tab:\n- Target **#826**: `IRRIGATION WHOLESALE — United States`, `draft`, Bricks, currently WordPress edit-locked (likely actively open), permalink shown as `/?post_type=landing_page&p=826` (no country slug yet), Rank Math noindex; Edit https://ybyirrigation.com/wp-admin/post.php?post=826&action=edit ; Preview https://ybyirrigation.com/?post_type=landing_page&p=826&preview=true\n- Germany reference **#824**: Published, slug `irrigation-wholesale-germany`; reference Owner-approved.\n- Older United States **Solution #798**: separate Draft, preserve untouched.\n- Wholesale mother #215 and Thank You #310 remain listed; preserve.\n- WP UI shows new target under edit lock; do not write over a possibly active Owner edit session.\n\n**Revised workflow:** inspect existing draft #826's actual Bricks content and appearance first, update existing draft only through approved UI/authorized editing, ensure Bricks 4 signed code, original 17 CTA + global popup, localized US text/description, requested final slug `irrigation-wholesale-united-states`, M14/desktop visual UAT, then publication + Google Ads final URL after policy checks. Avoid blindly replacing CSS ID/class names containing `de` and avoid inventing US inventory/shipping claims.\n\nNo mutation on production WP performed by assistant. Existing campaign #24355649904 must remain PAUSED pending verified destination. Browser connection available READ-ONLY (cannot click/save); a previously safety-denied production SSH/WP-CLI tool path must NOT be retried via alternative transport as a bypass.",
+      "at": "2026-10-16T06:26:57Z",
+      "url": "https://github.com/beyourlovercom/YBY-Core/issues/135#issuecomment-6209516918"
+    },
+    {
+      "author": "beyourlovercom",
+      "text": "2026-10-16 — Owner opened Bricks editor for existing US Wholesale Draft #826. Authenticated read-only Browser tab `https://ybyirrigation.com/?post_type=landing_page&p=826&bricks=run` detected. Bricks structure text includes Wrapper, hero/footer sections and 4 Code elements (consistent with the expected Germany layout, but **not a verified visual/element signature check**). Extracted DOM also contains `Session expired / Please log in again` modal content (visibility unknown: may be hidden until session expires); shared/global inquiry popup markup still mentions `Farm Size`, `irrigation_quick_inquiry`, plus a WhatsApp URL text `irrigation solution request` — **not yet attributed to page-specific Bricks content**. Must inspect real preview before deciding whether these global elements require separate changes. No WP/Bricks edits or site publication performed. Next authorized step: Owner open signed-in US Draft Preview `https://ybyirrigation.com/?post_type=landing_page&p=826&preview=true`, then read rendered content from browser and check residual Germany copy, actual CTA modal. Keep #826 Draft and #24355649904 PAUSED. Previously denied remote Production WP command is not retried via alternate access.",
+      "at": "2026-10-16T06:32:10Z",
+      "url": "https://github.com/beyourlovercom/YBY-Core/issues/135#issuecomment-6209587030"
+    },
+    {
+      "author": "beyourlovercom",
+      "text": "## 2026-10-16 — Existing US Draft #826 read-only follow-up (no site/Ads writes)\n\n**Live browser tab inspected** (Owner-authenticated Preview `/?post_type=landing_page&p=826&preview=true` and Bricks editor). **#826 exists; do not run Draft PR #136 `create`/`publish`**. The preview is **not** a public Ads URL or HTTP200 proof.\n\n### Exact US-only copy differences observed in preview\n1. H1 currently ends **`in Germany`** → replace only within #826 H1 with **`in the United States`** (preserve markup/line breaks).\n2. Hero description **`Wholesale sourcing for the German market.`** → **`Wholesale sourcing for the U.S. market.`**.\n3. Trust point **`Wholesale Supply for Germany`** → **`Wholesale Supply for U.S. Distributors`**.\n4. Page title already presents `IRRIGATION WHOLESALE — United States`; **unique final slug** `irrigation-wholesale-united-states` remains unverified.\n5. Copy consistency risk: hero says fixed `MOQ 100 pcs per model` / `Free Samples`, while FAQ explicitly says product-dependent MOQ and sample availability. Do not make unsupported US guarantees; review only #826 wording before launch.\n\n### Remaining runtime checks (NOT yet PASS)\n- Bricks editor structure exposes **4 Code elements**, consistent with Germany's contract; this **does not** verify real **4/4 native Code signatures** or 17 `data-yby-inquiry-trigger` instances, because the available browser connector exposes read-only text rather than saved Code/meta.\n- Global `Irrigation Quick Inquiry` component shows **Farm Size** and hidden `irrigation_quick_inquiry`; global WhatsApp text says **irrigation solution request**. They may be shared/default markup. **Do not edit global template blindly**. Only actual opening of a Wholesale CTA with runtime attribution proves the `irrigation_wholesale` profile; verify buyer type, product interest, quantity, destination, Thank You #310 and case_id without sending a fabricated real inquiry.\n- Mobile 390×844 and desktop 1440×900 **actual visual UAT pending**; opening a tab alone is not screenshot/button-click confirmation.\n- Owner has not approved this USA page yet. No authorized save channel exists in the current browser connector, and prior platform safety denial for Production terminal audit must not be bypassed by another method.\n\n### Ads unchanged / hard gate\n- Existing `IRR | Search | Wholesale | US` #24355649904 had a PAUSED create write confirmation, budget CNY100/day, with 2 PAUSED groups and draft-only RSA copy. **No reliable fresh Ads API readback; no RSA created, campaign not enabled.** Windsor action inventory still lacks US geo **PRESENCE** and **Search Partners OFF** updates; these require independent valid Google Ads UI/API review.\n- Both the Germany and candidate US public URLs were inaccessible to the public web tool here, **not proof of either HTTP code**. No new public #826 URL has been verified.\n- PR #136 stays Draft HOLD; PR #139 Draft unmerged; no other country/campaign touched.\n\n**Next minimal Owner-dependent step:** use normal WordPress #826 Bricks editing to save the **three exact US-only copy replacements** above in the existing draft (and reconcile MOQ/sample promise only with verified business terms), then return `done`. We can immediately re-read the existing preview and continue the source/runtime/visual gates. Do not publish or turn on Ads before PASS.\n",
+      "at": "2026-10-16T07:02:26Z",
+      "url": "https://github.com/beyourlovercom/YBY-Core/issues/135#issuecomment-6210011028"
+    }
+  ],
+  "comments_complete": true
+}
