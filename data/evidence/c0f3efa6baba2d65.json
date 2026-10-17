@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50073471",
-  "collected_at": "2026-10-15T07:23:41.904032+00:00",
+  "collected_at": "2026-10-17T06:54:23.118368+00:00",
   "source": {
     "author": "ericmags",
     "children": [
@@ -265,6 +265,21 @@
         "title": null,
         "type": "comment",
         "url": null
+      },
+      {
+        "author": "peplee",
+        "children": [],
+        "created_at": "2026-10-15T18:38:16.000Z",
+        "created_at_i": 1792089496,
+        "id": 50108228,
+        "options": [],
+        "parent_id": 50073471,
+        "points": null,
+        "story_id": 50073471,
+        "text": "Cool solution, and kudos on investing in getting the compliance groundwork stuff sorted out early. I can&#x27;t imagine that was cheap or easy. I&#x27;d think this is primarily interesting to the newer a&amp;d companies, right? Or even companies who are looking at their first government project. That seems to me like where the value is. The usual suspects tend to already have people and policies in place for proper handling of sensitive info.",
+        "title": null,
+        "type": "comment",
+        "url": null
       }
     ],
     "created_at": "2026-10-13T15:41:00.000Z",
@@ -381,6 +396,12 @@
       "text": "These are some pretty significant compliance claims, especially around ITAR, CUI, and FedRAMP High equivalency. I think the technology sounds interesting, but I'd like to understand what's actually happening behind the scenes before taking those claims at face value. A few things I'd be curious about: - *ITAR compliance:* What does that mean in practice for Consus? Are there specific controls around personnel access, data residency, subcontractors, and handling export-controlled information? - *FedRAMP equivalency:* Was there an independent assessment covering all 410 FedRAMP High controls, or is this based on internal control mapping? Also, is there any publicly available documentation showing the assessment scope or authorization status? - *Data handling:* Where do prompts and responses go? Are they stored, and if so, for how long? Can customers disable retention? I'd also be interested in how logging works and whether downstream model providers can retain data for training. - *Customer isolation:* Are customers running in separate environments with dedicated encryption keys, or is isolation handled logically within shared infrastructure? - *Security enforcement:* How does the system handle prompt injection or attempts to generate restricted technical information? Is there an additional security layer beyond the model itself, and can customers audit those decisions? - *Encryption and key management:* Who manages the encryption keys, how often are they rotated, and what safeguards prevent unauthorized access? I understand that not every security detail can be made public, but even a high-level explanation of the assessment scope, control coverage, and how data moves through the system would help. There's definitely value in making AI accessible for regulated environments. I just think the distinction between claiming compliance and demonstrating how it's enforced matters a lot, especially for organizations dealing with sensitive information. Would be interested to hear how the team approaches these challenges.",
       "at": "2026-10-14T07:04:02.000Z",
       "url": "https://news.ycombinator.com/item?id=50083533"
+    },
+    {
+      "author": "peplee",
+      "text": "Cool solution, and kudos on investing in getting the compliance groundwork stuff sorted out early. I can't imagine that was cheap or easy. I'd think this is primarily interesting to the newer a&d companies, right? Or even companies who are looking at their first government project. That seems to me like where the value is. The usual suspects tend to already have people and policies in place for proper handling of sensitive info.",
+      "at": "2026-10-15T18:38:16.000Z",
+      "url": "https://news.ycombinator.com/item?id=50108228"
     }
   ],
   "comments_complete": true

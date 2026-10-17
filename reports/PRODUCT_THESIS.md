@@ -7,8 +7,8 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## workflow_reliability — UNVALIDATED CLUSTER
 
-- independent_demand_count: 28
-- payment_evidence_count: 5
+- independent_demand_count: 30
+- payment_evidence_count: 6
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community', 'n8n Community']
 - communities: ['Ask/Show HN', 'Commerce operator forum', 'n8n Jobs', 'n8n-io/n8n', 'useagenthq/useagent']
 - repeated_pain: Operators cannot trust workflow execution status; triggers, responses or saved definitions fail.
@@ -20,12 +20,12 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://community.n8n.io/t/n8n-mirrorfly-developer-for-video-conferencing-automation/322016
+  - https://github.com/n8n-io/n8n/issues/41242
   - https://github.com/useagenthq/useagent/issues/176
   - https://github.com/n8n-io/n8n/issues/41152
   - https://community.n8n.io/t/exploring-n8n-implementation-partnerships-for-saas-workflow-plans-no-active-project-yet/321496
   - https://community.n8n.io/t/hiring-ai-n8n-builders-in-sea-for-small-paid-sme-automation-jobs-singapore/321311
-  - https://github.com/n8n-io/n8n/issues/41041
-  - https://community.n8n.io/t/looking-for-founding-n8n-automation-creators-osmium/321244
 
 ## lead_research — UNVALIDATED CLUSTER
 

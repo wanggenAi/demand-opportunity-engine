@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50110614",
+  "collected_at": "2026-10-17T06:54:23.118368+00:00",
+  "source": {
+    "author": "Warren93",
+    "children": [],
+    "created_at": "2026-10-15T21:32:10.000Z",
+    "created_at_i": 1792099930,
+    "id": 50110614,
+    "options": [],
+    "parent_id": null,
+    "points": 6,
+    "story_id": 50110614,
+    "text": "Endo is a Higher-Order Harness (HOH).<p>From the easiest concept to understand to the more complex ones, Endo gives you:\n* A single, simple UI to use any agent provider with your existing subscriptions, and hot-swap agents right in the middle of a session.\n* An orchestration layer, which I call HOH, allowing arbitrary composition of agents to achieve any workflow. A fun case I tried was asking Fable and Astra to mock a presidential debate.\n* An agent protocol that abstracts any agent. The key insight here is that every LLM is an agent—instead of treating the LLM as just one node inside an external ReAct loop.<p>Endo was a concept formed while I was building OpenChart (<a href=\"https:&#x2F;&#x2F;github.com&#x2F;longsurf-ai&#x2F;openchart\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;longsurf-ai&#x2F;openchart</a>). To power trading workflows, I needed to support scenarios where strict determinism is required, while still keeping the flexibility of an agent&#x27;s inference-time decision-making capability. A new form factor was needed between rigid n8n-style workflows and open-ended ReAct loop agents.<p>Thus the creation of Endo. Endo is short for Endomorphism, a term rooted in category theory and functional programming. An endomorphism is a function that transforms an object into another object of the same type. Similarly, Endo itself is built purely on functional programming principles, relying heavily on Effect (<a href=\"https:&#x2F;&#x2F;github.com&#x2F;Effect-TS&#x2F;effect\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;Effect-TS&#x2F;effect</a>).<p>..And if you have patience to speak technical jargons, Endo is:\n* An agent orchestration layer—Higher-Order Harness (HOH)—where an entire agent is treated the same as a single LLM call, enabling arbitrary composition of extremely complex workflows.\n* A way to abstract any harness into a standardized protocol, where raw models and agents behave the exact same way, in a KV-cache-friendly manner.\n* A workflow engine that enables arbitrary composition of agents with a single workflow language.<p>It&#x27;s completely open source, and if you think this idea is cool, let&#x27;s build together. Just for the fun of it.",
+    "title": "Show HN: Endo – A Higher-Order Harness",
+    "type": "story",
+    "url": "https://github.com/longsurf-ai/endo"
+  },
+  "comments": [],
+  "comments_complete": true
+}

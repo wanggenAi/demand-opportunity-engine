@@ -1,0 +1,129 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41242",
+  "collected_at": "2026-10-17T06:54:23.118368+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/41242",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/41242/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/41242/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/41242/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/41242",
+    "id": 5880424558,
+    "node_id": "I_kwDOC4Q8Qs8AAAABXoAobg",
+    "number": 41242,
+    "title": "Official Docker image 2.43.3 ships @napi-rs/canvas without any native binding → \"DOMMatrix is not defined\" in all PDF nodes",
+    "user": {
+      "login": "nephilim75",
+      "id": 19992865,
+      "node_id": "MDQ6VXNlcjE5OTkyODY1",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19992865?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/nephilim75",
+      "html_url": "https://github.com/nephilim75",
+      "followers_url": "https://api.github.com/users/nephilim75/followers",
+      "following_url": "https://api.github.com/users/nephilim75/following{/other_user}",
+      "gists_url": "https://api.github.com/users/nephilim75/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/nephilim75/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/nephilim75/subscriptions",
+      "organizations_url": "https://api.github.com/users/nephilim75/orgs",
+      "repos_url": "https://api.github.com/users/nephilim75/repos",
+      "events_url": "https://api.github.com/users/nephilim75/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/nephilim75/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582010757,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cXhQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:nodes",
+        "name": "team:nodes",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Nodes team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-10-16T07:50:29Z",
+    "updated_at": "2026-10-16T10:03:45Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nPDF parsing fails in the official Docker image `n8nio/n8n:2.43.3` with\n`DOMMatrix is not defined`. Both independent PDF code paths are affected:\n\n- `n8n-nodes-base.extractFromFile` (operation: `pdf`)\n- `@n8n/n8n-nodes-langchain.documentDefaultDataLoader` (dataType: `binary`, loader: `pdfLoader`)\n\nDownloading the PDF (e.g. via HTTP Request node) works fine; the failure\nhappens only when the PDF is parsed.\n\n**Root cause:** the image contains the JS wrapper `@napi-rs/canvas@0.1.80`,\nbut **no platform-specific native binding at all**. Neither\n`@napi-rs/canvas-linux-x64-musl` (which this Alpine/musl x86_64 image would\nneed) nor any other variant is present. As a result, pdfjs-dist cannot\npolyfill `DOMMatrix`, `ImageData` and `Path2D`, and PDF parsing aborts.\n\nThis is reproducible in a **pristine** image with no mounts, environment\nvariables or customizations.\n\n### To Reproduce\n\n1. Check which `@napi-rs/canvas` packages ship with the image:\n\n```bash\n   docker run --rm --entrypoint sh docker.n8n.io/n8nio/n8n:2.43.3 -c \\\n     'ls /usr/local/lib/node_modules/n8n/node_modules/.pnpm | grep -i \"napi-rs+canvas\"'\n```\n\n   Output:\n\n```\n   @napi-rs+canvas@0.1.80\n```\n\n   Only the wrapper is present; no `canvas-linux-x64-musl` (nor `-gnu`).\n\n2. Try to load the package inside the pristine image:\n\n```bash\n   docker run --rm --entrypoint sh docker.n8n.io/n8nio/n8n:2.43.3 -c \\\n     'd=$(find / -type d -path \"*node_modules/@napi-rs/canvas\" 2>/dev/null | head -1); \\\n      echo \"Path: $d\"; node -e \"require(\\\"$d\\\"); console.log(\\\"canvas OK\\\")\"'\n```\n\n   Output:\n\n```\n   Path: /usr/local/lib/node_modules/n8n/node_modules/.pnpm/@napi-rs+canvas@0.1.80/node_modules/@napi-rs/canvas\n   Error: Failed to load native binding\n     [cause]: [\n       Error: Cannot find module './skia.linux-x64-musl.node'\n       Error: Cannot find module '@napi-rs/canvas-linux-x64-musl'\n     ]\n```\n\n3. In a running instance, execute any workflow that uses Extract from File\n   (operation: PDF) or the Default Data Loader with a PDF binary. The node\n   fails with `DOMMatrix is not defined`.\n\n### Expected behavior\n\nThe image ships the native `@napi-rs/canvas` binding matching its own\nplatform (`linux-x64-musl`, and `linux-arm64-musl` for arm64 images), so\nPDF extraction works out of the box.\n\n### Debug Info\n\n## Logs (running instance)\n\n```\nWarning: Cannot load \"@napi-rs/canvas\" package: \"Error: Failed to load native binding\".\nWarning: Cannot polyfill `DOMMatrix`, rendering may be broken.\nWarning: Cannot polyfill `ImageData`, rendering may be broken.\nWarning: Cannot polyfill `Path2D`, rendering may be broken.\nReferenceError: DOMMatrix is not defined\n```\n\n## Environment\n\n- n8n version: 2.43.3 (self-hosted, `N8N_RELEASE_TYPE=stable`)\n- Image: `docker.n8n.io/n8nio/n8n:2.43.3`\n  (digest `sha256:d4eca183959b30fb1ba5ecda7e58363c5be49a7bcf8c0227a6384a47ce2f7a65`)\n- Base OS (from image): Docker Hardened Images (Alpine) 3.24\n- Node.js: v26.7.0\n- Architecture: x86_64\n- Running via: Docker, with external task runners\n  (`n8nio/runners:2.43.3`, `N8N_RUNNERS_MODE=external`)\n- Database / binary data mode: not relevant (reproducible without any instance data)\n\n## Additional context\n\n- Earlier images did contain `skia.linux-x64-musl.node` (see #23754 for 2.0.0),\n  so this appears to be a packaging regression: the optional platform\n  dependencies of `@napi-rs/canvas` seem to be omitted entirely during the\n  image build (e.g. via `--no-optional`, production pruning, or pnpm not\n  resolving optional deps for the target platform).\n- Related historical reports of the same symptom: #16593, #16438, #16422.\n- Possible fix: make sure the Docker build installs the matching platform\n  package, e.g. by adding `@napi-rs/canvas-linux-x64-musl` /\n  `@napi-rs/canvas-linux-arm64-musl` explicitly, or by configuring pnpm\n  `supportedArchitectures` with `os: [\"linux\"]`, `cpu: [\"x64\", \"arm64\"]`,\n  `libc: [\"musl\"]`.\n- Current workaround: extract the PDF text outside of n8n (e.g. Python/pypdf)\n  and send the text to n8n via webhook.\n\n### Operating System\n\nDebian 13 (host); container: Alpine 3.24 (Docker Hardened Images, official n8nio/n8n image)\n\n### n8n Version\n\n2.43.3\n\n### Node.js Version\n\n26.7.0\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/41242/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/41242/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @nephilim75,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9595\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9595](https://linear.app/n8n/issue/GHC-9595)",
+      "at": "2026-10-16T07:50:43Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41242#issuecomment-6210750681"
+    },
+    {
+      "author": "WilliamAyad",
+      "text": "+1 — reproduced identically on a pristine pull of docker.n8n.io/n8nio/n8n:2.43.3.\nThe wrapper @napi-rs/canvas@0.1.80 is present but no platform binding ships with\nit (this Alpine-based image needs @napi-rs/canvas-linux-x64-musl), so pdfjs-dist\ncannot polyfill DOMMatrix/ImageData/Path2D and every PDF code path dies.\n\nImmediate unblock, pick one:\n\n1) Easiest: pin back to docker.n8n.io/n8nio/n8n:2.43.2 until a fixed image is published.\n\n2) If you must stay on 2.43.3, bake the matching binding into the image:\n\nFROM docker.n8n.io/n8nio/n8n:2.43.3\nUSER root\nRUN cd /tmp && npm pack @napi-rs/canvas-linux-x64-musl@0.1.80 \\\n && tar -xzf napi-rs-canvas-linux-x64-musl-0.1.80.tgz \\\n && cp package/canvas.linux-x64-musl.node \\\n     /usr/local/lib/node_modules/n8n/node_modules/.pnpm/@napi-rs+canvas@0.1.80/node_modules/@napi-rs/canvas/ \\\n && rm -rf /tmp/package /tmp/*.tgz\nUSER node\n\nThe binding version must match the wrapper (0.1.80). On ARM hosts use\n@napi-rs/canvas-linux-arm64-musl; on a Debian/glibc base it would be the -gnu\nvariant. (Confirm the wrapper's exact .pnpm path with the `ls ... grep napi-rs+canvas`\ncommand from the original report, in case it shifts between tags.)\n\n3) Cheap CI smoke gate so a regression like this never reaches your prod again:\n\ndocker run --rm --entrypoint node your-n8n-image -e \\\n  \"require('/usr/local/lib/node_modules/n8n/node_modules/.pnpm/@napi-rs+canvas@0.1.80/node_modules/@napi-rs/canvas')\"\n\n(exit 0 = binding loads; fail the deploy otherwise.)\n\nRoot-cause suspicion for the maintainers: the image build now appears to prune\nnpm optional dependencies. napi-rs ships its platform binaries as\noptionalDependencies of the wrapper, so an --omit=optional-style publish step\nstrips exactly the .node file pdfjs needs — worth checking the publish pipeline\nfor that flag.",
+      "at": "2026-10-16T10:03:44Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41242#issuecomment-6213070683"
+    }
+  ],
+  "comments_complete": true
+}

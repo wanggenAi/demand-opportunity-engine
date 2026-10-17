@@ -1,0 +1,172 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50120358",
+  "collected_at": "2026-10-17T06:54:23.118368+00:00",
+  "source": {
+    "author": "kjs3",
+    "children": [
+      {
+        "author": "kens",
+        "children": [
+          {
+            "author": "kjs3",
+            "children": [],
+            "created_at": "2026-10-16T17:05:45.000Z",
+            "created_at_i": 1792170345,
+            "id": 50121128,
+            "options": [],
+            "parent_id": 50120878,
+            "points": null,
+            "story_id": 50118318,
+            "text": "Yeah, when I saw &#x27;Datapoint&#x27; I almost went there too. :-)",
+            "title": null,
+            "type": "comment",
+            "url": null
+          },
+          {
+            "author": "kjs3",
+            "children": [],
+            "created_at": "2026-10-16T21:10:48.000Z",
+            "created_at_i": 1792185048,
+            "id": 50124773,
+            "options": [],
+            "parent_id": 50120878,
+            "points": null,
+            "story_id": 50118318,
+            "text": "Ken...I know you tore open an Intel 82586 ethernet chip and an IBM Tropic TR chip.  It might be interesting to do a comparison of the complexity of those two, being that they&#x27;re roughly contemporary.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-16T16:49:42.000Z",
+        "created_at_i": 1792169382,
+        "id": 50120878,
+        "options": [],
+        "parent_id": 50120358,
+        "points": null,
+        "story_id": 50118318,
+        "text": "&gt; Datapoint, a pioneer in office automation using small computers<p>In 1970, Datapoint created a desktop computer, the Datapoint 2200, with an 8-bit TTL processor. Intel created a microprocessor version of this processor for Datapoint, called the Intel 8008. Datapoint decided to stick with TTL, so Intel ended up selling the 8008 as a general-purpose microprocessor. Intel improved it to make the 8080, then made a 16-bit version, the 8086, as a stopgap product until the iAPX 432 micro-mainframe was ready. The iAPX 432 was a disaster and that&#x27;s how you ended up with x86.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "ErroneousBosh",
+        "children": [
+          {
+            "author": "kjs3",
+            "children": [],
+            "created_at": "2026-10-16T19:37:23.000Z",
+            "created_at_i": 1792179443,
+            "id": 50123432,
+            "options": [],
+            "parent_id": 50122127,
+            "points": null,
+            "story_id": 50118318,
+            "text": "Maybe she&#x27;s configured for 4Mb and the other side is 16Mb.  Check the bridge between the lobes and make sure it&#x27;s passing...er...traffic. :-)",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-16T18:12:39.000Z",
+        "created_at_i": 1792174359,
+        "id": 50122127,
+        "options": [],
+        "parent_id": 50120358,
+        "points": null,
+        "story_id": 50118318,
+        "text": "&gt; But TR got smart MAUs<p>I wish I had a smart mau but she is standing on the windowsill mau-ing at the part that doesn&#x27;t open while the other side is wide open. In the rain. Which is getting inside while she maus to get inside.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "Animats",
+        "children": [],
+        "created_at": "2026-10-16T22:42:49.000Z",
+        "created_at_i": 1792190569,
+        "id": 50125766,
+        "options": [],
+        "parent_id": 50120358,
+        "points": null,
+        "story_id": 50118318,
+        "text": "&gt; Coax connectors for Token Ring did exist<p>Apollo Domain computers had a token ring which used coax. RCA phono plug connectors. We had a pair of those at the aerospace company for testing. \nWorked OK, but too weird. We ended up with Sun workstations.<p>At various times in my early career, I was involved with strange networking hardware only of  historical interest now.  Apollo Domain (sort of like Unix, but not.) &quot;Thick Ethernet&quot; 10BASE5.  Later &quot;Thin Ethernet&quot; (Yes, you can mix thick and thin Ethernet without an impedance mismatch, but you may need to use a time domain reflectometer to check. The adapters were built to tolerate TDM pulses.) Hyperchannel, 20Mb&#x2F;s which required 6U of rack space for the interface. (We had a pair, surplus from another project, but didn&#x27;t do much with them.) DECNET triaxial cable for connecting things called the DMC-11.<p>These were all coax, and they were all true &quot;baseband&quot;, that is, the signal was meaningful down to DC. No differential signals, and no scrambler to make the number of 1 and 0 bits roughly equal.\nYou can&#x27;t use decoupling capacitors or transformers. They were all susceptible to noise and ground loops. The coax shield should only be grounded at one point for the whole chain. Otherwise, noise in the ground comes through as noise in the cable.\nAll this was no problem in a place full of RF engineers, who knew all that, and considered hooking up a TDR or a scope to a data network normal operational setup. And in an RF R&amp;D facility, where copper busbars an inch wide were run in parallel with electrical ducts to solidly ground out noise, ground was solid.<p>So coax worked fine at Xerox PARC, it worked fine at Stanford (although inter-building coax didn&#x27;t work all that well), it worked fine in single-room installations, and it worked fine for organizations which understood the limitations of non-differential baseband over coax.\nThe coax technology thus needed too much basic electronics knowledge for general office use.<p>Modern Ethernet is pretty much idiot proof at the electrical level. It&#x27;s differential signals over a pair, immune to common-mode noise and ground level differences. If you plug standard cables into standard interfaces, it will work.<p>Which is why coax Ethernet went away.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "thenthenthen",
+        "children": [],
+        "created_at": "2026-10-17T01:25:27.000Z",
+        "created_at_i": 1792200327,
+        "id": 50126917,
+        "options": [],
+        "parent_id": 50120358,
+        "points": null,
+        "story_id": 50118318,
+        "text": "He is writing about tech since 1991, but I read a few articles today and most of them seem to repeat the same thing 3x in the first paragraph which is a bit off putting. This article doesnt but I agree, its ‘just enough’? Anyway cool to have all this in one place!",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-10-16T16:20:29.000Z",
+    "created_at_i": 1792167629,
+    "id": 50120358,
+    "options": [],
+    "parent_id": 50118318,
+    "points": null,
+    "story_id": 50118318,
+    "text": "I find this guy kinda annoying.  I mean, yeah...seems like he did some networking back in the day, but everything he posts is <i>just</i> enough off (or ia Google-correct, not Been-There-correct) that I can&#x27;t quite take him seriously.<p><i>The main reason Ethernet won the war was because it was cheaper.</i><p>He should have stopped there.  That was it.  And because it was cheaper, less complicated to build the chips, &#x27;good enough&#x27; networking, a bunch of folks jumped on the bandwagon.  And here we are.<p><i>If you had a 16 megabit network and brought up a system at 4 megabits, it took down the whole network.</i><p>Well, yes, <i>everyone</i> who has ever mentioned TR tells some variation of this.  And if you left the terminator off of the coax ethernet, you brought the whole network down.  But TR got smart MAUs and ethernet got UTP hubs around the same time and problem solved.<p>And hubs were a lot cheaper than smart MAUs.  Sooo...<p><i>Ethernet was junk if you went with the cheapest options all around, but you could make it acceptable if you invested some of the savings in improved technology.</i><p>Just like TR.  If you were deploying dirt cheap 8228s after 1990 or so, your network still sucked.  You didn&#x27;t do that.<p><i>But the other reason Ethernet won was because of scale.</i><p>Yes, there was a thing called 100Mb Token Ring.  Someone might have even shipped some number of them.  I never saw one in the wild, and I don&#x27;t know anyone who claimed they had who didn&#x27;t work for IBM or Madge (which, btw, wasn&#x27;t an &#x27;obscure&#x27; network company at the time and made more than just TR cards).<p>That&#x27;s because basically everyone who did Token Ring (IBM most of all) had decided that you wanted to scale TR you were going to ATM (for a bunch of mostly political and marketing reasons).  Which, unlike TR, was <i>in reality</i> a very bad idea, but that&#x27;s another story.<p>I&#x27;ve never even heard anyone even suggest 128Mb Token Ring, and I suspect someones LLM is hallucinating.  There <i>was</i> a gigabit Token Ring standard (IEEE 802.5v), but I feel pretty confident saying noone ever shipped it.  Like I said...ATM was gonna be the future.<p><i>Ethernet used a 15-pin connector that looks quite a bit like a PC joystick connector. Token Ring used a 9-pin connector that looks like a 9-pin video connector or an Atari style joystick plug.</i><p>Ok...I&#x27;ll just be snarky and point out there are ethernet cards that use a 9-pin D-sub connector to reuse a TR wiring physical plant.  I have several.<p><i>Coax connectors for Token Ring did exist</i><p>Citation needed.  I&#x27;ve seen coax for 802.<i>4</i> industrial networking stuff, which is not TR.  I&#x27;m betting more hallucinations.<p><i>ARCNET was another competitor from the same timeframe. It, too, was a contender for a while because it was backed by Datapoint, a pioneer in office automation using small computers.</i><p>Arcnet was a contender because it was even cheaper than ethernet and it was (and still is) widely used in industrial environments.  And some popular early PC file sharing systems (e.g. LANTastic) would use Arcnet.",
+    "title": null,
+    "type": "comment",
+    "url": null
+  },
+  "comments": [
+    {
+      "author": "kens",
+      "text": "> Datapoint, a pioneer in office automation using small computers In 1970, Datapoint created a desktop computer, the Datapoint 2200, with an 8-bit TTL processor. Intel created a microprocessor version of this processor for Datapoint, called the Intel 8008. Datapoint decided to stick with TTL, so Intel ended up selling the 8008 as a general-purpose microprocessor. Intel improved it to make the 8080, then made a 16-bit version, the 8086, as a stopgap product until the iAPX 432 micro-mainframe was ready. The iAPX 432 was a disaster and that's how you ended up with x86.",
+      "at": "2026-10-16T16:49:42.000Z",
+      "url": "https://news.ycombinator.com/item?id=50120878"
+    },
+    {
+      "author": "kjs3",
+      "text": "Yeah, when I saw 'Datapoint' I almost went there too. :-)",
+      "at": "2026-10-16T17:05:45.000Z",
+      "url": "https://news.ycombinator.com/item?id=50121128"
+    },
+    {
+      "author": "kjs3",
+      "text": "Ken...I know you tore open an Intel 82586 ethernet chip and an IBM Tropic TR chip.  It might be interesting to do a comparison of the complexity of those two, being that they're roughly contemporary.",
+      "at": "2026-10-16T21:10:48.000Z",
+      "url": "https://news.ycombinator.com/item?id=50124773"
+    },
+    {
+      "author": "ErroneousBosh",
+      "text": "> But TR got smart MAUs I wish I had a smart mau but she is standing on the windowsill mau-ing at the part that doesn't open while the other side is wide open. In the rain. Which is getting inside while she maus to get inside.",
+      "at": "2026-10-16T18:12:39.000Z",
+      "url": "https://news.ycombinator.com/item?id=50122127"
+    },
+    {
+      "author": "kjs3",
+      "text": "Maybe she's configured for 4Mb and the other side is 16Mb.  Check the bridge between the lobes and make sure it's passing...er...traffic. :-)",
+      "at": "2026-10-16T19:37:23.000Z",
+      "url": "https://news.ycombinator.com/item?id=50123432"
+    },
+    {
+      "author": "Animats",
+      "text": "> Coax connectors for Token Ring did exist Apollo Domain computers had a token ring which used coax. RCA phono plug connectors. We had a pair of those at the aerospace company for testing. \nWorked OK, but too weird. We ended up with Sun workstations. At various times in my early career, I was involved with strange networking hardware only of  historical interest now.  Apollo Domain (sort of like Unix, but not.) \"Thick Ethernet\" 10BASE5.  Later \"Thin Ethernet\" (Yes, you can mix thick and thin Ethernet without an impedance mismatch, but you may need to use a time domain reflectometer to check. The adapters were built to tolerate TDM pulses.) Hyperchannel, 20Mb/s which required 6U of rack space for the interface. (We had a pair, surplus from another project, but didn't do much with them.) DECNET triaxial cable for connecting things called the DMC-11. These were all coax, and they were all true \"baseband\", that is, the signal was meaningful down to DC. No differential signals, and no scrambler to make the number of 1 and 0 bits roughly equal.\nYou can't use decoupling capacitors or transformers. They were all susceptible to noise and ground loops. The coax shield should only be grounded at one point for the whole chain. Otherwise, noise in the ground comes through as noise in the cable.\nAll this was no problem in a place full of RF engineers, who knew all that, and considered hooking up a TDR or a scope to a data network normal operational setup. And in an RF R&D facility, where copper busbars an inch wide were run in parallel with electrical ducts to solidly ground out noise, ground was solid. So coax worked fine at Xerox PARC, it worked fine at Stanford (although inter-building coax didn't work all that well), it worked fine in single-room installations, and it worked fine for organizations which understood the limitations of non-differential baseband over coax.\nThe coax technology thus needed too much basic electronics knowledge for general office use. Modern Ethernet is pretty much idiot proof at the electrical level. It's differential signals over a pair, immune to common-mode noise and ground level differences. If you plug standard cables into standard interfaces, it will work. Which is why coax Ethernet went away.",
+      "at": "2026-10-16T22:42:49.000Z",
+      "url": "https://news.ycombinator.com/item?id=50125766"
+    },
+    {
+      "author": "thenthenthen",
+      "text": "He is writing about tech since 1991, but I read a few articles today and most of them seem to repeat the same thing 3x in the first paragraph which is a bit off putting. This article doesnt but I agree, its ‘just enough’? Anyway cool to have all this in one place!",
+      "at": "2026-10-17T01:25:27.000Z",
+      "url": "https://news.ycombinator.com/item?id=50126917"
+    }
+  ],
+  "comments_complete": true
+}

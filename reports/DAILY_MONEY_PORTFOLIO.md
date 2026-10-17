@@ -1,6 +1,6 @@
 # DAILY MONEY PORTFOLIO
 
-Generated: 2026-10-16T07:07:16.259711+00:00
+Generated: 2026-10-17T06:54:23.118368+00:00
 
 MANY VALIDATIONS, FEW HEAVY COMMITMENTS
 Current acquisition budget = 0. No quota filling. Only verified free-contact qualified buyers enter CONTACT_TODAY.
@@ -19,11 +19,11 @@ None. No verified qualifying record; no invented action.
 ### workflow_reliability
 
 - cluster_name: workflow_reliability
-- independent_demand_count: 28
-- payment_evidence_count: 5
+- independent_demand_count: 30
+- payment_evidence_count: 6
 - platforms: ["GitHub", "Hacker News", "Shopify Community", "n8n Community"]
 - communities: ["Ask/Show HN", "Commerce operator forum", "n8n Jobs", "n8n-io/n8n", "useagenthq/useagent"]
-- evidence_urls: ["https://github.com/useagenthq/useagent/issues/176", "https://github.com/n8n-io/n8n/issues/41152", "https://community.n8n.io/t/exploring-n8n-implementation-partnerships-for-saas-workflow-plans-no-active-project-yet/321496", "https://community.n8n.io/t/hiring-ai-n8n-builders-in-sea-for-small-paid-sme-automation-jobs-singapore/321311"]
+- evidence_urls: ["https://community.n8n.io/t/n8n-mirrorfly-developer-for-video-conferencing-automation/322016", "https://github.com/n8n-io/n8n/issues/41242", "https://github.com/useagenthq/useagent/issues/176", "https://github.com/n8n-io/n8n/issues/41152"]
 - repeated_pain: Operators cannot trust workflow execution status; triggers, responses or saved definitions fail.
 - current_alternatives: Vendor bug tracker and native fixes (free), internal engineering, n8n support, freelance automation providers.
 - productization_potential: Standardize reproduction, health checks and recovery runbooks; current category still too broad for one packaged product.
@@ -164,24 +164,98 @@ None. No verified qualifying record; no invented action.
 
 ## DIRECT LEADS — VALIDATE FIRST (desk checks only)
 
-None. No verified qualifying record; no invented action.
+### Question intake digest — unresolved clusters
+
+- id: 612759143ad7fcd0
+- title: Question intake digest — unresolved clusters
+- buyer: GitHub:github-actions[bot]
+- source: https://github.com/Ikalus1988/MisakaNet/issues/3333
+- commercial_evidence: **$0 / `zero-bounty` by design**: the reward is merge credit, a leaderboard entry and a line in the Hall of Fame, and a real bounty exists only when someone funds it with `/reward <amount>` (`JOIN.md` § Bounties & payment).
+- payment_signal: EXPLICIT_BUDGET
+- payment_evidence: **$0 / `zero-bounty` by design**: the reward is merge credit, a leaderboard entry and a line in the Hall of Fame, and a real bounty exists only when someone funds it with `/reward <amount>` (`JOIN.md` § Bounties & payment).
+- published_at: 2026-10-16T11:51:13Z
+- buyer_activity_at: None
+- freshness_days: 0.79
+- competition: LOW
+- competition_evidence: []
+- fit: REMOTE_NOW
+- offer: Remote diagnosis of one failing workflow, with reproduction and recovery checklist
+- suggested_price: USD 100–200 diagnostic; USD 300–600 implementation only after scope agreement (proposal, not budget)
+- observed_budget: {}
+- first_message_angle: Is this still blocking your workflow? I can scope a remote reproduction and recovery audit; what is the daily volume and cost of failures?
+- contact_channel: GitHub
+- contact_path: https://github.com/Ikalus1988/MisakaNet/issues/3333
+- acquisition_cost: UNKNOWN
+- risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports.
+- gate_failures: ["zero-cost acquisition not verified: UNKNOWN"]
+- human_minutes_required: 20
+- cash_cost: None
+- speed_to_cash: {"observed_average_days": null, "basis": "UNKNOWN; neutral factor"}
+- expected_value: {"currency": "USD", "amount": null, "basis": "UNKNOWN; no realized USD sales history"}
+- probability_of_conversion: None
+- structural_advantage: {"china_local_advantage": "NONE", "language_advantage": "NONE", "technical_advantage": "MEDIUM", "direct_contactability": "MEDIUM", "evidence": "Task explicitly mentions remote software work", "controlled_scope": "Chinese web research, translation drafts, evidence comparison; authorized remote code/tests only", "location_limit": "Desk research only; physical China location, field access and qualifications are not verified", "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"}
+- repeatability: 30
+- portfolio_priority: 16.103
+- priority_basis: relative allocation index, not promised revenue; neutral financial factors without history
+- learned_quote_ranges: {}
+- consumed_outcome_cohorts: []
+- next_action: Desk-check the failed gates in 20 minutes; SKIP if unresolved. No sales message yet.
+
+### PROC-SOURCING-001: authorized acquisition receipts to attributable sourcing candidates
+
+- id: c56b1a9f5871f9ae
+- title: PROC-SOURCING-001: authorized acquisition receipts to attributable sourcing candidates
+- buyer: GitHub:Tristan-Stoltz-ERC
+- source: https://github.com/Luminous-Dynamics/symthaea/issues/7660
+- commercial_evidence: Only later, wire an RFQ/purchase-order draft flow through Mycelix.
+- payment_signal: FEE_REQUEST
+- payment_evidence: - quote currency/unit, per-unit price and quantity basis, minimum-order/pack-size semantics, shipping/tax/fees, quote validity;
+- published_at: 2026-10-16T18:24:44Z
+- buyer_activity_at: None
+- freshness_days: 0.52
+- competition: UNKNOWN
+- competition_evidence: []
+- fit: REMOTE_NOW
+- offer: Remote supplier verification / RFQ comparison for one SKU
+- suggested_price: USD 100–250 (proposed discovery pilot; buyer budget unverified)
+- observed_budget: {}
+- first_message_angle: Which SKU, destination and supplier are you evaluating? I can scope a remote verification memo; physical QC is separate.
+- contact_channel: GitHub
+- contact_path: https://github.com/Luminous-Dynamics/symthaea/issues/7660
+- acquisition_cost: UNKNOWN
+- risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports.
+- gate_failures: ["zero-cost acquisition not verified: UNKNOWN", "competition high or unmeasured"]
+- human_minutes_required: 20
+- cash_cost: None
+- speed_to_cash: {"observed_average_days": null, "basis": "UNKNOWN; neutral factor"}
+- expected_value: {"currency": "USD", "amount": null, "basis": "UNKNOWN; no realized USD sales history"}
+- probability_of_conversion: None
+- structural_advantage: {"china_local_advantage": "NONE", "language_advantage": "NONE", "technical_advantage": "MEDIUM", "direct_contactability": "MEDIUM", "evidence": "Task explicitly mentions remote software work", "controlled_scope": "Chinese web research, translation drafts, evidence comparison; authorized remote code/tests only", "location_limit": "Desk research only; physical China location, field access and qualifications are not verified", "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"}
+- repeatability: 1
+- portfolio_priority: 7.576
+- priority_basis: relative allocation index, not promised revenue; neutral financial factors without history
+- learned_quote_ranges: {}
+- consumed_outcome_cohorts: []
+- next_action: Desk-check the failed gates in 20 minutes; SKIP if unresolved. No sales message yet.
 
 ## SKIP / WATCH
 
-Direct SKIP: 16; product WATCH: 1; info WATCH: 1.
+Direct SKIP: 17; product WATCH: 1; info WATCH: 1.
 Full records and rejection reasons: DAILY_PORTFOLIO.json. WATCH has no forced quota and consumes no active validation time.
 
 ## G. TODAY ACTION PLAN
 
-1. Validate workflow_reliability: Select one execution-status failure in the primary evidence; write five diagnostic acceptance checks. Compare native logs/manual diagnosis with paid support prices. Ask what one failure costs, not whether someone likes a broad tool. Evidence: https://github.com/useagenthq/useagent/issues/176 (30 min)
-2. Validate Haiku 5.5 launch: cost-sensitive automation model evaluation: Using the official <=100k versus >100k price tiers, draft an offline before/after cost sheet for one extraction workload. Include tokenizer/retry/quality uncertainty; prepare an awareness question for consenting existing LLM users. No API spend or promised savings. Source: https://www.anthropic.com/claude-haiku-5-5 (25 min)
-3. Validate lead_research: Extract the required lead fields from the primary paid brief. Specify a 20-company research sample with evidence URLs and no spam/private data. Compare manual research with two public-priced alternatives; prepare one question about paying for the sample. Evidence: https://community.n8n.io/t/looking-for-a-b2b-lead-generation-sales-partner-for-n8n-ai-automation-revenue-share/319139 (30 min)
-4. Validate voice_agent_qa: Draft ten failure-path checks for one existing voice agent and one pass/fail report format. Compare manual QA with vendor test pricing. Prepare a paid-test question for consenting operators; no paid calls, credentials or new agent build. Evidence: https://github.com/datnguyenquy94/news-radar/issues/777 (30 min)
-5. Validate browser_automation: Compare two public-priced alternatives; define one narrow deliverable and one consent-based interview question. Record unknowns, not assumed buyers. Evidence: https://github.com/useagenthq/useagent/issues/188 (30 min)
-6. Validate marketing_report_automation: Specify one weekly Meta Ads/Google Ads/GA4 spreadsheet and error alert, using the buyer's existing template. Compare native exports with public connector prices. Prepare a question about paying for this narrow pilot; no full marketing retainer or fabricated portfolio. Evidence: https://community.n8n.io/t/hiring-n8n-looker-studio-builder-for-marketing-reporting-meta-ads-google-ads-ga4-paid-test-ongoing-india-ist/317595 (30 min)
-7. Record only real messages/replies/quotes/wins/payments and actual human minutes; close failed assumptions. No invented outcomes. (10 min)
+1. Verify https://github.com/Ikalus1988/MisakaNet/issues/3333: zero-cost acquisition not verified: UNKNOWN. Stop after 20 minutes; no pitch unless all contact gates pass. (20 min)
+2. Validate workflow_reliability: Select one execution-status failure in the primary evidence; write five diagnostic acceptance checks. Compare native logs/manual diagnosis with paid support prices. Ask what one failure costs, not whether someone likes a broad tool. Evidence: https://community.n8n.io/t/n8n-mirrorfly-developer-for-video-conferencing-automation/322016 (30 min)
+3. Validate Haiku 5.5 launch: cost-sensitive automation model evaluation: Using the official <=100k versus >100k price tiers, draft an offline before/after cost sheet for one extraction workload. Include tokenizer/retry/quality uncertainty; prepare an awareness question for consenting existing LLM users. No API spend or promised savings. Source: https://www.anthropic.com/claude-haiku-5-5 (25 min)
+4. Verify https://github.com/Luminous-Dynamics/symthaea/issues/7660: zero-cost acquisition not verified: UNKNOWN; competition high or unmeasured. Stop after 20 minutes; no pitch unless all contact gates pass. (20 min)
+5. Validate lead_research: Extract the required lead fields from the primary paid brief. Specify a 20-company research sample with evidence URLs and no spam/private data. Compare manual research with two public-priced alternatives; prepare one question about paying for the sample. Evidence: https://community.n8n.io/t/looking-for-a-b2b-lead-generation-sales-partner-for-n8n-ai-automation-revenue-share/319139 (30 min)
+6. Validate voice_agent_qa: Draft ten failure-path checks for one existing voice agent and one pass/fail report format. Compare manual QA with vendor test pricing. Prepare a paid-test question for consenting operators; no paid calls, credentials or new agent build. Evidence: https://github.com/datnguyenquy94/news-radar/issues/777 (30 min)
+7. Validate browser_automation: Compare two public-priced alternatives; define one narrow deliverable and one consent-based interview question. Record unknowns, not assumed buyers. Evidence: https://github.com/useagenthq/useagent/issues/188 (30 min)
+8. Validate marketing_report_automation: Specify one weekly Meta Ads/Google Ads/GA4 spreadsheet and error alert, using the buyer's existing template. Compare native exports with public connector prices. Prepare a question about paying for this narrow pilot; no full marketing retainer or fabricated portfolio. Evidence: https://community.n8n.io/t/hiring-n8n-looker-studio-builder-for-marketing-reporting-meta-ads-google-ads-ga4-paid-test-ongoing-india-ist/317595 (30 min)
+9. Record only real messages/replies/quotes/wins/payments and actual human minutes; close failed assumptions. No invented outcomes. (10 min)
 
-Total estimated human time: 185 minutes.
+Total estimated human time: 225 minutes.
 Expected revenue exposure: UNKNOWN; proposals are not revenue. No dollar forecast without real sales history.
 Highest priority: qualified free buyer contacts, then due follow-ups, then bounded product/edge validations. Empty contacts mean no qualified buyer, not permission to invent one.
 Open quotes: 0; WIP overflow: none.

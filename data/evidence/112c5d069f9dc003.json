@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41215",
-  "collected_at": "2026-10-16T07:07:16.259711+00:00",
+  "collected_at": "2026-10-17T06:54:23.118368+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/41215",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -34,6 +34,17 @@
       "site_admin": false
     },
     "labels": [
+      {
+        "id": 8582010757,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cXhQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:nodes",
+        "name": "team:nodes",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Nodes team",
+        "archived_at": null,
+        "archived_by": null
+      },
       {
         "id": 9542225587,
         "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
@@ -72,9 +83,9 @@
     "locked": false,
     "assignees": [],
     "milestone": null,
-    "comments": 2,
+    "comments": 4,
     "created_at": "2026-10-15T18:01:00Z",
-    "updated_at": "2026-10-15T22:18:13Z",
+    "updated_at": "2026-10-16T16:03:11Z",
     "closed_at": null,
     "assignee": null,
     "author_association": "NONE",
@@ -123,6 +134,18 @@
       "text": "duplicate of https://github.com/n8n-io/n8n/issues/40803\n\nit seems this problem has been resolved in the latest version of code",
       "at": "2026-10-15T22:18:13Z",
       "url": "https://github.com/n8n-io/n8n/issues/41215#issuecomment-6203434818"
+    },
+    {
+      "author": "WilliamAyad",
+      "text": "This is the same credential-form bug as #40803, which the team already fixed —\nper the maintainer there, upgrade to n8n 2.39.7 or later and re-enter the port;\nthe original reporter confirmed the form works after upgrading. If it still\nclears the value or formats it on a version ≥ 2.39.7, please add your exact n8n\nversion and browser language here — that's precisely what the team asked for to\nreopen the investigation.\n\nOne separate heads-up: TCP/UDP ports max out at 65535, so a server cannot\nactually listen on 100222 — worth double-checking the real port with your\nprovider. (A valid 5-digit port like 22222 or 65000 should of course still save\nwithout a thousand separator — that display formatting is the genuine UI bug.)\n\nIf you're pinned on an older version and need the credential right now, bypass\nthe web form entirely via the CLI:\n\nn8n export:credentials --id <cred-id> --decrypted --output=cred.json\n# edit cred.json → \"port\": 22222\nn8n import:credentials --input=cred.json\n\nThen point your workflow at the re-imported credential, and delete/shred the\ndecrypted file — it contains your secrets.\n\nUseful split-test for the team if this persists on ≥ 2.39.7: devtools → Network\n→ save the credential → inspect the PATCH /rest/credentials/<id> payload. If the\nbrowser already sends \"100,222\" or empty, the bug lives in the form control; if\nit sends the correct number but the stored credential loses it, it's deeper in\nserialization.",
+      "at": "2026-10-16T10:02:12Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41215#issuecomment-6213043040"
+    },
+    {
+      "author": "smonty-nf",
+      "text": "Thank you for your prompt feedback. I will proceed to update my instance. Please note that the port number was provided solely as an example, though I appreciate you bringing it to my attention.",
+      "at": "2026-10-16T16:02:56Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41215#issuecomment-6219479867"
     }
   ],
   "comments_complete": true

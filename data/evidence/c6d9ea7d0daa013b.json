@@ -1,0 +1,65 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50107729",
+  "collected_at": "2026-10-17T06:54:23.118368+00:00",
+  "source": {
+    "author": "gvsg",
+    "children": [
+      {
+        "author": "Frone125",
+        "children": [],
+        "created_at": "2026-10-15T18:38:26.000Z",
+        "created_at_i": 1792089506,
+        "id": 50108237,
+        "options": [],
+        "parent_id": 50107729,
+        "points": null,
+        "story_id": 50107729,
+        "text": "This is really interesting. I&#x27;m almost at the point where I&#x27;d be fully ready to let the agent just apply the indexes and database fixes for me. I&#x27;d say i don&#x27;t fully trust AI on that level yet, but I could see that being an awesome feature for this tool. Regardless, I love the suggestions that it gives.  Even if i don&#x27;t create every single index it suggests im glad that it looks at ones you should drop too.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "venkat971",
+        "children": [],
+        "created_at": "2026-10-16T04:02:10.000Z",
+        "created_at_i": 1792123330,
+        "id": 50113928,
+        "options": [],
+        "parent_id": 50107729,
+        "points": null,
+        "story_id": 50107729,
+        "text": "we did something very similar at deepsql.ai\npl check it out, happy to exchange the notes and lessons. DM me.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-10-15T18:09:01.000Z",
+    "created_at_i": 1792087741,
+    "id": 50107729,
+    "options": [],
+    "parent_id": null,
+    "points": 6,
+    "story_id": 50107729,
+    "text": "We noticed during the course of many many years of DBA related work that fixes to database issues and queries are always reactive. An entire database can fall over extremely quickly when an unbounded query grows without warning.<p>Traditionally, DBAs hear complaints of slowness and follow a methodical process: \n- manually browse pg_stats or other database related performance internal tables \n- see which queries are slowest\n- figure out what indexes are missing\n- figure out which indexes are actually bad and slowing down writes\n- painstakingly implement a fix<p>In the age of cheap intelligence, we decided that there is no reason we can’t have an always-on agent that is designed to do this job for you.  Databases need something or someone that is always watching with a massive amount of contextual understanding to be able to take quick actions.  We’ve watched the alternative play out repeatedly. One of our users’s checkout page went from loading instantly to taking 11 seconds in a single night with no code change.  How? Well somehow their order table grew by 40M rows because BI team had injected historical data and suddenly postgres started doing full table scans. Sometimes routine operations have unintended results and can easily destroy your database. We wanted to catch these kinds of regressions instantly. So we built RDST.<p>RDST is a desktop agent that runs on your PC and connects to PostgreSQL &#x2F; MYSQL (read only) and compares every query against its own performance every minute. Every expensive query is automatically EXPLAIN ANALYZED, stripped of PII and sent to U.S. based frontier or open model providers to analyze which indexes are missing, how the query could be rewritten, and provides the fix.  We then run a classifier model (JEV) to decide if you should be notified (is this standard behavior for this particular query?), and the full history of the query performance is kept for years.  RDST also keeps track of your entire database health in general, and recommends more fixes than simply bad queries.<p>Since it runs locally we can keep the database credentials stored in your OS Keychain (RDST never keeps them in its own storage layer), and the connection goes straight to your database (using a jump host or SSH tunnel for private connections). You can read more about how we handle data especially as it pertains to LLM use here.<p><a href=\"https:&#x2F;&#x2F;readyset.io&#x2F;docs&#x2F;readyset-ai&#x2F;rdst&#x2F;desktop&#x2F;privacy\" rel=\"nofollow\">https:&#x2F;&#x2F;readyset.io&#x2F;docs&#x2F;readyset-ai&#x2F;rdst&#x2F;desktop&#x2F;privacy</a><p>We really want feedback from the community from people running Postgres and MySQL in production. We are giving inference away completely for free.<p>Just as a reminder, RDST will NOT run any updates or indexes against your database at this time.  We are considering a fully autonomous auto-pilot mode in the future, but for now we are leaving the actual fixes in your hands.<p>Let us know what you think!",
+    "title": "Show HN: RDST – A local agent that watches Postgres/MySQL for query regressions",
+    "type": "story",
+    "url": "https://github.com/readysettech/rdst"
+  },
+  "comments": [
+    {
+      "author": "Frone125",
+      "text": "This is really interesting. I'm almost at the point where I'd be fully ready to let the agent just apply the indexes and database fixes for me. I'd say i don't fully trust AI on that level yet, but I could see that being an awesome feature for this tool. Regardless, I love the suggestions that it gives.  Even if i don't create every single index it suggests im glad that it looks at ones you should drop too.",
+      "at": "2026-10-15T18:38:26.000Z",
+      "url": "https://news.ycombinator.com/item?id=50108237"
+    },
+    {
+      "author": "venkat971",
+      "text": "we did something very similar at deepsql.ai\npl check it out, happy to exchange the notes and lessons. DM me.",
+      "at": "2026-10-16T04:02:10.000Z",
+      "url": "https://news.ycombinator.com/item?id=50113928"
+    }
+  ],
+  "comments_complete": true
+}
