@@ -1,0 +1,182 @@
+{
+  "source_api_url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/7901",
+  "collected_at": "2026-10-18T07:12:13.754953+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/7901",
+    "repository_url": "https://api.github.com/repos/Luminous-Dynamics/symthaea",
+    "labels_url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/7901/labels{/name}",
+    "comments_url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/7901/comments",
+    "events_url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/7901/events",
+    "html_url": "https://github.com/Luminous-Dynamics/symthaea/issues/7901",
+    "id": 5901887764,
+    "node_id": "I_kwDOQ7glz88AAAABX8epFA",
+    "number": 7901,
+    "title": "ENV-MOBILITY-007: ground microfactory economics in a frozen SPM-0 BOM and real quotes",
+    "user": {
+      "login": "Tristan-Stoltz-ERC",
+      "id": 215346314,
+      "node_id": "U_kgDODNXsig",
+      "avatar_url": "https://avatars.githubusercontent.com/u/215346314?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Tristan-Stoltz-ERC",
+      "html_url": "https://github.com/Tristan-Stoltz-ERC",
+      "followers_url": "https://api.github.com/users/Tristan-Stoltz-ERC/followers",
+      "following_url": "https://api.github.com/users/Tristan-Stoltz-ERC/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Tristan-Stoltz-ERC/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Tristan-Stoltz-ERC/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Tristan-Stoltz-ERC/subscriptions",
+      "organizations_url": "https://api.github.com/users/Tristan-Stoltz-ERC/orgs",
+      "repos_url": "https://api.github.com/users/Tristan-Stoltz-ERC/repos",
+      "events_url": "https://api.github.com/users/Tristan-Stoltz-ERC/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Tristan-Stoltz-ERC/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 10417263867,
+        "node_id": "LA_kwDOQ7glz88AAAACbOrU-w",
+        "url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/labels/research",
+        "name": "research",
+        "color": "d4c5f9",
+        "default": false,
+        "description": "Research exploration",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 5,
+    "created_at": "2026-10-17T18:49:04Z",
+    "updated_at": "2026-10-17T19:31:53Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Parent\n- [Environmental survey and repairability benchmark kit PR #7870](https://github.com/Luminous-Dynamics/symthaea/pull/7870)\n- [ENV-MOBILITY-005 reference article/workcell](https://github.com/Luminous-Dynamics/symthaea/blob/research/env-mobility-survey-outposts-v1/docs/research/ENV-MOBILITY-005-reference-article-and-microfactory-workcell.md)\n- [ENV-MOBILITY-006 make/buy economics](https://github.com/Luminous-Dynamics/symthaea/blob/research/env-mobility-survey-outposts-v1/docs/research/ENV-MOBILITY-006-microfactory-make-buy-economics.md)\n- Synthetic make/buy fixture: `docs/research/fixtures/env-mobility-make-buy-v1.json`\n\n## Objective\nReplace synthetic-only input data with a frozen SPM-0 requirement/BOM and quote-backed, region-specific economic evidence. Do not recommend purchasing equipment before component identity, measurement requirements, local capabilities and comparable alternatives are explicit.\n\n## Scope\n1. Freeze the SPM-0 dry-side sensor/logger measurands, tolerances/uncertainty requirement, environmental limits, electrical interface, mounting datums, service boundary and acceptance method.\n2. Freeze exact candidate sensor/logger, harness, connectors, fasteners and adapter part identities, datasheet revisions, substitute rules and calibration/reference-instrument path.\n3. Select and document one comparison region/currency/price basis; collect timestamped supplier quotes and realistic freight/tax/minimum-order/lead-time data for at least two sourcing routes where available.\n4. Measure or clearly bound operator labor, cycle/setup/inspection/rework time, expected yield, consumables, fixture/tooling, maintenance, calibration and floor-space costs. Never record a planning estimate as an observation.\n5. Compare supplier-fabricated adapters/harnesses and commodity module procurement against only those local processes that can meet the same declared acceptance profile.\n6. Bind every quote, measured time, yield observation and calibration/reference record to the exact BOM/configuration and source/date.\n7. Run the new `env-mobility-make-buy` evaluator against the collected data only after the schema has a provenance field for every real input; keep the synthetic corpus as a regression fixture.\n\n## Acceptance gates\n- No supplier quote, labor rate or equipment price is invented or copied from a stale listing without date/region/configuration.\n- Costs use one declared currency and explicit tax/freight/accounting assumptions; real versus nominal discount-rate treatment is consistent.\n- Missing quotes, unknown qualification or missing yield/calibration evidence trigger abstention rather than zero-cost defaults.\n- In-house and purchased alternatives use the same part/quality/measurement profile before cost comparison.\n- Publish low/base/high demand and yield sensitivity, annual fixed cost, variable cost per conforming unit, positive break-even demand if it exists, lead-time and serviceability trade-offs.\n- Recommend no equipment purchase unless the process has an observed recurring workload, trained operators, safe space, inspection/metrology capability, maintenance plan and robustness across a plausible demand range.\n\n## Claim ceiling\nQuote-backed planning and observed bench/process economics only. No manufacturing capability, calibration accreditation, flight/sea qualification, safety approval or field-service savings are established until those specific claims have their own evidence.",
+    "reactions": {
+      "url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/7901/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/7901/timeline",
+    "performed_via_github_app": {
+      "id": 1144995,
+      "client_id": "Iv23liVemv8A9if9v0F2",
+      "slug": "chatgpt-codex-connector",
+      "node_id": "A_kwHOAOQ6Gs4AEXij",
+      "owner": {
+        "login": "openai",
+        "id": 14957082,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjE0OTU3MDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/14957082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/openai",
+        "html_url": "https://github.com/openai",
+        "followers_url": "https://api.github.com/users/openai/followers",
+        "following_url": "https://api.github.com/users/openai/following{/other_user}",
+        "gists_url": "https://api.github.com/users/openai/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/openai/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/openai/subscriptions",
+        "organizations_url": "https://api.github.com/users/openai/orgs",
+        "repos_url": "https://api.github.com/users/openai/repos",
+        "events_url": "https://api.github.com/users/openai/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/openai/received_events",
+        "type": "Organization",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "name": "ChatGPT Codex Connector",
+      "description": "Bring ChatGPT and Codex to your GitHub repositories.",
+      "external_url": "https://www.chatgpt.com",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "created_at": "2025-02-14T01:37:05Z",
+      "updated_at": "2026-09-23T18:52:59Z",
+      "permissions": {
+        "actions": "write",
+        "checks": "read",
+        "contents": "write",
+        "emails": "read",
+        "issues": "write",
+        "metadata": "read",
+        "pull_requests": "write",
+        "statuses": "read",
+        "workflows": "write"
+      },
+      "events": [
+        "check_run",
+        "check_suite",
+        "commit_comment",
+        "issues",
+        "issue_comment",
+        "pull_request",
+        "pull_request_review",
+        "pull_request_review_comment",
+        "pull_request_review_thread",
+        "repository",
+        "status",
+        "sub_issues"
+      ]
+    },
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "The synthetic baseline is now wired in draft PR #7870 with the command `cargo run -p xtask -- env-mobility-make-buy` and frozen regression fixture `docs/research/fixtures/env-mobility-make-buy-v1.json`.\n\nImportant separation for this issue: those numeric cases are fictional tests only. This issue owns the next data step—freeze the SPM-0 measurement profile/BOM, state the comparison region/currency, gather date/configuration-linked supplier quotations and then observed bench times/yields. The model must keep abstaining when price, process qualification or yield evidence is missing. It must not convert the synthetic $ figures into a real equipment purchase recommendation.",
+      "at": "2026-10-17T18:49:35Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/7901#issuecomment-6238913069"
+    },
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "A dated initial sourcing snapshot is now in the parent PR branch: [ENV-MOBILITY-008 — SPM-0 sourcing evidence snapshot](https://github.com/Luminous-Dynamics/symthaea/blob/research/env-mobility-survey-outposts-v1/docs/research/ENV-MOBILITY-008-spm0-sourcing-evidence-snapshot.md).\n\nA key design improvement is mission-specific sensor configurations rather than a universal payload:\n- Public catalog pages currently show an ESP32-C3 SuperMini at R89 and a BME280 breakout at R159 (both VAT-inclusive, with Durban stock shown by the seller), yielding a R248 listed electronics subtotal before shipping, harness, enclosure, tools, calibration or labor.\n- Communica lists a GY-BMP280-3.3 pressure module at R13 including VAT and says it is in stock with South Africa delivery in 2–5 working days. Combined with the same controller the displayed subtotal is R102, but that variant measures pressure and temperature, not relative humidity. It is not an equivalent substitute if humidity is a requirement, and the delivered module must be inspected and compared against a reference before any measurement claim.\n\nThose are catalog listings, not formal quotes. The cheaper variant is valid only if the actual mission doesn't need humidity. This gives #7901 a concrete, traceable starting point while keeping the real task open: freeze the measurands, obtain delivered quotes for exact revisions, and build an observed five-unit cost/repair baseline.",
+      "at": "2026-10-17T18:52:03Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/7901#issuecomment-6238953646"
+    },
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "A machine-readable snapshot is now added on the [PR #7870 branch](https://github.com/Luminous-Dynamics/symthaea/pull/7870): [env-mobility-spm0-source-register-v1.json](https://github.com/Luminous-Dynamics/symthaea/blob/research/env-mobility-survey-outposts-v1/docs/research/fixtures/env-mobility-spm0-source-register-v1.json).\n\nIt records eight rows: five public listings with URLs, displayed ZAR price, VAT basis and the seller's stock statement, plus three dependencies intentionally kept unpriced (keyed four-wire harness, enclosure/mount and reference/calibration path). It explicitly records zero written quotes and unknown delivered-to-Gauteng costs. Candidate catalog-only subtotals are R102 for a pressure+temperature profile and R248 for a temperature+humidity+pressure profile; they exclude all unresolved dependencies and are not unit-cost estimates.\n\nThe new test-only source audit command is `cargo run -p xtask -- env-mobility-sourcing-audit`, with tests under `cargo test -p xtask env_mobility_sourcing`. A source-side JSON replay confirmed 8 unique IDs, 5 catalog listings, 3 unpriced dependencies, 0 quotes and exact subtotals. No Rust build/test pass is claimed.",
+      "at": "2026-10-17T18:55:36Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/7901#issuecomment-6239013675"
+    },
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "The sourcing register is now machine-readable: [env-mobility-spm0-source-register-v1.json](https://github.com/Luminous-Dynamics/symthaea/blob/research/env-mobility-survey-outposts-v1/docs/research/fixtures/env-mobility-spm0-source-register-v1.json). I added an effects-disabled validator source and the proposed command `cargo run -p xtask -- env-mobility-sourcing-audit`.\n\nThe source-side replay found 8 unique items, 5 catalog listings, 3 explicitly unpriced dependencies, 0 written quotes, and correct profile arithmetic (R102 pressure+temperature; R248 temperature+humidity+pressure). The three unknown dependencies remain null, never zero: keyed 4-wire harness, enclosure/adapter, and reference/calibration path. The lower-cost BMP280 candidate is not equivalent if humidity is required.\n\nThis is catalog evidence only and the validator is still uncompiled/unrun; exact-head Rust tests remain a gate.",
+      "at": "2026-10-17T18:56:34Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/7901#issuecomment-6239030370"
+    },
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "New work on branch research/env-mobility-survey-outposts-v1: added [ENV-MOBILITY-009 measurement integrity and calibration-aware sensor benchmarks](https://github.com/Luminous-Dynamics/symthaea/blob/research/env-mobility-survey-outposts-v1/docs/research/ENV-MOBILITY-009-measurement-integrity-calibration-benchmarks.md). It freezes a measurement-evidence graph, separates BMP280 pressure/temperature from BME280 RH-capable profiles, defines a pre-registered five-unit bench screen with held-out correction validation, uncertainty reporting, fail-closed provenance gates, and a vendor quote packet. This is a protocol only; no physical units or calibration have been performed.\n\nAdditional public leads to scope-check (not quotes or endorsements): Testo SA lists temperature/humidity calibration and traceable pressure services; Applied Metrology Services lists temperature/pressure calibration in Midrand; TriLab lists temperature/pressure/humidity services. Before costing, ask each provider whether the exact assembled logger, required points/ranges, uncertainty, and desired certificate are in its applicable accredited scope. A general accreditation statement does not establish that scope for this device.",
+      "at": "2026-10-17T19:31:53Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/7901#issuecomment-6239627374"
+    }
+  ],
+  "comments_complete": true
+}

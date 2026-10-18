@@ -1,0 +1,92 @@
+{
+  "source_api_url": "https://api.github.com/repos/JPMarcelino/nodal/issues/11",
+  "collected_at": "2026-10-18T07:12:13.754953+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/JPMarcelino/nodal/issues/11",
+    "repository_url": "https://api.github.com/repos/JPMarcelino/nodal",
+    "labels_url": "https://api.github.com/repos/JPMarcelino/nodal/issues/11/labels{/name}",
+    "comments_url": "https://api.github.com/repos/JPMarcelino/nodal/issues/11/comments",
+    "events_url": "https://api.github.com/repos/JPMarcelino/nodal/issues/11/events",
+    "html_url": "https://github.com/JPMarcelino/nodal/issues/11",
+    "id": 5906434496,
+    "node_id": "I_kwDOVD0m2c8AAAABYA0JwA",
+    "number": 11,
+    "title": "Edit value, footprint, sourcing and DNP for many parts at once",
+    "user": {
+      "login": "JPMarcelino",
+      "id": 182987750,
+      "node_id": "U_kgDOCugr5g",
+      "avatar_url": "https://avatars.githubusercontent.com/u/182987750?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/JPMarcelino",
+      "html_url": "https://github.com/JPMarcelino",
+      "followers_url": "https://api.github.com/users/JPMarcelino/followers",
+      "following_url": "https://api.github.com/users/JPMarcelino/following{/other_user}",
+      "gists_url": "https://api.github.com/users/JPMarcelino/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/JPMarcelino/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/JPMarcelino/subscriptions",
+      "organizations_url": "https://api.github.com/users/JPMarcelino/orgs",
+      "repos_url": "https://api.github.com/users/JPMarcelino/repos",
+      "events_url": "https://api.github.com/users/JPMarcelino/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/JPMarcelino/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 12649877995,
+        "node_id": "LA_kwDOVD0m2c8AAAAC8f3R6w",
+        "url": "https://api.github.com/repos/JPMarcelino/nodal/labels/go-agents-idea",
+        "name": "go-agents-idea",
+        "color": "c5def5",
+        "default": false,
+        "description": "Idea proposed by the go-agents planner",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2026-10-18T05:19:24Z",
+    "updated_at": "2026-10-18T05:19:24Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "**Why:** Getting a schematic ready for a BOM or PCB means setting the same footprint, manufacturer or DNP flag on many parts, such as all ten 0603 resistors. Today the Inspector only shows Size when several parts are selected, so you have to click and type into each part one at a time. Bulk editing makes that a single edit.\n\n**Spec:** When the selection holds two or more components, MultiPanel (src/ui/Inspector.tsx ~L1027) shows only SizeField. Add a 'Part details' Section to MultiPanel that is visible when at least 2 selected components are real parts (hasPartFields(def), using getSymbol/instanceSymbol as the existing code does). It contains:\n1. A 'Value' TextInput.\n2. One TextInput per PART_FIELDS entry (footprint, manufacturer, mpn, supplier, supplier_pn, datasheet).\n3. A 'Do not populate' Toggle.\n\nHow it behaves:\n- If every targeted part has the same value for a field, the input shows that value. If the values differ, the input is empty with the placeholder 'Mixed'. An empty field with nothing set on any part shows the normal f.placeholder.\n- Typing into an input writes that value to ALL targeted parts in ONE mutate() call, so a single undo reverts every part. For PART_FIELDS, use the same rule as PartDetails.setProp (L369): trim the value, and delete the prop when the value is blank. For Value, write c.value as typed, matching ComponentPanel L647.\n- The DNP toggle shows 'on' only when every targeted part is DNP. Turning it on sets props.dnp = '1' on all targeted parts. Turning it off deletes props.dnp from all of them.\n- Targets are only the selected components whose symbol hasPartFields. Labels, rails, no-connect flags, wires and shapes in the same selection are left untouched. The section summary says e.g. '7 parts' and, when some selected components are skipped, adds '· 2 labels skipped'.\n- Locked parts are edited too. This matches the single-part inspector, which already lets you edit props of locked parts. Locking only blocks geometry changes.\n- Custom fields and Add field are out of scope (later slice).\n\nPut the logic in pure helpers in src/model/partFields.ts so it can be tested without React:\n- `sharedValue(comps: ComponentItem[], read: (c) => string): string | null` returns the common trimmed value, or null when the values are mixed. An empty list returns ''.\n- `applyPartField(doc: CircuitDoc, ids: string[], key: 'value' | PartFieldKey | 'dnp', v: string | boolean): void` mutates a draft doc, applies the rules above, and skips ids that are missing, not components, or not hasPartFields.\nThe UI calls `mutate((d) => applyPartField(d as CircuitDoc, ids, key, v))`.\n\nAdd a new test file src/__tests__/partFieldsBulk.test.ts. Build a small doc the way the existing tests do (see netlistExport.test.ts or groupScale.test.ts for doc/component helpers). Cover:\n- sharedValue for same, mixed and empty input.\n- applyPartField sets the footprint on all parts.\n- A blank footprint deletes the key on all parts.\n- DNP on and off.\n- A net-label/rail component in ids is untouched.\n- Value is written to all parts.\n- An unknown id is ignored without throwing.\n- toBomCsv on the result groups the now-identical parts into a single row with Quantity = n.\n\nUpdate the README line under 'Part details and manufacturing' to mention that selecting several parts lets you set their value, footprint, sourcing fields and DNP together.\n\n**Acceptance:**\n- [ ] src/model/partFields.ts exports sharedValue and applyPartField. applyPartField only touches components whose symbol passes hasPartFields, and ignores missing ids.\n- [ ] MultiPanel in src/ui/Inspector.tsx renders a 'Part details' Section with Value, the six PART_FIELDS inputs and a DNP toggle when 2 or more selected components are real parts.\n- [ ] Each edit from that section goes through exactly one mutate() call covering all targeted parts (confirm by reading the code), so one undo reverts them all.\n- [ ] Mixed values show an empty input with the 'Mixed' placeholder. Values shared by every part are prefilled. The DNP toggle is on only when every targeted part is DNP.\n- [ ] Blank PART_FIELDS input deletes the prop (same as single-part PartDetails). DNP off deletes props.dnp.\n- [ ] New test file src/__tests__/partFieldsBulk.test.ts covers same/mixed/empty sharedValue, set/clear footprint, DNP on/off, label components untouched, unknown id ignored, and BOM grouping after bulk footprint set. `npx vitest run src/__tests__/partFieldsBulk.test.ts` passes and `npx tsc -b` reports no new errors.\n- [ ] README mentions bulk editing of part details. Total diff stays under ~350 changed lines.\n\n_Proposed by the go-agents planner. A PR follows; it is not auto-merged._",
+    "reactions": {
+      "url": "https://api.github.com/repos/JPMarcelino/nodal/issues/11/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/JPMarcelino/nodal/issues/11/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [],
+  "comments_complete": true
+}

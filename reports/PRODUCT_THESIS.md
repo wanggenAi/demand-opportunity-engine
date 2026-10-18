@@ -7,7 +7,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## workflow_reliability — UNVALIDATED CLUSTER
 
-- independent_demand_count: 30
+- independent_demand_count: 35
 - payment_evidence_count: 6
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community', 'n8n Community']
 - communities: ['Ask/Show HN', 'Commerce operator forum', 'n8n Jobs', 'n8n-io/n8n', 'useagenthq/useagent']
@@ -20,16 +20,16 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://github.com/n8n-io/n8n/issues/41332
+  - https://github.com/n8n-io/n8n/issues/41329
+  - https://community.n8n.io/t/available-hardened-n8n-ai-engineer-database-idempotency-redis-dlq-whatsapp-systems/322231
+  - https://github.com/n8n-io/n8n/issues/41322
+  - https://community.shopify.com/t/selling-wholesale-on-shopify-how-do-you-notice-when-a-b2b-buyer-stops-reordering/699950
   - https://community.n8n.io/t/n8n-mirrorfly-developer-for-video-conferencing-automation/322016
-  - https://github.com/n8n-io/n8n/issues/41242
-  - https://github.com/useagenthq/useagent/issues/176
-  - https://github.com/n8n-io/n8n/issues/41152
-  - https://community.n8n.io/t/exploring-n8n-implementation-partnerships-for-saas-workflow-plans-no-active-project-yet/321496
-  - https://community.n8n.io/t/hiring-ai-n8n-builders-in-sea-for-small-paid-sme-automation-jobs-singapore/321311
 
 ## lead_research — UNVALIDATED CLUSTER
 
-- independent_demand_count: 3
+- independent_demand_count: 4
 - payment_evidence_count: 2
 - platforms: ['n8n Community']
 - communities: ['n8n Jobs']
@@ -42,9 +42,29 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://community.n8n.io/t/available-n8n-architect-from-germany-self-hosted-gdpr-friendly-fixed-price-projects/322229
   - https://community.n8n.io/t/looking-for-a-b2b-lead-generation-sales-partner-for-n8n-ai-automation-revenue-share/319139
   - https://community.n8n.io/t/hiring-multi-agent-b2b-lead-gen-system-n8n-langgraph-energy-storage-na-li-battery/317073
   - https://community.n8n.io/t/looking-for-1-2-n8n-builders-for-long-term-collaboration/316792
+
+## browser_automation — UNVALIDATED CLUSTER
+
+- independent_demand_count: 3
+- payment_evidence_count: 0
+- platforms: ['GitHub']
+- communities: ['96loveslife/big_model_radar', 'n8n-io/n8n', 'useagenthq/useagent']
+- repeated_pain: Repeated manual browser work is costly or brittle.
+- current_alternatives: Playwright, Selenium, vendor APIs and open-source browser agents.
+- productization_potential: Needs one repeated workflow and paying buyers before standardization.
+- suggested_product_form: Workflow + Service package
+- distribution: Authorized workflow audit and referrals.
+- Promotion blockers: fewer than 5 independent observations; fewer than 2 primary payment/commercial signals; paid-market proof not independently verified; problem too broad to standardize
+- Action: WATCH (no standardized product build authorized by evidence)
+- Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
+- Representative evidence:
+  - https://github.com/n8n-io/n8n/issues/41327
+  - https://github.com/useagenthq/useagent/issues/188
+  - https://github.com/96loveslife/big_model_radar/issues/642
 
 ## voice_agent_qa — UNVALIDATED CLUSTER
 
@@ -65,23 +85,23 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
   - https://github.com/duanyytop/agents-radar/issues/3794
   - https://community.n8n.io/t/looking-for-n8n-ai-automation-specialist-paid-qa-stress-testing/319256
 
-## browser_automation — UNVALIDATED CLUSTER
+## supplier_sourcing — UNVALIDATED CLUSTER
 
 - independent_demand_count: 2
 - payment_evidence_count: 0
-- platforms: ['GitHub']
-- communities: ['96loveslife/big_model_radar', 'useagenthq/useagent']
-- repeated_pain: Repeated manual browser work is costly or brittle.
-- current_alternatives: Playwright, Selenium, vendor APIs and open-source browser agents.
-- productization_potential: Needs one repeated workflow and paying buyers before standardization.
-- suggested_product_form: Workflow + Service package
-- distribution: Authorized workflow audit and referrals.
+- platforms: ['GitHub', 'Shopify Community']
+- communities: ['Commerce operator forum', 'zack-hum/coffee-intelligence-v1.1']
+- repeated_pain: supplier sourcing
+- current_alternatives: Manual research, spreadsheets and existing service providers.
+- productization_potential: Needs a narrower job-to-be-done and payment evidence.
+- suggested_product_form: Service package
+- distribution: Not yet demonstrated
 - Promotion blockers: fewer than 5 independent observations; fewer than 2 primary payment/commercial signals; paid-market proof not independently verified; problem too broad to standardize
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
-  - https://github.com/useagenthq/useagent/issues/188
-  - https://github.com/96loveslife/big_model_radar/issues/642
+  - https://github.com/zack-hum/coffee-intelligence-v1.1/issues/11
+  - https://community.shopify.com/t/what-questions-do-you-always-ask-potential-suppliers-before-placing-an-order/555921
 
 ## marketing_report_automation — UNVALIDATED CLUSTER
 
@@ -99,20 +119,3 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
   - https://community.n8n.io/t/hiring-n8n-looker-studio-builder-for-marketing-reporting-meta-ads-google-ads-ga4-paid-test-ongoing-india-ist/317595
-
-## supplier_sourcing — UNVALIDATED CLUSTER
-
-- independent_demand_count: 1
-- payment_evidence_count: 0
-- platforms: ['GitHub']
-- communities: ['zack-hum/coffee-intelligence-v1.1']
-- repeated_pain: supplier sourcing
-- current_alternatives: Manual research, spreadsheets and existing service providers.
-- productization_potential: Needs a narrower job-to-be-done and payment evidence.
-- suggested_product_form: Service package
-- distribution: Not yet demonstrated
-- Promotion blockers: fewer than 5 independent observations; only one community; cross-source validation missing; fewer than 2 primary payment/commercial signals; paid-market proof not independently verified; problem too broad to standardize
-- Action: WATCH (no standardized product build authorized by evidence)
-- Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
-- Representative evidence:
-  - https://github.com/zack-hum/coffee-intelligence-v1.1/issues/11

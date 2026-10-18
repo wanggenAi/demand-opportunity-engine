@@ -1,0 +1,129 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41332",
+  "collected_at": "2026-10-18T07:12:13.754953+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/41332",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/41332/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/41332/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/41332/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/41332",
+    "id": 5902032594,
+    "node_id": "I_kwDOC4Q8Qs8AAAABX8ne0g",
+    "number": 41332,
+    "title": "Bug: Wait node with \"Form Is Submitted\" delays the response until downstream nodes finish",
+    "user": {
+      "login": "akorneychuk",
+      "id": 6013124,
+      "node_id": "MDQ6VXNlcjYwMTMxMjQ=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6013124?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/akorneychuk",
+      "html_url": "https://github.com/akorneychuk",
+      "followers_url": "https://api.github.com/users/akorneychuk/followers",
+      "following_url": "https://api.github.com/users/akorneychuk/following{/other_user}",
+      "gists_url": "https://api.github.com/users/akorneychuk/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/akorneychuk/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/akorneychuk/subscriptions",
+      "organizations_url": "https://api.github.com/users/akorneychuk/orgs",
+      "repos_url": "https://api.github.com/users/akorneychuk/repos",
+      "events_url": "https://api.github.com/users/akorneychuk/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/akorneychuk/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582013554,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cicg",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:cats",
+        "name": "team:cats",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Cats team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-10-17T19:04:45Z",
+    "updated_at": "2026-10-17T19:57:18Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nThe Wait node does not seem to respond to a form submission immediately when the Respond When option is set to Form Is Submitted.\n\nThe behavior appears to depend on whether the Wait node has downstream nodes connected to it. If there are no downstream nodes, the form response is sent immediately. However, if the workflow continues through additional nodes, including another Wait node, the form response is delayed until the downstream execution finishes.\n\nThis behavior does not seem consistent with the documented purpose of the Form Is Submitted option.\n\n### To Reproduce\n\n1. Create a workflow with a Wait node configured to wait for a form submission.\n2. Set Respond When to Form Is Submitted.\n3. Submit the form without connecting any downstream nodes to the Wait node.\n4. Observe that the form responds immediately.\n5. Now connect the first Wait node to several additional nodes, including a second Wait node.\n6. Configure the second Wait node to wait for another event or form submission.\n7. Submit the form again at the first Wait node.\n8. Observe that the response is not sent immediately. Instead, it appears to wait until the downstream nodes finish executing, including the second Wait node.\n\n### Expected behavior\n\nWhen Respond When is set to Form Is Submitted, the form response should be sent immediately after the form is submitted, regardless of whether downstream nodes continue executing.\n\n\n\n### Debug Info\n\n# Debug info\n\n## core\n\n- n8nVersion: 2.43.7\n- platform: npm\n- nodeJsVersion: 24.22.0\n- nodeEnv: undefined\n- database: sqlite\n- executionMode: regular\n- concurrency: -1\n- license: community\n- consumerId: unknown\n\n## storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n## pruning\n\n- enabled: true\n- maxAge: 336 hours\n- maxCount: 10000 executions\n\n## client\n\n- userAgent: mozilla/5.0 (macintosh; intel mac os x 10_15_7) applewebkit/537.36 (khtml, like gecko) chrome/150.0.0.0 safari/537.36\n- isTouchDevice: false\n\n## cluster\n\n- instanceCount: 1\n- versions: 2.43.7\n- instances:\n  - instanceKey: c1b88e52-8011-41bc-a26d-d9198291f02a, hostId: main-0nwBFhK1qK9y8dam, instanceType: main, instanceRole: leader, version: 2.43.7\n- checks:\n  - check: hostid-clash, status: succeeded, warnings: -\n  - check: lifecycle, status: succeeded, warnings: -\n  - check: split-brain, status: succeeded, warnings: -\n  - check: version-mismatch, status: succeeded, warnings: -\n\nGenerated at: 2026-10-17T19:04:19.765Z\n\n### Operating System\n\nUbuntu 24.04.2 LTS\n\n### n8n Version\n\n2.43.7\n\n### Node.js Version\n\n20.20.2\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/41332/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/41332/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @akorneychuk,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9602\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9602](https://linear.app/n8n/issue/GHC-9602)",
+      "at": "2026-10-17T19:04:54Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41332#issuecomment-6239178555"
+    },
+    {
+      "author": "akorneychuk",
+      "text": "UPD: Generally there is no way to put 2 or more WAIT nodes in a row, no matter how additional nodes are between them.\nIf \"Respond When: Form Is Submitted choosen\" the flow has to be transparent and the user should be able to call as many Wait nodes as he want\n",
+      "at": "2026-10-17T19:57:18Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41332#issuecomment-6240028490"
+    }
+  ],
+  "comments_complete": true
+}

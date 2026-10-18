@@ -1,0 +1,89 @@
+{
+  "source_api_url": "https://api.github.com/repos/Refract-Protocol/refract-contracts/issues/307",
+  "collected_at": "2026-10-18T07:12:13.754953+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/Refract-Protocol/refract-contracts/issues/307",
+    "repository_url": "https://api.github.com/repos/Refract-Protocol/refract-contracts",
+    "labels_url": "https://api.github.com/repos/Refract-Protocol/refract-contracts/issues/307/labels{/name}",
+    "comments_url": "https://api.github.com/repos/Refract-Protocol/refract-contracts/issues/307/comments",
+    "events_url": "https://api.github.com/repos/Refract-Protocol/refract-contracts/issues/307/events",
+    "html_url": "https://github.com/Refract-Protocol/refract-contracts/issues/307",
+    "id": 5896307599,
+    "node_id": "I_kwDOS_Rhxc8AAAABX3KDjw",
+    "number": 307,
+    "title": "Implement Scoped, Expiring Keeper Delegations for Automated Operations",
+    "user": {
+      "login": "OxDev-max",
+      "id": 130108497,
+      "node_id": "U_kgDOB8FMUQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/130108497?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/OxDev-max",
+      "html_url": "https://github.com/OxDev-max",
+      "followers_url": "https://api.github.com/users/OxDev-max/followers",
+      "following_url": "https://api.github.com/users/OxDev-max/following{/other_user}",
+      "gists_url": "https://api.github.com/users/OxDev-max/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/OxDev-max/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/OxDev-max/subscriptions",
+      "organizations_url": "https://api.github.com/users/OxDev-max/orgs",
+      "repos_url": "https://api.github.com/users/OxDev-max/repos",
+      "events_url": "https://api.github.com/users/OxDev-max/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/OxDev-max/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-17T08:00:06Z",
+    "updated_at": "2026-10-17T17:52:34Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "**Description:**\nIntroduce a delegation primitive that lets an account grant a keeper (the backend operator, a third-party automation service, or a bot) narrowly scoped, expiring authority to execute specific permissioned entrypoints without handing over full admin rights. Automation then runs with least privilege and a hard expiry.\n\n**Problem Statement & Context:**\nSeveral flows are designed to be executed by whoever is around: settling due escrows, executing due timelocked actions, extending TTLs. In practice the backend needs a key that can do these things, and today the only options are an over-broad admin role or manual multisig signing — both unacceptable for routine, high-frequency automation. This is also a prerequisite for unattended operation during an incident.\n\n**Scope & Acceptance Criteria:**\n- Add `delegate(grantee, scope, expires_at_ledger, max_calls)` and `revoke(grantee)`, callable by the granting account or its admin.\n- `scope` is a checked bitmask of named capabilities (execute due escrow, execute timelocked action, extend TTL, trigger rate refresh), documented in the interface crate.\n- Every guarded entrypoint accepts either a direct role holder or a delegate whose scope covers it and whose expiry/max-calls budget is unexpired.\n- Delegates can never amplify: a delegated call that internally requires a stronger role fails instead of succeeding.\n- Events on grant, use, exhaustion, expiry-triggered rejection, and revoke; view listing a grantor's active delegations.\n- Out of scope: delegation of governance voting power (tracked separately) and off-chain key management.\n\n**Implementation Guidelines:**\n1. Key Files/Modules: `backstop/src/lib.rs`, `bounty/src/lib.rs`, `grants/src/lib.rs`, `treasury/src/lib.rs` for the guard, the shared interface crate for the scope enum, `tests/` for the authorization matrix.\n2. Design/Architecture: a single `require_scoped_auth(scope)` helper backed by persistent delegation records keyed by `(grantor, grantee)`; decrement `max_calls` in the same invocation that performs the guarded action so a failed call does not consume budget.\n3. Edge Cases/Constraints: expiry at the exact ledger boundary, revocation during an in-flight execution, scope combinations that are individually harmless but jointly dangerous, and keeping the guard cheap enough not to blow the instruction budget on hot paths.\n4. Testing: a full scope x entrypoint matrix, expiry boundary tests, max-calls exhaustion, revocation, and explicit negative tests proving no path escalates to admin.\n\n**Complexity:** Medium (130 points)",
+    "reactions": {
+      "url": "https://api.github.com/repos/Refract-Protocol/refract-contracts/issues/307/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/Refract-Protocol/refract-contracts/issues/307/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "duongynhi000005-oss",
+      "text": "/claim #307",
+      "at": "2026-10-17T17:52:34Z",
+      "url": "https://github.com/Refract-Protocol/refract-contracts/issues/307#issuecomment-6238055506"
+    }
+  ],
+  "comments_complete": true
+}

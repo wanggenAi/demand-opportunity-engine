@@ -1,39 +1,18 @@
 {
-  "observed_at": "2026-10-17T06:54:23.118368+00:00",
+  "observed_at": "2026-10-18T07:12:13.754953+00:00",
   "config": "data/discovery_config.json",
   "adapters": [
     {
       "source": "Hacker News",
       "refreshed": true,
-      "collected": 26,
+      "collected": 24,
       "errors": []
     },
     {
       "source": "GitHub",
       "refreshed": true,
       "collected": 24,
-      "errors": [
-        {
-          "url": "https://api.github.com/repos/Luminous-Dynamics/symtropy/issues/1750/comments",
-          "error": "HTTP Error 403: rate limit exceeded"
-        },
-        {
-          "url": "https://api.github.com/repos/Luminous-Dynamics/mycelix/issues/5109/comments",
-          "error": "HTTP Error 403: rate limit exceeded"
-        },
-        {
-          "url": "https://api.github.com/repos/craigtrim/axiom/issues/82/comments",
-          "error": "HTTP Error 403: rate limit exceeded"
-        },
-        {
-          "url": "https://api.github.com/repos/elevationupscales/ElevationUpScales/issues/292/comments",
-          "error": "HTTP Error 403: rate limit exceeded"
-        },
-        {
-          "url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/7660/comments",
-          "error": "HTTP Error 403: rate limit exceeded"
-        }
-      ]
+      "errors": []
     }
   ],
   "blocked_sources": [],
@@ -43,25 +22,25 @@
       "access_method": "Discourse public category/topic JSON",
       "url": "https://community.n8n.io/c/jobs/13.json?order=created",
       "records_inspected": 60,
-      "primary_pages_opened": 27,
+      "primary_pages_opened": 28,
       "verified_buyer_requests": 9,
       "explicit_commercial_signals": 9,
-      "collected": 27,
+      "collected": 28,
       "errors": [],
       "limitations": [
         "Two newest-topic pages, not complete market coverage; max 200 extra replies per topic. Incomplete competition remains UNKNOWN unless observed high.",
         "Last activity is not publication time. Only substantive buyer-authored follow-ups can renew a lead."
       ],
       "evidence_snapshots": [
-        "data/evidence/f5663f332d6bc9b1.json#sha256=eff37ade8625a150672eb7e1319bd0e4138c3a2915798815d5108f49241362f7",
-        "data/evidence/d9f0be47fa047f2c.json#sha256=1a87256467586a9749879cac53911fa9ac064f9c7d887992701ed2fa9d0a8ae7"
+        "data/evidence/f5663f332d6bc9b1.json#sha256=0e99bbf9e4b596e9537475fea3aafcd8ac4f79fa497f3cc9be4ff50ea1703a74",
+        "data/evidence/d9f0be47fa047f2c.json#sha256=7e365c34f41dc3ef9f81a1a9330111ded02bfed77d89b7c0ec6c4446775576ce"
       ]
     },
     {
       "source_family": "public freelance/job listings",
       "access_method": "Remotive public JSON API; attributed source links",
       "url": "https://remotive.com/api/remote-jobs?search=automation&limit=20",
-      "records_inspected": 15,
+      "records_inspected": 13,
       "primary_pages_opened": 0,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
@@ -72,7 +51,7 @@
         "Legal warning - Hey, thanks for using Remotive's API, we appreciate it! Please note that API documentation and access is granted so that developers can share our jobs further. Please do not submit Remotive jobs to third Party websites, including but not limited to: Jooble, Neuvoo, Google Jobs, LinkedIn Jobs. Please link back to the URL found on Remotive AND mention Remotive as a source in order to Remotive to get traffic from your listing. If you don't do that, we'll terminate your API access, sorry! Jobs displayed are delayed by 24 hours, the goal being that jobs are attributed to Remotive on various platforms. Displaying our jobs in order to collect signups/email addresses to show a listing constitutes a breach of our terms of services. We offer a private, paid-for API, please email us at hello(at)remotive(dot)io for more information (starting budget is $5k/mo). Please find out terms of services on https://remotive.com/api-documentation. Please note that there is absolutely no need to request Remotive Job data too frequently. Typically, you only need to GET Remotive job data through this API a couple of times a day (we advise max. 4 times a day). Our data is not changing much faster than that anyway. Note that excessive requests will be blocked. Many thanks (Rodolphe & the Remotive team!)"
       ],
       "evidence_snapshots": [
-        "data/evidence/071898d5d7cef09e.json#sha256=89261d73ec38f1bf0f2927198083efe47eb38e4a03d78cfc0d1a1f308ab56174"
+        "data/evidence/071898d5d7cef09e.json#sha256=46bd885ad508aad5202b4d63b9f2cc19c2baaf9016d1605ebe486d8354eebdf7"
       ]
     },
     {
@@ -102,7 +81,7 @@
         "Search returned procurement notices; up to three detail pages attempted. No buyer request promoted: eligibility, exact remote scope, submission deadline and award status require manual verification."
       ],
       "evidence_snapshots": [
-        "data/evidence/50e3af0542f19c3a.json#sha256=b816344e709e6571804fab71fd91bafe07746df4c90780aec649d4a845acf1ce"
+        "data/evidence/50e3af0542f19c3a.json#sha256=8b9cf1dfe6720217b2498239d10ff1f31e7ef0f95a88e12449236c5df96866fe"
       ]
     },
     {
@@ -155,14 +134,14 @@
         "No structured primary buyer requests extracted; static shell is not commercial proof. No login or anti-bot evasion."
       ],
       "evidence_snapshots": [
-        "data/evidence/b5d67d420401a4bb.json#sha256=7127eb81034c12edf9420a741c8604918a925f05392ce7038e2a484bf0269fcd"
+        "data/evidence/b5d67d420401a4bb.json#sha256=64ce6940792f945e7bf8e66ca82c0d20358d2bb96ac1ab4aa864a1ffcc58f80d"
       ]
     },
     {
       "source_family": "freelance project marketplace (Freelancer)",
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://www.freelancer.com/jobs/product-sourcing/",
-      "records_inspected": 18,
+      "records_inspected": 17,
       "primary_pages_opened": 2,
       "verified_buyer_requests": 2,
       "explicit_commercial_signals": 2,
@@ -172,9 +151,9 @@
         "Public bidCount includes competitors; only first 20 proposals may be visible. Employer identity often unresolved. Task budget is not agreement to our pilot."
       ],
       "evidence_snapshots": [
-        "data/evidence/abf73d1fa5782498.json#sha256=8247771b2250b1dd3bedc98f811fdd86dc35671f8734777179ed37254dac078a",
-        "data/evidence/3adde8bb3e84f849.json#sha256=4d8874c4089046efe5d111ac366037bcad2ae62830bbecf5ce4a7559066c6b9b",
-        "data/evidence/1dc2b31945045284.json#sha256=d571a39461843e63cf29b79aca403c9de3de6a3216ef71c546b9e30d5d523f94"
+        "data/evidence/abf73d1fa5782498.json#sha256=7b09618987c5bcd9bfd4c98b21d36524655f8d7d903919aa1fdc97dca6de31e2",
+        "data/evidence/3adde8bb3e84f849.json#sha256=57a7864badc972465f34b1b70814948c150bb570650d181bb3d21ff9f746d94e",
+        "data/evidence/1dc2b31945045284.json#sha256=4c6dbaf33eff5c5b8d02e22572c3c1ae6189d485267a969c6e51e8193adfa9c8"
       ],
       "records": [],
       "opportunity_ids": [
@@ -183,7 +162,6 @@
       ],
       "inspected_keys": [
         "/projects/textile-engineering/virgin-wool-pullover-sweater",
-        "/projects/sourcing/taiwan-hand-tool-sourcing-agent",
         "/projects/embedded-systems/solar-iot-device-consultation-supplier",
         "/projects/dropshipping/dropshipping-supplier-needed-resort",
         "/projects/project-management/agate-gemstone-sourcing-agent",
@@ -206,24 +184,32 @@
       "source_family": "freelance project marketplace (Freelancer)",
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://www.freelancer.com/jobs/api-integration/",
-      "records_inspected": 50,
-      "primary_pages_opened": 1,
-      "verified_buyer_requests": 1,
-      "explicit_commercial_signals": 1,
-      "collected": 1,
+      "records_inspected": 48,
+      "primary_pages_opened": 0,
+      "verified_buyer_requests": 0,
+      "explicit_commercial_signals": 0,
+      "collected": 0,
       "errors": [],
       "limitations": [
         "A different query/category on Freelancer does not count as another independent family."
       ],
       "evidence_snapshots": [
-        "data/evidence/eb34b643617bda88.json#sha256=5f0e53742a7540d8dadeb4b8e638d5571cea09a85ce08a777c45f7ae1b63d635",
-        "data/evidence/e5de20279ef56cbd.json#sha256=fbc9592bcf1363eeea3171c44ac01e7158fd69323db3d51e2081cc477c46840a"
+        "data/evidence/eb34b643617bda88.json#sha256=9249f1f9abd51a6b849ac0d307d282be9bea4607bec3a0b87eb9e49b286f3d80"
       ],
       "records": [],
-      "opportunity_ids": [
-        "e5de20279ef56cbd"
-      ],
+      "opportunity_ids": [],
       "inspected_keys": [
+        "/projects/api-integration/hyperzod-saas-app-setup-assistance",
+        "/projects/android-app-development/chalotrain-android-app-full-development",
+        "/projects/inventory-management/shopify-multi-store-inventory-dashboard",
+        "/projects/nextjs/building-prestia-full-stack-next",
+        "/projects/ai-development/fractional-tech-lead-for-driven",
+        "/projects/api-integration/betting-site-expansion-casino-livecasino",
+        "/projects/api-integration/moodle-enhancement-whatsapp-google-tools",
+        "/projects/api-integration/bodhan-api-integration-bot",
+        "/projects/api-integration/hostify-channel-manager-setup",
+        "/projects/web-development/hikashop-event-date-shipping-plugin",
+        "/projects/android/dual-sided-portable-pos-android",
         "/projects/telegram-api/telegram-channel-auto-reposter",
         "/projects/software-development/custom-software-development-40772222",
         "/projects/web-development/telehealth-weight-loss-platform",
@@ -232,7 +218,6 @@
         "/projects/dropshipping/finalize-woocommerce-dropship-stores",
         "/projects/web-development/restaurant-website-commerce-developer",
         "/projects/full-stack-development/crm-web-app-development",
-        "/projects/excel/python-developer-needed-for-data",
         "/projects/api-developmet/fix-whatsapp-broadcast-campaign-error",
         "/projects/web-development/globe-trek-travel-app-development",
         "/projects/web-development/cost-effective-local-electronics",
@@ -244,7 +229,6 @@
         "/projects/n8n/automation-workflow-build",
         "/projects/api-integration/postnl-perishable-order-fulfillment",
         "/projects/email-marketing/website-fixes-email-verification-setup",
-        "/projects/business-development/business-growth-client-relations-partner",
         "/projects/api-developmet/figma-functional-commerce-site",
         "/projects/full-stack-development/email-automation-warmup-system",
         "/projects/react-native/route-planner-app",
@@ -252,7 +236,6 @@
         "/projects/digital-marketing/build-marketing-agent-system-connected",
         "/projects/database-management/desktop-management-software-development",
         "/projects/cloud-computing/need-solution-for-project-regarding",
-        "/projects/graphql/whatsapp-business-api-specialist",
         "/projects/ai-automation/business-automation-expert",
         "/projects/google-cloud-platform/digital-asset-audit-api-mapping",
         "/projects/ai-chatbot/receptionist-quotation-automation",
@@ -263,17 +246,7 @@
         "/projects/full-stack-development/full-stack-developer-for-passes",
         "/projects/web-development/multivendor-commerce-marketplace",
         "/projects/payment-gateway-integration/apple-google-pay-integration",
-        "/projects/sales/commission-based-development-sales",
-        "/projects/web-development/email-outreach-automation-system",
-        "/projects/microsoft-project/project-ops-integration",
-        "/projects/android/comprehensive-api-integration-specialist",
-        "/projects/ios/convert-manus-web-app-ios",
-        "/projects/facebook-ads/meta-lead-generation-automation",
-        "/projects/app-development/deploy-android-app-aws",
-        "/projects/analytics/python-dev-digital-marketing-for",
-        "/projects/technical-support/meta-business-manager-expert-needed",
-        "/projects/web-development/bold-community-video-submission-site",
-        "/projects/php/advanced-paytm-phonepe-integration-php"
+        "/projects/sales/commission-based-development-sales"
       ]
     },
     {
@@ -281,57 +254,62 @@
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://community.shopify.com/latest.json",
       "records_inspected": 30,
-      "primary_pages_opened": 0,
+      "primary_pages_opened": 2,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
-      "collected": 0,
+      "collected": 2,
       "errors": [],
       "limitations": [
         "Latest activity is not original publication; support questions are PRODUCT_SIGNAL, not SALES. No more than four primary topics per run."
       ],
       "evidence_snapshots": [
-        "data/evidence/bda5dc3c1eb46ea5.json#sha256=75213bdd206b3d63f7ab72e784bb3999e5445c9269367800a8276baded906a66"
+        "data/evidence/bda5dc3c1eb46ea5.json#sha256=0b6d2ca2382851dc625742e54c75500e74c508d1b55c999d78fe716870c75e69",
+        "data/evidence/67bc51c405091f8a.json#sha256=0e1b1c411be1805d165dfe80affd76f5d672387d85ace5407c786f1c948529dc",
+        "data/evidence/8eac8077525fd1fc.json#sha256=da9c7f1eefd243262fd3d65ec3a2032b61d0f5d902be4e1fb9c06e4aa16f97f0"
       ],
       "records": [],
-      "opportunity_ids": [],
+      "opportunity_ids": [
+        "cb9654d39bcbd74c",
+        "7d6d4b37434e23b6"
+      ],
       "inspected_keys": [
         "355460",
-        "699090",
-        "699084",
-        "672605",
-        "697352",
-        "695353",
-        "698831",
-        "679035",
-        "561394",
-        "699321",
-        "698118",
-        "681884",
-        "698765",
+        "699075",
+        "700078",
+        "39703",
+        "698844",
+        "700071",
+        "699950",
+        "555921",
         "698200",
-        "699294",
-        "699289",
-        "699070",
-        "691796",
-        "698763",
-        "699269",
-        "699132",
-        "698788",
-        "699266",
-        "363943",
-        "582364",
-        "644122",
+        "696405",
+        "690016",
+        "698765",
+        "684511",
+        "700035",
+        "700055",
+        "700054",
+        "674712",
+        "689041",
+        "553677",
+        "679908",
+        "631832",
         "692265",
-        "699092",
-        "699079",
-        "698791"
+        "699269",
+        "579262",
+        "653418",
+        "690346",
+        "278698",
+        "694862",
+        "686452",
+        "420411"
       ]
     },
     {
       "source_family": "founder community (Indie Hackers)",
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://www.indiehackers.com/",
-      "records_inspected": 24,
+      "records_inspected": 20,
       "primary_pages_opened": 0,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
@@ -341,35 +319,31 @@
         "Only server-rendered public pages. robots disallows /api/ and sign-in; neither used. Founder self-promotion is not a buyer."
       ],
       "evidence_snapshots": [
-        "data/evidence/6548833164b0e7c9.json#sha256=43e14e43cabc5a2b93100e69e5ce59bcc4127523c6f719a15e564abaddeea8d8"
+        "data/evidence/6548833164b0e7c9.json#sha256=93ae718fddce034e8d9de2551a1dcfd0639e0bc24f886c3ccc7c79fd5f1839dd"
       ],
       "records": [],
       "opportunity_ids": [],
       "inspected_keys": [
         "/post/how-do-you-tell-useful-feedback-from-someone-who-might-actually-use-your-app-3ec6e41c26",
+        "/post/50-founders-saw-my-proof-screen-only-16-even-tried-98a870b47b",
         "/post/after-submitting-to-launch-directories-how-do-you-know-youre-actually-listed-0ca4076141",
+        "/post/building-an-ai-code-reviewer-that-does-more-than-point-out-bugs-72353b8479",
+        "/post/everyone-you-ve-shown-your-product-to-wants-you-to-succeed-that-s-the-problem-3d0cbf9e4b",
         "/post/i-launched-my-first-mac-app-today-a-text-expander-with-plain-text-snippets-7ee42de7dd",
-        "/post/0-77-in-api-bills-to-read-89-000-planning-pdfs-19ce97c6b5",
-        "/post/you-didn-t-run-out-of-motivation-you-ran-out-of-feedback-ef87a5789c",
-        "/post/66-days-0-then-my-first-customer-skipped-my-cheapest-plan-9526cdfef2",
-        "/post/i-listed-my-saas-on-6-software-directories-5-spent-0-real-visits-so-far-c23cf71643",
         "/post/tech/focusing-on-audience-first-and-hitting-30k-mrr-in-8-months-ootKyp98moigKLdaOON4",
         "/post/tech/how-rasty-turek-built-vaultaire-in-three-weeks-and-grew-it-to-40k-month-1BjFvs2akwfIVjMGYO54",
         "/post/tech/turning-an-agency-into-a-12k-mo-product-portfolio-13QkMY561jAQxsiA0LSg",
         "/post/tech/starting-from-scratch-and-hitting-9-5k-mrr-in-two-months-j5pMaED5FEbKw8qmeyj9",
         "/post/tech/building-a-3m-yr-company-without-launching-publicly-tacryeGIH66SCtD2an4r",
         "/post/tech/using-custom-infrastructure-as-a-competitive-advantage-and-hitting-31k-mrr-KgfHz813vyyWeszqJMIi",
-        "/post/everyone-you-ve-shown-your-product-to-wants-you-to-succeed-that-s-the-problem-3d0cbf9e4b",
-        "/post/building-an-ai-code-reviewer-that-does-more-than-point-out-bugs-72353b8479",
-        "/post/launch-directories-are-a-grift-that-sells-nothing-to-people-who-have-nothing-11c5117bd3",
-        "/post/every-best-running-shoe-list-is-an-opinion-i-tried-to-build-one-that-isn-t-8dde2f70a9",
-        "/post/i-built-a-local-course-directory-with-zero-scraped-listings-where-does-this-model-break-50fbd84353",
-        "/post/our-fourth-paid-billboard-takeover-what-changed-and-what-it-does-not-prove-0205cdf5ec",
-        "/post/most-saas-features-fail-for-one-simple-reason-60587430fe",
-        "/post/update-my-solo-vr-game-now-has-a-recipe-book-a-merchant-and-a-devlog-no-audience-yet-here-s-the-plan-028a0b6801",
-        "/post/i-launched-my-first-game-wiki-i-have-no-idea-how-itll-do-91f31ee72b",
-        "/post/seeing-the-context-before-asking-an-ai-agent-to-work-e2f8fbdbf7",
-        "/post/tech/turning-a-freelance-gig-into-a-150k-yr-product-tDdZGZyiyNTztPfI2wkY"
+        "/post/i-can-build-an-app-in-12-days-with-ai-i-still-cant-get-anyone-to-find-it-0f27759fe4",
+        "/post/what-if-ai-could-actually-help-you-get-your-first-customers-7876143b22",
+        "/post/before-you-blame-your-product-for-slow-signups-check-whether-strangers-can-find-it-797eb89ec1",
+        "/post/five-smoke-tests-you-can-run-this-week-with-the-pass-thresholds-18d338d5f2",
+        "/post/i-built-a-free-faq-schema-generator-after-seeing-the-same-json-ld-mistakes-repeatedly-17eb2d0e20",
+        "/post/6-842-price-changes-in-173-countries-what-my-pricing-tool-shows-before-you-push-c01260eefd",
+        "/post/google-doesn-t-think-my-brand-name-exists-it-thinks-i-made-a-typo-3db6ce4a9d",
+        "/post/my-fake-paywall-75-views-2-clicks-both-on-day-1-then-5-straight-days-of-zero-is-that-a-signal-380c335e68"
       ]
     },
     {
@@ -386,22 +360,22 @@
         "Physical goods buyers do not automatically buy research. Contact requires platform sign-in; no access bypass. No bid-count visibility => UNKNOWN."
       ],
       "evidence_snapshots": [
-        "data/evidence/3914e4f508c84945.json#sha256=90098111f376d4d90bfb3a3fde7f1816e4591f976cfbe05dd594197f77343089",
-        "data/evidence/59a4b47555421a53.json#sha256=27617286b3c3c7a4ff2da613715c728ad0bdaa3a78e37282ace6baaf8dff02f1",
-        "data/evidence/10877b67ef8f3f42.json#sha256=8031b47d4ccc2a991afe19d9f7eab095dd905ae72e22816f88fa093028e4ffe4"
+        "data/evidence/3914e4f508c84945.json#sha256=52a6fc07c21bfe20e7384796f92416563133caada14d3ca2e5ae6a7a1263b4b7",
+        "data/evidence/82f55d4728f7840a.json#sha256=e75bfc06dae26ffbf75e5dab14e6a161767185b92f42c6b12b5df703dfd9f94d",
+        "data/evidence/faa74e92582da602.json#sha256=6e7c387c9410b590b531214626d235d5a1ec76116512b44bcb3cf9ac68892449"
       ],
       "records": [
         {
-          "url": "https://importer1.tradekey.com/buyoffer/Wildwood-Tobacco-Shop-3876371.html",
-          "primary_excerpt": "Last Updated: Posted on: 15 Oct 2026 Time Left: 12M 2D Buying Frequency: Other Payment Terms: Other Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details Welcome to the Wildwood Tobacco Shop, the one-stop destination for all your smoking needs. With our wide selection of products, you can find the perfect product for any occasion. Our range includes pipes, bongs, cigars and more made from quality materials and designs, as well as hand-crafted artisanal pieces. Attachment To view attachment please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! Refine by popular tags tobacco shop Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.0975 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French Guiana French Polynesia Gabon Gambia Georgia Germany Ghana Gibraltar Greece Greenland Grenada Guadeloupe Guam Guatemal",
+          "url": "https://importer1.tradekey.com/buyoffer/Crafted-For-The-Perfect-Fit--3876373.html",
+          "primary_excerpt": "Last Updated: Posted on: 15 Oct 2026 Time Left: 27D 16H Buying Frequency: Weekly Payment Terms: PayPal, Other Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details Tailor Made USA LLC is a U.S.-based business focused on providing high-quality custom tailoring, clothing alterations, and personalized apparel solutions. We help customers achieve the perfect fit and style through careful craftsmanship, attention to detail, and reliable service. From custom-made garments and professional alterations to tailored fashion solutions, our goal is to deliver clothing that feels comfortable, looks refined, and is made to suit each customerâ€™s individual needs. Refine by popular tags men's clothing women's clothing children clothing Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.22635 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French G",
           "decision": "Physical goods RFQ; not a commissioned China research service; contact gated and competition unknown",
           "buyer": true,
           "published_at": "2026-10-15T00:00:00+00:00",
           "date_precision": "day; original posted date, not crawl date"
         },
         {
-          "url": "https://importer1.tradekey.com/buyoffer/Copper-Millberry-99-99-Wire-Scrap-3876369.html",
-          "primary_excerpt": "Last Updated: Posted on: 15 Oct 2026 Time Left: 5M 29D Buying Frequency: Monthly FOB Unit Price (USD): 4500 Metric Ton Payment Terms: L/C Shipping Terms: CIF Destination Port: Baku Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details We are looking to buy 100mt CIF in Baku port Ajerbaijan Payment: 100% Non transferable, LC is exhibited against Performance bond 2% by Seller. Final payment: After checking SGS in customs point in destination. Refine by popular tags purity 99.99% copper Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.11598 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French Guiana French Polynesia Gabon Gambia Georgia Germany Ghana Gibraltar Greece Greenland Grenada Guadeloupe Guam Guatemala Guernsey Guinea Guinea-Bissau Guyana Haiti Honduras Hong Kong Hungary Iceland India Indonesia Iraq Ireland Isle of Man Isra",
+          "url": "https://importer1.tradekey.com/buyoffer/Looking-For-Sabic-Off-Grade-EPDM-Virgin-Rubber-Bale-3876372.html",
+          "primary_excerpt": "Last Updated: Posted on: 15 Oct 2026 Time Left: 27D 16H Buying Frequency: Monthly Payment Terms: T/T Shipping Terms: Cif shanghai Destination Port: shanghai Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details ENB content:5.5% Ethylene content:68% Mooney Viscosity:61 Refine by popular tags epdm for running track and compouding using Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.25659 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French Guiana French Polynesia Gabon Gambia Georgia Germany Ghana Gibraltar Greece Greenland Grenada Guadeloupe Guam Guatemala Guernsey Guinea Guinea-Bissau Guyana Haiti Honduras Hong Kong Hungary Iceland India Indonesia Iraq Ireland Isle of Man Israel Italy Jamaica Japan Jersey Jordan Kazakhstan Kenya Kiribati Kuwait Kyrgyzstan Laos Latvia Lebanon Lesotho Liberia Libya Liechtenstein Lithuania Luxemb",
           "decision": "Physical goods RFQ; not a commissioned China research service; contact gated and competition unknown",
           "buyer": true,
           "published_at": "2026-10-15T00:00:00+00:00",
@@ -410,6 +384,8 @@
       ],
       "opportunity_ids": [],
       "inspected_keys": [
+        "https://importer1.tradekey.com/buyoffer/Crafted-For-The-Perfect-Fit--3876373.html",
+        "https://importer1.tradekey.com/buyoffer/Looking-For-Sabic-Off-Grade-EPDM-Virgin-Rubber-Bale-3876372.html",
         "https://importer1.tradekey.com/buyoffer/Wildwood-Tobacco-Shop-3876371.html",
         "https://importer1.tradekey.com/buyoffer/Copper-Millberry-99-99-Wire-Scrap-3876369.html",
         "https://importer1.tradekey.com/buyoffer/Trinity-Montessori-Academy-Riverwalk-3876367.html",
@@ -432,9 +408,7 @@
         "https://importer1.tradekey.com/buyoffer/UTP-Cable-By-Category-Pair-Count-And-Conductor-Gauge-3876311.html",
         "https://importer1.tradekey.com/buyoffer/Test-Strips-Intended-Test-And-Device-Compatibility-Required-3876309.html",
         "https://importer1.tradekey.com/buyoffer/Directory-Listings-For-A-Business-Website-3876307.html",
-        "https://importer1.tradekey.com/buyoffer/Red-Lentils-With-Split-Grade-And-Defect-Limits-3876305.html",
-        "https://importer1.tradekey.com/buyoffer/Beef-Cuts-With-Origin-Trim-And-Frozen-Packing-Stated-3876303.html",
-        "https://importer1.tradekey.com/buyoffer/Peanuts-By-Variety-Size-Count-And-Crop-Year-3876301.html"
+        "https://importer1.tradekey.com/buyoffer/Red-Lentils-With-Split-Grade-And-Defect-Limits-3876305.html"
       ]
     }
   ],
@@ -443,16 +417,16 @@
     {
       "id": "5409f529cb2b0f7b",
       "url": "https://community.n8n.io/t/assistant-credits-top-up-now-available/318075",
-      "checked_at": "2026-10-17T06:54:23.118368+00:00",
+      "checked_at": "2026-10-18T07:12:13.754953+00:00",
       "refreshed": false,
       "reason": "event expired; no publication rejuvenation"
     },
     {
       "id": "edge-haiku-2026-10-07",
       "url": "https://www.anthropic.com/claude-haiku-5-5",
-      "checked_at": "2026-10-17T06:54:23.118368+00:00",
+      "checked_at": "2026-10-18T07:12:13.754953+00:00",
       "refreshed": true,
-      "snapshot": "data/evidence/info-rechecks/cdb1d51fae043110.json#sha256=5ac3fee46c39de8714fda1a189023c7d82dfc99e536ebc5b708914ef0cbb85e0"
+      "snapshot": "data/evidence/info-rechecks/cdb1d51fae043110.json#sha256=ec658175bd198129c9a4e0693d8a8b985d1ead2e48100d53392adb47e4a9bd88"
     }
   ]
 }

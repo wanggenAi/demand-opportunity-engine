@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41329",
+  "collected_at": "2026-10-18T07:12:13.754953+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/41329",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/41329/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/41329/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/41329/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/41329",
+    "id": 5901380974,
+    "node_id": "I_kwDOC4Q8Qs8AAAABX7_tbg",
+    "number": 41329,
+    "title": "Editor: Workflow Settings select placeholders are hardcoded English",
+    "user": {
+      "login": "Pushkal-Gupta",
+      "id": 161060351,
+      "node_id": "U_kgDOCZmV_w",
+      "avatar_url": "https://avatars.githubusercontent.com/u/161060351?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Pushkal-Gupta",
+      "html_url": "https://github.com/Pushkal-Gupta",
+      "followers_url": "https://api.github.com/users/Pushkal-Gupta/followers",
+      "following_url": "https://api.github.com/users/Pushkal-Gupta/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Pushkal-Gupta/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Pushkal-Gupta/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Pushkal-Gupta/subscriptions",
+      "organizations_url": "https://api.github.com/users/Pushkal-Gupta/orgs",
+      "repos_url": "https://api.github.com/users/Pushkal-Gupta/repos",
+      "events_url": "https://api.github.com/users/Pushkal-Gupta/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Pushkal-Gupta/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-17T17:55:45Z",
+    "updated_at": "2026-10-17T17:55:54Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nThree selects in the Workflow Settings modal have hardcoded English placeholders:\n\n- \"Select Execution Order\"\n- \"Select Workflow\" (error workflow)\n- \"Select Timezone\"\n\nhttps://github.com/n8n-io/n8n/blob/ff975f1b9e2f960da96801ae8f6fad040123c514/packages/frontend/editor-ui/src/features/workflows/components/WorkflowSettings/WorkflowSettings.vue#L1027\nhttps://github.com/n8n-io/n8n/blob/ff975f1b9e2f960da96801ae8f6fad040123c514/packages/frontend/editor-ui/src/features/workflows/components/WorkflowSettings/WorkflowSettings.vue#L1063\nhttps://github.com/n8n-io/n8n/blob/ff975f1b9e2f960da96801ae8f6fad040123c514/packages/frontend/editor-ui/src/features/workflows/components/WorkflowSettings/WorkflowSettings.vue#L1223\n\nThe labels and help texts next to these selects use i18n. The credential resolver select in the same modal already uses a key for its placeholder (`workflowSettings.credentialResolver.placeholder`).\n\n### To Reproduce\n\n1. Switch the instance UI to a language other than English.\n2. Open a workflow and open **Settings** from the workflow menu.\n3. While the modal loads, the Error Workflow and Timezone selects show \"Select Workflow\" and \"Select Timezone\" in English. Throttling the network in dev tools makes this easier to see.\n\n### Expected behavior\n\nThe placeholders use i18n keys and show in the active language.\n\n### Debug Info\n\nFound by reading the source on `master` (version `2.44.0`). The strings are hardcoded in the component, so this does not depend on the instance setup.\n\n### Environment\n\n- Operating System: macOS (platform independent)\n- n8n Version: 2.44.0 (`master`)\n- Node.js Version: 24.x\n- Database: n/a\n- Execution mode: n/a\n\n### Note\n\nI have a PR ready for this.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/41329/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/41329/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @Pushkal-Gupta,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9601\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9601](https://linear.app/n8n/issue/GHC-9601)",
+      "at": "2026-10-17T17:55:52Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41329#issuecomment-6238112211"
+    }
+  ],
+  "comments_complete": true
+}

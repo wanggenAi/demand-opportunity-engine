@@ -1,0 +1,129 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41322",
+  "collected_at": "2026-10-18T07:12:13.754953+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/41322",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/41322/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/41322/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/41322/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/41322",
+    "id": 5899136221,
+    "node_id": "I_kwDOC4Q8Qs8AAAABX52s3Q",
+    "number": 41322,
+    "title": "n8n 2.43.5: eager VM expression-isolate acquisition adds alternating latency to minimal production webhooks",
+    "user": {
+      "login": "angel-svesht",
+      "id": 201078639,
+      "node_id": "U_kgDOC_w3bw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/201078639?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/angel-svesht",
+      "html_url": "https://github.com/angel-svesht",
+      "followers_url": "https://api.github.com/users/angel-svesht/followers",
+      "following_url": "https://api.github.com/users/angel-svesht/following{/other_user}",
+      "gists_url": "https://api.github.com/users/angel-svesht/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/angel-svesht/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/angel-svesht/subscriptions",
+      "organizations_url": "https://api.github.com/users/angel-svesht/orgs",
+      "repos_url": "https://api.github.com/users/angel-svesht/repos",
+      "events_url": "https://api.github.com/users/angel-svesht/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/angel-svesht/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582013554,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cicg",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:cats",
+        "name": "team:cats",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Cats team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-10-17T14:04:23Z",
+    "updated_at": "2026-10-17T17:00:40Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nOn self-hosted n8n 2.43.5, production webhook executions exhibit recurring latency spikes even with a minimal two-node workflow (`Webhook → Respond to Webhook`).\n\nSequential HTTP requests sent directly to `127.0.0.1:5678` reproduce alternating fast (~50–70 ms) and slow (~210–300 ms) response times. This excludes external reverse-proxy and TLS overhead from the reproduction path.\n\nWe instrumented the installed execution engine and identified the recurring delay in:\n\n`WorkflowExecute.initializeExecution() → workflow.expression.acquireIsolate()`\n\nAcross the diagnostic executions, isolate acquisition took approximately 5–7 ms on fast runs and 168–186 ms on slow runs. The workflow nodes themselves executed quickly.\n\nSource inspection showed that `ExpressionEvaluator.acquire()` obtains an initialized bridge from `IsolatePool`, but falls back to asynchronous `createBridge()` if the pool is exhausted. The pool replenishes bridges asynchronously and disposes acquired bridges on release.\n\nThis suggests that pool exhaustion and cold bridge initialization may explain the observed latency pattern. However, per-request pool availability and cold-start events were not directly instrumented, so this remains a hypothesis rather than a proven root cause.\n\n**Observed mitigation:**\n\nEnabling `N8N_EXPRESSION_ENGINE_LAZY_ACQUIRE=true`, together with pool size 2, substantially improved the minimal workflow's steady-state response times.\n\nAfter the first two post-restart requests (3252 ms and 377 ms), the following 18 requests completed in approximately 51–80 ms, with no recurring >200 ms spike in that sample.\n\nReal application workflows also completed successfully during subsequent Stage smoke tests, including dynamic-expression evaluation and authenticated application navigation.\n\nWe are reporting this because an otherwise minimal webhook appears to incur significant VM expression-isolate initialization overhead even when no dynamic expression evaluation is required.\n\n### To Reproduce\n\nDeploy the official Docker image docker.n8n.io/n8nio/n8n:2.43.5 with the default VM expression-engine configuration:\n\nN8N_EXPRESSION_ENGINE=vm\n\nN8N_EXPRESSION_ENGINE_POOL_SIZE=1\n\nN8N_EXPRESSION_ENGINE_LAZY_ACQUIRE=false\n\nThese are the installed defaults; explicit environment variables are not required.\n\nCreate and activate a minimal workflow:\n\nWebhook node using HTTP GET and a static path.\n\nRespond to Webhook node returning a simple static response.\n\nConfigure the Webhook node to use the Respond to Webhook node for its response.\n\nDo not add dynamic expressions or Code nodes.\n\nSend 20 sequential requests directly to the n8n instance:\n\nfor i in $(seq 1 20); do\n  curl -sS -o /dev/null \\\n    -w \"Request $i | HTTP %{http_code} | %{time_total}s\\n\" \\\n    http://127.0.0.1:5678/webhook/isolated/test\ndone\n\nObserve recurring slow responses interspersed with fast responses.\n\nRepeat with N8N_EXPRESSION_ENGINE_POOL_SIZE=2 and N8N_EXPRESSION_ENGINE_LAZY_ACQUIRE=false. Slow requests become less frequent but remain present.\n\nRepeat with:\n\nN8N_EXPRESSION_ENGINE_POOL_SIZE=2\n\nN8N_EXPRESSION_ENGINE_LAZY_ACQUIRE=true\n\nRestart the test instance, allow startup to finish, and repeat the benchmark. In our environment, steady-state latency spikes disappeared from the 18 requests following the initial two warm-up requests.\n\nMeasured results:\n\nConfiguration\n\nResults\n\nPool 1, eager\n\nAlternating ~50–70 ms / ~210–300 ms\n\nPool 2, eager, run 1\n\n6/20 requests >200 ms; maximum 573 ms\n\nPool 2, eager, run 2\n\n3/20 requests >200 ms; maximum 459 ms\n\nPool 2, lazy\n\nFirst two requests 3252/377 ms; remaining 18 ~51–80 ms, 0/18 >200 ms\n\nNo external HTTP proxy was involved in the direct localhost benchmark.\n\n### Expected behavior\n\nA production webhook workflow that does not evaluate dynamic expressions should not incur significant recurring VM isolate initialization overhead.\n\nAfter application initialization, repeated requests to an otherwise minimal workflow should show relatively consistent response times without regularly adding approximately 170–185 ms during `acquireIsolate()`.\n\nIf eager isolate acquisition is intentional, it would be helpful to clarify the expected latency characteristics, pool replenishment behaviour, and recommended production configuration for simple webhook workloads.\n\n### Debug Info\n\nEnvironment\n\nn8n version: 2.43.5\n\nDeployment: Self-hosted Docker Compose, official n8n image\n\nExpression engine: VM (isolated-vm bridge)\n\nDefault expression pool size: 1\n\nDefault lazy acquisition: false\n\nExecution mode: regular\n\nPostgreSQL: 16.2\n\nExternal JavaScript and Python task runners enabled\n\nHost resources: approximately 1.9 GiB RAM and 2 GiB swap\n\nTest route: local HTTP directly to port 5678\n\nInstrumentation findings\n\nWe instrumented the installed n8n execution engine at workflow initialization and surrounding execution phases.\n\nExample consecutive isolate-acquisition durations (ms):\n\nExecution A:   5.156\nExecution B: 182.627\nExecution C:   5.778\nExecution D: 182.852\nExecution E:   5.198\nExecution F: 186.227\nExecution G:   6.416\nExecution H: 180.081\n\nThe delay occurs in:\n\nWorkflowExecute.initializeExecution()\n  → workflow.expression.acquireIsolate()\n    → Expression.vmEvaluator.acquire(this)\n\nRelevant installed implementation files:\n\nn8n-core/dist/execution-engine/workflow-execute.js\nn8n-workflow/dist/cjs/expression.js\n@n8n/expression-runtime/dist/cjs/evaluator/expression-evaluator.js\n@n8n/expression-runtime/dist/cjs/pool/isolate-pool.js\n\nExpressionEvaluator.acquire() handles PoolExhaustedError by calling await this.createBridge(). IsolatePool.acquire() removes an initialized bridge and initiates asynchronous replenishment.\n\nAdditional observations\n\nLocalhost reproduction removes external proxy/TLS from the measured path.\n\nDisabling execution-data saving did not eliminate the latency pattern.\n\nThe pattern was reproduced using a minimal two-node workflow.\n\nIncreasing pool size partially improved results.\n\nLazy acquisition substantially improved steady-state minimal-webhook latency.\n\nBasic dynamic expressions and real application navigation passed Stage smoke tests.\n\nPool exhaustion/cold creation is a suspected explanation, not directly proven by pool-state instrumentation.\n\nNo equivalent controlled benchmark on n8n 1.x was recorded.\n\nQuestions for maintainers\n\nIs the observed eager isolate acquisition expected for workflows containing no dynamic expressions?\n\nIs there a reason N8N_EXPRESSION_ENGINE_LAZY_ACQUIRE defaults to false?\n\nIs per-execution isolate disposal and asynchronous replacement the intended pool lifecycle?\n\nAre there known trade-offs or compatibility limitations when enabling lazy acquisition for production workflows?\n\nWould upstream instrumentation of pool exhaustion and cold-start durations be useful for diagnosing this behaviour?\n\nWe can provide additional redacted timing logs and a minimal workflow export if requested.\n\n### Operating System\n\nUbuntu 24.04.1 LTS\n\n### n8n Version\n\n2.43.5\n\n### Node.js Version\n\nv26.7.0\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/41322/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/41322/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @angel-svesht,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9598\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9598](https://linear.app/n8n/issue/GHC-9598)",
+      "at": "2026-10-17T14:04:34Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41322#issuecomment-6234840829"
+    },
+    {
+      "author": "ardaerturk",
+      "text": "One instrumentation distinction in the **2.43.5 source** may help with the next benchmark: the existing synchronous cold-start metric cannot confirm or rule out the eager-path cold starts in this report.\n\n- [`initializeExecution()` acquires an isolate before running the workflow](https://github.com/n8n-io/n8n/blob/d811f5e87dfc164999f34d75b17017876d41a54a/packages/core/src/execution-engine/workflow-execute.ts#L1678-L1694). In [`ExpressionEvaluator.acquire()`](https://github.com/n8n-io/n8n/blob/d811f5e87dfc164999f34d75b17017876d41a54a/packages/%40n8n/expression-runtime/src/evaluator/expression-evaluator.ts#L119-L139), eager mode takes a warm bridge or awaits `createBridge()` after `PoolExhaustedError`. Lazy mode opens a scope without taking a bridge. This explains why the static two-node case can benefit without establishing the cause of the alternating timings.\n- [`IsolatePool.acquire()` starts asynchronous replenishment; `release()` disposes the used bridge](https://github.com/n8n-io/n8n/blob/d811f5e87dfc164999f34d75b17017876d41a54a/packages/%40n8n/expression-runtime/src/pool/isolate-pool.ts#L63-L78). The used bridge is not returned as a reusable warm entry.\n- [`expression.pool.cold_start_sync` and its duration metric](https://github.com/n8n-io/n8n/blob/d811f5e87dfc164999f34d75b17017876d41a54a/packages/%40n8n/expression-runtime/src/evaluator/expression-evaluator.ts#L141-L179) cover the **lazy, synchronous** fallback. The eager fallback above has no corresponding cold-start counter at that call site; both warm and cold eager acquisitions increment `poolAcquired`. Also, the evaluation-duration timer starts after `getBridge()`, so that timer excludes bridge acquisition.\n\nFor the existing Stage reproduction, I would keep the image, pool size and request spacing fixed, then compare eager/lazy on (1) the static response and (2) an otherwise identical response that evaluates one dynamic expression. Record the acquisition path (`warm` or `cold`), acquisition milliseconds, total request milliseconds, HTTP status and whether the expected response was correct. Keep the same predeclared warm-up rule in each run and retain the cold-start results separately. A short idle gap between requests is another useful, separate comparison for the replenishment hypothesis.\n\nThe trade-off to check is explicit in the [configuration comment](https://github.com/n8n-io/n8n/blob/d811f5e87dfc164999f34d75b17017876d41a54a/packages/%40n8n/config/src/configs/expression-engine.config.ts#L97-L105): lazy acquisition is marked experimental, and an empty pool can make the first engine evaluation build its isolate synchronously on the request path. The static case avoids that work; expression-bearing workloads can still pay it. This source reading does not establish why the default was chosen or certify production compatibility.\n\nI operate Keptick with AI assistance. This is a review of the tagged source, not an independent Docker reproduction or a rerun of its tests. A redacted timing table containing those fields would help distinguish pool misses from another source of delay; workflow payloads and credentials are unnecessary.",
+      "at": "2026-10-17T17:00:40Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41322#issuecomment-6237179066"
+    }
+  ],
+  "comments_complete": true
+}

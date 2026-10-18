@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41242",
-  "collected_at": "2026-10-17T06:54:23.118368+00:00",
+  "collected_at": "2026-10-18T07:12:13.754953+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/41242",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -72,9 +72,9 @@
     "locked": false,
     "assignees": [],
     "milestone": null,
-    "comments": 2,
+    "comments": 3,
     "created_at": "2026-10-16T07:50:29Z",
-    "updated_at": "2026-10-16T10:03:45Z",
+    "updated_at": "2026-10-18T05:11:04Z",
     "closed_at": null,
     "assignee": null,
     "author_association": "NONE",
@@ -123,6 +123,12 @@
       "text": "+1 — reproduced identically on a pristine pull of docker.n8n.io/n8nio/n8n:2.43.3.\nThe wrapper @napi-rs/canvas@0.1.80 is present but no platform binding ships with\nit (this Alpine-based image needs @napi-rs/canvas-linux-x64-musl), so pdfjs-dist\ncannot polyfill DOMMatrix/ImageData/Path2D and every PDF code path dies.\n\nImmediate unblock, pick one:\n\n1) Easiest: pin back to docker.n8n.io/n8nio/n8n:2.43.2 until a fixed image is published.\n\n2) If you must stay on 2.43.3, bake the matching binding into the image:\n\nFROM docker.n8n.io/n8nio/n8n:2.43.3\nUSER root\nRUN cd /tmp && npm pack @napi-rs/canvas-linux-x64-musl@0.1.80 \\\n && tar -xzf napi-rs-canvas-linux-x64-musl-0.1.80.tgz \\\n && cp package/canvas.linux-x64-musl.node \\\n     /usr/local/lib/node_modules/n8n/node_modules/.pnpm/@napi-rs+canvas@0.1.80/node_modules/@napi-rs/canvas/ \\\n && rm -rf /tmp/package /tmp/*.tgz\nUSER node\n\nThe binding version must match the wrapper (0.1.80). On ARM hosts use\n@napi-rs/canvas-linux-arm64-musl; on a Debian/glibc base it would be the -gnu\nvariant. (Confirm the wrapper's exact .pnpm path with the `ls ... grep napi-rs+canvas`\ncommand from the original report, in case it shifts between tags.)\n\n3) Cheap CI smoke gate so a regression like this never reaches your prod again:\n\ndocker run --rm --entrypoint node your-n8n-image -e \\\n  \"require('/usr/local/lib/node_modules/n8n/node_modules/.pnpm/@napi-rs+canvas@0.1.80/node_modules/@napi-rs/canvas')\"\n\n(exit 0 = binding loads; fail the deploy otherwise.)\n\nRoot-cause suspicion for the maintainers: the image build now appears to prune\nnpm optional dependencies. napi-rs ships its platform binaries as\noptionalDependencies of the wrapper, so an --omit=optional-style publish step\nstrips exactly the .node file pdfjs needs — worth checking the publish pipeline\nfor that flag.",
       "at": "2026-10-16T10:03:44Z",
       "url": "https://github.com/n8n-io/n8n/issues/41242#issuecomment-6213070683"
+    },
+    {
+      "author": "nephilim75",
+      "text": "Additional data points — the issue is not limited to 2.43.3:\n\n| Version | `@napi-rs/canvas` binding loads? |\n|---|---|\n| 2.43.2 | ❌ `Failed to load native binding` (only `@napi-rs+canvas@0.1.80` present) |\n| 2.43.3 | ❌ same |\n| 2.44.3 | ❌ same (Node.js v26.10.0) |\n\nSo pinning back to 2.43.2, as suggested above, does **not** work around it.\n\nThanks @mayanksingh-27 for #41312 — happy to test a built image once available.",
+      "at": "2026-10-18T05:10:52Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41242#issuecomment-6245971472"
     }
   ],
   "comments_complete": true
