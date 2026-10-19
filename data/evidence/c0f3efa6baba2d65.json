@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50073471",
-  "collected_at": "2026-10-17T06:54:23.118368+00:00",
+  "collected_at": "2026-10-19T07:43:58.565595+00:00",
   "source": {
     "author": "ericmags",
     "children": [
@@ -280,6 +280,21 @@
         "title": null,
         "type": "comment",
         "url": null
+      },
+      {
+        "author": "bitweis",
+        "children": [],
+        "created_at": "2026-10-18T08:31:22.000Z",
+        "created_at_i": 1792312282,
+        "id": 50139133,
+        "options": [],
+        "parent_id": 50073471,
+        "points": null,
+        "story_id": 50073471,
+        "text": "Routing requests to compliant infrastructure covers where the model runs. With ITAR there is still the question of who inside the company gets to see the answer. Export rules apply to foreign persons, including employees working in the US (the deemed export case). So if an agent can pull controlled technical data through a tool call or a retrieval step, a non-US-person engineer who asks the right question gets it back, whichever endpoint served the request.<p>Do you pass user attributes like US-person status or program access through the gateway, so retrieval and tool calls can be filtered per request? Or is that expected to live in each customer&#x27;s own systems?<p>I work at Permit, which builds authorization tooling, so this is the part I always end up asking about.",
+        "title": null,
+        "type": "comment",
+        "url": null
       }
     ],
     "created_at": "2026-10-13T15:41:00.000Z",
@@ -402,6 +417,12 @@
       "text": "Cool solution, and kudos on investing in getting the compliance groundwork stuff sorted out early. I can't imagine that was cheap or easy. I'd think this is primarily interesting to the newer a&d companies, right? Or even companies who are looking at their first government project. That seems to me like where the value is. The usual suspects tend to already have people and policies in place for proper handling of sensitive info.",
       "at": "2026-10-15T18:38:16.000Z",
       "url": "https://news.ycombinator.com/item?id=50108228"
+    },
+    {
+      "author": "bitweis",
+      "text": "Routing requests to compliant infrastructure covers where the model runs. With ITAR there is still the question of who inside the company gets to see the answer. Export rules apply to foreign persons, including employees working in the US (the deemed export case). So if an agent can pull controlled technical data through a tool call or a retrieval step, a non-US-person engineer who asks the right question gets it back, whichever endpoint served the request. Do you pass user attributes like US-person status or program access through the gateway, so retrieval and tool calls can be filtered per request? Or is that expected to live in each customer's own systems? I work at Permit, which builds authorization tooling, so this is the part I always end up asking about.",
+      "at": "2026-10-18T08:31:22.000Z",
+      "url": "https://news.ycombinator.com/item?id=50139133"
     }
   ],
   "comments_complete": true

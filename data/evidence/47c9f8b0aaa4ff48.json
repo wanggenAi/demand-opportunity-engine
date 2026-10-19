@@ -1,0 +1,123 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41372",
+  "collected_at": "2026-10-19T07:43:58.565595+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/41372",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/41372/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/41372/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/41372/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/41372",
+    "id": 5919566451,
+    "node_id": "I_kwDOC4Q8Qs8AAAABYNVqcw",
+    "number": 41372,
+    "title": "TypeError: r.firstEvent.getTime is not a function in WorkflowStatisticsRollupService.foldBatch (Postgres) — logged ~1,400×/hour",
+    "user": {
+      "login": "Pokornj928",
+      "id": 172298513,
+      "node_id": "U_kgDOCkUREQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/172298513?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Pokornj928",
+      "html_url": "https://github.com/Pokornj928",
+      "followers_url": "https://api.github.com/users/Pokornj928/followers",
+      "following_url": "https://api.github.com/users/Pokornj928/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Pokornj928/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Pokornj928/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Pokornj928/subscriptions",
+      "organizations_url": "https://api.github.com/users/Pokornj928/orgs",
+      "repos_url": "https://api.github.com/users/Pokornj928/repos",
+      "events_url": "https://api.github.com/users/Pokornj928/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Pokornj928/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582013554,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cicg",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:cats",
+        "name": "team:cats",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Cats team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-19T07:16:11Z",
+    "updated_at": "2026-10-19T07:23:43Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nOn n8n 2.30.7 (self-hosted, Docker, PostgreSQL) the container log is flooded with:\n\n```\nTypeError: r.firstEvent.getTime is not a function\n    at src/services/workflow-statistics-rollup.service.ts:126:19\n    at WorkflowStatisticsRollupService.foldBatch (src/services/workflow-statistics-rollup.service.ts:124:19)\n    at WorkflowStatisticsRollupService.rollup (src/services/workflow-statistics-rollup.service.ts:113:18)\n```\n\nRate: ~1,400 occurrences per hour (~34,000 per 24 h), continuously since 2026-09-29. Without log rotation a single container log grew to ~700 MB. Restarting the container does not help — the error reappears within ~3 minutes (1,340 occurrences in the first hour after a restart).\n\nIt looks like `firstEvent` comes back from PostgreSQL as a string (not a `Date`) in the rollup batch, so `.getTime()` fails. Possibly related: #28541, #28640 (same pattern with `dbTime.getTime`) and #40019 (rollup refactor).\n\n### To Reproduce\n\n1. Run n8n 2.30.7 in Docker with `DB_TYPE=postgresdb` (PostgreSQL 17).\n2. Have ~50 published workflows with ~1,400 executions per day.\n3. Watch the container log — the error is emitted continuously by the workflow statistics rollup.\n\n### Expected behavior\n\nWorkflow statistics rollup works with PostgreSQL (timestamps parsed as `Date`) and does not flood the log.\n\n### Debug Info\n\nSee the stack trace above.\n\n### Operating System\n\nLinux (Docker host)\n\n### n8n Version\n\n2.30.7\n\n### Node.js Version\n\nBundled with the official image docker.n8n.io/n8nio/n8n:2.30.7\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/41372/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/41372/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @Pokornj928,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9606\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9606](https://linear.app/n8n/issue/GHC-9606)",
+      "at": "2026-10-19T07:16:18Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41372#issuecomment-6261832286"
+    }
+  ],
+  "comments_complete": true
+}

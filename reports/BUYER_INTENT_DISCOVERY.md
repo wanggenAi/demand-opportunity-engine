@@ -1,9 +1,9 @@
 # BUYER INTENT DISCOVERY
 
-Checked: 2026-10-18T07:12:13.754953+00:00
+Checked: 2026-10-19T07:43:58.565595+00:00
 
-Verified explicit commercial buyers: 21; published within 7 days: 12.
-Intent types: {'PAID_TASK': 2, 'AGENT_OR_VENDOR_REQUEST': 4, 'BUDGET_STATED': 8, 'HIRING': 3, 'PROCUREMENT_REQUEST': 2, 'BOUNTY': 1, 'QUOTE_REQUESTED': 1}
+Verified explicit commercial buyers: 25; published within 7 days: 16.
+Intent types: {'PAID_TASK': 3, 'AGENT_OR_VENDOR_REQUEST': 4, 'BUDGET_STATED': 8, 'HIRING': 5, 'QUOTE_REQUESTED': 2, 'PROCUREMENT_REQUEST': 2, 'BOUNTY': 1}
 Commercial intent is not a verified budget or a promise of purchase. Exact buyer-authored sentences and legitimate source paths are mandatory. No outbound messages sent.
 
 ## Independent source strategies
@@ -19,29 +19,29 @@ Additional families attempted this run: 9.
 ### public founder/operator job community
 
 - Access: Discourse public category/topic JSON; https://community.n8n.io/c/jobs/13.json?order=created
-- Records inspected: 60; primary pages opened: 28; collected observations: 28
-- Verified buyer requests: 9; explicit commercial signals: 9
+- Records inspected: 60; primary pages opened: 31; collected observations: 31
+- Verified buyer requests: 10; explicit commercial signals: 10
 - Limitations: Two newest-topic pages, not complete market coverage; max 200 extra replies per topic. Incomplete competition remains UNKNOWN unless observed high.; Last activity is not publication time. Only substantive buyer-authored follow-ups can renew a lead.
 - Errors: []
-- Audit snapshots: data/evidence/f5663f332d6bc9b1.json#sha256=0e99bbf9e4b596e9537475fea3aafcd8ac4f79fa497f3cc9be4ff50ea1703a74, data/evidence/d9f0be47fa047f2c.json#sha256=7e365c34f41dc3ef9f81a1a9330111ded02bfed77d89b7c0ec6c4446775576ce
+- Audit snapshots: data/evidence/f5663f332d6bc9b1.json#sha256=62b26020bcd0ded0401f1a85de799fcd430acdf6e50511ec35f83ca79fcd18ce, data/evidence/d9f0be47fa047f2c.json#sha256=2464bea2e8d97066af91190ae74338b0e9e92257179050c7e4fd57018c151485
 
 ### public freelance/job listings
 
 - Access: Remotive public JSON API; attributed source links; https://remotive.com/api/remote-jobs?search=automation&limit=20
-- Records inspected: 13; primary pages opened: 0; collected observations: 0
+- Records inspected: 12; primary pages opened: 0; collected observations: 0
 - Verified buyer requests: 0; explicit commercial signals: 0
 - Limitations: Employer application pages not verified. No employer-authored quote invented from aggregator job labels.; Legal warning - Hey, thanks for using Remotive's API, we appreciate it! Please note that API documentation and access is granted so that developers can share our jobs further. Please do not submit Remotive jobs to third Party websites, including but not limited to: Jooble, Neuvoo, Google Jobs, LinkedIn Jobs. Please link back to the URL found on Remotive AND mention Remotive as a source in order to Remotive to get traffic from your listing. If you don't do that, we'll terminate your API access, sorry! Jobs displayed are delayed by 24 hours, the goal being that jobs are attributed to Remotive on various platforms. Displaying our jobs in order to collect signups/email addresses to show a listing constitutes a breach of our terms of services. We offer a private, paid-for API, please email us at hello(at)remotive(dot)io for more information (starting budget is $5k/mo). Please find out terms of services on https://remotive.com/api-documentation. Please note that there is absolutely no need to request Remotive Job data too frequently. Typically, you only need to GET Remotive job data through this API a couple of times a day (we advise max. 4 times a day). Our data is not changing much faster than that anyway. Note that excessive requests will be blocked. Many thanks (Rodolphe & the Remotive team!)
 - Errors: []
-- Audit snapshots: data/evidence/071898d5d7cef09e.json#sha256=46bd885ad508aad5202b4d63b9f2cc19c2baaf9016d1605ebe486d8354eebdf7
+- Audit snapshots: data/evidence/071898d5d7cef09e.json#sha256=d540416d8c280719ffc927e6f6c1bf2e25bad2e6adfd90b3b08378974806a066
 
 ### public procurement/RFQ
 
 - Access: bounded public HTTP page inspection; https://www.contractsfinder.service.gov.uk/Search/Results?keywords=automation
-- Records inspected: 20; primary pages opened: 0; collected observations: 0
+- Records inspected: 0; primary pages opened: 0; collected observations: 0
 - Verified buyer requests: 0; explicit commercial signals: 0
 - Limitations: Search returned procurement notices; up to three detail pages attempted. No buyer request promoted: eligibility, exact remote scope, submission deadline and award status require manual verification.
-- Errors: [{"url": "https://www.contractsfinder.service.gov.uk/notice/7eeb3a8e-8f79-46c3-92bf-a032bedc89d7", "error": "HTTPError: HTTP Error 403: Forbidden"}, {"url": "https://www.contractsfinder.service.gov.uk/notice/2a7494d3-86c5-40a1-9575-f93b1ab95ac0", "error": "HTTPError: HTTP Error 403: Forbidden"}, {"url": "https://www.contractsfinder.service.gov.uk/notice/2e7a8151-800c-4d24-8056-615661b46405", "error": "HTTPError: HTTP Error 403: Forbidden"}]
-- Audit snapshots: data/evidence/50e3af0542f19c3a.json#sha256=8b9cf1dfe6720217b2498239d10ff1f31e7ef0f95a88e12449236c5df96866fe
+- Errors: []
+- Audit snapshots: data/evidence/50e3af0542f19c3a.json#sha256=a7b7408b9cb166f7f5639cf13ba14f66e81727dd2df6b3a5bb6042cc08775ca9
 
 ### public bounty/paid task
 
@@ -68,16 +68,16 @@ Additional families attempted this run: 9.
 - Verified buyer requests: 0; explicit commercial signals: 0
 - Limitations: No structured primary buyer requests extracted; static shell is not commercial proof. No login or anti-bot evasion.
 - Errors: []
-- Audit snapshots: data/evidence/b5d67d420401a4bb.json#sha256=64ce6940792f945e7bf8e66ca82c0d20358d2bb96ac1ab4aa864a1ffcc58f80d
+- Audit snapshots: data/evidence/b5d67d420401a4bb.json#sha256=9c4b2736dea40f9d9c06fcc51e9d63258e9bc7f025fb6165bbfac4687725a9fa
 
 ### freelance project marketplace (Freelancer)
 
 - Access: bounded public HTTP/JSON; no authenticated endpoint; https://www.freelancer.com/jobs/product-sourcing/
-- Records inspected: 17; primary pages opened: 2; collected observations: 2
+- Records inspected: 13; primary pages opened: 2; collected observations: 2
 - Verified buyer requests: 2; explicit commercial signals: 2
 - Limitations: Public bidCount includes competitors; only first 20 proposals may be visible. Employer identity often unresolved. Task budget is not agreement to our pilot.
 - Errors: []
-- Audit snapshots: data/evidence/abf73d1fa5782498.json#sha256=7b09618987c5bcd9bfd4c98b21d36524655f8d7d903919aa1fdc97dca6de31e2, data/evidence/3adde8bb3e84f849.json#sha256=57a7864badc972465f34b1b70814948c150bb570650d181bb3d21ff9f746d94e, data/evidence/1dc2b31945045284.json#sha256=4c6dbaf33eff5c5b8d02e22572c3c1ae6189d485267a969c6e51e8193adfa9c8
+- Audit snapshots: data/evidence/abf73d1fa5782498.json#sha256=8a1aadf941ce14c07b0b60d21045aa82f3c2fc185fe4a7c13d17695da4622ca4, data/evidence/3adde8bb3e84f849.json#sha256=c5751ad129ecd51d3ac076eba08be2519ec429b6c2baf316875b48db72b4ae96, data/evidence/1dc2b31945045284.json#sha256=9ea9a25cb5ed2c6973da4e52b516378f18afd51eda47ea940761d664a560f8c7
 
 ### freelance project marketplace (Freelancer)
 
@@ -86,25 +86,25 @@ Additional families attempted this run: 9.
 - Verified buyer requests: 0; explicit commercial signals: 0
 - Limitations: A different query/category on Freelancer does not count as another independent family.
 - Errors: []
-- Audit snapshots: data/evidence/eb34b643617bda88.json#sha256=9249f1f9abd51a6b849ac0d307d282be9bea4607bec3a0b87eb9e49b286f3d80
+- Audit snapshots: data/evidence/eb34b643617bda88.json#sha256=42b1ea2fed5ff555d3e880578bd392f1554ee70eae0830a202e6148dd8ceec9e
 
 ### commerce operator community (Shopify)
 
 - Access: bounded public HTTP/JSON; no authenticated endpoint; https://community.shopify.com/latest.json
-- Records inspected: 30; primary pages opened: 2; collected observations: 2
+- Records inspected: 30; primary pages opened: 3; collected observations: 3
 - Verified buyer requests: 0; explicit commercial signals: 0
 - Limitations: Latest activity is not original publication; support questions are PRODUCT_SIGNAL, not SALES. No more than four primary topics per run.
 - Errors: []
-- Audit snapshots: data/evidence/bda5dc3c1eb46ea5.json#sha256=0b6d2ca2382851dc625742e54c75500e74c508d1b55c999d78fe716870c75e69, data/evidence/67bc51c405091f8a.json#sha256=0e1b1c411be1805d165dfe80affd76f5d672387d85ace5407c786f1c948529dc, data/evidence/8eac8077525fd1fc.json#sha256=da9c7f1eefd243262fd3d65ec3a2032b61d0f5d902be4e1fb9c06e4aa16f97f0
+- Audit snapshots: data/evidence/bda5dc3c1eb46ea5.json#sha256=9ccacf900251cba0c6d5529ddd32c2393f07ea4f23e81eb86255d7d5b489fb2b, data/evidence/c1e4485d5191e77a.json#sha256=08b3d64196a0307b20b2586d2a67cad677fe63815dcb247b23df2a138a5dbf19, data/evidence/63883190e7f407fc.json#sha256=3e4447f7d57b999a176e25885e57ffa1f3379beb7a12b704e07924bb8ae99364, data/evidence/8eac8077525fd1fc.json#sha256=866845aa30374e1e5348fb188032a29717a7e5ecee11a0bbf071bd16b3385ee8
 
 ### founder community (Indie Hackers)
 
 - Access: bounded public HTTP/JSON; no authenticated endpoint; https://www.indiehackers.com/
-- Records inspected: 20; primary pages opened: 0; collected observations: 0
+- Records inspected: 22; primary pages opened: 0; collected observations: 0
 - Verified buyer requests: 0; explicit commercial signals: 0
 - Limitations: Only server-rendered public pages. robots disallows /api/ and sign-in; neither used. Founder self-promotion is not a buyer.
 - Errors: []
-- Audit snapshots: data/evidence/6548833164b0e7c9.json#sha256=93ae718fddce034e8d9de2551a1dcfd0639e0bc24f886c3ccc7c79fd5f1839dd
+- Audit snapshots: data/evidence/6548833164b0e7c9.json#sha256=7b66fb4e31e7519abfb9565156935f697135dc0b999ad43f9baefde23220564f
 
 ### international physical-goods RFQ (TradeKey)
 
@@ -113,9 +113,84 @@ Additional families attempted this run: 9.
 - Verified buyer requests: 2; explicit commercial signals: 2
 - Limitations: Physical goods buyers do not automatically buy research. Contact requires platform sign-in; no access bypass. No bid-count visibility => UNKNOWN.
 - Errors: []
-- Audit snapshots: data/evidence/3914e4f508c84945.json#sha256=52a6fc07c21bfe20e7384796f92416563133caada14d3ca2e5ae6a7a1263b4b7, data/evidence/82f55d4728f7840a.json#sha256=e75bfc06dae26ffbf75e5dab14e6a161767185b92f42c6b12b5df703dfd9f94d, data/evidence/faa74e92582da602.json#sha256=6e7c387c9410b590b531214626d235d5a1ec76116512b44bcb3cf9ac68892449
+- Audit snapshots: data/evidence/3914e4f508c84945.json#sha256=6eb3af9843e4a19bd8ae8d0db7d27ccd5fde3d936ff5c64d494801ea057aa621, data/evidence/e965d6d6bbfa731e.json#sha256=d63668d1100f404ad15cb19ed64d7e1a88b702b1e74d54eef02640138fc4c9e7, data/evidence/91d9dbe1f44059ca.json#sha256=7a6410ae5d6bb7ede9f3434e455e4da145852d36803afd381cebba274d639f0a
 
 ## Primary commercial evidence (distinct source URLs)
+
+### Stop calling it "workflow automation." That's what someone does in an afternoon with three Zapier nodes and a prayer. I design systems.
+
+- Source: https://community.n8n.io/t/stop-calling-it-workflow-automation-thats-what-someone-does-in-an-afternoon-with-three-zapier-nodes-and-a-prayer-i-design-systems/322645
+- Buyer: n8n Community:Keyurr; published_at: 2026-10-19T02:44:27.257Z; last_activity_at: 2026-10-19T02:44:27.257Z
+- Intent: HIRING; exact quote: Hiring, or know someone who is?
+- Need (primary text): Stop calling it "workflow automation." That's what someone does in an afternoon with three Zapier nodes and a prayer. I design systems.
+I’m looking for an opportunity as an n8n Developer / AI Automation Engineer.
+ What’s actually built, not “worked on”:
+ → 36 workflows, 3 production systems, not tutorial projects, systems that run
+ → Multi-agent AI stacks wired into real databases, not a spreadsheet pretending to be a backend
+ → APIs, webhooks, end-to-end business logic. The unglamorous plumbing that decides whether a company’s ops actually work or just look like they do
+ Every system is documented down to the architecture, not a screenshot dump, an actual paper trail of decisions.
+ Po
+- Contact/application: https://community.n8n.io/t/stop-calling-it-workflow-automation-thats-what-someone-does-in-an-afternoon-with-three-zapier-nodes-and-a-prayer-i-design-systems/322645; public profile: https://community.n8n.io/u/Keyurr
+- Competition: LOW; replies=0; providers=0; complete=True
+- REMOTE_NOW scope: One buyer-specified remote workflow: agree inputs/output, implement in authorized sandbox, test cases and handover; no unscoped rebuild; proposed price: USD 100–200 paid scoping pilot; implementation quote after access/scope review (proposal, not buyer budget)
+- Dependencies: ['Buyer-approved narrow scope and actual relevant portfolio/timezone fit must be checked']; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports. Platform reply/application rules apply; private DM competition is unobservable.
+- First-message angle: Which first workflow and acceptance criteria should a small paid pilot cover? I will disclose actual experience and only quote after checking authorized access and scope.
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN
+
+### [HIRING] Shopify tracking + n8n specialist, part-time ongoing, $35/hr guaranteed + revenue share
+
+- Source: https://community.n8n.io/t/hiring-shopify-tracking-n8n-specialist-part-time-ongoing-35-hr-guaranteed-revenue-share/322445
+- Buyer: n8n Community:boston_young; published_at: 2026-10-18T19:32:55.349Z; last_activity_at: 2026-10-19T05:09:07.058Z
+- Intent: HIRING; exact quote: [HIRING] Shopify tracking + n8n specialist, part-time ongoing, $35/hr guaranteed + revenue share
+- Need (primary text): [HIRING] Shopify tracking + n8n specialist, part-time ongoing, $35/hr guaranteed + revenue share
+Hi all, I’m Boston. I run Young Automation Studio, a new agency on Upwork. We fix Shopify tracking (Meta Pixel / Conversions API duplicates, GA4 purchases), tune up Klaviyo, and build n8n automations for Shopify stores. From December we add lead-response and CRM automations for service businesses and agencies. We use AI heavily to scope, draft and prototype, so we need an expert to build it right, test it, and be the person clients talk to.
+ What you’d do
+
+ Deliver 72-hour Tracking Fix Sprints: Meta Pixel + Conversions API de-duplication (event_id), GA4 purchase events from Shopify Customer Ev
+- Contact/application: https://community.n8n.io/t/hiring-shopify-tracking-n8n-specialist-part-time-ongoing-35-hr-guaranteed-revenue-share/322445; public profile: https://community.n8n.io/u/boston_young
+- Competition: MEDIUM; replies=6; providers=3; complete=True
+- REMOTE_NOW scope: One buyer-specified remote workflow: agree inputs/output, implement in authorized sandbox, test cases and handover; no unscoped rebuild; proposed price: USD 100–200 paid scoping pilot; implementation quote after access/scope review (proposal, not buyer budget)
+- Dependencies: ['Buyer-approved narrow scope and actual relevant portfolio/timezone fit must be checked']; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports. Platform reply/application rules apply; private DM competition is unobservable.
+- First-message angle: Which first workflow and acceptance criteria should a small paid pilot cover? I will disclose actual experience and only quote after checking authorized access and scope.
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN
+
+### Task 032 — Convert the digital-asset portfolio into an income-first execution backlog
+
+- Source: https://github.com/faroukpandor/faroukpandor.github.io/issues/125
+- Buyer: GitHub:faroukpandor; published_at: 2026-10-18T16:19:48Z; last_activity_at: 2026-10-19T06:55:12Z
+- Intent: PAID_TASK; exact quote: - [ ] Prototype with synthetic/sample data; seek a paid pilot or a specific written commitment before expanding features.
+- Need (primary text): Task 032 — Convert the digital-asset portfolio into an income-first execution backlog
+# Task 032 — Convert the digital-asset portfolio into an income-first execution backlog
+
+**Parent programme:** Task 028 / portfolio roadmap — https://github.com/faroukpandor/faroukpandor.github.io/issues/95
+**Related:** competitor/repository register https://github.com/faroukpandor/faroukpandor.github.io/issues/114 · Stage 0 audit https://github.com/faroukpandor/faroukpandor.github.io/issues/115 · customer evidence sprint https://github.com/faroukpandor/faroukpandor.github.io/issues/116
+**Status:** Planning task registered; no revenue, customer validation, audit completion or deployment is implied.
+
+##
+- Contact/application: https://github.com/faroukpandor/faroukpandor.github.io/issues/125; public profile: https://github.com/faroukpandor
+- Competition: LOW; replies=4; providers=0; complete=True
+- REMOTE_NOW scope: Remote supplier verification / RFQ comparison for one SKU; proposed price: USD 100–250 (proposed discovery pilot; buyer budget unverified)
+- Dependencies: ['PARTNER_REQUIRED: on-site QC, warehouse or freight execution', 'SPECIALIST_REQUIRED: compliance/customs/category expertise']; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports. PARTNER_REQUIRED: on-site QC, warehouse or freight execution; SPECIALIST_REQUIRED: compliance/customs/category expertise
+- First-message angle: Which SKU, destination and supplier are you evaluating? I can scope a remote verification memo; physical QC is separate.
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; partner/specialist capability not currently controlled
+
+### HABITAT-VERTICAL-001: co-design factory, product, and end-to-end supply chain for repairable household goods
+
+- Source: https://github.com/Luminous-Dynamics/symthaea/issues/8051
+- Buyer: GitHub:Tristan-Stoltz-ERC; published_at: 2026-10-18T15:51:38Z; last_activity_at: 2026-10-19T07:30:21Z
+- Intent: QUOTE_REQUESTED; exact quote: - Include a training and operator-feedback loop; workers must be able to stop, challenge or annotate a plan without retaliation encoded into the software.
+- Need (primary text): HABITAT-VERTICAL-001: co-design factory, product, and end-to-end supply chain for repairable household goods
+## Mission
+
+Extend [SLEEP-PRODUCT-001 #8039](https://github.com/Luminous-Dynamics/symthaea/issues/8039) from an excellent product concept to an evidence-bearing **factory-to-product vertical**: upstream materials and suppliers, conversion, components, assembly, quality, utilities, workforce, facility design, distribution, repair/refurbishment and material recovery.
+
+The intended paradigm shift is product–process–factory–supply-chain co-design. Do not optimize a mattress topper, furniture article or garment in isolation and only afterward discover that its materials, tools, factory lay
+- Contact/application: https://github.com/Luminous-Dynamics/symthaea/issues/8051; public profile: https://github.com/Tristan-Stoltz-ERC
+- Competition: LOW; replies=9; providers=0; complete=True
+- REMOTE_NOW scope: Remote supplier verification / RFQ comparison for one SKU; proposed price: USD 100–250 (proposed discovery pilot; buyer budget unverified)
+- Dependencies: ['PARTNER_REQUIRED: on-site QC, warehouse or freight execution']; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports. PARTNER_REQUIRED: on-site QC, warehouse or freight execution
+- First-message angle: Which SKU, destination and supplier are you evaluating? I can scope a remote verification memo; physical QC is separate.
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; partner/specialist capability not currently controlled
 
 ### Enhancement: Shared branded PDF template designer — logos, contracts, invoices, letters, plans, schedules and bookings
 
@@ -155,7 +230,7 @@ The ledger had been recording these against #932, which is a different bug (tag-
 ### N8n + MirrorFly Developer for Video Conferencing Automation
 
 - Source: https://community.n8n.io/t/n8n-mirrorfly-developer-for-video-conferencing-automation/322016
-- Buyer: n8n Community:Shyamvijay; published_at: 2026-10-16T20:38:11.216Z; last_activity_at: 2026-10-18T06:36:21.209Z
+- Buyer: n8n Community:Shyamvijay; published_at: 2026-10-16T20:38:11.216Z; last_activity_at: 2026-10-19T05:47:54.353Z
 - Intent: AGENT_OR_VENDOR_REQUEST; exact quote: I’m looking for an experienced automation developer who can help me build a video conferencing automation system using n8n + MirrorFly + API integrations.
 - Need (primary text): N8n + MirrorFly Developer for Video Conferencing Automation
 Hi everyone,
@@ -174,7 +249,7 @@ Hi everyone,
 
  Schedule meetings using calendar integrat
 - Contact/application: https://community.n8n.io/t/n8n-mirrorfly-developer-for-video-conferencing-automation/322016; public profile: https://community.n8n.io/u/Shyamvijay
-- Competition: HIGH; replies=45; providers=26; complete=True
+- Competition: HIGH; replies=84; providers=57; complete=True
 - REMOTE_NOW scope: One buyer-specified remote workflow: agree inputs/output, implement in authorized sandbox, test cases and handover; no unscoped rebuild; proposed price: USD 100–200 paid scoping pilot; implementation quote after access/scope review (proposal, not buyer budget)
 - Dependencies: ['Buyer-approved narrow scope and actual relevant portfolio/timezone fit must be checked']; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports. Platform reply/application rules apply; private DM competition is unobservable.
 - First-message angle: Which first workflow and acceptance criteria should a small paid pilot cover? I will disclose actual experience and only quote after checking authorized access and scope.
@@ -233,7 +308,7 @@ Each genuine-gap cluster has a `[Bounty]` task linked to it. **$0 / `zero-bounty
 ### Exploring n8n implementation partnerships for SaaS workflow plans — no active project yet
 
 - Source: https://community.n8n.io/t/exploring-n8n-implementation-partnerships-for-saas-workflow-plans-no-active-project-yet/321496
-- Buyer: n8n Community:pony_weft; published_at: 2026-10-14T19:43:02.499Z; last_activity_at: 2026-10-18T06:47:46.742Z
+- Buyer: n8n Community:pony_weft; published_at: 2026-10-14T19:43:02.499Z; last_activity_at: 2026-10-19T02:41:21.745Z
 - Intent: PAID_TASK; exact quote: This is an exploratory partner introduction, not an open paid job or a promise of work.
 - Need (primary text): Exploring n8n implementation partnerships for SaaS workflow plans — no active project yet
 Hi, I’m Pony, founder of Weft. I’m looking to connect with n8n implementers who work on SaaS customer-request workflows across support, product and engineering.
@@ -241,7 +316,7 @@ Hi, I’m Pony, founder of Weft. I’m looking to connect with n8n implementers 
  Weft’s package covers reviewing one workflow, mapping the current and proposed process, defining owners and required data, and documenting exception paths and acceptance checks. Implementation is separately scoped.
  The collaboration I’d like to explore is: Weft prepares the p
 - Contact/application: https://community.n8n.io/t/exploring-n8n-implementation-partnerships-for-saas-workflow-plans-no-active-project-yet/321496; public profile: https://community.n8n.io/u/pony_weft
-- Competition: HIGH; replies=17; providers=6; complete=True
+- Competition: HIGH; replies=19; providers=7; complete=True
 - REMOTE_NOW scope: One buyer-specified remote workflow: agree inputs/output, implement in authorized sandbox, test cases and handover; no unscoped rebuild; proposed price: USD 100–200 paid scoping pilot; implementation quote after access/scope review (proposal, not buyer budget)
 - Dependencies: ['Buyer-approved narrow scope and actual relevant portfolio/timezone fit must be checked']; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports. Platform reply/application rules apply; private DM competition is unobservable.
 - First-message angle: Which first workflow and acceptance criteria should a small paid pilot cover? I will disclose actual experience and only quote after checking authorized access and scope.
@@ -250,7 +325,7 @@ Hi, I’m Pony, founder of Weft. I’m looking to connect with n8n implementers 
 ### [HIRING] AI / n8n builders in SEA for small, paid SME automation jobs (Singapore)
 
 - Source: https://community.n8n.io/t/hiring-ai-n8n-builders-in-sea-for-small-paid-sme-automation-jobs-singapore/321311
-- Buyer: n8n Community:zx_xasis; published_at: 2026-10-14T13:55:08.529Z; last_activity_at: 2026-10-17T19:13:46.206Z
+- Buyer: n8n Community:zx_xasis; published_at: 2026-10-14T13:55:08.529Z; last_activity_at: 2026-10-19T02:45:09.221Z
 - Intent: HIRING; exact quote: [HIRING] AI / n8n builders in SEA for small, paid SME automation jobs (Singapore)
 - Need (primary text): [HIRING] AI / n8n builders in SEA for small, paid SME automation jobs (Singapore)
 Hi all, I’m ZX, co-founder of XASIS in Singapore.
@@ -263,7 +338,7 @@ Hi all, I’m ZX, co-founder of XASIS in Singapore.
 
   If keen,  reply here or email  zhixian@xasis.compa
 - Contact/application: https://community.n8n.io/t/hiring-ai-n8n-builders-in-sea-for-small-paid-sme-automation-jobs-singapore/321311; public profile: https://community.n8n.io/u/zx_xasis
-- Competition: HIGH; replies=33; providers=15; complete=True
+- Competition: HIGH; replies=36; providers=17; complete=True
 - REMOTE_NOW scope: One buyer-specified remote workflow: agree inputs/output, implement in authorized sandbox, test cases and handover; no unscoped rebuild; proposed price: USD 100–200 paid scoping pilot; implementation quote after access/scope review (proposal, not buyer budget)
 - Dependencies: ['Buyer-approved narrow scope and actual relevant portfolio/timezone fit must be checked']; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports. Platform reply/application rules apply; private DM competition is unobservable.
 - First-message angle: Which first workflow and acceptance criteria should a small paid pilot cover? I will disclose actual experience and only quote after checking authorized access and scope.
@@ -365,7 +440,7 @@ If asynchronous techniques (aiohttp, asyncio) or task queues (Celery, RQ) would 
 ### AI Marketing & n8n Automation Specialist for chill life — Potential Long-Term Partnership
 
 - Source: https://community.n8n.io/t/ai-marketing-n8n-automation-specialist-for-chill-life-potential-long-term-partnership/320146
-- Buyer: n8n Community:Chill-life; published_at: 2026-10-09T20:48:10.154Z; last_activity_at: 2026-10-17T21:05:59.736Z
+- Buyer: n8n Community:Chill-life; published_at: 2026-10-09T20:48:10.154Z; last_activity_at: 2026-10-18T17:04:02.263Z
 - Intent: AGENT_OR_VENDOR_REQUEST; exact quote: I’m looking for an experienced AI marketing and automation specialist who can help translate this mission into consistent storytelling, audience growth, and measurable sales.
 - Need (primary text): AI Marketing & n8n Automation Specialist for chill life — Potential Long-Term Partnership
 AI Marketing & n8n Automation Specialist for chill life — Potential Long-Term Partnership
@@ -373,7 +448,7 @@ AI Marketing & n8n Automation Specialist for chill life — Potential Long-Term 
  We believe happier people create healthier communities. Our apparel, products, and initiatives promote positivity, mental fitness, and meaningful real-life connection. Two key areas of our work are encouraging healthier youth sports culture and helping people take daily breaks from technology to be more present.
  I’m looking for an experienced AI marketing and automation specialist who can help translate this mission into consistent s
 - Contact/application: https://community.n8n.io/t/ai-marketing-n8n-automation-specialist-for-chill-life-potential-long-term-partnership/320146; public profile: https://community.n8n.io/u/Chill-life
-- Competition: HIGH; replies=58; providers=28; complete=True
+- Competition: HIGH; replies=59; providers=28; complete=True
 - REMOTE_NOW scope: Implementation-only pilot: one approved story to email/social drafts and a human approval queue; full marketing role requires a proven partner; proposed price: USD 250–400 scoped technical pilot only if buyer accepts narrower remit; not a buyer budget
 - Dependencies: ['Verified consumer-brand marketing judgment and measurable sales case studies not currently established', 'Buyer consent, brand facts and existing Shopify/email access']; effort: 6–10 hours technical pilot after brand/tool scope; full engagement not estimated; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports. Platform reply/application rules apply; private DM competition is unobservable. Buyer seeks both strategy and implementation; operator case-study fit unverified.
 - First-message angle: You require proven consumer-brand marketing results. I would disclose that gap and ask whether a separate implementation-only approval workflow is useful; never imply an apparel sales track record.
@@ -429,7 +504,7 @@ Hi everyone,
   I’m not looking for the agents to be rebuilt from scratch.
  I’d like to start with  one agent as a paid trial , with ongoing work available if we’re a good
 - Contact/application: https://community.n8n.io/u/cobasuyi; public profile: https://community.n8n.io/u/cobasuyi
-- Competition: HIGH; replies=254; providers=146; complete=False
+- Competition: HIGH; replies=270; providers=147; complete=False
 - REMOTE_NOW scope: QA one existing n8n agent: agreed test cases, edge-case/error-handling report and prioritized fixes; no rebuild; proposed price: USD 150–250 fixed QA pilot (test proposal, not stated buyer budget); fixes scoped separately
 - Dependencies: ['Buyer-authorized sandbox/export and test credentials; call/API test costs agreed in advance', 'Human must evidence actual relevant n8n/voice integration experience before applying']; effort: 4–6 hours for one bounded QA pilot; integration fixes require separate estimate; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports. Platform reply/application rules apply; private DM competition is unobservable.
 - First-message angle: For your one-agent paid trial, which agent and acceptance cases matter first? I can scope a sandbox QA report before any fixes. I will state my actual Vapi/Twilio/ElevenLabs experience rather than claim unverified projects.
@@ -438,7 +513,7 @@ Hi everyone,
 ### Hiring Senior AI & Automation Operations Lead (n8n & Make Specialist) | Remote
 
 - Source: https://community.n8n.io/t/hiring-senior-ai-automation-operations-lead-n8n-make-specialist-remote/318516
-- Buyer: n8n Community:Blumark_24; published_at: 2026-10-03T13:30:09.646Z; last_activity_at: 2026-10-16T20:24:11.025Z
+- Buyer: n8n Community:Blumark_24; published_at: 2026-10-03T13:30:09.646Z; last_activity_at: 2026-10-19T02:43:45.388Z
 - Intent: HIRING; exact quote: Hiring Senior AI & Automation Operations Lead (n8n & Make Specialist) | Remote
 - Need (primary text): Hiring Senior AI & Automation Operations Lead (n8n & Make Specialist) | Remote
 About the Role
@@ -449,7 +524,7 @@ About the Role
 
   AI-First Operation
 - Contact/application: https://community.n8n.io/t/hiring-senior-ai-automation-operations-lead-n8n-make-specialist-remote/318516; public profile: https://community.n8n.io/u/Blumark_24
-- Competition: HIGH; replies=84; providers=51; complete=True
+- Competition: HIGH; replies=84; providers=52; complete=True
 - REMOTE_NOW scope: One bounded workflow implementation only if buyer separates it from the senior operations lead role; proposed price: USD 100–200 paid scoping pilot; implementation quote after access/scope review (proposal, not buyer budget)
 - Dependencies: ['Senior operational/team leadership and MENA client track record not established']; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports. Platform reply/application rules apply; private DM competition is unobservable. Senior ongoing leadership role is not equivalent to a 2-hour workflow diagnostic.
 - First-message angle: Is there a standalone workflow scope, separate from the senior operations/management contract? Disclose actual leadership experience and capacity.
@@ -458,7 +533,7 @@ About the Role
 ### [HIRING] n8n + Looker Studio builder for marketing reporting (Meta Ads, Google Ads, GA4) | Paid test → ongoing | India/IST
 
 - Source: https://community.n8n.io/t/hiring-n8n-looker-studio-builder-for-marketing-reporting-meta-ads-google-ads-ga4-paid-test-ongoing-india-ist/317595
-- Buyer: n8n Community:MerrillOther; published_at: 2026-09-29T12:26:51.654Z; last_activity_at: 2026-10-17T22:33:31.995Z
+- Buyer: n8n Community:MerrillOther; published_at: 2026-09-29T12:26:51.654Z; last_activity_at: 2026-10-19T02:42:15.276Z
 - Intent: BUDGET_STATED; exact quote: Budget: ₹[10,000] (~US$[115]) | Timeline: 7 days
 - Need (primary text): [HIRING] n8n + Looker Studio builder for marketing reporting (Meta Ads, Google Ads, GA4) | Paid test → ongoing | India/IST
 Hi all — I’m starting an automation service for small marketing and PR
@@ -476,7 +551,7 @@ A weekly automated client report:
 
  PAID TE
 - Contact/application: https://community.n8n.io/t/hiring-n8n-looker-studio-builder-for-marketing-reporting-meta-ads-google-ads-ga4-paid-test-ongoing-india-ist/317595; public profile: https://community.n8n.io/u/MerrillOther
-- Competition: HIGH; replies=24; providers=13; complete=True
+- Competition: HIGH; replies=25; providers=14; complete=True
 - REMOTE_NOW scope: Buyer-defined paid test: one Meta Ads account + GA4 to Sheet, existing Looker template, Monday summary email and error alert; no new product UI; proposed price: USD 100–115 fixed test subject to API access and scope (buyer states approx USD 115 / INR 10,000)
 - Dependencies: ['Actual Meta/Google Ads API portfolio proof required; not currently verified', 'Buyer-owned n8n, Google and Meta accounts; authorized test access', 'IST overlap and 4-week capacity confirmation']; effort: 6–10 hours provisional; 7-day buyer timeline; reject if API scope exceeds budget; risk: Stale without buyer renewal; budget tight; ads API permissions and portfolio fit unverified. No private credentials requested before scope/consent.
 - First-message angle: Is the INR 10,000 paid test still open? If actual ads API examples are available, answer your five application questions with one-account scope, tool-cost assumptions and capacity; do not send a generic pitch.
@@ -485,7 +560,7 @@ A weekly automated client report:
 ### [HIRING] Multi-Agent B2B Lead Gen System | n8n + LangGraph | Energy Storage (Na/Li Battery)
 
 - Source: https://community.n8n.io/t/hiring-multi-agent-b2b-lead-gen-system-n8n-langgraph-energy-storage-na-li-battery/317073
-- Buyer: n8n Community:zhuoweixinnengyan; published_at: 2026-09-28T05:23:36.414Z; last_activity_at: 2026-10-15T19:15:04.176Z
+- Buyer: n8n Community:zhuoweixinnengyan; published_at: 2026-09-28T05:23:36.414Z; last_activity_at: 2026-10-19T02:46:59.422Z
 - Intent: HIRING; exact quote: [HIRING] Multi-Agent B2B Lead Gen System | n8n + LangGraph | Energy Storage (Na/Li Battery)
 - Need (primary text): [HIRING] Multi-Agent B2B Lead Gen System | n8n + LangGraph | Energy Storage (Na/Li Battery)
 We are Henan Zhuowei New Energy, a manufacturer selling sodium-ion & lithium-ion battery energy storage systems worldwide.
@@ -498,7 +573,7 @@ We’re seeking an experienced AI Agent developer with deep expertise in n8n and
 
    Re
 - Contact/application: https://community.n8n.io/t/hiring-multi-agent-b2b-lead-gen-system-n8n-langgraph-energy-storage-na-li-battery/317073; public profile: https://community.n8n.io/u/zhuoweixinnengyan
-- Competition: HIGH; replies=92; providers=50; complete=True
+- Competition: HIGH; replies=94; providers=50; complete=True
 - REMOTE_NOW scope: One buyer-specified remote workflow: agree inputs/output, implement in authorized sandbox, test cases and handover; no unscoped rebuild; proposed price: USD 100–200 paid scoping pilot; implementation quote after access/scope review (proposal, not buyer budget)
 - Dependencies: ['Buyer-approved narrow scope and actual relevant portfolio/timezone fit must be checked']; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports. Platform reply/application rules apply; private DM competition is unobservable.
 - First-message angle: Which first workflow and acceptance criteria should a small paid pilot cover? I will disclose actual experience and only quote after checking authorized access and scope.

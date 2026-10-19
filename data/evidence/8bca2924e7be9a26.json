@@ -1,0 +1,1384 @@
+{
+  "source_api_url": "https://community.shopify.com/t/700544.json",
+  "collected_at": "2026-10-19T07:43:58.565595+00:00",
+  "source": {
+    "post_stream": {
+      "posts": [
+        {
+          "id": 1917704,
+          "username": "mrbasitafg",
+          "avatar_template": "/user_avatar/community.shopify.com/mrbasitafg/{size}/417595_2.png",
+          "created_at": "2026-10-19T01:11:41.600Z",
+          "cooked": "<p>I run a small dropshipping store and built an automation that syncs supplier stock to Shopify every 4 hours. It works, but I still worry about the gap: an item can sell out at the supplier between syncs and a customer can still order it.</p>\n<p>For those of you with supplier-based inventory:</p>\n<ul>\n<li>How often do you sync?</li>\n<li>Do you keep a safety buffer (for example, showing 0 when the supplier has fewer than 5)?</li>\n<li>How do you handle the occasional order for something that’s actually gone?</li>\n</ul>\n<p>Curious what’s worked for others.</p>",
+          "post_number": 1,
+          "post_type": 1,
+          "posts_count": 6,
+          "updated_at": "2026-10-19T01:11:41.600Z",
+          "reply_count": 0,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 1,
+          "reads": 19,
+          "readers_count": 18,
+          "score": 68.6,
+          "yours": false,
+          "topic_id": 700544,
+          "topic_slug": "how-often-do-you-sync-supplier-stock-with-your-shopify-store",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": null,
+          "bookmarked": false,
+          "actions_summary": [
+            {
+              "id": 2,
+              "count": 4
+            }
+          ],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1647148,
+          "hidden": false,
+          "trust_level": 0,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/how-often-do-you-sync-supplier-stock-with-your-shopify-store/700544/1",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "calendar_details": [],
+          "reactions": [
+            {
+              "id": "heart",
+              "type": "emoji",
+              "count": 4
+            }
+          ],
+          "current_user_reaction": null,
+          "reaction_users_count": 4,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null,
+          "can_vote": false
+        },
+        {
+          "id": 1917736,
+          "username": "hizachlee",
+          "avatar_template": "/user_avatar/community.shopify.com/hizachlee/{size}/416069_2.png",
+          "created_at": "2026-10-19T02:50:36.646Z",
+          "cooked": "<p>I’d set the buffer by how fast each item sells rather than one number for the whole catalog. For slow items, showing 0 once the supplier is down to 2 or 3 is plenty. For your top sellers, sync those more often if the supplier’s feed allows it, and use a bigger buffer. Push the supplier quantity minus the buffer into Shopify, and make sure “Continue selling when out of stock” is off on those variants so checkout stops at 0.</p>\n<p>For the order that slips through anyway, email the customer the same day: give a real ship date if the supplier is restocking soon, or cancel it from the order page, where the Cancel order dialog lets you refund and restock in one step.</p>",
+          "post_number": 2,
+          "post_type": 1,
+          "posts_count": 6,
+          "updated_at": "2026-10-19T02:50:36.646Z",
+          "reply_count": 1,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 2,
+          "reads": 14,
+          "readers_count": 13,
+          "score": 32.6,
+          "yours": false,
+          "topic_id": 700544,
+          "topic_slug": "how-often-do-you-sync-supplier-stock-with-your-shopify-store",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": null,
+          "bookmarked": false,
+          "actions_summary": [
+            {
+              "id": 2,
+              "count": 1
+            }
+          ],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1644435,
+          "hidden": false,
+          "trust_level": 1,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/how-often-do-you-sync-supplier-stock-with-your-shopify-store/700544/2",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [
+            {
+              "id": "heart",
+              "type": "emoji",
+              "count": 1
+            }
+          ],
+          "current_user_reaction": null,
+          "reaction_users_count": 1,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        },
+        {
+          "id": 1917760,
+          "username": "BobCSV",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/b/977dab/{size}.png",
+          "created_at": "2026-10-19T04:03:21.718Z",
+          "cooked": "<p>Four hours is not a bad interval on its own, and I would look at the feed before I tried to sync more often. Most of the oversells I have seen came from the spreadsheet behind the sync, not the timing. Raw supplier counts had duplicate SKUs, SKUs that did not quite match the Shopify variant, and rows where stock fell sharply between one file and the next, and all of that went straight into the store because the import trusted it.</p>\n<p>What helps is a quick cleanup pass before anything is pushed live. Keep the supplier quantity in one column, work out the quantity you actually want Shopify to show in another, and hold back the odd rows for a manual look instead of importing them automatically. A sharp drop, a missing SKU, or a product that suddenly reappears after being gone is worth checking, because no sync schedule can fix a bad row, it just publishes it faster. I spend a lot of time on this kind of supplier file cleanup at <a href=\"https://runeloresupply.com\" rel=\"noopener nofollow ugc\">https://runeloresupply.com</a>, and once that exception check is routine, a four-hour sync feels a lot safer.</p>\n<p>When one still slips through, checking that held-back list first also makes the customer message easier, because you know whether it was a genuine sell-out or a feed mistake. You can then contact them the same day with a confirmed restock date, a sensible alternative, or a refund, rather than a vague apology while you try to work out what happened.</p>",
+          "post_number": 3,
+          "post_type": 1,
+          "posts_count": 6,
+          "updated_at": "2026-10-19T04:03:21.718Z",
+          "reply_count": 1,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 11,
+          "readers_count": 10,
+          "score": 22.0,
+          "yours": false,
+          "topic_id": 700544,
+          "topic_slug": "how-often-do-you-sync-supplier-stock-with-your-shopify-store",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "link_counts": [
+            {
+              "url": "https://runeloresupply.com",
+              "internal": false,
+              "reflection": false,
+              "title": "Your customers, answered · RuneLore",
+              "clicks": 0
+            }
+          ],
+          "read": true,
+          "user_title": null,
+          "bookmarked": false,
+          "actions_summary": [
+            {
+              "id": 2,
+              "count": 1
+            }
+          ],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1645716,
+          "hidden": false,
+          "trust_level": 1,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/how-often-do-you-sync-supplier-stock-with-your-shopify-store/700544/3",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [
+            {
+              "id": "heart",
+              "type": "emoji",
+              "count": 1
+            }
+          ],
+          "current_user_reaction": null,
+          "reaction_users_count": 1,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        },
+        {
+          "id": 1917765,
+          "username": "mrbasitafg",
+          "avatar_template": "/user_avatar/community.shopify.com/mrbasitafg/{size}/417595_2.png",
+          "created_at": "2026-10-19T04:14:00.739Z",
+          "cooked": "<p>Thanks, this is really helpful. Setting the buffer by how fast each item sells makes a lot more sense than one number for everything. I’ll try a small buffer for slow items and a bigger one with more frequent syncs for my best sellers. Good reminder on “Continue selling when out of stock” too. I’ll double-check it’s off on all variants.</p>",
+          "post_number": 4,
+          "post_type": 1,
+          "posts_count": 6,
+          "updated_at": "2026-10-19T04:14:00.739Z",
+          "reply_count": 0,
+          "reply_to_post_number": 2,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 8,
+          "readers_count": 7,
+          "score": 1.6,
+          "yours": false,
+          "topic_id": 700544,
+          "topic_slug": "how-often-do-you-sync-supplier-stock-with-your-shopify-store",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": null,
+          "reply_to_user": {
+            "id": 1644435,
+            "username": "hizachlee",
+            "avatar_template": "/user_avatar/community.shopify.com/hizachlee/{size}/416069_2.png"
+          },
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1647148,
+          "hidden": false,
+          "trust_level": 0,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/how-often-do-you-sync-supplier-stock-with-your-shopify-store/700544/4",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        },
+        {
+          "id": 1917767,
+          "username": "mrbasitafg",
+          "avatar_template": "/user_avatar/community.shopify.com/mrbasitafg/{size}/417595_2.png",
+          "created_at": "2026-10-19T04:15:32.259Z",
+          "cooked": "<p>Thanks, that’s a great point. Bad data does more damage than slow timing. I already validate SKUs and variant IDs before anything gets written to Shopify, but I like the idea of flagging sharp stock drops and products that suddenly reappear for a manual check instead of pushing them live. Adding that to my sync.</p>",
+          "post_number": 5,
+          "post_type": 1,
+          "posts_count": 6,
+          "updated_at": "2026-10-19T04:15:32.259Z",
+          "reply_count": 0,
+          "reply_to_post_number": 3,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 9,
+          "readers_count": 8,
+          "score": 1.8,
+          "yours": false,
+          "topic_id": 700544,
+          "topic_slug": "how-often-do-you-sync-supplier-stock-with-your-shopify-store",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": null,
+          "reply_to_user": {
+            "id": 1645716,
+            "username": "BobCSV",
+            "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/b/977dab/{size}.png"
+          },
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1647148,
+          "hidden": false,
+          "trust_level": 0,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/how-often-do-you-sync-supplier-stock-with-your-shopify-store/700544/5",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        },
+        {
+          "id": 1917793,
+          "username": "ahsandoesntcare",
+          "avatar_template": "/user_avatar/community.shopify.com/ahsandoesntcare/{size}/415687_2.png",
+          "created_at": "2026-10-19T06:23:37.740Z",
+          "cooked": "<p>Hey <a class=\"mention\" href=\"/u/mrbasitafg\">@mrbasitafg</a></p>\n<p>After each sync, check Products &gt; Inventory in the admin for negative quantities. Those are the oversells, because the sync wrote the supplier’s 0 onto a variant that had already sold. Sorting by inventory shows them quickly and gives you a real oversell rate instead of a worry.</p>\n<p>If one fast mover keeps landing negative, sync just that item more often or pull it from the store.</p>\n<p>When an order does slip through, cancel and refund it the same day rather than waiting to see if the supplier restocks. Customers take that much better than a delayed “sorry, it’s gone”.</p>",
+          "post_number": 6,
+          "post_type": 1,
+          "posts_count": 6,
+          "updated_at": "2026-10-19T06:23:37.740Z",
+          "reply_count": 0,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 7,
+          "readers_count": 6,
+          "score": 16.4,
+          "yours": false,
+          "topic_id": 700544,
+          "topic_slug": "how-often-do-you-sync-supplier-stock-with-your-shopify-store",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": "",
+          "bookmarked": false,
+          "actions_summary": [
+            {
+              "id": 2,
+              "count": 1
+            }
+          ],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1640284,
+          "hidden": false,
+          "trust_level": 2,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/how-often-do-you-sync-supplier-stock-with-your-shopify-store/700544/6",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [
+            {
+              "id": "heart",
+              "type": "emoji",
+              "count": 1
+            }
+          ],
+          "current_user_reaction": null,
+          "reaction_users_count": 1,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        }
+      ],
+      "stream": [
+        1917704,
+        1917736,
+        1917760,
+        1917765,
+        1917767,
+        1917793
+      ]
+    },
+    "timeline_lookup": [
+      [
+        1,
+        0
+      ]
+    ],
+    "user_badges": {
+      "users": {
+        "1640284": {
+          "id": 1640284,
+          "badge_ids": [
+            111,
+            117
+          ]
+        },
+        "1644435": {
+          "id": 1644435,
+          "badge_ids": [
+            108
+          ]
+        }
+      },
+      "badges": {
+        "131": {
+          "id": 131,
+          "name": "1000 Accepted Solutions",
+          "slug": "1000-accepted-solutions",
+          "description": "You're a member of the 1000 accepted solutions club!",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 1
+        },
+        "110": {
+          "id": 110,
+          "name": "50 Posts",
+          "slug": "50-posts",
+          "description": "Way to go! You've posted 50 times in the Shopify Community",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 3
+        },
+        "19": {
+          "id": 19,
+          "name": "Good Topic",
+          "slug": "good-topic",
+          "description": "Received 25 likes on a topic",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 3,
+          "badge_type_id": 2
+        },
+        "7": {
+          "id": 7,
+          "name": "Good Post",
+          "slug": "good-reply",
+          "description": "Received 25 likes on a reply",
+          "icon": "reply",
+          "image_url": null,
+          "badge_grouping_id": 3,
+          "badge_type_id": 2
+        },
+        "114": {
+          "id": 114,
+          "name": "1000 Posts",
+          "slug": "1000-posts",
+          "description": "You're a member of the 1000 posts club!",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 1
+        },
+        "32": {
+          "id": 32,
+          "name": "Gives Back",
+          "slug": "gives-back",
+          "description": "Has 100 liked posts and gave 100 likes",
+          "icon": "heart",
+          "image_url": null,
+          "badge_grouping_id": 2,
+          "badge_type_id": 2
+        },
+        "109": {
+          "id": 109,
+          "name": "25 Posts",
+          "slug": "25-posts",
+          "description": "With 25 posts submitted, you help keep the conversations going",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 3
+        },
+        "113": {
+          "id": 113,
+          "name": "500 Posts",
+          "slug": "500-posts",
+          "description": "Congratulations on reaching the 500 post milestone!",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 1
+        },
+        "46": {
+          "id": 46,
+          "name": "Aficionado",
+          "slug": "aficionado",
+          "description": "Visited 100 consecutive days",
+          "icon": "far-eye",
+          "image_url": null,
+          "badge_grouping_id": 2,
+          "badge_type_id": 2
+        },
+        "112": {
+          "id": 112,
+          "name": "250 Posts",
+          "slug": "250-posts",
+          "description": "250 posts! Thanks for being an engaged member of the Shopify Community",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 2
+        },
+        "111": {
+          "id": 111,
+          "name": "100 Posts",
+          "slug": "100-posts",
+          "description": "100 posts! Thanks for being an engaged member of the Shopify Community",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 2
+        },
+        "122": {
+          "id": 122,
+          "name": "1000 Likes",
+          "slug": "1000-likes",
+          "description": "You're a member of the 1000 likes club!",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 1
+        },
+        "129": {
+          "id": 129,
+          "name": "250 Accepted Solutions",
+          "slug": "250-accepted-solutions",
+          "description": "250 accepted solutions! Thank you for being so helpful",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 2
+        },
+        "121": {
+          "id": 121,
+          "name": "500 Likes",
+          "slug": "500-likes",
+          "description": "Congratulations on obtaining 500 likes!",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 1
+        },
+        "135": {
+          "id": 135,
+          "name": "Power User 2024",
+          "slug": "power-user-2024",
+          "description": "Most participating users within 2024",
+          "icon": "ranking-star",
+          "image_url": null,
+          "badge_grouping_id": 6,
+          "badge_type_id": 3
+        },
+        "119": {
+          "id": 119,
+          "name": "100 Likes",
+          "slug": "100-likes",
+          "description": "Your contributions have earned you 100 likes",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 2
+        },
+        "126": {
+          "id": 126,
+          "name": "50 Accepted Solutions",
+          "slug": "50-accepted-solutions",
+          "description": "Your knowledge has resulted in 50 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 3
+        },
+        "125": {
+          "id": 125,
+          "name": "25 Accepted Solutions",
+          "slug": "25-accepted-solutions",
+          "description": "Your guidance has resulted in 25 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 3
+        },
+        "3": {
+          "id": 3,
+          "name": "Regular",
+          "slug": "regular",
+          "description": "Awarded at Trust Level 3. Recognized for regular contributions as a trusted user.",
+          "icon": "user",
+          "image_url": null,
+          "badge_grouping_id": 4,
+          "badge_type_id": 2
+        },
+        "120": {
+          "id": 120,
+          "name": "250 Likes",
+          "slug": "250-likes",
+          "description": "Your expertise has earned you 250 likes!",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 2
+        },
+        "127": {
+          "id": 127,
+          "name": "75 Accepted Solutions",
+          "slug": "75-accepted-solutions",
+          "description": "Your expertise has resulted in 75 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 2
+        },
+        "130": {
+          "id": 130,
+          "name": "500 Accepted Solutions",
+          "slug": "500-accepted-solutions",
+          "description": "Your valuable contributions have resulted in 500 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 1
+        },
+        "118": {
+          "id": 118,
+          "name": "50 Likes",
+          "slug": "50-likes",
+          "description": "Your contributions have earned you 50 likes",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 3
+        },
+        "116": {
+          "id": 116,
+          "name": "10 Likes",
+          "slug": "10-likes",
+          "description": "You've received 10 likes",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 3
+        },
+        "128": {
+          "id": 128,
+          "name": "100 Accepted Solutions",
+          "slug": "100-accepted-solutions",
+          "description": "Congratulations! You've provided 100 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 2
+        },
+        "117": {
+          "id": 117,
+          "name": "25 Likes",
+          "slug": "25-likes",
+          "description": "With 25 likes, your posts are popular",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 3
+        },
+        "124": {
+          "id": 124,
+          "name": "10 Accepted Solutions",
+          "slug": "10-accepted-solutions",
+          "description": "10 of your replies have been accepted as solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 3
+        },
+        "108": {
+          "id": 108,
+          "name": "10 Posts",
+          "slug": "10-posts",
+          "description": "Thanks for being an active member and posting 10 times",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 3
+        }
+      }
+    },
+    "suggested_topics": [],
+    "tags": [
+      {
+        "id": 3959,
+        "name": "dropshipping",
+        "slug": "dropshipping"
+      },
+      {
+        "id": 1103,
+        "name": "inventory",
+        "slug": "inventory"
+      },
+      {
+        "id": 5151,
+        "name": "Suppliers",
+        "slug": "suppliers"
+      }
+    ],
+    "tags_descriptions": {},
+    "fancy_title": "How often do you sync supplier stock with your Shopify store?",
+    "id": 700544,
+    "title": "How often do you sync supplier stock with your Shopify store?",
+    "posts_count": 6,
+    "created_at": "2026-10-19T01:11:41.447Z",
+    "views": 52,
+    "reply_count": 2,
+    "like_count": 7,
+    "last_posted_at": "2026-10-19T06:23:37.740Z",
+    "visible": true,
+    "closed": false,
+    "archived": false,
+    "has_summary": false,
+    "archetype": "regular",
+    "slug": "how-often-do-you-sync-supplier-stock-with-your-shopify-store",
+    "category_id": 286,
+    "word_count": 700,
+    "deleted_at": null,
+    "user_id": 1647148,
+    "featured_link": null,
+    "pinned_globally": false,
+    "pinned_at": null,
+    "pinned_until": null,
+    "image_url": null,
+    "slow_mode_seconds": 0,
+    "draft": null,
+    "draft_key": "topic_700544",
+    "draft_sequence": null,
+    "unpinned": null,
+    "pinned": false,
+    "current_post_number": 1,
+    "highest_post_number": 6,
+    "deleted_by": null,
+    "actions_summary": [
+      {
+        "id": 8,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 1002,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 4,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 7,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 1001,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 10,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      }
+    ],
+    "chunk_size": 20,
+    "bookmarked": false,
+    "topic_timer": {
+      "id": 1831,
+      "execute_at": "2027-04-17T06:23:37.740Z",
+      "duration_minutes": 259200,
+      "based_on_last_post": true,
+      "status_type": "close",
+      "category_id": null
+    },
+    "message_bus_last_id": 56,
+    "participant_count": 4,
+    "show_read_indicator": false,
+    "thumbnails": null,
+    "slow_mode_enabled_until": null,
+    "related_topics": [
+      {
+        "fancy_title": "Supplier stock changes before my shop updates&hellip; how do you handle that?",
+        "id": 693123,
+        "title": "Supplier stock changes before my shop updates... how do you handle that?",
+        "slug": "supplier-stock-changes-before-my-shop-updates-how-do-you-handle-that",
+        "posts_count": 7,
+        "reply_count": 1,
+        "highest_post_number": 7,
+        "image_url": null,
+        "created_at": "2026-10-07T10:00:14.882Z",
+        "last_posted_at": "2026-10-07T19:54:45.256Z",
+        "bumped": true,
+        "bumped_at": "2026-10-07T19:54:45.256Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "This is the part of working with a supplier that worries me. Their stock figure might sync to Shopify, but they could sell the last unit somewhere else before the next update. \nDo you leave a buffer instead of listing ev&hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [
+          {
+            "id": 2995,
+            "name": "css",
+            "slug": "css"
+          }
+        ],
+        "tags_descriptions": {},
+        "like_count": 5,
+        "views": 173,
+        "category_id": 286,
+        "featured_link": null,
+        "op_like_count": 1,
+        "has_accepted_answer": true,
+        "posters": [
+          {
+            "extras": "latest",
+            "description": "Original Poster, Most Recent Poster",
+            "user": {
+              "id": 1642607,
+              "username": "pablohc",
+              "avatar_template": "/user_avatar/community.shopify.com/pablohc/{size}/415069_2.png",
+              "trust_level": 0
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster, Accepted Answer",
+            "user": {
+              "id": 1111147,
+              "username": "alaattincagil",
+              "avatar_template": "/user_avatar/community.shopify.com/alaattincagil/{size}/414466_2.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 2
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 1644435,
+              "username": "hizachlee",
+              "avatar_template": "/user_avatar/community.shopify.com/hizachlee/{size}/416069_2.png",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 1630698,
+              "username": "Hardeep",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/h/65b543/{size}.png",
+              "trust_level": 2
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": 1645037,
+              "username": "Frec3",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/f/8baadc/{size}.png",
+              "trust_level": 1
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "Is there any way to sync Shopify product inventory with supplier inventory?",
+        "id": 305470,
+        "title": "Is there any way to sync Shopify product inventory with supplier inventory?",
+        "slug": "is-there-any-way-to-sync-shopify-product-inventory-with-supplier-inventory",
+        "posts_count": 3,
+        "reply_count": 0,
+        "highest_post_number": 0,
+        "image_url": null,
+        "created_at": "2024-03-14T21:02:11.000Z",
+        "last_posted_at": "2024-03-20T01:21:52.000Z",
+        "bumped": true,
+        "bumped_at": "2024-03-20T01:21:52.000Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Is there any way to sync Shopify product inventory with supplier inventory to prevent customers from being able to order items that are out of stock? Ideally when the product is out of stock for my supplier these changes&hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [
+          {
+            "id": 3959,
+            "name": "dropshipping",
+            "slug": "dropshipping"
+          },
+          {
+            "id": 751,
+            "name": "product-supplier",
+            "slug": "product-supplier"
+          }
+        ],
+        "tags_descriptions": {},
+        "like_count": 1,
+        "views": 111,
+        "category_id": 286,
+        "featured_link": null,
+        "op_like_count": 0,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 976542,
+              "username": "CC02",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/c/d78d45/{size}.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": 1263714,
+              "username": "Gangify",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/g/dec6dc/{size}.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 253337,
+              "username": "Shipant",
+              "avatar_template": "/user_avatar/community.shopify.com/shipant/{size}/60095_2.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "Challenges with Shopify Dropshipping: Issues with Supplier Integration and Order Fulfillment",
+        "id": 343458,
+        "title": "Challenges with Shopify Dropshipping: Issues with Supplier Integration and Order Fulfillment",
+        "slug": "challenges-with-shopify-dropshipping-issues-with-supplier-integration-and-order-fulfillment",
+        "posts_count": 3,
+        "reply_count": 0,
+        "highest_post_number": 3,
+        "image_url": null,
+        "created_at": "2024-07-29T07:15:32.000Z",
+        "last_posted_at": "2024-07-31T12:52:52.000Z",
+        "bumped": true,
+        "bumped_at": "2024-07-31T12:52:52.000Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Hello Shopify Community, \nI’m currently running a dropshipping store on Shopify and facing a few challenges that I hope you can help with. Specifically, I’m having issues with supplier integration and order fulfillment. \n&hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [
+          {
+            "id": 3959,
+            "name": "dropshipping",
+            "slug": "dropshipping"
+          }
+        ],
+        "tags_descriptions": {},
+        "like_count": 1,
+        "views": 250,
+        "category_id": 286,
+        "featured_link": null,
+        "op_like_count": 1,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 1363355,
+              "username": "Baxterstreeserv",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/b/f9ae1b/{size}.png",
+              "primary_group_name": "shopifystaff",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": 71460,
+              "username": "JoesIdeas",
+              "avatar_template": "/user_avatar/community.shopify.com/joesideas/{size}/417460_2.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 2
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 12801,
+              "username": "Fahad_Nawaz",
+              "avatar_template": "/user_avatar/community.shopify.com/fahad_nawaz/{size}/76129_2.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 1
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "Supplier Integration",
+        "id": 658353,
+        "title": "Supplier Integration",
+        "slug": "supplier-integration",
+        "posts_count": 4,
+        "reply_count": 0,
+        "highest_post_number": 5,
+        "image_url": null,
+        "created_at": "2026-07-29T01:05:06.921Z",
+        "last_posted_at": "2026-08-01T15:52:57.405Z",
+        "bumped": true,
+        "bumped_at": "2026-08-01T15:52:57.405Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Supplier Integration\n\nHas anyone integrated wholesalers or dropshipping suppliers with Shopify for inventory syncing and order fulfillment? I’m researching the best workflow and would appreciate hearing what apps or proc&hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [
+          {
+            "id": 5151,
+            "name": "Suppliers",
+            "slug": "suppliers"
+          }
+        ],
+        "tags_descriptions": {},
+        "like_count": 2,
+        "views": 156,
+        "category_id": 95,
+        "featured_link": null,
+        "op_like_count": 2,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 1631692,
+              "username": "aliasmith",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/a/3ab097/{size}.png",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 1630698,
+              "username": "Hardeep",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/h/65b543/{size}.png",
+              "trust_level": 2
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": 1633959,
+              "username": "One-Sun1995",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/o/f475e1/{size}.png",
+              "trust_level": 2
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 1300333,
+              "username": "SealSubs-Roan",
+              "avatar_template": "/user_avatar/community.shopify.com/sealsubs-roan/{size}/278057_2.png",
+              "primary_group_name": "merchant",
+              "trust_level": 2
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "Products stock",
+        "id": 420458,
+        "title": "Products stock",
+        "slug": "products-stock",
+        "posts_count": 2,
+        "reply_count": 0,
+        "highest_post_number": 2,
+        "image_url": null,
+        "created_at": "2025-06-21T22:05:32.000Z",
+        "last_posted_at": "2025-06-22T01:15:59.000Z",
+        "bumped": true,
+        "bumped_at": "2025-06-22T01:15:59.000Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "I’m dropping from a supplier and the products are being shipped from them on demand. due to that my products are saying sold out on he store.",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [
+          {
+            "id": 3959,
+            "name": "dropshipping",
+            "slug": "dropshipping"
+          }
+        ],
+        "tags_descriptions": {},
+        "like_count": 0,
+        "views": 82,
+        "category_id": 286,
+        "featured_link": null,
+        "op_like_count": 0,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 1572952,
+              "username": "NOCAUTION",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/n/b2d939/{size}.png",
+              "primary_group_name": "shopifystaff",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 1572973,
+              "username": "Mandystore001",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/m/d07c76/{size}.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          }
+        ]
+      }
+    ],
+    "summarizable": true,
+    "has_cached_summary": true,
+    "ai_summary": {
+      "id": 1845006,
+      "summarized_text": "A small dropshipping store syncs supplier inventory to Shopify every four hours, but worries that products may sell out between updates and still be ordered. The discussion suggests that four hours can be reasonable; feed accuracy and item-specific safeguards matter as much as sync frequency.\n\nRecommended practices include setting safety buffers based on how quickly each product sells, using larger buffers and more frequent updates for top sellers, and turning off “Continue selling when out of stock” on variants. Before importing supplier data, validate SKUs and variant IDs and manually review missing items, sharp stock drops, and products that suddenly reappear.\n\nAfter each sync, checking Shopify inventory for negative quantities can reveal oversells and help identify products that need faster updates or removal. If an order cannot be fulfilled, contact the customer promptly with a confirmed restock date or alternative, or cancel and refund it. The store owner plans to adopt these measures; no outcome has yet been reported.",
+      "algorithm": "gpt-6-luna",
+      "outdated": false,
+      "created_at": "2026-10-19T01:14:34.087Z",
+      "updated_at": "2026-10-19T06:24:21.942Z"
+    },
+    "is_category_expert_question": null,
+    "has_livestream": null,
+    "valid_reactions": [
+      "heart",
+      "+1",
+      "laughing",
+      "open_mouth",
+      "clap",
+      "confetti_ball",
+      "hugs"
+    ],
+    "has_accepted_answer": false,
+    "shared_issue_count": 0,
+    "can_create_shared_issue": false,
+    "shared_issue_visible": true,
+    "can_vote": false,
+    "vote_count": 0,
+    "user_voted": false,
+    "discourse_zendesk_plugin_zendesk_id": null,
+    "discourse_zendesk_plugin_zendesk_url": "https://your-url.zendesk.com/agent/tickets/",
+    "details": {
+      "can_edit": false,
+      "notification_level": 1,
+      "participants": [
+        {
+          "id": 1647148,
+          "username": "mrbasitafg",
+          "avatar_template": "/user_avatar/community.shopify.com/mrbasitafg/{size}/417595_2.png",
+          "post_count": 3,
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 0
+        },
+        {
+          "id": 1640284,
+          "username": "ahsandoesntcare",
+          "avatar_template": "/user_avatar/community.shopify.com/ahsandoesntcare/{size}/415687_2.png",
+          "post_count": 1,
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 2
+        },
+        {
+          "id": 1644435,
+          "username": "hizachlee",
+          "avatar_template": "/user_avatar/community.shopify.com/hizachlee/{size}/416069_2.png",
+          "post_count": 1,
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 1
+        },
+        {
+          "id": 1645716,
+          "username": "BobCSV",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/b/977dab/{size}.png",
+          "post_count": 1,
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 1
+        }
+      ],
+      "created_by": {
+        "id": 1647148,
+        "username": "mrbasitafg",
+        "avatar_template": "/user_avatar/community.shopify.com/mrbasitafg/{size}/417595_2.png"
+      },
+      "last_poster": {
+        "id": 1640284,
+        "username": "ahsandoesntcare",
+        "avatar_template": "/user_avatar/community.shopify.com/ahsandoesntcare/{size}/415687_2.png"
+      }
+    },
+    "bookmarks": []
+  },
+  "comments": [
+    {
+      "author": "hizachlee",
+      "text": "I’d set the buffer by how fast each item sells rather than one number for the whole catalog. For slow items, showing 0 once the supplier is down to 2 or 3 is plenty. For your top sellers, sync those more often if the supplier’s feed allows it, and use a bigger buffer. Push the supplier quantity minus the buffer into Shopify, and make sure “Continue selling when out of stock” is off on those variants so checkout stops at 0. \n For the order that slips through anyway, email the customer the same day: give a real ship date if the supplier is restocking soon, or cancel it from the order page, where the Cancel order dialog lets you refund and restock in one step.",
+      "at": "2026-10-19T02:50:36.646Z",
+      "url": "https://community.shopify.com/t/how-often-do-you-sync-supplier-stock-with-your-shopify-store/700544/2"
+    },
+    {
+      "author": "BobCSV",
+      "text": "Four hours is not a bad interval on its own, and I would look at the feed before I tried to sync more often. Most of the oversells I have seen came from the spreadsheet behind the sync, not the timing. Raw supplier counts had duplicate SKUs, SKUs that did not quite match the Shopify variant, and rows where stock fell sharply between one file and the next, and all of that went straight into the store because the import trusted it. \n What helps is a quick cleanup pass before anything is pushed live. Keep the supplier quantity in one column, work out the quantity you actually want Shopify to show in another, and hold back the odd rows for a manual look instead of importing them automatically. A sharp drop, a missing SKU, or a product that suddenly reappears after being gone is worth checking, because no sync schedule can fix a bad row, it just publishes it faster. I spend a lot of time on this kind of supplier file cleanup at  https://runeloresupply.com , and once that exception check is routine, a four-hour sync feels a lot safer. \n When one still slips through, checking that held-back list first also makes the customer message easier, because you know whether it was a genuine sell-out or a feed mistake. You can then contact them the same day with a confirmed restock date, a sensible alternative, or a refund, rather than a vague apology while you try to work out what happened.",
+      "at": "2026-10-19T04:03:21.718Z",
+      "url": "https://community.shopify.com/t/how-often-do-you-sync-supplier-stock-with-your-shopify-store/700544/3"
+    },
+    {
+      "author": "mrbasitafg",
+      "text": "Thanks, this is really helpful. Setting the buffer by how fast each item sells makes a lot more sense than one number for everything. I’ll try a small buffer for slow items and a bigger one with more frequent syncs for my best sellers. Good reminder on “Continue selling when out of stock” too. I’ll double-check it’s off on all variants.",
+      "at": "2026-10-19T04:14:00.739Z",
+      "url": "https://community.shopify.com/t/how-often-do-you-sync-supplier-stock-with-your-shopify-store/700544/4"
+    },
+    {
+      "author": "mrbasitafg",
+      "text": "Thanks, that’s a great point. Bad data does more damage than slow timing. I already validate SKUs and variant IDs before anything gets written to Shopify, but I like the idea of flagging sharp stock drops and products that suddenly reappear for a manual check instead of pushing them live. Adding that to my sync.",
+      "at": "2026-10-19T04:15:32.259Z",
+      "url": "https://community.shopify.com/t/how-often-do-you-sync-supplier-stock-with-your-shopify-store/700544/5"
+    },
+    {
+      "author": "ahsandoesntcare",
+      "text": "Hey  @mrbasitafg  \n After each sync, check Products > Inventory in the admin for negative quantities. Those are the oversells, because the sync wrote the supplier’s 0 onto a variant that had already sold. Sorting by inventory shows them quickly and gives you a real oversell rate instead of a worry. \n If one fast mover keeps landing negative, sync just that item more often or pull it from the store. \n When an order does slip through, cancel and refund it the same day rather than waiting to see if the supplier restocks. Customers take that much better than a delayed “sorry, it’s gone”.",
+      "at": "2026-10-19T06:23:37.740Z",
+      "url": "https://community.shopify.com/t/how-often-do-you-sync-supplier-stock-with-your-shopify-store/700544/6"
+    }
+  ],
+  "comments_complete": true
+}

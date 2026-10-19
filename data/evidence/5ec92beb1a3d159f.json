@@ -1,0 +1,123 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41375",
+  "collected_at": "2026-10-19T07:43:58.565595+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/41375",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/41375/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/41375/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/41375/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/41375",
+    "id": 5919748635,
+    "node_id": "I_kwDOC4Q8Qs8AAAABYNgyGw",
+    "number": 41375,
+    "title": "SFTP upload sub-workflow stays running for days after parent timeout (n8n 2.42.7, Windows OpenSSH)",
+    "user": {
+      "login": "somGHAdmin",
+      "id": 157695973,
+      "node_id": "U_kgDOCWY_5Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/157695973?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/somGHAdmin",
+      "html_url": "https://github.com/somGHAdmin",
+      "followers_url": "https://api.github.com/users/somGHAdmin/followers",
+      "following_url": "https://api.github.com/users/somGHAdmin/following{/other_user}",
+      "gists_url": "https://api.github.com/users/somGHAdmin/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/somGHAdmin/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/somGHAdmin/subscriptions",
+      "organizations_url": "https://api.github.com/users/somGHAdmin/orgs",
+      "repos_url": "https://api.github.com/users/somGHAdmin/repos",
+      "events_url": "https://api.github.com/users/somGHAdmin/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/somGHAdmin/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582013554,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cicg",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:cats",
+        "name": "team:cats",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Cats team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-19T07:31:09Z",
+    "updated_at": "2026-10-19T07:43:56Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nWe observe intermittent hangs in the built-in FTP node using SFTP to a Windows OpenSSH server. On three consecutive scheduled runs (October 17-19, 2026), the parent execution was canceled after approximately one hour, while its integrated child execution remained marked as running. The oldest child was still running after approximately 49 hours. The three children were subsequently canceled manually. A manual recovery run completed successfully.\n\nSaved execution data consistently shows the first source download completed, followed by the destination SFTP upload node in nodeExecutionStack, with no completed run recorded for that upload node or any downstream CSV parsing/SQL nodes. This identifies the execution boundary, but does not establish whether upload, cleanup, or another internal step was pending.\n\nWindows OpenSSH logs in the corresponding windows show successful authentication followed by a client-requested disconnect within approximately 0.3-0.45 seconds. These logs do not establish file-transfer completion. Other disconnects near ECONNRESET messages used different client ports and process IDs; we are not attributing those resets to the affected upload without further evidence.\n\n\n### To Reproduce\n\nProduction topology (intermittent; no deterministic end-to-end reproducer yet):\n1. A scheduled parent synchronously invokes a child workflow.\n2. The child loops over files with batch size 1, downloads a file from a source SFTP server, and uploads it to a separate Windows OpenSSH server using the built-in FTP node in SFTP mode.\n3. After upload, the child parses the CSV, imports data, archives the source file and continues the loop.\n4. On affected runs, execution remains at the first destination-upload boundary. Successful runs of the same workflow finish normally.\n\nAdditional code-level evidence\nIn the installed Ftp.node.js, execute() awaits sftp.put(), then awaits sftp.end() before returning. Its outer catch also awaits sftp.end() before rethrowing the original error.\n\nIn the installed ssh2-sftp-client 12.1.0, end() waits for close when this.sftp is present, without its own deadline. Its temporary error listener ignores ECONNRESET during end().\n\nA local event-based simulation using the extracted end/errorListener methods confirms that, IF ECONNRESET is delivered during end() and no subsequent close is delivered, the promise remains pending. Delivering close later resolves it. Pending cleanup also delays propagation of an earlier error. This simulation does not use a real SSH connection, does not reproduce the complete ssh2 event lifecycle, and does not prove that close was missing in the production incident.\n\n\n### Expected behavior\n\nThe upload node should complete or fail with an actionable error instead of remaining running indefinitely. Cleanup should not indefinitely delay the original error. Please also clarify whether parent timeout/cancellation is expected to propagate to an integrated child; the observed behavior allowed child executions to accumulate across scheduled runs.\n\n\n### Debug Info\n\nVerified diagnostics below; this is not the full UI-generated debug-information export.\n- n8n: 2.42.7 (self-hosted Docker; upgraded from 2.30.5 before these three incidents)\n- n8n-nodes-base: 2.42.5\n- Node.js in the deployed image: 26.7.0\n- ssh2-sftp-client: 12.1.0\n- ssh2: 1.16.0\n- Database: SQLite\n- Docker host OS: Ubuntu 26.04.1 LTS; Linux amd64 container\n- Destination SFTP server: Windows Server 2025 / OpenSSH\n- EXECUTIONS_MODE: unset (default mode)\n- EXECUTIONS_TIMEOUT=3600\n- EXECUTIONS_TIMEOUT_MAX=7200\n- EXECUTIONS_DATA_SAVE_ON_PROGRESS=true\n\n### Operating System\n\nUbuntu 26.04.1 LTS (Docker host; Linux amd64 container)\n\n### n8n Version\n\n2.42.7\n\n### Node.js Version\n\n26.7.0\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/41375/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/41375/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @somGHAdmin,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9607\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9607](https://linear.app/n8n/issue/GHC-9607)",
+      "at": "2026-10-19T07:31:17Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41375#issuecomment-6262066840"
+    }
+  ],
+  "comments_complete": true
+}

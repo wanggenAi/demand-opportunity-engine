@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50120358",
-  "collected_at": "2026-10-17T06:54:23.118368+00:00",
+  "collected_at": "2026-10-19T07:43:58.565595+00:00",
   "source": {
     "author": "kjs3",
     "children": [
@@ -83,7 +83,39 @@
       },
       {
         "author": "Animats",
-        "children": [],
+        "children": [
+          {
+            "author": "kjs3",
+            "children": [
+              {
+                "author": "Animats",
+                "children": [],
+                "created_at": "2026-10-19T05:53:15.000Z",
+                "created_at_i": 1792389195,
+                "id": 50148839,
+                "options": [],
+                "parent_id": 50146695,
+                "points": null,
+                "story_id": 50118318,
+                "text": "We had some early models which had two ordinary coax lines going in. Unplug either and the ring went down. They probably converted to something with one connector, and maybe a mechanism to close the loop if unplugged. That&#x27;s a basic problem with token ring - anything removed must be jumpered out.<p>We just had two loaners for a demo, so we might have been given an old model.\nWe were evaluating workstations, and had various devices for a few months at a time.<p>I saw quite a bit of rare early hardware over my career. Much of it was rare for a good reason.",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-10-18T23:47:13.000Z",
+            "created_at_i": 1792367233,
+            "id": 50146695,
+            "options": [],
+            "parent_id": 50125766,
+            "points": null,
+            "story_id": 50118318,
+            "text": "I ran a lab of Apollo 3500&#x2F;4500 era machine in college (thanks for poking that memory).  None of them had RCA phono connectors for token ring, but they <i>did</i> have a really weird connector that looked like it had 2 coax(ish) connections, along with some pins, in a D shell.  Think something that looks like a 13w3 video connector, but only 2 signals and fewer pins.  Are you thinking of an earlier generation of Apollo machines?",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
         "created_at": "2026-10-16T22:42:49.000Z",
         "created_at_i": 1792190569,
         "id": 50125766,
@@ -160,6 +192,18 @@
       "text": "> Coax connectors for Token Ring did exist Apollo Domain computers had a token ring which used coax. RCA phono plug connectors. We had a pair of those at the aerospace company for testing. \nWorked OK, but too weird. We ended up with Sun workstations. At various times in my early career, I was involved with strange networking hardware only of  historical interest now.  Apollo Domain (sort of like Unix, but not.) \"Thick Ethernet\" 10BASE5.  Later \"Thin Ethernet\" (Yes, you can mix thick and thin Ethernet without an impedance mismatch, but you may need to use a time domain reflectometer to check. The adapters were built to tolerate TDM pulses.) Hyperchannel, 20Mb/s which required 6U of rack space for the interface. (We had a pair, surplus from another project, but didn't do much with them.) DECNET triaxial cable for connecting things called the DMC-11. These were all coax, and they were all true \"baseband\", that is, the signal was meaningful down to DC. No differential signals, and no scrambler to make the number of 1 and 0 bits roughly equal.\nYou can't use decoupling capacitors or transformers. They were all susceptible to noise and ground loops. The coax shield should only be grounded at one point for the whole chain. Otherwise, noise in the ground comes through as noise in the cable.\nAll this was no problem in a place full of RF engineers, who knew all that, and considered hooking up a TDR or a scope to a data network normal operational setup. And in an RF R&D facility, where copper busbars an inch wide were run in parallel with electrical ducts to solidly ground out noise, ground was solid. So coax worked fine at Xerox PARC, it worked fine at Stanford (although inter-building coax didn't work all that well), it worked fine in single-room installations, and it worked fine for organizations which understood the limitations of non-differential baseband over coax.\nThe coax technology thus needed too much basic electronics knowledge for general office use. Modern Ethernet is pretty much idiot proof at the electrical level. It's differential signals over a pair, immune to common-mode noise and ground level differences. If you plug standard cables into standard interfaces, it will work. Which is why coax Ethernet went away.",
       "at": "2026-10-16T22:42:49.000Z",
       "url": "https://news.ycombinator.com/item?id=50125766"
+    },
+    {
+      "author": "kjs3",
+      "text": "I ran a lab of Apollo 3500/4500 era machine in college (thanks for poking that memory).  None of them had RCA phono connectors for token ring, but they  did  have a really weird connector that looked like it had 2 coax(ish) connections, along with some pins, in a D shell.  Think something that looks like a 13w3 video connector, but only 2 signals and fewer pins.  Are you thinking of an earlier generation of Apollo machines?",
+      "at": "2026-10-18T23:47:13.000Z",
+      "url": "https://news.ycombinator.com/item?id=50146695"
+    },
+    {
+      "author": "Animats",
+      "text": "We had some early models which had two ordinary coax lines going in. Unplug either and the ring went down. They probably converted to something with one connector, and maybe a mechanism to close the loop if unplugged. That's a basic problem with token ring - anything removed must be jumpered out. We just had two loaners for a demo, so we might have been given an old model.\nWe were evaluating workstations, and had various devices for a few months at a time. I saw quite a bit of rare early hardware over my career. Much of it was rare for a good reason.",
+      "at": "2026-10-19T05:53:15.000Z",
+      "url": "https://news.ycombinator.com/item?id=50148839"
     },
     {
       "author": "thenthenthen",

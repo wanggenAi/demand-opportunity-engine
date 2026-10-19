@@ -1,0 +1,194 @@
+{
+  "source_api_url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/8051",
+  "collected_at": "2026-10-19T07:43:58.565595+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/8051",
+    "repository_url": "https://api.github.com/repos/Luminous-Dynamics/symthaea",
+    "labels_url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/8051/labels{/name}",
+    "comments_url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/8051/comments",
+    "events_url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/8051/events",
+    "html_url": "https://github.com/Luminous-Dynamics/symthaea/issues/8051",
+    "id": 5911313878,
+    "node_id": "I_kwDOQ7glz88AAAABYFd91g",
+    "number": 8051,
+    "title": "HABITAT-VERTICAL-001: co-design factory, product, and end-to-end supply chain for repairable household goods",
+    "user": {
+      "login": "Tristan-Stoltz-ERC",
+      "id": 215346314,
+      "node_id": "U_kgDODNXsig",
+      "avatar_url": "https://avatars.githubusercontent.com/u/215346314?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Tristan-Stoltz-ERC",
+      "html_url": "https://github.com/Tristan-Stoltz-ERC",
+      "followers_url": "https://api.github.com/users/Tristan-Stoltz-ERC/followers",
+      "following_url": "https://api.github.com/users/Tristan-Stoltz-ERC/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Tristan-Stoltz-ERC/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Tristan-Stoltz-ERC/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Tristan-Stoltz-ERC/subscriptions",
+      "organizations_url": "https://api.github.com/users/Tristan-Stoltz-ERC/orgs",
+      "repos_url": "https://api.github.com/users/Tristan-Stoltz-ERC/repos",
+      "events_url": "https://api.github.com/users/Tristan-Stoltz-ERC/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Tristan-Stoltz-ERC/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 9,
+    "created_at": "2026-10-18T15:51:38Z",
+    "updated_at": "2026-10-19T07:30:21Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Mission\n\nExtend [SLEEP-PRODUCT-001 #8039](https://github.com/Luminous-Dynamics/symthaea/issues/8039) from an excellent product concept to an evidence-bearing **factory-to-product vertical**: upstream materials and suppliers, conversion, components, assembly, quality, utilities, workforce, facility design, distribution, repair/refurbishment and material recovery.\n\nThe intended paradigm shift is product–process–factory–supply-chain co-design. Do not optimize a mattress topper, furniture article or garment in isolation and only afterward discover that its materials, tools, factory layout, labor model, energy/water needs, transport, repair path or economics make it infeasible.\n\nThis issue is an integration / benchmark profile. It is **not** a new generic MRP/ERP, scheduling engine, process semantics, factory ontology, material registry, inventory ledger, digital twin, commissioning engine, or execution-authority system.\n\n## Existing owners to compose (avoid duplication)\n\n- Symthaea **MFG-PROC-000 #5686** and its children: process identity, process capability, recipe, process plan, pre/postconditions, manufacturability and process qualification.\n- Symthaea **MFG-LIFE-000 #5705**: lifecycle/circularity projection.\n- Symthaea **BUILT-ENV-001 #6032**, **BUILT-CX-001 #6037**, **BUILT-BIM-001 #6036**, **BUILT-SITE-001 #6034**, **BUILT-ROB-PILOT-001 #6040**: site/facility/workcell realization, commissioning, model exchange and low-risk demonstrator.\n- Symthaea **FACTORY-OPS-001 #7677**: reuse the existing capability-constrained deterministic scheduling direction; do not create a second operations-research scheduler.\n- Symthaea **ENG-DESIGN-001 #6005**, **ENG-DESIGN-003 #6091**, **ENG-MAT/materials**, structural, thermal/thermofluids, equipment, energy, water, metrology, reliability and safety owners as applicable.\n- Mycelix **MFG-EVID-001 #3084** and **MFG-PROC-001 #3085**: design revisions/BOM-to-unit evidence, supplier/resource offers, routings/work orders, production and lot genealogy.\n- Mycelix **LOG-COMMONS-001 #4900** and existing Supply Chain / Manufacturing functions: federated logistics and participant-owned operational/provenance facts.\n- Mycelix carries operational events and multi-party provenance; Symthaea owns engineering meaning, analysis and scoped qualification. No cross-project claim may silently promote an offer, plan, signature, simulation or event into physical capability or product qualification.\n\n## Initial vertical: human-habitat goods\n\nFirst use the modular mattress topper from #8039, with two follow-on product profiles:\n1. a flat-pack desk or storage unit;\n2. one repairable everyday garment / workwear item.\n\nKeep the first physical pilot to a low-risk, small-scale textile/converting-and-assembly cell. Furniture and garment cases may initially be synthetic process/fixture cases until their dedicated material and product-function evidence exists. The common vertical contract should accommodate all three without pretending that mattress comfort, furniture strength and garment fit are interchangeable.\n\n## End-to-end value chain to represent\n\nUse exact identified stages and evidence-bearing transitions; do not let existence of an upstream material claim establish downstream product capability.\n\n```\ndemand / user requirements / product variants\n-> product architecture + design revision + test requirements\n-> bill of materials + process plan + manufacturing capability demands\n-> upstream raw/secondary feedstocks and supplier claims\n-> material processing / grade qualification\n-> fabric / cover / layer / panel / fastener / component production\n-> inbound logistics, lot receipt, inspection and quarantine/acceptance\n-> workcell routing, labor/tools/equipment and production plan\n-> transformation, assembly and intermediate inspection/hold/rework\n-> final article identity + acceptance/quality evidence\n-> packaging, storage, outbound transport and delivery\n-> use, maintenance, replacement parts and repair\n-> return triage, refurbishment/remanufacture/reuse\n-> material recovery with actual route/grade evidence or disposal\n-> observed demand/defect/repair/recovery feedback into redesign\n```\n\nEvery transformation must retain input identities, material state/grade, quantity and unit semantics, process profile/revision, facility/equipment/workcell identity, responsible execution evidence, inspection observations, outputs/yield/scrap/byproducts, and uncertainty where relevant. A process plan is not an executed process; a completed operation is not an accepted article; recyclability is not recovered feedstock.\n\n## Factory design scope\n\nCreate an evidence-bound reference-design profile for an SME-scale, modular microfactory/workshop. Do not start with an expensive, fully autonomous \"lights-out\" factory. Compare manual, assisted, and appropriately automated layouts where all have the same stated demand, quality, staffing, and safety requirements.\n\nThe factory model should include:\n\n- Site and facility: site/geotechnical applicability references; spatial layout; receiving, quarantine, storage, workcells, inspection, finished goods, repair/returns and waste/recovery zones; access, egress and expansion constraints.\n- Utilities: electrical demand and quality, thermal conditioning, ventilation/dust extraction where needed, lighting, water and wastewater if process-relevant, data/communications, compressed air if justified, backup/common-mode dependency assumptions.\n- Equipment/workcell: exact equipment and tool identities, capability envelope, process/material applicability, maintenance/calibration status, cycle/setup time distributions or bounded ranges, changeover and inspection needs.\n- Material flow: travel distance/time, handling damage, WIP buffers, storage conditions, lot segregation, ergonomic handling, packaging and reverse flows.\n- Workforce: required skills, training pathways, accessible workstations, workload and ergonomic constraints; no optimization that treats injury exposure, worker dignity or legal labor obligations as a compensable cost.\n- Environment and safety: domain-appropriate guarding, fire/egress, dust/noise/chemical exposure, occupational safety and building-code review; these must be supplied by qualified owners/professionals, not guessed from a digital layout.\n- Facility lifecycle: commissioning, observation, maintenance, calibration, repair, change impact and recommissioning. Installed, powered or successfully started is not the same as commissioned under requirements.\n- Local capability and sourcing: separate local labor/value-added, locally available commodity inputs, imported specialty materials/parts, single points of failure and recovery options; do not equate \"assembled locally\" with full local supply-chain closure.\n\nA site/factory simulation may compare candidate layouts and utility profiles, but does not grant permit, construction, safety, commissioning, or equipment execution authority.\n\n## Proposed benchmark framework\n\nAll numbers below are **proposed target directions**, not current results or universal industry thresholds. Freeze metric definitions, data boundaries and baselines before interpreting outcomes.\n\n### 1. Traceability and qualification integrity\n- 100% of selected critical inputs in the pilot must link from received supplier lot through process/inspection events to the finished article or explicitly recorded scrap/rework.\n- Every output must bind exact product revision, BOM, process-plan revision, material lots, workcell profile and disposition.\n- 100% of deliberately unknown, stale, unqualified or mismatched critical prerequisites must be blocked from a qualified-pass state.\n- Target recall/containment query: identify all affected units from a seeded input-lot fault in under 5 minutes on the bounded pilot corpus; report corpus size and hardware/runtime.\n- Track supplier substitution, source license/specification, freshness and approval as independent fields.\n\n### 2. Production flow and economic performance\n- Establish baselines for end-to-end lead time, touch time, queue time, setup/changeover, WIP, first-pass yield, rework, scrap, delivered cost and on-time-in-full delivery.\n- Benchmark deterministic scheduling against a simple documented baseline for the same orders, skills, resource capacities and calendars. Feasibility must be exact; optimization quality can be measured separately.\n- Target a 20% reduction in delivered cost versus a named functional reference for the selected product where feasible. Include materials, yield loss, labor, consumables, depreciation/capacity allocation, QA, maintenance/spares, energy, water where applicable, packaging, freight, returns, tax/duty and replacement burden. Publish assumptions and sensitivity.\n- Proposed pilot improvement gate after a valid measured baseline: reduce order lead time or WIP by 15–20% without worsening safety, quality, worker loading or service level. If the synthetic model alone shows improvement, label it a simulation result and validate it physically later.\n\n### 3. Resource use and environmental performance\n- Report metered or explicitly modeled energy per accepted functional unit; distinguish idle/base load, process energy and facility utilities.\n- Report process-water withdrawal/consumption and wastewater only where applicable; do not invent a water benefit for a dry process.\n- Track input mass, accepted output, scrap, rework, packaging, byproducts and recovered material mass with an explicit balance and measurement uncertainty.\n- Compare lifecycle impact only with a declared ISO 14040/14044-compatible goal/scope, functional unit, boundary, allocation choices, data quality and sensitivity. Never infer environmental superiority from a recycled-content percentage alone.\n- Target at least 15% lower energy per accepted unit from a frozen baseline as an exploration goal, not a release requirement until metering and quality equivalence are shown.\n\n### 4. Facility and resilience\n- Compare layouts on material travel, throughput, ergonomic exposure, egress/access, inspection separation, utility demand, changeover flexibility and space for repair/recovery flows.\n- Run supply/operations stress cases: a critical supplier lot rejection, alternate supplier with different lead time/grade, machine outage, power interruption, water interruption if relevant, workforce-skill absence, transport disruption, and demand mix change.\n- Quantify lost output, backlog, recovery time, service impact and cost for each disruption. Do not use a vague \"resilience score\" without declared scenarios.\n- Show that a modular cell can add/remove a workcell or change product mix without corrupting lineage, qualification or resource-capability claims.\n- Commissioning and operational qualification remain separate gates; a planned factory layout is not a commissioned factory.\n\n### 5. Maintenance, workforce and circularity\n- Track planned/unplanned downtime, maintenance time, calibration expiry, spare-part lead time, time-to-diagnose and repair, training time and skills coverage.\n- Target replacement of the common wear component within the product-specific benchmark, with documented tools/parts and trained-operator conditions.\n- Quantify jobs/skill hours and ergonomic risk indicators without reducing human flourishing to simple throughput per worker.\n- Report return triage, repair/refurbishment yield, product/component reuse, material recovery and disposal separately. Count recovery only when a real route accepts that material grade and condition.\n- Include a training and operator-feedback loop; workers must be able to stop, challenge or annotate a plan without retaliation encoded into the software.\n\n## Machine-readable benchmark corpus and hostile controls\n\nThe first synthetic corpus should include at least:\n\n1. Valid single supplier → receiving inspection → fabric/cover preparation → sewing/assembly → inspection → accepted article.\n2. Exact upstream input lot exists but actual delivered grade is unverified.\n3. Substitute supplier has the same marketing name but a different grade/process envelope.\n4. A material transformation is marked completed with no required observation; downstream qualification is blocked.\n5. A rejected lot contaminates multiple WIP/final units; containment enumerates exactly affected descendants and does not falsely recall unrelated units.\n6. Machine/tool says it can perform the process but its qualification, calibration or availability is stale.\n7. Scheduler plan omits a required skill, resource or inspection hold point.\n8. Queue/setup/cycle data missing but an optimizer reports a precise completion date.\n9. Price excludes scrap/yield loss, labor, utilities, freight or returns.\n10. Low-carbon/recycled input has unknown provenance, grade or upstream burden; environmental claim stays unresolved.\n11. Nominally recyclable multi-material construction has no regionally available recovery route.\n12. Factory layout appears feasible while ventilation, emergency egress, guarding or accessibility evidence is absent.\n13. Power interruption affects both primary production and inspection/calibration; model must surface the common mode.\n14. Product revision changes a seam/layer/fastener/process and stale qualification cannot carry forward.\n15. Supplier or carrier cannot share sensitive commercial details; preserve minimum provenance commitments and access control without fabricating data.\n16. Repair returns arrive but no capacity/spare part exists; \"repairable by design\" does not become \"repair completed\".\n17. Mycelix inventory or signed delivery event conflicts with a physical receiving measurement; preserve both source events and an unresolved discrepancy.\n18. A complete synthetic path is reported correctly as synthetic-only, never actual production capability.\n\n## Interoperability and external research anchors\n\nUse standards as external mappings and test-method references; do not make an external standard the sole internal identity or assume the pilot is certified.\n\n- [ISA-95 / IEC 62264](https://www.isa.org/standards-and-publications/isa-standards/isa-95-standard): enterprise/logistics to manufacturing operations/control interfaces and vocabulary. Current ISA page includes ANSI/ISA-95.00.01-2025.\n- [ISO 22400-1](https://www.iso.org/cms/%20render/live/en/sites/isoorg/contents/data/standard/05/68/56847.html) / [ISO 22400-2](https://www.iso.org/standard/54497.html): manufacturing-operations KPI concepts and formulas; ISO/DIS 22400-2 is under development, so pin the edition actually used.\n- [NIST Digital Thread for Manufacturing](https://www.nist.gov/programs-projects/digital-thread-manufacturing): product definition, manufacturing, inspection and measured result linkage.\n- [GS1 Global Traceability Standard](https://www.gs1.org/standards/gs1-global-traceability-standard/current-standard): traceability goals, object IDs, batch/lot versus instance-level identity.\n- [ISO 50001](https://www.iso.org/standard/69426.html): energy management framework.\n- [ISO 14040](https://www.iso.org/standard/37456.html): lifecycle assessment principles and framework.\n- [EU ESPR Regulation (EU) 2024/1781](https://eur-lex.europa.eu/eli/reg/2024/1781/eng) and [European Commission DPP working plan/FAQ](https://single-market-economy.ec.europa.eu/single-market/digital-product-passport/explore-our-faqs_en): model/batch/item-level product data, open interoperable data and product-group-specific implementation. The Commission's 2 July 2026 plan puts textiles in the 2027 workstream, furniture in 2028, and mattresses in 2029; these are planned rule-adoption windows, not proof that every product already requires a DPP.\n\nFor an initial South African/regionally adaptable pilot, keep site-, electricity-, water-, labor-, freight-, standards- and supplier-specific assumptions explicit and replaceable. Do not hard-code a US/EU factory model as universal. Before physical implementation, a locally qualified engineering team must review actual zoning, building/fire/occupational-safety requirements, electrical compliance, environmental permits and applicable product standards.\n\n## Execution sequence and acceptance criteria\n\n1. Freeze the exact consumer product candidate, comparable baseline, BOM/material identities, supplier geography, lot rules, production demand, shift/calendar, skill/resource capabilities, test/inspection gates and unit/currency basis.\n2. Publish one small synthetic supply-chain + factory manifest that links supplier-lot events to a workcell/process DAG, inspections, product disposition, cost/resource metrics and end-of-life path.\n3. Define deterministic calculations and an independent, stdlib-only Rust qualifier using the existing manufacturing contracts/operations-research owners if their exact public API is qualified and usable. Do not implement a second scheduler or manufacturing state machine.\n4. Freeze expected outputs and negative-control receipts before running candidate comparisons.\n5. Report exactly which contract/corpus tests were run, on which source heads, plus pass/fail and skipped explicitly. A queued/skipped runner is never a pass.\n6. Only after synthetic qualification should a low-risk physical pilot be staged: incoming-lot tagging, textile cutting/sewing or cover assembly, low-energy handling, calibrated dimensional/weight checks, and manual operator sign-off. Do not introduce autonomous high-risk equipment or hazardous processing.\n7. Plan the factory layout and utility studies through BUILT-ENV/BUILT-CX/BUILT-ROB-PILOT and qualified engineers; no floorplan simulation acts as permission to construct or operate.\n8. Publish a reusable follow-on mapping for repairable furniture and clothing, with product-specific tests and safety/legal owners.\n\n## Claim ceiling\n\nOpening this work establishes an architecture and benchmark plan only. It does not establish physical supply, qualified suppliers, product quality, factory readiness, local self-sufficiency, cost competitiveness, environmental superiority, compliance, worker safety, or production capability. Synthetic and modeled outputs remain distinct from measured and independently replicated facts.",
+    "reactions": {
+      "url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/8051/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/8051/timeline",
+    "performed_via_github_app": {
+      "id": 1144995,
+      "client_id": "Iv23liVemv8A9if9v0F2",
+      "slug": "chatgpt-codex-connector",
+      "node_id": "A_kwHOAOQ6Gs4AEXij",
+      "owner": {
+        "login": "openai",
+        "id": 14957082,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjE0OTU3MDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/14957082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/openai",
+        "html_url": "https://github.com/openai",
+        "followers_url": "https://api.github.com/users/openai/followers",
+        "following_url": "https://api.github.com/users/openai/following{/other_user}",
+        "gists_url": "https://api.github.com/users/openai/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/openai/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/openai/subscriptions",
+        "organizations_url": "https://api.github.com/users/openai/orgs",
+        "repos_url": "https://api.github.com/users/openai/repos",
+        "events_url": "https://api.github.com/users/openai/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/openai/received_events",
+        "type": "Organization",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "name": "ChatGPT Codex Connector",
+      "description": "Bring ChatGPT and Codex to your GitHub repositories.",
+      "external_url": "https://www.chatgpt.com",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "created_at": "2025-02-14T01:37:05Z",
+      "updated_at": "2026-09-23T18:52:59Z",
+      "permissions": {
+        "actions": "write",
+        "checks": "read",
+        "contents": "write",
+        "emails": "read",
+        "issues": "write",
+        "metadata": "read",
+        "pull_requests": "write",
+        "statuses": "read",
+        "workflows": "write"
+      },
+      "events": [
+        "check_run",
+        "check_suite",
+        "commit_comment",
+        "issues",
+        "issue_comment",
+        "pull_request",
+        "pull_request_review",
+        "pull_request_review_comment",
+        "pull_request_review_thread",
+        "repository",
+        "status",
+        "sub_issues"
+      ]
+    },
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "Implementation starter: draft PR https://github.com/Luminous-Dynamics/symthaea/pull/8053 adds the factory-to-product vertical contract and synthetic benchmark fixture. The fixture is synthetic-only; its JSON parsing, process predecessor/resource/skill consistency, and acyclic operation graph were checked at head `fd76d3dbe11595a001b0249da7c0bfc00431e832`. Exact-head CI/workflow records are skipped, not pass. No physical factory/product claims are made.",
+      "at": "2026-10-18T15:55:52Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/8051#issuecomment-6251962874"
+    },
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "Integration note: I opened [Symtropy CIRC-MFG-001 #1984](https://github.com/Luminous-Dynamics/symtropy/issues/1984) and draft [PR #1986](https://github.com/Luminous-Dynamics/symtropy/pull/1986), now deliberately scoped to the construction-specific evidence contract used by this wider factory/product/supply-chain vertical.\\n\\nThis should remain a consumer/reference profile, not a second ontology, MRP/ERP, lifecycle database or optimizer. Mycelix owns BOM/work-order and lifecycle/custody event references; Symtropy #1596 owns its housing evidence/jurisdiction boundary; your HABITAT vertical should own product/factory/supply-chain co-design and its demonstration; MFG-VALUE #7608 remains the owner of production-value comparisons.\\n\\nSuggested integration experiment after the contract gate is qualified: pick one low-risk, non-load-bearing modular service enclosure or panel kit, freeze the product and process identity, and measure end-to-end material inputs, conforming outputs, rework, assembly/service time, transport, repair, disassembly damage and independently accepted reuse. Treat all 10% improvement targets as preregistered hypotheses, not claims.",
+      "at": "2026-10-18T16:24:20Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/8051#issuecomment-6252252598"
+    },
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "Follow-up from the current [Symtropy CIRC-MFG-001 draft](https://github.com/Luminous-Dynamics/symtropy/pull/1986): I have made the synthetic cross-system binding explicit across four owners. The current fixture roles include a Symthaea process-plan reference, Mycelix process/accounting/custody references, a Symtropy qualification reference, and a Sol-Atlas site-resource observation. The authority/role assignments are integration hypotheses in synthetic data, not claims that any real artifact is already available or qualified.\n\nThe new adversarial controls include missing Sol-Atlas site-resource evidence and the same local reference ID under the wrong owning authority. This keeps a missing or ambiguous water/energy/access observation from being silently promoted to site capacity. The reference harness does not duplicate your factory/product/supply-chain model or the production-value evaluator.",
+      "at": "2026-10-18T16:35:21Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/8051#issuecomment-6252367300"
+    },
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "Update: draft PR https://github.com/Luminous-Dynamics/symthaea/pull/8053 now includes the synthetic-first factory vertical contract, fixture, and a Rust benchmark/fixture qualifier in `crates/domains/symthaea-habitat-vertical-bench`. Exact inspected head: `0c5d0d6c703885fc51d4fa4d1496f6e8f16dc5c1`. The fixture now has 23 traceability nodes, 29 edges, four frozen known-answer containment sets (including an unrelated control unit), and 18 negative controls. A JSON/static consistency pass found no duplicate IDs, unresolved edges/references, or graph cycles, and all four known-answer descendant sets matched. Nineteen Rust unit tests are authored but NOT executed; the current head’s CI/workflow records are skipped, not pass. No physical performance or factory readiness claim is made.",
+      "at": "2026-10-18T19:34:02Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/8051#issuecomment-6254217812"
+    },
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "Further progress is in draft PR #8053: `symthaea-habitat-vertical-bench` now includes exact integer-based synthetic delivered-cost and material-balance oracles in addition to fixture/lot-genealogy validation. The fixture's two cost totals recompute to 250,000 and 210,000 synthetic minor units; candidate/reference ratio is 8,400 basis points (84%), correctly above the proposed 80% ceiling. The synthetic mass stream closes at 100% with 85% accepted-mass yield. These are arithmetic known answers only—not actual prices or production outcomes. 31 Rust tests are authored but not compiled or run here; exact-head workflows are skipped, not pass.",
+      "at": "2026-10-18T21:13:10Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/8051#issuecomment-6255212704"
+    },
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "Latest PR #8053 update at exact head `12f79470f94069754d29febeebd485ebeb9aa008`: the Rust scaffold now adds two more auditable arithmetic contracts: a 12-category delivered-cost known answer using checked integer sums/exact ratio comparison, and a single-stream material-balance known answer with residual/tolerance/closure. Synthetic cost ratio is 84%, correctly NOT meeting the proposed 80% target; synthetic material closure is 100%, accepted-mass yield 85%. Fixture preflight independently matched all four lot-containment descendant sets and found no duplicate IDs, unknown graph endpoints, cycles, or unresolved process/skill refs. 31 Rust tests are authored but remain uncompiled/unexecuted; one workflow is in progress and other checks are skipped, not pass. No physical claims are made.",
+      "at": "2026-10-18T21:14:17Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/8051#issuecomment-6255223808"
+    },
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "## Continuation update — paired disruption campaign\n\nAdded to the existing HABITAT-VERTICAL-001 draft PR rather than opening a parallel scheduler/benchmark engine:\n\n- Campaign contract: https://github.com/Luminous-Dynamics/symthaea/blob/research/habitat-vertical-001-factory-supply-chain/docs/research/HABITAT_COUNTERFACTUAL_001_DISRUPTION_CAMPAIGN.md\n- Machine-readable eight-case campaign: https://github.com/Luminous-Dynamics/symthaea/blob/research/habitat-vertical-001-factory-supply-chain/docs/research/fixtures/habitat-vertical-scenarios-v0.1.json\n- Rust definition-only qualifier: https://github.com/Luminous-Dynamics/symthaea/blob/research/habitat-vertical-001-factory-supply-chain/crates/domains/symthaea-habitat-vertical-bench/src/scenario_campaign.rs\n\nStatic JSON preflight found exact source coverage for all 8 declared disruptions, identical required-output lists, valid metric references, explicit execution blockers, zero embedded numeric results, and baseline/candidate policies still unbound. The qualifier adds 13 Rust unit tests (44 authored across this crate), but none have been compiled or executed. At inspected HEAD `bbfdc99eb6c35d6292d5ec3037cf32315dbd994d`, the compare is 39 commits ahead / 0 behind and all 8 observed workflow records are completed/skipped; no passing workflow is claimed.\n\nResearch grounding: NIST's manufacturing digital-twin guidance calls for credible verification/validation, quantified uncertainty, interoperability and trustworthy models; GS1 EPCIS offers an existing interoperable supply-chain event vocabulary. These are interface/test anchors, not validation of this implementation:\n- https://www.nist.gov/programs-projects/digital-twins-advanced-manufacturing\n- https://www.nist.gov/publications/manufacturing-digital-twin-standards\n- https://www.gs1.org/standards/epcis\n\nNew proposed hypothesis, not an achieved result: after exact baseline/candidate policies, runnable cases, units and horizon are pinned, aim for >=10% lower lost accepted-unit-hours across runnable paired cases with zero hard-gate violations; retain all case-wise results and NotEvaluable/Blocked states. Demand-mix change and repair-spare shortage remain not evaluable until the variant BOM/setup model and repair inventory/capacity profile exist.",
+      "at": "2026-10-19T05:36:56Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/8051#issuecomment-6260469269"
+    },
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "## Additional continuation — resilience option-value benchmark\n\nAdded a synthetic-only option-value benchmark to the existing HABITAT-VERTICAL-001 PR, linked to current robust-decision owners instead of duplicating an optimizer.\n\n- Contract: https://github.com/Luminous-Dynamics/symthaea/blob/ca10122ab3ca9a3e388e2afa64d7d28f5317f87e/docs/research/HABITAT_RESILIENCE_OPTIONS_001_OPTION_VALUE.md\n- Six options × eight existing disruptions = 48 synthetic outcome cells: https://github.com/Luminous-Dynamics/symthaea/blob/ca10122ab3ca9a3e388e2afa64d7d28f5317f87e/docs/research/fixtures/habitat-resilience-options-v0.1.json\n- Rust validator and 13 authored adversarial tests: https://github.com/Luminous-Dynamics/symthaea/blob/ca10122ab3ca9a3e388e2afa64d7d28f5317f87e/crates/domains/symthaea-habitat-vertical-bench/src/resilience_options.rs\n\nStatic JSON preflight confirms six options, eight exact source disruption IDs, all 48 option/scenario pairs unique, qualification gates on every option, valid intervals, localized mitigation behavior, no ungrounded scenario probabilities/ROI, and no real-qualification claims. These are deliberately constructed algorithmic challenge values, not operational estimates. The evaluator refuses to choose a robust winner: interval-frontier/minimax-regret APIs and real option/policy revisions remain unbound.\n\nResearch grounding added from current NIST work on digital-twin VVUQ/interoperability, the 2026 smart-manufacturing AI/ML roadmap, and September 2026 circular-manufacturing systems research. See the linked contract for sources and scope limits.\n\nExact head `ca10122ab3ca9a3e388e2afa64d7d28f5317f87e` is 49 commits ahead / 0 behind, 14 changed files. There are 57 authored Rust test functions in this crate; none has been compiled or executed. All eight observed workflows at the exact head are completed/skipped, not passing. PR remains draft.",
+      "at": "2026-10-19T07:29:32Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/8051#issuecomment-6262039785"
+    },
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "## Resilience-option continuation: exact-head status\n\nFollow-up validation/hardening is complete on the current draft branch:\n- Latest inspected head: `8729d9907cc348a1692270a7efb4f995e0038924`\n- Compare against main: 50 commits ahead, 0 behind; 14 changed files.\n- Fixture static preflight: 6 option concepts × 8 source scenarios = 48 exact unique cells; all options carry qualification gates; scenario IDs exactly match the paired-disruption campaign; intervals are ordered; all outcomes are synthetic-only; mitigations affect only declared scenarios; no probability or ROI model was added.\n- Rust source: 57 authored test functions across the structural/accounting, scenario-campaign, and option-value modules. None has been compiled or executed here. Tests and CLI wiring are authored, not passing evidence.\n- Exact-head workflows currently mix `in_progress` with `completed / skipped`. No PASS is claimed and work did not wait on them.\n- Robust frontier/minimax regret is intentionally not run; exact canonical API revisions and strategy qualifications remain unbound.\n\nThe important next engineering gate remains adapter/ownership verification for SE-OPT #7788, ICCB-004 #8024, MFG-VALUE-001 #7608, and FACTORY-OPS-001 #7677. We should consume these owners rather than add another optimizer or scheduler.",
+      "at": "2026-10-19T07:30:21Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/8051#issuecomment-6262052182"
+    }
+  ],
+  "comments_complete": true
+}

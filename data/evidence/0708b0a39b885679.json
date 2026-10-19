@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41322",
-  "collected_at": "2026-10-18T07:12:13.754953+00:00",
+  "collected_at": "2026-10-19T07:43:58.565595+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/41322",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -72,9 +72,9 @@
     "locked": false,
     "assignees": [],
     "milestone": null,
-    "comments": 2,
+    "comments": 3,
     "created_at": "2026-10-17T14:04:23Z",
-    "updated_at": "2026-10-17T17:00:40Z",
+    "updated_at": "2026-10-18T17:16:31Z",
     "closed_at": null,
     "assignee": null,
     "author_association": "NONE",
@@ -123,6 +123,12 @@
       "text": "One instrumentation distinction in the **2.43.5 source** may help with the next benchmark: the existing synchronous cold-start metric cannot confirm or rule out the eager-path cold starts in this report.\n\n- [`initializeExecution()` acquires an isolate before running the workflow](https://github.com/n8n-io/n8n/blob/d811f5e87dfc164999f34d75b17017876d41a54a/packages/core/src/execution-engine/workflow-execute.ts#L1678-L1694). In [`ExpressionEvaluator.acquire()`](https://github.com/n8n-io/n8n/blob/d811f5e87dfc164999f34d75b17017876d41a54a/packages/%40n8n/expression-runtime/src/evaluator/expression-evaluator.ts#L119-L139), eager mode takes a warm bridge or awaits `createBridge()` after `PoolExhaustedError`. Lazy mode opens a scope without taking a bridge. This explains why the static two-node case can benefit without establishing the cause of the alternating timings.\n- [`IsolatePool.acquire()` starts asynchronous replenishment; `release()` disposes the used bridge](https://github.com/n8n-io/n8n/blob/d811f5e87dfc164999f34d75b17017876d41a54a/packages/%40n8n/expression-runtime/src/pool/isolate-pool.ts#L63-L78). The used bridge is not returned as a reusable warm entry.\n- [`expression.pool.cold_start_sync` and its duration metric](https://github.com/n8n-io/n8n/blob/d811f5e87dfc164999f34d75b17017876d41a54a/packages/%40n8n/expression-runtime/src/evaluator/expression-evaluator.ts#L141-L179) cover the **lazy, synchronous** fallback. The eager fallback above has no corresponding cold-start counter at that call site; both warm and cold eager acquisitions increment `poolAcquired`. Also, the evaluation-duration timer starts after `getBridge()`, so that timer excludes bridge acquisition.\n\nFor the existing Stage reproduction, I would keep the image, pool size and request spacing fixed, then compare eager/lazy on (1) the static response and (2) an otherwise identical response that evaluates one dynamic expression. Record the acquisition path (`warm` or `cold`), acquisition milliseconds, total request milliseconds, HTTP status and whether the expected response was correct. Keep the same predeclared warm-up rule in each run and retain the cold-start results separately. A short idle gap between requests is another useful, separate comparison for the replenishment hypothesis.\n\nThe trade-off to check is explicit in the [configuration comment](https://github.com/n8n-io/n8n/blob/d811f5e87dfc164999f34d75b17017876d41a54a/packages/%40n8n/config/src/configs/expression-engine.config.ts#L97-L105): lazy acquisition is marked experimental, and an empty pool can make the first engine evaluation build its isolate synchronously on the request path. The static case avoids that work; expression-bearing workloads can still pay it. This source reading does not establish why the default was chosen or certify production compatibility.\n\nI operate Keptick with AI assistance. This is a review of the tagged source, not an independent Docker reproduction or a rerun of its tests. A redacted timing table containing those fields would help distinguish pool misses from another source of delay; workflow payloads and credentials are unnecessary.",
       "at": "2026-10-17T17:00:40Z",
       "url": "https://github.com/n8n-io/n8n/issues/41322#issuecomment-6237179066"
+    },
+    {
+      "author": "WilliamAyad",
+      "text": "One observation from those alternating fast/slow numbers: if acquisition alternates ~5ms/~180ms in strict alternation, the pool is almost certainly handing out isolates round-robin while one member gets torn down and rebuilt between uses — not concurrency contention. Two cheap discriminators before anyone touches code:\n\n1. Fire 10 sequential requests at 127.0.0.1:5678 with zero delay. If slow responses cluster at fixed positions (every Nth), that pins pool size and rebuild cadence.\n\n2. Repeat with a 5-second gap. If slowness correlates with idle time instead of position, it's TTL-based teardown rather than rotation.\n\nEither outcome converts \"alternating latency\" into an actionable runner-lifecycle question — worth appending to GHC-9598 before instrumentation deepens.",
+      "at": "2026-10-18T17:16:31Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41322#issuecomment-6252790170"
     }
   ],
   "comments_complete": true

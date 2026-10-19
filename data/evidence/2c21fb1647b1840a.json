@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50049588",
-  "collected_at": "2026-10-14T07:35:01.987802+00:00",
+  "collected_at": "2026-10-19T07:43:58.565595+00:00",
   "source": {
     "author": "SaarthRanka",
     "children": [
@@ -289,6 +289,37 @@
                 "title": null,
                 "type": "comment",
                 "url": null
+              },
+              {
+                "author": "trollbridge",
+                "children": [
+                  {
+                    "author": "pprotas",
+                    "children": [],
+                    "created_at": "2026-10-14T17:07:01.000Z",
+                    "created_at_i": 1791997621,
+                    "id": 50091039,
+                    "options": [],
+                    "parent_id": 50089110,
+                    "points": null,
+                    "story_id": 50049588,
+                    "text": "Just make a new account",
+                    "title": null,
+                    "type": "comment",
+                    "url": null
+                  }
+                ],
+                "created_at": "2026-10-14T15:26:01.000Z",
+                "created_at_i": 1791991561,
+                "id": 50089110,
+                "options": [],
+                "parent_id": 50066971,
+                "points": null,
+                "story_id": 50049588,
+                "text": "This is likely to earn a permanent ban from Anthropic, though (which predictably no way to appeal it)",
+                "title": null,
+                "type": "comment",
+                "url": null
               }
             ],
             "created_at": "2026-10-13T05:04:36.000Z",
@@ -445,7 +476,7 @@
     "id": 50049588,
     "options": [],
     "parent_id": null,
-    "points": 114,
+    "points": 116,
     "story_id": 50049588,
     "text": "Hi HN! I&#x27;m Saarth. I&#x27;m in 9th grade, and I built Atticus.<p>Atticus is a fast and cheap Mac assistant that can do tasks for you. You hold down Control-Option-Space, speak or type your task, be it complex or a simple browser search, and Atticus will get on it.<p>The interesting part is that simple tasks, like opening apps, playing a Spotify playlist, or web queries, don&#x27;t touch AI, and instead are processed locally and typically finish in under a second. For example, prompting Atticus to open apps takes around 0.08 seconds, sometimes even finishing before you finish your sentence, sort of like Jev.<p>Any tasks that are more complicated will be sent to Claude via claude -p, meaning you never need an API key and Atticus will run on your existing Claude Pro or Max plan. By using this approach, costs are also cut down immensely, with, on average, tasks costing a fraction of a cent.<p>To achieve Atticus&#x27; speed, it remembers shortcuts from each task it completes. When it does a task right for the first time, it saves its steps and replays them the next time without AI. For example, a workflow of creating a new meeting took about 30 seconds the first time around. Atticus then logs the exact steps to memory and takes 5-8 seconds on the next pass. To add to this, Atticus also learns about you as you use it more and from what&#x27;s on your computer, including your name, your apps, and things you want it to remember, personalizing its answers to you.<p>To combat the safety concerns over giving an AI unrestricted access to your device, Atticus has toggleable restrictions, so before anything is deleted, sent, bought, or written to a file, the user is prompted before that action.<p>Some features I&#x27;m currently working on include a meeting copilot that capitalizes on Atticus&#x27; speed, allowing Atticus to listen in on meetings and answer questions in real time as they come in, personalized to the context of the meeting and what it knows about you.<p>To run Atticus, macOS 26 or higher is required for its voice transcription features. The voice transcription is also done locally by macOS.<p>Atticus is free, open source, and also very fresh, and I&#x27;m completely aware of its many rough edges, which is why I&#x27;d love to hear from everyone about what breaks and what you guys would like to see Atticus do!",
     "title": "Show HN: Atticus – Hold-to-talk voice assistant for macOS that runs on Claude -p",
@@ -572,6 +603,18 @@
       "text": "Wasn’t everyone born on Jan 01, 1970?",
       "at": "2026-10-13T11:50:37.000Z",
       "url": "https://news.ycombinator.com/item?id=50070186"
+    },
+    {
+      "author": "trollbridge",
+      "text": "This is likely to earn a permanent ban from Anthropic, though (which predictably no way to appeal it)",
+      "at": "2026-10-14T15:26:01.000Z",
+      "url": "https://news.ycombinator.com/item?id=50089110"
+    },
+    {
+      "author": "pprotas",
+      "text": "Just make a new account",
+      "at": "2026-10-14T17:07:01.000Z",
+      "url": "https://news.ycombinator.com/item?id=50091039"
     },
     {
       "author": "jmathai",

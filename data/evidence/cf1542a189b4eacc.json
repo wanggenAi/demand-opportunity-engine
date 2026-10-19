@@ -1,0 +1,123 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41349",
+  "collected_at": "2026-10-19T07:43:58.565595+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/41349",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/41349/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/41349/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/41349/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/41349",
+    "id": 5911075712,
+    "node_id": "I_kwDOC4Q8Qs8AAAABYFPbgA",
+    "number": 41349,
+    "title": "accumulateTokenUsage stores NaN for the rest of an execution when a vendor response omits a token count",
+    "user": {
+      "login": "jonico",
+      "id": 1872314,
+      "node_id": "MDQ6VXNlcjE4NzIzMTQ=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1872314?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/jonico",
+      "html_url": "https://github.com/jonico",
+      "followers_url": "https://api.github.com/users/jonico/followers",
+      "following_url": "https://api.github.com/users/jonico/following{/other_user}",
+      "gists_url": "https://api.github.com/users/jonico/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/jonico/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/jonico/subscriptions",
+      "organizations_url": "https://api.github.com/users/jonico/orgs",
+      "repos_url": "https://api.github.com/users/jonico/repos",
+      "events_url": "https://api.github.com/users/jonico/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/jonico/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582010757,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cXhQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:nodes",
+        "name": "team:nodes",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Nodes team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-18T15:24:13Z",
+    "updated_at": "2026-10-18T15:34:48Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Bug Description\n\n`accumulateTokenUsage` in `packages/workflow/src/metadata-utils.ts` takes both counts on trust:\n\n```ts\nexport function accumulateTokenUsage(\n\tcontext: IExecuteFunctions,\n\tinputTokens: number,\n\toutputTokens: number,\n): void {\n\tconst prev = context.getExecuteData()?.metadata?.tokenUsage;\n\tcontext.setMetadata({\n\t\ttokenUsage: {\n\t\t\tinputTokens: (prev?.inputTokens ?? 0) + inputTokens,\n\t\t\toutputTokens: (prev?.outputTokens ?? 0) + outputTokens,\n\t\t},\n\t});\n}\n```\n\nIf a caller passes `undefined` — because a provider or an OpenAI-compatible gateway answered with a `usage` object that is missing the count fields — the stored value becomes `NaN`. Three things make that worse than one bad number:\n\n1. **It is sticky.** `??` only guards against `null`/`undefined`, and `NaN` is neither, so every later accumulation in the same execution stays `NaN`:\n\n   ```\n   after a response with usage:{}   -> { inputTokens: NaN, outputTokens: NaN }\n   after a later, valid call        -> { inputTokens: NaN, outputTokens: NaN }\n   ```\n\n2. **It is silent.** `JSON.stringify({ a: NaN })` yields `{\"a\":null}`, so the execution ends up with blank token metrics rather than an error.\n\n3. **It reaches telemetry.** `ITaskMetadata.tokenUsage` is documented as feeding `ai_input_tokens` / `ai_output_tokens` in `node_graph_string`.\n\nA negative count is the same class of problem in the other direction: the helper adds whatever it is given, so a provider answering `input_tokens: -350` silently *reduces* the execution's reported usage.\n\nTypeScript cannot catch any of this, because every vendor type declares the counts as required `number` inside an optional `usage` object. `if (response.usage)` satisfies the compiler while saying nothing about the fields inside.\n\n## To Reproduce\n\nPoint any vendor node below at an OpenAI-compatible gateway that returns `usage` without the count fields (`usage: {}`, or `usage: { total_tokens: 1610 }`, both of which real proxies emit), run it under an Evaluation Trigger so token metrics are aggregated, and the run reports no token usage at all — including for every other AI node in the same execution.\n\n**Seven vendor nodes call this helper, and exactly one guards its input:**\n\n| node | call site | guarded? |\n|---|---|---|\n| Ollama | `actions/text/message.operation.ts` (×2) | **yes** — `if (prompt_eval_count != null \\|\\| eval_count != null)` then `?? 0` |\n| Anthropic | `actions/text/message.operation.ts` | no |\n| Google Gemini | `actions/text/message.operation.ts` | no — guards that `usageMetadata` exists, then passes both counts raw |\n| MiniMax | `actions/text/message.operation.ts` | no |\n| Moonshot | `actions/text/message.operation.ts` | no |\n| Alibaba Cloud | `actions/text/message.operation.ts` | no |\n| OpenAI | `v1/actions/text/message.operation.ts` (×2), `v2/actions/text/response.operation.ts` (×2) | no |\n\nOllama being the only one handled by hand is the point: it is also the most likely to be pointed at a self-hosted or proxied endpoint, so someone thought about it there and nowhere else. The image operations were fixed in #38463, but per-call-site guards have now been applied unevenly across the other six vendors, which suggests the invariant belongs in the helper rather than in each caller.\n\n**Anthropic is worth separating out,** because a call-site guard would not be enough there — the arithmetic happens before the helper is reached:\n\n```ts\nconst inputTokens =\n\tusage.input_tokens +\n\t(usage.cache_creation_input_tokens ?? 0) +\n\t(usage.cache_read_input_tokens ?? 0);\naccumulateTokenUsage(this, inputTokens, usage.output_tokens);\n```\n\nA missing `input_tokens` produces `NaN` upstream of any check the call site could make. Only a guard inside `accumulateTokenUsage` catches it.\n\n## Expected behavior\n\n`accumulateTokenUsage` should never write a non-finite or negative value into `metadata.tokenUsage`. A count that is not a usable number should be ignored rather than poisoning the running total, so one malformed response costs at most its own contribution and the rest of the execution still reports correctly.\n\n## Debug Info\n\nNot instance-specific — the defect is in `packages/workflow` and is reachable from any of the vendor nodes listed above. Reproduced against master as of 2026-10-18 by reading the shipped helper and the call sites; the arithmetic above is from running the accumulator's own expression directly.\n\n## Environment\n\n- **Operating System:** macOS 26.6.1 (arm64)\n- **n8n Version:** 2.43.7\n- **Node.js Version:** v26.7.0\n- **Database:** SQLite\n- **Execution mode:** main\n- **Hosting:** Self-hosted (Docker)\n\nHappy to open a PR guarding the helper if you agree that is the right level — it is a small change, and it would let the OpenAI-specific helper added in #38463 shrink rather than adding another layer.",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/41349/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/41349/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @jonico,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9605\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9605](https://linear.app/n8n/issue/GHC-9605)",
+      "at": "2026-10-18T15:24:25Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41349#issuecomment-6251644160"
+    }
+  ],
+  "comments_complete": true
+}

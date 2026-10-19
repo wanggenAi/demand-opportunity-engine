@@ -1,11 +1,11 @@
 {
-  "observed_at": "2026-10-18T07:12:13.754953+00:00",
+  "observed_at": "2026-10-19T07:43:58.565595+00:00",
   "config": "data/discovery_config.json",
   "adapters": [
     {
       "source": "Hacker News",
       "refreshed": true,
-      "collected": 24,
+      "collected": 22,
       "errors": []
     },
     {
@@ -22,25 +22,25 @@
       "access_method": "Discourse public category/topic JSON",
       "url": "https://community.n8n.io/c/jobs/13.json?order=created",
       "records_inspected": 60,
-      "primary_pages_opened": 28,
-      "verified_buyer_requests": 9,
-      "explicit_commercial_signals": 9,
-      "collected": 28,
+      "primary_pages_opened": 31,
+      "verified_buyer_requests": 10,
+      "explicit_commercial_signals": 10,
+      "collected": 31,
       "errors": [],
       "limitations": [
         "Two newest-topic pages, not complete market coverage; max 200 extra replies per topic. Incomplete competition remains UNKNOWN unless observed high.",
         "Last activity is not publication time. Only substantive buyer-authored follow-ups can renew a lead."
       ],
       "evidence_snapshots": [
-        "data/evidence/f5663f332d6bc9b1.json#sha256=0e99bbf9e4b596e9537475fea3aafcd8ac4f79fa497f3cc9be4ff50ea1703a74",
-        "data/evidence/d9f0be47fa047f2c.json#sha256=7e365c34f41dc3ef9f81a1a9330111ded02bfed77d89b7c0ec6c4446775576ce"
+        "data/evidence/f5663f332d6bc9b1.json#sha256=62b26020bcd0ded0401f1a85de799fcd430acdf6e50511ec35f83ca79fcd18ce",
+        "data/evidence/d9f0be47fa047f2c.json#sha256=2464bea2e8d97066af91190ae74338b0e9e92257179050c7e4fd57018c151485"
       ]
     },
     {
       "source_family": "public freelance/job listings",
       "access_method": "Remotive public JSON API; attributed source links",
       "url": "https://remotive.com/api/remote-jobs?search=automation&limit=20",
-      "records_inspected": 13,
+      "records_inspected": 12,
       "primary_pages_opened": 0,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
@@ -51,37 +51,24 @@
         "Legal warning - Hey, thanks for using Remotive's API, we appreciate it! Please note that API documentation and access is granted so that developers can share our jobs further. Please do not submit Remotive jobs to third Party websites, including but not limited to: Jooble, Neuvoo, Google Jobs, LinkedIn Jobs. Please link back to the URL found on Remotive AND mention Remotive as a source in order to Remotive to get traffic from your listing. If you don't do that, we'll terminate your API access, sorry! Jobs displayed are delayed by 24 hours, the goal being that jobs are attributed to Remotive on various platforms. Displaying our jobs in order to collect signups/email addresses to show a listing constitutes a breach of our terms of services. We offer a private, paid-for API, please email us at hello(at)remotive(dot)io for more information (starting budget is $5k/mo). Please find out terms of services on https://remotive.com/api-documentation. Please note that there is absolutely no need to request Remotive Job data too frequently. Typically, you only need to GET Remotive job data through this API a couple of times a day (we advise max. 4 times a day). Our data is not changing much faster than that anyway. Note that excessive requests will be blocked. Many thanks (Rodolphe & the Remotive team!)"
       ],
       "evidence_snapshots": [
-        "data/evidence/071898d5d7cef09e.json#sha256=46bd885ad508aad5202b4d63b9f2cc19c2baaf9016d1605ebe486d8354eebdf7"
+        "data/evidence/071898d5d7cef09e.json#sha256=d540416d8c280719ffc927e6f6c1bf2e25bad2e6adfd90b3b08378974806a066"
       ]
     },
     {
       "source_family": "public procurement/RFQ",
       "access_method": "bounded public HTTP page inspection",
       "url": "https://www.contractsfinder.service.gov.uk/Search/Results?keywords=automation",
-      "records_inspected": 20,
+      "records_inspected": 0,
       "primary_pages_opened": 0,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
       "collected": 0,
-      "errors": [
-        {
-          "url": "https://www.contractsfinder.service.gov.uk/notice/7eeb3a8e-8f79-46c3-92bf-a032bedc89d7",
-          "error": "HTTPError: HTTP Error 403: Forbidden"
-        },
-        {
-          "url": "https://www.contractsfinder.service.gov.uk/notice/2a7494d3-86c5-40a1-9575-f93b1ab95ac0",
-          "error": "HTTPError: HTTP Error 403: Forbidden"
-        },
-        {
-          "url": "https://www.contractsfinder.service.gov.uk/notice/2e7a8151-800c-4d24-8056-615661b46405",
-          "error": "HTTPError: HTTP Error 403: Forbidden"
-        }
-      ],
+      "errors": [],
       "limitations": [
         "Search returned procurement notices; up to three detail pages attempted. No buyer request promoted: eligibility, exact remote scope, submission deadline and award status require manual verification."
       ],
       "evidence_snapshots": [
-        "data/evidence/50e3af0542f19c3a.json#sha256=8b9cf1dfe6720217b2498239d10ff1f31e7ef0f95a88e12449236c5df96866fe"
+        "data/evidence/50e3af0542f19c3a.json#sha256=a7b7408b9cb166f7f5639cf13ba14f66e81727dd2df6b3a5bb6042cc08775ca9"
       ]
     },
     {
@@ -134,14 +121,14 @@
         "No structured primary buyer requests extracted; static shell is not commercial proof. No login or anti-bot evasion."
       ],
       "evidence_snapshots": [
-        "data/evidence/b5d67d420401a4bb.json#sha256=64ce6940792f945e7bf8e66ca82c0d20358d2bb96ac1ab4aa864a1ffcc58f80d"
+        "data/evidence/b5d67d420401a4bb.json#sha256=9c4b2736dea40f9d9c06fcc51e9d63258e9bc7f025fb6165bbfac4687725a9fa"
       ]
     },
     {
       "source_family": "freelance project marketplace (Freelancer)",
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://www.freelancer.com/jobs/product-sourcing/",
-      "records_inspected": 17,
+      "records_inspected": 13,
       "primary_pages_opened": 2,
       "verified_buyer_requests": 2,
       "explicit_commercial_signals": 2,
@@ -151,9 +138,9 @@
         "Public bidCount includes competitors; only first 20 proposals may be visible. Employer identity often unresolved. Task budget is not agreement to our pilot."
       ],
       "evidence_snapshots": [
-        "data/evidence/abf73d1fa5782498.json#sha256=7b09618987c5bcd9bfd4c98b21d36524655f8d7d903919aa1fdc97dca6de31e2",
-        "data/evidence/3adde8bb3e84f849.json#sha256=57a7864badc972465f34b1b70814948c150bb570650d181bb3d21ff9f746d94e",
-        "data/evidence/1dc2b31945045284.json#sha256=4c6dbaf33eff5c5b8d02e22572c3c1ae6189d485267a969c6e51e8193adfa9c8"
+        "data/evidence/abf73d1fa5782498.json#sha256=8a1aadf941ce14c07b0b60d21045aa82f3c2fc185fe4a7c13d17695da4622ca4",
+        "data/evidence/3adde8bb3e84f849.json#sha256=c5751ad129ecd51d3ac076eba08be2519ec429b6c2baf316875b48db72b4ae96",
+        "data/evidence/1dc2b31945045284.json#sha256=9ea9a25cb5ed2c6973da4e52b516378f18afd51eda47ea940761d664a560f8c7"
       ],
       "records": [],
       "opportunity_ids": [
@@ -173,11 +160,7 @@
         "/projects/sourcing/canton-fair-industrial-electronics",
         "/projects/sourcing/source-cellulose-acetate-straw",
         "/projects/sourcing/brazil-agate-gemstone-sourcing-agent",
-        "/projects/sourcing/cosmetics-sourcing-agent-asia-required",
-        "/projects/graphic-design/retailer-focused-sales-pitch-deck",
-        "/projects/amazon/source-amazon-wholesale-products",
-        "/projects/virtual-assistant/virtual-assistant-needed-for-christmas",
-        "/projects/excel/project-40762768"
+        "/projects/sourcing/cosmetics-sourcing-agent-asia-required"
       ]
     },
     {
@@ -194,22 +177,33 @@
         "A different query/category on Freelancer does not count as another independent family."
       ],
       "evidence_snapshots": [
-        "data/evidence/eb34b643617bda88.json#sha256=9249f1f9abd51a6b849ac0d307d282be9bea4607bec3a0b87eb9e49b286f3d80"
+        "data/evidence/eb34b643617bda88.json#sha256=42b1ea2fed5ff555d3e880578bd392f1554ee70eae0830a202e6148dd8ceec9e"
       ],
       "records": [],
       "opportunity_ids": [],
       "inspected_keys": [
+        "/projects/video-streaming/live-stream-recording-chat-integration",
+        "/projects/api-integration/custom-ezform-for-order-processing",
+        "/projects/nextjs/prestia-platform-next-full-stack",
+        "/projects/json/golang-developer-high-performance",
+        "/projects/nodejs/create-code-app-builder-within",
+        "/projects/ios/cross-platform-digital-wallet-app",
+        "/projects/github/github-claude-integration-guidance",
+        "/projects/full-stack-development/saas-product-development",
+        "/projects/pine-script/tradingview-pine-auto-trader",
+        "/projects/web-development/auto-add-checkout-redirect-via",
+        "/projects/optical-character-recognition/net-developer-required-for-ocr",
+        "/projects/twilio/daily-whatsapp-reminder-automation",
         "/projects/api-integration/hyperzod-saas-app-setup-assistance",
         "/projects/android-app-development/chalotrain-android-app-full-development",
         "/projects/inventory-management/shopify-multi-store-inventory-dashboard",
         "/projects/nextjs/building-prestia-full-stack-next",
         "/projects/ai-development/fractional-tech-lead-for-driven",
         "/projects/api-integration/betting-site-expansion-casino-livecasino",
-        "/projects/api-integration/moodle-enhancement-whatsapp-google-tools",
         "/projects/api-integration/bodhan-api-integration-bot",
         "/projects/api-integration/hostify-channel-manager-setup",
         "/projects/web-development/hikashop-event-date-shipping-plugin",
-        "/projects/android/dual-sided-portable-pos-android",
+        "/projects/php/complete-sociovik-creative-social-media",
         "/projects/telegram-api/telegram-channel-auto-reposter",
         "/projects/software-development/custom-software-development-40772222",
         "/projects/web-development/telehealth-weight-loss-platform",
@@ -235,18 +229,7 @@
         "/projects/ai-automation/driven-seo-content-system-for",
         "/projects/digital-marketing/build-marketing-agent-system-connected",
         "/projects/database-management/desktop-management-software-development",
-        "/projects/cloud-computing/need-solution-for-project-regarding",
-        "/projects/ai-automation/business-automation-expert",
-        "/projects/google-cloud-platform/digital-asset-audit-api-mapping",
-        "/projects/ai-chatbot/receptionist-quotation-automation",
-        "/projects/frontend-development/frontend-development-engineer-needed",
-        "/projects/api-integration/seeking-australian-dev-for-custom",
-        "/projects/facebook-ads/fix-facebook-whatsapp-lead-transfer",
-        "/projects/full-stack-development/finance-crm-completion-launch-full",
-        "/projects/full-stack-development/full-stack-developer-for-passes",
-        "/projects/web-development/multivendor-commerce-marketplace",
-        "/projects/payment-gateway-integration/apple-google-pay-integration",
-        "/projects/sales/commission-based-development-sales"
+        "/projects/cloud-computing/need-solution-for-project-regarding"
       ]
     },
     {
@@ -254,62 +237,64 @@
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://community.shopify.com/latest.json",
       "records_inspected": 30,
-      "primary_pages_opened": 2,
+      "primary_pages_opened": 3,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
-      "collected": 2,
+      "collected": 3,
       "errors": [],
       "limitations": [
         "Latest activity is not original publication; support questions are PRODUCT_SIGNAL, not SALES. No more than four primary topics per run."
       ],
       "evidence_snapshots": [
-        "data/evidence/bda5dc3c1eb46ea5.json#sha256=0b6d2ca2382851dc625742e54c75500e74c508d1b55c999d78fe716870c75e69",
-        "data/evidence/67bc51c405091f8a.json#sha256=0e1b1c411be1805d165dfe80affd76f5d672387d85ace5407c786f1c948529dc",
-        "data/evidence/8eac8077525fd1fc.json#sha256=da9c7f1eefd243262fd3d65ec3a2032b61d0f5d902be4e1fb9c06e4aa16f97f0"
+        "data/evidence/bda5dc3c1eb46ea5.json#sha256=9ccacf900251cba0c6d5529ddd32c2393f07ea4f23e81eb86255d7d5b489fb2b",
+        "data/evidence/c1e4485d5191e77a.json#sha256=08b3d64196a0307b20b2586d2a67cad677fe63815dcb247b23df2a138a5dbf19",
+        "data/evidence/63883190e7f407fc.json#sha256=3e4447f7d57b999a176e25885e57ffa1f3379beb7a12b704e07924bb8ae99364",
+        "data/evidence/8eac8077525fd1fc.json#sha256=866845aa30374e1e5348fb188032a29717a7e5ecee11a0bbf071bd16b3385ee8"
       ],
       "records": [],
       "opportunity_ids": [
-        "cb9654d39bcbd74c",
+        "1885fafb90139d1e",
+        "8bca2924e7be9a26",
         "7d6d4b37434e23b6"
       ],
       "inspected_keys": [
         "355460",
-        "699075",
-        "700078",
-        "39703",
-        "698844",
-        "700071",
-        "699950",
-        "555921",
-        "698200",
-        "696405",
-        "690016",
+        "700522",
+        "700592",
+        "686854",
         "698765",
-        "684511",
+        "699079",
+        "588628",
+        "700590",
+        "575426",
+        "700544",
+        "698844",
+        "555921",
+        "696548",
+        "695270",
+        "390788",
+        "398789",
+        "582445",
+        "694275",
+        "688992",
+        "699059",
+        "700532",
+        "695852",
+        "698791",
+        "682435",
         "700035",
-        "700055",
-        "700054",
-        "674712",
-        "689041",
-        "553677",
+        "684511",
         "679908",
-        "631832",
-        "692265",
-        "699269",
-        "579262",
-        "653418",
-        "690346",
-        "278698",
-        "694862",
-        "686452",
-        "420411"
+        "698790",
+        "697027",
+        "404018"
       ]
     },
     {
       "source_family": "founder community (Indie Hackers)",
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://www.indiehackers.com/",
-      "records_inspected": 20,
+      "records_inspected": 22,
       "primary_pages_opened": 0,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
@@ -319,31 +304,33 @@
         "Only server-rendered public pages. robots disallows /api/ and sign-in; neither used. Founder self-promotion is not a buyer."
       ],
       "evidence_snapshots": [
-        "data/evidence/6548833164b0e7c9.json#sha256=93ae718fddce034e8d9de2551a1dcfd0639e0bc24f886c3ccc7c79fd5f1839dd"
+        "data/evidence/6548833164b0e7c9.json#sha256=7b66fb4e31e7519abfb9565156935f697135dc0b999ad43f9baefde23220564f"
       ],
       "records": [],
       "opportunity_ids": [],
       "inspected_keys": [
-        "/post/how-do-you-tell-useful-feedback-from-someone-who-might-actually-use-your-app-3ec6e41c26",
+        "/post/i-can-build-an-app-in-12-days-with-ai-i-still-cant-get-anyone-to-find-it-0f27759fe4",
+        "/post/show-ih-i-built-a-ranking-site-for-ai-tools-without-knowing-how-to-code-5-cold-emails-0-replies-what-am-i-missing-3b7700e0df",
         "/post/50-founders-saw-my-proof-screen-only-16-even-tried-98a870b47b",
+        "/post/before-you-blame-your-product-for-slow-signups-check-whether-strangers-can-find-it-797eb89ec1",
+        "/post/how-do-you-tell-useful-feedback-from-someone-who-might-actually-use-your-app-3ec6e41c26",
+        "/post/what-actually-produced-installs-for-my-small-app-one-kind-of-post-and-what-google-ads-really-cost-per-install-93f734a441",
+        "/post/four-weeks-of-my-steam-game-finder-google-went-cold-and-it-was-my-own-fault-a3e080ac15",
         "/post/after-submitting-to-launch-directories-how-do-you-know-youre-actually-listed-0ca4076141",
-        "/post/building-an-ai-code-reviewer-that-does-more-than-point-out-bugs-72353b8479",
-        "/post/everyone-you-ve-shown-your-product-to-wants-you-to-succeed-that-s-the-problem-3d0cbf9e4b",
-        "/post/i-launched-my-first-mac-app-today-a-text-expander-with-plain-text-snippets-7ee42de7dd",
+        "/post/tech/she-built-a-250k-month-business-around-an-ai-clone-07hKxdXQ0l7Bu3l2IBFy",
         "/post/tech/focusing-on-audience-first-and-hitting-30k-mrr-in-8-months-ootKyp98moigKLdaOON4",
         "/post/tech/how-rasty-turek-built-vaultaire-in-three-weeks-and-grew-it-to-40k-month-1BjFvs2akwfIVjMGYO54",
         "/post/tech/turning-an-agency-into-a-12k-mo-product-portfolio-13QkMY561jAQxsiA0LSg",
         "/post/tech/starting-from-scratch-and-hitting-9-5k-mrr-in-two-months-j5pMaED5FEbKw8qmeyj9",
         "/post/tech/building-a-3m-yr-company-without-launching-publicly-tacryeGIH66SCtD2an4r",
-        "/post/tech/using-custom-infrastructure-as-a-competitive-advantage-and-hitting-31k-mrr-KgfHz813vyyWeszqJMIi",
-        "/post/i-can-build-an-app-in-12-days-with-ai-i-still-cant-get-anyone-to-find-it-0f27759fe4",
-        "/post/what-if-ai-could-actually-help-you-get-your-first-customers-7876143b22",
-        "/post/before-you-blame-your-product-for-slow-signups-check-whether-strangers-can-find-it-797eb89ec1",
-        "/post/five-smoke-tests-you-can-run-this-week-with-the-pass-thresholds-18d338d5f2",
-        "/post/i-built-a-free-faq-schema-generator-after-seeing-the-same-json-ld-mistakes-repeatedly-17eb2d0e20",
-        "/post/6-842-price-changes-in-173-countries-what-my-pricing-tool-shows-before-you-push-c01260eefd",
-        "/post/google-doesn-t-think-my-brand-name-exists-it-thinks-i-made-a-typo-3db6ce4a9d",
-        "/post/my-fake-paywall-75-views-2-clicks-both-on-day-1-then-5-straight-days-of-zero-is-that-a-signal-380c335e68"
+        "/post/i-built-a-rank-tracker-that-only-emails-you-when-something-actually-changes-5056deb816",
+        "/post/i-got-600k-views-on-reddit-without-ever-mentioning-my-startup-a45d721996",
+        "/post/35-of-411-launches-had-a-demo-video-they-got-more-votes-5bad855a41",
+        "/post/im-learning-that-building-a-product-and-getting-it-noticed-are-two-different-problems-d08611e2fc",
+        "/post/every-onboarding-guide-says-start-with-a-quick-win-it-cost-me-67-of-my-signups-f19a7d9f6e",
+        "/post/i-read-the-pricing-of-1-170-ai-products-63-sell-credits-not-subscriptions-a545f1d1c3",
+        "/post/i-built-an-app-that-turns-chatgpt-into-a-social-media-manager-81b2cd77f9",
+        "/post/tech/using-custom-infrastructure-as-a-competitive-advantage-and-hitting-31k-mrr-KgfHz813vyyWeszqJMIi"
       ]
     },
     {
@@ -360,22 +347,22 @@
         "Physical goods buyers do not automatically buy research. Contact requires platform sign-in; no access bypass. No bid-count visibility => UNKNOWN."
       ],
       "evidence_snapshots": [
-        "data/evidence/3914e4f508c84945.json#sha256=52a6fc07c21bfe20e7384796f92416563133caada14d3ca2e5ae6a7a1263b4b7",
-        "data/evidence/82f55d4728f7840a.json#sha256=e75bfc06dae26ffbf75e5dab14e6a161767185b92f42c6b12b5df703dfd9f94d",
-        "data/evidence/faa74e92582da602.json#sha256=6e7c387c9410b590b531214626d235d5a1ec76116512b44bcb3cf9ac68892449"
+        "data/evidence/3914e4f508c84945.json#sha256=6eb3af9843e4a19bd8ae8d0db7d27ccd5fde3d936ff5c64d494801ea057aa621",
+        "data/evidence/e965d6d6bbfa731e.json#sha256=d63668d1100f404ad15cb19ed64d7e1a88b702b1e74d54eef02640138fc4c9e7",
+        "data/evidence/91d9dbe1f44059ca.json#sha256=7a6410ae5d6bb7ede9f3434e455e4da145852d36803afd381cebba274d639f0a"
       ],
       "records": [
         {
-          "url": "https://importer1.tradekey.com/buyoffer/Crafted-For-The-Perfect-Fit--3876373.html",
-          "primary_excerpt": "Last Updated: Posted on: 15 Oct 2026 Time Left: 27D 16H Buying Frequency: Weekly Payment Terms: PayPal, Other Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details Tailor Made USA LLC is a U.S.-based business focused on providing high-quality custom tailoring, clothing alterations, and personalized apparel solutions. We help customers achieve the perfect fit and style through careful craftsmanship, attention to detail, and reliable service. From custom-made garments and professional alterations to tailored fashion solutions, our goal is to deliver clothing that feels comfortable, looks refined, and is made to suit each customerâ€™s individual needs. Refine by popular tags men's clothing women's clothing children clothing Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.22635 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French G",
+          "url": "https://importer1.tradekey.com/buyoffer/RFQ-CHARGUER-STATION-TERRACOM-S-R-L--3876377.html",
+          "primary_excerpt": "Last Updated: Posted on: 15 Oct 2026 Time Left: 26D 16H Buying Frequency: Other Payment Terms: T/T Shipping Terms: FOB China Destination Port: Iquique Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details Hello dear Sirs. Please find in attachment our request. We are a company whit 12 years of experience buying from China. We need this proyect to provide one of our customers in our country. Waiting your kind reply, Regards. Hebert Terrazas R. General Manager TERRACOM S. R. L. Attachment To view attachment please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! Refine by popular tags rfw Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.10301 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French Guiana French Polynesia Gabon Gambia Georgia Germany Ghana Gibraltar Greece Greenland Grenada Guadeloupe Guam ",
           "decision": "Physical goods RFQ; not a commissioned China research service; contact gated and competition unknown",
           "buyer": true,
           "published_at": "2026-10-15T00:00:00+00:00",
           "date_precision": "day; original posted date, not crawl date"
         },
         {
-          "url": "https://importer1.tradekey.com/buyoffer/Looking-For-Sabic-Off-Grade-EPDM-Virgin-Rubber-Bale-3876372.html",
-          "primary_excerpt": "Last Updated: Posted on: 15 Oct 2026 Time Left: 27D 16H Buying Frequency: Monthly Payment Terms: T/T Shipping Terms: Cif shanghai Destination Port: shanghai Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details ENB content:5.5% Ethylene content:68% Mooney Viscosity:61 Refine by popular tags epdm for running track and compouding using Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.25659 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French Guiana French Polynesia Gabon Gambia Georgia Germany Ghana Gibraltar Greece Greenland Grenada Guadeloupe Guam Guatemala Guernsey Guinea Guinea-Bissau Guyana Haiti Honduras Hong Kong Hungary Iceland India Indonesia Iraq Ireland Isle of Man Israel Italy Jamaica Japan Jersey Jordan Kazakhstan Kenya Kiribati Kuwait Kyrgyzstan Laos Latvia Lebanon Lesotho Liberia Libya Liechtenstein Lithuania Luxemb",
+          "url": "https://importer1.tradekey.com/buyoffer/Trinity-Montessori-Academy-Indian-Land-3876375.html",
+          "primary_excerpt": "Last Updated: Posted on: 15 Oct 2026 Time Left: 26D 16H Buying Frequency: Daily Payment Terms: Other Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details Trinity Montessori Academy in Fort Mill, SC provides Montessori education programs designed to support early childhood development through hands on learning experiences. The academy offers infant toddler programs, primary education, transitional kindergarten, kindergarten, after school programs, and literacy focused learning with Christian values. Its classrooms encourage independence, curiosity, and confidence in children while preparing them for future academic success. Enroll today to explore a nurturing educational environment for your child. Attachment To view attachment please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! People who quote for this RFQ also looked at Trinity Montessori Academy - Riverwalk Trinity Montessori Academy provides Montessori education programs in Rock Hill, SC, designed to support children through engaging and age... Quote Now Refine by popular tags montessori academy Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.08647 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape",
           "decision": "Physical goods RFQ; not a commissioned China research service; contact gated and competition unknown",
           "buyer": true,
           "published_at": "2026-10-15T00:00:00+00:00",
@@ -384,6 +371,8 @@
       ],
       "opportunity_ids": [],
       "inspected_keys": [
+        "https://importer1.tradekey.com/buyoffer/RFQ-CHARGUER-STATION-TERRACOM-S-R-L--3876377.html",
+        "https://importer1.tradekey.com/buyoffer/Trinity-Montessori-Academy-Indian-Land-3876375.html",
         "https://importer1.tradekey.com/buyoffer/Crafted-For-The-Perfect-Fit--3876373.html",
         "https://importer1.tradekey.com/buyoffer/Looking-For-Sabic-Off-Grade-EPDM-Virgin-Rubber-Bale-3876372.html",
         "https://importer1.tradekey.com/buyoffer/Wildwood-Tobacco-Shop-3876371.html",
@@ -406,27 +395,25 @@
         "https://importer1.tradekey.com/buyoffer/Egg-Trays-Sized-For-Our-Packing-Line-3876315.html",
         "https://importer1.tradekey.com/buyoffer/Compliance-Review-Hold-Nicotine-Product-Request-3876313.html",
         "https://importer1.tradekey.com/buyoffer/UTP-Cable-By-Category-Pair-Count-And-Conductor-Gauge-3876311.html",
-        "https://importer1.tradekey.com/buyoffer/Test-Strips-Intended-Test-And-Device-Compatibility-Required-3876309.html",
-        "https://importer1.tradekey.com/buyoffer/Directory-Listings-For-A-Business-Website-3876307.html",
-        "https://importer1.tradekey.com/buyoffer/Red-Lentils-With-Split-Grade-And-Defect-Limits-3876305.html"
+        "https://importer1.tradekey.com/buyoffer/Test-Strips-Intended-Test-And-Device-Compatibility-Required-3876309.html"
       ]
     }
   ],
-  "unique_refreshed": 80,
+  "unique_refreshed": 82,
   "info_edge_refresh": [
     {
       "id": "5409f529cb2b0f7b",
       "url": "https://community.n8n.io/t/assistant-credits-top-up-now-available/318075",
-      "checked_at": "2026-10-18T07:12:13.754953+00:00",
+      "checked_at": "2026-10-19T07:43:58.565595+00:00",
       "refreshed": false,
       "reason": "event expired; no publication rejuvenation"
     },
     {
       "id": "edge-haiku-2026-10-07",
       "url": "https://www.anthropic.com/claude-haiku-5-5",
-      "checked_at": "2026-10-18T07:12:13.754953+00:00",
+      "checked_at": "2026-10-19T07:43:58.565595+00:00",
       "refreshed": true,
-      "snapshot": "data/evidence/info-rechecks/cdb1d51fae043110.json#sha256=ec658175bd198129c9a4e0693d8a8b985d1ead2e48100d53392adb47e4a9bd88"
+      "snapshot": "data/evidence/info-rechecks/cdb1d51fae043110.json#sha256=9a8801605ee92949d15e69a765d4509a2aa227e4ce2348ab16ab2ed8e7c5ed4e"
     }
   ]
 }
