@@ -1,0 +1,66 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50161254",
+  "collected_at": "2026-10-20T07:29:49.053303+00:00",
+  "source": {
+    "author": "otherayden",
+    "children": [
+      {
+        "author": "SurfingAlpaca",
+        "children": [
+          {
+            "author": "otherayden",
+            "children": [],
+            "created_at": "2026-10-20T05:51:32.000Z",
+            "created_at_i": 1792475492,
+            "id": 50161852,
+            "options": [],
+            "parent_id": 50161300,
+            "points": null,
+            "story_id": 50161254,
+            "text": "How often do you manually edit text files these days? I have been a neovim power user for a few years now but I find that I almost never open it anymore since I use agents for most code.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-20T04:19:27.000Z",
+        "created_at_i": 1792469967,
+        "id": 50161300,
+        "options": [],
+        "parent_id": 50161254,
+        "points": null,
+        "story_id": 50161254,
+        "text": "Back in the day I used to do ssh, tmux, vim for most of my work on the server and sshfs for stuff where I needed my IDE. In the last 10 years I think the only thing thats changed is adding agents to the mix (and no longer needing sshfs). Some files kinda open slow on vim or screw up the syntax highlighting so I switch to nvim&#x2F;helix (still evaluating both. Don’t know what to pick)",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-10-20T04:10:14.000Z",
+    "created_at_i": 1792469414,
+    "id": 50161254,
+    "options": [],
+    "parent_id": null,
+    "points": 2,
+    "story_id": 50161254,
+    "text": "I recently transitioned into doing most of my work via SSH running on an old server I&#x27;ve had lying around my house. Currently using tmux, ssh, neovim for file editing, and switching between claude code and codex for terminal coding agents. Is this as good of a setup as one can get? Anything I&#x27;m missing out on?",
+    "title": "Ask HN: What's your SSH terminal workflow like?",
+    "type": "story",
+    "url": null
+  },
+  "comments": [
+    {
+      "author": "SurfingAlpaca",
+      "text": "Back in the day I used to do ssh, tmux, vim for most of my work on the server and sshfs for stuff where I needed my IDE. In the last 10 years I think the only thing thats changed is adding agents to the mix (and no longer needing sshfs). Some files kinda open slow on vim or screw up the syntax highlighting so I switch to nvim/helix (still evaluating both. Don’t know what to pick)",
+      "at": "2026-10-20T04:19:27.000Z",
+      "url": "https://news.ycombinator.com/item?id=50161300"
+    },
+    {
+      "author": "otherayden",
+      "text": "How often do you manually edit text files these days? I have been a neovim power user for a few years now but I find that I almost never open it anymore since I use agents for most code.",
+      "at": "2026-10-20T05:51:32.000Z",
+      "url": "https://news.ycombinator.com/item?id=50161852"
+    }
+  ],
+  "comments_complete": true
+}

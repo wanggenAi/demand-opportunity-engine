@@ -1,0 +1,194 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50155647",
+  "collected_at": "2026-10-20T07:29:49.053303+00:00",
+  "source": {
+    "author": "zoozla",
+    "children": [
+      {
+        "author": "WillAdams",
+        "children": [],
+        "created_at": "2026-10-19T18:19:51.000Z",
+        "created_at_i": 1792433991,
+        "id": 50155920,
+        "options": [],
+        "parent_id": 50155647,
+        "points": null,
+        "story_id": 50155647,
+        "text": "Neat!<p>Jerry Pournelle often mentioned having an application which would teach reading --- apparently it is now out of print?<p><a href=\"https:&#x2F;&#x2F;www.readingtlc.com&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;www.readingtlc.com&#x2F;</a><p>Have you looked at intermediary things such as the &quot;Living Books&quot;?<p><a href=\"https:&#x2F;&#x2F;wanderfulstorybooks.com&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;wanderfulstorybooks.com&#x2F;</a>",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "swerve3815",
+        "children": [
+          {
+            "author": "whitten",
+            "children": [],
+            "created_at": "2026-10-19T23:31:24.000Z",
+            "created_at_i": 1792452684,
+            "id": 50159399,
+            "options": [],
+            "parent_id": 50157501,
+            "points": null,
+            "story_id": 50155647,
+            "text": "I was thinking this too. \nEspecially if it handles UNICODE character sets.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          },
+          {
+            "author": "zoozla",
+            "children": [],
+            "created_at": "2026-10-20T05:34:18.000Z",
+            "created_at_i": 1792474458,
+            "id": 50161737,
+            "options": [],
+            "parent_id": 50157501,
+            "points": null,
+            "story_id": 50155647,
+            "text": "That&#x27;s one of the reasons I made it open source - you can point your agent to it and adapt it to any other language. You&#x27;ll need to record the phonemes yourself through, haven&#x27;t found any AI model that can do it well.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-19T20:16:35.000Z",
+        "created_at_i": 1792440995,
+        "id": 50157501,
+        "options": [],
+        "parent_id": 50155647,
+        "points": null,
+        "story_id": 50155647,
+        "text": "Neat project. Too bad it only handles English phonemes, as it would be very valuable for teaching other languages. Maybe someday I&#x27;ll convert it from ARPABET to IPA...",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "giancarlostoro",
+        "children": [
+          {
+            "author": "zoozla",
+            "children": [],
+            "created_at": "2026-10-20T05:43:03.000Z",
+            "created_at_i": 1792474983,
+            "id": 50161794,
+            "options": [],
+            "parent_id": 50158278,
+            "points": null,
+            "story_id": 50155647,
+            "text": "Oh that&#x27;s odd. We use it both on Android and an iPad. Will look into it, thanks!",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-19T21:26:22.000Z",
+        "created_at_i": 1792445182,
+        "id": 50158278,
+        "options": [],
+        "parent_id": 50155647,
+        "points": null,
+        "story_id": 50155647,
+        "text": "Looks nice, on my iPhone (and maybe my iPad too?) I don&#x27;t hear a voice at all.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "throwaway89201",
+        "children": [
+          {
+            "author": "zoozla",
+            "children": [],
+            "created_at": "2026-10-20T05:42:21.000Z",
+            "created_at_i": 1792474941,
+            "id": 50161788,
+            "options": [],
+            "parent_id": 50159626,
+            "points": null,
+            "story_id": 50155647,
+            "text": "Thanks for pointing these things out, although dangerous is probably overstating it a bit. The points you mentioned at are easily fixable - there are few missing phonemes that I haven&#x27;t recorded, the voice can be changed from British (it&#x27;s actually Australian) to US in the settings, and the word no is often taught as a sight word because it comes much earlier than the full &quot;o&quot; sound, but you can tweak which words are treated as &quot;tricky&quot; in the settings as well.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-20T00:02:00.000Z",
+        "created_at_i": 1792454520,
+        "id": 50159626,
+        "options": [],
+        "parent_id": 50155647,
+        "points": null,
+        "story_id": 50155647,
+        "text": "This website seems almost dangerously wrong. It uses only a single phoneme &#x2F; sound for single letters, regardless of the actual phoneme used in the word. For example, every &#x27;a&#x27; in a word is the &#x2F;æ&#x2F; phoneme (as in &quot;cat&quot;), but this same sound is used for the word &quot;a&quot;, which should be pronounced as &#x2F;ə&#x2F; or &#x2F;eɪ&#x2F; (as in &quot;about&quot; or &quot;cake&quot;).<p>It also seems to mix up American and British English pronunciation between the phoneme and word forms a lot, for example in the word &quot;class&quot; which uses American phonemes but uses the British word pronunciation.<p>It sometimes cheats by declaring a word &#x27;difficult&#x27;. For example word &quot;no&quot; is declared difficult, which the average learner is probably pretty practiced in saying. It&#x27;s just not using the same phoneme as the all the other &#x27;o&#x27; phonemes on the website.<p>I&#x27;m sure its made with best intentions, but the foundation on which the app is built &#x2F; prompted is incorrect. Please don&#x27;t use this to teach children. Use proper material made by educators, acclaimed authors and experts.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-10-19T17:58:54.000Z",
+    "created_at_i": 1792432734,
+    "id": 50155647,
+    "options": [],
+    "parent_id": null,
+    "points": 21,
+    "story_id": 50155647,
+    "text": "My kid is 6 y&#x2F;o and she is learning to read. She&#x27;s moved through the basic phonics with Teach Your Monster to Read but was struggling with how repetitive it was. I wanted to give her some stories to read, but she still needed help sounding words out - and I wanted her to have the experience of sitting and reading by herself.<p>So I built this book reader app to allow her to click on the words, sound out the phonemes, and read by herself.<p>My 12 year old son wrote the first story, there&#x27;s a cliffhanger at the end and he&#x27;s working on the next section.<p>We&#x27;re going to release more chapters and more stories in the near future.<p>And there&#x27;s one other thing -<p>The reader has an MCP connection, so you can connect your Claude or ChatGPT or Grok, give them a PDF of a book you like (or even a set of scans done quickly with a phone camera) and have them import your favorite books into the app (private to your account, for your own kid, if you own the book of course).<p>The reader is free to use on its website and open source if you want to tinker and create your own version.<p>The included stories are under Creative Commons.",
+    "title": "Show HN: Open-source early-reading reader with phonics help",
+    "type": "story",
+    "url": "https://github.com/finereli/yarareads"
+  },
+  "comments": [
+    {
+      "author": "WillAdams",
+      "text": "Neat! Jerry Pournelle often mentioned having an application which would teach reading --- apparently it is now out of print?  https://www.readingtlc.com/  Have you looked at intermediary things such as the \"Living Books\"?  https://wanderfulstorybooks.com/",
+      "at": "2026-10-19T18:19:51.000Z",
+      "url": "https://news.ycombinator.com/item?id=50155920"
+    },
+    {
+      "author": "swerve3815",
+      "text": "Neat project. Too bad it only handles English phonemes, as it would be very valuable for teaching other languages. Maybe someday I'll convert it from ARPABET to IPA...",
+      "at": "2026-10-19T20:16:35.000Z",
+      "url": "https://news.ycombinator.com/item?id=50157501"
+    },
+    {
+      "author": "whitten",
+      "text": "I was thinking this too. \nEspecially if it handles UNICODE character sets.",
+      "at": "2026-10-19T23:31:24.000Z",
+      "url": "https://news.ycombinator.com/item?id=50159399"
+    },
+    {
+      "author": "zoozla",
+      "text": "That's one of the reasons I made it open source - you can point your agent to it and adapt it to any other language. You'll need to record the phonemes yourself through, haven't found any AI model that can do it well.",
+      "at": "2026-10-20T05:34:18.000Z",
+      "url": "https://news.ycombinator.com/item?id=50161737"
+    },
+    {
+      "author": "giancarlostoro",
+      "text": "Looks nice, on my iPhone (and maybe my iPad too?) I don't hear a voice at all.",
+      "at": "2026-10-19T21:26:22.000Z",
+      "url": "https://news.ycombinator.com/item?id=50158278"
+    },
+    {
+      "author": "zoozla",
+      "text": "Oh that's odd. We use it both on Android and an iPad. Will look into it, thanks!",
+      "at": "2026-10-20T05:43:03.000Z",
+      "url": "https://news.ycombinator.com/item?id=50161794"
+    },
+    {
+      "author": "throwaway89201",
+      "text": "This website seems almost dangerously wrong. It uses only a single phoneme / sound for single letters, regardless of the actual phoneme used in the word. For example, every 'a' in a word is the /æ/ phoneme (as in \"cat\"), but this same sound is used for the word \"a\", which should be pronounced as /ə/ or /eɪ/ (as in \"about\" or \"cake\"). It also seems to mix up American and British English pronunciation between the phoneme and word forms a lot, for example in the word \"class\" which uses American phonemes but uses the British word pronunciation. It sometimes cheats by declaring a word 'difficult'. For example word \"no\" is declared difficult, which the average learner is probably pretty practiced in saying. It's just not using the same phoneme as the all the other 'o' phonemes on the website. I'm sure its made with best intentions, but the foundation on which the app is built / prompted is incorrect. Please don't use this to teach children. Use proper material made by educators, acclaimed authors and experts.",
+      "at": "2026-10-20T00:02:00.000Z",
+      "url": "https://news.ycombinator.com/item?id=50159626"
+    },
+    {
+      "author": "zoozla",
+      "text": "Thanks for pointing these things out, although dangerous is probably overstating it a bit. The points you mentioned at are easily fixable - there are few missing phonemes that I haven't recorded, the voice can be changed from British (it's actually Australian) to US in the settings, and the word no is often taught as a sight word because it comes much earlier than the full \"o\" sound, but you can tweak which words are treated as \"tricky\" in the settings as well.",
+      "at": "2026-10-20T05:42:21.000Z",
+      "url": "https://news.ycombinator.com/item?id=50161788"
+    }
+  ],
+  "comments_complete": true
+}

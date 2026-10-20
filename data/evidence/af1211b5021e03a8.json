@@ -1,0 +1,123 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41485",
+  "collected_at": "2026-10-20T07:29:49.053303+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/41485",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/41485/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/41485/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/41485/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/41485",
+    "id": 5937276923,
+    "node_id": "I_kwDOC4Q8Qs8AAAABYeOn-w",
+    "number": 41485,
+    "title": "Array .pluck() with several fields returns values in object key order, not the requested field order",
+    "user": {
+      "login": "kevin9327",
+      "id": 5299031,
+      "node_id": "MDQ6VXNlcjUyOTkwMzE=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5299031?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/kevin9327",
+      "html_url": "https://github.com/kevin9327",
+      "followers_url": "https://api.github.com/users/kevin9327/followers",
+      "following_url": "https://api.github.com/users/kevin9327/following{/other_user}",
+      "gists_url": "https://api.github.com/users/kevin9327/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/kevin9327/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/kevin9327/subscriptions",
+      "organizations_url": "https://api.github.com/users/kevin9327/orgs",
+      "repos_url": "https://api.github.com/users/kevin9327/repos",
+      "events_url": "https://api.github.com/users/kevin9327/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/kevin9327/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582013554,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cicg",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:cats",
+        "name": "team:cats",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Cats team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-20T06:50:31Z",
+    "updated_at": "2026-10-20T07:07:26Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\n`Array.pluck()` with more than one field name returns each item's values in the order that item's keys happen to be in, not in the order of the field names passed in. When items in the array have their keys in different orders (common with data merged from different sources), the inner arrays don't line up, so position 0 is sometimes one field and sometimes the other.\n\nThis happens because `pluck` (in `packages/workflow/src/extensions/array-extensions.ts` and its mirror in `@n8n/expression-runtime`) loops over `Object.keys(item)` first and over the requested fields second.\n\n### To Reproduce\n\n1. Add a Set or Code node, or open any expression editor.\n2. Evaluate:\n   `{{ [{ lastName: 'Doe', firstName: 'John' }, { firstName: 'Jane', lastName: 'Roe' }].pluck('firstName', 'lastName') }}`\n3. You get `[[\"Doe\",\"John\"],[\"Jane\",\"Roe\"]]`\n\n### Expected behavior\n\n`[[\"John\",\"Doe\"],[\"Jane\",\"Roe\"]]`: each inner array follows the order of the field names passed to `pluck()`.\n\n### Debug Info\n\nFound by reading the code on `master`, and reproduced with a unit test that calls `arrayExtensions.functions.pluck` directly.\n\n### Operating System\n\nUbuntu Linux\n\n### n8n Version\n\nmaster (current HEAD)\n\n### Node.js Version\n\n20.19.2\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/41485/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/41485/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @kevin9327,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9610\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9610](https://linear.app/n8n/issue/GHC-9610)",
+      "at": "2026-10-20T06:50:40Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41485#issuecomment-6285176266"
+    }
+  ],
+  "comments_complete": true
+}

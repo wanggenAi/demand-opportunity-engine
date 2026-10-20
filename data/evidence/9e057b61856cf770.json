@@ -1,0 +1,123 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41418",
+  "collected_at": "2026-10-20T07:29:49.053303+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/41418",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/41418/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/41418/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/41418/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/41418",
+    "id": 5922694988,
+    "node_id": "I_kwDOC4Q8Qs8AAAABYQUnTA",
+    "number": 41418,
+    "title": "Queue workers retain waiting sub-workflow execution references after executions complete",
+    "user": {
+      "login": "one-word",
+      "id": 62826029,
+      "node_id": "MDQ6VXNlcjYyODI2MDI5",
+      "avatar_url": "https://avatars.githubusercontent.com/u/62826029?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/one-word",
+      "html_url": "https://github.com/one-word",
+      "followers_url": "https://api.github.com/users/one-word/followers",
+      "following_url": "https://api.github.com/users/one-word/following{/other_user}",
+      "gists_url": "https://api.github.com/users/one-word/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/one-word/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/one-word/subscriptions",
+      "organizations_url": "https://api.github.com/users/one-word/orgs",
+      "repos_url": "https://api.github.com/users/one-word/repos",
+      "events_url": "https://api.github.com/users/one-word/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/one-word/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582013554,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cicg",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:cats",
+        "name": "team:cats",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Cats team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-19T11:06:40Z",
+    "updated_at": "2026-10-19T11:15:10Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nIn a production queue-mode deployment, we observed waiting sub-workflow entries accumulating in a worker’s `ActiveExecutions` registry. Sampled execution IDs had already completed successfully, but their original in-memory entries remained.\n\nTwo production samples taken approximately 73 minutes apart showed:\n- Waiting entries increased from 6,439 to 9,776.\n- All entries from the earlier sample were still present in the later sample.\n- Sampled executions corresponding to retained entries had already completed successfully.\n\nThese observations show retained entries in the sampled worker. They do not establish the status of every retained execution, quantify the associated memory usage, or prove that this causes an out-of-memory crash.\n\nSuspected cause:\nIntegrated sub-workflows initially execute in their parent worker. When they enter a persisted wait, their execution data can remain in that worker’s `ActiveExecutions`. They subsequently resume as queue jobs, whose completion does not appear to remove the original entries.\n\nRelated proposed fix: https://github.com/n8n-io/n8n/pull/39224\n\nThe PR reports seven added regression tests, all 196 relevant tests passing, and CLI lint and type checking passing. Restoring the old cleanup logic caused two regression tests to fail as expected.\n\nLimitations:\n- The issue has not yet been reproduced in an unmodified upstream deployment.\n- Queue-mode integration validation of the proposed fix has not been completed.\n- Before-and-after memory measurements and validation against the latest upstream code are still needed.\n\n### To Reproduce\n\nA verified minimal reproduction is not yet available. The issue was observed through production worker inspection.\n\nThe following is a proposed reproduction procedure and still needs validation:\n\n1. Set up n8n in queue mode with a main instance and at least one worker.\n2. Create a parent workflow that invokes a sub-workflow containing a persisted Wait.\n3. Repeatedly execute the parent workflow and allow the sub-workflows to resume and complete.\n4. Inspect the original worker’s `ActiveExecutions` registry over time.\n5. Compare retained execution IDs with their persisted execution statuses.\n\nThe behavior to check for is that entries remain in the original worker even after the corresponding executions have completed successfully.\n\nThe exact workflow configuration, wait settings, and inspection method required for a reliable reproduction remain to be documented.\n\n### Expected behavior\n\nQueue workers should release in-memory references to persisted waiting sub-workflow executions once those references are no longer needed, so completed executions do not leave stale entries accumulating in the original worker.\n\nCleanup should preserve waiting contexts that still require in-memory state, including response-promise handling. An old cleanup callback should not remove a replacement entry for the same execution ID.\n\nPersisted execution data and the ability to resume waiting executions should remain intact.\n\n### Debug Info\n\nThe currently running container already includes a fix for this issue. Debug information copied from the current instance would describe the patched environment, rather than the environment in which the issue was originally observed.\n\nHistorical diagnostic evidence from before the fix is documented in PR #39224:\nhttps://github.com/n8n-io/n8n/pull/39224\n\nTwo production samples taken approximately 73 minutes apart showed:\n- Waiting entries in the worker's ActiveExecutions registry increased from 6,439 to 9,776.\n- All entries from the earlier sample remained in the later sample.\n- Sampled executions corresponding to retained entries had already completed successfully.\n\nThese are observations of retained in-memory entries, not an error log or stack trace. A minimal reproduction on an unmodified upstream deployment has not yet been verified.\n\n### Operating System\n\nDocker on Ubuntu 22.04.5 LTS (host kernel: 6.8.0-1021-aws)\n\n### n8n Version\n\n2.29.0\n\n### Node.js Version\n\n24.16.0\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nqueue\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/41418/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/41418/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @one-word,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9608\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9608](https://linear.app/n8n/issue/GHC-9608)",
+      "at": "2026-10-19T11:06:53Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41418#issuecomment-6265766363"
+    }
+  ],
+  "comments_complete": true
+}

@@ -1,0 +1,129 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41471",
+  "collected_at": "2026-10-20T07:29:49.053303+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/41471",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/41471/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/41471/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/41471/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/41471",
+    "id": 5927226068,
+    "node_id": "I_kwDOC4Q8Qs8AAAABYUpK1A",
+    "number": 41471,
+    "title": "Production Checklist reopens on every editor reload of a published workflow",
+    "user": {
+      "login": "dvakatsiienko",
+      "id": 15727958,
+      "node_id": "MDQ6VXNlcjE1NzI3OTU4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15727958?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dvakatsiienko",
+      "html_url": "https://github.com/dvakatsiienko",
+      "followers_url": "https://api.github.com/users/dvakatsiienko/followers",
+      "following_url": "https://api.github.com/users/dvakatsiienko/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dvakatsiienko/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dvakatsiienko/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dvakatsiienko/subscriptions",
+      "organizations_url": "https://api.github.com/users/dvakatsiienko/orgs",
+      "repos_url": "https://api.github.com/users/dvakatsiienko/repos",
+      "events_url": "https://api.github.com/users/dvakatsiienko/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dvakatsiienko/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582013554,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cicg",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:cats",
+        "name": "team:cats",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Cats team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-10-19T16:01:50Z",
+    "updated_at": "2026-10-19T16:15:20Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nThe Production Checklist popover opens by itself every time I reload the editor of an already-published workflow. Closing it with the ✕ doesn't stick: the next reload opens it again. All items on the checklist are already complete, so there's nothing left for it to tell me.\n\nAs far as I can read the code, the auto-open is meant to happen once, on a workflow's first activation. `WorkflowProductionChecklist.vue` stores `firstActivatedAt` in the IndexedDB workflow cache and checks it before opening:\n\n```ts\nwatch(isConfirmedActive, async (isActive, wasActive) => {\n\tif (isActive && !wasActive) {\n\t\tif (!cachedSettings.value?.firstActivatedAt) {\n\t\t\t// ...opens the popover\n\t\t}\n\t\tawait workflowsCache.updateFirstActivatedAt(...);\n\t}\n});\n\nonMounted(async () => {\n\tawait loadWorkflowSettings();\n});\n```\n\nI think it's a race. On a page load `isConfirmedActive` goes from `false` to `true` as soon as the workflow document arrives, so the watcher fires on every load. At that moment `cachedSettings` can still be `null`: it's only filled by the async `loadWorkflowSettings()` in `onMounted`, and that function does nothing at all if `workflowId` isn't set yet when the component mounts. With `cachedSettings` empty, the `firstActivatedAt` guard passes and the popover opens, even though the flag was written long ago.\n\nThe ✕ only flips the local `isPopoverOpen` ref, so it doesn't persist anything either.\n\nOne way to fix it would be to read the settings inside the watcher before the check (for example `await loadWorkflowSettings()` or `await workflowsCache.getWorkflowSettings(id)`) instead of relying on the value loaded in `onMounted`.\n\n### To Reproduce\n\n1. Create a workflow with a trigger (I used a Schedule Trigger) and publish it.\n2. Let the Production Checklist open on the first publish, then close it with the ✕.\n3. Optionally complete every item (error workflow, time saved).\n4. Reload the browser tab with the workflow open.\n5. The Production Checklist opens again. It does this on every reload.\n\n### Expected behavior\n\nThe checklist opens automatically once, on the workflow's first activation. After that it stays closed on reload and is only opened from the workflow menu (\"Production checklist\").\n\n### Debug Info\n\nSelf-hosted, started with `n8n start` from a global pnpm install, kept alive by pm2. Default SQLite, regular execution mode. Env: `N8N_DISABLED_MODULES=mcp`, `N8N_DIAGNOSTICS_ENABLED=false`, `N8N_PERSONALIZATION_ENABLED=false`. Editor bundle `n8n-editor-ui@2.43.5`. The same watcher logic is on `master` today (`packages/frontend/editor-ui/src/app/components/WorkflowProductionChecklist.vue`).\n\n### Operating System\n\nmacOS\n\n### n8n Version\n\n2.43.7\n\n### Node.js Version\n\n24.12.0\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted\n\nLabels I'd pick, if useful for triage: `ui`, `type:bug`.\n\n— printed by Claude Code, signed by me.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/41471/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/41471/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @dvakatsiienko,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9609\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9609](https://linear.app/n8n/issue/GHC-9609)",
+      "at": "2026-10-19T16:02:00Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41471#issuecomment-6271525949"
+    },
+    {
+      "author": "dvakatsiienko",
+      "text": "Hi, I'd like to pick this one up if nobody on the team has started it.\n\nThe fix I have in mind is small. The watcher in `WorkflowProductionChecklist.vue` would read the saved settings itself right before the first-time check, since the value `onMounted` loads may not be there yet on a reload. I'd add a unit test that fails on master (settings arriving after the watcher fires) and passes with the change.\n\nIf you'd rather handle it in-house or want a different approach, say so and I'll leave it.\n\n— printed by Claude Code, signed by me.\n",
+      "at": "2026-10-19T16:15:20Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41471#issuecomment-6271773316"
+    }
+  ],
+  "comments_complete": true
+}

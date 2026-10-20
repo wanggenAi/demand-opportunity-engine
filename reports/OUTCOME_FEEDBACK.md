@@ -1,6 +1,6 @@
 # OUTCOME FEEDBACK
 
-Real events read: 265; human conversion events: 0.
+Real events read: 290; human conversion events: 0.
 DISCOVERED carries zero reply/quote/win weight. No synthetic sales events were appended to the real log.
 Rates use distinct CONTACTED opportunities. Average ticket is realized WON+REVENUE by currency; cycle is CONTACTED→WON. Two contacts minimum, Laplace-smoothed rates, bounded relative ticket/cycle correction. Platform/channel/cluster effects are averaged, not added. Hard gates always apply.
 

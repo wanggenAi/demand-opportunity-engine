@@ -7,7 +7,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## workflow_reliability — UNVALIDATED CLUSTER
 
-- independent_demand_count: 42
+- independent_demand_count: 46
 - payment_evidence_count: 7
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community', 'n8n Community']
 - communities: ['Ask/Show HN', 'Commerce operator forum', 'n8n Jobs', 'n8n-io/n8n', 'useagenthq/useagent']
@@ -20,12 +20,12 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://github.com/n8n-io/n8n/issues/41487
+  - https://github.com/n8n-io/n8n/issues/41485
+  - https://news.ycombinator.com/item?id=50161254
+  - https://github.com/n8n-io/n8n/issues/41418
   - https://github.com/n8n-io/n8n/issues/41375
   - https://community.n8n.io/t/available-n8n-ai-automation-engineer-self-hosted-part-time-eu-hours/322775
-  - https://github.com/n8n-io/n8n/issues/41372
-  - https://community.n8n.io/t/stop-calling-it-workflow-automation-thats-what-someone-does-in-an-afternoon-with-three-zapier-nodes-and-a-prayer-i-design-systems/322645
-  - https://community.n8n.io/t/titulo-en-espanol-necesito-setup-completo-en-n8n-drive-a-100-cuentas-automatico-yo-no-se-nada-necesito-todo-listo/322466
-  - https://github.com/n8n-io/n8n/issues/41349
 
 ## lead_research — UNVALIDATED CLUSTER
 
@@ -50,7 +50,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## browser_automation — UNVALIDATED CLUSTER
 
-- independent_demand_count: 3
+- independent_demand_count: 4
 - payment_evidence_count: 0
 - platforms: ['GitHub']
 - communities: ['96loveslife/big_model_radar', 'n8n-io/n8n', 'useagenthq/useagent']
@@ -63,6 +63,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://github.com/n8n-io/n8n/issues/41471
   - https://github.com/n8n-io/n8n/issues/41327
   - https://github.com/useagenthq/useagent/issues/188
   - https://github.com/96loveslife/big_model_radar/issues/642

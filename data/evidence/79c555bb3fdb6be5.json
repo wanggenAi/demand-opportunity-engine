@@ -1,0 +1,123 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41487",
+  "collected_at": "2026-10-20T07:29:49.053303+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/41487",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/41487/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/41487/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/41487/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/41487",
+    "id": 5937310157,
+    "node_id": "I_kwDOC4Q8Qs8AAAABYeQpzQ",
+    "number": 41487,
+    "title": "object.urlEncode() throws on a lone surrogate in the isolated-VM engine but not in the default one",
+    "user": {
+      "login": "yu2971512385-ui",
+      "id": 287936273,
+      "node_id": "U_kgDOESmPEQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/287936273?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/yu2971512385-ui",
+      "html_url": "https://github.com/yu2971512385-ui",
+      "followers_url": "https://api.github.com/users/yu2971512385-ui/followers",
+      "following_url": "https://api.github.com/users/yu2971512385-ui/following{/other_user}",
+      "gists_url": "https://api.github.com/users/yu2971512385-ui/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/yu2971512385-ui/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/yu2971512385-ui/subscriptions",
+      "organizations_url": "https://api.github.com/users/yu2971512385-ui/orgs",
+      "repos_url": "https://api.github.com/users/yu2971512385-ui/repos",
+      "events_url": "https://api.github.com/users/yu2971512385-ui/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/yu2971512385-ui/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582013554,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cicg",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:cats",
+        "name": "team:cats",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Cats team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-20T06:53:27Z",
+    "updated_at": "2026-10-20T07:05:37Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Bug Description\n\n`packages/@n8n/expression-runtime/src/extensions/object-extensions.ts` is a deliberate mirror of `packages/workflow/src/extensions/object-extensions.ts`, and its comment states the intent:\n\n```ts\n// DIVERGENCE from packages/workflow/src/extensions/object-extensions.ts:\n// The original uses URLSearchParams which is a Web API unavailable inside the\n// V8 isolate. encodeURIComponent is an ECMAScript built-in available in all\n// V8 contexts, but it doesn't encode !'()~ which WHATWG requires. The extra\n// replace step covers those characters to match URLSearchParams output.\n```\n\nThey do not match for one input class. `URLSearchParams` replaces a lone surrogate with U+FFFD; `encodeURIComponent` throws a `URIError` on it. So the same expression succeeds on one engine and fails on another:\n\n| | `{ v: \"\\uD800\" }` |\n| --- | --- |\n| `packages/workflow` (URLSearchParams) | `v=%EF%BF%BD` |\n| `@n8n/expression-runtime` (encodeURIComponent) | **throws `URIError`** |\n\n## To Reproduce\n\nA lone surrogate is easy to end up with — `JSON.parse` produces one from a `\\uD800` escape, and so does slicing a string between the halves of a surrogate pair:\n\n1. Create a workflow with a Code node returning `{ json: { payload: JSON.parse('{\"a\":\"\\\\ud800\"}') } }`.\n2. In a following node use the expression `{{ $json.payload.urlEncode() }}`.\n3. Run it with `N8N_EXPRESSION_ENGINE` set to the isolate-backed engine, then with the default one.\n\nThe default engine returns `a=%EF%BF%BD`. The isolate-backed engine raises `URIError: URI malformed`.\n\n## Scope\n\nI swept every BMP code point through both implementations, as key and as value, plus astral samples:\n\n```\nchecked 65540 code points as both key and value\ndistinct disagreement shapes: 2\n\n  workflow: v=%EF%BF%BD\n  runtime:  URIError\n  e.g. U+D800 as value, U+D801 as value, U+D802 as value, U+D803 as value\n\n  workflow: %EF%BF%BD=x\n  runtime:  URIError\n  e.g. U+D800 as key, U+D801 as key, U+D802 as key, U+D803 as key\n```\n\n4096 disagreements out of 131,076 checks, all of them the 2048 surrogate code points in either position. Everything else is byte-identical, so `whatwgEncode` is right apart from this edge.\n\n## Suggested fix\n\nMake the string well-formed first, which is exactly what `URLSearchParams` does:\n\n```diff\n function whatwgEncode(str: string): string {\n-\treturn encodeURIComponent(str)\n+\t// URLSearchParams replaces lone surrogates with U+FFFD, while\n+\t// encodeURIComponent throws a URIError on them.\n+\treturn encodeURIComponent(str.toWellFormed())\n \t\t.replace(/%20/g, '+')\n \t\t.replace(/[!'()~]/g, (c) => '%' + c.charCodeAt(0).toString(16).toUpperCase());\n }\n```\n\nWith that applied the sweep reports **0 disagreements out of 131,076**. `String.prototype.toWellFormed` is ES2024 and available from Node 20; this repo requires Node >= 24.\n\n## A second, related divergence\n\n`packages/@n8n/expression-runtime/src/extensions/number-extensions.ts` carries a similar comment claiming parity:\n\n```ts\n// DIVERGENCE ... toLocaleString is an ECMAScript built-in available in all V8\n// contexts and produces the same output.\n```\n\n`toLocaleString` and `Intl.NumberFormat.format` are indeed equivalent, but the mirror wraps the call in `try { ... } catch { return String(value) }`, and that is not. Where the original raises, the mirror returns the unformatted number:\n\n| call | `packages/workflow` | `@n8n/expression-runtime` |\n| --- | --- | --- |\n| `(1234.5).format('en-US', { style: 'currency' })` | throws `TypeError` | `1234.5` |\n| `(1234.5).format('en-US', { minimumFractionDigits: 101 })` | throws `RangeError` | `1234.5` |\n| `(1234.5).format('')` | throws `RangeError` | `1234.5` |\n\nA malformed call is silently wrong on one engine rather than reported. I have not touched this one because the catch may be there for a limited-ICU isolate, which I cannot test from outside — happy to follow whichever way you want it to go.\n\n## Operating System\n\nmacOS (reproduced against `master` sources directly)\n\n## n8n Version\n\n`master` at the time of writing\n\n## Node.js Version\n\n24\n\n## Database\n\nSQLite (default)\n\n## Execution mode\n\nmain (default)\n\n---\n\nCONTRIBUTING.md asks for an issue before a bug-fix PR, so this is that. I have the `urlEncode` change ready with a regression test and will open a PR linking this issue — glad to hold off if you would rather triage first.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/41487/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/41487/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @yu2971512385-ui,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9611\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9611](https://linear.app/n8n/issue/GHC-9611)",
+      "at": "2026-10-20T06:53:38Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41487#issuecomment-6285217345"
+    }
+  ],
+  "comments_complete": true
+}
