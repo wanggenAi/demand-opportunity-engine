@@ -1,0 +1,123 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41591",
+  "collected_at": "2026-10-21T07:34:56.016842+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/41591",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/41591/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/41591/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/41591/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/41591",
+    "id": 5948510684,
+    "node_id": "I_kwDOC4Q8Qs8AAAABYo8R3A",
+    "number": 41591,
+    "title": "Intermittent `fetch failed` errors in Google Gemini Chat Model with AI Agent, while OpenAI-compatible Gemini endpoint works",
+    "user": {
+      "login": "Catalina-Cartagena",
+      "id": 282264546,
+      "node_id": "U_kgDOENMD4g",
+      "avatar_url": "https://avatars.githubusercontent.com/u/282264546?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Catalina-Cartagena",
+      "html_url": "https://github.com/Catalina-Cartagena",
+      "followers_url": "https://api.github.com/users/Catalina-Cartagena/followers",
+      "following_url": "https://api.github.com/users/Catalina-Cartagena/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Catalina-Cartagena/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Catalina-Cartagena/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Catalina-Cartagena/subscriptions",
+      "organizations_url": "https://api.github.com/users/Catalina-Cartagena/orgs",
+      "repos_url": "https://api.github.com/users/Catalina-Cartagena/repos",
+      "events_url": "https://api.github.com/users/Catalina-Cartagena/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Catalina-Cartagena/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8811645809,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACDTcLcQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:ai",
+        "name": "team:ai",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the AI team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-20T19:48:28Z",
+    "updated_at": "2026-10-20T19:55:11Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nThe Google Gemini Chat Model node intermittently fails when connected to an AI Agent, returning the following error after approximately 3 minutes:\n\n```\n[GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent: fetch failed\nUnknown error\n```\n\nThe issue occurs repeatedly throughout the day. During affected periods, every workflow using an AI Agent connected to Google Gemini Chat Model fails, including newly created test workflows.\n\nInterestingly, other methods of accessing the same Gemini API continue working normally during these failures:\n\n- **Google Gemini \"Message a Model\" node:** Works correctly.\n- **Direct HTTP requests from inside the n8n Docker container:** Work correctly, although sometimes with slightly higher latency.\n- **AI Agent + OpenAI Chat Model configured with Google's OpenAI-compatible Gemini endpoint:** Works correctly, even while the same AI Agent fails using Google Gemini Chat Model.\n- **AI Agent with OpenRouter using other models:** Works correctly.\n\nThe most significant finding is that switching only the model node from Google Gemini Chat Model to OpenAI Chat Model, configured to use Google's Gemini API directly, immediately restores functionality without changing the AI Agent itself.\n\nThe problem persists after updating n8n to the latest available version.\n\nThis strongly suggests an issue specific to the Google Gemini Chat Model integration, its underlying SDK, or its HTTP connection handling, rather than a general Gemini API outage or network connectivity problem.\n\nRelated issue: https://github.com/n8n-io/n8n/issues/21801\n\nThe following screenshot was taken before updating n8n, confirming that the issue occurs across different n8n versions and is not specific to the latest release.\n<img width=\"563\" height=\"437\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5f18227a-f75d-410a-80aa-0304fabce20d\" />\n\n### To Reproduce\n\n1. Create a new workflow in a self-hosted n8n instance running in Docker.\n2. Add a Manual Trigger and an AI Agent node.\n3. Connect a Google Gemini Chat Model node to the AI Agent.\n4. Configure the model as `gemini-3.1-flash-lite` (it happens with other models as well) using a valid Google Gemini API key.\n5. Execute the workflow several times throughout the day.\n6. During an affected period, the AI Agent fails after approximately 180 seconds with `GoogleGenerativeAI Error: fetch failed`.\n7. Create another test workflow using Google Gemini's native \"Message a Model\" node. Observe that requests succeed.\n8. Test the Gemini API directly from inside the n8n Docker container using Node.js `fetch()`. Observe that requests succeed.\n9. Replace the Google Gemini Chat Model connected to the same AI Agent with an OpenAI Chat Model configured as follows:\n   - Base URL: `https://generativelanguage.googleapis.com/v1beta/openai/`\n   - API Key: The same Google Gemini API key\n   - Model: `gemini-3.1-flash-lite`\n10. Execute the AI Agent again during the same affected period. The request succeeds.\n\n**Note:** The issue is intermittent and cannot be reproduced consistently on demand. However, once an affected period begins, all tested workflows using Google Gemini Chat Model with AI Agent fail, while the alternative integrations continue working.\n\n### Expected behavior\n\nThe Google Gemini Chat Model should successfully process requests through the AI Agent without intermittent connection failures, especially when the same Gemini API is accessible and functioning normally through other n8n nodes and the OpenAI-compatible endpoint.\n\nIf a temporary network or API error occurs, the integration should handle it appropriately and provide a meaningful underlying error instead of hanging for approximately 180 seconds before returning a generic `fetch failed` message.\n\nThe Google Gemini Chat Model should provide connection reliability comparable to the OpenAI Chat Model configured to access the same Gemini API.\n\n### Debug Info\n\n# Debug info\n\n## core\n\n- n8nVersion: 2.43.8\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.7.0\n- nodeEnv: production\n- database: postgres\n- executionMode: regular\n- concurrency: -1\n- license: enterprise (production)\n- consumerId: c61a07ff-fd9d-4365-85de-6bbfad9dd7db\n\n## storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: memory\n\n## pruning\n\n- enabled: true\n- maxAge: 100 hours\n- maxCount: 10000 executions\n\n## client\n\n- userAgent: mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/155.0.0.0 safari/537.36\n- isTouchDevice: false\n\n## cluster\n\n- instanceCount: 1\n- versions: 2.43.8\n- instances:\n  - instanceKey: 5ec4f651-6a85-4eb3-99f1-efe2d1eba1ee, hostId: main-7af0076e47ec, instanceType: main, instanceRole: leader, version: 2.43.8\n- checks:\n  - check: hostid-clash, status: succeeded, warnings: -\n  - check: lifecycle, status: succeeded, warnings: -\n  - check: split-brain, status: succeeded, warnings: -\n  - check: version-mismatch, status: succeeded, warnings: -\n\nGenerated at: 2026-10-20T19:36:17.313Z\n\n### Operating System\n\nUbuntu 22.04.5 LTS\n\n### n8n Version\n\n2.43.8\n\n### Node.js Version\n\n26.7.0\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nn8n cloud",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/41591/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/41591/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @Catalina-Cartagena,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9619\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9619](https://linear.app/n8n/issue/GHC-9619)",
+      "at": "2026-10-20T19:48:37Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41591#issuecomment-6299968887"
+    }
+  ],
+  "comments_complete": true
+}

@@ -1,0 +1,66 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50156640",
+  "collected_at": "2026-10-21T07:34:56.016842+00:00",
+  "source": {
+    "author": "Apocryphon",
+    "children": [
+      {
+        "author": "IshKebab",
+        "children": [
+          {
+            "author": "Apocryphon",
+            "children": [],
+            "created_at": "2026-10-20T17:17:05.000Z",
+            "created_at_i": 1792516625,
+            "id": 50169595,
+            "options": [],
+            "parent_id": 50156993,
+            "points": null,
+            "story_id": 50134472,
+            "text": "High-level programming languages, garbage collection, expressiveness, functional programming, code completion, jQuery, Wordpress, no-code solutions, Bootstrap.js, &quot;batteries-included&quot; SDKs...<p>Of course, prompting an LLM to one-shot an app is a quantum leap in comparison, but c&#x27;mon, the whole direction of the field is towards automation, abstraction, convenience. It&#x27;s always trended letting the programmer write less code. Have to deal with less menial tasks. So LLMs are just the latest manifestation of that motivation. And, perhaps in a decade or two, something will come along to replace LLMs, and this conversation will happen again, except even with more desperation and despair.<p>But while your example exists, I don&#x27;t believe that&#x27;s how the industry works, yet. They&#x27;re not just allowing laymen to one-shot their production software. Certainly some teams may be trying that, and some indie devs have made good money already selling vibecoded software. But I don&#x27;t think the technology is good enough to auto-generate professional code at scale, without human oversight. Give it another eighteen months.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-19T19:35:57.000Z",
+        "created_at_i": 1792438557,
+        "id": 50156993,
+        "options": [],
+        "parent_id": 50156640,
+        "points": null,
+        "story_id": 50134472,
+        "text": "Sorry but there&#x27;s no way that assembling libraries - even stupid ones like left-pad (which I&#x27;ll note was an extreme example) - is in no way comparable to just saying &quot;Claude make this program for me&quot;, which is pretty much where we are now. My wife can do the latter but not the former.<p>This isn&#x27;t just &quot;a bit more automation&quot;. It&#x27;s &quot;now we don&#x27;t need lift operators&quot;.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-10-19T19:11:56.000Z",
+    "created_at_i": 1792437116,
+    "id": 50156640,
+    "options": [],
+    "parent_id": 50155165,
+    "points": null,
+    "story_id": 50134472,
+    "text": "Writing left-pad isn&#x27;t the issue, the issue is that projects were importing a one-liner package and blindly using it, which requires no skill.<p>&gt; Second, even if the package’s logic is correct, I can’t help but be amazed by the fact that developers are taking on dependencies for single line functions that they should be able to write with their eyes closed. In my opinion, if you cannot write a left-pad, is-positive-integer, or isArray function in 5 minutes flat (including the time you spend Googling), then <i>you don’t actually know how to code</i>. Hell, any of these would make a great code screening interview question to determine whether or not a candidate can code.<p>&gt; Finally, stringing APIs together and calling it programming doesn’t make it programming. It’s some crazy form of dependency hacking that involves the cloud, over-engineering things, and complexity far beyond what’s actually needed.<p>Obviously LLMs make the situation even more dire, but I think people are overlooking that the industry was automating itself out of programming as a craft even before them. It&#x27;s just the automation involved reuse of the work of other humans.",
+    "title": null,
+    "type": "comment",
+    "url": null
+  },
+  "comments": [
+    {
+      "author": "IshKebab",
+      "text": "Sorry but there's no way that assembling libraries - even stupid ones like left-pad (which I'll note was an extreme example) - is in no way comparable to just saying \"Claude make this program for me\", which is pretty much where we are now. My wife can do the latter but not the former. This isn't just \"a bit more automation\". It's \"now we don't need lift operators\".",
+      "at": "2026-10-19T19:35:57.000Z",
+      "url": "https://news.ycombinator.com/item?id=50156993"
+    },
+    {
+      "author": "Apocryphon",
+      "text": "High-level programming languages, garbage collection, expressiveness, functional programming, code completion, jQuery, Wordpress, no-code solutions, Bootstrap.js, \"batteries-included\" SDKs... Of course, prompting an LLM to one-shot an app is a quantum leap in comparison, but c'mon, the whole direction of the field is towards automation, abstraction, convenience. It's always trended letting the programmer write less code. Have to deal with less menial tasks. So LLMs are just the latest manifestation of that motivation. And, perhaps in a decade or two, something will come along to replace LLMs, and this conversation will happen again, except even with more desperation and despair. But while your example exists, I don't believe that's how the industry works, yet. They're not just allowing laymen to one-shot their production software. Certainly some teams may be trying that, and some indie devs have made good money already selling vibecoded software. But I don't think the technology is good enough to auto-generate professional code at scale, without human oversight. Give it another eighteen months.",
+      "at": "2026-10-20T17:17:05.000Z",
+      "url": "https://news.ycombinator.com/item?id=50169595"
+    }
+  ],
+  "comments_complete": true
+}

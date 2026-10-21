@@ -1,0 +1,170 @@
+{
+  "source_api_url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/8223",
+  "collected_at": "2026-10-21T07:34:56.016842+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/8223",
+    "repository_url": "https://api.github.com/repos/Luminous-Dynamics/symthaea",
+    "labels_url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/8223/labels{/name}",
+    "comments_url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/8223/comments",
+    "events_url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/8223/events",
+    "html_url": "https://github.com/Luminous-Dynamics/symthaea/issues/8223",
+    "id": 5946765197,
+    "node_id": "I_kwDOQ7glz88AAAABYnRvjQ",
+    "number": 8223,
+    "title": "COMPUTE-MFG-001C: PCB fabrication, assembly, rework, and test capability profile",
+    "user": {
+      "login": "Tristan-Stoltz-ERC",
+      "id": 215346314,
+      "node_id": "U_kgDODNXsig",
+      "avatar_url": "https://avatars.githubusercontent.com/u/215346314?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Tristan-Stoltz-ERC",
+      "html_url": "https://github.com/Tristan-Stoltz-ERC",
+      "followers_url": "https://api.github.com/users/Tristan-Stoltz-ERC/followers",
+      "following_url": "https://api.github.com/users/Tristan-Stoltz-ERC/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Tristan-Stoltz-ERC/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Tristan-Stoltz-ERC/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Tristan-Stoltz-ERC/subscriptions",
+      "organizations_url": "https://api.github.com/users/Tristan-Stoltz-ERC/orgs",
+      "repos_url": "https://api.github.com/users/Tristan-Stoltz-ERC/repos",
+      "events_url": "https://api.github.com/users/Tristan-Stoltz-ERC/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Tristan-Stoltz-ERC/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 5,
+    "created_at": "2026-10-20T17:54:10Z",
+    "updated_at": "2026-10-21T00:12:59Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "Parent: [COMPUTE-MFG-001 #5796](https://github.com/Luminous-Dynamics/symthaea/issues/5796). Compose [MFG-PROC-000 #5686](https://github.com/Luminous-Dynamics/symthaea/issues/5686), [MFG-PROC-001 #5688](https://github.com/Luminous-Dynamics/symthaea/issues/5688), [HMI-MFG-001B #5799](https://github.com/Luminous-Dynamics/symthaea/issues/5799), [SEMI-ROADMAP-001 #5867](https://github.com/Luminous-Dynamics/symthaea/issues/5867), existing fabrication authority and evidence/metrology owners, plus [AtomFab PCB productive-closure roadmap PR #8222](https://github.com/Luminous-Dynamics/symthaea/pull/8222).\n\n## Purpose\n\nFreeze the first executable, evidence-bounded benchmark for designing, routing, fabricating or sourcing, assembling, inspecting, repairing, and testing a small low-voltage PCB.\n\nThis is the PCB-specific implementation slice of the existing computer/electronics closure program. It does not create a parallel process ontology, BOM authority, inspection ledger, capability-closure engine, or machine-control path.\n\n## Core distinctions\n\n~~~text\nPCB design exists != design passes declared DRC/DFM\nGerber/drill export exists != bare board has been fabricated\nbare board passes inspection != assembly is functional\nlocal assembly != local bare-board production\nlocal bare-board production != local IC/passive/connector manufacture\nchip RTL/design != fabricated, packaged, tested silicon\n~~~\n\n## First article profile\n\nUse a repairable low-voltage 2-layer sensor/controller board or wired macropad, selected and frozen after a design-for-manufacture review. Keep the first article outside mains voltage, high-energy power conversion, and safety-critical control.\n\nTrack independently: native design and library dependencies; electrical netlist; BOM / substitutes; manufacturing output bundle; bare-board route; assembly recipe; as-built identity; firmware identity; required inspection and electrical/functional test evidence; repair/rework history.\n\n## Route profiles to compare\n\n- **P0: outsourced bare board + local assembly/test.** Supplier service and lot are explicit external dependencies.\n- **P1: local isolation milling/drilling + local assembly/test.** Admissible only for feature requirements actually supported by the exact machine/material/tool/fixture profile; do not assume plated-through vias, industrial solder mask/finish, multilayer, impedance control, or high-density capability.\n- **P2: image/etch prototype route.** Representation only unless separately reviewed site/process safety and waste-management profiles are present; this issue gives no chemical recipe or operating setpoint.\n- **P3: conventional multilayer route.** Keep as an external qualified supplier profile initially; model internal lamination, drilling, desmear/plating, mask/finish, and electrical-test capability only as separate future qualification stages.\n\n## Synthetic corpus\n\nFreeze at least 16 small known-answer cases before implementing route selection. Include positive controls and negative controls for:\n\n1. valid P0 route with supplier capability evidence and complete output bundle;\n2. valid simple P1 route with no plated vias;\n3. P1 requested for plated-through vias;\n4. P1 requested for multilayer stack-up;\n5. route's minimum trace/space capability unknown;\n6. missing or stale DRC/DFM evidence;\n7. missing or revision-mismatched drill output;\n8. required solder mask or surface finish unavailable in selected route;\n9. unapproved component substitution changes a protected BOM requirement;\n10. missing required bare-board inspection;\n11. stale/missing calibration for a measurement used for acceptance;\n12. missing assembly/placement artifact;\n13. solder/placement inspection incomplete for the product profile;\n14. functional tests use wrong firmware or board revision;\n15. missing lot/as-built provenance;\n16. synthetic or supplier-declared results incorrectly promoted as independent physical qualification.\n\nThe independent oracle must derive dispositions from profile/case relationships, not echo expected output fields. Include duplicate IDs, wrong schema, altered case count, mismatched digests and missing negative controls as corpus-integrity attacks.\n\n## Acceptance and metrics\n\n- 100% agreement with independently derived known-answer dispositions.\n- 100% rejection of the registered invalid routes; all unresolved prerequisites return **incomplete** or **reject**, never silent pass.\n- Process feasibility, board quality, assembly quality, functional results, cost, lead time, resource impact, repairability and import dependence stay as separate outputs; no scalar score can override a hard gate.\n- Every route and receipt binds exact design revision, netlist/BOM, route/capability profile, schema/corpus digest, tool versions and Git HEAD.\n- Input order does not change canonical identity; a material, netlist, recipe, profile or protected-datum change changes the appropriate subject identity.\n- Physical targets for trace/space, drill accuracy, yield and reliability are defined from the actual article/product class and measured with suitable instruments; do not infer them from commanded step size or simulation.\n- Cost per accepted board includes labour, setup, consumables, tool wear, depreciation, utilities, inspection, scrap, rework and external supplier charges; disclose sample size and uncertainty.\n\n## Implementation sequence\n\n1. Freeze the schema / fixture contract and independent oracle.\n2. Add deterministic Rust validation and a reproducible receipt; run locally before relying on hosted CI.\n3. Add a KiCad CLI export / package-inventory adapter behind the existing process contract; never execute machine outputs from untrusted or unvalidated design input.\n4. Connect to the existing fabrication gateway only for already-qualified, explicitly authorized process profiles.\n5. Add as-built, netlist, inspection, functional-test and repair evidence composition.\n6. Extend to SMT automation / OpenPnP only after the first article and its manual baseline are reproducible.\n\n## Non-goals\n\nNo machine actuation or new execution authority; no hazardous process recipes; no claim of multilayer production qualification; no claim of locally fabricated semiconductors; no claim that passing synthetic cases establishes physical yields or reliability.",
+    "reactions": {
+      "url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/8223/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/8223/timeline",
+    "performed_via_github_app": {
+      "id": 1144995,
+      "client_id": "Iv23liVemv8A9if9v0F2",
+      "slug": "chatgpt-codex-connector",
+      "node_id": "A_kwHOAOQ6Gs4AEXij",
+      "owner": {
+        "login": "openai",
+        "id": 14957082,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjE0OTU3MDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/14957082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/openai",
+        "html_url": "https://github.com/openai",
+        "followers_url": "https://api.github.com/users/openai/followers",
+        "following_url": "https://api.github.com/users/openai/following{/other_user}",
+        "gists_url": "https://api.github.com/users/openai/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/openai/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/openai/subscriptions",
+        "organizations_url": "https://api.github.com/users/openai/orgs",
+        "repos_url": "https://api.github.com/users/openai/repos",
+        "events_url": "https://api.github.com/users/openai/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/openai/received_events",
+        "type": "Organization",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "name": "ChatGPT Codex Connector",
+      "description": "Bring ChatGPT and Codex to your GitHub repositories.",
+      "external_url": "https://www.chatgpt.com",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "created_at": "2025-02-14T01:37:05Z",
+      "updated_at": "2026-09-23T18:52:59Z",
+      "permissions": {
+        "actions": "write",
+        "checks": "read",
+        "contents": "write",
+        "emails": "read",
+        "issues": "write",
+        "metadata": "read",
+        "pull_requests": "write",
+        "statuses": "read",
+        "workflows": "write"
+      },
+      "events": [
+        "check_run",
+        "check_suite",
+        "commit_comment",
+        "issues",
+        "issue_comment",
+        "pull_request",
+        "pull_request_review",
+        "pull_request_review_comment",
+        "pull_request_review_thread",
+        "repository",
+        "status",
+        "sub_issues"
+      ]
+    },
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "Implementation update in [AtomFab PR #8222](https://github.com/Luminous-Dynamics/symthaea/pull/8222): the v0.2 corpus now cleanly separates route feasibility from evidence completeness and records multiple gate failures independently. Added `atomfab_pcb_route` Rust evaluator, SHA-256 corpus receipt, exact Git-head requirement, CLI runner and unit tests for independent oracle agreement, duplicate IDs/count tampering, changed expected result, order normalization and synthetic-evidence overclaim. The tests are added but have not been run in this work session; commit status currently has no reported status contexts. Next implementation step remains real KiCad output/package binding and then physical evidence composition, behind existing process and fabrication authority contracts.",
+      "at": "2026-10-20T19:31:11Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/8223#issuecomment-6299523815"
+    },
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "Further hardening in [AtomFab PR #8222](https://github.com/Luminous-Dynamics/symthaea/pull/8222): the corpus is now v0.3, and the CLI runs `git rev-parse HEAD` and refuses to emit a receipt if `ATOMFAB_GIT_HEAD` doesn't match the checked-out commit. A second negative control changes the evidence-source label to `measured` and still must reject physical qualification; the corpus does not include actual measured data or calibration artifacts. These are code/test additions, not yet a reported Rust test pass or physical-process qualification.",
+      "at": "2026-10-20T19:39:17Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/8223#issuecomment-6299723020"
+    },
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "Exact-head focused validation is now **passing** on the updated AtomFab PR head `a275bcb0311b6c70750bb5488b1f9af4d5022b3c`: [AtomFab PCB Route Corpus workflow #39486713433](https://github.com/Luminous-Dynamics/symthaea/actions/runs/39486713433). It passed exact-source rustfmt, the isolated Rust unit tests, route/evidence oracle checks, exact-head receipt generation, byte-identical replay, and the wrong-Git-SHA negative control. Receipt artifact digest: `sha256:9f0228d1b0962ee8821cd7088a0acd6c1a73fbe992c47e1d718a47d3026d3c8f9`. This does not clear the separate whole-workspace manifest blocker tracked in #7048/#6971 and does not establish physical PCB qualification.",
+      "at": "2026-10-20T19:50:36Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/8223#issuecomment-6300016193"
+    },
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "Next tranche added on the AtomFab branch: a 12-case synthetic PCB manufacturing-package integrity corpus and Rust validator. It checks binding between native board/schematic sources, netlist/BOM, DRC source digest/profile/revision, Gerber/drill/outline exports, BOM and placement artifacts; it rejects missing roles, stale revision/digests, duplicate paths, directory traversal, DRC violations, and unknown DRC status. `ready_for_review` is explicitly not manufacturing approval or execution authority. The route evaluator's focused green run is still valid at its exact tested head; the expanded route+package workflow on the newer package-code head has been triggered, but I am not claiming that code as passing yet.",
+      "at": "2026-10-20T19:56:06Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/8223#issuecomment-6300133979"
+    },
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "## Actual-byte artifact inventory extension (2026-10-21)\n\nWork is now being added in [AtomFab PR #8222](https://github.com/Luminous-Dynamics/symthaea/pull/8222) as `atomfab_pcb_artifacts` plus an exact-HEAD-bound example receipt runner. Compared with the package-manifest consistency gate, this evaluator reads files beneath a canonical artifact root and computes SHA-256 from the bytes actually present; it rejects unsafe paths, root-escaping symlinks, duplicate/undeclared roles, and expected-digest mismatches, and reports `complete` / `incomplete` / `rejected`.\n\nThe smoke fixture files are labelled synthetic placeholders; this is not a native KiCad design, real DRC output, Gerber, or physical evidence. The latest focused workflow on commit `f4c9d24ad7480da63678a619fb0b478a96b74b52` is queued after fixing the formatter findings; I am not claiming the new tests pass yet.\n\nNext physical-design bridge: add a small frozen native KiCad project and run a pinned `kicad-cli` toolchain in CI for DRC plus Gerber/drill export. Keep clean/violated design controls, pin tool version and command/exit status, hash output bytes, parse the DRC report, and keep the release gate false unless all separate capability, review, and physical-qualification evidence exists. The current inventory gate itself must never imply DRC cleanliness or production readiness.",
+      "at": "2026-10-21T00:12:59Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/8223#issuecomment-6304719479"
+    }
+  ],
+  "comments_complete": true
+}

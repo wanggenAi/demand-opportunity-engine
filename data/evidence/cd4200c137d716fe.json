@@ -1,0 +1,130 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50176908",
+  "collected_at": "2026-10-21T07:34:56.016842+00:00",
+  "source": {
+    "author": "simfinii",
+    "children": [
+      {
+        "author": "souvik1997",
+        "children": [
+          {
+            "author": "simfinii",
+            "children": [],
+            "created_at": "2026-10-21T07:14:23.000Z",
+            "created_at_i": 1792566863,
+            "id": 50177132,
+            "options": [],
+            "parent_id": 50177062,
+            "points": null,
+            "story_id": 50176908,
+            "text": "We actually account for this already! We allow developers to use alter to partition context memory based on end user + agent identity so the context leaks like the one you described can be fully prevented!<p>Feel free to go through the docs here if you have more questions: <a href=\"https:&#x2F;&#x2F;docs.alterauth.com&#x2F;guides&#x2F;propagate-identity-to-memory&#x2F;\">https:&#x2F;&#x2F;docs.alterauth.com&#x2F;guides&#x2F;propagate-identity-to-memo...</a>",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-21T07:03:45.000Z",
+        "created_at_i": 1792566225,
+        "id": 50177062,
+        "options": [],
+        "parent_id": 50176908,
+        "points": null,
+        "story_id": 50176908,
+        "text": "Looks cool!<p>One aspect of multi-user agent security, which I think is underexplored, is how context from a higher-privileged session might &quot;leak&quot; into a lower privileged session. Suppose the CEO of a company uses your shared openclaw agent and the agent writes sensitive data (investor emails, for example) to its memory. My understanding is this is not protected by Alter. Then a contractor uses the same agent and can read that same memory. It seems to me that a better agent harness for this kind of multi-user use case is needed; the standard ones like openclaw and claude code simply are not designed for it. Would love your thoughts!",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "avikonduru",
+        "children": [],
+        "created_at": "2026-10-21T07:20:00.000Z",
+        "created_at_i": 1792567200,
+        "id": 50177172,
+        "options": [],
+        "parent_id": 50176908,
+        "points": null,
+        "story_id": 50176908,
+        "text": "How do you handle permissions when the downstream service only offers a shared API key? For example, two sales reps can use the same CRM endpoint but should only access their own accounts. Does Alter check record ownership, or does the developer still need to supply that logic?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "911viper",
+        "children": [
+          {
+            "author": "simfinii",
+            "children": [],
+            "created_at": "2026-10-21T07:33:49.000Z",
+            "created_at_i": 1792568029,
+            "id": 50177262,
+            "options": [],
+            "parent_id": 50177194,
+            "points": null,
+            "story_id": 50176908,
+            "text": "When several principals are in the same channel talking to the same agent the current delegation model of alter does not apply.<p>As a result the right way to treat the agent is not as a delegated agent but rather an agent that takes the least privilege possible out of all the people in the channel<p>In scenarios where an agent and humans are peers we recommend giving separate agent identities to the agent and treat them as separate privileged users and give them permissions based on their identity and not based on the identities of the users in the channel.<p>We support standlone agent identities that dont require end users as the principals. Can read about that here: <a href=\"https:&#x2F;&#x2F;docs.alterauth.com&#x2F;guides&#x2F;give-an-agent-scoped-access&#x2F;\">https:&#x2F;&#x2F;docs.alterauth.com&#x2F;guides&#x2F;give-an-agent-scoped-acces...</a>",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-21T07:24:18.000Z",
+        "created_at_i": 1792567458,
+        "id": 50177194,
+        "options": [],
+        "parent_id": 50176908,
+        "points": null,
+        "story_id": 50176908,
+        "text": "Following the same thread as souvik1997 here: the leak problem gets worse in shared rooms than in shared sessions. When several principals (humans plus their own agents) sit in one channel, the transcript becomes the privilege boundary. Whatever an agent read in a higher-privileged turn is sitting in the context of every later turn in that room.<p>What we hit building exactly that, rooms where humans and bots are peers: you can&#x27;t scope a token to an agent, you have to scope it to an (agent, room) pair, and then decide what happens to the derived artifacts. Tool output, file handles, and the memory blob the agent writes back all outlive the session and get replayed into the next one.<p>So how are you handling derived state? Is agent memory a new principal holding the intersection of the rights of the sessions that fed it, or does it just inherit and you rely on the model not to act on stale context?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-10-21T06:42:12.000Z",
+    "created_at_i": 1792564932,
+    "id": 50176908,
+    "options": [],
+    "parent_id": null,
+    "points": 6,
+    "story_id": 50176908,
+    "text": "Hi HN! We’re Srikar and Kevan, founders of Alter – <a href=\"https:&#x2F;&#x2F;alterauth.com&#x2F;\">https:&#x2F;&#x2F;alterauth.com&#x2F;</a>. We’re building access control for agents that can take actions on behalf of multiple users.<p>If you’ve built an internal agent people use through Slack, you may have experienced this scenario: everyone signs in with their own account, but the agent connects to the CRM or billing system with one shared API key, so the agent can do anything that the key can do. User-level authentication in Slack does nothing to control what the agent can do in an external system like the CRM or billing system.<p>Here’s what Alter does:<p>-It acts as a proxy and manages downstream credentials for every API request that an agent takes;<p>-It takes identity into account for every action the agent does. Automatically take into account the end user identity of the person that the agent is taking actions on behalf of.<p>-It enforces fine grained runtime policies and records compliance grade audit logs.<p>Here’s a demo video: <a href=\"https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=9ZqPU14ipGE\" rel=\"nofollow\">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=9ZqPU14ipGE</a><p>We started this because we saw first hand how hard it is to build agents in regulated industries. To unlock the true benefits of agents we need to allow agents to take actions, sometimes actions on behalf of end users. I (Srikar) was working at Goldmans and I saw how prohibitively expensive it was for me as a developer to write my own custom auth to enable multi-tenancy in agents and to allow agents to have strict policy controls as they act on behalf of end users. My co-founder, Kevan, is a second time founder and was previously working on a database startup. He has experience building and selling deep tech into highly regulated environments. So this problem seemed like a natural fit for the both of us.<p>Building and maintaining custom auth for multi tenant agents was challenging. But so was ensuring that the solution we developed was secure, scalable and keeping track of security grade audit logs. As a result we realized there needs to be a separate product category for this that enables developers to easily build secure multi user agents that can actually take actions in an enterprise.\nSome of the real-world use cases we’ve seen include:<p>We have built a multi user open claw for our own team using Alter that saved us countless hours on our GTM effort.  Link here:<a href=\"https:&#x2F;&#x2F;github.com&#x2F;AlterAIDev&#x2F;openclaw-alter-plugin\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;AlterAIDev&#x2F;openclaw-alter-plugin</a><p>We have multiple startups who have used our platform to build their own secure internal agents for everything ranging from SRE agents to back office agents dealing with Quickbooks and payroll platforms like Rippling. It has saved developers countless hours both in terms of building and maintenance. We also have a defense contractor building air gapped agents for marine corp using Alter.<p>Under the hood, the value that we provide is that we do a lot of the plumbing that no one wants to do. We support hundreds of providers, all manually tested end to end. Reliability is our biggest priority. We have built this in a way to allow developers to custom build their agents however they see fit. Everything ranging from custom policies, agent delegation, user attribution, audit logs needed for compliance to a LLM gateway with guardrails (Coming soon)<p>Building a security product is hard. We have learnt that in order to build a truly secure product, security thinking has to pervade every part of the development process. We have embraced shift left security. Every PR that is pushed out is continuously checked for supply chain attacks, potentially dangerous code patterns etc.<p>Our business plan revolved around usage based pricing. There is a free tier up to 10k requests and then a pricing tier starting beyond that. We would love it if people configured their APIs and OAuth credentials, tried out the policies and actually built agents that can take actions with alter!<p>If you’ve built an agent that acts for multiple users, how are you handling permissions today? We’d especially like to hear what you’ve had to build yourself.<p><a href=\"https:&#x2F;&#x2F;alterauth.com&#x2F;\">https:&#x2F;&#x2F;alterauth.com&#x2F;</a>",
+    "title": "Launch HN: Alter (YC S25) – Access control for multi-user agents",
+    "type": "story",
+    "url": "https://alterauth.com/"
+  },
+  "comments": [
+    {
+      "author": "souvik1997",
+      "text": "Looks cool! One aspect of multi-user agent security, which I think is underexplored, is how context from a higher-privileged session might \"leak\" into a lower privileged session. Suppose the CEO of a company uses your shared openclaw agent and the agent writes sensitive data (investor emails, for example) to its memory. My understanding is this is not protected by Alter. Then a contractor uses the same agent and can read that same memory. It seems to me that a better agent harness for this kind of multi-user use case is needed; the standard ones like openclaw and claude code simply are not designed for it. Would love your thoughts!",
+      "at": "2026-10-21T07:03:45.000Z",
+      "url": "https://news.ycombinator.com/item?id=50177062"
+    },
+    {
+      "author": "simfinii",
+      "text": "We actually account for this already! We allow developers to use alter to partition context memory based on end user + agent identity so the context leaks like the one you described can be fully prevented! Feel free to go through the docs here if you have more questions:  https://docs.alterauth.com/guides/propagate-identity-to-memo...",
+      "at": "2026-10-21T07:14:23.000Z",
+      "url": "https://news.ycombinator.com/item?id=50177132"
+    },
+    {
+      "author": "avikonduru",
+      "text": "How do you handle permissions when the downstream service only offers a shared API key? For example, two sales reps can use the same CRM endpoint but should only access their own accounts. Does Alter check record ownership, or does the developer still need to supply that logic?",
+      "at": "2026-10-21T07:20:00.000Z",
+      "url": "https://news.ycombinator.com/item?id=50177172"
+    },
+    {
+      "author": "911viper",
+      "text": "Following the same thread as souvik1997 here: the leak problem gets worse in shared rooms than in shared sessions. When several principals (humans plus their own agents) sit in one channel, the transcript becomes the privilege boundary. Whatever an agent read in a higher-privileged turn is sitting in the context of every later turn in that room. What we hit building exactly that, rooms where humans and bots are peers: you can't scope a token to an agent, you have to scope it to an (agent, room) pair, and then decide what happens to the derived artifacts. Tool output, file handles, and the memory blob the agent writes back all outlive the session and get replayed into the next one. So how are you handling derived state? Is agent memory a new principal holding the intersection of the rights of the sessions that fed it, or does it just inherit and you rely on the model not to act on stale context?",
+      "at": "2026-10-21T07:24:18.000Z",
+      "url": "https://news.ycombinator.com/item?id=50177194"
+    },
+    {
+      "author": "simfinii",
+      "text": "When several principals are in the same channel talking to the same agent the current delegation model of alter does not apply. As a result the right way to treat the agent is not as a delegated agent but rather an agent that takes the least privilege possible out of all the people in the channel In scenarios where an agent and humans are peers we recommend giving separate agent identities to the agent and treat them as separate privileged users and give them permissions based on their identity and not based on the identities of the users in the channel. We support standlone agent identities that dont require end users as the principals. Can read about that here:  https://docs.alterauth.com/guides/give-an-agent-scoped-acces...",
+      "at": "2026-10-21T07:33:49.000Z",
+      "url": "https://news.ycombinator.com/item?id=50177262"
+    }
+  ],
+  "comments_complete": true
+}

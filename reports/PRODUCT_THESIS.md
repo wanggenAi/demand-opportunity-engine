@@ -7,7 +7,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## workflow_reliability — UNVALIDATED CLUSTER
 
-- independent_demand_count: 46
+- independent_demand_count: 51
 - payment_evidence_count: 7
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community', 'n8n Community']
 - communities: ['Ask/Show HN', 'Commerce operator forum', 'n8n Jobs', 'n8n-io/n8n', 'useagenthq/useagent']
@@ -20,12 +20,33 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://github.com/n8n-io/n8n/issues/41604
+  - https://github.com/n8n-io/n8n/issues/41591
+  - https://github.com/n8n-io/n8n/issues/41588
+  - https://github.com/n8n-io/n8n/issues/41554
+  - https://github.com/n8n-io/n8n/issues/41541
   - https://github.com/n8n-io/n8n/issues/41487
-  - https://github.com/n8n-io/n8n/issues/41485
-  - https://news.ycombinator.com/item?id=50161254
-  - https://github.com/n8n-io/n8n/issues/41418
-  - https://github.com/n8n-io/n8n/issues/41375
-  - https://community.n8n.io/t/available-n8n-ai-automation-engineer-self-hosted-part-time-eu-hours/322775
+
+## browser_automation — UNVALIDATED CLUSTER
+
+- independent_demand_count: 5
+- payment_evidence_count: 0
+- platforms: ['GitHub']
+- communities: ['96loveslife/big_model_radar', 'n8n-io/n8n', 'useagenthq/useagent']
+- repeated_pain: Repeated manual browser work is costly or brittle.
+- current_alternatives: Playwright, Selenium, vendor APIs and open-source browser agents.
+- productization_potential: Needs one repeated workflow and paying buyers before standardization.
+- suggested_product_form: Workflow + Service package
+- distribution: Authorized workflow audit and referrals.
+- Promotion blockers: fewer than 2 primary payment/commercial signals; paid-market proof not independently verified; problem too broad to standardize
+- Action: WATCH (no standardized product build authorized by evidence)
+- Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
+- Representative evidence:
+  - https://github.com/n8n-io/n8n/issues/41548
+  - https://github.com/n8n-io/n8n/issues/41471
+  - https://github.com/n8n-io/n8n/issues/41327
+  - https://github.com/useagenthq/useagent/issues/188
+  - https://github.com/96loveslife/big_model_radar/issues/642
 
 ## lead_research — UNVALIDATED CLUSTER
 
@@ -47,26 +68,6 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
   - https://community.n8n.io/t/looking-for-a-b2b-lead-generation-sales-partner-for-n8n-ai-automation-revenue-share/319139
   - https://community.n8n.io/t/hiring-multi-agent-b2b-lead-gen-system-n8n-langgraph-energy-storage-na-li-battery/317073
   - https://community.n8n.io/t/looking-for-1-2-n8n-builders-for-long-term-collaboration/316792
-
-## browser_automation — UNVALIDATED CLUSTER
-
-- independent_demand_count: 4
-- payment_evidence_count: 0
-- platforms: ['GitHub']
-- communities: ['96loveslife/big_model_radar', 'n8n-io/n8n', 'useagenthq/useagent']
-- repeated_pain: Repeated manual browser work is costly or brittle.
-- current_alternatives: Playwright, Selenium, vendor APIs and open-source browser agents.
-- productization_potential: Needs one repeated workflow and paying buyers before standardization.
-- suggested_product_form: Workflow + Service package
-- distribution: Authorized workflow audit and referrals.
-- Promotion blockers: fewer than 5 independent observations; fewer than 2 primary payment/commercial signals; paid-market proof not independently verified; problem too broad to standardize
-- Action: WATCH (no standardized product build authorized by evidence)
-- Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
-- Representative evidence:
-  - https://github.com/n8n-io/n8n/issues/41471
-  - https://github.com/n8n-io/n8n/issues/41327
-  - https://github.com/useagenthq/useagent/issues/188
-  - https://github.com/96loveslife/big_model_radar/issues/642
 
 ## supplier_sourcing — UNVALIDATED CLUSTER
 

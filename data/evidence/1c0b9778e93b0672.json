@@ -1,0 +1,153 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50161144",
+  "collected_at": "2026-10-21T07:34:56.016842+00:00",
+  "source": {
+    "author": "brndnbuilds",
+    "children": [
+      {
+        "author": "david_shaw",
+        "children": [
+          {
+            "author": "brndnbuilds",
+            "children": [
+              {
+                "author": "david_shaw",
+                "children": [
+                  {
+                    "author": "brndnbuilds",
+                    "children": [],
+                    "created_at": "2026-10-20T22:58:19.000Z",
+                    "created_at_i": 1792537099,
+                    "id": 50173846,
+                    "options": [],
+                    "parent_id": 50173499,
+                    "points": null,
+                    "story_id": 50161144,
+                    "text": "Thanks for the feedback. I should probably update the site to mention the pricing plans.",
+                    "title": null,
+                    "type": "comment",
+                    "url": null
+                  }
+                ],
+                "created_at": "2026-10-20T22:22:18.000Z",
+                "created_at_i": 1792534938,
+                "id": 50173499,
+                "options": [],
+                "parent_id": 50172274,
+                "points": null,
+                "story_id": 50161144,
+                "text": "My use case is personal, although I could absolutely see a business use case. Charge a subscription for the enterprise license(s) so you get recurring revenue!<p>For personal software, though, I am very much opposed to subscription costs without a &quot;lifetime&quot; software purchase model. I think a single active license (transferable but only active on one machine at a time) is totally reasonable.",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-10-20T20:34:28.000Z",
+            "created_at_i": 1792528468,
+            "id": 50172274,
+            "options": [],
+            "parent_id": 50172131,
+            "points": null,
+            "story_id": 50161144,
+            "text": "I was thinking of offering both subscription and once off options for private users so folks with subscription fatigue have an option. It&#x27;ll be subscription only for business users, as that will come with ongoing support. Once off private user cost is likely to be around $79 US. What do you think about that?<p>Edit: How many machines would you expect to run it on? What would be your expectations for the licence use on multiple machines?",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-20T20:23:02.000Z",
+        "created_at_i": 1792527782,
+        "id": 50172131,
+        "options": [],
+        "parent_id": 50161144,
+        "points": null,
+        "story_id": 50161144,
+        "text": "This is a cool project, but I&#x27;m not going to install it or invest any time until I better understand the pricing model.<p>Are you considering a subscription approach? One-time fee? Fee per version? Are you thinking ballpark $9.99 or $99.99?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "lisnake",
+        "children": [
+          {
+            "author": "brndnbuilds",
+            "children": [],
+            "created_at": "2026-10-20T20:46:33.000Z",
+            "created_at_i": 1792529193,
+            "id": 50172444,
+            "options": [],
+            "parent_id": 50172414,
+            "points": null,
+            "story_id": 50161144,
+            "text": "Thanks! Maybe one day!",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-20T20:44:39.000Z",
+        "created_at_i": 1792529079,
+        "id": 50172414,
+        "options": [],
+        "parent_id": 50161144,
+        "points": null,
+        "story_id": 50161144,
+        "text": "Cool project! But I need this for MacOS",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-10-20T03:51:43.000Z",
+    "created_at_i": 1792468303,
+    "id": 50161144,
+    "options": [],
+    "parent_id": null,
+    "points": 23,
+    "story_id": 50161144,
+    "text": "Hi HN,<p>Rouler is &quot;rules for your routes&quot;. It allows you to steer network traffic across multiple network interfaces on Windows. For example:<p>- Run Tailscale, Mullvad and OpenVPN official clients simultaneously.<p>- Use Rouler to send Slack via the OpenVPN connection, Chrome + an IP range via Tailscale and a torrent client via Mullvad.<p>Rouler is VPN agnostic, so you can &quot;split-tunnel&quot; with anything that sets up a windows network interface.<p>I&#x27;m an independent developer from Australia and have been working on Rouler for a bit over a year. It&#x27;s been a challenging project to say the least, but I&#x27;m really happy with how it&#x27;s turning out. I have spent a great deal of time building and throwing things away, starting over, belting the initial poc into something that I find intuitive... hopefully others do too!<p>I&#x27;ve done all the testing, fixing and improving I can, so now it&#x27;s open for public beta. I&#x27;d love to hear your feedback... and there are some specific points I&#x27;m interested in hearing about listed on the Rouler website. Please reply with any questions you might have.<p>Thanks for reading!<p>Brendan<p>p.s. Rouler is &quot;built in Rust&quot; TM ;-)<p>---<p>On AI (skip if you&#x27;re sick of hearing about it):<p>Since AI is the hot topic and people are naturally cautious about it, I&#x27;ll add some quick notes about it, specifically about the driver development as that&#x27;s the key thing to get right. The driver is hand written and every detail has been poured over many times over. I spent somewhere around 6-9 months manually building and testing just the driver, staring at Dbgview logs, wireshark logs, windows route tables, restarting VM&#x27;s back to their snapshot and manually copying things across to start again. That&#x27;s not always the most efficient way of doing things, but it&#x27;s the way it had to be done. If I had tried to vibe code it Rouler simply wouldn&#x27;t exist. I did try to lean on AI at times, but it constantly sent me in the wrong direction, told me things weren&#x27;t possible, tried to take shortcuts and implement poor performing trade-offs. It also loved to hallucinate the windows api. Keep in mind this was around the Opus 4.1 - 4.6 days.<p>Outside of the driver, in user mode land, AI has crept more and more into my workflow. I&#x27;ve had a lot of success utilising the latest models in the app in particular, and I purposefully separated the UI and core logic so I&#x27;m able to quickly iterate on the UI. I&#x27;ve also found AI very useful for scripting and refactoring. It has built some great scripts that would&#x27;ve taken me days or weeks to build and fine tune.",
+    "title": "Show HN: Rouler – Steer Windows traffic per app or IP across multiple interfaces",
+    "type": "story",
+    "url": "https://rouler.io/"
+  },
+  "comments": [
+    {
+      "author": "david_shaw",
+      "text": "This is a cool project, but I'm not going to install it or invest any time until I better understand the pricing model. Are you considering a subscription approach? One-time fee? Fee per version? Are you thinking ballpark $9.99 or $99.99?",
+      "at": "2026-10-20T20:23:02.000Z",
+      "url": "https://news.ycombinator.com/item?id=50172131"
+    },
+    {
+      "author": "brndnbuilds",
+      "text": "I was thinking of offering both subscription and once off options for private users so folks with subscription fatigue have an option. It'll be subscription only for business users, as that will come with ongoing support. Once off private user cost is likely to be around $79 US. What do you think about that? Edit: How many machines would you expect to run it on? What would be your expectations for the licence use on multiple machines?",
+      "at": "2026-10-20T20:34:28.000Z",
+      "url": "https://news.ycombinator.com/item?id=50172274"
+    },
+    {
+      "author": "david_shaw",
+      "text": "My use case is personal, although I could absolutely see a business use case. Charge a subscription for the enterprise license(s) so you get recurring revenue! For personal software, though, I am very much opposed to subscription costs without a \"lifetime\" software purchase model. I think a single active license (transferable but only active on one machine at a time) is totally reasonable.",
+      "at": "2026-10-20T22:22:18.000Z",
+      "url": "https://news.ycombinator.com/item?id=50173499"
+    },
+    {
+      "author": "brndnbuilds",
+      "text": "Thanks for the feedback. I should probably update the site to mention the pricing plans.",
+      "at": "2026-10-20T22:58:19.000Z",
+      "url": "https://news.ycombinator.com/item?id=50173846"
+    },
+    {
+      "author": "lisnake",
+      "text": "Cool project! But I need this for MacOS",
+      "at": "2026-10-20T20:44:39.000Z",
+      "url": "https://news.ycombinator.com/item?id=50172414"
+    },
+    {
+      "author": "brndnbuilds",
+      "text": "Thanks! Maybe one day!",
+      "at": "2026-10-20T20:46:33.000Z",
+      "url": "https://news.ycombinator.com/item?id=50172444"
+    }
+  ],
+  "comments_complete": true
+}

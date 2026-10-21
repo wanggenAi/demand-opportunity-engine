@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50161254",
-  "collected_at": "2026-10-20T07:29:49.053303+00:00",
+  "collected_at": "2026-10-21T07:34:56.016842+00:00",
   "source": {
     "author": "otherayden",
     "children": [
@@ -34,6 +34,83 @@
         "title": null,
         "type": "comment",
         "url": null
+      },
+      {
+        "author": "artemave",
+        "children": [
+          {
+            "author": "otherayden",
+            "children": [
+              {
+                "author": "artemave",
+                "children": [],
+                "created_at": "2026-10-20T19:31:48.000Z",
+                "created_at_i": 1792524708,
+                "id": 50171493,
+                "options": [],
+                "parent_id": 50167654,
+                "points": null,
+                "story_id": 50161254,
+                "text": "If all you want is clipboard integration over ssh, then, perhaps, kitty terminal might be enough.<p>hop does take it a notch further and allows to `hop open` images (or any binary really) from the remote machine such that they are opened by your host&#x27;s xdg-open (as well as pasting images from host to remote).",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-10-20T15:14:08.000Z",
+            "created_at_i": 1792509248,
+            "id": 50167654,
+            "options": [],
+            "parent_id": 50163161,
+            "points": null,
+            "story_id": 50161254,
+            "text": "I have been dying for clipboard sharing actually. I have sort of a hacky solution using scp and xclip but I will definitely be checking out the session manager",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-20T08:54:14.000Z",
+        "created_at_i": 1792486454,
+        "id": 50163161,
+        "options": [],
+        "parent_id": 50161254,
+        "points": null,
+        "story_id": 50161254,
+        "text": "One thing you might be missing is better integration between the local desktop and the remote environment. Things like persistent ssh connections, seamless clipboard sharing (including images), port forwarding and file path translation, so that working remotely feels almost indistinguishable from working locally.<p>I wrote a session manager[1] to handle all that. Linux&#x2F;sway&#x2F;kitty only though.<p>[1] <a href=\"https:&#x2F;&#x2F;github.com&#x2F;artemave&#x2F;hop\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;artemave&#x2F;hop</a>",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "Am4TIfIsER0ppos",
+        "children": [],
+        "created_at": "2026-10-20T11:28:45.000Z",
+        "created_at_i": 1792495725,
+        "id": 50164656,
+        "options": [],
+        "parent_id": 50161254,
+        "points": null,
+        "story_id": 50161254,
+        "text": "sshfs so you can either edit on the remote file system with your local editor or have your editor save a copy to the remote system",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "ecesena",
+        "children": [],
+        "created_at": "2026-10-21T03:41:09.000Z",
+        "created_at_i": 1792554069,
+        "id": 50175814,
+        "options": [],
+        "parent_id": 50161254,
+        "points": null,
+        "story_id": 50161254,
+        "text": "I have a tmux split in 4. Personally I just use claude, but in any 4th you can run whatever you pref.\nEach agent has its own workspace (run in a diff dir), but they all share memory, skills, and can of course read each other work.\nFour is nothing special, just easy to still read in a 13” screen, easy to switch each pane to full screen and so on.<p>Edit: forgot the ssh part. Same setup on my mac, on my server, at work. So my UX is pretty much always the same. Most of the time it’s via ssh, yes, only rarely I use my mac.",
+        "title": null,
+        "type": "comment",
+        "url": null
       }
     ],
     "created_at": "2026-10-20T04:10:14.000Z",
@@ -60,6 +137,36 @@
       "text": "How often do you manually edit text files these days? I have been a neovim power user for a few years now but I find that I almost never open it anymore since I use agents for most code.",
       "at": "2026-10-20T05:51:32.000Z",
       "url": "https://news.ycombinator.com/item?id=50161852"
+    },
+    {
+      "author": "artemave",
+      "text": "One thing you might be missing is better integration between the local desktop and the remote environment. Things like persistent ssh connections, seamless clipboard sharing (including images), port forwarding and file path translation, so that working remotely feels almost indistinguishable from working locally. I wrote a session manager[1] to handle all that. Linux/sway/kitty only though. [1]  https://github.com/artemave/hop",
+      "at": "2026-10-20T08:54:14.000Z",
+      "url": "https://news.ycombinator.com/item?id=50163161"
+    },
+    {
+      "author": "otherayden",
+      "text": "I have been dying for clipboard sharing actually. I have sort of a hacky solution using scp and xclip but I will definitely be checking out the session manager",
+      "at": "2026-10-20T15:14:08.000Z",
+      "url": "https://news.ycombinator.com/item?id=50167654"
+    },
+    {
+      "author": "artemave",
+      "text": "If all you want is clipboard integration over ssh, then, perhaps, kitty terminal might be enough. hop does take it a notch further and allows to `hop open` images (or any binary really) from the remote machine such that they are opened by your host's xdg-open (as well as pasting images from host to remote).",
+      "at": "2026-10-20T19:31:48.000Z",
+      "url": "https://news.ycombinator.com/item?id=50171493"
+    },
+    {
+      "author": "Am4TIfIsER0ppos",
+      "text": "sshfs so you can either edit on the remote file system with your local editor or have your editor save a copy to the remote system",
+      "at": "2026-10-20T11:28:45.000Z",
+      "url": "https://news.ycombinator.com/item?id=50164656"
+    },
+    {
+      "author": "ecesena",
+      "text": "I have a tmux split in 4. Personally I just use claude, but in any 4th you can run whatever you pref.\nEach agent has its own workspace (run in a diff dir), but they all share memory, skills, and can of course read each other work.\nFour is nothing special, just easy to still read in a 13” screen, easy to switch each pane to full screen and so on. Edit: forgot the ssh part. Same setup on my mac, on my server, at work. So my UX is pretty much always the same. Most of the time it’s via ssh, yes, only rarely I use my mac.",
+      "at": "2026-10-21T03:41:09.000Z",
+      "url": "https://news.ycombinator.com/item?id=50175814"
     }
   ],
   "comments_complete": true

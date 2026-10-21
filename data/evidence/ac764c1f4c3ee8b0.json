@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50151980",
-  "collected_at": "2026-10-20T07:29:49.053303+00:00",
+  "collected_at": "2026-10-21T07:34:56.016842+00:00",
   "source": {
     "author": "dmayle",
     "children": [
@@ -668,37 +668,6 @@
         "url": null
       },
       {
-        "author": "karmakaze",
-        "children": [
-          {
-            "author": "dmayle",
-            "children": [],
-            "created_at": "2026-10-19T23:38:09.000Z",
-            "created_at_i": 1792453089,
-            "id": 50159449,
-            "options": [],
-            "parent_id": 50158396,
-            "points": null,
-            "story_id": 50151980,
-            "text": "There are already a decently large number of todo apps that don&#x27;t have AI.  They compete on audience, and integrations, so it&#x27;s hard to differentiate and hard to deliver value worth switching.  This one doesn&#x27;t just add an AI chat interface, it uses the strengths of a model, handling arbitrary input, and re-reads your list every single day without getting bored or overwhelmed.",
-            "title": null,
-            "type": "comment",
-            "url": null
-          }
-        ],
-        "created_at": "2026-10-19T21:37:06.000Z",
-        "created_at_i": 1792445826,
-        "id": 50158396,
-        "options": [],
-        "parent_id": 50151980,
-        "points": null,
-        "story_id": 50151980,
-        "text": "A ToDo app isn&#x27;t interesting now unless it has an AI behind it to get things done.",
-        "title": null,
-        "type": "comment",
-        "url": null
-      },
-      {
         "author": "adammarples",
         "children": [
           {
@@ -773,6 +742,68 @@
         "title": null,
         "type": "comment",
         "url": null
+      },
+      {
+        "author": "asafel",
+        "children": [
+          {
+            "author": "dmayle",
+            "children": [],
+            "created_at": "2026-10-20T14:07:13.000Z",
+            "created_at_i": 1792505233,
+            "id": 50166684,
+            "options": [],
+            "parent_id": 50165429,
+            "points": null,
+            "story_id": 50151980,
+            "text": "Thank you.  No, this is my first pricing strategy.  I came to it two different ways:<p>1) Bottom-up: this is the price that is sustainable given that there is a model reading your task list every morning<p>2) Top-down: this is priced between simple todo lists that just manage your data, and more complex AI tools that do a lot more than tasks.<p>Does your freemium app feature AI?  Does it convert well into paying customers?",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-20T12:37:51.000Z",
+        "created_at_i": 1792499871,
+        "id": 50165429,
+        "options": [],
+        "parent_id": 50151980,
+        "points": null,
+        "story_id": 50151980,
+        "text": "I like that it gives back only three things, with the reason for each. The reason is the part that would make me trust the list. I run a freemium app myself, so I&#x27;m curious how you chose $99 a year. Did you try other prices first?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "mgkimsal",
+        "children": [
+          {
+            "author": "dmayle",
+            "children": [],
+            "created_at": "2026-10-20T19:29:54.000Z",
+            "created_at_i": 1792524594,
+            "id": 50171467,
+            "options": [],
+            "parent_id": 50171195,
+            "points": null,
+            "story_id": 50151980,
+            "text": "That&#x27;s neat, did you wire a voice model to your own backend, or do you use something off-the-shelf and seed the context and save the output?<p>Personally, I tend to dodge phone calls, but it&#x27;s true that I use this mostly with voice.  Rather than having something talk back to me, I&#x27;m using a gesture and talking to it.<p>How often are you taking that phone call?",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-20T19:10:40.000Z",
+        "created_at_i": 1792523440,
+        "id": 50171195,
+        "options": [],
+        "parent_id": 50151980,
+        "points": null,
+        "story_id": 50151980,
+        "text": "I&#x27;ve taken a somewhat different approach, although more reliant on voice.  Tied up a phone number to some agent&#x2F;llm service, tied to some APIs on some of my own code, and I have a system that calls me regularly to let me brain dump.  I can tell it what I need to get done, it can remind me of things I mentioned before, clear things that are no longer important or required, etc.  The key for me is the incoming call - something that regularly pings me and lets me just... talk it out, then sorts it out for me - it&#x27;s useful.  There&#x27;s probably folks already doing some of this with claude and whatnot, but this also gave me some ability to learn how the best way to fit some of these together.  Or... at least <i>a</i> way - might not be the best way yet :)",
+        "title": null,
+        "type": "comment",
+        "url": null
       }
     ],
     "created_at": "2026-10-19T13:07:07.000Z",
@@ -780,7 +811,7 @@
     "id": 50151980,
     "options": [],
     "parent_id": null,
-    "points": 54,
+    "points": 60,
     "story_id": 50151980,
     "text": "I&#x27;m a software engineer from the east coast (who has lived in Boston, NY, the bay area, UK, France), and I built a task system called 3 &amp; Done.  It&#x27;s the place you trust to store everything you need to do.  It accepts voice input for rapid entry, as well as text (it stores the audio locally so you can listen to jog your memory) and emails you every morning with the three most important things for you to do that day, and why, based on what you&#x27;ve said about the task: deadlines, urgency, sitting too long.<p>I&#x27;ve been at software engineering for about 44 years now... Grew up with it, which was unusual when I started, and I was always good about getting into the zone and doing things.  The career started small, small company, then back office, the dot com startups, then smaller companies again after the bust, a non-profit, and eventually YouTube (Google at the time, but just barely) and Meta (just Facebook when I was there).<p>When I hit the startups, and later big tech, it was no longer enough to just be an engineer, to have drive, to be good, you had to be organized, you had to follow through, get stuff done, and that&#x27;s where the task systems started. Twenty-five over the years (and yes, I&#x27;ve actually counted), from Moleskine notebooks with Getting Things Done, evernote (remember evernote?), bug trackers, todoist, asana, google keep, among others.<p>When I managed on the Facebook News Feed, I got into gantt charts (for me and my team), spreadsheets, OmniPlan... I remember apologizing to my director for being so disorganized (because I felt I was making a mess of it), and he told me that I was the most organized engineer he knew.<p>That was because I was doing all of the work in the background, the trimming, the sorting, the reviews, but it was just so much work.  Which was why I changed from system to system.  Each time it built up, and I had to spend more time looking at things I couldn&#x27;t or didn&#x27;t get done, when I was rushed and couldn&#x27;t put time into today&#x27;s review, it would pile up, and then using it was so much work that I would start taking mini-notes, just emailing myself a few things to do the next day.<p>That&#x27;s actually the thesis of the app (but not where it started), that if I could just have a few things to do emailed to me each day, I could get it done.<p>This app actually started when I described my previous startup failures into a Claude web session, and it repeated back to me what I had just said.  My previous failures were because I spent too much time building the stuff I needed, and not building what I was supposed to be building.<p>I decided that the app would email me three things to do every day (which matches best practices for attention), but that the day was always yours to decide.  We won&#x27;t overload you, but you can add more, if you&#x27;re feeling up to it, or cut back, and we never shame and try our best not to nag (I often only finish two).  If we get it wrong, you can tell us, and we&#x27;ll re-rank it once a day, or you can set it manually, and if you do, we never override that choice.  The web app is live, and native for both platforms is coming.  In the meantime, on Android, you can use gestures to quick launch into the voice input so saving a task is only a gesture away (e.g. double-tap the back of a Pixel, double-press the power button on Motorola).<p>Now let&#x27;s talk about the dirty parts.  I used AI to help me build this. Anthropic models mostly, and the brains of the app come from Anthropic models (I like the quality, I like the privacy, absolutely no training on customer data, and the stance of the company).  This app is not some one-shot wonder where I asked frontier models to build a task system and then I put it on a server to show you.<p>I have prompts for the various features (e.g. ranking, generating suggestions, task extractions), I have eval sets of task lists (not anyone&#x27;s real tasks, but constructed from patterns in my tasks, or the tasks of testers who allowed me to fix the problems they were having), with the three I expect to come out. I store the eval outputs, and re-test whenever I add a new rule to a prompt, or whenever testing a new model version.  The great thing about having this eval set is that it catches when I get it wrong.  When I introspect a failed run, sometimes it&#x27;s because I need to tune a prompt, but sometimes it&#x27;s because I missed something in my own ranking.<p>I did the same thing with my infrastructure as well, so this time, instead of setting up servers, and building login systems, and managing databases, I built on Vercel (git push to serving Next.js), Neon (hosted postgres).<p>I started getting emails mailed to me by mid-June, but started getting usable suggestions on June 26, and I&#x27;ve been using it every morning since.  I wanted it to be easy to get started, and easy to use, so the input handles mess (you can add multiple tasks in the same run-on sentence, and a friend who helped me test it just pasted his entire obsidian todo list in wholesale to get started).<p>I wanted to make sure that anyone could try it out, so I built a trial feature that uses the real in-app ranking with a list of items you provide.<p>If you want to try the service, there&#x27;s a free 14-day trial (card required), and then it&#x27;s $99&#x2F;year or $9.99&#x2F;month after that (plus sales tax).  We warn you seven days before your card is charged and if you cancel, you keep access through the term (either the trial, or our last paid period).  Online, through settings -&gt; billing, no email, no call.<p>I really hope you&#x27;ll try it out.  If you do, please tell me if we did a good job picking out your day.<p><a href=\"https:&#x2F;&#x2F;3anddoneapp.com&#x2F;try\" rel=\"nofollow\">https:&#x2F;&#x2F;3anddoneapp.com&#x2F;try</a>",
     "title": "Show HN: I built a task system to handle the drudgery so I could focus on tasks",
@@ -1047,18 +1078,6 @@
       "url": "https://news.ycombinator.com/item?id=50159793"
     },
     {
-      "author": "karmakaze",
-      "text": "A ToDo app isn't interesting now unless it has an AI behind it to get things done.",
-      "at": "2026-10-19T21:37:06.000Z",
-      "url": "https://news.ycombinator.com/item?id=50158396"
-    },
-    {
-      "author": "dmayle",
-      "text": "There are already a decently large number of todo apps that don't have AI.  They compete on audience, and integrations, so it's hard to differentiate and hard to deliver value worth switching.  This one doesn't just add an AI chat interface, it uses the strengths of a model, handling arbitrary input, and re-reads your list every single day without getting bored or overwhelmed.",
-      "at": "2026-10-19T23:38:09.000Z",
-      "url": "https://news.ycombinator.com/item?id=50159449"
-    },
-    {
       "author": "adammarples",
       "text": "So... How does it prioritize things? That's the only question that matters",
       "at": "2026-10-19T22:53:42.000Z",
@@ -1087,6 +1106,30 @@
       "text": "Great story and smart design choice using AI for background triage rather than just chat clutter. The voice-to-inbox flow is genuinely appealing—excited to see how this evolves!",
       "at": "2026-10-20T03:45:34.000Z",
       "url": "https://news.ycombinator.com/item?id=50161097"
+    },
+    {
+      "author": "asafel",
+      "text": "I like that it gives back only three things, with the reason for each. The reason is the part that would make me trust the list. I run a freemium app myself, so I'm curious how you chose $99 a year. Did you try other prices first?",
+      "at": "2026-10-20T12:37:51.000Z",
+      "url": "https://news.ycombinator.com/item?id=50165429"
+    },
+    {
+      "author": "dmayle",
+      "text": "Thank you.  No, this is my first pricing strategy.  I came to it two different ways: 1) Bottom-up: this is the price that is sustainable given that there is a model reading your task list every morning 2) Top-down: this is priced between simple todo lists that just manage your data, and more complex AI tools that do a lot more than tasks. Does your freemium app feature AI?  Does it convert well into paying customers?",
+      "at": "2026-10-20T14:07:13.000Z",
+      "url": "https://news.ycombinator.com/item?id=50166684"
+    },
+    {
+      "author": "mgkimsal",
+      "text": "I've taken a somewhat different approach, although more reliant on voice.  Tied up a phone number to some agent/llm service, tied to some APIs on some of my own code, and I have a system that calls me regularly to let me brain dump.  I can tell it what I need to get done, it can remind me of things I mentioned before, clear things that are no longer important or required, etc.  The key for me is the incoming call - something that regularly pings me and lets me just... talk it out, then sorts it out for me - it's useful.  There's probably folks already doing some of this with claude and whatnot, but this also gave me some ability to learn how the best way to fit some of these together.  Or... at least  a  way - might not be the best way yet :)",
+      "at": "2026-10-20T19:10:40.000Z",
+      "url": "https://news.ycombinator.com/item?id=50171195"
+    },
+    {
+      "author": "dmayle",
+      "text": "That's neat, did you wire a voice model to your own backend, or do you use something off-the-shelf and seed the context and save the output? Personally, I tend to dodge phone calls, but it's true that I use this mostly with voice.  Rather than having something talk back to me, I'm using a gesture and talking to it. How often are you taking that phone call?",
+      "at": "2026-10-20T19:29:54.000Z",
+      "url": "https://news.ycombinator.com/item?id=50171467"
     }
   ],
   "comments_complete": true

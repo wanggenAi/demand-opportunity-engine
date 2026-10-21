@@ -1,0 +1,198 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41548",
+  "collected_at": "2026-10-21T07:34:56.016842+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/41548",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/41548/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/41548/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/41548/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/41548",
+    "id": 5942635570,
+    "node_id": "I_kwDOC4Q8Qs8AAAABYjVsMg",
+    "number": 41548,
+    "title": "Summarize drops false boolean groups when ignoring empty grouping fields",
+    "user": {
+      "login": "sumitsharma01",
+      "id": 20676418,
+      "node_id": "MDQ6VXNlcjIwNjc2NDE4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/20676418?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/sumitsharma01",
+      "html_url": "https://github.com/sumitsharma01",
+      "followers_url": "https://api.github.com/users/sumitsharma01/followers",
+      "following_url": "https://api.github.com/users/sumitsharma01/following{/other_user}",
+      "gists_url": "https://api.github.com/users/sumitsharma01/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/sumitsharma01/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/sumitsharma01/subscriptions",
+      "organizations_url": "https://api.github.com/users/sumitsharma01/orgs",
+      "repos_url": "https://api.github.com/users/sumitsharma01/repos",
+      "events_url": "https://api.github.com/users/sumitsharma01/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/sumitsharma01/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582010757,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cXhQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:nodes",
+        "name": "team:nodes",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Nodes team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 4,
+    "created_at": "2026-10-20T13:35:12Z",
+    "updated_at": "2026-10-20T20:47:03Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nSummarize silently drops items grouped under boolean `false` when **Ignore items without valid fields to group by** is enabled. The same input is retained when the option is disabled. Boolean `true` and numeric `0` are retained with the option enabled.\n\nThis can remove an entire group from a summary, for example the total for inactive accounts or failed checks. A present boolean `false` value should not be treated as a missing grouping field.\n\n### To Reproduce\n\n1. Import the workflow below.\n2. Run it with Summarize node version **1.1**.\n3. Sum `amount`, split by `active`, with **Ignore items without valid fields to group by** enabled.\n4. Compare the output with the option disabled.\n5. Repeat with **All Splits in a Single Item** as the output format.\n\nInput:\n\n```json\n[\n  { \"active\": true, \"amount\": 10 },\n  { \"active\": false, \"amount\": 20 },\n  { \"active\": false, \"amount\": 30 },\n  { \"active\": 0, \"amount\": 40 },\n  { \"active\": \"\", \"amount\": 50 },\n  { \"active\": null, \"amount\": 60 },\n  { \"amount\": 70 }\n]\n```\n\nWith the option enabled, the current node execution returns only:\n\n```json\n[\n  { \"sum_amount\": 10, \"active\": true },\n  { \"sum_amount\": 40, \"active\": 0 }\n]\n```\n\nWith the option disabled, the `false` group is present with `sum_amount: 50`.\n\n### Expected behavior\n\nKeep the `false` group with a total of `50`, alongside `true` and `0`. Continue to ignore missing, null and empty-string grouping fields when the option is enabled.\n\n### Source\n\nIn [aggregateAndSplitData](https://github.com/n8n-io/n8n/blob/1265d2f461e093996591bb6d39a8ad4d11eb61ea/packages/nodes-base/nodes/Transform/Summarize/utils.ts#L238), the skip condition is:\n\n```ts\nif (options.skipEmptySplitFields && typeof splitValue !== 'number' && !splitValue) {\n  continue;\n}\n```\n\nThis explicitly preserves numbers such as `0`, but skips boolean `false`. The same file's `isEmpty()` helper defines empty as undefined, null or an empty string and does not classify `false` as empty.\n\n### Verification scope\n\nVerified against source commit `1265d2f461e093996591bb6d39a8ad4d11eb61ea` (root package version `2.45.0`).\n\nThe check directly invoked the actual `Summarize.execute()` and its aggregation/flattening functions with a mocked execution context. Four cases covered both output formats, each with the option enabled and disabled. Both formats lose the false group only when the option is enabled.\n\nDependency imports were replaced for this isolated check: `NodeConnectionTypes`, `NodeOperationError`, and lodash `get` were stubbed. The test used only flat property names. The node execution and grouping logic were unchanged. This was not a running n8n instance or a browser test; the importable workflow below is supplied for full-workflow confirmation.\n\n### Environment\n\n- OS: macOS\n- n8n source: `2.45.0` at the commit above\n- Summarize node: `1.1`\n- Node.js used for the isolated source check: `22.17.1`, with experimental TypeScript stripping\n- Database: not used\n- Execution mode: direct node execution with a mocked context\n- Hosting: local source-level reproduction\n\n<details>\n<summary>Importable workflow</summary>\n\n```json\n{\n  \"name\": \"Summarize boolean grouping reproduction\",\n  \"nodes\": [\n    {\n      \"parameters\": {},\n      \"id\": \"fa3f5a5c-ef3c-4197-9421-151031540001\",\n      \"name\": \"Manual Trigger\",\n      \"type\": \"n8n-nodes-base.manualTrigger\",\n      \"typeVersion\": 1,\n      \"position\": [\n        0,\n        0\n      ]\n    },\n    {\n      \"parameters\": {\n        \"jsCode\": \"return [{ active: true, amount: 10 }, { active: false, amount: 20 }, { active: false, amount: 30 }, { active: 0, amount: 40 }, { active: '', amount: 50 }, { active: null, amount: 60 }, { amount: 70 }].map(json => ({ json }));\"\n      },\n      \"id\": \"fa3f5a5c-ef3c-4197-9421-151031540002\",\n      \"name\": \"Sample data\",\n      \"type\": \"n8n-nodes-base.code\",\n      \"typeVersion\": 2,\n      \"position\": [\n        240,\n        0\n      ]\n    },\n    {\n      \"parameters\": {\n        \"fieldsToSummarize\": {\n          \"values\": [\n            {\n              \"aggregation\": \"sum\",\n              \"field\": \"amount\"\n            }\n          ]\n        },\n        \"fieldsToSplitBy\": \"active\",\n        \"options\": {\n          \"skipEmptySplitFields\": true,\n          \"outputFormat\": \"separateItems\"\n        }\n      },\n      \"id\": \"fa3f5a5c-ef3c-4197-9421-151031540003\",\n      \"name\": \"Summarize\",\n      \"type\": \"n8n-nodes-base.summarize\",\n      \"typeVersion\": 1.1,\n      \"position\": [\n        480,\n        0\n      ]\n    }\n  ],\n  \"connections\": {\n    \"Manual Trigger\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Sample data\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Sample data\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Summarize\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    }\n  },\n  \"settings\": {\n    \"executionOrder\": \"v1\"\n  },\n  \"active\": false\n}\n```\n\n</details>\n\n### Community contribution\n\nIs this available for a community contribution? I would like to make a focused fix and add regression coverage for boolean false, true, zero and empty grouping values in both output formats. Please let me know whether the behavior change needs a node version update. I will wait for a team member's confirmation before starting the implementation.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/41548/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/41548/timeline",
+    "performed_via_github_app": {
+      "id": 1144995,
+      "client_id": "Iv23liVemv8A9if9v0F2",
+      "slug": "chatgpt-codex-connector",
+      "node_id": "A_kwHOAOQ6Gs4AEXij",
+      "owner": {
+        "login": "openai",
+        "id": 14957082,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjE0OTU3MDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/14957082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/openai",
+        "html_url": "https://github.com/openai",
+        "followers_url": "https://api.github.com/users/openai/followers",
+        "following_url": "https://api.github.com/users/openai/following{/other_user}",
+        "gists_url": "https://api.github.com/users/openai/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/openai/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/openai/subscriptions",
+        "organizations_url": "https://api.github.com/users/openai/orgs",
+        "repos_url": "https://api.github.com/users/openai/repos",
+        "events_url": "https://api.github.com/users/openai/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/openai/received_events",
+        "type": "Organization",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "name": "ChatGPT Codex Connector",
+      "description": "Bring ChatGPT and Codex to your GitHub repositories.",
+      "external_url": "https://www.chatgpt.com",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "created_at": "2025-02-14T01:37:05Z",
+      "updated_at": "2026-09-23T18:52:59Z",
+      "permissions": {
+        "actions": "write",
+        "checks": "read",
+        "contents": "write",
+        "emails": "read",
+        "issues": "write",
+        "metadata": "read",
+        "pull_requests": "write",
+        "statuses": "read",
+        "workflows": "write"
+      },
+      "events": [
+        "check_run",
+        "check_suite",
+        "commit_comment",
+        "issues",
+        "issue_comment",
+        "pull_request",
+        "pull_request_review",
+        "pull_request_review_comment",
+        "pull_request_review_thread",
+        "repository",
+        "status",
+        "sub_issues"
+      ]
+    },
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @sumitsharma01,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9614\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9614](https://linear.app/n8n/issue/GHC-9614)",
+      "at": "2026-10-20T13:35:21Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41548#issuecomment-6292126491"
+    },
+    {
+      "author": "sumitsharma01",
+      "text": "A quick update: this also happens in the official n8n 2.45.0 Docker image. I ran the workflow from this issue through the n8n CLI, so this check uses the real workflow engine rather than the earlier mocked setup.\n\nUsing the same input and Summarize v1.1:\n\n- With the option off, the `false` group is included and totals `50`.\n- With the option on, that group disappears. The `true` group still totals `10`, and the `0` group still totals `40`.\n- The same thing happens with both output formats.\n\nAll four runs completed successfully. The two items with `active: false` are present in the Code node’s output, but Summarize leaves them out when the option is on.\n\nThis was tested on Docker Desktop on macOS, using the Linux arm64 image with a fresh SQLite database. It was a CLI test, not a browser test.\n\nWould you be happy for me to take this on? I’d keep the fix focused and add tests for `false`, `true`, `0` and empty values. I’ll wait for your go-ahead before starting.",
+      "at": "2026-10-20T13:50:45Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41548#issuecomment-6292440745"
+    },
+    {
+      "author": "official-burak",
+      "text": "The drop happens in the split logic — the skip check is a truthiness test, so boolean `false` is treated as empty while `0` survives behind a `typeof !== \"number\"` guard. I opened #41589, which fixes the Summarize node and the same copies of that check in the Item Lists node.",
+      "at": "2026-10-20T18:18:12Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41548#issuecomment-6297959836"
+    },
+    {
+      "author": "sumitsharma01",
+      "text": "Thanks for putting together #41589, @official-burak. I opened this issue hoping to contribute the fix myself and was waiting for the team’s go-ahead, as requested in the contribution guidelines. I’m still keen to contribute. Could a maintainer advise how we should coordinate from here?",
+      "at": "2026-10-20T20:46:51Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41548#issuecomment-6301118275"
+    }
+  ],
+  "comments_complete": true
+}

@@ -1,0 +1,123 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41604",
+  "collected_at": "2026-10-21T07:34:56.016842+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/41604",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/41604/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/41604/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/41604/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/41604",
+    "id": 5954733783,
+    "node_id": "I_kwDOC4Q8Qs8AAAABYu4G1w",
+    "number": 41604,
+    "title": "Agent v3.1 cannot execute Tool HTTP Request: \"has a supplyData method but no execute method\"",
+    "user": {
+      "login": "kemrec",
+      "id": 25618690,
+      "node_id": "MDQ6VXNlcjI1NjE4Njkw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/25618690?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/kemrec",
+      "html_url": "https://github.com/kemrec",
+      "followers_url": "https://api.github.com/users/kemrec/followers",
+      "following_url": "https://api.github.com/users/kemrec/following{/other_user}",
+      "gists_url": "https://api.github.com/users/kemrec/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/kemrec/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/kemrec/subscriptions",
+      "organizations_url": "https://api.github.com/users/kemrec/orgs",
+      "repos_url": "https://api.github.com/users/kemrec/repos",
+      "events_url": "https://api.github.com/users/kemrec/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/kemrec/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8811645809,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACDTcLcQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:ai",
+        "name": "team:ai",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the AI team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-21T05:10:21Z",
+    "updated_at": "2026-10-21T05:26:26Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Environment\n\n- n8n 2.45.0, self-hosted (Docker image `n8nio/n8n:2.45.0`)\n- AI Agent node `@n8n/n8n-nodes-langchain.agent` v3.1\n- Tool HTTP Request `@n8n/n8n-nodes-langchain.toolHttpRequest` v1.1\n- OpenAI Chat Model `@n8n/n8n-nodes-langchain.lmChatOpenAi` v1\n- Model endpoint: any OpenAI-compatible endpoint (the failure happens when the model asks for the tool, before the HTTP request is made)\n\n## Steps to reproduce\n\n1. Add a Manual Trigger, then an AI Agent node (v3.1).\n2. Attach an OpenAI Chat Model as `ai_languageModel`.\n3. Attach a Tool HTTP Request (v1.1) as `ai_tool`, with any URL (e.g. `https://example.com`).\n4. Give the agent a prompt that makes the model call the tool.\n5. Execute the workflow.\n\n## Expected\n\nThe tool performs the HTTP request and returns the response body to the agent.\n\n## Actual\n\nThe tool node fails with:\n\n```\nThe node \"@n8n/n8n-nodes-langchain.toolHttpRequest\" has a \"supplyData\" method but no \"execute\" method.\n```\n\nThe AI Agent node itself reports `success` and hands an empty tool result to the model, so from the agent's point of view the tool returned nothing. The execution status is `error` only because of the tool node's error.\n\n## Control\n\nThe same workflow with the AI Agent node set to v2.2 works: the HTTP request is made and the response (including headers) reaches the model.\n\nSo on 2.45.0 `toolHttpRequest` is usable with agent v2.2 and unusable with agent v3.1.\n\n## Additional note\n\nThe silent part matters on its own: when a tool fails, the agent does not surface the failure to the model and still finishes `success`. Anyone relying on the model to notice a failed tool call needs to inspect the tool node's `runData` instead.\n\n## Evidence\n\nLocal 2.45.0 instance, agent v3.1 workflow:\n- execution id 885: `Tool` node `error` with the message above, `Agent` node `success`, agent output `TOOLSAW:\"\"`.\n- control execution 890 (agent v2.2, same tool pointed at a closed port): tool node `success` and the model receives `There was an error: \"connect ECONNREFUSED 127.0.0.1:9\"`.\n\nHappy to retest against a newer build or provide the exported workflow JSON.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/41604/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/41604/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @kemrec,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9620\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9620](https://linear.app/n8n/issue/GHC-9620)",
+      "at": "2026-10-21T05:10:31Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41604#issuecomment-6308570699"
+    }
+  ],
+  "comments_complete": true
+}

@@ -1,0 +1,107 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41541",
+  "collected_at": "2026-10-21T07:34:56.016842+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/41541",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/41541/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/41541/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/41541/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/41541",
+    "id": 5941499481,
+    "node_id": "I_kwDOC4Q8Qs8AAAABYiQWWQ",
+    "number": 41541,
+    "title": "Publication service never retries an in-memory trigger that fails during reconcile (IMAP trigger stays dead after transient network loss)",
+    "user": {
+      "login": "meminens",
+      "id": 42714627,
+      "node_id": "MDQ6VXNlcjQyNzE0NjI3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/42714627?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/meminens",
+      "html_url": "https://github.com/meminens",
+      "followers_url": "https://api.github.com/users/meminens/followers",
+      "following_url": "https://api.github.com/users/meminens/following{/other_user}",
+      "gists_url": "https://api.github.com/users/meminens/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/meminens/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/meminens/subscriptions",
+      "organizations_url": "https://api.github.com/users/meminens/orgs",
+      "repos_url": "https://api.github.com/users/meminens/repos",
+      "events_url": "https://api.github.com/users/meminens/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/meminens/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-10-20T12:19:14Z",
+    "updated_at": "2026-10-21T05:22:33Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nWith the workflow publication service enabled (the default, `N8N_USE_WORKFLOW_PUBLICATION_SERVICE=true`), a temporary network outage can permanently disable in-memory triggers. They stay off until each workflow is manually unpublished and republished. Restarting n8n does not bring them back.\n\n9 workflows with IMAP Email Triggers lost their IMAP connections during a short host network outage. The periodic reconcile ran while the network was still down, tried to republish them once, and failed. Errors recorded in `workflow_publication_trigger_status` / `workflow_publication_outbox` (reason `reconcile`):\n\n- `There was a problem activating the workflow: \"connect EHOSTUNREACH <imap-server-ip>::993\"`\n- `There was a problem activating the workflow: \"Failed to establish connection in required time\"`\n- `Workflow publication processing exceeded its deadline`\n\nAfter that, n8n never tried again. The network was back within minutes, but the triggers stayed dead for about 36 hours. A full container recreate in between created no new outbox rows and did not change the `failed` rows. The UI shows \"Failed publish\" with only \"Unpublish\" in the menu.\n\n**Cause (from the 2.43.4 dist code):**\n\n1. On a failed publication, `publication-status-reporter.js` calls `retryStateRepository.suppressRetry(workflowId, publishedVersionId)`, then `outboxRepository.markFailed(...)`. The trigger-status rows are written with `status = 'failed'`.\n2. `WorkflowPublicationReconciler.findMissingActiveWorkflows()` gets its candidates from `triggerStatusRepository.findActivatedInMemoryTriggers()`, which filters `ts.status = 'activated'`. A `failed` trigger is never treated as missing, so neither the interval reconcile nor the `Startup` reconcile re-enqueues it.\n3. The other reconcile queries (version skew, status drift, unreported) don't match either, because the active version and its status rows are consistent. They are just `failed`.\n\nThe result is a terminal state for any failure, including a transient one like `EHOSTUNREACH`. The legacy path in the same build (`ActiveWorkflowManager.addQueuedWorkflowActivation`) retries with exponential backoff up to `WORKFLOW_REACTIVATE_MAX_TIMEOUT`, so it self-heals in this scenario.\n\n**Workaround:** `N8N_USE_WORKFLOW_PUBLICATION_SERVICE=false`, or manually unpublish and republish each affected workflow.\n\n### To Reproduce\n\n1. Self-hosted n8n 2.43.4 in Docker, default config (publication service enabled).\n2. Publish a workflow with an IMAP Email Trigger.\n3. Cut network access from the container (e.g. `docker network disconnect <net> n8n`) long enough for the IMAP connection to drop and the next reconcile interval to run.\n4. Restore the network.\n5. The workflow stays in \"Failed publish\" and the IMAP trigger never reconnects, including after restarting n8n.\n\n### Expected behavior\n\nA trigger that fails to (re)activate because of a transient error (network unreachable, connection timeout) should be retried with backoff, as in the legacy `ActiveWorkflowManager` path. At minimum, it should be picked up again by the next reconcile or on startup. Polling and long-connection triggers like IMAP fail silently, so staying dead until someone intervenes means data is lost without any alert.\n\n### Debug Info\n\nn8n 2.43.4, Docker (docker.io/n8nio/n8n), SQLite, task runners internal mode, N8N_LOG_LEVEL=warn, EXECUTIONS_DATA_SAVE_ON_SUCCESS=none\n\n### Operating System\n\nArch Linux (kernel 7.2), Docker 29.9.1\n\n### n8n Version\n\n2.43.4\n\n### Node.js Version\n\n26.7.0\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/41541/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/41541/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @meminens,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9612\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9612](https://linear.app/n8n/issue/GHC-9612)",
+      "at": "2026-10-20T12:19:25Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41541#issuecomment-6290681568"
+    },
+    {
+      "author": "crimsondhaks",
+      "text": "Hi, could I take this one? I checked master and it still matches what you found. The reconciler only looks at triggers with status activated, so once a trigger is marked failed nothing picks it up again, and the failure path also suppresses the retry.\n\nBefore I write anything I'd like to check the approach with the team. Should a failed trigger be retried with backoff like the old ActiveWorkflowManager path, or just get picked up again by the next reconcile and on startup? Happy to go either way, or leave it if you'd rather handle it in house.\n",
+      "at": "2026-10-21T05:22:33Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41541#issuecomment-6308724345"
+    }
+  ],
+  "comments_complete": true
+}

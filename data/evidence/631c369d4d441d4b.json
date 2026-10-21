@@ -1,0 +1,89 @@
+{
+  "source_api_url": "https://api.github.com/repos/Chain-Love/chain-love/issues/4718",
+  "collected_at": "2026-10-21T07:34:56.016842+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/Chain-Love/chain-love/issues/4718",
+    "repository_url": "https://api.github.com/repos/Chain-Love/chain-love",
+    "labels_url": "https://api.github.com/repos/Chain-Love/chain-love/issues/4718/labels{/name}",
+    "comments_url": "https://api.github.com/repos/Chain-Love/chain-love/issues/4718/comments",
+    "events_url": "https://api.github.com/repos/Chain-Love/chain-love/issues/4718/events",
+    "html_url": "https://github.com/Chain-Love/chain-love/issues/4718",
+    "id": 5945956863,
+    "node_id": "I_kwDOPYEk1M8AAAABYmgZ_w",
+    "number": 4718,
+    "title": "[DBIP] Distinguish live provider docs links from verified project identity",
+    "user": {
+      "login": "livastic-vm5-primary-20260911",
+      "id": 327907686,
+      "node_id": "U_kgDOE4t5Zg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/327907686?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/livastic-vm5-primary-20260911",
+      "html_url": "https://github.com/livastic-vm5-primary-20260911",
+      "followers_url": "https://api.github.com/users/livastic-vm5-primary-20260911/followers",
+      "following_url": "https://api.github.com/users/livastic-vm5-primary-20260911/following{/other_user}",
+      "gists_url": "https://api.github.com/users/livastic-vm5-primary-20260911/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/livastic-vm5-primary-20260911/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/livastic-vm5-primary-20260911/subscriptions",
+      "organizations_url": "https://api.github.com/users/livastic-vm5-primary-20260911/orgs",
+      "repos_url": "https://api.github.com/users/livastic-vm5-primary-20260911/repos",
+      "events_url": "https://api.github.com/users/livastic-vm5-primary-20260911/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/livastic-vm5-primary-20260911/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-20T16:59:40Z",
+    "updated_at": "2026-10-20T17:00:37Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Proposal type\nOther — provider `website`/`docs` evidence semantics and validation policy (no column addition required).\n\n### Affected scope\n- `references/providers/providers.csv`: NEW OR EDITED values of `website` and `docs`.\n- `CONTRIBUTING.md` (current link rules cover URL format but not whether a live page belongs to the named provider).\n- `.github/workflows/link-check-analysis.yaml`: identity-check reporting for PR-added URLs, without making network-dependent checks a blocking validator on every build.\n- The eventual provider column documentation/Style Guide; do **not** modify automatic SDK-release/maintainer/license fields.\n\n### Actual first-party failure case (not a hypothetical vulnerability)\n\nExisting original PR [#4711](https://github.com/Chain-Love/chain-love/pull/4711) initially linked the provider **Huff** to `https://huff.sh/` and `https://docs.huff.sh/`. The original `Link Check` accepted **13/13 links** even though the independent maintainer reviewer [USS-Supervisor's 2026-10-20 CHANGES_REQUESTED review](https://github.com/Chain-Love/chain-love/pull/4711) found those pages now served unrelated Indonesian gambling/slot content. Those domains responded to HTTP but **no longer belonged to the Huff development project**. The correct maintained source was later verified at `https://github.com/huff-language/huff2#differences-vs-huff-rs`; PR #4711 was fixed in place, without claiming that either old site remains safe.\n\nThis is reproducible from the repository's `.github/workflows/link-check-analysis.yaml`: its Lychee configuration treats `200,202,204,400,401,403,405,429` as acceptable response codes. A `200` from the *wrong product/owner* is indistinguishable from a maintained first-party docs URL. HTTP success establishes **transport-level reachability, not product identity**.\n\nA second observed identity class was a valid Viem documentation page proposed as generic `wevm` provider-wide docs. The maintainer correctly rejected this product/provider scope mismatch although the page itself was genuine and live. Current link checking cannot tell the two apart.\n\n### Exact problem / beneficiary\n\nA new valid-looking docs link can be a domain takeover, parked/repurposed domain, generic network page, or a different product in the same organization. Reviewers must rediscover the provenance manually while consumer tools can display the inappropriate live content as authoritative docs. Developers and automated agents using the directory may be misdirected. A fail-closed, **explicitly provenance-uncertain** flag would prevent a green HTTP code from being mistaken for a first-party identity check.\n\nThis DBIP is deliberately *not* a duplicate of:\n- [#3345](https://github.com/Chain-Love/chain-love/issues/3345): manually collected **four specific off-brand/dead offer links**, a dataset cleanup;\n- [#3916](https://github.com/Chain-Love/chain-love/issues/3916): social network handle ownership and invite validity;\n- [#2937](https://github.com/Chain-Love/chain-love/issues/2937) / [#3120](https://github.com/Chain-Love/chain-love/issues/3120): provider/offer lifecycle metadata schemas;\n- [#4045](https://github.com/Chain-Love/chain-love/issues/4045): provider metadata currently bypasses validator rules.\n\nThis proposes the **specific reusable new-link / newly-changed-link provenance gate** for **provider website/docs HTML identity**, not re-reporting those rows, inventing another lifecycle field, or duplicating link reachability.\n\n### Detailed minimal proposal (review-first, low false-positive)\n\n1. For new/changed `references/providers/providers.csv` `website`/`docs`, require the PR description to include one **independent first-party ownership trail**: from the canonical provider GitHub organization/README to the docs URL or from the project's official website to its docs URL. A URL in the same row is not itself independent proof.\n2. Extend the PR link-check report to expose **separate status** for `reachable` and `provenance`: `first_party_evidenced`, `needs_manual_identity_review`, `not_applicable`. This is a report/verification rule, not an invented new CSV field or a claim of automatic legal ownership determination.\n3. If the candidate is a changed bare website/docs domain with no independent provider-owned crosslink, it must show `needs_manual_identity_review` even if HTTP 200. A human reviewer can approve with the cited crosslink, reject unrelated content, or document an unresolved bot-wall. **Do not run an LLM classifier on arbitrary websites and auto-approve from similarity.**\n4. The local *unit* tests should use **synthetic HTML/page metadata** only: a fake HTTP200 gambling/parking page for `Huff` must not become identity-verified; official GitHub `huff-language/huff2` README → exact official docs is a positive crosslink; and a valid `viem` product guide must not automatically become `wevm` provider-wide docs.\n5. HTTP 401/403/429, anti-bot pages, redirects, discontinued domains and genuine GitHub-hosted maintained projects must **not** be blindly treated as hijacked. Unknowns remain `needs_manual_identity_review` and can be resolved by an explicit original maintainer-provided official crosslink. Keep the routine fast/offline when possible and do not repeatedly fetch personal data or claim third-party security ownership.\n\n### Acceptance criteria / focused test cases\n\n- Positive: official provider README linking directly to maintained provider docs gives separate URL-reachable and identity-evidenced outcomes.\n- Negative: mocked valid HTTP200 HTML with a different product/operator and absent official crosslink is **not** marked identity-evidenced; reviewer gets a source link and a clear reason.\n- Negative: docs link for one product among multiple provider products (Viem vs wevm) requires scope review, not silently marked provider-wide.\n- Unknown: Cloudflare 403/429 is neither automatically approved nor automatically condemned as hijacked.\n- Only new/changed provider website/docs fields are checked and reported; no broad crawling of customer data, unsupported claims of token security or automated page classification.\n- No new mutable provider columns, no edits to SDK automation-owned fields, no changes to payment/wallet logic. Document the distinction: **HTTP success ≠ first-party identity verified**.\n\n### Contributor disclosure and reward request\n\nThis DBIP was prepared with AI-assisted analysis by VM5 Delivery Lab for **one human beneficial owner**; the same owner operates VM1/VM2/VM3/VM5 and is **not several independent contributors**. The source is publicly reviewable; no production or third-party data was modified. This is a **proposal for maintainer discussion**, not a completed implementation, guaranteed security finding, approved payout, or paid work order.\n\nFor the [database improvement bounty program #41](https://github.com/Chain-Love/chain-love/discussions/41), the posted **10 native USDC per *approved* DBIP issue** is strictly conditional on independent human approval. Do not count any grant until acceptance and Ethereum-mainnet actual payout have been verified. Original one-owner public EVM reward recipient on Ethereum mainnet: `0x6b01efa0705e91a7aca54271510bf9e594717f34`. No MetaMask private key, gas, signature or escrow needed to submit this issue.\n\nI welcome a rejection if it duplicates an existing approved scope; please link the canonical DBIP rather than awarding the same work twice.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/Chain-Love/chain-love/issues/4718/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/Chain-Love/chain-love/issues/4718/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "livastic-vm5-primary-20260911",
+      "text": "Housekeeping: I used the original DBIP title/template and requested the existing `DBIP` label on issue creation, but the label is not visible; the GitHub API confirms my account does not have permission to add it. A maintainer may label it if it belongs in the DBIP review queue. I will not retry privileged label actions. The proposal is independent of link-reachability and provider-lifecycle DBIPs, and a rejection as a duplicate is fine. This is AI-assisted, from one beneficial owner; no reward is claimed before human approval.",
+      "at": "2026-10-20T17:00:37Z",
+      "url": "https://github.com/Chain-Love/chain-love/issues/4718#issuecomment-6296449693"
+    }
+  ],
+  "comments_complete": true
+}

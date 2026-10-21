@@ -1,0 +1,87 @@
+{
+  "source_api_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/1011",
+  "collected_at": "2026-10-21T07:34:56.016842+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/1011",
+    "repository_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid",
+    "labels_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/1011/labels{/name}",
+    "comments_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/1011/comments",
+    "events_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/1011/events",
+    "html_url": "https://github.com/limitlessprojects/Go-Hybrid/issues/1011",
+    "id": 5941396831,
+    "node_id": "I_kwDOVFB-j88AAAABYiKFXw",
+    "number": 1011,
+    "title": "[wildcard] Kill the hand-written behaviour repro: an execution-oracle fuzzer (INVARIANT 5 — accepted ⇒ runs clean under `-race`)",
+    "user": {
+      "login": "Dimany4",
+      "id": 336554214,
+      "node_id": "U_kgDOFA9o5g",
+      "avatar_url": "https://avatars.githubusercontent.com/u/336554214?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Dimany4",
+      "html_url": "https://github.com/Dimany4",
+      "followers_url": "https://api.github.com/users/Dimany4/followers",
+      "following_url": "https://api.github.com/users/Dimany4/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Dimany4/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Dimany4/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Dimany4/subscriptions",
+      "organizations_url": "https://api.github.com/users/Dimany4/orgs",
+      "repos_url": "https://api.github.com/users/Dimany4/repos",
+      "events_url": "https://api.github.com/users/Dimany4/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Dimany4/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-20T12:11:38Z",
+    "updated_at": "2026-10-20T12:13:57Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### The idea, in a paragraph\r\n\r\nHybrid already checks buildability by machine (W-023's INVARIANT 4: accepted ⇒ `go build` succeeds) and checks *behaviour* by hand: the differential harness compares `build+run` outcomes on a curated set of hand-authored pairs, and every race/P0 report in this tracker was found by a person writing one more racing program. That asymmetry is the hole. Buildability is decidable by a compiler; **soundness itself** — \"this accepted program does not race, does not panic, does not write the wrong element\" — is only ever *observed* when a human hand-writes the witness. The proposal is to make execution the oracle: grow `tools/fuzz/hyfuzz.py` a **semantics leg** — generate programs, let `hyb check` accept-gate them, emit, `go build`, then **execute the emitted Go under `-race`** (plus the runtime's own guards); classify divergence (race | panic | guard violation | wrong value | none); delta-debug-shrink anything that diverges; self-file it with the witness. The static claims the checker makes for a program (loan spans, no cross-task aliasing, single-writer windows) become *hypotheses* that the execution leg adjudicates. The first iteration needs no semantic model at all: race reports and panics are unambiguous, and they are exactly the **P0 ladder class** — an accepted program that builds and then races is the most expensive bug in this repo.\r\n\r\n### Which assumption it breaks\r\n\r\nTwo. (1) *\"Evidence about behaviour must be hand-authored.\"* A curated corpus proves the checker right on the programs someone chose; a fuzzer searches the space nobody chose. Behaviour evidence stops being a list and becomes a measured quantity (N executions, M CPU-hours, residual per rule family) — the semantic twin of what W-023 did for buildability. (2) *\"The runtime is only the untrusted half.\"* Today the Rust runtime/bridge is the thing the checker's proofs are supposed to protect; here the runtime becomes the **judge** of those proofs. This is a genuinely different oracle from a compiler check: `go build` answers \"is this well-formed Go\"; `go run -race` answers \"does the program behave the way the checker said it would\". When the race detector fires inside a program the checker proved non-aliasing, something is wrong — the checker's proof or the runtime's enforcement — and the divergence is the finding. (Honest limit: the runtime cannot certify itself; the two sides are adjudicated against each other, and each divergence is triaged as P0-class evidence, not as a verdict about which side is wrong.)\r\n\r\n### Why this is a breakthrough, not an increment\r\n\r\nReceipts from this repo, not theory. W-023's build oracle drove the build residual 38.03% → 2.78% and left *semantics* untouched — the open P0 family is precisely the set that **builds fine**: #970 (a slice-element loan survives re-binding → OOB store-back panic + silent wrong-element write), #946 (map-slot loans bypass E3102 across move/re-loan, concurrent map writes), #953 (`emit_match` drops the O8 store-back on `else_arm`), #966 (self-shadowed bindings allow concurrent map writes after a move), #971 (bare expression statements / deferred calls discard values past the front-end), #974 (clobbered return-origin and multi-return alias tracking). No amount of build-fuzzing moves those numbers; execution-fuzzing can. **The size of the untouched half** is measurable today: 84 of the 178 open issues in this tracker carry `soundness` in the title (`is:issue is:open soundness in:title`) against 192 open PRs — and the behavioural ones among them are, by construction, programs the checker *accepts* and the compiler *builds*; the build-side family is the one machine sweeping has already taken. And the project's own spike protocol already proves the oracle works — the wildcard spikes are *race-verified* by running them under the detector. Today that verification happens once per idea, by hand, at PR time; this makes it a standing nightly leg, and turns \"we once verified a spike\" into \"we continuously attacked the checker with executions\". A normal feature bounty would reject it (no user-visible feature, pure tooling) — which is what this track is for.\r\n\r\n### How we would know it works (or doesn't)\r\n\r\nPre-registered spike, scoped to `spikes/<id>-exec-oracle/` (ID from triage), results committed before they are judged:\r\n\r\n1. **Build** (no checker/emitter/runtime changes): semantics leg in the fuzzer + driver (`hyb check` → emit → `go build` → `go run -race`), divergence classifier, delta-debug shrinker, auto-filer with a shrink-normalized dedup key.\r\n2. **Budget**: ≥3 nights × ~16 CPU-hours. Race-instrumented runs are 5–20× slower, so the semantics leg sees far fewer programs than the checker-only leg — the *ratio* is pre-registered with the budget, not the raw count.\r\n3. **Negative control first**: seed the pipeline with the known P0 shapes at their pre-fix commits (#970's three repros — OOB reslice panic, silent wrong-element write, append-realloc — plus #946, #953, #966, #971, #974). It must re-find every one; without this a silently broken oracle reads as saturation.\r\n4. **SUCCESS** = ≥1 *new* accepted-but-unsound minimal repro on current main, filed immediately as a first-reporter P0-class issue (MOONSHOT.md: P0-class soundness insights bypass the review calendar).\r\n5. **SATURATION** = 0 findings over the full budget ⇒ publish the first measured **execution-residual table** per rule family (build + race + panic + guard violations) — a number no fixed corpus can state, and the first measured bound on how saturated the checker is *semantically*.\r\n\r\nEither outcome is the M2 learning; both are paid.\r\n\r\n### Cost honesty (optional but powerful)\r\n\r\n- **Slow by construction**: `-race` makes the semantics leg roughly an order of magnitude more expensive per program than the build leg; the claim is deliberately per-execution, and the ratio is pre-registered so nobody mistakes a small sample for saturation.\r\n- **Nondeterminism**: the first iteration counts only unambiguous classes (race reports, panics, runtime guard violations) and skips model comparison for programs whose output is not deterministic; \"wrong value vs a model\" is an explicit later, opt-in stage, so no soft claims enter the record.\r\n- **Triage load**: auto-filed reports need the dedup key plus a hard rate cap (e.g. ≤3/week) — otherwise the pipeline becomes the noise problem it exists to solve.\r\n- **Dependencies**: the pinned Go toolchain (go1.26.9) is already a CI dependency, `-race` needs nothing more, and the spike requires **zero** checker/emitter/runtime edits — tooling only (generator leg + driver + shrinker, ~1–2k lines).\r\n- **Relation to existing entries, stated up front**: this is the *semantic twin* of W-023 (#565 / spike #577, buildability) and the *execution half* of #939 (reproduction automation: shrink → dedup → auto-file). The generator/harness would be shared with both; the oracle, the falsified claim, and the defect class are different (buildable vs behavioural). If the maintainers prefer to fold this into W-023 or into #939 with credited authorship, that is a perfectly good outcome — the deliverable is the runtime leg and the numbers it produces.\r\n\r\n### Track terms\r\n\r\n- [x] I understand no prototype is required and failure-with-knowledge is a valid, paid outcome\r\n- [x] I understand all outcomes (including declines and failures) are published in MOONSHOT.md\r\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/1011/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/1011/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "Dimany4",
+      "text": "# Spike pre-registration — execution-oracle fuzzer (INVARIANT 5)\r\n\r\n**Status:** pre-registered draft, written *before* any run, to be committed as\r\n`spikes/<id>-exec-oracle/HYPOTHESIS.md` once triage assigns the `<id>`.\r\n**Claim under test:** \"accepted ⇒ runs clean\" is falsifiable *by machine*, and\r\nthe machine finds accepted-but-unsound programs that the build oracle (W-023)\r\ncannot see.\r\n**Pre-registered by:** Dimany4 (issue #1011). Nothing below is edited after\r\nresults exist; deviations are appended, never rewritten.\r\n\r\n## H — hypothesis\r\n\r\nH1. A generator + accept-gate + emit + **execute** pipeline, seeded with the\r\nknown pre-fix P0 shapes, re-finds **all** seeded shapes and finds at least one\r\n**new** accepted-but-unsound minimal program on `main` within the budget.\r\n\r\nH0 (the null, published if it wins). Zero findings in the full budget. The\r\nresult is then the first measured *execution-residual table* per rule family —\r\na number, not a claim.\r\n\r\n## Falsifier design (what would make H1 false)\r\n\r\n- F1. Any seeded shape is **not** re-found ⇒ the leg is broken; the run is void\r\n  until fixed (this is the negative control, run first, before any budget is\r\n  spent on generation).\r\n- F2. A \"finding\" cannot be reproduced by a human in <10 minutes from the\r\n  shrinker's output (i.e. the minimization is not actually minimal) ⇒ counted\r\n  as a tooling defect, not a finding.\r\n- F3. A divergence disappears when the same program is built with the pinned\r\n  toolchain in a clean tree ⇒ classified as environment noise, discarded.\r\n\r\n## Budget (committed in advance)\r\n\r\n- 3 nights × ~16 CPU-hours on the developer machine; pinned toolchain\r\n  (go1.26.9 + rust 1.99.0 as per repo pins).\r\n- Pre-registered **ratio**, not raw counts: for every 1000 programs that pass\r\n  the accept-gate, report how many reach execution (build + `-race` start) —\r\n  the build leg's throughput is not the claim, the *execution* leg's is.\r\n- Findings cap: at most 3 auto-filed reports per week across the whole run.\r\n\r\n## Measurement (what gets published, either way)\r\n\r\n| Stage | Metric |\r\n|---|---|\r\n| generate | programs emitted, accept rate (accepted / generated) |\r\n| build | INVARIANT 4 residual (buildable failures) — W-023 comparison baseline |\r\n| execute | programs executed, wall-time per execution, `-race` overhead factor |\r\n| classify | divergence counts: race / panic / guard violation / nondeterministic / clean |\r\n| attribute | per rule family: executions, divergences, execution-residual rate |\r\n| file | auto-filed issues, dedup hits, human-reproduce time for each |\r\n\r\nThe published learning is the table above plus the status of H1 — success\r\n(new P0-class repro filed) or saturation (measured residual per family).\r\n\r\n## Out of scope in this spike (deliberately)\r\n\r\n- No semantic model comparison for nondeterministic programs (a wrong-value\r\n  claim needs a model; the first iteration refuses to guess).\r\n- No checker/emitter/runtime source changes: the leg is external tooling.\r\n- No CI wiring beyond an opt-in per-PR job with a wall-clock budget (wiring is\r\n  the M2 deliverable, not the spike's).\r\n\r\n## Relation to other entries (stated up front)\r\n\r\n- **W-023 (#565 / spike #577)** — same generator/accept-gate skeleton, oracle =\r\n  *compiler*. This spike's oracle = *execution*. Their residual is buildability;\r\n  this one's is behaviour.\r\n- **#939 (this author)** — reproduction automation (shrink → dedup → auto-file).\r\n  The spike reuses that plumbing; the claim here is the oracle, not the filing.\r\n- If maintainers prefer one merged entry with credited authorship, that is an\r\n  acceptable outcome; the artifacts above stay the deliverable either way.\r\n",
+      "at": "2026-10-20T12:13:57Z",
+      "url": "https://github.com/limitlessprojects/Go-Hybrid/issues/1011#issuecomment-6290585803"
+    }
+  ],
+  "comments_complete": true
+}

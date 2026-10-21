@@ -1,0 +1,107 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41588",
+  "collected_at": "2026-10-21T07:34:56.016842+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/41588",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/41588/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/41588/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/41588/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/41588",
+    "id": 5947057451,
+    "node_id": "I_kwDOC4Q8Qs8AAAABYnjlKw",
+    "number": 41588,
+    "title": "Expressions in node parameters resolve to null when referencing a Code node via $('…') with task runners disabled (regression in 1.123.x)",
+    "user": {
+      "login": "emsmizu",
+      "id": 273573870,
+      "node_id": "U_kgDOEE5n7g",
+      "avatar_url": "https://avatars.githubusercontent.com/u/273573870?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/emsmizu",
+      "html_url": "https://github.com/emsmizu",
+      "followers_url": "https://api.github.com/users/emsmizu/followers",
+      "following_url": "https://api.github.com/users/emsmizu/following{/other_user}",
+      "gists_url": "https://api.github.com/users/emsmizu/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/emsmizu/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/emsmizu/subscriptions",
+      "organizations_url": "https://api.github.com/users/emsmizu/orgs",
+      "repos_url": "https://api.github.com/users/emsmizu/repos",
+      "events_url": "https://api.github.com/users/emsmizu/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/emsmizu/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-10-20T18:14:05Z",
+    "updated_at": "2026-10-20T18:20:27Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nAfter upgrading a self-hosted instance from **1.121.3 to 1.123.85** (Docker, SQLite, task runners **disabled** — `N8N_RUNNERS_ENABLED` not set), any expression **in a node parameter** that reads the output of a **Code node** through `$('<Code node>')` resolves to `null`. Most nodes raise no error, so executions finish as `success` with wrong data.\n\nResults of the minimal workflow below, run in a clean container (expressions placed in a Set node):\n\n| Expression | Referenced node | 1.123.85, runners disabled | 1.123.85, `N8N_RUNNERS_ENABLED=true` |\n|---|---|---|---|\n| `$('Code').first().json.value` | Code | `null` ❌ | `from_code` ✅ |\n| `$('Code').item.json.value` | Code | `null` ❌ | `from_code` ✅ |\n| `$node['Code'].json.value` (legacy) | Code | `from_code` ✅ | `from_code` ✅ |\n| `$('Edit Fields').first().json.value_set` | Set | `from_set` ✅ | `from_set` ✅ |\n| `$json.value` (direct input from the Code node) | Code | `from_code` ✅ | `from_code` ✅ |\n\nIn our production instance we also checked:\n- `JSON.stringify($('Code').first())` in a parameter → `null` (runners disabled); the full item with runners enabled.\n- `$('Code').first().json.value` **inside another Code node** → correct value in both modes.\n\nObservations:\n- Only references to **Code** nodes are affected. References to Webhook, Postgres and Set nodes work.\n- The editor's parameter preview shows the correct value. The `null` only appears at execution time; manual, webhook and schedule executions are all affected.\n- Enabling task runners (`N8N_RUNNERS_ENABLED=true`, internal mode) fixes it. That is our current workaround.\n\n**Regression evidence (1.121.3):** the same production workflow, with identical node parameters, worked on 1.121.3. An execution on 2026-10-14 created a Google Drive folder with the name and parent folder taken from `$('Configuración').first().json…`. After upgrading to 1.123.85, the first two executions created a folder named `Untitled` in the Drive root.\n\nReal impact we hit in production after the upgrade:\n- **Google Drive → Folder → Create**: name and parent folder taken from a Code node → folder created as `Untitled` in the **Drive root**, no error. Uploads with `folderId` from a Code node also went to the root, and those files contained personal data.\n- **Google Drive → File → Move**: `folderId` from a Code node → the file stays in the root, no error.\n- **Postgres → Execute Query** with `queryReplacement` = `{{ [$(\"Code\").item.json.x] }}` → `Query Parameters must be a string of comma-separated values or an array of values`.\n- **Gmail → Send** with `sendTo` = `{{ $('Code').item.json.email }}` → `Cannot read properties of undefined (reading 'split')`.\n- **Odoo** filters and **IF** conditions fed from a Code node → empty values, silently wrong results.\n\nPossibly related: #35559 (expressions silently resolving to `null` because an internal error is swallowed while rendering the expression) and the expression VM isolate mentioned in #41322 and in the 1.123.63 release note (\"Preserve Date values passed to the expression isolate\"). Our guess is that the output of the legacy in-process Code sandbox cannot be transferred to the expression isolate, and the resulting error becomes `null`. We have not verified this in the source.\n\n### To Reproduce\n\n1. Save the workflow below as `repro.json`.\n2. Run it in a clean instance with default settings (task runners disabled):\n```bash\n   mkdir -p /tmp/n8n-repro && cp repro.json /tmp/n8n-repro/\n   docker run --rm -v /tmp/n8n-repro:/home/node/.n8n n8nio/n8n:1.123.85 import:workflow --input=/home/node/.n8n/repro.json\n   docker run --rm -v /tmp/n8n-repro:/home/node/.n8n n8nio/n8n:1.123.85 execute --id=repro00000000001 --rawOutput\n```\n   (Or import it in the editor and click *Execute workflow*.)\n3. Look at the output of the `Result` node: `A_code_first` and `B_code_item` are `null`.\n4. Repeat with a fresh folder, adding `-e N8N_RUNNERS_ENABLED=true` to the `execute` command: all fields have the expected values.\n\n<details><summary>repro.json</summary>\n\n```json\n{ \"id\": \"repro00000000001\", \"name\": \"Repro: $() reference to Code node returns null\", \"active\": false,\n  \"settings\": { \"executionOrder\": \"v1\" },\n  \"nodes\": [\n    { \"parameters\": {}, \"name\": \"Start\", \"type\": \"n8n-nodes-base.manualTrigger\", \"typeVersion\": 1, \"position\": [0, 0] },\n    { \"parameters\": { \"jsCode\": \"return [{ json: { value: 'from_code' } }];\" }, \"name\": \"Code\", \"type\": \"n8n-nodes-base.code\", \"typeVersion\": 2, \"position\": [220, 0] },\n    { \"parameters\": { \"assignments\": { \"assignments\": [ { \"id\": \"s1\", \"name\": \"value_set\", \"value\": \"from_set\", \"type\": \"string\" } ] },\n        \"includeOtherFields\": true, \"options\": {} }, \"name\": \"Edit Fields\", \"type\": \"n8n-nodes-base.set\", \"typeVersion\": 3.4, \"position\": [440, 0] },\n    { \"parameters\": { \"assignments\": { \"assignments\": [\n        { \"id\": \"r1\", \"name\": \"A_code_first\", \"value\": \"={{ $('Code').first().json.value }}\", \"type\": \"string\" },\n        { \"id\": \"r2\", \"name\": \"B_code_item\", \"value\": \"={{ $('Code').item.json.value }}\", \"type\": \"string\" },\n        { \"id\": \"r3\", \"name\": \"C_code_node_legacy\", \"value\": \"={{ $node['Code'].json.value }}\", \"type\": \"string\" },\n        { \"id\": \"r4\", \"name\": \"D_set_first\", \"value\": \"={{ $('Edit Fields').first().json.value_set }}\", \"type\": \"string\" },\n        { \"id\": \"r5\", \"name\": \"E_json\", \"value\": \"={{ $json.value }}\", \"type\": \"string\" } ] }, \"options\": {} },\n      \"name\": \"Result\", \"type\": \"n8n-nodes-base.set\", \"typeVersion\": 3.4, \"position\": [660, 0] }\n  ],\n  \"connections\": {\n    \"Start\": { \"main\": [[{ \"node\": \"Code\", \"type\": \"main\", \"index\": 0 }]] },\n    \"Code\": { \"main\": [[{ \"node\": \"Edit Fields\", \"type\": \"main\", \"index\": 0 }]] },\n    \"Edit Fields\": { \"main\": [[{ \"node\": \"Result\", \"type\": \"main\", \"index\": 0 }]] }\n  }\n}\n```\n</details>\n\n### Expected behavior\n\n`$('Code').first().json.value` and `$('Code').item.json.value` should return `from_code`, as they did in 1.121.3 and as they do with task runners enabled. If the referenced data cannot be evaluated, n8n should raise an expression error instead of silently returning `null`.\n\n### Debug Info\n\n# Debug info\n\n## core\n\n- n8nVersion: 1.123.85\n- platform: docker (self-hosted)\n- nodeJsVersion: 24.13.1\n- nodeEnv: production\n- database: sqlite\n- executionMode: regular\n- concurrency: -1\n- license: enterprise (production)\n\n## storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: memory\n\n## pruning\n\n- enabled: true\n- maxAge: 336 hours\n- maxCount: 10000 executions\n\n## client\n\n- userAgent: mozilla/5.0 (macintosh; intel mac os x 10_15_7) applewebkit/537.36 (khtml, like gecko) chrome/155.0.0.0 safari/537.36 edg/155.0.0.0\n- isTouchDevice: false\n\nGenerated at: 2026-10-20T18:07:37.808Z\n\n### Operating System\n\nUbuntu 24.04.4 LTS (host), official Docker image n8nio/n8n\n\n### n8n Version\n\n1.123.85\n\n### Node.js Version\n\n24.13.1\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/41588/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/41588/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @emsmizu,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9617\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9617](https://linear.app/n8n/issue/GHC-9617)",
+      "at": "2026-10-20T18:14:15Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41588#issuecomment-6297882102"
+    },
+    {
+      "author": "emsmizu",
+      "text": "Tested the same repro on 1.121.3 and it works fine there, so this broke somewhere between 1.121.3 and 1.123.85.\n\n```\nversion    runners   $('Code').first()  $('Code').item  $node['Code']  $('Edit Fields')  $json\n1.121.3      off           from_code          from_code        from_code        from_set            from_code\n1.123.85   off           null                       null                    from_code        from_set            from_code\n1.123.85   on           from_code           from_code       from_code        from_set             from_code\n```\n\nOne thing if you want to try it on 1.121.3: the import fails with `NOT NULL constraint failed: workflow_entity.versionId` unless you add a `\"versionId\"` (any UUID) to repro.json. 1.123.85 doesn't need it.",
+      "at": "2026-10-20T18:20:27Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41588#issuecomment-6298002529"
+    }
+  ],
+  "comments_complete": true
+}

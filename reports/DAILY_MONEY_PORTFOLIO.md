@@ -1,6 +1,6 @@
 # DAILY MONEY PORTFOLIO
 
-Generated: 2026-10-20T07:29:49.053303+00:00
+Generated: 2026-10-21T07:34:56.016842+00:00
 
 MANY VALIDATIONS, FEW HEAVY COMMITMENTS
 Current acquisition budget = 0. No quota filling. Only verified free-contact qualified buyers enter CONTACT_TODAY.
@@ -19,11 +19,11 @@ None. No verified qualifying record; no invented action.
 ### workflow_reliability
 
 - cluster_name: workflow_reliability
-- independent_demand_count: 46
+- independent_demand_count: 51
 - payment_evidence_count: 7
 - platforms: ["GitHub", "Hacker News", "Shopify Community", "n8n Community"]
 - communities: ["Ask/Show HN", "Commerce operator forum", "n8n Jobs", "n8n-io/n8n", "useagenthq/useagent"]
-- evidence_urls: ["https://github.com/n8n-io/n8n/issues/41487", "https://github.com/n8n-io/n8n/issues/41485", "https://news.ycombinator.com/item?id=50161254", "https://github.com/n8n-io/n8n/issues/41418"]
+- evidence_urls: ["https://github.com/n8n-io/n8n/issues/41604", "https://github.com/n8n-io/n8n/issues/41591", "https://github.com/n8n-io/n8n/issues/41588", "https://github.com/n8n-io/n8n/issues/41554"]
 - repeated_pain: Operators cannot trust workflow execution status; triggers, responses or saved definitions fail.
 - current_alternatives: Vendor bug tracker and native fixes (free), internal engineering, n8n support, freelance automation providers.
 - productization_potential: Standardize reproduction, health checks and recovery runbooks; current category still too broad for one packaged product.
@@ -37,6 +37,29 @@ None. No verified qualifying record; no invented action.
 - monetization_hypothesis: Fixed-price standardized research/diagnostic pilot only after demand confirmation.
 - human_minutes_required: 30
 - validation_task_today: Select one execution-status failure in the primary evidence; write five diagnostic acceptance checks. Compare native logs/manual diagnosis with paid support prices. Ask what one failure costs, not whether someone likes a broad tool.
+- interview_presell_status: No confirmed tester/preorder recorded
+
+### browser_automation
+
+- cluster_name: browser_automation
+- independent_demand_count: 5
+- payment_evidence_count: 0
+- platforms: ["GitHub"]
+- communities: ["96loveslife/big_model_radar", "n8n-io/n8n", "useagenthq/useagent"]
+- evidence_urls: ["https://github.com/n8n-io/n8n/issues/41548", "https://github.com/n8n-io/n8n/issues/41471", "https://github.com/n8n-io/n8n/issues/41327", "https://github.com/useagenthq/useagent/issues/188"]
+- repeated_pain: Repeated manual browser work is costly or brittle.
+- current_alternatives: Playwright, Selenium, vendor APIs and open-source browser agents.
+- productization_potential: Needs one repeated workflow and paying buyers before standardization.
+- suggested_product_form: Workflow + Service package
+- distribution: Authorized workflow audit and referrals.
+- status: UNVALIDATED CLUSTER
+- gates_failed: ["fewer than 2 primary payment/commercial signals; paid-market proof not independently verified", "problem too broad to standardize"]
+- prebuild_validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
+- build_status: NO BUILD
+- competitor_prices: NOT VERIFIED
+- monetization_hypothesis: Fixed-price standardized research/diagnostic pilot only after demand confirmation.
+- human_minutes_required: 30
+- validation_task_today: Compare two public-priced alternatives; define one narrow deliverable and one consent-based interview question. Record unknowns, not assumed buyers.
 - interview_presell_status: No confirmed tester/preorder recorded
 
 ### lead_research
@@ -60,29 +83,6 @@ None. No verified qualifying record; no invented action.
 - monetization_hypothesis: Fixed-price standardized research/diagnostic pilot only after demand confirmation.
 - human_minutes_required: 30
 - validation_task_today: Extract the required lead fields from the primary paid brief. Specify a 20-company research sample with evidence URLs and no spam/private data. Compare manual research with two public-priced alternatives; prepare one question about paying for the sample.
-- interview_presell_status: No confirmed tester/preorder recorded
-
-### browser_automation
-
-- cluster_name: browser_automation
-- independent_demand_count: 4
-- payment_evidence_count: 0
-- platforms: ["GitHub"]
-- communities: ["96loveslife/big_model_radar", "n8n-io/n8n", "useagenthq/useagent"]
-- evidence_urls: ["https://github.com/n8n-io/n8n/issues/41471", "https://github.com/n8n-io/n8n/issues/41327", "https://github.com/useagenthq/useagent/issues/188", "https://github.com/96loveslife/big_model_radar/issues/642"]
-- repeated_pain: Repeated manual browser work is costly or brittle.
-- current_alternatives: Playwright, Selenium, vendor APIs and open-source browser agents.
-- productization_potential: Needs one repeated workflow and paying buyers before standardization.
-- suggested_product_form: Workflow + Service package
-- distribution: Authorized workflow audit and referrals.
-- status: UNVALIDATED CLUSTER
-- gates_failed: ["fewer than 5 independent observations", "fewer than 2 primary payment/commercial signals; paid-market proof not independently verified", "problem too broad to standardize"]
-- prebuild_validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
-- build_status: NO BUILD
-- competitor_prices: NOT VERIFIED
-- monetization_hypothesis: Fixed-price standardized research/diagnostic pilot only after demand confirmation.
-- human_minutes_required: 30
-- validation_task_today: Compare two public-priced alternatives; define one narrow deliverable and one consent-based interview question. Record unknowns, not assumed buyers.
 - interview_presell_status: No confirmed tester/preorder recorded
 
 ### supplier_sourcing
@@ -133,26 +133,7 @@ None. No verified qualifying record; no invented action.
 
 ## D. INFO EDGE VALIDATIONS
 
-### Haiku 5.5 launch: cost-sensitive automation model evaluation
-
-- id: edge-haiku-2026-10-07
-- information_edge: Haiku 5.5 launch: cost-sensitive automation model evaluation
-- source: https://www.anthropic.com/claude-haiku-5-5
-- event_date: 2026-10-07T00:00:00Z
-- novelty: Model released 2026-10-07 with materially lower listed token prices; task-level savings require evaluation.
-- information_gap: Hypothesis only: some Chinese automation operators may still budget for Haiku 4.5. No buyer-awareness interviews or adoption measurements yet.
-- target_buyer: Agencies/operators already paying for high-volume LLM classification and extraction.
-- economic_value: Potential cost/time savings; not yet measured in buyer workloads.
-- monetization_route: Proposed paid cost/quality audit on anonymized high-volume classification or extraction workloads; never promise benchmark savings.
-- expiry_decay: Validate by 2026-10-15; hard expiry 2026-10-21 (14 days from launch).
-- competition: UNKNOWN
-- verification_sources: [{"url": "https://www.anthropic.com/claude-haiku-5-5", "quote": "On average, it now costs around 75% less to run.", "verified": true, "independent": true, "method": "Public primary web reader re-read 2026-10-14; crawl today (Anthropic) / yesterday (n8n); original event date unchanged"}, {"url": "https://artificialanalysis.ai/models/claude-haiku-5-5", "quote": "In $0.10 Out $0.50 Cache Discount 90%", "verified": true, "independent": true, "method": "web source read 2026-10-13; independent benchmark and price table"}]
-- legal_compliance_risk: Use public published pricing and authorized/anonymized workload samples; no account resale, quota abuse or credential transfer.
-- risk: No evidence that few target buyers know; tokenization, long prompts, quality, retry and migration costs may erase savings.
-- gate_failures: ["target-buyer information gap remains unverified"]
-- promotion: VALIDATE
-- human_minutes_required: 25
-- validation_task_today: Using the official <=100k versus >100k price tiers, draft an offline before/after cost sheet for one extraction workload. Include tokenizer/retry/quality uncertainty; prepare an awareness question for consenting existing LLM users. No API spend or promised savings.
+None. No verified qualifying record; no invented action.
 
 ## E. ACTIVE BUILDS
 
@@ -163,6 +144,43 @@ None. No verified qualifying record; no invented action.
 None. No verified qualifying record; no invented action.
 
 ## DIRECT LEADS — VALIDATE FIRST (desk checks only)
+
+### [bug] Repository audit follow-ups: security, correctness, CI, and docs
+
+- id: 2fcc86b6607c57ba
+- title: [bug] Repository audit follow-ups: security, correctness, CI, and docs
+- buyer: GitHub:e-1-s-4
+- source: https://github.com/Boing-Network/boing.network/issues/61
+- commercial_evidence: The RUNBOOK bug bounty and TESTNET reward criteria are still “TBD”, and there's a `2025-03-15` placeholder in a 2026 repo.
+- payment_signal: FEE_REQUEST
+- payment_evidence: Native value moved by `ContractCallWithValue`, including inside a batch, isn't included in the basis-point fee calculation.
+- published_at: 2026-10-20T20:55:06Z
+- buyer_activity_at: None
+- freshness_days: 0.44
+- competition: LOW
+- competition_evidence: []
+- fit: REMOTE_NOW
+- offer: Remote diagnosis of one failing workflow, with reproduction and recovery checklist
+- suggested_price: USD 100–200 diagnostic; USD 300–600 implementation only after scope agreement (proposal, not budget)
+- observed_budget: {}
+- first_message_angle: Is this still blocking your workflow? I can scope a remote reproduction and recovery audit; what is the daily volume and cost of failures?
+- contact_channel: GitHub
+- contact_path: https://github.com/Boing-Network/boing.network/issues/61
+- acquisition_cost: UNKNOWN
+- risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports.
+- gate_failures: ["zero-cost acquisition not verified: UNKNOWN"]
+- human_minutes_required: 20
+- cash_cost: None
+- speed_to_cash: {"observed_average_days": null, "basis": "UNKNOWN; neutral factor"}
+- expected_value: {"currency": "USD", "amount": null, "basis": "UNKNOWN; no realized USD sales history"}
+- probability_of_conversion: None
+- structural_advantage: {"china_local_advantage": "NONE", "language_advantage": "NONE", "technical_advantage": "MEDIUM", "direct_contactability": "MEDIUM", "evidence": "Task explicitly mentions remote software work", "controlled_scope": "Chinese web research, translation drafts, evidence comparison; authorized remote code/tests only", "location_limit": "Desk research only; physical China location, field access and qualifications are not verified", "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"}
+- repeatability: 5
+- portfolio_priority: 16.103
+- priority_basis: relative allocation index, not promised revenue; neutral financial factors without history
+- learned_quote_ranges: {}
+- consumed_outcome_cohorts: []
+- next_action: Desk-check the failed gates in 20 minutes; SKIP if unresolved. No sales message yet.
 
 ### Question intake digest — unresolved clusters
 
@@ -175,7 +193,7 @@ None. No verified qualifying record; no invented action.
 - payment_evidence: **$0 / `zero-bounty` by design**: the reward is merge credit, a leaderboard entry and a line in the Hall of Fame, and a real bounty exists only when someone funds it with `/reward <amount>` (`JOIN.md` § Bounties & payment).
 - published_at: 2026-10-16T11:51:13Z
 - buyer_activity_at: None
-- freshness_days: 3.82
+- freshness_days: 4.82
 - competition: LOW
 - competition_evidence: []
 - fit: REMOTE_NOW
@@ -194,7 +212,7 @@ None. No verified qualifying record; no invented action.
 - expected_value: {"currency": "USD", "amount": null, "basis": "UNKNOWN; no realized USD sales history"}
 - probability_of_conversion: None
 - structural_advantage: {"china_local_advantage": "NONE", "language_advantage": "NONE", "technical_advantage": "MEDIUM", "direct_contactability": "MEDIUM", "evidence": "Task explicitly mentions remote software work", "controlled_scope": "Chinese web research, translation drafts, evidence comparison; authorized remote code/tests only", "location_limit": "Desk research only; physical China location, field access and qualifications are not verified", "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"}
-- repeatability: 46
+- repeatability: 51
 - portfolio_priority: 16.103
 - priority_basis: relative allocation index, not promised revenue; neutral financial factors without history
 - learned_quote_ranges: {}
@@ -212,7 +230,7 @@ None. No verified qualifying record; no invented action.
 - payment_evidence: Hiring, or know someone who is?
 - published_at: 2026-10-19T02:44:27.257Z
 - buyer_activity_at: None
-- freshness_days: 1.2
+- freshness_days: 2.2
 - competition: LOW
 - competition_evidence: []
 - fit: REMOTE_NOW
@@ -231,7 +249,7 @@ None. No verified qualifying record; no invented action.
 - expected_value: {"currency": "USD", "amount": null, "basis": "UNKNOWN; no realized USD sales history"}
 - probability_of_conversion: None
 - structural_advantage: {"china_local_advantage": "NONE", "language_advantage": "NONE", "technical_advantage": "MEDIUM", "direct_contactability": "MEDIUM", "evidence": "Task explicitly mentions remote software work", "controlled_scope": "Chinese web research, translation drafts, evidence comparison; authorized remote code/tests only", "location_limit": "Desk research only; physical China location, field access and qualifications are not verified", "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"}
-- repeatability: 46
+- repeatability: 51
 - portfolio_priority: 16.103
 - priority_basis: relative allocation index, not promised revenue; neutral financial factors without history
 - learned_quote_ranges: {}
@@ -249,7 +267,7 @@ None. No verified qualifying record; no invented action.
 - payment_evidence: Bounty: paid in karma points.
 - published_at: 2026-10-19T17:04:49Z
 - buyer_activity_at: None
-- freshness_days: 0.6
+- freshness_days: 1.6
 - competition: LOW
 - competition_evidence: []
 - fit: REMOTE_NOW
@@ -268,7 +286,7 @@ None. No verified qualifying record; no invented action.
 - expected_value: {"currency": "USD", "amount": null, "basis": "UNKNOWN; no realized USD sales history"}
 - probability_of_conversion: None
 - structural_advantage: {"china_local_advantage": "NONE", "language_advantage": "NONE", "technical_advantage": "MEDIUM", "direct_contactability": "MEDIUM", "evidence": "Task explicitly mentions remote software work", "controlled_scope": "Chinese web research, translation drafts, evidence comparison; authorized remote code/tests only", "location_limit": "Desk research only; physical China location, field access and qualifications are not verified", "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"}
-- repeatability: 46
+- repeatability: 51
 - portfolio_priority: 16.103
 - priority_basis: relative allocation index, not promised revenue; neutral financial factors without history
 - learned_quote_ranges: {}
@@ -286,7 +304,7 @@ None. No verified qualifying record; no invented action.
 - payment_evidence: - quote currency/unit, per-unit price and quantity basis, minimum-order/pack-size semantics, shipping/tax/fees, quote validity;
 - published_at: 2026-10-16T18:24:44Z
 - buyer_activity_at: None
-- freshness_days: 3.55
+- freshness_days: 4.55
 - competition: UNKNOWN
 - competition_evidence: []
 - fit: REMOTE_NOW
@@ -314,23 +332,23 @@ None. No verified qualifying record; no invented action.
 
 ## SKIP / WATCH
 
-Direct SKIP: 23; product WATCH: 1; info WATCH: 1.
+Direct SKIP: 24; product WATCH: 1; info WATCH: 2.
 Full records and rejection reasons: DAILY_PORTFOLIO.json. WATCH has no forced quota and consumes no active validation time.
 
 ## G. TODAY ACTION PLAN
 
-1. Verify https://github.com/Ikalus1988/MisakaNet/issues/3333: zero-cost acquisition not verified: UNKNOWN. Stop after 20 minutes; no pitch unless all contact gates pass. (20 min)
-2. Validate workflow_reliability: Select one execution-status failure in the primary evidence; write five diagnostic acceptance checks. Compare native logs/manual diagnosis with paid support prices. Ask what one failure costs, not whether someone likes a broad tool. Evidence: https://github.com/n8n-io/n8n/issues/41487 (30 min)
-3. Validate Haiku 5.5 launch: cost-sensitive automation model evaluation: Using the official <=100k versus >100k price tiers, draft an offline before/after cost sheet for one extraction workload. Include tokenizer/retry/quality uncertainty; prepare an awareness question for consenting existing LLM users. No API spend or promised savings. Source: https://www.anthropic.com/claude-haiku-5-5 (25 min)
-4. Verify https://community.n8n.io/t/stop-calling-it-workflow-automation-thats-what-someone-does-in-an-afternoon-with-three-zapier-nodes-and-a-prayer-i-design-systems/322645: zero-cost acquisition not verified: UNKNOWN. Stop after 20 minutes; no pitch unless all contact gates pass. (20 min)
-5. Validate lead_research: Extract the required lead fields from the primary paid brief. Specify a 20-company research sample with evidence URLs and no spam/private data. Compare manual research with two public-priced alternatives; prepare one question about paying for the sample. Evidence: https://community.n8n.io/t/hiring-shopify-tracking-n8n-specialist-part-time-ongoing-35-hr-guaranteed-revenue-share/322445 (30 min)
-6. Verify https://github.com/lizTheDeveloper/privacy-the-game/issues/358: zero-cost acquisition not verified: UNKNOWN. Stop after 20 minutes; no pitch unless all contact gates pass. (20 min)
-7. Validate browser_automation: Compare two public-priced alternatives; define one narrow deliverable and one consent-based interview question. Record unknowns, not assumed buyers. Evidence: https://github.com/n8n-io/n8n/issues/41471 (30 min)
-8. Verify https://github.com/Luminous-Dynamics/symthaea/issues/7660: zero-cost acquisition not verified: UNKNOWN; competition high or unmeasured. Stop after 20 minutes; no pitch unless all contact gates pass. (20 min)
-9. Validate supplier_sourcing: Compare two public-priced alternatives; define one narrow deliverable and one consent-based interview question. Record unknowns, not assumed buyers. Evidence: https://community.shopify.com/t/how-often-do-you-sync-supplier-stock-with-your-shopify-store/700544 (30 min)
+1. Verify https://github.com/Boing-Network/boing.network/issues/61: zero-cost acquisition not verified: UNKNOWN. Stop after 20 minutes; no pitch unless all contact gates pass. (20 min)
+2. Validate workflow_reliability: Select one execution-status failure in the primary evidence; write five diagnostic acceptance checks. Compare native logs/manual diagnosis with paid support prices. Ask what one failure costs, not whether someone likes a broad tool. Evidence: https://github.com/n8n-io/n8n/issues/41604 (30 min)
+3. Verify https://github.com/Ikalus1988/MisakaNet/issues/3333: zero-cost acquisition not verified: UNKNOWN. Stop after 20 minutes; no pitch unless all contact gates pass. (20 min)
+4. Validate browser_automation: Compare two public-priced alternatives; define one narrow deliverable and one consent-based interview question. Record unknowns, not assumed buyers. Evidence: https://github.com/n8n-io/n8n/issues/41548 (30 min)
+5. Verify https://community.n8n.io/t/stop-calling-it-workflow-automation-thats-what-someone-does-in-an-afternoon-with-three-zapier-nodes-and-a-prayer-i-design-systems/322645: zero-cost acquisition not verified: UNKNOWN. Stop after 20 minutes; no pitch unless all contact gates pass. (20 min)
+6. Validate lead_research: Extract the required lead fields from the primary paid brief. Specify a 20-company research sample with evidence URLs and no spam/private data. Compare manual research with two public-priced alternatives; prepare one question about paying for the sample. Evidence: https://community.n8n.io/t/hiring-shopify-tracking-n8n-specialist-part-time-ongoing-35-hr-guaranteed-revenue-share/322445 (30 min)
+7. Verify https://github.com/lizTheDeveloper/privacy-the-game/issues/358: zero-cost acquisition not verified: UNKNOWN. Stop after 20 minutes; no pitch unless all contact gates pass. (20 min)
+8. Validate supplier_sourcing: Compare two public-priced alternatives; define one narrow deliverable and one consent-based interview question. Record unknowns, not assumed buyers. Evidence: https://community.shopify.com/t/how-often-do-you-sync-supplier-stock-with-your-shopify-store/700544 (30 min)
+9. Verify https://github.com/Luminous-Dynamics/symthaea/issues/7660: zero-cost acquisition not verified: UNKNOWN; competition high or unmeasured. Stop after 20 minutes; no pitch unless all contact gates pass. (20 min)
 10. Record only real messages/replies/quotes/wins/payments and actual human minutes; close failed assumptions. No invented outcomes. (10 min)
 
-Total estimated human time: 235 minutes.
+Total estimated human time: 230 minutes.
 Expected revenue exposure: UNKNOWN; proposals are not revenue. No dollar forecast without real sales history.
 Highest priority: qualified free buyer contacts, then due follow-ups, then bounded product/edge validations. Empty contacts mean no qualified buyer, not permission to invent one.
 Open quotes: 0; WIP overflow: none.

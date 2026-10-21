@@ -1,0 +1,87 @@
+{
+  "source_api_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/939",
+  "collected_at": "2026-10-21T07:34:56.016842+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/939",
+    "repository_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid",
+    "labels_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/939/labels{/name}",
+    "comments_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/939/comments",
+    "events_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/939/events",
+    "html_url": "https://github.com/limitlessprojects/Go-Hybrid/issues/939",
+    "id": 5931112079,
+    "node_id": "I_kwDOVFB-j88AAAABYYWWjw",
+    "number": 939,
+    "title": "[wildcard] Kill the human-written repro: a self-submitting soundness pipeline (grammar fuzz → accept-gate → emit → go build → shrink → auto-file)",
+    "user": {
+      "login": "Dimany4",
+      "id": 336554214,
+      "node_id": "U_kgDOFA9o5g",
+      "avatar_url": "https://avatars.githubusercontent.com/u/336554214?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Dimany4",
+      "html_url": "https://github.com/Dimany4",
+      "followers_url": "https://api.github.com/users/Dimany4/followers",
+      "following_url": "https://api.github.com/users/Dimany4/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Dimany4/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Dimany4/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Dimany4/subscriptions",
+      "organizations_url": "https://api.github.com/users/Dimany4/orgs",
+      "repos_url": "https://api.github.com/users/Dimany4/repos",
+      "events_url": "https://api.github.com/users/Dimany4/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Dimany4/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-19T20:33:45Z",
+    "updated_at": "2026-10-20T12:11:39Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### The idea, in a paragraph\n\nHybrid already owns every piece of a machine bug-hunter except the machine. A grammar-driven generator can synthesize well-formed `.hy` programs by the million; `hyb check` filters the ones it ACCEPTS; the emitter lowers them; `go build` is an independent oracle that requires zero trust in our own code; a delta-debugging shrinker reduces any accepted-but-unbuildable program to a minimal repro automatically. Chain those five stages and the Tier-0 BUILDABLE guarantee stops depending on humans noticing violations: every violation becomes a one-command, minimized, self-filed issue — the first night it runs, the pipeline does mechanically the work of every soundness report filed here so far. It doubles as a regression gate in CI (fuzz for N minutes per PR) and as the corpus's missing half — the corpus proves the checker is right where we looked; the fuzzer proves it is right where we didn't. Any second oracle (`go vet`, the ownership runtime's own assertions, a checker derived from GUARANTEES.md rows) turns the same shape into a differential soundness engine.\n\n### Which assumption it breaks\n\nTwo sacred cows. (1) *\"Reproduction is the only door to a payout\"* — the door today is a human-written repro; this removes the human from the loop, so reproduction becomes the toolchain's own output, not a reporter's skill. (2) *\"A green corpus is our evidence of soundness\"* — a fixed corpus only samples the program space; a fuzzer searches it, so the evidence stops being \"we checked these programs\" and becomes \"we continuously searched for counterexamples and found none (N programs, M CPU-hours, coverage X)\". The BUILDABLE claim in GUARANTEES.md goes from asserted to falsified-or-surviving, in public, with a number attached.\n\n### Why this is a breakthrough, not an increment\n\nEvery issue in this tracker is a human finding a hole once, a fix closing it, and the next hole waiting for the next human. This changes what the project *is*: soundness stops being a property people verify occasionally and becomes a property the toolchain attacks continuously. It also inverts the trust debate the other wildcard families are having — capabilities (W-001–W-004), the untrusted emitter (#345), native-Go analysis (W-011–W-013) all argue about which component to trust; a pipeline checked against the real Go toolchain is the only argument that does not have to trust the checker, the emitter, or the alias graph *at the same time*. A normal feature bounty would reject it — no user-visible feature, pure tooling; this track exists exactly for that.\n\n**Why now — receipts from this repo's own week.** Three distinct defect classes slipped past the standing evidence base — 191 unit tests, ~60 integration suites, a 1523/0 battery, a 109/109 differential corpus: (a) the sub-64 constant-conversion over-rejection pinned by `tests/const_conversion.rs::sub64_integer_overflow_folds_and_stays_accepted` — it broke while sitting in an open fix PR (#907); (b) pointer-parameter auto-addressing pinned by `tests/pointer_borrow_chains_issue_131.rs` — same story (#911); (c) the four range-bound bypass classes of #827. Each surfaced only because a human happened to write one more case — and two of them survived even the fix authors' own validation loops until a full-suite run forced them out. `check → emit → go build` finds every one of these classes mechanically, before a fix ships, on every commit. Meanwhile the tracker is absorbing waves of instant, unverified issues (dozens per afternoon): triage bandwidth, not report supply, is the bottleneck — and the pipeline's output is the opposite of that noise: every auto-filed report arrives already verified (accepted + unbuildable) and delta-minimized.\n\n### How we would know it works (or doesn't)\n\nPreregistered spike, scoped to `spikes/<id>-self-submitting-pipeline/` (ID from triage):\n\n1. **Build** (no checker/emitter changes): grammar+corpus-seeded generator, driver, delta-debug shrinker.\n2. **Budget**: ≥3 nights × ~16 CPU-hours — order 10^4–10^5 fully-compiled programs (check → emit → `go build`) and ~10^6 checker-only programs per night.\n3. **Negative control first**: seed the pipeline with the known pre-fix vectors (#827's six loops, the sub64 accept set) against the pre-fix commit — it must re-find them; without this, a silently broken oracle reads as saturation.\n4. **SUCCESS** = ≥1 accepted-but-unbuildable minimal repro on current main — filed immediately as a first-reporter soundness issue (P0-class insights bypass the review calendar per MOONSHOT.md).\n5. **SATURATION** = 0 findings after the full budget — the first *measured* bound on how saturated the checker is, something no fixed corpus can state. Either outcome publishes as the M2 learning; both are paid.\n\n### Cost honesty (optional but powerful)\n\nNo checker or emitter code changes — external tooling only (generator, driver, shrinker, ~1–2k lines) plus CI wiring. What breaks: CI minutes (tunable N per PR), triage load (needs a dedup label and a rate cap, e.g. ≤5 auto-filed issues/week), and Go becomes a CI dependency for the oracle (already pinned: go1.26.9). User-facing migration: none.\n\n### Track terms\n\n- [x] I understand no prototype is required and failure-with-knowledge is a valid, paid outcome\n- [x] I understand all outcomes (including declines and failures) are published in MOONSHOT.md\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/939/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/939/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "Dimany4",
+      "text": "### Addendum: how this relates to the other pipeline entries — and one request\r\n\r\n**1. Relation to W-023 (#565, spike #577).** Same skeleton (generator → `hyb check` accept-gate → emit), different oracle and different deliverables. W-023's oracle is the *compiler* (INVARIANT 4: accepted ⇒ `go build`); the deliverable here is **reproduction automation** — delta-debug shrink, a shrink-normalized dedup key, self-filing with the witness, and a per-PR fuzz gate. Their own numbers make the split concrete: the build residual went 38.03% → 2.78%, while the remaining accepted-but-wrong programs (#970, #946, #953, #966, #971, #974) all **build fine** — a build oracle cannot turn any of them into a minimized, one-command report, which is exactly what this proposal automates. If triage prefers to record this as a sibling take of W-023, that is understood; none of those four deliverables exist in #577 today.\r\n\r\n**2. A distinct, adjacent proposal is filed alongside this one:** an *execution*-oracle fuzzer (INVARIANT 5: accepted ⇒ runs clean under `-race`), aimed at the semantic residual instead of the buildable one. Filed separately so the two can be judged on their own claims rather than collapsed into one.\r\n\r\n**3. Request (same courtesy #565 needed):** could you add `wildcard` + `💎 Bounty` when you triage this? The issue was opened through the API and `AddLabelsToLabelable` is denied for outside contributors, so the template labels never applied — I would rather not have the entry miss the MOONSHOT ledger over a missing label.\r\n",
+      "at": "2026-10-20T12:11:39Z",
+      "url": "https://github.com/limitlessprojects/Go-Hybrid/issues/939#issuecomment-6290546264"
+    }
+  ],
+  "comments_complete": true
+}

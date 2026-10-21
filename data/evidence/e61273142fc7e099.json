@@ -1,0 +1,44 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50166745",
+  "collected_at": "2026-10-21T07:34:56.016842+00:00",
+  "source": {
+    "author": "tdewitt",
+    "children": [
+      {
+        "author": "tdewitt",
+        "children": [],
+        "created_at": "2026-10-20T16:18:33.000Z",
+        "created_at_i": 1792513113,
+        "id": 50168684,
+        "options": [],
+        "parent_id": 50166745,
+        "points": null,
+        "story_id": 50166745,
+        "text": "And I forgot the newlines in the bullet points!  :headdesk:",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-10-20T14:10:44.000Z",
+    "created_at_i": 1792505444,
+    "id": 50166745,
+    "options": [],
+    "parent_id": null,
+    "points": 1,
+    "story_id": 50166745,
+    "text": "I have three laptops on my desk most days.  Each laptop is used for different work, that I need to keep separate.  (Day job, advisory work, personal.)  When I went looking for a software KVM, the only free one that correctly handled trackpad gestures was Apple&#x27;s Universal Control but that requires using the same iCloud account on each system, which is a non starter.<p>I had planned to just contribute to something else but the best option I found was intended to be a universal software KVM and had already rejected OS specific features.  I get the thinking and don&#x27;t begrudge the devs at all but I needed something that supports my workflow.  Thus, Daisy (as in &quot;daisy chain&quot;).<p>Daisy is a FOSS software KVM for macOS that doesn&#x27;t need an iCloud account and handles gestures the way I want it to.  You arrange the displays to match your physical desk, move the pointer across an edge, and control follows it to the next machine. Nothing leaves the local network (unless you want auto-updates) and there&#x27;s encryption all the way around anyway.<p>It turns out that getting the trackpad working is somewhat non trivial. macOS doesn&#x27;t expose Spaces and Mission Control swipes through the public gesture events. They arrive as private DockControl events, which meant figuring out how to capture the gesture phases, progress, and velocity, transport them, and replay them on another Mac. There&#x27;s a fair amount of undocumented macOS behavior involved, and I&#x27;ve documented what I figured out in the repo.<p>Beyond gestures, the key things I wanted:<p>- Capable of handling a large chain (8), with a layout tool that that makes it easy to arranges systems the way they exist on my desk\n- Copy&#x2F;paste across machines for images, files, and folders\n- No accounts or other external dependencies\n- Keeping displays active across the whole chain when you&#x27;re doing work, without violating the intent behind screen locking\n- No single machine acting as the control system that all peers must negotiate with for trust (the machine you&#x27;re typing on is always the control system)<p>It&#x27;s not quite 1.0. Occasionally the layout UI loses track of a peer even though the connection is fine, input can sometimes get jerky, and I still need to beat on file transfers more.<p>I use it daily, though, and it&#x27;s reached the point where I find it genuinely useful. It currently requires Apple silicon and macOS 26 or later. I&#x27;ve tested on 26 and 27.<p>Code, downloads, and the technical documentation are here:\n<a href=\"https:&#x2F;&#x2F;github.com&#x2F;misfitdev&#x2F;daisy\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;misfitdev&#x2F;daisy</a><p>I&#x27;d be particularly interested in hearing from anyone who&#x27;s fought with macOS input events or tried to solve the same problem. And if you give Daisy a shot, I&#x27;d like to know what breaks.<p>I&#x27;m also really happy about the security design and I&#x27;d love for people to poke holes in it. :)",
+    "title": "Show HN: Daisy – macOS software KVM with native trackpad gestures",
+    "type": "story",
+    "url": "https://misfitdev.github.io/daisy/"
+  },
+  "comments": [
+    {
+      "author": "tdewitt",
+      "text": "And I forgot the newlines in the bullet points!  :headdesk:",
+      "at": "2026-10-20T16:18:33.000Z",
+      "url": "https://news.ycombinator.com/item?id=50168684"
+    }
+  ],
+  "comments_complete": true
+}

@@ -1,0 +1,453 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50167583",
+  "collected_at": "2026-10-21T07:34:56.016842+00:00",
+  "source": {
+    "author": "Andydy25",
+    "children": [
+      {
+        "author": "verdverm",
+        "children": [
+          {
+            "author": "Andydy25",
+            "children": [
+              {
+                "author": "verdverm",
+                "children": [
+                  {
+                    "author": "Andydy25",
+                    "children": [
+                      {
+                        "author": "verdverm",
+                        "children": [],
+                        "created_at": "2026-10-20T16:52:41.000Z",
+                        "created_at_i": 1792515161,
+                        "id": 50169235,
+                        "options": [],
+                        "parent_id": 50169116,
+                        "points": null,
+                        "story_id": 50167583,
+                        "text": "No one at our org knows rust, so &quot;reading the source&quot; is not possible, and we know people don&#x27;t actually do this anyway.<p>I would recommend a batteries included approach. You can see a similar difference between adoption of OpenCode and Pi in the harness space.<p>And get the image published, a changing API is no reason not to have one. Every project evolves their API and users know how to handle this situation.",
+                        "title": null,
+                        "type": "comment",
+                        "url": null
+                      }
+                    ],
+                    "created_at": "2026-10-20T16:45:15.000Z",
+                    "created_at_i": 1792514715,
+                    "id": 50169116,
+                    "options": [],
+                    "parent_id": 50168581,
+                    "points": null,
+                    "story_id": 50167583,
+                    "text": "We had a Docker image, but pulled it before launch because some APIs might still change. You have to build the Docker images, but we have GitHub releases for binaries.<p>We have configurable template plugins for common things like adding vendors and formats. No rebuild needed for config changes, but if you want custom logic beyond those templates, you need to compile it in.<p>And yes, crates still have supply-chain risks. I just meant you can review the source you’re adding, unlike a binary you don’t know.",
+                    "title": null,
+                    "type": "comment",
+                    "url": null
+                  },
+                  {
+                    "author": "Andydy25",
+                    "children": [],
+                    "created_at": "2026-10-20T17:08:08.000Z",
+                    "created_at_i": 1792516088,
+                    "id": 50169464,
+                    "options": [],
+                    "parent_id": 50168581,
+                    "points": null,
+                    "story_id": 50167583,
+                    "text": "Yeah, ours are more like GStreamer’s statically compiled plugins. We might consider WebAssembly in the future if there’s a need for it.",
+                    "title": null,
+                    "type": "comment",
+                    "url": null
+                  }
+                ],
+                "created_at": "2026-10-20T16:12:36.000Z",
+                "created_at_i": 1792512756,
+                "id": 50168581,
+                "options": [],
+                "parent_id": 50168539,
+                "points": null,
+                "story_id": 50167583,
+                "text": "So we cannot just run a docker image for a gateway, we will also need an entire CI process to use this paradigm? Generally, when we use the term &quot;plugin&quot; in industry, this means we do not have to run a compiler.<p>Crates are still an avenue for supply chain compromise, they come from random developers. We&#x27;ve seen it before and I expect we will see in more frequently for a while, until out industry gets really serious about all the things around this.",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-10-20T16:10:33.000Z",
+            "created_at_i": 1792512633,
+            "id": 50168539,
+            "options": [],
+            "parent_id": 50168233,
+            "points": null,
+            "story_id": 50167583,
+            "text": "In Respan, plugins are not arbitrary executables that you download from a random repository. They are modular crates that you compile into your application.<p>Plugins offer better interface boundaries. For example, you can implement a PII feature without having to touch the logging, billing, or provider subsystems.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-20T15:51:08.000Z",
+        "created_at_i": 1792511468,
+        "id": 50168233,
+        "options": [],
+        "parent_id": 50167583,
+        "points": null,
+        "story_id": 50167583,
+        "text": "Why are plugins a desirable feature for core features?<p>Today I use GoModel [1], and in example, all providers are built in. Having recently given Pi a try, the plugin ecosystem is a mess and I have more security worries.<p>Can you explain why you think a plugin based system is preferable to a competent team building a complete, curated product?<p>Plugins seems like a great way to expose yourself to supply chain security events.<p>[1] <a href=\"https:&#x2F;&#x2F;gomodel.enterpilot.io&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;gomodel.enterpilot.io&#x2F;</a>",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "blakeashleyjr",
+        "children": [
+          {
+            "author": "Andydy25",
+            "children": [
+              {
+                "author": "rileycalhoun022",
+                "children": [
+                  {
+                    "author": "Andydy25",
+                    "children": [
+                      {
+                        "author": "skrtskrt",
+                        "children": [],
+                        "created_at": "2026-10-20T22:31:28.000Z",
+                        "created_at_i": 1792535488,
+                        "id": 50173595,
+                        "options": [],
+                        "parent_id": 50169289,
+                        "points": null,
+                        "story_id": 50167583,
+                        "text": "Honestly one of the coolest things you can do for this sort of problem offer a version of the Talos Image Factory, where people can select the combination of plugins and the architecture and get a build.<p>There can be a lot of permutations to create of course but each one only needs to be built once per version you release.<p>To limit permutations you can always create pre-selected bundles of related plugins (like package groups on Linux distros) and let people select those bundles.\nThey can always fall back to building it themselves if they really need to be picky about the plugin selection.",
+                        "title": null,
+                        "type": "comment",
+                        "url": null
+                      }
+                    ],
+                    "created_at": "2026-10-20T16:56:20.000Z",
+                    "created_at_i": 1792515380,
+                    "id": 50169289,
+                    "options": [],
+                    "parent_id": 50169121,
+                    "points": null,
+                    "story_id": 50167583,
+                    "text": "We do have an official build on GitHub Releases with first-party plugins built in.",
+                    "title": null,
+                    "type": "comment",
+                    "url": null
+                  }
+                ],
+                "created_at": "2026-10-20T16:45:28.000Z",
+                "created_at_i": 1792514728,
+                "id": 50169121,
+                "options": [],
+                "parent_id": 50168688,
+                "points": null,
+                "story_id": 50167583,
+                "text": "The compile-time choice makes sense for a gateway: plugins sit in the hot path and often need database or queue access, which is awkward to expose through a WASM sandbox. The cost is the workflow verdverm points out: there is no prebuilt image to just pull and run. Do you plan to publish an official build with the default plugin set, for people who don&#x27;t need custom plugins?",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-10-20T16:18:37.000Z",
+            "created_at_i": 1792513117,
+            "id": 50168688,
+            "options": [],
+            "parent_id": 50168329,
+            "points": null,
+            "story_id": 50167583,
+            "text": "The plugins are natively compiled Rust crates, not interpreted or dynamically loaded.<p>We considered WASM and libloading, but plugins often require database connections or other privileges. With WASM, supporting that would be the SDK’s responsibility.<p>Dynamic loading with libloading didn’t offer enough benefit for this design, so we chose modular crates compiled into the application.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-20T15:57:02.000Z",
+        "created_at_i": 1792511822,
+        "id": 50168329,
+        "options": [],
+        "parent_id": 50167583,
+        "points": null,
+        "story_id": 50167583,
+        "text": "What&#x27;s your plugin model for Rust? Are they compiletime or interpreted?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "m00dy",
+        "children": [
+          {
+            "author": "bb-connor",
+            "children": [
+              {
+                "author": "verdverm",
+                "children": [],
+                "created_at": "2026-10-20T16:23:13.000Z",
+                "created_at_i": 1792513393,
+                "id": 50168774,
+                "options": [],
+                "parent_id": 50168701,
+                "points": null,
+                "story_id": 50167583,
+                "text": "I looks like they&#x2F;it (Claude) rolled some of their own auth systems, it&#x27;s an important question this dAIy in age<p><a href=\"https:&#x2F;&#x2F;github.com&#x2F;respanai&#x2F;respan-gateway&#x2F;blob&#x2F;main&#x2F;apps&#x2F;gateway&#x2F;src&#x2F;mcp_oauth.rs\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;respanai&#x2F;respan-gateway&#x2F;blob&#x2F;main&#x2F;apps&#x2F;ga...</a><p>If we as an industry are going to p(doom) about security and hacking, perhaps we should stop doing things like this?",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-10-20T16:19:22.000Z",
+            "created_at_i": 1792513162,
+            "id": 50168701,
+            "options": [],
+            "parent_id": 50168386,
+            "points": null,
+            "story_id": 50167583,
+            "text": "&quot;do you personally understand the code&quot;<p>classic hackernews comments",
+            "title": null,
+            "type": "comment",
+            "url": null
+          },
+          {
+            "author": "Andydy25",
+            "children": [],
+            "created_at": "2026-10-20T16:32:15.000Z",
+            "created_at_i": 1792513935,
+            "id": 50168930,
+            "options": [],
+            "parent_id": 50168386,
+            "points": null,
+            "story_id": 50167583,
+            "text": "Yes, we used Claude to generate code, but we reviewed every line ourselves. For MCP, we considered rmcp, but our gateway needs hooks at each processing stage, so we would still have needed substantial custom logic. We ultimately implemented the MCP support ourselves.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-20T16:01:25.000Z",
+        "created_at_i": 1792512085,
+        "id": 50168386,
+        "options": [],
+        "parent_id": 50167583,
+        "points": null,
+        "story_id": 50167583,
+        "text": "Good luck with the launch!<p>Quick question: do you personally understand the Rust code in your project, or was the whole thing AI-assisted ?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "camilaferreira",
+        "children": [],
+        "created_at": "2026-10-20T22:36:51.000Z",
+        "created_at_i": 1792535811,
+        "id": 50173641,
+        "options": [],
+        "parent_id": 50167583,
+        "points": null,
+        "story_id": 50167583,
+        "text": "The plugin boundary matters more than the number of plugins. I’d limit the core to request normalization, ordered middleware execution, cancellation, and observability. Each plugin would have a versioned manifest with declared capabilities and compatibility ranges.<p>Run third-party plugins out of process or in WASM so a panic, timeout, or dependency conflict can’t take down the gateway. A small conformance suite using recorded provider responses would also make API changes safer.<p>For prompt-facing plugins, Wordfully can tighten the wording and remove ambiguity before requests enter the gateway.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "slopinthebag",
+        "children": [],
+        "created_at": "2026-10-21T01:23:37.000Z",
+        "created_at_i": 1792545817,
+        "id": 50174930,
+        "options": [],
+        "parent_id": 50167583,
+        "points": null,
+        "story_id": 50167583,
+        "text": "why is this entire thread full of bots?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "jing09928",
+        "children": [],
+        "created_at": "2026-10-21T01:32:47.000Z",
+        "created_at_i": 1792546367,
+        "id": 50174983,
+        "options": [],
+        "parent_id": 50167583,
+        "points": null,
+        "story_id": 50167583,
+        "text": "The plugin boundary seems like the right way to keep provider churn from leaking into application code. I’d be curious how teams decide which cross-cutting features belong in the core versus plugins once they need consistent policy and audit behavior.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "rinkash",
+        "children": [],
+        "created_at": "2026-10-21T02:14:57.000Z",
+        "created_at_i": 1792548897,
+        "id": 50175246,
+        "options": [],
+        "parent_id": 50167583,
+        "points": null,
+        "story_id": 50167583,
+        "text": "Does the gateway give you token accounting you can trust across providers? You mention Groq putting usage in its own field, and that’s the kind of quirk that quietly breaks cost attribution. Once you’re routing across providers, cost per request is the number most teams actually want out of a gateway, and it’s only as good as the worst provider’s usage reporting.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "vbc1406",
+        "children": [],
+        "created_at": "2026-10-21T06:57:34.000Z",
+        "created_at_i": 1792565854,
+        "id": 50177023,
+        "options": [],
+        "parent_id": 50167583,
+        "points": null,
+        "story_id": 50167583,
+        "text": "Replying since this one didn’t get an answer. I’ve been building a gateway too and usage reporting is the annoying part. Groq only gives you usage on streamed responses if you ask for it with stream_options, otherwise you’re guessing. Mistral has no equivalent at all, so for streams you end up estimating from response length. Curious how Respan handles that, or if the plugin just trusts whatever the provider sends back.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-10-20T15:09:29.000Z",
+    "created_at_i": 1792508969,
+    "id": 50167583,
+    "options": [],
+    "parent_id": null,
+    "points": 49,
+    "story_id": 50167583,
+    "text": "Hey HN, this is Andy from Respan (<a href=\"https:&#x2F;&#x2F;www.respan.ai\">https:&#x2F;&#x2F;www.respan.ai</a>). We are building an open-source Rust AI gateway. It is a decoupled gateway, so everything is a plugin, including different providers, protocols (MCP, voice), modalities (images, videos), and gateway features (fallbacks, PII redaction, smart routing).<p>Instead of packaging tons of providers and features into one gateway, Respan provides a small core and public interfaces that teams can use to assemble the AI infrastructure their application needs. That way, users can build their own features as additional plugins without having to change the gateway&#x27;s core.<p>Here’s a video demo: <a href=\"https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=pVv2ibXiTXM\" rel=\"nofollow\">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=pVv2ibXiTXM</a><p>There are countless LLM gateways and most of them solve a common problem: calling different providers from a single endpoint. However, adding new features can become prohibitively difficult. So developers can end up building another gateway to solve a specific problem.<p>We&#x27;ve been building our gateway based on LiteLLM since 2024, and now it&#x27;s providing services for thousands of orgs. Each org needs different API key settings, routes, and limits. To support that, we kept wrapping LiteLLM, adding more features to it, and at one stage, our wrapper code exceeded 100,000 lines.<p>This January, a routine LiteLLM upgrade caused intermittent connection errors, and we had to roll back. We still haven&#x27;t figured out the cause, but since then, we no longer upgrade LiteLLM directly and instead manually backport upstream fixes. These experiences made us realize that continuing to patch LiteLLM is not a sustainable long-term solution, and we had to redesign the gateway ourselves.<p>While redesigning our gateway, we wanted to make it easier to add features without breaking existing ones. Inspired by Nginx, we think an AI gateway should have a really small core, only responsible for dispatching events.<p>We believe that everything should be a plugin in our gateway, including providers (OpenAI, Anthropic, Gemini), protocols (chat, realtime voice, MCP), modalities (images, videos), and gateway features for reliability and security (smart routing, fallbacks, and PII redaction through example plugins). Beyond that, we want developers to be able to easily extend the gateway&#x27;s capabilities by adding their own plugins, without touching the core. Adding a provider, even your own, is dead simple, because quirks are plugins too and there’s nothing magical about them. A provider is a short file, Mistral’s is 22 lines, and each quirk, like Groq putting token usage in its own field, gets its own test.<p>Respan Gateway does more than let you call Claude or Gemini models from the OpenAI SDK. It handles tools, images, and reasoning protocols automatically: an application based on the OpenAI Realtime API can also use Gemini Live through the gateway, though not every feature translates. A simple chat app can use MCP tools configured in the gateway, without implementing MCP itself.<p>We also parse requests into a shared structure. When the client and provider use the same API, we preserve provider-specific fields in their native format, even if our shared structure doesn&#x27;t have a field for them. That way, the gateway can write them back instead of dropping them.<p>Here’s how it works:<p>An adapter hands each HTTP or WebSocket connection to the first client format that recognizes it. The format exposes the request as a two-way stream of typed input and output events. The core runs plugins in registration order, allowing them to choose a provider, filter or wrap either stream, make additional calls, return a response, or refuse the request. A provider format then opens the upstream connection.<p>If the client and provider use the same format and no plugin changes the payload, the original bytes and protocol-specific fields can pass through unchanged. When formats differ, they translate through shared types for messages, tool calls, results, streams, and usage. This stream model can represent both one-shot HTTP requests and long-lived bidirectional sessions.<p>The gateway is open source at <a href=\"https:&#x2F;&#x2F;github.com&#x2F;respanai&#x2F;respan-gateway\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;respanai&#x2F;respan-gateway</a> under the MIT or Apache-2.0 license. You don&#x27;t need to use Respan&#x27;s hosted platform and can run it directly on your local machine. Build it from source, add your provider keys, and swap the base URL in a supported client. You can keep using the API your client already speaks. It&#x27;s still pre-alpha.<p>We make money from our hosted platform (<a href=\"https:&#x2F;&#x2F;www.respan.ai&#x2F;pricing\">https:&#x2F;&#x2F;www.respan.ai&#x2F;pricing</a>), which runs the gateway for you with native observability and evals, along with unified billing.<p>If you’re building routing, tools, filtering, observability, or security for agents, we&#x27;d love to see it as a plugin. PLUGINS.md in the repo explains how to write one and links to the plugins we’ve created so far. Turning that into an ecosystem is basically our roadmap, and we welcome you to contribute your own plugins. We&#x27;d love to answer any questions and hear your feedback!<p><a href=\"https:&#x2F;&#x2F;github.com&#x2F;respanai&#x2F;respan-gateway\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;respanai&#x2F;respan-gateway</a>",
+    "title": "Launch HN: Respan (YC W24) – Open-source Rust AI gateway built around plugins",
+    "type": "story",
+    "url": null
+  },
+  "comments": [
+    {
+      "author": "verdverm",
+      "text": "Why are plugins a desirable feature for core features? Today I use GoModel [1], and in example, all providers are built in. Having recently given Pi a try, the plugin ecosystem is a mess and I have more security worries. Can you explain why you think a plugin based system is preferable to a competent team building a complete, curated product? Plugins seems like a great way to expose yourself to supply chain security events. [1]  https://gomodel.enterpilot.io/",
+      "at": "2026-10-20T15:51:08.000Z",
+      "url": "https://news.ycombinator.com/item?id=50168233"
+    },
+    {
+      "author": "Andydy25",
+      "text": "In Respan, plugins are not arbitrary executables that you download from a random repository. They are modular crates that you compile into your application. Plugins offer better interface boundaries. For example, you can implement a PII feature without having to touch the logging, billing, or provider subsystems.",
+      "at": "2026-10-20T16:10:33.000Z",
+      "url": "https://news.ycombinator.com/item?id=50168539"
+    },
+    {
+      "author": "verdverm",
+      "text": "So we cannot just run a docker image for a gateway, we will also need an entire CI process to use this paradigm? Generally, when we use the term \"plugin\" in industry, this means we do not have to run a compiler. Crates are still an avenue for supply chain compromise, they come from random developers. We've seen it before and I expect we will see in more frequently for a while, until out industry gets really serious about all the things around this.",
+      "at": "2026-10-20T16:12:36.000Z",
+      "url": "https://news.ycombinator.com/item?id=50168581"
+    },
+    {
+      "author": "Andydy25",
+      "text": "We had a Docker image, but pulled it before launch because some APIs might still change. You have to build the Docker images, but we have GitHub releases for binaries. We have configurable template plugins for common things like adding vendors and formats. No rebuild needed for config changes, but if you want custom logic beyond those templates, you need to compile it in. And yes, crates still have supply-chain risks. I just meant you can review the source you’re adding, unlike a binary you don’t know.",
+      "at": "2026-10-20T16:45:15.000Z",
+      "url": "https://news.ycombinator.com/item?id=50169116"
+    },
+    {
+      "author": "verdverm",
+      "text": "No one at our org knows rust, so \"reading the source\" is not possible, and we know people don't actually do this anyway. I would recommend a batteries included approach. You can see a similar difference between adoption of OpenCode and Pi in the harness space. And get the image published, a changing API is no reason not to have one. Every project evolves their API and users know how to handle this situation.",
+      "at": "2026-10-20T16:52:41.000Z",
+      "url": "https://news.ycombinator.com/item?id=50169235"
+    },
+    {
+      "author": "Andydy25",
+      "text": "Yeah, ours are more like GStreamer’s statically compiled plugins. We might consider WebAssembly in the future if there’s a need for it.",
+      "at": "2026-10-20T17:08:08.000Z",
+      "url": "https://news.ycombinator.com/item?id=50169464"
+    },
+    {
+      "author": "blakeashleyjr",
+      "text": "What's your plugin model for Rust? Are they compiletime or interpreted?",
+      "at": "2026-10-20T15:57:02.000Z",
+      "url": "https://news.ycombinator.com/item?id=50168329"
+    },
+    {
+      "author": "Andydy25",
+      "text": "The plugins are natively compiled Rust crates, not interpreted or dynamically loaded. We considered WASM and libloading, but plugins often require database connections or other privileges. With WASM, supporting that would be the SDK’s responsibility. Dynamic loading with libloading didn’t offer enough benefit for this design, so we chose modular crates compiled into the application.",
+      "at": "2026-10-20T16:18:37.000Z",
+      "url": "https://news.ycombinator.com/item?id=50168688"
+    },
+    {
+      "author": "rileycalhoun022",
+      "text": "The compile-time choice makes sense for a gateway: plugins sit in the hot path and often need database or queue access, which is awkward to expose through a WASM sandbox. The cost is the workflow verdverm points out: there is no prebuilt image to just pull and run. Do you plan to publish an official build with the default plugin set, for people who don't need custom plugins?",
+      "at": "2026-10-20T16:45:28.000Z",
+      "url": "https://news.ycombinator.com/item?id=50169121"
+    },
+    {
+      "author": "Andydy25",
+      "text": "We do have an official build on GitHub Releases with first-party plugins built in.",
+      "at": "2026-10-20T16:56:20.000Z",
+      "url": "https://news.ycombinator.com/item?id=50169289"
+    },
+    {
+      "author": "skrtskrt",
+      "text": "Honestly one of the coolest things you can do for this sort of problem offer a version of the Talos Image Factory, where people can select the combination of plugins and the architecture and get a build. There can be a lot of permutations to create of course but each one only needs to be built once per version you release. To limit permutations you can always create pre-selected bundles of related plugins (like package groups on Linux distros) and let people select those bundles.\nThey can always fall back to building it themselves if they really need to be picky about the plugin selection.",
+      "at": "2026-10-20T22:31:28.000Z",
+      "url": "https://news.ycombinator.com/item?id=50173595"
+    },
+    {
+      "author": "m00dy",
+      "text": "Good luck with the launch! Quick question: do you personally understand the Rust code in your project, or was the whole thing AI-assisted ?",
+      "at": "2026-10-20T16:01:25.000Z",
+      "url": "https://news.ycombinator.com/item?id=50168386"
+    },
+    {
+      "author": "bb-connor",
+      "text": "\"do you personally understand the code\" classic hackernews comments",
+      "at": "2026-10-20T16:19:22.000Z",
+      "url": "https://news.ycombinator.com/item?id=50168701"
+    },
+    {
+      "author": "verdverm",
+      "text": "I looks like they/it (Claude) rolled some of their own auth systems, it's an important question this dAIy in age  https://github.com/respanai/respan-gateway/blob/main/apps/ga...  If we as an industry are going to p(doom) about security and hacking, perhaps we should stop doing things like this?",
+      "at": "2026-10-20T16:23:13.000Z",
+      "url": "https://news.ycombinator.com/item?id=50168774"
+    },
+    {
+      "author": "Andydy25",
+      "text": "Yes, we used Claude to generate code, but we reviewed every line ourselves. For MCP, we considered rmcp, but our gateway needs hooks at each processing stage, so we would still have needed substantial custom logic. We ultimately implemented the MCP support ourselves.",
+      "at": "2026-10-20T16:32:15.000Z",
+      "url": "https://news.ycombinator.com/item?id=50168930"
+    },
+    {
+      "author": "camilaferreira",
+      "text": "The plugin boundary matters more than the number of plugins. I’d limit the core to request normalization, ordered middleware execution, cancellation, and observability. Each plugin would have a versioned manifest with declared capabilities and compatibility ranges. Run third-party plugins out of process or in WASM so a panic, timeout, or dependency conflict can’t take down the gateway. A small conformance suite using recorded provider responses would also make API changes safer. For prompt-facing plugins, Wordfully can tighten the wording and remove ambiguity before requests enter the gateway.",
+      "at": "2026-10-20T22:36:51.000Z",
+      "url": "https://news.ycombinator.com/item?id=50173641"
+    },
+    {
+      "author": "slopinthebag",
+      "text": "why is this entire thread full of bots?",
+      "at": "2026-10-21T01:23:37.000Z",
+      "url": "https://news.ycombinator.com/item?id=50174930"
+    },
+    {
+      "author": "jing09928",
+      "text": "The plugin boundary seems like the right way to keep provider churn from leaking into application code. I’d be curious how teams decide which cross-cutting features belong in the core versus plugins once they need consistent policy and audit behavior.",
+      "at": "2026-10-21T01:32:47.000Z",
+      "url": "https://news.ycombinator.com/item?id=50174983"
+    },
+    {
+      "author": "rinkash",
+      "text": "Does the gateway give you token accounting you can trust across providers? You mention Groq putting usage in its own field, and that’s the kind of quirk that quietly breaks cost attribution. Once you’re routing across providers, cost per request is the number most teams actually want out of a gateway, and it’s only as good as the worst provider’s usage reporting.",
+      "at": "2026-10-21T02:14:57.000Z",
+      "url": "https://news.ycombinator.com/item?id=50175246"
+    },
+    {
+      "author": "vbc1406",
+      "text": "Replying since this one didn’t get an answer. I’ve been building a gateway too and usage reporting is the annoying part. Groq only gives you usage on streamed responses if you ask for it with stream_options, otherwise you’re guessing. Mistral has no equivalent at all, so for streams you end up estimating from response length. Curious how Respan handles that, or if the plugin just trusts whatever the provider sends back.",
+      "at": "2026-10-21T06:57:34.000Z",
+      "url": "https://news.ycombinator.com/item?id=50177023"
+    }
+  ],
+  "comments_complete": true
+}

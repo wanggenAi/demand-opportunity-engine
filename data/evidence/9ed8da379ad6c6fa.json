@@ -1,0 +1,123 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41554",
+  "collected_at": "2026-10-21T07:34:56.016842+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/41554",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/41554/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/41554/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/41554/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/41554",
+    "id": 5943207823,
+    "node_id": "I_kwDOC4Q8Qs8AAAABYj4njw",
+    "number": 41554,
+    "title": "AI Agent (V3) saves only the last tool-calling round of a turn to chat memory",
+    "user": {
+      "login": "certicky",
+      "id": 3534507,
+      "node_id": "MDQ6VXNlcjM1MzQ1MDc=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3534507?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/certicky",
+      "html_url": "https://github.com/certicky",
+      "followers_url": "https://api.github.com/users/certicky/followers",
+      "following_url": "https://api.github.com/users/certicky/following{/other_user}",
+      "gists_url": "https://api.github.com/users/certicky/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/certicky/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/certicky/subscriptions",
+      "organizations_url": "https://api.github.com/users/certicky/orgs",
+      "repos_url": "https://api.github.com/users/certicky/repos",
+      "events_url": "https://api.github.com/users/certicky/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/certicky/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8811645809,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACDTcLcQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:ai",
+        "name": "team:ai",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the AI team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-20T14:11:08Z",
+    "updated_at": "2026-10-20T14:27:48Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\n`saveToMemory` in `packages/@n8n/nodes-langchain/utils/agent-execution/memoryManagement.ts` takes `previousStepsCount` and does `steps.slice(previousStepsCount)` \"to avoid duplicates (they're already in memory)\". Both call sites in `nodes/agents/Agent/agents/ToolsAgent/V3/helpers/runAgent.ts` pass `response?.metadata?.previousRequests?.length`.\n\nBut `previousRequests` is the accumulator of the earlier tool rounds of the SAME execution: `buildResponseMetadata` → `buildSteps` pushes `previousRequests` back into `steps` on every engine round-trip. Memory is written exactly once, at the end of the turn. Nothing from those earlier rounds was ever saved, so the slice drops every round except the last one.\n\nEffects on the next turn: the model cannot see the tools it already called (in our workflow it repeats a 16k-char `read_instructions` tool call every turn), it loses data fetched in earlier rounds (we traced a confabulated \"I already cancelled those\" to this), and because the replayed history differs from what the live turn sent, prompt caching of the history across turns is impossible.\n\nThe code is unchanged on master (2.45.0). The slice was introduced in #23687. Related: #14361 (V1/V2 save no tool calls at all) and #29148 (proposes gating V3 tool-step persistence on `returnIntermediateSteps`). Whichever persistence policy is chosen, the slice as written dedups against nothing.\n\nProposed fix: pass all `steps` of the execution to `saveToMemory` (or drop the `previousStepsCount` parameter). We run that one-line change as a patch on the compiled file; with it the replayed history equals the live turn and the repeated tool calls stop.\n\n### To Reproduce\n\n1. Chat Trigger → AI Agent (typeVersion 3.x) with an Anthropic or OpenAI chat model, Simple Memory, and three tools.\n2. Send a message that makes the agent call tool A, then (in a second round) tools B and C, then answer.\n3. Inspect the Simple Memory node's `saveContext` output in the execution, or send a follow-up and look at the `loadMemoryVariables` output.\n4. The stored history is: HumanMessage, AIMessage(tool_calls: B, C), ToolMessage(B), ToolMessage(C), AIMessage(final). Round A is missing.\n5. Ask \"which tools did you use?\" — the model answers B and C only, and will call A again if it needs its result.\n\n### Expected behavior\n\nThe full sequence of the turn is stored: HumanMessage, AIMessage(tool_calls: A), ToolMessage(A), AIMessage(tool_calls: B, C), ToolMessage(B), ToolMessage(C), AIMessage(final). `buildSteps` already assembles exactly that list; only the slice in `saveToMemory` removes it.\n\n### Debug Info\n\n# Debug info\n\n## core\n\n- n8nVersion: 2.34.6\n- platform: docker (self-hosted)\n- nodeJsVersion: 24.18.0\n- nodeEnv: production\n- database: postgres\n- executionMode: scaling (single-main)\n- concurrency: -1\n- license: enterprise (production)\n- consumerId: 22883434-d88a-44d8-86cf-72be2fcbda38\n\n## storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: database\n\n## pruning\n\n- enabled: true\n- maxAge: 336 hours\n- maxCount: 10000 executions\n\n## client\n\n- userAgent: mozilla/5.0 (x11; linux x86_64) applewebkit/537.36 (khtml, like gecko) chrome/154.0.0.0 safari/537.36\n- isTouchDevice: false\n\n## cluster\n\n- instanceCount: 2\n- versions: 2.34.6\n- instances:\n  - instanceKey: cebf4e9d-0dd5-4e87-9faf-e9874ed61912, hostId: main-caecec0fb567, instanceType: main, instanceRole: leader, version: 2.34.6\n  - instanceKey: 1c0941ef-34b4-4a4f-8a70-326e14efd364, hostId: worker-5a4575e95db9, instanceType: worker, instanceRole: unset, version: 2.34.6\n- checks:\n  - check: hostid-clash, status: succeeded, warnings: -\n  - check: lifecycle, status: succeeded, warnings: -\n  - check: split-brain, status: succeeded, warnings: -\n  - check: version-mismatch, status: succeeded, warnings: -\n\nGenerated at: 2026-10-20T14:10:58.014Z\n\n### Operating System\n\nDocker image n8nio/n8n:2.34.6 (Alpine)\n\n### n8n Version\n\n2.34.6, same code on master\n\n### Node.js Version\n\n24.18.0 (the image’s bundled Node)\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nqueue\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/41554/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/41554/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @certicky,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9615\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9615](https://linear.app/n8n/issue/GHC-9615)",
+      "at": "2026-10-20T14:11:17Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41554#issuecomment-6292868987"
+    }
+  ],
+  "comments_complete": true
+}
