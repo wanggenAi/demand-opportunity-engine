@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41554",
-  "collected_at": "2026-10-21T07:34:56.016842+00:00",
+  "collected_at": "2026-10-22T07:31:32.564113+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/41554",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -72,9 +72,9 @@
     "locked": false,
     "assignees": [],
     "milestone": null,
-    "comments": 1,
+    "comments": 2,
     "created_at": "2026-10-20T14:11:08Z",
-    "updated_at": "2026-10-20T14:27:48Z",
+    "updated_at": "2026-10-21T13:33:38Z",
     "closed_at": null,
     "assignee": null,
     "author_association": "NONE",
@@ -117,6 +117,12 @@
       "text": "Hey @certicky,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9615\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9615](https://linear.app/n8n/issue/GHC-9615)",
       "at": "2026-10-20T14:11:17Z",
       "url": "https://github.com/n8n-io/n8n/issues/41554#issuecomment-6292868987"
+    },
+    {
+      "author": "Raizesdaterra",
+      "text": "We hit the same root cause with a more severe effect on Anthropic models that enforce preserved-thinking prefix binding (Claude Haiku 5.5, Sonnet 5.5, Opus 5.5 and Fable 5.1, on accounts created on or after 2026-08-31).\n\nSetup: n8n 2.43.5 self-hosted, AI Agent V3, Anthropic Chat Model claude-haiku-5-5 (Thinking Mode not set, so the model thinks), Simple Memory, one HTTP Request Tool.\n\nIn one turn the agent called the same tool twice (two sequential rounds). Simple Memory stored only the second round: HumanMessage, AIMessage [thinking, tool_use], ToolMessage (second result), AIMessage (final text). The signed thinking block in the stored AIMessage was created after the first round, so on the next user message Anthropic rejects the replay:\n\n400 messages.1.content.0: Invalid `signature` in `thinking` block. The block is bound to a different conversation. [...] Content that preceded this block when it was created is missing from this request, starting at `messages.0.content.0`.\n\nEvery following message in that session fails the same way, so the conversation gets stuck, not just loses context. Saving all tool rounds (#41577) should resolve this, as long as each round is replayed exactly as it was sent (see also #40360: tool inputs replayed as input: {} when thinking is on, which would still change the prefix).",
+      "at": "2026-10-21T13:33:38Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41554#issuecomment-6317391746"
     }
   ],
   "comments_complete": true

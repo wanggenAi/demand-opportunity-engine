@@ -1,0 +1,92 @@
+{
+  "source_api_url": "https://api.github.com/repos/myvars/supplymars/issues/104",
+  "collected_at": "2026-10-22T07:31:32.564113+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/myvars/supplymars/issues/104",
+    "repository_url": "https://api.github.com/repos/myvars/supplymars",
+    "labels_url": "https://api.github.com/repos/myvars/supplymars/issues/104/labels{/name}",
+    "comments_url": "https://api.github.com/repos/myvars/supplymars/issues/104/comments",
+    "events_url": "https://api.github.com/repos/myvars/supplymars/issues/104/events",
+    "html_url": "https://github.com/myvars/supplymars/issues/104",
+    "id": 5969493719,
+    "node_id": "I_kwDOO3HiYc8AAAABY88-1w",
+    "number": 104,
+    "title": "Allocation edge cases leave orders stuck or over-allocated",
+    "user": {
+      "login": "myvars",
+      "id": 2104639,
+      "node_id": "MDQ6VXNlcjIxMDQ2Mzk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2104639?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/myvars",
+      "html_url": "https://github.com/myvars",
+      "followers_url": "https://api.github.com/users/myvars/followers",
+      "following_url": "https://api.github.com/users/myvars/following{/other_user}",
+      "gists_url": "https://api.github.com/users/myvars/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/myvars/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/myvars/subscriptions",
+      "organizations_url": "https://api.github.com/users/myvars/orgs",
+      "repos_url": "https://api.github.com/users/myvars/repos",
+      "events_url": "https://api.github.com/users/myvars/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/myvars/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8738650941,
+        "node_id": "LA_kwDOO3HiYc8AAAACCN07PQ",
+        "url": "https://api.github.com/repos/myvars/supplymars/labels/bug",
+        "name": "bug",
+        "color": "d73a4a",
+        "default": true,
+        "description": "Something isn't working",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2026-10-21T22:23:05Z",
+    "updated_at": "2026-10-21T22:23:05Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "Found during the docs review (#96). Each was read from the code; none has a test.\n\n**1. An order allocated entirely by hand never reaches suppliers.**\n- Allocating every line from the supplier list (`CreatePurchaseOrderItemHandler` → `OrderItemAllocator::forOrderItem`) creates the PO items as PENDING.\n- PO items only move to PROCESSING at the end of an `OrderAllocator::process()` run that started with something outstanding (`OrderAllocator.php`, `allItemsAllocated()` → `updateItemStatus()`).\n- After a full manual allocation, clicking Allocate returns \"No items to allocate.\" (`AllocateOrderHandler`) and changes nothing.\n- `app:build-purchase-orders` only picks orders with no PO yet (`CustomerOrderDoctrineRepository`), and acceptance only reads PROCESSING POs.\n- The order stays Pending until someone sets each PO item to Processing by hand.\n\n**2. A cancelled order item still counts as outstanding.**\n- An item can only be cancelled while nothing is on a PO, so its outstanding quantity is its full quantity.\n- `getOutstandingQty()` doesn't look at the item's own status (`CustomerOrderItem.php`), and `OrderAllocator::process()` doesn't skip cancelled items.\n- So Allocate can put a cancelled line on a PO. If no supplier has the stock, the order reports \"Cannot allocate all items\" for ever.\n\n**3. Rewind can over-allocate a line.**\n- `PurchaseOrder::forceRewindToPending()` sets every item to PENDING, including REFUNDED and CANCELLED ones.\n- A refunded item's quantity has usually been allocated again on another PO by `app:refund-purchase-orders`. After a rewind it counts again (`getQtyAddedToPurchaseOrders()` skips only cancelled and refunded items), so the line is on POs twice.\n\n**4. The nightly refund skips rejected items on a mixed PO.**\n- `app:refund-purchase-orders` handles POs whose overall status is REJECTED.\n- A PO's status is its least advanced item. A rejected item next to an ACCEPTED one is never refunded or reallocated automatically.\n\n**5. A partly allocated order is never picked up again by the schedule.**\n- `app:build-purchase-orders` needs an order with no PO.\n- If one line had no supplier with stock at the time, it waits for someone to click Allocate.\n\n### To decide\n- Should Allocate also move manually created PENDING PO items to PROCESSING when nothing is outstanding, or should a separate action do it?\n- Should rewind leave REFUNDED and CANCELLED items alone?\n- Should the schedule retry orders with outstanding quantity?\n\n### Done when\nEach case above has a test showing the intended behaviour. `Docs/04-sourcing-and-pricing.md` and `Docs/UserManual/09-order-items.md` / `10-purchase-orders.md` describe today's behaviour and need updating with the fix.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/myvars/supplymars/issues/104/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/myvars/supplymars/issues/104/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [],
+  "comments_complete": true
+}

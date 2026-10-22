@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50161254",
-  "collected_at": "2026-10-21T07:34:56.016842+00:00",
+  "collected_at": "2026-10-22T07:31:32.564113+00:00",
   "source": {
     "author": "otherayden",
     "children": [
@@ -52,6 +52,21 @@
                 "points": null,
                 "story_id": 50161254,
                 "text": "If all you want is clipboard integration over ssh, then, perhaps, kitty terminal might be enough.<p>hop does take it a notch further and allows to `hop open` images (or any binary really) from the remote machine such that they are opened by your host&#x27;s xdg-open (as well as pasting images from host to remote).",
+                "title": null,
+                "type": "comment",
+                "url": null
+              },
+              {
+                "author": "ceniymeisg",
+                "children": [],
+                "created_at": "2026-10-21T15:33:49.000Z",
+                "created_at_i": 1792596829,
+                "id": 50182755,
+                "options": [],
+                "parent_id": 50167654,
+                "points": null,
+                "story_id": 50161254,
+                "text": "Make sure your terminal and tmux have OSC 52 enabled so your Neovim yank directly copies into your local client&#x27;s clipboard over SSH.",
                 "title": null,
                 "type": "comment",
                 "url": null
@@ -118,7 +133,7 @@
     "id": 50161254,
     "options": [],
     "parent_id": null,
-    "points": 2,
+    "points": 4,
     "story_id": 50161254,
     "text": "I recently transitioned into doing most of my work via SSH running on an old server I&#x27;ve had lying around my house. Currently using tmux, ssh, neovim for file editing, and switching between claude code and codex for terminal coding agents. Is this as good of a setup as one can get? Anything I&#x27;m missing out on?",
     "title": "Ask HN: What's your SSH terminal workflow like?",
@@ -155,6 +170,12 @@
       "text": "If all you want is clipboard integration over ssh, then, perhaps, kitty terminal might be enough. hop does take it a notch further and allows to `hop open` images (or any binary really) from the remote machine such that they are opened by your host's xdg-open (as well as pasting images from host to remote).",
       "at": "2026-10-20T19:31:48.000Z",
       "url": "https://news.ycombinator.com/item?id=50171493"
+    },
+    {
+      "author": "ceniymeisg",
+      "text": "Make sure your terminal and tmux have OSC 52 enabled so your Neovim yank directly copies into your local client's clipboard over SSH.",
+      "at": "2026-10-21T15:33:49.000Z",
+      "url": "https://news.ycombinator.com/item?id=50182755"
     },
     {
       "author": "Am4TIfIsER0ppos",

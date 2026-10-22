@@ -1,0 +1,123 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41626",
+  "collected_at": "2026-10-22T07:31:32.564113+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/41626",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/41626/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/41626/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/41626/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/41626",
+    "id": 5957236673,
+    "node_id": "I_kwDOC4Q8Qs8AAAABYxQ3wQ",
+    "number": 41626,
+    "title": "Nasa Node: DONKI endpoint is outdated",
+    "user": {
+      "login": "AlessandroRoic",
+      "id": 29387855,
+      "node_id": "MDQ6VXNlcjI5Mzg3ODU1",
+      "avatar_url": "https://avatars.githubusercontent.com/u/29387855?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/AlessandroRoic",
+      "html_url": "https://github.com/AlessandroRoic",
+      "followers_url": "https://api.github.com/users/AlessandroRoic/followers",
+      "following_url": "https://api.github.com/users/AlessandroRoic/following{/other_user}",
+      "gists_url": "https://api.github.com/users/AlessandroRoic/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/AlessandroRoic/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/AlessandroRoic/subscriptions",
+      "organizations_url": "https://api.github.com/users/AlessandroRoic/orgs",
+      "repos_url": "https://api.github.com/users/AlessandroRoic/repos",
+      "events_url": "https://api.github.com/users/AlessandroRoic/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/AlessandroRoic/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582010757,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cXhQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:nodes",
+        "name": "team:nodes",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Nodes team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-21T08:40:11Z",
+    "updated_at": "2026-10-21T08:54:26Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nExecute the “Get a DONKI solar flare” node. It returns HTML page from the NASA CCMC Announcements page.\nRoot Cause: NASA migrated the DONKI system backend on the 30th of September [CCMC Announcements | NASA CCMC](https://ccmc.gsfc.nasa.gov/news/major-updates/)\n\nCommunity Link: https://community.n8n.io/t/nasa-node-get-a-donki-solar-flare-returns-html-page-instead-of-json-due-to-nasa-api-migration/319301/3\n\n### To Reproduce\n\nSame steps to https://docs.n8n.io/build-your-first-workflow\nStep 3 of the tutorial does not work \n\n### Expected behavior\n\nNode should call correct endpoint\n\n### Debug Info\n\nn/a\n\n### Operating System\n\nWindows\n\n### n8n Version\n\n2.41.7\n\n### Node.js Version\n\n24\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/41626/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/41626/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @AlessandroRoic,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9621\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9621](https://linear.app/n8n/issue/GHC-9621)",
+      "at": "2026-10-21T08:40:19Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41626#issuecomment-6311780971"
+    }
+  ],
+  "comments_complete": true
+}

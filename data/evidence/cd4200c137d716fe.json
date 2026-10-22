@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50176908",
-  "collected_at": "2026-10-21T07:34:56.016842+00:00",
+  "collected_at": "2026-10-22T07:31:32.564113+00:00",
   "source": {
     "author": "simfinii",
     "children": [
@@ -9,7 +9,70 @@
         "children": [
           {
             "author": "simfinii",
-            "children": [],
+            "children": [
+              {
+                "author": "souvik1997",
+                "children": [
+                  {
+                    "author": "simfinii",
+                    "children": [],
+                    "created_at": "2026-10-21T17:59:23.000Z",
+                    "created_at_i": 1792605563,
+                    "id": 50185030,
+                    "options": [],
+                    "parent_id": 50177469,
+                    "points": null,
+                    "story_id": 50176908,
+                    "text": "Thank you!",
+                    "title": null,
+                    "type": "comment",
+                    "url": null
+                  }
+                ],
+                "created_at": "2026-10-21T08:04:00.000Z",
+                "created_at_i": 1792569840,
+                "id": 50177469,
+                "options": [],
+                "parent_id": 50177132,
+                "points": null,
+                "story_id": 50176908,
+                "text": "Amazing! Great to hear you&#x27;ve already thought about this",
+                "title": null,
+                "type": "comment",
+                "url": null
+              },
+              {
+                "author": "Melatonic",
+                "children": [
+                  {
+                    "author": "simfinii",
+                    "children": [],
+                    "created_at": "2026-10-21T17:56:00.000Z",
+                    "created_at_i": 1792605360,
+                    "id": 50184984,
+                    "options": [],
+                    "parent_id": 50184955,
+                    "points": null,
+                    "story_id": 50176908,
+                    "text": "Thank you! Yes the goal is to allow developers to build multi-tenanted agents that can actually act on behalf of end users. We are in the process of abstracting away every building block needed to build that so developers can focus on what they do best",
+                    "title": null,
+                    "type": "comment",
+                    "url": null
+                  }
+                ],
+                "created_at": "2026-10-21T17:53:20.000Z",
+                "created_at_i": 1792605200,
+                "id": 50184955,
+                "options": [],
+                "parent_id": 50177132,
+                "points": null,
+                "story_id": 50176908,
+                "text": "Seems like this could be very useful for more than just security !",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
             "created_at": "2026-10-21T07:14:23.000Z",
             "created_at_i": 1792566863,
             "id": 50177132,
@@ -18,6 +81,37 @@
             "points": null,
             "story_id": 50176908,
             "text": "We actually account for this already! We allow developers to use alter to partition context memory based on end user + agent identity so the context leaks like the one you described can be fully prevented!<p>Feel free to go through the docs here if you have more questions: <a href=\"https:&#x2F;&#x2F;docs.alterauth.com&#x2F;guides&#x2F;propagate-identity-to-memory&#x2F;\">https:&#x2F;&#x2F;docs.alterauth.com&#x2F;guides&#x2F;propagate-identity-to-memo...</a>",
+            "title": null,
+            "type": "comment",
+            "url": null
+          },
+          {
+            "author": "ptkachykby",
+            "children": [
+              {
+                "author": "simfinii",
+                "children": [],
+                "created_at": "2026-10-21T16:58:18.000Z",
+                "created_at_i": 1792601898,
+                "id": 50184132,
+                "options": [],
+                "parent_id": 50183894,
+                "points": null,
+                "story_id": 50176908,
+                "text": "Yes we do. We separate based on both the end user identity and agent identity. Would love to see how your product could potentially work with alter",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-10-21T16:45:09.000Z",
+            "created_at_i": 1792601109,
+            "id": 50183894,
+            "options": [],
+            "parent_id": 50177062,
+            "points": null,
+            "story_id": 50176908,
+            "text": "You can add a tag to each memory indicating who wrote it, and then at read time filter the memories instead of putting them in the prompt.<p>I am the founder of Substrate, a project that lets you inspect what is in the memory and select what each agent sees.<p>Do you separate memory per user with your harness?",
             "title": null,
             "type": "comment",
             "url": null
@@ -37,7 +131,39 @@
       },
       {
         "author": "avikonduru",
-        "children": [],
+        "children": [
+          {
+            "author": "simfinii",
+            "children": [
+              {
+                "author": "verdverm",
+                "children": [],
+                "created_at": "2026-10-21T17:51:04.000Z",
+                "created_at_i": 1792605064,
+                "id": 50184915,
+                "options": [],
+                "parent_id": 50177372,
+                "points": null,
+                "story_id": 50176908,
+                "text": "&gt; We allow end users to add API keys directly<p>This seems like a bad idea to me these days. Companies doing this make themselves a target and then get hacked like OpenCode. Customer accounts get drained or bills run up.<p>Run your own gateway behind a firewall &#x2F; vpn. I personally use GoModel + Tailscale.<p><a href=\"https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50133401\">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50133401</a> (OpenCode hacked story)",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-10-21T07:49:08.000Z",
+            "created_at_i": 1792568948,
+            "id": 50177372,
+            "options": [],
+            "parent_id": 50177172,
+            "points": null,
+            "story_id": 50176908,
+            "text": "We allow end users to add API keys directly via the alter connect SDK. If the API key needs to be shared then developers can map it on their end using the grant ID abstraction that we provide. Feel free to go through the docs here: <a href=\"https:&#x2F;&#x2F;docs.alterauth.com&#x2F;concepts&#x2F;credentials&#x2F;\">https:&#x2F;&#x2F;docs.alterauth.com&#x2F;concepts&#x2F;credentials&#x2F;</a>",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
         "created_at": "2026-10-21T07:20:00.000Z",
         "created_at_i": 1792567200,
         "id": 50177172,
@@ -63,7 +189,22 @@
             "parent_id": 50177194,
             "points": null,
             "story_id": 50176908,
-            "text": "When several principals are in the same channel talking to the same agent the current delegation model of alter does not apply.<p>As a result the right way to treat the agent is not as a delegated agent but rather an agent that takes the least privilege possible out of all the people in the channel<p>In scenarios where an agent and humans are peers we recommend giving separate agent identities to the agent and treat them as separate privileged users and give them permissions based on their identity and not based on the identities of the users in the channel.<p>We support standlone agent identities that dont require end users as the principals. Can read about that here: <a href=\"https:&#x2F;&#x2F;docs.alterauth.com&#x2F;guides&#x2F;give-an-agent-scoped-access&#x2F;\">https:&#x2F;&#x2F;docs.alterauth.com&#x2F;guides&#x2F;give-an-agent-scoped-acces...</a>",
+            "text": "When several principals are in the same channel talking to the same agent the concept of agent delegation does not apply.<p>The right way to treat the agent is not as a delegated agent but rather as a stand alone agent with its own permissions and privleges.<p>In scenarios where an agent and humans are peers we recommend giving separate agent identities to the agent and treat them as separate privileged users and give them permissions based on their identity and not based on the identities of the users in the channel.<p>We support standlone agent identities that dont require end users as the principals. Can read about that here: <a href=\"https:&#x2F;&#x2F;docs.alterauth.com&#x2F;guides&#x2F;give-an-agent-scoped-access&#x2F;\">https:&#x2F;&#x2F;docs.alterauth.com&#x2F;guides&#x2F;give-an-agent-scoped-acces...</a>",
+            "title": null,
+            "type": "comment",
+            "url": null
+          },
+          {
+            "author": "911viper",
+            "children": [],
+            "created_at": "2026-10-21T10:54:02.000Z",
+            "created_at_i": 1792580042,
+            "id": 50178817,
+            "options": [],
+            "parent_id": 50177194,
+            "points": null,
+            "story_id": 50176908,
+            "text": "Osmessenger.com is the answer it seems",
             "title": null,
             "type": "comment",
             "url": null
@@ -80,6 +221,193 @@
         "title": null,
         "type": "comment",
         "url": null
+      },
+      {
+        "author": "mauvehed",
+        "children": [
+          {
+            "author": "simfinii",
+            "children": [
+              {
+                "author": "sirianni",
+                "children": [
+                  {
+                    "author": "simfinii",
+                    "children": [],
+                    "created_at": "2026-10-22T01:16:05.000Z",
+                    "created_at_i": 1792631765,
+                    "id": 50189892,
+                    "options": [],
+                    "parent_id": 50187674,
+                    "points": null,
+                    "story_id": 50176908,
+                    "text": "LOL that was a polite response to a rude question. There was no LLM involved there",
+                    "title": null,
+                    "type": "comment",
+                    "url": null
+                  }
+                ],
+                "created_at": "2026-10-21T21:10:15.000Z",
+                "created_at_i": 1792617015,
+                "id": 50187674,
+                "options": [],
+                "parent_id": 50184215,
+                "points": null,
+                "story_id": 50176908,
+                "text": "<p><pre><code>  is this an LLM generated response. The irony…</code></pre>",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-10-21T17:03:28.000Z",
+            "created_at_i": 1792602208,
+            "id": 50184215,
+            "options": [],
+            "parent_id": 50184158,
+            "points": null,
+            "story_id": 50176908,
+            "text": "We are in the process of getting SOC2 compliant. You can go through our trust page here: <a href=\"https:&#x2F;&#x2F;trust.alterauth.com&#x2F;\">https:&#x2F;&#x2F;trust.alterauth.com&#x2F;</a><p>We have also gotten pen tested 2 separate times and have found no issues. You can find the result of one of the pen tests on the trust center",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-21T17:00:09.000Z",
+        "created_at_i": 1792602009,
+        "id": 50184158,
+        "options": [],
+        "parent_id": 50176908,
+        "points": null,
+        "story_id": 50176908,
+        "text": "That website is literally a vibe-coded template.. How can we put any trust into the app itself?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "luis_valerio",
+        "children": [
+          {
+            "author": "kdodhia",
+            "children": [],
+            "created_at": "2026-10-21T21:08:21.000Z",
+            "created_at_i": 1792616901,
+            "id": 50187650,
+            "options": [],
+            "parent_id": 50187367,
+            "points": null,
+            "story_id": 50176908,
+            "text": "Hey @luis_valerio, kevan here! That question shaped most of the design.<p>We assume you can&#x27;t reliably stop the model from being prompt injected. So nothing is enforced at the model layer. Enforcement happens at the proxy, which sits between the agent and the downstream API and is the only thing holding the credential. The agent never sees the key, so an injected agent can&#x27;t bypass it or route around the deterministic policy.<p>For irreversible actions you stack three things:<p>1. Method&#x2F;endpoint restrictions. &quot;This agent may only GET under &#x2F;instances&#x2F;*&quot; means a DELETE never reaches the provider. For infra agents we&#x27;d push read-only by default and allowlist the few mutations you need.<p>2. Human-in-the-loop on the dangerous ops. Approval can be required conditionally: on DELETE, on specific operations, or when a parameter matches (resource outside the allowed set, etc). The request is frozen server-side, so what the approver sees is exactly what executes. The agent can&#x27;t swap the payload after the yes.<p>3. Audit logs on every call, including denials, with the agent and end-user identity attached. So you can see the agent tried a DELETE it wasn&#x27;t allowed, on whose behalf, and with what body.<p>Basically we treat every call like a compromised laptop: don&#x27;t assume it behaves, scope the credential, and gate the risky actions behind a second party. Would love to hear more about your setup.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-21T20:44:25.000Z",
+        "created_at_i": 1792615465,
+        "id": 50187367,
+        "options": [],
+        "parent_id": 50176908,
+        "points": null,
+        "story_id": 50176908,
+        "text": "One question from the infrastructure side (i&#x27;m running a similar scenario but for infrastucture) where any mistake could not be reversible such as a deletion of a resource.<p>How do you handle an agent that has valid authorization but has been prompt-injected?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "yaoke259",
+        "children": [
+          {
+            "author": "simfinii",
+            "children": [],
+            "created_at": "2026-10-22T01:25:32.000Z",
+            "created_at_i": 1792632332,
+            "id": 50189951,
+            "options": [],
+            "parent_id": 50188659,
+            "points": null,
+            "story_id": 50176908,
+            "text": "Great question! If you are looking to just store secrets you can just use infisical.<p>The real value of alter comes in when you want to give your agents access to end users credentials. When agents act on behalf of end user as a developer you have to manage multiple credentials and more importantly manage the mapping relationship between end user identity and the credentials.<p>Also, as agents take actions the problem of non deterministic actions become more pronounced. With alters policy guardrails any chance of actions taking negative actions is mitigated.<p>Lastly, the full compliance trails of what the agent has done ends up being quite valuble especially as agents take more autonomus actions!",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-21T22:36:58.000Z",
+        "created_at_i": 1792622218,
+        "id": 50188659,
+        "options": [],
+        "parent_id": 50176908,
+        "points": null,
+        "story_id": 50176908,
+        "text": "what&#x27;s the advantage of a tool like this compared to existing mature tools like infisical?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "jeswin",
+        "children": [
+          {
+            "author": "simfinii",
+            "children": [
+              {
+                "author": "jeswin",
+                "children": [],
+                "created_at": "2026-10-22T04:20:41.000Z",
+                "created_at_i": 1792642841,
+                "id": 50191132,
+                "options": [],
+                "parent_id": 50190911,
+                "points": null,
+                "story_id": 50176908,
+                "text": "&gt; Separately would say it is a bad assumption to make that a product is vibe coded without trying it out.<p>You&#x27;ve put it behind a very typical AI-generated UI; like the many that come up every day. In your case, it&#x27;s an auth product and it matters more. Besides, It&#x27;s difficult to try your product without handing you the keys to the kingdom.<p>&gt; We are currently in the process being fully SOC2 compliant<p>You&#x27;re getting a Type I attestation first, I presume? That is of limited value in itself, and is mostly about getting to Type II. If you already have Type I complted, you could mention that on the website. &quot;Regulated industries&quot; have long sales cycles and evaluations, and you&#x27;ll find it difficult to start those conversations without a more reassuring website.",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-10-22T03:37:50.000Z",
+            "created_at_i": 1792640270,
+            "id": 50190911,
+            "options": [],
+            "parent_id": 50190726,
+            "points": null,
+            "story_id": 50176908,
+            "text": "Hey! Fair question.<p>We are currently in the process being fully SOC2 compliant and have gotten pen tested twice from two different companies and have found no issues. You can explore the full extent of our security process and pen test results here : trust.alterauth.com<p>Separately would say it is a bad assumption to make that a product is vibe coded without trying it out. As mentioned in the post we adopted a lot of security processes as a part of our SDLC including consistent scans for supply chain attacks, and static code scanners (SAST).<p>We also do a pen test at a yearly cadence",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-22T03:14:06.000Z",
+        "created_at_i": 1792638846,
+        "id": 50190726,
+        "options": [],
+        "parent_id": 50176908,
+        "points": null,
+        "story_id": 50176908,
+        "text": "This might seem like an aggressive question. But it&#x27;s one to be asked of  products dealing with auth.<p>For a security-centric product, how would I trust your fully vibe-coded product if I can&#x27;t see the source code?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "ybathaee",
+        "children": [],
+        "created_at": "2026-10-22T07:26:12.000Z",
+        "created_at_i": 1792653972,
+        "id": 50192292,
+        "options": [],
+        "parent_id": 50176908,
+        "points": null,
+        "story_id": 50176908,
+        "text": "Dumb",
+        "title": null,
+        "type": "comment",
+        "url": null
       }
     ],
     "created_at": "2026-10-21T06:42:12.000Z",
@@ -87,7 +415,7 @@
     "id": 50176908,
     "options": [],
     "parent_id": null,
-    "points": 6,
+    "points": 60,
     "story_id": 50176908,
     "text": "Hi HN! We’re Srikar and Kevan, founders of Alter – <a href=\"https:&#x2F;&#x2F;alterauth.com&#x2F;\">https:&#x2F;&#x2F;alterauth.com&#x2F;</a>. We’re building access control for agents that can take actions on behalf of multiple users.<p>If you’ve built an internal agent people use through Slack, you may have experienced this scenario: everyone signs in with their own account, but the agent connects to the CRM or billing system with one shared API key, so the agent can do anything that the key can do. User-level authentication in Slack does nothing to control what the agent can do in an external system like the CRM or billing system.<p>Here’s what Alter does:<p>-It acts as a proxy and manages downstream credentials for every API request that an agent takes;<p>-It takes identity into account for every action the agent does. Automatically take into account the end user identity of the person that the agent is taking actions on behalf of.<p>-It enforces fine grained runtime policies and records compliance grade audit logs.<p>Here’s a demo video: <a href=\"https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=9ZqPU14ipGE\" rel=\"nofollow\">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=9ZqPU14ipGE</a><p>We started this because we saw first hand how hard it is to build agents in regulated industries. To unlock the true benefits of agents we need to allow agents to take actions, sometimes actions on behalf of end users. I (Srikar) was working at Goldmans and I saw how prohibitively expensive it was for me as a developer to write my own custom auth to enable multi-tenancy in agents and to allow agents to have strict policy controls as they act on behalf of end users. My co-founder, Kevan, is a second time founder and was previously working on a database startup. He has experience building and selling deep tech into highly regulated environments. So this problem seemed like a natural fit for the both of us.<p>Building and maintaining custom auth for multi tenant agents was challenging. But so was ensuring that the solution we developed was secure, scalable and keeping track of security grade audit logs. As a result we realized there needs to be a separate product category for this that enables developers to easily build secure multi user agents that can actually take actions in an enterprise.\nSome of the real-world use cases we’ve seen include:<p>We have built a multi user open claw for our own team using Alter that saved us countless hours on our GTM effort.  Link here:<a href=\"https:&#x2F;&#x2F;github.com&#x2F;AlterAIDev&#x2F;openclaw-alter-plugin\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;AlterAIDev&#x2F;openclaw-alter-plugin</a><p>We have multiple startups who have used our platform to build their own secure internal agents for everything ranging from SRE agents to back office agents dealing with Quickbooks and payroll platforms like Rippling. It has saved developers countless hours both in terms of building and maintenance. We also have a defense contractor building air gapped agents for marine corp using Alter.<p>Under the hood, the value that we provide is that we do a lot of the plumbing that no one wants to do. We support hundreds of providers, all manually tested end to end. Reliability is our biggest priority. We have built this in a way to allow developers to custom build their agents however they see fit. Everything ranging from custom policies, agent delegation, user attribution, audit logs needed for compliance to a LLM gateway with guardrails (Coming soon)<p>Building a security product is hard. We have learnt that in order to build a truly secure product, security thinking has to pervade every part of the development process. We have embraced shift left security. Every PR that is pushed out is continuously checked for supply chain attacks, potentially dangerous code patterns etc.<p>Our business plan revolved around usage based pricing. There is a free tier up to 10k requests and then a pricing tier starting beyond that. We would love it if people configured their APIs and OAuth credentials, tried out the policies and actually built agents that can take actions with alter!<p>If you’ve built an agent that acts for multiple users, how are you handling permissions today? We’d especially like to hear what you’ve had to build yourself.<p><a href=\"https:&#x2F;&#x2F;alterauth.com&#x2F;\">https:&#x2F;&#x2F;alterauth.com&#x2F;</a>",
     "title": "Launch HN: Alter (YC S25) – Access control for multi-user agents",
@@ -108,10 +436,58 @@
       "url": "https://news.ycombinator.com/item?id=50177132"
     },
     {
+      "author": "souvik1997",
+      "text": "Amazing! Great to hear you've already thought about this",
+      "at": "2026-10-21T08:04:00.000Z",
+      "url": "https://news.ycombinator.com/item?id=50177469"
+    },
+    {
+      "author": "simfinii",
+      "text": "Thank you!",
+      "at": "2026-10-21T17:59:23.000Z",
+      "url": "https://news.ycombinator.com/item?id=50185030"
+    },
+    {
+      "author": "Melatonic",
+      "text": "Seems like this could be very useful for more than just security !",
+      "at": "2026-10-21T17:53:20.000Z",
+      "url": "https://news.ycombinator.com/item?id=50184955"
+    },
+    {
+      "author": "simfinii",
+      "text": "Thank you! Yes the goal is to allow developers to build multi-tenanted agents that can actually act on behalf of end users. We are in the process of abstracting away every building block needed to build that so developers can focus on what they do best",
+      "at": "2026-10-21T17:56:00.000Z",
+      "url": "https://news.ycombinator.com/item?id=50184984"
+    },
+    {
+      "author": "ptkachykby",
+      "text": "You can add a tag to each memory indicating who wrote it, and then at read time filter the memories instead of putting them in the prompt. I am the founder of Substrate, a project that lets you inspect what is in the memory and select what each agent sees. Do you separate memory per user with your harness?",
+      "at": "2026-10-21T16:45:09.000Z",
+      "url": "https://news.ycombinator.com/item?id=50183894"
+    },
+    {
+      "author": "simfinii",
+      "text": "Yes we do. We separate based on both the end user identity and agent identity. Would love to see how your product could potentially work with alter",
+      "at": "2026-10-21T16:58:18.000Z",
+      "url": "https://news.ycombinator.com/item?id=50184132"
+    },
+    {
       "author": "avikonduru",
       "text": "How do you handle permissions when the downstream service only offers a shared API key? For example, two sales reps can use the same CRM endpoint but should only access their own accounts. Does Alter check record ownership, or does the developer still need to supply that logic?",
       "at": "2026-10-21T07:20:00.000Z",
       "url": "https://news.ycombinator.com/item?id=50177172"
+    },
+    {
+      "author": "simfinii",
+      "text": "We allow end users to add API keys directly via the alter connect SDK. If the API key needs to be shared then developers can map it on their end using the grant ID abstraction that we provide. Feel free to go through the docs here:  https://docs.alterauth.com/concepts/credentials/",
+      "at": "2026-10-21T07:49:08.000Z",
+      "url": "https://news.ycombinator.com/item?id=50177372"
+    },
+    {
+      "author": "verdverm",
+      "text": "> We allow end users to add API keys directly This seems like a bad idea to me these days. Companies doing this make themselves a target and then get hacked like OpenCode. Customer accounts get drained or bills run up. Run your own gateway behind a firewall / vpn. I personally use GoModel + Tailscale.  https://news.ycombinator.com/item?id=50133401  (OpenCode hacked story)",
+      "at": "2026-10-21T17:51:04.000Z",
+      "url": "https://news.ycombinator.com/item?id=50184915"
     },
     {
       "author": "911viper",
@@ -121,9 +497,87 @@
     },
     {
       "author": "simfinii",
-      "text": "When several principals are in the same channel talking to the same agent the current delegation model of alter does not apply. As a result the right way to treat the agent is not as a delegated agent but rather an agent that takes the least privilege possible out of all the people in the channel In scenarios where an agent and humans are peers we recommend giving separate agent identities to the agent and treat them as separate privileged users and give them permissions based on their identity and not based on the identities of the users in the channel. We support standlone agent identities that dont require end users as the principals. Can read about that here:  https://docs.alterauth.com/guides/give-an-agent-scoped-acces...",
+      "text": "When several principals are in the same channel talking to the same agent the concept of agent delegation does not apply. The right way to treat the agent is not as a delegated agent but rather as a stand alone agent with its own permissions and privleges. In scenarios where an agent and humans are peers we recommend giving separate agent identities to the agent and treat them as separate privileged users and give them permissions based on their identity and not based on the identities of the users in the channel. We support standlone agent identities that dont require end users as the principals. Can read about that here:  https://docs.alterauth.com/guides/give-an-agent-scoped-acces...",
       "at": "2026-10-21T07:33:49.000Z",
       "url": "https://news.ycombinator.com/item?id=50177262"
+    },
+    {
+      "author": "911viper",
+      "text": "Osmessenger.com is the answer it seems",
+      "at": "2026-10-21T10:54:02.000Z",
+      "url": "https://news.ycombinator.com/item?id=50178817"
+    },
+    {
+      "author": "mauvehed",
+      "text": "That website is literally a vibe-coded template.. How can we put any trust into the app itself?",
+      "at": "2026-10-21T17:00:09.000Z",
+      "url": "https://news.ycombinator.com/item?id=50184158"
+    },
+    {
+      "author": "simfinii",
+      "text": "We are in the process of getting SOC2 compliant. You can go through our trust page here:  https://trust.alterauth.com/  We have also gotten pen tested 2 separate times and have found no issues. You can find the result of one of the pen tests on the trust center",
+      "at": "2026-10-21T17:03:28.000Z",
+      "url": "https://news.ycombinator.com/item?id=50184215"
+    },
+    {
+      "author": "sirianni",
+      "text": "is this an LLM generated response. The irony…",
+      "at": "2026-10-21T21:10:15.000Z",
+      "url": "https://news.ycombinator.com/item?id=50187674"
+    },
+    {
+      "author": "simfinii",
+      "text": "LOL that was a polite response to a rude question. There was no LLM involved there",
+      "at": "2026-10-22T01:16:05.000Z",
+      "url": "https://news.ycombinator.com/item?id=50189892"
+    },
+    {
+      "author": "luis_valerio",
+      "text": "One question from the infrastructure side (i'm running a similar scenario but for infrastucture) where any mistake could not be reversible such as a deletion of a resource. How do you handle an agent that has valid authorization but has been prompt-injected?",
+      "at": "2026-10-21T20:44:25.000Z",
+      "url": "https://news.ycombinator.com/item?id=50187367"
+    },
+    {
+      "author": "kdodhia",
+      "text": "Hey @luis_valerio, kevan here! That question shaped most of the design. We assume you can't reliably stop the model from being prompt injected. So nothing is enforced at the model layer. Enforcement happens at the proxy, which sits between the agent and the downstream API and is the only thing holding the credential. The agent never sees the key, so an injected agent can't bypass it or route around the deterministic policy. For irreversible actions you stack three things: 1. Method/endpoint restrictions. \"This agent may only GET under /instances/*\" means a DELETE never reaches the provider. For infra agents we'd push read-only by default and allowlist the few mutations you need. 2. Human-in-the-loop on the dangerous ops. Approval can be required conditionally: on DELETE, on specific operations, or when a parameter matches (resource outside the allowed set, etc). The request is frozen server-side, so what the approver sees is exactly what executes. The agent can't swap the payload after the yes. 3. Audit logs on every call, including denials, with the agent and end-user identity attached. So you can see the agent tried a DELETE it wasn't allowed, on whose behalf, and with what body. Basically we treat every call like a compromised laptop: don't assume it behaves, scope the credential, and gate the risky actions behind a second party. Would love to hear more about your setup.",
+      "at": "2026-10-21T21:08:21.000Z",
+      "url": "https://news.ycombinator.com/item?id=50187650"
+    },
+    {
+      "author": "yaoke259",
+      "text": "what's the advantage of a tool like this compared to existing mature tools like infisical?",
+      "at": "2026-10-21T22:36:58.000Z",
+      "url": "https://news.ycombinator.com/item?id=50188659"
+    },
+    {
+      "author": "simfinii",
+      "text": "Great question! If you are looking to just store secrets you can just use infisical. The real value of alter comes in when you want to give your agents access to end users credentials. When agents act on behalf of end user as a developer you have to manage multiple credentials and more importantly manage the mapping relationship between end user identity and the credentials. Also, as agents take actions the problem of non deterministic actions become more pronounced. With alters policy guardrails any chance of actions taking negative actions is mitigated. Lastly, the full compliance trails of what the agent has done ends up being quite valuble especially as agents take more autonomus actions!",
+      "at": "2026-10-22T01:25:32.000Z",
+      "url": "https://news.ycombinator.com/item?id=50189951"
+    },
+    {
+      "author": "jeswin",
+      "text": "This might seem like an aggressive question. But it's one to be asked of  products dealing with auth. For a security-centric product, how would I trust your fully vibe-coded product if I can't see the source code?",
+      "at": "2026-10-22T03:14:06.000Z",
+      "url": "https://news.ycombinator.com/item?id=50190726"
+    },
+    {
+      "author": "simfinii",
+      "text": "Hey! Fair question. We are currently in the process being fully SOC2 compliant and have gotten pen tested twice from two different companies and have found no issues. You can explore the full extent of our security process and pen test results here : trust.alterauth.com Separately would say it is a bad assumption to make that a product is vibe coded without trying it out. As mentioned in the post we adopted a lot of security processes as a part of our SDLC including consistent scans for supply chain attacks, and static code scanners (SAST). We also do a pen test at a yearly cadence",
+      "at": "2026-10-22T03:37:50.000Z",
+      "url": "https://news.ycombinator.com/item?id=50190911"
+    },
+    {
+      "author": "jeswin",
+      "text": "> Separately would say it is a bad assumption to make that a product is vibe coded without trying it out. You've put it behind a very typical AI-generated UI; like the many that come up every day. In your case, it's an auth product and it matters more. Besides, It's difficult to try your product without handing you the keys to the kingdom. > We are currently in the process being fully SOC2 compliant You're getting a Type I attestation first, I presume? That is of limited value in itself, and is mostly about getting to Type II. If you already have Type I complted, you could mention that on the website. \"Regulated industries\" have long sales cycles and evaluations, and you'll find it difficult to start those conversations without a more reassuring website.",
+      "at": "2026-10-22T04:20:41.000Z",
+      "url": "https://news.ycombinator.com/item?id=50191132"
+    },
+    {
+      "author": "ybathaee",
+      "text": "Dumb",
+      "at": "2026-10-22T07:26:12.000Z",
+      "url": "https://news.ycombinator.com/item?id=50192292"
     }
   ],
   "comments_complete": true

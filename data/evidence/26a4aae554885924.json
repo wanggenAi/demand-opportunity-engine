@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50155647",
-  "collected_at": "2026-10-21T07:34:56.016842+00:00",
+  "collected_at": "2026-10-22T07:31:32.564113+00:00",
   "source": {
     "author": "zoozla",
     "children": [
@@ -141,6 +141,21 @@
         "title": null,
         "type": "comment",
         "url": null
+      },
+      {
+        "author": "ronpotok",
+        "children": [],
+        "created_at": "2026-10-21T17:54:46.000Z",
+        "created_at_i": 1792605286,
+        "id": 50184975,
+        "options": [],
+        "parent_id": 50155647,
+        "points": null,
+        "story_id": 50155647,
+        "text": "Making phoneme models for children is difficult (or at least was a couple of years ago). Most speech recognition models are word recognition models, not sound recognition. I built some of the best ones a couple of years ago in my company, Kid Smart AI. Unfortunately I sold that company last year to a large edtech. Hopefully someone else will pick up this use case soon.",
+        "title": null,
+        "type": "comment",
+        "url": null
       }
     ],
     "created_at": "2026-10-19T17:58:54.000Z",
@@ -148,7 +163,7 @@
     "id": 50155647,
     "options": [],
     "parent_id": null,
-    "points": 22,
+    "points": 23,
     "story_id": 50155647,
     "text": "My kid is 6 y&#x2F;o and she is learning to read. She&#x27;s moved through the basic phonics with Teach Your Monster to Read but was struggling with how repetitive it was. I wanted to give her some stories to read, but she still needed help sounding words out - and I wanted her to have the experience of sitting and reading by herself.<p>So I built this book reader app to allow her to click on the words, sound out the phonemes, and read by herself.<p>My 12 year old son wrote the first story, there&#x27;s a cliffhanger at the end and he&#x27;s working on the next section.<p>We&#x27;re going to release more chapters and more stories in the near future.<p>And there&#x27;s one other thing -<p>The reader has an MCP connection, so you can connect your Claude or ChatGPT or Grok, give them a PDF of a book you like (or even a set of scans done quickly with a phone camera) and have them import your favorite books into the app (private to your account, for your own kid, if you own the book of course).<p>The reader is free to use on its website and open source if you want to tinker and create your own version.<p>The included stories are under Creative Commons.",
     "title": "Show HN: Open-source early-reading reader with phonics help",
@@ -209,6 +224,12 @@
       "text": "Agreed, I was excited about the prospect of this but it seems rushed. It's got potential but I wouldn't show it to my child in this state. A language selector would be useful there as it's confusing for me (living in UK).",
       "at": "2026-10-20T08:56:19.000Z",
       "url": "https://news.ycombinator.com/item?id=50163177"
+    },
+    {
+      "author": "ronpotok",
+      "text": "Making phoneme models for children is difficult (or at least was a couple of years ago). Most speech recognition models are word recognition models, not sound recognition. I built some of the best ones a couple of years ago in my company, Kid Smart AI. Unfortunately I sold that company last year to a large edtech. Hopefully someone else will pick up this use case soon.",
+      "at": "2026-10-21T17:54:46.000Z",
+      "url": "https://news.ycombinator.com/item?id=50184975"
     }
   ],
   "comments_complete": true

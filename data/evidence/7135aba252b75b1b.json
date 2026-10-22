@@ -1,0 +1,1091 @@
+{
+  "source_url": "https://community.shopify.com/t/701808.json",
+  "collected_at": "2026-10-22T07:31:32.564113+00:00",
+  "source": {
+    "post_stream": {
+      "posts": [
+        {
+          "id": 1919774,
+          "username": "XpressCS",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/x/d78d45/{size}.png",
+          "created_at": "2026-10-21T21:32:13.731Z",
+          "cooked": "<p>Hi,</p>\n<p>Is there a Shopify-compatible app that allows my customers to sign up for re-stock notifications, and allows us to send out re-stock email notifications to my customers, but only based on available inventory? I.E. if I add 8 items back to stock then the first 8 customers on the notify list get emails?</p>",
+          "post_number": 1,
+          "post_type": 1,
+          "posts_count": 3,
+          "updated_at": "2026-10-21T21:32:13.731Z",
+          "reply_count": 0,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 3,
+          "reads": 12,
+          "readers_count": 11,
+          "score": 17.4,
+          "yours": false,
+          "topic_id": 701808,
+          "topic_slug": "delay-in-stock-emails-based-on-inventory",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": null,
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1647675,
+          "hidden": false,
+          "trust_level": 0,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/delay-in-stock-emails-based-on-inventory/701808/1",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "calendar_details": [],
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null,
+          "can_vote": false
+        },
+        {
+          "id": 1919814,
+          "username": "Shadab_dev",
+          "avatar_template": "/user_avatar/community.shopify.com/shadab_dev/{size}/372863_2.png",
+          "created_at": "2026-10-22T02:08:43.470Z",
+          "cooked": "<p>This is a more detailed one. But i have used Back In Stock alert, notify me app. This adds a notify me button on the pdp so users add their email to sign up. Once you restock or add inventory an email automatically gets send.</p>\n<p>I.E. if I add 8 items back to stock then the first 8 customers on the notify list get emails? I cannot confirm of this specific behaviour. You can reach out to chat support. Support is great.</p>",
+          "post_number": 2,
+          "post_type": 1,
+          "posts_count": 3,
+          "updated_at": "2026-10-22T02:08:43.470Z",
+          "reply_count": 0,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 7,
+          "readers_count": 6,
+          "score": 1.4,
+          "yours": false,
+          "topic_id": 701808,
+          "topic_slug": "delay-in-stock-emails-based-on-inventory",
+          "primary_group_name": "shopifypartner",
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": "",
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1338735,
+          "hidden": false,
+          "trust_level": 2,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/delay-in-stock-emails-based-on-inventory/701808/2",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        },
+        {
+          "id": 1919870,
+          "username": "Lauren_Scott",
+          "avatar_template": "/user_avatar/community.shopify.com/lauren_scott/{size}/417640_2.png",
+          "created_at": "2026-10-22T06:37:48.475Z",
+          "cooked": "<p>Most restock notification tools send to every subscriber for a variant when it comes back in stock, so the “first 8 only” behavior is the part to verify before you buy. Ask the vendor the exact question: does a restock send fire once per variant, and can the number of emails be limited to the quantity added? Get the answer in writing, since “support is great” doesn’t tell you whether it’s a setting or a custom build.</p>\n<p>If the answer is no, you have two practical options. The simple one is to turn off automatic restock emails, export the signup list with timestamps, and email the first N people yourself when you restock.</p>\n<p>The other option is a small custom app. Subscribe to the inventory level update webhook and compare each new quantity with the previous one. Only a positive change counts as a restock, because every sale also fires that webhook. When the delta is positive, email the oldest N signups and mark them as notified.</p>",
+          "post_number": 3,
+          "post_type": 1,
+          "posts_count": 3,
+          "updated_at": "2026-10-22T06:37:48.475Z",
+          "reply_count": 0,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 2,
+          "readers_count": 1,
+          "score": 0.4,
+          "yours": false,
+          "topic_id": 701808,
+          "topic_slug": "delay-in-stock-emails-based-on-inventory",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": null,
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1646717,
+          "hidden": false,
+          "trust_level": 1,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/delay-in-stock-emails-based-on-inventory/701808/3",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        }
+      ],
+      "stream": [
+        1919774,
+        1919814,
+        1919870
+      ]
+    },
+    "timeline_lookup": [
+      [
+        1,
+        0
+      ]
+    ],
+    "user_badges": {
+      "users": {
+        "1338735": {
+          "id": 1338735,
+          "badge_ids": [
+            114,
+            120,
+            127
+          ]
+        },
+        "1646717": {
+          "id": 1646717,
+          "badge_ids": [
+            108
+          ]
+        }
+      },
+      "badges": {
+        "131": {
+          "id": 131,
+          "name": "1000 Accepted Solutions",
+          "slug": "1000-accepted-solutions",
+          "description": "You're a member of the 1000 accepted solutions club!",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 1
+        },
+        "110": {
+          "id": 110,
+          "name": "50 Posts",
+          "slug": "50-posts",
+          "description": "Way to go! You've posted 50 times in the Shopify Community",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 3
+        },
+        "19": {
+          "id": 19,
+          "name": "Good Topic",
+          "slug": "good-topic",
+          "description": "Received 25 likes on a topic",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 3,
+          "badge_type_id": 2
+        },
+        "7": {
+          "id": 7,
+          "name": "Good Post",
+          "slug": "good-reply",
+          "description": "Received 25 likes on a reply",
+          "icon": "reply",
+          "image_url": null,
+          "badge_grouping_id": 3,
+          "badge_type_id": 2
+        },
+        "114": {
+          "id": 114,
+          "name": "1000 Posts",
+          "slug": "1000-posts",
+          "description": "You're a member of the 1000 posts club!",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 1
+        },
+        "32": {
+          "id": 32,
+          "name": "Gives Back",
+          "slug": "gives-back",
+          "description": "Has 100 liked posts and gave 100 likes",
+          "icon": "heart",
+          "image_url": null,
+          "badge_grouping_id": 2,
+          "badge_type_id": 2
+        },
+        "111": {
+          "id": 111,
+          "name": "100 Posts",
+          "slug": "100-posts",
+          "description": "100 posts! Thanks for being an engaged member of the Shopify Community",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 2
+        },
+        "113": {
+          "id": 113,
+          "name": "500 Posts",
+          "slug": "500-posts",
+          "description": "Congratulations on reaching the 500 post milestone!",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 1
+        },
+        "46": {
+          "id": 46,
+          "name": "Aficionado",
+          "slug": "aficionado",
+          "description": "Visited 100 consecutive days",
+          "icon": "far-eye",
+          "image_url": null,
+          "badge_grouping_id": 2,
+          "badge_type_id": 2
+        },
+        "112": {
+          "id": 112,
+          "name": "250 Posts",
+          "slug": "250-posts",
+          "description": "250 posts! Thanks for being an engaged member of the Shopify Community",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 2
+        },
+        "109": {
+          "id": 109,
+          "name": "25 Posts",
+          "slug": "25-posts",
+          "description": "With 25 posts submitted, you help keep the conversations going",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 3
+        },
+        "122": {
+          "id": 122,
+          "name": "1000 Likes",
+          "slug": "1000-likes",
+          "description": "You're a member of the 1000 likes club!",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 1
+        },
+        "129": {
+          "id": 129,
+          "name": "250 Accepted Solutions",
+          "slug": "250-accepted-solutions",
+          "description": "250 accepted solutions! Thank you for being so helpful",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 2
+        },
+        "121": {
+          "id": 121,
+          "name": "500 Likes",
+          "slug": "500-likes",
+          "description": "Congratulations on obtaining 500 likes!",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 1
+        },
+        "135": {
+          "id": 135,
+          "name": "Power User 2024",
+          "slug": "power-user-2024",
+          "description": "Most participating users within 2024",
+          "icon": "ranking-star",
+          "image_url": null,
+          "badge_grouping_id": 6,
+          "badge_type_id": 3
+        },
+        "126": {
+          "id": 126,
+          "name": "50 Accepted Solutions",
+          "slug": "50-accepted-solutions",
+          "description": "Your knowledge has resulted in 50 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 3
+        },
+        "3": {
+          "id": 3,
+          "name": "Regular",
+          "slug": "regular",
+          "description": "Awarded at Trust Level 3. Recognized for regular contributions as a trusted user.",
+          "icon": "user",
+          "image_url": null,
+          "badge_grouping_id": 4,
+          "badge_type_id": 2
+        },
+        "125": {
+          "id": 125,
+          "name": "25 Accepted Solutions",
+          "slug": "25-accepted-solutions",
+          "description": "Your guidance has resulted in 25 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 3
+        },
+        "119": {
+          "id": 119,
+          "name": "100 Likes",
+          "slug": "100-likes",
+          "description": "Your contributions have earned you 100 likes",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 2
+        },
+        "120": {
+          "id": 120,
+          "name": "250 Likes",
+          "slug": "250-likes",
+          "description": "Your expertise has earned you 250 likes!",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 2
+        },
+        "127": {
+          "id": 127,
+          "name": "75 Accepted Solutions",
+          "slug": "75-accepted-solutions",
+          "description": "Your expertise has resulted in 75 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 2
+        },
+        "130": {
+          "id": 130,
+          "name": "500 Accepted Solutions",
+          "slug": "500-accepted-solutions",
+          "description": "Your valuable contributions have resulted in 500 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 1
+        },
+        "118": {
+          "id": 118,
+          "name": "50 Likes",
+          "slug": "50-likes",
+          "description": "Your contributions have earned you 50 likes",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 3
+        },
+        "116": {
+          "id": 116,
+          "name": "10 Likes",
+          "slug": "10-likes",
+          "description": "You've received 10 likes",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 3
+        },
+        "128": {
+          "id": 128,
+          "name": "100 Accepted Solutions",
+          "slug": "100-accepted-solutions",
+          "description": "Congratulations! You've provided 100 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 2
+        },
+        "108": {
+          "id": 108,
+          "name": "10 Posts",
+          "slug": "10-posts",
+          "description": "Thanks for being an active member and posting 10 times",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 3
+        },
+        "117": {
+          "id": 117,
+          "name": "25 Likes",
+          "slug": "25-likes",
+          "description": "With 25 likes, your posts are popular",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 3
+        },
+        "124": {
+          "id": 124,
+          "name": "10 Accepted Solutions",
+          "slug": "10-accepted-solutions",
+          "description": "10 of your replies have been accepted as solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 3
+        }
+      }
+    },
+    "suggested_topics": [],
+    "tags": [
+      {
+        "id": 4775,
+        "name": "shopify-apps",
+        "slug": "shopify-apps"
+      }
+    ],
+    "tags_descriptions": {},
+    "fancy_title": "Delay in-stock email&rsquo;s based on inventory?",
+    "id": 701808,
+    "title": "Delay in-stock email's based on inventory?",
+    "posts_count": 3,
+    "created_at": "2026-10-21T21:32:13.494Z",
+    "views": 42,
+    "reply_count": 0,
+    "like_count": 0,
+    "last_posted_at": "2026-10-22T06:37:48.475Z",
+    "visible": true,
+    "closed": false,
+    "archived": false,
+    "has_summary": false,
+    "archetype": "regular",
+    "slug": "delay-in-stock-emails-based-on-inventory",
+    "category_id": 186,
+    "word_count": 310,
+    "deleted_at": null,
+    "user_id": 1647675,
+    "featured_link": null,
+    "pinned_globally": false,
+    "pinned_at": null,
+    "pinned_until": null,
+    "image_url": null,
+    "slow_mode_seconds": 0,
+    "draft": null,
+    "draft_key": "topic_701808",
+    "draft_sequence": null,
+    "unpinned": null,
+    "pinned": false,
+    "current_post_number": 1,
+    "highest_post_number": 3,
+    "deleted_by": null,
+    "actions_summary": [
+      {
+        "id": 8,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 1002,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 4,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 7,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 1001,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 10,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      }
+    ],
+    "chunk_size": 20,
+    "bookmarked": false,
+    "topic_timer": {
+      "id": 1929,
+      "execute_at": "2027-04-20T06:37:48.475Z",
+      "duration_minutes": 259200,
+      "based_on_last_post": true,
+      "status_type": "close",
+      "category_id": null
+    },
+    "message_bus_last_id": 41,
+    "participant_count": 3,
+    "show_read_indicator": false,
+    "thumbnails": null,
+    "slow_mode_enabled_until": null,
+    "related_topics": [
+      {
+        "fancy_title": "How to notify a customer when an item is in stock?",
+        "id": 1585,
+        "title": "How to notify a customer when an item is in stock?",
+        "slug": "how-to-notify-a-customer-when-an-item-is-in-stock",
+        "posts_count": 13,
+        "reply_count": 6,
+        "highest_post_number": 0,
+        "image_url": null,
+        "created_at": "2018-10-25T05:43:34.000Z",
+        "last_posted_at": "2024-04-02T18:13:07.000Z",
+        "bumped": true,
+        "bumped_at": "2024-04-02T18:13:07.000Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Shopify currently has the option to show a form that will let the shop owner know that a customer wants to be notified when an out of stock item is in stock. \nCan this be done within the shopify code or would an app need&hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [],
+        "tags_descriptions": {},
+        "like_count": 8,
+        "views": 697,
+        "category_id": 186,
+        "featured_link": null,
+        "op_like_count": 1,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 50695,
+              "username": "Sam69",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/s/7ab992/{size}.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 828953,
+              "username": "auto-discount",
+              "avatar_template": "/user_avatar/community.shopify.com/auto-discount/{size}/206878_2.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 754601,
+              "username": "UniquelyC",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/u/a9a28c/{size}.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": 803834,
+              "username": "AprilW",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/a/3e96dc/{size}.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 1211795,
+              "username": "JesseLu",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/j/5f8ce5/{size}.png",
+              "primary_group_name": "shopifystaff",
+              "trust_level": 1
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "Are there any back in stock alert apps that integrate seamlessly with shopify email?",
+        "id": 316047,
+        "title": "Are there any back in stock alert apps that integrate seamlessly with shopify email?",
+        "slug": "are-there-any-back-in-stock-alert-apps-that-integrate-seamlessly-with-shopify-email",
+        "posts_count": 3,
+        "reply_count": 0,
+        "highest_post_number": 3,
+        "image_url": null,
+        "created_at": "2024-04-20T02:24:15.000Z",
+        "last_posted_at": "2024-08-26T17:18:40.000Z",
+        "bumped": true,
+        "bumped_at": "2024-08-26T17:18:40.000Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Hi! \nI am a running a small luxury garment business and I’m about to launch my business. Since it’s the first launch, the production is small and limited quantity. I anticipate that I will need some form to alert custome&hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [
+          {
+            "id": 4775,
+            "name": "shopify-apps",
+            "slug": "shopify-apps"
+          },
+          {
+            "id": 2135,
+            "name": "third-party-apps",
+            "slug": "third-party-apps"
+          },
+          {
+            "id": 3823,
+            "name": "shopify-scripts",
+            "slug": "shopify-scripts"
+          }
+        ],
+        "tags_descriptions": {},
+        "like_count": 3,
+        "views": 369,
+        "category_id": 186,
+        "featured_link": null,
+        "op_like_count": 1,
+        "has_accepted_answer": true,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 1288437,
+              "username": "masha3",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/m/9de053/{size}.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster, Accepted Answer",
+            "user": {
+              "id": 868594,
+              "username": "PageFly-Kate",
+              "avatar_template": "/user_avatar/community.shopify.com/pagefly-kate/{size}/139064_2.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 579169,
+              "username": "Sandy-STOQ",
+              "avatar_template": "/user_avatar/community.shopify.com/sandy-stoq/{size}/86109_2.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 1
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "Find an App for Notify Me When Back In Stock",
+        "id": 195610,
+        "title": "Find an App for Notify Me When Back In Stock",
+        "slug": "find-an-app-for-notify-me-when-back-in-stock",
+        "posts_count": 3,
+        "reply_count": 0,
+        "highest_post_number": 3,
+        "image_url": null,
+        "created_at": "2023-02-28T07:17:33.000Z",
+        "last_posted_at": "2026-08-20T08:36:43.019Z",
+        "bumped": true,
+        "bumped_at": "2026-08-20T08:36:43.019Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Hi There, \nHope you are doing good !! \nhave a query which is When a product is out of stock we would like to be able to capture a users email address so that when the product comes back into stock they are able to send t&hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [
+          {
+            "id": 2135,
+            "name": "third-party-apps",
+            "slug": "third-party-apps"
+          },
+          {
+            "id": 2061,
+            "name": "plus-admin",
+            "slug": "plus-admin"
+          }
+        ],
+        "tags_descriptions": {},
+        "like_count": 0,
+        "views": 126,
+        "category_id": 88,
+        "featured_link": null,
+        "op_like_count": 0,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 926758,
+              "username": "ayush-wtc",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/a/43a26b/{size}.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": 238743,
+              "username": "Blair",
+              "avatar_template": "/user_avatar/community.shopify.com/blair/{size}/35201_2.png",
+              "flair_name": "shopifystaff",
+              "flair_group_id": 51,
+              "primary_group_name": "shopifystaff",
+              "trust_level": 4
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 1573055,
+              "username": "Emma_collins",
+              "avatar_template": "/user_avatar/community.shopify.com/emma_collins/{size}/408864_2.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "How can I add a &lsquo;back in stock&rsquo; notification feature on my product page?",
+        "id": 140288,
+        "title": "How can I add a 'back in stock' notification feature on my product page?",
+        "slug": "how-can-i-add-a-back-in-stock-notification-feature-on-my-product-page",
+        "posts_count": 4,
+        "reply_count": 0,
+        "highest_post_number": 0,
+        "image_url": null,
+        "created_at": "2022-08-04T05:03:29.000Z",
+        "last_posted_at": "2025-06-22T09:31:04.000Z",
+        "bumped": true,
+        "bumped_at": "2025-06-22T09:31:04.000Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Hello everyone! \nHave a great day. \nLet me ask one question. \nI wanna add Back in stock notification feature in products page of my Shopify Website. I want to customers to fill their email addresses and click notify butt&hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [
+          {
+            "id": 4021,
+            "name": "troubleshooting",
+            "slug": "troubleshooting"
+          },
+          {
+            "id": 4770,
+            "name": "shop-performance",
+            "slug": "shop-performance"
+          }
+        ],
+        "tags_descriptions": {},
+        "like_count": 1,
+        "views": 430,
+        "category_id": 95,
+        "featured_link": null,
+        "op_like_count": 0,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 754669,
+              "username": "Wadmin",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/w/6de8d8/{size}.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 485907,
+              "username": "Daniel_41",
+              "avatar_template": "/user_avatar/community.shopify.com/daniel_41/{size}/92492_2.png",
+              "flair_name": "shopifyretired",
+              "flair_group_id": 56,
+              "primary_group_name": "shopifyretired",
+              "trust_level": 2
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": 579169,
+              "username": "Sandy-STOQ",
+              "avatar_template": "/user_avatar/community.shopify.com/sandy-stoq/{size}/86109_2.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 1573055,
+              "username": "Emma_collins",
+              "avatar_template": "/user_avatar/community.shopify.com/emma_collins/{size}/408864_2.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "How can I notify the customers if their favorite product is back in stock?",
+        "id": 31283,
+        "title": "How can I notify the customers if their favorite product is back in stock?",
+        "slug": "how-can-i-notify-the-customers-if-their-favorite-product-is-back-in-stock",
+        "posts_count": 2,
+        "reply_count": 0,
+        "highest_post_number": 2,
+        "image_url": null,
+        "created_at": "2021-01-11T09:52:42.000Z",
+        "last_posted_at": "2021-03-10T13:40:30.000Z",
+        "bumped": true,
+        "bumped_at": "2021-03-10T13:40:30.000Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Here are some Shopify Apps that can help to get your customers notified: \nQuick Stock Notifier Shopify App by HubifyApps - The Quick Stock Notifier App allows you to alert customers via email or SMS for product restocks.&hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [],
+        "tags_descriptions": {},
+        "like_count": 0,
+        "views": 101,
+        "category_id": 186,
+        "featured_link": null,
+        "op_like_count": 0,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 367423,
+              "username": "Alex291",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/a/45deac/{size}.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 326016,
+              "username": "chandrasekhar",
+              "avatar_template": "/user_avatar/community.shopify.com/chandrasekhar/{size}/263373_2.png",
+              "primary_group_name": "merchant",
+              "trust_level": 2
+            }
+          }
+        ]
+      }
+    ],
+    "summarizable": true,
+    "has_cached_summary": true,
+    "ai_summary": {
+      "id": 1849163,
+      "summarized_text": "The request is for a Shopify restock-notification app that limits alerts to the number of units added—for example, notifying only the first eight subscribers when eight items return to stock. A participant recommends Back In Stock Alert / Notify Me, which adds a signup button and automatically sends emails when inventory is replenished, but cannot confirm whether it supports quantity-based limits. Another advises verifying this exact behavior with the vendor, including whether alerts can be capped by the restock quantity, and getting confirmation in writing.\n\nIf the app does not offer this feature, two alternatives were suggested: disable automatic alerts and manually email the earliest signups after exporting the list, or build a custom app. The custom approach would track Shopify inventory-update webhooks, detect positive inventory changes, and notify the oldest subscribers up to the increase, while avoiding treating sales-related inventory decreases as restocks. No app capability or final solution has been confirmed, so the question remains open.",
+      "algorithm": "gpt-6-luna",
+      "outdated": false,
+      "created_at": "2026-10-21T21:37:21.000Z",
+      "updated_at": "2026-10-22T06:38:37.023Z"
+    },
+    "is_category_expert_question": null,
+    "has_livestream": null,
+    "valid_reactions": [
+      "heart",
+      "+1",
+      "laughing",
+      "open_mouth",
+      "clap",
+      "confetti_ball",
+      "hugs"
+    ],
+    "has_accepted_answer": false,
+    "shared_issue_count": 1,
+    "can_create_shared_issue": false,
+    "shared_issue_visible": true,
+    "can_vote": false,
+    "vote_count": 0,
+    "user_voted": false,
+    "discourse_zendesk_plugin_zendesk_id": null,
+    "discourse_zendesk_plugin_zendesk_url": "https://your-url.zendesk.com/agent/tickets/",
+    "details": {
+      "can_edit": false,
+      "notification_level": 1,
+      "participants": [
+        {
+          "id": 1647675,
+          "username": "XpressCS",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/x/d78d45/{size}.png",
+          "post_count": 1,
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 0
+        },
+        {
+          "id": 1338735,
+          "username": "Shadab_dev",
+          "avatar_template": "/user_avatar/community.shopify.com/shadab_dev/{size}/372863_2.png",
+          "post_count": 1,
+          "primary_group_name": "shopifypartner",
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 2
+        },
+        {
+          "id": 1646717,
+          "username": "Lauren_Scott",
+          "avatar_template": "/user_avatar/community.shopify.com/lauren_scott/{size}/417640_2.png",
+          "post_count": 1,
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 1
+        }
+      ],
+      "created_by": {
+        "id": 1647675,
+        "username": "XpressCS",
+        "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/x/d78d45/{size}.png"
+      },
+      "last_poster": {
+        "id": 1646717,
+        "username": "Lauren_Scott",
+        "avatar_template": "/user_avatar/community.shopify.com/lauren_scott/{size}/417640_2.png"
+      }
+    },
+    "bookmarks": []
+  }
+}

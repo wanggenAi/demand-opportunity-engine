@@ -1,0 +1,92 @@
+{
+  "source_api_url": "https://api.github.com/repos/myvars/supplymars/issues/106",
+  "collected_at": "2026-10-22T07:31:32.564113+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/myvars/supplymars/issues/106",
+    "repository_url": "https://api.github.com/repos/myvars/supplymars",
+    "labels_url": "https://api.github.com/repos/myvars/supplymars/issues/106/labels{/name}",
+    "comments_url": "https://api.github.com/repos/myvars/supplymars/issues/106/comments",
+    "events_url": "https://api.github.com/repos/myvars/supplymars/issues/106/events",
+    "html_url": "https://github.com/myvars/supplymars/issues/106",
+    "id": 5969494496,
+    "node_id": "I_kwDOO3HiYc8AAAABY89B4A",
+    "number": 106,
+    "title": "Simulated stock and cost changes don't update products; repricing can throw",
+    "user": {
+      "login": "myvars",
+      "id": 2104639,
+      "node_id": "MDQ6VXNlcjIxMDQ2Mzk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2104639?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/myvars",
+      "html_url": "https://github.com/myvars",
+      "followers_url": "https://api.github.com/users/myvars/followers",
+      "following_url": "https://api.github.com/users/myvars/following{/other_user}",
+      "gists_url": "https://api.github.com/users/myvars/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/myvars/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/myvars/subscriptions",
+      "organizations_url": "https://api.github.com/users/myvars/orgs",
+      "repos_url": "https://api.github.com/users/myvars/repos",
+      "events_url": "https://api.github.com/users/myvars/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/myvars/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8738650941,
+        "node_id": "LA_kwDOO3HiYc8AAAACCN07PQ",
+        "url": "https://api.github.com/repos/myvars/supplymars/labels/bug",
+        "name": "bug",
+        "color": "d73a4a",
+        "default": true,
+        "description": "Something isn't working",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2026-10-21T22:23:08Z",
+    "updated_at": "2026-10-21T22:23:08Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "Found during the docs review (#96).\n\n**1. Simulated supplier stock and cost changes never update products.**\n- `app:update-supplier-stock` and `app:reset-supplier-stock` call `SupplierProduct::updateStock()` / `updateCost()`. These raise `SupplierProductStockWasChangedEvent`, and only the audit log listens to it (`SupplierStockChangeLogger`).\n- So a product's stored stock, cost, active source and price stay as they were until a supplier product is edited in the UI with a changed value.\n- Allocation reads supplier stock live, so sourcing works. But:\n  - the catalog shows stale stock and prices;\n  - a product whose active source has run out keeps showing it;\n  - a cheaper source that came back into stock isn't picked up.\n- It has been like this since the DDD move (`edcfa149`).\n\n**2. `Product::recalculatePrice()` throws, and nothing catches it.**\n- It throws \"Cost must be greater than 0.\" when the cost is 0.00, the default for a product that has never been sourced.\n- It throws \"Sell price must be greater than cost.\" when the effective markup is 0 under `DEFAULT`/`NONE`.\n- A product edit, or a category or VAT change that reaches such a product, then fails with an exception instead of a message. This was confirmed with the real `MarkupCalculator`, not over HTTP.\n\n### To decide\n- Should a stock or cost change reprice the product and recalculate its active source (a Pricing listener on `SupplierProductStockWasChangedEvent`)?\n- What should pricing do for a product with no cost or a zero markup: skip, keep the last price, or refuse the change with a message?\n\n### Done when\n- Tests cover a stock change that empties the active source, a cost change on the active source, and a category change reaching a zero-cost product.\n- `Docs/04-sourcing-and-pricing.md` (Stock, Gotchas) is updated.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/myvars/supplymars/issues/106/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/myvars/supplymars/issues/106/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [],
+  "comments_complete": true
+}

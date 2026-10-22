@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50154029",
-  "collected_at": "2026-10-21T07:34:56.016842+00:00",
+  "collected_at": "2026-10-22T07:31:32.564113+00:00",
   "source": {
     "author": "skull8888888",
     "children": [
@@ -156,7 +156,23 @@
                 "children": [
                   {
                     "author": "skull8888888",
-                    "children": [],
+                    "children": [
+                      {
+                        "author": "BoorishBears",
+                        "children": [],
+                        "created_at": "2026-10-21T09:25:25.000Z",
+                        "created_at_i": 1792574725,
+                        "id": 50178013,
+                        "options": [],
+                        "parent_id": 50157775,
+                        "points": null,
+                        "story_id": 50154029,
+                        "text": "Have you tried SFT to guide it early to more efficient trajectories? I know it hurts generalization and I&#x27;ve seen folks claim that it hurts final performance, but for my limited budget I literally will not do rubric based RL without SFT to shape the thinking to the rubric anymore.<p>It&#x27;s so much more compute efficient for my goals, though I do deal with subjective preference which makes exploration during training much harder",
+                        "title": null,
+                        "type": "comment",
+                        "url": null
+                      }
+                    ],
                     "created_at": "2026-10-19T20:41:08.000Z",
                     "created_at_i": 1792442468,
                     "id": 50157775,
@@ -429,7 +445,7 @@
     "id": 50154029,
     "options": [],
     "parent_id": null,
-    "points": 58,
+    "points": 59,
     "story_id": 50154029,
     "text": "Hi HN, we’re Robert and Din from Laminar (<a href=\"https:&#x2F;&#x2F;laminar.sh\">https:&#x2F;&#x2F;laminar.sh</a>). We’ve been building open-source observability for AI agents since 2024. Recently, we released flow-1, a model trained with RL to find errors in agent traces. On our benchmark (<a href=\"https:&#x2F;&#x2F;laminar.sh&#x2F;blog&#x2F;flow-1\">https:&#x2F;&#x2F;laminar.sh&#x2F;blog&#x2F;flow-1</a>), it matches GPT-6-sol in detection quality while being 23x cheaper. This makes it affordable to analyze every production agent trace, without sampling.<p>Here’s a one-minute walkthrough: <a href=\"https:&#x2F;&#x2F;youtu.be&#x2F;KJa3h6ZJNLQ\" rel=\"nofollow\">https:&#x2F;&#x2F;youtu.be&#x2F;KJa3h6ZJNLQ</a><p>We also put together a post with example traces and analyses from flow-1 and other models: <a href=\"https:&#x2F;&#x2F;laminar.sh&#x2F;blog&#x2F;flow-1-in-action\">https:&#x2F;&#x2F;laminar.sh&#x2F;blog&#x2F;flow-1-in-action</a><p>Agent observability is crowded, so instead of a bullet list of how Laminar differs from X, we’ll explain how we’re solving agent observability from first principles.<p>Agents now run for many steps and fail implicitly. An agent can click the wrong button or cite the wrong document while every call completes successfully. These errors are the most useful ones to catch and understand. To find them, you need to understand what the agent was trying to do and inspect its LLM calls and tool results. Simply looking at the final agent output is not enough.<p>Collecting traces alone doesn’t solve this. A lot of agent observability platforms are still data collectors at their core. You can end up paying to store traces that nobody has time to read or extract value from.<p>Using another LLM to inspect traces is THE solution, but capable models are expensive at scale and cheaper ones often miss errors or flag unrelated things.<p>So we built our model to solve exactly this problem. We finetuned a small OSS model and then post trained it with RL on thousands of synthetic investigations of realistic agent workflows in software, legal, customer support, etc. We got a model that is both good at agent trace analysis and very cheap to run.<p>flow-1 runs inside a harness we call Signals. It acts as a coding agent, treating an agent trace like a repo, with each span (an LLM call, tool call, etc.) as a file. It starts from a compressed string representation of a full agent trace and a user prompt, then greps across spans and reads the relevant ones in full.<p>The beauty of Signals is that it can respond to a general prompt. You can ask it to identify user frustration, check whether your browser agent completed a checkout, and so on. It’s not limited to raw error detection. It returns findings as JSON in a schema users can freely define. We call these signal events.<p>Once you’re analyzing every trace, you also have too many individual events to read. That’s why we automatically group similar signal events into clusters. You can see recurring problems and how often they happen, then drill into individual events and the traces behind them.<p>You can use traces from a cluster to build an eval dataset for that type of failure. You can then use your favourite coding agent to hillclimb on those evals and check that the fix works across these cases before shipping it to prod.<p>Trace → analyze → catch errors and form clusters → fix → release. Making this loop easy is why we built Laminar.<p>We’ve put the same thought into the rest of Laminar. Our blog (<a href=\"https:&#x2F;&#x2F;laminar.sh&#x2F;blog\">https:&#x2F;&#x2F;laminar.sh&#x2F;blog</a>) explains how looking closely at how agents actually work led us to build 20x trace compression, a custom SQL query engine and automatic task extraction.<p>Laminar is Apache 2.0 and self-hostable (<a href=\"https:&#x2F;&#x2F;github.com&#x2F;lmnr-ai&#x2F;lmnr\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;lmnr-ai&#x2F;lmnr</a>). We make money from the managed cloud.<p>We’d love to hear how you track your agents’ performance today. How much do you learn from user feedback versus your own monitoring? And when you fix something, how do you check that it hasn’t introduced a different failure?",
     "title": "Launch HN: Laminar (YC S24) – RL-trained model that finds errors in agent traces",
@@ -514,6 +530,12 @@
       "text": "this is a very valid point. I will expand on RL post train here. I used GSPO because it worked really well for very long prompts (we're dealing with traces analyses so prompts are very very long, and by prompts I mean what goes into LLM call). We RL-ed flow-1 in our harness, which made it very efficient at using tools it had. Our harness as I said in the post is basically coding agent, it has grep, read and couple of other aux tools. I spent a loooot of time and money on figuring out the right RL recipe and especially the reward. It was really hard to find the right balance between exploration and exploitation. Some RL runs are still running, because the prod checkpoint as good as it is, thinks a lot. It produces a lot of thinking tokens, which affects the throughput, especially on the large, complex traces to be analyzed. So the next big challenge for me is to make it efficient thinker - i.e. reduce thinking tokens, without losing quality.",
       "at": "2026-10-19T20:41:08.000Z",
       "url": "https://news.ycombinator.com/item?id=50157775"
+    },
+    {
+      "author": "BoorishBears",
+      "text": "Have you tried SFT to guide it early to more efficient trajectories? I know it hurts generalization and I've seen folks claim that it hurts final performance, but for my limited budget I literally will not do rubric based RL without SFT to shape the thinking to the rubric anymore. It's so much more compute efficient for my goals, though I do deal with subjective preference which makes exploration during training much harder",
+      "at": "2026-10-21T09:25:25.000Z",
+      "url": "https://news.ycombinator.com/item?id=50178013"
     },
     {
       "author": "dmos62",

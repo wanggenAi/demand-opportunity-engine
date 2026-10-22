@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50185265",
+  "collected_at": "2026-10-22T07:31:32.564113+00:00",
+  "source": {
+    "author": "ymattia",
+    "children": [],
+    "created_at": "2026-10-21T18:17:50.000Z",
+    "created_at_i": 1792606670,
+    "id": 50185265,
+    "options": [],
+    "parent_id": null,
+    "points": 2,
+    "story_id": 50185265,
+    "text": "Apple appears to have made its Foundation Models accessible directly from Terminal in macOS 27.<p>The interesting part is how little setup is required:<p>```\nfm respond &quot;Your Question&quot;\n```<p>You can also pipe text into it, request structured JSON output with `--schema`, and expose a local endpoint using `fm serve`.<p>On-device inference reportedly works on M1 Macs with 8GB RAM, with a 4K context window. There&#x27;s also a Private Cloud Compute option for larger requests.<p>For me, the interesting use case isn&#x27;t replacing Claude or ChatGPT. It&#x27;s using a built-in local model for everyday shell automation: extracting information from logs, classifying files, summarizing documents, and generating structured data without API costs.<p>Curious whether anyone here has benchmarked it against Ollama or llama.cpp for these smaller tasks.",
+    "title": "macOS 27 has a built-in, offline LLM you can call from Terminal",
+    "type": "story",
+    "url": null
+  },
+  "comments": [],
+  "comments_complete": true
+}

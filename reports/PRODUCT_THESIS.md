@@ -7,8 +7,8 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## workflow_reliability — UNVALIDATED CLUSTER
 
-- independent_demand_count: 51
-- payment_evidence_count: 7
+- independent_demand_count: 53
+- payment_evidence_count: 8
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community', 'n8n Community']
 - communities: ['Ask/Show HN', 'Commerce operator forum', 'n8n Jobs', 'n8n-io/n8n', 'useagenthq/useagent']
 - repeated_pain: Operators cannot trust workflow execution status; triggers, responses or saved definitions fail.
@@ -20,12 +20,12 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://github.com/n8n-io/n8n/issues/41772
+  - https://community.n8n.io/t/hiring-ai-growth-automation-specialist-remote-potential-growth-partnership/323364
+  - https://github.com/n8n-io/n8n/issues/41626
   - https://github.com/n8n-io/n8n/issues/41604
   - https://github.com/n8n-io/n8n/issues/41591
   - https://github.com/n8n-io/n8n/issues/41588
-  - https://github.com/n8n-io/n8n/issues/41554
-  - https://github.com/n8n-io/n8n/issues/41541
-  - https://github.com/n8n-io/n8n/issues/41487
 
 ## browser_automation — UNVALIDATED CLUSTER
 
@@ -71,10 +71,10 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## supplier_sourcing — UNVALIDATED CLUSTER
 
-- independent_demand_count: 3
+- independent_demand_count: 4
 - payment_evidence_count: 0
 - platforms: ['GitHub', 'Shopify Community']
-- communities: ['Commerce operator forum', 'zack-hum/coffee-intelligence-v1.1']
+- communities: ['Commerce operator forum', 'n8n-io/n8n', 'zack-hum/coffee-intelligence-v1.1']
 - repeated_pain: supplier sourcing
 - current_alternatives: Manual research, spreadsheets and existing service providers.
 - productization_potential: Needs a narrower job-to-be-done and payment evidence.
@@ -84,6 +84,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://github.com/n8n-io/n8n/issues/41635
   - https://community.shopify.com/t/how-often-do-you-sync-supplier-stock-with-your-shopify-store/700544
   - https://github.com/zack-hum/coffee-intelligence-v1.1/issues/11
   - https://community.shopify.com/t/what-questions-do-you-always-ask-potential-suppliers-before-placing-an-order/555921
