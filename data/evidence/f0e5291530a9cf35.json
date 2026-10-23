@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://community.n8n.io/t/319989.json",
-  "collected_at": "2026-10-22T07:31:32.564113+00:00",
+  "collected_at": "2026-10-23T07:28:04.863834+00:00",
   "source": {
     "topic": {
       "post_stream": {
@@ -14,7 +14,7 @@
             "cooked": "<p>Hello everyone,</p>\n<p>I’m currently running n8n locally via Docker Desktop to learn the ropes. I want to build my skills on n8n and would love to collaborate on projects to see how others use the platform and understand their thought process behind the problems they solve.</p>\n<p>Right now, I’m not looking for paid gigs yet; instead, I am looking for hands-on, real-world experience. I would love to team up with someone as an assistant or collaborator. You can hand off the repetitive parts of a project to me like mapping out data, setting up credentials or handling webhooks which frees up your time and in return, I get to see how you architecture the final solution.</p>\n<p>While I’m still learning live server hosting, I can confidently handle local testing, setting up API credentials and building workflows to move data around. I am also comfortable working with webhooks and while I haven’t deployed them in production yet, I regularly use ReqBin to send and test POST requests locally. I also have foundational understanding of the Code node(JavaScript) for simple data manipulation.</p>\n<p>Once a workflow is built on my end, I can easily export the JSON file directly to you. I’m looking forward to connecting with experienced developers and working on some great projects together!! Please drop a comment or send me a DM if you’d like to collaborate.</p>\n<p>Thanks,<br>\nVenacline.</p>",
             "post_number": 1,
             "post_type": 1,
-            "posts_count": 2,
+            "posts_count": 3,
             "updated_at": "2026-10-08T21:37:42.079Z",
             "reply_count": 0,
             "reply_to_post_number": null,
@@ -78,14 +78,14 @@
             "cooked": "<p>Your plan to learn n8n by watching how someone else structures a real workflow, starting with webhooks and credentials, is a sound way to learn it.</p>\n<p>The closest thing I have is a self-hosted n8n workflow for a missed-call text-back. A signed Twilio-style voice webhook hits n8n, which verifies the X-Twilio-Signature, builds the text-back and sends it through a Twilio node. It then logs the miss to a Supabase table. Bad signatures get a 403, and Twilio errors go to a separate error-log branch. It’s test-built on localhost with SMS suppressed, so it isn’t in production.</p>\n<p>The same pattern shows up in a CSV import workflow I built: upload, allow-list the columns, validate, dedupe, then report inserted and skipped rows.</p>\n<p>Since you already test POST requests, I’d start in two steps:<br>\n(1) Move from ReqBin to signed requests, so you see why signature checks and replay protection matter.<br>\n(2) Add an error branch to one of your workflows, so failures get logged instead of vanishing.</p>\n<p>I can walk you through the exported workflow JSON on a live screen-share, node by node, and explain why each piece is where it is.</p>",
             "post_number": 2,
             "post_type": 1,
-            "posts_count": 2,
+            "posts_count": 3,
             "updated_at": "2026-10-13T02:32:16.797Z",
             "reply_count": 0,
             "reply_to_post_number": null,
             "quote_count": 0,
             "incoming_link_count": 0,
-            "reads": 9,
-            "readers_count": 8,
+            "reads": 10,
+            "readers_count": 9,
             "score": 1.8,
             "yours": false,
             "topic_id": 319989,
@@ -131,21 +131,177 @@
             "can_unaccept_answer": false,
             "accepted_answer": false,
             "topic_accepted_answer": null
+          },
+          {
+            "id": 604571,
+            "name": "",
+            "username": "bartv",
+            "avatar_template": "/user_avatar/community.n8n.io/bartv/{size}/156374_2.png",
+            "created_at": "2026-10-22T12:07:10.385Z",
+            "cooked": "<p><img src=\"https://emoji.discourse-cdn.com/twemoji/information_source.png?v=15\" title=\":information_source:\" class=\"emoji\" alt=\":information_source:\" loading=\"lazy\" width=\"20\" height=\"20\"> Replies are closed - contact the author using email, application form or direct message. Read more <a href=\"https://community.n8n.io/t/jobs-category-guidelines-posting-and-applying/941\">here</a>.</p>",
+            "post_number": 3,
+            "post_type": 1,
+            "posts_count": 3,
+            "updated_at": "2026-10-22T12:07:10.385Z",
+            "reply_count": 0,
+            "reply_to_post_number": null,
+            "quote_count": 0,
+            "incoming_link_count": 0,
+            "reads": 2,
+            "readers_count": 1,
+            "score": 0,
+            "yours": false,
+            "topic_id": 319989,
+            "topic_slug": "open-to-collabs-want-to-build-my-n8n-skills-and-assist-on-projects",
+            "display_username": "",
+            "primary_group_name": "n8n_Team",
+            "flair_name": "n8n_Team",
+            "flair_url": "https://europe1.discourse-cdn.com/n8n/original/3X/1/2/1266586f88b96780cc315b2bf55ea2bdb4058c43.png",
+            "flair_bg_color": "",
+            "flair_color": "",
+            "flair_group_id": 46,
+            "badges_granted": [],
+            "version": 1,
+            "can_edit": false,
+            "can_delete": false,
+            "can_recover": false,
+            "can_see_hidden_post": false,
+            "can_wiki": false,
+            "link_counts": [
+              {
+                "url": "https://community.n8n.io/t/jobs-category-guidelines-posting-and-applying/941",
+                "internal": true,
+                "reflection": false,
+                "title": "Jobs Category Guidelines: Posting and Applying",
+                "clicks": 0
+              }
+            ],
+            "read": true,
+            "user_title": "n8n Team",
+            "title_is_group": true,
+            "bookmarked": false,
+            "actions_summary": [],
+            "moderator": true,
+            "admin": true,
+            "staff": true,
+            "user_id": 3026,
+            "hidden": false,
+            "trust_level": 2,
+            "deleted_at": null,
+            "user_deleted": false,
+            "edit_reason": null,
+            "can_view_edit_history": true,
+            "wiki": false,
+            "user_status": {
+              "description": "noding",
+              "emoji": "rocket",
+              "ends_at": null,
+              "message_bus_last_id": 102
+            },
+            "mentioned_users": [],
+            "post_url": "/t/open-to-collabs-want-to-build-my-n8n-skills-and-assist-on-projects/319989/3",
+            "locale": null,
+            "is_localized": false,
+            "reactions": [],
+            "current_user_reaction": null,
+            "reaction_users_count": 0,
+            "current_user_used_main_reaction": false,
+            "can_accept_answer": false,
+            "can_unaccept_answer": false,
+            "accepted_answer": false,
+            "topic_accepted_answer": null
+          },
+          {
+            "id": 604572,
+            "name": "",
+            "username": "bartv",
+            "avatar_template": "/user_avatar/community.n8n.io/bartv/{size}/156374_2.png",
+            "created_at": "2026-10-22T12:07:10.587Z",
+            "cooked": "",
+            "post_number": 4,
+            "post_type": 3,
+            "posts_count": 3,
+            "updated_at": "2026-10-22T12:07:10.587Z",
+            "reply_count": 0,
+            "reply_to_post_number": null,
+            "quote_count": 0,
+            "incoming_link_count": 0,
+            "reads": 1,
+            "readers_count": 0,
+            "score": 0,
+            "yours": false,
+            "topic_id": 319989,
+            "topic_slug": "open-to-collabs-want-to-build-my-n8n-skills-and-assist-on-projects",
+            "display_username": "",
+            "primary_group_name": "n8n_Team",
+            "flair_name": "n8n_Team",
+            "flair_url": "https://europe1.discourse-cdn.com/n8n/original/3X/1/2/1266586f88b96780cc315b2bf55ea2bdb4058c43.png",
+            "flair_bg_color": "",
+            "flair_color": "",
+            "flair_group_id": 46,
+            "badges_granted": [],
+            "version": 1,
+            "can_edit": false,
+            "can_delete": false,
+            "can_recover": false,
+            "can_see_hidden_post": false,
+            "can_wiki": false,
+            "read": true,
+            "user_title": "n8n Team",
+            "title_is_group": true,
+            "bookmarked": false,
+            "actions_summary": [],
+            "moderator": true,
+            "admin": true,
+            "staff": true,
+            "user_id": 3026,
+            "hidden": false,
+            "trust_level": 2,
+            "deleted_at": null,
+            "user_deleted": false,
+            "edit_reason": null,
+            "can_view_edit_history": true,
+            "wiki": false,
+            "action_code": "closed.enabled",
+            "user_status": {
+              "description": "noding",
+              "emoji": "rocket",
+              "ends_at": null,
+              "message_bus_last_id": 102
+            },
+            "mentioned_users": [],
+            "post_url": "/t/open-to-collabs-want-to-build-my-n8n-skills-and-assist-on-projects/319989/4",
+            "locale": null,
+            "is_localized": false,
+            "reactions": [],
+            "current_user_reaction": null,
+            "reaction_users_count": 0,
+            "current_user_used_main_reaction": false,
+            "can_accept_answer": false,
+            "can_unaccept_answer": false,
+            "accepted_answer": false,
+            "topic_accepted_answer": null
           }
         ],
         "stream": [
           597226,
-          598961
+          598961,
+          604571,
+          604572
         ]
       },
       "timeline_lookup": [
         [
           1,
-          13
+          14
         ],
         [
           2,
-          9
+          10
+        ],
+        [
+          3,
+          1
         ]
       ],
       "suggested_topics": [],
@@ -156,20 +312,20 @@
       "locale": null,
       "id": 319989,
       "title": "[Open to Collabs] Want to build my n8n skills and assist on projects",
-      "posts_count": 2,
+      "posts_count": 3,
       "created_at": "2026-10-08T21:37:42.017Z",
-      "views": 80,
+      "views": 85,
       "reply_count": 0,
       "like_count": 0,
-      "last_posted_at": "2026-10-13T02:32:16.797Z",
+      "last_posted_at": "2026-10-22T12:07:10.385Z",
       "visible": true,
-      "closed": false,
+      "closed": true,
       "archived": false,
       "has_summary": false,
       "archetype": "regular",
       "slug": "open-to-collabs-want-to-build-my-n8n-skills-and-assist-on-projects",
       "category_id": 13,
-      "word_count": 442,
+      "word_count": 471,
       "deleted_at": null,
       "user_id": 197980,
       "featured_link": null,
@@ -184,7 +340,7 @@
       "unpinned": null,
       "pinned": false,
       "current_post_number": 1,
-      "highest_post_number": 2,
+      "highest_post_number": 4,
       "deleted_by": null,
       "actions_summary": [
         {
@@ -214,365 +370,14 @@
       ],
       "chunk_size": 20,
       "bookmarked": false,
-      "topic_timer": {
-        "id": 35209,
-        "execute_at": "2026-11-12T02:32:16.797Z",
-        "duration_minutes": 43200,
-        "based_on_last_post": true,
-        "status_type": "close",
-        "category_id": null
-      },
-      "message_bus_last_id": 0,
-      "participant_count": 2,
+      "topic_timer": null,
+      "message_bus_last_id": 6,
+      "participant_count": 3,
       "show_read_indicator": false,
       "thumbnails": null,
       "slow_mode_enabled_until": null,
       "has_localized_content": false,
       "related_topics": [
-        {
-          "fancy_title": "[FOR HIRE] n8n in production - I run 74 live workflows on my own server. Builds, rescues, hardening",
-          "fancy_title_localized": false,
-          "locale": null,
-          "id": 307797,
-          "title": "[FOR HIRE] n8n in production - I run 74 live workflows on my own server. Builds, rescues, hardening",
-          "slug": "for-hire-n8n-in-production-i-run-74-live-workflows-on-my-own-server-builds-rescues-hardening",
-          "posts_count": 1,
-          "reply_count": 0,
-          "highest_post_number": 1,
-          "image_url": null,
-          "created_at": "2026-08-15T16:44:11.144Z",
-          "last_posted_at": "2026-08-15T16:44:11.205Z",
-          "bumped": true,
-          "bumped_at": "2026-08-15T16:44:11.205Z",
-          "archetype": "regular",
-          "unseen": false,
-          "pinned": false,
-          "unpinned": null,
-          "visible": true,
-          "closed": true,
-          "archived": false,
-          "bookmarked": null,
-          "liked": null,
-          "thumbnails": null,
-          "tags": [],
-          "tags_descriptions": {},
-          "like_count": 0,
-          "views": 96,
-          "category_id": 13,
-          "featured_link": null,
-          "op_like_count": 0,
-          "has_accepted_answer": false,
-          "posters": [
-            {
-              "extras": "latest",
-              "description": "Original Poster, Most Recent Poster",
-              "user": {
-                "id": 187469,
-                "username": "Oleksii_Zahlukha",
-                "name": "Oleksii Zahlukha",
-                "avatar_template": "/user_avatar/community.n8n.io/oleksii_zahlukha/{size}/185941_2.png",
-                "trust_level": 0
-              }
-            },
-            {
-              "extras": null,
-              "description": "Recent Poster",
-              "user": {
-                "id": 3026,
-                "username": "bartv",
-                "name": "",
-                "avatar_template": "/user_avatar/community.n8n.io/bartv/{size}/156374_2.png",
-                "flair_name": "n8n_Team",
-                "flair_url": "https://europe1.discourse-cdn.com/n8n/original/3X/1/2/1266586f88b96780cc315b2bf55ea2bdb4058c43.png",
-                "flair_group_id": 46,
-                "primary_group_name": "n8n_Team",
-                "admin": true,
-                "moderator": true,
-                "trust_level": 2
-              }
-            }
-          ]
-        },
-        {
-          "fancy_title": "N8n Developer for hire",
-          "fancy_title_localized": false,
-          "locale": null,
-          "id": 259685,
-          "title": "N8n Developer for hire",
-          "slug": "n8n-developer-for-hire",
-          "posts_count": 3,
-          "reply_count": 1,
-          "highest_post_number": 3,
-          "image_url": null,
-          "created_at": "2026-02-03T00:20:19.859Z",
-          "last_posted_at": "2026-08-10T17:37:00.526Z",
-          "bumped": true,
-          "bumped_at": "2026-08-10T17:37:00.526Z",
-          "archetype": "regular",
-          "unseen": false,
-          "pinned": false,
-          "unpinned": null,
-          "visible": true,
-          "closed": true,
-          "archived": false,
-          "bookmarked": null,
-          "liked": null,
-          "thumbnails": null,
-          "tags": [],
-          "tags_descriptions": {},
-          "like_count": 1,
-          "views": 222,
-          "category_id": 13,
-          "featured_link": null,
-          "op_like_count": 1,
-          "has_accepted_answer": false,
-          "posters": [
-            {
-              "extras": null,
-              "description": "Original Poster",
-              "user": {
-                "id": 137032,
-                "username": "Emilio_Montoya",
-                "name": "Emilio Montoya",
-                "avatar_template": "/user_avatar/community.n8n.io/emilio_montoya/{size}/152825_2.png",
-                "trust_level": 1
-              }
-            },
-            {
-              "extras": null,
-              "description": "Frequent Poster",
-              "user": {
-                "id": 186430,
-                "username": "The_Best_5_Minute_Wi",
-                "name": "The Best 5 Minute Wine Podcast",
-                "avatar_template": "/user_avatar/community.n8n.io/the_best_5_minute_wi/{size}/185013_2.png",
-                "trust_level": 1
-              }
-            },
-            {
-              "extras": null,
-              "description": "Recent Poster",
-              "user": {
-                "id": 3026,
-                "username": "bartv",
-                "name": "",
-                "avatar_template": "/user_avatar/community.n8n.io/bartv/{size}/156374_2.png",
-                "flair_name": "n8n_Team",
-                "flair_url": "https://europe1.discourse-cdn.com/n8n/original/3X/1/2/1266586f88b96780cc315b2bf55ea2bdb4058c43.png",
-                "flair_group_id": 46,
-                "primary_group_name": "n8n_Team",
-                "admin": true,
-                "moderator": true,
-                "trust_level": 2
-              }
-            },
-            {
-              "extras": "latest",
-              "description": "Most Recent Poster",
-              "user": {
-                "id": 186300,
-                "username": "Eliran_Anisimov",
-                "name": "Eliran Anisimov",
-                "avatar_template": "/user_avatar/community.n8n.io/eliran_anisimov/{size}/184937_2.png",
-                "trust_level": 1
-              }
-            }
-          ]
-        },
-        {
-          "fancy_title": "Hiring n8n automation engineer",
-          "fancy_title_localized": false,
-          "locale": null,
-          "id": 249502,
-          "title": "Hiring n8n automation engineer",
-          "slug": "hiring-n8n-automation-engineer",
-          "posts_count": 38,
-          "reply_count": 1,
-          "highest_post_number": 41,
-          "image_url": null,
-          "created_at": "2026-01-13T19:43:16.035Z",
-          "last_posted_at": "2026-09-22T08:50:34.942Z",
-          "bumped": true,
-          "bumped_at": "2026-09-19T17:45:16.683Z",
-          "archetype": "regular",
-          "unseen": false,
-          "pinned": false,
-          "unpinned": null,
-          "visible": true,
-          "closed": true,
-          "archived": false,
-          "bookmarked": null,
-          "liked": null,
-          "thumbnails": null,
-          "tags": [],
-          "tags_descriptions": {},
-          "like_count": 12,
-          "views": 1861,
-          "category_id": 13,
-          "featured_link": null,
-          "op_like_count": 11,
-          "has_accepted_answer": false,
-          "posters": [
-            {
-              "extras": null,
-              "description": "Original Poster",
-              "user": {
-                "id": 135606,
-                "username": "ShaneSmitas",
-                "name": "Shane Smitas",
-                "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/s/3da27b/{size}.png",
-                "trust_level": 0
-              }
-            },
-            {
-              "extras": null,
-              "description": "Frequent Poster",
-              "user": {
-                "id": 167641,
-                "username": "Suhail_Narot",
-                "name": "Suhail Narot",
-                "avatar_template": "/user_avatar/community.n8n.io/suhail_narot/{size}/60013_2.png",
-                "trust_level": 1
-              }
-            },
-            {
-              "extras": null,
-              "description": "Frequent Poster",
-              "user": {
-                "id": 64374,
-                "username": "automaxion",
-                "name": "automaxion",
-                "avatar_template": "/user_avatar/community.n8n.io/automaxion/{size}/59074_2.png",
-                "trust_level": 2
-              }
-            },
-            {
-              "extras": null,
-              "description": "Recent Poster",
-              "user": {
-                "id": 3026,
-                "username": "bartv",
-                "name": "",
-                "avatar_template": "/user_avatar/community.n8n.io/bartv/{size}/156374_2.png",
-                "flair_name": "n8n_Team",
-                "flair_url": "https://europe1.discourse-cdn.com/n8n/original/3X/1/2/1266586f88b96780cc315b2bf55ea2bdb4058c43.png",
-                "flair_group_id": 46,
-                "primary_group_name": "n8n_Team",
-                "admin": true,
-                "moderator": true,
-                "trust_level": 2
-              }
-            },
-            {
-              "extras": "latest",
-              "description": "Most Recent Poster",
-              "user": {
-                "id": 187480,
-                "username": "Drilon_Miftari",
-                "name": "Drilon Miftari",
-                "avatar_template": "/user_avatar/community.n8n.io/drilon_miftari/{size}/187127_2.png",
-                "trust_level": 1
-              }
-            }
-          ]
-        },
-        {
-          "fancy_title": "Seeking n8n expert for multiple workflow gig&rsquo;s",
-          "fancy_title_localized": false,
-          "locale": null,
-          "id": 174992,
-          "title": "Seeking n8n expert for multiple workflow gig's",
-          "slug": "seeking-n8n-expert-for-multiple-workflow-gigs",
-          "posts_count": 9,
-          "reply_count": 0,
-          "highest_post_number": 9,
-          "image_url": null,
-          "created_at": "2025-08-24T23:23:07.904Z",
-          "last_posted_at": "2025-08-25T19:04:49.947Z",
-          "bumped": true,
-          "bumped_at": "2025-08-25T19:04:49.947Z",
-          "archetype": "regular",
-          "unseen": false,
-          "pinned": false,
-          "unpinned": null,
-          "visible": true,
-          "closed": true,
-          "archived": false,
-          "bookmarked": null,
-          "liked": null,
-          "thumbnails": null,
-          "tags": [],
-          "tags_descriptions": {},
-          "like_count": 6,
-          "views": 324,
-          "category_id": 13,
-          "featured_link": null,
-          "op_like_count": 6,
-          "has_accepted_answer": false,
-          "posters": [
-            {
-              "extras": null,
-              "description": "Original Poster",
-              "user": {
-                "id": 85261,
-                "username": "Kris_Ross",
-                "name": "Kris Ross",
-                "avatar_template": "/user_avatar/community.n8n.io/kris_ross/{size}/64306_2.png",
-                "trust_level": 0
-              }
-            },
-            {
-              "extras": null,
-              "description": "Frequent Poster",
-              "user": {
-                "id": 84728,
-                "username": "Yu_Xuan_Tang",
-                "name": "Yu Xuan Tang",
-                "avatar_template": "/user_avatar/community.n8n.io/yu_xuan_tang/{size}/112805_2.png",
-                "trust_level": 1
-              }
-            },
-            {
-              "extras": null,
-              "description": "Frequent Poster",
-              "user": {
-                "id": 82640,
-                "username": "hatici1",
-                "name": "Hasan Atici",
-                "avatar_template": "/user_avatar/community.n8n.io/hatici1/{size}/111064_2.png",
-                "trust_level": 0
-              }
-            },
-            {
-              "extras": null,
-              "description": "Recent Poster",
-              "user": {
-                "id": 3026,
-                "username": "bartv",
-                "name": "",
-                "avatar_template": "/user_avatar/community.n8n.io/bartv/{size}/156374_2.png",
-                "flair_name": "n8n_Team",
-                "flair_url": "https://europe1.discourse-cdn.com/n8n/original/3X/1/2/1266586f88b96780cc315b2bf55ea2bdb4058c43.png",
-                "flair_group_id": 46,
-                "primary_group_name": "n8n_Team",
-                "admin": true,
-                "moderator": true,
-                "trust_level": 2
-              }
-            },
-            {
-              "extras": "latest",
-              "description": "Most Recent Poster",
-              "user": {
-                "id": 64374,
-                "username": "automaxion",
-                "name": "automaxion",
-                "avatar_template": "/user_avatar/community.n8n.io/automaxion/{size}/59074_2.png",
-                "trust_level": 2
-              }
-            }
-          ]
-        },
         {
           "fancy_title": "Building n8n gives errors",
           "fancy_title_localized": false,
@@ -607,7 +412,7 @@
           ],
           "tags_descriptions": {},
           "like_count": 3,
-          "views": 5364,
+          "views": 5366,
           "category_id": 12,
           "featured_link": null,
           "op_like_count": 0,
@@ -657,6 +462,366 @@
               }
             }
           ]
+        },
+        {
+          "fancy_title": "I want to learn N8N as I have learnt basic of automation and aware of the nodes but need internship under a mentor where I can learn and grow",
+          "fancy_title_localized": false,
+          "locale": "en",
+          "id": 318488,
+          "title": "I want to learn N8N as I have learnt basic of automation and aware of the nodes but need internship under a mentor where I can learn and grow",
+          "slug": "i-want-to-learn-n8n-as-i-have-learnt-basic-of-automation-and-aware-of-the-nodes-but-need-internship-under-a-mentor-where-i-can-learn-and-grow",
+          "posts_count": 3,
+          "reply_count": 0,
+          "highest_post_number": 3,
+          "image_url": null,
+          "created_at": "2026-10-03T07:18:57.642Z",
+          "last_posted_at": "2026-10-05T19:05:13.820Z",
+          "bumped": true,
+          "bumped_at": "2026-10-03T07:18:57.702Z",
+          "archetype": "regular",
+          "unseen": false,
+          "pinned": false,
+          "unpinned": null,
+          "visible": true,
+          "closed": false,
+          "archived": false,
+          "bookmarked": null,
+          "liked": null,
+          "thumbnails": null,
+          "tags": [],
+          "tags_descriptions": {},
+          "like_count": 0,
+          "views": 54,
+          "category_id": 36,
+          "featured_link": null,
+          "op_like_count": 0,
+          "has_accepted_answer": false,
+          "posters": [
+            {
+              "extras": null,
+              "description": "Original Poster",
+              "user": {
+                "id": 196853,
+                "username": "Dilip_Kumar1",
+                "name": "Dilip Kumar",
+                "avatar_template": "/user_avatar/community.n8n.io/dilip_kumar1/{size}/193120_2.png",
+                "trust_level": 0
+              }
+            },
+            {
+              "extras": null,
+              "description": "Recent Poster",
+              "user": {
+                "id": 196955,
+                "username": "Michael_Matthews1",
+                "name": "Michael Matthews",
+                "avatar_template": "/user_avatar/community.n8n.io/michael_matthews1/{size}/191302_2.png",
+                "trust_level": 0
+              }
+            },
+            {
+              "extras": "latest",
+              "description": "Most Recent Poster",
+              "user": {
+                "id": 196996,
+                "username": "HomelabAgent",
+                "name": "Homelab Agent",
+                "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/h/ba8739/{size}.png",
+                "trust_level": 1
+              }
+            }
+          ]
+        },
+        {
+          "fancy_title": "Use n8n behind the scenes",
+          "fancy_title_localized": false,
+          "locale": null,
+          "id": 1356,
+          "title": "Use n8n behind the scenes",
+          "slug": "use-n8n-behind-the-scenes",
+          "posts_count": 17,
+          "reply_count": 8,
+          "highest_post_number": 17,
+          "image_url": null,
+          "created_at": "2020-05-18T12:45:05.172Z",
+          "last_posted_at": "2021-02-02T18:06:18.384Z",
+          "bumped": true,
+          "bumped_at": "2021-02-02T18:06:18.384Z",
+          "archetype": "regular",
+          "unseen": false,
+          "pinned": false,
+          "unpinned": null,
+          "visible": true,
+          "closed": false,
+          "archived": false,
+          "bookmarked": null,
+          "liked": null,
+          "thumbnails": null,
+          "tags": [],
+          "tags_descriptions": {},
+          "like_count": 16,
+          "views": 4724,
+          "category_id": 12,
+          "featured_link": null,
+          "op_like_count": 0,
+          "has_accepted_answer": false,
+          "posters": [
+            {
+              "extras": null,
+              "description": "Original Poster",
+              "user": {
+                "id": 448,
+                "username": "hadifarnoud",
+                "name": "Hadi Farnoud",
+                "avatar_template": "/user_avatar/community.n8n.io/hadifarnoud/{size}/1101_2.png",
+                "trust_level": 1
+              }
+            },
+            {
+              "extras": null,
+              "description": "Frequent Poster",
+              "user": {
+                "id": 392,
+                "username": "Tephlon",
+                "name": "Jason McFeetors",
+                "avatar_template": "/user_avatar/community.n8n.io/tephlon/{size}/9899_2.png",
+                "flair_name": "Expert_Partners",
+                "flair_url": "https://europe1.discourse-cdn.com/n8n/original/3X/8/c/8c906a29bdd6394e7afd76c6c7da14d0dbdac097.png",
+                "flair_group_id": 48,
+                "primary_group_name": "Expert_Partners",
+                "trust_level": 4
+              }
+            },
+            {
+              "extras": null,
+              "description": "Frequent Poster",
+              "user": {
+                "id": 533,
+                "username": "minukobba",
+                "name": "minuk",
+                "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/m/f08c70/{size}.png",
+                "trust_level": 0
+              }
+            },
+            {
+              "extras": null,
+              "description": "Recent Poster",
+              "user": {
+                "id": 1305,
+                "username": "BJL",
+                "name": "BJL",
+                "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/b/8baadc/{size}.png",
+                "trust_level": 1
+              }
+            },
+            {
+              "extras": "latest",
+              "description": "Most Recent Poster",
+              "user": {
+                "id": 1,
+                "username": "jan",
+                "name": "Jan Oberhauser",
+                "avatar_template": "/user_avatar/community.n8n.io/jan/{size}/9_2.png",
+                "flair_name": "n8n_Team",
+                "flair_url": "https://europe1.discourse-cdn.com/n8n/original/3X/1/2/1266586f88b96780cc315b2bf55ea2bdb4058c43.png",
+                "flair_group_id": 46,
+                "primary_group_name": "n8n_Team",
+                "admin": true,
+                "moderator": true,
+                "trust_level": 4
+              }
+            }
+          ]
+        },
+        {
+          "fancy_title": "Confused about n8n real use",
+          "fancy_title_localized": false,
+          "locale": "en",
+          "id": 303621,
+          "title": "Confused about n8n real use",
+          "slug": "confused-about-n8n-real-use",
+          "posts_count": 3,
+          "reply_count": 0,
+          "highest_post_number": 3,
+          "image_url": null,
+          "created_at": "2026-07-17T13:49:52.794Z",
+          "last_posted_at": "2026-07-17T15:22:18.948Z",
+          "bumped": true,
+          "bumped_at": "2026-07-17T15:22:18.948Z",
+          "archetype": "regular",
+          "unseen": false,
+          "pinned": false,
+          "unpinned": null,
+          "visible": true,
+          "closed": true,
+          "archived": false,
+          "bookmarked": null,
+          "liked": null,
+          "thumbnails": null,
+          "tags": [],
+          "tags_descriptions": {},
+          "like_count": 1,
+          "views": 140,
+          "category_id": 12,
+          "featured_link": null,
+          "op_like_count": 0,
+          "has_accepted_answer": false,
+          "posters": [
+            {
+              "extras": null,
+              "description": "Original Poster",
+              "user": {
+                "id": 181793,
+                "username": "Ahad_Gujjar",
+                "name": "Ahad Gujjar",
+                "avatar_template": "/user_avatar/community.n8n.io/ahad_gujjar/{size}/61277_2.png",
+                "trust_level": 0
+              }
+            },
+            {
+              "extras": null,
+              "description": "Frequent Poster",
+              "user": {
+                "id": 155731,
+                "username": "kjooleng",
+                "name": "Kjooleng",
+                "avatar_template": "/user_avatar/community.n8n.io/kjooleng/{size}/184045_2.png",
+                "flair_name": "Lv_2_Course_Complete",
+                "flair_url": "https://europe1.discourse-cdn.com/n8n/original/2X/8/830d900b5a1b012113f1f87098b00578e50f04ec.png",
+                "flair_group_id": 43,
+                "primary_group_name": "Lv_2_Course_Complete",
+                "trust_level": 3
+              }
+            },
+            {
+              "extras": null,
+              "description": "Recent Poster",
+              "user": {
+                "id": -1,
+                "username": "system",
+                "name": "system",
+                "avatar_template": "/user_avatar/community.n8n.io/system/{size}/195824_2.png",
+                "admin": true,
+                "moderator": true,
+                "trust_level": 4
+              }
+            },
+            {
+              "extras": "latest",
+              "description": "Most Recent Poster",
+              "user": {
+                "id": 2945,
+                "username": "BramKn",
+                "name": "Bram Knuever",
+                "avatar_template": "/user_avatar/community.n8n.io/bramkn/{size}/11894_2.png",
+                "flair_name": "Expert_Partners",
+                "flair_url": "https://europe1.discourse-cdn.com/n8n/original/3X/8/c/8c906a29bdd6394e7afd76c6c7da14d0dbdac097.png",
+                "flair_group_id": 48,
+                "primary_group_name": "n8n_navigators",
+                "trust_level": 4
+              }
+            }
+          ]
+        },
+        {
+          "fancy_title": "Zero experience how to get started with n8n real projects to become a job ready candidate",
+          "fancy_title_localized": false,
+          "locale": null,
+          "id": 180082,
+          "title": "Zero experience how to get started with n8n real projects to become a job ready candidate",
+          "slug": "zero-experience-how-to-get-started-with-n8n-real-projects-to-become-a-job-ready-candidate",
+          "posts_count": 5,
+          "reply_count": 1,
+          "highest_post_number": 5,
+          "image_url": null,
+          "created_at": "2025-09-01T15:21:57.562Z",
+          "last_posted_at": "2025-09-02T00:12:18.807Z",
+          "bumped": true,
+          "bumped_at": "2025-09-02T00:12:18.807Z",
+          "archetype": "regular",
+          "unseen": false,
+          "pinned": false,
+          "unpinned": null,
+          "visible": true,
+          "closed": true,
+          "archived": false,
+          "bookmarked": null,
+          "liked": null,
+          "thumbnails": null,
+          "tags": [],
+          "tags_descriptions": {},
+          "like_count": 13,
+          "views": 403,
+          "category_id": 12,
+          "featured_link": null,
+          "op_like_count": 1,
+          "has_accepted_answer": true,
+          "posters": [
+            {
+              "extras": "latest",
+              "description": "Original Poster, Most Recent Poster",
+              "user": {
+                "id": 88515,
+                "username": "DktPhl25",
+                "name": null,
+                "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/d/f04885/{size}.png",
+                "trust_level": 1
+              }
+            },
+            {
+              "extras": null,
+              "description": "Frequent Poster, Accepted Answer",
+              "user": {
+                "id": 32176,
+                "username": "mohamed3nan",
+                "name": "Anan",
+                "avatar_template": "/user_avatar/community.n8n.io/mohamed3nan/{size}/188347_2.png",
+                "flair_name": "Lv_2_Course_Complete",
+                "flair_url": "https://europe1.discourse-cdn.com/n8n/original/2X/8/830d900b5a1b012113f1f87098b00578e50f04ec.png",
+                "flair_group_id": 43,
+                "trust_level": 2
+              }
+            },
+            {
+              "extras": null,
+              "description": "Frequent Poster",
+              "user": {
+                "id": 55053,
+                "username": "heizenberg",
+                "name": "heizenberg",
+                "avatar_template": "/user_avatar/community.n8n.io/heizenberg/{size}/115751_2.png",
+                "flair_name": "Lv_1_Course_Complete",
+                "flair_url": "https://europe1.discourse-cdn.com/n8n/original/2X/4/4030779fd2c61a5108644ff302e263119bdf4ca3.png",
+                "flair_group_id": 42,
+                "primary_group_name": "Lv_1_Course_Complete",
+                "trust_level": 2
+              }
+            },
+            {
+              "extras": null,
+              "description": "Recent Poster",
+              "user": {
+                "id": -1,
+                "username": "system",
+                "name": "system",
+                "avatar_template": "/user_avatar/community.n8n.io/system/{size}/195824_2.png",
+                "admin": true,
+                "moderator": true,
+                "trust_level": 4
+              }
+            },
+            {
+              "extras": null,
+              "description": "Recent Poster",
+              "user": {
+                "id": 88603,
+                "username": "KonstantinoVici",
+                "name": "Konstantino Vici",
+                "avatar_template": "/user_avatar/community.n8n.io/konstantinovici/{size}/115808_2.png",
+                "trust_level": 0
+              }
+            }
+          ]
         }
       ],
       "summarizable": false,
@@ -697,6 +862,22 @@
             "trust_level": 0
           },
           {
+            "id": 3026,
+            "username": "bartv",
+            "name": "",
+            "avatar_template": "/user_avatar/community.n8n.io/bartv/{size}/156374_2.png",
+            "post_count": 1,
+            "primary_group_name": "n8n_Team",
+            "flair_name": "n8n_Team",
+            "flair_url": "https://europe1.discourse-cdn.com/n8n/original/3X/1/2/1266586f88b96780cc315b2bf55ea2bdb4058c43.png",
+            "flair_color": "",
+            "flair_bg_color": "",
+            "flair_group_id": 46,
+            "admin": true,
+            "moderator": true,
+            "trust_level": 2
+          },
+          {
             "id": 197980,
             "username": "_venacline",
             "name": "",
@@ -718,10 +899,10 @@
           "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/_/5f9b8f/{size}.png"
         },
         "last_poster": {
-          "id": 194197,
-          "username": "mattmichels",
-          "name": "Matt Michels",
-          "avatar_template": "/user_avatar/community.n8n.io/mattmichels/{size}/191164_2.png"
+          "id": 3026,
+          "username": "bartv",
+          "name": "",
+          "avatar_template": "/user_avatar/community.n8n.io/bartv/{size}/156374_2.png"
         }
       },
       "bookmarks": []
@@ -736,7 +917,7 @@
         "cooked": "<p>Hello everyone,</p>\n<p>I’m currently running n8n locally via Docker Desktop to learn the ropes. I want to build my skills on n8n and would love to collaborate on projects to see how others use the platform and understand their thought process behind the problems they solve.</p>\n<p>Right now, I’m not looking for paid gigs yet; instead, I am looking for hands-on, real-world experience. I would love to team up with someone as an assistant or collaborator. You can hand off the repetitive parts of a project to me like mapping out data, setting up credentials or handling webhooks which frees up your time and in return, I get to see how you architecture the final solution.</p>\n<p>While I’m still learning live server hosting, I can confidently handle local testing, setting up API credentials and building workflows to move data around. I am also comfortable working with webhooks and while I haven’t deployed them in production yet, I regularly use ReqBin to send and test POST requests locally. I also have foundational understanding of the Code node(JavaScript) for simple data manipulation.</p>\n<p>Once a workflow is built on my end, I can easily export the JSON file directly to you. I’m looking forward to connecting with experienced developers and working on some great projects together!! Please drop a comment or send me a DM if you’d like to collaborate.</p>\n<p>Thanks,<br>\nVenacline.</p>",
         "post_number": 1,
         "post_type": 1,
-        "posts_count": 2,
+        "posts_count": 3,
         "updated_at": "2026-10-08T21:37:42.079Z",
         "reply_count": 0,
         "reply_to_post_number": null,
@@ -800,14 +981,14 @@
         "cooked": "<p>Your plan to learn n8n by watching how someone else structures a real workflow, starting with webhooks and credentials, is a sound way to learn it.</p>\n<p>The closest thing I have is a self-hosted n8n workflow for a missed-call text-back. A signed Twilio-style voice webhook hits n8n, which verifies the X-Twilio-Signature, builds the text-back and sends it through a Twilio node. It then logs the miss to a Supabase table. Bad signatures get a 403, and Twilio errors go to a separate error-log branch. It’s test-built on localhost with SMS suppressed, so it isn’t in production.</p>\n<p>The same pattern shows up in a CSV import workflow I built: upload, allow-list the columns, validate, dedupe, then report inserted and skipped rows.</p>\n<p>Since you already test POST requests, I’d start in two steps:<br>\n(1) Move from ReqBin to signed requests, so you see why signature checks and replay protection matter.<br>\n(2) Add an error branch to one of your workflows, so failures get logged instead of vanishing.</p>\n<p>I can walk you through the exported workflow JSON on a live screen-share, node by node, and explain why each piece is where it is.</p>",
         "post_number": 2,
         "post_type": 1,
-        "posts_count": 2,
+        "posts_count": 3,
         "updated_at": "2026-10-13T02:32:16.797Z",
         "reply_count": 0,
         "reply_to_post_number": null,
         "quote_count": 0,
         "incoming_link_count": 0,
-        "reads": 9,
-        "readers_count": 8,
+        "reads": 10,
+        "readers_count": 9,
         "score": 1.8,
         "yours": false,
         "topic_id": 319989,
@@ -853,6 +1034,156 @@
         "can_unaccept_answer": false,
         "accepted_answer": false,
         "topic_accepted_answer": null
+      },
+      {
+        "id": 604571,
+        "name": "",
+        "username": "bartv",
+        "avatar_template": "/user_avatar/community.n8n.io/bartv/{size}/156374_2.png",
+        "created_at": "2026-10-22T12:07:10.385Z",
+        "cooked": "<p><img src=\"https://emoji.discourse-cdn.com/twemoji/information_source.png?v=15\" title=\":information_source:\" class=\"emoji\" alt=\":information_source:\" loading=\"lazy\" width=\"20\" height=\"20\"> Replies are closed - contact the author using email, application form or direct message. Read more <a href=\"https://community.n8n.io/t/jobs-category-guidelines-posting-and-applying/941\">here</a>.</p>",
+        "post_number": 3,
+        "post_type": 1,
+        "posts_count": 3,
+        "updated_at": "2026-10-22T12:07:10.385Z",
+        "reply_count": 0,
+        "reply_to_post_number": null,
+        "quote_count": 0,
+        "incoming_link_count": 0,
+        "reads": 2,
+        "readers_count": 1,
+        "score": 0,
+        "yours": false,
+        "topic_id": 319989,
+        "topic_slug": "open-to-collabs-want-to-build-my-n8n-skills-and-assist-on-projects",
+        "display_username": "",
+        "primary_group_name": "n8n_Team",
+        "flair_name": "n8n_Team",
+        "flair_url": "https://europe1.discourse-cdn.com/n8n/original/3X/1/2/1266586f88b96780cc315b2bf55ea2bdb4058c43.png",
+        "flair_bg_color": "",
+        "flair_color": "",
+        "flair_group_id": 46,
+        "badges_granted": [],
+        "version": 1,
+        "can_edit": false,
+        "can_delete": false,
+        "can_recover": false,
+        "can_see_hidden_post": false,
+        "can_wiki": false,
+        "link_counts": [
+          {
+            "url": "https://community.n8n.io/t/jobs-category-guidelines-posting-and-applying/941",
+            "internal": true,
+            "reflection": false,
+            "title": "Jobs Category Guidelines: Posting and Applying",
+            "clicks": 0
+          }
+        ],
+        "read": true,
+        "user_title": "n8n Team",
+        "title_is_group": true,
+        "bookmarked": false,
+        "actions_summary": [],
+        "moderator": true,
+        "admin": true,
+        "staff": true,
+        "user_id": 3026,
+        "hidden": false,
+        "trust_level": 2,
+        "deleted_at": null,
+        "user_deleted": false,
+        "edit_reason": null,
+        "can_view_edit_history": true,
+        "wiki": false,
+        "user_status": {
+          "description": "noding",
+          "emoji": "rocket",
+          "ends_at": null,
+          "message_bus_last_id": 102
+        },
+        "mentioned_users": [],
+        "post_url": "/t/open-to-collabs-want-to-build-my-n8n-skills-and-assist-on-projects/319989/3",
+        "locale": null,
+        "is_localized": false,
+        "reactions": [],
+        "current_user_reaction": null,
+        "reaction_users_count": 0,
+        "current_user_used_main_reaction": false,
+        "can_accept_answer": false,
+        "can_unaccept_answer": false,
+        "accepted_answer": false,
+        "topic_accepted_answer": null
+      },
+      {
+        "id": 604572,
+        "name": "",
+        "username": "bartv",
+        "avatar_template": "/user_avatar/community.n8n.io/bartv/{size}/156374_2.png",
+        "created_at": "2026-10-22T12:07:10.587Z",
+        "cooked": "",
+        "post_number": 4,
+        "post_type": 3,
+        "posts_count": 3,
+        "updated_at": "2026-10-22T12:07:10.587Z",
+        "reply_count": 0,
+        "reply_to_post_number": null,
+        "quote_count": 0,
+        "incoming_link_count": 0,
+        "reads": 1,
+        "readers_count": 0,
+        "score": 0,
+        "yours": false,
+        "topic_id": 319989,
+        "topic_slug": "open-to-collabs-want-to-build-my-n8n-skills-and-assist-on-projects",
+        "display_username": "",
+        "primary_group_name": "n8n_Team",
+        "flair_name": "n8n_Team",
+        "flair_url": "https://europe1.discourse-cdn.com/n8n/original/3X/1/2/1266586f88b96780cc315b2bf55ea2bdb4058c43.png",
+        "flair_bg_color": "",
+        "flair_color": "",
+        "flair_group_id": 46,
+        "badges_granted": [],
+        "version": 1,
+        "can_edit": false,
+        "can_delete": false,
+        "can_recover": false,
+        "can_see_hidden_post": false,
+        "can_wiki": false,
+        "read": true,
+        "user_title": "n8n Team",
+        "title_is_group": true,
+        "bookmarked": false,
+        "actions_summary": [],
+        "moderator": true,
+        "admin": true,
+        "staff": true,
+        "user_id": 3026,
+        "hidden": false,
+        "trust_level": 2,
+        "deleted_at": null,
+        "user_deleted": false,
+        "edit_reason": null,
+        "can_view_edit_history": true,
+        "wiki": false,
+        "action_code": "closed.enabled",
+        "user_status": {
+          "description": "noding",
+          "emoji": "rocket",
+          "ends_at": null,
+          "message_bus_last_id": 102
+        },
+        "mentioned_users": [],
+        "post_url": "/t/open-to-collabs-want-to-build-my-n8n-skills-and-assist-on-projects/319989/4",
+        "locale": null,
+        "is_localized": false,
+        "reactions": [],
+        "current_user_reaction": null,
+        "reaction_users_count": 0,
+        "current_user_used_main_reaction": false,
+        "can_accept_answer": false,
+        "can_unaccept_answer": false,
+        "accepted_answer": false,
+        "topic_accepted_answer": null
       }
     ]
   },
@@ -862,6 +1193,18 @@
       "text": "Your plan to learn n8n by watching how someone else structures a real workflow, starting with webhooks and credentials, is a sound way to learn it. \n The closest thing I have is a self-hosted n8n workflow for a missed-call text-back. A signed Twilio-style voice webhook hits n8n, which verifies the X-Twilio-Signature, builds the text-back and sends it through a Twilio node. It then logs the miss to a Supabase table. Bad signatures get a 403, and Twilio errors go to a separate error-log branch. It’s test-built on localhost with SMS suppressed, so it isn’t in production. \n The same pattern shows up in a CSV import workflow I built: upload, allow-list the columns, validate, dedupe, then report inserted and skipped rows. \n Since you already test POST requests, I’d start in two steps: \n(1) Move from ReqBin to signed requests, so you see why signature checks and replay protection matter. \n(2) Add an error branch to one of your workflows, so failures get logged instead of vanishing. \n I can walk you through the exported workflow JSON on a live screen-share, node by node, and explain why each piece is where it is.",
       "at": "2026-10-13T02:32:16.797Z",
       "url": "https://community.n8n.io/t/319989/2"
+    },
+    {
+      "author": "bartv",
+      "text": "Replies are closed - contact the author using email, application form or direct message. Read more  here .",
+      "at": "2026-10-22T12:07:10.385Z",
+      "url": "https://community.n8n.io/t/319989/3"
+    },
+    {
+      "author": "bartv",
+      "text": "",
+      "at": "2026-10-22T12:07:10.587Z",
+      "url": "https://community.n8n.io/t/319989/4"
     }
   ],
   "comments_complete": true

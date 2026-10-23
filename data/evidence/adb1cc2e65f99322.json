@@ -1,0 +1,113 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41893",
+  "collected_at": "2026-10-23T07:28:04.863834+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/41893",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/41893/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/41893/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/41893/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/41893",
+    "id": 5990262882,
+    "node_id": "I_kwDOC4Q8Qs8AAAABZQwoYg",
+    "number": 41893,
+    "title": "Execute Workflow deletes saved input mappings when its workflow ID expression resolves to empty",
+    "user": {
+      "login": "jonasgpayer",
+      "id": 70784204,
+      "node_id": "MDQ6VXNlcjcwNzg0MjA0",
+      "avatar_url": "https://avatars.githubusercontent.com/u/70784204?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/jonasgpayer",
+      "html_url": "https://github.com/jonasgpayer",
+      "followers_url": "https://api.github.com/users/jonasgpayer/followers",
+      "following_url": "https://api.github.com/users/jonasgpayer/following{/other_user}",
+      "gists_url": "https://api.github.com/users/jonasgpayer/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/jonasgpayer/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/jonasgpayer/subscriptions",
+      "organizations_url": "https://api.github.com/users/jonasgpayer/orgs",
+      "repos_url": "https://api.github.com/users/jonasgpayer/repos",
+      "events_url": "https://api.github.com/users/jonasgpayer/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/jonasgpayer/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 3,
+    "created_at": "2026-10-23T01:30:41Z",
+    "updated_at": "2026-10-23T01:58:32Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nOpening an Execute Workflow node whose workflow ID is an expression deletes the input mapping that was already saved, and autosave persists the deletion.\n\nThis happens when the expression cannot be resolved yet, for example because the trigger has no pinned data and the node has not been executed. The resource mapper depends on `workflowId.value`. While that value is empty, the saved `workflowInputs` (values and schema) are removed.\n\nAfter a reference is available and the node is opened again, n8n recreates the input fields from the target sub-workflow. Those fields are empty. The expressions that had been configured are gone.\n\nThis is separate from #35728. That report shows empty fields in the execution view when no input mapping was stored and incoming data is still forwarded. Here a mapping was stored, and opening the node removes it.\n\n### To Reproduce\n\n1. Create a sub-workflow with an Execute Workflow Trigger (v1.1). Set Input data mode to \"Define using fields below\" and add one field, `env` (string). Save it.\n2. Create a parent workflow with a Manual Trigger and an Edit Fields node. Edit Fields sets `workflow_id` to the sub-workflow ID and `env` to any string. Do not pin data and do not execute the workflow.\n3. Add an Execute Workflow node (v1.2 or newer). Set Workflow to \"By ID\" and use `={{ $('Edit Fields').item.json.workflow_id }}`.\n4. Temporarily select the sub-workflow from the list, map `env` to `={{ $('Edit Fields').item.json.env }}`, then switch Workflow back to \"By ID\" with the expression above. Confirm the mapping is still there and the workflow has saved.\n5. Close the node. Confirm the trigger and Edit Fields have no pinned data.\n6. Open the Execute Workflow node again.\n\nThe saved `env` mapping is gone and the workflow autosaves in that state.\n\n7. Pin `workflow_id` on Edit Fields with the real sub-workflow ID, or execute Edit Fields so the expression resolves. Open the Execute Workflow node again.\n\nThe `env` field from the sub-workflow is back and its value is empty.\n\n### Expected behavior\n\nOpening the node while the workflow ID expression is unresolved keeps the saved `workflowInputs`. Autosave does not persist a cleared mapping. When the expression later resolves to a sub-workflow, values for fields that still exist are preserved.\n\n### Debug Info\n\n# Debug info\n\n## core\n\n- n8nVersion: 2.41.4\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.7.0\n- nodeEnv: production\n- database: sqlite\n- executionMode: regular\n- concurrency: -1\n- license: enterprise (production)\n- consumerId: 7874036b-51f7-4432-965f-34f0e25ad1f9\n\n## storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n## pruning\n\n- enabled: true\n- maxAge: 336 hours\n- maxCount: 10000 executions\n\n## client\n\n- userAgent: mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/155.0.0.0 safari/537.36 edg/155.0.0.0\n- isTouchDevice: false\n\n## cluster\n\n- instanceCount: 1\n- versions: 2.41.4\n- instances:\n  - instanceKey: cfc750eb-a6b2-457f-9d16-d04ad9a98009, hostId: main-b424dafd1511, instanceType: main, instanceRole: leader, version: 2.41.4\n- checks:\n  - check: hostid-clash, status: succeeded, warnings: -\n  - check: lifecycle, status: succeeded, warnings: -\n  - check: split-brain, status: succeeded, warnings: -\n  - check: version-mismatch, status: succeeded, warnings: -\n\nGenerated at: 2026-10-23T01:26:24.435Z\n\n### Operating System\n\neasypanel\n\n### n8n Version\n\n2.41.4\n\n### Node.js Version\n\n26.7.0\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/41893/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/41893/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @jonasgpayer,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9628\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9628](https://linear.app/n8n/issue/GHC-9628)",
+      "at": "2026-10-23T01:30:51Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41893#issuecomment-6355209803"
+    },
+    {
+      "author": "lakshya-dhariwal",
+      "text": "Hi, I'd like to pick this up if no one has started yet.\n\nReading the resource mapper flow, the saved `workflowInputs` (values and schema) get cleared whenever `workflowId.value` is empty, which is exactly the state an unresolved `={{ ... }}` workflow ID produces when the node is opened; autosave then persists the deletion. My plan: keep the stored mapping when the workflow ID cannot be resolved yet, and only rebuild the mapping once a real workflow ID is available, plus a regression test that fails on current master.\n\nAny objection, or guidance on where you'd like the guard to live?",
+      "at": "2026-10-23T01:44:03Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41893#issuecomment-6355372476"
+    },
+    {
+      "author": "jonasgpayer",
+      "text": "No objection. That matches what happens in the editor.\n\nWhen a real workflow ID becomes available, please keep the saved expressions for fields that still exist. Rebuilding the schema from the sub-workflow is what leaves those fields empty today, so the deleted mapping never comes back.\n\nI don't have a preference for where the guard lives.",
+      "at": "2026-10-23T01:58:32Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41893#issuecomment-6355556241"
+    }
+  ],
+  "comments_complete": true
+}

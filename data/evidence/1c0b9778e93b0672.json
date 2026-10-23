@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50161144",
-  "collected_at": "2026-10-21T07:34:56.016842+00:00",
+  "collected_at": "2026-10-23T07:28:04.863834+00:00",
   "source": {
     "author": "brndnbuilds",
     "children": [
@@ -97,6 +97,21 @@
         "title": null,
         "type": "comment",
         "url": null
+      },
+      {
+        "author": "peter_d_sherman",
+        "children": [],
+        "created_at": "2026-10-22T02:29:04.000Z",
+        "created_at_i": 1792636144,
+        "id": 50190440,
+        "options": [],
+        "parent_id": 50161144,
+        "points": null,
+        "story_id": 50161144,
+        "text": "&gt;&quot;What is Rouler?<p>Rouler is split tunnelling for Windows. You choose which network interface each app uses: a privacy VPN for your browser, a work tunnel for work apps, and your normal connection for everything else. They all run at the same time.&quot;<p>Sounds like a great idea!",
+        "title": null,
+        "type": "comment",
+        "url": null
       }
     ],
     "created_at": "2026-10-20T03:51:43.000Z",
@@ -104,7 +119,7 @@
     "id": 50161144,
     "options": [],
     "parent_id": null,
-    "points": 23,
+    "points": 28,
     "story_id": 50161144,
     "text": "Hi HN,<p>Rouler is &quot;rules for your routes&quot;. It allows you to steer network traffic across multiple network interfaces on Windows. For example:<p>- Run Tailscale, Mullvad and OpenVPN official clients simultaneously.<p>- Use Rouler to send Slack via the OpenVPN connection, Chrome + an IP range via Tailscale and a torrent client via Mullvad.<p>Rouler is VPN agnostic, so you can &quot;split-tunnel&quot; with anything that sets up a windows network interface.<p>I&#x27;m an independent developer from Australia and have been working on Rouler for a bit over a year. It&#x27;s been a challenging project to say the least, but I&#x27;m really happy with how it&#x27;s turning out. I have spent a great deal of time building and throwing things away, starting over, belting the initial poc into something that I find intuitive... hopefully others do too!<p>I&#x27;ve done all the testing, fixing and improving I can, so now it&#x27;s open for public beta. I&#x27;d love to hear your feedback... and there are some specific points I&#x27;m interested in hearing about listed on the Rouler website. Please reply with any questions you might have.<p>Thanks for reading!<p>Brendan<p>p.s. Rouler is &quot;built in Rust&quot; TM ;-)<p>---<p>On AI (skip if you&#x27;re sick of hearing about it):<p>Since AI is the hot topic and people are naturally cautious about it, I&#x27;ll add some quick notes about it, specifically about the driver development as that&#x27;s the key thing to get right. The driver is hand written and every detail has been poured over many times over. I spent somewhere around 6-9 months manually building and testing just the driver, staring at Dbgview logs, wireshark logs, windows route tables, restarting VM&#x27;s back to their snapshot and manually copying things across to start again. That&#x27;s not always the most efficient way of doing things, but it&#x27;s the way it had to be done. If I had tried to vibe code it Rouler simply wouldn&#x27;t exist. I did try to lean on AI at times, but it constantly sent me in the wrong direction, told me things weren&#x27;t possible, tried to take shortcuts and implement poor performing trade-offs. It also loved to hallucinate the windows api. Keep in mind this was around the Opus 4.1 - 4.6 days.<p>Outside of the driver, in user mode land, AI has crept more and more into my workflow. I&#x27;ve had a lot of success utilising the latest models in the app in particular, and I purposefully separated the UI and core logic so I&#x27;m able to quickly iterate on the UI. I&#x27;ve also found AI very useful for scripting and refactoring. It has built some great scripts that would&#x27;ve taken me days or weeks to build and fine tune.",
     "title": "Show HN: Rouler – Steer Windows traffic per app or IP across multiple interfaces",
@@ -147,6 +162,12 @@
       "text": "Thanks! Maybe one day!",
       "at": "2026-10-20T20:46:33.000Z",
       "url": "https://news.ycombinator.com/item?id=50172444"
+    },
+    {
+      "author": "peter_d_sherman",
+      "text": ">\"What is Rouler? Rouler is split tunnelling for Windows. You choose which network interface each app uses: a privacy VPN for your browser, a work tunnel for work apps, and your normal connection for everything else. They all run at the same time.\" Sounds like a great idea!",
+      "at": "2026-10-22T02:29:04.000Z",
+      "url": "https://news.ycombinator.com/item?id=50190440"
     }
   ],
   "comments_complete": true

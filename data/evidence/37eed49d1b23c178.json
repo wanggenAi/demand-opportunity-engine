@@ -1,0 +1,123 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41884",
+  "collected_at": "2026-10-23T07:28:04.863834+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/41884",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/41884/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/41884/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/41884/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/41884",
+    "id": 5984160120,
+    "node_id": "I_kwDOC4Q8Qs8AAAABZK8JeA",
+    "number": 41884,
+    "title": "Can't delete the user and transfer their workflows to the archive space if users don't have access to this  archive space",
+    "user": {
+      "login": "lopatoid",
+      "id": 1956241,
+      "node_id": "MDQ6VXNlcjE5NTYyNDE=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1956241?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lopatoid",
+      "html_url": "https://github.com/lopatoid",
+      "followers_url": "https://api.github.com/users/lopatoid/followers",
+      "following_url": "https://api.github.com/users/lopatoid/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lopatoid/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lopatoid/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lopatoid/subscriptions",
+      "organizations_url": "https://api.github.com/users/lopatoid/orgs",
+      "repos_url": "https://api.github.com/users/lopatoid/repos",
+      "events_url": "https://api.github.com/users/lopatoid/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lopatoid/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 11654110784,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACtqOeQA",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:identity",
+        "name": "team:identity",
+        "color": "ededed",
+        "default": false,
+        "description": null,
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-22T17:20:27Z",
+    "updated_at": "2026-10-22T17:34:21Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nWe've got a self-hosted enterprise n8n with users signing in to n8n using Okta. When we deactivate users, we want to transfer their data to an archive space. The problem is that when we try to do so using the \"Transfer their workflows, credentials and data tables to another user\" function, it fails (see error). I was able to solve it by giving the user access to the target Project, but the error is not clear, and honestly it doesn't make sense (imagine root user in Linux wouldn't be able to move files of another user just because another user doesn't have rights to do it)\n\n<img width=\"656\" height=\"320\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ce5e9116-9e48-47eb-9ec8-949905df6261\" />\n\n### To Reproduce\n\n1. Go to \"Settings -> Users\"\n2. Find the user, then click \"⋮\" -> Delete User\n3. Choose \"Transfer their workflows, credentials and data tables to another user\", and an error\n```\nProblem while deleting user\nCould not find any entity of type \"User\" matching: { \"projectRelations\": { \"projectId\": \"162ij8tLdoK7UBrE\" } }\n```\nappears.\n\n### Expected behavior\n\nJust transfer all the workflows without the need for any shenanigans. I'm the owner of n8n, I should be able to do this. Or at least the error message should be clearer.\n\n### Debug Info\n\n# Debug info\n\n## core\n\n- n8nVersion: 2.44.6\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.12.1\n- nodeEnv: production\n- database: postgres\n- executionMode: regular\n- concurrency: -1\n- license: enterprise (production)\n- consumerId: 302eaf93-9af5-42d8-8578-2b32ec5bf2ad\n\n## storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n## pruning\n\n- enabled: true\n- maxAge: 336 hours\n- maxCount: 100000 executions\n\n## client\n\n- userAgent: mozilla/5.0 (macintosh; intel mac os x 10_15_7) applewebkit/537.36 (khtml, like gecko) chrome/156.0.0.0 safari/537.36\n- isTouchDevice: false\n\n## cluster\n\n- instanceCount: 1\n- versions: 2.44.6\n- instances:\n  - instanceKey: 68d54bfa-3bab-4e58-a131-0b40fb8be2ac, hostId: main-75791e56bf2b, instanceType: main, instanceRole: leader, version: 2.44.6\n- checks:\n  - check: hostid-clash, status: succeeded, warnings: -\n  - check: lifecycle, status: succeeded, warnings: -\n  - check: split-brain, status: succeeded, warnings: -\n  - check: version-mismatch, status: succeeded, warnings: -\n\nGenerated at: 2026-10-22T16:46:52.605Z\n\n### Operating System\n\nUbuntu 24.04.3 LTS\n\n### n8n Version\n\n2.44.6\n\n### Node.js Version\n\n26.12.1\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/41884/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/41884/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @lopatoid,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9627\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9627](https://linear.app/n8n/issue/GHC-9627)",
+      "at": "2026-10-22T17:20:36Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41884#issuecomment-6346850310"
+    }
+  ],
+  "comments_complete": true
+}

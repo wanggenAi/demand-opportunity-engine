@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://community.shopify.com/t/701808.json",
-  "collected_at": "2026-10-22T07:31:32.564113+00:00",
+  "collected_at": "2026-10-23T07:28:04.863834+00:00",
   "source": {
     "post_stream": {
       "posts": [
@@ -12,15 +12,15 @@
           "cooked": "<p>Hi,</p>\n<p>Is there a Shopify-compatible app that allows my customers to sign up for re-stock notifications, and allows us to send out re-stock email notifications to my customers, but only based on available inventory? I.E. if I add 8 items back to stock then the first 8 customers on the notify list get emails?</p>",
           "post_number": 1,
           "post_type": 1,
-          "posts_count": 3,
+          "posts_count": 10,
           "updated_at": "2026-10-21T21:32:13.731Z",
           "reply_count": 0,
           "reply_to_post_number": null,
           "quote_count": 0,
-          "incoming_link_count": 3,
-          "reads": 12,
-          "readers_count": 11,
-          "score": 17.4,
+          "incoming_link_count": 5,
+          "reads": 24,
+          "readers_count": 23,
+          "score": 59.6,
           "yours": false,
           "topic_id": 701808,
           "topic_slug": "delay-in-stock-emails-based-on-inventory",
@@ -40,7 +40,12 @@
           "read": true,
           "user_title": null,
           "bookmarked": false,
-          "actions_summary": [],
+          "actions_summary": [
+            {
+              "id": 2,
+              "count": 2
+            }
+          ],
           "moderator": false,
           "admin": false,
           "staff": false,
@@ -58,9 +63,15 @@
           "can_manage_category_expert_posts": false,
           "event": null,
           "calendar_details": [],
-          "reactions": [],
+          "reactions": [
+            {
+              "id": "heart",
+              "type": "emoji",
+              "count": 2
+            }
+          ],
           "current_user_reaction": null,
-          "reaction_users_count": 0,
+          "reaction_users_count": 2,
           "current_user_used_main_reaction": false,
           "can_accept_answer": false,
           "can_unaccept_answer": false,
@@ -76,15 +87,15 @@
           "cooked": "<p>This is a more detailed one. But i have used Back In Stock alert, notify me app. This adds a notify me button on the pdp so users add their email to sign up. Once you restock or add inventory an email automatically gets send.</p>\n<p>I.E. if I add 8 items back to stock then the first 8 customers on the notify list get emails? I cannot confirm of this specific behaviour. You can reach out to chat support. Support is great.</p>",
           "post_number": 2,
           "post_type": 1,
-          "posts_count": 3,
+          "posts_count": 10,
           "updated_at": "2026-10-22T02:08:43.470Z",
           "reply_count": 0,
           "reply_to_post_number": null,
           "quote_count": 0,
           "incoming_link_count": 0,
-          "reads": 7,
-          "readers_count": 6,
-          "score": 1.4,
+          "reads": 20,
+          "readers_count": 19,
+          "score": 3.8,
           "yours": false,
           "topic_id": 701808,
           "topic_slug": "delay-in-stock-emails-based-on-inventory",
@@ -131,15 +142,451 @@
           "topic_accepted_answer": null
         },
         {
-          "id": 1919870,
-          "username": "Lauren_Scott",
-          "avatar_template": "/user_avatar/community.shopify.com/lauren_scott/{size}/417640_2.png",
-          "created_at": "2026-10-22T06:37:48.475Z",
-          "cooked": "<p>Most restock notification tools send to every subscriber for a variant when it comes back in stock, so the “first 8 only” behavior is the part to verify before you buy. Ask the vendor the exact question: does a restock send fire once per variant, and can the number of emails be limited to the quantity added? Get the answer in writing, since “support is great” doesn’t tell you whether it’s a setting or a custom build.</p>\n<p>If the answer is no, you have two practical options. The simple one is to turn off automatic restock emails, export the signup list with timestamps, and email the first N people yourself when you restock.</p>\n<p>The other option is a small custom app. Subscribe to the inventory level update webhook and compare each new quantity with the previous one. Only a positive change counts as a restock, because every sale also fires that webhook. When the delta is positive, email the oldest N signups and mark them as notified.</p>",
-          "post_number": 3,
+          "id": 1920888,
+          "username": "Adflipr",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/a/43a26b/{size}.png",
+          "created_at": "2026-10-22T15:21:13.694Z",
+          "cooked": "<p>Blasting your entire subscriber waiting list when only a small batch arrives is one of the quickest ways to create customer support tickets. When 50 people get an alert for 8 units, 42 shoppers click through to an immediately sold-out page.</p>\n<p>To solve this, you need inventory-proportional batching rather than an all-at-once broadcast trigger.</p>\n<p>Here is how to configure the pacing logic:</p>\n<p>1. Inventory-to-Notification Ratio (1:1 or 1:1.5): Set your restock rule to notify only N subscribers where N equals available inventory (or at most 1.5x inventory to account for non-openers). If you add 8 units, only the first 8 or 12 subscribers in queue should receive the alert.</p>\n<p>2. Drip Delay Windows: Do not release subsequent batches immediately. Add a 2 to 4 hour cooldown window between notification batches. If the first 8 subscribers do not purchase within 3 hours and units remain in stock, the next batch of subscribers is triggered automatically.</p>\n<p>3. Minimum Stock Threshold: Prevent restock alerts entirely on single-unit returns. If a customer returns 1 damaged or canceled item, you do not want an automated alert firing to dozens of eager buyers. Set a minimum threshold of at least 3 to 5 units before restock triggers activate.</p>\n<p>4. Auto-Pause on Stockout: Ensure the trigger listener checks real-time Shopify inventory right before dispatching each batch, pausing the queue immediately if stock drops back to zero.</p>",
+          "post_number": 4,
           "post_type": 1,
-          "posts_count": 3,
-          "updated_at": "2026-10-22T06:37:48.475Z",
+          "posts_count": 10,
+          "updated_at": "2026-10-22T15:21:13.694Z",
+          "reply_count": 1,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 9,
+          "readers_count": 8,
+          "score": 6.6,
+          "yours": false,
+          "topic_id": 701808,
+          "topic_slug": "delay-in-stock-emails-based-on-inventory",
+          "primary_group_name": "shopifypartner",
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": "Shopify Partner",
+          "title_is_group": true,
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1370959,
+          "hidden": false,
+          "trust_level": 1,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/delay-in-stock-emails-based-on-inventory/701808/4",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        },
+        {
+          "id": 1920912,
+          "username": "frankybiz",
+          "avatar_template": "/user_avatar/community.shopify.com/frankybiz/{size}/417535_2.png",
+          "created_at": "2026-10-22T15:59:00.178Z",
+          "cooked": "<aside class=\"quote group-shopifypartner\" data-username=\"Adflipr\" data-post=\"4\" data-topic=\"701808\">\n<div class=\"title\">\n<div class=\"quote-controls\"></div>\n<img alt=\"\" width=\"24\" height=\"24\" src=\"https://avatars.discourse-cdn.com/v4/letter/a/43a26b/48.png\" class=\"avatar\"> Adflipr:</div>\n<blockquote>\n<p>Blasting your entire subscriber waiting list when only a small batch arrives is one of the quickest ways to create customer support tickets. When 50 people get an alert for 8 units, 42 shoppers click through to an immediately sold-out page.</p>\n</blockquote>\n</aside>\n<p>Absolutely this ^^^^</p>\n<p>What I would do is a “first come first serve” sorting. If 8 stock come in, I would send to the first 4 people who signed up. Then wait. Then send some more.</p>\n<p>You don’t really need third party apps. Flow and Messaging. Add tag customers. Create customer segments by tag. Email the segment. Remove tag when sent. All automated. You could even create a metaobject or something to house the waitlist.</p>",
+          "post_number": 5,
+          "post_type": 1,
+          "posts_count": 10,
+          "updated_at": "2026-10-22T15:59:00.178Z",
+          "reply_count": 2,
+          "reply_to_post_number": 4,
+          "quote_count": 1,
+          "incoming_link_count": 0,
+          "reads": 8,
+          "readers_count": 7,
+          "score": 26.4,
+          "yours": false,
+          "topic_id": 701808,
+          "topic_slug": "delay-in-stock-emails-based-on-inventory",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": null,
+          "bookmarked": false,
+          "actions_summary": [
+            {
+              "id": 2,
+              "count": 1
+            }
+          ],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1646893,
+          "hidden": false,
+          "trust_level": 1,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/delay-in-stock-emails-based-on-inventory/701808/5",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [
+            {
+              "id": "+1",
+              "type": "emoji",
+              "count": 1
+            }
+          ],
+          "current_user_reaction": null,
+          "reaction_users_count": 1,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        },
+        {
+          "id": 1920991,
+          "username": "XpressCS",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/x/d78d45/{size}.png",
+          "created_at": "2026-10-22T19:10:05.214Z",
+          "cooked": "<p>(post deleted by author)</p>",
+          "post_number": 6,
+          "post_type": 1,
+          "posts_count": 10,
+          "updated_at": "2026-10-22T19:23:51.835Z",
+          "reply_count": 0,
+          "reply_to_post_number": 5,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 7,
+          "readers_count": 6,
+          "score": 1.2,
+          "yours": false,
+          "topic_id": 701808,
+          "topic_slug": "delay-in-stock-emails-based-on-inventory",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 2,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": null,
+          "reply_to_user": {
+            "id": 1646893,
+            "username": "frankybiz",
+            "avatar_template": "/user_avatar/community.shopify.com/frankybiz/{size}/417535_2.png"
+          },
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1647675,
+          "hidden": false,
+          "trust_level": 0,
+          "deleted_at": null,
+          "user_deleted": true,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/delay-in-stock-emails-based-on-inventory/701808/6",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        },
+        {
+          "id": 1921000,
+          "username": "XpressCS",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/x/d78d45/{size}.png",
+          "created_at": "2026-10-22T19:23:58.411Z",
+          "cooked": "<p>Apologies for being dumb on this, but is there a how-to that shows how to build this into my store?</p>",
+          "post_number": 7,
+          "post_type": 1,
+          "posts_count": 10,
+          "updated_at": "2026-10-22T19:23:58.411Z",
+          "reply_count": 1,
+          "reply_to_post_number": 5,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 5,
+          "readers_count": 4,
+          "score": 20.8,
+          "yours": false,
+          "topic_id": 701808,
+          "topic_slug": "delay-in-stock-emails-based-on-inventory",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": null,
+          "reply_to_user": {
+            "id": 1646893,
+            "username": "frankybiz",
+            "avatar_template": "/user_avatar/community.shopify.com/frankybiz/{size}/417535_2.png"
+          },
+          "bookmarked": false,
+          "actions_summary": [
+            {
+              "id": 2,
+              "count": 1
+            }
+          ],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1647675,
+          "hidden": false,
+          "trust_level": 0,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/delay-in-stock-emails-based-on-inventory/701808/7",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [
+            {
+              "id": "heart",
+              "type": "emoji",
+              "count": 1
+            }
+          ],
+          "current_user_reaction": null,
+          "reaction_users_count": 1,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        },
+        {
+          "id": 1921006,
+          "username": "frankybiz",
+          "avatar_template": "/user_avatar/community.shopify.com/frankybiz/{size}/417535_2.png",
+          "created_at": "2026-10-22T19:44:18.442Z",
+          "cooked": "<p>Every store is different, and I’m sure there are some threads here around this kind of thing. I personally like to figure it out myself. Watch these videos to get a brief understanding of what Flow can do.<br>\n<a href=\"https://www.youtube.com/watch?v=edym2_mCj2I\" rel=\"noopener nofollow ugc\">https://www.youtube.com/watch?v=edym2_mCj2I</a></p>\n<p><a href=\"https://www.youtube.com/watch?v=DAoxfhgaFOU\" rel=\"noopener nofollow ugc\">https://www.youtube.com/watch?v=DAoxfhgaFOU</a></p>\n<p><a href=\"https://www.youtube.com/watch?v=SKrzJvb3yCg\" rel=\"noopener nofollow ugc\">https://www.youtube.com/watch?v=SKrzJvb3yCg</a></p>\n<p>Here is one if you use Klavio</p>\n<div class=\"youtube-onebox lazy-video-container\" data-video-id=\"TFfXT46lrSk\" data-video-title=\"Klaviyo Tutorial: How to Setup Back in Stock Emails for Shopify 2025 (Step by Step)\" data-video-start-time=\"\" data-video-list-id=\"\" data-provider-name=\"youtube\">\n  <a href=\"https://www.youtube.com/watch?v=TFfXT46lrSk\" target=\"_blank\" class=\"video-thumbnail\" rel=\"noopener nofollow ugc\">\n    <img class=\"youtube-thumbnail\" src=\"https://canada1.discourse-cdn.com/shopifyforum/original/4X/2/d/3/2d3a3037c7d8c1c6667e994b2051040afe885ec5.jpeg\" title=\"Klaviyo Tutorial: How to Setup Back in Stock Emails for Shopify 2025 (Step by Step)\" data-dominant-color=\"646C84\" width=\"690\" height=\"388\">\n  </a>\n</div>\n",
+          "post_number": 8,
+          "post_type": 1,
+          "posts_count": 10,
+          "updated_at": "2026-10-22T19:44:18.442Z",
+          "reply_count": 0,
+          "reply_to_post_number": 7,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 7,
+          "readers_count": 6,
+          "score": 1.2,
+          "yours": false,
+          "topic_id": 701808,
+          "topic_slug": "delay-in-stock-emails-based-on-inventory",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "link_counts": [
+            {
+              "url": "https://www.youtube.com/watch?v=SKrzJvb3yCg",
+              "internal": false,
+              "reflection": false,
+              "clicks": 0
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=TFfXT46lrSk",
+              "internal": false,
+              "reflection": false,
+              "clicks": 0
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=edym2_mCj2I",
+              "internal": false,
+              "reflection": false,
+              "clicks": 0
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=DAoxfhgaFOU",
+              "internal": false,
+              "reflection": false,
+              "clicks": 0
+            }
+          ],
+          "read": true,
+          "user_title": null,
+          "reply_to_user": {
+            "id": 1647675,
+            "username": "XpressCS",
+            "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/x/d78d45/{size}.png"
+          },
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1646893,
+          "hidden": false,
+          "trust_level": 1,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/delay-in-stock-emails-based-on-inventory/701808/8",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        },
+        {
+          "id": 1921061,
+          "username": "bchen27",
+          "avatar_template": "/user_avatar/community.shopify.com/bchen27/{size}/400064_2.png",
+          "created_at": "2026-10-22T22:18:34.261Z",
+          "cooked": "<p>one thing to check before building anything: a lot of notify-me apps email the whole list automatically the moment inventory goes above zero. so if you add the 8 back the normal way, everyone gets emailed before any first-8 logic can happen. turn that auto-send off before you restock.</p>\n<p>after that, the no-build version works fine for small batches. if your app lets you export the waitlist with signup dates, email the first 8 to 10 yourself, then the next few a couple hours later if anything’s left. the email doesn’t hold the item for them though, so anyone browsing can still buy those 8 first, and one person can take 3. if your theme or an app can cap restocks at 1 per order, i’d add that too.</p>",
+          "post_number": 9,
+          "post_type": 1,
+          "posts_count": 10,
+          "updated_at": "2026-10-22T22:18:34.261Z",
+          "reply_count": 0,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 5,
+          "readers_count": 4,
+          "score": 1.0,
+          "yours": false,
+          "topic_id": 701808,
+          "topic_slug": "delay-in-stock-emails-based-on-inventory",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": "",
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1619276,
+          "hidden": false,
+          "trust_level": 2,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/delay-in-stock-emails-based-on-inventory/701808/9",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        },
+        {
+          "id": 1921078,
+          "username": "bubby_shopkeeper",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/b/b487fb/{size}.png",
+          "created_at": "2026-10-22T23:59:43.721Z",
+          "cooked": "<p>Check the restock app’s settings for a cap on emails per restock before you pick one, because a lot of them just email the whole list at once and you end up with more people than stock.</p>",
+          "post_number": 10,
+          "post_type": 1,
+          "posts_count": 10,
+          "updated_at": "2026-10-22T23:59:43.721Z",
           "reply_count": 0,
           "reply_to_post_number": null,
           "quote_count": 0,
@@ -170,7 +617,7 @@
           "moderator": false,
           "admin": false,
           "staff": false,
-          "user_id": 1646717,
+          "user_id": 1646869,
           "hidden": false,
           "trust_level": 1,
           "deleted_at": null,
@@ -178,7 +625,69 @@
           "edit_reason": null,
           "can_view_edit_history": true,
           "wiki": false,
-          "post_url": "/t/delay-in-stock-emails-based-on-inventory/701808/3",
+          "post_url": "/t/delay-in-stock-emails-based-on-inventory/701808/10",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        },
+        {
+          "id": 1921164,
+          "username": "Shawn-Z",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/s/5f8ce5/{size}.png",
+          "created_at": "2026-10-23T07:02:04.810Z",
+          "cooked": "<p>Flow can spot the restock, but it can’t email your customers. The inventory quantity changed trigger gives you the variant and the quantity before the change, and the email action in Flow is for internal recipients, so staff get the message, not buyers. There’s no native waitlist either.</p>\n<p>The list itself lives in whichever notify-me tool you’re using, so the cap of eight has to come from there. Check whether it has a per-restock email limit or batching setting before you look at anything custom.</p>\n<p>If it doesn’t, export the list with signup dates and send to the oldest entries in batches yourself. If the tool writes signups as customer tags or segments, a marketing automation can handle the send instead.</p>\n<p>One thing to keep in mind: an email doesn’t reserve stock, so if people are slow to open it you can still oversell.</p>",
+          "post_number": 11,
+          "post_type": 1,
+          "posts_count": 10,
+          "updated_at": "2026-10-23T07:02:04.810Z",
+          "reply_count": 0,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 1,
+          "readers_count": 0,
+          "score": 0.2,
+          "yours": false,
+          "topic_id": 701808,
+          "topic_slug": "delay-in-stock-emails-based-on-inventory",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": null,
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1643664,
+          "hidden": false,
+          "trust_level": 1,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/delay-in-stock-emails-based-on-inventory/701808/11",
           "category_expert_approved_group": null,
           "needs_category_expert_approval": null,
           "can_manage_category_expert_posts": false,
@@ -196,12 +705,23 @@
       "stream": [
         1919774,
         1919814,
-        1919870
+        1920888,
+        1920912,
+        1920991,
+        1921000,
+        1921006,
+        1921061,
+        1921078,
+        1921164
       ]
     },
     "timeline_lookup": [
       [
         1,
+        1
+      ],
+      [
+        7,
         0
       ]
     ],
@@ -215,10 +735,30 @@
             127
           ]
         },
-        "1646717": {
-          "id": 1646717,
+        "1619276": {
+          "id": 1619276,
+          "badge_ids": [
+            111,
+            118
+          ]
+        },
+        "1643664": {
+          "id": 1643664,
+          "badge_ids": [
+            109
+          ]
+        },
+        "1646869": {
+          "id": 1646869,
           "badge_ids": [
             108
+          ]
+        },
+        "1646893": {
+          "id": 1646893,
+          "badge_ids": [
+            109,
+            116
           ]
         }
       },
@@ -232,16 +772,6 @@
           "image_url": null,
           "badge_grouping_id": 9,
           "badge_type_id": 1
-        },
-        "110": {
-          "id": 110,
-          "name": "50 Posts",
-          "slug": "50-posts",
-          "description": "Way to go! You've posted 50 times in the Shopify Community",
-          "icon": "file-signature",
-          "image_url": null,
-          "badge_grouping_id": 7,
-          "badge_type_id": 3
         },
         "19": {
           "id": 19,
@@ -283,6 +813,26 @@
           "badge_grouping_id": 2,
           "badge_type_id": 2
         },
+        "109": {
+          "id": 109,
+          "name": "25 Posts",
+          "slug": "25-posts",
+          "description": "With 25 posts submitted, you help keep the conversations going",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 3
+        },
+        "110": {
+          "id": 110,
+          "name": "50 Posts",
+          "slug": "50-posts",
+          "description": "Way to go! You've posted 50 times in the Shopify Community",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 3
+        },
         "111": {
           "id": 111,
           "name": "100 Posts",
@@ -322,16 +872,6 @@
           "image_url": null,
           "badge_grouping_id": 7,
           "badge_type_id": 2
-        },
-        "109": {
-          "id": 109,
-          "name": "25 Posts",
-          "slug": "25-posts",
-          "description": "With 25 posts submitted, you help keep the conversations going",
-          "icon": "file-signature",
-          "image_url": null,
-          "badge_grouping_id": 7,
-          "badge_type_id": 3
         },
         "122": {
           "id": 122,
@@ -423,6 +963,26 @@
           "badge_grouping_id": 8,
           "badge_type_id": 2
         },
+        "116": {
+          "id": 116,
+          "name": "10 Likes",
+          "slug": "10-likes",
+          "description": "You've received 10 likes",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 3
+        },
+        "118": {
+          "id": 118,
+          "name": "50 Likes",
+          "slug": "50-likes",
+          "description": "Your contributions have earned you 50 likes",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 3
+        },
         "127": {
           "id": 127,
           "name": "75 Accepted Solutions",
@@ -443,26 +1003,6 @@
           "badge_grouping_id": 9,
           "badge_type_id": 1
         },
-        "118": {
-          "id": 118,
-          "name": "50 Likes",
-          "slug": "50-likes",
-          "description": "Your contributions have earned you 50 likes",
-          "icon": "thumbs-up",
-          "image_url": null,
-          "badge_grouping_id": 8,
-          "badge_type_id": 3
-        },
-        "116": {
-          "id": 116,
-          "name": "10 Likes",
-          "slug": "10-likes",
-          "description": "You've received 10 likes",
-          "icon": "thumbs-up",
-          "image_url": null,
-          "badge_grouping_id": 8,
-          "badge_type_id": 3
-        },
         "128": {
           "id": 128,
           "name": "100 Accepted Solutions",
@@ -473,16 +1013,6 @@
           "badge_grouping_id": 9,
           "badge_type_id": 2
         },
-        "108": {
-          "id": 108,
-          "name": "10 Posts",
-          "slug": "10-posts",
-          "description": "Thanks for being an active member and posting 10 times",
-          "icon": "file-signature",
-          "image_url": null,
-          "badge_grouping_id": 7,
-          "badge_type_id": 3
-        },
         "117": {
           "id": 117,
           "name": "25 Likes",
@@ -491,6 +1021,16 @@
           "icon": "thumbs-up",
           "image_url": null,
           "badge_grouping_id": 8,
+          "badge_type_id": 3
+        },
+        "108": {
+          "id": 108,
+          "name": "10 Posts",
+          "slug": "10-posts",
+          "description": "Thanks for being an active member and posting 10 times",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
           "badge_type_id": 3
         },
         "124": {
@@ -517,12 +1057,12 @@
     "fancy_title": "Delay in-stock email&rsquo;s based on inventory?",
     "id": 701808,
     "title": "Delay in-stock email's based on inventory?",
-    "posts_count": 3,
+    "posts_count": 10,
     "created_at": "2026-10-21T21:32:13.494Z",
-    "views": 42,
-    "reply_count": 0,
-    "like_count": 0,
-    "last_posted_at": "2026-10-22T06:37:48.475Z",
+    "views": 94,
+    "reply_count": 4,
+    "like_count": 4,
+    "last_posted_at": "2026-10-23T07:02:04.810Z",
     "visible": true,
     "closed": false,
     "archived": false,
@@ -530,7 +1070,7 @@
     "archetype": "regular",
     "slug": "delay-in-stock-emails-based-on-inventory",
     "category_id": 186,
-    "word_count": 310,
+    "word_count": 932,
     "deleted_at": null,
     "user_id": 1647675,
     "featured_link": null,
@@ -545,7 +1085,7 @@
     "unpinned": null,
     "pinned": false,
     "current_post_number": 1,
-    "highest_post_number": 3,
+    "highest_post_number": 11,
     "deleted_by": null,
     "actions_summary": [
       {
@@ -589,18 +1129,174 @@
     "bookmarked": false,
     "topic_timer": {
       "id": 1929,
-      "execute_at": "2027-04-20T06:37:48.475Z",
+      "execute_at": "2027-04-21T07:02:04.810Z",
       "duration_minutes": 259200,
       "based_on_last_post": true,
       "status_type": "close",
       "category_id": null
     },
-    "message_bus_last_id": 41,
-    "participant_count": 3,
+    "message_bus_last_id": 82,
+    "participant_count": 7,
     "show_read_indicator": false,
     "thumbnails": null,
     "slow_mode_enabled_until": null,
     "related_topics": [
+      {
+        "fancy_title": "Waitlist app with batch alert send feature",
+        "id": 233396,
+        "title": "Waitlist app with batch alert send feature",
+        "slug": "waitlist-app-with-batch-alert-send-feature",
+        "posts_count": 3,
+        "reply_count": 0,
+        "highest_post_number": 3,
+        "image_url": null,
+        "created_at": "2023-07-17T15:59:15.000Z",
+        "last_posted_at": "2025-04-16T01:00:10.000Z",
+        "bumped": true,
+        "bumped_at": "2025-04-16T01:00:10.000Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Hi shopify community, \nim searching for an app to send a notification to the clients on a product back in stock, but this notification needs to be batch sent (not sent to all clients on the waitlist, just the first 10 on&hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [
+          {
+            "id": 4775,
+            "name": "shopify-apps",
+            "slug": "shopify-apps"
+          }
+        ],
+        "tags_descriptions": {},
+        "like_count": 0,
+        "views": 111,
+        "category_id": 186,
+        "featured_link": null,
+        "op_like_count": 0,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 1041709,
+              "username": "mariomijes",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/m/71c47a/{size}.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": 1016768,
+              "username": "Sindoora",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/s/ea666f/{size}.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 117341,
+              "username": "Iliasshad",
+              "avatar_template": "/user_avatar/community.shopify.com/iliasshad/{size}/241791_2.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 1
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "Are there any back in stock alert apps that integrate seamlessly with shopify email?",
+        "id": 316047,
+        "title": "Are there any back in stock alert apps that integrate seamlessly with shopify email?",
+        "slug": "are-there-any-back-in-stock-alert-apps-that-integrate-seamlessly-with-shopify-email",
+        "posts_count": 3,
+        "reply_count": 0,
+        "highest_post_number": 3,
+        "image_url": null,
+        "created_at": "2024-04-20T02:24:15.000Z",
+        "last_posted_at": "2024-08-26T17:18:40.000Z",
+        "bumped": true,
+        "bumped_at": "2024-08-26T17:18:40.000Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Hi! \nI am a running a small luxury garment business and I’m about to launch my business. Since it’s the first launch, the production is small and limited quantity. I anticipate that I will need some form to alert custome&hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [
+          {
+            "id": 4775,
+            "name": "shopify-apps",
+            "slug": "shopify-apps"
+          },
+          {
+            "id": 2135,
+            "name": "third-party-apps",
+            "slug": "third-party-apps"
+          },
+          {
+            "id": 3823,
+            "name": "shopify-scripts",
+            "slug": "shopify-scripts"
+          }
+        ],
+        "tags_descriptions": {},
+        "like_count": 3,
+        "views": 371,
+        "category_id": 186,
+        "featured_link": null,
+        "op_like_count": 1,
+        "has_accepted_answer": true,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 1288437,
+              "username": "masha3",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/m/9de053/{size}.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster, Accepted Answer",
+            "user": {
+              "id": 868594,
+              "username": "PageFly-Kate",
+              "avatar_template": "/user_avatar/community.shopify.com/pagefly-kate/{size}/139064_2.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 579169,
+              "username": "Sandy-STOQ",
+              "avatar_template": "/user_avatar/community.shopify.com/sandy-stoq/{size}/86109_2.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 1
+            }
+          }
+        ]
+      },
       {
         "fancy_title": "How to notify a customer when an item is in stock?",
         "id": 1585,
@@ -627,7 +1323,7 @@
         "tags": [],
         "tags_descriptions": {},
         "like_count": 8,
-        "views": 697,
+        "views": 702,
         "category_id": 186,
         "featured_link": null,
         "op_like_count": 1,
@@ -691,277 +1387,23 @@
         ]
       },
       {
-        "fancy_title": "Are there any back in stock alert apps that integrate seamlessly with shopify email?",
-        "id": 316047,
-        "title": "Are there any back in stock alert apps that integrate seamlessly with shopify email?",
-        "slug": "are-there-any-back-in-stock-alert-apps-that-integrate-seamlessly-with-shopify-email",
-        "posts_count": 3,
-        "reply_count": 0,
-        "highest_post_number": 3,
-        "image_url": null,
-        "created_at": "2024-04-20T02:24:15.000Z",
-        "last_posted_at": "2024-08-26T17:18:40.000Z",
-        "bumped": true,
-        "bumped_at": "2024-08-26T17:18:40.000Z",
-        "archetype": "regular",
-        "unseen": false,
-        "pinned": false,
-        "unpinned": null,
-        "excerpt": "Hi! \nI am a running a small luxury garment business and I’m about to launch my business. Since it’s the first launch, the production is small and limited quantity. I anticipate that I will need some form to alert custome&hellip;",
-        "visible": true,
-        "closed": false,
-        "archived": false,
-        "bookmarked": null,
-        "liked": null,
-        "tags": [
-          {
-            "id": 4775,
-            "name": "shopify-apps",
-            "slug": "shopify-apps"
-          },
-          {
-            "id": 2135,
-            "name": "third-party-apps",
-            "slug": "third-party-apps"
-          },
-          {
-            "id": 3823,
-            "name": "shopify-scripts",
-            "slug": "shopify-scripts"
-          }
-        ],
-        "tags_descriptions": {},
-        "like_count": 3,
-        "views": 369,
-        "category_id": 186,
-        "featured_link": null,
-        "op_like_count": 1,
-        "has_accepted_answer": true,
-        "posters": [
-          {
-            "extras": null,
-            "description": "Original Poster",
-            "user": {
-              "id": 1288437,
-              "username": "masha3",
-              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/m/9de053/{size}.png",
-              "primary_group_name": "merchant",
-              "trust_level": 1
-            }
-          },
-          {
-            "extras": null,
-            "description": "Recent Poster, Accepted Answer",
-            "user": {
-              "id": 868594,
-              "username": "PageFly-Kate",
-              "avatar_template": "/user_avatar/community.shopify.com/pagefly-kate/{size}/139064_2.png",
-              "primary_group_name": "shopifypartner",
-              "trust_level": 1
-            }
-          },
-          {
-            "extras": "latest",
-            "description": "Most Recent Poster",
-            "user": {
-              "id": 579169,
-              "username": "Sandy-STOQ",
-              "avatar_template": "/user_avatar/community.shopify.com/sandy-stoq/{size}/86109_2.png",
-              "primary_group_name": "shopifypartner",
-              "trust_level": 1
-            }
-          }
-        ]
-      },
-      {
-        "fancy_title": "Find an App for Notify Me When Back In Stock",
-        "id": 195610,
-        "title": "Find an App for Notify Me When Back In Stock",
-        "slug": "find-an-app-for-notify-me-when-back-in-stock",
-        "posts_count": 3,
-        "reply_count": 0,
-        "highest_post_number": 3,
-        "image_url": null,
-        "created_at": "2023-02-28T07:17:33.000Z",
-        "last_posted_at": "2026-08-20T08:36:43.019Z",
-        "bumped": true,
-        "bumped_at": "2026-08-20T08:36:43.019Z",
-        "archetype": "regular",
-        "unseen": false,
-        "pinned": false,
-        "unpinned": null,
-        "excerpt": "Hi There, \nHope you are doing good !! \nhave a query which is When a product is out of stock we would like to be able to capture a users email address so that when the product comes back into stock they are able to send t&hellip;",
-        "visible": true,
-        "closed": false,
-        "archived": false,
-        "bookmarked": null,
-        "liked": null,
-        "tags": [
-          {
-            "id": 2135,
-            "name": "third-party-apps",
-            "slug": "third-party-apps"
-          },
-          {
-            "id": 2061,
-            "name": "plus-admin",
-            "slug": "plus-admin"
-          }
-        ],
-        "tags_descriptions": {},
-        "like_count": 0,
-        "views": 126,
-        "category_id": 88,
-        "featured_link": null,
-        "op_like_count": 0,
-        "has_accepted_answer": false,
-        "posters": [
-          {
-            "extras": null,
-            "description": "Original Poster",
-            "user": {
-              "id": 926758,
-              "username": "ayush-wtc",
-              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/a/43a26b/{size}.png",
-              "primary_group_name": "shopifypartner",
-              "trust_level": 1
-            }
-          },
-          {
-            "extras": null,
-            "description": "Recent Poster",
-            "user": {
-              "id": 238743,
-              "username": "Blair",
-              "avatar_template": "/user_avatar/community.shopify.com/blair/{size}/35201_2.png",
-              "flair_name": "shopifystaff",
-              "flair_group_id": 51,
-              "primary_group_name": "shopifystaff",
-              "trust_level": 4
-            }
-          },
-          {
-            "extras": "latest",
-            "description": "Most Recent Poster",
-            "user": {
-              "id": 1573055,
-              "username": "Emma_collins",
-              "avatar_template": "/user_avatar/community.shopify.com/emma_collins/{size}/408864_2.png",
-              "primary_group_name": "merchant",
-              "trust_level": 1
-            }
-          }
-        ]
-      },
-      {
-        "fancy_title": "How can I add a &lsquo;back in stock&rsquo; notification feature on my product page?",
-        "id": 140288,
-        "title": "How can I add a 'back in stock' notification feature on my product page?",
-        "slug": "how-can-i-add-a-back-in-stock-notification-feature-on-my-product-page",
-        "posts_count": 4,
+        "fancy_title": "Looking for Best Back in stock and Restock Alert App?",
+        "id": 31597,
+        "title": "Looking for Best Back in stock and Restock Alert App?",
+        "slug": "looking-for-best-back-in-stock-and-restock-alert-app",
+        "posts_count": 1,
         "reply_count": 0,
         "highest_post_number": 0,
         "image_url": null,
-        "created_at": "2022-08-04T05:03:29.000Z",
-        "last_posted_at": "2025-06-22T09:31:04.000Z",
-        "bumped": true,
-        "bumped_at": "2025-06-22T09:31:04.000Z",
+        "created_at": "2021-01-13T07:35:45.000Z",
+        "last_posted_at": "2021-01-13T07:35:45.000Z",
+        "bumped": false,
+        "bumped_at": "2021-01-13T07:35:45.000Z",
         "archetype": "regular",
         "unseen": false,
         "pinned": false,
         "unpinned": null,
-        "excerpt": "Hello everyone! \nHave a great day. \nLet me ask one question. \nI wanna add Back in stock notification feature in products page of my Shopify Website. I want to customers to fill their email addresses and click notify butt&hellip;",
-        "visible": true,
-        "closed": false,
-        "archived": false,
-        "bookmarked": null,
-        "liked": null,
-        "tags": [
-          {
-            "id": 4021,
-            "name": "troubleshooting",
-            "slug": "troubleshooting"
-          },
-          {
-            "id": 4770,
-            "name": "shop-performance",
-            "slug": "shop-performance"
-          }
-        ],
-        "tags_descriptions": {},
-        "like_count": 1,
-        "views": 430,
-        "category_id": 95,
-        "featured_link": null,
-        "op_like_count": 0,
-        "has_accepted_answer": false,
-        "posters": [
-          {
-            "extras": null,
-            "description": "Original Poster",
-            "user": {
-              "id": 754669,
-              "username": "Wadmin",
-              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/w/6de8d8/{size}.png",
-              "primary_group_name": "merchant",
-              "trust_level": 1
-            }
-          },
-          {
-            "extras": null,
-            "description": "Frequent Poster",
-            "user": {
-              "id": 485907,
-              "username": "Daniel_41",
-              "avatar_template": "/user_avatar/community.shopify.com/daniel_41/{size}/92492_2.png",
-              "flair_name": "shopifyretired",
-              "flair_group_id": 56,
-              "primary_group_name": "shopifyretired",
-              "trust_level": 2
-            }
-          },
-          {
-            "extras": null,
-            "description": "Recent Poster",
-            "user": {
-              "id": 579169,
-              "username": "Sandy-STOQ",
-              "avatar_template": "/user_avatar/community.shopify.com/sandy-stoq/{size}/86109_2.png",
-              "primary_group_name": "shopifypartner",
-              "trust_level": 1
-            }
-          },
-          {
-            "extras": "latest",
-            "description": "Most Recent Poster",
-            "user": {
-              "id": 1573055,
-              "username": "Emma_collins",
-              "avatar_template": "/user_avatar/community.shopify.com/emma_collins/{size}/408864_2.png",
-              "primary_group_name": "merchant",
-              "trust_level": 1
-            }
-          }
-        ]
-      },
-      {
-        "fancy_title": "How can I notify the customers if their favorite product is back in stock?",
-        "id": 31283,
-        "title": "How can I notify the customers if their favorite product is back in stock?",
-        "slug": "how-can-i-notify-the-customers-if-their-favorite-product-is-back-in-stock",
-        "posts_count": 2,
-        "reply_count": 0,
-        "highest_post_number": 2,
-        "image_url": null,
-        "created_at": "2021-01-11T09:52:42.000Z",
-        "last_posted_at": "2021-03-10T13:40:30.000Z",
-        "bumped": true,
-        "bumped_at": "2021-03-10T13:40:30.000Z",
-        "archetype": "regular",
-        "unseen": false,
-        "pinned": false,
-        "unpinned": null,
-        "excerpt": "Here are some Shopify Apps that can help to get your customers notified: \nQuick Stock Notifier Shopify App by HubifyApps - The Quick Stock Notifier App allows you to alert customers via email or SMS for product restocks.&hellip;",
+        "excerpt": "Quick Stock Notifier Shopify App by HubifyApps - This Shopify App allows you to alert customers via email or SMS when products are restocked. Customer alerts can be customized to cater to individual preferences, includin&hellip;",
         "visible": true,
         "closed": false,
         "archived": false,
@@ -970,15 +1412,15 @@
         "tags": [],
         "tags_descriptions": {},
         "like_count": 0,
-        "views": 101,
+        "views": 170,
         "category_id": 186,
         "featured_link": null,
         "op_like_count": 0,
         "has_accepted_answer": false,
         "posters": [
           {
-            "extras": null,
-            "description": "Original Poster",
+            "extras": "latest single",
+            "description": "Original Poster, Most Recent Poster",
             "user": {
               "id": 367423,
               "username": "Alex291",
@@ -986,15 +1428,62 @@
               "primary_group_name": "merchant",
               "trust_level": 1
             }
+          }
+        ]
+      },
+      {
+        "fancy_title": "App Avise me quando chegar um produto",
+        "id": 47757,
+        "title": "App Avise me quando chegar um produto",
+        "slug": "app-avise-me-quando-chegar-um-produto",
+        "posts_count": 2,
+        "reply_count": 0,
+        "highest_post_number": 0,
+        "image_url": null,
+        "created_at": "2021-05-26T23:24:21.000Z",
+        "last_posted_at": "2021-06-03T18:50:04.000Z",
+        "bumped": true,
+        "bumped_at": "2021-06-03T18:50:04.000Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Boa noite \nQuando um produto da minha loja acaba, fica no botão Esgotado. Teria algum app que disponibilizaria para o cliente colocar o seu email para ser avisado quando o produto ficar disponivel?",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [],
+        "tags_descriptions": {},
+        "like_count": 2,
+        "views": 146,
+        "category_id": 135,
+        "featured_link": null,
+        "op_like_count": 1,
+        "has_accepted_answer": true,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 486759,
+              "username": "lacasasmart",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/l/838e76/{size}.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
           },
           {
             "extras": "latest",
-            "description": "Most Recent Poster",
+            "description": "Most Recent Poster, Accepted Answer",
             "user": {
-              "id": 326016,
-              "username": "chandrasekhar",
-              "avatar_template": "/user_avatar/community.shopify.com/chandrasekhar/{size}/263373_2.png",
-              "primary_group_name": "merchant",
+              "id": 147664,
+              "username": "Amalia",
+              "avatar_template": "/user_avatar/community.shopify.com/amalia/{size}/310408_2.png",
+              "flair_name": "shopifyretired",
+              "flair_group_id": 56,
+              "primary_group_name": "shopifyretired",
               "trust_level": 2
             }
           }
@@ -1004,12 +1493,12 @@
     "summarizable": true,
     "has_cached_summary": true,
     "ai_summary": {
-      "id": 1849163,
-      "summarized_text": "The request is for a Shopify restock-notification app that limits alerts to the number of units added—for example, notifying only the first eight subscribers when eight items return to stock. A participant recommends Back In Stock Alert / Notify Me, which adds a signup button and automatically sends emails when inventory is replenished, but cannot confirm whether it supports quantity-based limits. Another advises verifying this exact behavior with the vendor, including whether alerts can be capped by the restock quantity, and getting confirmation in writing.\n\nIf the app does not offer this feature, two alternatives were suggested: disable automatic alerts and manually email the earliest signups after exporting the list, or build a custom app. The custom approach would track Shopify inventory-update webhooks, detect positive inventory changes, and notify the oldest subscribers up to the increase, while avoiding treating sales-related inventory decreases as restocks. No app capability or final solution has been confirmed, so the question remains open.",
+      "id": 1851662,
+      "summarized_text": "The store owner wants restock alerts to be limited by available inventory—for example, notifying only the first eight waitlisted customers when eight units return, rather than emailing the entire list. One recommended app can automatically send alerts when inventory is added, but its ability to limit recipients per restock was not confirmed; checking the app’s settings or support is advised.\n\nThe discussion recommends inventory-based batches, optionally with a delay before notifying the next group, and pausing alerts if stock sells out. Contributors also suggest disabling any app’s automatic whole-list email before restocking. For small batches, the waitlist could be exported and the oldest signups emailed manually in groups; customer tags, segments, or marketing automation may support a more automated workflow.\n\nShopify Flow can detect inventory changes but, according to one reply, cannot email buyers directly or provide a native waitlist; its email action is for staff. Alerts also do not reserve inventory, so recipients may arrive after stock is gone or purchase multiple units. No specific app or final implementation was confirmed, so the issue remains open.",
       "algorithm": "gpt-6-luna",
       "outdated": false,
-      "created_at": "2026-10-21T21:37:21.000Z",
-      "updated_at": "2026-10-22T06:38:37.023Z"
+      "created_at": "2026-10-22T19:26:25.065Z",
+      "updated_at": "2026-10-23T07:04:35.277Z"
     },
     "is_category_expert_question": null,
     "has_livestream": null,
@@ -1039,7 +1528,7 @@
           "id": 1647675,
           "username": "XpressCS",
           "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/x/d78d45/{size}.png",
-          "post_count": 1,
+          "post_count": 3,
           "primary_group_name": null,
           "flair_name": null,
           "flair_url": null,
@@ -1047,6 +1536,58 @@
           "flair_bg_color": null,
           "flair_group_id": null,
           "trust_level": 0
+        },
+        {
+          "id": 1646893,
+          "username": "frankybiz",
+          "avatar_template": "/user_avatar/community.shopify.com/frankybiz/{size}/417535_2.png",
+          "post_count": 2,
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 1
+        },
+        {
+          "id": 1646869,
+          "username": "bubby_shopkeeper",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/b/b487fb/{size}.png",
+          "post_count": 1,
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 1
+        },
+        {
+          "id": 1370959,
+          "username": "Adflipr",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/a/43a26b/{size}.png",
+          "post_count": 1,
+          "primary_group_name": "shopifypartner",
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 1
+        },
+        {
+          "id": 1643664,
+          "username": "Shawn-Z",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/s/5f8ce5/{size}.png",
+          "post_count": 1,
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 1
         },
         {
           "id": 1338735,
@@ -1062,9 +1603,9 @@
           "trust_level": 2
         },
         {
-          "id": 1646717,
-          "username": "Lauren_Scott",
-          "avatar_template": "/user_avatar/community.shopify.com/lauren_scott/{size}/417640_2.png",
+          "id": 1619276,
+          "username": "bchen27",
+          "avatar_template": "/user_avatar/community.shopify.com/bchen27/{size}/400064_2.png",
           "post_count": 1,
           "primary_group_name": null,
           "flair_name": null,
@@ -1072,7 +1613,7 @@
           "flair_color": null,
           "flair_bg_color": null,
           "flair_group_id": null,
-          "trust_level": 1
+          "trust_level": 2
         }
       ],
       "created_by": {
@@ -1081,9 +1622,9 @@
         "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/x/d78d45/{size}.png"
       },
       "last_poster": {
-        "id": 1646717,
-        "username": "Lauren_Scott",
-        "avatar_template": "/user_avatar/community.shopify.com/lauren_scott/{size}/417640_2.png"
+        "id": 1643664,
+        "username": "Shawn-Z",
+        "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/s/5f8ce5/{size}.png"
       }
     },
     "bookmarks": []
@@ -1096,10 +1637,52 @@
       "url": "https://community.shopify.com/t/delay-in-stock-emails-based-on-inventory/701808/2"
     },
     {
-      "author": "Lauren_Scott",
-      "text": "Most restock notification tools send to every subscriber for a variant when it comes back in stock, so the “first 8 only” behavior is the part to verify before you buy. Ask the vendor the exact question: does a restock send fire once per variant, and can the number of emails be limited to the quantity added? Get the answer in writing, since “support is great” doesn’t tell you whether it’s a setting or a custom build. \n If the answer is no, you have two practical options. The simple one is to turn off automatic restock emails, export the signup list with timestamps, and email the first N people yourself when you restock. \n The other option is a small custom app. Subscribe to the inventory level update webhook and compare each new quantity with the previous one. Only a positive change counts as a restock, because every sale also fires that webhook. When the delta is positive, email the oldest N signups and mark them as notified.",
-      "at": "2026-10-22T06:37:48.475Z",
-      "url": "https://community.shopify.com/t/delay-in-stock-emails-based-on-inventory/701808/3"
+      "author": "Adflipr",
+      "text": "Blasting your entire subscriber waiting list when only a small batch arrives is one of the quickest ways to create customer support tickets. When 50 people get an alert for 8 units, 42 shoppers click through to an immediately sold-out page. \n To solve this, you need inventory-proportional batching rather than an all-at-once broadcast trigger. \n Here is how to configure the pacing logic: \n 1. Inventory-to-Notification Ratio (1:1 or 1:1.5): Set your restock rule to notify only N subscribers where N equals available inventory (or at most 1.5x inventory to account for non-openers). If you add 8 units, only the first 8 or 12 subscribers in queue should receive the alert. \n 2. Drip Delay Windows: Do not release subsequent batches immediately. Add a 2 to 4 hour cooldown window between notification batches. If the first 8 subscribers do not purchase within 3 hours and units remain in stock, the next batch of subscribers is triggered automatically. \n 3. Minimum Stock Threshold: Prevent restock alerts entirely on single-unit returns. If a customer returns 1 damaged or canceled item, you do not want an automated alert firing to dozens of eager buyers. Set a minimum threshold of at least 3 to 5 units before restock triggers activate. \n 4. Auto-Pause on Stockout: Ensure the trigger listener checks real-time Shopify inventory right before dispatching each batch, pausing the queue immediately if stock drops back to zero.",
+      "at": "2026-10-22T15:21:13.694Z",
+      "url": "https://community.shopify.com/t/delay-in-stock-emails-based-on-inventory/701808/4"
+    },
+    {
+      "author": "frankybiz",
+      "text": "Adflipr: \n \n Blasting your entire subscriber waiting list when only a small batch arrives is one of the quickest ways to create customer support tickets. When 50 people get an alert for 8 units, 42 shoppers click through to an immediately sold-out page. \n \n \n Absolutely this ^^^^ \n What I would do is a “first come first serve” sorting. If 8 stock come in, I would send to the first 4 people who signed up. Then wait. Then send some more. \n You don’t really need third party apps. Flow and Messaging. Add tag customers. Create customer segments by tag. Email the segment. Remove tag when sent. All automated. You could even create a metaobject or something to house the waitlist.",
+      "at": "2026-10-22T15:59:00.178Z",
+      "url": "https://community.shopify.com/t/delay-in-stock-emails-based-on-inventory/701808/5"
+    },
+    {
+      "author": "XpressCS",
+      "text": "(post deleted by author)",
+      "at": "2026-10-22T19:10:05.214Z",
+      "url": "https://community.shopify.com/t/delay-in-stock-emails-based-on-inventory/701808/6"
+    },
+    {
+      "author": "XpressCS",
+      "text": "Apologies for being dumb on this, but is there a how-to that shows how to build this into my store?",
+      "at": "2026-10-22T19:23:58.411Z",
+      "url": "https://community.shopify.com/t/delay-in-stock-emails-based-on-inventory/701808/7"
+    },
+    {
+      "author": "frankybiz",
+      "text": "Every store is different, and I’m sure there are some threads here around this kind of thing. I personally like to figure it out myself. Watch these videos to get a brief understanding of what Flow can do. \n https://www.youtube.com/watch?v=edym2_mCj2I  \n  https://www.youtube.com/watch?v=DAoxfhgaFOU  \n  https://www.youtube.com/watch?v=SKrzJvb3yCg  \n Here is one if you use Klavio",
+      "at": "2026-10-22T19:44:18.442Z",
+      "url": "https://community.shopify.com/t/delay-in-stock-emails-based-on-inventory/701808/8"
+    },
+    {
+      "author": "bchen27",
+      "text": "one thing to check before building anything: a lot of notify-me apps email the whole list automatically the moment inventory goes above zero. so if you add the 8 back the normal way, everyone gets emailed before any first-8 logic can happen. turn that auto-send off before you restock. \n after that, the no-build version works fine for small batches. if your app lets you export the waitlist with signup dates, email the first 8 to 10 yourself, then the next few a couple hours later if anything’s left. the email doesn’t hold the item for them though, so anyone browsing can still buy those 8 first, and one person can take 3. if your theme or an app can cap restocks at 1 per order, i’d add that too.",
+      "at": "2026-10-22T22:18:34.261Z",
+      "url": "https://community.shopify.com/t/delay-in-stock-emails-based-on-inventory/701808/9"
+    },
+    {
+      "author": "bubby_shopkeeper",
+      "text": "Check the restock app’s settings for a cap on emails per restock before you pick one, because a lot of them just email the whole list at once and you end up with more people than stock.",
+      "at": "2026-10-22T23:59:43.721Z",
+      "url": "https://community.shopify.com/t/delay-in-stock-emails-based-on-inventory/701808/10"
+    },
+    {
+      "author": "Shawn-Z",
+      "text": "Flow can spot the restock, but it can’t email your customers. The inventory quantity changed trigger gives you the variant and the quantity before the change, and the email action in Flow is for internal recipients, so staff get the message, not buyers. There’s no native waitlist either. \n The list itself lives in whichever notify-me tool you’re using, so the cap of eight has to come from there. Check whether it has a per-restock email limit or batching setting before you look at anything custom. \n If it doesn’t, export the list with signup dates and send to the oldest entries in batches yourself. If the tool writes signups as customer tags or segments, a marketing automation can handle the send instead. \n One thing to keep in mind: an email doesn’t reserve stock, so if people are slow to open it you can still oversell.",
+      "at": "2026-10-23T07:02:04.810Z",
+      "url": "https://community.shopify.com/t/delay-in-stock-emails-based-on-inventory/701808/11"
     }
   ],
   "comments_complete": true

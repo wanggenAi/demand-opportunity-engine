@@ -1,0 +1,154 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50185257",
+  "collected_at": "2026-10-23T07:28:04.863834+00:00",
+  "source": {
+    "author": "solyin",
+    "children": [
+      {
+        "author": "charcircuit",
+        "children": [
+          {
+            "author": "Dylan16807",
+            "children": [
+              {
+                "author": "charcircuit",
+                "children": [
+                  {
+                    "author": "Dylan16807",
+                    "children": [
+                      {
+                        "author": "charcircuit",
+                        "children": [
+                          {
+                            "author": "Dylan16807",
+                            "children": [],
+                            "created_at": "2026-10-22T02:04:17.000Z",
+                            "created_at_i": 1792634657,
+                            "id": 50190266,
+                            "options": [],
+                            "parent_id": 50189475,
+                            "points": null,
+                            "story_id": 50180873,
+                            "text": "Let me try to split these concerns up:<p>1. The time it took to develop the patch doesn&#x27;t matter.  Nobody leaked anything during that period.  It just needed to not be a <i>huge</i> length of time.<p>2. The time between the warning and the patch release is overall a good thing.  In this case the secrecy failed halfway through and we only got a fraction of the benefit, but it was still better than &quot;surprise and good luck with the imminent exploits, hope you weren&#x27;t asleep!&quot;.  If the secrecy hadn&#x27;t failed it would have been <i>much</i> better.<p>3. There needs to be an official patch before releasing the details.  Some random untrusted person publishing a patch has all the downsides of releasing the exploit but people can&#x27;t safely install it fast.",
+                            "title": null,
+                            "type": "comment",
+                            "url": null
+                          }
+                        ],
+                        "created_at": "2026-10-22T00:24:26.000Z",
+                        "created_at_i": 1792628666,
+                        "id": 50189475,
+                        "options": [],
+                        "parent_id": 50188456,
+                        "points": null,
+                        "story_id": 50180873,
+                        "text": "We are talking about a hypothetical where a patch is made &lt;2 months. With AI agents, I can 100% assure you it would take a max of a few days to pat CB and test a mitigation. Not months.<p>If you are warning people to turn off their servers. You might as well give them a patch at the same time.",
+                        "title": null,
+                        "type": "comment",
+                        "url": null
+                      }
+                    ],
+                    "created_at": "2026-10-21T22:18:56.000Z",
+                    "created_at_i": 1792621136,
+                    "id": 50188456,
+                    "options": [],
+                    "parent_id": 50188089,
+                    "points": null,
+                    "story_id": 50180873,
+                    "text": "2 months ago there was no patch and no possibility of a very quick patch.  Releasing details then would have been very bad.<p>If you mean they should have released the patch as soon as it was done, it&#x27;s true that it would have been before the bug was public... for about five minutes.  When a warning a day or two before patch release works, it lets admins prepare to patch immediately and&#x2F;or shut down their servers before the release time.<p>Even with the leak, admins still had warning and it was better than an unwarned official patch drop.  Which itself is better than an unwarned unofficial patch drop.  Which itself is better than an unwarned drop of exploit details.",
+                    "title": null,
+                    "type": "comment",
+                    "url": null
+                  }
+                ],
+                "created_at": "2026-10-21T21:42:53.000Z",
+                "created_at_i": 1792618973,
+                "id": 50188089,
+                "options": [],
+                "parent_id": 50187864,
+                "points": null,
+                "story_id": 50180873,
+                "text": "And in the situation where they released a security patch 2 months ago, there would be a security patch before the bug was public.",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-10-21T21:24:59.000Z",
+            "created_at_i": 1792617899,
+            "id": 50187864,
+            "options": [],
+            "parent_id": 50187104,
+            "points": null,
+            "story_id": 50180873,
+            "text": "&gt; How is what you are describing any different than what happened today?<p>There was an official patch within a few hours.  It probably would have been a lot longer.<p>And that was the screwup case.  If today had gone correctly the official patch would have been out by the time the bug was public.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-21T20:23:06.000Z",
+        "created_at_i": 1792614186,
+        "id": 50187104,
+        "options": [],
+        "parent_id": 50185257,
+        "points": null,
+        "story_id": 50180873,
+        "text": "How is what you are describing any different than what happened today? Except the vulnerabilities were also explained. You can say that sites are getting hacked right now due to them releasing the security update.<p>&gt;I&#x27;m some rando so no one&#x27;s even heard of me<p>Why do think people need to have heard of you. If you are reporting this issue directly to distro maintainers, security companies, hosting companies, etc first you can help use their names as part of the marketing push to raise awareness.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-10-21T18:17:11.000Z",
+    "created_at_i": 1792606631,
+    "id": 50185257,
+    "options": [],
+    "parent_id": 50184643,
+    "points": null,
+    "story_id": 50180873,
+    "text": "Yes it is.<p>Say I release a fix. I&#x27;m some rando but I go out to the world and say I fixed an issue with php. Use my version instead! Not telling you what I fixed, it&#x27;s a secret, just trust me.<p>It will take, with LLM help, attackers a couple hours, tops, to reverse engineer my fix into active exploitation. Meanwhile, I&#x27;m some rando so no one&#x27;s even heard of me, people who do hear don&#x27;t automatically trust me to install my fix, so very few people have my fix. Meanwhile, the exploit is out there <i>thanks to me</i> and people are getting their sites hacked <i>thanks to me</i>.<p>That seems like a problem, no?",
+    "title": null,
+    "type": "comment",
+    "url": null
+  },
+  "comments": [
+    {
+      "author": "charcircuit",
+      "text": "How is what you are describing any different than what happened today? Except the vulnerabilities were also explained. You can say that sites are getting hacked right now due to them releasing the security update. >I'm some rando so no one's even heard of me Why do think people need to have heard of you. If you are reporting this issue directly to distro maintainers, security companies, hosting companies, etc first you can help use their names as part of the marketing push to raise awareness.",
+      "at": "2026-10-21T20:23:06.000Z",
+      "url": "https://news.ycombinator.com/item?id=50187104"
+    },
+    {
+      "author": "Dylan16807",
+      "text": "> How is what you are describing any different than what happened today? There was an official patch within a few hours.  It probably would have been a lot longer. And that was the screwup case.  If today had gone correctly the official patch would have been out by the time the bug was public.",
+      "at": "2026-10-21T21:24:59.000Z",
+      "url": "https://news.ycombinator.com/item?id=50187864"
+    },
+    {
+      "author": "charcircuit",
+      "text": "And in the situation where they released a security patch 2 months ago, there would be a security patch before the bug was public.",
+      "at": "2026-10-21T21:42:53.000Z",
+      "url": "https://news.ycombinator.com/item?id=50188089"
+    },
+    {
+      "author": "Dylan16807",
+      "text": "2 months ago there was no patch and no possibility of a very quick patch.  Releasing details then would have been very bad. If you mean they should have released the patch as soon as it was done, it's true that it would have been before the bug was public... for about five minutes.  When a warning a day or two before patch release works, it lets admins prepare to patch immediately and/or shut down their servers before the release time. Even with the leak, admins still had warning and it was better than an unwarned official patch drop.  Which itself is better than an unwarned unofficial patch drop.  Which itself is better than an unwarned drop of exploit details.",
+      "at": "2026-10-21T22:18:56.000Z",
+      "url": "https://news.ycombinator.com/item?id=50188456"
+    },
+    {
+      "author": "charcircuit",
+      "text": "We are talking about a hypothetical where a patch is made <2 months. With AI agents, I can 100% assure you it would take a max of a few days to pat CB and test a mitigation. Not months. If you are warning people to turn off their servers. You might as well give them a patch at the same time.",
+      "at": "2026-10-22T00:24:26.000Z",
+      "url": "https://news.ycombinator.com/item?id=50189475"
+    },
+    {
+      "author": "Dylan16807",
+      "text": "Let me try to split these concerns up: 1. The time it took to develop the patch doesn't matter.  Nobody leaked anything during that period.  It just needed to not be a  huge  length of time. 2. The time between the warning and the patch release is overall a good thing.  In this case the secrecy failed halfway through and we only got a fraction of the benefit, but it was still better than \"surprise and good luck with the imminent exploits, hope you weren't asleep!\".  If the secrecy hadn't failed it would have been  much  better. 3. There needs to be an official patch before releasing the details.  Some random untrusted person publishing a patch has all the downsides of releasing the exploit but people can't safely install it fast.",
+      "at": "2026-10-22T02:04:17.000Z",
+      "url": "https://news.ycombinator.com/item?id=50190266"
+    }
+  ],
+  "comments_complete": true
+}

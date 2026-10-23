@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50196741",
+  "collected_at": "2026-10-23T07:28:04.863834+00:00",
+  "source": {
+    "author": "visch",
+    "children": [],
+    "created_at": "2026-10-22T15:27:52.000Z",
+    "created_at_i": 1792682872,
+    "id": 50196741,
+    "options": [],
+    "parent_id": null,
+    "points": 3,
+    "story_id": 50196741,
+    "text": "Hi, I&#x27;m Derek. I&#x27;ve been doing data integrations &#x2F; ETL work since 2014, first for K-12, now for commercial companies think ADP&#x2F;BambooHR to AzureAD, etc. I&#x27;ve written so many deployment systems for integrations, each slightly different. Instead, we took the best parts of all the systems we&#x27;ve built and put them into one tool. PDT takes your job and deploys it to AWS, Azure, GCP, or even Task Scheduler. It&#x27;s a convention-over-configuration deployment tool specifically made for Scheduled Jobs. Things like data integrations, scans, reports, etc.<p>With AI, writing scripts is easier than ever. Deploying them into production isn&#x27;t as easy. Because the AI needs to know what you want, this can be tricky as there are so many choices to make! Do I use Azure Functions, Duarble Functions, Container Instances, Azure Batch, AKS CronJob, Azure Automation Runbooks, Logic Apps? ahhh, I just want this to run in production.<p>To give it a shot, install uv, then:<p><pre><code>  uv tool install pdt-cli\n  uv tool update-shell\n  pdt init jobs\n  cd jobs\n  pdt run hello-world # runs locally\n  pdt deploy hello-world # runs on cloud \n  pdt new hello --from powershell-hello-world # give powershell a shot\n</code></pre>\nPDT gives you a standard set of primitives to use for scheduling, secrets, storage, logs, and alerts. This means you already know how to track state, where to drop the file you wanted to drop, how to know when the job fails, and how to answer all the other orchestration-related questions.",
+    "title": "Show HN: PDT – Open-source deployment of scheduled jobs on your own cloud",
+    "type": "story",
+    "url": "https://github.com/AutoIDM/pdt"
+  },
+  "comments": [],
+  "comments_complete": true
+}

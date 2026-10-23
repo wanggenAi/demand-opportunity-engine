@@ -1,0 +1,162 @@
+{
+  "source_api_url": "https://api.github.com/repos/polygoku/makhex/issues/44",
+  "collected_at": "2026-10-23T07:28:04.863834+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/polygoku/makhex/issues/44",
+    "repository_url": "https://api.github.com/repos/polygoku/makhex",
+    "labels_url": "https://api.github.com/repos/polygoku/makhex/issues/44/labels{/name}",
+    "comments_url": "https://api.github.com/repos/polygoku/makhex/issues/44/comments",
+    "events_url": "https://api.github.com/repos/polygoku/makhex/issues/44/events",
+    "html_url": "https://github.com/polygoku/makhex/issues/44",
+    "id": 5981606046,
+    "node_id": "I_kwDOVStDgs8AAAABZIgQng",
+    "number": 44,
+    "title": "Sprint 12 — MAKHEX Doroppu test import readback, N4 mismatch, and supplier qualification",
+    "user": {
+      "login": "polygoku",
+      "id": 264026015,
+      "node_id": "U_kgDOD7y3nw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/264026015?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/polygoku",
+      "html_url": "https://github.com/polygoku",
+      "followers_url": "https://api.github.com/users/polygoku/followers",
+      "following_url": "https://api.github.com/users/polygoku/following{/other_user}",
+      "gists_url": "https://api.github.com/users/polygoku/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/polygoku/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/polygoku/subscriptions",
+      "organizations_url": "https://api.github.com/users/polygoku/orgs",
+      "repos_url": "https://api.github.com/users/polygoku/repos",
+      "events_url": "https://api.github.com/users/polygoku/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/polygoku/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 4,
+    "created_at": "2026-10-22T14:46:06Z",
+    "updated_at": "2026-10-23T00:47:35Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Status (2026-10-22)\n**MAKHEX × Doroppu real Squarespace import: controlled staging succeeded; products are not approved for sale.**\n\n### Verified in authenticated Squarespace admin\n- Squarespace product catalog was **8** existing hidden/demo products at initial export `products_Oct-22_09-35-12AM.csv`.\n- First live test: AliExpress item `1005009494694247` imported as hidden/stock **0** using verified existing Squarespace Store Page slug `support` and the account's **28-column `product_import-v3.csv`**. Subsequent admin export confirmed the product/variant ID, SKU, `Visible=No`, `Stock=0`, $14.06 preview price, and **no changes to any of 8 pre-existing products**.\n- **Important SKU mismatch:** despite the original supplier title mentioning *N8*, the selectable supplier option was `N4`. This old, hidden, zero-stock trial entry must **not** be published or treated as an N8 board.\n- Second test batch generated via Doroppu and passed independent MAKHEX import validator (**2 products / 2 variants, hidden, stock 0, no media and no checkout**). Squarespace confirmed **`Import Complete — IMPORTED (2)`** and the Products UI displayed **11 products** total.\n- Stronger manufacturer-referenced AliExpress candidates used for batch 2:\n  - ESP32-C6 DevKitC-1 N8: https://www.aliexpress.com/item/1005005087160183.html, exact selectable N8 option; read-only API stock snapshot 114; USD unit cost $12.50.\n  - ESP32-S3 DevKitC-1 N8R8: https://www.aliexpress.com/item/3256803793464226.html, exact selectable N8R8 option; read-only API stock snapshot 108; USD unit cost $22.00.\n  - Provisional preview prices at 1.7× unit cost: $21.25 / $37.40. **Shipping, fees and landed margin unverified.**\n- Device session timed out while triggering the second *post-import export*. Therefore the full, per-variant readback for the two new items and unchanged-original-product comparison are **still pending**, despite the successful import result and 11-product admin listing. Do not mark full acceptance until completed.\n\n### Remaining MAKHEX catalog sourcing\nAll **12 existing MAKHEX research-part categories** have AliExpress item candidates; an earlier API audit found **67 supplier variants**. A curated, *not-uploaded* 12-item single-variant research batch has been independently validated for CSV shape, hidden status and zero stock.\n\nThree technical **HOLD** categories require further investigation before catalog import: ESP32-S3 camera board (mixed camera/accessory bundles), 2.9-inch e-paper (controller and package unverified), USB-C breadboard power kit (included power module and safety unverified). The other seven non-board categories remain REVIEW, not supplier-qualified. No automatic fulfillment has been tested.\n\n### Acceptance checklist\n- [x] Use account-downloaded official Squarespace **28-column v3** template, not obsolete 26-column v2.\n- [x] Identify real Squarespace Store Page slug as `support`. Blank page slug was **rejected** by live import as “Product page not found”; do not assume it creates a new Store Page.\n- [x] Generate from authorized AliExpress item/SKU data; retain exact supplier variant IDs, cost and provenance **only in ignored local evidence**.\n- [x] Check current pre-import Squarespace product export for SKU/handle collisions.\n- [x] Test a single hidden zero-stock import; verify 8→9 and full readback.\n- [x] Import two stronger manufacturer-referenced N8/N8R8 trial products with zero stock, no images, no sale price; Squarespace confirmation says 2 imported and 9→11 items in UI.\n- [x] Download fresh post-import Squarespace export (`products_Oct-22_04-24-16PM.csv`) and verify exactly **11 products**, the two new SKUs/price/visibility/stock, and all nine previously existing products unchanged across all 34 exported columns. Squarespace export leaves `Product ID [Non Editable]` and `Variant ID [Non Editable]` blank for all rows, so those IDs cannot be asserted from CSV; verify via UI/API if needed.\n- [x] Correct the **N4-backed, N8-titled** original hidden trial listing before any public use.\n- [x] Commit, CI-test and merge the Doroppu and MAKHEX **v3 format upgrades**, independent validator updates, and documented blank Store Page failure ([Doroppu #19](https://github.com/polygoku/doroppu/pull/19), [MAKHEX #45](https://github.com/polygoku/makhex/pull/45)).\n- [ ] Qualify technical hardware variants against vendor schematics/BOM, actual availability at checkout, shipping price/time, returns, image rights and landed economics.\n- [ ] Review three HOLD categories; do **not** upload the research-only 12-part batch or enable MAKHEX `storePath` purchase links yet.\n- [ ] End-to-end Squarespace order → Doroppu supplier fulfillment → tracking/refund test, only for approved SKUs.\n\n**Safety:** Keep zero stock and Hidden on all imported test items. No secrets, OAuth tokens or buyer data should be added to this issue.\n\n\n### 2026-10-22 safety regression merged\n- [x] [PR #49](https://github.com/polygoku/makhex/pull/49) merged (`cdf1cf6`): QA verifies checkout approvals ledger empty and C6 buyer-orderability/shipping false. XPS `npm run check`, `npm run build`, `npm run qa` and updated staged-catalog assertion passed.\n- [x] Live Squarespace old trial title and description corrected to explicitly identify the supplier-selected **N4** and prohibit sale; hidden and stock zero preserved.\n\n\n### 2026-10-22 direct Squarespace correction — VERIFIED\n- Signed-in Squarespace Products editor on XPS: renamed `mkx-1005009494694247` from `ESP32-C6 DevKitC-1 N8 Development Board - Supplier Candidate` to `ESP32-C6 DevKitC-1 N4 - Unverified Supplier Trial (Not For Sale)`; replaced misleading N8 description with N4-vs-N8 warning and no-publish/no-fulfill instructions. Saved using **Save as Hidden**, not Publish.\n- Fresh authenticated export `products_Oct-22_08-47-01PM.csv`: **22** rows. Exact comparison against `products_Oct-22_07-38-45PM.csv` finds **2 changed cells only** (Title, Description for this one item). Stock remains `0`, `Visible=No`, retail $14.06, merchant SKU unchanged. Correct separate N8 item `mkx-1005005087160183` remains stock 0, hidden, price $31.25.\n- N4 labeling blocker resolved. Supplier verification and checkout-release gates still open.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/polygoku/makhex/issues/44/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/polygoku/makhex/issues/44/timeline",
+    "performed_via_github_app": {
+      "id": 1144995,
+      "client_id": "Iv23liVemv8A9if9v0F2",
+      "slug": "chatgpt-codex-connector",
+      "node_id": "A_kwHOAOQ6Gs4AEXij",
+      "owner": {
+        "login": "openai",
+        "id": 14957082,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjE0OTU3MDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/14957082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/openai",
+        "html_url": "https://github.com/openai",
+        "followers_url": "https://api.github.com/users/openai/followers",
+        "following_url": "https://api.github.com/users/openai/following{/other_user}",
+        "gists_url": "https://api.github.com/users/openai/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/openai/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/openai/subscriptions",
+        "organizations_url": "https://api.github.com/users/openai/orgs",
+        "repos_url": "https://api.github.com/users/openai/repos",
+        "events_url": "https://api.github.com/users/openai/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/openai/received_events",
+        "type": "Organization",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "name": "ChatGPT Codex Connector",
+      "description": "Bring ChatGPT and Codex to your GitHub repositories.",
+      "external_url": "https://www.chatgpt.com",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "created_at": "2025-02-14T01:37:05Z",
+      "updated_at": "2026-09-23T18:52:59Z",
+      "permissions": {
+        "actions": "write",
+        "checks": "read",
+        "contents": "write",
+        "emails": "read",
+        "issues": "write",
+        "metadata": "read",
+        "pull_requests": "write",
+        "statuses": "read",
+        "workflows": "write"
+      },
+      "events": [
+        "check_run",
+        "check_suite",
+        "commit_comment",
+        "issues",
+        "issue_comment",
+        "pull_request",
+        "pull_request_review",
+        "pull_request_review_comment",
+        "pull_request_review_thread",
+        "repository",
+        "status",
+        "sub_issues"
+      ]
+    },
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "polygoku",
+      "text": "**2026-10-22 follow-up:** The obsolete Squarespace 26-column CSV format has been corrected in reviewable PRs: [Doroppu #19](https://github.com/polygoku/doroppu/pull/19) and [MAKHEX #45](https://github.com/polygoku/makhex/pull/45). Both PRs add/validate the account's actual **28-column v3 format** with blank GTIN/MPN; CI is in progress.\n\nA separate **public** check from a connected basement computer confirms HTTP 200 / valid TLS for the MAKHEX apex and Squarespace shop, and HTTP **404** for direct public product URLs for the new C6 N8 and S3 N8R8 research candidates. This is consistent with the hidden test import; it does **not** replace the required post-import admin CSV readback of SKU, stock and visibility.\n\nXPS remote agent stopped responding during the final export, so the 11-product export and old-product diff are pending. Do not publish or upload additional candidate batches before that verification.",
+      "at": "2026-10-22T14:57:26Z",
+      "url": "https://github.com/polygoku/makhex/issues/44#issuecomment-6343858086"
+    },
+    {
+      "author": "polygoku",
+      "text": "## XPS restored — second import post-import acceptance **PASS** (October 22, 2026, 4:24 PM Eastern)\n\nThe authenticated Squarespace admin successfully exported **`products_Oct-22_04-24-16PM.csv`** (11 rows, 34 columns). A complete field-by-field comparison with the pre-import export **`products_Oct-22_09-51-44AM.csv`** (9 rows) yielded **zero changes across all 34 fields of all nine previously existing products**. Both new rows match the intended item identity and merchant SKUs:\n\n| Item | SKU | Price | Visible | Stock | On sale | Product Page |\n|---|---|---:|---|---:|---|---|\n| AliExpress 1005005087160183, C6 N8 | `MKX-1005005087160183-0BC421159CCA` | $21.25 | No | 0 | No | `support` |\n| AliExpress 3256803793464226, S3 N8R8 | `MKX-3256803793464226-4E4BEABD4C98` | $37.40 | No | 0 | No | `support` |\n\nBoth retain blank GTIN/MPN and image URL fields. Squarespace's product-export defaults the inactive sale price to `0.00` (even though staging CSV left it blank) and typographically converts the title's ASCII dash to an em dash. These are non-material platform normalizations; release protections **remain intact**. Squarespace exports blank `Product ID [Non Editable]` and `Variant ID [Non Editable]` even for existing products, so those internal IDs cannot be evidenced by this CSV, and should only be claimed after a verified admin/API ID readback.\n\nIndependent URL tests from XPS: `makhex.com` 200, `www.makhex.com` 200 (one canonical redirect), `shop.makhex.com` 200, and all three `/support/mkx-...` hidden test product URLs **404** (valid TLS). No public buyable test listing identified.\n\n**Important remaining HOLD:** first trial `MKX-1005009494694247-CF4EC8776BE9` remains titled N8 but exact selected AliExpress source option is `3:201010228#N4`. It is still **Visible No / Stock 0**; correct or archive the misleading title before eventual public availability. Attempts to target the row interactively were blocked by the XPS's foreground/locked-desktop restriction, so no unsafe edit was made. The entire other 12-part research batch is **not** uploaded. Shipping, actual purchase orderability, electronics-specific hardware confirmation, media rights, and fulfillment are still unverified.\n\nThe CSV acceptance checkbox is completed. Keep the overall issue open for the **N4 correction, supplier qualification, and end-to-end ordering** gates.",
+      "at": "2026-10-22T20:30:07Z",
+      "url": "https://github.com/polygoku/makhex/issues/44#issuecomment-6350633613"
+    },
+    {
+      "author": "polygoku",
+      "text": "### MAKHEX bulk supplier import + public sourcing map — 2026-10-22\n\n**Catalog accepted:** Squarespace importer reported **IMPORTED (10)** for ten newly matched AliExpress component listings (11 selected variants). Post-import export `products_Oct-22_05-06-00PM.csv` shows **21 products and 22 variants**, with **zero changes to the preceding 11 variants**, zero SKU mismatches, and all newly imported variants hidden / stock 0 / no active sale. The earlier S3 N8R8 and C6 N8 boards were reused without duplication; original N4-under-N8 trial remains hidden and requires correction before release.\n\n**Project matching:** Ten MAKHEX projects now map 29 BOM lines / 31 component units to 11 reused component types; the twelfth catalog item is a standalone ESP32-C6 DevKit. Each BOM and product page shows an AliExpress research link, technical REVIEW/HOLD status, and no live checkout. [MAKHEX PR #46](https://github.com/polygoku/makhex/pull/46) was merged and production-deployed; direct HTTP smoke tests passed for `/sourcing.json`, the RGB project BOM and product page with disabled checkout.\n\n**Doroppu SKU bindings:** [Doroppu PR #20](https://github.com/polygoku/doroppu/pull/20) merged with passing CI. A private staging registry on XPS reconciled **12 AliExpress item IDs / 13 exact source variants** to the actual Squarespace CSV SKUs and prices; seven tests passed. No AliExpress product orders, fulfillment routing, or inventory synchronization are enabled.\n\n**Freight qualification — blocked:** Owner-authorized, read-only API experiments produced **0 valid shipping quotes**. Legacy `aliexpress.logistics.buyer.freight.calculate` for all 12 products returned `queryShippingOptionForItemforBuyer return null` or `skuId is need`. Adding source-variant attribute strings as `sku_id` produced `UnsupportedParamMapping`; the newer `aliexpress.logistics.buyer.freight.get` returned `InvalidParameter`. This does not establish US postage, checkout orderability or landed margins. The short-lived probe URLs were *inactive Cloudflare version previews*, authorization guarded and automatically expired; local bearer tokens removed. No provider orders or customer data used.\n\nRemaining: confirm API's exact numeric/attribute SKU identity and US freight to ZIP 11021, validate 3 hardware HOLD categories, acquire authorized images, fix the older N4-titled-as-N8 test entry, provision Squarespace Orders/Inventory integration with idempotent Doroppu order mapping, and pass one controlled tracking/refund test before enabling a sellable SKU. Overall issue stays **open**.",
+      "at": "2026-10-22T21:48:07Z",
+      "url": "https://github.com/polygoku/makhex/issues/44#issuecomment-6352052128"
+    },
+    {
+      "author": "polygoku",
+      "text": "### Sprint 16 presentation release — LIVE and verified, October 22, 2026\n\n[MAKHEX PR #47](https://github.com/polygoku/makhex/pull/47) is **merged** (commit `1e4a76d`) and deployed to the live Cloudflare Worker `makhex` (version `00bb9d67-0e15-43a1-9f16-c9ccb848329f`). Public smoke tests returned HTTP 200 for the shop, selected individual products, project BOM pages, `/sourcing.json`, and the untouched Squarespace shop. Production content assertions passed.\n\nThe redesigned [MAKHEX Components catalog](https://makhex.com/shop/) now presents:\n- All **12 component types / 13 selected AliExpress variants**, exact source-match model names and **indicative** retail prices (planning snapshot 2026-10-22), not a live sale offer.\n- Original distinctive technical hardware illustrations, explicitly labeled **not exact supplier product photography**. Supplier images were not copied without permission.\n- 3 technical HOLD labels, checkout **disabled for all 12**; Squarespace records remain hidden with zero stock.\n- All 10 [project BOMs](https://makhex.com/projects/) list indicative per-line and parts-only subtotal, excluding freight, taxes and unresolved parts. Hardware gaps surfaced for speaker, physical pushbutton and rated 5V WS2812 power/possible shifter.\n- Agent-consumable [sourcing JSON v2](https://makhex.com/sourcing.json) maps models, prices, project parts, REVIEW/HOLD gates. No private supplier wholesale costs or SKUs.\n- Existing local discussions and original project creator credits preserved.\n\n**Automated and visual QA:** PR GitHub CI passed; merged-build QA passed 30 HTML pages, 12 gated products, 10 native discussions, zero checkout paths; Cloudflare dry-run passed with `--keep-vars`; Edge/CDP checked mobile 390px, tablet 768px and desktop 1440px, no horizontal overflow; production content assertions PASS.\n\n**Outstanding separate revenue-release gates:** authorized variant-specific AliExpress freight to U.S. ZIP 11021 (0 usable quotes so far), supplier real order/fulfillment/track/refund idempotency through Doroppu and Squarespace Orders API, sample verification and permissioned product photography, 3 hardware HOLD source specifics, original hidden N4-vs-N8 misnamed test entry. Do not enable purchasing until those checks pass. Sprint 16 **presentation** is complete; first-sellable-product qualification is NOT complete.",
+      "at": "2026-10-22T22:16:41Z",
+      "url": "https://github.com/polygoku/makhex/issues/44#issuecomment-6352515579"
+    }
+  ],
+  "comments_complete": true
+}

@@ -1,0 +1,92 @@
+{
+  "source_api_url": "https://api.github.com/repos/Ikalus1988/MisakaNet/issues/3731",
+  "collected_at": "2026-10-23T07:28:04.863834+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/Ikalus1988/MisakaNet/issues/3731",
+    "repository_url": "https://api.github.com/repos/Ikalus1988/MisakaNet",
+    "labels_url": "https://api.github.com/repos/Ikalus1988/MisakaNet/issues/3731/labels{/name}",
+    "comments_url": "https://api.github.com/repos/Ikalus1988/MisakaNet/issues/3731/comments",
+    "events_url": "https://api.github.com/repos/Ikalus1988/MisakaNet/issues/3731/events",
+    "html_url": "https://github.com/Ikalus1988/MisakaNet/issues/3731",
+    "id": 5979162020,
+    "node_id": "I_kwDOSP_2Ts8AAAABZGLFpA",
+    "number": 3731,
+    "title": "Question intake digest — unresolved clusters",
+    "user": {
+      "login": "github-actions[bot]",
+      "id": 41898282,
+      "node_id": "MDM6Qm90NDE4OTgyODI=",
+      "avatar_url": "https://avatars.githubusercontent.com/in/15368?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/github-actions%5Bbot%5D",
+      "html_url": "https://github.com/apps/github-actions",
+      "followers_url": "https://api.github.com/users/github-actions%5Bbot%5D/followers",
+      "following_url": "https://api.github.com/users/github-actions%5Bbot%5D/following{/other_user}",
+      "gists_url": "https://api.github.com/users/github-actions%5Bbot%5D/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/github-actions%5Bbot%5D/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/github-actions%5Bbot%5D/subscriptions",
+      "organizations_url": "https://api.github.com/users/github-actions%5Bbot%5D/orgs",
+      "repos_url": "https://api.github.com/users/github-actions%5Bbot%5D/repos",
+      "events_url": "https://api.github.com/users/github-actions%5Bbot%5D/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/github-actions%5Bbot%5D/received_events",
+      "type": "Bot",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 12379015708,
+        "node_id": "LA_kwDOSP_2Ts8AAAAC4djKHA",
+        "url": "https://api.github.com/repos/Ikalus1988/MisakaNet/labels/question-digest",
+        "name": "question-digest",
+        "color": "ededed",
+        "default": false,
+        "description": null,
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2026-10-22T12:19:48Z",
+    "updated_at": "2026-10-22T12:19:50Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "# Question intake digest — unresolved clusters\n\n24 open question intake(s), of which **13 form 6 cluster(s)**. One answer per cluster clears the cluster; answering per question is how the pile grows faster than it drains.\n\n## Clusters (answer once)\n\n| cluster | questions | shared vocabulary |\n|---|---|---|\n| @#3662, #3664, #3666 | 3 | `appkit`, `nonactivating` |\n| @#3658, #3663 | 2 | `operations`, `target`, `write` |\n| @#3659, #3660 | 2 | `preserving`, `preview`, `rollback` |\n| @#3611, #3657 | 2 | `but`, `diagnostic`, `supported` |\n| @#3653, #3654 | 2 | `evidence`, `primary`, `private` |\n| @#3612, #3613 | 2 | `checks`, `passive`, `snapping` |\n\n## Claimable tasks\n\nEach genuine-gap cluster has a `[Bounty]` task linked to it. **$0 / `zero-bounty` by design**: the reward is merge credit, a leaderboard entry and a line in the Hall of Fame, and a real bounty exists only when someone funds it with `/reward <amount>` (`JOIN.md` § Bounties & payment).\n\n- #3662 anchor · 3 question(s) · `#3662, #3664, #3666`\n- #3658 anchor · 2 question(s) · `#3658, #3663`\n- #3659 anchor · 2 question(s) · `#3659, #3660`\n- #3611 anchor · 2 question(s) · `#3611, #3657`\n- #3653 anchor · 2 question(s) · `#3653, #3654`\n- #3612 anchor · 2 question(s) · `#3612, #3613`\n\n## By measured coverage\n\n- **genuine gaps** (no lesson reaches them): 24: #3668, #3666, #3664, #3663, #3662, #3660, #3659, #3658, #3657, #3655, #3654, #3653, #3652, #3651, #3613, #3612, #3611, #3610, #3609, #3608, #3607, #3605, #3604, #3574\n- **already covered** (a lesson is reached, so this is retrieval or phrasing): 0\n- **not measured** (endpoint unreachable — *not* a coverage claim): 0\n\n## What automation cannot do here\n\nWriting the answer. A generated answer to a question about a platform nobody here has run is an invented source, which is the one failure this repository has a gate for. The automation's job is to make the human step as small as possible: cluster it, measure it, ask the reporter for the missing pieces, and never leave them in silence.\n\n<sub>Regenerated by `scripts/question_autopilot.py` (`.github/workflows/question-autopilot.yml`).</sub>\n<br/>\n<hr/>\n\n<details><summary>This repo is using Opire - what does it mean? 👇</summary><br/>💵 Everyone can add rewards for this issue commenting <code>/reward 100</code> (replace <code>100</code> with the amount).<br/>🕵️‍♂️ If someone starts working on this issue to earn the rewards, they can comment <code>/try</code> to let everyone know!<br/>🙌 And when they open the PR, they can comment <code>/claim #3731</code> either in the PR description or in a PR's comment.<br/><br/>🪙 Also, everyone can tip any user commenting <code>/tip 20 @github-actions[bot]</code> (replace <code>20</code> with the amount, and <code>@github-actions[bot]</code> with the user to tip).<br/><br/>📖 If you want to learn more, check out our <a href=\"https://docs.opire.dev\">documentation</a>.</details>",
+    "reactions": {
+      "url": "https://api.github.com/repos/Ikalus1988/MisakaNet/issues/3731/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/Ikalus1988/MisakaNet/issues/3731/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [],
+  "comments_complete": true
+}

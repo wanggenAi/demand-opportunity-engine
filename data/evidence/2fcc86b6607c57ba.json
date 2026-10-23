@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/Boing-Network/boing.network/issues/61",
-  "collected_at": "2026-10-22T07:31:32.564113+00:00",
+  "collected_at": "2026-10-23T07:28:04.863834+00:00",
   "source": {
     "url": "https://api.github.com/repos/Boing-Network/boing.network/issues/61",
     "repository_url": "https://api.github.com/repos/Boing-Network/boing.network",
@@ -50,9 +50,9 @@
     "locked": false,
     "assignees": [],
     "milestone": null,
-    "comments": 3,
+    "comments": 4,
     "created_at": "2026-10-20T20:55:06Z",
-    "updated_at": "2026-10-21T17:58:38Z",
+    "updated_at": "2026-10-22T23:01:53Z",
     "closed_at": null,
     "assignee": null,
     "author_association": "NONE",
@@ -107,6 +107,12 @@
       "text": "Can you send discord invite the link in issues isnt working",
       "at": "2026-10-21T17:58:37Z",
       "url": "https://github.com/Boing-Network/boing.network/issues/61#issuecomment-6322886831"
+    },
+    {
+      "author": "exocognosis",
+      "text": "Taking item 1, the out-of-band slashing. I will move the slash paths (apply_equivocation_slash, the tick_liveness stake changes, and the slash-appeal restore) onto deterministic, block-ordered state transitions so no node mutates committed state from local observations, with a test for the divergent-root case: two nodes applying a local slash at different times must still agree on the state root. Happy to work against a split-out issue if you want it tracked separately.\n\nItem 2, the operator RPC failing open, is already up as PR #83: fail closed when no token is configured, and a constant-time comparison.\n\nOn Discord: the invite linked in the issue is dead on my end too. I am ricktglenn on Discord, add me there.",
+      "at": "2026-10-22T23:01:53Z",
+      "url": "https://github.com/Boing-Network/boing.network/issues/61#issuecomment-6353218201"
     }
   ],
   "comments_complete": true

@@ -1,0 +1,132 @@
+{
+  "source_api_url": "https://api.github.com/repos/neetub1508/warehouse-issues/issues/582",
+  "collected_at": "2026-10-23T07:28:04.863834+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/neetub1508/warehouse-issues/issues/582",
+    "repository_url": "https://api.github.com/repos/neetub1508/warehouse-issues",
+    "labels_url": "https://api.github.com/repos/neetub1508/warehouse-issues/issues/582/labels{/name}",
+    "comments_url": "https://api.github.com/repos/neetub1508/warehouse-issues/issues/582/comments",
+    "events_url": "https://api.github.com/repos/neetub1508/warehouse-issues/issues/582/events",
+    "html_url": "https://github.com/neetub1508/warehouse-issues/issues/582",
+    "id": 5982810594,
+    "node_id": "I_kwDOT-Pf3c8AAAABZJpx4g",
+    "number": 582,
+    "title": "[Warehouse] P9-05 · Sourcing — RFQ to many suppliers, vendor quotations with versions, comparative statement with L1 and the approved award",
+    "user": {
+      "login": "neetub1508",
+      "id": 153187956,
+      "node_id": "U_kgDOCSF2dA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/153187956?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/neetub1508",
+      "html_url": "https://github.com/neetub1508",
+      "followers_url": "https://api.github.com/users/neetub1508/followers",
+      "following_url": "https://api.github.com/users/neetub1508/following{/other_user}",
+      "gists_url": "https://api.github.com/users/neetub1508/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/neetub1508/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/neetub1508/subscriptions",
+      "organizations_url": "https://api.github.com/users/neetub1508/orgs",
+      "repos_url": "https://api.github.com/users/neetub1508/repos",
+      "events_url": "https://api.github.com/users/neetub1508/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/neetub1508/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 12037949273,
+        "node_id": "LA_kwDOT-Pf3c8AAAACzYSHWQ",
+        "url": "https://api.github.com/repos/neetub1508/warehouse-issues/labels/warehouse",
+        "name": "warehouse",
+        "color": "ededed",
+        "default": false,
+        "description": null,
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 12045953509,
+        "node_id": "LA_kwDOT-Pf3c8AAAACzf6p5Q",
+        "url": "https://api.github.com/repos/neetub1508/warehouse-issues/labels/task",
+        "name": "task",
+        "color": "ededed",
+        "default": false,
+        "description": null,
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 12796631307,
+        "node_id": "LA_kwDOT-Pf3c8AAAAC-r0ZCw",
+        "url": "https://api.github.com/repos/neetub1508/warehouse-issues/labels/phase-p9",
+        "name": "phase-p9",
+        "color": "efe657",
+        "default": false,
+        "description": "",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 12796632859,
+        "node_id": "LA_kwDOT-Pf3c8AAAAC-r0fGw",
+        "url": "https://api.github.com/repos/neetub1508/warehouse-issues/labels/warehouse-trade",
+        "name": "warehouse-trade",
+        "color": "26e39e",
+        "default": false,
+        "description": "",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-22T15:55:51Z",
+    "updated_at": "2026-10-22T15:59:18Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "Part of #547 · Module **`warehouse-trade`** · Migrations **V550040, V551050, V551051** · Screens **WS-288 RFQs**, **WS-289 Vendor Quotations**, **WS-290 Comparative Statements**\n\nContract: [`docs/contracts/trade-rfq-award.contract.md`](../docs/contracts/trade-rfq-award.contract.md). Mirror rows M7–M12 (the sales side is p9-08).\n\n## Scope\n- Tables per contract §0 (`V550040`).\n- RFQ issue renders **one print job per invitee** (`TRA-UNR-01`); response tracking; close bids.\n- Vendor quotation capture with versions (`supersedes_id`), charges, alternatives, free-of-charge;\n  supplier document attachment through platform documents.\n- Sealed mode (`warehouse.trade.rfq.sealed_until_due`, default false, `OD-37`): masking happens in the\n  **backend response**, not in the page.\n- `ComparativeStatementService` computes the matrix (`TRA-T4-01`) including vendor grade (blank until\n  p9-12) and contract rate (blank until p9-06); refresh on staleness (`TRA-T4-02`). **One statement per\n  RFQ × currency** (`currency_code`, partial uk among statements not `REJECTED`); quotations in another\n  currency are shown unranked and are awardable only on their own currency's statement (`TRA-GRD-10`).\n- Award editor, split award, reasons; `TradeApprovable` for `CS` with `non_l1_award` condition. Exits:\n  rejected → `REJECTED` (terminal, RFQ back to `BIDS_CLOSED`, a new statement may be prepared,\n  `TRA-T1-13`); returned → `DRAFT` (`-14`); an input change on a `SUBMITTED` statement returns its request\n  (`TAM-T1-08a`). RFQ cancel is allowed from `BIDS_CLOSED` / `EVALUATION` with no approved statement.\n- Vendor quotation revise is allowed from `SUBMITTED` **and `EXPIRED`** (a validity extension, `TRA-T1-08`).\n- Award targets include an **OPEN PO** (rate fixed, quantity open) as well as FIXED / BLANKET PO and a rate\n  contract (`TRA-T4-03`).\n- `AwardService.onApproved` drafts targets (`TRA-T4-03`) — FIXED / OPEN / BLANKET PO need p9-07, rate\n  contract needs p9-06; a target type whose task has not landed is not offered.\n- `TradeRfqJob` (`TRA-T3-01`…`-03`), settings `warehouse.trade.rfq.min_suppliers` (3), `rfq.reminder_days` (2).\n- Prints `RFQ`, `COMPARATIVE_STATEMENT`: this task seeds their minimal default templates (FR-615); p9-14 adds final layouts.\n- Permissions / menus (*Purchasing — Sourcing*) / grids / scopes / caches (`V551050`, `V551051`).\n  `wht_comparative_statements:approve` approves the award — **no `:award` verb** is seeded.\n  Notification kind `TRADE_VQ_EXPIRED` and the RFQ reminder kinds (FRD-TRADE §12b).\n\n## Requirements closed\n`FR-562` `FR-563` `FR-564` `FR-565` `FR-566` `FR-567` `FR-568` `FR-569`\n\n## Scenarios closed\n`WH-SC-485` (invite half) `WH-SC-505` … `WH-SC-514` · `WH-SC-566` `WH-SC-573`\n\n## Closes\n`RM-002`\n\n## Traps\n- **Ranking is backend-only and per currency** (`TRA-UNR-02`); the page renders the payload, it does not sort prices.\n- Landed price excludes tax (`TRD-06`); charge allocation basis per charge.\n- A revised quotation after CS preparation makes the CS stale; submitting a stale CS is refused.\n- An alternative item never displaces the RFQ item in rank.\n- The CS detail is a matrix — not a `DynamicDataTable`; the list page is.\n\n## Acceptance\n- [ ] Every `TRA-*` row tested; `WH-SC-510` arithmetic asserted to the paisa\n- [ ] Sealed masking verified at the API (a second buyer's GET returns no price)\n- [ ] Award approval moves PR allocations exactly (`TRA-T4-04`)\n- [ ] Prints carry only the invitee's name\n\n## Blocked on\n`p9-02`, `p9-03`, `p9-04`. Award targets: `p9-06`, `p9-07`.\n\n## Definition of done\nMerged; reviewer + functional-reviewer clean against `trade-rfq-award`.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/neetub1508/warehouse-issues/issues/582/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/neetub1508/warehouse-issues/issues/582/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "neetub1508",
+      "text": "## R29 functional review findings carried by this task\n\nEvery R29 finding below was fixed in the design set and folded into this task's body (rule: findings are folded, never filed as separate issues). Source: the *R29 dispositions* tables.\n\n**[FRD-TRADE — R29 dispositions](https://github.com/neetub1508/warehouse-issues/blob/main/docs/frd/FRD-TRADE.md#r29-dispositions)**\n\n- **TP-F2** · Purchase review — Rejected CS terminal with RFQ back to `BIDS_CLOSED`; returned CS → `DRAFT`; RFQ cancel from `BIDS_CLOSED`/`EVALUATION`\n- **TP-F3** · Purchase review — Vendor quotation revisable from `EXPIRED`\n- **TP-F16** · Purchase review — One comparative statement per RFQ × currency\n- **TP-F25** · Purchase review — OPEN-PO and rate-contract award targets release the PR allocation (they hold no quantity); the buyer allocates to releases later\n- **TP-F28** · Purchase review — Screen contracts completed (grids, scopes, tiles, filters, actions)\n\n**R29 reports:** [`R29-functional-review-trade-purchase.md`](https://github.com/neetub1508/warehouse-issues/blob/main/docs/reviews/R29-functional-review-trade-purchase.md)\n",
+      "at": "2026-10-22T15:59:18Z",
+      "url": "https://github.com/neetub1508/warehouse-issues/issues/582#issuecomment-6345216486"
+    }
+  ],
+  "comments_complete": true
+}

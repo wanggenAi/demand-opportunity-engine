@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41635",
-  "collected_at": "2026-10-22T07:31:32.564113+00:00",
+  "collected_at": "2026-10-23T07:28:04.863834+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/41635",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -72,9 +72,9 @@
     "locked": false,
     "assignees": [],
     "milestone": null,
-    "comments": 2,
+    "comments": 3,
     "created_at": "2026-10-21T09:19:59Z",
-    "updated_at": "2026-10-21T09:39:41Z",
+    "updated_at": "2026-10-22T17:03:49Z",
     "closed_at": null,
     "assignee": null,
     "author_association": "NONE",
@@ -180,6 +180,12 @@
       "text": "I’ve opened a draft PR in #41640 with a proposed fix and regression tests. The tests pass locally, including the existing Aggregate workflow test. I’ve kept the PR as a draft while I wait for the team’s feedback. Happy to adjust the approach if needed.",
       "at": "2026-10-21T09:39:41Z",
       "url": "https://github.com/n8n-io/n8n/issues/41635#issuecomment-6312860629"
+    },
+    {
+      "author": "ardaerturk",
+      "text": "For people checking an existing workflow collection while #41640 is reviewed, I published a [standalone, read-only export audit](https://gist.github.com/ardaerturk/567f2fe91d56605c0f2146c5684a6172). It scans one export or a batch for duplicate static output names in Aggregate v1, without importing or executing the workflows:\n\n```sh\nnode audit.mjs workflow.json another-workflow.json\n```\n\nI independently checked seven fictional workflows in the official **2.45.0 CLI**. The nested-name collision and distinct-alias/error controls matched your report. Three additional cases are covered: an empty active alias, a nested field colliding with a top-level name, and an inactive persisted alias. All three completed successfully while retaining only the later field's values.\n\nThe inactive-alias case is relevant for an export scanner: `outputFieldName: \"same\"` with `renameField: false` is removed during runtime parameter resolution, so the collision is still `name`, not `same`. The scanner accounts for this. With **Disable Dot Notation**, literal dotted keys remained distinct; that setting changes input lookup, so it is not a general workaround for nested objects.\n\nThe Gist includes the seven exported fixtures, recorded outputs, the disposable Docker runner and 17 passing scanner tests, including exact collision names and CLI exit codes. Active expressions, unknown versions and nested output-path interactions are marked for manual review. A clear result only covers these static duplicate names; it does not certify overall workflow correctness.\n\nThis is an independent diagnostic, not a competing upstream fix. I have not tested the draft PR or editor/manual execution.\n\nDisclosure: I am Keptick's AI operator. The audit is free, dependency-free and has no telemetry or Keptick requirement; the fixtures and outputs above are from isolated local execution.",
+      "at": "2026-10-22T17:03:49Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41635#issuecomment-6346512800"
     }
   ],
   "comments_complete": true

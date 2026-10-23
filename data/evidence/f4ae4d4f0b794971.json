@@ -1,0 +1,129 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41897",
+  "collected_at": "2026-10-23T07:28:04.863834+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/41897",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/41897/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/41897/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/41897/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/41897",
+    "id": 5992091070,
+    "node_id": "I_kwDOC4Q8Qs8AAAABZSgNvg",
+    "number": 41897,
+    "title": "Queue mode: community package install can leave an empty package directory when processes share the ~/.n8n volume",
+    "user": {
+      "login": "propiter",
+      "id": 125416154,
+      "node_id": "U_kgDOB3my2g",
+      "avatar_url": "https://avatars.githubusercontent.com/u/125416154?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/propiter",
+      "html_url": "https://github.com/propiter",
+      "followers_url": "https://api.github.com/users/propiter/followers",
+      "following_url": "https://api.github.com/users/propiter/following{/other_user}",
+      "gists_url": "https://api.github.com/users/propiter/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/propiter/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/propiter/subscriptions",
+      "organizations_url": "https://api.github.com/users/propiter/orgs",
+      "repos_url": "https://api.github.com/users/propiter/repos",
+      "events_url": "https://api.github.com/users/propiter/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/propiter/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582010757,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cXhQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:nodes",
+        "name": "team:nodes",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Nodes team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-10-23T04:50:38Z",
+    "updated_at": "2026-10-23T06:21:29Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nIn queue mode, the main instance, the workers and the webhook processors can mount the same `~/.n8n` volume, as in the official `n8n-hosting` example `docker-compose/withPostgresAndWorker`. In that setup, a community package install from **Settings → Community Nodes** can leave the package directory empty on the shared disk.\n\nAfter the install, the UI shows the package and its nodes, because each process keeps the nodes in memory. But the package directory under `~/.n8n/nodes/node_modules/<package>` has no files:\n\n- Node icons return 404, because `resolveIcon()` reads them from disk.\n- After a restart, the package cannot load until `N8N_REINSTALL_MISSING_PACKAGES` reinstalls it. On that restart, all processes reinstall at the same time on the same disk, so the problem can happen again.\n\n### Root cause (from the code on `master`)\n\n1. The main instance installs the package. Then it publishes `community-package-install` ([`community-packages.service.ts#L621`](https://github.com/n8n-io/n8n/blob/8cb0242b079b8867c055143522b46747c6dfe8a5/packages/cli/src/modules/community-packages/community-packages.service.ts#L621)).\n2. The handler has no instance filter ([`#L665`](https://github.com/n8n-io/n8n/blob/8cb0242b079b8867c055143522b46747c6dfe8a5/packages/cli/src/modules/community-packages/community-packages.service.ts#L665)), so every worker ([`worker.ts#L190`](https://github.com/n8n-io/n8n/blob/8cb0242b079b8867c055143522b46747c6dfe8a5/packages/cli/src/commands/worker.ts#L190)) and every webhook processor ([`webhook.ts#L132`](https://github.com/n8n-io/n8n/blob/8cb0242b079b8867c055143522b46747c6dfe8a5/packages/cli/src/commands/webhook.ts#L132)) runs it.\n3. `installOrUpdateNpmPackage()` skips the install only when the version on disk matches **and** the package is already loaded in this process ([`#L769`](https://github.com/n8n-io/n8n/blob/8cb0242b079b8867c055143522b46747c6dfe8a5/packages/cli/src/modules/community-packages/community-packages.service.ts#L769)). A follower has not loaded a new package yet, so it always reinstalls, even when the main instance already put the correct version on the shared disk.\n4. The reinstall changes the shared directory:\n   - It renames the package directory to `<dir>.backup-<ts>` ([`#L871`](https://github.com/n8n-io/n8n/blob/8cb0242b079b8867c055143522b46747c6dfe8a5/packages/cli/src/modules/community-packages/community-packages.service.ts#L871)).\n   - It runs `npm pack` into the shared download folder and extracts the tarball ([`#L992`](https://github.com/n8n-io/n8n/blob/8cb0242b079b8867c055143522b46747c6dfe8a5/packages/cli/src/modules/community-packages/community-packages.service.ts#L992)).\n   - It deletes the tarball, which has the same name for every process ([`#L1052`](https://github.com/n8n-io/n8n/blob/8cb0242b079b8867c055143522b46747c6dfe8a5/packages/cli/src/modules/community-packages/community-packages.service.ts#L1052)).\n\n   The worker and the webhook processor do these steps at the same time on the same directory and the same tarball path. The `packageMutex` is per process, so it does not protect against this.\n\nIn our logs, the main instance logged `Community package installed: <package>`, and the worker logged the same line 1.4 seconds later. The directory was empty afterwards. When we extracted the same tarball into the directory again, the icons loaded. Later restarts were fine, because nothing writes when the files are complete.\n\n### To Reproduce\n\n1. Run queue mode with one main instance, one worker and one webhook processor. All three mount the same volume at `/home/node/.n8n`, as in `n8n-hosting/docker-compose/withPostgresAndWorker`.\n2. In **Settings → Community Nodes**, install any community package that is not installed yet.\n3. Wait for the worker and the webhook processor to process `community-package-install`.\n4. List `~/.n8n/nodes/node_modules/<package>` on the shared volume. The directory can be empty or partial, and the node icons return 404 in the editor. The race is timing dependent, so it does not happen on every install.\n\n### Expected behavior\n\nA shared `~/.n8n` volume must not lose the package files. Some possible fixes:\n\n- A follower skips the download when the version on disk already matches, and only loads the package (`loadPackage`).\n- Or the processes take a lock on disk, or download to a unique temporary directory and rename it into place.\n- Or the docs and the official compose example say that `~/.n8n/nodes` must not be shared between processes in queue mode.\n\n### Debug Info\n\n- n8n 2.43.0, built from source. The community packages and pubsub code is identical to `master` at `8cb0242`.\n- Queue mode with PostgreSQL and Redis. Docker Swarm with 1 main instance, 1 worker and 1 webhook processor, all on one shared named volume for `/home/node/.n8n`.\n- `N8N_COMMUNITY_PACKAGES_ENABLED=true`, `N8N_REINSTALL_MISSING_PACKAGES=true`, `N8N_DEFAULT_BINARY_DATA_MODE=database`, encryption key set through an environment variable.\n\n### Operating System\n\nUbuntu 24.04 (host), n8n Docker image based on Alpine\n\n### n8n Version\n\n2.43.0\n\n### Node.js Version\n\n26.10.0\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nqueue\n\n### Hosting\n\nself hosted\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/41897/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/41897/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @propiter,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9629\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9629](https://linear.app/n8n/issue/GHC-9629)",
+      "at": "2026-10-23T04:50:50Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41897#issuecomment-6357656025"
+    },
+    {
+      "author": "propiter",
+      "text": "### Second symptom: package updates do not reach the worker or the webhook processor\n\nThe same shared `~/.n8n` setup has a second problem, which is harder to see. After a package **update**, the followers keep running the **old version** from memory.\n\n**What happens:**\n1. The main instance writes the new version to the shared disk. Then it publishes `community-package-update`.\n2. Each follower checks two things: whether the version on disk equals the new version, and whether a loader for the package already exists ([`community-packages.service.ts#L766-L772`](https://github.com/n8n-io/n8n/blob/8cb0242b079b8867c055143522b46747c6dfe8a5/packages/cli/src/modules/community-packages/community-packages.service.ts#L766-L772)).\n3. Both checks pass. The disk already has the new version, because the main instance wrote it, and the loader exists, because it still holds the old version.\n4. The follower skips the reload and logs it only at `debug` level.\n\n**What we observed (n8n 2.43.0, queue mode, 1 main, 1 worker, 1 webhook processor on one shared volume):**\n- We updated a package twice, from 0.1.0 to 0.2.0 and from 0.2.0 to 0.2.1. Both times the main logged `Community package installed: <package>`, and the worker and the webhook processor logged nothing.\n- Executions run on the worker, so workflows kept running the 0.1.0 code. Operations added in the new versions were not available there.\n- When we restarted the worker and the webhook processor, they loaded the new version from disk, and the new operations worked at once.\n\n**Why it matters:** the UI and the database show the new version, but production runs the old one, with no warning. A security fix in a package update would not take effect until each process restarts.\n\n**Possible fix:** on a follower, when the version on disk matches but the loaded package has a different version, reload the package from disk (`unloadPackage` + `loadPackage`) without downloading it again. This also fixes the first symptom in this issue, because the follower no longer writes to the shared directory.\n\nWorkaround until then: restart every worker and webhook processor after each community package install or update.\n",
+      "at": "2026-10-23T06:21:29Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41897#issuecomment-6358829165"
+    }
+  ],
+  "comments_complete": true
+}
