@@ -1,0 +1,140 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41980",
+  "collected_at": "2026-10-24T07:15:47.927670+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/41980",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/41980/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/41980/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/41980/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/41980",
+    "id": 5998851012,
+    "node_id": "I_kwDOC4Q8Qs8AAAABZY8zxA",
+    "number": 41980,
+    "title": "Public API n8n-packages/export returns 500 for a specific archived workflow",
+    "user": {
+      "login": "pauherrera",
+      "id": 219336044,
+      "node_id": "U_kgDODRLNbA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/219336044?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pauherrera",
+      "html_url": "https://github.com/pauherrera",
+      "followers_url": "https://api.github.com/users/pauherrera/followers",
+      "following_url": "https://api.github.com/users/pauherrera/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pauherrera/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pauherrera/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pauherrera/subscriptions",
+      "organizations_url": "https://api.github.com/users/pauherrera/orgs",
+      "repos_url": "https://api.github.com/users/pauherrera/repos",
+      "events_url": "https://api.github.com/users/pauherrera/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pauherrera/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 5176033697,
+        "node_id": "LA_kwDOC4Q8Qs8AAAABNIQBoQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/Needs%20Feedback",
+        "name": "Needs Feedback",
+        "color": "34F826",
+        "default": false,
+        "description": "Waiting for further input or clarification.",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 10081993897,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACWO8EqQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:lifecycle",
+        "name": "team:lifecycle",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Lifecycle & Governance team",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-10-23T13:40:39Z",
+    "updated_at": "2026-10-23T14:14:55Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\n`POST /api/v1/n8n-packages/export` returns HTTP 500 `{\"message\":\"Internal server error\"}` whenever one specific archived workflow is included, either alone (`workflowIds: [\"<id>\"]`) or in a batch. Every other workflow in the same project (73) exports fine. The workflow is archived and does not show up in the UI even with \"Show archived workflows\", but it is still returned by `GET /api/v1/workflows`.\n\n### To Reproduce\n\n1. POST /api/v1/n8n-packages/export\n   {\"workflowIds\":[\"<id of the affected workflow>\"],\"includeArchivedWorkflows\":true,\"credentialExportPolicy\":\"no-values\",\"includeVariableValues\":false,\"missingWorkflowDependencyPolicy\":\"reference-only\"}\n2. Response: 500 Internal server error (consistent, retried several times)\n\n### Expected behavior\n\nEither export the workflow or return a 4xx explaining why it cannot be exported, so that a single broken workflow does not make the whole batch fail.\n\n### Debug Info\n\n## core\n- n8nVersion: 2.39.10\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.7.0\n- nodeEnv: production\n- database: postgres\n- executionMode: scaling (single-main)\n- concurrency: -1\n- license: enterprise (production)\n\n## storage\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: memory\n\n## pruning\n- enabled: true\n- maxAge: 720 hours\n- maxCount: 200000 executions\n\n## cluster\n- instanceCount: 6 (1 main, 2 workers, 3 webhook), all on 2.39.10\n- checks: hostid-clash, lifecycle, split-brain, version-mismatch: all succeeded\n\nGenerated at: 2026-10-23T13:38:51.509Z\n\n### Operating System\n\nDocker Hardened Images/Alpine Linux v3.24\n\n### n8n Version\n\n2.39.10\n\n### Node.js Version\n\n26.7.0\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nqueue\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/41980/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/41980/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @pauherrera,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9632\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9632](https://linear.app/n8n/issue/GHC-9632)",
+      "at": "2026-10-23T13:40:51Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41980#issuecomment-6366253092"
+    },
+    {
+      "author": "geemanjs",
+      "text": "Hi @pauherrera Thanks - We have a ticket for this - would you be able to supply the `workflow.json` also? Whilst we can improve the error - I'd be curious to know what inside the workflow causes it to fail to export",
+      "at": "2026-10-23T14:14:39Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41980#issuecomment-6366948651"
+    }
+  ],
+  "comments_complete": true
+}

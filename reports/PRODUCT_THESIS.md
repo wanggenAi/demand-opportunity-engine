@@ -7,7 +7,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## workflow_reliability — UNVALIDATED CLUSTER
 
-- independent_demand_count: 43
+- independent_demand_count: 46
 - payment_evidence_count: 1
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community', 'n8n Community']
 - communities: ['Ask/Show HN', 'Commerce operator forum', 'n8n Jobs', 'n8n-io/n8n', 'useagenthq/useagent']
@@ -20,19 +20,19 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://news.ycombinator.com/item?id=50210095
+  - https://github.com/n8n-io/n8n/issues/41992
+  - https://github.com/n8n-io/n8n/issues/41980
   - https://github.com/n8n-io/n8n/issues/41897
   - https://github.com/n8n-io/n8n/issues/41893
   - https://github.com/n8n-io/n8n/issues/41884
-  - https://news.ycombinator.com/item?id=50197950
-  - https://community.shopify.com/t/has-anyone-used-shopifys-new-app-security-check-in-a-real-release-workflow/702608
-  - https://github.com/n8n-io/n8n/issues/41777
 
 ## browser_automation — UNVALIDATED CLUSTER
 
 - independent_demand_count: 5
 - payment_evidence_count: 0
 - platforms: ['GitHub']
-- communities: ['96loveslife/big_model_radar', 'n8n-io/n8n', 'useagenthq/useagent']
+- communities: ['kouweizhu/agents-radar', 'n8n-io/n8n', 'useagenthq/useagent']
 - repeated_pain: Repeated manual browser work is costly or brittle.
 - current_alternatives: Playwright, Selenium, vendor APIs and open-source browser agents.
 - productization_potential: Needs one repeated workflow and paying buyers before standardization.
@@ -42,15 +42,15 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://github.com/kouweizhu/agents-radar/issues/642
   - https://github.com/n8n-io/n8n/issues/41548
   - https://github.com/n8n-io/n8n/issues/41471
   - https://github.com/n8n-io/n8n/issues/41327
   - https://github.com/useagenthq/useagent/issues/188
-  - https://github.com/96loveslife/big_model_radar/issues/642
 
 ## supplier_sourcing — UNVALIDATED CLUSTER
 
-- independent_demand_count: 4
+- independent_demand_count: 5
 - payment_evidence_count: 0
 - platforms: ['GitHub', 'Shopify Community']
 - communities: ['Commerce operator forum', 'n8n-io/n8n', 'zack-hum/coffee-intelligence-v1.1']
@@ -59,7 +59,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - productization_potential: Needs a narrower job-to-be-done and payment evidence.
 - suggested_product_form: Service package
 - distribution: Not yet demonstrated
-- Promotion blockers: fewer than 5 independent observations; fewer than 2 primary payment/commercial signals; paid-market proof not independently verified; problem too broad to standardize
+- Promotion blockers: fewer than 2 primary payment/commercial signals; paid-market proof not independently verified; problem too broad to standardize
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
@@ -67,6 +67,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
   - https://community.shopify.com/t/how-often-do-you-sync-supplier-stock-with-your-shopify-store/700544
   - https://github.com/zack-hum/coffee-intelligence-v1.1/issues/11
   - https://community.shopify.com/t/what-questions-do-you-always-ask-potential-suppliers-before-placing-an-order/555921
+  - https://community.shopify.com/t/supplier-sku-and-shop-sku-in-purchase-orders/247864
 
 ## lead_research — UNVALIDATED CLUSTER
 
@@ -91,7 +92,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - independent_demand_count: 2
 - payment_evidence_count: 0
 - platforms: ['GitHub']
-- communities: ['datnguyenquy94/news-radar', 'duanyytop/agents-radar']
+- communities: ['HuggerHustle/ai-radar', 'datnguyenquy94/news-radar']
 - repeated_pain: Test an existing voice agent's failure paths before client demonstration.
 - current_alternatives: Manual call tests, platform logs, voice-agent test services and freelancers.
 - productization_potential: One-agent test matrix and evidence report; repeat paid buyers not yet established.
@@ -101,5 +102,5 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://github.com/HuggerHustle/ai-radar/issues/46
   - https://github.com/datnguyenquy94/news-radar/issues/777
-  - https://github.com/duanyytop/agents-radar/issues/3794

@@ -1,0 +1,107 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/41992",
+  "collected_at": "2026-10-24T07:15:47.927670+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/41992",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/41992/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/41992/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/41992/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/41992",
+    "id": 5999878933,
+    "node_id": "I_kwDOC4Q8Qs8AAAABZZ7jFQ",
+    "number": 41992,
+    "title": "Webhook: request bodies with charset=ISO-8859-1 fail with 422 \"Unknown encoding: iso-8859-1\"",
+    "user": {
+      "login": "VKaczmarek84",
+      "id": 164149147,
+      "node_id": "U_kgDOCci3mw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/164149147?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/VKaczmarek84",
+      "html_url": "https://github.com/VKaczmarek84",
+      "followers_url": "https://api.github.com/users/VKaczmarek84/followers",
+      "following_url": "https://api.github.com/users/VKaczmarek84/following{/other_user}",
+      "gists_url": "https://api.github.com/users/VKaczmarek84/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/VKaczmarek84/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/VKaczmarek84/subscriptions",
+      "organizations_url": "https://api.github.com/users/VKaczmarek84/orgs",
+      "repos_url": "https://api.github.com/users/VKaczmarek84/repos",
+      "events_url": "https://api.github.com/users/VKaczmarek84/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/VKaczmarek84/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-10-23T14:42:38Z",
+    "updated_at": "2026-10-24T04:44:19Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nWebhook requests whose Content-Type declares a charset name that Node.js Buffer does not know are rejected before the workflow runs:\n\nHTTP 422 {\"code\":422,\"message\":\"Failed to parse request body\",\"hint\":\"Unknown encoding: iso-8859-1\"}\n\nISO-8859-1 is the IANA name of the charset Node calls \"latin1\". The same request with charset=latin1 is accepted and decoded correctly.\n\nThe webhook body parser passes the charset from the header straight to Buffer.toString():\n- parseIncomingMessage sets message.encoding = parameters.charset.toLowerCase()\n- packages/cli/src/middlewares/body-parser.ts -> parseBody() calls rawBody.toString(encoding) for JSON, XML, form-urlencoded and text bodies\n\nThe same problem was fixed for the HTTP Request node in #11928 / #11930 (binaryToString switched to iconv-lite), but the webhook body parser still uses Buffer.toString().\n\nReal-world sender: SMS gateways (e.g. brevis.one) forward incoming SMS as application/x-www-form-urlencoded; charset=ISO-8859-1. Other legacy systems do the same.\n\n### To Reproduce\n\n1. Create a workflow with a Webhook node (POST, path \"charset-test\", Respond: when last node finishes) and activate it.\n2. curl -i -X POST \"http://localhost:5678/webhook/charset-test\" -H \"Content-Type: application/x-www-form-urlencoded; charset=ISO-8859-1\" --data-binary \"text=Gr%FC%DFe\"\n3. Response: 422 Failed to parse request body - Unknown encoding: iso-8859-1\n4. Same request with charset=latin1 -> 200, text = \"Grüße\"\n\n\n### Expected behavior\n\nThe body is decoded with the declared charset (\"Grüße\"), as the HTTP Request node already does since #11930.\n\nSuggested fix: in parseBody() decode with iconv-lite (already a dependency of n8n-core), e.g. iconv.decode(rawBody, encoding ?? 'utf-8'), or fall back when Buffer.isEncoding(encoding) is false.\n\n\n### Debug Info\n\n# Debug info\n\n## core\n\n- n8nVersion: 2.44.6\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.12.1\n- nodeEnv: production\n- database: sqlite\n- executionMode: regular\n- concurrency: -1\n- license: community\n- consumerId: unknown\n\n## storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n## pruning\n\n- enabled: true\n- maxAge: 336 hours\n- maxCount: 10000 executions\n\n## client\n\n- userAgent: mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/155.0.0.0 safari/537.36\n- isTouchDevice: false\n\n## security\n\n- secureCookie: false\n\n## cluster\n\n- instanceCount: 1\n- versions: 2.44.6\n- instances:\n  - instanceKey: 948be6bd-8a5c-413d-b3b0-808506d27ec1, hostId: main-6d736fecb2de, instanceType: main, instanceRole: leader, version: 2.44.6\n- checks:\n  - check: hostid-clash, status: succeeded, warnings: -\n  - check: lifecycle, status: succeeded, warnings: -\n  - check: split-brain, status: succeeded, warnings: -\n  - check: version-mismatch, status: succeeded, warnings: -\n\nGenerated at: 2026-10-23T14:42:29.232Z\n\n### Operating System\n\nDocker (official n8nio/n8n image) on Debian 12 / WSL2\n\n### n8n Version\n\n2.44.6 (also affected: 1.94.1)\n\n### Node.js Version\n\nas shipped in the official image\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/41992/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/41992/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @VKaczmarek84,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9633\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9633](https://linear.app/n8n/issue/GHC-9633)",
+      "at": "2026-10-23T14:42:49Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41992#issuecomment-6367532897"
+    },
+    {
+      "author": "jackeddisciple",
+      "text": "Hey, I’d be happy to look into this and submit a fix if nobody’s working on it already.",
+      "at": "2026-10-24T04:44:19Z",
+      "url": "https://github.com/n8n-io/n8n/issues/41992#issuecomment-6379998608"
+    }
+  ],
+  "comments_complete": true
+}

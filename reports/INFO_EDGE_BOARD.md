@@ -1,13 +1,13 @@
 # INFO EDGE BOARD
 
-Checked: 2026-10-23T07:28:04.863834+00:00
+Checked: 2026-10-24T07:15:47.927670+00:00
 
 Only current, corroborated changes are candidates. Target-buyer awareness and paid validation are separate requirements; public availability is not scarcity.
 
 ## Assistant credits top up - now available — VALIDATION CANDIDATE ONLY
 
 - What changed / novelty: Cloud Starter/Pro Assistant credits can be topped up instead of waiting or upgrading the base plan.
-- Exact event date: 2026-10-01T12:01:16.610Z; age: 21.81 days
+- Exact event date: 2026-10-01T12:01:16.610Z; age: 22.80 days
 - information_gap: Hypothesis only: some operators may still believe upgrading is the only way to continue. No awareness interviews conducted.
 - target_buyer: n8n Cloud Starter/Pro teams demonstrably constrained by Assistant monthly credits
 - monetization_path: Authorized fixed-scope usage/plan comparison audit, only after paid demand evidence; no resale.
@@ -22,7 +22,7 @@ Only current, corroborated changes are candidates. Target-buyer awareness and pa
 ## Haiku 5.5 launch: cost-sensitive automation model evaluation — VALIDATION CANDIDATE ONLY
 
 - What changed / novelty: Model released 2026-10-07 with materially lower listed token prices; task-level savings require evaluation.
-- Exact event date: 2026-10-07T00:00:00Z; age: 16.31 days
+- Exact event date: 2026-10-07T00:00:00Z; age: 17.30 days
 - information_gap: Hypothesis only: some Chinese automation operators may still budget for Haiku 4.5. No buyer-awareness interviews or adoption measurements yet.
 - target_buyer: Agencies/operators already paying for high-volume LLM classification and extraction.
 - monetization_path: Proposed paid cost/quality audit on anonymized high-volume classification or extraction workloads; never promise benchmark savings.

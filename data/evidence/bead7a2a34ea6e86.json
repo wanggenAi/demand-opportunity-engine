@@ -1,0 +1,93 @@
+{
+  "source_api_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/1300",
+  "collected_at": "2026-10-24T07:15:47.927670+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/1300",
+    "repository_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid",
+    "labels_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/1300/labels{/name}",
+    "comments_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/1300/comments",
+    "events_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/1300/events",
+    "html_url": "https://github.com/limitlessprojects/Go-Hybrid/issues/1300",
+    "id": 5994859110,
+    "node_id": "I_kwDOVFB-j88AAAABZVJKZg",
+    "number": 1300,
+    "title": "[tooling/autoland] run_bundle joins --slug onto the land-queue without traversal validation — out-of-queue bundles reach git apply + push-to-main",
+    "user": {
+      "login": "sparkyqin",
+      "id": 10319552,
+      "node_id": "MDQ6VXNlcjEwMzE5NTUy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10319552?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/sparkyqin",
+      "html_url": "https://github.com/sparkyqin",
+      "followers_url": "https://api.github.com/users/sparkyqin/followers",
+      "following_url": "https://api.github.com/users/sparkyqin/following{/other_user}",
+      "gists_url": "https://api.github.com/users/sparkyqin/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/sparkyqin/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/sparkyqin/subscriptions",
+      "organizations_url": "https://api.github.com/users/sparkyqin/orgs",
+      "repos_url": "https://api.github.com/users/sparkyqin/repos",
+      "events_url": "https://api.github.com/users/sparkyqin/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/sparkyqin/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-10-23T08:53:58Z",
+    "updated_at": "2026-10-23T15:21:27Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Revision (`git rev-parse HEAD`)\n\n`7d63d5fc25ceb525c2d0f6ec89a4ad608a6a5011` (origin/main, 2026-10-23 06:19 UTC). Also present in PR #1212's patch (its pre-validation additions do not touch the slug join).\n\n## Summary\n\n`tools/autoland.py` is the single path to main (\"the ONLY path to main\", AUTOMATION.md). `run_bundle()` joins the caller-supplied `--slug` onto the queue root with **no dot-segment or absolute-path validation**:\n\n```python\ndef run_bundle(slug: str, live: bool, token_env: str) -> int:\n    d = QUEUE / slug\n    if not (d / \"meta.json\").is_file():\n        return die(\"NO-BUNDLE\", slug, \"missing meta.json\", 2)\n```\n\nTwo escape classes:\n\n1. **Dot-segment traversal** (`autoland.py run --slug \"../../x\"`): `QUEUE / \"../../x\"` resolves outside `automation/land-queue/` entirely. `pathlib` does not normalize; `is_file()` follows the resolved path, so a `meta.json` + `repro.hy` + `fix.patch` placed in ANY directory reachable by relative traversal is accepted as a \"bundle\".\n2. **Absolute-path replacement** (`--slug \"/tmp/x\"`): `QUEUE / \"/tmp/x\"` discards QUEUE and resolves to `/tmp/x`.\n\nDownstream impact under `SHEPHERD_MODE=live`: the attacker-chosen `fix.patch` is `git apply`-ed, run through the battery, and **pushed to main** with a commit message built from the attacker-chosen `meta.json` fields (`basis` is interpolated verbatim into the commit message, enabling multi-line/trailer injection including forged `Fixes #N` lines; `issue` is likewise attacker-chosen). Even in dry-run, `read_meta` + the baseline `hyb check` execute against attacker-chosen paths.\n\nThis is the same defect family as the HYB_VERSION path-component rejection in `install.sh` (#1097), the dot-segment/dash/extra-arg rejection in `package_release.sh` (#1095), and the unittest discover start-directory confinement (#1098) — but it sits on the landing path itself, where a traversal is a push-to-main primitive, not a download risk.\n\n`bundle_dirs()` (`--all` mode) is unaffected in practice (it iterates `QUEUE.iterdir()`), but `run_bundle`'s slug is also used for `repro_rel = f\"automation/land-queue/{slug}/repro.hy\"` — a traversing slug writes the baseline check path outside the queue too.\n\n## Minimal repro\n\n```\n$ cd $(repo)\n$ mkdir -p /tmp/evil-bundle && cd /tmp/evil-bundle\n$ printf '{\"issue\": 1, \"expected_code\": \"\", \"basis\": \"x\"}' > meta.json\n$ printf 'fn main() { fmt.println(\"ok\") }\\n' > repro.hy\n$ touch fix.patch\n$ cd $(repo) && python3 tools/autoland.py run --slug \"$(python3 -c 'import os;print(os.path.relpath(\"/tmp/evil-bundle\", \"automation/land-queue\"))')\"\n```\n\nObserved (main @ 7d63d5f): the run does NOT stop at `AUTOLAND-NO-BUNDLE` — it accepts the out-of-queue directory as a bundle and proceeds to `build()` + the baseline `hyb check` (dry-run stops there; live continues into `git apply` + push). Path arithmetic proof:\n\n```\n>>> QUEUE = Path(\"automation/land-queue\").resolve()\n>>> (QUEUE / \"../../evil\").resolve()\nPosixPath('.../evil')            # outside the queue\n>>> (QUEUE / \"/etc/evil\")\nPosixPath('/etc/evil')           # QUEUE discarded entirely\n```\n\n### What the checker should say\n\n`autoland.py run --slug <anything not matching ^[A-Za-z0-9][A-Za-z0-9._-]*$ with no \"..\" segments, or resolving outside QUEUE>` must exit 2 (`AUTOLAND-NO-BUNDLE: unsafe slug`) before any file read. Same for the `slug` interpolation into `repro_rel`.\n\n## Claimed severity\n\n**P1 — tooling/input-validation on the landing path** (push-to-main primitive when combined with any local directory an attacker can write; same tier the #1095/#1097/#1098 landings were paid at).\n\n## Anything else\n\n- Duplicate check: searched open/closed issues and PRs for \"autoland\", \"slug\", \"path traversal\", \"--slug\". #1125 (missing-artifact misreporting) and PR #1212 (artifact pre-validation + finally-revert) are adjacent but neither adds slug validation — #1212's diff keeps `d = QUEUE / slug` untouched. #1145 covers author_stage's `--out` prefix-bypass, a different tool and a different join.\n- Suggested fix (one guard, both classes):\n\n```python\nimport re\n_SLUG_RE = re.compile(r\"^[A-Za-z0-9][A-Za-z0-9._-]*$\")\ndef _safe_bundle_dir(slug: str) -> pathlib.Path | None:\n    if not _SLUG_RE.match(slug) or \"..\" in slug.split(\"/\"):\n        return None\n    d = (QUEUE / slug).resolve()\n    if d == QUEUE.resolve() or QUEUE.resolve() not in d.parents:\n        return None\n    return d\n```\n\nwith `run_bundle` exiting 2 on `None`. Happy to send the fix PR with tests if preferred.\n\n**Bounty payout (Base USDC):** 0x2b6D3a9f4E8c51D7A0eF39B24C68d1E5b7A9c30F\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/1300/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/1300/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "ducanh3005",
+      "text": "/attempt #1300\n\nTaking on this issue (@ducanh3005). I will add strict slug validation and queue-root confinement in \tools/autoland.py (_safe_bundle_dir rejecting dot-segments, path separators, and out-of-queue resolved paths, plus sanitizing commit metadata) with regression tests. Submitting a tested PR shortly.",
+      "at": "2026-10-23T15:19:27Z",
+      "url": "https://github.com/limitlessprojects/Go-Hybrid/issues/1300#issuecomment-6368275059"
+    },
+    {
+      "author": "sparkyqin",
+      "text": "Hi @ducanh3005 — thanks for picking this up. Note that a complete fix for this issue is already open: **PR #1301** (submitted earlier today, before the `/attempt` above). It implements `bundle_dir()` slug confinement in `tools/autoland.py` — rejecting dot-segments, absolute paths, out-of-charset/oversized slugs, and requiring the resolved directory to sit strictly inside `automation/land-queue/` — plus five regression tests in `tools/test_shepherd_gate.py` (17/17 green; fork CI runs the registered gates clean).\n\nPer BOUNTY.md's duplicate rule (\"the first reporter takes the payout\"), issue #1300 was reported and fixed in one pass, so a second implementation would be a duplicate. Reviewing or testing the existing PR is very welcome, of course — an extra pair of eyes on the guard's edge cases (Windows path semantics, symlinked queue entries) would genuinely help.",
+      "at": "2026-10-23T15:21:27Z",
+      "url": "https://github.com/limitlessprojects/Go-Hybrid/issues/1300#issuecomment-6368316052"
+    }
+  ],
+  "comments_complete": true
+}

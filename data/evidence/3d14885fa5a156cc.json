@@ -1,0 +1,186 @@
+{
+  "source_api_url": "https://api.github.com/repos/angeloaudia1975/homecareproviderservicesordering/issues/1",
+  "collected_at": "2026-10-24T07:15:47.927670+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/angeloaudia1975/homecareproviderservicesordering/issues/1",
+    "repository_url": "https://api.github.com/repos/angeloaudia1975/homecareproviderservicesordering",
+    "labels_url": "https://api.github.com/repos/angeloaudia1975/homecareproviderservicesordering/issues/1/labels{/name}",
+    "comments_url": "https://api.github.com/repos/angeloaudia1975/homecareproviderservicesordering/issues/1/comments",
+    "events_url": "https://api.github.com/repos/angeloaudia1975/homecareproviderservicesordering/issues/1/events",
+    "html_url": "https://github.com/angeloaudia1975/homecareproviderservicesordering/issues/1",
+    "id": 6001876890,
+    "node_id": "I_kwDOTjhp0s8AAAABZb1fmg",
+    "number": 1,
+    "title": "Partner 360 — Automated Manufacturer Catalog Completion & Launch",
+    "user": {
+      "login": "angeloaudia1975",
+      "id": 293657422,
+      "node_id": "U_kgDOEYDbTg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/293657422?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/angeloaudia1975",
+      "html_url": "https://github.com/angeloaudia1975",
+      "followers_url": "https://api.github.com/users/angeloaudia1975/followers",
+      "following_url": "https://api.github.com/users/angeloaudia1975/following{/other_user}",
+      "gists_url": "https://api.github.com/users/angeloaudia1975/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/angeloaudia1975/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/angeloaudia1975/subscriptions",
+      "organizations_url": "https://api.github.com/users/angeloaudia1975/orgs",
+      "repos_url": "https://api.github.com/users/angeloaudia1975/repos",
+      "events_url": "https://api.github.com/users/angeloaudia1975/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/angeloaudia1975/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 8,
+    "created_at": "2026-10-23T16:48:16Z",
+    "updated_at": "2026-10-24T04:51:35Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Owner direction — 2026-10-23\nAccelerate completion of HCPS Partner 360 dealer ordering across every represented non-Golden manufacturer. Reuse the existing storefront and product-detail templates; eliminate one-manufacturer-at-a-time manual entry. Golden retains its separate ordering portal. Owner wants progress through normal engineering work without repetitive approval requests, with safeguards on commercial accuracy and production release.\n\n## Grounded starting point (read-only repository + Supabase inspection, 2026-10-23)\nRepo: angeloaudia1975/homecareproviderservicesordering, main.\nLive HCPS Ordering Supabase database has **several catalog layers**: `public/data/<manufacturer>.json`, `custom_products`, `product_overrides`, `product_images`, `product_content`, and the newer master commercial `product_skus`. `price_imports` are immutable source rows; `reconcile_conflicts` records unresolved differences. Do not assume README Phase 1 is current.\n\nMaster `product_skus` active SKU count / approved content pages:\n- ovation-medical: 303 / 60 (preserve existing verified work)\n- climbing-steps: 21 / 21 (preserve)\n- strongback-mobility: 14 / 14 (preserve)\n- bemis: 9 / 3 of 7 (finalize)\n- access4u, airavant-bongorx, corsicana, pedifix, ohio-medical/gce, dalton, abm-respiratory-care: no master SKU rows currently observed, but many have legacy catalog data and must NOT be called empty/absent.\n- Important key discrepancy: `public/data/manufacturers.json` uses `gce` while DB metadata/legacy overrides also use `ohio-medical`. Plan explicit normalization rather than silently split or merge.\n\nThese database counts are not proof of live dealer-visible behavior. Verify the deployed environment and correct branch/config.\n\n## Objective\nOne repeatable, source-attributed pipeline to research, import, reconcile, enrich, QA and stage/publish all represented lines, not bespoke manual editing of product cards. Output a dealer-ready marketplace with correct entitled pricing, categories, dimensions/options, images, descriptions, MAP/MSRP only where documented, freight, PO/order confirmation, manufacturer email routing, and mobile experience.\n\n## Workstreams — proceed in parallel where independent\n\n**A. Inventory and truth hierarchy**\n1. Read code paths and database schema and produce an up-to-date per-manufacturer inventory: source docs/dates, JSON rows, legacy rows, SKU master rows, live effective selling SKUs, content pages, image coverage, missing pricing, conflicts, current visibility flags, checkout enablement and active/deactivated models.\n2. Establish stable manufacturer slug + exact SKU + explicit variant mapping. Identify canonical catalog definitions: commercial price/tiers/UOM/status from `product_skus`; marketing content/specs/categories/media from approved content/category maps; retain import source + effective date. Never repurpose SKU codes or overwrite approved records on guesses.\n3. Identify legacy/modern layers that disagree. Emit a machine-readable diff and owner exception report. No silent wholesale migration or destructive cleanup.\n4. Produce an accurate go-live matrix and a progress dashboard that distinguishes *existing in JSON*, *master migrated*, *enriched*, *dealer-visible*, and *order-verified*.\n\n**B. Reusable bulk importer and enrichment**\n1. Build generic manufacturer adapters for pricing XLSX/CSV/PDF and websites/authorized catalogs; reusable parsing, normalized CSV/JSON review artifacts, deduplication, validation and idempotent upsert staging. Import to a review state with provenance; publish only verified commercial facts.\n2. Research manufacturer official pages, authorized assets and (only as corroboration) reseller pages. Capture source URL, checked date, SKU/variant match and confidence, along with an exception list. Never invent descriptions, images, MSRP/MAP, freight, HCPCS, weights, UOM, pack sizes, availability or lead times.\n3. Image pipeline: prefer authorized manufacturer imagery; locate exact model/variant, download/rehost only when authorized, preserve ratios, make thumbnails and fallbacks, detect dead URLs and wrong variants; create unresolved-image report rather than labeling unmatched images as verified.\n4. Add taxonomy crosswalk by manufacturer: category/subcategory/product family, variations (size/color/laterality), related accessories; don't multiply duplicate product pages or mix legacy SKUs with options.\n5. Keep products without verified dealer pricing unavailable for purchase; do not display invented/legacy prices as authoritative. Do not derive MSRP using a universal multiplier. Verify manufacturer-specific contracts and case/quantity tiers.\n\n**C. Manufacturer batches**\n- Batch 0: protect verified Ovation, Climbing Steps, Strongback as golden test fixtures; regress all three.\n- Batch 1: finish BEMIS first: remaining approved pages, SKU/case packs and freight; verify source terms for free freight >= $500, $40 below, $20 dropship, less-than-case $10 per line rather than assuming all captured in cart rules.\n- Batch 2 parallel: AIRAVANT/BongoRx, Access4U, PediFix, Ohio Medical/GCE, Corsicana, ABM. Use existing legacy content and latest authoritative supplier lists. Get a source-gap checklist for commercial facts requiring owner's documents.\n- Batch 3 Dalton Medical (existing dedicated 2026 price/catalog work must be reconciled; do not silently apply an old 5% discount; verify lead times and special bed preorder state with current source).\n- Reconcile manufacturer's active line roster with HCPS before claiming 100% coverage. Golden out of this project.\n\n**D. Storefront and order acceptance**\nFor each manufacturer, automated smoke tests: dealer auth/entitlement & RLS, anonymous price leakage, real authorized dealer view, category navigation, search, correct image and variant, price/tier/case and per-line freight logic, mixed manufacturer cart, separate PO/order records and appropriately formatted manufacturer emails, taxes if applicable, validation, mobile usability, confirmation and My Orders totals. Use staging and non-deliverable test orders; do not send live commercial orders to a manufacturer during testing. Confirm price displayed = charged/emailed/stored. Snapshot and rollback migration plan.\n\n**E. Engineering delivery and approvals**\n- First deliver audit/report + implementation design; then build independent branches/PRs for shared importer, per-manufacturer adapters and QA.\n- Test against a safely isolated/staged environment; guard live settings, retain backups, avoid changing production pricing/active flags/permissions or sending real emails until checks pass and the exact release is approved.\n- Noncommercial formatting/content improvements can proceed through normal PR review. Require documented authority for any material dealer price, freight, UOM, clinical/regulatory statement, discontinuation or availability change.\n- Do not expose Supabase service keys or private wholesale terms in public static JSON, page source or unauthenticated APIs.\n- For each PR record test results, imported and published counts, missing pricing/media, price-source date, rollback steps, and owner-only exceptions.\n- Keep scope focused on ordering/catalog launch; no independent redesign of Dealer 360, Academy or Golden order portal.\n\n## Definition of done per manufacturer\n(1) All currently sellable official SKUs accounted for or documented exceptions; (2) verified dealer pricing and per-SKU unit/case/tier rules; (3) categories and variants mapped; (4) media and descriptions reasonably complete with no incorrect stand-ins; (5) entitlement and approval gates secure; (6) totals/freight/order email consistent; (7) mobile and checkout tests pass in staging; (8) owner-facing sign-off summary with source dates and outstanding exceptions.\n\n## Immediate first deliverables\n1. Baseline live-vs-repository inventory & go-live coverage matrix.\n2. Shared importer + image matching/rehosting architecture proposal, aligned to existing admin/catalog workspace and current authority flags.\n3. First BEMIS completion PR plus parallel source-gap research for remaining manufacturers; keep production unchanged until verified.\n4. Short owner-request list ONLY for irreplaceable source documents/permissions or business-policy conflicts (not manual row-by-row entry).\n\nPlease use this issue as the implementation umbrella; report per-workstream PR links and concrete completion evidence.",
+    "reactions": {
+      "url": "https://api.github.com/repos/angeloaudia1975/homecareproviderservicesordering/issues/1/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/angeloaudia1975/homecareproviderservicesordering/issues/1/timeline",
+    "performed_via_github_app": {
+      "id": 1144995,
+      "client_id": "Iv23liVemv8A9if9v0F2",
+      "slug": "chatgpt-codex-connector",
+      "node_id": "A_kwHOAOQ6Gs4AEXij",
+      "owner": {
+        "login": "openai",
+        "id": 14957082,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjE0OTU3MDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/14957082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/openai",
+        "html_url": "https://github.com/openai",
+        "followers_url": "https://api.github.com/users/openai/followers",
+        "following_url": "https://api.github.com/users/openai/following{/other_user}",
+        "gists_url": "https://api.github.com/users/openai/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/openai/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/openai/subscriptions",
+        "organizations_url": "https://api.github.com/users/openai/orgs",
+        "repos_url": "https://api.github.com/users/openai/repos",
+        "events_url": "https://api.github.com/users/openai/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/openai/received_events",
+        "type": "Organization",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "name": "ChatGPT Codex Connector",
+      "description": "Bring ChatGPT and Codex to your GitHub repositories.",
+      "external_url": "https://www.chatgpt.com",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "created_at": "2025-02-14T01:37:05Z",
+      "updated_at": "2026-09-23T18:52:59Z",
+      "permissions": {
+        "actions": "write",
+        "checks": "read",
+        "contents": "write",
+        "emails": "read",
+        "issues": "write",
+        "metadata": "read",
+        "pull_requests": "write",
+        "statuses": "read",
+        "workflows": "write"
+      },
+      "events": [
+        "check_run",
+        "check_suite",
+        "commit_comment",
+        "issues",
+        "issue_comment",
+        "pull_request",
+        "pull_request_review",
+        "pull_request_review_comment",
+        "pull_request_review_thread",
+        "repository",
+        "status",
+        "sub_issues"
+      ]
+    },
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "angeloaudia1975",
+      "text": "## Cross-repository handoff + protected BEMIS correction (2026-10-23)\nThis umbrella launch issue MUST coordinate **two repositories**:\n- `angeloaudia1975/homecareproviderservices`: Manufacturer Center implementation, release/approval/correction workflow, and related Netlify functions (e.g. `src/admin/manufacturer-center.html`, `netlify/functions/_publish.js`, `CLAUDE.md`).\n- `angeloaudia1975/homecareproviderservicesordering`: Partner 360 dealer-facing storefront, orders/cart, and catalog feed.\nDo not assume that completing a change in one repo changes the other or that the original umbrella issue describes both codebases completely. Check the current `CLAUDE.md` in both repos before editing.\n\n**Owner-provided prior Claude handoff:** BEMIS current finalized Gold Standard PASS is run #20, and earlier failed runs #16–#19 must remain in immutable history; UI fixes were described as deployed and need fresh production verification. BEMIS Assurance published-page regression correction was PREPARED ONLY. The proposed dry-run plan hash begins `0da21cc8b2b854a3`. The correction is strictly one product page `assurance-raised-toilet-seat-with-clean-shield-3-in` and strictly 3 fields, keeping all photos, options, grouping, other pages, documents/videos, price, tiers, UOM, MAP/MSRP, freight, and status unchanged.\n\n**Independently confirmed live Supabase DB as of 2026-10-23:** `mfr_decisions` #908 regression_fix and #909 description / #910 features / #911 specs approvals all exist and `used_at IS NULL`; Assurance `product_content` still contains the undesired 1,000 lb capacity and Stay·Tite wording. Latest `mfr_verification_runs` for Bemis is run #20 PASS (2026-10-13 UTC). No post-correction publication can be claimed yet.\n\n**Safety gate:** Owner's explicit earlier instruction was **do not publish/finalize Assurance correction until the dry run is approved**. Preserve this and revalidate plan hash / fingerprint and exact scope before seeking explicit approval. Do not bypass with enrichment window #907, do not destroy historical runs, and do not re-enrich or mutate already approved lines as a side effect of bulk importer work.\n\n**Immediate coordinated task:** verify the main HCPS Manufacturer Center fix/code deployment, keep Bemis correction review separate, and build/readiness-audit other manufacturer adapters in parallel without publishing or rewriting frozen lines. Report distinct status: current Gold Standard / historical verification failures / staging / approved / published. Require dry-run matching plan hash and explicit release authorization for any production correction.",
+      "at": "2026-10-23T16:54:58Z",
+      "url": "https://github.com/angeloaudia1975/homecareproviderservicesordering/issues/1#issuecomment-6370166624"
+    },
+    {
+      "author": "angeloaudia1975",
+      "text": "## Status 2026-10-23 — baseline + Workstream A R1\n\n**PR:** angeloaudia1975/homecareproviderservices#34 — launch-readiness matrix (read-only; no dealer-facing change; no production writes). Tests: readiness 34/34, mutants 31/31 killed, snapshot pg 5/5, Manufacturer Center pg suites 81/81, correction 13/13 + 16/16 mutants.\n\n**BEMIS Assurance correction (#908 fix · #909/#910/#911) — staged, NOT published.** Public read today: page `assurance-raised-toilet-seat-with-clean-shield-3-in` (published 2026-10-13 03:05 UTC) still carries the 1000 lb and Stay·Tite wording in description and features. Gold Standard = run #20; #16–#19 untouched. Nothing done to it; awaits Angelo's approval of the re-derived dry run (hash must still begin 0da21cc8b2b854a3).\n\n**Security (pre-existing):** `/data/<line>.json` on the shop site serves dealer base prices/tiers unauthenticated (1,593 rows), and `custom_products` is anon-readable with prices (379 rows). `product_skus` / `price_imports` correctly return nothing to anon; MC tables 401.\n\n**Inventory exceptions:** Complete Medical Supplies file (473 rows) not listed + 27 missing image files · Dalton listed hasData:true with an empty file · ABM no data · storefront slug `gce` vs canonical `ohio-medical` · Access4U duplicate codes SR3, PRK + 9 rows without image · no freight terms on Access4U, AIRAVANT, GCE, Dalton.\n\n**Gap found:** no server-side price-list parser — Manufacturer Center takes pasted tables only. Next: R2 shared xlsx/csv/pdf parser feeding the existing register → import → match → stage path; R3 live readiness tab; R4 close the price exposure with frozen-line fingerprint proof; R5 Batch 2 source-gap research.\n\n---\n_Generated by [Claude Code](https://claude.ai/code)_",
+      "at": "2026-10-23T17:09:45Z",
+      "url": "https://github.com/angeloaudia1975/homecareproviderservicesordering/issues/1#issuecomment-6370453727"
+    },
+    {
+      "author": "angeloaudia1975",
+      "text": "## 2026-10-23 integration checkpoint — owner-directed Complete Medical retirement and P0 security\nCurrent pending change pairs:\n- **Remove Complete Medical**: ordering PR #4, admin PR #37. Owner's intent: not an HCPS represented line; keep historical orders/commissions/dealer associations.\n- **P0 commercial privacy**: ordering PR #3, admin PR #36. MUST deploy together with private DB overlay and price parity.\n- **Readiness** admin PR #34; **Importer** admin PR #35; other content/staging PR in progress.\n\nIndependent ChatGPT connector review comments now exist on #4 and #37 (plus earlier #3/#36/#34/#35). Outstanding integration blockers:\n1. P0 seed script enumerates pre-retirement Complete Medical from git ref 4b1bad3; if PR #4 removes its JSON, future private overlay seed flags a mismatch. Explicitly remove retired line from seeding, overlay row counts, and test cross-branch merge/rebase. Never reintroduce its 473 catalog rows or prices.\n2. PR #4 README references executing `supabase/retire_complete_medical.sql`, but PR #37 CLAUDE.md explicitly says do NOT run that script because it deletes historical dealer_manufacturers records. Correct docs; no retirement SQL should run.\n3. PR #37 `_pricing.js` fallback permits any line when manufacturer list is empty/404. Fail closed in the production caller and test empty/missing list with residual custom_products; preserve compatibility only where explicitly intended.\n4. Both #37 and #36 edit server _pricing.js; both #4 and #3 edit same shop catalog. Rebase and run an integrated test matrix on exact combined heads (not independent CI only), including protected Gold Standard lines and dealer checkout.\n5. Do not deploy live P0 until overlay identity/version guard proven, DB seed exact, admin before storefront, legacy access lock only after test dealer passes, old Netlify deploys considered, and independent review/release gate satisfied.\n\nCatalog content/importer work can continue in parallel. BEMIS #908–#911 correction remains separately held. Current storefront/admin production unchanged by this comment.",
+      "at": "2026-10-23T21:42:54Z",
+      "url": "https://github.com/angeloaudia1975/homecareproviderservicesordering/issues/1#issuecomment-6375327711"
+    },
+    {
+      "author": "angeloaudia1975",
+      "text": "## 2026-10-23 post-retirement merge checkpoint (ChatGPT independent review)\n**MERGED to main, verified by GitHub response:**\n- Admin PR #37, fail-closed retired manufacturer order gate, squash main commit `a5758a0ac2a873d1acce43e0b7ccce24a27a1395`.\n- Ordering PR #4, Complete Medical catalog/image removal, squash main commit `6223f69575204b88b74718178bb0439bf716a49e`.\nThese merges ran NO Supabase SQL, did not delete historical dealer/manufacturer association, commission, or order rows. Separate **live Netlify deploy verification not yet established** (the merged commit's initial status lookup returned no checks). Both sets of original heads had passing reported preview status. We intentionally merged ADMIN first, then storefront so order-server retirement protection precedes catalog removal.\n\n**Action now:** REBASE/RECONCILE remaining open PRs to updated main. GitHub reports `mergeable=false` immediately after the two main updates for ordering #3 and admin #34/#35/#36/#38; treat as requiring fresh mergeability reconciliation and tests, not approval. Especially preserve #37's fail-closed `_pricing.js` changes in admin #36, and exclude Complete Medical from all security seeding/probes in ordering #3. Verify production deployment of a5758a0/6223f69 first, and public retired catalog 404 with no price. Do not merge/deploy P0 #3/#36 until private table seeded, Netlify old deploy URLs protected, owner release steps and live signed-in + anonymous entitlement tests are ready. Post-merge exact-HEAD CI and cross-repo parity must be re-run; do not assume earlier green base-commit tests suffice.\n\n**Received-date blocker: mailbox evidence found, no guesses.** Original Outlook email subjects and attachment metadata:\n- Access4U: 2026-10-09 email `Re: Access4U newsletter and pricing`, attachment `Pricelist fall 2026.pdf`.\n- AIRAVANT/BongoRx: 2026-07-08 email `BongoRx Prescription Form and Application and Pricing`, attachment `Bongo Rx Price List and Dealer Application New 2026.pdf`.\n- Corsicana: 2026-05-21 email `Corsicana Healthcare Catalog and Price List`, attachment `CORSICANA HEALTHCARE PRICE LIST 2026.xlsx`.\n- Dalton: 2026-10-20 email `New Pricing and Freight`, attachment `NEW Dalton Price list and Freight - 11-1-26.pdf`.\n- ABM: 2026-10-12 email `Welcome to the ABM Respiratory Care Family.- Williams Bros. Health Care Pharmacy Pricing List`, `Willams Bros Clear Pricing 26.pdf` and `Williams Bros Cough pricing 26.pdf`. These remain **named account rates**, never general dealer rates without confirmation.\n- PediFix: 2026-09-04 email `Pedifix Digital Catalog and Pricelist`, attachments `PediFix 2025 Retail.pdf` and `PediFix 2025 Retail Order Form.xlsx`, NOT evidence of a 2026 wholesale list.\n- Ohio Medical: 2026-08-04 `Ohio Medical Contract 2026` email includes ONLY `Ohio Medical Contract 2026 Homecare Provider Services.pdf`; NOT established as the receipt date for imported GCE price list.\nFor each candidate, match exact attachment filename/hash to the imported source before using email received day as `received_date`. Distinguish email received day from manufacturer's `effective_date`; do not use receipt date to override future effective date (Dalton 2026-11-01). Keep GCE missing date as an exception, and require manufacturer-specific source verification.\n\n**Dealer with no active lines:** read-only live DB check shows only one, `is_test=true`, `active=true`, zero approved dealer_users logins. Do not use it as evidence that active customer accounts lack assignments. General rule stays: approved real dealer without active manufacturer entitlement may browse noncommercial info but cannot obtain wholesale or place an order.\n\n**Private repo safety:** there are already exposed wholesale/commission facts in admin git history; owner's recommended direction is make both repos private after Netlify/GitHub compatibility check, remove/exclude source price files from public code and consider old immutable Netlify deploys. Do not change repo visibility without direct owner authorization and actual compatibility validation.\n\n**Future work:** continue importer and content review in parallel, record research exceptions rather than inventing codes or source facts, and preserve BEMIS #908–#911 release gate.",
+      "at": "2026-10-23T22:15:58Z",
+      "url": "https://github.com/angeloaudia1975/homecareproviderservicesordering/issues/1#issuecomment-6375821026"
+    },
+    {
+      "author": "angeloaudia1975",
+      "text": "## October 23, 2026 — latest independent checkpoint and merger\n**Admin PR #34 MERGED** as squash commit `546ba46d207bc1d22d91b9200a73a373d3f118f1` into `homecareproviderservices/main`. Read-only manufacturer readiness scoring only; **no production SQL or dealer price/content mutation**. The other admin PRs #35 (importer), #36 (security), #38 (content review) may need a fresh main reconciliation/retest after this merge. Ordering #3 remains draft.\n\nRead-only HCPS Supabase production verification after this merge: `catalog_file_commercial` **does not exist**; `custom_products_read` and `product_overrides_read` are still permissive SELECT `USING (true)` for `public`. **The private-price security release has NOT been executed and must not be reported as deployed.** Owner must protect legacy Netlify deploy links and authorize a coordinated migration/validation window.\n\n### Source receipt evidence / date blockers\nThe user has a connected Outlook mailbox. Verified message/attachment names and mailbox receive dates from metadata:\n- Access4U 2026-10-09 `Re: Access4U newsletter and pricing`: `Pricelist fall 2026.pdf` (Claude reports full file hash matched, so received date can be used).\n- AIRAVANT 2026-07-08 `BongoRx Prescription Form and Application and Pricing`: `Bongo Rx Price List and Dealer Application New 2026.pdf`. Its existence and date ARE verified, but full imported-file SHA match not yet established: request actual comparison, not declaration that no email exists.\n- Corsicana 2026-05-21 `Corsicana Healthcare Catalog and Price List`: `CORSICANA HEALTHCARE PRICE LIST 2026.xlsx`; imported `_rev` copy remains unmatched.\n- Dalton 2026-10-20 `New Pricing and Freight`: `NEW Dalton Price list and Freight - 11-1-26.pdf`; original DOES NOT match imported corrected `REVa` version, so do not assign vendor email date to REVa without provenance. User Library has HCPS-generated `Dalton_Dealer_Price_List_Nov_2026.pdf`, created 2026-10-21T01:21Z (Oct 20 CT); this timestamp proves creation of **that generated artifact**, not original manufacturer's document receipt. Effective date 2026-11-01 is separate.\n- ABM 2026-10-12 `Welcome to the ABM Respiratory Care Family.- Williams Bros. Health Care Pharmacy Pricing List` has named account prices only; no general dealer price approval.\n- PediFix 2026-09-04 `Pedifix Digital Catalog and Pricelist` attaches 2025 RETAIL docs, not a verified current 2026 dealer list.\n- Ohio Medical 2026-08-04 contract email is not confirmed as specific dealer price-list provenance.\n\n### Process improvement (development scope)\nAllow an explicit **verified HCPS owner-upload/intake date** as a separate provenance type from a vendor email date (with original file hash and upload record); keep vendor_received_at UNKNOWN if unverified. Do not invent or conflate dates. If Manufacturer Center requires `received_date` for registration, accept an auditable documented intake timestamp + provenance type, not a fake vendor receipt date, with a controlled read-only migration/test. Keep formal pricing approval gate intact. This can unblock review/staging of verified source packages without asking the owner to remember seven mail dates.\n\nNext: check admin #35/#36/#38 against new main, complete source-document matching, protect old Netlify deploys, then execute P0 rollout only after verified preflight, rollback plan, live dealer tests. Don't merge/deploy #3/#36 from earlier green head. BEMIS correction #908–#911 remains separate and held.",
+      "at": "2026-10-23T23:09:05Z",
+      "url": "https://github.com/angeloaudia1975/homecareproviderservicesordering/issues/1#issuecomment-6376539994"
+    },
+    {
+      "author": "angeloaudia1975",
+      "text": "## 2026-10-23 late-evening GitHub handoff — importer merged, content review needs reconciliation\n**Admin importer PR #35 MERGED** into `homecareproviderservices/main` at squash commit `872f637003b9e53f93578a96e4df56745151b21d` after checking current head `0075813ea752f15a959dbdaf625110e50615720f`, successful Dealer lifecycle + Netlify preview checks, and a read-only code review. This adds offline parser, source normalization/diff, exceptions, deterministic before-after report, Manufacturer Center staged handoff. No product or wholesale price import was executed; no production SQL. Owner's earlier blanket routine development approvals used. `CLAUDE.md` updates included.\n\n**Next branch action:** Admin content-review PR #38 (`62ebe830eff762a87145f15d6436a3f4a4132b5a`) now reports `mergeable=false` against updated main due to #35. Reconcile including both CLAUDE.md sections, rerun content-review + importer/handoff tests, Netlify CI and exact head review, then merge if only offline/no-write tooling. Review comment already on PR #38; specifically verify image fetch redirects against official allowlist and bound response size, keep rights pending and no images published. Admin security #36 similarly needs reconciliation after #35; leave as draft until P0 release.\n\n**Supabase current verification:** `catalog_file_commercial` absent and 2 publicly readable legacy SELECT policies remain. Pricing P0 security NOT deployed. Netlify original deploy IDs/permalinks remain a release dependency. On current Netlify credit-based UI use Project configuration > General > Visitor access > Project visibility > Private, `Previews only` where available; test old deploy-ID links without auth, plus production public access unaffected. Other plans use Password Protection. Do not assume turning off Deploy Previews removes old immutable deployment URLs. Do not deploy security PR #36/#3 or run schema/seed/lock until preflight + protection verified.\n\n**Source date policy:** Differentiate original manufacturer email receipt (validated content-matching attachment) and separately auditable owner document intake (upload timestamp + hash), not the same provenance. Missing exact receipt date may continue as exception until supported audit metadata; don't invent. Preserve corrected Dalton effective date 2026-11-01, ABM named-account block, PediFix stale list, BEMIS correction hold #908–#911.\n\n**Recommended next Claude work:** rebase #38 & #36 on importer commit; complete offline content/photo staging safety; supply exact Netlify on-screen protection instructions; prepare security dry-run/release preflight, without production writes or activations.",
+      "at": "2026-10-24T04:25:01Z",
+      "url": "https://github.com/angeloaudia1975/homecareproviderservicesordering/issues/1#issuecomment-6379825318"
+    },
+    {
+      "author": "angeloaudia1975",
+      "text": "## Owner direction — ONE final checklist, not piecemeal approvals (2026-10-23)\nThe owner requests a single consolidated, executable owner-action/go-live checklist once development and integration have progressed as far as possible without owner-only inputs. **Do not stop routine engineering, reviews, safe draft staging and tests to request one manufacturer date, one SKU confirmation, one setting or one approval at a time.** Keep a living internal action/dependency register with evidence and links; resolve developer-owned items independently; group all remaining legitimate owner actions into ONE final handoff, in dependency order.\n\nThe final checklist should specify exactly what the owner must do (link/page/button, document to supply, confirmation, expected PASS evidence), estimated scope, priority, prerequisites, and which decisions are optional. Consolidate Netlify historic-preview and production permalink protection, GitHub repo privacy, Supabase private pricing migration + verified seed/rollback, coordinated admin/storefront release + signed-in tests, dealer entitlements, commercial source receipts and unresolved terms, product claims, image rights, frozen-line Gold Standard checks, and BEMIS's separate correction gate. Distinguish *developer-ready* from *dealer-launch-ready*. Do not invent missing prices/dates or quietly approve publication.\n\n**Exception:** Escalate an active high-severity security incident, irreversible/destructive operation, legal compliance blocker or immediate risk that cannot safely wait; do not defer vital warnings just to achieve a single checklist.\n\nThe owner prefers large engineering batches and a single consolidated handoff, not repeated 'please do this small action' requests.",
+      "at": "2026-10-24T04:29:46Z",
+      "url": "https://github.com/angeloaudia1975/homecareproviderservicesordering/issues/1#issuecomment-6379869440"
+    },
+    {
+      "author": "angeloaudia1975",
+      "text": "HCPS catalog autonomous continuation checkpoint 2026-10-24:\n\n- ChatGPT verified latest heads and passing GitHub checks: admin #38 9540f32 (Netlify + dealer lifecycle green), #39 520757f (green), #36 ef9eacc (green), ordering #3 dc9de90 (Netlify green).\n- ChatGPT merged SAFE offline content-review admin PR #38 as squash e41d27f0fffb77ee2bd145a49727f91458abca9. This has no Supabase writes, no product publication, no image licensing or price activation.\n- After merge, admin #39 (receipt provenance) and #36 (P0 admin price security) are not mergeable against new main. Claude: reconcile #39's CLAUDE.md changes and receipt-basis code with main, repeat 53+7 and mutation tests, verify Netlify, then prepare clean nonproduction merge. On successful safe merge rebase/retest #36 again, but KEEP #36 DRAFT until coordinated private-price release with ordering #3.\n- Verify #39 provenance is source-anchored and distinguish actual mailbox receipt SHA match from human-verified HCPS intake. Current code accepts an HCPS attestation verified_by + note without external proof; ensure attestation is explicit, dated, audited (not treated as a vendor-email hash match), and do not stage or publish without real sourcing approvals.\n- The user wants ONE consolidated final owner-action checklist and no piecemeal action requests before all autonomous engineering is complete. Keep working on safe dev tasks and exceptions; only interrupt for a critical security issue.\n- Critical security exception: old ADMIN Netlify production and preview deploys reportedly public, including stale functions with live env credentials. Security P0 issue #2 has official Netlify guidance and action record (comment 6380057012). Restrict previews, identify/delete or protect vulnerable old production deploy IDs. Do not assume Previews only protects old production permalinks, and do not remove current published deploy. Anonymous verify 401/404 without exposing secrets. Prepare an exact brief one-time owner action, and keep public storefront access intact.\n- Continue manufacturer source research, image rights checks, and staging preparation while Awaiting P0 gate. Preserve BEMIS #908-#911 hold and frozen-line parity.\n- Before final checklist: provide private-price table migration/seed readiness, signed-in dealer/no-entitlement/anon verification plan, future release order, exact remaining owner input, and honest launch readiness evidence. Do not claim production complete based only on CI.",
+      "at": "2026-10-24T04:51:35Z",
+      "url": "https://github.com/angeloaudia1975/homecareproviderservicesordering/issues/1#issuecomment-6380060176"
+    }
+  ],
+  "comments_complete": true
+}
