@@ -1,0 +1,87 @@
+{
+  "source_api_url": "https://api.github.com/repos/PrintNC-V4/Design/issues/1",
+  "collected_at": "2026-10-25T07:33:30.783721+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/PrintNC-V4/Design/issues/1",
+    "repository_url": "https://api.github.com/repos/PrintNC-V4/Design",
+    "labels_url": "https://api.github.com/repos/PrintNC-V4/Design/issues/1/labels{/name}",
+    "comments_url": "https://api.github.com/repos/PrintNC-V4/Design/issues/1/comments",
+    "events_url": "https://api.github.com/repos/PrintNC-V4/Design/issues/1/events",
+    "html_url": "https://github.com/PrintNC-V4/Design/issues/1",
+    "id": 6021719832,
+    "node_id": "I_kwDOQJfx5M8AAAABZuwnGA",
+    "number": 1,
+    "title": "EU sourcing notes for the V4 BOM: EU-warehouse suppliers + customs traps (info)",
+    "user": {
+      "login": "estovisioncontact-bit",
+      "id": 317790002,
+      "node_id": "U_kgDOEvEXMg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/317790002?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/estovisioncontact-bit",
+      "html_url": "https://github.com/estovisioncontact-bit",
+      "followers_url": "https://api.github.com/users/estovisioncontact-bit/followers",
+      "following_url": "https://api.github.com/users/estovisioncontact-bit/following{/other_user}",
+      "gists_url": "https://api.github.com/users/estovisioncontact-bit/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/estovisioncontact-bit/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/estovisioncontact-bit/subscriptions",
+      "organizations_url": "https://api.github.com/users/estovisioncontact-bit/orgs",
+      "repos_url": "https://api.github.com/users/estovisioncontact-bit/repos",
+      "events_url": "https://api.github.com/users/estovisioncontact-bit/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/estovisioncontact-bit/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-25T06:48:50Z",
+    "updated_at": "2026-10-25T07:17:54Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "Sharing notes from mapping the PrintNC / LowRider / MPCNC BOM to suppliers that ship from EU warehouses — relevant for anyone sourcing the V4 parts list from Europe.\n\nKey findings from doing my own EU build:\n- US-direct orders (control boards, ballscrews, kits) end up +40–50% delivered once customs/VAT handling and shipping are added. EU-warehouse orders clear in 3–10 days with zero customs.\n- The PrintNC steel kits sold in DE have been sold out for months; local steel merchants cutting per your section list are the practical fallback.\n- Recurring ordering traps seen across build threads: 1605 vs 1610 ballscrew end machining, anti-backlash nut handedness mismatch, rail length vs travel mismatch, plate thickness vs gantry design revision, PSU current vs parallel stepper sets, and missing metric fastener assortments.\n- Per-build quantity tables (X/Y/Z axes, 1015/1501/2006-class variants) mapped to PL/DE/CZ/ES warehouse suppliers.\n\nFull free list (maintained, includes traps and a 48-hour ordering plan):\nhttps://gist.github.com/estovisioncontact-bit/d80d74146b9ea5b9ebd7586559b130a2\nWeb version: https://estovisioncontact-bit.github.io/cnc-sourcing-pl-eu/\n\nI compiled this while sourcing my own build — the guide is free; there's an optional paid custom-research service if maintainers or users want country-specific supplier quotes. Happy to contribute an \"EU suppliers\" section directly into this repo/wiki if that's preferred over an external link.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/PrintNC-V4/Design/issues/1/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/PrintNC-V4/Design/issues/1/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "estovisioncontact-bit",
+      "text": "Follow-up survey for builders in PL/EU:\n\n1. Which build are you sourcing for? (PrintNC / LowRider V4 / MPCNC / other)\n2. What's the #1 sourcing pain point? (shipping/customs cost, supplier verification, BOM quantities, steel/aluminium sourcing, other)\n3. Would a –9 verified BOM + supplier map save you time? (yes / maybe / no)\n4. Any country-specific supplier you'd want included?\n\nFree guide: https://estovisioncontact-bit.github.io/cnc-sourcing-pl-eu/\nCustom research (.50): https://soul.mds.markets/browse?soul=hermes-research-analyst\n\nThanks — feedback shapes the next revision.",
+      "at": "2026-10-25T07:17:54Z",
+      "url": "https://github.com/PrintNC-V4/Design/issues/1#issuecomment-6394795151"
+    }
+  ],
+  "comments_complete": true
+}

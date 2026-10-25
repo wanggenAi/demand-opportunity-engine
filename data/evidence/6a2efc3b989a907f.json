@@ -1,0 +1,204 @@
+{
+  "source_api_url": "https://api.github.com/repos/hoangthang1209-byte/vnc-os/issues/244",
+  "collected_at": "2026-10-25T07:33:30.783721+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/hoangthang1209-byte/vnc-os/issues/244",
+    "repository_url": "https://api.github.com/repos/hoangthang1209-byte/vnc-os",
+    "labels_url": "https://api.github.com/repos/hoangthang1209-byte/vnc-os/issues/244/labels{/name}",
+    "comments_url": "https://api.github.com/repos/hoangthang1209-byte/vnc-os/issues/244/comments",
+    "events_url": "https://api.github.com/repos/hoangthang1209-byte/vnc-os/issues/244/events",
+    "html_url": "https://github.com/hoangthang1209-byte/vnc-os/issues/244",
+    "id": 6020115489,
+    "node_id": "I_kwDOS1p0Ic8AAAABZtOsIQ",
+    "number": 244,
+    "title": "VietnamClothing Website — independent B2B OEM export website build (parallel revenue track)",
+    "user": {
+      "login": "hoangthang1209-byte",
+      "id": 285110750,
+      "node_id": "U_kgDOEP5x3g",
+      "avatar_url": "https://avatars.githubusercontent.com/u/285110750?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hoangthang1209-byte",
+      "html_url": "https://github.com/hoangthang1209-byte",
+      "followers_url": "https://api.github.com/users/hoangthang1209-byte/followers",
+      "following_url": "https://api.github.com/users/hoangthang1209-byte/following{/other_user}",
+      "gists_url": "https://api.github.com/users/hoangthang1209-byte/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/hoangthang1209-byte/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/hoangthang1209-byte/subscriptions",
+      "organizations_url": "https://api.github.com/users/hoangthang1209-byte/orgs",
+      "repos_url": "https://api.github.com/users/hoangthang1209-byte/repos",
+      "events_url": "https://api.github.com/users/hoangthang1209-byte/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/hoangthang1209-byte/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 11,
+    "created_at": "2026-10-25T02:38:46Z",
+    "updated_at": "2026-10-25T05:54:57Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## CEO direction — 25 Oct 2026\nBuild **vietnamclothing.vn** website as a third parallel business program alongside (A) Agent OS #240 and (B) Revenue Sprint #243. Distinguish VietnamClothing export/OEM manufacturing positioning from attd.vn, and reuse existing VNC OS CRM intake rather than creating a second CRM.\n\n## Verified public-site context\nCurrent vietnamclothing.vn presents a broad garment manufacturing catalog (fashionwear, activewear, kidswear, workwear, etc.) and bilingual VN/EN pages; basic OEM/FOB service descriptions and contact information exist. Business objective is qualified B2B RFQs, especially private-label OEM/ODM apparel and export sourcing; verify actual capabilities, MOQ, compliance and references with business owner before publishing new claims.\n\n## Phase W0 — Discovery/spec (can start NOW in parallel, no code write conflict)\n- Audit domain, current stack/hosting, content, redirects, brand, analytics, SEO footprint, sitemap, forms and existing VNC OS code ownership.\n- Clarify whether vietnamclothing.vn is a distinct repo/app or managed in vnc-os; use a dedicated project/branch and review boundary, avoid touching Agent OS code.\n- Prepare mobile-first English-first export buyer journey with Vietnamese localization.\n- Deliver IA/wireframe/copy specification and high-intent RFQ form field mapping; don't misstate certifications, export destinations, MOQ or capacity.\n\n## Phase W1 — Revenue-ready site MVP\n1. Home: manufacturing proposition, OEM/ODM, sourcing process, trust/proof with verified evidence, primary Request a Quote CTA.\n2. Capability/service pages: OEM/Private Label, T-shirts/Polo/Hoodies, Activewear, Workwear, Materials/Printing/Embroidery, Quality & Sampling, Export/Fulfillment as actually supported.\n3. RFQ form: contact/company/country, product/qty/MOQ, materials/specifications, timeline, file upload (secure), spam controls, consent; normalized intake into canonical VNC OS CRM (#124), stable idempotency + attribution (sourceSite=vietnamclothing.vn, UTM), owner assignment and follow-up task.\n4. SEO: bilingual canonical/hreflang where applicable, unique category landing pages, structured data only if justified, Core Web Vitals and image optimization.\n5. QA: 393×852 mobile, desktop, keyboard/accessibility, form end-to-end and real lead in CRM, spam, monitoring and rollback. Keep existing site functional until release.\n\n## Parallel execution policy\nWebsite discovery/copy/QA can proceed while #242 CI/review continues. Build in dedicated isolation; **no concurrent code Builder against overlapping vnc-os modules**. Before implementation, inspect existing repo and choose safe independent target. Reuse shared CRM through versioned API contract rather than duplicated models.\n\n## Milestones and acceptance\nW0: approved spec + file/repo boundaries and baseline measurement.\nW1: production-ready staging/preview with tested RFQ-to-CRM mapping.\nW2: controlled domain cutover after owner review, SEO redirects, real-device smoke, monitor first legitimate RFQ.\nMetrics: qualified RFQs, RFQ completion rate, first response latency, quote rate, quote-to-order; baseline initially unknown. No claims of sales until evidenced.\n\nRelated issues: #243 Revenue Sprint, #124 multi-source lead hub, #214 website conversion spec, #215 SEO, #240 Agent OS.",
+    "reactions": {
+      "url": "https://api.github.com/repos/hoangthang1209-byte/vnc-os/issues/244/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/hoangthang1209-byte/vnc-os/issues/244/timeline",
+    "performed_via_github_app": {
+      "id": 1144995,
+      "client_id": "Iv23liVemv8A9if9v0F2",
+      "slug": "chatgpt-codex-connector",
+      "node_id": "A_kwHOAOQ6Gs4AEXij",
+      "owner": {
+        "login": "openai",
+        "id": 14957082,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjE0OTU3MDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/14957082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/openai",
+        "html_url": "https://github.com/openai",
+        "followers_url": "https://api.github.com/users/openai/followers",
+        "following_url": "https://api.github.com/users/openai/following{/other_user}",
+        "gists_url": "https://api.github.com/users/openai/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/openai/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/openai/subscriptions",
+        "organizations_url": "https://api.github.com/users/openai/orgs",
+        "repos_url": "https://api.github.com/users/openai/repos",
+        "events_url": "https://api.github.com/users/openai/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/openai/received_events",
+        "type": "Organization",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "name": "ChatGPT Codex Connector",
+      "description": "Bring ChatGPT and Codex to your GitHub repositories.",
+      "external_url": "https://www.chatgpt.com",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "created_at": "2025-02-14T01:37:05Z",
+      "updated_at": "2026-09-23T18:52:59Z",
+      "permissions": {
+        "actions": "write",
+        "checks": "read",
+        "contents": "write",
+        "emails": "read",
+        "issues": "write",
+        "metadata": "read",
+        "pull_requests": "write",
+        "statuses": "read",
+        "workflows": "write"
+      },
+      "events": [
+        "check_run",
+        "check_suite",
+        "commit_comment",
+        "issues",
+        "issue_comment",
+        "pull_request",
+        "pull_request_review",
+        "pull_request_review_comment",
+        "pull_request_review_thread",
+        "repository",
+        "status",
+        "sub_issues"
+      ]
+    },
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "hoangthang1209-byte",
+      "text": "EXECUTION ROUTING — Phase W0 research and implementation-ready design/spec are authorized to begin independently of Agent OS. Do not dispatch a second overlapping Cursor code Builder until #242 conflict risk is cleared and dedicated repo/code boundaries established. No unapproved production domain cutover. TASK_AREA: Public Website",
+      "at": "2026-10-25T02:38:58Z",
+      "url": "https://github.com/hoangthang1209-byte/vnc-os/issues/244#issuecomment-6392549275"
+    },
+    {
+      "author": "hoangthang1209-byte",
+      "text": "W1 IMPLEMENTATION STARTED — Dedicated isolated website MVP code delivered on DRAFT PR #245, branch issue-244-vietnamclothing-website-mvp, head b72d8fedbefcbf38956ceed3acc3a1eff05c012a. Responsive OEM/export homepage + RFQ email-preview form + implementation/runbook. Form is NOT connected to CRM and does not claim live intake. Current vietnamclothing.vn unchanged. Next: independent review, verify proper hosting/cutover ownership, secure canonical CRM intake #124, browser/mobile QA and staging before domain switch. Agent OS #240 and revenue sprint #243 remain independent.",
+      "at": "2026-10-25T02:44:32Z",
+      "url": "https://github.com/hoangthang1209-byte/vnc-os/issues/244#issuecomment-6392596209"
+    },
+    {
+      "author": "hoangthang1209-byte",
+      "text": "SEO MIGRATION RELEASE BLOCKER — 25 Oct 2026. Important correction: legacy database.sql for vietnamclothing.vn supplied by owner in Library has been located (~4.2 MB) and includes qsv_website domain SEO metadata, branded assets and content schema/data. Existing live indexed site has /product, /service, /about/vietnam-clothing, /magazine/xuong-may-gia-cong-thoi-trang-1 and category/product detail pages. Draft #245 was developed WITHOUT full legacy source/database URL inventory and is prototype-only. ABSOLUTE NO-GO on publishing/replacing domain until (1) retrieve full legacy source archive and database schema, recover character encoding, inventory URL records and media links; (2) compare current live crawl, sitemap, robots, canonical/hreflang and GSC top pages; (3) produce OLD URL -> NEW URL exact preserve/301 mapping per localized/product/service/magazine route, avoid bulk home redirects; (4) migrate meaningful content, structured data, metadata/images/internal links; (5) stage and crawl SEO regression incl status codes, redirect chains, robots, XML sitemap, canonical/hreflang, noindex, 404, performance; (6) verify GSC/analytics and monitor post-cutover. Require owner signoff of URL inventory and rollback plan. Do not replace old site with one-page MVP. No fabricated SEO preservation guarantee.",
+      "at": "2026-10-25T02:48:46Z",
+      "url": "https://github.com/hoangthang1209-byte/vnc-os/issues/244#issuecomment-6392631666"
+    },
+    {
+      "author": "hoangthang1209-byte",
+      "text": "CEO ARCHITECTURE DIRECTIVE — 2026-10-25: ALL public websites (attd.vn, vietnamclothing.vn, aothunthongdiep.com, future brands) MUST use VNC OS as the one business Single Source of Truth. One canonical CRM/Lead Intake, Customer, product/business records, Pricing/Quotation, Orders, and central CMS governance with site/brand/lang scoped content and permissions. Every RFQ is ingested into canonical VNC OS with sourceSite, UTMs, idempotency/dedupe, routing/follow-up. Websites may have independently deployed frontend and domain-specific SEO/url/sitemap/canonical but must NOT establish a second operating database or divergent CRM/CMS. Integrations via versioned authenticated APIs, resilient retries, audit and permissions; do not expose secrets client side. Legacy VietnamClothing SQL/source are MIGRATION INPUT ONLY, never a new parallel production source of truth. Keep per-domain SEO history and preserve/migrate URLs. No production changes or live integration claimed until smoke-tested. This requirement supersedes any wording implying independently owned operational backend.",
+      "at": "2026-10-25T03:25:26Z",
+      "url": "https://github.com/hoangthang1209-byte/vnc-os/issues/244#issuecomment-6392931747"
+    },
+    {
+      "author": "hoangthang1209-byte",
+      "text": "SOURCE HANDOVER PROGRESS — Owner-supplied vietnamclothing.zip has nested source.zip AND database.sql. Offline inspection found ~3,193 archive entries, 832 PHP files, legacy .htaccess, robots.txt, sitemap.php, routing through index.php, /files handled by file.php. SEO findings and migration gates committed on PR #245 at a5f9f1b4397fceae139d65ac1ad3cac9c11379c2 as sites/vietnamclothing/LEGACY_SEO_MIGRATION.md. Important: 3.2GB additional media still unverified; no SQL/config secrets put on GitHub. PR stays draft, production cutover blocked.",
+      "at": "2026-10-25T03:39:39Z",
+      "url": "https://github.com/hoangthang1209-byte/vnc-os/issues/244#issuecomment-6393047787"
+    },
+    {
+      "author": "hoangthang1209-byte",
+      "text": "Owner update (2026-10-25): legacy vietnamclothing.vn website data has been uploaded to Google Drive folder https://drive.google.com/drive/u/5/folders/1i2ZlpZAFLwm3NXA2hpT9b0XSvKllmk8D . Treat as candidate source archive for SEO-preserving migration. Access and contents not yet verified; do not claim download/completeness. Inventory files (website source, database dump, media), create checksums and backup, compare DB SEO rewrites/redirects and old media paths, preserve canonical old URLs and 301 mapping, stage import and smoke before production cutover. Do not make folder public merely for access; use authorized Drive connection. No production migration without review.",
+      "at": "2026-10-25T05:26:22Z",
+      "url": "https://github.com/hoangthang1209-byte/vnc-os/issues/244#issuecomment-6393904257"
+    },
+    {
+      "author": "hoangthang1209-byte",
+      "text": "Drive access verified 2026-10-25 via connected Google Drive, same session (no new chat required). Root folder `VIETNAMCLOTHING.VN - SOURCE CODE`: `database.sql` (4,228,609 bytes) plus `source/`. Source top-level contains 14 entries incl `core/`, `process/`, `upload/`, `admin/`, `data/`, `mail/`, `config/`, `index.php`, `router.php`, `sitemap.php`, `robots.txt`, `.htaccess`. `core/` includes `rewriteurl.php` and `redirect.php` (SEO routing). `upload/` includes `thumb/` and `data/`; `upload/data/` has at least 75 immediate dated folders; `upload/thumb/` returned 100 entries and may be truncated (fetch folder limit). `source/data/` has 94 direct entries incl product JPGs. This establishes that code, SQL, and media files exist, not completeness. Root folder Google Drive permissions were `anyone` reader via link; sensitive SQL backup should be set Restricted after checking authorized access. Next: inventory recursively/paginate `upload/thumb` and other media, compare SEO rewrites/redirect SQL and old URLs, derive checksum and staging migration test; no Production overwrite/cutover. Never copy config credentials into comments.",
+      "at": "2026-10-25T05:29:13Z",
+      "url": "https://github.com/hoangthang1209-byte/vnc-os/issues/244#issuecomment-6393925854"
+    },
+    {
+      "author": "hoangthang1209-byte",
+      "text": "Owner requirement (2026-10-25): historical media is large and MUST be optimized before website migration/deployment while preserving legacy SEO and originals. Add media pipeline: (1) recursive inventory all `source/upload/data`, `source/upload/thumb`, `source/data`; Google Drive folder fetch caps at 100 direct items, so do not mistake response size for complete inventory; classify mime, byte size, dimensions, duplicates and missing DB referenced assets. (2) preserve original backup immutable; generate responsive derivatives (AVIF/WebP and compatible JPEG/PNG fallback), sizes tailored to usage (thumbnail/card/detail/hero), quality visually tested, EXIF strip except necessary copyright/color; protect alpha/transparency and animated assets; never blindly upscale or transcode all. (3) enforce responsive `<picture>`/`srcset`/`sizes`, lazy load below-fold, eager/LCP hero optimized, explicit width/height, CDN caching; use reproducible manifest mapping legacy path→optimized assets. (4) Maintain legacy asset path redirects or backward-compatible serve to prevent broken external links and Google Image Search; page URL 301 maps and image references checked against database rewrite/redirect tables. (5) staging smoke broken links/404, Lighthouse Core Web Vitals/LCP/CLS, file size reduction and visual QA, rollback. Don't delete or overwrite originals, don't upload all originals to runtime, no production cutover until QA. Note `source/data/VCSW0250LYMN.jpg` is 12,777 bytes; large-media assumption requires measured aggregate inventory, not extrapolating from this file.",
+      "at": "2026-10-25T05:30:32Z",
+      "url": "https://github.com/hoangthang1209-byte/vnc-os/issues/244#issuecomment-6393936123"
+    },
+    {
+      "author": "hoangthang1209-byte",
+      "text": "## CEO-approved full website redesign blueprint — VietnamClothing (2026-10-25)\n**North star:** EN-first B2B apparel OEM/ODM, export buyers and global fashion brands; Vietnamese localization, no false capability/MOQ/certification/partner claims. Upgrade standalone site in draft PR #245; SEO-safe migration from verified Google Drive legacy backup.\n\n### IA / complete scope\n1. Home: hero \"Apparel Manufacturing in Vietnam, Built Around Your Brand\"; two primary CTAs \"Request Manufacturing Quote\" and \"Explore Capabilities\"; proof bar ONLY with verified factory/quality/process/lead-time evidence; 6 category gateways; manufacturing process; material and decoration; factory gallery; FAQ; RFQ.\n2. Manufacturing / OEM & Private Label: design/spec → fabric sourcing → sample approval → production → inspection → packing/shipping; supported models and responsibility.\n3. Products / Capabilities directory: t-shirts & polos, hoodies & sweatshirts, activewear, workwear, kidswear, fashionwear and accessories as supported by old catalog. Each SEO landing: buyer use cases, verified options, materials, process examples, MOQ/lead-time disclosed only if verified, unique evidence/gallery, category RFQ CTA.\n4. Materials & Techniques; Quality Control; Factory/Capability; Case Studies (permissioned, genuine); About; Insights/Guides; Contact/RFQ; privacy/terms.\n5. RFQ: buyer type, brand/company, country, contact/email, product category, qty, target date, fabric/spec, logo/branding, attachments with size/type/security limits and consent. Server-only authenticated VNC OS canonical CRM intake with sourceSite vietnamclothing.vn, SEO landingPage+UTM, dedupe/idempotency; unassigned shared inbox; genuine success + failure handling, anti-spam. No mailto-only production forms.\n\n### Design system\nEditorial industrial manufacturing aesthetic; deep ink/navy + warm off-white, restrained accent; real factory/product photography, strong typographic hierarchy, spacious desktop grid, effective mobile nav and sticky single quote action (no duplicate widgets). English copy polished first, native Vietnamese pages subsequently. Product imagery optimized responsive AVIF/WebP and fallback, proper aspect ratios + descriptive alt.\n\n### Legacy SEO and migration mandatory\nGoogle Drive legacy root 1i2ZlpZAFLwm3NXA2hpT9b0XSvKllmk8D includes SQL and source tree; direct media subfolders. Inventory all files recursively (Drive folder fetch max 100), legacy SQL rewrite/redirect rows, all product/blog/category canonical URL paths, image paths and internal links. Preserve working legacy URLs where possible; otherwise exact one-hop 301 map; sitemap, metadata, canonical/hreflang, robots, structured data evidence, staged 404 log; no blanket redirects. Store immutable original assets, optimize derivative manifest + backward-compatible image URLs, prevent broken Google Image links.\n\n### Acceptance / work packages\nVC-1 research/design tokens+responsive wireframes (home, capability, listing, product, RFQ, article); VC-2 complete component/page build against PR #245 branch without touching unrelated VNC OS files; VC-3 legacy content/media import; VC-4 CRM bridge #124/#248; VC-5 real mobile+desktop conversion/SEO/a11y/Lighthouse smoke and exact-HEAD CI/review; domain launch last, reversible. Coordinate with Gmail #251 and CRM #250. No production cutover or client secret exposure.",
+      "at": "2026-10-25T05:33:25Z",
+      "url": "https://github.com/hoangthang1209-byte/vnc-os/issues/244#issuecomment-6393958435"
+    },
+    {
+      "author": "hoangthang1209-byte",
+      "text": "## STRATEGIC CORRECTION — explicit CEO direction (2026-10-25): VNC is AXXEL-style B2B merchandising & sourcing, PLUS entertainment merchandise supply\nSupersedes the narrower 'OEM/export apparel manufacturer only' positioning in earlier comments/PR #245. VietnamClothing must be designed as **Global Merchandise, Sourcing & Manufacturing Solutions** with apparel manufacturing as one capability, NOT the only primary product. Benchmark: AXXEL Marketing brand-activation/promotional-merchandise full service; reference YG PLUS/YG SELECT for fan goods/IP solutions. The owner specifically prioritizes winning entertainment-sector merchandise contracts of the kind seen for BIGBANG, BLACKPINK, and targeting buyer organizations similar to YG (not claiming VNC has supplied those artists or a relationship with YG).\n### New site core pillars and IA\n- **Entertainment Merchandise** (first-class hero gateway): concert/tour goods; artist & fan club merchandise; K-pop/IP/licensed collections; limited editions; bundled sets; apparel, bags, textile accessories, collectibles and relevant sourced hard goods within verified capability.\n- **Brand & Promotional Merchandise**: campaign activation, Gift-with-Purchase, corporate gifting, event merchandise, brand experience.\n- **Sourcing & Product Development**: ideation, design-support, sampling, multi-category sourcing (including non-apparel), supplier vetting and quality control, assembly and packaging, overseas shipment where actually provided.\n- **Apparel OEM/ODM / Private Label**: retain proven strength and SEO entry pages for clothing manufacturer and all old legacy paths; position as business line.\n- Industry gateways: Entertainment & Music; Agencies & Brands; Corporate & Promotions; Fashion & Retail; Events/Festivals. B2B audience is labels, artist management companies, IP rights holders, concert promoters, distributors, agencies, licensing houses, overseas brands. Target outreach buyer personas procurement/merchandise development/product manager and partnership.\n- Dedicated RFQ flows conditional on buyer/project type, selection of product categories, expected volumes, distribution market, artwork / IP licensing status, launch/tour deadline, packaging and logistics, contact/company, privacy/consent. Route to **single VNC OS shared unassigned CRM inbox** with segment and source attribution; no forged client proof.\n- Content/SEO include 'concert merchandise manufacturer Vietnam', 'K-pop merchandise sourcing', 'custom fan merchandise production', 'promotional merchandise supplier', 'gift with purchase manufacturing', 'private label apparel manufacturer Vietnam'; only publish pages with substantive real content and evidence, preserve 9k+ historical rewrites/redirects and original image link references.\n- Editorial B2B capability + campaign-impact visual aesthetic, not basic factory catalog or fan retail store; showcase only cleared real examples, otherwise mark illustrative concepts as such.\n- ATTD remains domestic Vietnamese B2B solutions brand (five business engines), while VNC globally markets multi-category sourcing and entertainment/brand merchandising; separate brand positioning, one shared OS infrastructure.\n### Execution priority\nUpdate PR #245's hero, nav, IA, page templates, services and RFQ spec before more polishing of narrow apparel-first MVP. Establish independent workstreams for content/industry case studies, secured image use & portfolio rights, SEO/legacy migration, VNC OS media and CRM. No deployment to production until verified capability statements, brand/IP legal review, QA and SEO cutover. Source external benchmarks: axxel.biz, ygplus.com/en/business/merchandise, en.ygselect.com.",
+      "at": "2026-10-25T05:36:35Z",
+      "url": "https://github.com/hoangthang1209-byte/vnc-os/issues/244#issuecomment-6393983441"
+    },
+    {
+      "author": "hoangthang1209-byte",
+      "text": "CEO DESIGN SIGN-OFF (2026-10-25): APPROVED design direction for VietnamClothing — modern global B2B merchandise & sourcing, AXXEL-inspired positioning, prominently Entertainment/Artist/IP Merchandise, Promotional/Brand Merchandise, Sourcing/Product Development and Apparel OEM. Approved concept direction, NOT production go-live. Proceed to full IA/templates, real cleared media, SEO-preserving legacy migration, VNC OS CRM integration, staging QA and review. No unauthorized artist/client claims.",
+      "at": "2026-10-25T05:54:57Z",
+      "url": "https://github.com/hoangthang1209-byte/vnc-os/issues/244#issuecomment-6394128208"
+    }
+  ],
+  "comments_complete": true
+}

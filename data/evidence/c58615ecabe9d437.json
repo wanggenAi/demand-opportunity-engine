@@ -1,0 +1,66 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50215009",
+  "collected_at": "2026-10-25T07:33:30.783721+00:00",
+  "source": {
+    "author": "wlesieutre",
+    "children": [
+      {
+        "author": "stouset",
+        "children": [
+          {
+            "author": "jasomill",
+            "children": [],
+            "created_at": "2026-10-24T02:34:02.000Z",
+            "created_at_i": 1792809242,
+            "id": 50217895,
+            "options": [],
+            "parent_id": 50215557,
+            "points": null,
+            "story_id": 50207910,
+            "text": "MP3 player interfaces which were originally integrated via CD changer interfaces that start from the first track of the first disc and play tracks and discs sequentially unless shuffle is enabled, which is a pefectly sensible default for a CD changer.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-23T21:24:01.000Z",
+        "created_at_i": 1792790641,
+        "id": 50215557,
+        "options": [],
+        "parent_id": 50215009,
+        "points": null,
+        "story_id": 50207910,
+        "text": "Yep. My old Honda Fit did this way before CarPlay. I believe it’s a holdover from external mp3 devices using track numbers in their filenames.<p>It was always a stupid decision to start playing your music alphabetically, but it became a <i>more</i> stupid decision when music libraries were no longer carefully curated folders in the filesystem.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-10-23T20:39:04.000Z",
+    "created_at_i": 1792787944,
+    "id": 50215009,
+    "options": [],
+    "parent_id": 50214604,
+    "points": null,
+    "story_id": 50207910,
+    "text": "It&#x27;s not the phone deciding to do it, when the device connects the car is telling it to play. Check your infotainment settings to see if there&#x27;s a way to turn it off.<p>Apple doesn&#x27;t have an official way to prevent it, but I think you could do it with Shortcuts and an automation to pause music triggered by &quot;When CarPlay is connected.&quot;<p>If it&#x27;s tricky to get it to trigger at the exact time it starts playing, you could even do like:<p><pre><code>  - Store media volume to a variable\n  - Set media volume to 0\n  - Wait 3 seconds\n  - Stop playing\n  - Restore original media volume</code></pre>",
+    "title": null,
+    "type": "comment",
+    "url": null
+  },
+  "comments": [
+    {
+      "author": "stouset",
+      "text": "Yep. My old Honda Fit did this way before CarPlay. I believe it’s a holdover from external mp3 devices using track numbers in their filenames. It was always a stupid decision to start playing your music alphabetically, but it became a  more  stupid decision when music libraries were no longer carefully curated folders in the filesystem.",
+      "at": "2026-10-23T21:24:01.000Z",
+      "url": "https://news.ycombinator.com/item?id=50215557"
+    },
+    {
+      "author": "jasomill",
+      "text": "MP3 player interfaces which were originally integrated via CD changer interfaces that start from the first track of the first disc and play tracks and discs sequentially unless shuffle is enabled, which is a pefectly sensible default for a CD changer.",
+      "at": "2026-10-24T02:34:02.000Z",
+      "url": "https://news.ycombinator.com/item?id=50217895"
+    }
+  ],
+  "comments_complete": true
+}

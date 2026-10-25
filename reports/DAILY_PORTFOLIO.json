@@ -3,6 +3,60 @@
   "FOLLOW_UP": [],
   "VALIDATE_FIRST": [
     {
+      "id": "106a5b03dd9eb55d",
+      "title": "[Bounty #743] Validate /api/proposals payload before persistence",
+      "buyer": "GitHub:evandroribeiro94",
+      "source": "https://github.com/SecureBananaLabs/bug-bounty/issues/13710",
+      "commercial_evidence": "/bounty $700",
+      "payment_signal": "EXPLICIT_BUDGET",
+      "payment_evidence": "/bounty $700",
+      "published_at": "2026-10-24T12:04:53Z",
+      "buyer_activity_at": null,
+      "freshness_days": 0.81,
+      "competition": "LOW",
+      "competition_evidence": [],
+      "fit": "REMOTE_NOW",
+      "offer": "Remote diagnosis of one failing workflow, with reproduction and recovery checklist",
+      "suggested_price": "USD 100–200 diagnostic; USD 300–600 implementation only after scope agreement (proposal, not budget)",
+      "observed_budget": {},
+      "first_message_angle": "Is this still blocking your workflow? I can scope a remote reproduction and recovery audit; what is the daily volume and cost of failures?",
+      "contact_channel": "GitHub",
+      "contact_path": "https://github.com/SecureBananaLabs/bug-bounty/issues/13710",
+      "acquisition_cost": "UNKNOWN",
+      "risk": "Payment and exact scope require confirmation; do not pitch unsolicited on bug reports.",
+      "gate_failures": [
+        "zero-cost acquisition not verified: UNKNOWN"
+      ],
+      "human_minutes_required": 20,
+      "cash_cost": null,
+      "speed_to_cash": {
+        "observed_average_days": null,
+        "basis": "UNKNOWN; neutral factor"
+      },
+      "expected_value": {
+        "currency": "USD",
+        "amount": null,
+        "basis": "UNKNOWN; no realized USD sales history"
+      },
+      "probability_of_conversion": null,
+      "structural_advantage": {
+        "china_local_advantage": "NONE",
+        "language_advantage": "NONE",
+        "technical_advantage": "MEDIUM",
+        "direct_contactability": "MEDIUM",
+        "evidence": "Task explicitly mentions remote software work",
+        "controlled_scope": "Chinese web research, translation drafts, evidence comparison; authorized remote code/tests only",
+        "location_limit": "Desk research only; physical China location, field access and qualifications are not verified",
+        "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"
+      },
+      "repeatability": 49,
+      "portfolio_priority": 16.103,
+      "priority_basis": "relative allocation index, not promised revenue; neutral financial factors without history",
+      "learned_quote_ranges": {},
+      "consumed_outcome_cohorts": [],
+      "next_action": "Desk-check the failed gates in 20 minutes; SKIP if unresolved. No sales message yet."
+    },
+    {
       "id": "2fcc86b6607c57ba",
       "title": "[bug] Repository audit follow-ups: security, correctness, CI, and docs",
       "buyer": "GitHub:e-1-s-4",
@@ -12,7 +66,7 @@
       "payment_evidence": "Native value moved by `ContractCallWithValue`, including inside a batch, isn't included in the basis-point fee calculation.",
       "published_at": "2026-10-20T20:55:06Z",
       "buyer_activity_at": null,
-      "freshness_days": 3.43,
+      "freshness_days": 4.44,
       "competition": "LOW",
       "competition_evidence": [],
       "fit": "REMOTE_NOW",
@@ -66,7 +120,7 @@
       "payment_evidence": "**This is a `zero-bounty` task: $0.** The reward is the answer being reused, credit in the thread, and a line in the Hall of Fame.",
       "published_at": "2026-10-22T12:19:36Z",
       "buyer_activity_at": null,
-      "freshness_days": 1.79,
+      "freshness_days": 2.8,
       "competition": "LOW",
       "competition_evidence": [],
       "fit": "REMOTE_NOW",
@@ -103,7 +157,7 @@
         "location_limit": "Desk research only; physical China location, field access and qualifications are not verified",
         "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"
       },
-      "repeatability": 46,
+      "repeatability": 49,
       "portfolio_priority": 16.103,
       "priority_basis": "relative allocation index, not promised revenue; neutral financial factors without history",
       "learned_quote_ranges": {},
@@ -120,7 +174,7 @@
       "payment_evidence": "**$0 / `zero-bounty` by design**: the reward is merge credit, a leaderboard entry and a line in the Hall of Fame, and a real bounty exists only when someone funds it with `/reward <amount>` (`JOIN.md` § Bounties & payment).",
       "published_at": "2026-10-22T12:19:48Z",
       "buyer_activity_at": null,
-      "freshness_days": 1.79,
+      "freshness_days": 2.8,
       "competition": "LOW",
       "competition_evidence": [],
       "fit": "REMOTE_NOW",
@@ -157,7 +211,7 @@
         "location_limit": "Desk research only; physical China location, field access and qualifications are not verified",
         "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"
       },
-      "repeatability": 46,
+      "repeatability": 49,
       "portfolio_priority": 16.103,
       "priority_basis": "relative allocation index, not promised revenue; neutral financial factors without history",
       "learned_quote_ranges": {},
@@ -165,16 +219,16 @@
       "next_action": "Desk-check the failed gates in 20 minutes; SKIP if unresolved. No sales message yet."
     },
     {
-      "id": "612759143ad7fcd0",
-      "title": "Question intake digest — unresolved clusters",
-      "buyer": "GitHub:github-actions[bot]",
-      "source": "https://github.com/Ikalus1988/MisakaNet/issues/3333",
-      "commercial_evidence": "**$0 / `zero-bounty` by design**: the reward is merge credit, a leaderboard entry and a line in the Hall of Fame, and a real bounty exists only when someone funds it with `/reward <amount>` (`JOIN.md` § Bounties & payment).",
+      "id": "42284d68b11e5ea6",
+      "title": "[Bounty #743] Validate /api/users payload before persistence",
+      "buyer": "GitHub:evandroribeiro94",
+      "source": "https://github.com/SecureBananaLabs/bug-bounty/issues/13802",
+      "commercial_evidence": "/bounty $700",
       "payment_signal": "EXPLICIT_BUDGET",
-      "payment_evidence": "**$0 / `zero-bounty` by design**: the reward is merge credit, a leaderboard entry and a line in the Hall of Fame, and a real bounty exists only when someone funds it with `/reward <amount>` (`JOIN.md` § Bounties & payment).",
-      "published_at": "2026-10-16T11:51:13Z",
+      "payment_evidence": "/bounty $700",
+      "published_at": "2026-10-24T19:39:29Z",
       "buyer_activity_at": null,
-      "freshness_days": 7.81,
+      "freshness_days": 0.5,
       "competition": "LOW",
       "competition_evidence": [],
       "fit": "REMOTE_NOW",
@@ -183,62 +237,7 @@
       "observed_budget": {},
       "first_message_angle": "Is this still blocking your workflow? I can scope a remote reproduction and recovery audit; what is the daily volume and cost of failures?",
       "contact_channel": "GitHub",
-      "contact_path": "https://github.com/Ikalus1988/MisakaNet/issues/3333",
-      "acquisition_cost": "UNKNOWN",
-      "risk": "Payment and exact scope require confirmation; do not pitch unsolicited on bug reports.",
-      "gate_failures": [
-        "zero-cost acquisition not verified: UNKNOWN",
-        "7–14-day demand is VALIDATE until buyer activity is renewed"
-      ],
-      "human_minutes_required": 20,
-      "cash_cost": null,
-      "speed_to_cash": {
-        "observed_average_days": null,
-        "basis": "UNKNOWN; neutral factor"
-      },
-      "expected_value": {
-        "currency": "USD",
-        "amount": null,
-        "basis": "UNKNOWN; no realized USD sales history"
-      },
-      "probability_of_conversion": null,
-      "structural_advantage": {
-        "china_local_advantage": "NONE",
-        "language_advantage": "NONE",
-        "technical_advantage": "MEDIUM",
-        "direct_contactability": "MEDIUM",
-        "evidence": "Task explicitly mentions remote software work",
-        "controlled_scope": "Chinese web research, translation drafts, evidence comparison; authorized remote code/tests only",
-        "location_limit": "Desk research only; physical China location, field access and qualifications are not verified",
-        "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"
-      },
-      "repeatability": 46,
-      "portfolio_priority": 16.103,
-      "priority_basis": "relative allocation index, not promised revenue; neutral financial factors without history",
-      "learned_quote_ranges": {},
-      "consumed_outcome_cohorts": [],
-      "next_action": "Desk-check the failed gates in 20 minutes; SKIP if unresolved. No sales message yet."
-    },
-    {
-      "id": "9efc1d3db992c0a9",
-      "title": "[APP-C29] Procurement, sourcing and supplier management",
-      "buyer": "GitHub:github-actions[bot]",
-      "source": "https://github.com/Pick-Your-AI/pick-your-ai-applications/issues/44",
-      "commercial_evidence": "- APP-C29.02: RFP and proposal evaluation",
-      "payment_signal": "COMMERCIAL_INTENT",
-      "payment_evidence": "- APP-C29.02: RFP and proposal evaluation",
-      "published_at": "2026-10-23T04:40:13Z",
-      "buyer_activity_at": null,
-      "freshness_days": 1.11,
-      "competition": "LOW",
-      "competition_evidence": [],
-      "fit": "REMOTE_NOW",
-      "offer": "Remote supplier verification / RFQ comparison for one SKU",
-      "suggested_price": "USD 100–250 (proposed discovery pilot; buyer budget unverified)",
-      "observed_budget": {},
-      "first_message_angle": "Which SKU, destination and supplier are you evaluating? I can scope a remote verification memo; physical QC is separate.",
-      "contact_channel": "GitHub",
-      "contact_path": "https://github.com/Pick-Your-AI/pick-your-ai-applications/issues/44",
+      "contact_path": "https://github.com/SecureBananaLabs/bug-bounty/issues/13802",
       "acquisition_cost": "UNKNOWN",
       "risk": "Payment and exact scope require confirmation; do not pitch unsolicited on bug reports.",
       "gate_failures": [
@@ -266,7 +265,7 @@
         "location_limit": "Desk research only; physical China location, field access and qualifications are not verified",
         "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"
       },
-      "repeatability": 5,
+      "repeatability": 49,
       "portfolio_priority": 16.103,
       "priority_basis": "relative allocation index, not promised revenue; neutral financial factors without history",
       "learned_quote_ranges": {},
@@ -285,7 +284,7 @@
       "payment_evidence": "Hiring, or know someone who is?",
       "published_at": "2026-10-19T02:44:27.257Z",
       "buyer_activity_at": null,
-      "freshness_days": 5.19,
+      "freshness_days": 6.2,
       "competition": "LOW",
       "competition_evidence": [
         "https://community.n8n.io/t/322645/2"
@@ -325,7 +324,7 @@
         "location_limit": "Desk research only; physical China location, field access and qualifications are not verified",
         "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"
       },
-      "repeatability": 46,
+      "repeatability": 49,
       "portfolio_priority": 31.153,
       "priority_basis": "relative allocation index, not promised revenue; neutral financial factors without history",
       "learned_quote_ranges": {},
@@ -341,7 +340,7 @@
       "payment_evidence": "- Include a training and operator-feedback loop; workers must be able to stop, challenge or annotate a plan without retaliation encoded into the software.",
       "published_at": "2026-10-18T15:51:38Z",
       "buyer_activity_at": null,
-      "freshness_days": 5.64,
+      "freshness_days": 6.65,
       "competition": "LOW",
       "competition_evidence": [],
       "fit": "PARTNER_REQUIRED",
@@ -395,7 +394,7 @@
       "payment_evidence": "Total compensation (base plus equity plus bonus) ranges from $520,000 to $2.48 million, with a national midpoint of $910,000.",
       "published_at": "2026-10-19T22:15:53Z",
       "buyer_activity_at": null,
-      "freshness_days": 4.37,
+      "freshness_days": 5.39,
       "competition": "LOW",
       "competition_evidence": [],
       "fit": "SPECIALIST_REQUIRED",
@@ -449,7 +448,7 @@
       "payment_evidence": "[Warehouse] P9-05 · Sourcing — RFQ to many suppliers, vendor quotations with versions, comparative statement with L1 and the approved award",
       "published_at": "2026-10-22T15:55:51Z",
       "buyer_activity_at": null,
-      "freshness_days": 1.64,
+      "freshness_days": 2.65,
       "competition": "LOW",
       "competition_evidence": [],
       "fit": "PARTNER_REQUIRED",
@@ -503,7 +502,7 @@
       "payment_evidence": "Alternative approaches include shrinking offering to $2.5-3 billion, about half original target.",
       "published_at": "2026-10-21T03:35:56Z",
       "buyer_activity_at": null,
-      "freshness_days": 3.15,
+      "freshness_days": 4.16,
       "competition": "LOW",
       "competition_evidence": [],
       "fit": "SPECIALIST_REQUIRED",
@@ -557,7 +556,7 @@
       "payment_evidence": "[HIRING] Shopify tracking + n8n specialist, part-time ongoing, $35/hr guaranteed + revenue share",
       "published_at": "2026-10-18T19:32:55.349Z",
       "buyer_activity_at": null,
-      "freshness_days": 5.49,
+      "freshness_days": 6.5,
       "competition": "HIGH",
       "competition_evidence": [
         "https://community.n8n.io/t/322445/2",
@@ -623,6 +622,60 @@
       "consumed_outcome_cohorts": []
     },
     {
+      "id": "6a2efc3b989a907f",
+      "title": "VietnamClothing Website — independent B2B OEM export website build (parallel revenue track)",
+      "buyer": "GitHub:hoangthang1209-byte",
+      "source": "https://github.com/hoangthang1209-byte/vnc-os/issues/244",
+      "commercial_evidence": "Home: manufacturing proposition, OEM/ODM, sourcing process, trust/proof with verified evidence, primary Request a Quote CTA.",
+      "payment_signal": "FEE_REQUEST",
+      "payment_evidence": "Home: manufacturing proposition, OEM/ODM, sourcing process, trust/proof with verified evidence, primary Request a Quote CTA.",
+      "published_at": "2026-10-25T02:38:46Z",
+      "buyer_activity_at": "2026-10-25T05:36:35Z",
+      "freshness_days": 0.2,
+      "competition": "LOW",
+      "competition_evidence": [],
+      "fit": "SPECIALIST_REQUIRED",
+      "offer": "Remote supplier verification / RFQ comparison for one SKU",
+      "suggested_price": "USD 100–250 (proposed discovery pilot; buyer budget unverified)",
+      "observed_budget": {},
+      "first_message_angle": "Which SKU, destination and supplier are you evaluating? I can scope a remote verification memo; physical QC is separate.",
+      "contact_channel": "GitHub",
+      "contact_path": "https://github.com/hoangthang1209-byte/vnc-os/issues/244",
+      "acquisition_cost": "UNKNOWN",
+      "risk": "Payment and exact scope require confirmation; do not pitch unsolicited on bug reports. SPECIALIST_REQUIRED: compliance/customs/category expertise",
+      "gate_failures": [
+        "zero-cost acquisition not verified: UNKNOWN",
+        "partner/specialist capability not currently controlled"
+      ],
+      "human_minutes_required": 10,
+      "cash_cost": null,
+      "speed_to_cash": {
+        "observed_average_days": null,
+        "basis": "UNKNOWN; neutral factor"
+      },
+      "expected_value": {
+        "currency": "USD",
+        "amount": null,
+        "basis": "UNKNOWN; no realized USD sales history"
+      },
+      "probability_of_conversion": null,
+      "structural_advantage": {
+        "china_local_advantage": "NONE",
+        "language_advantage": "NONE",
+        "technical_advantage": "NONE",
+        "direct_contactability": "MEDIUM",
+        "evidence": "Task explicitly mentions remote software work",
+        "controlled_scope": "Chinese web research, translation drafts, evidence comparison; authorized remote code/tests only",
+        "location_limit": "Desk research only; physical China location, field access and qualifications are not verified",
+        "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"
+      },
+      "repeatability": 1,
+      "portfolio_priority": 7.576,
+      "priority_basis": "relative allocation index, not promised revenue; neutral financial factors without history",
+      "learned_quote_ranges": {},
+      "consumed_outcome_cohorts": []
+    },
+    {
       "id": "bd99cae7aaccec6f",
       "title": "Hiring: AI Growth & Automation Specialist | Remote | Potential Growth Partnership",
       "buyer": "n8n Community:Alvaro_Zapata",
@@ -632,7 +685,7 @@
       "payment_evidence": "Hiring: AI Growth & Automation Specialist | Remote | Potential Growth Partnership",
       "published_at": "2026-10-21T12:27:42.050Z",
       "buyer_activity_at": null,
-      "freshness_days": 2.78,
+      "freshness_days": 3.8,
       "competition": "HIGH",
       "competition_evidence": [
         "https://community.n8n.io/t/323364/2",
@@ -689,7 +742,7 @@
         "location_limit": "Desk research only; physical China location, field access and qualifications are not verified",
         "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"
       },
-      "repeatability": 46,
+      "repeatability": 49,
       "portfolio_priority": 26.667,
       "priority_basis": "relative allocation index, not promised revenue; neutral financial factors without history",
       "learned_quote_ranges": {},
@@ -705,7 +758,7 @@
       "payment_evidence": "[HIRING] AI / n8n builders in SEA for small, paid SME automation jobs (Singapore)",
       "published_at": "2026-10-14T13:55:08.529Z",
       "buyer_activity_at": null,
-      "freshness_days": 9.72,
+      "freshness_days": 10.73,
       "competition": "HIGH",
       "competition_evidence": [
         "https://community.n8n.io/t/321311/2",
@@ -771,7 +824,7 @@
         "location_limit": "Desk research only; physical China location, field access and qualifications are not verified",
         "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"
       },
-      "repeatability": 46,
+      "repeatability": 49,
       "portfolio_priority": 26.667,
       "priority_basis": "relative allocation index, not promised revenue; neutral financial factors without history",
       "learned_quote_ranges": {},
@@ -787,7 +840,7 @@
       "payment_evidence": "This is an exploratory partner introduction, not an open paid job or a promise of work.",
       "published_at": "2026-10-14T19:43:02.499Z",
       "buyer_activity_at": null,
-      "freshness_days": 9.48,
+      "freshness_days": 10.49,
       "competition": "HIGH",
       "competition_evidence": [
         "https://community.n8n.io/t/321496/2",
@@ -836,116 +889,8 @@
         "location_limit": "Desk research only; physical China location, field access and qualifications are not verified",
         "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"
       },
-      "repeatability": 46,
+      "repeatability": 49,
       "portfolio_priority": 26.667,
-      "priority_basis": "relative allocation index, not promised revenue; neutral financial factors without history",
-      "learned_quote_ranges": {},
-      "consumed_outcome_cohorts": []
-    },
-    {
-      "id": "5f917621b6a1e1e0",
-      "title": "Enhancement: Shared branded PDF template designer — logos, contracts, invoices, letters, plans, schedules and bookings",
-      "buyer": "GitHub:Owner-webrainfriends",
-      "source": "https://github.com/webrainfriends/sportarena/issues/249",
-      "commercial_evidence": "| Supply-chain sourcer/supplier | RFQ, quotation, sourcing/service agreement, purchase-order presentation, delivery note and invoice from supported canonical records |",
-      "payment_signal": "COMMERCIAL_INTENT",
-      "payment_evidence": "| Supply-chain sourcer/supplier | RFQ, quotation, sourcing/service agreement, purchase-order presentation, delivery note and invoice from supported canonical records |",
-      "published_at": "2026-10-18T06:04:03Z",
-      "buyer_activity_at": null,
-      "freshness_days": 6.05,
-      "competition": "LOW",
-      "competition_evidence": [],
-      "fit": "SPECIALIST_REQUIRED",
-      "offer": "Remote supplier verification / RFQ comparison for one SKU",
-      "suggested_price": "USD 100–250 (proposed discovery pilot; buyer budget unverified)",
-      "observed_budget": {},
-      "first_message_angle": "Which SKU, destination and supplier are you evaluating? I can scope a remote verification memo; physical QC is separate.",
-      "contact_channel": "GitHub",
-      "contact_path": "https://github.com/webrainfriends/sportarena/issues/249",
-      "acquisition_cost": "UNKNOWN",
-      "risk": "Payment and exact scope require confirmation; do not pitch unsolicited on bug reports. SPECIALIST_REQUIRED: compliance/customs/category expertise",
-      "gate_failures": [
-        "zero-cost acquisition not verified: UNKNOWN",
-        "partner/specialist capability not currently controlled"
-      ],
-      "human_minutes_required": 10,
-      "cash_cost": null,
-      "speed_to_cash": {
-        "observed_average_days": null,
-        "basis": "UNKNOWN; neutral factor"
-      },
-      "expected_value": {
-        "currency": "USD",
-        "amount": null,
-        "basis": "UNKNOWN; no realized USD sales history"
-      },
-      "probability_of_conversion": null,
-      "structural_advantage": {
-        "china_local_advantage": "NONE",
-        "language_advantage": "NONE",
-        "technical_advantage": "NONE",
-        "direct_contactability": "MEDIUM",
-        "evidence": "Task explicitly mentions remote software work",
-        "controlled_scope": "Chinese web research, translation drafts, evidence comparison; authorized remote code/tests only",
-        "location_limit": "Desk research only; physical China location, field access and qualifications are not verified",
-        "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"
-      },
-      "repeatability": 2,
-      "portfolio_priority": 9.47,
-      "priority_basis": "relative allocation index, not promised revenue; neutral financial factors without history",
-      "learned_quote_ranges": {},
-      "consumed_outcome_cohorts": []
-    },
-    {
-      "id": "c855a357e2c9c3c6",
-      "title": "catalog-wide — 296 tags are unaliased duplicates of another tag (abbreviation, plural, synonym), splitting one market across two landing pages",
-      "buyer": "GitHub:kinlane",
-      "source": "https://github.com/api-evangelist/roadmap/issues/980",
-      "commercial_evidence": "- `pricing-data` — private share pricing (Caplight) vs forest products pricing (ResourceWise); overlaps price-data",
-      "payment_signal": "COMMERCIAL_INTENT",
-      "payment_evidence": "- `pricing-data` — private share pricing (Caplight) vs forest products pricing (ResourceWise); overlaps price-data",
-      "published_at": "2026-10-17T22:52:08Z",
-      "buyer_activity_at": null,
-      "freshness_days": 6.35,
-      "competition": "LOW",
-      "competition_evidence": [],
-      "fit": "SPECIALIST_REQUIRED",
-      "offer": "Remote supplier verification / RFQ comparison for one SKU",
-      "suggested_price": "USD 100–250 (proposed discovery pilot; buyer budget unverified)",
-      "observed_budget": {},
-      "first_message_angle": "Which SKU, destination and supplier are you evaluating? I can scope a remote verification memo; physical QC is separate.",
-      "contact_channel": "GitHub",
-      "contact_path": "https://github.com/api-evangelist/roadmap/issues/980",
-      "acquisition_cost": "UNKNOWN",
-      "risk": "Payment and exact scope require confirmation; do not pitch unsolicited on bug reports. SPECIALIST_REQUIRED: compliance/customs/category expertise",
-      "gate_failures": [
-        "zero-cost acquisition not verified: UNKNOWN",
-        "partner/specialist capability not currently controlled"
-      ],
-      "human_minutes_required": 10,
-      "cash_cost": null,
-      "speed_to_cash": {
-        "observed_average_days": null,
-        "basis": "UNKNOWN; neutral factor"
-      },
-      "expected_value": {
-        "currency": "USD",
-        "amount": null,
-        "basis": "UNKNOWN; no realized USD sales history"
-      },
-      "probability_of_conversion": null,
-      "structural_advantage": {
-        "china_local_advantage": "NONE",
-        "language_advantage": "NONE",
-        "technical_advantage": "NONE",
-        "direct_contactability": "MEDIUM",
-        "evidence": "Task explicitly mentions remote software work",
-        "controlled_scope": "Chinese web research, translation drafts, evidence comparison; authorized remote code/tests only",
-        "location_limit": "Desk research only; physical China location, field access and qualifications are not verified",
-        "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"
-      },
-      "repeatability": 2,
-      "portfolio_priority": 9.47,
       "priority_basis": "relative allocation index, not promised revenue; neutral financial factors without history",
       "learned_quote_ranges": {},
       "consumed_outcome_cohorts": []
@@ -960,7 +905,7 @@
       "payment_evidence": "Budget: ₹1500-12500 INR",
       "published_at": "2026-10-13T03:20:34+00:00",
       "buyer_activity_at": null,
-      "freshness_days": 11.16,
+      "freshness_days": 12.18,
       "competition": "HIGH",
       "competition_evidence": [
         "https://www.freelancer.com/u/SBITServices",
@@ -1028,7 +973,7 @@
         "location_limit": "Desk research only; physical China location, field access and qualifications are not verified",
         "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"
       },
-      "repeatability": 46,
+      "repeatability": 49,
       "portfolio_priority": 26.667,
       "priority_basis": "relative allocation index, not promised revenue; neutral financial factors without history",
       "learned_quote_ranges": {},
@@ -1044,7 +989,7 @@
       "payment_evidence": "- [ ] Prototype with synthetic/sample data; seek a paid pilot or a specific written commitment before expanding features.",
       "published_at": "2026-10-18T16:19:48Z",
       "buyer_activity_at": "2026-10-18T16:24:15Z",
-      "freshness_days": 5.62,
+      "freshness_days": 6.63,
       "competition": "LOW",
       "competition_evidence": [],
       "fit": "SPECIALIST_REQUIRED",
@@ -1098,7 +1043,7 @@
       "payment_evidence": "I’m looking for an experienced automation developer who can help me build a video conferencing automation system using n8n + MirrorFly + API integrations.",
       "published_at": "2026-10-16T20:38:11.216Z",
       "buyer_activity_at": null,
-      "freshness_days": 7.44,
+      "freshness_days": 8.46,
       "competition": "HIGH",
       "competition_evidence": [
         "https://community.n8n.io/t/322016/2",
@@ -1231,7 +1176,7 @@
         "location_limit": "Desk research only; physical China location, field access and qualifications are not verified",
         "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"
       },
-      "repeatability": 46,
+      "repeatability": 49,
       "portfolio_priority": 26.667,
       "priority_basis": "relative allocation index, not promised revenue; neutral financial factors without history",
       "learned_quote_ranges": {},
@@ -1247,7 +1192,7 @@
       "payment_evidence": "Budget: ₹[10,000] (~US$[115]) | Timeline: 7 days",
       "published_at": "2026-09-29T12:26:51.654Z",
       "buyer_activity_at": null,
-      "freshness_days": 24.78,
+      "freshness_days": 25.8,
       "competition": "HIGH",
       "competition_evidence": [
         "https://community.n8n.io/t/317595/2",
@@ -1322,7 +1267,7 @@
       "payment_evidence": "[HIRING] Multi-Agent B2B Lead Gen System | n8n + LangGraph | Energy Storage (Na/Li Battery)",
       "published_at": "2026-09-28T05:23:36.414Z",
       "buyer_activity_at": null,
-      "freshness_days": 26.08,
+      "freshness_days": 27.09,
       "competition": "HIGH",
       "competition_evidence": [
         "https://community.n8n.io/t/317073/2",
@@ -1433,7 +1378,7 @@
       "payment_evidence": "PR (manual · stores shortage · replenishment · MRP)        Sales enquiry (customer RFQ)",
       "published_at": "2026-10-22T15:54:31Z",
       "buyer_activity_at": null,
-      "freshness_days": 1.64,
+      "freshness_days": 2.65,
       "competition": "HIGH",
       "competition_evidence": [],
       "fit": "PARTNER_REQUIRED",
@@ -1488,7 +1433,7 @@
       "payment_evidence": "Looking for an n8n Freelancer / Automation Builder",
       "published_at": "2026-09-25T15:00:21.483Z",
       "buyer_activity_at": "2026-09-26T13:21:09.000Z",
-      "freshness_days": 28.68,
+      "freshness_days": 29.69,
       "competition": "HIGH",
       "competition_evidence": [
         "https://community.n8n.io/t/316359/2",
@@ -1614,8 +1559,120 @@
         "location_limit": "Desk research only; physical China location, field access and qualifications are not verified",
         "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"
       },
-      "repeatability": 46,
+      "repeatability": 49,
       "portfolio_priority": 26.667,
+      "priority_basis": "relative allocation index, not promised revenue; neutral financial factors without history",
+      "learned_quote_ranges": {},
+      "consumed_outcome_cohorts": []
+    },
+    {
+      "id": "5f917621b6a1e1e0",
+      "title": "Enhancement: Shared branded PDF template designer — logos, contracts, invoices, letters, plans, schedules and bookings",
+      "buyer": "GitHub:Owner-webrainfriends",
+      "source": "https://github.com/webrainfriends/sportarena/issues/249",
+      "commercial_evidence": "| Supply-chain sourcer/supplier | RFQ, quotation, sourcing/service agreement, purchase-order presentation, delivery note and invoice from supported canonical records |",
+      "payment_signal": "COMMERCIAL_INTENT",
+      "payment_evidence": "| Supply-chain sourcer/supplier | RFQ, quotation, sourcing/service agreement, purchase-order presentation, delivery note and invoice from supported canonical records |",
+      "published_at": "2026-10-18T06:04:03Z",
+      "buyer_activity_at": null,
+      "freshness_days": 7.06,
+      "competition": "LOW",
+      "competition_evidence": [],
+      "fit": "SPECIALIST_REQUIRED",
+      "offer": "Remote supplier verification / RFQ comparison for one SKU",
+      "suggested_price": "USD 100–250 (proposed discovery pilot; buyer budget unverified)",
+      "observed_budget": {},
+      "first_message_angle": "Which SKU, destination and supplier are you evaluating? I can scope a remote verification memo; physical QC is separate.",
+      "contact_channel": "GitHub",
+      "contact_path": "https://github.com/webrainfriends/sportarena/issues/249",
+      "acquisition_cost": "UNKNOWN",
+      "risk": "Payment and exact scope require confirmation; do not pitch unsolicited on bug reports. SPECIALIST_REQUIRED: compliance/customs/category expertise",
+      "gate_failures": [
+        "zero-cost acquisition not verified: UNKNOWN",
+        "source verification is future-dated or older than 7 days",
+        "7–14-day demand is VALIDATE until buyer activity is renewed",
+        "partner/specialist capability not currently controlled"
+      ],
+      "human_minutes_required": 10,
+      "cash_cost": null,
+      "speed_to_cash": {
+        "observed_average_days": null,
+        "basis": "UNKNOWN; neutral factor"
+      },
+      "expected_value": {
+        "currency": "USD",
+        "amount": null,
+        "basis": "UNKNOWN; no realized USD sales history"
+      },
+      "probability_of_conversion": null,
+      "structural_advantage": {
+        "china_local_advantage": "NONE",
+        "language_advantage": "NONE",
+        "technical_advantage": "NONE",
+        "direct_contactability": "MEDIUM",
+        "evidence": "Task explicitly mentions remote software work",
+        "controlled_scope": "Chinese web research, translation drafts, evidence comparison; authorized remote code/tests only",
+        "location_limit": "Desk research only; physical China location, field access and qualifications are not verified",
+        "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"
+      },
+      "repeatability": 2,
+      "portfolio_priority": 9.47,
+      "priority_basis": "relative allocation index, not promised revenue; neutral financial factors without history",
+      "learned_quote_ranges": {},
+      "consumed_outcome_cohorts": []
+    },
+    {
+      "id": "c855a357e2c9c3c6",
+      "title": "catalog-wide — 296 tags are unaliased duplicates of another tag (abbreviation, plural, synonym), splitting one market across two landing pages",
+      "buyer": "GitHub:kinlane",
+      "source": "https://github.com/api-evangelist/roadmap/issues/980",
+      "commercial_evidence": "- `pricing-data` — private share pricing (Caplight) vs forest products pricing (ResourceWise); overlaps price-data",
+      "payment_signal": "COMMERCIAL_INTENT",
+      "payment_evidence": "- `pricing-data` — private share pricing (Caplight) vs forest products pricing (ResourceWise); overlaps price-data",
+      "published_at": "2026-10-17T22:52:08Z",
+      "buyer_activity_at": null,
+      "freshness_days": 7.36,
+      "competition": "LOW",
+      "competition_evidence": [],
+      "fit": "SPECIALIST_REQUIRED",
+      "offer": "Remote supplier verification / RFQ comparison for one SKU",
+      "suggested_price": "USD 100–250 (proposed discovery pilot; buyer budget unverified)",
+      "observed_budget": {},
+      "first_message_angle": "Which SKU, destination and supplier are you evaluating? I can scope a remote verification memo; physical QC is separate.",
+      "contact_channel": "GitHub",
+      "contact_path": "https://github.com/api-evangelist/roadmap/issues/980",
+      "acquisition_cost": "UNKNOWN",
+      "risk": "Payment and exact scope require confirmation; do not pitch unsolicited on bug reports. SPECIALIST_REQUIRED: compliance/customs/category expertise",
+      "gate_failures": [
+        "zero-cost acquisition not verified: UNKNOWN",
+        "source verification is future-dated or older than 7 days",
+        "7–14-day demand is VALIDATE until buyer activity is renewed",
+        "partner/specialist capability not currently controlled"
+      ],
+      "human_minutes_required": 10,
+      "cash_cost": null,
+      "speed_to_cash": {
+        "observed_average_days": null,
+        "basis": "UNKNOWN; neutral factor"
+      },
+      "expected_value": {
+        "currency": "USD",
+        "amount": null,
+        "basis": "UNKNOWN; no realized USD sales history"
+      },
+      "probability_of_conversion": null,
+      "structural_advantage": {
+        "china_local_advantage": "NONE",
+        "language_advantage": "NONE",
+        "technical_advantage": "NONE",
+        "direct_contactability": "MEDIUM",
+        "evidence": "Task explicitly mentions remote software work",
+        "controlled_scope": "Chinese web research, translation drafts, evidence comparison; authorized remote code/tests only",
+        "location_limit": "Desk research only; physical China location, field access and qualifications are not verified",
+        "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"
+      },
+      "repeatability": 2,
+      "portfolio_priority": 9.47,
       "priority_basis": "relative allocation index, not promised revenue; neutral financial factors without history",
       "learned_quote_ranges": {},
       "consumed_outcome_cohorts": []
@@ -1630,7 +1687,7 @@
       "payment_evidence": "I’d like to start with  one agent as a paid trial , with ongoing work available if we’re a good fit.",
       "published_at": "2026-10-06T21:10:54.270Z",
       "buyer_activity_at": null,
-      "freshness_days": 17.42,
+      "freshness_days": 18.43,
       "competition": "HIGH",
       "competition_evidence": [
         "https://community.n8n.io/t/319256/2",
@@ -1840,7 +1897,7 @@
       "payment_evidence": "Looking for 1–2 n8n Builders for Long-Term Collaboration",
       "published_at": "2026-09-26T14:01:38.168Z",
       "buyer_activity_at": null,
-      "freshness_days": 27.72,
+      "freshness_days": 28.73,
       "competition": "HIGH",
       "competition_evidence": [
         "https://community.n8n.io/t/316792/3",
@@ -1898,6 +1955,7 @@
       "risk": "Payment and exact scope require confirmation; do not pitch unsolicited on bug reports. Platform reply/application rules apply; private DM competition is unobservable. Source explicitly has no existing clients; paid work is conditional on future client acquisition, not a ready commission.",
       "gate_failures": [
         "zero-cost acquisition not verified: UNKNOWN",
+        "source verification is future-dated or older than 7 days",
         "freshness gate failed: >14 days without verified buyer activity <=7 days",
         "competition high or unmeasured"
       ],
@@ -1939,7 +1997,7 @@
       "payment_evidence": "Budget: ₹1500-12500 INR",
       "published_at": "2026-10-13T07:01:06+00:00",
       "buyer_activity_at": null,
-      "freshness_days": 11.01,
+      "freshness_days": 12.02,
       "competition": "HIGH",
       "competition_evidence": [
         "https://www.freelancer.com/u/jayantkumar314",
@@ -2024,7 +2082,7 @@
       "payment_evidence": "Budget: ₹1500-12500 INR",
       "published_at": "2026-10-13T19:23:38+00:00",
       "buyer_activity_at": null,
-      "freshness_days": 10.49,
+      "freshness_days": 11.51,
       "competition": "HIGH",
       "competition_evidence": [
         "https://www.freelancer.com/u/HireSEOExperts",
@@ -2109,7 +2167,7 @@
       "payment_evidence": "Hiring Senior AI & Automation Operations Lead (n8n & Make Specialist) | Remote",
       "published_at": "2026-10-03T13:30:09.646Z",
       "buyer_activity_at": "2026-10-04T16:22:02.901Z",
-      "freshness_days": 20.74,
+      "freshness_days": 21.75,
       "competition": "HIGH",
       "competition_evidence": [
         "https://community.n8n.io/t/318516/2",
@@ -2210,7 +2268,7 @@
         "location_limit": "Desk research only; physical China location, field access and qualifications are not verified",
         "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"
       },
-      "repeatability": 46,
+      "repeatability": 49,
       "portfolio_priority": 13.333,
       "priority_basis": "relative allocation index, not promised revenue; neutral financial factors without history",
       "learned_quote_ranges": {},
@@ -2226,7 +2284,7 @@
       "payment_evidence": "I’m looking for an experienced AI marketing and automation specialist who can help translate this mission into consistent storytelling, audience growth, and measurable sales.",
       "published_at": "2026-10-09T20:48:10.154Z",
       "buyer_activity_at": null,
-      "freshness_days": 14.44,
+      "freshness_days": 15.45,
       "competition": "HIGH",
       "competition_evidence": [
         "https://community.n8n.io/t/320146/2",
@@ -2306,7 +2364,7 @@
         "location_limit": "Desk research only; physical China location, field access and qualifications are not verified",
         "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"
       },
-      "repeatability": 46,
+      "repeatability": 49,
       "portfolio_priority": 13.333,
       "priority_basis": "relative allocation index, not promised revenue; neutral financial factors without history",
       "learned_quote_ranges": {},
@@ -2322,7 +2380,7 @@
       "payment_evidence": "Budget: $250-750 AUD",
       "published_at": "2026-10-13T06:05:10+00:00",
       "buyer_activity_at": null,
-      "freshness_days": 11.05,
+      "freshness_days": 12.06,
       "competition": "HIGH",
       "competition_evidence": [
         "https://www.freelancer.com/u/smtechnology",
@@ -2399,7 +2457,7 @@
       "payment_evidence": "Budget: €30-250 EUR",
       "published_at": "2026-10-13T08:54:02+00:00",
       "buyer_activity_at": null,
-      "freshness_days": 10.93,
+      "freshness_days": 11.94,
       "competition": "HIGH",
       "competition_evidence": [
         "https://www.freelancer.com/u/amiran42",
@@ -2467,7 +2525,7 @@
       "payment_evidence": "Budget: $30-250 USD",
       "published_at": "2026-10-07T09:38:14+00:00",
       "buyer_activity_at": null,
-      "freshness_days": 16.9,
+      "freshness_days": 17.91,
       "competition": "HIGH",
       "competition_evidence": [
         "https://www.freelancer.com/u/samsharma75",
@@ -2552,7 +2610,7 @@
       "payment_evidence": "Budget: $250-750 USD",
       "published_at": "2026-10-09T15:21:24+00:00",
       "buyer_activity_at": null,
-      "freshness_days": 14.66,
+      "freshness_days": 15.68,
       "competition": "HIGH",
       "competition_evidence": [
         "https://www.freelancer.com/u/abbasbirgu",
@@ -2631,7 +2689,7 @@
   "PRODUCT_VALIDATIONS": [
     {
       "cluster_name": "workflow_reliability",
-      "independent_demand_count": 46,
+      "independent_demand_count": 49,
       "payment_evidence_count": 1,
       "platforms": [
         "GitHub",
@@ -2647,6 +2705,10 @@
         "useagenthq/useagent"
       ],
       "evidence_urls": [
+        "https://github.com/n8n-io/n8n/issues/42066",
+        "https://github.com/n8n-io/n8n/issues/42064",
+        "https://news.ycombinator.com/item?id=50223730",
+        "https://github.com/n8n-io/n8n/issues/42054",
         "https://news.ycombinator.com/item?id=50210095",
         "https://github.com/n8n-io/n8n/issues/41992",
         "https://github.com/n8n-io/n8n/issues/41980",
@@ -2663,7 +2725,6 @@
         "https://github.com/n8n-io/n8n/issues/41554",
         "https://github.com/n8n-io/n8n/issues/41541",
         "https://github.com/n8n-io/n8n/issues/41487",
-        "https://github.com/n8n-io/n8n/issues/41485",
         "https://news.ycombinator.com/item?id=50161254",
         "https://github.com/n8n-io/n8n/issues/41418",
         "https://github.com/n8n-io/n8n/issues/41375",
@@ -2725,7 +2786,7 @@
         "useagenthq/useagent"
       ],
       "evidence_urls": [
-        "https://github.com/kouweizhu/agents-radar/issues/642",
+        "https://github.com/kouweizhu/agents-radar/issues/654",
         "https://github.com/n8n-io/n8n/issues/41548",
         "https://github.com/n8n-io/n8n/issues/41471",
         "https://github.com/n8n-io/n8n/issues/41327",
@@ -2932,11 +2993,11 @@
   "ACTIVE_DELIVERY": [],
   "PRESELL": [],
   "wip_overflow": {
-    "VALIDATE_FIRST": 6
+    "VALIDATE_FIRST": 12
   },
   "quoted_open_count": 0,
   "unconfirmed_won_commitments": [],
-  "generated_at": "2026-10-24T07:15:47.927670+00:00",
+  "generated_at": "2026-10-25T07:33:30.783721+00:00",
   "policy": "MANY VALIDATIONS, FEW HEAVY COMMITMENTS",
   "wip_limits": {
     "CONTACT_TODAY": 5,
@@ -2953,14 +3014,24 @@
   },
   "today_action_plan": [
     {
+      "action": "Verify https://github.com/SecureBananaLabs/bug-bounty/issues/13710: zero-cost acquisition not verified: UNKNOWN. Stop after 20 minutes; no pitch unless all contact gates pass.",
+      "minutes": 20,
+      "id": "106a5b03dd9eb55d"
+    },
+    {
+      "action": "Validate workflow_reliability: Select one execution-status failure in the primary evidence; write five diagnostic acceptance checks. Compare native logs/manual diagnosis with paid support prices. Ask what one failure costs, not whether someone likes a broad tool. Evidence: https://github.com/n8n-io/n8n/issues/42066",
+      "minutes": 30,
+      "id": "workflow_reliability"
+    },
+    {
       "action": "Verify https://github.com/Boing-Network/boing.network/issues/61: zero-cost acquisition not verified: UNKNOWN. Stop after 20 minutes; no pitch unless all contact gates pass.",
       "minutes": 20,
       "id": "2fcc86b6607c57ba"
     },
     {
-      "action": "Validate workflow_reliability: Select one execution-status failure in the primary evidence; write five diagnostic acceptance checks. Compare native logs/manual diagnosis with paid support prices. Ask what one failure costs, not whether someone likes a broad tool. Evidence: https://news.ycombinator.com/item?id=50210095",
+      "action": "Validate browser_automation: Compare two public-priced alternatives; define one narrow deliverable and one consent-based interview question. Record unknowns, not assumed buyers. Evidence: https://github.com/kouweizhu/agents-radar/issues/654",
       "minutes": 30,
-      "id": "workflow_reliability"
+      "id": "browser_automation"
     },
     {
       "action": "Verify https://github.com/Ikalus1988/MisakaNet/issues/3726: zero-cost acquisition not verified: UNKNOWN. Stop after 20 minutes; no pitch unless all contact gates pass.",
@@ -2968,9 +3039,9 @@
       "id": "3ad9cc0d4cdb7c1e"
     },
     {
-      "action": "Validate browser_automation: Compare two public-priced alternatives; define one narrow deliverable and one consent-based interview question. Record unknowns, not assumed buyers. Evidence: https://github.com/kouweizhu/agents-radar/issues/642",
+      "action": "Validate supplier_sourcing: Compare two public-priced alternatives; define one narrow deliverable and one consent-based interview question. Record unknowns, not assumed buyers. Evidence: https://github.com/n8n-io/n8n/issues/41635",
       "minutes": 30,
-      "id": "browser_automation"
+      "id": "supplier_sourcing"
     },
     {
       "action": "Verify https://github.com/Ikalus1988/MisakaNet/issues/3731: zero-cost acquisition not verified: UNKNOWN. Stop after 20 minutes; no pitch unless all contact gates pass.",
@@ -2978,24 +3049,14 @@
       "id": "412feb34eb351ede"
     },
     {
-      "action": "Validate supplier_sourcing: Compare two public-priced alternatives; define one narrow deliverable and one consent-based interview question. Record unknowns, not assumed buyers. Evidence: https://github.com/n8n-io/n8n/issues/41635",
-      "minutes": 30,
-      "id": "supplier_sourcing"
-    },
-    {
-      "action": "Verify https://github.com/Ikalus1988/MisakaNet/issues/3333: zero-cost acquisition not verified: UNKNOWN; 7–14-day demand is VALIDATE until buyer activity is renewed. Stop after 20 minutes; no pitch unless all contact gates pass.",
-      "minutes": 20,
-      "id": "612759143ad7fcd0"
-    },
-    {
       "action": "Validate lead_research: Extract the required lead fields from the primary paid brief. Specify a 20-company research sample with evidence URLs and no spam/private data. Compare manual research with two public-priced alternatives; prepare one question about paying for the sample. Evidence: https://community.n8n.io/t/hiring-multi-agent-b2b-lead-gen-system-n8n-langgraph-energy-storage-na-li-battery/317073",
       "minutes": 30,
       "id": "lead_research"
     },
     {
-      "action": "Verify https://github.com/Pick-Your-AI/pick-your-ai-applications/issues/44: zero-cost acquisition not verified: UNKNOWN. Stop after 20 minutes; no pitch unless all contact gates pass.",
+      "action": "Verify https://github.com/SecureBananaLabs/bug-bounty/issues/13802: zero-cost acquisition not verified: UNKNOWN. Stop after 20 minutes; no pitch unless all contact gates pass.",
       "minutes": 20,
-      "id": "9efc1d3db992c0a9"
+      "id": "42284d68b11e5ea6"
     },
     {
       "action": "Record only real messages/replies/quotes/wins/payments and actual human minutes; close failed assumptions. No invented outcomes.",

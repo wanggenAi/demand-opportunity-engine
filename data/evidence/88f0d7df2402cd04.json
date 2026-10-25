@@ -1,0 +1,93 @@
+{
+  "source_api_url": "https://api.github.com/repos/interias/PrintNC-BOM-Generator/issues/7",
+  "collected_at": "2026-10-25T07:33:30.783721+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/interias/PrintNC-BOM-Generator/issues/7",
+    "repository_url": "https://api.github.com/repos/interias/PrintNC-BOM-Generator",
+    "labels_url": "https://api.github.com/repos/interias/PrintNC-BOM-Generator/issues/7/labels{/name}",
+    "comments_url": "https://api.github.com/repos/interias/PrintNC-BOM-Generator/issues/7/comments",
+    "events_url": "https://api.github.com/repos/interias/PrintNC-BOM-Generator/issues/7/events",
+    "html_url": "https://github.com/interias/PrintNC-BOM-Generator/issues/7",
+    "id": 6021720064,
+    "node_id": "I_kwDONvtYkM8AAAABZuwoAA",
+    "number": 7,
+    "title": "EU supplier/shipping-origin data source for BOM (free, maintained)",
+    "user": {
+      "login": "estovisioncontact-bit",
+      "id": 317790002,
+      "node_id": "U_kgDOEvEXMg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/317790002?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/estovisioncontact-bit",
+      "html_url": "https://github.com/estovisioncontact-bit",
+      "followers_url": "https://api.github.com/users/estovisioncontact-bit/followers",
+      "following_url": "https://api.github.com/users/estovisioncontact-bit/following{/other_user}",
+      "gists_url": "https://api.github.com/users/estovisioncontact-bit/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/estovisioncontact-bit/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/estovisioncontact-bit/subscriptions",
+      "organizations_url": "https://api.github.com/users/estovisioncontact-bit/orgs",
+      "repos_url": "https://api.github.com/users/estovisioncontact-bit/repos",
+      "events_url": "https://api.github.com/users/estovisioncontact-bit/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/estovisioncontact-bit/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-10-25T06:48:51Z",
+    "updated_at": "2026-10-25T07:20:53Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "Useful project — quantity mapping is exactly the hard part of PrintNC builds.\n\nOne data gap for EU users: the same part list has very different landed cost depending on shipping origin. US-direct orders end up +40–50% after customs/VAT handling, while the same parts from EU warehouses (PL/DE/CZ/ES) arrive in 3–10 days with zero customs. There are also a few recurring part-spec traps (1605 vs 1610 ballscrew ends, anti-backlash nut handedness, rail length vs travel) that a generator could validate.\n\nI maintain a free, per-build BOM→EU-supplier mapping here (quantities, supplier paths, ordering traps):\nhttps://gist.github.com/estovisioncontact-bit/d80d74146b9ea5b9ebd7586559b130a2\n\nIf it's useful, it could serve as an \"EU shipping origin\" hint layer in the generator, or I can format it as JSON/CSV keyed to the same part IDs. Compiled while sourcing my own build.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/interias/PrintNC-BOM-Generator/issues/7/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/interias/PrintNC-BOM-Generator/issues/7/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "estovisioncontact-bit",
+      "text": "EU supplier data contribution (optional): I mapped PrintNC/LowRider/MPCNC BOM quantities to EU-warehouse suppliers (zero customs, 3–10 days) + 6 ordering traps + 48h ordering plan. If useful as a data source for the generator, free guide here: https://estovisioncontact-bit.github.io/cnc-sourcing-pl-eu/\n\nQuestion for maintainers: would you accept a PR adding an 'EU suppliers' tab / region filter to the generator? Happy to format as CSV/JSON if preferred.",
+      "at": "2026-10-25T07:17:59Z",
+      "url": "https://github.com/interias/PrintNC-BOM-Generator/issues/7#issuecomment-6394796016"
+    },
+    {
+      "author": "interias",
+      "text": "Hey, feel free to create a PR. I will Check, Feedback and merge IT. ",
+      "at": "2026-10-25T07:20:53Z",
+      "url": "https://github.com/interias/PrintNC-BOM-Generator/issues/7#issuecomment-6394820262"
+    }
+  ],
+  "comments_complete": true
+}

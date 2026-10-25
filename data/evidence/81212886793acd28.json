@@ -1,0 +1,123 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42054",
+  "collected_at": "2026-10-25T07:33:30.783721+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/42054",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/42054/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/42054/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/42054/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/42054",
+    "id": 6014382948,
+    "node_id": "I_kwDOC4Q8Qs8AAAABZnwzZA",
+    "number": 42054,
+    "title": "HTTP Request node with pagination does not refresh credentials that use preAuthentication on 401",
+    "user": {
+      "login": "Theragus",
+      "id": 38653346,
+      "node_id": "MDQ6VXNlcjM4NjUzMzQ2",
+      "avatar_url": "https://avatars.githubusercontent.com/u/38653346?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Theragus",
+      "html_url": "https://github.com/Theragus",
+      "followers_url": "https://api.github.com/users/Theragus/followers",
+      "following_url": "https://api.github.com/users/Theragus/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Theragus/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Theragus/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Theragus/subscriptions",
+      "organizations_url": "https://api.github.com/users/Theragus/orgs",
+      "repos_url": "https://api.github.com/users/Theragus/repos",
+      "events_url": "https://api.github.com/users/Theragus/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Theragus/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582010757,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cXhQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:nodes",
+        "name": "team:nodes",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Nodes team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-24T15:11:10Z",
+    "updated_at": "2026-10-24T15:23:34Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\n\nThe HTTP Request node does not renew an expired token for credentials that use `preAuthentication` (for example Microsoft Entra Service Principal) when pagination is enabled.\n\nWhen the stored Microsoft Graph access token expires (every 60 to 90 minutes), Graph answers:\n\n```\nHTTP 401 {\"error\":{\"code\":\"InvalidAuthenticationToken\",\"message\":\"Invalid token lifetime.\"}}\n```\n\nn8n shows \"Authorization failed - please check your credentials\". \"Retry On Fail\" (3 tries, 5000 ms) does not help: all tries fail with the same error. The Microsoft Entra sign-in logs show no service principal sign-in during the failing executions, so n8n does not request a new token. The workflow works again only after another workflow uses the same credential without pagination, gets a 401, and renews the stored token.\n\nRoot cause (n8n 2.44.6, unchanged on master):\n\n1. `requestWithAuthenticationPaginated` (`packages/core/src/execution-engine/node-execution-context/utils/request-helpers/pagination.ts`) sets `simple = false` and `resolveWithFullResponse = true` for each page.\n2. Thus `requestWithAuthentication` (`.../request-helpers/authentication.ts`) resolves the 401 instead of throwing it. The `preAuthentication(credentialsExpired = true)` refresh and the resend exist only in its `catch` block, so they do not run.\n3. `pagination.ts` then throws the 401 itself, outside the refresh path.\n4. Each node retry reads the same expired token from the database.\n\n`requestOAuth2` already handles a resolved 401 under `simple: false` (it throws it so that the token refresh runs). Credentials with `preAuthentication` do not get this handling. This affects all such credential types with HTTP Request pagination.\n\nRelated: #14426 (same symptom in the Microsoft Entra ID node, fixed in #30943 at node level).\n\n### To Reproduce\n\n1. Create a \"Microsoft Entra Service Principal\" credential for an app registration with the `Mail.Read` application permission.\n2. Create a workflow: Schedule Trigger (every 10 minutes) → HTTP Request (typeVersion 4.2):\n   - Authentication: Predefined Credential Type, Credential Type: Microsoft Entra Service Principal\n   - `GET https://graph.microsoft.com/v1.0/users/<user>/mailFolders/inbox/messages`\n   - Pagination: Mode \"Response Contains Next URL\", Next URL `{{ $response.body['@odata.nextLink'] }}`, Pagination Complete When \"Other\", Complete Expression `{{ !$response.body['@odata.nextLink'] }}`, Limit Pages Fetched: 10\n   - Settings: Retry On Fail (3 tries, 5000 ms)\n3. Use this credential in no other workflow.\n4. Activate the workflow and wait until the first token expires (60 to 90 minutes).\n5. All later executions fail with 401 \"Invalid token lifetime\". The Entra sign-in logs show no new service principal sign-in.\n\n### Expected behavior\n\nOn a 401 for a page, n8n runs `preAuthentication` with `credentialsExpired = true`, stores the new token, and sends the page request again. This is the behavior without pagination and for OAuth2 credentials.\n\n### Debug Info\n\n# Debug info\n\n## core\n\n- n8nVersion: 2.44.6\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.12.1\n- nodeEnv: production\n- database: postgres\n- executionMode: regular\n- concurrency: -1\n- license: enterprise (production)\n- consumerId: f0b34ca3-f3b4-4cfa-9f88-e28c081cfa7c\n\n## storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n## pruning\n\n- enabled: true\n- maxAge: 336 hours\n- maxCount: 20000 executions\n\n## client\n\n- userAgent: mozilla/5.0 (macintosh; intel mac os x 10_15_7) applewebkit/537.36 (khtml, like gecko) chrome/153.0.0.0 safari/537.36 edg/153.0.0.0\n- isTouchDevice: false\n\n## cluster\n\n- instanceCount: 1\n- versions: 2.44.6\n- instances:\n  - instanceKey: 08d17624-c269-4829-8906-85fefa71b1c2, hostId: main-e5d5a2bcd681, instanceType: main, instanceRole: leader, version: 2.44.6\n- checks:\n  - check: hostid-clash, status: succeeded, warnings: -\n  - check: lifecycle, status: succeeded, warnings: -\n  - check: split-brain, status: succeeded, warnings: -\n  - check: version-mismatch, status: succeeded, warnings: -\n\nGenerated at: 2026-10-24T15:09:45.012Z\n\n### Operating System\n\nLinux (Docker)\n\n### n8n Version\n\n2.44.6\n\n### Node.js Version\n\n24.0\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/42054/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/42054/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @Theragus,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9637\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9637](https://linear.app/n8n/issue/GHC-9637)",
+      "at": "2026-10-24T15:11:18Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42054#issuecomment-6385842823"
+    }
+  ],
+  "comments_complete": true
+}

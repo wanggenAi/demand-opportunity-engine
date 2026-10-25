@@ -1,9 +1,9 @@
 # BUYER INTENT DISCOVERY
 
-Checked: 2026-10-24T07:15:47.927670+00:00
+Checked: 2026-10-25T07:33:30.783721+00:00
 
-Verified explicit commercial buyers: 39; published within 7 days: 20.
-Intent types: {'PAID_TASK': 4, 'PROCUREMENT_REQUEST': 6, 'AGENT_OR_VENDOR_REQUEST': 4, 'BUDGET_STATED': 10, 'HIRING': 6, 'BOUNTY': 6, 'QUOTE_REQUESTED': 3}
+Verified explicit commercial buyers: 46; published within 7 days: 25.
+Intent types: {'PAID_TASK': 4, 'PROCUREMENT_REQUEST': 6, 'AGENT_OR_VENDOR_REQUEST': 4, 'BUDGET_STATED': 10, 'BOUNTY': 12, 'HIRING': 6, 'QUOTE_REQUESTED': 4}
 Commercial intent is not a verified budget or a promise of purchase. Exact buyer-authored sentences and legitimate source paths are mandatory. No outbound messages sent.
 
 ## Independent source strategies
@@ -23,16 +23,16 @@ Additional families attempted this run: 9.
 - Verified buyer requests: 10; explicit commercial signals: 10
 - Limitations: Two newest-topic pages, not complete market coverage; max 200 extra replies per topic. Incomplete competition remains UNKNOWN unless observed high.; Last activity is not publication time. Only substantive buyer-authored follow-ups can renew a lead.
 - Errors: []
-- Audit snapshots: data/evidence/f5663f332d6bc9b1.json#sha256=6b086392defc0df11d200999d66efddd1b92e4ccaa13423e3678e778b4d09b9f, data/evidence/d9f0be47fa047f2c.json#sha256=382dd598f8a6b5b8bf94f975662b8f925918c0b7954753759d95f99eb975e8c6
+- Audit snapshots: data/evidence/f5663f332d6bc9b1.json#sha256=0d23f1db35f9a64ede87c3895efe8d91c88638816f77f67b30ce2ac495fc033a, data/evidence/d9f0be47fa047f2c.json#sha256=6e833077d9a4be2e1c9c9f71e7e28a3bf9ae5103b8993408909e9d0781ea9d01
 
 ### public freelance/job listings
 
 - Access: Remotive public JSON API; attributed source links; https://remotive.com/api/remote-jobs?search=automation&limit=20
-- Records inspected: 9; primary pages opened: 0; collected observations: 0
+- Records inspected: 10; primary pages opened: 0; collected observations: 0
 - Verified buyer requests: 0; explicit commercial signals: 0
 - Limitations: Employer application pages not verified. No employer-authored quote invented from aggregator job labels.; Legal warning - Hey, thanks for using Remotive's API, we appreciate it! Please note that API documentation and access is granted so that developers can share our jobs further. Please do not submit Remotive jobs to third Party websites, including but not limited to: Jooble, Neuvoo, Google Jobs, LinkedIn Jobs. Please link back to the URL found on Remotive AND mention Remotive as a source in order to Remotive to get traffic from your listing. If you don't do that, we'll terminate your API access, sorry! Jobs displayed are delayed by 24 hours, the goal being that jobs are attributed to Remotive on various platforms. Displaying our jobs in order to collect signups/email addresses to show a listing constitutes a breach of our terms of services. We offer a private, paid-for API, please email us at hello(at)remotive(dot)io for more information (starting budget is $5k/mo). Please find out terms of services on https://remotive.com/api-documentation. Please note that there is absolutely no need to request Remotive Job data too frequently. Typically, you only need to GET Remotive job data through this API a couple of times a day (we advise max. 4 times a day). Our data is not changing much faster than that anyway. Note that excessive requests will be blocked. Many thanks (Rodolphe & the Remotive team!)
 - Errors: []
-- Audit snapshots: data/evidence/071898d5d7cef09e.json#sha256=2da87f25822bae7f419d35ab6f19a3c2f403f41b8b4cd9ce7eeab3be363c0ec7
+- Audit snapshots: data/evidence/071898d5d7cef09e.json#sha256=a67da8aa321d510e88a0e2b4a882593615818fa3f2a5487c3850d53b7d44381c
 
 ### public procurement/RFQ
 
@@ -41,7 +41,7 @@ Additional families attempted this run: 9.
 - Verified buyer requests: 0; explicit commercial signals: 0
 - Limitations: Search returned procurement notices; up to three detail pages attempted. No buyer request promoted: eligibility, exact remote scope, submission deadline and award status require manual verification.
 - Errors: [{"url": "https://www.contractsfinder.service.gov.uk/notice/aeb37bc4-61d8-40de-b087-2908571083bf", "error": "HTTPError: HTTP Error 403: Forbidden"}, {"url": "https://www.contractsfinder.service.gov.uk/notice/05a775d2-e23d-4eda-8259-dfb12f037fb5", "error": "HTTPError: HTTP Error 403: Forbidden"}, {"url": "https://www.contractsfinder.service.gov.uk/notice/7616d874-383e-479e-ab24-d97c0a2ce48f", "error": "HTTPError: HTTP Error 403: Forbidden"}]
-- Audit snapshots: data/evidence/50e3af0542f19c3a.json#sha256=eeb13abd05509722f1a508a7aca2a591846c102d961ea6147a6b25232a60bbc0
+- Audit snapshots: data/evidence/50e3af0542f19c3a.json#sha256=83a8d5733f81482b008d0c41b266608873bcef1262ce0e24e6e1c3ef01035679
 
 ### public bounty/paid task
 
@@ -68,7 +68,7 @@ Additional families attempted this run: 9.
 - Verified buyer requests: 0; explicit commercial signals: 0
 - Limitations: No structured primary buyer requests extracted; static shell is not commercial proof. No login or anti-bot evasion.
 - Errors: []
-- Audit snapshots: data/evidence/b5d67d420401a4bb.json#sha256=e7fab55804e2ab066d2a2dc09e69b9985b88eedcf65d1944dc7c7e79f0cb3227
+- Audit snapshots: data/evidence/b5d67d420401a4bb.json#sha256=3af48602f39a9891d14f898fb0f280af36fec248807e416b3d22e41684625d22
 
 ### freelance project marketplace (Freelancer)
 
@@ -77,7 +77,7 @@ Additional families attempted this run: 9.
 - Verified buyer requests: 0; explicit commercial signals: 0
 - Limitations: Public bidCount includes competitors; only first 20 proposals may be visible. Employer identity often unresolved. Task budget is not agreement to our pilot.
 - Errors: []
-- Audit snapshots: data/evidence/abf73d1fa5782498.json#sha256=50a7ee2f34847a0102af148afa1ed63ea9c9a79f57815d3c1f629082c1051a8f
+- Audit snapshots: data/evidence/abf73d1fa5782498.json#sha256=fa41a69f571c02b5fe9c2ba10ea994e32a45c40f25821bc4acd0819eafa84665
 
 ### freelance project marketplace (Freelancer)
 
@@ -86,7 +86,7 @@ Additional families attempted this run: 9.
 - Verified buyer requests: 0; explicit commercial signals: 0
 - Limitations: A different query/category on Freelancer does not count as another independent family.
 - Errors: []
-- Audit snapshots: data/evidence/eb34b643617bda88.json#sha256=d123ffcb25786b19c672c49da92eb772faf23422d882280af4593c44adb65f25
+- Audit snapshots: data/evidence/eb34b643617bda88.json#sha256=c04683f35e4b8149027fa3251662dcd33b2ebc59b9126d1357e844c3c6ab9e17
 
 ### commerce operator community (Shopify)
 
@@ -95,16 +95,16 @@ Additional families attempted this run: 9.
 - Verified buyer requests: 0; explicit commercial signals: 0
 - Limitations: Latest activity is not original publication; support questions are PRODUCT_SIGNAL, not SALES. No more than four primary topics per run.
 - Errors: []
-- Audit snapshots: data/evidence/bda5dc3c1eb46ea5.json#sha256=21d0f5c06c3f434865afc1deb169450a56f196bc1003a44c7fab5d7c23f897bf, data/evidence/8eac8077525fd1fc.json#sha256=7d0bee7f502b98e3dbfca94cf49da2425abc207f93e40f01e9a6629981dbc4eb, data/evidence/7135aba252b75b1b.json#sha256=406e3689d45f74e1795a53b5ea739d30140cb5db4d9deafb09840306822599f9, data/evidence/5d5031b503fcc483.json#sha256=f454b1f2c9153c0c00586208be06ed6f6f7687ff5a463786af7a0d5c5eb1e92e
+- Audit snapshots: data/evidence/bda5dc3c1eb46ea5.json#sha256=732dac6d27e8b85d4ef98ee152f5cbce129ef79c3d84c127ceaa36437cfbf978, data/evidence/18b8ca3fceca33ec.json#sha256=68e3d4a131257de0073d9e6f487662666674e25c82d13971b7094afd3b804846, data/evidence/a8f39233ea6a2bf0.json#sha256=b4f3718e2105d2836dd5d716387a0bd520aedd153b0b00d7fe0207f6bcffa095, data/evidence/7135aba252b75b1b.json#sha256=910fdb9900e88dc881b46bfc001927b1584915e886432846132c8b38948464f8
 
 ### founder community (Indie Hackers)
 
 - Access: bounded public HTTP/JSON; no authenticated endpoint; https://www.indiehackers.com/
-- Records inspected: 25; primary pages opened: 1; collected observations: 0
+- Records inspected: 23; primary pages opened: 0; collected observations: 0
 - Verified buyer requests: 0; explicit commercial signals: 0
 - Limitations: Only server-rendered public pages. robots disallows /api/ and sign-in; neither used. Founder self-promotion is not a buyer.
 - Errors: []
-- Audit snapshots: data/evidence/6548833164b0e7c9.json#sha256=e4ea28881b3f14791bbcd9ad5fdd8e117ddf1c5c34c1443289a501222dd288a4, data/evidence/4f52bfd89cada35a.json#sha256=3327a9d8e2dfd78de8de35692f0ede5e290662c8f2fb27a849fb1c239edb49c7
+- Audit snapshots: data/evidence/6548833164b0e7c9.json#sha256=9f213b05644afcee0f0f953e496b0214cfaebac4b9832cbf4c0c01184e543d7c
 
 ### international physical-goods RFQ (TradeKey)
 
@@ -113,9 +113,151 @@ Additional families attempted this run: 9.
 - Verified buyer requests: 2; explicit commercial signals: 2
 - Limitations: Physical goods buyers do not automatically buy research. Contact requires platform sign-in; no access bypass. No bid-count visibility => UNKNOWN.
 - Errors: []
-- Audit snapshots: data/evidence/3914e4f508c84945.json#sha256=7cdba825c886c888e71b6f5312f9c362ae8c9a11a213567f6e4434966030996a, data/evidence/f1e9aa070c45d40c.json#sha256=b0b5b33c4022267b073967aa9b44372c985760b4e091b04e049cca0eedd21318, data/evidence/7d3123421e2b34e3.json#sha256=44018b18805302a13ff4aae17b495f714b92d8f79256eb6ee16676c93f079843
+- Audit snapshots: data/evidence/3914e4f508c84945.json#sha256=40609f166ecf9f70daea498d33a86c1ee7052d4aaf7e6eeb4a8af2821a98505a, data/evidence/2fc602e590c9d358.json#sha256=431b0337ba6299fc1acede0d9e29262e9b567fdfe5ed9308b8b21c614a5e8a62, data/evidence/c38e2bfc88109b60.json#sha256=c9f01f8a5f71be06543896ff249ec9cb61af4459240eddf4d15b3603b806eba7
 
 ## Primary commercial evidence (distinct source URLs)
+
+### VietnamClothing Website — independent B2B OEM export website build (parallel revenue track)
+
+- Source: https://github.com/hoangthang1209-byte/vnc-os/issues/244
+- Buyer: GitHub:hoangthang1209-byte; published_at: 2026-10-25T02:38:46Z; last_activity_at: 2026-10-25T05:54:57Z
+- Intent: QUOTE_REQUESTED; exact quote: Home: manufacturing proposition, OEM/ODM, sourcing process, trust/proof with verified evidence, primary Request a Quote CTA.
+- Need (primary text): VietnamClothing Website — independent B2B OEM export website build (parallel revenue track)
+## CEO direction — 25 Oct 2026
+Build **vietnamclothing.vn** website as a third parallel business program alongside (A) Agent OS #240 and (B) Revenue Sprint #243. Distinguish VietnamClothing export/OEM manufacturing positioning from attd.vn, and reuse existing VNC OS CRM intake rather than creating a second CRM.
+
+## Verified public-site context
+Current vietnamclothing.vn presents a broad garment manufacturing catalog (fashionwear, activewear, kidswear, workwear, etc.) and bilingual VN/EN pages; basic OEM/FOB service descriptions and contact information exist. Business objective is qualified B2B RFQs, e
+- Contact/application: https://github.com/hoangthang1209-byte/vnc-os/issues/244; public profile: https://github.com/hoangthang1209-byte
+- Competition: LOW; replies=11; providers=0; complete=True
+- REMOTE_NOW scope: Remote supplier verification / RFQ comparison for one SKU; proposed price: USD 100–250 (proposed discovery pilot; buyer budget unverified)
+- Dependencies: ['SPECIALIST_REQUIRED: compliance/customs/category expertise']; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports. SPECIALIST_REQUIRED: compliance/customs/category expertise
+- First-message angle: Which SKU, destination and supplier are you evaluating? I can scope a remote verification memo; physical QC is separate.
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; partner/specialist capability not currently controlled
+
+### [Bounty #743] Validate /api/upload files and reject missing or dangerous uploads
+
+- Source: https://github.com/SecureBananaLabs/bug-bounty/issues/13806
+- Buyer: GitHub:evandroribeiro94; published_at: 2026-10-24T19:40:52Z; last_activity_at: 2026-10-24T22:09:46Z
+- Intent: BOUNTY; exact quote: /bounty $700
+- Need (primary text): [Bounty #743] Validate /api/upload files and reject missing or dangerous uploads
+## Problem
+
+POST /api/upload accepts empty upload requests without a file attachment and returns a 201 Created status code with "no-file". Furthermore, it lacks MIME type whitelisting and file extension sanitation, allowing arbitrary executable scripts (.sh, .exe, .bat, .php) and unbounded file streams that can cause denial-of-service and remote code execution vulnerabilities.
+
+## Requested fix
+
+Harden the upload endpoint in uploadController and uploadRoutes:
+1. Reject requests without an uploaded file with a 400 Bad Request error ("No file provided").
+2. Enforce a 10MB maximum file size limit.
+3. Validate MIME
+- Contact/application: https://github.com/SecureBananaLabs/bug-bounty/issues/13806; public profile: https://github.com/evandroribeiro94
+- Competition: LOW; replies=1; providers=0; complete=True
+- REMOTE_NOW scope: Remote diagnosis of one failing workflow, with reproduction and recovery checklist; proposed price: USD 100–200 diagnostic; USD 300–600 implementation only after scope agreement (proposal, not budget)
+- Dependencies: []; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports.
+- First-message angle: Is this still blocking your workflow? I can scope a remote reproduction and recovery audit; what is the daily volume and cost of failures?
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN
+
+### [Bounty #743] Validate /api/users payload before persistence
+
+- Source: https://github.com/SecureBananaLabs/bug-bounty/issues/13802
+- Buyer: GitHub:evandroribeiro94; published_at: 2026-10-24T19:39:29Z; last_activity_at: 2026-10-24T22:22:46Z
+- Intent: BOUNTY; exact quote: /bounty $700
+- Need (primary text): [Bounty #743] Validate /api/users payload before persistence
+## Problem
+
+POST /api/users forwards req.body directly to createUser without schema validation. Any JSON object is accepted, including missing email/fullName, malformed email addresses, unhashed passwords, and prototype pollution fields. The in-memory user store then persists malformed user records, risking data corruption and unauthorized credential exposure.
+
+## Requested fix
+
+Add a strict Zod schema for user creation and validate the request in userController before persistence. Require a valid RFC-compliant email, require fullName between 2 and 100 characters, allow optional bio (up to 500 characters) and standard role ("client
+- Contact/application: https://github.com/SecureBananaLabs/bug-bounty/issues/13802; public profile: https://github.com/evandroribeiro94
+- Competition: LOW; replies=1; providers=0; complete=True
+- REMOTE_NOW scope: Remote diagnosis of one failing workflow, with reproduction and recovery checklist; proposed price: USD 100–200 diagnostic; USD 300–600 implementation only after scope agreement (proposal, not budget)
+- Dependencies: []; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports.
+- First-message angle: Is this still blocking your workflow? I can scope a remote reproduction and recovery audit; what is the daily volume and cost of failures?
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN
+
+### [Bounty #743] Validate /api/notifications payload before persistence
+
+- Source: https://github.com/SecureBananaLabs/bug-bounty/issues/13787
+- Buyer: GitHub:evandroribeiro94; published_at: 2026-10-24T18:25:13Z; last_activity_at: 2026-10-24T18:25:13Z
+- Intent: BOUNTY; exact quote: /bounty $700
+- Need (primary text): [Bounty #743] Validate /api/notifications payload before persistence
+## Problem
+
+POST /api/notifications forwards req.body directly to createNotification without schema validation. Any JSON object is accepted, including missing userId, missing notification type, empty message text, excessively long payloads, and prototype pollution fields. The in-memory notification store then persists malformed notification entities, degrading client notification feeds and causing runtime render errors.
+
+## Requested fix
+
+Add a strict Zod schema for notification creation and validate the request in notificationController before persistence. Require valid userId string, require standard notification type or
+- Contact/application: https://github.com/SecureBananaLabs/bug-bounty/issues/13787; public profile: https://github.com/evandroribeiro94
+- Competition: LOW; replies=0; providers=0; complete=True
+- REMOTE_NOW scope: Remote diagnosis of one failing workflow, with reproduction and recovery checklist; proposed price: USD 100–200 diagnostic; USD 300–600 implementation only after scope agreement (proposal, not budget)
+- Dependencies: []; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports.
+- First-message angle: Is this still blocking your workflow? I can scope a remote reproduction and recovery audit; what is the daily volume and cost of failures?
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN
+
+### [Bounty #743] Validate /api/messages payload before persistence
+
+- Source: https://github.com/SecureBananaLabs/bug-bounty/issues/13783
+- Buyer: GitHub:evandroribeiro94; published_at: 2026-10-24T18:23:18Z; last_activity_at: 2026-10-24T22:27:48Z
+- Intent: BOUNTY; exact quote: /bounty $700
+- Need (primary text): [Bounty #743] Validate /api/messages payload before persistence
+## Problem
+
+POST /api/messages forwards req.body directly to sendMessage without schema validation. Any JSON object is accepted, including missing senderId/receiverId, empty content, oversized content, and prototype pollution fields. The in-memory message store then persists malformed message entities, corrupting conversation threads and breaking client chat interfaces.
+
+## Requested fix
+
+Add a strict Zod schema for message creation and validate the request in messageController before persistence. Require valid senderId and receiverId strings, require non-empty content up to 5,000 characters, allow optional conversationId, and r
+- Contact/application: https://github.com/SecureBananaLabs/bug-bounty/issues/13783; public profile: https://github.com/evandroribeiro94
+- Competition: LOW; replies=1; providers=0; complete=True
+- REMOTE_NOW scope: Remote diagnosis of one failing workflow, with reproduction and recovery checklist; proposed price: USD 100–200 diagnostic; USD 300–600 implementation only after scope agreement (proposal, not budget)
+- Dependencies: []; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports.
+- First-message angle: Is this still blocking your workflow? I can scope a remote reproduction and recovery audit; what is the daily volume and cost of failures?
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN
+
+### [Bounty #743] Validate /api/reviews payload before persistence
+
+- Source: https://github.com/SecureBananaLabs/bug-bounty/issues/13762
+- Buyer: GitHub:evandroribeiro94; published_at: 2026-10-24T16:02:39Z; last_activity_at: 2026-10-24T17:43:31Z
+- Intent: BOUNTY; exact quote: /bounty $700
+- Need (primary text): [Bounty #743] Validate /api/reviews payload before persistence
+## Problem
+
+POST /api/reviews forwards req.body directly to createReview without schema validation. Any JSON object is accepted, including invalid rating ranges (e.g. negative numbers or numbers > 5), missing targetId, missing reviewerId, empty or excessively long comments, and prototype pollution fields. The in-memory review store then persists malformed reviews, degrading data integrity and breaking client consumers.
+
+## Requested fix
+
+Add a strict Zod schema for review creation and validate the request in reviewController before persistence. Accept only valid rating integers between 1 and 5, require valid reviewerId and target
+- Contact/application: https://github.com/SecureBananaLabs/bug-bounty/issues/13762; public profile: https://github.com/evandroribeiro94
+- Competition: LOW; replies=1; providers=0; complete=True
+- REMOTE_NOW scope: Remote diagnosis of one failing workflow, with reproduction and recovery checklist; proposed price: USD 100–200 diagnostic; USD 300–600 implementation only after scope agreement (proposal, not budget)
+- Dependencies: []; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports.
+- First-message angle: Is this still blocking your workflow? I can scope a remote reproduction and recovery audit; what is the daily volume and cost of failures?
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN
+
+### [Bounty #743] Validate /api/proposals payload before persistence
+
+- Source: https://github.com/SecureBananaLabs/bug-bounty/issues/13710
+- Buyer: GitHub:evandroribeiro94; published_at: 2026-10-24T12:04:53Z; last_activity_at: 2026-10-24T18:40:51Z
+- Intent: BOUNTY; exact quote: /bounty $700
+- Need (primary text): [Bounty #743] Validate /api/proposals payload before persistence
+## Problem
+
+POST /api/proposals forwards `req.body` directly to `createProposal` without schema or bounds validation. Any arbitrary JSON object is accepted into the in-memory proposals store, including negative or zero bid amounts, missing cover letters, missing jobId associations, and arbitrary injected fields. Furthermore, unhandled validation errors or malformed payloads can corrupt proposal records and lead to unexpected runtime failures.
+
+## Requested fix
+
+1. Implement a strict Zod validation schema (`createProposalSchema`) in `apps/api/src/validators/proposal.js` enforcing:
+   - `jobId`: required string with bounds (1 to
+- Contact/application: https://github.com/SecureBananaLabs/bug-bounty/issues/13710; public profile: https://github.com/evandroribeiro94
+- Competition: LOW; replies=1; providers=0; complete=True
+- REMOTE_NOW scope: Remote diagnosis of one failing workflow, with reproduction and recovery checklist; proposed price: USD 100–200 diagnostic; USD 300–600 implementation only after scope agreement (proposal, not budget)
+- Dependencies: []; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports.
+- First-message angle: Is this still blocking your workflow? I can scope a remote reproduction and recovery audit; what is the daily volume and cost of failures?
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN
 
 ### First-Dollar Mission: qualify and complete the first paid AI-assisted repair
 
@@ -538,7 +680,7 @@ Training/coaching plans, rehabilitation plans, event schedules, bookings and oth
 - REMOTE_NOW scope: Remote supplier verification / RFQ comparison for one SKU; proposed price: USD 100–250 (proposed discovery pilot; buyer budget unverified)
 - Dependencies: ['SPECIALIST_REQUIRED: compliance/customs/category expertise']; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports. SPECIALIST_REQUIRED: compliance/customs/category expertise
 - First-message angle: Which SKU, destination and supplier are you evaluating? I can scope a remote verification memo; physical QC is separate.
-- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; partner/specialist capability not currently controlled
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; source verification is future-dated or older than 7 days; 7–14-day demand is VALIDATE until buyer activity is renewed; partner/specialist capability not currently controlled
 
 ### catalog-wide — 296 tags are unaliased duplicates of another tag (abbreviation, plural, synonym), splitting one market across two landing pages
 
@@ -556,7 +698,7 @@ The ledger had been recording these against #932, which is a different bug (tag-
 - REMOTE_NOW scope: Remote supplier verification / RFQ comparison for one SKU; proposed price: USD 100–250 (proposed discovery pilot; buyer budget unverified)
 - Dependencies: ['SPECIALIST_REQUIRED: compliance/customs/category expertise']; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports. SPECIALIST_REQUIRED: compliance/customs/category expertise
 - First-message angle: Which SKU, destination and supplier are you evaluating? I can scope a remote verification memo; physical QC is separate.
-- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; partner/specialist capability not currently controlled
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; source verification is future-dated or older than 7 days; 7–14-day demand is VALIDATE until buyer activity is renewed; partner/specialist capability not currently controlled
 
 ### N8n + MirrorFly Developer for Video Conferencing Automation
 
@@ -634,7 +776,7 @@ Each genuine-gap cluster has a `[Bounty]` task linked to it. **$0 / `zero-bounty
 - REMOTE_NOW scope: Remote diagnosis of one failing workflow, with reproduction and recovery checklist; proposed price: USD 100–200 diagnostic; USD 300–600 implementation only after scope agreement (proposal, not budget)
 - Dependencies: []; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports.
 - First-message angle: Is this still blocking your workflow? I can scope a remote reproduction and recovery audit; what is the daily volume and cost of failures?
-- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; 7–14-day demand is VALIDATE until buyer activity is renewed
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; source verification is future-dated or older than 7 days; 7–14-day demand is VALIDATE until buyer activity is renewed
 
 ### Exploring n8n implementation partnerships for SaaS workflow plans — no active project yet
 
@@ -936,7 +1078,7 @@ Hi everyone,
 - REMOTE_NOW scope: One buyer-specified remote workflow: agree inputs/output, implement in authorized sandbox, test cases and handover; no unscoped rebuild; proposed price: USD 100–200 paid scoping pilot; implementation quote after access/scope review (proposal, not buyer budget)
 - Dependencies: ['Buyer-approved narrow scope and actual relevant portfolio/timezone fit must be checked']; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports. Platform reply/application rules apply; private DM competition is unobservable. Source explicitly has no existing clients; paid work is conditional on future client acquisition, not a ready commission.
 - First-message angle: Which first workflow and acceptance criteria should a small paid pilot cover? I will disclose actual experience and only quote after checking authorized access and scope.
-- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; freshness gate failed: >14 days without verified buyer activity <=7 days; competition high or unmeasured
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; source verification is future-dated or older than 7 days; freshness gate failed: >14 days without verified buyer activity <=7 days; competition high or unmeasured
 
 ### Looking for an n8n Freelancer / Automation Builder
 

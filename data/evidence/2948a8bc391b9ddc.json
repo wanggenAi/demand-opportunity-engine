@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42066",
+  "collected_at": "2026-10-25T07:33:30.783721+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/42066",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/42066/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/42066/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/42066/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/42066",
+    "id": 6021777189,
+    "node_id": "I_kwDOC4Q8Qs8AAAABZu0HJQ",
+    "number": 42066,
+    "title": "String .extractUrl() includes trailing sentence punctuation in the extracted URL",
+    "user": {
+      "login": "indexGin",
+      "id": 166748424,
+      "node_id": "U_kgDOCfBhCA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/166748424?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/indexGin",
+      "html_url": "https://github.com/indexGin",
+      "followers_url": "https://api.github.com/users/indexGin/followers",
+      "following_url": "https://api.github.com/users/indexGin/following{/other_user}",
+      "gists_url": "https://api.github.com/users/indexGin/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/indexGin/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/indexGin/subscriptions",
+      "organizations_url": "https://api.github.com/users/indexGin/orgs",
+      "repos_url": "https://api.github.com/users/indexGin/repos",
+      "events_url": "https://api.github.com/users/indexGin/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/indexGin/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-25T06:56:16Z",
+    "updated_at": "2026-10-25T06:56:26Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\n`.extractUrl()` includes punctuation that belongs to the surrounding sentence, not the URL itself. When a URL appears at the end of a sentence, before a comma, or inside parentheses, the extracted value keeps the trailing marks:\n\n- `\"Docs: https://docs.n8n.io.\".extractUrl()` → `https://docs.n8n.io.` (trailing period included)\n- `\"See (https://example.com) for details\".extractUrl()` → `https://example.com)` (closing paren included)\n- `\"Visit https://example.com, then come back\".extractUrl()` → `https://example.com,` (comma included)\n- `\"File at https://example.com/data.csv;\".extractUrl()` → `https://example.com/data.csv;`\n\nThe returned value is then not directly usable: passing it on (e.g. to `new URL()`, an HTTP request, or `.extractUrlPath()`) fails or hits the wrong path.\n\nThe same code exists in `packages/workflow/src/extensions/string-extensions.ts` and its mirror in `@n8n/expression-runtime`.\n\n### To Reproduce\n\n1. In any expression, evaluate: `{{ \"Docs: https://docs.n8n.io.\".extractUrl() }}`\n2. The result is `https://docs.n8n.io.` — the sentence-final period is part of the URL.\n\nThe regex match in `extractUrl` (`URL_REGEXP`) ends with `#?[^\\s]*`, which consumes every non-whitespace character after the host, including sentence punctuation.\n\n### Expected behavior\n\nPunctuation directly after a URL that belongs to the surrounding sentence is not part of the extracted URL:\n\n- `\"Docs: https://docs.n8n.io.\".extractUrl()` → `https://docs.n8n.io`\n- `\"See (https://example.com) for details\".extractUrl()` → `https://example.com`\n- Balanced parens that are part of the URL are kept: `\"Wiki (https://example.com/C_(lang))\"` → `https://example.com/C_(lang)`\n- Query strings are unaffected apart from a trailing sentence mark: `\"Search https://example.com/search?q=n8n!\".extractUrl()` → `https://example.com/search?q=n8n`\n\nThis matches how other ecosystems handle URLs in prose (e.g. CommonMark/GFM autolinks trim trailing punctuation and unbalanced closing parens).\n\n### Debug Info\n\nFound by reading the code on `master` (2.45.0). The regex has behaved this way since the current matching was introduced in #6010.\n\n### Operating System\n\nPlatform independent\n\n### n8n Version\n\nmaster (current HEAD)\n\n### Node.js Version\n\n24\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/42066/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/42066/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @indexGin,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9640\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9640](https://linear.app/n8n/issue/GHC-9640)",
+      "at": "2026-10-25T06:56:24Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42066#issuecomment-6394612856"
+    }
+  ],
+  "comments_complete": true
+}

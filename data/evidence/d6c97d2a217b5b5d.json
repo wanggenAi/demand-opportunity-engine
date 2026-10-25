@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42064",
+  "collected_at": "2026-10-25T07:33:30.783721+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/42064",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/42064/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/42064/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/42064/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/42064",
+    "id": 6021582596,
+    "node_id": "I_kwDOC4Q8Qs8AAAABZuoPBA",
+    "number": 42064,
+    "title": "String .toDate() returns the previous day for a date-only ISO string west of UTC",
+    "user": {
+      "login": "kevin9327",
+      "id": 5299031,
+      "node_id": "MDQ6VXNlcjUyOTkwMzE=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5299031?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/kevin9327",
+      "html_url": "https://github.com/kevin9327",
+      "followers_url": "https://api.github.com/users/kevin9327/followers",
+      "following_url": "https://api.github.com/users/kevin9327/following{/other_user}",
+      "gists_url": "https://api.github.com/users/kevin9327/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/kevin9327/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/kevin9327/subscriptions",
+      "organizations_url": "https://api.github.com/users/kevin9327/orgs",
+      "repos_url": "https://api.github.com/users/kevin9327/repos",
+      "events_url": "https://api.github.com/users/kevin9327/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/kevin9327/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-25T06:28:01Z",
+    "updated_at": "2026-10-25T06:28:12Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\n`String.toDate()` returns the day **before** the one written when the string is a date-only ISO date (`\"2023-06-16\"`) and the n8n process runs west of UTC (any `America/*` time zone, for example).\n\n`toDate()` parses with `Date.parse()`, which reads a date-only ISO string as **UTC** midnight, and then forces \"00:00h\" with `date.setHours(0, 0, 0)`, which works on the **local** fields. In `America/New_York`, `2023-06-16T00:00Z` is `2023-06-15 20:00` local, so `setHours(0, 0, 0)` lands on `2023-06-15 00:00` local. East of UTC (and in UTC) the local day already matches, so the bug only shows up for instances west of UTC.\n\nOther date-only forms such as `\"June 16, 2023\"` parse as local midnight and are not affected.\n\nThe same code is in `packages/workflow/src/extensions/string-extensions.ts` and its mirror in `@n8n/expression-runtime`.\n\n### To Reproduce\n\n1. Run n8n with `TZ=America/New_York` (or `GENERIC_TIMEZONE`/system time zone west of UTC).\n2. Evaluate `{{ \"2023-06-16\".toDate().toDateString() }}` in an expression.\n3. You get `Thu Jun 15 2023`.\n\nMinimal Node reproduction of the same steps:\n\n```sh\nTZ=America/New_York node -e 'const d = new Date(Date.parse(\"2023-06-16\")); d.setHours(0, 0, 0); console.log(d.toString())'\n# Thu Jun 15 2023 00:00:00 GMT-0400 (Eastern Daylight Time)\n```\n\n### Expected behavior\n\n`Fri Jun 16 2023`: local midnight of the day that was written, in every time zone.\n\n### Debug Info\n\nFound by reading the code on `master`, and reproduced with a unit test that calls `stringExtensions.functions.toDate` directly with `process.env.TZ = 'America/New_York'`.\n\n### Operating System\n\nUbuntu Linux\n\n### n8n Version\n\nmaster (current HEAD)\n\n### Node.js Version\n\n20.19.2\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/42064/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/42064/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @kevin9327,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9639\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9639](https://linear.app/n8n/issue/GHC-9639)",
+      "at": "2026-10-25T06:28:10Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42064#issuecomment-6394385425"
+    }
+  ],
+  "comments_complete": true
+}
