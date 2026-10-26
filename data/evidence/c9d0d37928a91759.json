@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42070",
+  "collected_at": "2026-10-26T07:45:41.172442+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/42070",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/42070/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/42070/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/42070/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/42070",
+    "id": 6023643626,
+    "node_id": "I_kwDOC4Q8Qs8AAAABZwmB6g",
+    "number": 42070,
+    "title": "Schedule Trigger runs daily workflows twice on DST fall-back night (Europe/Berlin)",
+    "user": {
+      "login": "remkostas",
+      "id": 256176975,
+      "node_id": "U_kgDOD0TzTw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/256176975?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/remkostas",
+      "html_url": "https://github.com/remkostas",
+      "followers_url": "https://api.github.com/users/remkostas/followers",
+      "following_url": "https://api.github.com/users/remkostas/following{/other_user}",
+      "gists_url": "https://api.github.com/users/remkostas/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/remkostas/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/remkostas/subscriptions",
+      "organizations_url": "https://api.github.com/users/remkostas/orgs",
+      "repos_url": "https://api.github.com/users/remkostas/repos",
+      "events_url": "https://api.github.com/users/remkostas/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/remkostas/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-25T10:55:27Z",
+    "updated_at": "2026-10-25T10:55:36Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nOn 25 Oct 2026 the clocks in Germany went back (03:00 CEST to 02:00 CET). Every daily Schedule Trigger I have at 03:xx ran twice, one hour apart:\n- Days interval at 03:00: 01:00:58Z and 02:00:58Z\n- Days interval at 03:45: 01:45:57Z and 02:45:57Z\n- cron `0 15 3 * * *`: 01:15:00Z and 02:15:00Z\n\nThe first run falls in the repeated hour (the second 02:xx), the second one is the real 03:xx. All 8 of my daily triggers at 03:xx did this, in interval and in cron mode. A daily trigger at 02:45 ran once, and the triggers at 04:xx and the hourly ones ran normally. Both runs have mode trigger and the same seconds offset.\n\nI run the legacy scheduler (N8N_SCHEDULER_ENABLED not set), which uses cron 4.4.0 with luxon 3.7.2. My image is the official one plus a few patched OS and npm packages (not cron or luxon). This looks like the same bug as:\n- https://github.com/kelektiv/node-cron/issues/1087 (see the comment from 4 Oct about daily jobs in the hour after the repeated hour)\n- https://github.com/nestjs/schedule/issues/2389 (same double run, same date and timezone, cron 4.4.0)\ncron 4.4.0 is still the latest stable release, so there's no fixed version to upgrade to yet. The comment on kelektiv/node-cron#1087 also shows this for America/New_York with daily jobs at 02:xx. US clocks go back on 1 Nov 2026.\n\nWorkaround: I moved the jobs where a second run hurts to 04:xx.\n\n### To Reproduce\n\n1. Self-hosted n8n with GENERIC_TIMEZONE=Europe/Berlin and TZ=Europe/Berlin, N8N_SCHEDULER_ENABLED not set.\n2. Activate a workflow with a Schedule Trigger that runs daily at 03:00.\n3. Let it run through a DST fall-back night (or fake the clock).\n4. On 25 Oct 2026 it ran at 01:00Z and again at 02:00Z.\n\n### Expected behavior\n\nOne run per day, at 03:00 local time (02:00Z on 25 Oct).\n\n\n\n### Debug Info\n\n# Debug info\n\n## core\n\n- n8nVersion: 2.44.6\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.12.1\n- nodeEnv: production\n- database: sqlite\n- executionMode: regular\n- concurrency: -1\n- license: enterprise (production)\n\n## storage\n\n- success: all\n- error: all\n- progress: true\n- manual: true\n- binaryMode: filesystem\n\n## pruning\n\n- enabled: true\n- maxAge: 336 hours\n- maxCount: 10000 executions\n\n## client\n\n- userAgent: mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/152.0.0.0 safari/537.36\n- isTouchDevice: false\n\n## cluster\n\n- instanceCount: 1\n- versions: 2.44.6\n- instances:\n  - instanceType: main, instanceRole: leader, version: 2.44.6\n- checks:\n  - check: hostid-clash, status: succeeded, warnings: -\n  - check: lifecycle, status: succeeded, warnings: -\n  - check: split-brain, status: succeeded, warnings: -\n  - check: version-mismatch, status: succeeded, warnings: -\n\nGenerated at: 2026-10-25T10:24:51.292Z\n\n### Operating System\n\nUbuntu Linux 26.04.1 LTS, n8n in Docker\n\n### n8n Version\n\n2.44.6\n\n### Node.js Version\n\n26.12.1\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/42070/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/42070/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @remkostas,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9641\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9641](https://linear.app/n8n/issue/GHC-9641)",
+      "at": "2026-10-25T10:55:34Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42070#issuecomment-6396755365"
+    }
+  ],
+  "comments_complete": true
+}

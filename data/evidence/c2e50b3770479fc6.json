@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42088",
+  "collected_at": "2026-10-26T07:45:41.172442+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/42088",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/42088/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/42088/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/42088/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/42088",
+    "id": 6027806659,
+    "node_id": "I_kwDOC4Q8Qs8AAAABZ0kHww",
+    "number": 42088,
+    "title": "isBetween() with date-only string bounds drops the written day in non-UTC workflow timezones",
+    "user": {
+      "login": "mayur-dhavan",
+      "id": 118877752,
+      "node_id": "U_kgDOBxXuOA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/118877752?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mayur-dhavan",
+      "html_url": "https://github.com/mayur-dhavan",
+      "followers_url": "https://api.github.com/users/mayur-dhavan/followers",
+      "following_url": "https://api.github.com/users/mayur-dhavan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mayur-dhavan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mayur-dhavan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mayur-dhavan/subscriptions",
+      "organizations_url": "https://api.github.com/users/mayur-dhavan/orgs",
+      "repos_url": "https://api.github.com/users/mayur-dhavan/repos",
+      "events_url": "https://api.github.com/users/mayur-dhavan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mayur-dhavan/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-25T18:27:11Z",
+    "updated_at": "2026-10-25T18:27:21Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nIn a workflow expression, `DateTime.local(2023, 6, 16, 23, 0).isBetween('2023-06-16', '2023-06-17')` returns `false` when the workflow timezone is west of UTC (for example America/New_York), even though 23:00 on June 16 is inside the written range. Date-only string bounds go through `new Date()`, which parses them as UTC midnight; converted into the workflow timezone, `'2023-06-16'` becomes June 15, 8:00 PM in New York. East of UTC the bounds land mid-day instead of midnight. The same shift affects partial date-only strings (`'2023-06'`, `'2023'`).\n\nI reproduced this in n8n's own expression test suites (`packages/workflow` and `packages/@n8n/expression-runtime`): a regression test with the expression above fails on current master in the default America/New_York test timezone.\n\n### To Reproduce\n\n1. Set a workflow's timezone to America/New_York (workflow Settings).\n2. Evaluate `{{ DateTime.local(2023, 6, 16, 23, 0).isBetween('2023-06-16', '2023-06-17') }}` in an expression, for example in a Set node.\n3. The result is `false`.\n\n### Expected behavior\n\n`true`. Date-only string bounds should mean midnight in the workflow timezone, the same way `.toDateTime()` already parses `'2023-06-16'` (`tryToParseDateTime` uses `DateTime.fromISO`, i.e. local midnight).\n\n### Debug Info\n\nReproduced on current master (2.45.0) through the test suites above (Node 24). I did not run a separate UI test; the steps above are the reproduction path for the same code. Related: #42064 reports the same class of bug for String.toDate - this is a different code path (isBetween bounds via convertToDateTime), not covered by its PR #42065.\n\n### Operating System\n\nUbuntu Linux 22.04\n\n### n8n Version\n\n2.45.0 (current master, source)\n\n### Node.js Version\n\n24.18.0\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/42088/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/42088/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @mayur-dhavan,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9646\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9646](https://linear.app/n8n/issue/GHC-9646)",
+      "at": "2026-10-25T18:27:19Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42088#issuecomment-6401463094"
+    }
+  ],
+  "comments_complete": true
+}

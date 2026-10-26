@@ -1,0 +1,107 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42108",
+  "collected_at": "2026-10-26T07:45:41.172442+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/42108",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/42108/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/42108/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/42108/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/42108",
+    "id": 6034654616,
+    "node_id": "I_kwDOC4Q8Qs8AAAABZ7GFmA",
+    "number": 42108,
+    "title": "Array .min() and .max() throw 'Maximum call stack size exceeded' on large arrays",
+    "user": {
+      "login": "kevin9327",
+      "id": 5299031,
+      "node_id": "MDQ6VXNlcjUyOTkwMzE=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5299031?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/kevin9327",
+      "html_url": "https://github.com/kevin9327",
+      "followers_url": "https://api.github.com/users/kevin9327/followers",
+      "following_url": "https://api.github.com/users/kevin9327/following{/other_user}",
+      "gists_url": "https://api.github.com/users/kevin9327/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/kevin9327/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/kevin9327/subscriptions",
+      "organizations_url": "https://api.github.com/users/kevin9327/orgs",
+      "repos_url": "https://api.github.com/users/kevin9327/repos",
+      "events_url": "https://api.github.com/users/kevin9327/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/kevin9327/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-10-26T06:36:38Z",
+    "updated_at": "2026-10-26T07:05:28Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\n`Array.min()` and `Array.max()` in expressions throw `Maximum call stack size exceeded` for an array of about 125,000 numbers or more.\n\nBoth functions call `Math.min(...value)` / `Math.max(...value)`, which passes every element of the array as a separate function argument. V8 (and QuickJS) put those arguments on the stack, so a large enough array overflows it. `sum()` and `average()` use `reduce` and work on the same arrays.\n\nThe same code is in `packages/workflow/src/extensions/array-extensions.ts` and its mirror in `@n8n/expression-runtime`.\n\n### To Reproduce\n\n1. Add a Set (Edit Fields) node with an expression such as `{{ Array.from({ length: 200000 }, (_, i) => i).max() }}`, or call `.min()`/`.max()` on a large numeric array from an earlier node (e.g. `{{ $json.prices.max() }}` with 200,000 prices).\n2. Execute the node.\n3. The expression fails with `Maximum call stack size exceeded`.\n\nMinimal Node reproduction of the same call:\n\n```sh\nnode -e 'console.log(Math.max(...new Array(200000).fill(1)))'\n# RangeError: Maximum call stack size exceeded\n```\n\n### Expected behavior\n\n`199999`, as for smaller arrays. `.sum()` on the same array already works.\n\n### Debug Info\n\nFound by reading the code on `master`, and reproduced with tests that call `.min()`/`.max()` on a 200,000-element array in the legacy and QuickJS expression engines and on `arrayExtensions.functions.min/max` directly.\n\n### Operating System\n\nUbuntu Linux\n\n### n8n Version\n\nmaster (current HEAD)\n\n### Node.js Version\n\n20.19.2\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/42108/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/42108/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @kevin9327,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9649\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9649](https://linear.app/n8n/issue/GHC-9649)",
+      "at": "2026-10-26T06:36:47Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42108#issuecomment-6409853108"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "I checked both current implementations (`packages/workflow/src/extensions/array-extensions.ts` and the `@n8n/expression-runtime` mirror): each maps the values and spreads the entire result into `Math.min`/`Math.max`. A bounded chunk reduction would avoid the argument-count limit while retaining native `Math.min`/`Math.max` behavior (including `NaN` and signed zero); the existing `ensureNumberArray` validation and string-to-number conversion can remain unchanged. The two copies should be updated together to keep legacy and QuickJS expression behavior aligned.",
+      "at": "2026-10-26T07:05:28Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42108#issuecomment-6410260086"
+    }
+  ],
+  "comments_complete": true
+}

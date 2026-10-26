@@ -1,0 +1,122 @@
+{
+  "source_api_url": "https://api.github.com/repos/keyframesfound/matchmaxhk/issues/475",
+  "collected_at": "2026-10-26T07:45:41.172442+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/keyframesfound/matchmaxhk/issues/475",
+    "repository_url": "https://api.github.com/repos/keyframesfound/matchmaxhk",
+    "labels_url": "https://api.github.com/repos/keyframesfound/matchmaxhk/issues/475/labels{/name}",
+    "comments_url": "https://api.github.com/repos/keyframesfound/matchmaxhk/issues/475/comments",
+    "events_url": "https://api.github.com/repos/keyframesfound/matchmaxhk/issues/475/events",
+    "html_url": "https://github.com/keyframesfound/matchmaxhk/issues/475",
+    "id": 6025346910,
+    "node_id": "I_kwDOTg0I7M8AAAABZyN_Xg",
+    "number": 475,
+    "title": "[Parked] Automated Fee Collection & Tutor/Centre Payout Rails (FPS → Stripe Connect → Hold-until-Confirm)",
+    "user": {
+      "login": "owlstonbusiness-svg",
+      "id": 320250893,
+      "node_id": "U_kgDOExakDQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/320250893?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/owlstonbusiness-svg",
+      "html_url": "https://github.com/owlstonbusiness-svg",
+      "followers_url": "https://api.github.com/users/owlstonbusiness-svg/followers",
+      "following_url": "https://api.github.com/users/owlstonbusiness-svg/following{/other_user}",
+      "gists_url": "https://api.github.com/users/owlstonbusiness-svg/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/owlstonbusiness-svg/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/owlstonbusiness-svg/subscriptions",
+      "organizations_url": "https://api.github.com/users/owlstonbusiness-svg/orgs",
+      "repos_url": "https://api.github.com/users/owlstonbusiness-svg/repos",
+      "events_url": "https://api.github.com/users/owlstonbusiness-svg/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/owlstonbusiness-svg/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 11603661397,
+        "node_id": "LA_kwDOTg0I7M8AAAACs6HSVQ",
+        "url": "https://api.github.com/repos/keyframesfound/matchmaxhk/labels/enhancement",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "default": true,
+        "description": "New feature or request",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 11603661399,
+        "node_id": "LA_kwDOTg0I7M8AAAACs6HSVw",
+        "url": "https://api.github.com/repos/keyframesfound/matchmaxhk/labels/On%20Hold",
+        "name": "On Hold",
+        "color": "008672",
+        "default": false,
+        "description": "Extra attention is needed",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 3,
+    "created_at": "2026-10-25T14:08:25Z",
+    "updated_at": "2026-10-25T18:33:37Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "COLLABORATOR",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "# [Parked] Automated Fee Collection & Tutor/Centre Payout Rails (FPS → Stripe Connect → Hold-until-Confirm)\n\n> **RESOLVED 2026-10-25:** [#444](https://github.com/keyframesfound/matchmaxhk/issues/444) / [#469](https://github.com/keyframesfound/matchmaxhk/pull/469) merged — live ToS §15 = tutor-pays (`owed by the Tutor`; Customers and centres do not pay MatchMax a matching fee). Build/copy against tutor-pays; admin-fee automation gate on #444 is cleared for **payer identity** (other #475 phase gates still apply).\n\n> **Payer lock:** Issues lock **tutor pays** 1.5-lesson admin (#464). Live ToS §15 now matches (see RESOLVED above). Build against tutor-pays. #475 Phase1 Collect Tuition (parent→tutor) remains available after `#459`/`#461A`; automated admin collection still waits on #475 phase gates (not on #444 identity).\n\n> **Status: On Hold / Later — NOT V1 Urgent.**  \n> Do **not** pull into the urgent set. Desk matching + `#459` / `#461A` / `#466` / `#467` ship first.  \n> **Does not change** the tutor-pays **1.5-lesson** admin lock or **0% after L2** economics (#464).\n\n## CEO locks (2026-10-25 — ADOPT; do not drift)\n\n| # | Lock |\n| --- | --- |\n| 1 | **Phase 0 (now):** Manual FPS for MatchMax admin fee + notes-shop manual cashier. Keep shipping reminders / mark-paid; do **not** rebuild payment rails yet. |\n| 2 | **Phase 1 (after `#459` + `#461A`):** **Collect Tuition** tool on tutor `/dashboard#earnings` (centres under `/business/`). Parent pays tutor via **FPS QR** and/or **Stripe Payment Link**. **MatchMax does not touch the money.** Completing payment updates the **Unpaid tuition** bucket only. |\n| 3 | **Phase 2 (later):** **Stripe Connect** — tutors/centres as Connected Accounts; MatchMax may take `application_fee` only for admin L1/L2 where applicable; **tutor/centre is the payee**. Hong Kong supported — prefer Connect over inventing a MatchMax bank escrow. |\n| 4 | **Phase 3 (later still):** **Delayed payout / hold-until-confirmed** (Stripe Connect delayed payout or similar) — **not** MatchMax corporate bank escrow. **HK solicitor + Cap.57 review REQUIRED** before any hold on tutoring tuition. |\n| 5 | **NEVER** hold client tuition in MatchMax’s own bank account early. |\n| 6 | **NEVER** become Merchant of Record (MoR) for ongoing L3+ tuition without counsel. |\n| 7 | Do **not** change 1.5 / short-case 20% / **0% after L2** economics just to enable payments. |\n| 8 | **Cap.57:** MatchMax = matching + **optional** payment tools. Tutors remain independent contractors. Not an employment agency; no EA licence. |\n| 9 | Centres use the **same** collection flow under `/business/` (org payout account). |\n| 10 | **Hours ledger ≠ payment status.** `#459` VerifiedHoursLedger writes from lesson complete / confirm; unpaid/paid tuition is a separate money state on `#461`. |\n\n---\n\n## Critical conflict — document before any public automation\n\n| Source | Who pays MatchMax **admin** fee (1.5) today / as locked |\n| --- | --- |\n| **Live** [ToS §15](https://matchmax.hk/en/tos) (post-[#469](https://github.com/keyframesfound/matchmaxhk/pull/469)) + guides | **Tutor pays** MatchMax admin by FPS (`owed by the Tutor`). Customers/centres do **not** pay MatchMax a matching fee; Customer pays Tutor directly for tuition. |\n| **CEO / issues** `#464` · `#444` · `#461` · `#467` · PRODUCT.md | **Tutor pays** matching admin (B2C + B2B). Parents/centres do **not** pay MatchMax matching fees. Short ≤5 → 20% of package. |\n\n**Gate (updated 2026-10-25):** [#444](https://github.com/keyframesfound/matchmaxhk/issues/444) / [#469](https://github.com/keyframesfound/matchmaxhk/pull/469) merged — live ToS §15 = **tutor-pays**; payer-identity conflict for admin fee is **cleared**. Phase 0/1 Collect Tuition (parent→tutor) can still ship after `#459`/`#461A`. Public automated **admin-fee** checkout still waits on remaining #475 phase gates (Stripe/FPS rails, counsel for hold) — **this issue stays On Hold / not urgent**; do not unpark.\n\n---\n\n## A. Current commercial model map (who pays whom)\n\n### Live product (website + code today)\n\n| Money | From → To | When | Rail today |\n| --- | --- | --- | --- |\n| **Admin fee (1.5)** | Parent → MatchMax | After intro lessons / invoice (`fee_invoiced` → `fee_paid` in `sor.ts`) | Manual **FPS** + screenshot; staff mark paid (`#259` Fee desk). Reminders: `fee-reminder.tsx`. |\n| L1 tutor pay | — | Tutor receives **$0** for L1 under live parent-pays model | N/A |\n| L2 tutor share | Parent → Tutor | Remaining **50%** of L2 | Direct (off-platform) |\n| L3+ tuition | Parent → Tutor | Ongoing Lesson Contract | Direct; MatchMax **does not** hold/process (ToS §5, §15) |\n| Notes / freestyle | Buyer → MatchMax (seller of record) | Checkout | Manual FPS cashier (`#203`); 20% platform / 80% tutor monthly FPS payout |\n| Notes escrow (planned) | Hold seller net 48–72h | After delivery | `#429` — **goods** escrow, seller-funded refunds only |\n| Referral bounty | MatchMax → referrer | After referred tutor’s first fee-paid case | Monthly FPS |\n\n**Code reality:** `fee-breakdown.ts` / `sor.ts` = 1.5 math + SoR states. `checkout.functions.ts` = materials cashier. **No Stripe dependency** in `package.json`. Help `payment-methods.md` is still a draft stub.\n\n### Locked destination (issues — do not reopen economics)\n\n| Money | From → To | Rule |\n| --- | --- | --- |\n| **Admin fee** | **Tutor → MatchMax** | 1.5 lessons (L1 100% + L2 50%); short ≤5 = 20% package; pro-bono $0 = 0 (`#464`) |\n| L3+ tuition | Parent → Tutor | **0%** MatchMax cut — lock-in thesis (`#467`) |\n| Unpaid tuition bucket | Parent **owes tutor** | Never conflate with admin fee (`#461` Phase A) |\n| Phones | After fee paid | `#255` |\n\n---\n\n## B. Gaps vs Airbnb / Taobao ambition\n\n| Airbnb / Taobao / eBay | MatchMax today | Gap |\n| --- | --- | --- |\n| Hosted checkout | Manual FPS + WA | No auto capture / webhook |\n| Platform holds then releases | Only planned for **notes** (`#429`) | Tutoring tuition explicitly **not** held (ToS §5) |\n| Connected payouts | Monthly FPS statements for notes | No Connect accounts for tutors/centres |\n| Lesson complete → pay | Desk / WA | Needs `#461A` session writer + unpaid bucket first |\n| Trust / escrow on first deal | Human concierge | Hold-until-confirm = Phase 3 + solicitor |\n\nAmbition is valid; **path = tools for both parties**, not “MatchMax becomes the bank.”\n\n---\n\n## C. Phased carry-out (ADOPT — do not compress)\n\n### Phase 0 — Now (V1 ops; keep)\n\n- Manual FPS admin-fee collection + `#259` mark-paid + fee reminders.\n- Notes shop manual cashier (`#203`); escrow hold stays on `#429` (goods only).\n- Automate **invoicing reminders** and tie “lesson complete → invoice / unpaid” signals from `#461A` when it lands — still **no** new payment processor.\n- Finish `#444` legal rewrite in parallel (unblock public honesty).\n\n### Phase 1 — After `#459` + `#461A` (Tuition Collection Tool)\n\n**What:** Optional **Collect tuition** on `/dashboard#earnings` (tutor) and `/business/` (centre).\n\n- Generate **FPS QR** (tutor’s own FPS ID) and/or **Stripe Payment Link** pointing at the tutor’s Stripe account / Payment Link (tutor-owned; MatchMax does not receive funds).\n- Parent pays → tutor/centre marks received **or** webhook on Payment Link paid → **Unpaid tuition** bucket clears for that lesson.\n- MatchMax **does not** touch money; **0%** rail fee in Phase 1 (convenience tool only). Tiny rail fee optional later — product decision, not economics change to 1.5.\n- Hours ledger still from lesson complete / dual confirm (`#459`) — **independent** of paid/unpaid.\n\n**Acceptance (Phase 1)**\n\n- [ ] Tutor/centre can create a payment request tied to a logged lesson / unpaid row\n- [ ] FPS QR uses tutor/centre FPS identifier stored on payout profile\n- [ ] Stripe Payment Link path uses tutor-owned Stripe (no MatchMax destination)\n- [ ] Unpaid bucket updates; admin-fee state untouched\n- [ ] Cap.57 / independent-tutor disclaimer on the Collect UI\n- [ ] No MatchMax bank account in the flow\n\n### Phase 2 — Later (Stripe Connect)\n\n- Tutors/centres onboard as **Stripe Connect** Connected Accounts (HK).\n- For **admin fee** (post-`#444` tutor-pays): charge path where MatchMax is paid via `application_fee_amount` / destination charge as counsel advises — **tutor remains commercial party to tuition**; admin fee identity follows Fee Agreement.\n- For **ongoing tuition**: prefer **direct charges to Connected Account** (tutor payee) with MatchMax as platform; **0%** or tiny listed rail fee; **never** silent take of L3+.\n- Centres: one Connected Account per Organisation; multi-seat / class packs = Phase 4 flavour of same rail.\n\n**Acceptance (Phase 2)**\n\n- [ ] Connect onboarding + payout profile on dashboard / business portal\n- [ ] Webhook: `payment_intent.succeeded` / `checkout.session.completed` → mark lesson tuition paid\n- [ ] Admin-fee automation only after `#444` live\n- [ ] Reconciliation export for ops\n- [ ] Solicitor memo filed on Connect + Cap.57 before go-live\n\n### Phase 3 — Later still (Hold-until-confirm)\n\n- **Delayed payout** on Connected Account (or Stripe hold products) until parent/tutor confirms L1 (or N hours) — **not** parking funds in MatchMax Ltd / sole-prop bank.\n- Mirror notes-shop anti-scam intent (`#429`) for **first lesson / new tutors** only; do **not** default-hold all L3+ volume.\n- **Solicitor + Cap.57 + payment-services review REQUIRED** before any tutoring-tuition hold ships.\n- ToS §5 today forbids receiving/safeguarding tuition — must be rewritten with affirmative Fee / Payment Facility acceptance before enablement.\n\n### Phase 4 — Centres / packs (after Phase 2)\n\n- Multi-seat attendance + prepaid package burn-down (`#461` Phase B) collecting via same Connect rail.\n- Class packs / centre invoices; still org Connected Account as payee.\n\n### Explicit non-goals (early)\n\n- ❌ MatchMax bank escrow for all ongoing tuition  \n- ❌ Becoming MoR for L3+ without counsel  \n- ❌ Changing 1.5 / 0%-after-L2 to “justify” payments  \n- ❌ Replacing `#255` phones gate with “pay anything”  \n- ❌ Vacancy/job payment flows (`#413` Cap.57 parked)  \n\n---\n\n## D. Stripe vs FPS vs hybrid (HK recommendation)\n\n| Rail | Use for | Pros | Cons |\n| --- | --- | --- | --- |\n| **FPS (manual → QR)** | Phase 0–1 default; HK parents already use it | Zero FX; familiar; matches ToS/cashier today | No rich webhook unless bank API; staff/tutor confirm needed |\n| **Stripe Payment Links** | Phase 1 optional card/FPS-via-Stripe where tutor has Stripe | Fast to ship; tutor-owned | Tutor must have Stripe; fees on tutor side |\n| **Stripe Connect** | Phase 2+ platform automation | Proper marketplace pattern; `application_fee`; delayed payout options | Onboarding friction; counsel; HK Connect product limits to verify at build time |\n| **PayMe / other** | Optional later | Local UX | Extra integration; don’t block Phase 1 |\n\n**Recommendation:** **Hybrid.** Keep FPS as primary HK path forever for parents who won’t card-pay. Add Stripe Connect when volume and `#461` logging make automation ROI clear. Do **not** rip out FPS cashier for notes until Connect escrow for goods is designed (`#429`).\n\n---\n\n## E. Cap.57 / EA / money-handling warnings (honest)\n\n1. MatchMax **does not** hold an Employment Agency licence (`#412` / `#413` / ToS §1). Matching is limited to **independent** tutors / Contract for Services.  \n2. **Holding parent tuition in MatchMax’s own account** looks closer to safeguarding client money + intermediary control of the Lesson Contract — highest legal risk; **forbidden in Phase 0–2**.  \n3. **Optional payment tools** where funds go **tutor/centre Connected Account** (or tutor FPS) keep MatchMax as matching platform + software — lower risk **if** copy, Fee Agreements, and independence language stay clean.  \n4. **MoR for ongoing tuition** (MatchMax sells “lessons” and pays tutors as suppliers) is a different business — counsel before any experiment.  \n5. Notes-shop escrow (`#429`) is **goods** marketplace with MatchMax as seller of record — do **not** copy-paste that pattern onto tutoring tuition without a separate legal memo.  \n6. Automating admin-fee collection under the **wrong public payer story** (live parent-pays vs locked tutor-pays) is a compliance + trust bug — **`#444` first**.\n\n---\n\n## F. Dependencies & links\n\n| Issue | Role |\n| --- | --- |\n| `#444` · `#464` | Payer identity + ToS; **blocks public admin-fee automation** |\n| `#459` | Hours ledger foundation |\n| `#461` · `#467` | Unpaid bucket, session writer, 0% after L2 loop |\n| `#259` | Fee desk (Phase 0) |\n| `#255` | Phones after fee — unchanged by tuition tool |\n| `#203` · `#429` | Notes cashier + goods escrow (separate from tutoring rails) |\n| `#465` · `#412` | Centres / Cap.57 org lane |\n| `#473` | Promo / liability language when payment facility launches |\n\n---\n\n## G. Acceptance (epic-level)\n\n- [ ] Phase labels respected; nothing marked `urgent` from this epic alone  \n- [ ] Phase 1 ships only after `#459` + `#461A` usable daily  \n- [ ] Phase 2 admin-fee auto-charge only after `#444` live on site  \n- [ ] No MatchMax-bank hold of tutoring tuition in any phase without solicitor sign-off + ToS Payment Facility section  \n- [ ] Tutor and centre UX parity (dashboard vs `/business/`)  \n- [ ] Ledger hours and tuition paid flags never collapsed into one field  \n\n---\n\n## H. Wireframe (Phase 1 Collect — sketch)\n\n```\n/dashboard#earnings\n┌─────────────────────────────────────────────┐\n│ Unpaid tuition (owed to you)     HK$ 1,200  │\n│  • Case MM-1042 · L3 · 22 Oct · $400        │\n│    [ Collect via FPS QR ] [ Stripe Link ]   │\n│  • Case MM-0988 · L5 · 21 Oct · $800        │\n│    [ Mark received ]                        │\n│ ⚠ MatchMax does not hold this money.        │\n│   You are an independent tutor (Cap.57).    │\n└─────────────────────────────────────────────┘\n```\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/keyframesfound/matchmaxhk/issues/475/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/keyframesfound/matchmaxhk/issues/475/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "owlstonbusiness-svg",
+      "text": "Filed from CEO ask (2026-10-25): automate fee collection / tutor+centre collection tool / eventual Airbnb-like rails, without becoming the bank early. Urgent set unchanged. Adopt path locked in issue body.",
+      "at": "2026-10-25T14:08:41Z",
+      "url": "https://github.com/keyframesfound/matchmaxhk/issues/475#issuecomment-6398666747"
+    },
+    {
+      "author": "owlstonbusiness-svg",
+      "text": "**Payer-conflict loop closed (2026-10-25 Asia/Hong_Kong)**\n\n[#444](https://github.com/keyframesfound/matchmaxhk/issues/444) closed · [#469](https://github.com/keyframesfound/matchmaxhk/pull/469) merged — live [ToS §15](https://matchmax.hk/en/tos) = tutor-pays (`owed by the Tutor`; Customers and centres do not pay MatchMax a matching fee).\n\nBody top updated: RESOLVED note + payer lock refreshed. Build/copy against tutor-pays. Admin-fee automation **identity** gate on #444 cleared; other #475 phase gates / On Hold status unchanged. Urgent labels untouched.",
+      "at": "2026-10-25T15:30:00Z",
+      "url": "https://github.com/keyframesfound/matchmaxhk/issues/475#issuecomment-6399538796"
+    },
+    {
+      "author": "owlstonbusiness-svg",
+      "text": "Phase 1 webhook FPS / Payment Link is the **desk offload** half of surge protection [#478](https://github.com/keyframesfound/matchmaxhk/issues/478) Phase B (kills screenshot tax under viral load).",
+      "at": "2026-10-25T17:41:50Z",
+      "url": "https://github.com/keyframesfound/matchmaxhk/issues/475#issuecomment-6400963944"
+    }
+  ],
+  "comments_complete": true
+}

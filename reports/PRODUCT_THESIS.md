@@ -7,7 +7,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## workflow_reliability — UNVALIDATED CLUSTER
 
-- independent_demand_count: 49
+- independent_demand_count: 53
 - payment_evidence_count: 1
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community', 'n8n Community']
 - communities: ['Ask/Show HN', 'Commerce operator forum', 'n8n Jobs', 'n8n-io/n8n', 'useagenthq/useagent']
@@ -20,12 +20,12 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://github.com/n8n-io/n8n/issues/42108
+  - https://github.com/n8n-io/n8n/issues/42088
+  - https://github.com/n8n-io/n8n/issues/42077
+  - https://github.com/n8n-io/n8n/issues/42075
+  - https://github.com/n8n-io/n8n/issues/42070
   - https://github.com/n8n-io/n8n/issues/42066
-  - https://github.com/n8n-io/n8n/issues/42064
-  - https://news.ycombinator.com/item?id=50223730
-  - https://github.com/n8n-io/n8n/issues/42054
-  - https://news.ycombinator.com/item?id=50210095
-  - https://github.com/n8n-io/n8n/issues/41992
 
 ## browser_automation — UNVALIDATED CLUSTER
 

@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42066",
-  "collected_at": "2026-10-25T07:33:30.783721+00:00",
+  "collected_at": "2026-10-26T07:45:41.172442+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/42066",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -50,9 +50,9 @@
     "locked": false,
     "assignees": [],
     "milestone": null,
-    "comments": 1,
+    "comments": 2,
     "created_at": "2026-10-25T06:56:16Z",
-    "updated_at": "2026-10-25T06:56:26Z",
+    "updated_at": "2026-10-25T14:05:12Z",
     "closed_at": null,
     "assignee": null,
     "author_association": "NONE",
@@ -95,6 +95,12 @@
       "text": "Hey @indexGin,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9640\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9640](https://linear.app/n8n/issue/GHC-9640)",
       "at": "2026-10-25T06:56:24Z",
       "url": "https://github.com/n8n-io/n8n/issues/42066#issuecomment-6394612856"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "I checked the current source: both `packages/workflow/src/extensions/string-extensions.ts` and `packages/@n8n/expression-runtime/src/extensions/string-extensions.ts` use the same `URL_REGEXP`, and `extractUrl()` returns `matched[0]` unchanged. So a trim added to only one implementation would leave the expression-runtime behavior inconsistent. For the examples here, trimming terminal prose punctuation should also preserve balanced parentheses that are part of the URL (and only remove unmatched closing `)`), rather than stripping punctuation indiscriminately.",
+      "at": "2026-10-25T14:05:12Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42066#issuecomment-6398630274"
     }
   ],
   "comments_complete": true

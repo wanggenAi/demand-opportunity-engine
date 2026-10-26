@@ -1,0 +1,130 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42077",
+  "collected_at": "2026-10-26T07:45:41.172442+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/42077",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/42077/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/42077/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/42077/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/42077",
+    "id": 6026256952,
+    "node_id": "I_kwDOC4Q8Qs8AAAABZzFiOA",
+    "number": 42077,
+    "title": "Static data written in a webhook trigger's webhook() is not persisted since 2.19.2",
+    "user": {
+      "login": "rmyndharis",
+      "id": 2390382,
+      "node_id": "MDQ6VXNlcjIzOTAzODI=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2390382?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/rmyndharis",
+      "html_url": "https://github.com/rmyndharis",
+      "followers_url": "https://api.github.com/users/rmyndharis/followers",
+      "following_url": "https://api.github.com/users/rmyndharis/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rmyndharis/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rmyndharis/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rmyndharis/subscriptions",
+      "organizations_url": "https://api.github.com/users/rmyndharis/orgs",
+      "repos_url": "https://api.github.com/users/rmyndharis/repos",
+      "events_url": "https://api.github.com/users/rmyndharis/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rmyndharis/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 5176033697,
+        "node_id": "LA_kwDOC4Q8Qs8AAAABNIQBoQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/Needs%20Feedback",
+        "name": "Needs Feedback",
+        "color": "34F826",
+        "default": false,
+        "description": "Waiting for further input or clarification.",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 4,
+    "created_at": "2026-10-25T15:46:41Z",
+    "updated_at": "2026-10-26T00:37:39Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Bug Description\n\nStatic data written from a webhook trigger's `webhook()` is not persisted on n8n 2.19.2 and later. The write is visible during the execution, but the next delivery starts from the previously stored state, so counters, cursors and de-duplication records kept in node static data silently stop working. 1.x and 2.19.0 persist it.\n\n2.19.2 is the first affected release. It carries the backport of #28973 (\"Persist execution context before writing to db\"). `WorkflowRunner.establishContextForPersistence` builds a `Workflow` over `data.workflowData.staticData`, the same object the webhook has just modified. `ObservableObject.create` defines `__dataChanged = false` on that top-level object, so the change flag is cleared before the static data is saved.\n\n## To Reproduce\n\n1. Save the node below as `StaticDataRepro.node.js` in a directory listed in `N8N_CUSTOM_EXTENSIONS` and start n8n.\n2. Create a workflow with the `Static Data Repro` trigger followed by any node, and publish it.\n3. POST to its production webhook URL three times, one request after another.\n4. Compare the output of the three executions and the workflow's static data (`GET /rest/workflows/:id`, or the `staticData` column of `workflow_entity`).\n\n<details>\n<summary>StaticDataRepro.node.js</summary>\n\n```js\n// Minimal webhook trigger: registers a remote id on activation (as real triggers do) and counts\n// deliveries in node static data from inside webhook().\nclass StaticDataRepro {\n  constructor() {\n    this.description = {\n      displayName: 'Static Data Repro',\n      name: 'staticDataRepro',\n      group: ['trigger'],\n      version: 1,\n      description: 'Counts deliveries in node static data',\n      defaults: { name: 'Static Data Repro' },\n      inputs: [],\n      outputs: ['main'],\n      webhooks: [{ name: 'default', httpMethod: 'POST', responseMode: 'onReceived', path: 'repro' }],\n      properties: [],\n    };\n    this.webhookMethods = {\n      default: {\n        async checkExists() {\n          return this.getWorkflowStaticData('node').remoteId !== undefined;\n        },\n        async create() {\n          this.getWorkflowStaticData('node').remoteId = 'remote-1';\n          return true;\n        },\n        async delete() {\n          delete this.getWorkflowStaticData('node').remoteId;\n          return true;\n        },\n      },\n    };\n  }\n\n  async webhook() {\n    const data = this.getWorkflowStaticData('node');\n    data.count = (data.count ?? 0) + 1;\n    return { workflowData: [this.helpers.returnJsonArray({ count: data.count })] };\n  }\n}\n\nmodule.exports = { StaticDataRepro };\n```\n\n</details>\n\n| n8n | `count` in executions 1, 2, 3 | persisted static data |\n| --- | --- | --- |\n| 1.123.87 | 1, 2, 3 | `{\"remoteId\":\"remote-1\",\"count\":3}` |\n| 2.19.0 | 1, 2, 3 | `{\"remoteId\":\"remote-1\",\"count\":3}` |\n| 2.19.2 | 1, 1, 1 | `{\"remoteId\":\"remote-1\"}` |\n| 2.45.3 | 1, 1, 1 | `{\"remoteId\":\"remote-1\"}` |\n\nThe node registers a remote ID in `webhookMethods.create`, as real triggers do, so the stored static data is not empty. With an empty store the first delivery is persisted by accident, because the extra `Workflow` is then built over a separate object, and every later delivery is lost. A community trigger that keeps a de-duplication record in static data behaves the same on 2.20.0, 2.30.0, 2.41.6, 2.44.4 and 2.44.6.\n\n## Expected behavior\n\nEach execution reports the incremented count and the workflow keeps `count` in its static data, as on 1.x and 2.19.0.\n\n## Cause and fix\n\n`establishContextForPersistence` only needs the workflow settings and node lookups, and its comment says \"no staticData loading\", yet it passes `staticData`. Dropping that argument restores `1, 2, 3` and persists `count` on 2.45.3 (checked by patching the compiled `workflow-runner.js`). `master` has the same code today.\n\nThis is not #39653, which is about reloading static data on queue workers.\n\nI will open a PR with a regression test.\n\n## Debug Info\n\n```\ncore\n  n8nVersion: 2.45.3\n  platform: npm\n  nodeJsVersion: 24.22.1\n  database: sqlite\n  executionMode: regular\n```\n\n- Operating System: macOS 27.0.1\n- n8n Version: 2.45.3 (first affected: 2.19.2)\n- Node.js Version: 24.22.1\n- Database: SQLite\n- Execution mode: main\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/42077/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/42077/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @rmyndharis,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9644\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9644](https://linear.app/n8n/issue/GHC-9644)",
+      "at": "2026-10-25T15:46:51Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42077#issuecomment-6399720138"
+    },
+    {
+      "author": "Joffcom",
+      "text": "@rmyndharis this would be a bit worrying as it would suggest all trigger nodes that use static data have been broken for months but I have not seen any reports of that which is interesting.\n\nCan you share more information on what you were doing when you found this as it may help provide a bit more context as to why this isn't a bigger issue. ",
+      "at": "2026-10-25T17:17:31Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42077#issuecomment-6400699740"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "I checked the current `master` source at `packages/cli/src/workflow-runner.ts`: `establishContextForPersistence()` constructs `contextWorkflow` with `staticData: data.workflowData.staticData` (around line 387), despite the adjacent comment saying this lightweight workflow uses “no staticData loading.” That confirms the object is still passed into this context workflow; I have not independently verified the `Workflow`/`ObservableObject` mutation behavior or run your reproduction. A focused regression test or PR demonstrating the reported `2.19.0` vs `2.19.2` behavior would help maintainers validate the proposed fix.",
+      "at": "2026-10-25T18:05:28Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42077#issuecomment-6401221503"
+    },
+    {
+      "author": "rmyndharis",
+      "text": "Thanks for taking a look, @Joffcom. I agree it would be surprising if this hit many nodes. As far as I can tell it hits very few, for the reasons below.\n\n**How I found it.** I maintain a community node for a WhatsApp gateway. Its webhook trigger de-duplicates retried deliveries by keeping a ring of seen keys in node static data, written from `webhook()`. While checking the node against several n8n versions, the ring stopped persisting from 2.19.2. The trigger node in the issue reproduces the same loss without my node.\n\n**Why it is probably not visible elsewhere.** The loss only affects static data written from inside `webhook()` on a production run. The usual use of static data in webhook triggers is the remote webhook ID written in `webhookMethods.create`, which is saved on a different path and still works (the repro stores a `remoteId` there and it persists).\n\nI checked the built-in nodes. Ten `webhook()` implementations touch static data: Bitbucket, Cisco Webex, ClickUp, HelpScout, Jira, Mailchimp, PayPal, Strava, WooCommerce and Wufoo. Nine only read what activation stored. The one that writes per delivery is the Jira Trigger with OAuth2, which stores `lastRefreshed`. If that write is lost, the node refreshes the webhook again on the next delivery, so nothing looks wrong. I have not looked at polling triggers.\n\nThe numbers from the repro are in the issue (1.123.87 and 2.19.0 give 1, 2, 3; 2.19.2 and 2.45.3 give 1, 1, 1). #42081 has the one-line change and a regression test that fails on `master` and passes with it.\n",
+      "at": "2026-10-26T00:37:39Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42077#issuecomment-6405632612"
+    }
+  ],
+  "comments_complete": true
+}

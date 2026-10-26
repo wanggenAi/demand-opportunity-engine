@@ -1,0 +1,112 @@
+{
+  "source_api_url": "https://api.github.com/repos/AINative-Studio/builder-ainative-studio/issues/1540",
+  "collected_at": "2026-10-26T07:45:41.172442+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/AINative-Studio/builder-ainative-studio/issues/1540",
+    "repository_url": "https://api.github.com/repos/AINative-Studio/builder-ainative-studio",
+    "labels_url": "https://api.github.com/repos/AINative-Studio/builder-ainative-studio/issues/1540/labels{/name}",
+    "comments_url": "https://api.github.com/repos/AINative-Studio/builder-ainative-studio/issues/1540/comments",
+    "events_url": "https://api.github.com/repos/AINative-Studio/builder-ainative-studio/issues/1540/events",
+    "html_url": "https://github.com/AINative-Studio/builder-ainative-studio/issues/1540",
+    "id": 6033154276,
+    "node_id": "I_kwDORdCWFs8AAAABZ5qg5A",
+    "number": 1540,
+    "title": "bug(build): generated artifacts for one company describe unrelated businesses, with fabricated testimonial and sources",
+    "user": {
+      "login": "urbantech",
+      "id": 2746731,
+      "node_id": "MDQ6VXNlcjI3NDY3MzE=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2746731?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/urbantech",
+      "html_url": "https://github.com/urbantech",
+      "followers_url": "https://api.github.com/users/urbantech/followers",
+      "following_url": "https://api.github.com/users/urbantech/following{/other_user}",
+      "gists_url": "https://api.github.com/users/urbantech/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/urbantech/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/urbantech/subscriptions",
+      "organizations_url": "https://api.github.com/users/urbantech/orgs",
+      "repos_url": "https://api.github.com/users/urbantech/repos",
+      "events_url": "https://api.github.com/users/urbantech/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/urbantech/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 10331450592,
+        "node_id": "LA_kwDORdCWFs8AAAACZ81s4A",
+        "url": "https://api.github.com/repos/AINative-Studio/builder-ainative-studio/labels/bug",
+        "name": "bug",
+        "color": "d73a4a",
+        "default": true,
+        "description": "Something isn't working",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 11968489365,
+        "node_id": "LA_kwDORdCWFs8AAAACyWCnlQ",
+        "url": "https://api.github.com/repos/AINative-Studio/builder-ainative-studio/labels/P0",
+        "name": "P0",
+        "color": "B60205",
+        "default": false,
+        "description": "Critical - fix immediately",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-26T04:09:49Z",
+    "updated_at": "2026-10-26T05:00:31Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Summary\n\nReproduced live, Oct 25 2026, company \"silo\": the generated landing page and a generated planning document (Executive Summary / roadmap) describe **two completely different, mutually contradictory businesses** — and at least one of them is fabricated by pattern-matching the company's NAME against a real, unrelated public company, complete with invented sources.\n\n## Evidence\n\n**Landing page** (`builder.ainative.studio/build/silo`) — a data-security/access-control SaaS product:\n- \"Connect Your Data Sources\" / \"Auto-Classification\" / \"Enforce & Monitor\" (3-step flow)\n- A fabricated customer testimonial: \"Sarah Martinez, Head of Security\" — \"Silo cut our compliance audit time by 70%. The automated classification alone saved us hundreds of hours.\" — this is a named, fictional person and a specific, fabricated metric presented as a real customer quote.\n\n**Executive Summary document** (surfaced in the Live dashboard, exact user-pasted text) — a B2B wholesale food marketplace roadmap:\n> \"Silo's product roadmap is structured around three horizons — Now, Next, and Later... With minimal context provided about Silo's specific domain, the roadmap below is grounded in the most prominent public company named 'Silo' (Silo AI / Silo, the B2B wholesale food marketplace)...\"\n\nFollowed by a fully fleshed-out 8-item roadmap (buyer-supplier matching engine, net terms/trade credit, Restaurant365/Toast/QuickBooks integrations, etc.) — all genuinely-researched content about a REAL, different company that happens to share the name \"Silo,\" not about this founder's actual venture. The document's own \"Sources\" section cites real external URLs (`silomarkets.com`, `silo.ai`, a real TechCrunch article) as if they were research grounding THIS company — they describe someone else's business entirely.\n\n## Why this is severe, not cosmetic\n\n1. **Two artifacts for the same company describe unrelated businesses** — a security/compliance SaaS vs. a food-distribution marketplace. Neither can be right for whatever the founder actually described when creating \"silo\" (name unknown to this investigation — the point is neither artifact is grounded in the founder's own input).\n2. **Fabricated customer testimonial** — a named person (\"Sarah Martinez\"), a specific role, and a specific, precise-sounding metric (\"cut audit time by 70%\") presented as real, on a live, real, now-paid company's actual landing page. This is actively misleading if any real visitor sees it.\n3. **Fabricated sourcing presented as research** — the exec summary document explicitly says it is \"grounded in the most prominent public company named 'Silo'\" and cites that other company's real website/TechCrunch coverage as its sources — i.e., Cody reached for an unrelated real company's actual story because the generated company's name happened to match, and presented that borrowed content as the founder's own business plan. The document DOES self-flag this uncertainty (\"flags where assumptions require founder verification,\" \"if 'Silo' in this brief refers to Silo AI rather than the food marketplace, the entire roadmap above requires replacement\") — so Cody was aware it was guessing, but still produced and surfaced a fully-detailed, confident-sounding roadmap built on that guess rather than asking the founder or declining to generate specifics.\n\n## Root cause (hypothesis, needs investigation)\n\nWhatever document-generation path produced the Executive Summary had access to the company's bare NAME (\"silo\") but NOT the founder's actual idea/description/kickoff answers — so it filled the gap by web-researching a real company with a matching name instead of grounding in the founder's own input, or asking a clarifying question. The landing page generator apparently had a DIFFERENT (also ungrounded, differently-guessed) notion of what \"silo\" means, producing the security-product framing — these two generation paths are not sharing or validating against the same source-of-truth idea/description.\n\n## Scope for investigation\n\n1. Find which document-generation code path produced the Executive Summary (likely a roadmap/planning artifact generator distinct from the landing-page/app generator) and check: does it receive the founder's actual idea text, or only the company name/slug?\n2. Confirm whether a real `idea`/`description` was ever actually captured for this company at creation time, or whether it was created with a bare name and no real idea — if the latter, the bug is \"don't fabricate a full business plan + fake testimonial + fake sources when there's no real founder input; ask or clearly flag as a placeholder\" rather than confidently generating one.\n3. Check whether this is a known, broader pattern — any company whose name happens to coincide with a well-known real company is at risk of the same name-collision hallucination.\n4. The fabricated testimonial specifically should never ship on any live company page regardless of the broader grounding question — a named fictional person with an invented quote and invented metric is a distinct, serious problem even on a correctly-grounded landing page.\n\n## Account / company used in this finding\n\nCompany slug `silo`, account `toby+builderqa1791502624@opencapstack.com` (test/QA account, real paid Pro subscription — per prior instruction this subscription needs to be cancelled in Stripe once testing concludes).\n\nRefs: found during live verification of #1533/#1534 (unrelated company-track chat-to-task fix); surfaced independently by the founder reviewing the same company's dashboard.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/AINative-Studio/builder-ainative-studio/issues/1540/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/AINative-Studio/builder-ainative-studio/issues/1540/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "urbantech",
+      "text": "## Investigation lead from this hour's overnight loop run (no fix shipped)\n\nNo network egress to `builder.ainative.studio`/`api.ainative.studio` this run (#1265, still open) — could not fetch `silo`'s actual stored `idea`/kickoff text, so could not confirm the real trigger. Traced the likely contributing code path via static analysis only, documenting it here rather than shipping a speculative prompt change on a P0 trust/fabrication issue without verification:\n\n- `app/api/build/documents/route.ts:174-175` — the only server-side guard on the `idea` text sent to the roadmap/mission/research/market generator is `idea.length < 3`. A bare company name like `\"silo\"` (4 chars) passes this check trivially — the guard distinguishes \"empty\" from \"non-empty,\" not \"a real founder-authored idea\" from \"just the name.\"\n- `lib/build/document-prompts.ts`'s `STRUCTURE_CONTRACT` (added by #1083) instructs the model not to substitute \"a more common adjacent business concept\" when the idea is short — but that instruction doesn't cover this issue's actual failure mode: given almost nothing but a name, the model apparently reached for a REAL, differently-named-but-identical-string public company instead of either (a) representing the sparse idea text literally, however thin, or (b) flagging that no real idea was captured. #1083's fix and this issue's bug are adjacent but distinct failure shapes under the same \"idea is too sparse to ground in\" condition.\n\n**Open question for whoever has live access next**: fetch company `silo`'s actual stored `idea` field (via the generation-state restore endpoint `RESTORE_BUILD`/`d.idea` that feeds `state.idea` in `components/build/screens/Live.tsx`) to confirm whether it really was just the bare name/near-empty, or something else entirely — that determines whether the right fix is hardening the `idea.length < 3` guard, strengthening `STRUCTURE_CONTRACT` with an explicit \"never research a differently-owned real company sharing this name\" rule, or something upstream in how `idea` gets captured at company creation.\n\nThe fabricated-testimonial problem (a named fictional person + invented metric on a live landing page) is a separate, narrower, always-true-regardless-of-grounding issue per the original filing's point 4 — worth its own fix independent of the above.\n\n---\n_Generated by [Claude Code](https://claude.ai/code)_",
+      "at": "2026-10-26T05:00:31Z",
+      "url": "https://github.com/AINative-Studio/builder-ainative-studio/issues/1540#issuecomment-6408612081"
+    }
+  ],
+  "comments_complete": true
+}

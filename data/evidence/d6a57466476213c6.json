@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50233447",
+  "collected_at": "2026-10-26T07:45:41.172442+00:00",
+  "source": {
+    "author": "anylut",
+    "children": [],
+    "created_at": "2026-10-25T16:41:36.000Z",
+    "created_at_i": 1792946496,
+    "id": 50233447,
+    "options": [],
+    "parent_id": null,
+    "points": 3,
+    "story_id": 50233447,
+    "text": "I have built an indie hacker project; my main flow was:<p>1. chatting with Claud Code about the general plan<p>2. assigning slices of work to other worker agents like Pi + DeepSeek 4.1 Flash<p>3. building in parallel<p>4. Claud Code reviews when done, runs tests, and merges after I validate<p>It worked, but with a lot of glue in the middle, so I built radian + arc into the same binary.<p>Radian: a compact, pragmatic agent that has enough tooling to solve a small coding task end to end; it does not try to be a plugin platform. You can still extend it via MCP, skills, or hooks to extend its capabilities. I think plugins are great, but a lot of them are for humans. I&#x27;m trying to remove humans from the loop. Humans are at the start and end of the loop.<p>arc: built into the radian binary;<p>* it can get work sent from another agent<p>* assign work items to concurrent headless radian agents<p>* automatically review, CICD, integrate locally<p>* humans can still be in the loop but not at the agent conversation or code review level, but at the work item approval&#x2F;review level.<p>* shows all of the above in a plan view or Kanban board in TUI.<p>I have been heavily dogfooding, and Radian + arc basically built themselves in the last couple of weeks, with me just being a product manager&#x2F;scrum master and qa.<p>radian + arc are open source at <a href=\"https:&#x2F;&#x2F;github.com&#x2F;hisea&#x2F;radian\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;hisea&#x2F;radian</a><p>What do you think about this approach?\nLooking for ideas to make Radian better or fit more scenarios.",
+    "title": "Show HN: Radian, an agent puts development workflow on autopilot",
+    "type": "story",
+    "url": "https://getrad.dev"
+  },
+  "comments": [],
+  "comments_complete": true
+}

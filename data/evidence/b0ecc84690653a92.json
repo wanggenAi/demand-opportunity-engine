@@ -1,0 +1,129 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42075",
+  "collected_at": "2026-10-26T07:45:41.172442+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/42075",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/42075/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/42075/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/42075/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/42075",
+    "id": 6025555639,
+    "node_id": "I_kwDOC4Q8Qs8AAAABZyautw",
+    "number": 42075,
+    "title": "AI Agent (V3) replaces Gemini's text before a tool call with synthetic \"Calling tools: …\" in history; model then copies it into user-facing replies",
+    "user": {
+      "login": "Fanfulla",
+      "id": 224395883,
+      "node_id": "U_kgDODWACaw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/224395883?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Fanfulla",
+      "html_url": "https://github.com/Fanfulla",
+      "followers_url": "https://api.github.com/users/Fanfulla/followers",
+      "following_url": "https://api.github.com/users/Fanfulla/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Fanfulla/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Fanfulla/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Fanfulla/subscriptions",
+      "organizations_url": "https://api.github.com/users/Fanfulla/orgs",
+      "repos_url": "https://api.github.com/users/Fanfulla/repos",
+      "events_url": "https://api.github.com/users/Fanfulla/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Fanfulla/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8811645809,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACDTcLcQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:ai",
+        "name": "team:ai",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the AI team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-10-25T14:31:40Z",
+    "updated_at": "2026-10-25T14:43:20Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nWith AI Agent v3.1 + Google Vertex Chat Model (Gemini 3.x), when the model writes text before a tool call in the same turn, the agent doesn't send that text back on the next LLM request:\n\n- parallel tool calls: the text is replaced by a synthetic `Calling tools: code_tool, reverse_tool` text part\n- single tool call: the text is dropped\n\nSo the history the model sees differs from what it actually said and what the user saw. The model sometimes picks up the synthetic format and writes it into the reply shown to the user. I saw this twice:\n\n1. With Simple Memory, within one run (1 of 4 runs): the model wrote `Calling tool: code_tool` into the streamed reply.\n2. With Postgres Chat Memory, across turns: the synthetic text was stored and replayed from memory, and on the follow-up turn the model replied `Calling tools: kb_lookupAccording to our policy…`.\n\nNo request failed (all Vertex responses HTTP 200). I found this while testing #35393; it's unrelated to that 400.\n\nRelated: #27069 (closed, unmerged opt-in \"Save AI Announcements\"), #26352 (model emitting `Calling Tool1 with input: …` text).\n\nEvidence (request/response parts logged at the HTTP layer, gemini-3.5-flash, location global, streaming; signatures shown as hash prefixes):\n\nCall 1, model response:\n```\ntext(\"I am\") | text(\" going to convert 'alpha' to uppercase and reverse the word 'beta' simultaneously.\")\nfunctionCall(code_tool {\"input\":\"alpha\"})[sig:4f88ab57]\nfunctionCall(reverse_tool {\"input\":\"beta\"})\ntext(\"\")\n```\n\nCall 2, request (replayed model turn). The original text is gone and synthetic text is inserted:\n```\nmodel:    text(\"Calling tools: code_tool, reverse_tool\") | functionCall(code_tool {\"input\":\"alpha\"})[sig:4f88ab57] | functionCall(reverse_tool {\"input\":\"beta\"})\nfunction: functionResponse(code_tool …) | functionResponse(reverse_tool …)\n```\n\nCall 2, model response. The model imitates the synthetic text:\n```\ntext(\"Calling tool: code_tool\") | functionCall(code_tool {\"input\":\"ateb\"})[sig:6f2699aa] | text(\"\")\n```\n\nCall 3, request. The text from call 2 is dropped (single call):\n```\nmodel: functionCall(code_tool {\"input\":\"ateb\"})[sig:6f2699aa]\n```\n\nChat stream received by the client:\n```\nI am going to convert 'alpha' to uppercase and reverse the word 'beta' simultaneously.Calling tool: code_toolHere are the results of the operations: ...\n```\n\nWhere it seems to come from: in `packages/@n8n/nodes-langchain/utils/agent-execution/buildSteps.ts`, `buildSharedGeminiAIMessage()` sets the content to `Calling tools: ${toolNames}` for parallel Gemini calls, and `buildIndividualAIMessage()` uses empty content for non-Anthropic providers, so a single call's leading text is lost. The streamed text reaches the chat but isn't carried into the step used for the next request or saved to memory.\n\n### To Reproduce\n\n1. Import the attached workflow:\n   - Chat Trigger (streaming) → AI Agent v3.1 with system message \"Before every tool call, first write one short sentence telling the user what you are about to do, then call the tool(s) in the same turn. Call independent tools in parallel.\"\n   - Google Vertex Chat Model `gemini-3.5-flash` (service account, region global)\n   - Simple Memory\n   - Two Code Tools: `code_tool` (upper-case) and `reverse_tool` (reverse)\n2. Set your project ID and credential, and publish the workflow.\n3. Send: `Do two independent things at once: upper-case 'alpha' with code_tool and reverse 'beta' with reverse_tool. Then upper-case the reversed result with code_tool. Show all results.`\n4. Look at the second and third LLM requests: the model's own text is missing, and the first replayed turn contains `Calling tools: code_tool, reverse_tool`. Sometimes the reply contains `Calling tool: code_tool`.\n\nThe replacement and drop happen every time; the copying into the reply is intermittent.\n\n### Expected behavior\n\nThe replayed model turn contains the model's original parts: the text it wrote, then its function calls, with signatures on the same parts. No synthetic text is added, and `Calling …` text never shows up in the user-facing reply.\n\n### Debug Info\n\n- n8n 2.45.0, built from source (master `cfbd9a56`); also seen on the official Docker images 2.45.0 and 2.34.6\n- Node.js 24.22.1, SQLite, regular execution mode, internal task runner\n- AI Agent 3.1, Chat Trigger 1.5, Google Vertex Chat Model 1, Code Tool 1.3, Simple Memory 1.3 / Postgres Chat Memory\n- gemini-3.5-flash, location global, `@langchain/google-vertexai` 2.1.24\n\nInvestigation done with AI assistance; I reviewed the setup and the results myself.\n\n### Operating System\n\nLinux (Ubuntu)\n\n### n8n Version\n\n2.45.0\n\n### Node.js Version\n\n24.22.1\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/42075/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/42075/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @Fanfulla,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9643\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9643](https://linear.app/n8n/issue/GHC-9643)",
+      "at": "2026-10-25T14:31:48Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42075#issuecomment-6398913932"
+    },
+    {
+      "author": "Fanfulla",
+      "text": "Attaching the workflow from the repro steps.\n\n[new-issue-workflow.json](https://github.com/user-attachments/files/33928332/new-issue-workflow.json)\n\n",
+      "at": "2026-10-25T14:38:11Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42075#issuecomment-6398981174"
+    }
+  ],
+  "comments_complete": true
+}

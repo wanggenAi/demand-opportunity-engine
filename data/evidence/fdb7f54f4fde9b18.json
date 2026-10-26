@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50234643",
+  "collected_at": "2026-10-26T07:45:41.172442+00:00",
+  "source": {
+    "author": "jawiggins",
+    "children": [],
+    "created_at": "2026-10-25T18:37:48.000Z",
+    "created_at_i": 1792953468,
+    "id": 50234643,
+    "options": [],
+    "parent_id": null,
+    "points": 1,
+    "story_id": 50234643,
+    "text": "Hey HN!<p>I shared Optio here back in March. Originally it was focused on getting swarms of coding agents (claude code&#x2F;codex) to drive PRs towards a merge by automatically resuming them on CI failures or PR comments.<p>Since then, I&#x27;ve reworked the project to be a general platform for running any kind of AI workflow on your infra by allowing users to configure each component of a possible workflow:<p>When: On demand, a cron schedule, or triggered by external events such as a webhook, slack message, ticket (jira&#x2F;linear&#x2F;gh), pagerduty&#x2F;datadog&#x2F;alertsmanager&#x2F;pylon&#x2F;sentry.<p>Where: In a k8s pod or any machine you have installed the optio daemon on (I use my laptop).<p>Who: Any harness you prefer (Claude Code, Codex, Gemini, Pi, etc.)<p>What&#x2F;Why: You can format parameters from the triggers directly into the prompts and then configure if the agent should exit, be resumed automatically, or be persistent.<p>You can either define workflows in the web ui or as yaml files that get synced to the orchestrator (ai config-as-code).<p>I&#x27;ve also built native iOS and Android apps so you can connect to your cluster and create&#x2F;manage agents remotely.<p>The marketing page is at <a href=\"https:&#x2F;&#x2F;optio.host\" rel=\"nofollow\">https:&#x2F;&#x2F;optio.host</a> and the code is still open source at <a href=\"https:&#x2F;&#x2F;github.com&#x2F;jonwiggins&#x2F;optio\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;jonwiggins&#x2F;optio</a><p>Would love feedback or any thoughts you might have on how I could make it better!",
+    "title": "Show HN: Optio – A self-hosted orchestration platform for AI agents",
+    "type": "story",
+    "url": "https://optio.host/"
+  },
+  "comments": [],
+  "comments_complete": true
+}

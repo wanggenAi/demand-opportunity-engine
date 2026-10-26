@@ -1,6 +1,6 @@
 # OUTCOME FEEDBACK
 
-Real events read: 427; human conversion events: 0.
+Real events read: 450; human conversion events: 0.
 DISCOVERED carries zero reply/quote/win weight. No synthetic sales events were appended to the real log.
 Rates use distinct CONTACTED opportunities. Average ticket is realized WON+REVENUE by currency; cycle is CONTACTED→WON. Two contacts minimum, Laplace-smoothed rates, bounded relative ticket/cycle correction. Platform/channel/cluster effects are averaged, not added. Hard gates always apply.
 
@@ -396,7 +396,7 @@ Rates use distinct CONTACTED opportunities. Average ticket is realized WON+REVEN
 ## Score path proof
 
 - 005c1c6186cbb2ed: components.outcome_feedback=0.0; consumed groups=[]
+- 00e2e74adf9b2f25: components.outcome_feedback=0.0; consumed groups=[]
 - 00fcb05b93a2a776: components.outcome_feedback=0.0; consumed groups=[]
-- 011753e3bb3916a0: components.outcome_feedback=0.0; consumed groups=[]
 
 For a positive/negative controlled demonstration use tests.test_engine feedback tests; those fixtures are never production outcomes.
