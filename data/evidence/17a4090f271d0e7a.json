@@ -1,0 +1,107 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42172",
+  "collected_at": "2026-10-27T07:48:10.236480+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/42172",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/42172/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/42172/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/42172/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/42172",
+    "id": 6041022723,
+    "node_id": "I_kwDOC4Q8Qs8AAAABaBKxAw",
+    "number": 42172,
+    "title": "Execute Workflow node panel shows stale sub-workflow restriction state after changing the selected sub-workflow",
+    "user": {
+      "login": "shafiktanbir",
+      "id": 58387559,
+      "node_id": "MDQ6VXNlcjU4Mzg3NTU5",
+      "avatar_url": "https://avatars.githubusercontent.com/u/58387559?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/shafiktanbir",
+      "html_url": "https://github.com/shafiktanbir",
+      "followers_url": "https://api.github.com/users/shafiktanbir/followers",
+      "following_url": "https://api.github.com/users/shafiktanbir/following{/other_user}",
+      "gists_url": "https://api.github.com/users/shafiktanbir/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/shafiktanbir/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/shafiktanbir/subscriptions",
+      "organizations_url": "https://api.github.com/users/shafiktanbir/orgs",
+      "repos_url": "https://api.github.com/users/shafiktanbir/repos",
+      "events_url": "https://api.github.com/users/shafiktanbir/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/shafiktanbir/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-10-26T13:51:44Z",
+    "updated_at": "2026-10-26T18:12:07Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nWhen opening an Execute Workflow node panel and selecting or switching the target sub-workflow, the restriction callout inside the node panel does not force a fresh policy check if the sub-workflow was already checked earlier in the session or if the workflow ID field started empty. If a sub-workflow's restricted node policies were updated since the workflow editor loaded, the node panel continues displaying the cached restriction state instead of fetching the current check.\n\n### To Reproduce\n\n1. Open a workflow containing an Execute Workflow node that points to Sub-Workflow A (or starts with an empty workflow ID), and also have Sub-Workflow B checked on the canvas.\n2. Update Sub-Workflow B so it now contains (or no longer contains) a policy-restricted node.\n3. Open the Execute Workflow node panel and change the selected sub-workflow to Sub-Workflow B.\n4. Observe that no new sub-workflow policy check request is sent for Sub-Workflow B, and the callout in the node panel reflects the old cached state.\n\n### Expected behavior\n\nSelecting or changing the target sub-workflow inside the open Execute Workflow node panel should always fetch a fresh sub-workflow policy check for the newly selected sub-workflow.\n\n### Debug Info\n\nmaster (commit 0cd0787)\n\n### Operating System\n\nUbuntu 24.04 LTS\n\n### n8n Version\n\nmaster (commit 0cd0787)\n\n### Node.js Version\n\n22.14.0\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/42172/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/42172/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @shafiktanbir,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9655\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9655](https://linear.app/n8n/issue/GHC-9655)",
+      "at": "2026-10-26T13:51:52Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42172#issuecomment-6417693936"
+    },
+    {
+      "author": "badrisatyam1-ctrl",
+      "text": "/take\n",
+      "at": "2026-10-26T18:12:07Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42172#issuecomment-6423789912"
+    }
+  ],
+  "comments_complete": true
+}

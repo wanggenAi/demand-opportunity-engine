@@ -1,11 +1,11 @@
 {
-  "observed_at": "2026-10-26T07:45:41.172442+00:00",
+  "observed_at": "2026-10-27T07:48:10.236480+00:00",
   "config": "data/discovery_config.json",
   "adapters": [
     {
       "source": "Hacker News",
       "refreshed": true,
-      "collected": 20,
+      "collected": 21,
       "errors": []
     },
     {
@@ -32,8 +32,8 @@
         "Last activity is not publication time. Only substantive buyer-authored follow-ups can renew a lead."
       ],
       "evidence_snapshots": [
-        "data/evidence/f5663f332d6bc9b1.json#sha256=c6846b0d056b74759c96c7d9195c097c393df917e0bfa242bb8aa35f8b631085",
-        "data/evidence/d9f0be47fa047f2c.json#sha256=5c6d704d6daddbbf31ccf45b0a3fc9b53568a6c73db48398013f103d0fb6ad5d"
+        "data/evidence/f5663f332d6bc9b1.json#sha256=084e590940a4bab4b54db23fcbc3a03f72b766b40cad13834684ba61a17b8a85",
+        "data/evidence/d9f0be47fa047f2c.json#sha256=ca3c4c438688d02dcea53d4be8c8579d91fd3e2145bc626648eebb331513c79b"
       ]
     },
     {
@@ -51,7 +51,7 @@
         "Legal warning - Hey, thanks for using Remotive's API, we appreciate it! Please note that API documentation and access is granted so that developers can share our jobs further. Please do not submit Remotive jobs to third Party websites, including but not limited to: Jooble, Neuvoo, Google Jobs, LinkedIn Jobs. Please link back to the URL found on Remotive AND mention Remotive as a source in order to Remotive to get traffic from your listing. If you don't do that, we'll terminate your API access, sorry! Jobs displayed are delayed by 24 hours, the goal being that jobs are attributed to Remotive on various platforms. Displaying our jobs in order to collect signups/email addresses to show a listing constitutes a breach of our terms of services. We offer a private, paid-for API, please email us at hello(at)remotive(dot)io for more information (starting budget is $5k/mo). Please find out terms of services on https://remotive.com/api-documentation. Please note that there is absolutely no need to request Remotive Job data too frequently. Typically, you only need to GET Remotive job data through this API a couple of times a day (we advise max. 4 times a day). Our data is not changing much faster than that anyway. Note that excessive requests will be blocked. Many thanks (Rodolphe & the Remotive team!)"
       ],
       "evidence_snapshots": [
-        "data/evidence/071898d5d7cef09e.json#sha256=6d5e806561bbfa2316f58fa9bf28474804c5199ed36441bcbf154c8c69db9cf0"
+        "data/evidence/071898d5d7cef09e.json#sha256=818a3cfbf3dbe7ebe330ee992d27325f3eb4b96d1f746db5ffcd25faa4036091"
       ]
     },
     {
@@ -65,15 +65,15 @@
       "collected": 0,
       "errors": [
         {
-          "url": "https://www.contractsfinder.service.gov.uk/notice/aeb37bc4-61d8-40de-b087-2908571083bf",
+          "url": "https://www.contractsfinder.service.gov.uk/notice/c959d8f9-c3be-4709-aa75-b599d5778a78",
           "error": "HTTPError: HTTP Error 403: Forbidden"
         },
         {
-          "url": "https://www.contractsfinder.service.gov.uk/notice/05a775d2-e23d-4eda-8259-dfb12f037fb5",
+          "url": "https://www.contractsfinder.service.gov.uk/notice/3244a195-4d3f-4923-b52f-8858e90ad9d1",
           "error": "HTTPError: HTTP Error 403: Forbidden"
         },
         {
-          "url": "https://www.contractsfinder.service.gov.uk/notice/7616d874-383e-479e-ab24-d97c0a2ce48f",
+          "url": "https://www.contractsfinder.service.gov.uk/notice/6e156deb-0b84-46e2-bae5-427ee3e1cf0c",
           "error": "HTTPError: HTTP Error 403: Forbidden"
         }
       ],
@@ -81,7 +81,7 @@
         "Search returned procurement notices; up to three detail pages attempted. No buyer request promoted: eligibility, exact remote scope, submission deadline and award status require manual verification."
       ],
       "evidence_snapshots": [
-        "data/evidence/50e3af0542f19c3a.json#sha256=ef8ec6f6021e737c0971a45b4769df1c5ac90ebfff5c96b240b306594c706cd7"
+        "data/evidence/50e3af0542f19c3a.json#sha256=457f35e8bad9c68e33b62ca164e960d41a569335c3de1d4adfe6f973c06c9978"
       ]
     },
     {
@@ -134,7 +134,7 @@
         "No structured primary buyer requests extracted; static shell is not commercial proof. No login or anti-bot evasion."
       ],
       "evidence_snapshots": [
-        "data/evidence/b5d67d420401a4bb.json#sha256=986c70955c3e9e076d57998e19b4be478e6818ecac315e20bdf35f34edea3c34"
+        "data/evidence/b5d67d420401a4bb.json#sha256=549dff97e9212a303f9c87b2513546153bd1464a202bc00b5babfb0fd8621da0"
       ]
     },
     {
@@ -151,18 +151,18 @@
         "Public bidCount includes competitors; only first 20 proposals may be visible. Employer identity often unresolved. Task budget is not agreement to our pilot."
       ],
       "evidence_snapshots": [
-        "data/evidence/abf73d1fa5782498.json#sha256=3ecab77c7fbee067015b0bb0e966292bc27182a408743533fcc8c74655cee8dd"
+        "data/evidence/abf73d1fa5782498.json#sha256=8a9fb45290ba757bc33bf22f32d0b93e0a4f4e11c41c451510d305d06ada63c8"
       ],
       "records": [],
       "opportunity_ids": [],
       "inspected_keys": [
+        "/projects/aliexpress/dropshipping-product-research-supplier",
         "/projects/textile-engineering/fashion-designers-wanted-bangladesh-knit",
         "/projects/amazon-fba/expert-amazon-fba-product-sourcing",
         "/projects/sourcing/source-used-test-measurement-equipment",
         "/projects/rendering/mid-century-accessorization",
         "/projects/shopify-site/full-shopify-dropship-management",
-        "/projects/shipping/buy-condor-pro-algeria-ship",
-        "/projects/product-sourcing/multi-industry-product-sourcing"
+        "/projects/shipping/buy-condor-pro-algeria-ship"
       ]
     },
     {
@@ -179,13 +179,29 @@
         "A different query/category on Freelancer does not count as another independent family."
       ],
       "evidence_snapshots": [
-        "data/evidence/eb34b643617bda88.json#sha256=8c3ef4bbabc8b73c19ed0c9d9f88102d213ee189172842f4af1542357b09a7bb"
+        "data/evidence/eb34b643617bda88.json#sha256=e54c64ae81f09490097cf323b77e3331d74967affc4fbdaad99d5c88709241ec"
       ],
       "records": [],
       "opportunity_ids": [],
       "inspected_keys": [
+        "/projects/laravel/complete-upi-payment-gateway-platform",
+        "/projects/stripe/fix-stripe-access-issues",
+        "/projects/api/obtain-brazilian-smile-one-api",
+        "/projects/api-integration/meta-verification-whatsapp-activation",
+        "/projects/odoo/odoo-erp-implementation-specialist-40788153",
+        "/projects/ai-development/engineer-for-healthcare-voice-platform",
+        "/projects/project-management/dpdp-consent-platform-technical-project",
+        "/projects/powershell/outlook-junk-email-blocker-script",
+        "/projects/web-development/islamic-prayer-quran-website",
+        "/projects/web-development/web-mobile-app-developer-for",
+        "/projects/shopify-site/mobile-accessories-commerce-site",
+        "/projects/api-integration/automate-growthhub-crm-social-posting",
+        "/projects/stripe/simple-php-stripe-checkout-integration",
+        "/projects/api/configure-meta-whatsapp-webhook",
+        "/projects/api-integration/zoho-crm-trackbox-api-integration",
+        "/projects/trading-bot-development/automated-trading-bot-development",
+        "/projects/software-development/customize-money-exchange-software",
         "/projects/api-integration/build-fennec-hub-mobile-apps",
-        "/projects/flutter/cross-platform-flutter-app-with-40787034",
         "/projects/web-development/build-football-scores-news-fans",
         "/projects/flutter/update-flutter-food-apps",
         "/projects/api-integration/automated-business-data-collection",
@@ -194,17 +210,14 @@
         "/projects/rest-api/experienced-wordpress-php-developer",
         "/projects/web-development/build-basketball-scores-fan-community",
         "/projects/web-development/website-app-service-booking",
-        "/projects/web-development/build-kabaddi-live-scores-platform",
-        "/projects/api/configure-meta-whatsapp-webhook",
         "/projects/web-development/laravel-developer-required-city-wise",
-        "/projects/api-integration/lightspeed-ecom-google-sync",
-        "/projects/rest-api/woocommerce-whatsapp-order-updates",
         "/projects/api-integration/badminton-live-scores-news-app",
         "/projects/web-development/build-badminton-website-based-our",
         "/projects/api-integration/tennis-live-scores-news-cross",
         "/projects/mysql/build-tennis-live-score-news",
         "/projects/api-integration/google-meet-live-note-taking",
         "/projects/replit/aws-dns-replit-email-setup",
+        "/projects/api-integration/ebay-canada-account-setup",
         "/projects/web-development/basketball-live-score-news-website",
         "/projects/full-stack-development/build-lunex-poc-platform",
         "/projects/automation/udyam-registration-telegram-automation",
@@ -220,20 +233,7 @@
         "/projects/android-app-development/develop-android-ios-apps-for",
         "/projects/flutter/build-cross-platform-application-for",
         "/projects/android-app-development/android-ios-app-development-similar",
-        "/projects/mobile-app-development/part-time-mobile-app-developer",
-        "/projects/android-app-development/build-android-application-exactly",
-        "/projects/ios/cross-platform-cricket-scores-app",
-        "/projects/flutter/cross-platform-cricket-live-score-40784156",
-        "/projects/android-app-development/build-live-cricket-scores-android",
-        "/projects/api-integration/build-live-cricket-scores-app",
-        "/projects/crm/build-finance-website-custom-crm",
-        "/projects/formstack/formstack-form-merge-workflows",
-        "/projects/android-app-development/android-ios-app-development-for",
-        "/projects/flutter/cross-platform-mobile-app-for-40783367",
-        "/projects/full-stack-development/optimize-criclive-seo-performance-40783327",
-        "/projects/full-stack-development/upgrade-criclive-website-live-cricket",
-        "/projects/flutter/build-high-quality-cross-platform",
-        "/projects/frontend-development/enhance-criclive-website-live-cricket"
+        "/projects/mobile-app-development/part-time-mobile-app-developer"
       ]
     },
     {
@@ -241,57 +241,64 @@
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://community.shopify.com/latest.json",
       "records_inspected": 30,
-      "primary_pages_opened": 0,
+      "primary_pages_opened": 3,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
-      "collected": 0,
+      "collected": 3,
       "errors": [],
       "limitations": [
         "Latest activity is not original publication; support questions are PRODUCT_SIGNAL, not SALES. No more than four primary topics per run."
       ],
       "evidence_snapshots": [
-        "data/evidence/bda5dc3c1eb46ea5.json#sha256=d551cca1b6f19e6d870991e3e905251cccac1dab17e939853b26d32a1fffd970"
+        "data/evidence/bda5dc3c1eb46ea5.json#sha256=df781b0474115c352c47018dbb5ea3c9ac3628412071df8e0dee817844063a9b",
+        "data/evidence/783d85337e9ce56a.json#sha256=64be4427a9471928925587b1eeb8296635bae88dead764e9a6e9940074436010",
+        "data/evidence/eb93693d9eda3a83.json#sha256=dc3836ee9cd0cfe05ecca8b8d676867898c372e2690d08be1ac6663d9e02d7bc",
+        "data/evidence/1de46100f752b6f2.json#sha256=478e13921249e07aee8ead57c6c9e6896cf4422d9b433dc66e7efea772a96b60"
       ],
       "records": [],
-      "opportunity_ids": [],
+      "opportunity_ids": [
+        "9febed42b4618e17",
+        "8ed1c69be32abcb6",
+        "a7b98fe4e505fedf"
+      ],
       "inspected_keys": [
         "355460",
-        "704703",
-        "697352",
-        "703205",
-        "660682",
-        "704278",
-        "704247",
-        "704178",
-        "703658",
-        "701753",
-        "701849",
-        "628578",
-        "308358",
-        "669696",
-        "704695",
-        "703394",
-        "703666",
-        "630899",
-        "703545",
-        "683303",
-        "683256",
-        "301424",
-        "687776",
-        "694269",
         "703363",
-        "700935",
-        "9915",
-        "243478",
-        "234345",
-        "5401"
+        "704703",
+        "672498",
+        "666280",
+        "690149",
+        "700605",
+        "688734",
+        "704807",
+        "705292",
+        "703394",
+        "599312",
+        "704695",
+        "639598",
+        "704901",
+        "697051",
+        "701042",
+        "704891",
+        "704730",
+        "703666",
+        "704312",
+        "39815",
+        "363803",
+        "14952",
+        "221866",
+        "370649",
+        "307813",
+        "405361",
+        "703658",
+        "583906"
       ]
     },
     {
       "source_family": "founder community (Indie Hackers)",
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://www.indiehackers.com/",
-      "records_inspected": 25,
+      "records_inspected": 24,
       "primary_pages_opened": 0,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
@@ -301,36 +308,35 @@
         "Only server-rendered public pages. robots disallows /api/ and sign-in; neither used. Founder self-promotion is not a buyer."
       ],
       "evidence_snapshots": [
-        "data/evidence/6548833164b0e7c9.json#sha256=276a0f932b1c3ac8dc807581558a04b19170bfa58730a40deef929cecae6a91f"
+        "data/evidence/6548833164b0e7c9.json#sha256=d2cd55bdc9df2d623647d0f46a5bd8e0f5a2c5ee9aa1825e4aff9e22521bbf2f"
       ],
       "records": [],
       "opportunity_ids": [],
       "inspected_keys": [
+        "/post/what-distribution-did-you-try-that-flopped-5ee182aad1",
         "/post/reddit-vs-indie-hackers-vs-x-for-founder-posts-where-do-you-get-real-replies-d8bcec5ae0",
+        "/post/our-engineers-say-our-ai-product-is-easy-to-use-i-m-not-convinced-9df585c5dd",
         "/post/an-ai-agent-deleted-a-production-database-in-9-seconds-what-should-have-stopped-it-1fde961ff7",
-        "/post/500-visitors-in-two-days-but-zero-sign-ups-what-am-i-getting-wrong-27580a4992",
+        "/post/who-do-you-tell-first-when-you-launch-7bf3ddfe66",
+        "/post/hearof-public-changelog-in-app-unread-badge-0-free-19-99-pro-208f3c11ce",
+        "/post/how-did-you-get-into-indie-hacking-57381fd339",
+        "/post/i-submitted-a-small-tools-site-to-40-directories-in-2-weeks-heres-what-was-actually-free-76ca1c5d38",
         "/post/postmortem-our-product-hunt-launch-got-1-upvote-heres-everything-that-went-wrong-56ee98d76d",
-        "/post/finding-a-bug-is-easy-trusting-the-ai-generated-fix-is-harder-4106af2ad5",
-        "/post/how-do-you-make-time-for-maintenance-when-you-re-also-trying-to-get-customers-f3f2e9de4e",
-        "/post/founders-which-subreddits-got-you-banned-and-which-ones-worked-44495892ef",
+        "/post/tech/how-goguardian-grew-from-a-chrome-extension-to-100m-arr-B1qKroz4HFqqH47eGHTD",
         "/post/tech/she-built-a-250k-month-business-around-an-ai-clone-07hKxdXQ0l7Bu3l2IBFy",
         "/post/tech/focusing-on-audience-first-and-hitting-30k-mrr-in-8-months-ootKyp98moigKLdaOON4",
         "/post/tech/how-rasty-turek-built-vaultaire-in-three-weeks-and-grew-it-to-40k-month-1BjFvs2akwfIVjMGYO54",
         "/post/tech/turning-an-agency-into-a-12k-mo-product-portfolio-13QkMY561jAQxsiA0LSg",
         "/post/tech/starting-from-scratch-and-hitting-9-5k-mrr-in-two-months-j5pMaED5FEbKw8qmeyj9",
+        "/post/how-do-you-handle-founder-fatigue-when-you-re-doing-everything-and-funding-it-yourself-87a059f177",
+        "/post/i-tried-to-break-my-own-saas-starter-kit-heres-what-i-learned-5a7fc4780d",
+        "/post/why-we-built-an-instantly-alternative-that-charges-per-email-sent-not-stored-contacts-b97e777882",
+        "/post/launching-two-tiny-digital-products-with-0-marketing-whats-working-so-far-6e16eeef42",
+        "/post/i-imported-9-months-of-my-own-bank-statements-into-my-app-fixing-one-months-rent-fixed-nothing-else-98f8acdf39",
+        "/post/paid-directory-launches-which-ones-worked-and-which-didn-t-3d4fc770f3",
+        "/post/tech/building-a-5k-mrr-app-while-freelancing-to-keep-the-lights-on-JhX6p14De0nagI0j1Xg1",
         "/post/tech/building-a-3m-yr-company-without-launching-publicly-tacryeGIH66SCtD2an4r",
-        "/post/hearof-public-changelog-in-app-unread-badge-0-free-19-99-pro-208f3c11ce",
-        "/post/what-i-will-count-before-calling-an-outreach-post-successful-4f13ff2a7a",
-        "/post/one-stream-27-clips-24-approved-tcg-machine-beta-update-8a6631e296",
-        "/post/how-did-you-get-into-indie-hacking-57381fd339",
-        "/post/i-built-a-client-project-workspace-for-latam-freelancers-and-small-agencies-heres-the-stack-and-what-i-m-unsure-about-5a44e3fe28",
-        "/post/i-submitted-a-small-tools-site-to-40-directories-in-2-weeks-heres-what-was-actually-free-76ca1c5d38",
-        "/post/break-the-cap-get-an-ai-agent-to-spend-past-a-0-06-limit-free-2-weeks-real-prize-11dcb074a9",
-        "/post/i-got-4-tech-giants-to-admit-the-problem-is-real-then-i-built-the-fix-and-launched-the-site-28da66fc9c",
-        "/post/building-a-product-fast-is-easy-now-that-is-exactly-the-problem-7a32cf359c",
-        "/post/creators/buying-chess-com-for-56k-and-growing-it-to-200m-in-annual-revenue-GkkdbA1ibyb3KUxKhFyT",
-        "/post/services/pivoting-a-saas-into-a-mid-5-figure-mrr-service-company-g66eHSApgPWLDMHo7Ik1",
-        "/post/tech/from-weekend-project-to-1m-mrr-in-two-years-YRaa1QlGTjaqh0XgzWkc"
+        "/post/services/pivoting-a-saas-into-a-mid-5-figure-mrr-service-company-g66eHSApgPWLDMHo7Ik1"
       ]
     },
     {
@@ -345,7 +351,7 @@
       "errors": [
         {
           "url": "https://www1.tradekey.com/buyoffer_search/start_date/3/page_no/3.htm",
-          "error": "TimeoutError: The read operation timed out"
+          "error": "URLError: <urlopen error _ssl.c:999: The handshake operation timed out>"
         }
       ],
       "limitations": [],
@@ -355,19 +361,19 @@
       "inspected_keys": []
     }
   ],
-  "unique_refreshed": 72,
+  "unique_refreshed": 76,
   "info_edge_refresh": [
     {
       "id": "5409f529cb2b0f7b",
       "url": "https://community.n8n.io/t/assistant-credits-top-up-now-available/318075",
-      "checked_at": "2026-10-26T07:45:41.172442+00:00",
+      "checked_at": "2026-10-27T07:48:10.236480+00:00",
       "refreshed": false,
       "reason": "event expired; no publication rejuvenation"
     },
     {
       "id": "edge-haiku-2026-10-07",
       "url": "https://www.anthropic.com/claude-haiku-5-5",
-      "checked_at": "2026-10-26T07:45:41.172442+00:00",
+      "checked_at": "2026-10-27T07:48:10.236480+00:00",
       "refreshed": false,
       "reason": "event expired; no publication rejuvenation"
     }

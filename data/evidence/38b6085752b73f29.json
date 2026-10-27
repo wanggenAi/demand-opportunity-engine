@@ -1,0 +1,123 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42209",
+  "collected_at": "2026-10-27T07:48:10.236480+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/42209",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/42209/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/42209/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/42209/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/42209",
+    "id": 6045982272,
+    "node_id": "I_kwDOC4Q8Qs8AAAABaF5eQA",
+    "number": 42209,
+    "title": "Anthropic Chat Model (lmChatAnthropic v1.5): sends `thinking: {type:\"disabled\"}` (400 on claude-sonnet-5-5) and parallel tool calls reach AI Agent tools with missing arguments",
+    "user": {
+      "login": "dtouidjine-maker",
+      "id": 282190319,
+      "node_id": "U_kgDOENHh7w",
+      "avatar_url": "https://avatars.githubusercontent.com/u/282190319?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dtouidjine-maker",
+      "html_url": "https://github.com/dtouidjine-maker",
+      "followers_url": "https://api.github.com/users/dtouidjine-maker/followers",
+      "following_url": "https://api.github.com/users/dtouidjine-maker/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dtouidjine-maker/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dtouidjine-maker/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dtouidjine-maker/subscriptions",
+      "organizations_url": "https://api.github.com/users/dtouidjine-maker/orgs",
+      "repos_url": "https://api.github.com/users/dtouidjine-maker/repos",
+      "events_url": "https://api.github.com/users/dtouidjine-maker/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dtouidjine-maker/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8811645809,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACDTcLcQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:ai",
+        "name": "team:ai",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the AI team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-26T18:40:45Z",
+    "updated_at": "2026-10-26T18:53:46Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\n## Bug Description\n\nTwo issues when using the **Anthropic Chat Model** node as the language model of an **AI Agent** node that has several tools (HTTP Request tools + structured tools).\n\n### 1. Claude Sonnet 5.5 rejects every request (400)\n\nWith model `claude-sonnet-5-5`, every call fails:\n\n```\n400 invalid_request_error — thinking type \"disabled\" is not supported for this model, use \"between_tools\"\nrequest_id: req_011CgQLZKZVVJVAu1TXnmK9p\n```\n\nThe node sends `thinking: {\"type\": \"disabled\"}` even though \"thinking\" is not enabled in the node options. Per Anthropic's Sonnet 5.5 docs, `disabled` returns 400 on this model; the lowest setting is `{\"type\": \"between_tools\"}`, or the field can be omitted (adaptive).\n`@langchain/anthropic` **1.5.1** already fixed this (\"Stop sending `thinking: { type: \"disabled\" }` on ChatAnthropic requests when the user never configured thinking\"). Bumping the dependency (and/or exposing `between_tools` in the node options) should fix it.\n\n### 2. Parallel tool calls arrive at tools with missing required arguments\n\nWith `claude-sonnet-4-6` (thinking issue avoided), when the model emits **several tool_use blocks in one turn**, the agent fails with:\n\n```\nReceived tool input did not match expected schema\n✖ Required → at search_query\n```\nand on another tool:\n```\n✖ Required → at analyse   ✖ Required → at pertinence   ✖ Required → at resume\n```\n\nThe same workflow, same prompt, same tools and **same model through an OpenAI-compatible provider (OpenRouter `anthropic/claude-sonnet-4.6`)** works reliably. This suggests the tool inputs of parallel `tool_use` blocks are lost/partially assembled in the Anthropic path (streamed `input_json_delta` consolidation?), not a model issue.\n\n## To Reproduce\n\n1. AI Agent node (v1.6), ≥3 tools with required string parameters (e.g. one HTTP Request tool with `search_query`, one tool with `analyse`, `pertinence`, `resume`).\n2. Connect **Anthropic Chat Model** (v1.5), model `claude-sonnet-5-5` → error 1 on first call.\n3. Switch model to `claude-sonnet-4-6`, prompt that encourages several searches → error 2 as soon as the model issues parallel tool calls (reproduced on 2 consecutive runs).\n4. Replace the model with OpenRouter Chat Model, `anthropic/claude-sonnet-4.6` → works.\n\n## Expected behavior\n\n- No `thinking` field sent unless configured (or `between_tools` available) so Sonnet 5.5 works.\n- Every parallel `tool_use` block's full `input` is passed to the matching tool.\n\n## Workaround\n\nUse the same Claude model via OpenRouter (OpenAI-compatible) instead of the native Anthropic node.\n\n## Environment\n\n- n8n version: [n8n version] — self-hosted (Docker, Coolify), queue mode: no\n- Nodes: `@n8n/n8n-nodes-langchain.agent` v1.6, `@n8n/n8n-nodes-langchain.lmChatAnthropic` v1.5\n- Models: `claude-sonnet-5-5`, `claude-sonnet-4-6` (Anthropic API, direct key)\n- OS: Linux (Ubuntu VPS)\n\n## Related\n\n- Anthropic — What's new in Claude Sonnet 5.5 (breaking change: `between_tools`): https://platform.claude.com/docs/en/models/sonnet-5-5/whats-new-sonnet-5-5\n- @langchain/anthropic CHANGELOG 1.5.1 / 1.3.11 (input_json_delta consolidation): https://app.unpkg.com/@langchain/anthropic@1.5.2/files/CHANGELOG.md\n- Community threads with the same schema error: https://community.n8n.io/t/received-tool-input-did-not-match-expected-schema-required/276546 and https://community.n8n.io/t/problem-in-node-ai-agent-received-tool-input-did-not-match-expected-schema/86219\n\n\n### To Reproduce\n\n1. Create an AI Agent node (v1.6) with 3+ tools that have required string parameters (e.g. an HTTP Request tool with `search_query`, a tool with `analyse`, `pertinence`, `resume`).\n2. Connect an Anthropic Chat Model node (v1.5) with model `claude-sonnet-5-5` (no thinking option enabled) and run the workflow.\n   → Every call fails: `400 invalid_request_error – thinking type \"disabled\" is not supported for this model, use \"between_tools\"` (request_id req_011CgQLZKZVVJVAu1TXnmK9p).\n3. Switch the model to `claude-sonnet-4-6` and use a prompt that leads the agent to call several tools in the same turn.\n   → As soon as the model emits parallel tool_use blocks, the agent fails with:\n   `Received tool input did not match expected schema ✖ Required → at search_query`\n   and on another tool: `✖ Required → at analyse ✖ Required → at pertinence ✖ Required → at resume`\n   (reproduced on 2 consecutive runs).\n4. Replace the Anthropic Chat Model with the OpenRouter Chat Model using `anthropic/claude-sonnet-4.6` (same prompt, same tools) → works reliably.\n\n### Expected behavior\n\n- The Anthropic Chat Model node should not send `thinking: {type:\"disabled\"}` when thinking is not configured (already fixed upstream in @langchain/anthropic 1.5.1), or should offer `between_tools`, so that claude-sonnet-5-5 works (see https://platform.claude.com/docs/en/models/sonnet-5-5/whats-new-sonnet-5-5).\n- When the model returns several tool_use blocks in one turn, each tool should receive its full `input` with all required arguments, as it does with the same model via an OpenAI-compatible provider.\n\n### Debug Info\n\n# Debug info\n\n## core\n\n- n8nVersion: 2.34.6\n- platform: docker (self-hosted)\n- nodeJsVersion: 24.18.0\n- nodeEnv: production\n- database: sqlite\n- executionMode: regular\n- concurrency: -1\n- license: community\n- consumerId: unknown\n\n## storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n## pruning\n\n- enabled: true\n- maxAge: 336 hours\n- maxCount: 10000 executions\n\n## client\n\n- userAgent: mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/155.0.0.0 safari/537.36\n- isTouchDevice: false\n\n## cluster\n\n- instanceCount: 1\n- versions: 2.34.6\n- instances:\n  - instanceKey: [redacted], instanceType: main, instanceRole: leader, version: 2.34.6\n- checks:\n  - check: hostid-clash, status: succeeded, warnings: -\n  - check: lifecycle, status: succeeded, warnings: -\n  - check: split-brain, status: succeeded, warnings: -\n  - check: version-mismatch, status: succeeded, warnings: -\n\nGenerated at: 2026-10-26T18:35:06.439Z\n\n### Operating System\n\nLinux (Ubuntu VPS)\n\n### n8n Version\n\n2.34.6\n\n### Node.js Version\n\n22.x (official Docker image n8nio/n8n:2.34.6)\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/42209/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/42209/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @dtouidjine-maker,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9657\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9657](https://linear.app/n8n/issue/GHC-9657)",
+      "at": "2026-10-26T18:40:55Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42209#issuecomment-6424391486"
+    }
+  ],
+  "comments_complete": true
+}

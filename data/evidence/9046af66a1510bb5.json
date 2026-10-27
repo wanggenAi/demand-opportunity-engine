@@ -1,0 +1,127 @@
+{
+  "source_api_url": "https://api.github.com/repos/relayhop/sn-monetization-runtime/issues/1339",
+  "collected_at": "2026-10-27T07:48:10.236480+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/relayhop/sn-monetization-runtime/issues/1339",
+    "repository_url": "https://api.github.com/repos/relayhop/sn-monetization-runtime",
+    "labels_url": "https://api.github.com/repos/relayhop/sn-monetization-runtime/issues/1339/labels{/name}",
+    "comments_url": "https://api.github.com/repos/relayhop/sn-monetization-runtime/issues/1339/comments",
+    "events_url": "https://api.github.com/repos/relayhop/sn-monetization-runtime/issues/1339/events",
+    "html_url": "https://github.com/relayhop/sn-monetization-runtime/issues/1339",
+    "id": 6039972215,
+    "node_id": "I_kwDOSScoo88AAAABaAKpdw",
+    "number": 1339,
+    "title": "[radar] SN open bounty 2026-10-26T12:48",
+    "user": {
+      "login": "github-actions[bot]",
+      "id": 41898282,
+      "node_id": "MDM6Qm90NDE4OTgyODI=",
+      "avatar_url": "https://avatars.githubusercontent.com/in/15368?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/github-actions%5Bbot%5D",
+      "html_url": "https://github.com/apps/github-actions",
+      "followers_url": "https://api.github.com/users/github-actions%5Bbot%5D/followers",
+      "following_url": "https://api.github.com/users/github-actions%5Bbot%5D/following{/other_user}",
+      "gists_url": "https://api.github.com/users/github-actions%5Bbot%5D/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/github-actions%5Bbot%5D/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/github-actions%5Bbot%5D/subscriptions",
+      "organizations_url": "https://api.github.com/users/github-actions%5Bbot%5D/orgs",
+      "repos_url": "https://api.github.com/users/github-actions%5Bbot%5D/repos",
+      "events_url": "https://api.github.com/users/github-actions%5Bbot%5D/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/github-actions%5Bbot%5D/received_events",
+      "type": "Bot",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 10851515357,
+        "node_id": "LA_kwDOSScoo88AAAAChsz73Q",
+        "url": "https://api.github.com/repos/relayhop/sn-monetization-runtime/labels/radar",
+        "name": "radar",
+        "color": "ededed",
+        "default": false,
+        "description": null,
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 10851515359,
+        "node_id": "LA_kwDOSScoo88AAAAChsz73w",
+        "url": "https://api.github.com/repos/relayhop/sn-monetization-runtime/labels/sn",
+        "name": "sn",
+        "color": "ededed",
+        "default": false,
+        "description": null,
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 10851515363,
+        "node_id": "LA_kwDOSScoo88AAAAChsz74w",
+        "url": "https://api.github.com/repos/relayhop/sn-monetization-runtime/labels/bounty",
+        "name": "bounty",
+        "color": "ededed",
+        "default": false,
+        "description": null,
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-10-26T12:48:58Z",
+    "updated_at": "2026-10-26T13:07:08Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "New SN OPEN_BOUNTY detected:\n\n```\n1601866\tStacker_Stocks\t2\t319\t10000\t22\t24.7\t9274\t28921\trecent@Stacker_Stocks\tOPEN_BOUNTY\tStacker Stocks Weekly Close Contest 🟩 or 🟥 - Week #16 Win up to 20k Sats!\n```",
+    "reactions": {
+      "url": "https://api.github.com/repos/relayhop/sn-monetization-runtime/issues/1339/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/relayhop/sn-monetization-runtime/issues/1339/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "calproencrip",
+      "text": "**File:** bounty-parser.js  \n**Commit:** Implement SN OPEN_BOUNTY detection and notify Stacker Stocks about the new contest\n\n```javascript\n// bounty-parser.js\nconst webhookUrl = 'https://example.com/webhook';\n\nfunction processNewBounty(data) {\n  const bountyData = data[1601866];\n  if (bountyData && bountyData[1] === 'Stacker_Stocks') {\n    const { userId, amount, contestName, reward } = bountyData;\n    const message = `${contestName}: Win up to ${reward} Sats!`;\n    sendNotification(userId, message, webhookUrl);\n  }\n}\n\nfunction sendNotification(userId, message, webhookUrl) {\n  fetch(webhookUrl, {\n    method: 'POST',\n    headers: {\n      'Content-Type': 'application/json',\n    },\n    body: JSON.stringify({ userId, message }),\n  })\n    .then(() => console.log(`Notified user ${userId} about the contest`))\n    .catch((error) => console.error(`Failed to notify user ${userId}:`, error));\n}\n\n// Example usage\nconst bountyData = [\n  [1601866, 'Stacker_Stocks', 2, 319, 10000, 22, 24.7, 9274, 28921, 'recent@Stacker_Stocks', 'OPEN_BOUNTY', 'Stacker Stocks Weekly Close Contest 🟩 or 🟥 - Week #16 Win up to 20k Sats!']\n];\n\nprocessNewBounty(bountyData);\n```\n\nThis PR adds a function to parse and notify users about new SN OPEN_BOUNTY events, specifically the Stacker Stocks Weekly Close Contest.",
+      "at": "2026-10-26T13:03:44Z",
+      "url": "https://github.com/relayhop/sn-monetization-runtime/issues/1339#issuecomment-6416677792"
+    },
+    {
+      "author": "fangjian-bit",
+      "text": "Contributor details\nYour Expensify account email: 3055073676@qq.com\nUpwork Profile Link: https://www.upwork.com/freelancers/~01a6c3832b8108493d\n\n## Proposal\n\n### Please re-state the problem that we are trying to solve in this issue.\n\nIn [`relayhop/sn-monetization-runtime`](https://github.com/relayhop/sn-monetization-runtime), the scheduled GitHub Actions workflow **sn_radar** ([`.github/workflows/sn_radar.yml`](file:///.github/workflows/sn_radar.yml)) executes [`scripts/sn_radar_v2.mjs`](file:///scripts/sn_radar_v2.mjs) every 15 minutes (`3,18,33,48 * * * *`, `7 * * * *`, and `11 6 * * *`) to scrape the Stacker News GraphQL API for opportunities and open bounties.\n\nWhen an active bounty exists on Stacker News—in this case, item **#1601866** in sub `~Stacker_Stocks` (*\"Stacker Stocks Weekly Close Contest 🟩 or 🟥 - Week #16 Win up to 20k Sats!\"*, offering a 10,000–20,000 sat reward)—the repository suffers from a critical deficiency in bounty lifecycle state management and issue deduplication:\n\n1. **Runaway Duplicate Issue Storm (1,300+ Spam Issues)**:\n   Stacker News bounties (such as weekly market contests or developer bounties) remain active for several days. Because `.github/workflows/sn_radar.yml` checks if the latest TSV contains `OPEN_BOUNTY` and unconditionally calls `github.rest.issues.create`, a new duplicate GitHub issue is generated on every single cron run. Over **1,339 issues** have been opened for the same repeating bounties, flooding the issue tracker, exhausting API budgets, and burying actionable notifications.\n2. **Race-Condition Duplication (<40s Gap Between Issues)**:\n   Overlapping schedule patterns (e.g., the Tier 1 cron at minute 48 and the Tier 1+2 cron at minute 7/delayed execution) run in close succession. For example, **Issue #1338** was created at `2026-10-26T12:48:24Z`, and **Issue #1339** was created just 34 seconds later at `2026-10-26T12:48:58Z`, both containing the exact same TSV row for Stacker News item `1601866`.\n3. **Non-Deterministic, Non-Deduplicable Issue Titles**:\n   Issue titles are formatted as timestamp snapshots (e.g. `[radar] SN open bounty 2026-10-26T12:48`) rather than entity-keyed titles (e.g. `[radar] SN bounty #1601866: Stacker Stocks Weekly Close Contest`), preventing standard GitHub search deduplication and automated tracking.\n4. **Lack of Lifecycle Cleanup & Fulfillment Automation**:\n   When a bounty is claimed on Stacker News (`bountyPaidTo` populated) or closed, corresponding GitHub issues remain open indefinitely. Furthermore, the repository lacks an automated fulfillment handler to ingest detected contest bounties and submit predictions or solutions to capture the reward.\n\n---\n\n### What is the root cause of that problem?\n\nThe problem stems from two architectural root causes in the workflow definition and the radar script:\n\n1. **Unconditional Issue Creation in [`.github/workflows/sn_radar.yml#L67-L84`](file:///.github/workflows/sn_radar.yml#L67-L84)**:\n   ```yaml\n   - name: Run radar v2\n     id: radar\n     run: |\n       ...\n       LATEST=$(ls -t data/sn_opportunities/sn_*.tsv 2>/dev/null | head -1)\n       if [ -n \"$LATEST\" ]; then\n         BOUNTIES=$(awk -F'\\t' '$11 ~ /OPEN_BOUNTY/' \"$LATEST\" | head -5)\n         ...\n       fi\n\n   - name: Open issue if open bounty found\n     if: steps.radar.outputs.bounties != ''\n     uses: actions/github-script@v7\n     with:\n       script: |\n         const body = `New SN OPEN_BOUNTY detected:\\n\\n\\`\\`\\`\\n${{ steps.radar.outputs.bounties }}\\n\\`\\`\\``;\n         await github.rest.issues.create({\n           owner: context.repo.owner,\n           repo: context.repo.repo,\n           title: `[radar] SN open bounty ${new Date().toISOString().slice(0,16)}`,\n           body,\n           labels: ['radar', 'sn', 'bounty']\n         });\n   ```\n   The workflow executes `github.rest.issues.create` on every run where `steps.radar.outputs.bounties` is non-empty. It performs no deduplication against existing open issues, nor does it check whether the detected bounty IDs have previously been notified.\n\n2. **Missing Bounty State Ledger in [`scripts/sn_radar_v2.mjs#L148-L170`](file:///scripts/sn_radar_v2.mjs#L148-L170)**:\n   In `scripts/sn_radar_v2.mjs`, the script correctly maintains append-only accumulated state files for other classifications:\n   - `data/sn_targets_accumulated/all_signals.tsv` for `SIGNAL` items\n   - `data/sn_targets_accumulated/self_post_opportunities.tsv` for `SELF_POST_OPP` items\n\n   However, there is **no persistent ledger or set for `OPEN_BOUNTY`**. Every run writes an ephemeral snapshot TSV (`data/sn_opportunities/sn_${ts}.tsv`) containing all currently open bounties from Stacker News. Because the script does not record previously alerted bounty IDs in Git-persisted storage, downstream consumers cannot determine whether a bounty is brand-new or has already been alerted 100 times.\n\n3. **Non-Atomic Concurrency and Timestamp-Based Titles**:\n   Because issue titles contain generic wall-clock timestamps rather than the Stacker News item ID (`it.id`), concurrent or overlapping workflow executions cannot detect that another run is already handling the same bounty.\n\n---\n\n### What changes do you think we should make in order to solve the problem?\n\n#### 1. Persist Alerted Bounty State in [`scripts/sn_radar_v2.mjs`](file:///scripts/sn_radar_v2.mjs)\nAdd a persistent registry file (`data/sn_targets_accumulated/alerted_bounties.tsv`) and tag newly detected bounties as `NEW_BOUNTY`, isolating them from already-alerted active bounties:\n\n```diff\n--- a/scripts/sn_radar_v2.mjs\n+++ b/scripts/sn_radar_v2.mjs\n@@ -155,6 +155,30 @@\n     fs.appendFileSync(accumFile, new Date().toISOString() + '\\t' + row(it) + '\\n');\n   }\n \n+  // 2.5 累積與去重 OPEN_BOUNTY (防止重複 issue 轟炸)\n+  const bountyLedgerFile = path.join(accumDir, 'alerted_bounties.tsv');\n+  const seenBountyIds = new Set();\n+  if (fs.existsSync(bountyLedgerFile)) {\n+    const lines = fs.readFileSync(bountyLedgerFile, 'utf8').split('\\n');\n+    for (const l of lines) {\n+      if (!l.trim() || l.startsWith('#')) continue;\n+      const parts = l.split('\\t');\n+      // parts[1] is item.id (parts[0] is discovered_at)\n+      if (parts[1]) seenBountyIds.add(parts[1].trim());\n+    }\n+  } else {\n+    fs.writeFileSync(bountyLedgerFile, '# discovered_at\\t' + headers.slice(2) + '\\n');\n+  }\n+\n+  const openBountyItems = top.filter(it => it._tags.includes('OPEN_BOUNTY'));\n+  const newBounties = [];\n+  for (const it of openBountyItems) {\n+    if (!seenBountyIds.has(String(it.id))) {\n+      newBounties.push(it);\n+      seenBountyIds.add(String(it.id));\n+      fs.appendFileSync(bountyLedgerFile, new Date().toISOString() + '\\t' + row(it) + '\\n');\n+    }\n+  }\n+\n   // 3. 累積 SELF_POST_OPP (主題挖掘)\n   const oppFile = path.join(accumDir, 'self_post_opportunities.tsv');\n   if (!fs.existsSync(oppFile)) fs.writeFileSync(oppFile, '# discovered_at\\tsub\\tscore\\tncom\\ttitle\\tangle\\n');\n@@ -179,6 +203,7 @@\n     items_unique: all.length,\n     items_in_top100: top.length,\n     signals: sigItems.length,\n+    new_open_bounties: newBounties.length,\n     self_post_opps: oppItems.length,\n     open_bounty: top.filter(it => it._tags.includes('OPEN_BOUNTY')).length,\n     hot: top.filter(it => it._tags.includes('HOT')).length,\n```\n\n#### 2. Deduplicate Issue Creation & Enable Lifecycle Auto-Close in [`.github/workflows/sn_radar.yml`](file:///.github/workflows/sn_radar.yml)\nUpdate the workflow to:\n- Export only newly discovered bounties (`NEW_BOUNTY`).\n- Deterministically title issues with the Stacker News ID: `[radar] SN bounty #${id}: ${title}`.\n- Query existing open issues via GitHub API before creating new ones.\n- Auto-close issues when Stacker News bounties are paid or expired.\n\n```diff\n--- a/.github/workflows/sn_radar.yml\n+++ b/.github/workflows/sn_radar.yml\n@@ -62,7 +62,17 @@\n           cat /tmp/radar.out\n           LATEST=$(ls -t data/sn_opportunities/sn_*.tsv 2>/dev/null | head -1)\n           if [ -n \"$LATEST\" ]; then\n-            BOUNTIES=$(awk -F'\\t' '$11 ~ /OPEN_BOUNTY/' \"$LATEST\" | head -5)\n+            # Extract only unalerted bounties by checking alerted_bounties.tsv\n+            LEDGER=\"data/sn_targets_accumulated/alerted_bounties.tsv\"\n+            touch \"$LEDGER\"\n+            BOUNTIES=$(awk -F'\\t' '\n+              NR==FNR { if ($2 != \"\") seen[$2]=1; next }\n+              $11 ~ /OPEN_BOUNTY/ && !seen[$1] {\n+                print $0\n+                seen[$1]=1\n+              }\n+            ' \"$LEDGER\" \"$LATEST\" | head -5)\n+\n             SIGNALS=$(awk -F'\\t' '$11 ~ /SIGNAL/' \"$LATEST\" | head -5)\n             {\n               echo \"bounties<<EOF\"\n@@ -81,13 +91,37 @@\n         uses: actions/github-script@v7\n         with:\n           script: |\n-            const body = `New SN OPEN_BOUNTY detected:\\n\\n\\`\\`\\`\\n${{ steps.radar.outputs.bounties }}\\n\\`\\`\\``;\n-            await github.rest.issues.create({\n+            const rawBounties = `${{ steps.radar.outputs.bounties }}`.trim().split('\\n').filter(Boolean);\n+            if (!rawBounties.length) return;\n+\n+            // Query existing open issues with label \"bounty\" to guarantee zero duplication\n+            const existingIssues = await github.rest.issues.listForRepo({\n               owner: context.repo.owner,\n               repo: context.repo.repo,\n-              title: `[radar] SN open bounty ${new Date().toISOString().slice(0,16)}`,\n-              body,\n-              labels: ['radar', 'sn', 'bounty']\n+              state: 'open',\n+              labels: 'bounty',\n+              per_page: 100\n             });\n+\n+            for (const row of rawBounties) {\n+              const cols = row.split('\\t');\n+              const [id, sub, tier, score, bounty, ncom, ageH, op_since, op_nitems, hits, tags, title] = cols;\n+              if (!id || id.startsWith('#')) continue;\n+\n+              const expectedTag = `[sn-${id}]`;\n+              const alreadyOpen = existingIssues.data.some(i => i.title.includes(expectedTag) || i.body.includes(id));\n+              if (alreadyOpen) {\n+                console.log(`Bounty #${id} already has an open tracking issue, skipping duplicate.`);\n+                continue;\n+              }\n+\n+              const issueTitle = `[radar] SN bounty #${id} ${expectedTag}: ${title || 'Open Bounty'} (${bounty} Sats)`;\n+              const body = `### Stacker News Open Bounty Detected\\n\\n- **Item ID:** [${id}](https://stacker.news/items/${id})\\n- **Sub:** ~${sub}\\n- **Bounty:** ${bounty} Sats\\n- **Score:** ${score}\\n- **Comments:** ${ncom}\\n- **Created:** ~${ageH}h ago\\n\\n\\`\\`\\`tsv\\n${row}\\n\\`\\`\\``;\n+              await github.rest.issues.create({\n+                owner: context.repo.owner,\n+                repo: context.repo.repo,\n+                title: issueTitle,\n+                body,\n+                labels: ['radar', 'sn', 'bounty']\n+              });\n+            }\n```\n\n#### 3. Immediate Resolution of Issue #1339: Contest Prediction Dispatcher\nFor Stacker News item `#1601866` (*\"Stacker Stocks Weekly Close Contest 🟩 or 🟥 - Week #16 Win up to 20k Sats!\"*), provide a submission automation script in [`scripts/sn_contest_solver.mjs`](file:///scripts/sn_contest_solver.mjs) that fetches the target stock/index symbol, retrieves the Friday closing price benchmark, formats the directional forecast comment (🟩 Green or 🟥 Red) with cryptographic sat payout invoice, and claims the 10,000 sat reward.\n\n---\n\n### What alternative solutions did you explore? (Optional)\n\n1. **GitHub Issues Search API (`octokit.rest.search.issuesAndPullRequests`)**:\n   - *Exploration*: Dynamically searching GitHub issues on every run using `q: repo:owner/repo is:issue is:open label:bounty ...`.\n   - *Drawback*: The GitHub Search API is subject to secondary rate limits (30 requests/minute) and exhibits a 10–60 second search indexing latency. In overlapping cron runs, index delay allows race conditions where two workflows query GitHub before the first issue is indexed, opening duplicates like #1338 and #1339.\n   - *Selected approach*: Storing the seen IDs in `data/sn_targets_accumulated/alerted_bounties.tsv` and committing it via Git provides atomic, local, zero-API-cost deduplication, with `issues.listForRepo` serving as a resilient secondary defense.\n\n2. **Single Pinned Issue Dashboard (Updating a Single Issue)**:\n   - *Exploration*: Editing a single pinned GitHub Issue with an active markdown table of current open bounties instead of creating individual issues.\n   - *Drawback*: Prevents webhook triggers, individual PR linkage, granular comment discussions, and bounty-specific notification routing. Having one deterministic issue per Stacker News item ID preserves clear traceability while preventing runaway spam.\n\n---\n\n### What automated tests can you add to prevent this from re-occurring?\n\nAdd a comprehensive unit test suite in [`tests/sn_radar_dedup.test.mjs`](file:///tests/sn_radar_dedup.test.mjs) using Node.js built-in test runner (`node --test`):\n\n```javascript\nimport { test, describe, beforeEach, afterEach } from 'node:test';\nimport assert from 'node:assert/strict';\nimport fs from 'node:fs';\nimport path from 'node:path';\nimport os from 'node:os';\n\ndescribe('Stacker News Radar Bounty Deduplication Suite', () => {\n  let tmpDir;\n  let ledgerPath;\n\n  beforeEach(() => {\n    tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'sn-radar-test-'));\n    ledgerPath = path.join(tmpDir, 'alerted_bounties.tsv');\n  });\n\n  afterEach(() => {\n    fs.rmSync(tmpDir, { recursive: true, force: true });\n  });\n\n  function filterNewBounties(ledgerFile, incomingRows) {\n    const seen = new Set();\n    if (fs.existsSync(ledgerFile)) {\n      const lines = fs.readFileSync(ledgerFile, 'utf8').split('\\n');\n      for (const line of lines) {\n        if (!line.trim() || line.startsWith('#')) continue;\n        const cols = line.split('\\t');\n        if (cols[1]) seen.add(cols[1].trim());\n      }\n    } else {\n      fs.writeFileSync(ledgerFile, '# discovered_at\\tid\\tsub\\ttier\\tscore\\tbounty\\n');\n    }\n\n    const newRows = [];\n    for (const row of incomingRows) {\n      const cols = row.split('\\t');\n      const id = cols[0];\n      if (id && !seen.has(id)) {\n        newRows.push(row);\n        seen.add(id);\n        fs.appendFileSync(ledgerFile, `${new Date().toISOString()}\\t${row}\\n`);\n      }\n    }\n    return newRows;\n  }\n\n  test('detects newly discovered bounty on first run', () => {\n    const mockRow = '1601866\\tStacker_Stocks\\t2\\t319\\t10000\\t22\\t24.7\\t9274\\t28921\\trecent@Stacker_Stocks\\tOPEN_BOUNTY\\tStacker Stocks Weekly Close Contest';\n    const newItems = filterNewBounties(ledgerPath, [mockRow]);\n\n    assert.equal(newItems.length, 1);\n    assert.equal(newItems[0].split('\\t')[0], '1601866');\n    assert.ok(fs.existsSync(ledgerPath));\n  });\n\n  test('strictly rejects duplicate bounty on subsequent cron executions', () => {\n    const mockRow = '1601866\\tStacker_Stocks\\t2\\t319\\t10000\\t22\\t24.7\\t9274\\t28921\\trecent@Stacker_Stocks\\tOPEN_BOUNTY\\tStacker Stocks Weekly Close Contest';\n\n    // First execution (e.g. Issue #1338 run)\n    const run1 = filterNewBounties(ledgerPath, [mockRow]);\n    assert.equal(run1.length, 1);\n\n    // Second execution 34 seconds later (e.g. Issue #1339 run)\n    const run2 = filterNewBounties(ledgerPath, [mockRow]);\n    assert.equal(run2.length, 0, 'Must not emit duplicate bounty that was already alerted');\n\n    // Third execution on next 15-minute cron interval\n    const run3 = filterNewBounties(ledgerPath, [mockRow]);\n    assert.equal(run3.length, 0, 'Must suppress repeating open bounties across all cron intervals');\n  });\n\n  test('allows new independent bounty ID while suppressing existing', () => {\n    const bountyA = '1601866\\tStacker_Stocks\\t2\\t319\\t10000\\t22\\t24.7\\t9274\\t28921\\trecent@Stacker_Stocks\\tOPEN_BOUNTY\\tStacker Stocks Contest';\n    const bountyB = '1602999\\tbitcoin\\t1\\t500\\t50000\\t5\\t1.2\\t1234\\t567\\trecent@bitcoin\\tOPEN_BOUNTY\\tLightning Node Debugging';\n\n    filterNewBounties(ledgerPath, [bountyA]);\n\n    const mixedRun = filterNewBounties(ledgerPath, [bountyA, bountyB]);\n    assert.equal(mixedRun.length, 1);\n    assert.equal(mixedRun[0].split('\\t')[0], '1602999', 'Only the new unalerted bounty ID should be accepted');\n  });\n});\n```",
+      "at": "2026-10-26T13:07:08Z",
+      "url": "https://github.com/relayhop/sn-monetization-runtime/issues/1339#issuecomment-6416746217"
+    }
+  ],
+  "comments_complete": true
+}

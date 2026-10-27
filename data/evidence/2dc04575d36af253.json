@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50227527",
-  "collected_at": "2026-10-25T07:33:30.783721+00:00",
+  "collected_at": "2026-10-27T07:48:10.236480+00:00",
   "source": {
     "author": "bsutto",
     "children": [
@@ -20,16 +20,125 @@
         "url": null
       },
       {
-        "author": "tobwen",
-        "children": [],
-        "created_at": "2026-10-25T03:25:06.000Z",
-        "created_at_i": 1792898706,
-        "id": 50227983,
+        "author": "sneurlax",
+        "children": [
+          {
+            "author": "bsutto",
+            "children": [],
+            "created_at": "2026-10-26T21:38:03.000Z",
+            "created_at_i": 1793050683,
+            "id": 50251365,
+            "options": [],
+            "parent_id": 50234658,
+            "points": null,
+            "story_id": 50227527,
+            "text": "I&#x27;m a big Dart (I&#x27;m one of the founders of <a href=\"https:&#x2F;&#x2F;onepub.dev\" rel=\"nofollow\">https:&#x2F;&#x2F;onepub.dev</a> - a dart private repository).<p>All my UI is dart&#x2F;flutter as well as any scripting (I&#x27;m the author of the dart package dcli <a href=\"https:&#x2F;&#x2F;pub.dev&#x2F;packages&#x2F;dcli\" rel=\"nofollow\">https:&#x2F;&#x2F;pub.dev&#x2F;packages&#x2F;dcli</a>).<p>I&#x27;m converting all of my back end stuff to Rust (using AI) for the performance and reduced memory.<p>We run a monitoring agent on our servers, porting from dart to rust reduced memory from around 450MB to about 30MB at about 50% of the CPU.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-25T18:38:56.000Z",
+        "created_at_i": 1792953536,
+        "id": 50234658,
         "options": [],
         "parent_id": 50227527,
         "points": null,
         "story_id": 50227527,
-        "text": "No matter how good it is, some people will auto-hate this because you used AI :(",
+        "text": "Nice to see some Dart around here, even if it migrated to Rust eventually (as I am also wont to do).  Just posting the github repo link for those that are lazy like me and want to go directly to the source: <a href=\"https:&#x2F;&#x2F;github.com&#x2F;onepub-dev&#x2F;reVault\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;onepub-dev&#x2F;reVault</a>",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "ktallett",
+        "children": [
+          {
+            "author": "hagbard_c",
+            "children": [
+              {
+                "author": "bsutto",
+                "children": [],
+                "created_at": "2026-10-26T21:39:35.000Z",
+                "created_at_i": 1793050775,
+                "id": 50251388,
+                "options": [],
+                "parent_id": 50235422,
+                "points": null,
+                "story_id": 50227527,
+                "text": "That would be a serious misunderstanding of why it&#x27;s needed.<p><a href=\"https:&#x2F;&#x2F;csrc.nist.gov&#x2F;pubs&#x2F;ir&#x2F;8547&#x2F;ipd\" rel=\"nofollow\">https:&#x2F;&#x2F;csrc.nist.gov&#x2F;pubs&#x2F;ir&#x2F;8547&#x2F;ipd</a>",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-10-25T19:51:36.000Z",
+            "created_at_i": 1792957896,
+            "id": 50235422,
+            "options": [],
+            "parent_id": 50235025,
+            "points": null,
+            "story_id": 50227527,
+            "text": "Delicious bull-shit bingo dressing? A bit like Thousand Islands dressing but for code.<p>Here&#x27;s an explanation of what it is supposed to be:<p><a href=\"https:&#x2F;&#x2F;quantumsecuritydefence.com&#x2F;quantum-news&#x2F;hybrid-pqc-classical-cryptography-explained&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;quantumsecuritydefence.com&#x2F;quantum-news&#x2F;hybrid-pqc-c...</a>",
+            "title": null,
+            "type": "comment",
+            "url": null
+          },
+          {
+            "author": "bsutto",
+            "children": [],
+            "created_at": "2026-10-26T21:25:05.000Z",
+            "created_at_i": 1793049905,
+            "id": 50251212,
+            "options": [],
+            "parent_id": 50235025,
+            "points": null,
+            "story_id": 50227527,
+            "text": "It wraps the content keys with a standard pub&#x2F;priv algo then wraps that in  a post quantum algo.<p>post quantum being an alog which we believe to be resilient in the face of emerging quantum computers.<p>The wrapping is done because the post quantum algos are new and might be flawed, so if that is broken (and we aren&#x27;t post quantum) then the standard algo will still protect the content.<p>NIST recommend the use of these hybrid keys:<p><a href=\"https:&#x2F;&#x2F;csrc.nist.gov&#x2F;pubs&#x2F;ir&#x2F;8547&#x2F;ipd\" rel=\"nofollow\">https:&#x2F;&#x2F;csrc.nist.gov&#x2F;pubs&#x2F;ir&#x2F;8547&#x2F;ipd</a>",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-25T19:12:16.000Z",
+        "created_at_i": 1792955536,
+        "id": 50235025,
+        "options": [],
+        "parent_id": 50227527,
+        "points": null,
+        "story_id": 50227527,
+        "text": "What does &quot;Hybrid post-quantum encryption&quot; mean?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "realusername",
+        "children": [
+          {
+            "author": "bsutto",
+            "children": [],
+            "created_at": "2026-10-26T21:33:40.000Z",
+            "created_at_i": 1793050420,
+            "id": 50251325,
+            "options": [],
+            "parent_id": 50235818,
+            "points": null,
+            "story_id": 50227527,
+            "text": "Compared with veracrypt:<p>It&#x27;s not a filesystem, its an archive designed to be shared.<p>It has compression built in .<p>A lockbox is signed not just encrypted- so you can verify identity and data integrity,<p>You can store variables and forms and can expand them in a script.<p>Supports multiple identities and and is designed to be shared by &#x27;granting&#x27; other access using their public key.<p>It&#x27;s designed to be portable rather than for local file access.<p>A browser can upload and open a lockbox via our wasm support.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-25T20:37:07.000Z",
+        "created_at_i": 1792960627,
+        "id": 50235818,
+        "options": [],
+        "parent_id": 50227527,
+        "points": null,
+        "story_id": 50227527,
+        "text": "Isn&#x27;t that similar to a Veracrypt volume as a file?",
         "title": null,
         "type": "comment",
         "url": null
@@ -40,10 +149,10 @@
     "id": 50227527,
     "options": [],
     "parent_id": null,
-    "points": 2,
+    "points": 9,
     "story_id": 50227527,
-    "text": "reVault is a new, secure-by-default archive format called a lockbox, designed to be simple to use.<p>I&#x27;ve been working on reVault for about 2 years. It was originally written in Dart, but with the improvements in AI, I decided to port it to Rust using AI.<p>It&#x27;s now in beta, so I&#x27;m looking for feedback, particularly around the different language bindings.<p>A lockbox is encrypted, signed and compressed by default. Each can be disabled selectively.<p><pre><code>  - Hybrid post-quantum or passphrase encryption, including metadata.\n  - Zstd compression.\n  - Pure Rust libraries wherever possible.\n</code></pre>\nWe intend to phase out remaining C code as alternatives become available. The project has been scanned using OpenAI&#x27;s Daybreak cyber security tools.<p>The manual is a work in progress:\nhttps:&#x2F;&#x2F;docs.revault.onepub.dev&#x2F;<p>reVault supports Linux, macOS and Windows, x64 and arm64, plus Wasm. The core is Rust, with bindings for C&#x2F;C++, Java, Dart, Python, Ruby, JS&#x2F;TypeScript, Go, C#, Kotlin, Lua, PHP and Swift.<p>Within a lockbox you can store:<p><pre><code>  - Files, directories, permissions and symlinks.\n  - Variables.\n  - Forms.\n</code></pre>\nVariables, forms and the lockbox itself can have descriptions.<p>reVault uses a portable vault (just another lockbox with structured content) to hold your keys, contacts&#x27; keys, lockbox aliases and form definitions.<p>It ties into your platform&#x27;s secure store, so logging into your desktop unlocks your vault. You don&#x27;t have to enter a passphrase every time you access a lockbox. You can disable this.<p>There are lots of shortcuts. Creating a lockbox stores an alias in your vault, based on its filename or a name you choose:<p><pre><code>  lbx create &#x2F;some&#x2F;path&#x2F;mybox.lbox\n  lbx mybox open --duration 1h\n  lbx mybox var set KEY VALUE\n</code></pre>\nSet a default lockbox and you can leave its name out:<p><pre><code>  lbx session default mybox\n  lbx var get KEY\n</code></pre>\nYou can mirror a directory tree into a lockbox and update it when the directory changes:<p><pre><code>  lbx store.lbox mirrors project create --from .&#x2F;project --to &#x2F;projects&#x2F;project\n  lbx store.lbox mirrors update\n</code></pre>\nThe API lets you read, write and seek within files without extracting them to the filesystem. Each lockbox has a table of contents, so extracting a single file from a multi-gigabyte lockbox is fast.<p>Recovery<p>Updates are transactional, with automatic rollback for failed updates. The format is designed for recovery: content is stored in pages, allowing unaffected content to be recovered if part of a lockbox is corrupted.<p>Sharing<p>An encrypted lockbox is more useful if you can share it.<p>reVault has an open-source keyserver for exchanging public keys, with validation through a second trusted channel. It&#x27;s still experimental.<p>OnePub has donated a server to run a single keyserver. If you&#x27;re interested in donating resources, I&#x27;d like to bring up a second redundant server. It&#x27;s pure Rust, uses under 100 MB RSS and supports rate limits.<p>To publish your default profile&#x27;s public key:<p><pre><code>  lbx vault profiles email you@example.com\n  lbx vault profiles publish\n</code></pre>\nGive the publish code to your contact. They can import your key:<p><pre><code>  lbx vault contacts receive &lt;publish-code&gt; &lt;contact-name&gt;\n</code></pre>\nDisplay your profile&#x27;s fingerprint and exchange it through a second trusted channel:<p><pre><code>  lbx vault profiles fingerprint\n</code></pre>\nRepeat the process in the opposite direction to get their key. Once you have it, grant them access to your default lockbox:<p><pre><code>  lbx access grant alice\n</code></pre>\nYou can then email the encrypted lockbox to Alice.<p>To install the CLI and get started:<p><pre><code>  cargo install revault_cli\n  lbx vault init\n  lbx completion install\n</code></pre>\nCompletion installation detects your shell. To diagnose issues:<p><pre><code>  lbx doctor\n</code></pre>\nThe language bindings are published to their respective package repositories.<p>I&#x27;m looking for constructive criticism of the project on its own merits, particularly the APIs and language bindings. I&#x27;m not interested in a debate about using AI.",
-    "title": "ReVault – new secure archive format",
+    "text": "reVault is a new, secure-by-default archive format called a lockbox, designed to be simple to use.<p>I&#x27;ve been working on reVault for about 2 years. It was originally written in Dart, but with the improvements in AI, I decided to port it to Rust using AI.<p>It&#x27;s now in beta, so I&#x27;m looking for feedback, particularly around the different language bindings.<p>A lockbox is encrypted, signed and compressed by default. Each can be disabled selectively.<p><pre><code>  - Hybrid post-quantum or passphrase encryption, including metadata.\n  - Zstd compression.\n  - Pure Rust libraries wherever possible.\n</code></pre>\nWe intend to phase out remaining C code as alternatives become available. The project has been scanned using OpenAI&#x27;s Daybreak cyber security tools.<p>The manual is a work in progress:\n<a href=\"https:&#x2F;&#x2F;docs.revault.onepub.dev&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;docs.revault.onepub.dev&#x2F;</a><p>reVault supports Linux, macOS and Windows, x64 and arm64, plus Wasm. The core is Rust, with bindings for C&#x2F;C++, Java, Dart, Python, Ruby, JS&#x2F;TypeScript, Go, C#, Kotlin, Lua, PHP and Swift.<p>Within a lockbox you can store:<p><pre><code>  - Files, directories, permissions and symlinks.\n  - Variables.\n  - Forms.\n</code></pre>\nVariables, forms and the lockbox itself can have descriptions.<p>reVault uses a portable vault (just another lockbox with structured content) to hold your keys, contacts&#x27; keys, lockbox aliases and form definitions.<p>It ties into your platform&#x27;s secure store, so logging into your desktop unlocks your vault. You don&#x27;t have to enter a passphrase every time you access a lockbox. You can disable this.<p>There are lots of shortcuts. Creating a lockbox stores an alias in your vault, based on its filename or a name you choose:<p><pre><code>  lbx create &#x2F;some&#x2F;path&#x2F;mybox.lbox\n  lbx mybox open --duration 1h\n  lbx mybox var set KEY VALUE\n</code></pre>\nSet a default lockbox and you can leave its name out:<p><pre><code>  lbx session default mybox\n  lbx var get KEY\n</code></pre>\nYou can mirror a directory tree into a lockbox and update it when the directory changes:<p><pre><code>  lbx store.lbox mirrors project create --from .&#x2F;project --to &#x2F;projects&#x2F;project\n  lbx store.lbox mirrors update\n</code></pre>\nThe API lets you read, write and seek within files without extracting them to the filesystem. Each lockbox has a table of contents, so extracting a single file from a multi-gigabyte lockbox is fast.<p>Recovery<p>Updates are transactional, with automatic rollback for failed updates. The format is designed for recovery: content is stored in pages, allowing unaffected content to be recovered if part of a lockbox is corrupted.<p>Sharing<p>An encrypted lockbox is more useful if you can share it.<p>reVault has an open-source keyserver for exchanging public keys, with validation through a second trusted channel. It&#x27;s still experimental.<p>OnePub has donated a server to run a single keyserver. If you&#x27;re interested in donating resources, I&#x27;d like to bring up a second redundant server. It&#x27;s pure Rust, uses under 100 MB RSS and supports rate limits.<p>To publish your default profile&#x27;s public key:<p><pre><code>  lbx vault profiles email you@example.com\n  lbx vault profiles publish\n</code></pre>\nGive the publish code to your contact. They can import your key:<p><pre><code>  lbx vault contacts receive &lt;publish-code&gt; &lt;contact-name&gt;\n</code></pre>\nDisplay your profile&#x27;s fingerprint and exchange it through a second trusted channel:<p><pre><code>  lbx vault profiles fingerprint\n</code></pre>\nRepeat the process in the opposite direction to get their key. Once you have it, grant them access to your default lockbox:<p><pre><code>  lbx access grant alice\n</code></pre>\nYou can then email the encrypted lockbox to Alice.<p>To install the CLI and get started:<p><pre><code>  cargo install revault_cli\n  lbx vault init\n  lbx completion install\n</code></pre>\nCompletion installation detects your shell. To diagnose issues:<p><pre><code>  lbx doctor\n</code></pre>\nThe language bindings are published to their respective package repositories.<p>I&#x27;m looking for constructive criticism of the project on its own merits, particularly the APIs and language bindings. I&#x27;m not interested in a debate about using AI.",
+    "title": "Show HN: ReVault – new secure archive format",
     "type": "story",
     "url": null
   },
@@ -55,10 +164,52 @@
       "url": "https://news.ycombinator.com/item?id=50227535"
     },
     {
-      "author": "tobwen",
-      "text": "No matter how good it is, some people will auto-hate this because you used AI :(",
-      "at": "2026-10-25T03:25:06.000Z",
-      "url": "https://news.ycombinator.com/item?id=50227983"
+      "author": "sneurlax",
+      "text": "Nice to see some Dart around here, even if it migrated to Rust eventually (as I am also wont to do).  Just posting the github repo link for those that are lazy like me and want to go directly to the source:  https://github.com/onepub-dev/reVault",
+      "at": "2026-10-25T18:38:56.000Z",
+      "url": "https://news.ycombinator.com/item?id=50234658"
+    },
+    {
+      "author": "bsutto",
+      "text": "I'm a big Dart (I'm one of the founders of  https://onepub.dev  - a dart private repository). All my UI is dart/flutter as well as any scripting (I'm the author of the dart package dcli  https://pub.dev/packages/dcli ). I'm converting all of my back end stuff to Rust (using AI) for the performance and reduced memory. We run a monitoring agent on our servers, porting from dart to rust reduced memory from around 450MB to about 30MB at about 50% of the CPU.",
+      "at": "2026-10-26T21:38:03.000Z",
+      "url": "https://news.ycombinator.com/item?id=50251365"
+    },
+    {
+      "author": "ktallett",
+      "text": "What does \"Hybrid post-quantum encryption\" mean?",
+      "at": "2026-10-25T19:12:16.000Z",
+      "url": "https://news.ycombinator.com/item?id=50235025"
+    },
+    {
+      "author": "hagbard_c",
+      "text": "Delicious bull-shit bingo dressing? A bit like Thousand Islands dressing but for code. Here's an explanation of what it is supposed to be:  https://quantumsecuritydefence.com/quantum-news/hybrid-pqc-c...",
+      "at": "2026-10-25T19:51:36.000Z",
+      "url": "https://news.ycombinator.com/item?id=50235422"
+    },
+    {
+      "author": "bsutto",
+      "text": "That would be a serious misunderstanding of why it's needed.  https://csrc.nist.gov/pubs/ir/8547/ipd",
+      "at": "2026-10-26T21:39:35.000Z",
+      "url": "https://news.ycombinator.com/item?id=50251388"
+    },
+    {
+      "author": "bsutto",
+      "text": "It wraps the content keys with a standard pub/priv algo then wraps that in  a post quantum algo. post quantum being an alog which we believe to be resilient in the face of emerging quantum computers. The wrapping is done because the post quantum algos are new and might be flawed, so if that is broken (and we aren't post quantum) then the standard algo will still protect the content. NIST recommend the use of these hybrid keys:  https://csrc.nist.gov/pubs/ir/8547/ipd",
+      "at": "2026-10-26T21:25:05.000Z",
+      "url": "https://news.ycombinator.com/item?id=50251212"
+    },
+    {
+      "author": "realusername",
+      "text": "Isn't that similar to a Veracrypt volume as a file?",
+      "at": "2026-10-25T20:37:07.000Z",
+      "url": "https://news.ycombinator.com/item?id=50235818"
+    },
+    {
+      "author": "bsutto",
+      "text": "Compared with veracrypt: It's not a filesystem, its an archive designed to be shared. It has compression built in . A lockbox is signed not just encrypted- so you can verify identity and data integrity, You can store variables and forms and can expand them in a script. Supports multiple identities and and is designed to be shared by 'granting' other access using their public key. It's designed to be portable rather than for local file access. A browser can upload and open a lockbox via our wasm support.",
+      "at": "2026-10-26T21:33:40.000Z",
+      "url": "https://news.ycombinator.com/item?id=50251325"
     }
   ],
   "comments_complete": true

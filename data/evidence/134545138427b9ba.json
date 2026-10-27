@@ -1,0 +1,44 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50242411",
+  "collected_at": "2026-10-27T07:48:10.236480+00:00",
+  "source": {
+    "author": "derekwisong",
+    "children": [
+      {
+        "author": "derekwisong",
+        "children": [],
+        "created_at": "2026-10-26T12:32:49.000Z",
+        "created_at_i": 1793017969,
+        "id": 50242562,
+        "options": [],
+        "parent_id": 50242411,
+        "points": null,
+        "story_id": 50242411,
+        "text": "Hi, I&#x27;m Derek. This is my second Show HN about Datui.  It&#x27;s undergone a lot of changes since my first post in February.<p>This started because I wanted a nice visual debugger for Polars dataframes, while working on analysis of some aircraft engine data. What started as a tool for a quick look, eventually became a place to add all the things I usually open a notebook for when starting work on a new dataset: charting, analysis, diving into groups.<p>This is a single-binary terminal viewer for tabular data: local or remote. Built on Rust, Ratatui, and Polars. Directories (and bucket prefixes) can be opened as one table.<p>I took a lot of inspiration from VisiData, but wanted to focus on viewing and not editing (datui does support exporting) large datasets.<p>I also wanted it to be themeable, have mouse support, and a customizable home page that I can use as a data catalog.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-10-26T12:19:58.000Z",
+    "created_at_i": 1793017198,
+    "id": 50242411,
+    "options": [],
+    "parent_id": null,
+    "points": 2,
+    "story_id": 50242411,
+    "text": "Datui is a TUI application I created to make viewing large tabular datasets in Parquet, CSV, and more quick and easy (hive partitioning too). It is also a landing page for your configurable catalog of data, creates exportable charts, has built in data-quality checks, and lets you query and transform with SQL. Try it as a python module to make viewing&#x2F;debugging DataFrames in a terminal session easy.  It&#x27;s built on Polars LazyFrames, so only the rows on screen are read.<p>Additionally, Datui can read custom binary formats (via a toml spec), CAN, FIX, Excel, Arrow, and others.<p>You can install it with pip install datui, brew, winget, package managers, or a curl script.<p>Try opening up public parquet with this:<p><pre><code>  datui s3:&#x2F;&#x2F;noaa-ghcn-pds&#x2F;parquet&#x2F;by_year&#x2F;YEAR=2024&#x2F;\n</code></pre>\nWhich data formats or workflows would you like to be able to inspect?",
+    "title": "Show HN: Datui – Explore Parquet, CSV, Arrow and S3 Data in the Terminal",
+    "type": "story",
+    "url": "https://github.com/derekwisong/datui"
+  },
+  "comments": [
+    {
+      "author": "derekwisong",
+      "text": "Hi, I'm Derek. This is my second Show HN about Datui.  It's undergone a lot of changes since my first post in February. This started because I wanted a nice visual debugger for Polars dataframes, while working on analysis of some aircraft engine data. What started as a tool for a quick look, eventually became a place to add all the things I usually open a notebook for when starting work on a new dataset: charting, analysis, diving into groups. This is a single-binary terminal viewer for tabular data: local or remote. Built on Rust, Ratatui, and Polars. Directories (and bucket prefixes) can be opened as one table. I took a lot of inspiration from VisiData, but wanted to focus on viewing and not editing (datui does support exporting) large datasets. I also wanted it to be themeable, have mouse support, and a customizable home page that I can use as a data catalog.",
+      "at": "2026-10-26T12:32:49.000Z",
+      "url": "https://news.ycombinator.com/item?id=50242562"
+    }
+  ],
+  "comments_complete": true
+}

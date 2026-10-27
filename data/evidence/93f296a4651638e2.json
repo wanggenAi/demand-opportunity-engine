@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42153",
+  "collected_at": "2026-10-27T07:48:10.236480+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/42153",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/42153/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/42153/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/42153/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/42153",
+    "id": 6039375702,
+    "node_id": "I_kwDOC4Q8Qs8AAAABZ_mPVg",
+    "number": 42153,
+    "title": "Evaluations UI: custom metric cards overflow into their neighbours — value and delta render at up to 6 decimals inside a fixed 192px card",
+    "user": {
+      "login": "jonico",
+      "id": 1872314,
+      "node_id": "MDQ6VXNlcjE4NzIzMTQ=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1872314?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/jonico",
+      "html_url": "https://github.com/jonico",
+      "followers_url": "https://api.github.com/users/jonico/followers",
+      "following_url": "https://api.github.com/users/jonico/following{/other_user}",
+      "gists_url": "https://api.github.com/users/jonico/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/jonico/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/jonico/subscriptions",
+      "organizations_url": "https://api.github.com/users/jonico/orgs",
+      "repos_url": "https://api.github.com/users/jonico/repos",
+      "events_url": "https://api.github.com/users/jonico/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/jonico/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-26T12:11:32Z",
+    "updated_at": "2026-10-26T12:13:42Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Describe the bug\n\n#40852 fixed the formatting half of #40844 — custom `setMetrics` values are no longer squashed into percentages, and that part works exactly as hoped. But raw values are much wider than the `73%` strings the summary strip was laid out for, and the card cannot grow or clip, so the value and its delta badge paint on top of the neighbouring card.\n\n<img width=\"1313\" height=\"272\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d2277b3f-eed7-4605-873b-c14da349317d\" />\n\nIn the screenshot (Run #39, 17 custom metrics): `Jev Legible Confidence`'s value `0.7` and its `-0.037` badge are drawn on top of `Jev Legible Norm`'s `+0.084333` badge, and the same happens between `Jev Faithful` and `Judge Match Ok`, whose value `1` is buried under the badge to its left.\n\n## Why it happens\n\n`MetricSummaryCard.vue` gives each card a fixed track that cannot shrink and does not clip:\n\n```scss\nflex: 1 0 calc(var(--spacing--4xl) + var(--spacing--3xl));   /* 128px + 64px = 192px */\npadding: var(--spacing--md) var(--spacing--lg);              /* 24px each side */\n```\n\nThat leaves **144px** of content box. `.valueRow` is `display: flex` with `flex-wrap: nowrap`, no `min-width: 0` and no `overflow`, holding:\n\n- the value at `--font-size--2xl` (28px) — `0.728333` is roughly 120px of glyphs,\n- `--spacing--sm` (16px) of gap,\n- the `TrendDeltaBadge`, itself an icon plus `+0.084333` at `--font-size--sm`, roughly another 100px.\n\nSo ~240px of content in a 144px box, with `flex-shrink: 0` and `overflow: visible` — the surplus is painted over whatever sits to the right.\n\nBoth strings come from the same helper added in #40852, which is why the value *and* the delta are wide:\n\n```ts\nfunction formatMetricNumber(value: number): string {\n\treturn value.toLocaleString(undefined, { maximumFractionDigits: 6 });\n}\n```\n\nThis only shows up for unscaled custom metrics, because `formatMetricPercent` keeps every other category to 3–4 characters.\n\n## To Reproduce\n\n1. On a workflow with evaluations, emit two or more custom metrics whose values are not round — e.g. `0.728333`, `0.833333`, `0.777778` (an average over 14 rows produces these naturally).\n2. Run the evaluation twice, so the cards also render a delta badge.\n3. Open the run detail. Adjacent cards overlap; the narrower the viewport and the more metrics, the more of them collide.\n\n## Expected behaviour\n\nA metric card is at least as wide as the value and delta it renders, and never draws over the card next to it.\n\n## Suggested fix\n\nTwo small changes, in the spirit of #40852:\n\n**1. Let the card size to its content** — `MetricSummaryStrip.vue` already wraps the row in an `ElScrollbar`, so a wider row scrolls instead of colliding:\n\n```diff\n-\tflex: 1 0 calc(var(--spacing--4xl) + var(--spacing--3xl));\n+\tflex: 1 0 auto;\n \tmin-width: calc(var(--spacing--4xl) + var(--spacing--3xl));\n```\n\n`min-width` keeps today's floor for short values, `flex-grow: 1` still fills the strip when there are only a few metrics.\n\n**2. Keep the tile readable** — six decimals is more than a summary tile needs, and the delta needs it even less. Capping `formatMetricNumber` to about four significant digits (`0.7283`, `1`, `0.8333`) keeps the cards compact while the exact value stays available on hover. Note that unscaled custom metrics currently have **no** value tooltip at all: `formattedSumScore` is `''` for them, so `valueTooltip` is empty — worth populating it with the full-precision value as part of this.\n\nOptionally `min-width: 0` on `.valueRow` as a guard, so no future change to either string can paint over a neighbour again.\n\nBoth are covered by the test files #40852 added (`evaluation.utils.test.ts`, `MetricSummaryStrip.test.ts`).\n\nHappy to open a PR for this if that helps.\n\n## Environment\n\n- n8n version: 2.45.4 (self-hosted, Docker, SQLite)\n- First affected release: 2.45.0, where #40852 shipped\n- Browser: Chrome\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/42153/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/42153/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @jonico,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9654\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9654](https://linear.app/n8n/issue/GHC-9654)",
+      "at": "2026-10-26T12:11:41Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42153#issuecomment-6415682507"
+    }
+  ],
+  "comments_complete": true
+}

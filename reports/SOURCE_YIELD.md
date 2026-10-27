@@ -1,6 +1,6 @@
 # SOURCE YIELD
 
-Observed: 2026-10-26T07:45:41.172442+00:00; evaluated: 2026-10-26T07:45:41.172442+00:00
+Observed: 2026-10-27T07:48:10.236480+00:00; evaluated: 2026-10-27T07:48:10.236480+00:00
 
 Four NEW independent ecosystems: Freelancer project marketplace, Shopify commerce operators, Indie Hackers founders, TradeKey RFQs. Two Freelancer categories count as one family. Existing n8n/Remotive/procurement/Reddit/Algora paths remain separately audited.
 Inspected = distinct listing records where keys are available; otherwise adapter listing inspections. Resolved buyer pages = primary pages with explicit commercial buyers, including physical-goods RFQs. Fresh column is original publication <=7 days, not recent seller replies. All yields are from this run only; retained old observations do not inflate them.
@@ -14,8 +14,8 @@ Inspected = distinct listing records where keys are available; otherwise adapter
 | public Reddit buyer requests | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0.0 | 0.0 | HTTPError: HTTP Error 403: Blocked |
 | freelance project marketplace (Freelancer) | 57 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0.0 | 0.0 | Public bidCount includes competitors; only first 20 proposals may be visible. Employer identity often unresolved. Task budget is not agreement to our pilot.; A different query/category on Freelancer does not count as another independent family. |
 | commerce operator community (Shopify) | 30 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0.0 | 0.0 | Latest activity is not original publication; support questions are PRODUCT_SIGNAL, not SALES. No more than four primary topics per run. |
-| founder community (Indie Hackers) | 25 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0.0 | 0.0 | Only server-rendered public pages. robots disallows /api/ and sign-in; neither used. Founder self-promotion is not a buyer. |
-| international physical-goods RFQ (TradeKey) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0.0 | 0.0 | TimeoutError: The read operation timed out |
+| founder community (Indie Hackers) | 24 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0.0 | 0.0 | Only server-rendered public pages. robots disallows /api/ and sign-in; neither used. Founder self-promotion is not a buyer. |
+| international physical-goods RFQ (TradeKey) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0.0 | 0.0 | URLError: <urlopen error _ssl.c:999: The handshake operation timed out> |
 
 ## Tomorrow's budget
 

@@ -7,7 +7,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## workflow_reliability — UNVALIDATED CLUSTER
 
-- independent_demand_count: 53
+- independent_demand_count: 58
 - payment_evidence_count: 1
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community', 'n8n Community']
 - communities: ['Ask/Show HN', 'Commerce operator forum', 'n8n Jobs', 'n8n-io/n8n', 'useagenthq/useagent']
@@ -20,16 +20,16 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://news.ycombinator.com/item?id=50252654
+  - https://github.com/n8n-io/n8n/issues/42225
+  - https://github.com/n8n-io/n8n/issues/42209
+  - https://github.com/n8n-io/n8n/issues/42188
+  - https://github.com/n8n-io/n8n/issues/42172
   - https://github.com/n8n-io/n8n/issues/42108
-  - https://github.com/n8n-io/n8n/issues/42088
-  - https://github.com/n8n-io/n8n/issues/42077
-  - https://github.com/n8n-io/n8n/issues/42075
-  - https://github.com/n8n-io/n8n/issues/42070
-  - https://github.com/n8n-io/n8n/issues/42066
 
 ## browser_automation — UNVALIDATED CLUSTER
 
-- independent_demand_count: 5
+- independent_demand_count: 6
 - payment_evidence_count: 0
 - platforms: ['GitHub']
 - communities: ['kouweizhu/agents-radar', 'n8n-io/n8n', 'useagenthq/useagent']
@@ -42,6 +42,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://github.com/n8n-io/n8n/issues/42153
   - https://github.com/kouweizhu/agents-radar/issues/654
   - https://github.com/n8n-io/n8n/issues/41548
   - https://github.com/n8n-io/n8n/issues/41471

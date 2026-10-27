@@ -1,0 +1,129 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42188",
+  "collected_at": "2026-10-27T07:48:10.236480+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/42188",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/42188/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/42188/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/42188/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/42188",
+    "id": 6043171709,
+    "node_id": "I_kwDOC4Q8Qs8AAAABaDN7fQ",
+    "number": 42188,
+    "title": "Gmail Trigger skips emails when Gmail's internalDate is in the future (follow-up to #24539)",
+    "user": {
+      "login": "VanderPants2",
+      "id": 57048338,
+      "node_id": "MDQ6VXNlcjU3MDQ4MzM4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/57048338?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/VanderPants2",
+      "html_url": "https://github.com/VanderPants2",
+      "followers_url": "https://api.github.com/users/VanderPants2/followers",
+      "following_url": "https://api.github.com/users/VanderPants2/following{/other_user}",
+      "gists_url": "https://api.github.com/users/VanderPants2/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/VanderPants2/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/VanderPants2/subscriptions",
+      "organizations_url": "https://api.github.com/users/VanderPants2/orgs",
+      "repos_url": "https://api.github.com/users/VanderPants2/repos",
+      "events_url": "https://api.github.com/users/VanderPants2/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/VanderPants2/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582010757,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cXhQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:nodes",
+        "name": "team:nodes",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Nodes team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-10-26T15:50:06Z",
+    "updated_at": "2026-10-26T16:05:25Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "<!-- Please follow the template below. Skip the questions that are not relevant to you. -->\n\n## Describe the problem/error/question\n\nThe Gmail Trigger silently skips emails when Gmail's `internalDate` of an incoming email lies in the future. This is the same bug as GitHub issue #24539 (closed by the stale bot; the reporter confirmed on 2026-09-22 it still happens on 2.39.9). The cursor logic is unchanged on current `master`.\n\nThe trigger sets `staticData.lastTimeChecked` to the newest date among the messages it fetched:\n\n```ts\nlet effectiveLastTimeChecked = Math.floor(Math.max(lastEmailDate, +startDate)) || +startDate;\n```\n\n`getEmailDateAsSeconds()` already prefers `internalDate` over the `Date:` header, but that does not help: Gmail itself can set `internalDate` in the future. In our case a customer replied from a gmail.com address to our Google Workspace mailbox, and the sender's clock was about 10 minutes ahead:\n\n| Source | Value (UTC) |\n|---|---|\n| `Received:` by mx.google.com | 14:04:51 |\n| `X-Received:` | 14:04:50 |\n| Trigger poll that picked it up | 14:05:18 |\n| `Date:` header | 14:14:50 |\n| `internalDate` returned by the Gmail API | **14:14:50** |\n\nFrom then on every poll queried `after:<14:14:50>`, which returns nothing. All Gmail Triggers on that mailbox were blind for ~10 minutes, and every email that arrived in that window was never processed. The cursor recovered by itself once the clock passed 14:14:50, but the skipped emails are never picked up again. With a larger clock skew the gap grows: we saw 72 minutes in an earlier incident, and #24539 reports several hours.\n\n**To reproduce**\n1. Activate a workflow with a Gmail Trigger (v1.4, poll every minute).\n2. Send an email to that mailbox from a client whose system clock is ahead (e.g. 15 minutes), for example via an IMAP/SMTP client against a gmail.com account.\n3. The trigger fires once for that email. `lastTimeChecked` in the workflow's static data is now in the future.\n4. Send a normal email before that future time. The trigger never fires for it.\n\n**Expected behavior**\nThe cursor should never move past the time of the poll, for example:\n\n```ts\nconst nowSeconds = Math.floor(+now);\neffectiveLastTimeChecked = Math.min(effectiveLastTimeChecked, nowSeconds);\n```\n\n`possibleDuplicates` already covers the boundary, so the email with the future date would not be emitted twice.\n\n## What is the error message (if any)?\n\nNone. That is the core of the problem: the trigger produces no executions and no errors while it skips emails.\n\n## Please share your workflow/screenshots/recording\n\nAny workflow with a Gmail Trigger reproduces it. Minimal example (credentials removed):\n\n```\n{\n  \"nodes\": [\n    {\n      \"parameters\": {\n        \"pollTimes\": { \"item\": [{ \"mode\": \"everyMinute\" }] },\n        \"filters\": {}\n      },\n      \"type\": \"n8n-nodes-base.gmailTrigger\",\n      \"typeVersion\": 1.4,\n      \"position\": [0, 0],\n      \"name\": \"Gmail Trigger\"\n    }\n  ],\n  \"connections\": {}\n}\n```\n\n## Share the output returned by the last node\n\nTrigger output for the offending email (simplified, other fields omitted):\n\n```json\n{\n  \"id\": \"1a178873d42e1349\",\n  \"internalDate\": \"1793024090000\"\n}\n```\n\n`1793024090000` = 2026-10-26 14:14:50 UTC, while the email was received at 14:04:51 UTC and picked up by the poll at 14:05:18 UTC.\n\nStatic data of every trigger on that mailbox right after that poll:\n\n```json\n{ \"lastTimeChecked\": 1793024090 }\n```\n\n## Debug info\n\n### core\n\n- n8nVersion: 2.23.2\n- platform: docker (self-hosted)\n- nodeJsVersion: 24.15.0\n- nodeEnv: production\n- database: postgres\n- executionMode: regular\n- concurrency: -1\n- license: enterprise (production)\n\n### storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n### pruning\n\n- enabled: true\n- maxAge: 48 hours\n- maxCount: 15000 executions\n\n### client\n\n- userAgent: mozilla/5.0 (macintosh; intel mac os x 10_15_7) applewebkit/537.36 (khtml, like gecko) chrome/155.0.0.0 safari/537.36\n- isTouchDevice: false\n\n### cluster\n\n- instanceCount: 1\n- versions: 2.23.2\n- instances:\n  - instanceKey: c2b42488-cee9-4383-94cd-35de08e972d4, hostId: main-76f4c04779f4, instanceType: main, instanceRole: leader, version: 2.23.2\n- checks:\n  - check: hostid-clash, status: succeeded, warnings: -\n  - check: lifecycle, status: succeeded, warnings: -\n  - check: split-brain, status: succeeded, warnings: -\n  - check: version-mismatch, status: succeeded, warnings: -\n\nGenerated at: 2026-10-26T15:36:14.184Z",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/42188/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/42188/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @VanderPants2,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9656\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9656](https://linear.app/n8n/issue/GHC-9656)",
+      "at": "2026-10-26T15:50:21Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42188#issuecomment-6420459172"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "I verified the current `GmailTrigger.node.ts` cursor path in `n8n-io/n8n` (HEAD dated 2026-10-26): `getEmailDateAsSeconds()` prefers `internalDate`, and the normal cursor still takes `Math.max(lastEmailDate, startDate)` before storing `lastTimeChecked`. So the reported future-timestamp mechanism is still present in the current source. One nuance for a fix: this implementation also holds the cursor when a bounded scan is incomplete, so clamping the fully-scanned cursor to poll time should preserve that separate hold/backlog behavior. The report’s `possibleDuplicates` assertion is consistent with its intent, but worth checking against overlap/re-fetch behavior before relying on it to avoid duplicate delivery.",
+      "at": "2026-10-26T16:05:24Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42188#issuecomment-6420810233"
+    }
+  ],
+  "comments_complete": true
+}
