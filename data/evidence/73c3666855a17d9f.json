@@ -1,0 +1,44 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50257183",
+  "collected_at": "2026-10-28T08:25:42.603238+00:00",
+  "source": {
+    "author": "jrowilliams",
+    "children": [
+      {
+        "author": "pgross",
+        "children": [],
+        "created_at": "2026-10-27T13:22:53.000Z",
+        "created_at_i": 1793107373,
+        "id": 50258859,
+        "options": [],
+        "parent_id": 50257183,
+        "points": null,
+        "story_id": 50257183,
+        "text": "I&#x27;ve found my biggest gains came from agent managed local ephemeral environments and a verification matrix.<p>Agent managed local ephemeral environments is allowing your agents to quickly and easily set up worktrees (ideally polyrepo support), configure services in separate port ranges or isolated resources (eg its own postgres db, its own apis, its own web server, etc), and populate data.  This enables many agents to work in parallel on your machine which opens the door for the verification matrix.<p>A verification matrix is a slug based list of every possible way to verify some aspect of a change to the project.  That could be running a deterministic set of tools like linting processes, tests, or custom scripts.  The verification matrix also includes manual processes such as executing sql code, api endpoints, cli commands, opening a browser and using the app, and so on.<p>Linking the verification matrix slug (eg web:manual-testing-via-chrome-devtools) to the acceptance criteria or product requirement in the plan phase is where you&#x27;d go next.  Then your plan reviewer can object to any plan whose AC&#x2F;requirement has no way to be verified -- the agent can build the new method of verification into the plan to move forward.<p>All of this is centered around verifiability.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-10-27T10:52:25.000Z",
+    "created_at_i": 1793098345,
+    "id": 50257183,
+    "options": [],
+    "parent_id": null,
+    "points": 1,
+    "story_id": 50257183,
+    "text": "Hi everyone,<p>I&#x27;m wondering what workflows&#x2F;skills&#x2F;processes you&#x27;ve found that have made a big difference to how you work as a Software Engineer, using coding agents?",
+    "title": "Ask HN: What QoL improvements have you made while doing \"agentic\" SWEngineering?",
+    "type": "story",
+    "url": null
+  },
+  "comments": [
+    {
+      "author": "pgross",
+      "text": "I've found my biggest gains came from agent managed local ephemeral environments and a verification matrix. Agent managed local ephemeral environments is allowing your agents to quickly and easily set up worktrees (ideally polyrepo support), configure services in separate port ranges or isolated resources (eg its own postgres db, its own apis, its own web server, etc), and populate data.  This enables many agents to work in parallel on your machine which opens the door for the verification matrix. A verification matrix is a slug based list of every possible way to verify some aspect of a change to the project.  That could be running a deterministic set of tools like linting processes, tests, or custom scripts.  The verification matrix also includes manual processes such as executing sql code, api endpoints, cli commands, opening a browser and using the app, and so on. Linking the verification matrix slug (eg web:manual-testing-via-chrome-devtools) to the acceptance criteria or product requirement in the plan phase is where you'd go next.  Then your plan reviewer can object to any plan whose AC/requirement has no way to be verified -- the agent can build the new method of verification into the plan to move forward. All of this is centered around verifiability.",
+      "at": "2026-10-27T13:22:53.000Z",
+      "url": "https://news.ycombinator.com/item?id=50258859"
+    }
+  ],
+  "comments_complete": true
+}

@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42188",
-  "collected_at": "2026-10-27T07:48:10.236480+00:00",
+  "collected_at": "2026-10-28T08:25:42.603238+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/42188",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -72,9 +72,9 @@
     "locked": false,
     "assignees": [],
     "milestone": null,
-    "comments": 2,
+    "comments": 4,
     "created_at": "2026-10-26T15:50:06Z",
-    "updated_at": "2026-10-26T16:05:25Z",
+    "updated_at": "2026-10-28T04:59:20Z",
     "closed_at": null,
     "assignee": null,
     "author_association": "NONE",
@@ -111,19 +111,6 @@
     "pinned_comment": null,
     "score": 1.0
   },
-  "comments": [
-    {
-      "author": "n8n-assistant[bot]",
-      "text": "Hey @VanderPants2,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9656\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9656](https://linear.app/n8n/issue/GHC-9656)",
-      "at": "2026-10-26T15:50:21Z",
-      "url": "https://github.com/n8n-io/n8n/issues/42188#issuecomment-6420459172"
-    },
-    {
-      "author": "goutham-valugula",
-      "text": "I verified the current `GmailTrigger.node.ts` cursor path in `n8n-io/n8n` (HEAD dated 2026-10-26): `getEmailDateAsSeconds()` prefers `internalDate`, and the normal cursor still takes `Math.max(lastEmailDate, startDate)` before storing `lastTimeChecked`. So the reported future-timestamp mechanism is still present in the current source. One nuance for a fix: this implementation also holds the cursor when a bounded scan is incomplete, so clamping the fully-scanned cursor to poll time should preserve that separate hold/backlog behavior. The report’s `possibleDuplicates` assertion is consistent with its intent, but worth checking against overlap/re-fetch behavior before relying on it to avoid duplicate delivery.",
-      "at": "2026-10-26T16:05:24Z",
-      "url": "https://github.com/n8n-io/n8n/issues/42188#issuecomment-6420810233"
-    }
-  ],
-  "comments_complete": true
+  "comments": [],
+  "comments_complete": false
 }

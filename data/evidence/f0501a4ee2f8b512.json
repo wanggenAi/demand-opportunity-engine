@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50258875",
+  "collected_at": "2026-10-28T08:25:42.603238+00:00",
+  "source": {
+    "author": "richardcrng",
+    "children": [],
+    "created_at": "2026-10-27T13:23:49.000Z",
+    "created_at_i": 1793107429,
+    "id": 50258875,
+    "options": [],
+    "parent_id": null,
+    "points": 8,
+    "story_id": 50258875,
+    "text": "Hi HN, I&#x27;m Richard, founder of Native. I&#x27;m working on open-source context ownership, to stop AI centralisation: <a href=\"https:&#x2F;&#x2F;github.com&#x2F;withnative&#x2F;native\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;withnative&#x2F;native</a><p>My first focus has been making Markdown vaults powerful enough so that teams can self-host all of their context (messaging, docs and projects), without it being externally fragmented or rate-limited.<p>I&#x27;m sharing some early results: Markdown vaults can be 40× more efficient with SQLite!<p><a href=\"https:&#x2F;&#x2F;www.withnative.ai&#x2F;research-and-posts&#x2F;markdown-context-benchmark\" rel=\"nofollow\">https:&#x2F;&#x2F;www.withnative.ai&#x2F;research-and-posts&#x2F;markdown-contex...</a><p>Here&#x27;s some of the main ideas:<p>- SQLite or Markdown folders, you pick. You can project the same authoritative event log into either form; more projection formats will follow (e.g. maybe neo4j; we do use a graph structure).<p>- Empirically: SQLite is better for agents! On a 120 trial evaluation for 11,000 records, agents use 40× fewer tokens with SQLite vs Markdown, per correct answer.<p>- Everything is a file or SQLite row. Messages, documents and projects: all can be modelled in your vault. You get local-first collaboration with teammates, synced to a cloud of your choice.<p>- You can render your vault with arbitrary UI. Your WhatsApp-like UI speaks to your teammate&#x27;s Slack-like UI; both are just views over the same database.<p>A few things I&#x27;ve learned building this:<p>- Agents do pretty well even without SQL if you give them strongly typed Markdown frontmatter. This was one arm of the trial I ran. I didn&#x27;t have any clear expectations, but it was cool to watch: agents ended up writing Python scripts to do SQL-like queries.<p>- Cumulatively, cached input tokens can get expensive. I feel silly in hindsight here. I&#x27;d gotten used to letting my sessions run long, &quot;It&#x27;s all cached so it&#x27;s very cheap&quot;. But when I looked at my results here, over 2&#x2F;3 of the token bill on long sessions was cached input...<p>- &quot;Markdown vaults don&#x27;t scale as well as databases&quot; isn&#x27;t as self-evident as I think. This is why I decided to benchmark it... I&#x27;ve had some very blank stares when I try to explain how Markdown files might break at true agent-scale volume.<p>Unfortunately, the dataset is private, because it&#x27;s two months of my own work. I am considering open-sourcing it even so, but there is definitely some embarrassing stuff in there. TBD... I know that independent result verification matters!<p>The core engine that I evaluated is open-source, with more to be released soon: <a href=\"https:&#x2F;&#x2F;github.com&#x2F;withnative&#x2F;native\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;withnative&#x2F;native</a><p>If you&#x27;re interested in trying connected context on an open engine, you can get updates from our website or email me directly: richard@withnative.ai<p><a href=\"https:&#x2F;&#x2F;www.withnative.ai&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;www.withnative.ai&#x2F;</a>",
+    "title": "Show HN: Markdown is 40× more token-efficient with SQLite",
+    "type": "story",
+    "url": "https://www.withnative.ai/research-and-posts/markdown-context-benchmark"
+  },
+  "comments": [],
+  "comments_complete": true
+}

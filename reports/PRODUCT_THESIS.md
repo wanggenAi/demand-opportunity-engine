@@ -7,7 +7,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## workflow_reliability — UNVALIDATED CLUSTER
 
-- independent_demand_count: 58
+- independent_demand_count: 62
 - payment_evidence_count: 1
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community', 'n8n Community']
 - communities: ['Ask/Show HN', 'Commerce operator forum', 'n8n Jobs', 'n8n-io/n8n', 'useagenthq/useagent']
@@ -20,12 +20,12 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://github.com/n8n-io/n8n/issues/42335
+  - https://news.ycombinator.com/item?id=50265028
+  - https://news.ycombinator.com/item?id=50257183
+  - https://github.com/n8n-io/n8n/issues/42252
   - https://news.ycombinator.com/item?id=50252654
   - https://github.com/n8n-io/n8n/issues/42225
-  - https://github.com/n8n-io/n8n/issues/42209
-  - https://github.com/n8n-io/n8n/issues/42188
-  - https://github.com/n8n-io/n8n/issues/42172
-  - https://github.com/n8n-io/n8n/issues/42108
 
 ## browser_automation — UNVALIDATED CLUSTER
 
@@ -51,7 +51,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## supplier_sourcing — UNVALIDATED CLUSTER
 
-- independent_demand_count: 5
+- independent_demand_count: 6
 - payment_evidence_count: 0
 - platforms: ['GitHub', 'Shopify Community']
 - communities: ['Commerce operator forum', 'n8n-io/n8n', 'zack-hum/coffee-intelligence-v1.1']
@@ -67,6 +67,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
   - https://github.com/n8n-io/n8n/issues/41635
   - https://community.shopify.com/t/how-often-do-you-sync-supplier-stock-with-your-shopify-store/700544
   - https://github.com/zack-hum/coffee-intelligence-v1.1/issues/11
+  - https://community.shopify.com/t/how-do-you-decide-when-to-stop-sourcing-from-one-supplier-and-diversify/607636
   - https://community.shopify.com/t/what-questions-do-you-always-ask-potential-suppliers-before-placing-an-order/555921
   - https://community.shopify.com/t/supplier-sku-and-shop-sku-in-purchase-orders/247864
 

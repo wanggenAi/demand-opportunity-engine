@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50261285",
+  "collected_at": "2026-10-28T08:25:42.603238+00:00",
+  "source": {
+    "author": "mellosty",
+    "children": [],
+    "created_at": "2026-10-27T16:03:31.000Z",
+    "created_at_i": 1793117011,
+    "id": 50261285,
+    "options": [],
+    "parent_id": null,
+    "points": 3,
+    "story_id": 50261285,
+    "text": "I built Formstep: <a href=\"https:&#x2F;&#x2F;formstep.io\" rel=\"nofollow\">https:&#x2F;&#x2F;formstep.io</a><p>The idea came from a problem I kept running into while working on loan applications.<p>A workflow could automate a large part of the process, but eventually it would need something only the customer could provide: a document, a correction, a signature, an explanation, or confirmation of some information.<p>At that point, workflow automation basically did not work.<p>The forms themselves were also often the source of the problem. Applications came in with wrong documents, misunderstood questions, incomplete answers, or people simply forgetting to finish.<p>Someone had to email the customer, explain what was missing, wait for a reply then follow up again. It was always back-and-forth.<p>So I built Formstep to make requesting information from customers easier, not only for humans, but also for workflows and AI agents.<p>The idea is: A person, workflow, or AI agent sends a customer a request through email or a link. Either re-use existing form  or create unique for each customer.<p>You can prefill what you already know, lock fields, pass context, and only ask the customer what you need.<p>For example, we might already know:<p>* Address that you already have in the CRM<p>* Company description from the internet<p>* What a agreement document must contain<p>* How a good answer should be<p>Formstep can check inputs and uploaded files while the customer is filling out the form and tell them if something is missing or inconsistent before they submit.\nFor example “The PDF does not contain your signature” or “Invoice total does not match the order amount”.<p>The goal is to catch problems while the customer is still there, rather than letting bad data continue through the workflow and discovering it later.<p>On the automation side, requests can currently be created through n8n, Zapier, the REST API, or by an AI agent over MCP.\nWhen the customer finishes, the structured answers can go back into the workflow so it can continue.<p>Forms and invitation&#x2F;reminder are multilingual, and submitted answers can be translated inside the dashboard with one click.  If you want, Formstep can be used as normal form builder and shared through public links, QR, embeds etc. It support custom themes for dark&#x2F;light mode, with cover image, has Notion-style editor and much more. The list is too long to fit here.<p>I want to make Formstep a plattform where it becomes more intelligent over time and ensures that we can get better answers from customers for any use case.<p>My question to you:\nWhere do your automations currently stop because they need input from a customer or user, and how are you handling that today?<p>If you are interested in trying out the n8n node: <a href=\"https:&#x2F;&#x2F;www.npmjs.com&#x2F;package&#x2F;n8n-nodes-formstep\" rel=\"nofollow\">https:&#x2F;&#x2F;www.npmjs.com&#x2F;package&#x2F;n8n-nodes-formstep</a><p>Zapier integration: <a href=\"https:&#x2F;&#x2F;zapier.com&#x2F;apps&#x2F;formstep&#x2F;integrations\" rel=\"nofollow\">https:&#x2F;&#x2F;zapier.com&#x2F;apps&#x2F;formstep&#x2F;integrations</a><p>Connecting your AI agent: <a href=\"https:&#x2F;&#x2F;docs.formstep.io&#x2F;developers&#x2F;mcp-server&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;docs.formstep.io&#x2F;developers&#x2F;mcp-server&#x2F;</a><p>Docs: <a href=\"https:&#x2F;&#x2F;docs.formstep.io\" rel=\"nofollow\">https:&#x2F;&#x2F;docs.formstep.io</a><p>I would love your feedback and please try a quick demo at <a href=\"https:&#x2F;&#x2F;app.formstep.io&#x2F;try\" rel=\"nofollow\">https:&#x2F;&#x2F;app.formstep.io&#x2F;try</a>",
+    "title": "Show HN: Formstep, Request information from customers without the back-and-forth",
+    "type": "story",
+    "url": "https://formstep.io/"
+  },
+  "comments": [],
+  "comments_complete": true
+}

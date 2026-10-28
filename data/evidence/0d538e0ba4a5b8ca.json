@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50261093",
+  "collected_at": "2026-10-28T08:25:42.603238+00:00",
+  "source": {
+    "author": "zwad3",
+    "children": [],
+    "created_at": "2026-10-27T15:48:59.000Z",
+    "created_at_i": 1793116139,
+    "id": 50261093,
+    "options": [],
+    "parent_id": null,
+    "points": 12,
+    "story_id": 50261093,
+    "text": "Cryo is a programming language that models long-running tasks like workflows or AI agents. Programs freeze to disk when idle and can be thawed when new data arrives.<p>As part of our announcement of Endothermic Labs, we&#x27;ve put together a small demo of Cryo that highlights its features and walks through the language and its plugin system.<p>We originally built it as a way to deploy healthcare agents at scale, but have rebuilt it from the ground up to be a standalone toolchain for long-running tasks. It acts as something like a cross between Durable Objects and Temporal workflows, where the script itself is the durable unit with no replay needed.<p>Cryo is statically and structurally typed, with a concurrency model similar to Go. It&#x27;s still under active development, so we&#x27;re holding off on open sourcing it until we&#x27;re confident that the language is stable, ideally in the next 3-4 weeks.",
+    "title": "Show HN: Cryo – A language whose programs live forever",
+    "type": "story",
+    "url": "https://play.endothermic.ai/"
+  },
+  "comments": [],
+  "comments_complete": true
+}
