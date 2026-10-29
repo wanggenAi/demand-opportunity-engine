@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/Expensify/App/issues/105215",
-  "collected_at": "2026-10-28T08:25:42.603238+00:00",
+  "collected_at": "2026-10-29T08:25:40.101774+00:00",
   "source": {
     "url": "https://api.github.com/repos/Expensify/App/issues/105215",
     "repository_url": "https://api.github.com/repos/Expensify/App",
@@ -72,6 +72,27 @@
     "locked": false,
     "assignees": [
       {
+        "login": "c3024",
+        "id": 102477862,
+        "node_id": "U_kgDOBhuwJg",
+        "avatar_url": "https://avatars.githubusercontent.com/u/102477862?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/c3024",
+        "html_url": "https://github.com/c3024",
+        "followers_url": "https://api.github.com/users/c3024/followers",
+        "following_url": "https://api.github.com/users/c3024/following{/other_user}",
+        "gists_url": "https://api.github.com/users/c3024/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/c3024/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/c3024/subscriptions",
+        "organizations_url": "https://api.github.com/users/c3024/orgs",
+        "repos_url": "https://api.github.com/users/c3024/repos",
+        "events_url": "https://api.github.com/users/c3024/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/c3024/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      {
         "login": "thelullabyy",
         "id": 182625428,
         "node_id": "U_kgDOCuKklA",
@@ -94,9 +115,9 @@
       }
     ],
     "milestone": null,
-    "comments": 7,
+    "comments": 12,
     "created_at": "2026-10-28T02:47:57Z",
-    "updated_at": "2026-10-28T02:55:41Z",
+    "updated_at": "2026-10-29T02:24:06Z",
     "closed_at": null,
     "assignee": {
       "login": "thelullabyy",
@@ -134,7 +155,7 @@
       "blocking": 0,
       "total_blocking": 0
     },
-    "body": "If you haven’t already, check out our [contributing guidelines](https://github.com/Expensify/ReactNativeChat/blob/main/contributingGuides/CONTRIBUTING.md) for onboarding. To join our Slack channel, fill out [this form](https://forms.gle/Q7hnhUJPnQCK7Fe56).\n___\n\n**Version Number:** v9.5.24-2\n**Reproducible in staging?:** Yes\n**Reproducible in production?:** Yes\n**If this was caught during regression testing, add the test name, ID and link from BrowserStack:** https://github.com/Expensify/App/pull/104671\n**Email or phone of affected tester (no customers):** leungbratt6+2210@gmail.com\n**Issue reported by:** Applause Internal Team\n**Bug source:** Pull Request QA execution\n**Device used:** Windows 11/Chrome\n**App Component:** Left Hand Navigation (LHN)\n\n## Action Performed:\nPreconditions: The user has a Workspace with a Business Band Account and a Personal BA to withdraw\n1. Open the New Dot app\n2. Navigate to an approved report in Workspace chat\n3. Pay it with the Business Band Account\n4. Go to the Spend tab - Reports -Column - Select Withdrawal ID\n\n## Expected Result:\nA Withdrawal ID appears in the paid report\n\n## Actual Result:\nBlank at the Withdrawal ID (recheck the same paid report after 12hours, still blank)\n\n## Workaround:\nUnknown\n\n## Platforms:\n- [ ] Android: App\n- [ ] Android: mWeb Chrome\n- [ ] iOS: App\n- [ ] iOS: mWeb Safari\n- [ ] iOS: mWeb Chrome\n- [x] Windows: Chrome\n- [ ] MacOS: Chrome Safari\n\n## Screenshots/Videos\n\nhttps://github.com/user-attachments/assets/d20c1fbe-ab87-4bd6-899d-76de769955d2\n\n[View all open jobs on GitHub](https://github.com/Expensify/App/issues?q=is%3Aopen+is%3Aissue+label%3A%22Help+Wanted%22)\n\n\n> **Applause Internal Information**\n> Exported by: Chandana Kiran\n> Bug ID: 7298423\n<details><summary>Upwork Automation - Do Not Edit</summary>\n    <ul>\n        <li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022115275697924542772\">https://www.upwork.com/jobs/~022115275697924542772</a></li>\n        <li>Upwork Job ID: 2115275697924542772</li>\n        <li>Last Price Increase: 2026-10-28</li>\n    </ul>\n</details>",
+    "body": "If you haven’t already, check out our [contributing guidelines](https://github.com/Expensify/ReactNativeChat/blob/main/contributingGuides/CONTRIBUTING.md) for onboarding. To join our Slack channel, fill out [this form](https://forms.gle/Q7hnhUJPnQCK7Fe56).\n___\n\n**Version Number:** v9.5.24-2\n**Reproducible in staging?:** Yes\n**Reproducible in production?:** Yes\n**If this was caught during regression testing, add the test name, ID and link from BrowserStack:** https://github.com/Expensify/App/pull/104671\n**Email or phone of affected tester (no customers):** leungbratt6+2210@gmail.com\n**Issue reported by:** Applause Internal Team\n**Bug source:** Pull Request QA execution\n**Device used:** Windows 11/Chrome\n**App Component:** Left Hand Navigation (LHN)\n\n## Action Performed:\nPreconditions: The user has a Workspace with a Business Band Account and a Personal BA to withdraw\n1. Open the New Dot app\n2. Navigate to an approved report in Workspace chat\n3. Pay it with the Business Band Account\n4. Go to the Spend tab - Reports -Column - Select Withdrawal ID\n\n## Expected Result:\nA Withdrawal ID appears in the paid report\n\n## Actual Result:\nBlank at the Withdrawal ID (recheck the same paid report after 12hours, still blank)\n\n## Workaround:\nUnknown\n\n## Platforms:\n- [ ] Android: App\n- [ ] Android: mWeb Chrome\n- [ ] iOS: App\n- [ ] iOS: mWeb Safari\n- [ ] iOS: mWeb Chrome\n- [x] Windows: Chrome\n- [ ] MacOS: Chrome Safari\n\n## Screenshots/Videos\n\nhttps://github.com/user-attachments/assets/d20c1fbe-ab87-4bd6-899d-76de769955d2\n\n[View all open jobs on GitHub](https://github.com/Expensify/App/issues?q=is%3Aopen+is%3Aissue+label%3A%22Help+Wanted%22)\n\n\n> **Applause Internal Information**\n> Exported by: Chandana Kiran\n> Bug ID: 7298423\n<details><summary>Upwork Automation - Do Not Edit</summary>\n    <ul>\n        <li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022115275697924542772\">https://www.upwork.com/jobs/~022115275697924542772</a></li>\n        <li>Upwork Job ID: 2115275697924542772</li>\n        <li>Last Price Increase: 2026-10-28</li>\n    </ul>\n</details>\n\n<details><summary>Issue Owner</summary>Current Issue Owner: @c3024</details>",
     "reactions": {
       "url": "https://api.github.com/repos/Expensify/App/issues/105215/reactions",
       "total_count": 1,
@@ -153,6 +174,79 @@
     "pinned_comment": null,
     "score": 1.0
   },
-  "comments": [],
-  "comments_complete": false
+  "comments": [
+    {
+      "author": "applause-bot[bot]",
+      "text": "While Applause doesn't embed attachments for this bug, here are the links for quick view:\nhttps://platform.applause.com/services/links/v1/external/4eb429b1d2975881dd787659882fea0de2039ed24d64b51198e82bb24e829e8f",
+      "at": "2026-10-28T02:47:59Z",
+      "url": "https://github.com/Expensify/App/issues/105215#issuecomment-6459289021"
+    },
+    {
+      "author": "MelvinBot",
+      "text": "## Proposal\n\n### What is the root cause of that problem?\nThe App shows exactly what Search returns, and Search did not return a withdrawal ID for this report. This appears to be a backend/internal issue. A separate internal investigation is needed.\n\nThe column only renders the report's `withdrawalIDs` field from the Search results. Nothing in the App sets that field, including the pay flow. The field is defined as the report's **settled** withdrawal IDs. An ACH payment from a business bank account may still be unsettled 12 hours later, so the blank cell may be expected behavior rather than a bug.\n\n<details>\n<summary>Code evidence</summary>\n\n- The cell renders `item.withdrawalIDs` as is: [`ExpenseReportListItemRowWide.tsx:272-274`](https://github.com/Expensify/App/blob/fedc94f82232bb7e0e265549070f30085490dd6c/src/components/Search/SearchList/ListItem/ExpenseReportListItemRow/ExpenseReportListItemRowWide.tsx#L272-L274)\n- The report row copies the Search entry unchanged and spreads it into the list item: [`SearchUIUtils.ts:2915`](https://github.com/Expensify/App/blob/fedc94f82232bb7e0e265549070f30085490dd6c/src/libs/SearchUIUtils.ts#L2915), [`SearchUIUtils.ts:2997-2999`](https://github.com/Expensify/App/blob/fedc94f82232bb7e0e265549070f30085490dd6c/src/libs/SearchUIUtils.ts#L2997-L2999)\n- The field is typed as settled withdrawals only: [`Report.ts:116-117`](https://github.com/Expensify/App/blob/fedc94f82232bb7e0e265549070f30085490dd6c/src/types/onyx/Report.ts#L116-L117)\n- The key name matches everywhere (row, sort, column width, selector, whitelist). No action in `src/libs/actions` sets `withdrawalID` or `withdrawalIDs`.\n\nI couldn't check production logs in this run, so I haven't confirmed whether this withdrawal was created or settled.\n</details>\n\n### What changes do you think we should make in order to solve the problem?\nNo App change is needed. An internal engineer should check this tester's paid report (leungbratt6+2210@gmail.com):\n\n1. If the withdrawal is still unsettled, this is expected. Recheck after it settles, and consider clarifying the QA steps in [Add the Withdrawal ID custom column to expense report searches](https://github.com/Expensify/App/pull/104671) to say the ID appears only after settlement.\n2. If the withdrawal is settled and Search still omits `withdrawalIDs`, the fix is on the backend, outside the App repo.\n\n**Related:** [\\[Due for payment 2026-11-03\\] \\[CFI\\] Add the `Withdrawal ID` custom column to expense report searches](https://github.com/Expensify/App/issues/104139) is the feature issue for this column.\n\n---\n**Next Steps for Contributor+ team:**\n**To accept:** `@MelvinBot implement [this](https://github.com/Expensify/App/issues/105215)` to create a draft PR.\n**To refine:** `@MelvinBot <your feedback>`\n**To reject:** Explain why you are rejecting Melvin's proposal.\n\n\n---\n_[view run](https://github.com/Expensify/melvin/actions/runs/40623042556)_\n",
+      "at": "2026-10-28T02:53:09Z",
+      "url": "https://github.com/Expensify/App/issues/105215#issuecomment-6459367992"
+    },
+    {
+      "author": "melvin-bot[bot]",
+      "text": "Triggered auto assignment to Contributor-plus team member for initial proposal review - @thelullabyy (`External`)",
+      "at": "2026-10-28T02:53:16Z",
+      "url": "https://github.com/Expensify/App/issues/105215#issuecomment-6459369773"
+    },
+    {
+      "author": "melvin-bot[bot]",
+      "text": "Job added to Upwork: https://www.upwork.com/jobs/~022115275697924542772",
+      "at": "2026-10-28T02:53:23Z",
+      "url": "https://github.com/Expensify/App/issues/105215#issuecomment-6459371626"
+    },
+    {
+      "author": "j3ffffff",
+      "text": "VERDICT: POST\nROOT_CAUSE_ONELINER: PR #104671 introduced the Withdrawal ID column in Spend > Reports by reading `report.withdrawalIDs` from the backend search API (Auth PR 25635), but Auth PR 25635 does not populate `withdrawalIDs` for reports paid via Business Bank Account (BBA), so the field is absent in search results and the column is always blank for BBA-paid reports.\nPROPOSAL_TYPE: FIRST\nAUTOPOST_SAFE: YES\n",
+      "at": "2026-10-28T02:54:09Z",
+      "url": "https://github.com/Expensify/App/issues/105215#issuecomment-6459383187"
+    },
+    {
+      "author": "camesenin",
+      "text": "## Proposal\n\n### Please re-state the problem that we are trying to solve in this issue.\n\nAfter paying an approved report with a business bank account, its Withdrawal ID column remains blank in Spend → Reports, including when checked 12 hours later. We need to determine whether the identifier is missing from the server response or lost during client storage, transformation, or rendering.\n\n### What is the root cause of that problem?\n\n**The root cause is not established by the available evidence.** MelvinBot provides a plausible investigation direction, but its conclusion that no App change is needed is premature.\n\nThe supplied proposal cites these locations at revision `fedc94f82232bb7e0e265549070f30085490dd6c`:\n\n| Referenced location | What it could establish | What it cannot establish |\n|---|---|---|\n| `ExpenseReportListItemRowWide.tsx:272–274` | The cell reads `item.withdrawalIDs`. | Whether the affected row receives fresh data. |\n| `SearchUIUtils.ts:2915, 2997–2999` | The referenced transformation preserves the field. | Whether subscriptions, caching, or memoization propagate later changes. |\n| `src/types/onyx/Report.ts:116–117` | The documented meaning of the property. | The affected withdrawal’s actual settlement state or the runtime API contract. |\n\nThese references are **supplied evidence, not independently verified findings**: the pinned files and issue history could not be retrieved in this session. No affected Search payload, Onyx trace, settlement record, or executed reproduction was available.\n\nIn particular:\n\n- A blank cell does not prove Search omitted the field.\n- Absence of a local payment mutation does not prove a backend defect; server responses or subsequent updates may supply the value.\n- Twelve elapsed hours proves neither settlement nor non-settlement.\n- A type comment alone does not establish that the reported behavior satisfies the feature requirements.\n\n### What changes do you think we should make in order to solve the problem?\n\n**Do not approve a production patch or close this as expected behavior yet.** An exact TypeScript diff would currently invent the defective boundary.\n\nCapture one reproduction with the same report ID across:\n\n1. Payment completion and authoritative withdrawal status.\n2. A fresh Search request and its returned `withdrawalIDs`.\n3. The corresponding stored Search entry.\n4. The transformed row and rendered cell.\n\nUse that evidence to select the smallest change:\n\n| Observed boundary failure | Appropriate correction |\n|---|---|\n| A contractually eligible withdrawal is absent from a fresh Search response | Correct the backend population or serialization path. |\n| Search returns the ID, but stored results retain the old value | Correct the specific response merge or subscription path. |\n| Stored results contain the ID, but the row remains blank | Correct the specific transformation or rendering update condition. |\n| The withdrawal is ineligible under a confirmed settlement-only contract | Correct the QA expectation; no payment-flow patch is justified. |\n\nDo not synthesize a withdrawal ID from a payment ID, optimistically mark a withdrawal settled, or introduce polling without demonstrating the need.\n\nExpensify’s [contributing guidelines](https://github.com/Expensify/App/blob/main/contributingGuides/CONTRIBUTING.md) require reproduction before proposing a solution and a meaningful difference from existing proposals. This assessment is an investigation gate, not a verified competing implementation.\n\n### What alternative solutions did you explore? (Optional)\n\n**Complement MelvinBot’s investigation; reject its unconditional conclusion.**\n\nIts backend-versus-unsettled split misses a third possibility: the server returns the identifier, but the client continues displaying stale data. That possibility is unproven, but it must be eliminated before declaring the App correct.\n\nConversely, changing the frontend merely to compete with MelvinBot would be equally unsupported. No evidence currently demonstrates a missing mutation, a defective comparator, or a rendering bug. The proposed internal investigation substantially overlaps MelvinBot’s existing proposal and should not be presented as a distinct bounty solution.\n\n### What automated tests can you add to prevent this from re-occurring?\n\nAfter verifying the actual component types and test harness, add a Jest regression case named:\n\n```typescript\nit('updates the withdrawal ID cell when the same report receives withdrawal IDs')\n```\n\nThe test should:\n\n1. Render an eligible report with the Withdrawal ID column selected and no IDs.\n2. Deliver an immutable Search-result update containing a valid withdrawal ID while retaining the same report ID and list key.\n3. Assert that the existing row displays the identifier without navigation or remounting.\n4. Update an unrelated report and assert that the original row retains its identifier.\n\nAlso cover initial populated data, the contract’s supported empty representation, and multiple IDs if supported by the schema.\n\nIf the defect is server-side, add a backend regression test proving that an eligible withdrawal reaches the Search response. A Jest fixture that supplies the missing field cannot validate backend generation.\n\n**Validation status:** No tests were executed. No verified TypeScript patch or security impact has been established.\n\n### Proof of Concept (Reproduction Demo)\n- **Interactive Reproduction & Verification Video:** https://github.com/camesenin/App/releases/download/evidence/proof_issue_105215.webm\n\nContributor details  \nYour Expensify account email: camesenin@gmail.com  \nUpwork Profile Link: https://www.upwork.com/freelancers/~01b60d704ba377be83",
+      "at": "2026-10-28T02:55:39Z",
+      "url": "https://github.com/Expensify/App/issues/105215#issuecomment-6459406332"
+    },
+    {
+      "author": "melvin-bot[bot]",
+      "text": "✅ Contributor details stored successfully. Thank you for contributing to Expensify!",
+      "at": "2026-10-28T02:55:41Z",
+      "url": "https://github.com/Expensify/App/issues/105215#issuecomment-6459407019"
+    },
+    {
+      "author": "hardik4love-lang",
+      "text": "## Proposal\n\n### What is the root cause of that problem?\nIn `src/components/Search/SearchList/ListItem/ExpenseReportListItemRow/ExpenseReportListItemRowWide.tsx` (lines 272–274), the \"Withdrawal ID\" column renders `item.withdrawalIDs` directly from the Search index.\nWhen an expense report is settled via an ACH business bank account transfer, ACH clearance typically takes 1 to 3 business days. Until the transaction settlements are fully processed and confirmed on the server side, the backend Search response leaves `withdrawalIDs` empty/null.\nBecause the frontend currently renders a blank cell without any visual distinction between an unsettled/pending payment vs a report with no payment attached, users and QA perceive this as a missing field / UI bug.\n\n### What changes do you think we should make in order to solve the problem?\n1. In `src/components/Search/SearchList/ListItem/ExpenseReportListItemRow/ExpenseReportListItemRowWide.tsx`:\n   - If `item.withdrawalIDs` is populated, render the withdrawal ID string as usual.\n   - If `item.withdrawalIDs` is null/empty but the report has an active pending settlement state (e.g., `report.statusNum === CONST.REPORT.STATUS_NUM.PROCESSING` or `report.isWaitingOnBank`), render a fallback pending indicator or localized message (e.g. `translate('search.pendingSettlement')` or dash/placeholder rather than an empty blank space) so users know the settlement is in flight.\n\n2. In `src/libs/SearchUIUtils.ts`:\n   - Add a helper function or check `isReportPaymentPending(report)` that inspects the report state so the cell renderer accurately reflects unsettled ACH transfers without throwing or failing regression checks.\n\n### What alternative solutions did you explore? (Optional)\n- Doing nothing / closing as expected behavior: Rejected because a blank cell gives no feedback to the user on whether the payment was dispatched or failed.\n- Fabricating or optimistically predicting a withdrawal ID on the client: Rejected because ACH withdrawal IDs are generated strictly by the server banking processor upon settlement confirmation.\n\n### What automated tests can you add to prevent this from re-occurring?\n- Add unit test coverage in `tests/unit/SearchUIUtilsTest.ts` verifying that expense reports with pending bank payment status display the expected pending state before `withdrawalIDs` are received from the server.\n\nContributor details\nYour Expensify account email: hardik4love@gmail.com\nUpwork Profile Link: https://www.upwork.com/freelancers/~01ae8e58df76cb90f5\n",
+      "at": "2026-10-28T13:47:38Z",
+      "url": "https://github.com/Expensify/App/issues/105215#issuecomment-6470723643"
+    },
+    {
+      "author": "melvin-bot[bot]",
+      "text": "✅ Contributor details stored successfully. Thank you for contributing to Expensify!",
+      "at": "2026-10-28T13:47:41Z",
+      "url": "https://github.com/Expensify/App/issues/105215#issuecomment-6470724776"
+    },
+    {
+      "author": "trjExpensify",
+      "text": "@c3024 @JS00001 as this is within the regression period: https://github.com/Expensify/App/issues/104139",
+      "at": "2026-10-28T17:20:01Z",
+      "url": "https://github.com/Expensify/App/issues/105215#issuecomment-6475777014"
+    },
+    {
+      "author": "JS00001",
+      "text": "assigning kc as well to take a look",
+      "at": "2026-10-28T17:26:32Z",
+      "url": "https://github.com/Expensify/App/issues/105215#issuecomment-6475922547"
+    },
+    {
+      "author": "Kabeer099",
+      "text": "## Proposal\n\n### Please re-state the problem that we are trying to solve in this issue.\nOn Web under **Spend > Reports**, after paying an approved expense report with a Business Bank Account (BBA), the **Withdrawal ID** column remains blank.\n\n### What is the root cause of that problem?\n1. In `src/components/Search/SearchList/ListItem/ExpenseReportListItemRow/ExpenseReportListItemRowWide.tsx` (lines 272–274), the **Withdrawal ID** column renders `item.withdrawalIDs` directly from the report item in the Search snapshot (`src/libs/SearchUIUtils.ts:2915, 2997–2999`).\n2. When an expense report is paid via `payMoneyRequest` (`src/libs/actions/IOU/PayMoneyRequest.ts`), neither the optimistic Onyx report update nor the backend Search response immediately populates `withdrawalIDs` while the Business Bank Account ACH withdrawal is still pending settlement on the backend.\n3. Because `withdrawalIDs` is only populated by the backend once the ACH settlement withdrawal record is finalized (or if the backend search query omits unsettled BBA withdrawal IDs), `item.withdrawalIDs` is `undefined` and the cell renders empty.\n\n### What changes do you think we should make in order to solve the problem?\n1. If the **Withdrawal ID** column in **Spend > Reports** is intended to show only settled withdrawal IDs, no client-side code change is needed unless a pending placeholder/dash should be rendered when a report is reimbursed via ACH (`statusNum === CONST.REPORT.STATUS_NUM.REIMBURSED`) and `item.withdrawalIDs` is not yet populated.\n2. Otherwise, if unsettled BBA withdrawal IDs should appear immediately after paying a report, the backend Search index (`Auth` search query for `withdrawalIDs` introduced for PR `#104671`) should include pending BBA withdrawal IDs (and `getReportSections` in `src/libs/SearchUIUtils.ts` should fall back to `report.withdrawalIDs ?? reportSnapshot.withdrawalIDs`).\n\n### What alternative solutions did you explore? (Optional)\nGenerating a synthetic withdrawal ID optimistically on the client in `payMoneyRequest` was ruled out because withdrawal IDs are assigned by the server's settlement processor.",
+      "at": "2026-10-29T02:24:06Z",
+      "url": "https://github.com/Expensify/App/issues/105215#issuecomment-6486152704"
+    }
+  ],
+  "comments_complete": true
 }

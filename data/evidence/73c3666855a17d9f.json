@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50257183",
-  "collected_at": "2026-10-28T08:25:42.603238+00:00",
+  "collected_at": "2026-10-29T08:25:40.101774+00:00",
   "source": {
     "author": "jrowilliams",
     "children": [
@@ -15,6 +15,21 @@
         "points": null,
         "story_id": 50257183,
         "text": "I&#x27;ve found my biggest gains came from agent managed local ephemeral environments and a verification matrix.<p>Agent managed local ephemeral environments is allowing your agents to quickly and easily set up worktrees (ideally polyrepo support), configure services in separate port ranges or isolated resources (eg its own postgres db, its own apis, its own web server, etc), and populate data.  This enables many agents to work in parallel on your machine which opens the door for the verification matrix.<p>A verification matrix is a slug based list of every possible way to verify some aspect of a change to the project.  That could be running a deterministic set of tools like linting processes, tests, or custom scripts.  The verification matrix also includes manual processes such as executing sql code, api endpoints, cli commands, opening a browser and using the app, and so on.<p>Linking the verification matrix slug (eg web:manual-testing-via-chrome-devtools) to the acceptance criteria or product requirement in the plan phase is where you&#x27;d go next.  Then your plan reviewer can object to any plan whose AC&#x2F;requirement has no way to be verified -- the agent can build the new method of verification into the plan to move forward.<p>All of this is centered around verifiability.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "netshade",
+        "children": [],
+        "created_at": "2026-10-28T12:13:45.000Z",
+        "created_at_i": 1793189625,
+        "id": 50272363,
+        "options": [],
+        "parent_id": 50257183,
+        "points": null,
+        "story_id": 50257183,
+        "text": "Sensors everywhere. If it&#x27;s at all relevant to what you&#x27;re working on, providing a different way of viewing something, and a skill description on how to do that, has these long-compounding effects that are magic at first, and then become &quot;of course, it should always just work&quot; as your expectation.<p>My product that I&#x27;m working on sorta acquired a bunch of that. I put a ton of work into making a browser that could just see &#x2F; interact w&#x2F; the web in a ton of different contexts. Now that I have it, it&#x27;s pretty amazing to just have the agent do everything I need it to ( pull a network log, debug JS, navigate a form ), and it has the appropriate context everywhere.",
         "title": null,
         "type": "comment",
         "url": null
@@ -38,6 +53,12 @@
       "text": "I've found my biggest gains came from agent managed local ephemeral environments and a verification matrix. Agent managed local ephemeral environments is allowing your agents to quickly and easily set up worktrees (ideally polyrepo support), configure services in separate port ranges or isolated resources (eg its own postgres db, its own apis, its own web server, etc), and populate data.  This enables many agents to work in parallel on your machine which opens the door for the verification matrix. A verification matrix is a slug based list of every possible way to verify some aspect of a change to the project.  That could be running a deterministic set of tools like linting processes, tests, or custom scripts.  The verification matrix also includes manual processes such as executing sql code, api endpoints, cli commands, opening a browser and using the app, and so on. Linking the verification matrix slug (eg web:manual-testing-via-chrome-devtools) to the acceptance criteria or product requirement in the plan phase is where you'd go next.  Then your plan reviewer can object to any plan whose AC/requirement has no way to be verified -- the agent can build the new method of verification into the plan to move forward. All of this is centered around verifiability.",
       "at": "2026-10-27T13:22:53.000Z",
       "url": "https://news.ycombinator.com/item?id=50258859"
+    },
+    {
+      "author": "netshade",
+      "text": "Sensors everywhere. If it's at all relevant to what you're working on, providing a different way of viewing something, and a skill description on how to do that, has these long-compounding effects that are magic at first, and then become \"of course, it should always just work\" as your expectation. My product that I'm working on sorta acquired a bunch of that. I put a ton of work into making a browser that could just see / interact w/ the web in a ton of different contexts. Now that I have it, it's pretty amazing to just have the agent do everything I need it to ( pull a network log, debug JS, navigate a form ), and it has the appropriate context everywhere.",
+      "at": "2026-10-28T12:13:45.000Z",
+      "url": "https://news.ycombinator.com/item?id=50272363"
     }
   ],
   "comments_complete": true

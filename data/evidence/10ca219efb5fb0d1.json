@@ -1,0 +1,129 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42503",
+  "collected_at": "2026-10-29T08:25:40.101774+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/42503",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/42503/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/42503/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/42503/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/42503",
+    "id": 6090174335,
+    "node_id": "I_kwDOC4Q8Qs8AAAABawCvfw",
+    "number": 42503,
+    "title": "Gmail Trigger's error handling keeps the new poll back-off from ever engaging (polls every minute through 401/429)",
+    "user": {
+      "login": "Xactoblade",
+      "id": 171745051,
+      "node_id": "U_kgDOCjyfGw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/171745051?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Xactoblade",
+      "html_url": "https://github.com/Xactoblade",
+      "followers_url": "https://api.github.com/users/Xactoblade/followers",
+      "following_url": "https://api.github.com/users/Xactoblade/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Xactoblade/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Xactoblade/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Xactoblade/subscriptions",
+      "organizations_url": "https://api.github.com/users/Xactoblade/orgs",
+      "repos_url": "https://api.github.com/users/Xactoblade/repos",
+      "events_url": "https://api.github.com/users/Xactoblade/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Xactoblade/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582010757,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cXhQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:nodes",
+        "name": "team:nodes",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Nodes team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-10-29T00:33:13Z",
+    "updated_at": "2026-10-29T01:05:27Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nWith `N8N_SCHEDULER_POLL_TRIGGERS_ENABLED=true` and `N8N_POLLER_DURABLE_CURSORS_ENABLED=true`, a failing poll trigger backs off (`poll-backoff.service.js`, which already maps 429 + Retry-After and 401/403). The Gmail Trigger never reaches it, because it catches its own API errors and returns \"no new mail\":\n\n```ts\n// packages/nodes-base/nodes/Google/Gmail/GmailTrigger.node.ts (same on master today)\nif (this.getMode() !== 'manual') {\n    nodeStaticData.lastTimeChecked ??= +now;          // set before the try, on every scheduled poll\n}\n...\n} catch (error) {\n    if (this.getMode() === 'manual' || !nodeStaticData.lastTimeChecked) {\n        throw error;                                   // so this only fires for manual runs\n    }\n    this.logger.error(`There was a problem in '${node.name}' node in workflow '${workflow.id}': '${error.description}'`, ...);\n}\n...\nif (!allFetchedMessages.length) {\n    return null;\n}\n```\n\nBecause `lastTimeChecked` is set before the `try`, the rethrow only fires in manual mode, so every scheduled poll's errors are hidden. `PollTriggerTaskHandler` sees a successful empty poll and calls `recordSuccess`, never `recordFailure`. There's no back-off, no failed execution and no error workflow; the only trace is one log line per poll.\n\nI understand the swallow-and-log was probably deliberate under the old in-memory poller, so one Gmail hiccup wouldn't stop a workflow (#5397 was closed on similar grounds). Now that the scheduler handles failures properly (back-off, cursor left in place, workflow stays active), the swallow defeats the protection the back-off was built for.\n\nWhy it matters to us: a Gmail Trigger hit `429 User-rate limit exceeded` and kept polling every minute. Each refused call pushed Gmail's Retry-After further out, and the mailbox stayed blocked for about 13 hours.\n\n### To Reproduce\n\n1. Enable the two settings above (`N8N_SCHEDULER_ENABLED` and `N8N_USE_WORKFLOW_PUBLICATION_SERVICE` at their default true).\n2. Create a `gmailOAuth2` credential with a made-up client and access token, so Google answers 401.\n3. Create a workflow with only a Gmail Trigger (typeVersion 1.4, poll every minute) using that credential, then activate it.\n\n**Observed:**\n- Activation succeeds, even though the credential can't work.\n- For 6 minutes, every scheduled task finished `succeeded`, and `poller_state.consecutiveErrors` stayed `0` with `backoffUntil` null.\n- No executions were saved.\n- The log showed `There was a problem in 'Gmail test' node in workflow '<id>': 'undefined'` once a minute (`error.description` is undefined for this error, so the line doesn't even say what failed).\n\n**Control:** an RSS Feed Read Trigger on the same instance, pointed at a server answering `429` with `Retry-After: 180`, logged `Poll failed; backing off`, `consecutiveErrors` went 1→3, and its polls dropped from every minute to every 4 minutes.\n\n### Expected behavior\n\nGmail API errors on a scheduled poll should reach the poll back-off like other poll triggers: a 429 should honour Retry-After, and a 401/403 should get the long back-off. One option: rethrow when durable poll cursors are on (or always, now that the scheduler handles failures), and keep the log-and-continue path only for the legacy poller. Also, the log line should fall back to `error.message` when `error.description` is undefined.\n\n### Debug Info\n\n- Gmail Trigger typeVersion 1.4, poll mode \"every minute\"\n- `N8N_SCHEDULER_POLL_TRIGGERS_ENABLED=true`, `N8N_POLLER_DURABLE_CURSORS_ENABLED=true`; `N8N_SCHEDULER_ENABLED` and `N8N_USE_WORKFLOW_PUBLICATION_SERVICE` at default (true)\n- Docker image `docker.n8n.io/n8nio/n8n`, Postgres 16, single main instance\n\n### Operating System\n\nmacOS 26 (Docker Desktop)\n\n### n8n Version\n\n2.45.5\n\n### Node.js Version\n\n26.12.1\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/42503/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/42503/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @Xactoblade,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9667\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9667](https://linear.app/n8n/issue/GHC-9667)",
+      "at": "2026-10-29T00:33:22Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42503#issuecomment-6484497016"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "I checked the current `master` source. The scheduled Gmail path initializes `lastTimeChecked` before the poll’s outer `try`, then the catch rethrows only for manual mode or a missing cursor; otherwise it logs and continues ([GmailTrigger.node.ts](https://github.com/n8n-io/n8n/blob/master/packages/nodes-base/nodes/Google/Gmail/GmailTrigger.node.ts#L341-L345) and [catch/empty result](https://github.com/n8n-io/n8n/blob/master/packages/nodes-base/nodes/Google/Gmail/GmailTrigger.node.ts#L792-L811)). The poll task handler records failure from its exception path and success after a completed poll ([poll-trigger-task-handler.ts](https://github.com/n8n-io/n8n/blob/master/packages/cli/src/scheduling/poll-trigger-node/poll-trigger-task-handler.ts#L150-L215)), so this swallowed exception can indeed bypass back-off as described. A focused regression test should cover a Gmail API error with durable cursors enabled and verify it reaches the scheduler failure path; the existing legacy behavior can remain conditional if needed.",
+      "at": "2026-10-29T01:05:27Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42503#issuecomment-6484989689"
+    }
+  ],
+  "comments_complete": true
+}

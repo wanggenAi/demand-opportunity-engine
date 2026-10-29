@@ -1,0 +1,123 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42512",
+  "collected_at": "2026-10-29T08:25:40.101774+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/42512",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/42512/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/42512/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/42512/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/42512",
+    "id": 6093516908,
+    "node_id": "I_kwDOC4Q8Qs8AAAABazOwbA",
+    "number": 42512,
+    "title": "MCP Server Trigger opens a stray SSE session for a Streamable HTTP GET",
+    "user": {
+      "login": "jaeminbird",
+      "id": 108485598,
+      "node_id": "U_kgDOBndb3g",
+      "avatar_url": "https://avatars.githubusercontent.com/u/108485598?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/jaeminbird",
+      "html_url": "https://github.com/jaeminbird",
+      "followers_url": "https://api.github.com/users/jaeminbird/followers",
+      "following_url": "https://api.github.com/users/jaeminbird/following{/other_user}",
+      "gists_url": "https://api.github.com/users/jaeminbird/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/jaeminbird/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/jaeminbird/subscriptions",
+      "organizations_url": "https://api.github.com/users/jaeminbird/orgs",
+      "repos_url": "https://api.github.com/users/jaeminbird/repos",
+      "events_url": "https://api.github.com/users/jaeminbird/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/jaeminbird/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582010757,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cXhQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:nodes",
+        "name": "team:nodes",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Nodes team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-29T05:28:17Z",
+    "updated_at": "2026-10-29T05:35:36Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\r\n\r\nSince typeVersion 2, SSE setup and the Streamable HTTP endpoint share one path. A Streamable HTTP client opens its optional server-to-client stream with a GET carrying its `mcp-session-id`. The trigger treats that GET as a new SSE setup: it opens a second, legacy SSE session with a new session ID and sends an `endpoint` event (the Python SDK logs `Unknown SSE event: endpoint`). The stray session stays in the session manager until it is evicted. The spec lets a server that does not offer this stream answer the GET with 405.\r\n\r\n### To Reproduce\r\n\r\n1. Activate a workflow with an MCP Server Trigger (typeVersion 2).\r\n2. POST an initialize request and read the `mcp-session-id` response header.\r\n3. GET the same path with that header.\r\n4. The response is an SSE stream with `event: endpoint` and a different `sessionId`.\r\n\r\n### Expected behavior\r\n\r\n405 Method Not Allowed, and no new session.\r\n\r\n### Debug Info\r\n\r\n```\r\n## core\r\n- n8nVersion: 2.45.5\r\n- platform: docker (self-hosted)\r\n- nodeJsVersion: 26.12.1\r\n- database: sqlite\r\n- executionMode: regular\r\n- license: community\r\n```\r\n\r\n### Operating System\r\n\r\nDocker (Linux) on Windows 11 / WSL2\r\n\r\n### n8n Version\r\n\r\n2.45.5\r\n\r\n### Node.js Version\r\n\r\n26.12.1\r\n\r\n### Database\r\n\r\nSQLite (default)\r\n\r\n### Execution mode\r\n\r\nmain (default)\r\n\r\n### Hosting\r\n\r\nself hosted\r\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/42512/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/42512/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @jaeminbird,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9669\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9669](https://linear.app/n8n/issue/GHC-9669)",
+      "at": "2026-10-29T05:28:24Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42512#issuecomment-6488800722"
+    }
+  ],
+  "comments_complete": true
+}

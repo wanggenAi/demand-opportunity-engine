@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/revert-finance/v4lend/issues/47",
-  "collected_at": "2026-10-28T08:25:42.603238+00:00",
+  "collected_at": "2026-10-29T08:25:40.101774+00:00",
   "source": {
     "url": "https://api.github.com/repos/revert-finance/v4lend/issues/47",
     "repository_url": "https://api.github.com/repos/revert-finance/v4lend",
@@ -38,9 +38,9 @@
     "locked": false,
     "assignees": [],
     "milestone": null,
-    "comments": 1,
+    "comments": 2,
     "created_at": "2026-10-28T07:19:48Z",
-    "updated_at": "2026-10-28T07:46:08Z",
+    "updated_at": "2026-10-28T11:12:50Z",
     "closed_at": null,
     "assignee": null,
     "author_association": "NONE",
@@ -77,6 +77,19 @@
     "pinned_comment": null,
     "score": 1.0
   },
-  "comments": [],
-  "comments_complete": false
+  "comments": [
+    {
+      "author": "octdev-dev",
+      "text": "Implemented in https://github.com/revert-finance/v4lend/pull/50\n\nPayout: 0xDd00783d9f2a9A99A0254391960b4D9A3d3c34B4",
+      "at": "2026-10-28T07:46:08Z",
+      "url": "https://github.com/revert-finance/v4lend/issues/47#issuecomment-6463563814"
+    },
+    {
+      "author": "moonstory85",
+      "text": "Thanks @octdev-dev for providing the community implementation in PR #50 based on the root cause and mitigation detailed in my report.\n\nFriendly confirmation for the Revert Finance maintainers & judges:\nAs the author and first finder of this vulnerability report (Issue #47), my official bug bounty payout wallet is:\n`0x3a5E08708dd1CF22AAe94f913Ab69b17b80a3dC5` (USDC Base / EVM).\n\nAppreciate your review!",
+      "at": "2026-10-28T11:12:50Z",
+      "url": "https://github.com/revert-finance/v4lend/issues/47#issuecomment-6467497991"
+    }
+  ],
+  "comments_complete": true
 }

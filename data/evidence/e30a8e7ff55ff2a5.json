@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42225",
-  "collected_at": "2026-10-28T08:25:42.603238+00:00",
+  "collected_at": "2026-10-29T08:25:40.101774+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/42225",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -168,6 +168,19 @@
     "pinned_comment": null,
     "score": 1.0
   },
-  "comments": [],
-  "comments_complete": false
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @umanamente,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9659\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9659](https://linear.app/n8n/issue/GHC-9659)",
+      "at": "2026-10-26T20:34:19Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42225#issuecomment-6426689164"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "The report’s isolation is useful in narrowing this down: in `load-class-in-isolation.ts`, the VM receives the host `require`, so package imports still use the host process’s CommonJS resolver state. `DirectoryLoader.unloadAll()` (2.44.7) removes `require.cache` entries under the package roots, but does not clear `Module._pathCache`; the reported deleted `lib/imap-flow.js` path is consistent with stale resolution state surviving that sweep. Since the same error persisted after clearing matching `_pathCache` entries in the earlier probe, that cache alone is not yet a demonstrated fix. A focused regression would be to load a dependency whose `exports`/entry path changes across a same-path package replacement, then verify reload resolves the new path (or explicitly requires a process restart).",
+      "at": "2026-10-26T21:04:58Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42225#issuecomment-6427295531"
+    }
+  ],
+  "comments_complete": true
 }

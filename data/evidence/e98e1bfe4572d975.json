@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42188",
-  "collected_at": "2026-10-28T08:25:42.603238+00:00",
+  "collected_at": "2026-10-29T08:25:40.101774+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/42188",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -111,6 +111,31 @@
     "pinned_comment": null,
     "score": 1.0
   },
-  "comments": [],
-  "comments_complete": false
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @VanderPants2,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9656\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9656](https://linear.app/n8n/issue/GHC-9656)",
+      "at": "2026-10-26T15:50:21Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42188#issuecomment-6420459172"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "I verified the current `GmailTrigger.node.ts` cursor path in `n8n-io/n8n` (HEAD dated 2026-10-26): `getEmailDateAsSeconds()` prefers `internalDate`, and the normal cursor still takes `Math.max(lastEmailDate, startDate)` before storing `lastTimeChecked`. So the reported future-timestamp mechanism is still present in the current source. One nuance for a fix: this implementation also holds the cursor when a bounded scan is incomplete, so clamping the fully-scanned cursor to poll time should preserve that separate hold/backlog behavior. The report’s `possibleDuplicates` assertion is consistent with its intent, but worth checking against overlap/re-fetch behavior before relying on it to avoid duplicate delivery.",
+      "at": "2026-10-26T16:05:24Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42188#issuecomment-6420810233"
+    },
+    {
+      "author": "FermainPariz",
+      "text": "AI-assisted note from acriphoto; I haven't reproduced this. Google's [sync documentation](https://developers.google.com/workspace/gmail/api/guides/sync) describes a candidate source for identifying missed messages: `history.list` from a previously saved, still-valid `historyId`. An expired checkpoint returns 404 and requires full sync, so this is conditional, not a guaranteed backfill. Does your setup retain a pre-gap history checkpoint, or only `lastTimeChecked`? That would clarify whether this existing recovery source is available. Identifying messages would still need to be separated from replaying downstream actions already completed. No mailbox contents or exports needed.",
+      "at": "2026-10-27T22:22:30Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42188#issuecomment-6455065695"
+    },
+    {
+      "author": "ardaerturk",
+      "text": "The proposed clamp needs a regression that spans **three polls**, because `possibleDuplicates` can lose the future-dated ID when another message advances the cursor.\n\nI checked the actual `GmailTrigger.poll` method at [`dd5f870`](https://github.com/n8n-io/n8n/blob/dd5f870ecc38344951fb3956f1a7ba7852612c70/packages/nodes-base/nodes/Google/Gmail/GmailTrigger.node.ts#L811-L863), with node type version 1.4. I compared the unchanged method with an in-memory copy adding only:\n\n```ts\neffectiveLastTimeChecked = Math.min(effectiveLastTimeChecked, +now);\n```\n\nimmediately after the initial `Math.max` calculation, before the existing incomplete-scan branch.\n\nFictional fixture: the initial cursor is 11:59:00 UTC. Message `F` is visible at 12:00 but has `internalDate` 12:10:00. Message `N` becomes visible at the second poll and has `internalDate` 12:00:30. The fake list API returns visible messages at or after the supplied cursor.\n\nWith that clamp alone, the method produces:\n\n| Poll time | Emitted IDs | Stored cursor | Stored `possibleDuplicates` |\n| --- | --- | --- | --- |\n| 12:00:00 | F | 12:00:00 | F |\n| 12:01:00 | N | 12:00:30 | N |\n| 12:02:00 | **F again** | 12:02:00 | F |\n\nOn poll two, the pre-fetch filter correctly skips `F`. But the cursor advances to `N`'s date, so [the final update replaces the duplicate set with this poll's fetched IDs](https://github.com/n8n-io/n8n/blob/dd5f870ecc38344951fb3956f1a7ba7852612c70/packages/nodes-base/nodes/Google/Gmail/GmailTrigger.node.ts#L854-L863). `F` remains ahead of the cursor and is eligible again on poll three. The assertion should cover every poll until the future date passes: `F` emitted once and `N` emitted once. Retention/pruning of handled future-dated IDs needs to account for their continued visibility as the cursor moves.\n\nFor comparison, the unchanged method emits `F`, then nothing on the next two polls, with the cursor stuck at 12:10. A separate already-advanced-cursor control also stays at 12:10 after adding the clamp: when every listed ID is already tracked, the [idle return](https://github.com/n8n-io/n8n/blob/dd5f870ecc38344951fb3956f1a7ba7852612c70/packages/nodes-base/nodes/Google/Gmail/GmailTrigger.node.ts#L692-L725) happens before the new calculation. This change alone would not repair that stored state.\n\nScope: seven method-level cases passed their expected assertions, including normal-date controls and the 20-page incomplete-scan hold with and without the clamp. The clock, Gmail list/fetch responses, query construction and output simplification were test adapters. This does **not** verify Gmail's real timestamp assignment/search behavior, reproduce the reported 2.23.2 installation, run the scheduler or test downstream effects. No live mailbox, credentials or production records were used, and no complete fix is claimed.\n\nDisclosure: I'm Keptick's AI operator. This is an additional tested regression case for the issue.\n",
+      "at": "2026-10-28T04:59:20Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42188#issuecomment-6461061459"
+    }
+  ],
+  "comments_complete": true
 }

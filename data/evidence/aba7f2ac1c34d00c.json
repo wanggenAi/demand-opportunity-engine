@@ -1,0 +1,93 @@
+{
+  "source_api_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/2168",
+  "collected_at": "2026-10-29T08:25:40.101774+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/2168",
+    "repository_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid",
+    "labels_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/2168/labels{/name}",
+    "comments_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/2168/comments",
+    "events_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/2168/events",
+    "html_url": "https://github.com/limitlessprojects/Go-Hybrid/issues/2168",
+    "id": 6090751783,
+    "node_id": "I_kwDOVFB-j88AAAABawl_Jw",
+    "number": 2168,
+    "title": "[tooling] preflight can never pass: `go build ./...` runs at the repo root, which has no Go module",
+    "user": {
+      "login": "lilyliiphone2026-collab",
+      "id": 347224597,
+      "node_id": "U_kgDOFLI6FQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/347224597?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lilyliiphone2026-collab",
+      "html_url": "https://github.com/lilyliiphone2026-collab",
+      "followers_url": "https://api.github.com/users/lilyliiphone2026-collab/followers",
+      "following_url": "https://api.github.com/users/lilyliiphone2026-collab/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lilyliiphone2026-collab/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lilyliiphone2026-collab/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lilyliiphone2026-collab/subscriptions",
+      "organizations_url": "https://api.github.com/users/lilyliiphone2026-collab/orgs",
+      "repos_url": "https://api.github.com/users/lilyliiphone2026-collab/repos",
+      "events_url": "https://api.github.com/users/lilyliiphone2026-collab/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lilyliiphone2026-collab/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-10-29T01:24:59Z",
+    "updated_at": "2026-10-29T05:36:47Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## What happens\n\nEvery PR's **preflight** check fails at the `Preflight checks` step, before any of the PR's own content is judged. Pinned example: run 40701107298 / job 122860840925 (my branch), but the failure is structural, not per-PR.\n\n```\n- go build: **FAIL**\npattern ./...: directory prefix . does not contain main module or its selected dependencies\n```\n\n## Why it can never pass\n\n`.github/workflows/shepherd-preflight.yml:71` runs, with no `working-directory:`:\n\n```yaml\nif go build ./... ; then\n  echo \"- go build: **pass**\" >> /tmp/preflight.md\nelse\n  echo \"- go build: **FAIL**\" >> /tmp/preflight.md\n  exit 1\nfi\n```\n\nBut this repository has **no Go module at the root**:\n\n| Check | Result |\n|---|---|\n| `ls go.mod` at repo root | *no such file* |\n| `find . -maxdepth 3 -name go.mod` | only `./examples/gomod-integration/go.mod` |\n| `find runtime -name go.mod` | **empty** — `runtime/go/{hybench,hybridge,jsonbinding,overheadbench,regexbinding,sha3binding}` are all module-less |\n| `find . -maxdepth 1 -name '*.go'` | **0 files** |\n\nSo `go build ./...` at the root resolves against no module and exits non-zero 100% of the time. `go vet ./...` on line 77 fails identically. The third check (`cargo build -p hyb`) does pass — the failure is always the Go pair.\n\n## Why it matters more than a cosmetic red X\n\n`BOUNTY.md` makes CI a hard gate on payout:\n\n> **CI must pass on our side.** A fix PR has to go green on our GitHub Actions run at least once before it gets the final review that decides a merge. We never merge on local-only evidence.\n\nIf preflight can never reach green, then **no fix PR can reach the final review**, no matter how correct it is.\n\n## The timeline lines up\n\n| Evidence | Observation |\n|---|---|\n| PRs merged on 2026-10-24 (#1419, #1410, #1429) | **no `preflight` check run at all** — the workflow did not exist / did not run for them |\n| #1416, also merged 2026-10-24 | only `board: failure` recorded, no `preflight` |\n| `git log` on `main` | `shepherd-*` + `queue-sweeper` automation lands 2026-10-24 14:00 |\n| `is:pr is:merged merged:>2026-10-24` | **0** |\n| open PR queue | 100+ |\n\nI am not claiming preflight is the only cause of the merge freeze — I cannot see the repo's required-checks settings. But it is the one gate that is **structurally impossible to satisfy**, and it appeared in the same batch of automation commits that precedes the freeze.\n\nThe `board` job has a similar shape for fork PRs (it PATCHes the board issue with a read-only `GITHUB_TOKEN` → 403), but that one is a permissions limitation and #1416 shows it does not block merges. This one is a **path bug**.\n\n## Suggested fix (smallest correct one)\n\nGuard the two Go checks so they only run where a module actually exists — keeps the intent, stops the false red:\n\n```yaml\nif [ -f go.mod ]; then\n  go build ./... && go vet ./... || { echo \"- go build/vet: **FAIL**\" >> /tmp/preflight.md; exit 1; }\n  echo \"- go build/vet: **pass**\" >> /tmp/preflight.md\nelse\n  echo \"- go build/vet: **skipped** (no root go.mod; Go fixtures live under examples/gomod-integration)\" >> /tmp/preflight.md\nfi\n```\n\nAlternative: point the checks at `examples/gomod-integration` with an explicit `working-directory:`, or drop the Go pair entirely if the Go side is meant to be generated output only.\n\n## Note on verification\n\nI cannot reproduce the run locally on Windows (the compiler build hits `os error 193` from a non-ASCII user path), so this report is based on the workflow file, the checkout layout above, and the recorded failure — not on a local run. The structural claim (no root module → `go build ./...` must fail) is verifiable from the tree alone.\n\nHappy to send the workflow patch as a PR if you prefer that over an issue.",
+    "reactions": {
+      "url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/2168/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/2168/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "dextermos-dev",
+      "text": "Hello @limitlessprojects maintainers,\n\nThank you for reporting this issue! \n\nWe have prepared and opened a clean, targeted fix in PR #2186 (https://github.com/limitlessprojects/Go-Hybrid/pull/2186).\n\n### Summary of the delivered fix:\n1. **Root Module Guard:** Wrapped the `go build ./...` and `go vet ./...` calls with `[ -f go.mod ]`.\n2. **Subdirectory Fallback:** If no root `go.mod` is present, it builds and vets `examples/gomod-integration` where the module is configured.\n3. **Safety Fallback:** If neither is present, marks the step as skipped rather than failing CI.\n4. **Regression Gate:** Added `PreflightWorkflowContract` unit test in `tools/test_shepherd_gate.py` asserting that the workflow contract is strictly preserved.\n\nLocal verification:\n- `python3 -m unittest discover -s tools -p test_shepherd_gate.py -v`: 13/13 passing.\n- `python3 -m unittest discover -s tools -p 'test_*.py'`: 387/387 passing.\n\nSettlement Wallet (Base L2 USDC): `0x8366bCe3a2D379Dec7656D7A67015789FaF999f20`\n",
+      "at": "2026-10-29T04:45:42Z",
+      "url": "https://github.com/limitlessprojects/Go-Hybrid/issues/2168#issuecomment-6488187517"
+    },
+    {
+      "author": "chiragjangiir",
+      "text": "I have submitted a clean, verified resolution in PR #2188:\nhttps://github.com/limitlessprojects/Go-Hybrid/pull/2188\n\n### Summary of Changes:\n1. **Root Module Guard:** Wrapped `go build ./...` and `go vet ./...` in `[ -f go.mod ]`.\n2. **Subdirectory Integration Fallback:** Checks against `examples/gomod-integration` where the Go module fixtures actually reside.\n3. **Clean Skip Reporting:** Gracefully logs `- go build/vet: **skipped** (no root go.mod)` when no module is configured, stopping false red preflight failures.\n4. **Offline Contract Gate:** Added `PreflightWorkflowContract` in `tools/test_shepherd_gate.py` ensuring the workflow contract is strictly guarded and regression-tested.\n\n### Local Test Verification:\n- `python3 -m unittest discover -s tools -p 'test_shepherd_gate.py' -v`: 13/13 passing\n- `python3 -m unittest discover -s tools -p 'test_*.py'`: 388/388 passing",
+      "at": "2026-10-29T05:36:47Z",
+      "url": "https://github.com/limitlessprojects/Go-Hybrid/issues/2168#issuecomment-6488918530"
+    }
+  ],
+  "comments_complete": true
+}
