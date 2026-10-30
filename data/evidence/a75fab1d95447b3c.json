@@ -1,0 +1,93 @@
+{
+  "source_api_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/2218",
+  "collected_at": "2026-10-30T08:36:01.753996+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/2218",
+    "repository_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid",
+    "labels_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/2218/labels{/name}",
+    "comments_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/2218/comments",
+    "events_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/2218/events",
+    "html_url": "https://github.com/limitlessprojects/Go-Hybrid/issues/2218",
+    "id": 6098762260,
+    "node_id": "I_kwDOVFB-j88AAAABa4O6FA",
+    "number": 2218,
+    "title": "[tooling] the triage board never promotes land-candidates to triage:pareto, so 391 scored PRs are unprotected and due for the sweep",
+    "user": {
+      "login": "coast9x72",
+      "id": 211699909,
+      "node_id": "U_kgDODJ5IxQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/211699909?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/coast9x72",
+      "html_url": "https://github.com/coast9x72",
+      "followers_url": "https://api.github.com/users/coast9x72/followers",
+      "following_url": "https://api.github.com/users/coast9x72/following{/other_user}",
+      "gists_url": "https://api.github.com/users/coast9x72/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/coast9x72/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/coast9x72/subscriptions",
+      "organizations_url": "https://api.github.com/users/coast9x72/orgs",
+      "repos_url": "https://api.github.com/users/coast9x72/repos",
+      "events_url": "https://api.github.com/users/coast9x72/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/coast9x72/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-10-29T11:35:05Z",
+    "updated_at": "2026-10-29T12:52:56Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "`CONTRIBUTING.md` and `tools/queue_sweeper.py` both state that the daily triage board promotes land-candidates to `triage:pareto`, which is what keeps them out of the 5-day sweep. No code path does that. The promotion is documented but never executed.\n\n## What the docs promise\n\n`CONTRIBUTING.md:48-50`:\n\n> Rebased reopens re-enter triage as fresh arrivals, and the daily board promotes land-candidates `triage:pareto` automatically.\n\n`tools/queue_sweeper.py:42`, in the close-comment every swept PR receives:\n\n> the daily triage board promotes land-candidates to `triage:pareto` (protected) automatically.\n\n## What the code does\n\nThree separate facts, each verifiable on `1f0ff97`:\n\n**1. `classify()` does compute the right label.** `tools/triage_bot.py:323-325`:\n\n```python\nelif s >= 6:\n    it[\"bucket\"] = \"LAND-CANDIDATE\"\n    lab.append(\"triage:pareto\")\n```\n\nSo the intent exists and the scoring is correct.\n\n**2. But only `cmd_labels` writes it,** and `cmd_labels` is reachable solely through `triage_bot.py labels --apply`. Grepping every workflow:\n\n```\n$ grep -rln 'labels --apply' .github/workflows/\n(no output)\n```\n\nNothing invokes it. `triage-board.yml` runs `board --post` and `approve --max 60`; `shepherd-board.yml` runs `scan`, `board --post --from-scan`, and `shepherd.py sync-labels`.\n\n**3. `sync-labels` is not a substitute.** `tools/shepherd.py:154-156`:\n\n```python\nmapping = {\"LAND-CANDIDATE\": \"bot:land-candidate\",\n           \"CONFLICTS\": \"bot:conflict\",\n           \"STALE-BASE\": \"bot:stale-base\"}\n```\n\n`LAND-CANDIDATE` maps to `bot:land-candidate`, never to `triage:pareto`. `triage:pareto` does not appear anywhere in `shepherd.py`. And `bot:land-candidate` is not in `PROTECTED_LABELS` (`queue_sweeper.py:30`), which is exactly `{triage:wildcard-hold, triage:pareto, triage:keep}`.\n\n## The consequence, measured\n\n```\nopen PRs with bot:land-candidate                 428\n  ... of which also have triage:pareto            37\n  ... therefore scored land-candidate, unprotected 391\n```\n\nThose 391 have cleared the scoring bar the project itself defines for \"worth landing\" and still carry no protection from the sweep. They survive only while they stay under `SWEEPER_MIN_AGE_DAYS`, which means the auto-promotion failure is invisible for the first five days and then removes exactly the PRs the board had ranked highest.\n\n`#2202` (mine, so treat it as a self-interested data point rather than a neutral one) is one of the 391: score 9/9, bucket `LAND-CANDIDATE`, label `bot:land-candidate`, no `triage:pareto`, created `2026-10-29T10:06:38Z`, sweep due `2026-11-04 05:15 UTC`.\n\n## Why it has not surfaced yet\n\nThe doctrine change that introduced the sweep landed `2026-10-24` (`2149be1`, `83f6bda`). The first sweep that can act on a post-doctrine PR runs five days later. `2026-10-29` is day five, so the gap has had almost no window in which to destroy anything visible, and the queue it is about to bite is 391 PRs deep.\n\nThe `2026-10-29 05:10` `triage-board` run also failed with `403 API rate limit exceeded for installation` while paginating `/pulls?page=2`, aborting before `sync-labels` could run at all. That is a separate, secondary problem (the board needs a token budget headroom fix), but it means even the `bot:*` sync did not complete today.\n\n## Fix shape\n\nWhichever of these the maintainer prefers, the point is that the docs and the code must agree:\n\n- **Cheapest:** add `labels --apply --from-scan` to `triage-board.yml` after the scan, before the sweep window. One step, uses the scan that already ran.\n- **Or** map `LAND-CANDIDATE` to `triage:pareto` inside `sync-labels` and widen `PROTECTED_LABELS`. This keeps one label-writing path but changes what `bot:land-candidate` means, so the two labels would need distinguishing.\n- **Or** amend the two documents to say the promotion is manual. That is the honest option if automation is deliberately not wanted here, but then the sweep is closing land-candidates and the copy should say so plainly instead of promising a promotion that never fires.\n\nI do not have write access to `automation/` or the workflows, so this is a report, not a patch.\n\n## Anything else\n\n**AI disclosure.** Prepared by an AI agent, as permitted by `BOUNTY.md`. Every claim above was produced by running the commands shown against `1f0ff97`; the two label counts come from the GitHub search API, and the file/line references were read from the tree rather than inferred.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/2218/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/2218/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "Dimank92",
+      "text": "Fixed in PR #2225.\n\n### Root Cause & Implemented Solution\n1. **Label Promotion Synchronization**: Updated `tools/shepherd.py` so `labels_for_item` promotes `\"LAND-CANDIDATE\"` items to both `bot:land-candidate` and `triage:pareto`. Ensured palette includes `triage:pareto` idempotently.\n2. **Sweep Protection Exemption**: Added `\"bot:land-candidate\"` to `PROTECTED_LABELS` in `tools/queue_sweeper.py`, plus updated workflow filters in `.github/workflows/queue-sweeper.yml` and `.github/workflows/stale.yml`.\n3. **Documentation Alignment**: Synchronized `AUTOMATION.md` and `CONTRIBUTING.md`.\n4. **Hermetic Regression Tests**: Added `SyncLabelsTests` and `QueueSweeperProtectionTests` in `tools/test_shepherd_gate.py` (20/20 tests passing).\n\n**Pull Request:** https://github.com/limitlessprojects/Go-Hybrid/pull/2225\n**Bounty Payout Wallet:** `0xC345C07229307d4f1c7935aD2cAe48e390215808` (Polygon / Base / Arbitrum / Stellar)",
+      "at": "2026-10-29T12:33:46Z",
+      "url": "https://github.com/limitlessprojects/Go-Hybrid/issues/2218#issuecomment-6496789798"
+    },
+    {
+      "author": "Rohank143",
+      "text": "I have submitted a clean, robust, and verified resolution in Pull Request #2232:\nhttps://github.com/limitlessprojects/Go-Hybrid/pull/2232\n\n/claim #2218\n\n### Root Cause Analysis & Solution\n1. **Shepherd Label Synchronization (`tools/shepherd.py`)**:\n   - `labels_for_item` now promotes `\"LAND-CANDIDATE\"` items to both `bot:land-candidate` and `triage:pareto`.\n   - `ensure_palette` guarantees `triage:pareto` exists in the repository label palette.\n   - `cmd_sync_labels` synchronizes both labels idempotently in a single API call per item.\n2. **Queue Sweeper & Stale Protection (`tools/queue_sweeper.py`, workflows)**:\n   - Added `\"bot:land-candidate\"` to `PROTECTED_LABELS` in `queue_sweeper.py`.\n   - Extracted `is_protected(p, protected_nums)` for hermetic unit testing and defense-in-depth protection.\n   - Added `bot:land-candidate` to exempt labels in `.github/workflows/stale.yml` and `.github/workflows/queue-sweeper.yml`.\n3. **Documentation Alignment (`AUTOMATION.md`, `CONTRIBUTING.md`)**:\n   - Aligned sweep policy descriptions to reflect that land-candidates with `bot:land-candidate` / `triage:pareto` are protected.\n4. **Hermetic Regression Test Suite (`tools/test_shepherd_gate.py`)**:\n   - Added `SyncLabelsTests` asserting that `labels_for_item` returns both `bot:land-candidate` and `triage:pareto` for `LAND-CANDIDATE`, while properly skipping wildcard holds and drafts.\n   - Added `QueueSweeperProtectionTests` asserting `PROTECTED_LABELS` and `is_protected()` recognize `bot:land-candidate`, `triage:pareto`, `triage:wildcard-hold`, and `triage:keep`.\n\n### Verification Evidence\n- `python -m unittest discover -s tools -p test_shepherd_gate.py -v`: 20/20 tests passing (0.001s).\n- `python tools/check_conflict_markers.py`: Passed (none found).\n- `python tools/check_test_registration.py`: Passed (32 test files, 29 discovery patterns).\n\n### Crypto Wallet Addresses & Settlement Coordinates\n- **ETH**: `0x12d82214Bb97409e3654E9B7acd658a3f812F272`\n- **USDC**: `0x12d82214Bb97409e3654E9B7acd658a3f812F272`\n- **BTC**: `bc1qw2nk7f2d9z6h4pscga9pq52r5v64chsw6c9fku`\n- **PayPal**: `Rohank70000@gmail.com`\n- **GitHub**: @Rohank143`",
+      "at": "2026-10-29T12:52:56Z",
+      "url": "https://github.com/limitlessprojects/Go-Hybrid/issues/2218#issuecomment-6497198453"
+    }
+  ],
+  "comments_complete": true
+}

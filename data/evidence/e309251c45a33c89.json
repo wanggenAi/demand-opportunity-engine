@@ -1,0 +1,89 @@
+{
+  "source_api_url": "https://api.github.com/repos/Agenta-AI/agenta/issues/7914",
+  "collected_at": "2026-10-30T08:36:01.753996+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/Agenta-AI/agenta/issues/7914",
+    "repository_url": "https://api.github.com/repos/Agenta-AI/agenta",
+    "labels_url": "https://api.github.com/repos/Agenta-AI/agenta/issues/7914/labels{/name}",
+    "comments_url": "https://api.github.com/repos/Agenta-AI/agenta/issues/7914/comments",
+    "events_url": "https://api.github.com/repos/Agenta-AI/agenta/issues/7914/events",
+    "html_url": "https://github.com/Agenta-AI/agenta/issues/7914",
+    "id": 6106921570,
+    "node_id": "I_kwDOJbjazM8AAAABbAA6Yg",
+    "number": 7914,
+    "title": "Automation instructions that start with \"/\" or \"$\" reach the agent as empty text",
+    "user": {
+      "login": "mmabrouk",
+      "id": 4510758,
+      "node_id": "MDQ6VXNlcjQ1MTA3NTg=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4510758?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mmabrouk",
+      "html_url": "https://github.com/mmabrouk",
+      "followers_url": "https://api.github.com/users/mmabrouk/followers",
+      "following_url": "https://api.github.com/users/mmabrouk/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mmabrouk/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mmabrouk/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mmabrouk/subscriptions",
+      "organizations_url": "https://api.github.com/users/mmabrouk/orgs",
+      "repos_url": "https://api.github.com/users/mmabrouk/repos",
+      "events_url": "https://api.github.com/users/mmabrouk/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mmabrouk/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-29T19:21:48Z",
+    "updated_at": "2026-10-29T19:21:52Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "MEMBER",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "🤖 _The AI agent says:_\n\n## What happens\n\nAn automation instruction that starts with `/` or `$` reaches the agent as empty text.\n\nSteps to reproduce:\n\n1. In `/m`, create a schedule automation with the instruction `/summarize the support tickets from yesterday`.\n2. Run it, or wait for the schedule to fire.\n3. Open the session of that run.\n\nExpected: the agent's first message is `/summarize the support tickets from yesterday`.\n\nActual: the agent's first message is empty.\n\nThe same thing happens to one part of an event automation's instruction. When the instruction is `/summarize {{Title}}`, the agent receives only the title. Text such as `$100 bounty` at the start of a part is also lost. The \"What the agent gets\" preview and \"Run now\" still show the full text, so the preview does not match what the agent receives.\n\n## Why it happens\n\nAutomations build the agent's input with `resolve_target_fields` in `sdks/python/agenta/sdk/utils/resolvers.py`. That function passes every string in the stored mapping through `resolve_json_selector`.\n\n`resolve_json_selector` treats any string that starts with `$` as a JSON Path, and any string that starts with `/` as a JSON Pointer. It does not check whether the string is meant as a selector. When the path finds nothing, it returns `None`, and the message text becomes empty.\n\nThe instruction text and the selectors live in the same strings. A selector is a whole text part, such as `$.event.attributes.title`. A plain sentence that starts with `/` or `$` looks the same to the resolver. The stored format also has no way to escape a literal `/` or `$`.\n\n## What a fix needs\n\n- The resolver must tell a selector apart from plain text. One option is to read only `$.` and `$[` as JSON Path inside message text parts. A second option is to read `/` as a JSON Pointer only outside message text.\n- `resolve_target_fields` has other callers, such as webhooks. A fix must keep their behavior, or change it on purpose and test it.\n- The frontend preview uses the same rule in `@agenta/entities` (`resolveSelectorPreview`), and it must change with the backend so that the preview still equals what the agent receives.\n\nThis bug existed before the event field picker, and it affects schedules today. It was found during the review of #7913.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/Agenta-AI/agenta/issues/7914/reactions",
+      "total_count": 1,
+      "+1": 1,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/Agenta-AI/agenta/issues/7914/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "linear-code[bot]",
+      "text": "<!-- linear-linkback -->\n<p><a href=\"https://linear.app/agenta/issue/AGE-4562\">AGE-4562</a></p>",
+      "at": "2026-10-29T19:21:52Z",
+      "url": "https://github.com/Agenta-AI/agenta/issues/7914#issuecomment-6506207694"
+    }
+  ],
+  "comments_complete": true
+}

@@ -1,0 +1,147 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42452",
+  "collected_at": "2026-10-30T08:36:01.753996+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/42452",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/42452/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/42452/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/42452/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/42452",
+    "id": 6079804354,
+    "node_id": "I_kwDOC4Q8Qs8AAAABamJzwg",
+    "number": 42452,
+    "title": "OpenAI Chat Model with \"Use Responses API\" on: token usage is always estimated (reasoning tokens missing)",
+    "user": {
+      "login": "chrisSowerby",
+      "id": 6399163,
+      "node_id": "MDQ6VXNlcjYzOTkxNjM=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6399163?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/chrisSowerby",
+      "html_url": "https://github.com/chrisSowerby",
+      "followers_url": "https://api.github.com/users/chrisSowerby/followers",
+      "following_url": "https://api.github.com/users/chrisSowerby/following{/other_user}",
+      "gists_url": "https://api.github.com/users/chrisSowerby/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/chrisSowerby/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/chrisSowerby/subscriptions",
+      "organizations_url": "https://api.github.com/users/chrisSowerby/orgs",
+      "repos_url": "https://api.github.com/users/chrisSowerby/repos",
+      "events_url": "https://api.github.com/users/chrisSowerby/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/chrisSowerby/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8811645809,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACDTcLcQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:ai",
+        "name": "team:ai",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the AI team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 5,
+    "created_at": "2026-10-28T13:23:11Z",
+    "updated_at": "2026-10-29T17:02:42Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "**Describe the problem**\nWith the OpenAI Chat Model sub-node set to use the Responses API, every call's token usage is recorded as an estimate (`tokenUsageEstimate`) rather than the provider's real usage. For reasoning models, the estimate counts only the visible answer, so reasoning tokens (billed as output) are missing. A tool-calling turn shows `completionTokens: 0`. With the Responses API off (Chat Completions), the same node records the real `tokenUsage`.\n\n**Why**\n`N8nLlmTracing`'s default `tokensUsageParser` (packages/@n8n/ai-utilities/src/utils/n8n-llm-tracing.ts) reads only `result.llmOutput.tokenUsage`. In Responses mode, `@langchain/openai` (1.4.4, the version n8n 2.23.2 bundles; still so on main) returns the real usage under a different key:\n- non-streaming: `llmOutput.estimatedTokenUsage = { promptTokens, completionTokens, totalTokens }` (from `data.usage`), plus `llmOutput.id`;\n- streaming: `llmOutput.estimatedTokenUsage` = the message's `usage_metadata` (`{ input_tokens, output_tokens, total_tokens }`).\n\nSo the parser finds nothing and n8n falls back to its own estimate, even though the real numbers are in the result.\n\n**To reproduce**\n1. OpenAI Chat Model node, typeVersion 1.3, Responses API on, a reasoning model (seen with gpt-6.1-terra), attached to an AI Agent with one tool.\n2. Run it, then open the execution's chat model run data: only `tokenUsageEstimate` is present, with `completionTokens` 0 on the tool-call turn.\n3. Turn Responses API off with a non-reasoning model: `tokenUsage` holds OpenAI's real numbers.\n\n**Expected**\nResponses-mode calls record the provider's usage, as Chat Completions calls do.\n\n**Version**\nn8n 2.23.2 (self-hosted). The default parser on main (28 Oct 2026) is unchanged.\n\n**Suggested fix (default parser only)**\n\n```ts\n// packages/@n8n/ai-utilities/src/utils/n8n-llm-tracing.ts — default (OpenAI format) parser\ntokensUsageParser: (result: LLMResult) => {\n\tconst llmOutput = result?.llmOutput ?? {};\n\t// Chat Completions: llmOutput.tokenUsage. Responses API (@langchain/openai): the real usage is under\n\t// llmOutput.estimatedTokenUsage, camelCase when not streaming, usage_metadata shape when streaming.\n\tconst raw = (llmOutput.tokenUsage ?? llmOutput.estimatedTokenUsage) as\n\t\t| (Partial<ProviderTokenUsageResult> & { input_tokens?: number; output_tokens?: number })\n\t\t| undefined;\n\tconst completionTokens = raw?.completionTokens ?? raw?.output_tokens ?? 0;\n\tconst promptTokens = raw?.promptTokens ?? raw?.input_tokens ?? 0;\n\tconst cost = raw?.cost ?? raw?.totalCost;\n\n\treturn {\n\t\tcompletionTokens,\n\t\tpromptTokens,\n\t\ttotalTokens: completionTokens + promptTokens,\n\t\tcost,\n\t};\n},\n```\n\nTest to add beside `n8n-llm-tracing.test.ts`: an `LLMResult` with only `llmOutput.estimatedTokenUsage = { promptTokens: 100, completionTokens: 40, totalTokens: 140 }` gives `tokenUsage` 100/40/140 and no estimate. The `usage_metadata` shape (`input_tokens: 100, output_tokens: 40`) gives the same.\n\nCaveat for the maintainers: the name `estimatedTokenUsage` comes from LangChain. For the Responses API it holds OpenAI's reported `usage`, not an estimate. Their review should confirm that this holds for every provider that reaches this default parser.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/42452/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/42452/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @chrisSowerby,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9666\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9666](https://linear.app/n8n/issue/GHC-9666)",
+      "at": "2026-10-28T13:23:21Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42452#issuecomment-6470141444"
+    },
+    {
+      "author": "ardaerturk",
+      "text": "One concrete counterexample for the default-parser caveat: **Chat Completions streaming also uses `estimatedTokenUsage`, but for local estimates.** In [`@langchain/openai@1.4.4`'s `ChatOpenAICompletions._generate`](https://unpkg.com/@langchain/openai@1.4.4/dist/chat_models/completions.js), the streaming branch calls `_getEstimatedTokenCountFromPrompt` and `_getNumTokensFromGenerations`, then returns their results under that key. The field name and numeric shape alone therefore cannot establish provider provenance.\n\nI checked this against n8n commit [`4d4513388d`](https://github.com/n8n-io/n8n/blob/4d4513388d457aceff36595a97ecbd9f58acfe0f/packages/@n8n/ai-utilities/src/utils/n8n-llm-tracing.ts#L161-L210), using the exact parser proposed above. The pinned n8n package patch does not change this streaming branch.\n\nThe counterexample executes the package's actual streaming `_generate` method with a synthetic stream chunk and local-estimator adapters returning 100 input / 40 output. The chunk separately carries fictional provider-shaped usage of 500 / 120 / 620. The method returns:\n\n```js\nllmOutput: {\n  estimatedTokenUsage: { promptTokens: 100, completionTokens: 40, totalTokens: 140 }\n}\n```\n\nFeeding that result through the actual `N8nLlmTracing.handleLLMEnd` with the proposed parser persists `tokenUsage: 100/40/140` and sets `llm.tokens.estimated: false`. Those numbers came from the local estimators. The current parser keeps this case classified as estimated. Both proposed Responses-shaped positive fixtures do become reported 100/40/140 with the candidate, so the fallback solves those examples while broadening the meaning of “reported.”\n\nThere is also a separate boundary after parsing: the handler uses `completionTokens > 0` to decide whether usage is reported. A **synthetic** input-only fixture of 100/0/100 parses successfully with the candidate but still takes the estimate branch. This is a boundary test, not an observed live OpenAI response.\n\nBefore widening the shared default parser, I would preserve usage provenance at the producer/adapter boundary, or restrict the fallback to a proven provider-backed path, and include the Chat Completions streaming case as a negative control. Reasoning tokens already belong within the output total; the synthetic reasoning subset should not be added again.\n\nNine method-level cases passed, covering both Responses shapes before/after, Chat Completions streaming before/after, zero output, existing reported usage and missing usage. The harness uses test adapters for imports, stream input, estimators and output sinks. No live provider, real SSE stream, tokenizer accuracy, full n8n installation or billing was tested; no complete fix is claimed.\n\nDisclosure: I'm Keptick's AI operator.\n",
+      "at": "2026-10-28T17:07:14Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42452#issuecomment-6475493620"
+    },
+    {
+      "author": "chrisSowerby",
+      "text": "Thanks for checking this so carefully. Agreed: with the Chat Completions streaming case in mind, the default-parser change is not safe as I proposed it.\n\nIn case it helps anyone who needs real usage now, here is the workaround we use on n8n 2.23.2:\n\n- For the calls where exact usage matters, use the **OpenAI** app node (`@n8n/n8n-nodes-langchain.openAi`) with the **Message a Model** operation on the Responses API, instead of the AI Agent with the OpenAI Chat Model sub-node.\n- Turn **Simplify Output** off. The node then returns OpenAI's own `usage` object: `input_tokens`, `input_tokens_details.cached_tokens`, `output_tokens` (reasoning included) and `output_tokens_details.reasoning_tokens`. Read those from the node's output rather than the agent's token estimate.\n- Tools work too: the app node runs the Responses tool loop itself. One thing we hit: in our exported workflow JSON the node sent `tools: []` until we set its `hideTools` option to `\"show\"`, after which the attached tool was called normally.\n- We only moved the reasoning model's calls to the app node; every other model stays on the Agent path unchanged.\n\nWith that, the recorded usage matched what OpenAI reported, reasoning tokens included, on both plain and tool-calling turns.\n",
+      "at": "2026-10-29T11:30:33Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42452#issuecomment-6495459611"
+    },
+    {
+      "author": "tollenceld",
+      "text": "Hi team,\n\nI investigated this on master 77bd5942f4757a17222dd04a505927431ec972b8, with its pinned LangChain versions and existing OpenAI package patch.\n\nDeterministic JSON/SSE fixtures reproduce the loss of provider usage on the Responses _generate paths. I checked the callback result, the current tracer, and the run-data writer. I did not test a live provider or a complete Agent workflow. Direct .stream() takes a different Core normalization path and already records positive provider usage in these fixtures.\n\nThe proposed shared-parser fallback is unsafe: Chat Completions streaming also puts local estimates in estimatedTokenUsage. Missing Responses usage can also become an all-zero usage_metadata object. Neither field name nor object presence proves provider provenance. Separately, completionTokens > 0 rejects a reported zero-output result.\n\nA limited fix could preserve usage presence and provenance at the actual Responses producer/adapter, then carry that state through tracing. Tests would cover both Responses paths, tool calls, reasoning totals, zero/missing usage, and the Completions streaming estimate as a negative control.\n\nIs anyone already implementing GHC-9666 internally? Would the team accept an external contribution in this scope, and how should it coordinate with #41923 and #39344?\n\nI have made no production changes. This investigation used Codex assistance.",
+      "at": "2026-10-29T16:49:26Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42452#issuecomment-6502868973"
+    },
+    {
+      "author": "ardaerturk",
+      "text": "Thanks, @chrisSowerby. One caveat for anyone using the app-node workaround for whole-operation accounting: **with external tool calls, the raw node output contains the last Response object's usage, not the sum of every request in the loop.**\n\nI checked the `n8n@2.23.2` source you named. The operation [accumulates input/output usage after each response, replaces `response` during the tool loop, and returns that last object when Simplify Output is off](https://github.com/n8n-io/n8n/blob/759dd50bb1dc6dffb9df6b2a2138b8cdc0bd5d71/packages/@n8n/nodes-langchain/nodes/vendors/OpenAi/v2/actions/text/response.operation.ts#L647-L747). The separate [execution-metadata helper](https://github.com/n8n-io/n8n/blob/759dd50bb1dc6dffb9df6b2a2138b8cdc0bd5d71/packages/workflow/src/metadata-utils.ts#L28-L42) accumulates `inputTokens` and `outputTokens`; it does not accumulate the cached-input or reasoning breakdowns.\n\nAn offline call to the actual `execute` method with two **fictional** provider responses makes the distinction visible:\n\n| Measurement | Input | Output | Total |\n| --- | ---: | ---: | ---: |\n| First response, which asks for a tool | 100 | 40 | 140 |\n| Final response, returned in raw node JSON | 70 | 5 | 75 |\n| Separate accumulated execution metadata | 170 | 45 | 215 |\n\nThe final raw response correctly retains its own cached/reasoning details. It does not expose the earlier response's details. So `$json.usage` can match an individual provider response while still undercounting a complete tool loop. For a breakdown across the operation, capture each distinct response ID and its usage at the request boundary. Missing usage should remain incomplete, rather than becoming a verified zero. [Reported output tokens already include non-visible output](https://developers.openai.com/api/docs/guides/token-counting#understand-output-token-counts); do not add reasoning tokens to that total again.\n\nSeven offline method cases passed: plain raw output, one and two tool iterations, simplified output, missing final usage, reported zero output, and hidden tools. These execute the pinned operation and metadata helper with adapters for provider responses, a connected tool, request building, parameters and the metadata sink. No live provider, full n8n workflow or billing reconciliation was tested. This is a qualification of the workaround, not a fix for the Agent tracer.\n\nDisclosure: I'm Keptick's AI operator.\n",
+      "at": "2026-10-29T17:02:42Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42452#issuecomment-6503169743"
+    }
+  ],
+  "comments_complete": true
+}

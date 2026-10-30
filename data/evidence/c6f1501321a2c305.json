@@ -1,0 +1,87 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50293115",
+  "collected_at": "2026-10-30T08:36:01.753996+00:00",
+  "source": {
+    "author": "rvanderlinden",
+    "children": [
+      {
+        "author": "kulahan",
+        "children": [
+          {
+            "author": "rvanderlinden",
+            "children": [],
+            "created_at": "2026-10-29T21:50:20.000Z",
+            "created_at_i": 1793310620,
+            "id": 50296615,
+            "options": [],
+            "parent_id": 50296274,
+            "points": null,
+            "story_id": 50293115,
+            "text": "Misheard words is something that Overtone fixes. But it can&#x27;t fix all, in some cases audio mix and pronunciation are so bad that it&#x27;s genuinely hard even for a human in their native language to understand. Music also messes up speech-to-text models.<p>Unfortunately translation of (on-screen) text wasn&#x27;t built into Overtone. This is something both Netflix and Disney are very aware of, and they already create multiple visual versions of content. On both platforms you can trigger a different visual language version by changing your UI language. Disney movies are most known for this: <a href=\"https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=FxzL7UYyAeg\" rel=\"nofollow\">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=FxzL7UYyAeg</a><p>They use the IMF format to transport content with &quot;overlays&quot; for different languages. In those languages certain frames are swapped out for a translated version. So that an EXIT sign is seamlessly translated to a SALIDA sign in Spanish for example.<p>Simpler way to do this is forced narrative captions. They are basically a separate captions track to only translate stuff like the on-screen sign you mention. This is combined with regular captions. Netflix turns them on by default I believe, and on Apple TV+ it&#x27;s called &quot;auto&quot; captions.<p>The core problem is that AI isn&#x27;t yet able to do everything. There&#x27;s a race to the bottom going on for translation companies and things won&#x27;t get better until AI gets better probably. Companies like Netflix and Disney still spend good money to get high-quality captions, but smaller ones don&#x27;t unfortunately. Best thing for you to do might be to message the provider so they at least know that people are unhappy.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-29T21:25:09.000Z",
+        "created_at_i": 1793309109,
+        "id": 50296274,
+        "options": [],
+        "parent_id": 50293115,
+        "points": null,
+        "story_id": 50293115,
+        "text": "I have no idea what’s going on, but modern subtitles are suddenly TRASH. All kinds of misheard words, it really feels like they removed all human oversight, or reduced it so significantly it’s just impossible to actually read it all for whatever crew works on this.<p>I only glanced through capabilities, so apologies if I simply missed this, but I am begging you to ensure there is some kind of system for translating foreign text on screen - most ideally, in a slightly differentiated font.<p>So often someone is walking by a sign in some other language, and their comments on it are translated, but the sign is not! I just watched Sai on Netflix, and it changes to a bright red screen with white text near the end of most episodes. I think it’s introducing the credits but I have no idea. It was just 30 seconds of Japanese text.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "msykes",
+        "children": [],
+        "created_at": "2026-10-30T04:35:30.000Z",
+        "created_at_i": 1793334930,
+        "id": 50299903,
+        "options": [],
+        "parent_id": 50293115,
+        "points": null,
+        "story_id": 50293115,
+        "text": "Experimenting with STT myself, I understand the need for re-reviews :)<p>I feel that conveying that is hard to the end-user as the cost of STT is real yet they don&#x27;t always appreciate that given the ease of access to dictation these days.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-10-29T17:48:17.000Z",
+    "created_at_i": 1793296097,
+    "id": 50293115,
+    "options": [],
+    "parent_id": null,
+    "points": 40,
+    "story_id": 50293115,
+    "text": "Hi HN, I&#x27;m Ruud, co-founder of Lont. We turn company emails into personalized videos.<p>Video captions cost us manual work twice: fixing misheard words, then fixing layout, like lines ending on “the”.<p>Overtone uses multiple models to listen to the audio: gpt-transcribe, Azure STT, and Elevenlabs Scribe. When they return conflicting results, Overtone sends small clips to the models again, and then lets an LLM decide what was actually said.<p>The LLM is like a human doing a sanity check on the transcription model. Humans would easily recognize a word to be different based on context. The LLM basically does the same, using an optional context prompt + its world knowledge. Because of this the Word Error Rate (WER) on many test files is lower when using Overtone, compared to just using a model without it.<p>Sure, the cost is higher because we use up to 3 different STT models + an LLM, but it still removes mistakes, reducing the time needed to fix captions to a minimum, and reducing the chance you&#x27;ll miss something. For us it&#x27;s worth it. For ultra high volume use cases it may not be.<p>The rules-based cutter nicely cuts the transcript into captions that look good, depending on screen size: 16:9 is different from 9:16, and the Overtone Format we created supports any type really. Pauses become breaks, captions are grouped per speaker, and names&#x2F;numbers are never spread out over multiple captions.<p>How to add these captions to your videos? A videojs plugin can do this automatically, so you don&#x27;t burn in your captions. The plugin lets you cycle between styled captions, plain captions, and off. You can burn them into an MP4 file with overtone burn.<p>Quickly try it out just the cutter? Try:<p><pre><code>  npx overtone-captions recut yoursub.srt\n</code></pre>\nTranscribing audio with API keys works too. Use --dry-run to show a cost estimate before you send.<p>We open-sourced this first version (MIT) because we believe many people can benefit from this, especially if your captions just need to be good. There&#x27;s plenty of room to improve though, so we&#x27;ve made it easy to help contribute to add style packs, languages, and providers&#x2F;models.<p>You can find a demo at: <a href=\"https:&#x2F;&#x2F;overtone.lont.ai&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;overtone.lont.ai&#x2F;</a><p>Find the code and benchmarks here: <a href=\"https:&#x2F;&#x2F;github.com&#x2F;lonthq&#x2F;overtone-captions\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;lonthq&#x2F;overtone-captions</a>",
+    "title": "Show HN: Overtone – Transcribe, correct and cut captions for any screen shape",
+    "type": "story",
+    "url": "https://github.com/lonthq/overtone-captions"
+  },
+  "comments": [
+    {
+      "author": "kulahan",
+      "text": "I have no idea what’s going on, but modern subtitles are suddenly TRASH. All kinds of misheard words, it really feels like they removed all human oversight, or reduced it so significantly it’s just impossible to actually read it all for whatever crew works on this. I only glanced through capabilities, so apologies if I simply missed this, but I am begging you to ensure there is some kind of system for translating foreign text on screen - most ideally, in a slightly differentiated font. So often someone is walking by a sign in some other language, and their comments on it are translated, but the sign is not! I just watched Sai on Netflix, and it changes to a bright red screen with white text near the end of most episodes. I think it’s introducing the credits but I have no idea. It was just 30 seconds of Japanese text.",
+      "at": "2026-10-29T21:25:09.000Z",
+      "url": "https://news.ycombinator.com/item?id=50296274"
+    },
+    {
+      "author": "rvanderlinden",
+      "text": "Misheard words is something that Overtone fixes. But it can't fix all, in some cases audio mix and pronunciation are so bad that it's genuinely hard even for a human in their native language to understand. Music also messes up speech-to-text models. Unfortunately translation of (on-screen) text wasn't built into Overtone. This is something both Netflix and Disney are very aware of, and they already create multiple visual versions of content. On both platforms you can trigger a different visual language version by changing your UI language. Disney movies are most known for this:  https://www.youtube.com/watch?v=FxzL7UYyAeg  They use the IMF format to transport content with \"overlays\" for different languages. In those languages certain frames are swapped out for a translated version. So that an EXIT sign is seamlessly translated to a SALIDA sign in Spanish for example. Simpler way to do this is forced narrative captions. They are basically a separate captions track to only translate stuff like the on-screen sign you mention. This is combined with regular captions. Netflix turns them on by default I believe, and on Apple TV+ it's called \"auto\" captions. The core problem is that AI isn't yet able to do everything. There's a race to the bottom going on for translation companies and things won't get better until AI gets better probably. Companies like Netflix and Disney still spend good money to get high-quality captions, but smaller ones don't unfortunately. Best thing for you to do might be to message the provider so they at least know that people are unhappy.",
+      "at": "2026-10-29T21:50:20.000Z",
+      "url": "https://news.ycombinator.com/item?id=50296615"
+    },
+    {
+      "author": "msykes",
+      "text": "Experimenting with STT myself, I understand the need for re-reviews :) I feel that conveying that is hard to the end-user as the cost of STT is real yet they don't always appreciate that given the ease of access to dictation these days.",
+      "at": "2026-10-30T04:35:30.000Z",
+      "url": "https://news.ycombinator.com/item?id=50299903"
+    }
+  ],
+  "comments_complete": true
+}

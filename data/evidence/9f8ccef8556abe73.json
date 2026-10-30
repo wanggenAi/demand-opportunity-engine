@@ -1,0 +1,65 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50292324",
+  "collected_at": "2026-10-30T08:36:01.753996+00:00",
+  "source": {
+    "author": "shiz92",
+    "children": [
+      {
+        "author": "scottfalconer",
+        "children": [],
+        "created_at": "2026-10-29T18:59:08.000Z",
+        "created_at_i": 1793300348,
+        "id": 50294148,
+        "options": [],
+        "parent_id": 50292324,
+        "points": null,
+        "story_id": 50292324,
+        "text": "I use voice mode a lot for product &#x2F; architecture planning and dev - but the fundamentals are still the same. Have well defined requirements &#x2F; specs &#x2F; plans, understand the tradeoffs and edge cases before any real dev starts, have standards and tests checked by systems that the agent can&#x27;t talk it&#x27;s away around etc.<p>I&#x27;m less concerned about the syntax of the code these days and focus more on the overall architecture.<p>i.e. going on a walk with voice mode and saying &quot;lets walk through all of the tests one-by-one, for each lets review what it does, why we need it, and how it covers something that could actually happen in the real world.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "mrothroc",
+        "children": [],
+        "created_at": "2026-10-29T20:12:56.000Z",
+        "created_at_i": 1793304776,
+        "id": 50295135,
+        "options": [],
+        "parent_id": 50292324,
+        "points": null,
+        "story_id": 50292324,
+        "text": "I&#x27;ve been doing multi-agent development for a while now and I&#x27;ve been very happy with the outcome. I disagree with the approach of creating a fleet of &quot;persona&quot; agents and just letting them rip. Instead, I use a standard SDLC pipeline with stages that produce artifacts and gates that evaluate them.<p>The gates have both deterministic and stochastic (LLM as a judge) components. The blend depends on the artifact: prose leans heavily on LLMs, where code has a lot of tests.<p>I work by having a discussion with claude code about what I&#x27;m trying to do and how it might be built. I ask it how its proposal fits into the existing bounded contexts and if it is reusing the existing patterns and libraries. Once it can give me an approach I like, I have it create a plan. This uses a skill and it has guidance on the structure and contents of the plan.<p>It is mostly prose, so the deterministic checks just look for the sections in the correct order. The LLM reviewer is a different model entirely to avoid bias and it is agentic, so it can (and does) explore the code and is prompted to verify the plan is correct both in the abstract and in the context of the code.<p>Once approved, it moves to breaking the plan into one or &quot;releases&quot; which are batches of tasks. Another gate, then to coding, which is where it fans out to multiple implementing agents. Another gate.<p>As I said, very standard SDLC. I get asked this question a lot, so I wrote it up with a guide on how to do it on the second to last page. <a href=\"https:&#x2F;&#x2F;michael.roth.rocks&#x2F;research&#x2F;543-hours\" rel=\"nofollow\">https:&#x2F;&#x2F;michael.roth.rocks&#x2F;research&#x2F;543-hours</a>",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-10-29T17:01:54.000Z",
+    "created_at_i": 1793293314,
+    "id": 50292324,
+    "options": [],
+    "parent_id": null,
+    "points": 2,
+    "story_id": 50292324,
+    "text": "Hi,\nSomething I&#x27;ve read here and there is people using LLMs for multi-agent orchestration, and I cannot fully understand the idea behind it.\nSo for those of you who do, do you not review code anymore, as you&#x27;re undoubtedly the bottleneck in this setup? How does this not end up in a chinese whisper game, especially considering how much LLMs infer, guess, and find edge cases and whatnot everywhere?\nI have two co worker, one is closer to my workflow, plans a lot, build one at a time, almost a duet with our company&#x27;s LLM. Another one will take the conf room and voice mode over with his orchestrator, define all kind of things and full send it. One is a system engineer the other a web dev, but you get the idea.<p>I have looked at various attempt from people on github to implement these things, eg https:&#x2F;&#x2F;github.com&#x2F;kunchenguid&#x2F;firstmate; herdr itself; claude multi agent process. It has never worked out on my end, is it because of the complexity of the work or am I incompetent at delegating?<p>I understand the importance of mastering LLMs in this brave new world but to me it seems complicated to handle more than one at a time, especially if the problem is complex and requires reading&#x2F;back and forth with it.<p>I&#x27;d appreciate resources of any kind to look deeper into it, or reading some of your work flows, good people of HN.<p>Cheers :)",
+    "title": "Ask HN: Agent swarm, orchestra, sequential, what's your workflow?",
+    "type": "story",
+    "url": null
+  },
+  "comments": [
+    {
+      "author": "scottfalconer",
+      "text": "I use voice mode a lot for product / architecture planning and dev - but the fundamentals are still the same. Have well defined requirements / specs / plans, understand the tradeoffs and edge cases before any real dev starts, have standards and tests checked by systems that the agent can't talk it's away around etc. I'm less concerned about the syntax of the code these days and focus more on the overall architecture. i.e. going on a walk with voice mode and saying \"lets walk through all of the tests one-by-one, for each lets review what it does, why we need it, and how it covers something that could actually happen in the real world.",
+      "at": "2026-10-29T18:59:08.000Z",
+      "url": "https://news.ycombinator.com/item?id=50294148"
+    },
+    {
+      "author": "mrothroc",
+      "text": "I've been doing multi-agent development for a while now and I've been very happy with the outcome. I disagree with the approach of creating a fleet of \"persona\" agents and just letting them rip. Instead, I use a standard SDLC pipeline with stages that produce artifacts and gates that evaluate them. The gates have both deterministic and stochastic (LLM as a judge) components. The blend depends on the artifact: prose leans heavily on LLMs, where code has a lot of tests. I work by having a discussion with claude code about what I'm trying to do and how it might be built. I ask it how its proposal fits into the existing bounded contexts and if it is reusing the existing patterns and libraries. Once it can give me an approach I like, I have it create a plan. This uses a skill and it has guidance on the structure and contents of the plan. It is mostly prose, so the deterministic checks just look for the sections in the correct order. The LLM reviewer is a different model entirely to avoid bias and it is agentic, so it can (and does) explore the code and is prompted to verify the plan is correct both in the abstract and in the context of the code. Once approved, it moves to breaking the plan into one or \"releases\" which are batches of tasks. Another gate, then to coding, which is where it fans out to multiple implementing agents. Another gate. As I said, very standard SDLC. I get asked this question a lot, so I wrote it up with a guide on how to do it on the second to last page.  https://michael.roth.rocks/research/543-hours",
+      "at": "2026-10-29T20:12:56.000Z",
+      "url": "https://news.ycombinator.com/item?id=50295135"
+    }
+  ],
+  "comments_complete": true
+}

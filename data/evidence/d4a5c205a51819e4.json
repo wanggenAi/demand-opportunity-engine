@@ -1,0 +1,108 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50299077",
+  "collected_at": "2026-10-30T08:36:01.753996+00:00",
+  "source": {
+    "author": "1718627440",
+    "children": [
+      {
+        "author": "N19PEDL2",
+        "children": [
+          {
+            "author": "otherme123",
+            "children": [],
+            "created_at": "2026-10-30T07:08:13.000Z",
+            "created_at_i": 1793344093,
+            "id": 50300681,
+            "options": [],
+            "parent_id": 50300537,
+            "points": null,
+            "story_id": 50286197,
+            "text": "The first train going from A to B derailed, and the second train going from B to A crashed into the derailed cars 9 (20 on other sources) seconds later. Even if the second train was put in full brake in the exact same second the derailment happened, it couldn&#x27;t have avoided the crash.<p><a href=\"https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;2026_Adamuz_rail_disaster\" rel=\"nofollow\">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;2026_Adamuz_rail_disaster</a>",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-30T06:44:12.000Z",
+        "created_at_i": 1793342652,
+        "id": 50300537,
+        "options": [],
+        "parent_id": 50299077,
+        "points": null,
+        "story_id": 50286197,
+        "text": "&gt; The accident from January this year in Spain was also a collision, but because a train derailed, while another train passed it. This can&#x27;t really be prevented by a current train control system, other then not allowing the derailment to happen in the first place.<p>Or by putting all the signals to red after the derailment of the first train so as to stop all the circulation on the line, which seems not to be the common practice in Spain unfortunately.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "skew-aberration",
+        "children": [],
+        "created_at": "2026-10-30T07:03:06.000Z",
+        "created_at_i": 1793343786,
+        "id": 50300653,
+        "options": [],
+        "parent_id": 50299077,
+        "points": null,
+        "story_id": 50286197,
+        "text": "Surely a better fallback is possible. Like if a train is known to be in a PZB with other trains ahead of it, then when LZB goes down it has to slow down&#x2F;wait&#x2F;follow some different protocol until PZB rules can be enforced again.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "potamic",
+        "children": [],
+        "created_at": "2026-10-30T07:14:02.000Z",
+        "created_at_i": 1793344442,
+        "id": 50300709,
+        "options": [],
+        "parent_id": 50299077,
+        "points": null,
+        "story_id": 50286197,
+        "text": "&gt; the signal shows whether you are allowed to drive in the next block, not into the current, as you are already in the current block. This seemed to be what happened here, the second train saw the green signal thought they are back in the automatic safety system and accelerated to 200km&#x2F;h, not knowing that there is still a train in front.<p>Don&#x27;t think the second train saw a green signal. They were in the middle of the block, while the first train was waiting just before the exit of the block (with a green signal ahead).<p>What I&#x27;m gathering from other sources is that the Spanish system allows the controller to override the point-based rules and provide manual clearance (because the blocks are long and it takes forever to reach the next signal by sight). It&#x27;s a failure of the system imo. Ideally, the system, under no conditions whatsoever, should have even allowed such a practice to be allowed.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-10-30T02:16:54.000Z",
+    "created_at_i": 1793326614,
+    "id": 50299077,
+    "options": [],
+    "parent_id": 50298796,
+    "points": null,
+    "story_id": 50286197,
+    "text": "So to explain the used terms more:  Most train control systems operate under the assumption of a fixed block.  The whole network is separated into blocks, there can always be only one train in a block.  Each block is protected by a signal, there must always be a red signal separating one train from the next, and there are sensors that detect when a train drives in a block, when it drives out of a block and how many carriages (train integrity is important too).<p>For point based train control systems, operation of a train is only enforced at every signal (and on the way in approach at specific points), this means e.g. that a train does not run over a red signal, does not drive faster than the maximum speed, and has acknowledged speed limits.<p>For line based train control systems, that supervising happens continuously over the whole track.<p>Since the physical signals and sensors are expensive in installation and maintenance and railway capacity depends on the number of blocks on a track, line based train control systems support virtual blocks.  This means that the signals and sensors are not physically there, but simulated by computers (on the train and signalbox).  From the view of the point based train control that means multiple trains are in a single block, because it does not know about the virtual subblocks.  When a train is running that only supports point based train control it can only use whole blocks, so the capacity is simply reduced, but it is still safe, because every physical block is also known in the line based control system.<p>When the line based train control system stops being in use, the fundamental constraint of the point based train control system is being violated:  there are multiple trains that are in a single block, and hence not actually protected by a red signal in between.  This means that you must ignore the signals until every train has crossed at least one physical signal.<p>(This is speculation:)  It seems that that the operators assumed that there is still a safety system in place, that they can rely on.  Hence they did no tell the trains to use manual operation, (which might also require driving by sight [max. 40km&#x2F;h], but not necessarily, I don&#x27;t know the proper procedure in Spain), but told them to fall back to the normal safety system.  It&#x27;s reported that some train drivers and dispatchers questioned that, but that can also be an translation error and instead them repeating what was said, as is proper safety procedure.  But the point based train control system will show a green signal, even if there is actually a train in front, because it is in the same block as you, but the signal shows whether you are allowed to drive in the next block, not into the current, as you are already in the current block.  This seemed to be what happened here, the second train saw the green signal thought they are back in the automatic safety system and accelerated to 200km&#x2F;h, not knowing that there is still a train in front.  The first train should have also started driving, but did not, due to an error in the train.  In normal situations this should never cause an accident, but in this case the accident would not have occurred if that wouldn&#x27;t have taken place, but that would have been simply by luck.<p>You can see the green signal in some of the pictures, which to me looks really weird (kinda like a both dead and alive corps), because I would expect to put all signals to red in the case of an accident.  I would expect to do that, while you are calling the emergency number, but I do not know if that is the procedure in Spain.  You also see in the pictures that the whole cluster traveled about a train length and that the last carriages of the first and the first of the second train are merged into one.  This indicates a surprisingly high speed for the crash, above 100km&#x2F;h.  That fits the explanation of the second train not being able to see the first until directly up to a few 100 meters before.<p>There were actually more trains in that block, so it&#x27;s pure luck, that there were &quot;only&quot; two trains involved in this accident.  Also some claimed, that there was a curve directly before, so the second train couldn&#x27;t see the first until directly up to the accident.  This would not have prevented the accident, it would have just reduced the involved crash speed and hence reduced the number of dead people.<p>It&#x27;s quite ironic, that the accident would have likely not happened in case of no safety system being present.<p>---<p>Actual classical collisions of two trains like in this case are quite rare, because that&#x27;s like the first purpose of every train control system, which exist since the 1870s.  The accident from January this year in Spain was also a collision, but because a train derailed, while another train passed it.  This can&#x27;t really be prevented by a current train control system, other then not allowing the derailment to happen in the first place.  Derailment in carriages is actually not rare at all, but daily, it&#x27;s like going slightly on the shoulders of the street with your car, but train derailments are.<p>The accident from Meerbusch-Osterath from 2017 is similar in that is was also a collision.  The cause itself is not really similar.  The normal train control also failed, so the trains need to be operated manually.  For that it was still relied on the automatic train detection and labeling system, but that had a bug (and some operator error due to a bug, this is simplified) and showed the number of the second train, where the block of the first train was.  So they allowed the second train to advance.  They did have contact with the first train, because they noticed something was wrong, but that driver didn&#x27;t properly speak German and also failed to look out of the window directly where a hectometer sign was, so he couldn&#x27;t tell the dispatchers were he actually was.  The dispatcher forgot to tell the driver of the second train to use drive by sight (40km&#x2F;h), so he accelerated to full speed (120km&#x2F;h).  The accident only caused 40 injured people and no deaths, because the second driver saw the first train.  The accident happened at night, in the dark and at a speed of 85km&#x2F;h.  Train dispatchers are supposed to keep track of the trains and the actions they do too, but since the automatic train detection and labeling works most of the time, it becomes easy to rely on it.<p>The accident from Fallersleben from 2002 is similar, because the original failure of LZB and fallback to PZB is the same.  Hence there was also more than one train in one block.  The signalbox software told the second train to advance to full speed and the first to stop.  This would have caused a crash, but the train driver of the second train noticed, that couldn&#x27;t be and notified the dispatcher who then told them to not proceed, hence the accident didn&#x27;t happen.  This caused it to become mandatory to let the first train to drive again operate on sight [40 km&#x2F;h].",
+    "title": null,
+    "type": "comment",
+    "url": null
+  },
+  "comments": [
+    {
+      "author": "N19PEDL2",
+      "text": "> The accident from January this year in Spain was also a collision, but because a train derailed, while another train passed it. This can't really be prevented by a current train control system, other then not allowing the derailment to happen in the first place. Or by putting all the signals to red after the derailment of the first train so as to stop all the circulation on the line, which seems not to be the common practice in Spain unfortunately.",
+      "at": "2026-10-30T06:44:12.000Z",
+      "url": "https://news.ycombinator.com/item?id=50300537"
+    },
+    {
+      "author": "otherme123",
+      "text": "The first train going from A to B derailed, and the second train going from B to A crashed into the derailed cars 9 (20 on other sources) seconds later. Even if the second train was put in full brake in the exact same second the derailment happened, it couldn't have avoided the crash.  https://en.wikipedia.org/wiki/2026_Adamuz_rail_disaster",
+      "at": "2026-10-30T07:08:13.000Z",
+      "url": "https://news.ycombinator.com/item?id=50300681"
+    },
+    {
+      "author": "skew-aberration",
+      "text": "Surely a better fallback is possible. Like if a train is known to be in a PZB with other trains ahead of it, then when LZB goes down it has to slow down/wait/follow some different protocol until PZB rules can be enforced again.",
+      "at": "2026-10-30T07:03:06.000Z",
+      "url": "https://news.ycombinator.com/item?id=50300653"
+    },
+    {
+      "author": "potamic",
+      "text": "> the signal shows whether you are allowed to drive in the next block, not into the current, as you are already in the current block. This seemed to be what happened here, the second train saw the green signal thought they are back in the automatic safety system and accelerated to 200km/h, not knowing that there is still a train in front. Don't think the second train saw a green signal. They were in the middle of the block, while the first train was waiting just before the exit of the block (with a green signal ahead). What I'm gathering from other sources is that the Spanish system allows the controller to override the point-based rules and provide manual clearance (because the blocks are long and it takes forever to reach the next signal by sight). It's a failure of the system imo. Ideally, the system, under no conditions whatsoever, should have even allowed such a practice to be allowed.",
+      "at": "2026-10-30T07:14:02.000Z",
+      "url": "https://news.ycombinator.com/item?id=50300709"
+    }
+  ],
+  "comments_complete": true
+}

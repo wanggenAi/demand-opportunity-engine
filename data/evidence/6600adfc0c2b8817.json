@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42512",
-  "collected_at": "2026-10-29T08:25:40.101774+00:00",
+  "collected_at": "2026-10-30T08:36:01.753996+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/42512",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -72,9 +72,9 @@
     "locked": false,
     "assignees": [],
     "milestone": null,
-    "comments": 1,
+    "comments": 2,
     "created_at": "2026-10-29T05:28:17Z",
-    "updated_at": "2026-10-29T05:35:36Z",
+    "updated_at": "2026-10-30T06:05:31Z",
     "closed_at": null,
     "assignee": null,
     "author_association": "NONE",
@@ -117,6 +117,12 @@
       "text": "Hey @jaeminbird,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9669\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9669](https://linear.app/n8n/issue/GHC-9669)",
       "at": "2026-10-29T05:28:24Z",
       "url": "https://github.com/n8n-io/n8n/issues/42512#issuecomment-6488800722"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "I checked the current `master` routing. The GET webhook enters the `setup` branch without checking for an existing `mcp-session-id`, and `handleSetupRequest()` always creates a new SSE transport/session ([McpTrigger.node.ts](https://github.com/n8n-io/n8n/blob/master/packages/@n8n/nodes-langchain/nodes/mcp/McpTrigger/McpTrigger.node.ts#L320-L338), [McpServer.ts](https://github.com/n8n-io/n8n/blob/master/packages/@n8n/nodes-langchain/nodes/mcp/McpTrigger/McpServer.ts#L112-L124)). That matches the stray-session path in the report. A regression test could send GET with an existing Streamable HTTP session header and assert 405 with no additional session registered; the initial GET without that header should continue to establish the legacy SSE connection.",
+      "at": "2026-10-30T06:05:31Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42512#issuecomment-6516195715"
     }
   ],
   "comments_complete": true
