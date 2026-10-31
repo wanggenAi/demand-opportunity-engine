@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50291116",
-  "collected_at": "2026-10-30T08:36:01.753996+00:00",
+  "collected_at": "2026-10-31T08:24:00.641334+00:00",
   "source": {
     "author": "shong0504",
     "children": [
@@ -18,6 +18,37 @@
             "points": null,
             "story_id": 50291116,
             "text": "Thank you, yes validation is the new bottleneck anywhere we talk to people. However for us in hardware its pretty simple, The board is king! Our setups are simpler now than it will be in the next few months coming as we add in more and more components to a “scenario”.<p>But, this is a great point because we do think about what is a bench artifact from the dev boards we are testing versus something that would not show up in production pcb.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          },
+          {
+            "author": "malte_querier",
+            "children": [
+              {
+                "author": "enough_ahnaf",
+                "children": [],
+                "created_at": "2026-10-30T18:52:49.000Z",
+                "created_at_i": 1793386369,
+                "id": 50308504,
+                "options": [],
+                "parent_id": 50303035,
+                "points": null,
+                "story_id": 50291116,
+                "text": "haha you just reminded me of a time when AI forgot about the python GIL when doing pytest wrapped around my custom USB endpoint C++ code to talk to my firmware and it completely broke all my host USB because I didn&#x27;t know how locks would affect my code. this was opus 4.6 though so I forgive em.",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-10-30T12:33:32.000Z",
+            "created_at_i": 1793363612,
+            "id": 50303035,
+            "options": [],
+            "parent_id": 50291206,
+            "points": null,
+            "story_id": 50291116,
+            "text": "In my Python&#x2F;Postgres work, unit tests don&#x27;t catch lock behavior, so I run migrations against a disposable Postgres container in CI. Keeping the failing board trace with the exact firmware revision sounds like the same kind of evidence when a simulator and the board disagree. The board being the reference makes sense to me.",
             "title": null,
             "type": "comment",
             "url": null
@@ -301,6 +332,85 @@
             "title": null,
             "type": "comment",
             "url": null
+          },
+          {
+            "author": "amelius",
+            "children": [
+              {
+                "author": "enough_ahnaf",
+                "children": [
+                  {
+                    "author": "amelius",
+                    "children": [
+                      {
+                        "author": "shong0504",
+                        "children": [
+                          {
+                            "author": "amelius",
+                            "children": [],
+                            "created_at": "2026-10-30T20:51:21.000Z",
+                            "created_at_i": 1793393481,
+                            "id": 50309982,
+                            "options": [],
+                            "parent_id": 50307131,
+                            "points": null,
+                            "story_id": 50291116,
+                            "text": "Certainly a win if someone makes it, but I think that with the help of AI, soon anyone with a datasheet can make those simulation models. And even if it&#x27;s not that simple, open source folks will do it.",
+                            "title": null,
+                            "type": "comment",
+                            "url": null
+                          }
+                        ],
+                        "created_at": "2026-10-30T17:21:58.000Z",
+                        "created_at_i": 1793380918,
+                        "id": 50307131,
+                        "options": [],
+                        "parent_id": 50303053,
+                        "points": null,
+                        "story_id": 50291116,
+                        "text": "I would say that is true, that hardware vendors should and can provide simulation models with their hardware. We know they can because they rely entirely on simulation to test their chips before tapeout.<p>We even tried to work with chip vendors (won&#x27;t name here but they are 2 out of the 10 biggest microcontroller designers), but in reality, them providing their own simulation is a little bit counterintuitive for them.<p>They make their money on selling chips, and their thought is that providing a simulator would make it so that people buy less chips. If they do provide a simulator, it would be hella expensive, like through the Synopsys Virtualizer, which costs $500k per seat.<p>For RISC-V and open-source MCUs, they are easy to simulate. Just run the RTL through something like Verilator, and you have a fully working simulation.<p>We do hope that chip companies eventually do exactly that. We are also firmware engineers, and our goal is to make the simulation software we needed while working in the field. Either we make it, or they make it. Win-win in my opinion.",
+                        "title": null,
+                        "type": "comment",
+                        "url": null
+                      }
+                    ],
+                    "created_at": "2026-10-30T12:35:36.000Z",
+                    "created_at_i": 1793363736,
+                    "id": 50303053,
+                    "options": [],
+                    "parent_id": 50302120,
+                    "points": null,
+                    "story_id": 50291116,
+                    "text": "But what if (due to the availability of AI) it becomes more common that hardware vendors provide simulation models with their hardware? That&#x27;s the direction I&#x27;m hoping we will move in. And if it doesn&#x27;t happen, perhaps FOSS enthusiasts will provide these models ...",
+                    "title": null,
+                    "type": "comment",
+                    "url": null
+                  }
+                ],
+                "created_at": "2026-10-30T10:38:20.000Z",
+                "created_at_i": 1793356700,
+                "id": 50302120,
+                "options": [],
+                "parent_id": 50301360,
+                "points": null,
+                "story_id": 50291116,
+                "text": "Yes I totally agree claude can write some damn good firmware! but at an enterprise development team scale for testing needs simulation. It has and always will for any critical embedded system. I think its the other way around that the viability will only get greater. Only this year did people start trusting LLMs with firmware  so the bet based on what we saw at industry, the better the AI the better you want the simulation it can use for your development.<p>The other contributing cause is the actual lack of silicon in supply and we are seeing it especially for the automotive industry, which is only spiking demand for better simulations to unblock teams.<p>If you want to ship with agents at scale you need a good testing pipeline now more than ever. We don&#x27;t replace the bench setup test, we look to enhance what you bring to it.<p>But that doesn&#x27;t take away from the fact that, yes you could just let your LLM continuously loop on some hardware setup, rinse and repeat for weeks. If you have the hardware and the time to spare.",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-10-30T08:58:32.000Z",
+            "created_at_i": 1793350712,
+            "id": 50301360,
+            "options": [],
+            "parent_id": 50300973,
+            "points": null,
+            "story_id": 50291116,
+            "text": "This. And Claude writes my firmware and does a pretty damn good job, and it can even test with a bench setup. So honestly, I don&#x27;t think this simulator has much viability. It&#x27;s a bitter message but I think the earlier they recognize this the better.",
+            "title": null,
+            "type": "comment",
+            "url": null
           }
         ],
         "created_at": "2026-10-30T07:59:33.000Z",
@@ -314,6 +424,99 @@
         "title": null,
         "type": "comment",
         "url": null
+      },
+      {
+        "author": "peterabbitcook",
+        "children": [
+          {
+            "author": "enough_ahnaf",
+            "children": [],
+            "created_at": "2026-10-30T10:39:10.000Z",
+            "created_at_i": 1793356750,
+            "id": 50302127,
+            "options": [],
+            "parent_id": 50302110,
+            "points": null,
+            "story_id": 50291116,
+            "text": "haha, now wouldnt want the world to have yet another PLC simulation software would we...",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-30T10:37:16.000Z",
+        "created_at_i": 1793356636,
+        "id": 50302110,
+        "options": [],
+        "parent_id": 50291116,
+        "points": null,
+        "story_id": 50291116,
+        "text": "Would it be confusing if Simantic added support the Siemens Simatic S7-1500 PLC?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "dodolaunch",
+        "children": [
+          {
+            "author": "shong0504",
+            "children": [],
+            "created_at": "2026-10-30T17:38:05.000Z",
+            "created_at_i": 1793381885,
+            "id": 50307387,
+            "options": [],
+            "parent_id": 50303665,
+            "points": null,
+            "story_id": 50291116,
+            "text": "Yes you&#x27;re absolutely right about that. We talked to a bunch of aerospace teams who tried to use Renode and QEMU in their CI, but ended up scrapping it because their timing mechanisms were terrible and very inaccurate.<p>We do try to make our simulations as timing-accurate as possible. We are going to publish a report soon, to outline every gap between silicon and simulation, so these teams know exactly what to expect.<p>We&#x27;re also not trying to replace HIL testing. As a firmware engineer myself, I know that hardware is and will always be the source of truth, and we&#x27;re not changing that. What we can do, is reduce the amount of testing that needs to be done on hardware, because HIL testing will always be slow and clunky. Things like application logic, and replicating garbage data on something like a CAN bus, is much better suited to be tested in simulation, and that&#x27;s the gap we are focusing on.<p>Let us know if you have any other questions!",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-30T13:34:40.000Z",
+        "created_at_i": 1793367280,
+        "id": 50303665,
+        "options": [],
+        "parent_id": 50291116,
+        "points": null,
+        "story_id": 50291116,
+        "text": "The Renode wrapper story is a useful one, because the build-versus-wrap decision is where a lot of infrastructure startups get stuck. Wrapping gets you to a demo quickly, but you inherit the upstream roadmap and the bug surface without control over either. For safety-critical customers I&#x27;d guess the harder problem than speed is fidelity: how do you show a skeptical avionics team that your simulated peripheral timing matches real silicon? Published correlation data against hardware traces for a few common MCUs might do more for trust than any feature list.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "unrented7977",
+        "children": [
+          {
+            "author": "shong0504",
+            "children": [],
+            "created_at": "2026-10-30T17:11:27.000Z",
+            "created_at_i": 1793380287,
+            "id": 50306946,
+            "options": [],
+            "parent_id": 50306349,
+            "points": null,
+            "story_id": 50291116,
+            "text": "Anyone can make their own emulator. The ISA is publicly documented, and MCU datasheets are also public. There are also open source emulators like Renode and QEMU, like we wrote in our post. I would say there are two main differences between us and you using Claude to make its own emulator:<p>1. Although the ISA and peripheral behavior for the MCUs are documented, there are hardware intricacies that can&#x27;t be effectively done with just an LLM. Things like register transaction timings, and hardware bugs (yes chip designers make mistakes in designs that aren&#x27;t shown in documentation) requires many weeks of constant bench testing to detect and fix.<p>2. Maintenance. Yes, Claude is incredibly good. But it still makes mistakes. We understand that, and we&#x27;re always making updates to our simulation software whenever there is a bug. You however, as a firmware engineer whose job is to make products and ship code, I would assume you would rather work on that instead spending all day fixing and updating a simulator. We do the maintenance for you, so you can focus on building your things.<p>Hope that answers your question! We&#x27;re not claiming that AI can&#x27;t do it with enough time and resources. It&#x27;s just that the people who find value in this would rather spend their time on other things.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-30T16:33:54.000Z",
+        "created_at_i": 1793378034,
+        "id": 50306349,
+        "options": [],
+        "parent_id": 50291116,
+        "points": null,
+        "story_id": 50291116,
+        "text": "As a firmware engineer, I had Claude and Qwen spend about two hours writing my own multi-chip emulator. I can connect multiple firmware images together with gpio, UART, SPI, etc. I didn&#x27;t even prompt for this, they decided they needed this capability on their own and wrote the emulator.<p>What does your product offer that Claude hasn&#x27;t already suggested and built on its own?",
+        "title": null,
+        "type": "comment",
+        "url": null
       }
     ],
     "created_at": "2026-10-29T15:56:32.000Z",
@@ -321,7 +524,7 @@
     "id": 50291116,
     "options": [],
     "parent_id": null,
-    "points": 66,
+    "points": 76,
     "story_id": 50291116,
     "text": "Hi HN, we&#x27;re Ahnaf and Seungmin from Simantic (<a href=\"https:&#x2F;&#x2F;simantic.com\">https:&#x2F;&#x2F;simantic.com</a>). We are building the simulation layer that lets engineers and AI agents test and validate firmware without hardware.<p>Before Simantic, we were ex-firmware engineers at companies like Neuralink and Tesla. We’ve worked on some of the coolest projects, like the Cybertruck and Roadster, back when they were still early prototypes.<p>We started working on firmware back when ChatGPT didn’t exist yet, but over the years, we saw how much of the engineering and development work has been automated as the frontier models improved to this point. In software, AI can run and test code inside your computer in a matter of seconds. But as firmware engineers, we didn’t have that luxury. An AI agent can write firmware in seconds, but in order to test it, we had to flash a physical board, then manually run tests using expensive and clunky tools with software made over a decade ago.<p>To speed up the validation loop, we built the simulation layer that lets AI agents test the firmware and make decisions based on evidence, instead of waiting for the engineer to run tests for them. We used to spend hours testing our firmware manually on devboards, but now we use our own simulation to validate firmware in seconds.<p>What we offer:\n- Virtual devboards you can program and run with a single API call, without leaving your terminal.\n- An AI code reviewer for firmware, that makes informed decisions based on evidence, using our simulation as a verification engine.\n- A CI&#x2F;CD pipeline for your hardware projects that validates your firmware against a simulated version of the microcontroller on every commit.<p>Here is a demo of our simulation used in an AI code review session: <a href=\"https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=kBK1ZjGWWbQ\" rel=\"nofollow\">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=kBK1ZjGWWbQ</a><p>Our users are using Simantic for bare-metal and RTOS development for applications like flight controllers, electric vehicles, robotics, and satellites. For safety critical systems like avionics and automotives, a robust simulation system is incredibly important, because every change in the firmware puts a human life at stake, especially for machines that cost hundreds of thousands to millions of dollars.<p>We recently helped an early stage space startup building satellites, to test their firmware on hardware that they don&#x27;t yet have. Even the development modules for those satellites costs over $100k, and we helped them do that at just a hundredth of the cost and time.<p>Early on in our journey, we established our idea to make better simulation but didn’t have a clear idea of how we would do it, we considered developing our software around open source emulation frameworks like Renode (<a href=\"https:&#x2F;&#x2F;github.com&#x2F;renode&#x2F;renode\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;renode&#x2F;renode</a>) and QEMU (<a href=\"https:&#x2F;&#x2F;www.qemu.org&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;www.qemu.org&#x2F;</a>), because they were tools already used within the firmware industry. We built our MVP that was essentially a wrapper around Renode, but we quickly realized there were a lot of limitations to doing this.<p>1. We were bottlenecked by the development speed of Renode themselves. We tried making contributions on Github to fix issues we came across, but the speed in which we could merge our features in was not fast enough for a startup like us trying to move fast.<p>2. Renode is built using Dotnet, and it was proving itself to be slower than we would have liked. Renode was released in 2017, which was when all code was still being written by hand, so I think it made sense looking back, but there were limitations because of the language itself.<p>3. The open source tools were bloated, with features that we would never use. Yes, there were a  breadth of features, but we had a lot of things we had to work around just because we couldn’t remove or change them.\nUsers were complaining about simulation accuracy. Renode is an emulator at the core, but our users, especially those who are building systems where timing accuracy is crucial did not find the accuracy good enough to validate their firmware.<p>Because of these issues, we made our own simulation engine from scratch, fully written in Rust.<p>- Our simulation is focused on accuracy. Open source frameworks often focus on expandability and developer experience, which means there were a lot of tradeoffs made to prioritize a breadth of models rather than going deep into a set of select models.<p>- We have our own hardware validation rigs running 24&#x2F;7 to ensure our simulation models are as close to real world hardware as possible, and any gaps are detected and fixed as soon as we can. It currently looks like devboards connected to a Saleae Logic MSO and a SWD bus, controlled by a Linux PC, running Claude 24&#x2F;7 just finding these gaps.<p>Our cloud-hosted simulator is available to use right now! We also provide a native binary with our developer plan licenses that let you run your firmware on your machines locally without any limitations.<p>Check it out at <a href=\"https:&#x2F;&#x2F;simantic.com&#x2F;cloud-sim\">https:&#x2F;&#x2F;simantic.com&#x2F;cloud-sim</a>, and you can start using our AI firmware reviewer bot in your own Github repos here: <a href=\"https:&#x2F;&#x2F;simantic.com&#x2F;dashboard&#x2F;simantic-bot\">https:&#x2F;&#x2F;simantic.com&#x2F;dashboard&#x2F;simantic-bot</a>.<p>We currently have support for some models of the STM32F0, F4, H7 series MCUs, ESP32-S3&#x2F;C3, and RP2040, but we’re constantly working to release new models every week, and improve our existing ones.<p>Thank you, and if you have any questions, feel free to send us an email at founders@simantic.dev",
     "title": "Launch HN: Simantic (YC F26) – Firmware Simulation for AI Agents",
@@ -340,6 +543,18 @@
       "text": "Thank you, yes validation is the new bottleneck anywhere we talk to people. However for us in hardware its pretty simple, The board is king! Our setups are simpler now than it will be in the next few months coming as we add in more and more components to a “scenario”. But, this is a great point because we do think about what is a bench artifact from the dev boards we are testing versus something that would not show up in production pcb.",
       "at": "2026-10-29T16:10:03.000Z",
       "url": "https://news.ycombinator.com/item?id=50291346"
+    },
+    {
+      "author": "malte_querier",
+      "text": "In my Python/Postgres work, unit tests don't catch lock behavior, so I run migrations against a disposable Postgres container in CI. Keeping the failing board trace with the exact firmware revision sounds like the same kind of evidence when a simulator and the board disagree. The board being the reference makes sense to me.",
+      "at": "2026-10-30T12:33:32.000Z",
+      "url": "https://news.ycombinator.com/item?id=50303035"
+    },
+    {
+      "author": "enough_ahnaf",
+      "text": "haha you just reminded me of a time when AI forgot about the python GIL when doing pytest wrapped around my custom USB endpoint C++ code to talk to my firmware and it completely broke all my host USB because I didn't know how locks would affect my code. this was opus 4.6 though so I forgive em.",
+      "at": "2026-10-30T18:52:49.000Z",
+      "url": "https://news.ycombinator.com/item?id=50308504"
     },
     {
       "author": "anon291",
@@ -448,6 +663,72 @@
       "text": "Unfortunately yes, we are limited in the mixed signal domain right now, that is by design. you would need to interact with ICs at a data level or pin level transactions. This would be digital levels nothing analog. This was kind of part of our original offerings to have a firmware mixed signal co-simulation. Run firmware--> see Spice level simulations happen. But this was a case where the speed to fidelity trade off really didnt make sense... yet. We were spreading ourselves thin on a long horizon project with nothing to show for it during the YC term. We will come to revisit this problem for sure as we have heard many of our customers ask similiar question for analog IC purposes. Just have to take it one step at a time.",
       "at": "2026-10-30T08:21:47.000Z",
       "url": "https://news.ycombinator.com/item?id=50301122"
+    },
+    {
+      "author": "amelius",
+      "text": "This. And Claude writes my firmware and does a pretty damn good job, and it can even test with a bench setup. So honestly, I don't think this simulator has much viability. It's a bitter message but I think the earlier they recognize this the better.",
+      "at": "2026-10-30T08:58:32.000Z",
+      "url": "https://news.ycombinator.com/item?id=50301360"
+    },
+    {
+      "author": "enough_ahnaf",
+      "text": "Yes I totally agree claude can write some damn good firmware! but at an enterprise development team scale for testing needs simulation. It has and always will for any critical embedded system. I think its the other way around that the viability will only get greater. Only this year did people start trusting LLMs with firmware  so the bet based on what we saw at industry, the better the AI the better you want the simulation it can use for your development. The other contributing cause is the actual lack of silicon in supply and we are seeing it especially for the automotive industry, which is only spiking demand for better simulations to unblock teams. If you want to ship with agents at scale you need a good testing pipeline now more than ever. We don't replace the bench setup test, we look to enhance what you bring to it. But that doesn't take away from the fact that, yes you could just let your LLM continuously loop on some hardware setup, rinse and repeat for weeks. If you have the hardware and the time to spare.",
+      "at": "2026-10-30T10:38:20.000Z",
+      "url": "https://news.ycombinator.com/item?id=50302120"
+    },
+    {
+      "author": "amelius",
+      "text": "But what if (due to the availability of AI) it becomes more common that hardware vendors provide simulation models with their hardware? That's the direction I'm hoping we will move in. And if it doesn't happen, perhaps FOSS enthusiasts will provide these models ...",
+      "at": "2026-10-30T12:35:36.000Z",
+      "url": "https://news.ycombinator.com/item?id=50303053"
+    },
+    {
+      "author": "shong0504",
+      "text": "I would say that is true, that hardware vendors should and can provide simulation models with their hardware. We know they can because they rely entirely on simulation to test their chips before tapeout. We even tried to work with chip vendors (won't name here but they are 2 out of the 10 biggest microcontroller designers), but in reality, them providing their own simulation is a little bit counterintuitive for them. They make their money on selling chips, and their thought is that providing a simulator would make it so that people buy less chips. If they do provide a simulator, it would be hella expensive, like through the Synopsys Virtualizer, which costs $500k per seat. For RISC-V and open-source MCUs, they are easy to simulate. Just run the RTL through something like Verilator, and you have a fully working simulation. We do hope that chip companies eventually do exactly that. We are also firmware engineers, and our goal is to make the simulation software we needed while working in the field. Either we make it, or they make it. Win-win in my opinion.",
+      "at": "2026-10-30T17:21:58.000Z",
+      "url": "https://news.ycombinator.com/item?id=50307131"
+    },
+    {
+      "author": "amelius",
+      "text": "Certainly a win if someone makes it, but I think that with the help of AI, soon anyone with a datasheet can make those simulation models. And even if it's not that simple, open source folks will do it.",
+      "at": "2026-10-30T20:51:21.000Z",
+      "url": "https://news.ycombinator.com/item?id=50309982"
+    },
+    {
+      "author": "peterabbitcook",
+      "text": "Would it be confusing if Simantic added support the Siemens Simatic S7-1500 PLC?",
+      "at": "2026-10-30T10:37:16.000Z",
+      "url": "https://news.ycombinator.com/item?id=50302110"
+    },
+    {
+      "author": "enough_ahnaf",
+      "text": "haha, now wouldnt want the world to have yet another PLC simulation software would we...",
+      "at": "2026-10-30T10:39:10.000Z",
+      "url": "https://news.ycombinator.com/item?id=50302127"
+    },
+    {
+      "author": "dodolaunch",
+      "text": "The Renode wrapper story is a useful one, because the build-versus-wrap decision is where a lot of infrastructure startups get stuck. Wrapping gets you to a demo quickly, but you inherit the upstream roadmap and the bug surface without control over either. For safety-critical customers I'd guess the harder problem than speed is fidelity: how do you show a skeptical avionics team that your simulated peripheral timing matches real silicon? Published correlation data against hardware traces for a few common MCUs might do more for trust than any feature list.",
+      "at": "2026-10-30T13:34:40.000Z",
+      "url": "https://news.ycombinator.com/item?id=50303665"
+    },
+    {
+      "author": "shong0504",
+      "text": "Yes you're absolutely right about that. We talked to a bunch of aerospace teams who tried to use Renode and QEMU in their CI, but ended up scrapping it because their timing mechanisms were terrible and very inaccurate. We do try to make our simulations as timing-accurate as possible. We are going to publish a report soon, to outline every gap between silicon and simulation, so these teams know exactly what to expect. We're also not trying to replace HIL testing. As a firmware engineer myself, I know that hardware is and will always be the source of truth, and we're not changing that. What we can do, is reduce the amount of testing that needs to be done on hardware, because HIL testing will always be slow and clunky. Things like application logic, and replicating garbage data on something like a CAN bus, is much better suited to be tested in simulation, and that's the gap we are focusing on. Let us know if you have any other questions!",
+      "at": "2026-10-30T17:38:05.000Z",
+      "url": "https://news.ycombinator.com/item?id=50307387"
+    },
+    {
+      "author": "unrented7977",
+      "text": "As a firmware engineer, I had Claude and Qwen spend about two hours writing my own multi-chip emulator. I can connect multiple firmware images together with gpio, UART, SPI, etc. I didn't even prompt for this, they decided they needed this capability on their own and wrote the emulator. What does your product offer that Claude hasn't already suggested and built on its own?",
+      "at": "2026-10-30T16:33:54.000Z",
+      "url": "https://news.ycombinator.com/item?id=50306349"
+    },
+    {
+      "author": "shong0504",
+      "text": "Anyone can make their own emulator. The ISA is publicly documented, and MCU datasheets are also public. There are also open source emulators like Renode and QEMU, like we wrote in our post. I would say there are two main differences between us and you using Claude to make its own emulator: 1. Although the ISA and peripheral behavior for the MCUs are documented, there are hardware intricacies that can't be effectively done with just an LLM. Things like register transaction timings, and hardware bugs (yes chip designers make mistakes in designs that aren't shown in documentation) requires many weeks of constant bench testing to detect and fix. 2. Maintenance. Yes, Claude is incredibly good. But it still makes mistakes. We understand that, and we're always making updates to our simulation software whenever there is a bug. You however, as a firmware engineer whose job is to make products and ship code, I would assume you would rather work on that instead spending all day fixing and updating a simulator. We do the maintenance for you, so you can focus on building your things. Hope that answers your question! We're not claiming that AI can't do it with enough time and resources. It's just that the people who find value in this would rather spend their time on other things.",
+      "at": "2026-10-30T17:11:27.000Z",
+      "url": "https://news.ycombinator.com/item?id=50306946"
     }
   ],
   "comments_complete": true

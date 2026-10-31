@@ -7,7 +7,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## workflow_reliability — UNVALIDATED CLUSTER
 
-- independent_demand_count: 66
+- independent_demand_count: 67
 - payment_evidence_count: 1
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community', 'n8n Community']
 - communities: ['Agenta-AI/agenta', 'Ask/Show HN', 'Commerce operator forum', 'n8n Jobs', 'n8n-io/n8n', 'useagenthq/useagent']
@@ -20,17 +20,17 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://github.com/n8n-io/n8n/issues/42822
+  - https://news.ycombinator.com/item?id=50301901
   - https://github.com/Agenta-AI/agenta/issues/7914
   - https://news.ycombinator.com/item?id=50292324
-  - https://github.com/n8n-io/n8n/issues/42582
   - https://github.com/n8n-io/n8n/issues/42512
   - https://github.com/n8n-io/n8n/issues/42503
-  - https://github.com/n8n-io/n8n/issues/42335
 
 ## supplier_sourcing — UNVALIDATED CLUSTER
 
-- independent_demand_count: 7
-- payment_evidence_count: 0
+- independent_demand_count: 8
+- payment_evidence_count: 1
 - platforms: ['GitHub', 'Shopify Community']
 - communities: ['Commerce operator forum', 'n8n-io/n8n', 'zack-hum/coffee-intelligence-v1.1']
 - repeated_pain: supplier sourcing
@@ -42,12 +42,12 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://community.shopify.com/t/shopify-va-inventory-listings-product-sourcing-customer-support-email-marketing-seo/707251
   - https://community.shopify.com/t/feature-request-product-specific-customer-tax-exemptions-for-accurate-wholesale-and-retail-checkout/706515
   - https://github.com/n8n-io/n8n/issues/41635
   - https://community.shopify.com/t/how-often-do-you-sync-supplier-stock-with-your-shopify-store/700544
   - https://github.com/zack-hum/coffee-intelligence-v1.1/issues/11
   - https://community.shopify.com/t/how-do-you-decide-when-to-stop-sourcing-from-one-supplier-and-diversify/607636
-  - https://community.shopify.com/t/what-questions-do-you-always-ask-potential-suppliers-before-placing-an-order/555921
 
 ## browser_automation — UNVALIDATED CLUSTER
 

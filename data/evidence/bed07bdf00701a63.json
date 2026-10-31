@@ -1,0 +1,92 @@
+{
+  "source_api_url": "https://api.github.com/repos/AdiYohanes/stockos/issues/11",
+  "collected_at": "2026-10-31T08:24:00.641334+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/AdiYohanes/stockos/issues/11",
+    "repository_url": "https://api.github.com/repos/AdiYohanes/stockos",
+    "labels_url": "https://api.github.com/repos/AdiYohanes/stockos/issues/11/labels{/name}",
+    "comments_url": "https://api.github.com/repos/AdiYohanes/stockos/issues/11/comments",
+    "events_url": "https://api.github.com/repos/AdiYohanes/stockos/issues/11/events",
+    "html_url": "https://github.com/AdiYohanes/stockos/issues/11",
+    "id": 6130624718,
+    "node_id": "I_kwDOT3R5K88AAAABbWnozg",
+    "number": 11,
+    "title": "feat(catalog): managed categories and suppliers with text-snapshot storage",
+    "user": {
+      "login": "AdiYohanes",
+      "id": 105840796,
+      "node_id": "U_kgDOBk8AnA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/105840796?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/AdiYohanes",
+      "html_url": "https://github.com/AdiYohanes",
+      "followers_url": "https://api.github.com/users/AdiYohanes/followers",
+      "following_url": "https://api.github.com/users/AdiYohanes/following{/other_user}",
+      "gists_url": "https://api.github.com/users/AdiYohanes/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/AdiYohanes/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/AdiYohanes/subscriptions",
+      "organizations_url": "https://api.github.com/users/AdiYohanes/orgs",
+      "repos_url": "https://api.github.com/users/AdiYohanes/repos",
+      "events_url": "https://api.github.com/users/AdiYohanes/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/AdiYohanes/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 12608383247,
+        "node_id": "LA_kwDOT3R5K88AAAAC74SpDw",
+        "url": "https://api.github.com/repos/AdiYohanes/stockos/labels/ready-for-agent",
+        "name": "ready-for-agent",
+        "color": "0E8A16",
+        "default": false,
+        "description": "Fully specified; implementation still requires explicit approval",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2026-10-31T03:27:56Z",
+    "updated_at": "2026-10-31T03:27:56Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Problem Statement\n\nSaat ini, kategori produk dan pemasok (supplier) di StockOS hanya disimpan sebagai teks bebas pada tabel produk. Pilihan dropdown kategori di modal tambah/edit produk hanya mengandalkan daftar bawaan 8 kategori warung dan saran teks dari produk yang sudah pernah diinput. Hal ini menimbulkan beberapa kendala:\n1. Pemilik warung kesulitan memilih kategori karena tidak ada daftar master yang terstruktur dan mudah dikelola.\n2. Pemilik warung tidak memiliki menu atau tempat untuk mendokumentasikan daftar pemasok (distributor/toko grosir) beserta kontak telepon/WhatsApp dan catatan ringkasnya.\n3. Inkonsistensi penulisan nama kategori atau pemasok menyebabkan filter dan pengelompokan produk menjadi terpecah.\n4. Pemilik tidak dapat menambah kategori atau pemasok baru secara cepat saat sedang menginput produk baru tanpa merusak keseragaman data.\n\n## Solution\n\nMenyediakan fitur manajemen master data kategori produk dan pemasok yang sederhana dan praktis:\n1. **Manajemen di Pengaturan (`/settings`)**: Menambahkan tab/seksi di halaman Pengaturan untuk mengelola master Kategori Produk dan Daftar Pemasok (tambah, edit nama/kontak, hapus dengan proteksi).\n2. **Quick-Add di Modal Produk**:\n   - Kategori: Combobox *creatable* yang memungkinkan pemilik mengetik kategori baru dan langsung menambahkannya dalam satu klik saat input produk.\n   - Pemasok: Tombol mini `+` di samping kolom pemasok untuk membuka dialog cepat (nama, no. telepon/WA, catatan).\n3. **Penyimpanan Snapshot Teks (ADR 0002)**: Tabel master menyimpan entitas referensi, sedangkan produk dan riwayat stok tetap menyimpan teks snapshot. Rename di master secara otomatis memperbarui data produk aktif, namun bukti audit historis (bukti stok masuk/nota) tetap abadi dan tidak rusak.\n4. **Proteksi Integritas**: Kategori dan pemasok yang masih digunakan oleh produk aktif tidak dapat dihapus (*restrict delete*).\n5. **Dukungan SKU PLU**: Kategori kustom baru otomatis menggunakan digit prefix PLU `9` (Lainnya/Umum) untuk penomoran SKU otomatis.\n\n## User Stories\n\n1. As a Pemilik warung, I want to view a dedicated list of product categories in the Settings page, so that I can see all active categories available in my shop.\n2. As a Pemilik warung, I want to add a new custom category from the Settings page, so that I can classify goods specific to my shop inventory.\n3. As a Pemilik warung, I want to edit an existing category name in Settings, so that typos or naming adjustments can be corrected centrally.\n4. As a Pemilik warung, I want category renames to automatically update active products using that category, so that my product filters and groupings stay consistent without manual updates.\n5. As a Pemilik warung, I want the system to prevent deleting a category if it is currently assigned to active products, so that my product catalog never gets orphaned or corrupted.\n6. As a Pemilik warung, I want to delete an unused category from Settings, so that my category dropdown stays clean and relevant.\n7. As a Pemilik warung, I want the 8 canonical warung categories to be pre-seeded in my shop, so that I have a practical baseline catalog out of the box.\n8. As a Pemilik warung, I want to view a dedicated list of suppliers in the Settings page, so that I have an organized directory of my distributors and wholesale shops.\n9. As a Pemilik warung, I want to add a new supplier with their name, phone/WhatsApp number, and brief notes in Settings, so that I can easily find contact information when reordering goods.\n10. As a Pemilik warung, I want to edit a supplier's name, phone number, and notes in Settings, so that supplier contact details remain up to date.\n11. As a Pemilik warung, I want supplier renames to automatically update active products associated with that supplier, so that filtering by supplier remains accurate.\n12. As a Pemilik warung, I want the system to prevent deleting a supplier if any active product is still linked to them, so that product sourcing data is preserved.\n13. As a Pemilik warung, I want to delete an unused supplier from Settings, so that obsolete or inactive vendors do not clutter my list.\n14. As a Pemilik warung, I want a structured dropdown/combobox for category selection inside the Add Product modal, so that I can select a category quickly without typing from scratch.\n15. As a Pemilik warung, I want to create a new category directly inside the Add Product modal combobox, so that I do not have to leave the product creation flow when introducing a new category.\n16. As a Pemilik warung, I want products created with a new custom category to automatically receive a PLU SKU prefixed with digit 9, so that automatic retail SKU standards remain consistent.\n17. As a Pemilik warung, I want a structured dropdown for selecting a supplier in the Add Product modal, so that I can select existing suppliers consistently.\n18. As a Pemilik warung, I want a quick-add button next to the supplier field in the Add Product modal, so that I can add a new supplier with contact details on the fly.\n19. As a Pemilik warung, I want the same category combobox and supplier quick-add available in the Edit Product modal, so that updating existing products is equally effortless.\n20. As a Pemilik warung, I want existing categories and suppliers from currently stored products to be automatically populated into the master tables during migration, so that no existing data is lost.\n21. As a Pemilik warung, I want historical stock receipts, opname events, and audit logs to retain their original category and supplier snapshots, so that past operational records remain immutable even if masters are edited or removed.\n22. As a Pemilik warung, I want quick click-to-copy or click-to-WhatsApp on supplier phone numbers in the Settings supplier list, so that I can contact distributors with a single click from my device.\n\n## Implementation Decisions\n\n### Data & Architecture\n- **Dedicated Master Tables**: Create `categories` and `suppliers` in the private database schema.\n  - `categories`: `id` (UUID), `name` (unique nonblank text, max 120), `created_at`, `updated_at`.\n  - `suppliers`: `id` (UUID), `name` (unique nonblank text, max 120), `phone` (optional text, max 40), `notes` (optional text, max 500), `created_at`, `updated_at`.\n- **Text Snapshot Storage (ADR 0002)**: The `products` table continues to store `category` (required text) and `supplier` (nullable text). Past `inventory_events` snapshots continue to hold the original text captured at the time of the event.\n- **Controlled Rename Propagation**: When a category or supplier is renamed in the master table, a server RPC updates the corresponding string values in all active `products` rows within the same transaction. Past inventory events are never modified.\n- **Deletion Safeguard**: An RPC enforces that a category or supplier can only be deleted if `COUNT(*) FROM products WHERE category = ...` (or `supplier = ...`) is zero. Otherwise, a validation conflict is returned.\n- **Migration & Seeding**: A forward database migration automatically seeds the 8 standard warung categories and extracts distinct existing `category` and `supplier` text from `products` into the respective master tables.\n\n### Server Contracts & RPCs\n- Private RPCs with verified owner context:\n  - `stockos_list_categories` & `stockos_create_category` & `stockos_update_category` & `stockos_delete_category`\n  - `stockos_list_suppliers` & `stockos_create_supplier` & `stockos_update_supplier` & `stockos_delete_supplier`\n- Server Actions wrapped with authentication verification, schema validation (Zod), and cache revalidation.\n\n### User Interface & Interaction\n- **Settings Page**: Add two tabs or organized card sections under `/settings`:\n  - \"Kategori Produk\": Data table listing categories, product count per category, action buttons for edit and delete, and a \"+ Tambah Kategori\" button triggering a simple modal.\n  - \"Pemasok / Distributor\": Data table listing supplier name, phone/WA, notes, product count, and actions for edit/delete, plus quick-action link to WA/dial.\n- **Product Modals (Add & Edit)**:\n  - Category input transformed into a creatable combobox displaying existing master categories with instant search filtering and a \"+ Tambah '[Input]'\" option at the bottom.\n  - Supplier input transformed into a select dropdown accompanied by a small `+` icon button that opens a mini dialog for quick supplier creation without losing form draft state.\n- **PLU SKU Rule**: The `getCategoryPluPrefix` helper defaults any category not matching the 8 standard categories to digit `9`.\n\n## Testing Decisions\n\n- **Testing Philosophy**: Test observable external behavior and workflows rather than internal implementation details.\n- **Browser E2E Seam (Playwright / UI verification script)**:\n  - Verify navigating to `/settings`, creating a category and supplier, editing their names, and seeing the change reflected on existing products.\n  - Verify that attempting to delete a category or supplier currently used by a product displays an error and leaves data intact.\n  - Verify deleting an unused category or supplier succeeds.\n  - Verify opening the Add Product modal, using inline category creation, and verifying automatic PLU SKU generation with prefix `9`.\n  - Verify using inline supplier creation from the modal and confirming the newly created supplier is selected.\n- **Contract & Mutation Assertions**:\n  - Assert that RPC renames atomically update `products.category` and `products.supplier`.\n  - Assert that `inventory_events` snapshots retain historic names after master renames.\n  - Assert that delete restrictions fail closed when active products are attached.\n- **Prior Art**: Follows existing verification suite patterns in `scripts/check-settings-state.mjs` and `scripts/launch-warung-proof.py`.\n\n## Out of Scope\n\n- Purchase Orders (PO), goods receipt notes across multi-product purchase orders, and supplier invoicing.\n- Supplier debt/credit tracking (hutang dagang / accounts payable) and payment terms.\n- Multi-location supplier assignments or warehouse fulfillment logic.\n- Complex hierarchical category trees (sub-categories / department nesting).\n- Staff access controls or permission tiers for category/supplier management.\n\n## Further Notes\n\n- Aligns directly with `GLOSSARY.md` definitions of *Warung*, *Pemilik*, *Kategori*, and *Pemasok*.\n- Conforms to `ADR 0002` regarding text snapshots for audit durability.\n- All database mutations must use forward-only PostgreSQL migrations under Supabase with owner security definer contexts.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/AdiYohanes/stockos/issues/11/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/AdiYohanes/stockos/issues/11/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [],
+  "comments_complete": true
+}

@@ -1,0 +1,123 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42820",
+  "collected_at": "2026-10-31T08:24:00.641334+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/42820",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/42820/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/42820/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/42820/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/42820",
+    "id": 6126919000,
+    "node_id": "I_kwDOC4Q8Qs8AAAABbTFdWA",
+    "number": 42820,
+    "title": "Editor: Workflows table in the community package modal is hardcoded English",
+    "user": {
+      "login": "Pushkal-Gupta",
+      "id": 161060351,
+      "node_id": "U_kgDOCZmV_w",
+      "avatar_url": "https://avatars.githubusercontent.com/u/161060351?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Pushkal-Gupta",
+      "html_url": "https://github.com/Pushkal-Gupta",
+      "followers_url": "https://api.github.com/users/Pushkal-Gupta/followers",
+      "following_url": "https://api.github.com/users/Pushkal-Gupta/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Pushkal-Gupta/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Pushkal-Gupta/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Pushkal-Gupta/subscriptions",
+      "organizations_url": "https://api.github.com/users/Pushkal-Gupta/orgs",
+      "repos_url": "https://api.github.com/users/Pushkal-Gupta/repos",
+      "events_url": "https://api.github.com/users/Pushkal-Gupta/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Pushkal-Gupta/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582010757,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cXhQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:nodes",
+        "name": "team:nodes",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Nodes team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-30T21:04:32Z",
+    "updated_at": "2026-10-30T21:14:23Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nWhen you uninstall or update a community node package that is used in workflows, the modal shows a table of those workflows. All the text in that table is written in English straight into the code, so it does not get translated:\n\n- The column headers \"Workflow\", \"Owner\" and \"Status\"\n- The \"Active\" and \"Inactive\" labels in the status column\n\nhttps://github.com/n8n-io/n8n/blob/fa52841130f3576b50da09a55a9d1e61ae9ad5f8/packages/frontend/editor-ui/src/features/settings/communityNodes/components/NodesInWorkflowTable.vue#L30-L40\nhttps://github.com/n8n-io/n8n/blob/fa52841130f3576b50da09a55a9d1e61ae9ad5f8/packages/frontend/editor-ui/src/features/settings/communityNodes/components/NodesInWorkflowTable.vue#L95-L96\n\nThe rest of the modal is already translated. For example, the title uses `settings.communityNodes.confirmModal.uninstall.title`.\n\n### To Reproduce\n\n1. Set the UI to a language other than English.\n2. Go to **Settings > Community nodes** and install any package.\n3. Add one of its nodes to a workflow and save the workflow.\n4. Go back to **Community nodes**, open the package menu and click **Uninstall package**.\n5. The table of workflows is still in English.\n\n### Expected behavior\n\nThe table headers and the status labels show in the selected language.\n\n### Debug Info\n\nI found this while reading the code on `master` (2.46.0). The text is written into the code, so it happens on every setup.\n\n### Environment\n\n- Operating System: macOS (platform independent)\n- n8n Version: 2.46.0 (`master`)\n- Node.js Version: 24.x\n- Database: n/a\n- Execution mode: n/a\n\n### Note\n\nI have a fix ready and will open a PR.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/42820/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/42820/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @Pushkal-Gupta,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9681\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9681](https://linear.app/n8n/issue/GHC-9681)",
+      "at": "2026-10-30T21:04:40Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42820#issuecomment-6533429429"
+    }
+  ],
+  "comments_complete": true
+}

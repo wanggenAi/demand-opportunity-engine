@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50303157",
+  "collected_at": "2026-10-31T08:24:00.641334+00:00",
+  "source": {
+    "author": "specdeck",
+    "children": [],
+    "created_at": "2026-10-30T12:47:48.000Z",
+    "created_at_i": 1793364468,
+    "id": 50303157,
+    "options": [],
+    "parent_id": null,
+    "points": 2,
+    "story_id": 50303157,
+    "text": "Writing good specs is hard. You don’t know everything upfront and it’s impossible to write every little detail in the spec. Much of my job as a developer has been to treat specs as intent, and fill out the blanks in the code and use the code reviews as a way to question those decisions. But as coding agents have started to produce much more code, the decisions that actually affect the product are getting harder to find.<p>So I created SpecDeck. It helps everyone on the team write specs and hand them over to developers and their agents through MCP. During implementation, agents write the decisions that matter back as proposed spec changes and leave smaller implementation choices in the code. When the work is done, a person reviews and publish those changes into the spec.<p>The workflow is modeled on git: a published spec is main, drafts are branches, and proposals are pull requests. It should feel familiar to developers, while making it easy for the whole team to work with specs and keep them up to date without touching git.<p>It’s still early and there’s plenty to improve, but I’d love to hear your feedback.",
+    "title": "Show HN: SpecDeck – Bring coding agent decisions back into the spec",
+    "type": "story",
+    "url": "https://specdeck.ai/"
+  },
+  "comments": [],
+  "comments_complete": true
+}

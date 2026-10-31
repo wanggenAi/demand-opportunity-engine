@@ -1,0 +1,172 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50301901",
+  "collected_at": "2026-10-31T08:24:00.641334+00:00",
+  "source": {
+    "author": "japhyr",
+    "children": [
+      {
+        "author": "spottedmarley",
+        "children": [
+          {
+            "author": "japhyr",
+            "children": [],
+            "created_at": "2026-10-30T12:23:26.000Z",
+            "created_at_i": 1793363006,
+            "id": 50302949,
+            "options": [],
+            "parent_id": 50302284,
+            "points": null,
+            "story_id": 50301901,
+            "text": "I&#x27;ve only implemented support for one provider at the moment, but it is structured in a way where I can add support for any other providers or local models. It feels good to not be locked into any one company&#x27;s models or harness.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-30T11:00:44.000Z",
+        "created_at_i": 1793358044,
+        "id": 50302284,
+        "options": [],
+        "parent_id": 50301901,
+        "points": null,
+        "story_id": 50301901,
+        "text": "I have been using my own harness for quite a while now and giving it constant and continuous updates and improvements. It is optimized for use with local models but can also use any API that I have an account with too when the desire arises.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "tinykerneldev",
+        "children": [],
+        "created_at": "2026-10-30T13:30:10.000Z",
+        "created_at_i": 1793367010,
+        "id": 50303613,
+        "options": [],
+        "parent_id": 50301901,
+        "points": null,
+        "story_id": 50301901,
+        "text": "omp (oh-my-pi) all the time. I just loved embracing the terminal and being able to switch between providers freely.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "mattbrewsbytes",
+        "children": [],
+        "created_at": "2026-10-30T15:15:28.000Z",
+        "created_at_i": 1793373328,
+        "id": 50305104,
+        "options": [],
+        "parent_id": 50301901,
+        "points": null,
+        "story_id": 50301901,
+        "text": "Is there an accepted definition on what a harness is?  Is this like GasTown and similar? Plan mode? Is this a client-side loop with multi-threaded agents running in parallel? If the AI client is doing this on its own, is that considered agentic and&#x2F;or using a harness? Or does the introduction of saving text to a MD file make it &quot;self learning&quot; a harness?<p>It feels like the pace at which the industry is defining things may be faster than the actual pace of change sometimes.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "ravenstine",
+        "children": [
+          {
+            "author": "akshithio",
+            "children": [],
+            "created_at": "2026-10-30T22:02:44.000Z",
+            "created_at_i": 1793397764,
+            "id": 50310733,
+            "options": [],
+            "parent_id": 50308572,
+            "points": null,
+            "story_id": 50301901,
+            "text": "I&#x27;m curious to hear what the problem was with Pi? I&#x27;d assume the problems you mentioned are due to homebrew (and its dependency churn) rather than Pi itself.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-10-30T18:57:26.000Z",
+        "created_at_i": 1793386646,
+        "id": 50308572,
+        "options": [],
+        "parent_id": 50301901,
+        "points": null,
+        "story_id": 50301901,
+        "text": "Not currently, but I probably will be in the coming weeks.<p>I pretty much end up hating every harness I use.  Some come really close to what I&#x27;m looking for but then completely miss the mark in other ways.  At the moment, I&#x27;m stripping OpenCode down to its absolute bare minimum, removing pretty much all of the vendor-specific crap and everything else I don&#x27;t plan on using.  Once I&#x27;m convinced that&#x27;s stable, I&#x27;ll identify how all the &quot;good parts&quot; work and reimplement the core using Rust.<p>And yeah, I know Pi exists, which in many ways is what I&#x27;m looking for, except even that ended up being more of a bulky mess than what I was hoping.  Chose the install with Homebrew option, and for some reason it took an ungodly amount of time to install a buttload of dependencies and then compile, only to completely stall out and fail.  I mean... what the fuck.  Glad it works for other people, but this is the exact type of total nonsense that I&#x27;m done with when it comes to modern software.<p>For Pete&#x27;s sake... I just want something that reads my text, contacts an LLM, and runs commands on my system.  Why does this have to feel like coordinating a manned mission to the Moon?  This shouldn&#x27;t require even hundreds of megabytes of a runtime.  It takes a fraction of the time for me to compile the <i>Perfect Dark PC Port</i>, a full blown FPS game, than it does for me to install some of these harnesses.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "devoidfury",
+        "children": [],
+        "created_at": "2026-10-31T08:06:16.000Z",
+        "created_at_i": 1793433976,
+        "id": 50314103,
+        "options": [],
+        "parent_id": 50301901,
+        "points": null,
+        "story_id": 50301901,
+        "text": "Yeah, I built mine to learn how these work and have been playing with it since then while I look for a job. <a href=\"https:&#x2F;&#x2F;github.com&#x2F;devoidfury&#x2F;hotdog\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;devoidfury&#x2F;hotdog</a>",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-10-30T10:12:39.000Z",
+    "created_at_i": 1793355159,
+    "id": 50301901,
+    "options": [],
+    "parent_id": null,
+    "points": 9,
+    "story_id": 50301901,
+    "text": "I was slow to adopt an agentic workflow for a variety of reasons. When I was ready to try an agentic workflow, I didn&#x27;t want to install Claude on my own system. I have a hard time trusting its boundaries, and I don&#x27;t want to spend a bunch of time learning its permissions model well enough to start trusting it.<p>I decided to write my own harness, and thought people would find that a pointless thing to do in 2026. I was amazed how easy it was to build a harness that can read, write, and modify files within a project directory. I now use this harness on a daily basis, and it hasn&#x27;t grown much since that first iteration.<p>That made me wonder: How many of us are using a custom harness on a regular basis? What keeps you using your own harness?",
+    "title": "Ask HN: Are you using a custom harness?",
+    "type": "story",
+    "url": null
+  },
+  "comments": [
+    {
+      "author": "spottedmarley",
+      "text": "I have been using my own harness for quite a while now and giving it constant and continuous updates and improvements. It is optimized for use with local models but can also use any API that I have an account with too when the desire arises.",
+      "at": "2026-10-30T11:00:44.000Z",
+      "url": "https://news.ycombinator.com/item?id=50302284"
+    },
+    {
+      "author": "japhyr",
+      "text": "I've only implemented support for one provider at the moment, but it is structured in a way where I can add support for any other providers or local models. It feels good to not be locked into any one company's models or harness.",
+      "at": "2026-10-30T12:23:26.000Z",
+      "url": "https://news.ycombinator.com/item?id=50302949"
+    },
+    {
+      "author": "tinykerneldev",
+      "text": "omp (oh-my-pi) all the time. I just loved embracing the terminal and being able to switch between providers freely.",
+      "at": "2026-10-30T13:30:10.000Z",
+      "url": "https://news.ycombinator.com/item?id=50303613"
+    },
+    {
+      "author": "mattbrewsbytes",
+      "text": "Is there an accepted definition on what a harness is?  Is this like GasTown and similar? Plan mode? Is this a client-side loop with multi-threaded agents running in parallel? If the AI client is doing this on its own, is that considered agentic and/or using a harness? Or does the introduction of saving text to a MD file make it \"self learning\" a harness? It feels like the pace at which the industry is defining things may be faster than the actual pace of change sometimes.",
+      "at": "2026-10-30T15:15:28.000Z",
+      "url": "https://news.ycombinator.com/item?id=50305104"
+    },
+    {
+      "author": "ravenstine",
+      "text": "Not currently, but I probably will be in the coming weeks. I pretty much end up hating every harness I use.  Some come really close to what I'm looking for but then completely miss the mark in other ways.  At the moment, I'm stripping OpenCode down to its absolute bare minimum, removing pretty much all of the vendor-specific crap and everything else I don't plan on using.  Once I'm convinced that's stable, I'll identify how all the \"good parts\" work and reimplement the core using Rust. And yeah, I know Pi exists, which in many ways is what I'm looking for, except even that ended up being more of a bulky mess than what I was hoping.  Chose the install with Homebrew option, and for some reason it took an ungodly amount of time to install a buttload of dependencies and then compile, only to completely stall out and fail.  I mean... what the fuck.  Glad it works for other people, but this is the exact type of total nonsense that I'm done with when it comes to modern software. For Pete's sake... I just want something that reads my text, contacts an LLM, and runs commands on my system.  Why does this have to feel like coordinating a manned mission to the Moon?  This shouldn't require even hundreds of megabytes of a runtime.  It takes a fraction of the time for me to compile the  Perfect Dark PC Port , a full blown FPS game, than it does for me to install some of these harnesses.",
+      "at": "2026-10-30T18:57:26.000Z",
+      "url": "https://news.ycombinator.com/item?id=50308572"
+    },
+    {
+      "author": "akshithio",
+      "text": "I'm curious to hear what the problem was with Pi? I'd assume the problems you mentioned are due to homebrew (and its dependency churn) rather than Pi itself.",
+      "at": "2026-10-30T22:02:44.000Z",
+      "url": "https://news.ycombinator.com/item?id=50310733"
+    },
+    {
+      "author": "devoidfury",
+      "text": "Yeah, I built mine to learn how these work and have been playing with it since then while I look for a job.  https://github.com/devoidfury/hotdog",
+      "at": "2026-10-31T08:06:16.000Z",
+      "url": "https://news.ycombinator.com/item?id=50314103"
+    }
+  ],
+  "comments_complete": true
+}

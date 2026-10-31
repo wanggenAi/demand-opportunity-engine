@@ -1,0 +1,107 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42676",
+  "collected_at": "2026-10-31T08:24:00.641334+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/42676",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/42676/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/42676/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/42676/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/42676",
+    "id": 6116312905,
+    "node_id": "I_kwDOC4Q8Qs8AAAABbI-HSQ",
+    "number": 42676,
+    "title": "IMAP Trigger node bug",
+    "user": {
+      "login": "pmtryingtocode",
+      "id": 198231597,
+      "node_id": "U_kgDOC9DGLQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/198231597?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pmtryingtocode",
+      "html_url": "https://github.com/pmtryingtocode",
+      "followers_url": "https://api.github.com/users/pmtryingtocode/followers",
+      "following_url": "https://api.github.com/users/pmtryingtocode/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pmtryingtocode/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pmtryingtocode/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pmtryingtocode/subscriptions",
+      "organizations_url": "https://api.github.com/users/pmtryingtocode/orgs",
+      "repos_url": "https://api.github.com/users/pmtryingtocode/repos",
+      "events_url": "https://api.github.com/users/pmtryingtocode/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pmtryingtocode/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-10-30T09:09:47Z",
+    "updated_at": "2026-10-30T13:10:56Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "\n<!-- Please follow the template below. Skip the questions that are not relevant to you. -->\n\n## Describe the problem/error/question\nI'm constantly getting an random \"Failed publish\" workflow. It's totally random and it's not clear why it happens. Sure it's related with the IMAP node. The trigger works 99% of the time and randomly the workflow fails to publish with any intervention in the workflow. Literally the solution stops working without any manual publishing or changes to the workflow.\n\n## What is the error message (if any)?\nI don't have any error message besides this:\n\n<img width=\"266\" height=\"196\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4b249e6f-bc3c-421a-8ba9-610f56295f0d\" />\n\n<img width=\"1193\" height=\"92\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/48abf1bd-5fd7-43ea-b674-36d830f0a9a4\" />\n\n## Please share your workflow/screenshots/recording\n\n<img width=\"1569\" height=\"685\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fe23afac-d892-4e79-a40f-ce9959a2e5cb\" />\n\n```\n(Select the nodes on your canvas and use the keyboard shortcuts CMD+C/CTRL+C and CMD+V/CTRL+V to copy and paste the workflow.)\n⚠️ WARNING ⚠️ If you have sensitive data in your workflow (like API keys), please remove it before sharing.\n```\n{\n  \"nodes\": [\n    {\n      \"parameters\": {\n        \"downloadAttachments\": true,\n        \"options\": {}\n      },\n      \"type\": \"n8n-nodes-base.emailReadImap\",\n      \"typeVersion\": 2.1,\n      \"position\": [\n        -400,\n        720\n      ],\n      \"id\": \"10f62c9c-a58a-45af-b006-6ee36c23650f\",\n      \"name\": \"Email Trigger (IMAP)\",\n      \"credentials\": {\n        \"imap\": {\n          \"id\": \"PUGsNRogYW6mpXx4\",\n          \"name\": \"IMAP Email\"\n        }\n      }\n    }\n  ],\n  \"connections\": {\n    \"Email Trigger (IMAP)\": {\n      \"main\": [\n        []\n      ]\n    }\n  },\n  \"pinData\": {},\n  \"meta\": {\n    \"templateCredsSetupCompleted\": true,\n    \"instanceId\": \"3ce6ff7b23c0c339d9e0e96c98b57179bbef8d60b0d0635395deeed55ff26179\"\n  }\n}\n\n## Share the output returned by the last node\n<!-- If you need help with data transformations, please also share your expected output. -->\n\nDoesn't exist because the problem is with the trigger node.\n\n## Debug info\n\n### core\n\n- n8nVersion: 2.45.6\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.12.1\n- nodeEnv: production\n- database: postgres\n- executionMode: regular\n- concurrency: -1\n- license: enterprise (production)\n\n### storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n### pruning\n\n- enabled: true\n- maxAge: 336 hours\n- maxCount: 10000 executions\n\n### client\n\n- userAgent: mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/155.0.0.0 safari/537.36\n- isTouchDevice: false\n\nGenerated at: 2026-10-30T08:10:04.807Z",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/42676/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/42676/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @pmtryingtocode,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9678\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9678](https://linear.app/n8n/issue/GHC-9678)",
+      "at": "2026-10-30T09:10:19Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42676#issuecomment-6519169176"
+    },
+    {
+      "author": "vterzic",
+      "text": "Thanks for the detailed report! It is likely duplicate of https://github.com/n8n-io/n8n/issues/41541  \n\nWe will expedite the fix",
+      "at": "2026-10-30T12:03:54Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42676#issuecomment-6522288036"
+    }
+  ],
+  "comments_complete": true
+}

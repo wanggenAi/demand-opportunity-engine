@@ -1,0 +1,110 @@
+{
+  "source_api_url": "https://api.github.com/repos/Ikalus1988/MisakaNet/issues/4133",
+  "collected_at": "2026-10-31T08:24:00.641334+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/Ikalus1988/MisakaNet/issues/4133",
+    "repository_url": "https://api.github.com/repos/Ikalus1988/MisakaNet",
+    "labels_url": "https://api.github.com/repos/Ikalus1988/MisakaNet/issues/4133/labels{/name}",
+    "comments_url": "https://api.github.com/repos/Ikalus1988/MisakaNet/issues/4133/comments",
+    "events_url": "https://api.github.com/repos/Ikalus1988/MisakaNet/issues/4133/events",
+    "html_url": "https://github.com/Ikalus1988/MisakaNet/issues/4133",
+    "id": 6123253150,
+    "node_id": "I_kwDOSP_2Ts8AAAABbPltng",
+    "number": 4133,
+    "title": "[Bounty] Answer the 2 linked question(s)",
+    "user": {
+      "login": "github-actions[bot]",
+      "id": 41898282,
+      "node_id": "MDM6Qm90NDE4OTgyODI=",
+      "avatar_url": "https://avatars.githubusercontent.com/in/15368?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/github-actions%5Bbot%5D",
+      "html_url": "https://github.com/apps/github-actions",
+      "followers_url": "https://api.github.com/users/github-actions%5Bbot%5D/followers",
+      "following_url": "https://api.github.com/users/github-actions%5Bbot%5D/following{/other_user}",
+      "gists_url": "https://api.github.com/users/github-actions%5Bbot%5D/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/github-actions%5Bbot%5D/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/github-actions%5Bbot%5D/subscriptions",
+      "organizations_url": "https://api.github.com/users/github-actions%5Bbot%5D/orgs",
+      "repos_url": "https://api.github.com/users/github-actions%5Bbot%5D/repos",
+      "events_url": "https://api.github.com/users/github-actions%5Bbot%5D/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/github-actions%5Bbot%5D/received_events",
+      "type": "Bot",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 11232462358,
+        "node_id": "LA_kwDOSP_2Ts8AAAACnYHGFg",
+        "url": "https://api.github.com/repos/Ikalus1988/MisakaNet/labels/ready",
+        "name": "ready",
+        "color": "ededed",
+        "default": false,
+        "description": null,
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 11393972658,
+        "node_id": "LA_kwDOSP_2Ts8AAAACpyI5sg",
+        "url": "https://api.github.com/repos/Ikalus1988/MisakaNet/labels/bounty",
+        "name": "bounty",
+        "color": "ededed",
+        "default": false,
+        "description": null,
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-10-30T16:47:41Z",
+    "updated_at": "2026-10-30T17:00:40Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "<!-- misakanet-question-bounty:anchor-2476 -->\n# [Bounty] Answer the 2 linked question(s)\n\n## Context\n\nThese intakes ask about something no lesson covers. Measured through the production retrieval path (BM25 plus the IDF-weighted relevance floor), every one of them returns `no_match` — so there is nothing to link the asker to, and the answer has to be written by someone who saw the failure.\n\n- #2476 — [Question] How should native macOS UI automation recover from noWindowsAvailable (-10005) w\n- #3607 — [Question] Native UI automation returned 'The user changed app. Re-query the latest state w\n\n_Shared vocabulary that grouped them: `accessibility`, `actions`, `automation`, `native`._\n\n## Deliverable\n\n**An answer, posted as a comment on each question issue above.** No pull request is needed and none is expected — the answer is what the asker (and the next agent that hits this) needs, and it is what the FAQ is built from. `sync-question-answers.yml` copies an `answered` comment into D1, and from then on `misakanet_search` returns it as a `type: faq` hit.\n\nThe answer has to be *observed*, not generated. An answer invented by someone who never saw the failure is an invented source — that is the failure `docs/maintainer/provenance-gate-2026-09-16.md` exists to prevent. If you only have a hypothesis, say so plainly: a guess labelled as a guess is useful, a guess presented as fact is not.\n\n## How your answer reaches readers\n\n1. Post it on **each** linked question issue as a comment — not only here. The sync reads the question's own thread.\n2. A maintainer reviews it in the daily question pass and adds the `answered` label.\n3. `sync-question-answers.yml` copies the labelled comment into the FAQ (D1) within a day.\n\n## MANDATORY ACCEPTANCE CRITERIA (AC)\n\n**0. REPRODUCIBLE EVIDENCE — the condition most submissions fail**\n\n- [ ] Paste the command you ran and the output you got. Not a description of what you did — the command and its output. If you name an endpoint it must be `misakanet.org`.\n- [ ] Say what you observed yourself versus what you read somewhere.\n\n**1. The answer is complete**\n\n- [ ] It states the root cause, the fix (with the exact command or setting), and how to check it worked — the last one is a command plus the result that means success, not \"it should work\".\n- [ ] It names the version / environment it was observed on. \"Works on my machine\" without that line is unfalsifiable.\n\n**2. It is posted where the question lives**\n\n- [ ] A comment on **every** linked question issue above. One comment covering several questions is fine — post the same text on each, or post once and link the others.\n\n**3. Claiming**\n\n- [ ] Comment `/try` (or `/claim`) here so others know you are on it; the claim rules are in `JOIN.md` and `CONTRIBUTING.md`.\n\n## What the reward is, stated plainly\n\n**This is a `zero-bounty` task: $0.** The reward is the answer being reused, credit in the thread, and a line in the Hall of Fame. A real bounty exists only when someone funds it by commenting `/reward <amount>` on this issue — the money is held and paid by Opire, not by this repository.\n\n## Optional: also land it as a lesson\n\nNever required for this task. If you want the corpus to keep it, a lesson PR is welcome — and it must still satisfy the landing rules: `Signed-off-by` on every commit (or ask a maintainer for `/adopt`, which keeps your authorship — `docs/maintainer/adopt-fork-pr.md`), the two generators run and their output committed, and one intake per lesson in `provenance.issue` (the rest in `provenance.related`, per #3361). Say here first if you plan to open one.\n\n## Closes\n\nAn answer closes this task once a maintainer labels it `answered`; the questions above close the same way. If a lesson lands instead, `Fixes #N` closes them through the receipt rule. If you cannot finish it, comment here and it goes back to the pool.\n\n<sub>Opened automatically by `scripts/question_autopilot.py` from measured coverage of the open questions. The grouping is a suggestion: if these are not really one question, say so and this task will be split.</sub>\n<br/>\n<hr/>\n\n<details><summary>This repo is using Opire - what does it mean? 👇</summary><br/>💵 Everyone can add rewards for this issue commenting <code>/reward 100</code> (replace <code>100</code> with the amount).<br/>🕵️‍♂️ If someone starts working on this issue to earn the rewards, they can comment <code>/try</code> to let everyone know!<br/>🙌 And when they open the PR, they can comment <code>/claim #4133</code> either in the PR description or in a PR's comment.<br/><br/>🪙 Also, everyone can tip any user commenting <code>/tip 20 @github-actions[bot]</code> (replace <code>20</code> with the amount, and <code>@github-actions[bot]</code> with the user to tip).<br/><br/>📖 If you want to learn more, check out our <a href=\"https://docs.opire.dev\">documentation</a>.</details>",
+    "reactions": {
+      "url": "https://api.github.com/repos/Ikalus1988/MisakaNet/issues/4133/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/Ikalus1988/MisakaNet/issues/4133/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "calproencrip",
+      "text": "For #2476: When encountering the `-10005: noWindowsAvailable` error in native macOS UI automation, you can handle this by implementing a retry mechanism. Before attempting to interact with the UI element, check if the accessibility object for the element still exists. If not, wait for a short period and retry. This can be implemented as a PR in the `your-repo/actions` file:\n\n```diff\n- const interactWithElement = async (element) => {\n+ const interactWithElement = async (element) => {\n+     const retryCount = 3;\n+     for (let i = 0; i < retryCount; i++) {\n+         if (element) {\n+             await performActions(element);\n+             break;\n+         } else if (i === retryCount - 1) {\n+             console.error(`No element found after ${retryCount} attempts. Skipping interaction.`);\n+             return;\n+         } else {\n+             await new Promise(resolve => setTimeout(resolve, 500));\n+         }\n+     }\n+     await interactWithElement(element); // Retrying the interaction\n+ }\n```\n\nFor #3607: When a user switches apps, you can implement a state retrieval strategy. After the initial call fails due to the app switch, you can query the app state using the `window.location.reload()` method or another means to fetch the latest state. This can be implemented as a PR in the `your-repo/actions` file:\n\n```diff\n- const getLatestAppState = async () => {\n+ const getLatestAppState = async () => {\n+     await window.location.reload();\n+     const latestState = await fetchLatestStateFromServer();\n+     return latestState;\n+ }\n```\n\nBy implementing these solutions, you ensure that your automation script can gracefully handle app switches and ensure that the most up-to-date state is fetched, preventing the `-100",
+      "at": "2026-10-30T17:00:40Z",
+      "url": "https://github.com/Ikalus1988/MisakaNet/issues/4133#issuecomment-6528512959"
+    }
+  ],
+  "comments_complete": true
+}
