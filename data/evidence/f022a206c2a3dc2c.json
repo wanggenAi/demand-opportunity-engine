@@ -1,0 +1,117 @@
+{
+  "source_api_url": "https://api.github.com/repos/weslocke/ED-Outrider/issues/20",
+  "collected_at": "2026-11-01T09:12:34.713715+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/weslocke/ED-Outrider/issues/20",
+    "repository_url": "https://api.github.com/repos/weslocke/ED-Outrider",
+    "labels_url": "https://api.github.com/repos/weslocke/ED-Outrider/issues/20/labels{/name}",
+    "comments_url": "https://api.github.com/repos/weslocke/ED-Outrider/issues/20/comments",
+    "events_url": "https://api.github.com/repos/weslocke/ED-Outrider/issues/20/events",
+    "html_url": "https://github.com/weslocke/ED-Outrider/issues/20",
+    "id": 6138345452,
+    "node_id": "I_kwDOUvWDoM8AAAABbd-37A",
+    "number": 20,
+    "title": "As promised here my thoughts on a multi-commander setup.",
+    "user": {
+      "login": "weslocke",
+      "id": 80059396,
+      "node_id": "MDQ6VXNlcjgwMDU5Mzk2",
+      "avatar_url": "https://avatars.githubusercontent.com/u/80059396?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/weslocke",
+      "html_url": "https://github.com/weslocke",
+      "followers_url": "https://api.github.com/users/weslocke/followers",
+      "following_url": "https://api.github.com/users/weslocke/following{/other_user}",
+      "gists_url": "https://api.github.com/users/weslocke/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/weslocke/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/weslocke/subscriptions",
+      "organizations_url": "https://api.github.com/users/weslocke/orgs",
+      "repos_url": "https://api.github.com/users/weslocke/repos",
+      "events_url": "https://api.github.com/users/weslocke/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/weslocke/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 6,
+    "created_at": "2026-10-31T18:31:01Z",
+    "updated_at": "2026-10-31T20:43:24Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "As promised here my thoughts on a multi-commander setup.\r\n\r\n## Issue\r\nWhen the journal contains info for more than one commander the data displayed is randomly selected.\r\n\r\n_Example: The CMDR section shos info on commander A, the FC info is for an FC belonging to commander B, the exobiology data shown may belong a commander C._\r\n\r\n## Current Solution\r\nThe app recognises and identifies all commanders in the journal and shows an according message. To display information correctly for one commander only, the server setting _Commander_ needs to be set to the desired commander name, _Save Settings_ needs to be clicked and the server restarted using the button _Restart now_.\r\n\r\nThis is emminently doable and does not require a big effort. Besides it is a problem for only a limited amount of players. However, since the data is already enumerated, it appears that an automation of these steps should be fairly straightfoward.\r\n\r\n## Proposed Solution\r\nAgain I refer to ED Discovery, where on start-up the last used commander is selected and only the entries pertaining to that commander are displayed. Changing to a different commander is done simply by selecting that commander from a drop-down list, which triggers a re-read of the journal with entries now shown only for the new commander.\r\n\r\nSo, instead of a message showing the commanders found and re-direct the player manually to the _Server Settings_, a similar drop-down field (or something equivalent) should be shown and after selecting the new commander, a server re-start should be initiated by the tool automatically. Whether the last-used commander can be stored and then used on start-up I don't know, but it still would be better if just the data of one commander is shown to begin with. \r\n\r\nIf a last-used commander value is not available, perhaps some default value could be defined separately (or _favourite_, doesn't really matter how it is named).\r\n\r\n## Notes\r\nI guess the only thing left after that would be to ensure that in fact all data shown only belong to that commander across all tabs. I'm saying this because I thought at one point that I had selected commander B and the exobiology data still seemed to be from commander A, but it may have been a timing/update issue. Not sure.\r\n\r\n_Originally posted by @Hiner399 in https://github.com/weslocke/ED-Outrider/discussions/18_",
+    "reactions": {
+      "url": "https://api.github.com/repos/weslocke/ED-Outrider/issues/20/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/weslocke/ED-Outrider/issues/20/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "weslocke",
+      "text": "One quick question...  how often do you flip between the alts?  Is it a per-session thing, or are you running them at the same time and flipping between?\n\nI ask because it's easy to put in a drop-down to select between the accounts, but doing so would essentially re-read your journals each time (about a minute for ~1,400 journal files, longer with more).  If it's once per session that's not that painful, but if you're doing it frequently that would become a problem.\n\nThe \"better\" fix would be a different database for each commander, but it would be a pretty in-depth change that I just wanted to see if it was needed before I started on that one.\n",
+      "at": "2026-10-31T18:34:28Z",
+      "url": "https://github.com/weslocke/ED-Outrider/issues/20#issuecomment-6547506685"
+    },
+    {
+      "author": "weslocke",
+      "text": "Thanks for writing that up!  I went ahead and put a couple of things in, they're in main now if you want to pull the current code and give it a try (it's not in a release yet).\n\n**Picking the commander:** the \"also logs CMDR B\" card's button now opens a list of every commander in your journals (how many journals each has, when each last played, and which one is playing right now), plus \"every commander\" if you want them all mixed like before.  Pick one and Outrider saves it, restarts and reads the journals again for that commander, no more going into Server settings and hitting Restart yourself.  The same list is behind the \"CMDR B is playing\" card, and there's a **Choose…** button next to `[journals] commander` in Settings → Server if you want to switch later.  Whichever one you pick is remembered, so it starts up with that commander next time.\n\n**You weren't imagining the exobiology thing:** even with the commander set, the estimate of what's on board (the value on Now and Nearby, the top finds) and the Log tab were still reading every commander's journals...  so a sale by one commander could wipe out the other's estimate.  That's fixed, they only look at the commander you picked now.\n\nHeads up, the first start after updating reads all the journals again once (part of an unrelated change), so give it a minute or so.\n\nAnd the question from before still stands...  how often do you flip between the alts?  Right now every switch re-reads the journals (about a minute for ~1,400 journal files).  If it's once per session that's probably fine, but if you're switching back and forth a lot I'd look at giving each commander their own database so switching is instant.  It's a bigger change though, so I wanted to check before I start on it. 👍\n",
+      "at": "2026-10-31T18:56:23Z",
+      "url": "https://github.com/weslocke/ED-Outrider/issues/20#issuecomment-6547747197"
+    },
+    {
+      "author": "Hiner399",
+      "text": "First, apologies that I put this into Ideas, I didn't really see this as a hard feature request because there is a working solution in place right now. It's more a nice-to-have.\n\nBut you were fast again. I've cloned the repo, so I'll do an update of my local copy and give it a try.\n\nRe your question: I never run more than one commander at the same time, always just one commander doing its thing (e.g. colonisation) and then perhaps switching to another (e.g. doing bounty hunting for BGS), etc. So re-reading the journal is just fine, that's what ED Discovery does as well. In fact, I've already moved some of the older journals to a sub-folder so they are not being read all the time. No need for a database solution.\n\nP.S.: And I haven't forgotten the Squadron Carrier topic, I'll do some stuff probably tomorrow.\n\n",
+      "at": "2026-10-31T19:06:55Z",
+      "url": "https://github.com/weslocke/ED-Outrider/issues/20#issuecomment-6547864536"
+    },
+    {
+      "author": "weslocke",
+      "text": "No worries at all about where it went, Ideas is fine...  and glad to hear the re-read is fine for how you play, I'll skip the database idea then. 👍\n\nOn the Squadron Carrier, just whenever you get the time, the basics are there for \"common members\".  I am really curious if the commander switching is easy and maintains for you...  I don't have multiple accounts so I can't actually test it myself.\n\nOne heads up before you update, since you mentioned moving the older journals into a sub-folder.  Outrider only looks for journals directly in the journal folder, not in sub-folders, and this update re-reads all the journals once.  So anything that only lives in the moved journals (systems visited, first discoveries, earnings, that sort of thing) would drop out of the history after that re-read.  If you want to keep it, add that sub-folder under `[journals] legacy` in Settings → Server → Files and backups (or start it once with `--legacy <that folder>`).  Legacy folders are read once, not every time, so they won't slow it down, and they're read again any time the journals get re-read.  Either way it takes a backup right before the re-read, so nothing is lost if you'd rather sort it out afterwards.\n",
+      "at": "2026-10-31T19:17:14Z",
+      "url": "https://github.com/weslocke/ED-Outrider/issues/20#issuecomment-6547978329"
+    },
+    {
+      "author": "Hiner399",
+      "text": "1. That commander switch works like a charm. Thank you so much, that makes life much easier.\n2. I saw what you've implemented for the SC, already very good, Not sure whether more is even needed, but I'll provide the information nonetheless. Might be something in there that's useful when you are an SC owner.\n3. Thanks for the tip using the _legacy_ option for reading the older journals. That's configured now, too.\n\nI've also started taking notes when running ED so I can write down anything I notice in Outrider when playing that is worth mentioning (bugs or potential features).",
+      "at": "2026-10-31T20:17:17Z",
+      "url": "https://github.com/weslocke/ED-Outrider/issues/20#issuecomment-6548617966"
+    },
+    {
+      "author": "weslocke",
+      "text": "Perfect, please do...  though sorry for giving you homework.  🤣 \n",
+      "at": "2026-10-31T20:43:24Z",
+      "url": "https://github.com/weslocke/ED-Outrider/issues/20#issuecomment-6548887951"
+    }
+  ],
+  "comments_complete": true
+}

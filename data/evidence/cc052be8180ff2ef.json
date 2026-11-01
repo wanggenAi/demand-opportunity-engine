@@ -1,0 +1,123 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42851",
+  "collected_at": "2026-11-01T09:12:34.713715+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/42851",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/42851/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/42851/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/42851/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/42851",
+    "id": 6143947502,
+    "node_id": "I_kwDOC4Q8Qs8AAAABbjUy7g",
+    "number": 42851,
+    "title": "High browser CPU usage caused by Waiting node border animation in execution view (n8n 2.45.7)",
+    "user": {
+      "login": "mixxxa163-lgtm",
+      "id": 294532712,
+      "node_id": "U_kgDOEY42aA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/294532712?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mixxxa163-lgtm",
+      "html_url": "https://github.com/mixxxa163-lgtm",
+      "followers_url": "https://api.github.com/users/mixxxa163-lgtm/followers",
+      "following_url": "https://api.github.com/users/mixxxa163-lgtm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mixxxa163-lgtm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mixxxa163-lgtm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mixxxa163-lgtm/subscriptions",
+      "organizations_url": "https://api.github.com/users/mixxxa163-lgtm/orgs",
+      "repos_url": "https://api.github.com/users/mixxxa163-lgtm/repos",
+      "events_url": "https://api.github.com/users/mixxxa163-lgtm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mixxxa163-lgtm/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8811645809,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACDTcLcQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:ai",
+        "name": "team:ai",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the AI team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-01T06:16:50Z",
+    "updated_at": "2026-11-01T06:24:41Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nAfter upgrading our self-hosted n8n instance from 2.16.2 to 2.45.7, we noticed excessive browser CPU usage while keeping an execution with a Waiting node open. The exact regression has not been established; this animation also existed in the previous version.\n\nEnvironment: Vivaldi 8.2.4133.96 on Windows; NVIDIA GeForce RTX 3080 Ti; hardware acceleration enabled; two monitors; approximately 229 workflow nodes.\n\nKeeping the execution canvas visible causes sustained CPU usage in Vivaldi's GPU process, increased fan noise, and YouTube playback stalls in the same browser.\n\nControlled A/B/A test on the same page:\n- Waiting border animation running: approximately 121–152% CPU in the browser GPU process.\n- Animation paused: approximately 0–5%.\n- Animation resumed: high CPU usage immediately returns.\nThese counters use 100% for one logical CPU core, not the entire CPU.\n\ndocument.getAnimations() identified a continuously running border-rotate animation on the Waiting node. This local CSS workaround removes the sustained load:\n\n```css\n.vue-flow__node .waiting::after,\n.vue-flow__node .running::after {\n  animation: none !important;\n}\n```\n\nWe added a static colored outline to keep the current node clearly visible. The workaround was installed locally through Tampermonkey, verified after page reload and navigation between executions, and confirmed by the user: YouTube playback and fan noise returned to normal. The canvas stays open and auto-refresh remains enabled.\n\nWaiting-state behavior was verified; Running-state behavior has not been independently measured. Could you investigate excessive repainting and consider a low-cost animation or a static-status/reduced-motion option?\n\n### To Reproduce\n\n1. Open a large workflow in the execution view using Vivaldi with hardware acceleration enabled.\n2. Select an existing execution waiting at a Wait node and keep the canvas visible.\n3. Observe sustained CPU usage in the browser GPU process, increased fan noise, and video playback stalls in another tab.\n4. Identify the animation with document.getAnimations().\n5. Pause it with document.getAnimations().forEach(a => a.pause()); CPU usage drops immediately.\n6. Resume it with document.getAnimations().forEach(a => a.play()); high usage returns.\n7. Apply the CSS in the description: the execution stays visible without the sustained load.\n\n### Expected behavior\n\nThe execution canvas should remain open for monitoring without excessive sustained CPU usage or interference with other browser tabs. Waiting and Running nodes should remain clearly identifiable without requiring an expensive continuously repainting animation.\n\n### Debug Info\n\nSelf-hosted n8n 2.45.7 in Docker on Linux; PostgreSQL; regular/main execution mode. Client: Windows, Vivaldi 8.2.4133.96, RTX 3080 Ti, hardware acceleration, two monitors. Exact Node.js runtime version and the full generated debug-information block have not been captured. No production workflow JSON or execution payload is attached because it contains private business data. This report concerns client-side rendering.\n\n### Operating System\n\nServer: Linux (Docker); browser client: Windows\n\n### n8n Version\n\n2.45.7\n\n### Node.js Version\n\nNot captured; official n8n 2.45.7 Docker image\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/42851/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/42851/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @mixxxa163-lgtm,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9686\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9686](https://linear.app/n8n/issue/GHC-9686)",
+      "at": "2026-11-01T06:17:03Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42851#issuecomment-6554341251"
+    }
+  ],
+  "comments_complete": true
+}

@@ -1,0 +1,113 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42846",
+  "collected_at": "2026-11-01T09:12:34.713715+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/42846",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/42846/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/42846/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/42846/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/42846",
+    "id": 6140768394,
+    "node_id": "I_kwDOC4Q8Qs8AAAABbgSwig",
+    "number": 42846,
+    "title": "String .removeTags() deletes the rest of the text after a < that is not a tag",
+    "user": {
+      "login": "kevin9327",
+      "id": 5299031,
+      "node_id": "MDQ6VXNlcjUyOTkwMzE=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5299031?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/kevin9327",
+      "html_url": "https://github.com/kevin9327",
+      "followers_url": "https://api.github.com/users/kevin9327/followers",
+      "following_url": "https://api.github.com/users/kevin9327/following{/other_user}",
+      "gists_url": "https://api.github.com/users/kevin9327/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/kevin9327/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/kevin9327/subscriptions",
+      "organizations_url": "https://api.github.com/users/kevin9327/orgs",
+      "repos_url": "https://api.github.com/users/kevin9327/repos",
+      "events_url": "https://api.github.com/users/kevin9327/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/kevin9327/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 3,
+    "created_at": "2026-10-31T23:02:34Z",
+    "updated_at": "2026-11-01T02:58:28Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\n`String.removeTags()` deletes everything after a `<` that does not start a tag. `\"price < 100 USD\".removeTags()` returns `\"price \"` instead of `\"price < 100 USD\"`, and `\"a<2 and b>1\".removeTags()` returns `\"a1\"`.\n\nThe function uses `value.replace(/<[^>]*>?/gm, '')`. Because the closing `>` is optional, any `<` matches up to the next `>` or, when there is none, to the end of the string. Plain-text content that contains a less-than sign (prices, comparisons, `<3`, `x <= y`) loses part of its text silently.\n\nAn HTML parser only starts a tag when `<` is followed by a letter, `/`, `!` or `?`; a `<` followed by a space or digit is text.\n\nThe same code is in `packages/workflow/src/extensions/string-extensions.ts` and its mirror in `@n8n/expression-runtime`.\n\n### To Reproduce\n\n1. Evaluate `{{ \"price < 100 USD\".removeTags() }}` in an expression.\n2. You get `price ` (the text after `<` is gone).\n\nMinimal Node reproduction of the same regex:\n\n```sh\nnode -e 'console.log(JSON.stringify(\"price < 100 USD\".replace(/<[^>]*>?/gm, \"\")))'\n# \"price \"\n```\n\n### Expected behavior\n\n`price < 100 USD`: only real tags are removed, as in `\"<b>bold</b>, <a>link</a>\".removeTags()` → `\"bold, link\"`.\n\n### Debug Info\n\nFound by reading the code on `master`, and reproduced with a unit test that calls `stringExtensions.functions.removeTags` directly.\n\n### Operating System\n\nUbuntu Linux\n\n### n8n Version\n\nmaster (current HEAD)\n\n### Node.js Version\n\n20.19.2\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/42846/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/42846/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @kevin9327,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9684\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9684](https://linear.app/n8n/issue/GHC-9684)",
+      "at": "2026-10-31T23:02:42Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42846#issuecomment-6550322288"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "Both current implementations use the same `/<[^>]*>?/gm` replacement: one in `packages/workflow`, one in `packages/@n8n/expression-runtime`. The workflow test currently covers nested tags, but not a less-than sign in plain text; I also could not find a `removeTags` case in the expression-runtime test file. Regression cases for `price < 100 USD` and `a<2 and b>1`, alongside the existing tag example, would pin down the behavior in both implementations.",
+      "at": "2026-11-01T02:05:23Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42846#issuecomment-6552122360"
+    },
+    {
+      "author": "kevin9327",
+      "text": "Thanks for checking both copies. The PR already changes the regex in `packages/workflow` and `packages/@n8n/expression-runtime`, and the expression-runtime tests cover `price < 100 USD`, `a<2 and b>1` and `x <= y`. You're right that the workflow side only had the nested-tag case, so I pushed a commit adding `price < 100 USD`, `a<2 and b>1` and `<b>bold</b> < 100` to `packages/workflow/test/ExpressionExtensions/string-extensions.test.ts`. All three fail with the old `/<[^>]*>?/gm` pattern and pass with the new one.\n",
+      "at": "2026-11-01T02:58:27Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42846#issuecomment-6552603213"
+    }
+  ],
+  "comments_complete": true
+}

@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://community.shopify.com/t/706515.json",
-  "collected_at": "2026-10-30T08:36:01.753996+00:00",
+  "collected_at": "2026-11-01T09:12:34.713715+00:00",
   "source": {
     "post_stream": {
       "posts": [
@@ -12,15 +12,15 @@
           "cooked": "<p>Shopify currently applies customer-level tax exemptions across all otherwise taxable purchases, without allowing merchants to restrict those exemptions to specific products or collections.</p>\n<p>This creates a significant tax compliance problem for small businesses operating both wholesale and retail sales through one Shopify store.</p>\n<p><strong>The problem</strong></p>\n<p>I operate a micro-scale flower farm and retail business in British Columbia, Canada. We sell flowers wholesale to professional florists alongside retail designed floral arrangements, books, pottery and, since we are relying on what we produce at the farm, we also sell fruit and other boutique products with various taxation levels.</p>\n<p>Some of our wholesale customers qualify for a BC Provincial Sales Tax (PST) exemption when purchasing products for resale. However, those same customers occasionally purchase retail products for personal use, which are not eligible for that exemption.</p>\n<p>Currently, when a customer’s PST exemption is enabled in Shopify, it applies to all their otherwise PST-taxable purchases, regardless of whether the items are being purchased for resale or personal use.</p>\n<p>For example, a wholesale florist recently purchased a book from our retail boutique. Shopify correctly charged GST but removed PST because of the customer’s account-wide exemption even though the book was for personal use and needed to be taxed.</p>\n<p><strong>The result is that Shopify’s existing tax settings cannot correctly accommodate a customer who makes both exempt and taxable purchases using the same account.</strong></p>\n<h2><a name=\"p-1926445-the-proposed-solution-1\" class=\"anchor\" href=\"#p-1926445-the-proposed-solution-1\" aria-label=\"Heading link\"></a>The proposed solution</h2>\n<p>Please introduce <strong>conditional, line-item customer tax exemptions</strong>, allowing merchants to specify which products or collections qualify for a particular customer’s tax exemption.</p>\n<p>When configuring a customer tax exemption, merchants should be able to choose whether it applies to:</p>\n<ul>\n<li>\n<p>All otherwise eligible purchases, preserving the existing functionality.</p>\n</li>\n<li>\n<p>Specific products selected individually.</p>\n</li>\n<li>\n<p>Products selected through designated collections, as a convenient way to configure the underlying product-level rules.</p>\n</li>\n</ul>\n<p>The actual tax calculation should occur at the individual line-item level, rather than relying solely on collection membership.</p>\n<p>For example, a BC PST resale exemption could apply to qualifying products purchased for resale from an approved wholesale collection, while purchases from our retail products would continue to be taxed normally.</p>\n<p><strong>The exemption should apply only when both conditions are satisfied:</strong></p>\n<ol>\n<li>\n<p>The customer qualifies for the relevant tax exemption.</p>\n</li>\n<li>\n<p>The purchased product and its intended use qualify for that exemption under the applicable tax rules.</p>\n</li>\n</ol>\n<p>Simply having access to a wholesale collection should not automatically make a customer or transaction tax-exempt.</p>\n<p>Ideally, Shopify would also allow merchants to use customer and product tags or metafields to configure these rules, making them easier to manage as businesses grow.</p>\n<h3><a name=\"p-1926445-essential-functionality-2\" class=\"anchor\" href=\"#p-1926445-essential-functionality-2\" aria-label=\"Heading link\"></a>Essential functionality</h3>\n<p>The proposed system should:</p>\n<ul>\n<li>\n<p>Correctly calculate taxes for mixed carts containing both exempt and taxable products.</p>\n</li>\n<li>\n<p>Support different tax treatments for the same customer account without requiring separate wholesale and retail accounts.</p>\n</li>\n<li>\n<p>Preserve existing product tax settings, collection tax overrides and other applicable tax exemptions.</p>\n</li>\n<li>\n<p>Allow customers to complete their own purchases through the normal online checkout.</p>\n</li>\n<li>\n<p>Calculate the correct tax amounts before payment, without requiring draft orders, manual adjustments or additional invoices.</p>\n</li>\n<li>\n<p>Record actual GST and PST amounts accurately in Shopify’s order records and tax reports.</p>\n</li>\n<li>\n<p>Be available on Shopify’s standard subscription plans, including Basic, rather than requiring Shopify Plus.</p>\n</li>\n</ul>\n<p>The goal is not to create an alternative tax calculation system. It is to make Shopify’s existing customer exemption functionality more precise and compatible with businesses serving different types of customers and transactions.</p>\n<h2><a name=\"p-1926445-why-this-matters-to-small-businesses-3\" class=\"anchor\" href=\"#p-1926445-why-this-matters-to-small-businesses-3\" aria-label=\"Heading link\"></a>Why this matters to small businesses</h2>\n<p>I contacted Shopify Support and was informed that there is currently no native solution, and that a developer cannot implement this conditional tax calculation on Shopify Basic.</p>\n<p>The suggested workarounds involve creating draft orders, manually changing customer exemptions or asking wholesale customers to use separate accounts for retail purchases.</p>\n<p>None of these is a satisfactory long-term solution.</p>\n<p>These workarounds introduce unnecessary administrative work, create friction for customers, interfere with self-service online ordering, decrease the number of sales, and increase the risk of tax errors.</p>\n<p>For a micro-business like ours, Shopify Plus is financially impossible. Our monthly sales cannot absorb the cost of that subscription.</p>\n<p>Small businesses should not need an enterprise-level subscription simply to apply the correct taxation level required by law to run their online store.</p>\n<h2><a name=\"p-1926445-why-this-should-be-prioritized-4\" class=\"anchor\" href=\"#p-1926445-why-this-should-be-prioritized-4\" aria-label=\"Heading link\"></a>Why this should be prioritized</h2>\n<p><strong>This is fundamentally a tax accuracy and compliance issue, not simply a wholesale feature request.</strong></p>\n<p>It affects financial reporting, customer experience, administrative efficiency and the profitability of small businesses.</p>\n<p>The issue is particularly relevant to businesses serving both wholesale and retail customers, including farms, growers, makers, food producers and other small suppliers.</p>\n<p>It may also affect merchants in other jurisdictions where tax exemptions depend on both customer eligibility and the nature or intended use of the purchased products.</p>\n<p>As Shopify continues to support businesses of all sizes, providing accurate conditional tax exemptions on standard plans would be a meaningful improvement.</p>\n<p><strong>Please consider prioritizing product-level customer tax exemption rules across Shopify plans, including Basic, so merchants can calculate, collect and report the correct taxes automatically without relying on manual workarounds.</strong></p>\n<p>If a similar improvement is already being considered, I would appreciate having this use case added to the existing feature request.</p>\n<p>Thank you for considering this request.</p>",
           "post_number": 1,
           "post_type": 1,
-          "posts_count": 7,
+          "posts_count": 9,
           "updated_at": "2026-10-29T20:45:56.853Z",
           "reply_count": 0,
           "reply_to_post_number": null,
           "quote_count": 0,
-          "incoming_link_count": 3,
-          "reads": 19,
-          "readers_count": 18,
-          "score": 63.6,
+          "incoming_link_count": 5,
+          "reads": 23,
+          "readers_count": 22,
+          "score": 74.6,
           "yours": false,
           "topic_id": 706515,
           "topic_slug": "feature-request-product-specific-customer-tax-exemptions-for-accurate-wholesale-and-retail-checkout",
@@ -87,15 +87,15 @@
           "cooked": "<p>You’ve identified a genuine limitation in Shopify’s current tax design. The customer-level exemption model works smoothly when customers fall into a single category, but it breaks down when the same customer needs different tax treatment based on product type or intended use, exactly as you’ve described.</p>\n<p>The line-item approach you’ve outlined would address this, and your suggestion to use collections or metafields for configuration would make it practical to manage as your business scales. What you’ve recognized is that accurate tax compliance in this scenario actually requires knowing both the customer and the product, not just the customer.</p>\n<p>If this helped, mark it helpful for others.</p>",
           "post_number": 2,
           "post_type": 1,
-          "posts_count": 7,
+          "posts_count": 9,
           "updated_at": "2026-10-29T21:46:09.339Z",
           "reply_count": 0,
           "reply_to_post_number": null,
           "quote_count": 0,
           "incoming_link_count": 1,
-          "reads": 10,
-          "readers_count": 9,
-          "score": 52.0,
+          "reads": 14,
+          "readers_count": 13,
+          "score": 52.8,
           "yours": false,
           "topic_id": 706515,
           "topic_slug": "feature-request-product-specific-customer-tax-exemptions-for-accurate-wholesale-and-retail-checkout",
@@ -161,15 +161,15 @@
           "cooked": "<p>Thank you, John! I really appreciate you taking the time to read through the proposal and recognize the issue.</p>\n<p>I’m hoping this discussion will help bring the limitation to Shopify’s attention, particularly because it affects tax compliance for small businesses.</p>\n<p>If you know of other merchants experiencing similar challenges, I’d be grateful if you could encourage them to contribute to the discussion. The more examples we can share, the better!</p>\n<p>Thanks again for your support!</p>",
           "post_number": 3,
           "post_type": 1,
-          "posts_count": 7,
+          "posts_count": 9,
           "updated_at": "2026-10-29T21:54:10.401Z",
           "reply_count": 0,
           "reply_to_post_number": null,
           "quote_count": 0,
           "incoming_link_count": 1,
-          "reads": 10,
-          "readers_count": 9,
-          "score": 22.0,
+          "reads": 14,
+          "readers_count": 13,
+          "score": 22.8,
           "yours": false,
           "topic_id": 706515,
           "topic_slug": "feature-request-product-specific-customer-tax-exemptions-for-accurate-wholesale-and-retail-checkout",
@@ -234,15 +234,15 @@
           "cooked": "<p>Yeah, this gets messy pretty fast.</p>\n<p>Shopify basically treats the customer tax exemption and the product tax setup as two separate things, and the customer exemption can override the product side. That works fine if the customer is always buying under the same tax status, but not so well if the same person sometimes buys for resale and sometimes buys retail.</p>\n<p>For your specific case, the simplest workaround may be using separate customer accounts for the two types of purchases:</p>\n<ul>\n<li>\n<p>one account for wholesale/resale purchases with the exemption</p>\n</li>\n<li>\n<p>one normal retail account that gets taxed normally</p>\n</li>\n</ul>\n<p>If you’re using Shopify B2B, you may also be able to separate this by company/location instead of by the individual customer.</p>\n<p>The bigger issue is that product-specific exemptions still don’t solve every case. You could easily have a product that’s tax exempt for one person, taxable for another, or even taxable/exempt for the same person depending on why they’re buying it.</p>\n<p>So I agree this would be useful for Shopify to add, but I think it probably needs to be more flexible than just “this customer is exempt on these products.”</p>\n<p>For now, separate purchase identities is probably the cleanest native workaround.</p>\n<p>They can just use a + in their email for a new account. For example <em><a href=\"mailto:email+taxed@example.com\">email+taxed@example.com</a> vs <a href=\"mailto:email@example.com\">email@example.com</a></em></p>",
           "post_number": 4,
           "post_type": 1,
-          "posts_count": 7,
+          "posts_count": 9,
           "updated_at": "2026-10-29T22:14:36.339Z",
           "reply_count": 1,
           "reply_to_post_number": null,
           "quote_count": 0,
           "incoming_link_count": 1,
-          "reads": 9,
-          "readers_count": 8,
-          "score": 11.8,
+          "reads": 12,
+          "readers_count": 11,
+          "score": 12.4,
           "yours": false,
           "topic_id": 706515,
           "topic_slug": "feature-request-product-specific-customer-tax-exemptions-for-accurate-wholesale-and-retail-checkout",
@@ -296,15 +296,15 @@
           "cooked": "<p>Thank you for raising this! You’ve identified an important distinction that I hadn’t fully addressed in my original proposal.</p>\n<p>You’re absolutely right that the intended purpose of a purchase can determine whether an exemption applies, even when the customer and product remain the same.</p>\n<p>Maybe an ideal solution would combine product-level exemption rules with an optional declaration of purchase purpose at checkout, allowing eligible customers to identify qualifying purchases for resale. That would make the system more flexible and help merchants and B2B customers maintain accurate tax records.</p>\n<p>The separate-account workaround is certainly an option, but it creates additional friction for customers and administrative work for small businesses. I’m hoping Shopify will eventually provide a solution that allows customers to make both taxable and exempt purchases through a single account.</p>\n<p>I really appreciate your contribution. It’s helped make the proposed feature more comprehensive!</p>",
           "post_number": 5,
           "post_type": 1,
-          "posts_count": 7,
+          "posts_count": 9,
           "updated_at": "2026-10-29T22:30:33.700Z",
           "reply_count": 0,
           "reply_to_post_number": null,
           "quote_count": 0,
           "incoming_link_count": 1,
-          "reads": 8,
-          "readers_count": 7,
-          "score": 6.6,
+          "reads": 11,
+          "readers_count": 10,
+          "score": 7.2,
           "yours": false,
           "topic_id": 706515,
           "topic_slug": "feature-request-product-specific-customer-tax-exemptions-for-accurate-wholesale-and-retail-checkout",
@@ -358,15 +358,15 @@
           "cooked": "<p>No, not per product. The exemption sits on the customer profile under Customers &gt; customer &gt; Manage tax settings, and once it’s on, it applies to everything that would otherwise be taxable for that customer. Product and collection tax overrides cannot beat it: customer tax exemptions always take precedence over tax overrides, and that includes product and shipping overrides.</p>\n<p>The workaround that holds up is a second customer account for the retail purchases. Keep the exemption on the wholesale account only, and make sure the retail account checks out with its own email address, because tax-exempt customers have to check out with the same email as the one on their account.</p>\n<p>The other option is leaving the exemption off and adjusting or refunding the PST on the qualifying orders, which works but puts the check on whoever processes the order. As a feature request it’s a fair one, though I wouldn’t count on it landing soon.</p>\n<p>Which treatment is correct for a given order is your accountant’s call, not something to settle in the checkout settings.</p>",
           "post_number": 6,
           "post_type": 1,
-          "posts_count": 7,
+          "posts_count": 9,
           "updated_at": "2026-10-30T05:10:01.349Z",
           "reply_count": 0,
           "reply_to_post_number": null,
           "quote_count": 0,
           "incoming_link_count": 1,
-          "reads": 8,
-          "readers_count": 7,
-          "score": 21.6,
+          "reads": 12,
+          "readers_count": 11,
+          "score": 22.4,
           "yours": false,
           "topic_id": 706515,
           "topic_slug": "feature-request-product-specific-customer-tax-exemptions-for-accurate-wholesale-and-retail-checkout",
@@ -432,15 +432,15 @@
           "cooked_hidden": true,
           "post_number": 7,
           "post_type": 1,
-          "posts_count": 7,
+          "posts_count": 9,
           "updated_at": "2026-10-30T05:22:01.976Z",
           "reply_count": 0,
           "reply_to_post_number": null,
           "quote_count": 0,
           "incoming_link_count": 1,
-          "reads": 8,
-          "readers_count": 7,
-          "score": 6.6,
+          "reads": 13,
+          "readers_count": 12,
+          "score": 7.6,
           "yours": false,
           "topic_id": 706515,
           "topic_slug": "feature-request-product-specific-customer-tax-exemptions-for-accurate-wholesale-and-retail-checkout",
@@ -486,6 +486,130 @@
           "can_unaccept_answer": false,
           "accepted_answer": false,
           "topic_accepted_answer": null
+        },
+        {
+          "id": 1927087,
+          "username": "AlexCharter",
+          "avatar_template": "/user_avatar/community.shopify.com/alexcharter/{size}/418445_2.png",
+          "created_at": "2026-10-30T09:45:26.633Z",
+          "cooked": "<p>Hi <a class=\"mention\" href=\"/u/julie_remy\">@Julie_Remy</a></p>\n<p>Line-level or collection-based customer exemptions aren’t something Shopify supports right now. A tax exemption set on a customer record applies to every otherwise taxable line on their order, and there’s no setting to narrow it to certain products or collections. That change sits with Shopify’s product team.</p>\n<p>A workable stopgap is leaving the exemption off the wholesale account and handling resale purchases separately. Check draft orders for this — you can adjust tax on individual lines there before invoicing, so retail items stay taxed. Send the request to Shopify support so it gets logged as a feature request.</p>",
+          "post_number": 8,
+          "post_type": 1,
+          "posts_count": 9,
+          "updated_at": "2026-10-30T09:45:26.633Z",
+          "reply_count": 0,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 1,
+          "reads": 6,
+          "readers_count": 5,
+          "score": 6.2,
+          "yours": false,
+          "topic_id": 706515,
+          "topic_slug": "feature-request-product-specific-customer-tax-exemptions-for-accurate-wholesale-and-retail-checkout",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": "",
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1648536,
+          "hidden": false,
+          "trust_level": 1,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/feature-request-product-specific-customer-tax-exemptions-for-accurate-wholesale-and-retail-checkout/706515/8",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        },
+        {
+          "id": 1927841,
+          "username": "Robert_Dainowski",
+          "avatar_template": "/user_avatar/community.shopify.com/robert_dainowski/{size}/413854_2.png",
+          "created_at": "2026-10-31T21:26:09.115Z",
+          "cooked": "<p>Until something like this exists, the workaround I would try is two customer records for the same florist: one with the exemption for resale orders, and a plain account for anything they buy for themselves. It is clumsy, but it ties the exemption to the kind of purchase instead of the person. For the odd retail item that slips through on the exempt account, I would check whether a draft order lets you set the tax on that line by hand.</p>",
+          "post_number": 9,
+          "post_type": 1,
+          "posts_count": 9,
+          "updated_at": "2026-10-31T21:26:09.115Z",
+          "reply_count": 0,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 2,
+          "readers_count": 1,
+          "score": 0.4,
+          "yours": false,
+          "topic_id": 706515,
+          "topic_slug": "feature-request-product-specific-customer-tax-exemptions-for-accurate-wholesale-and-retail-checkout",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": "",
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1630040,
+          "hidden": false,
+          "trust_level": 2,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/feature-request-product-specific-customer-tax-exemptions-for-accurate-wholesale-and-retail-checkout/706515/9",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
         }
       ],
       "stream": [
@@ -495,12 +619,22 @@
         1926472,
         1926476,
         1926564,
-        1926566
+        1926566,
+        1927087,
+        1927841
       ]
     },
     "timeline_lookup": [
       [
         1,
+        3
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        9,
         0
       ]
     ],
@@ -509,21 +643,29 @@
         "793617": {
           "id": 793617,
           "badge_ids": [
-            110,
+            111,
             117
+          ]
+        },
+        "1630040": {
+          "id": 1630040,
+          "badge_ids": [
+            109,
+            116
           ]
         },
         "1632488": {
           "id": 1632488,
           "badge_ids": [
             110,
-            116
+            117
           ]
         },
         "1643664": {
           "id": 1643664,
           "badge_ids": [
-            109
+            109,
+            116
           ]
         }
       },
@@ -568,26 +710,6 @@
           "badge_grouping_id": 7,
           "badge_type_id": 1
         },
-        "32": {
-          "id": 32,
-          "name": "Gives Back",
-          "slug": "gives-back",
-          "description": "Has 100 liked posts and gave 100 likes",
-          "icon": "heart",
-          "image_url": null,
-          "badge_grouping_id": 2,
-          "badge_type_id": 2
-        },
-        "110": {
-          "id": 110,
-          "name": "50 Posts",
-          "slug": "50-posts",
-          "description": "Way to go! You've posted 50 times in the Shopify Community",
-          "icon": "file-signature",
-          "image_url": null,
-          "badge_grouping_id": 7,
-          "badge_type_id": 3
-        },
         "109": {
           "id": 109,
           "name": "25 Posts",
@@ -597,6 +719,16 @@
           "image_url": null,
           "badge_grouping_id": 7,
           "badge_type_id": 3
+        },
+        "32": {
+          "id": 32,
+          "name": "Gives Back",
+          "slug": "gives-back",
+          "description": "Has 100 liked posts and gave 100 likes",
+          "icon": "heart",
+          "image_url": null,
+          "badge_grouping_id": 2,
+          "badge_type_id": 2
         },
         "113": {
           "id": 113,
@@ -638,14 +770,24 @@
           "badge_grouping_id": 7,
           "badge_type_id": 2
         },
-        "119": {
-          "id": 119,
-          "name": "100 Likes",
-          "slug": "100-likes",
-          "description": "Your contributions have earned you 100 likes",
-          "icon": "thumbs-up",
+        "110": {
+          "id": 110,
+          "name": "50 Posts",
+          "slug": "50-posts",
+          "description": "Way to go! You've posted 50 times in the Shopify Community",
+          "icon": "file-signature",
           "image_url": null,
-          "badge_grouping_id": 8,
+          "badge_grouping_id": 7,
+          "badge_type_id": 3
+        },
+        "3": {
+          "id": 3,
+          "name": "Regular",
+          "slug": "regular",
+          "description": "Awarded at Trust Level 3. Recognized for regular contributions as a trusted user.",
+          "icon": "user",
+          "image_url": null,
+          "badge_grouping_id": 4,
           "badge_type_id": 2
         },
         "122": {
@@ -688,16 +830,6 @@
           "badge_grouping_id": 6,
           "badge_type_id": 3
         },
-        "3": {
-          "id": 3,
-          "name": "Regular",
-          "slug": "regular",
-          "description": "Awarded at Trust Level 3. Recognized for regular contributions as a trusted user.",
-          "icon": "user",
-          "image_url": null,
-          "badge_grouping_id": 4,
-          "badge_type_id": 2
-        },
         "126": {
           "id": 126,
           "name": "50 Accepted Solutions",
@@ -718,6 +850,16 @@
           "badge_grouping_id": 9,
           "badge_type_id": 3
         },
+        "119": {
+          "id": 119,
+          "name": "100 Likes",
+          "slug": "100-likes",
+          "description": "Your contributions have earned you 100 likes",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 2
+        },
         "120": {
           "id": 120,
           "name": "250 Likes",
@@ -727,16 +869,6 @@
           "image_url": null,
           "badge_grouping_id": 8,
           "badge_type_id": 2
-        },
-        "118": {
-          "id": 118,
-          "name": "50 Likes",
-          "slug": "50-likes",
-          "description": "Your contributions have earned you 50 likes",
-          "icon": "thumbs-up",
-          "image_url": null,
-          "badge_grouping_id": 8,
-          "badge_type_id": 3
         },
         "127": {
           "id": 127,
@@ -757,6 +889,16 @@
           "image_url": null,
           "badge_grouping_id": 9,
           "badge_type_id": 1
+        },
+        "118": {
+          "id": 118,
+          "name": "50 Likes",
+          "slug": "50-likes",
+          "description": "Your contributions have earned you 50 likes",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 3
         },
         "116": {
           "id": 116,
@@ -788,16 +930,6 @@
           "badge_grouping_id": 9,
           "badge_type_id": 3
         },
-        "108": {
-          "id": 108,
-          "name": "10 Posts",
-          "slug": "10-posts",
-          "description": "Thanks for being an active member and posting 10 times",
-          "icon": "file-signature",
-          "image_url": null,
-          "badge_grouping_id": 7,
-          "badge_type_id": 3
-        },
         "117": {
           "id": 117,
           "name": "25 Likes",
@@ -806,6 +938,16 @@
           "icon": "thumbs-up",
           "image_url": null,
           "badge_grouping_id": 8,
+          "badge_type_id": 3
+        },
+        "108": {
+          "id": 108,
+          "name": "10 Posts",
+          "slug": "10-posts",
+          "description": "Thanks for being an active member and posting 10 times",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
           "badge_type_id": 3
         }
       }
@@ -842,12 +984,12 @@
     "fancy_title": "Feature request: Product-specific customer tax exemptions for accurate wholesale and retail checkout",
     "id": 706515,
     "title": "Feature request: Product-specific customer tax exemptions for accurate wholesale and retail checkout",
-    "posts_count": 7,
+    "posts_count": 9,
     "created_at": "2026-10-29T20:45:56.639Z",
-    "views": 63,
+    "views": 92,
     "reply_count": 0,
     "like_count": 8,
-    "last_posted_at": "2026-10-30T05:21:58.059Z",
+    "last_posted_at": "2026-10-31T21:26:09.115Z",
     "visible": true,
     "closed": false,
     "archived": false,
@@ -855,7 +997,7 @@
     "archetype": "regular",
     "slug": "feature-request-product-specific-customer-tax-exemptions-for-accurate-wholesale-and-retail-checkout",
     "category_id": 223,
-    "word_count": 1766,
+    "word_count": 1951,
     "deleted_at": null,
     "user_id": 1648842,
     "featured_link": null,
@@ -870,7 +1012,7 @@
     "unpinned": null,
     "pinned": false,
     "current_post_number": 1,
-    "highest_post_number": 7,
+    "highest_post_number": 9,
     "deleted_by": null,
     "actions_summary": [
       {
@@ -914,14 +1056,14 @@
     "bookmarked": false,
     "topic_timer": {
       "id": 2140,
-      "execute_at": "2027-04-28T05:21:58.059Z",
+      "execute_at": "2027-04-29T21:26:09.115Z",
       "duration_minutes": 259200,
       "based_on_last_post": true,
       "status_type": "close",
       "category_id": null
     },
-    "message_bus_last_id": 61,
-    "participant_count": 5,
+    "message_bus_last_id": 70,
+    "participant_count": 7,
     "show_read_indicator": false,
     "thumbnails": null,
     "slow_mode_enabled_until": null,
@@ -958,7 +1100,7 @@
         ],
         "tags_descriptions": {},
         "like_count": 0,
-        "views": 149,
+        "views": 151,
         "category_id": 186,
         "featured_link": null,
         "op_like_count": 0,
@@ -1025,7 +1167,7 @@
         "tags": [],
         "tags_descriptions": {},
         "like_count": 18,
-        "views": 1168,
+        "views": 1191,
         "category_id": 223,
         "featured_link": null,
         "op_like_count": 1,
@@ -1122,7 +1264,7 @@
         ],
         "tags_descriptions": {},
         "like_count": 1,
-        "views": 201,
+        "views": 202,
         "category_id": 223,
         "featured_link": null,
         "op_like_count": 1,
@@ -1164,23 +1306,23 @@
         ]
       },
       {
-        "fancy_title": "Tax exemption for certain customers on certain products",
-        "id": 101713,
-        "title": "Tax exemption for certain customers on certain products",
-        "slug": "tax-exemption-for-certain-customers-on-certain-products",
-        "posts_count": 3,
+        "fancy_title": "Why are customer tax exemptions suddenly not working?",
+        "id": 203215,
+        "title": "Why are customer tax exemptions suddenly not working?",
+        "slug": "why-are-customer-tax-exemptions-suddenly-not-working",
+        "posts_count": 2,
         "reply_count": 0,
-        "highest_post_number": 3,
+        "highest_post_number": 0,
         "image_url": null,
-        "created_at": "2022-02-22T23:58:25.000Z",
-        "last_posted_at": "2025-04-28T19:45:04.000Z",
+        "created_at": "2023-03-27T14:03:45.000Z",
+        "last_posted_at": "2023-04-20T07:03:19.000Z",
         "bumped": true,
-        "bumped_at": "2025-04-28T19:45:04.000Z",
+        "bumped_at": "2023-04-20T07:03:19.000Z",
         "archetype": "regular",
         "unseen": false,
         "pinned": false,
         "unpinned": null,
-        "excerpt": "Hi everyone, \nI ran into the following issue: \nWe’re an agricultural equipment company and we’re currently building an online store for our customers. Everyone will be able to see the store and products, but only (pre-ex&hellip;",
+        "excerpt": "For a long time we’ve had setup various Customers as “Tax Exempt” through Customers &gt; Manage &gt; Manage tax exemptions &gt; unchecked “Collect tax” … however, recently those Customers are being charged tax. As if the “uncheck&hellip;",
         "visible": true,
         "closed": false,
         "archived": false,
@@ -1188,20 +1330,15 @@
         "liked": null,
         "tags": [
           {
-            "id": 4021,
-            "name": "troubleshooting",
-            "slug": "troubleshooting"
-          },
-          {
-            "id": 4404,
-            "name": "apps",
-            "slug": "apps"
+            "id": 3566,
+            "name": "taxes",
+            "slug": "taxes"
           }
         ],
         "tags_descriptions": {},
         "like_count": 0,
-        "views": 79,
-        "category_id": 95,
+        "views": 100,
+        "category_id": 223,
         "featured_link": null,
         "op_like_count": 0,
         "has_accepted_answer": false,
@@ -1210,21 +1347,10 @@
             "extras": null,
             "description": "Original Poster",
             "user": {
-              "id": 648236,
-              "username": "KimC-1987",
-              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/k/87869e/{size}.png",
+              "id": 665978,
+              "username": "Penrose",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/p/71e660/{size}.png",
               "primary_group_name": "merchant",
-              "trust_level": 1
-            }
-          },
-          {
-            "extras": null,
-            "description": "Recent Poster",
-            "user": {
-              "id": 780167,
-              "username": "heelstoo",
-              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/h/b19c9b/{size}.png",
-              "primary_group_name": "shopifypartner",
               "trust_level": 1
             }
           },
@@ -1232,10 +1358,10 @@
             "extras": "latest",
             "description": "Most Recent Poster",
             "user": {
-              "id": 1545834,
-              "username": "Tamara4",
-              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/t/e99b99/{size}.png",
-              "primary_group_name": "shopifystaff",
+              "id": 969055,
+              "username": "Laura60",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/l/e19b73/{size}.png",
+              "primary_group_name": "shopifyplus",
               "trust_level": 1
             }
           }
@@ -1267,7 +1393,7 @@
         "tags": [],
         "tags_descriptions": {},
         "like_count": 23,
-        "views": 1095,
+        "views": 1106,
         "category_id": 223,
         "featured_link": null,
         "op_like_count": 0,
@@ -1336,11 +1462,11 @@
     "has_cached_summary": true,
     "ai_summary": {
       "id": 1862594,
-      "summarized_text": "Shopify’s customer-level tax exemption applies to all otherwise taxable purchases and takes precedence over product or collection tax overrides. A British Columbia flower farm says this causes incorrect PST treatment when wholesale customers also buy retail goods for personal use, such as a book that should be taxed.\n\nThe requested feature is conditional, line-item exemptions configured by product, collection, tags, or metafields, potentially with a checkout declaration of purchase purpose. The author argues this would let one customer account handle both taxable and resale-exempt purchases, with accurate tax collection and reporting on standard plans.\n\nParticipants agree the limitation is real, while noting that eligibility may depend on intended use as well as customer and product. Suggested current workarounds are separate wholesale and retail customer accounts, or leaving the exemption off and manually adjusting or refunding tax on qualifying orders. The discussion does not report a Shopify change or resolution; the feature request remains open, and the correct tax treatment for specific orders should be confirmed with an accountant.",
+      "summarized_text": "Shopify’s customer-level tax exemption applies to every otherwise taxable item in an order, with no way to limit it by product or collection. The request comes from a British Columbia flower business whose wholesale customers may qualify for PST exemption on resale goods but still owe PST on personal retail purchases. As a result, mixed carts can be taxed incorrectly, affecting compliance and reporting.\n\nThe proposed feature would apply exemptions at the line-item level, configurable for all eligible purchases or selected products and collections, with possible support for tags or metafields. Participants note that purchase purpose can also determine eligibility, so product rules alone may not cover every case; one suggestion is to let customers declare resale use at checkout.\n\nNo native solution or decision from Shopify is reported. Suggested workarounds include separate exempt and taxable customer accounts, processing orders as drafts and adjusting line taxes, or leaving exemptions off and correcting qualifying orders manually. These approaches add friction and error risk, and the discussion remains an open feature request. Participants also note that the correct tax treatment depends on applicable rules and may require an accountant’s guidance.",
       "algorithm": "gpt-6-luna",
       "outdated": false,
       "created_at": "2026-10-29T20:46:04.878Z",
-      "updated_at": "2026-10-30T05:24:19.857Z"
+      "updated_at": "2026-10-31T21:28:46.914Z"
     },
     "is_category_expert_question": null,
     "has_livestream": null,
@@ -1381,6 +1507,32 @@
           "trust_level": 0
         },
         {
+          "id": 793617,
+          "username": "JohnQQ",
+          "avatar_template": "/user_avatar/community.shopify.com/johnqq/{size}/410347_2.png",
+          "post_count": 1,
+          "primary_group_name": "shopifypartner",
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 2
+        },
+        {
+          "id": 1648536,
+          "username": "AlexCharter",
+          "avatar_template": "/user_avatar/community.shopify.com/alexcharter/{size}/418445_2.png",
+          "post_count": 1,
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 1
+        },
+        {
           "id": 1643664,
           "username": "Shawn-Z",
           "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/s/5f8ce5/{size}.png",
@@ -1394,11 +1546,24 @@
           "trust_level": 1
         },
         {
-          "id": 793617,
-          "username": "JohnQQ",
-          "avatar_template": "/user_avatar/community.shopify.com/johnqq/{size}/410347_2.png",
+          "id": 1630040,
+          "username": "Robert_Dainowski",
+          "avatar_template": "/user_avatar/community.shopify.com/robert_dainowski/{size}/413854_2.png",
           "post_count": 1,
-          "primary_group_name": "shopifypartner",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 2
+        },
+        {
+          "id": 1632488,
+          "username": "Josh-FiveAcreCode",
+          "avatar_template": "/user_avatar/community.shopify.com/josh-fiveacrecode/{size}/412361_2.png",
+          "post_count": 1,
+          "primary_group_name": null,
           "flair_name": null,
           "flair_url": null,
           "flair_color": null,
@@ -1418,19 +1583,6 @@
           "flair_bg_color": null,
           "flair_group_id": null,
           "trust_level": 1
-        },
-        {
-          "id": 1632488,
-          "username": "Josh-FiveAcreCode",
-          "avatar_template": "/user_avatar/community.shopify.com/josh-fiveacrecode/{size}/412361_2.png",
-          "post_count": 1,
-          "primary_group_name": null,
-          "flair_name": null,
-          "flair_url": null,
-          "flair_color": null,
-          "flair_bg_color": null,
-          "flair_group_id": null,
-          "trust_level": 2
         }
       ],
       "created_by": {
@@ -1439,9 +1591,9 @@
         "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/j/bc8723/{size}.png"
       },
       "last_poster": {
-        "id": 1646491,
-        "username": "Nexus_Shipping_Prt",
-        "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/n/a88e4f/{size}.png"
+        "id": 1630040,
+        "username": "Robert_Dainowski",
+        "avatar_template": "/user_avatar/community.shopify.com/robert_dainowski/{size}/413854_2.png"
       }
     },
     "bookmarks": []
@@ -1482,6 +1634,18 @@
       "text": "This post was flagged by the community and is temporarily hidden.",
       "at": "2026-10-30T05:21:58.059Z",
       "url": "https://community.shopify.com/t/feature-request-product-specific-customer-tax-exemptions-for-accurate-wholesale-and-retail-checkout/706515/7"
+    },
+    {
+      "author": "AlexCharter",
+      "text": "Hi  @Julie_Remy  \n Line-level or collection-based customer exemptions aren’t something Shopify supports right now. A tax exemption set on a customer record applies to every otherwise taxable line on their order, and there’s no setting to narrow it to certain products or collections. That change sits with Shopify’s product team. \n A workable stopgap is leaving the exemption off the wholesale account and handling resale purchases separately. Check draft orders for this — you can adjust tax on individual lines there before invoicing, so retail items stay taxed. Send the request to Shopify support so it gets logged as a feature request.",
+      "at": "2026-10-30T09:45:26.633Z",
+      "url": "https://community.shopify.com/t/feature-request-product-specific-customer-tax-exemptions-for-accurate-wholesale-and-retail-checkout/706515/8"
+    },
+    {
+      "author": "Robert_Dainowski",
+      "text": "Until something like this exists, the workaround I would try is two customer records for the same florist: one with the exemption for resale orders, and a plain account for anything they buy for themselves. It is clumsy, but it ties the exemption to the kind of purchase instead of the person. For the odd retail item that slips through on the exempt account, I would check whether a draft order lets you set the tax on that line by hand.",
+      "at": "2026-10-31T21:26:09.115Z",
+      "url": "https://community.shopify.com/t/feature-request-product-specific-customer-tax-exemptions-for-accurate-wholesale-and-retail-checkout/706515/9"
     }
   ],
   "comments_complete": true

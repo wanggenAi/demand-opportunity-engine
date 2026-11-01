@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50317919",
+  "collected_at": "2026-11-01T09:12:34.713715+00:00",
+  "source": {
+    "author": "sainteye",
+    "children": [],
+    "created_at": "2026-10-31T17:05:23.000Z",
+    "created_at_i": 1793466323,
+    "id": 50317919,
+    "options": [],
+    "parent_id": null,
+    "points": 1,
+    "story_id": 50317919,
+    "text": "I built Clawdline to manage Claude Code and Codex sessions across multiple computers in one place.<p>It runs on multiple computers (Mac and Linux), and you can see all of your sessions in one list. Each session reports its status (working, completed, or needs attention). You can also manage all your sessions and receive notifications from your phone (web app).<p>Herdr, T3 Code, and Orca already cover a lot of this space, and there’s overlap.<p>When I started building Clawdline, I didn&#x27;t know about Herdr, T3 Code, or Orca. So I built it to fit my own dev workflow. At first, I used Swift to build a Mac app, but I realized that it wouldn&#x27;t work if I also wanted to support Linux. So I decided to rewrite it in Go. Now it can support both of them.<p>Main Features:<p>- Cross Machine Agent Communication: You can ask a root session (&quot;Local&quot;) on your Mac to start a new session (&quot;Remote&quot;) on a remote Linux machine. Once the remote session finishes its work, it notifies the root (&quot;Local&quot;) session.<p>- Cross Agent Communication: You can use one root session to create tasks need multiple agents. They can communicate with each other through clawdline<p>- Scheduled Task with Webhook: You can create scheduled tasks and combine them with your service (use webhooks to trigger new agent sessions)<p>- Board System: tasks control for Feature, Issue, Epic, Refactor, Plan<p>- Snippet&#x2F;Playbook: If there are commands you use them very often, snippet can help you<p>- TODO: lightweight tasks<p>- Note: Agents can leave notes to you if they need your attention<p>- Agent Squad: assign role to any task or session<p>- Archive: you can archive sessions and see it in one place<p>- Others: Intelligence session naming, Image&#x2F;Video display, Voice input, Machine monitor, Usage Monitor, Dev Stack Run, Deploy progress monitor...<p>This project is open source and I have used Claude &amp; Codex to do independent reviews on Clawdline, Herdr, T3 and Orca. (you can find the reviews on the website.)<p>The work still needs further input and feedback. Hope this helps other developers improve their devs! :)",
+    "title": "Show HN: Clawdline – Manage Claude Code/Codex sessions across computers",
+    "type": "story",
+    "url": "https://clawdline.com/"
+  },
+  "comments": [],
+  "comments_complete": true
+}

@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42822",
-  "collected_at": "2026-10-31T08:24:00.641334+00:00",
+  "collected_at": "2026-11-01T09:12:34.713715+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/42822",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -50,9 +50,9 @@
     "locked": false,
     "assignees": [],
     "milestone": null,
-    "comments": 1,
+    "comments": 3,
     "created_at": "2026-10-30T21:24:35Z",
-    "updated_at": "2026-10-30T21:24:44Z",
+    "updated_at": "2026-10-31T13:05:59Z",
     "closed_at": null,
     "assignee": null,
     "author_association": "CONTRIBUTOR",
@@ -95,6 +95,18 @@
       "text": "Hey @Pushkal-Gupta,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9682\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9682](https://linear.app/n8n/issue/GHC-9682)",
       "at": "2026-10-30T21:24:42Z",
       "url": "https://github.com/n8n-io/n8n/issues/42822#issuecomment-6533772131"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "I confirmed this in the current source: the run table uses `locale.baseText(...)` for the neighboring Run number and Status headers, but sets this column label to the literal `Run at` (`RunsSection.vue`, line 83). A translation key alongside those existing `evaluation.listRuns.*` keys would keep this header localized too. Since you mention a fix is ready, please link the PR here when it is open so the issue can be closed against it.",
+      "at": "2026-10-31T12:05:14Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42822#issuecomment-6543134450"
+    },
+    {
+      "author": "Pushkal-Gupta",
+      "text": "Thanks for checking! The PR is up here: #42823. It adds an evaluation.listRuns.runAt key next to the other listRuns keys, so the issue will close when it merges.",
+      "at": "2026-10-31T13:05:59Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42822#issuecomment-6543741650"
     }
   ],
   "comments_complete": true

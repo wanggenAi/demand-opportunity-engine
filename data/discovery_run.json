@@ -1,5 +1,5 @@
 {
-  "observed_at": "2026-10-31T08:24:00.641334+00:00",
+  "observed_at": "2026-11-01T09:12:34.713715+00:00",
   "config": "data/discovery_config.json",
   "adapters": [
     {
@@ -11,7 +11,7 @@
     {
       "source": "GitHub",
       "refreshed": true,
-      "collected": 24,
+      "collected": 22,
       "errors": []
     }
   ],
@@ -21,19 +21,19 @@
       "source_family": "public founder/operator job community",
       "access_method": "Discourse public category/topic JSON",
       "url": "https://community.n8n.io/c/jobs/13.json?order=created",
-      "records_inspected": 60,
-      "primary_pages_opened": 28,
-      "verified_buyer_requests": 11,
-      "explicit_commercial_signals": 11,
-      "collected": 28,
+      "records_inspected": 59,
+      "primary_pages_opened": 29,
+      "verified_buyer_requests": 12,
+      "explicit_commercial_signals": 12,
+      "collected": 29,
       "errors": [],
       "limitations": [
         "Two newest-topic pages, not complete market coverage; max 200 extra replies per topic. Incomplete competition remains UNKNOWN unless observed high.",
         "Last activity is not publication time. Only substantive buyer-authored follow-ups can renew a lead."
       ],
       "evidence_snapshots": [
-        "data/evidence/f5663f332d6bc9b1.json#sha256=8caa2b0ffdad3890b01fcf751fc3e55a91eb364cba292b09e3a7a1c9a591ee11",
-        "data/evidence/d9f0be47fa047f2c.json#sha256=f3bfc4a25e565dde2afebb392e4aa7e48dc89c5f9bd599ff5e2353ad288aa256"
+        "data/evidence/f5663f332d6bc9b1.json#sha256=ce994570d1bcff8a6a1eed0f524e4eac74afbe62720c8e63c5660667a8671aa2",
+        "data/evidence/d9f0be47fa047f2c.json#sha256=482361d5653fa86a37e007897df1c2d39424ec3fedaf42579eef6ff1b3f83a25"
       ]
     },
     {
@@ -51,7 +51,7 @@
         "Legal warning - Hey, thanks for using Remotive's API, we appreciate it! Please note that API documentation and access is granted so that developers can share our jobs further. Please do not submit Remotive jobs to third Party websites, including but not limited to: Jooble, Neuvoo, Google Jobs, LinkedIn Jobs. Please link back to the URL found on Remotive AND mention Remotive as a source in order to Remotive to get traffic from your listing. If you don't do that, we'll terminate your API access, sorry! Jobs displayed are delayed by 24 hours, the goal being that jobs are attributed to Remotive on various platforms. Displaying our jobs in order to collect signups/email addresses to show a listing constitutes a breach of our terms of services. We offer a private, paid-for API, please email us at hello(at)remotive(dot)io for more information (starting budget is $5k/mo). Please find out terms of services on https://remotive.com/api-documentation. Please note that there is absolutely no need to request Remotive Job data too frequently. Typically, you only need to GET Remotive job data through this API a couple of times a day (we advise max. 4 times a day). Our data is not changing much faster than that anyway. Note that excessive requests will be blocked. Many thanks (Rodolphe & the Remotive team!)"
       ],
       "evidence_snapshots": [
-        "data/evidence/071898d5d7cef09e.json#sha256=ccdc91006b44281dbbb6052d12bdbaf9950f97bdae7b9150047dd4167ec55b0b"
+        "data/evidence/071898d5d7cef09e.json#sha256=caf6164dba81af9e2a55942ac2ca2dc2cd489770ac41ec4bfe4f784f902a2209"
       ]
     },
     {
@@ -81,7 +81,7 @@
         "Search returned procurement notices; up to three detail pages attempted. No buyer request promoted: eligibility, exact remote scope, submission deadline and award status require manual verification."
       ],
       "evidence_snapshots": [
-        "data/evidence/50e3af0542f19c3a.json#sha256=ca76571f23694a87c2ca5614ccec55a72858d1d12f0a04399ec1ae3318b05203"
+        "data/evidence/50e3af0542f19c3a.json#sha256=ad9b8e979dd32fbbf441b51105c64bd6e853dfbacbcb49ae3f4072273bd90098"
       ]
     },
     {
@@ -134,14 +134,14 @@
         "No structured primary buyer requests extracted; static shell is not commercial proof. No login or anti-bot evasion."
       ],
       "evidence_snapshots": [
-        "data/evidence/b5d67d420401a4bb.json#sha256=155645e8cd2a74cbd5df2253f38113831de05d7b0bbc3600007dabd0ae72af17"
+        "data/evidence/b5d67d420401a4bb.json#sha256=b15ac94977af4da707431f8a58dd6b30feec64bbc295fe0c476d9eb4e10ceb89"
       ]
     },
     {
       "source_family": "freelance project marketplace (Freelancer)",
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://www.freelancer.com/jobs/product-sourcing/",
-      "records_inspected": 5,
+      "records_inspected": 6,
       "primary_pages_opened": 1,
       "verified_buyer_requests": 1,
       "explicit_commercial_signals": 1,
@@ -151,14 +151,15 @@
         "Public bidCount includes competitors; only first 20 proposals may be visible. Employer identity often unresolved. Task budget is not agreement to our pilot."
       ],
       "evidence_snapshots": [
-        "data/evidence/abf73d1fa5782498.json#sha256=30316583fdf620e6a08ecb1302625ab6f59c075d4457fad16a94ae98ad9a9ea5",
-        "data/evidence/98213439aaa8f42b.json#sha256=aaa8c812fc75e507c297a2bc66fc355dfab8dbb8a0a4980ac36944dd1cc05d7d"
+        "data/evidence/abf73d1fa5782498.json#sha256=734aa019986e096f2f1f7d94f631ad33377db595fa4ac4e87c7f57903b03b5ee",
+        "data/evidence/98213439aaa8f42b.json#sha256=12d7866473d8dae72d69d366951fea919db83da569f220af3d1c92b9f5036bbd"
       ],
       "records": [],
       "opportunity_ids": [
         "98213439aaa8f42b"
       ],
       "inspected_keys": [
+        "/projects/product-sourcing/global-product-sourcing-market-research",
         "/projects/sourcing/source-consolidate-home-goods",
         "/projects/sourcing/china-based-product-sourcing-agent",
         "/projects/market-research/launch-india-japan-export-business",
@@ -180,11 +181,24 @@
         "A different query/category on Freelancer does not count as another independent family."
       ],
       "evidence_snapshots": [
-        "data/evidence/eb34b643617bda88.json#sha256=33f7148cea076634064fa3787189de819cd5cb45514481a91fb754bfa3ad1831"
+        "data/evidence/eb34b643617bda88.json#sha256=8cd5962da9c6f22824d90779a6decc9bd0a4ccaf30b70ca432c85a4ff9194c1c"
       ],
       "records": [],
       "opportunity_ids": [],
       "inspected_keys": [
+        "/projects/ai-automation/automation-engineer-python-instructor",
+        "/projects/payment-processing/automated-photo-sale-cart",
+        "/projects/api-integration/hotel-payment-loader-integration",
+        "/projects/api-integration/ticket-scanning-app-development",
+        "/projects/web-development/video-call-support-listener-platform",
+        "/projects/full-stack-development/fintech-payments-platform-development",
+        "/projects/frontend-development/whatsapp-booking-button-integration",
+        "/projects/compliance/fix-whatsapp-business-need-more",
+        "/projects/ai-chatbot/chatbot-automation-developer-facebook",
+        "/projects/n8n/reusable-csv-mysql",
+        "/projects/api-integration/bulk-sms-delivery-china",
+        "/projects/web-design/web-design-crm-aur-testing",
+        "/projects/api-integration/china-upi-gaming-payment-gateway",
         "/projects/api-integration/senior-dev-for-ticketing-web",
         "/projects/api-integration/hubspot-starter-ticket-pipeline-coaching",
         "/projects/api-integration/add-icici-payment-gateway-integration",
@@ -207,7 +221,6 @@
         "/projects/braintree/braintree-checkout-integration-needed",
         "/projects/spring-boot/modernize-legacy-java-enterprise",
         "/projects/react-js/react-saas-platform-with-stripe",
-        "/projects/selenium/vfs-visa-appointment-automation-system",
         "/projects/forex-trading/forex-automation-strategy-development",
         "/projects/google-sheets/task-performance-system-consultation",
         "/projects/data-visualization/restaurant-sales-reporting-dashboard",
@@ -217,23 +230,11 @@
         "/projects/real-estate/bilingual-real-estate-sales-automation",
         "/projects/api-integration/whatsapp-api-setup-integration",
         "/projects/lovable/finalize-helm-helm-connect",
-        "/projects/mobile-app-development/deploy-two-react-voice-apps",
         "/projects/baidu/baidu-account-site-verification",
         "/projects/database-management/adalo-signup-error-fix-hindi",
         "/projects/api-integration/claude-linkedin-posting-connector",
         "/projects/data-management/upgrade-orcid-profile",
-        "/projects/automation/low-latency-order-acceptance-automation",
-        "/projects/laravel/complete-upi-payment-gateway-platform",
-        "/projects/stripe/fix-stripe-access-issues",
-        "/projects/api/obtain-brazilian-smile-one-api",
-        "/projects/api-integration/meta-verification-whatsapp-activation",
-        "/projects/odoo/odoo-erp-implementation-specialist-40788153",
-        "/projects/ai-development/engineer-for-healthcare-voice-platform",
-        "/projects/project-management/dpdp-consent-platform-technical-project",
-        "/projects/powershell/outlook-junk-email-blocker-script",
-        "/projects/web-development/islamic-prayer-quran-website",
-        "/projects/web-development/web-mobile-app-developer-for",
-        "/projects/shopify-site/mobile-accessories-commerce-site"
+        "/projects/automation/low-latency-order-acceptance-automation"
       ]
     },
     {
@@ -241,59 +242,58 @@
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://community.shopify.com/latest.json",
       "records_inspected": 30,
-      "primary_pages_opened": 4,
-      "verified_buyer_requests": 1,
-      "explicit_commercial_signals": 1,
-      "collected": 4,
-      "errors": [],
+      "primary_pages_opened": 1,
+      "verified_buyer_requests": 0,
+      "explicit_commercial_signals": 0,
+      "collected": 1,
+      "errors": [
+        {
+          "url": "https://community.shopify.com/t/583906.json",
+          "error": "HTTPError: HTTP Error 429: Too Many Requests"
+        }
+      ],
       "limitations": [
         "Latest activity is not original publication; support questions are PRODUCT_SIGNAL, not SALES. No more than four primary topics per run."
       ],
       "evidence_snapshots": [
-        "data/evidence/bda5dc3c1eb46ea5.json#sha256=ae7cc21d83025e31ac96fd5c50064569f713ad2a5954b5b4d79bc965552073c3",
-        "data/evidence/21268dafb2d63a29.json#sha256=793947f78bafa52f44c5621a0909acbb3258e2d008c56b3faafd3acce2a7e16d",
-        "data/evidence/7135aba252b75b1b.json#sha256=afcb17121aa4b9eebce6ec1f99b1338ee246a8ba168046bce2f31be6ca1e2ea0",
-        "data/evidence/f4f65b01ebf967fc.json#sha256=0b5a2b12634a734c7fb7f9a33110d96cc5885d7ee9f731da27770d65d7781a60",
-        "data/evidence/783d85337e9ce56a.json#sha256=410eccf0700af5221ef398e7715ed653f0f2b23e691b04ad9d8f4f24f94d1844"
+        "data/evidence/bda5dc3c1eb46ea5.json#sha256=da1faacdb3fa4e1184fd580358fab28005af632791314052b8bcdcaf0c7a04e5",
+        "data/evidence/29db929ef5c4fac5.json#sha256=6b9ec01ec623b2f9c2ab840392f5bd2fb6f395d17540355fd044a8afb1be99ec"
       ],
       "records": [],
       "opportunity_ids": [
-        "052a206540fec1a7",
-        "f606f3c9931fb984",
-        "09dfe6c8147db234",
-        "9febed42b4618e17"
+        "7aa3eca08e101205"
       ],
       "inspected_keys": [
         "355460",
-        "628578",
-        "707284",
-        "409978",
-        "698844",
-        "570393",
-        "646221",
-        "701808",
-        "706498",
-        "707315",
-        "588255",
-        "646528",
-        "707269",
-        "707176",
-        "704730",
-        "707275",
-        "707214",
-        "551801",
-        "707177",
-        "707251",
-        "569631",
-        "707240",
+        "707397",
         "707236",
-        "410945",
-        "607408",
-        "672498",
-        "704282",
-        "705670",
-        "694267",
-        "707078"
+        "700055",
+        "707463",
+        "707467",
+        "707465",
+        "706515",
+        "576081",
+        "393028",
+        "707177",
+        "707408",
+        "707404",
+        "688734",
+        "707403",
+        "707335",
+        "706408",
+        "705416",
+        "657818",
+        "679666",
+        "599312",
+        "583906",
+        "707357",
+        "703363",
+        "652065",
+        "696556",
+        "706401",
+        "652435",
+        "707284",
+        "554939"
       ]
     },
     {
@@ -301,7 +301,7 @@
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://www.indiehackers.com/",
       "records_inspected": 27,
-      "primary_pages_opened": 0,
+      "primary_pages_opened": 1,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
       "collected": 0,
@@ -310,45 +310,74 @@
         "Only server-rendered public pages. robots disallows /api/ and sign-in; neither used. Founder self-promotion is not a buyer."
       ],
       "evidence_snapshots": [
-        "data/evidence/6548833164b0e7c9.json#sha256=0637d2d62a52b43392a9d81e55a24dc1882ef35a850d60a1aea80bf4b480051c"
+        "data/evidence/6548833164b0e7c9.json#sha256=3e91e7528acbe3ede04c99004f4870a1889d9c8072575d3be8c8403a564e6de0",
+        "data/evidence/6abd55a425379a1a.json#sha256=e4aa8b5d48899ed12c75b949d188dd8c4169b4a4e81f0b39b2573a03cd5792a7"
       ],
-      "records": [],
+      "records": [
+        {
+          "url": "https://www.indiehackers.com/post/why-automated-warmup-pools-are-failing-in-2026-and-what-to-do-instead-5dbc71438a",
+          "author_body": "For years, the industry standard for cold email deliverability was simple: connect your domains to a shared pool, let the tool exchange thousands of nonsensical emails between your domain and other users, and watch your open rates climb. In late 2026, the game has fundamentally changed. Gmail and Microsoft have updated their inbox classifiers to detect the \"warmup footprint\", a pattern of high-volume, low-engagement, repetitive traffic that is now trivially easy to identify as artificial. Here is the technical reality of why automated warmup pools are losing effectiveness and how we handle domain ramping at Ballast . The warmup footprint When you connect a domain to an automated warmup pool, you are letting a script control your SMTP traffic. These tools typically send hundreds of emails per day between mailboxes in the same network to inflate your open rates. Google and Microsoft are not blind to this. They analyze three specific indicators that flag these tools: Closed-Loop Engagement: If 90% of your incoming and outgoing emails are with other mailboxes that are also flagged as \"warmup participants,\" your domain reputation is siloed. It never interacts with the real web. Artificial Cadence: Automated pools often send emails on the exact same second or minute every day. Real human traffic has irregular, unpredictable patterns. Template Identicality: Even if subject lines are spun, the underlying SMTP headers and the repetition of body structures act as a fingerprint. If your domain spends 30 days in a warmup pool and then immediately starts blasting 100 cold emails a day, you are essentially faking a reputation that inbox providers can see right through. The three pillars of manual domain ramping Instead of relying on shared pools, successful outbound teams are moving toward domain-specific ramping. This is the method we built into Ballast to handle deliverability at scale. 1. Progressive throttling Do not start with 50 emails a day. Start with 5 to 10. The key is randomized jitter. If you send exactly 10 emails every day at 9:00 AM, you are predictable. You need a platform that manages delays, typically 4 to 10 minutes between emails, to simulate human behavior. 2. DNS hygiene before sending Before you send a single cold email, your DNS stack must be bulletproof. Automated pools often ignore these basics: SPF: Only include necessary mechanisms. Overloading SPF records with too many lookups leads to permerror. DKIM: Ensure your keys are rotated and that your signing domain matches the envelope sender. DMARC: You should have a policy in place even if it is p=none. PTR/rDNS: Ensure your server’s IP address points back to your domain. If your PTR record does not resolve, Microsoft will defer your mail instantly. 3. Real engagement vs. fake opens The metric everyone trusts, Open Rate, is the most unreliable data point in email marketing. Since 2021, Apple Mail Privacy Protection has been pre-loading tracking pixels. This means every time someone uses an iPhone, your email \"opens.\" If you base your warmup on high open rates from automated pool accounts, you are optimizing for bots, not humans. Focus on Reply Rate instead. Comparing warmup strategies Automated Warmup Pools: Sending pattern: High frequency, robotic. Recipient quality: Closed network (only pool users). Engagement: Artificial opens. Risk: High (identifiable footprint). Ballast-style Manual Ramping: Sending pattern: Randomized, throttled. Recipient quality: Real-world engagement. Engagement: Real human replies. Risk: Low (imitates normal user behavior). When your domain is actually ready A domain is ready for volume when it has established a history of successful deliveries followed by human actions. Move from 10 emails to 100 emails a day over two weeks. If you see your bounce rate creep above 3 percent, stop. We built Ballast specifically to automate these guardrails. If the system detects that your bounce rate is climbing or your mailbox reputation is being challenged, the campaign pauses automatically to protect the domain. Frequently Asked Questions (FAQ) Does buying an old domain help with warmup? Yes, but only if that domain has a clean reputation. If the previous owner used it for spam, you are inheriting their blacklist history. Always check your domain history before starting. How many mailboxes do I need? Instead of hitting one mailbox with high volume, it is safer to spread volume across multiple mailboxes. This distributes the risk. Ballast handles unlimited mailboxes on every plan precisely so you can scale safely. What is the best way to handle 'Out of Office' replies during warmup? OOO replies are great signals. They prove your email is reaching a real, active inbox. Do not mark these as spam; let them stay in your sequence so the provider sees that your domain is interacting with real people. For more technical deep dives on cold email infrastructure, check out our feature comparison .",
+          "metadata": [
+            {
+              "@context": "https://schema.org",
+              "@type": "BlogPosting",
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://www.indiehackers.com/post/why-automated-warmup-pools-are-failing-in-2026-and-what-to-do-instead-5dbc71438a"
+              },
+              "headline": "Why automated warmup pools are failing in 2026 (and what to do instead)",
+              "datePublished": "2026-10-31T22:08:18.122Z",
+              "dateModified": "2026-10-31T22:08:18.122Z",
+              "author": [
+                {
+                  "@type": "Person",
+                  "name": "Alex",
+                  "sameAs": [
+                    "https://www.indiehackers.com/ballastapp"
+                  ]
+                }
+              ]
+            }
+          ],
+          "decision": "Discussion/seller/product research only; no paid buyer or complete competition/contact evidence"
+        }
+      ],
       "opportunity_ids": [],
       "inspected_keys": [
         "/post/do-you-launch-for-free-or-charge-from-day-one-b08d3ae440",
-        "/post/i-built-103-free-css-tools-and-posted-a-short-every-day-for-26-days-traffic-doubled-sales-are-still-0-fc6f6abf7b",
         "/post/launched-a-9-meeting-notes-to-action-items-kit-this-week-0-sales-so-far-what-would-stop-you-from-buying-948aba5577",
+        "/post/i-built-a-newsletter-digest-for-marketers-103-of-reddit-ads-83-visits-0-trial-clicks-what-am-i-missing-a4d78d3985",
+        "/post/what-do-you-actually-do-in-the-first-hour-after-you-launch-6c113a0b19",
+        "/post/i-built-103-free-css-tools-and-posted-a-short-every-day-for-26-days-traffic-doubled-sales-are-still-0-fc6f6abf7b",
         "/post/we-vetted-463-high-dr-directories-for-our-saas-22-were-worth-submitting-to-57f6a0eace",
         "/post/nobody-checks-your-work-and-nobody-expects-your-update-what-keeps-you-going-10e988d998",
         "/post/how-to-see-which-of-your-signups-came-from-chatgpt-even-the-ones-ga4-calls-direct-46da4517fb",
-        "/post/5-comments-from-strangers-changed-my-product-more-than-100-signups-did-c7b2cec8d3",
-        "/post/were-a-tiny-utah-team-building-a-free-app-for-group-plans-shipping-was-the-easy-part-9924143043",
-        "/post/i-shipped-a-split-pdf-tool-and-skipped-the-delete-pages-button-was-that-a-mistake-7d1ca22fee",
+        "/post/i-tried-breaking-my-own-saas-starter-before-asking-anyone-to-buy-it-4fa9f5c933",
         "/post/tech/how-goguardian-grew-from-a-chrome-extension-to-100m-arr-B1qKroz4HFqqH47eGHTD",
         "/post/tech/she-built-a-250k-month-business-around-an-ai-clone-07hKxdXQ0l7Bu3l2IBFy",
         "/post/tech/focusing-on-audience-first-and-hitting-30k-mrr-in-8-months-ootKyp98moigKLdaOON4",
         "/post/tech/how-rasty-turek-built-vaultaire-in-three-weeks-and-grew-it-to-40k-month-1BjFvs2akwfIVjMGYO54",
         "/post/tech/turning-an-agency-into-a-12k-mo-product-portfolio-13QkMY561jAQxsiA0LSg",
         "/post/tech/starting-from-scratch-and-hitting-9-5k-mrr-in-two-months-j5pMaED5FEbKw8qmeyj9",
-        "/post/i-tried-breaking-my-own-saas-starter-before-asking-anyone-to-buy-it-4fa9f5c933",
-        "/post/google-trends-alternatives-for-researching-your-next-product-1cee726fdd",
-        "/post/i-picked-a-boring-micro-saas-niche-with-keyword-data-quickbooks-file-converters-e6496a4335",
-        "/post/i-built-a-finance-app-for-people-whose-income-comes-on-no-schedule-heres-what-i-learned-about-quarterly-taxes-1dd36e545c",
-        "/post/i-built-a-newsletter-digest-for-marketers-103-of-reddit-ads-83-visits-0-trial-clicks-what-am-i-missing-a4d78d3985",
-        "/post/the-sentence-your-user-said-in-frustration-is-better-copy-than-anything-you-ll-write-on-purpose-53a679de8b",
-        "/post/two-weeks-building-templates-for-contractors-80-pages-14-free-tools-0-sales-e883c1be4a",
-        "/post/ai-agents-were-writing-code-faster-than-we-could-review-it-heres-what-we-built-f9f02383f7",
-        "/post/most-launch-sites-bury-you-after-24-hours-im-testing-something-different-ad501d383e",
-        "/post/tech/building-a-5k-mrr-app-while-freelancing-to-keep-the-lights-on-JhX6p14De0nagI0j1Xg1",
-        "/post/tech/building-a-3m-yr-company-without-launching-publicly-tacryeGIH66SCtD2an4r",
-        "/post/tech/growing-a-side-project-in-a-crowded-market-to-1m-arr-by-playing-the-long-game-eL15KZvm2ax20BtiM5i8"
+        "/post/i-built-an-offline-planner-for-my-freelance-work-then-turned-it-into-a-product-79f0a4d946",
+        "/post/i-sent-gptbot-to-10-indie-ai-product-pages-nothing-blocked-it-and-six-had-nothing-an-ai-could-quote-1b42635c14",
+        "/post/i-turned-my-editing-admin-into-76-ai-agent-workflows-and-put-them-on-gumroad-48b1de99e0",
+        "/post/9-days-building-a-task-board-for-ai-agents-0-paid-jobs-so-far-heres-what-we-learned-6ac67b303a",
+        "/post/why-automated-warmup-pools-are-failing-in-2026-and-what-to-do-instead-5dbc71438a",
+        "/post/10-days-after-launching-my-side-project-what-each-channel-actually-brought-in-2065963871",
+        "/post/i-launched-two-shopify-apps-got-zero-installs-and-built-two-free-calculators-instead-b62b4a2c54",
+        "/post/im-a-tv-director-so-i-built-my-own-instant-trigger-audio-player-for-live-broadcast-public-beta-1c013585f4",
+        "/post/i-built-a-free-pixel-art-dinosaur-game-you-play-in-a-few-minutes-a-day-4e2f30865e",
+        "/post/tech/hitting-60k-mrr-by-building-an-sdk-instead-of-an-app-0B3bsTvvOG0wqf8cAx1v",
+        "/post/tech/turning-a-freelance-gig-into-a-150k-yr-product-tDdZGZyiyNTztPfI2wkY",
+        "/post/tech/this-founder-left-academia-built-four-failed-products-then-hit-12-5k-mo-xkng30lczEuiLG4983UN"
       ]
     },
     {
       "source_family": "international physical-goods RFQ (TradeKey)",
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://www1.tradekey.com/buyoffer_search/start_date/3/page_no/3.htm",
-      "records_inspected": 25,
+      "records_inspected": 21,
       "primary_pages_opened": 2,
       "verified_buyer_requests": 2,
       "explicit_commercial_signals": 2,
@@ -358,22 +387,22 @@
         "Physical goods buyers do not automatically buy research. Contact requires platform sign-in; no access bypass. No bid-count visibility => UNKNOWN."
       ],
       "evidence_snapshots": [
-        "data/evidence/3914e4f508c84945.json#sha256=5b879ef64e15b09782d811e87cf3b582e0fec58b8231c7ff7c96c260945daa62",
-        "data/evidence/a4a8b54ab2f047e6.json#sha256=ebf814f2d8f871cf01107fa3cbcc8d82e60165b94db8e947f33b361b4e8675c7",
-        "data/evidence/50252152aba6fa1d.json#sha256=92a79c37a206f4c378b103709bae612f33b59131a5ac791770e0164b3d4b608a"
+        "data/evidence/3914e4f508c84945.json#sha256=c4dedbe92b859f25547eb59ff3ef1c904048b9d40a0872d268c6fdc9582d77ed",
+        "data/evidence/8436c7d4b1507490.json#sha256=547c44068ea32bd1850cb3cab3fb4615617cd7c85722587fd8ef77d2cf23c052",
+        "data/evidence/f18b1288dd47bd54.json#sha256=87c7d116f21dfeba243f0c760ad99b9bea142fad4b90ec105a5161aba9c695c4"
       ],
       "records": [
         {
-          "url": "https://importer1.tradekey.com/buyoffer/Industrial-Wood-Pellets-In-Six-And-Eight-Millimetre-Sizes-3877647.html",
-          "primary_excerpt": "Last Updated: Posted on: 30 Oct 2026 Time Left: 29D 15H Payment Terms: T/T, L/C, D/A, D/P, Western Union, Money Gram Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details Good day, I need a current, product-specific offer for industrial wood pellets. For comparison, include 6 mm and 8 mm diameter, moisture, ash, fines, bulk density, net calorific value, durability, feedstock and 15 kg or bulk-bag packing. Many thanks, BÃœLent Refine by popular tags wood pellets biomass pellets Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.10936 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French Guiana French Polynesia Gabon Gambia Georgia Germany Ghana Gibraltar Greece Greenland Grenada Guadeloupe Guam Guatemala Guernsey Guinea Guinea-Bissau Guyana Haiti Honduras Hong Kong Hungary Iceland India Indonesia Iraq Ireland Isle of Man Israel Ital",
+          "url": "https://importer1.tradekey.com/buyoffer/Construction-Materials-With-Product-Level-Quotations-3877737.html",
+          "primary_excerpt": "Last Updated: Posted on: 30 Oct 2026 Time Left: 28D 14H Payment Terms: T/T, L/C, D/A, D/P, Western Union, Money Gram Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details Greetings, I want to evaluate suppliers for construction materials. Please separate your available grades and report each exact material, grade or standard, dimensions, strength or performance values, unit weight, packing, monthly availability and delivery lead time. Quote the smallest trial quantity and the price break for a regular order. Kind regards, Sami Refine by popular tags construction materials building supplies wholesale construction Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.11197 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French Guiana French Polynesia Gabon Gambia Georgia Germany Ghana Gibraltar Greece Greenland Grenada Guadeloupe Guam Gu",
           "decision": "Physical goods RFQ; not a commissioned China research service; contact gated and competition unknown",
           "buyer": true,
           "published_at": "2026-10-30T00:00:00+00:00",
           "date_precision": "day; original posted date, not crawl date"
         },
         {
-          "url": "https://importer1.tradekey.com/buyoffer/Laboratory-Culture-Media-By-Exact-Formulation-3877645.html",
-          "primary_excerpt": "Last Updated: Posted on: 30 Oct 2026 Time Left: 29D 15H Payment Terms: T/T, L/C, D/A, D/P, Western Union, Money Gram Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details Dear supplier, I am building a shortlist for dehydrated microbiological culture media. For technical review, quote medium name, intended organism, dehydrated powder or prepared plate form, pH after preparation, pack weight, lot number, expiry and storage temperature. Please distinguish every grade, model or size that changes the price, and use measurable values rather than general quality claims. A representative sample and current availability should accompany the quotation. Best regards, Abdalla Refine by popular tags laboratory media culture media microbiology supplies dehydrated microbiological culture media bulk laboratory media Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.09763 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Er",
+          "url": "https://importer1.tradekey.com/buyoffer/Split-Red-Lentils-With-Crop-And-Quality-Data-3877735.html",
+          "primary_excerpt": "Last Updated: Posted on: 30 Oct 2026 Time Left: 28D 14H Payment Terms: T/T, L/C, D/A, D/P, Western Union, Money Gram Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details Hello, Our next order will include split red lentils. Before we shortlist, confirm crop year, size, moisture, purity, broken and damaged grains, foreign matter, colour uniformity and 25 or 50 kg bags. Many thanks, Johnsull Refine by popular tags red lentils split lentils Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.09016 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French Guiana French Polynesia Gabon Gambia Georgia Germany Ghana Gibraltar Greece Greenland Grenada Guadeloupe Guam Guatemala Guernsey Guinea Guinea-Bissau Guyana Haiti Honduras Hong Kong Hungary Iceland India Indonesia Iraq Ireland Isle of Man Israel Italy Jamaica Japan Jersey Jordan Kazakhsta",
           "decision": "Physical goods RFQ; not a commissioned China research service; contact gated and competition unknown",
           "buyer": true,
           "published_at": "2026-10-30T00:00:00+00:00",
@@ -382,47 +411,43 @@
       ],
       "opportunity_ids": [],
       "inspected_keys": [
-        "https://importer1.tradekey.com/buyoffer/Industrial-Wood-Pellets-In-Six-And-Eight-Millimetre-Sizes-3877647.html",
-        "https://importer1.tradekey.com/buyoffer/Laboratory-Culture-Media-By-Exact-Formulation-3877645.html",
-        "https://importer1.tradekey.com/buyoffer/Automotive-Airbag-Modules-By-Vehicle-Application-3877643.html",
-        "https://importer1.tradekey.com/buyoffer/Garment-Hangers-For-Retail-And-Laundry-Use-3877641.html",
-        "https://importer1.tradekey.com/buyoffer/Dry-Salted-Cow-Hides-By-Weight-And-Grade-3877637.html",
-        "https://importer1.tradekey.com/buyoffer/Black-Basalt-Blocks-And-Cut-to-Size-Slabs-3877635.html",
-        "https://importer1.tradekey.com/buyoffer/Gypsum-Products-With-Clearly-Defined-Grade-3877633.html",
-        "https://importer1.tradekey.com/buyoffer/Palm-Kernel-Shell-Biomass-With-Controlled-Moisture-3877631.html",
-        "https://importer1.tradekey.com/buyoffer/Positive-And-Negative-Plates-For-Automotive-Batteries-3877629.html",
-        "https://importer1.tradekey.com/buyoffer/White-Dried-Fish-By-Species-And-Size-Grade-3877627.html",
-        "https://importer1.tradekey.com/buyoffer/Retail-Makeup-Range-With-Ingredient-And-Shade-Details-3877623.html",
-        "https://importer1.tradekey.com/buyoffer/Rechargeable-Batteries-By-Chemistry-And-Capacity-3877621.html",
-        "https://importer1.tradekey.com/buyoffer/PVC-Synthetic-Leather-In-Upholstery-And-Bag-Grades-3877617.html",
-        "https://importer1.tradekey.com/buyoffer/Industrial-Water-Chiller-With-Rated-Cooling-Capacity-3877615.html",
-        "https://importer1.tradekey.com/buyoffer/Parboiled-Rice-With-Maximum-5-Percent-Broken-3877613.html",
-        "https://importer1.tradekey.com/buyoffer/Samsung-Galaxy-Smartphones-By-Exact-Model-3877611.html",
-        "https://importer1.tradekey.com/buyoffer/RBD-Palm-Olein-CP10-For-Food-Distribution-3877609.html",
-        "https://importer1.tradekey.com/buyoffer/Industrial-Sulphuric-Acid-In-Bulk-Or-IBC-Packing-3877607.html",
-        "https://importer1.tradekey.com/buyoffer/Seamless-C12200-DHP-Soft-Copper-Tubing-3877605.html",
-        "https://importer1.tradekey.com/buyoffer/Nickel-Bearing-Sludge-For-Licensed-Metal-Recovery-3877599.html",
-        "https://importer1.tradekey.com/buyoffer/Bizpromo-Databases-3877597.html",
-        "https://importer1.tradekey.com/buyoffer/CASSIA-SPLITE-STAR-ANASE-BLACK-PAPER-3877595.html",
-        "https://importer1.tradekey.com/buyoffer/Casual-Shoes-For-Retail-Assortments-3877589.html",
-        "https://importer1.tradekey.com/buyoffer/Ceramic-CPU-Scrap-With-Declared-Precious-Metal-Yield-Basis-3877587.html",
-        "https://importer1.tradekey.com/buyoffer/Food-Grade-Dry-Beans-By-Variety-And-Size-3877585.html"
+        "https://importer1.tradekey.com/buyoffer/Construction-Materials-With-Product-Level-Quotations-3877737.html",
+        "https://importer1.tradekey.com/buyoffer/Split-Red-Lentils-With-Crop-And-Quality-Data-3877735.html",
+        "https://importer1.tradekey.com/buyoffer/Commercial-Plastic-Products-By-Resin-And-Application-3877731.html",
+        "https://importer1.tradekey.com/buyoffer/Bamboo-Cotton-Towels-With-GSM-And-Size-Options-3877729.html",
+        "https://importer1.tradekey.com/buyoffer/Automotive-Spare-Parts-By-Vehicle-And-OEM-Reference-3877727.html",
+        "https://importer1.tradekey.com/buyoffer/Garment-Buttons-By-Material-Size-And-Finish-3877725.html",
+        "https://importer1.tradekey.com/buyoffer/Fashion-Clothing-Assortment-For-Retail-Buyers-3877721.html",
+        "https://importer1.tradekey.com/buyoffer/Custom-Sportswear-Sets-With-Fabric-Performance-Data-3877715.html",
+        "https://importer1.tradekey.com/buyoffer/Fresh-Scotch-Bonnet-Chillies-With-Heat-And-Size-Grading-3877711.html",
+        "https://importer1.tradekey.com/buyoffer/Raw-Silica-Mineral-With-Laboratory-Composition-3877705.html",
+        "https://importer1.tradekey.com/buyoffer/Disposable-Cups-In-Foodservice-Sizes-3877701.html",
+        "https://importer1.tradekey.com/buyoffer/Food-Grade-Jaggery-In-Blocks-And-Powder-3877697.html",
+        "https://importer1.tradekey.com/buyoffer/Genuine-Leather-Wallets-For-Private-Label-Retail-3877695.html",
+        "https://importer1.tradekey.com/buyoffer/High-Protein-Fish-Meal-For-Feed-Production-3877693.html",
+        "https://importer1.tradekey.com/buyoffer/Boxing-Gloves-In-Training-And-Competition-Weights-3877687.html",
+        "https://importer1.tradekey.com/buyoffer/Bitter-Kola-In-Fresh-Export-Grade-3877683.html",
+        "https://importer1.tradekey.com/buyoffer/Export-Clothing-Stock-Lots-With-Item-Level-Packing-List-3877681.html",
+        "https://importer1.tradekey.com/buyoffer/Dehydrated-Flowers-With-Natural-Colour-Retention-3877677.html",
+        "https://importer1.tradekey.com/buyoffer/Fine-Multani-Mitti-Powder-For-Cosmetic-Formulation-3877673.html",
+        "https://importer1.tradekey.com/buyoffer/Ready-Made-Clothing-With-Defined-Styles-And-Size-Ratios-3877667.html",
+        "https://importer1.tradekey.com/buyoffer/Dates-By-Variety-Size-And-Moisture-Grade-3877665.html"
       ]
     }
   ],
-  "unique_refreshed": 79,
+  "unique_refreshed": 75,
   "info_edge_refresh": [
     {
       "id": "5409f529cb2b0f7b",
       "url": "https://community.n8n.io/t/assistant-credits-top-up-now-available/318075",
-      "checked_at": "2026-10-31T08:24:00.641334+00:00",
+      "checked_at": "2026-11-01T09:12:34.713715+00:00",
       "refreshed": false,
       "reason": "event expired; no publication rejuvenation"
     },
     {
       "id": "edge-haiku-2026-10-07",
       "url": "https://www.anthropic.com/claude-haiku-5-5",
-      "checked_at": "2026-10-31T08:24:00.641334+00:00",
+      "checked_at": "2026-11-01T09:12:34.713715+00:00",
       "refreshed": false,
       "reason": "event expired; no publication rejuvenation"
     }

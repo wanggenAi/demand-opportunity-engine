@@ -1,0 +1,129 @@
+{
+  "source_api_url": "https://api.github.com/repos/Zikrasoft/approved_rs/issues/442",
+  "collected_at": "2026-11-01T09:12:34.713715+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/Zikrasoft/approved_rs/issues/442",
+    "repository_url": "https://api.github.com/repos/Zikrasoft/approved_rs",
+    "labels_url": "https://api.github.com/repos/Zikrasoft/approved_rs/issues/442/labels{/name}",
+    "comments_url": "https://api.github.com/repos/Zikrasoft/approved_rs/issues/442/comments",
+    "events_url": "https://api.github.com/repos/Zikrasoft/approved_rs/issues/442/events",
+    "html_url": "https://github.com/Zikrasoft/approved_rs/issues/442",
+    "id": 6136565210,
+    "node_id": "I_kwDOTLQuMc8AAAABbcSN2g",
+    "number": 442,
+    "title": "Release prep: owner decisions for carlab.rs",
+    "user": {
+      "login": "aleksey-zikrackiy",
+      "id": 22475031,
+      "node_id": "MDQ6VXNlcjIyNDc1MDMx",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22475031?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/aleksey-zikrackiy",
+      "html_url": "https://github.com/aleksey-zikrackiy",
+      "followers_url": "https://api.github.com/users/aleksey-zikrackiy/followers",
+      "following_url": "https://api.github.com/users/aleksey-zikrackiy/following{/other_user}",
+      "gists_url": "https://api.github.com/users/aleksey-zikrackiy/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/aleksey-zikrackiy/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/aleksey-zikrackiy/subscriptions",
+      "organizations_url": "https://api.github.com/users/aleksey-zikrackiy/orgs",
+      "repos_url": "https://api.github.com/users/aleksey-zikrackiy/repos",
+      "events_url": "https://api.github.com/users/aleksey-zikrackiy/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/aleksey-zikrackiy/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 12444917036,
+        "node_id": "LA_kwDOTLQuMc8AAAAC5cZdLA",
+        "url": "https://api.github.com/repos/Zikrasoft/approved_rs/labels/ready-for-human",
+        "name": "ready-for-human",
+        "color": "1d76db",
+        "default": false,
+        "description": "Requires human implementation",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 12543697690,
+        "node_id": "LA_kwDOTLQuMc8AAAAC66mjGg",
+        "url": "https://api.github.com/repos/Zikrasoft/approved_rs/labels/carlab.rs",
+        "name": "carlab.rs",
+        "color": "ef8a17",
+        "default": false,
+        "description": "carlab.rs (apps/auto-service, apps/medusa, infra/medusa)",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 12868531142,
+        "node_id": "LA_kwDOTLQuMc8AAAAC_wYzxg",
+        "url": "https://api.github.com/repos/Zikrasoft/approved_rs/labels/feature",
+        "name": "feature",
+        "color": "0e8a16",
+        "default": false,
+        "description": "Something new",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-10-31T15:29:43Z",
+    "updated_at": "2026-11-01T04:33:57Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "COLLABORATOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "Owner-only decisions collected by the carlab.rs pre-release QA loop (branch `carlab-shop`). Everything an engineer could decide is already fixed or defaulted in the code; this list holds only what needs you. The loop appends here each round.\n\n## Decisions\n\n- [ ] **[feature] Parts guarantee / returns wording.** Part pages now show the pickup address and hours next to the price, but no guarantee or return promise (we did not invent one). What do we promise? E.g. \"manufacturer's warranty\", \"doesn't fit your VIN, we swap it\", \"returns within N days on conditions X\". Without an answer the line stays out.\n- [ ] **[feature] Reviews / rating on the parts path.** Today we show real Works (\"Мы уже подбирали\") instead of reviews. Do you want a Google rating or reviews block? If yes: the source (Google Business Profile link) and whether the numbers can be shown.\n- [ ] **[feature] Installation service per Category.** «Установить у нас» books: `brake-pads`/`brakes`/`suspension` → brakes-suspension, `engine-parts`/`transmission` → engine-gearbox, `body-parts` → bodywork-painting, everything else (batteries, oils, filters) → servicing. Confirm or correct.\n- [ ] **[bug] Social account URLs, incl. the real details.rs Instagram.** `PUBLIC_INSTAGRAM` is no longer read; links come from `packages/brands` `social`. Until you send URLs, details.rs shows no Instagram at all. Need: Instagram/Facebook/TikTok/YouTube per brand (approved.rs, carlab.rs, details.rs).\n- [ ] **[feature] Telegram tile on the order confirmation.** It opens the capture bot as a Parts sourcing inquiry. Tying it to the order number needs a capture-bot change (accept `parts-order` as a start slug, show an order screen). Worth it now or after release?\n\n- [ ] **[feature] VIN and decode retention.** The shop stores every VIN a visitor typed (`vin_lookup`) and raw decoder responses, with no expiry. How long may we keep them? Suggestion: 12 months, then delete or anonymise. Needs your call (privacy policy / Serbian data law).\n- [ ] **[feature] Where Leads live long term.** All Leads sit in one JSON blob on Vercel Blob, read and rewritten whole on every change. Estimate: fine to low thousands, degrading near 10k Leads or ~1 write/s bursts, unusable at 30-50k (lost clicks/forms). Options: (a) archive closed Leads older than N months to a second blob (cheap, soon); (b) move the store to Postgres (more work, a DB cost). Which, and when? Knowing today's `data/leads.json` size would tell us how close we are.\n- [ ] **[feature] VPS sizing.** The shop runs Postgres capped at 512 MB and Node at a 1 GB heap. Fine for the closed beta and the current catalogue; a catalogue in the hundreds of thousands of Parts will want a bigger box. Budget for an upgrade before the full catalogue import?\n\n- [ ] **[bug] Analytics before consent.** Metrika (with Webvisor), GA4 and the Meta Pixel start on page load and stop only if the visitor declines (opt-out, ADR-0033 / ADR-0044). Under GDPR and the Serbian personal data law (ZZPL) tracking cookies usually need opt-in, the Pixel most of all. Keep opt-out, or switch to opt-in (analytics start only after «Принять»; expect fewer measured visits)? A lawyer's view would settle it.\n- [ ] **[feature] Spam protection on forms.** No layer rate-limits the public forms, click beacons or orders today; the code side (shop per-IP limits, no click Lead without a visitor id, a cap on order hand-offs) is being added. The edge needs one of: (a) Vercel Firewall rate-limit rules on `/api/leads`, `/api/contact-click`, `/api/order`, `/api/cart` for all three sites (config in the Vercel dashboard, no conversion cost; recommended), or (b) Cloudflare Turnstile on the forms (stronger, costs some conversions). Which? For (a) I can write the exact rules for you to paste.\n\n- [ ] **[feature] The «обычно в течение часа» promise.** The thanks pages and the failed-checkout notice promise a reply «обычно в течение часа» in working hours. Can staffing keep that, Saturday included? If not, what should it say (e.g. «в течение рабочего дня»)?\n\n## Needs you (not code)\n\n- [ ] **[feature] Env before the shop's first deploy:**\n  - approved.rs (Vercel): `SHOP_API_URL`, `SHOP_ORDER_OUTCOME_SECRET`\n  - carlab.rs (Vercel): `SHOP_LEAD_SECRET`\n  - carlab.rs (Vercel): `SHOP_PREVIEW_TOKEN` (closed-beta preview; open `/api/shop-preview?token=…` once per tester) and `SHOP_CLIENT_SECRET` (signs the visitor IP for the shop's rate limits)\n  - shop `.env` on the VPS: `SHOP_LEAD_SECRET`, `SHOP_ORDER_OUTCOME_SECRET`, `SHOP_PREVIEW_TOKEN`, `SHOP_CLIENT_SECRET` (same values as on Vercel; each `openssl rand -hex 32`), and `JWT_SECRET` / `COOKIE_SECRET` of at least 32 characters\n  - deploy order: shop first, then the storefront\n- [ ] **[feature] First production Publish with the OpenAI key.** Part, Category and car names on the en/sr catalogue pages are translated only by Publish (Terra). The local demo skips it, so they read Russian there; the first production Publish fills them.\n- [ ] **[feature] GA4 key event `lead_modal_open`** on the carlab.rs and details.rs properties (it now fires on all three sites; approved.rs already had it). Otherwise it is left out of conversion reports.\n- [ ] **[feature] #380:** after the shop's first production deploy, check the catalogue Vercel build time and size; the second Publish run's log should show `(restored)` pages (incremental builds, ADR-0055).\n- [ ] **[feature] #268:** keyword research for approved.rs and details.rs needs Keyword Planner / Search Console access.\n\nPR context: #441 (spec #432).\n\n\n\n\n\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/Zikrasoft/approved_rs/issues/442/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/Zikrasoft/approved_rs/issues/442/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "aleksey-zikrackiy",
+      "text": "UX round 8 (release UX loop), questions only the owner can answer:\n\n- [ ] **[bug] Servicing duration.** The home page trust strip says «1 день» for ТО (`apps/auto-service/src/content/i18n/home.yaml`, `trust[1]`), while the servicing card and service page say «2–4 часа». Which one is true?\n- [ ] **[bug] Service prices in €, parts in RSD.** `services.yaml` `priceFrom` is in euros; parts, add-ons and the cart are in dinars. Keep euros on services, or switch to RSD? Does «от 90 €» for ТО include oil and filters? The page should say so either way.\n- [ ] **[bug] Works content.** Four works slugs are transliterated Russian (e.g. `obsluzhivanie-tormoznoj-sistemy`), and the directory `content/works/BMW 116D/` has a space and capitals. Some ru titles are only a car name or are in Serbian: «Peugeot 208 veliki servis», «Audi Q7 » (with a trailing space), «BMW 116D», «VW Golf». Renaming a slug changes a live URL; I can add 301s. OK to rename the slugs and rewrite those titles, or will you edit the works in Keystatic yourself?\n",
+      "at": "2026-11-01T02:16:40Z",
+      "url": "https://github.com/Zikrasoft/approved_rs/issues/442#issuecomment-6552230281"
+    },
+    {
+      "author": "aleksey-zikrackiy",
+      "text": "UX round 9, owner decisions:\n\n- [ ] **[feature] Show a cheaper equivalent on a priced OE page?** BMW 11 42 8 575 211 sells at 1 850 RSD, while the same Part from MANN costs 1 200 RSD. Right now the cheaper equivalent shows only on price-on-request pages. Surfacing it helps the visitor but moves sales to the lower-margin offer. Show it, or keep it hidden?\n- [ ] **[bug] «В наличии, забрать завтра».** Does \"in stock\" mean in your workshop or at the supplier? If it means the supplier, the line should say something like «Есть у поставщика, забрать завтра».\n",
+      "at": "2026-11-01T04:33:57Z",
+      "url": "https://github.com/Zikrasoft/approved_rs/issues/442#issuecomment-6553453378"
+    }
+  ],
+  "comments_complete": true
+}

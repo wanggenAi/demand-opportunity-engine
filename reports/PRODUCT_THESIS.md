@@ -7,7 +7,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## workflow_reliability — UNVALIDATED CLUSTER
 
-- independent_demand_count: 67
+- independent_demand_count: 70
 - payment_evidence_count: 1
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community', 'n8n Community']
 - communities: ['Agenta-AI/agenta', 'Ask/Show HN', 'Commerce operator forum', 'n8n Jobs', 'n8n-io/n8n', 'useagenthq/useagent']
@@ -20,12 +20,12 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://github.com/n8n-io/n8n/issues/42848
+  - https://github.com/n8n-io/n8n/issues/42846
+  - https://news.ycombinator.com/item?id=50317158
+  - https://news.ycombinator.com/item?id=50315297
   - https://github.com/n8n-io/n8n/issues/42822
   - https://news.ycombinator.com/item?id=50301901
-  - https://github.com/Agenta-AI/agenta/issues/7914
-  - https://news.ycombinator.com/item?id=50292324
-  - https://github.com/n8n-io/n8n/issues/42512
-  - https://github.com/n8n-io/n8n/issues/42503
 
 ## supplier_sourcing — UNVALIDATED CLUSTER
 
@@ -51,7 +51,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## browser_automation — UNVALIDATED CLUSTER
 
-- independent_demand_count: 6
+- independent_demand_count: 7
 - payment_evidence_count: 0
 - platforms: ['GitHub']
 - communities: ['kouweizhu/agents-radar', 'n8n-io/n8n', 'useagenthq/useagent']
@@ -64,12 +64,12 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://github.com/n8n-io/n8n/issues/42851
   - https://github.com/n8n-io/n8n/issues/42153
   - https://github.com/kouweizhu/agents-radar/issues/654
   - https://github.com/n8n-io/n8n/issues/41548
   - https://github.com/n8n-io/n8n/issues/41471
   - https://github.com/n8n-io/n8n/issues/41327
-  - https://github.com/useagenthq/useagent/issues/188
 
 ## lead_research — UNVALIDATED CLUSTER
 
