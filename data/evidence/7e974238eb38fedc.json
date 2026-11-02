@@ -1,0 +1,141 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42853",
+  "collected_at": "2026-11-02T09:26:19.309813+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/42853",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/42853/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/42853/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/42853/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/42853",
+    "id": 6144786233,
+    "node_id": "I_kwDOC4Q8Qs8AAAABbkH_OQ",
+    "number": 42853,
+    "title": "Gmail Trigger intermittently misses incoming forwarded emails despite 1-minute polling",
+    "user": {
+      "login": "imran-baitham",
+      "id": 81960197,
+      "node_id": "MDQ6VXNlcjgxOTYwMTk3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/81960197?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/imran-baitham",
+      "html_url": "https://github.com/imran-baitham",
+      "followers_url": "https://api.github.com/users/imran-baitham/followers",
+      "following_url": "https://api.github.com/users/imran-baitham/following{/other_user}",
+      "gists_url": "https://api.github.com/users/imran-baitham/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/imran-baitham/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/imran-baitham/subscriptions",
+      "organizations_url": "https://api.github.com/users/imran-baitham/orgs",
+      "repos_url": "https://api.github.com/users/imran-baitham/repos",
+      "events_url": "https://api.github.com/users/imran-baitham/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/imran-baitham/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582010757,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cXhQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:nodes",
+        "name": "team:nodes",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Nodes team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 4,
+    "created_at": "2026-11-01T09:14:18Z",
+    "updated_at": "2026-11-01T18:38:47Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nI am experiencing inconsistent behavior with the Gmail Trigger node in my self-hosted n8n instance.\n\nI have five Fiverr accounts forwarding their notification emails to one central Gmail inbox. This inbox is connected to an n8n Gmail Trigger configured to check for new emails every minute.\n\nThe trigger detects some incoming Fiverr notifications, but other emails are not detected consistently. This happens even though the emails are successfully delivered to the central Gmail inbox.\n\nThe issue affects the reliability of my Fiverr notification automation.\n\n## Additional Context\n\nI have two separate email notification automations running on the same self-hosted n8n instance: one for Upwork and another for Fiverr.\n\nBoth automations use the same approach:\n- Gmail Trigger node to monitor incoming emails.\n- AI processing to analyze and classify notifications.\n- Slack integration to send notifications.\n\nThe Upwork automation works perfectly. Whenever I receive a new Upwork email, the Gmail Trigger detects it, processes it, and successfully sends a notification to Slack.\n\nHowever, the Fiverr automation does not behave the same way. Although it uses a similar workflow structure and configuration, it inconsistently detects incoming Fiverr emails. Some notifications reach Slack, while others are completely missed.\n\nSince both automations run on the same n8n instance and use the same Gmail Trigger approach, I would like to understand why the Fiverr workflow is not detecting emails reliably while the Upwork workflow works as expected.\n\n### Current Configuration\n\n- Gmail Trigger polling interval: 1 minute\n- Simple: Disabled (`false`)\n- Maximum results: 10\n- Gmail search query: `from:(fiverr)` (tested with and without this filter)\n\n### To Reproduce\n\n1. Set up a Gmail account that receives forwarded emails from multiple Fiverr accounts.\n2. Connect the Gmail account to an n8n Gmail Trigger node.\n3. Configure the trigger to poll every minute.\n4. Send or receive multiple test emails through the forwarding accounts.\n5. Compare the emails received in Gmail with the emails detected by the Gmail Trigger.\n6. Observe that some emails are detected while others are missed.\n\n### Expected behavior\n\nThe Gmail Trigger should reliably detect all new emails matching its configured search criteria during subsequent polling cycles.\n\nEmails successfully delivered to the connected Gmail inbox should not be silently missed.\n\n### Debug Info\n\n<img width=\"560\" height=\"974\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/62ca12b9-0468-4c55-ae24-b1ffc2cf5d37\" />\n\n### Operating System\n\nUbuntu (Hostinger VPS)\n\n### n8n Version\n\n2.45.6\n\n### Node.js Version\n\nUnknown\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nown (deprecated)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/42853/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/42853/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @imran-baitham,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9687\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9687](https://linear.app/n8n/issue/GHC-9687)",
+      "at": "2026-11-01T09:14:30Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42853#issuecomment-6555402908"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "Could you share one missed message’s Gmail message ID and internalDate, plus the Gmail Trigger node version from the workflow? In the current source, the trigger first lists message IDs using its Gmail query (which includes an after: cursor), then fetches each message; fetch failures are logged and retried. For that one message, whether its ID appears in the list/fetch logs would distinguish a query/cursor miss from a fetch failure. Please omit message content and addresses.",
+      "at": "2026-11-01T12:05:31Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42853#issuecomment-6557693052"
+    },
+    {
+      "author": "dmitriy718",
+      "text": "The contrast between your **direct Upwork** workflow (100% reliable) and your **5-account forwarded Fiverr** workflow (intermittent drops) points directly to **forwarding-latency cursor skew** against Gmail's `after:` search filter:\n\n### Why Upwork works while forwarded Fiverr misses messages\n1. `GmailTrigger` tracks a moving poll cursor (`lastTimeChecked`) that advances to `now` on every 1-minute tick and queries `messages.list` with `after:<lastTimeChecked_epoch>`.\n2. Gmail's `after:` search operator evaluates the message's header timestamp (`Date:` — stamped when Fiverr originally generated the email), **not** the moment the forwarded copy landed in your central Gmail inbox (`internalDate` / final hop delivery).\n3. Your **Upwork** emails arrive directly (`0` forwarding hops, `<2s` transit), so `Date:` is always `>= lastTimeChecked`. Your **5 Fiverr accounts** traverse an extra mailbox auto-forward hop (SRS/SPF/greylisting/MTA queue jitter often adds `30–120s`). Whenever a forwarded Fiverr message takes `>60s` to land in the central Gmail inbox, `n8n` has already advanced `lastTimeChecked` past the email's original `Date:`, so `after:<cursor>` permanently skips it on every subsequent poll.\n\n### Deterministic zero-drop fix in self-hosted `n8n`\nReplace timestamp-cursor polling on forwarded mailboxes with **label-state cursoring + idempotent `Message-ID` deduplication**:\n1. In the central Gmail account, create a Gmail filter (`from:(fiverr.com)`) -> **Apply label** `n8n-queue` (and *Never send to Spam*).\n2. In `n8n`, use a **1-minute Schedule Trigger** -> **Gmail: Get Many Messages** with query `label:n8n-queue` (`Limit: 50`, instead of `10` so bursts across all 5 Fiverr accounts don't clip).\n3. Deduplicate on the RFC `Message-ID` (or Gmail `id`) before your AI classifier + Slack step, and **only after the Slack webhook returns `2xx`**, call **Gmail: Remove Label `n8n-queue`** on that message ID.\n\nThat turns Gmail's label into an at-least-once queue immune to 1–10 minute forwarding delays, while the `Message-ID` check guarantees exact-once Slack delivery even if a run retries:\n- Reference stdlib SQLite WAL idempotent event/webhook dedup outbox pattern: https://gist.github.com/dmitriy718/6170df9763bdb17a481b130aba114daa\n- Notes on sub-minute freelance brief radar & alert triage pipelines: https://gighound.net/insights/",
+      "at": "2026-11-01T14:47:50Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42853#issuecomment-6559508570"
+    },
+    {
+      "author": "donleco2474",
+      "text": "When Gmail triggers miss forwarded emails like your Fiverr notifications, it is usually because Gmail groups fast-arriving messages into existing threads or delays indexing search queries during high-volume polling cycles. Switching your architecture from timed polling to Gmail Push Notifications via Google Cloud Pub/Sub will instantly stream new message webhooks into n8n as they arrive. Let me know if you want me to outline how to configure the Pub/Sub credential bindings and webhook subscription for your self-hosted n8n instance right here.",
+      "at": "2026-11-01T18:38:47Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42853#issuecomment-6562196179"
+    }
+  ],
+  "comments_complete": true
+}

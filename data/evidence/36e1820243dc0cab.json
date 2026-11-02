@@ -1,0 +1,103 @@
+{
+  "source_api_url": "https://api.github.com/repos/Shreyaanp/AI-Builder-Cup-2026/issues/645",
+  "collected_at": "2026-11-02T09:26:19.309813+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/Shreyaanp/AI-Builder-Cup-2026/issues/645",
+    "repository_url": "https://api.github.com/repos/Shreyaanp/AI-Builder-Cup-2026",
+    "labels_url": "https://api.github.com/repos/Shreyaanp/AI-Builder-Cup-2026/issues/645/labels{/name}",
+    "comments_url": "https://api.github.com/repos/Shreyaanp/AI-Builder-Cup-2026/issues/645/comments",
+    "events_url": "https://api.github.com/repos/Shreyaanp/AI-Builder-Cup-2026/issues/645/events",
+    "html_url": "https://github.com/Shreyaanp/AI-Builder-Cup-2026/issues/645",
+    "id": 6155162715,
+    "node_id": "I_kwDOVHpMhs8AAAABbuBUWw",
+    "number": 645,
+    "title": "OB-252: main CI red: sourcing order flow test after #642, voice rate-limit test",
+    "user": {
+      "login": "Shreyaanp",
+      "id": 79451850,
+      "node_id": "MDQ6VXNlcjc5NDUxODUw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/79451850?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Shreyaanp",
+      "html_url": "https://github.com/Shreyaanp",
+      "followers_url": "https://api.github.com/users/Shreyaanp/followers",
+      "following_url": "https://api.github.com/users/Shreyaanp/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Shreyaanp/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Shreyaanp/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Shreyaanp/subscriptions",
+      "organizations_url": "https://api.github.com/users/Shreyaanp/orgs",
+      "repos_url": "https://api.github.com/users/Shreyaanp/repos",
+      "events_url": "https://api.github.com/users/Shreyaanp/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Shreyaanp/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 12744065046,
+        "node_id": "LA_kwDOVHpMhs8AAAAC95sAFg",
+        "url": "https://api.github.com/repos/Shreyaanp/AI-Builder-Cup-2026/labels/owner-queue",
+        "name": "owner-queue",
+        "color": "D93F0B",
+        "default": false,
+        "description": "Owner-reported, tracked in the queue",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 12754296009,
+        "node_id": "LA_kwDOVHpMhs8AAAAC-DccyQ",
+        "url": "https://api.github.com/repos/Shreyaanp/AI-Builder-Cup-2026/labels/P1",
+        "name": "P1",
+        "color": "D93F0B",
+        "default": false,
+        "description": "",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2026-11-02T02:39:17Z",
+    "updated_at": "2026-11-02T02:39:17Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "Main 91356afb (live 00162): tests/sourcing.spec.ts:21 (running low → suppliers → one-tap order → supplier reply → Orders) fails with retry since #642 (chat cards fold); tests/new-shop-voice.spec.ts:348 voice rate-limit fails consistently since at least 486ef517 (OB-246 #631). Prod smoke passes. Fix branch fix/main-sourcing-voice: root cause first; fix the product if the owner flow is broken.",
+    "reactions": {
+      "url": "https://api.github.com/repos/Shreyaanp/AI-Builder-Cup-2026/issues/645/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/Shreyaanp/AI-Builder-Cup-2026/issues/645/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [],
+  "comments_complete": true
+}

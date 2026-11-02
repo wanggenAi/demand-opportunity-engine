@@ -7,7 +7,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## workflow_reliability — UNVALIDATED CLUSTER
 
-- independent_demand_count: 70
+- independent_demand_count: 72
 - payment_evidence_count: 1
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community', 'n8n Community']
 - communities: ['Agenta-AI/agenta', 'Ask/Show HN', 'Commerce operator forum', 'n8n Jobs', 'n8n-io/n8n', 'useagenthq/useagent']
@@ -20,12 +20,34 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://news.ycombinator.com/item?id=50330567
+  - https://github.com/n8n-io/n8n/issues/42853
   - https://github.com/n8n-io/n8n/issues/42848
   - https://github.com/n8n-io/n8n/issues/42846
   - https://news.ycombinator.com/item?id=50317158
   - https://news.ycombinator.com/item?id=50315297
-  - https://github.com/n8n-io/n8n/issues/42822
-  - https://news.ycombinator.com/item?id=50301901
+
+## browser_automation — UNVALIDATED CLUSTER
+
+- independent_demand_count: 9
+- payment_evidence_count: 0
+- platforms: ['GitHub', 'Hacker News', 'Shopify Community']
+- communities: ['Commerce operator forum', 'Understanding Email Encryption (2025)', 'kouweizhu/agents-radar', 'n8n-io/n8n', 'useagenthq/useagent']
+- repeated_pain: Repeated manual browser work is costly or brittle.
+- current_alternatives: Playwright, Selenium, vendor APIs and open-source browser agents.
+- productization_potential: Needs one repeated workflow and paying buyers before standardization.
+- suggested_product_form: Workflow + Service package
+- distribution: Authorized workflow audit and referrals.
+- Promotion blockers: fewer than 2 primary payment/commercial signals; paid-market proof not independently verified; problem too broad to standardize
+- Action: WATCH (no standardized product build authorized by evidence)
+- Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
+- Representative evidence:
+  - https://news.ycombinator.com/item?id=50334266
+  - https://github.com/n8n-io/n8n/issues/42851
+  - https://github.com/n8n-io/n8n/issues/42153
+  - https://github.com/kouweizhu/agents-radar/issues/654
+  - https://github.com/n8n-io/n8n/issues/41548
+  - https://github.com/n8n-io/n8n/issues/41471
 
 ## supplier_sourcing — UNVALIDATED CLUSTER
 
@@ -48,28 +70,6 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
   - https://community.shopify.com/t/how-often-do-you-sync-supplier-stock-with-your-shopify-store/700544
   - https://github.com/zack-hum/coffee-intelligence-v1.1/issues/11
   - https://community.shopify.com/t/how-do-you-decide-when-to-stop-sourcing-from-one-supplier-and-diversify/607636
-
-## browser_automation — UNVALIDATED CLUSTER
-
-- independent_demand_count: 7
-- payment_evidence_count: 0
-- platforms: ['GitHub']
-- communities: ['kouweizhu/agents-radar', 'n8n-io/n8n', 'useagenthq/useagent']
-- repeated_pain: Repeated manual browser work is costly or brittle.
-- current_alternatives: Playwright, Selenium, vendor APIs and open-source browser agents.
-- productization_potential: Needs one repeated workflow and paying buyers before standardization.
-- suggested_product_form: Workflow + Service package
-- distribution: Authorized workflow audit and referrals.
-- Promotion blockers: fewer than 2 primary payment/commercial signals; paid-market proof not independently verified; problem too broad to standardize
-- Action: WATCH (no standardized product build authorized by evidence)
-- Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
-- Representative evidence:
-  - https://github.com/n8n-io/n8n/issues/42851
-  - https://github.com/n8n-io/n8n/issues/42153
-  - https://github.com/kouweizhu/agents-radar/issues/654
-  - https://github.com/n8n-io/n8n/issues/41548
-  - https://github.com/n8n-io/n8n/issues/41471
-  - https://github.com/n8n-io/n8n/issues/41327
 
 ## lead_research — UNVALIDATED CLUSTER
 

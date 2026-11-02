@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42851",
-  "collected_at": "2026-11-01T09:12:34.713715+00:00",
+  "collected_at": "2026-11-02T09:26:19.309813+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/42851",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -72,9 +72,9 @@
     "locked": false,
     "assignees": [],
     "milestone": null,
-    "comments": 1,
+    "comments": 2,
     "created_at": "2026-11-01T06:16:50Z",
-    "updated_at": "2026-11-01T06:24:41Z",
+    "updated_at": "2026-11-01T14:05:06Z",
     "closed_at": null,
     "assignee": null,
     "author_association": "NONE",
@@ -117,6 +117,12 @@
       "text": "Hey @mixxxa163-lgtm,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9686\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9686](https://linear.app/n8n/issue/GHC-9686)",
       "at": "2026-11-01T06:17:03Z",
       "url": "https://github.com/n8n-io/n8n/issues/42851#issuecomment-6554341251"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "A useful follow-up would be to compare the animation’s repaint/compositing behavior with and without the Waiting-node CSS, since the reported A/B/A measurement isolates this animation but doesn’t yet show which rendering property is driving the GPU load. If the effect is not cheap to composite, a reduced-motion or static-status option could preserve visibility without continuously animating. The report says the Running state has not been measured, so it would be worth profiling that separately before changing both selectors.",
+      "at": "2026-11-01T14:05:06Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42851#issuecomment-6559010970"
     }
   ],
   "comments_complete": true

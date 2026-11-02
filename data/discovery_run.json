@@ -1,17 +1,17 @@
 {
-  "observed_at": "2026-11-01T09:12:34.713715+00:00",
+  "observed_at": "2026-11-02T09:26:19.309813+00:00",
   "config": "data/discovery_config.json",
   "adapters": [
     {
       "source": "Hacker News",
       "refreshed": true,
-      "collected": 22,
+      "collected": 28,
       "errors": []
     },
     {
       "source": "GitHub",
       "refreshed": true,
-      "collected": 22,
+      "collected": 24,
       "errors": []
     }
   ],
@@ -21,10 +21,10 @@
       "source_family": "public founder/operator job community",
       "access_method": "Discourse public category/topic JSON",
       "url": "https://community.n8n.io/c/jobs/13.json?order=created",
-      "records_inspected": 59,
+      "records_inspected": 57,
       "primary_pages_opened": 29,
-      "verified_buyer_requests": 12,
-      "explicit_commercial_signals": 12,
+      "verified_buyer_requests": 11,
+      "explicit_commercial_signals": 11,
       "collected": 29,
       "errors": [],
       "limitations": [
@@ -32,8 +32,8 @@
         "Last activity is not publication time. Only substantive buyer-authored follow-ups can renew a lead."
       ],
       "evidence_snapshots": [
-        "data/evidence/f5663f332d6bc9b1.json#sha256=ce994570d1bcff8a6a1eed0f524e4eac74afbe62720c8e63c5660667a8671aa2",
-        "data/evidence/d9f0be47fa047f2c.json#sha256=482361d5653fa86a37e007897df1c2d39424ec3fedaf42579eef6ff1b3f83a25"
+        "data/evidence/f5663f332d6bc9b1.json#sha256=c96f017d7b58d4cf57fcde36adecc1c9b5d0fde8213f680f12a677bf3448a234",
+        "data/evidence/d9f0be47fa047f2c.json#sha256=95b5b1fa6de44a2db2cf38a8d72375e230fc868c9c4397d5877cd1e5228ce2cb"
       ]
     },
     {
@@ -51,7 +51,7 @@
         "Legal warning - Hey, thanks for using Remotive's API, we appreciate it! Please note that API documentation and access is granted so that developers can share our jobs further. Please do not submit Remotive jobs to third Party websites, including but not limited to: Jooble, Neuvoo, Google Jobs, LinkedIn Jobs. Please link back to the URL found on Remotive AND mention Remotive as a source in order to Remotive to get traffic from your listing. If you don't do that, we'll terminate your API access, sorry! Jobs displayed are delayed by 24 hours, the goal being that jobs are attributed to Remotive on various platforms. Displaying our jobs in order to collect signups/email addresses to show a listing constitutes a breach of our terms of services. We offer a private, paid-for API, please email us at hello(at)remotive(dot)io for more information (starting budget is $5k/mo). Please find out terms of services on https://remotive.com/api-documentation. Please note that there is absolutely no need to request Remotive Job data too frequently. Typically, you only need to GET Remotive job data through this API a couple of times a day (we advise max. 4 times a day). Our data is not changing much faster than that anyway. Note that excessive requests will be blocked. Many thanks (Rodolphe & the Remotive team!)"
       ],
       "evidence_snapshots": [
-        "data/evidence/071898d5d7cef09e.json#sha256=caf6164dba81af9e2a55942ac2ca2dc2cd489770ac41ec4bfe4f784f902a2209"
+        "data/evidence/071898d5d7cef09e.json#sha256=98fd3fbc101047ec684004d05b2fd0ea5012559278f0bc6faf0ad19b566af950"
       ]
     },
     {
@@ -65,15 +65,15 @@
       "collected": 0,
       "errors": [
         {
-          "url": "https://www.contractsfinder.service.gov.uk/notice/e4850a58-9d39-47a1-b152-abef8016498e",
-          "error": "HTTPError: HTTP Error 403: Forbidden"
-        },
-        {
           "url": "https://www.contractsfinder.service.gov.uk/notice/612ec727-9bb1-4e65-99f4-1c68f8c05873",
           "error": "HTTPError: HTTP Error 403: Forbidden"
         },
         {
-          "url": "https://www.contractsfinder.service.gov.uk/notice/c95b145b-df51-4e53-a3ae-c7f8e086d556",
+          "url": "https://www.contractsfinder.service.gov.uk/notice/7616d874-383e-479e-ab24-d97c0a2ce48f",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        },
+        {
+          "url": "https://www.contractsfinder.service.gov.uk/notice/e004e4c9-7238-4902-80c1-52f0650e4ca0",
           "error": "HTTPError: HTTP Error 403: Forbidden"
         }
       ],
@@ -81,7 +81,7 @@
         "Search returned procurement notices; up to three detail pages attempted. No buyer request promoted: eligibility, exact remote scope, submission deadline and award status require manual verification."
       ],
       "evidence_snapshots": [
-        "data/evidence/50e3af0542f19c3a.json#sha256=ad9b8e979dd32fbbf441b51105c64bd6e853dfbacbcb49ae3f4072273bd90098"
+        "data/evidence/50e3af0542f19c3a.json#sha256=b2c9dc5b9a274dd46b6058b95aca1de2a6d1f82aed86fd6c182f3956f515af02"
       ]
     },
     {
@@ -134,7 +134,7 @@
         "No structured primary buyer requests extracted; static shell is not commercial proof. No login or anti-bot evasion."
       ],
       "evidence_snapshots": [
-        "data/evidence/b5d67d420401a4bb.json#sha256=b15ac94977af4da707431f8a58dd6b30feec64bbc295fe0c476d9eb4e10ceb89"
+        "data/evidence/b5d67d420401a4bb.json#sha256=2cc7d1789abc61e42b2eaed2654b8710321423186ffddfa5ee976e545ffb530b"
       ]
     },
     {
@@ -151,8 +151,8 @@
         "Public bidCount includes competitors; only first 20 proposals may be visible. Employer identity often unresolved. Task budget is not agreement to our pilot."
       ],
       "evidence_snapshots": [
-        "data/evidence/abf73d1fa5782498.json#sha256=734aa019986e096f2f1f7d94f631ad33377db595fa4ac4e87c7f57903b03b5ee",
-        "data/evidence/98213439aaa8f42b.json#sha256=12d7866473d8dae72d69d366951fea919db83da569f220af3d1c92b9f5036bbd"
+        "data/evidence/abf73d1fa5782498.json#sha256=eafdd3c3db80efe1680bf22ad3ec012b80fca25684ed8da2adbddb84006158c1",
+        "data/evidence/98213439aaa8f42b.json#sha256=6e245e7a9791bef163b6bc77cf07a6fd5cb55b049ade9b6b9b7f1ce2064e72ed"
       ],
       "records": [],
       "opportunity_ids": [
@@ -181,14 +181,23 @@
         "A different query/category on Freelancer does not count as another independent family."
       ],
       "evidence_snapshots": [
-        "data/evidence/eb34b643617bda88.json#sha256=8cd5962da9c6f22824d90779a6decc9bd0a4ccaf30b70ca432c85a4ff9194c1c"
+        "data/evidence/eb34b643617bda88.json#sha256=968d30bf306af479ec557eddcd3d8d70e91ca6dc774e98dd6b90f76c8cc18f19"
       ],
       "records": [],
       "opportunity_ids": [],
       "inspected_keys": [
+        "/projects/n8n/build-automation-portfolio-case-studies",
+        "/projects/windows-server/thingboard-server-maintenance-dashboards",
+        "/projects/ai-voice-agents/voice-agent-crm-what-app",
+        "/projects/shopify-site/show-product-stars-google-shopping",
+        "/projects/amazon/automated-dropshipping-amazon-store",
+        "/projects/web-development/newsletter-signup-mailgun-integration",
+        "/projects/ai-agents/build-collaborative-grok-organization",
+        "/projects/selenium/product-price-comparison",
+        "/projects/web-development/cricket-color-trading-mvp",
+        "/projects/python/build-powered-pdf-processing-question",
         "/projects/ai-automation/automation-engineer-python-instructor",
         "/projects/payment-processing/automated-photo-sale-cart",
-        "/projects/api-integration/hotel-payment-loader-integration",
         "/projects/api-integration/ticket-scanning-app-development",
         "/projects/web-development/video-call-support-listener-platform",
         "/projects/full-stack-development/fintech-payments-platform-development",
@@ -202,7 +211,7 @@
         "/projects/api-integration/senior-dev-for-ticketing-web",
         "/projects/api-integration/hubspot-starter-ticket-pipeline-coaching",
         "/projects/api-integration/add-icici-payment-gateway-integration",
-        "/projects/nextjs/next-authentication-feature-build",
+        "/projects/zapier/build-zapier-textable-sms-automation",
         "/projects/ai-chatbot-development/integration-partner-needed",
         "/projects/cryptocurrency/low-risk-crypto-bot",
         "/projects/zoho-crm/finalizar-automatizaci-zoho-cloudtalk",
@@ -216,7 +225,6 @@
         "/projects/c-sharp-programming/experienced-windows-desktop-developer",
         "/projects/api-integration/integrate-youpi-payment-gateway",
         "/projects/web-development/real-estate-website-crm",
-        "/projects/payment-gateway-integration/payment-gateway-integration-needed-40791751",
         "/projects/php/ongoing-python-automation-integration",
         "/projects/braintree/braintree-checkout-integration-needed",
         "/projects/spring-boot/modernize-legacy-java-enterprise",
@@ -226,15 +234,7 @@
         "/projects/data-visualization/restaurant-sales-reporting-dashboard",
         "/projects/n8n/voice-revenue-recovery-technical-right",
         "/projects/api-integration/vagaro-calendars-sync-integration",
-        "/projects/ai-chatbot-development/build-bilingual-real-estate-sales",
-        "/projects/real-estate/bilingual-real-estate-sales-automation",
-        "/projects/api-integration/whatsapp-api-setup-integration",
-        "/projects/lovable/finalize-helm-helm-connect",
-        "/projects/baidu/baidu-account-site-verification",
-        "/projects/database-management/adalo-signup-error-fix-hindi",
-        "/projects/api-integration/claude-linkedin-posting-connector",
-        "/projects/data-management/upgrade-orcid-profile",
-        "/projects/automation/low-latency-order-acceptance-automation"
+        "/projects/ai-chatbot-development/build-bilingual-real-estate-sales"
       ]
     },
     {
@@ -242,66 +242,63 @@
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://community.shopify.com/latest.json",
       "records_inspected": 30,
-      "primary_pages_opened": 1,
+      "primary_pages_opened": 2,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
-      "collected": 1,
-      "errors": [
-        {
-          "url": "https://community.shopify.com/t/583906.json",
-          "error": "HTTPError: HTTP Error 429: Too Many Requests"
-        }
-      ],
+      "collected": 2,
+      "errors": [],
       "limitations": [
         "Latest activity is not original publication; support questions are PRODUCT_SIGNAL, not SALES. No more than four primary topics per run."
       ],
       "evidence_snapshots": [
-        "data/evidence/bda5dc3c1eb46ea5.json#sha256=da1faacdb3fa4e1184fd580358fab28005af632791314052b8bcdcaf0c7a04e5",
-        "data/evidence/29db929ef5c4fac5.json#sha256=6b9ec01ec623b2f9c2ab840392f5bd2fb6f395d17540355fd044a8afb1be99ec"
+        "data/evidence/bda5dc3c1eb46ea5.json#sha256=0ba53dea35c99aab8799ae13c478aacce172e500bb4d8dd74d7aaa7e73d31181",
+        "data/evidence/18b8ca3fceca33ec.json#sha256=80c98286cd2db0b518e7edfa8990eb6c19bb368bf8df6cbefb5ff98ae4087cf6",
+        "data/evidence/16569aed389fbd91.json#sha256=d17d71ef495ede114b42ca477ea4a2cbfbbaf2f6ca3682020ded10fa5d4fc4be"
       ],
       "records": [],
       "opportunity_ids": [
-        "7aa3eca08e101205"
+        "89b8b77600d46138",
+        "e0cb2949fce981ad"
       ],
       "inspected_keys": [
         "355460",
-        "707397",
-        "707236",
-        "700055",
-        "707463",
-        "707467",
+        "621708",
+        "708277",
+        "552695",
+        "701365",
+        "700606",
+        "708278",
         "707465",
-        "706515",
-        "576081",
-        "393028",
-        "707177",
-        "707408",
-        "707404",
-        "688734",
-        "707403",
-        "707335",
-        "706408",
-        "705416",
+        "701866",
+        "665019",
+        "708141",
+        "698649",
+        "708258",
+        "708222",
         "657818",
-        "679666",
-        "599312",
-        "583906",
-        "707357",
-        "703363",
-        "652065",
-        "696556",
-        "706401",
-        "652435",
-        "707284",
-        "554939"
+        "708212",
+        "708196",
+        "708246",
+        "708079",
+        "708231",
+        "708086",
+        "708133",
+        "707404",
+        "707397",
+        "393028",
+        "556131",
+        "675105",
+        "698844",
+        "622609",
+        "583477"
       ]
     },
     {
       "source_family": "founder community (Indie Hackers)",
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://www.indiehackers.com/",
-      "records_inspected": 27,
-      "primary_pages_opened": 1,
+      "records_inspected": 25,
+      "primary_pages_opened": 2,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
       "collected": 0,
@@ -310,30 +307,58 @@
         "Only server-rendered public pages. robots disallows /api/ and sign-in; neither used. Founder self-promotion is not a buyer."
       ],
       "evidence_snapshots": [
-        "data/evidence/6548833164b0e7c9.json#sha256=3e91e7528acbe3ede04c99004f4870a1889d9c8072575d3be8c8403a564e6de0",
-        "data/evidence/6abd55a425379a1a.json#sha256=e4aa8b5d48899ed12c75b949d188dd8c4169b4a4e81f0b39b2573a03cd5792a7"
+        "data/evidence/6548833164b0e7c9.json#sha256=2e0243d51014063cbd6331a89f70ff8e6aab4a2d242c6d3f77a6918efb31b69b",
+        "data/evidence/b0c5981b5f8e3511.json#sha256=52bcd8b2c3c5cf76cc2469b0a0602cc25c9b65ba066d1a7547027cbc55e7f0ae",
+        "data/evidence/61d9bc7a2d64ecfb.json#sha256=4dacb33284630b61757f74dcea4cff5d30a35946b0a09fd4bb6a79fc5f3379cd"
       ],
       "records": [
         {
-          "url": "https://www.indiehackers.com/post/why-automated-warmup-pools-are-failing-in-2026-and-what-to-do-instead-5dbc71438a",
-          "author_body": "For years, the industry standard for cold email deliverability was simple: connect your domains to a shared pool, let the tool exchange thousands of nonsensical emails between your domain and other users, and watch your open rates climb. In late 2026, the game has fundamentally changed. Gmail and Microsoft have updated their inbox classifiers to detect the \"warmup footprint\", a pattern of high-volume, low-engagement, repetitive traffic that is now trivially easy to identify as artificial. Here is the technical reality of why automated warmup pools are losing effectiveness and how we handle domain ramping at Ballast . The warmup footprint When you connect a domain to an automated warmup pool, you are letting a script control your SMTP traffic. These tools typically send hundreds of emails per day between mailboxes in the same network to inflate your open rates. Google and Microsoft are not blind to this. They analyze three specific indicators that flag these tools: Closed-Loop Engagement: If 90% of your incoming and outgoing emails are with other mailboxes that are also flagged as \"warmup participants,\" your domain reputation is siloed. It never interacts with the real web. Artificial Cadence: Automated pools often send emails on the exact same second or minute every day. Real human traffic has irregular, unpredictable patterns. Template Identicality: Even if subject lines are spun, the underlying SMTP headers and the repetition of body structures act as a fingerprint. If your domain spends 30 days in a warmup pool and then immediately starts blasting 100 cold emails a day, you are essentially faking a reputation that inbox providers can see right through. The three pillars of manual domain ramping Instead of relying on shared pools, successful outbound teams are moving toward domain-specific ramping. This is the method we built into Ballast to handle deliverability at scale. 1. Progressive throttling Do not start with 50 emails a day. Start with 5 to 10. The key is randomized jitter. If you send exactly 10 emails every day at 9:00 AM, you are predictable. You need a platform that manages delays, typically 4 to 10 minutes between emails, to simulate human behavior. 2. DNS hygiene before sending Before you send a single cold email, your DNS stack must be bulletproof. Automated pools often ignore these basics: SPF: Only include necessary mechanisms. Overloading SPF records with too many lookups leads to permerror. DKIM: Ensure your keys are rotated and that your signing domain matches the envelope sender. DMARC: You should have a policy in place even if it is p=none. PTR/rDNS: Ensure your server’s IP address points back to your domain. If your PTR record does not resolve, Microsoft will defer your mail instantly. 3. Real engagement vs. fake opens The metric everyone trusts, Open Rate, is the most unreliable data point in email marketing. Since 2021, Apple Mail Privacy Protection has been pre-loading tracking pixels. This means every time someone uses an iPhone, your email \"opens.\" If you base your warmup on high open rates from automated pool accounts, you are optimizing for bots, not humans. Focus on Reply Rate instead. Comparing warmup strategies Automated Warmup Pools: Sending pattern: High frequency, robotic. Recipient quality: Closed network (only pool users). Engagement: Artificial opens. Risk: High (identifiable footprint). Ballast-style Manual Ramping: Sending pattern: Randomized, throttled. Recipient quality: Real-world engagement. Engagement: Real human replies. Risk: Low (imitates normal user behavior). When your domain is actually ready A domain is ready for volume when it has established a history of successful deliveries followed by human actions. Move from 10 emails to 100 emails a day over two weeks. If you see your bounce rate creep above 3 percent, stop. We built Ballast specifically to automate these guardrails. If the system detects that your bounce rate is climbing or your mailbox reputation is being challenged, the campaign pauses automatically to protect the domain. Frequently Asked Questions (FAQ) Does buying an old domain help with warmup? Yes, but only if that domain has a clean reputation. If the previous owner used it for spam, you are inheriting their blacklist history. Always check your domain history before starting. How many mailboxes do I need? Instead of hitting one mailbox with high volume, it is safer to spread volume across multiple mailboxes. This distributes the risk. Ballast handles unlimited mailboxes on every plan precisely so you can scale safely. What is the best way to handle 'Out of Office' replies during warmup? OOO replies are great signals. They prove your email is reaching a real, active inbox. Do not mark these as spam; let them stay in your sequence so the provider sees that your domain is interacting with real people. For more technical deep dives on cold email infrastructure, check out our feature comparison .",
+          "url": "https://www.indiehackers.com/post/looking-for-14-new-startups-to-list-on-circlesaas-before-monday-s-launch-35e7b77c1b",
+          "author_body": "The CircleSaaS weekly launch starts this Monday, November 2. How the weekly launch works Only 25 startups launch each week, so none get buried. Every launch gets its own week, with a fixed slot on the board. Hall of Fame After your launch week, your startup goes into the Hall of Fame for 30 days. It stays visible on the list for those 30 days. Submit at circlesaasboard.com . P.S. Your tile is permanent from the moment you claim it.",
           "metadata": [
             {
               "@context": "https://schema.org",
               "@type": "BlogPosting",
               "mainEntityOfPage": {
                 "@type": "WebPage",
-                "@id": "https://www.indiehackers.com/post/why-automated-warmup-pools-are-failing-in-2026-and-what-to-do-instead-5dbc71438a"
+                "@id": "https://www.indiehackers.com/post/looking-for-14-new-startups-to-list-on-circlesaas-before-monday-s-launch-35e7b77c1b"
               },
-              "headline": "Why automated warmup pools are failing in 2026 (and what to do instead)",
-              "datePublished": "2026-10-31T22:08:18.122Z",
-              "dateModified": "2026-10-31T22:08:18.122Z",
+              "headline": "Looking for 14 new startups to list on CircleSaaS before Monday’s launch",
+              "datePublished": "2026-11-01T10:07:03.642Z",
+              "dateModified": "2026-11-01T10:07:03.642Z",
               "author": [
                 {
                   "@type": "Person",
-                  "name": "Alex",
+                  "name": "Vikas Yadav",
                   "sameAs": [
-                    "https://www.indiehackers.com/ballastapp"
+                    "https://www.indiehackers.com/biku7"
+                  ]
+                }
+              ]
+            }
+          ],
+          "decision": "Discussion/seller/product research only; no paid buyer or complete competition/contact evidence"
+        },
+        {
+          "url": "https://www.indiehackers.com/post/what-actually-happened-when-your-first-users-signed-up-3e3bb887be",
+          "author_body": "I review early-stage products as a first-time user, and I keep seeing the same pattern: people sign up, but most never reach the product's first useful moment. Before I write about it, I want to hear from founders who are living it: • How many people signed up in your first few weeks, and how many did something meaningful? • Where do you think they got stuck? • What have you tried so far? Rough numbers are fine. I'm not selling anything, and I'll share a summary of what I learn. If you're open to a 15-minute chat or a longer message exchange, reply here or DM me.",
+          "metadata": [
+            {
+              "@context": "https://schema.org",
+              "@type": "BlogPosting",
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://www.indiehackers.com/post/what-actually-happened-when-your-first-users-signed-up-3e3bb887be"
+              },
+              "headline": "What actually happened when your first users signed up?",
+              "datePublished": "2026-11-02T08:17:45.209Z",
+              "dateModified": "2026-11-02T08:17:45.209Z",
+              "author": [
+                {
+                  "@type": "Person",
+                  "name": "Chi — Onboarding Audits for Digital Products",
+                  "sameAs": [
+                    "https://www.indiehackers.com/cza_designer29"
                   ]
                 }
               ]
@@ -344,33 +369,31 @@
       ],
       "opportunity_ids": [],
       "inspected_keys": [
-        "/post/do-you-launch-for-free-or-charge-from-day-one-b08d3ae440",
-        "/post/launched-a-9-meeting-notes-to-action-items-kit-this-week-0-sales-so-far-what-would-stop-you-from-buying-948aba5577",
+        "/post/a-month-without-a-launch-110-users-52-came-back-this-week-3534fc481c",
+        "/post/10-days-after-launching-my-side-project-what-each-channel-actually-brought-in-2065963871",
+        "/post/im-really-stuck-with-my-app-can-someone-help-me-figure-out-what-to-do-f1c3d2feac",
+        "/post/do-you-follow-up-with-launch-visitors-later-46f3923546",
+        "/post/i-built-an-offline-planner-for-my-freelance-work-then-turned-it-into-a-product-79f0a4d946",
+        "/post/i-launched-two-shopify-apps-got-zero-installs-and-built-two-free-calculators-instead-b62b4a2c54",
+        "/post/looking-for-14-new-startups-to-list-on-circlesaas-before-monday-s-launch-35e7b77c1b",
+        "/post/i-sent-gptbot-to-10-indie-ai-product-pages-nothing-blocked-it-and-six-had-nothing-an-ai-could-quote-1b42635c14",
         "/post/i-built-a-newsletter-digest-for-marketers-103-of-reddit-ads-83-visits-0-trial-clicks-what-am-i-missing-a4d78d3985",
-        "/post/what-do-you-actually-do-in-the-first-hour-after-you-launch-6c113a0b19",
-        "/post/i-built-103-free-css-tools-and-posted-a-short-every-day-for-26-days-traffic-doubled-sales-are-still-0-fc6f6abf7b",
-        "/post/we-vetted-463-high-dr-directories-for-our-saas-22-were-worth-submitting-to-57f6a0eace",
-        "/post/nobody-checks-your-work-and-nobody-expects-your-update-what-keeps-you-going-10e988d998",
-        "/post/how-to-see-which-of-your-signups-came-from-chatgpt-even-the-ones-ga4-calls-direct-46da4517fb",
-        "/post/i-tried-breaking-my-own-saas-starter-before-asking-anyone-to-buy-it-4fa9f5c933",
         "/post/tech/how-goguardian-grew-from-a-chrome-extension-to-100m-arr-B1qKroz4HFqqH47eGHTD",
         "/post/tech/she-built-a-250k-month-business-around-an-ai-clone-07hKxdXQ0l7Bu3l2IBFy",
         "/post/tech/focusing-on-audience-first-and-hitting-30k-mrr-in-8-months-ootKyp98moigKLdaOON4",
         "/post/tech/how-rasty-turek-built-vaultaire-in-three-weeks-and-grew-it-to-40k-month-1BjFvs2akwfIVjMGYO54",
         "/post/tech/turning-an-agency-into-a-12k-mo-product-portfolio-13QkMY561jAQxsiA0LSg",
         "/post/tech/starting-from-scratch-and-hitting-9-5k-mrr-in-two-months-j5pMaED5FEbKw8qmeyj9",
-        "/post/i-built-an-offline-planner-for-my-freelance-work-then-turned-it-into-a-product-79f0a4d946",
-        "/post/i-sent-gptbot-to-10-indie-ai-product-pages-nothing-blocked-it-and-six-had-nothing-an-ai-could-quote-1b42635c14",
-        "/post/i-turned-my-editing-admin-into-76-ai-agent-workflows-and-put-them-on-gumroad-48b1de99e0",
-        "/post/9-days-building-a-task-board-for-ai-agents-0-paid-jobs-so-far-heres-what-we-learned-6ac67b303a",
-        "/post/why-automated-warmup-pools-are-failing-in-2026-and-what-to-do-instead-5dbc71438a",
-        "/post/10-days-after-launching-my-side-project-what-each-channel-actually-brought-in-2065963871",
-        "/post/i-launched-two-shopify-apps-got-zero-installs-and-built-two-free-calculators-instead-b62b4a2c54",
-        "/post/im-a-tv-director-so-i-built-my-own-instant-trigger-audio-player-for-live-broadcast-public-beta-1c013585f4",
-        "/post/i-built-a-free-pixel-art-dinosaur-game-you-play-in-a-few-minutes-a-day-4e2f30865e",
-        "/post/tech/hitting-60k-mrr-by-building-an-sdk-instead-of-an-app-0B3bsTvvOG0wqf8cAx1v",
-        "/post/tech/turning-a-freelance-gig-into-a-150k-yr-product-tDdZGZyiyNTztPfI2wkY",
-        "/post/tech/this-founder-left-academia-built-four-failed-products-then-hit-12-5k-mo-xkng30lczEuiLG4983UN"
+        "/post/what-actually-happened-when-your-first-users-signed-up-3e3bb887be",
+        "/post/i-shipped-a-pdf-compressor-that-sometimes-refuses-to-output-a-file-too-honest-2b7281919b",
+        "/post/i-built-a-windows-sql-client-where-an-llm-drafts-the-query-and-you-stay-in-control-5c4a09cf37",
+        "/post/build-log-week-1-150-messages-0-invoices-shared-3-signups-only-1-really-counts-4dd1a0ddea",
+        "/post/10-years-building-software-8-months-building-a-saas-i-learned-theyre-two-different-jobs-i-got-stuff-wrong-right-f58f02e0a8",
+        "/post/i-built-a-site-for-one-viral-tiktok-trend-is-this-a-real-business-or-a-race-you-cant-win-d378c1a911",
+        "/post/cold-email-deliverability-checklist-the-2026-engineering-guide-792f3156a7",
+        "/post/creators/buying-chess-com-for-56k-and-growing-it-to-200m-in-annual-revenue-GkkdbA1ibyb3KUxKhFyT",
+        "/post/tech/this-founder-solved-his-agencys-problem-and-turned-the-solution-into-a-3m-arr-saas-uS8zjhggjKA4eoXFAUZi",
+        "/post/tech/from-weekend-project-to-1m-mrr-in-two-years-YRaa1QlGTjaqh0XgzWkc"
       ]
     },
     {
@@ -387,22 +410,22 @@
         "Physical goods buyers do not automatically buy research. Contact requires platform sign-in; no access bypass. No bid-count visibility => UNKNOWN."
       ],
       "evidence_snapshots": [
-        "data/evidence/3914e4f508c84945.json#sha256=c4dedbe92b859f25547eb59ff3ef1c904048b9d40a0872d268c6fdc9582d77ed",
-        "data/evidence/8436c7d4b1507490.json#sha256=547c44068ea32bd1850cb3cab3fb4615617cd7c85722587fd8ef77d2cf23c052",
-        "data/evidence/f18b1288dd47bd54.json#sha256=87c7d116f21dfeba243f0c760ad99b9bea142fad4b90ec105a5161aba9c695c4"
+        "data/evidence/3914e4f508c84945.json#sha256=d67a815ada33d57ff5f4c2adc4f92e486cb7f55ef623c711b32d9ec11a3244f0",
+        "data/evidence/ed9f7591bc97d329.json#sha256=4e5143d78b8dac09fc2ef48f81f5469158bd42525023d80a330b919f2ec94151",
+        "data/evidence/8436c7d4b1507490.json#sha256=b66a9b96beb7e9b7d79b0d9325721f90f3a734e3364c4b1256301010a45ce9b5"
       ],
       "records": [
         {
-          "url": "https://importer1.tradekey.com/buyoffer/Construction-Materials-With-Product-Level-Quotations-3877737.html",
-          "primary_excerpt": "Last Updated: Posted on: 30 Oct 2026 Time Left: 28D 14H Payment Terms: T/T, L/C, D/A, D/P, Western Union, Money Gram Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details Greetings, I want to evaluate suppliers for construction materials. Please separate your available grades and report each exact material, grade or standard, dimensions, strength or performance values, unit weight, packing, monthly availability and delivery lead time. Quote the smallest trial quantity and the price break for a regular order. Kind regards, Sami Refine by popular tags construction materials building supplies wholesale construction Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.11197 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French Guiana French Polynesia Gabon Gambia Georgia Germany Ghana Gibraltar Greece Greenland Grenada Guadeloupe Guam Gu",
+          "url": "https://importer1.tradekey.com/buyoffer/Consumer-Electronics-With-Model-Specific-Offers-3877739.html",
+          "primary_excerpt": "Last Updated: Posted on: 30 Oct 2026 Time Left: 27D 14H Payment Terms: T/T, L/C, D/A, D/P, Western Union, Money Gram Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details Hello, We are ready to discuss a trial order of consumer electronics, and I do not want a general catalogue. In your reply, state product type, brand and model, power rating, voltage, plug, main functions, warranty, unit packing and carton quantity. Also give the MOQ, sample cost, packing and realistic lead time. Kind regards, Souleymane Refine by popular tags consumer electronics electronic products wholesale electronics bulk consumer electronics Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.13868 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French Guiana French Polynesia Gabon Gambia Georgia Germany Ghana Gibraltar Greece Greenland Grenada Guadeloupe Guam",
           "decision": "Physical goods RFQ; not a commissioned China research service; contact gated and competition unknown",
           "buyer": true,
           "published_at": "2026-10-30T00:00:00+00:00",
           "date_precision": "day; original posted date, not crawl date"
         },
         {
-          "url": "https://importer1.tradekey.com/buyoffer/Split-Red-Lentils-With-Crop-And-Quality-Data-3877735.html",
-          "primary_excerpt": "Last Updated: Posted on: 30 Oct 2026 Time Left: 28D 14H Payment Terms: T/T, L/C, D/A, D/P, Western Union, Money Gram Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details Hello, Our next order will include split red lentils. Before we shortlist, confirm crop year, size, moisture, purity, broken and damaged grains, foreign matter, colour uniformity and 25 or 50 kg bags. Many thanks, Johnsull Refine by popular tags red lentils split lentils Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.09016 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French Guiana French Polynesia Gabon Gambia Georgia Germany Ghana Gibraltar Greece Greenland Grenada Guadeloupe Guam Guatemala Guernsey Guinea Guinea-Bissau Guyana Haiti Honduras Hong Kong Hungary Iceland India Indonesia Iraq Ireland Isle of Man Israel Italy Jamaica Japan Jersey Jordan Kazakhsta",
+          "url": "https://importer1.tradekey.com/buyoffer/Construction-Materials-With-Product-Level-Quotations-3877737.html",
+          "primary_excerpt": "Last Updated: Posted on: 30 Oct 2026 Time Left: 27D 14H Payment Terms: T/T, L/C, D/A, D/P, Western Union, Money Gram Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details Greetings, I want to evaluate suppliers for construction materials. Please separate your available grades and report each exact material, grade or standard, dimensions, strength or performance values, unit weight, packing, monthly availability and delivery lead time. Quote the smallest trial quantity and the price break for a regular order. Kind regards, Sami Refine by popular tags construction materials building supplies wholesale construction Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.111 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French Guiana French Polynesia Gabon Gambia Georgia Germany Ghana Gibraltar Greece Greenland Grenada Guadeloupe Guam Guat",
           "decision": "Physical goods RFQ; not a commissioned China research service; contact gated and competition unknown",
           "buyer": true,
           "published_at": "2026-10-30T00:00:00+00:00",
@@ -411,6 +434,7 @@
       ],
       "opportunity_ids": [],
       "inspected_keys": [
+        "https://importer1.tradekey.com/buyoffer/Consumer-Electronics-With-Model-Specific-Offers-3877739.html",
         "https://importer1.tradekey.com/buyoffer/Construction-Materials-With-Product-Level-Quotations-3877737.html",
         "https://importer1.tradekey.com/buyoffer/Split-Red-Lentils-With-Crop-And-Quality-Data-3877735.html",
         "https://importer1.tradekey.com/buyoffer/Commercial-Plastic-Products-By-Resin-And-Application-3877731.html",
@@ -430,24 +454,23 @@
         "https://importer1.tradekey.com/buyoffer/Export-Clothing-Stock-Lots-With-Item-Level-Packing-List-3877681.html",
         "https://importer1.tradekey.com/buyoffer/Dehydrated-Flowers-With-Natural-Colour-Retention-3877677.html",
         "https://importer1.tradekey.com/buyoffer/Fine-Multani-Mitti-Powder-For-Cosmetic-Formulation-3877673.html",
-        "https://importer1.tradekey.com/buyoffer/Ready-Made-Clothing-With-Defined-Styles-And-Size-Ratios-3877667.html",
-        "https://importer1.tradekey.com/buyoffer/Dates-By-Variety-Size-And-Moisture-Grade-3877665.html"
+        "https://importer1.tradekey.com/buyoffer/Ready-Made-Clothing-With-Defined-Styles-And-Size-Ratios-3877667.html"
       ]
     }
   ],
-  "unique_refreshed": 75,
+  "unique_refreshed": 84,
   "info_edge_refresh": [
     {
       "id": "5409f529cb2b0f7b",
       "url": "https://community.n8n.io/t/assistant-credits-top-up-now-available/318075",
-      "checked_at": "2026-11-01T09:12:34.713715+00:00",
+      "checked_at": "2026-11-02T09:26:19.309813+00:00",
       "refreshed": false,
       "reason": "event expired; no publication rejuvenation"
     },
     {
       "id": "edge-haiku-2026-10-07",
       "url": "https://www.anthropic.com/claude-haiku-5-5",
-      "checked_at": "2026-11-01T09:12:34.713715+00:00",
+      "checked_at": "2026-11-02T09:26:19.309813+00:00",
       "refreshed": false,
       "reason": "event expired; no publication rejuvenation"
     }

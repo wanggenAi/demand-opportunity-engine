@@ -1,0 +1,66 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50324799",
+  "collected_at": "2026-11-02T09:26:19.309813+00:00",
+  "source": {
+    "author": "SkiFire13",
+    "children": [
+      {
+        "author": "Twey",
+        "children": [
+          {
+            "author": "SkiFire13",
+            "children": [],
+            "created_at": "2026-11-02T06:22:07.000Z",
+            "created_at_i": 1793600527,
+            "id": 50333697,
+            "options": [],
+            "parent_id": 50329543,
+            "points": null,
+            "story_id": 50310398,
+            "text": "&gt; if you own it and know its structure<p>This is never the case for a async&#x2F;await generated future.<p>&gt; Why would you ever want to wait on a Waker that you won&#x27;t wake? :)<p>Blindly waking a Waker is still the same as busy polling. You need to know whether what the async fn requested is ready or not.<p>&gt; It&#x27;s not more difficult than with the manual state machine?<p>For the end user? No. For whoever is writing the state machine? Yes. But those are generally different users.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-01T20:35:59.000Z",
+        "created_at_i": 1793565359,
+        "id": 50329543,
+        "options": [],
+        "parent_id": 50324799,
+        "points": null,
+        "story_id": 50310398,
+        "text": "&gt; How would the future get the I&#x2F;O result then?<p>You can write directly into the future (if you own it and know its structure), use a channel, etc. It&#x27;s not the best ergonomics (see the comment uptree about this) but it&#x27;s doable.<p>&gt; This makes no sense, why would I ever want to do that?<p>Why would you ever want to wait on a Waker that you won&#x27;t wake? :)<p>&gt; That&#x27;s a very big if. I said &quot;easily&quot; and this is not easy at all.<p>&gt; Moreover it ignores the context: the SansIO&#x2F;async&#x2F;await code is generally a library written by a user, while the code that wants to use it is written by someone else entirely. Good luck sharing this external notion between the two!<p>It&#x27;s not more difficult than with the manual state machine? That also has no general notion of inputs — you have to call specific functions to advance particular states with their inputs. There&#x27;s no general equivalent of `poll`; the library and its caller have to agree on an API.<p>&gt; I agree that it would be ideal to have a way to automatically generate the state machine from straightforward looking code, and async&#x2F;await kinda does this, but this usecase requires more flexibility than what async&#x2F;await provides.<p>I&#x27;m not trying to claim that (Rust&#x27;s particular flavour of) async&#x2F;await is suitable here. It certainly has some sharp edges, and it may well be that some of them bite for this project. I&#x27;d have loved to see an analysis of what and how, if so.<p>My point is just that use of async&#x2F;await is not excluded by wanting to write some code ‘sans-I&#x2F;O’. That&#x27;s not a claim that it&#x27;s universally applicable to all problems.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-11-01T11:59:21.000Z",
+    "created_at_i": 1793534361,
+    "id": 50324799,
+    "options": [],
+    "parent_id": 50324623,
+    "points": null,
+    "story_id": 50310398,
+    "text": "&gt; You don&#x27;t actually have to handle I&#x2F;O with the async runtime if you don&#x27;t want. You _could_ just poll the futures yourself in a loop, which is roughly the same as what happens if you just call the transition function in a loop for a manual state machine.<p>How would the future get the I&#x2F;O result then?<p>&gt; And likewise if you just keep calling the transition function with empty input you&#x27;ll also busy-loop.<p>This makes no sense, why would I ever want to do that?<p>&gt; but if you&#x27;ve got your own external notion of that<p>That&#x27;s a very big if. I said &quot;easily&quot; and this is not easy at all.<p>Moreover it ignores the context: the SansIO&#x2F;async&#x2F;await code is generally a library written by a user, while the code that wants to use it is written by someone else entirely. Good luck sharing this external notion between the two!<p>---<p>I agree that it would be ideal to have a way to automatically generate the state machine from straightforward looking code, and async&#x2F;await kinda does this, but this usecase requires more flexibility than what async&#x2F;await provides.",
+    "title": null,
+    "type": "comment",
+    "url": null
+  },
+  "comments": [
+    {
+      "author": "Twey",
+      "text": "> How would the future get the I/O result then? You can write directly into the future (if you own it and know its structure), use a channel, etc. It's not the best ergonomics (see the comment uptree about this) but it's doable. > This makes no sense, why would I ever want to do that? Why would you ever want to wait on a Waker that you won't wake? :) > That's a very big if. I said \"easily\" and this is not easy at all. > Moreover it ignores the context: the SansIO/async/await code is generally a library written by a user, while the code that wants to use it is written by someone else entirely. Good luck sharing this external notion between the two! It's not more difficult than with the manual state machine? That also has no general notion of inputs — you have to call specific functions to advance particular states with their inputs. There's no general equivalent of `poll`; the library and its caller have to agree on an API. > I agree that it would be ideal to have a way to automatically generate the state machine from straightforward looking code, and async/await kinda does this, but this usecase requires more flexibility than what async/await provides. I'm not trying to claim that (Rust's particular flavour of) async/await is suitable here. It certainly has some sharp edges, and it may well be that some of them bite for this project. I'd have loved to see an analysis of what and how, if so. My point is just that use of async/await is not excluded by wanting to write some code ‘sans-I/O’. That's not a claim that it's universally applicable to all problems.",
+      "at": "2026-11-01T20:35:59.000Z",
+      "url": "https://news.ycombinator.com/item?id=50329543"
+    },
+    {
+      "author": "SkiFire13",
+      "text": "> if you own it and know its structure This is never the case for a async/await generated future. > Why would you ever want to wait on a Waker that you won't wake? :) Blindly waking a Waker is still the same as busy polling. You need to know whether what the async fn requested is ready or not. > It's not more difficult than with the manual state machine? For the end user? No. For whoever is writing the state machine? Yes. But those are generally different users.",
+      "at": "2026-11-02T06:22:07.000Z",
+      "url": "https://news.ycombinator.com/item?id=50333697"
+    }
+  ],
+  "comments_complete": true
+}

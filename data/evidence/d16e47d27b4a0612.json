@@ -1,0 +1,89 @@
+{
+  "source_api_url": "https://api.github.com/repos/creativeghq/material-kai-vision-platform/issues/525",
+  "collected_at": "2026-11-02T09:26:19.309813+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/creativeghq/material-kai-vision-platform/issues/525",
+    "repository_url": "https://api.github.com/repos/creativeghq/material-kai-vision-platform",
+    "labels_url": "https://api.github.com/repos/creativeghq/material-kai-vision-platform/issues/525/labels{/name}",
+    "comments_url": "https://api.github.com/repos/creativeghq/material-kai-vision-platform/issues/525/comments",
+    "events_url": "https://api.github.com/repos/creativeghq/material-kai-vision-platform/issues/525/events",
+    "html_url": "https://github.com/creativeghq/material-kai-vision-platform/issues/525",
+    "id": 6147972724,
+    "node_id": "I_kwDOPKyHYs8AAAABbnKedA",
+    "number": 525,
+    "title": "Ingestion image quality: measure source resolution, source manufacturer originals, repair, then embed once",
+    "user": {
+      "login": "Basilakis",
+      "id": 293717,
+      "node_id": "MDQ6VXNlcjI5MzcxNw==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/293717?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Basilakis",
+      "html_url": "https://github.com/Basilakis",
+      "followers_url": "https://api.github.com/users/Basilakis/followers",
+      "following_url": "https://api.github.com/users/Basilakis/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Basilakis/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Basilakis/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Basilakis/subscriptions",
+      "organizations_url": "https://api.github.com/users/Basilakis/orgs",
+      "repos_url": "https://api.github.com/users/Basilakis/repos",
+      "events_url": "https://api.github.com/users/Basilakis/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Basilakis/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-01T14:20:00Z",
+    "updated_at": "2026-11-01T15:02:08Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "COLLABORATOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Problem\n\nCatalogue PDFs are often the supplier's low-resolution export. Ceramica Euro's general catalogue (`EURO_Cat_..._bassa_compressed.pdf`) stores room photos at 72 DPI (516x697 px for a full page) and tile swatches at 15-72 DPI (a swatch is ~51x51 px). Stage 3 renders crops at 250 DPI, so a swatch with ~50 real pixels is stored as a ~500 px image of magnified JPEG blocks, then classified, embedded and shown as a product photo. Nothing checks the source resolution.\n\n## Evidence (bake-off, 2026-11-01)\n\nFour Spatula images, three methods, scored against the manufacturer's own files from cereuro.it:\n\n| Method | White SSIM / dE | Grey SSIM / dE | Peonies decor | Room photo |\n|---|---|---|---|---|\n| PDF crop (today) | 0.889 / 1.90 | 0.774 / 3.01 | pixelated | soft |\n| Classical clean-up (OpenCV, no AI) | 0.880 / 2.12 | 0.769 / 2.84 | blurred | cleaner |\n| Gemini 3.1 Flash Image restore | 0.857 / 2.42 | 0.744 / 2.90 | **sharp, same composition** | **cleaner** |\n| cereuro.it original | 886x296 swatch | 886x296 swatch | 886x295 | 1920x1200 |\n\n- The manufacturer file wins everywhere.\n- Gemini is good on patterned decors and photos, and **fails on plain tiles**: it reads JPEG blocks as tile texture and draws a rectangle grid into the surface (a different-looking product).\n- The classical clean-up is safe but only cosmetic.\n- gpt-image-1 untested: OpenAI account has no credits. The MIVAA host's GEMINI_API_KEY returns 403; only the edge env key works.\n\n## Flow (per ingested image, before any embedding)\n\n1. **Extract** (Stage 3, as today).\n2. **Measure source quality.** Record on the crop: the native DPI and native pixel size of the embedded raster under it (`page.get_image_info`), not the render size. Verdict: `ok` / `low_res`.\n3. **Find a better image on the manufacturer website** for `low_res` images.\n   - Site = `crm_companies.website` via `products.brand_company_id`, else `products.product_url`, else `metadata.factory.website`. https only, every fetch through `safe_fetch_bytes` (invariant 7).\n   - Find the collection page from the site's own links (link text matching the collection name), collect its images (`img src`/`href` to image files, `og:image`).\n   - **Accept a candidate only on visual evidence**: aspect-normalised comparison with the PDF crop (colour distance + structural similarity above thresholds). A name match alone never links an image (same rule as draft enrichment: a guessed match is not a match).\n   - Store as a NEW `document_images` row: `source_type='manufacturer_site'`, `source_url`, `metadata.replaces_image_id`, linked to the same product (and colour variant when the file name / colour table identifies it). The PDF crop is kept and marked `superseded_by`.\n4. **Repair what has no original.** Patterned decors and photos: Gemini restore via the edge (`generate-interior-gemini` image-edit path, exact source aspect ratio), then a **block-grid check** (8 px periodicity energy vs the source) that rejects invented grids. Plain tiles: classical clean-up only. Result stored as a new row with `source_type='restored'` and the method; original kept.\n5. **Classify + embed once**, on the final image. Stage 3 saves `low_res` crops with embedding deferred (same mechanism as the quarantine marker), and the sourcing step embeds the winner through the `_embed_confirmed_material` path.\n6. **Display + AI inputs** read `product_image_order()` (shipped in b74fd9437), which ranks manufacturer > restored > crop, so a superseded crop never leads.\n\n## Ceramica Euro redo (after the flow ships)\n\nRe-run images for the 24 products of doc fc845244 through the new path; retire the 50 remaining full-page renders; embed once at the end (not per step).\n\n## Already shipped toward this (2026-11-01)\n\n- MIVAA e1f5f036 / 5f81d883 / 60dfed48: one crop per photo, full-bleed photos cropped, heading/footer trimmed, no full-page render duplicate.\n- b74fd9437: `product_image_order()` / `product_cover_image_url()` as the one ordering for cover + gallery; modal never stretches a small image.\n- 38 duplicate full-page renders unlinked (vectors purged).\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/creativeghq/material-kai-vision-platform/issues/525/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/creativeghq/material-kai-vision-platform/issues/525/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "Basilakis",
+      "text": "## Two more Stage 3 defects found on the Keros run (2026-11-01)\n\n**1. Photos across the spread fold are cut into a clipped crop and a sliver.** Belle Epoque (doc babc922c), PDF sheet 7 = printed pages 11|12: the Colonial ambience photo covers ~60% of the sheet width, so ~19% spills onto page 12. Page 12's first layout region is `{x:1, y:0, w:380, h:1869}` -> crop `86716210-…` is a 380x1869 sliver (classified PRODUCT_IMAGE), and page 11's crop is clipped at the fold. Systematic in Belle (pages 10, 12, 14, 16, 24; 19-22% strips).\n- **Fix (in the #525 MIVAA change, not yet deployed):** `gutter_photo_regions` in `app/services/pdf/region_geometry.py`. For a photo region whose embedded raster extends past the half-page bound, the half holding the photo's CENTRE crops the whole raster across the fold (`clip_pdf`, rendered from the full sheet, `region_source='across_fold'`); the facing half drops its region. A region qualifies only when it covers >=30% of that raster on its half, so a page-wide background behind other content is never expanded. Tested.\n\n**2. Pages shared by several products are extracted, classified and embedded once PER PRODUCT.** Belle printed page 12 (Colonial, Zen, Capricci): the same 4 embedded images + 4 region crops written at 14:31 and again at 14:34, identical perceptual_hash, `is_duplicate=false`, both embedded. 20 of 184 Belle rows so far; Actual/Innova (one series per spread) have 0. Cause: `process_product_images` runs over each product's `page_range` with no per-document `(page, phash)` cache.\n- **Not fixed yet.** Fix: extract + classify + embed each page once per document, then link the one row to every product on the page. `image-redo` with `product_ids` would repeat it per product too, so it belongs in the same change.\n",
+      "at": "2026-11-01T15:02:07Z",
+      "url": "https://github.com/creativeghq/material-kai-vision-platform/issues/525#issuecomment-6559670423"
+    }
+  ],
+  "comments_complete": true
+}

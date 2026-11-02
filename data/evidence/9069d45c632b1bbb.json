@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50334504",
+  "collected_at": "2026-11-02T09:26:19.309813+00:00",
+  "source": {
+    "author": "klaas-",
+    "children": [],
+    "created_at": "2026-11-02T08:55:18.000Z",
+    "created_at_i": 1793609718,
+    "id": 50334504,
+    "options": [],
+    "parent_id": null,
+    "points": 1,
+    "story_id": 50334504,
+    "text": "I&#x27;ve noticed a problem, and it happens reproducibly, but I have not seen this being talked about anywhere.<p>Can anyone else reproduce that, I have reproduced it easily with several VMs in different locations, both RHEL&#x2F;Ubuntu behave the same, so I am fairly sure this is on Azure side of tihngs, but not 100% sure :) Seeing as this should then happen with every boot between 12:00 and 13:00 UTC I am wondering why I would be the only one noticing it :) It messes with systemds boot time, that is where I noticed it -- it claimed updates had not been installed because the upgrades were installed in the future (12 hours ahead) and system time was earlier than that.<p>I am guessing Azure is doing some magic in background because they run their Azure Hypervisors in localtime and Linux guests like to have UTC RTCs, under &quot;normal&quot; HyperV there is an offset from localtime of the hypervisor being saved per VM starting with 0 on first boot, but on Azure I guess they automated it? And somewhere in that &quot;calculation&quot; they have an am&#x2F;pm or 12hour confusion?<p>Reproducer, RHEL9, disable chrony from overwriting RTC, set fake time to 12:xx, reboot, observe 00:xx rtc time<p><pre><code>  $ sed -i.bak &#x27;&#x2F;^[[:space:]]*rtcsync[[:space:]]*$&#x2F;s&#x2F;^&#x2F;#&#x2F;&#x27; &#x2F;etc&#x2F;chrony.conf\n  $ systemctl restart chronyd\n  $ hwclock --get\n  2026-11-02 08:36:01.994014+00:00\n  $ hwclock --set --date &quot;2026-11-02 12:01:31.995048+00:00&quot;\n  $ hwclock --get\n  2026-11-02 12:01:34.992128+00:00\n  $ cat &#x2F;proc&#x2F;driver&#x2F;rtc\n  rtc_time        : 12:01:41\n  rtc_date        : 2026-11-02\n  alrm_time       : 00:00:00\n  alrm_date       : 2026-10-31\n  alarm_IRQ       : no\n  alrm_pending    : no\n  update IRQ enabled      : no\n  periodic IRQ enabled    : no\n  periodic IRQ frequency  : 1024\n  max user IRQ frequency  : 64\n  24hr            : yes\n  periodic_IRQ    : no\n  update_IRQ      : no\n  HPET_emulated   : no\n  BCD             : yes\n  DST_enable      : no\n  periodic_freq   : 1024\n  batt_status     : okay\n  $ systemctl reboot\n  [...]\n  $ ssh root@server\n  [...]\n  $ hwclock --get\n  2026-11-02 00:02:48.993944+00:00\n  $ cat &#x2F;proc&#x2F;driver&#x2F;rtc\n  rtc_time        : 00:02:53\n  rtc_date        : 2026-11-02\n  alrm_time       : 00:00:00\n  alrm_date       : 2026-11-03\n  alarm_IRQ       : no\n  alrm_pending    : no\n  update IRQ enabled      : no\n  periodic IRQ enabled    : no\n  periodic IRQ frequency  : 1024\n  max user IRQ frequency  : 64\n  24hr            : yes\n  periodic_IRQ    : no\n  update_IRQ      : no\n  HPET_emulated   : no\n  BCD             : yes\n  DST_enable      : no\n  periodic_freq   : 1024\n  batt_status     : okay</code></pre>",
+    "title": "Ask HN: Azure Linux VM's RTC loses 12 hours on reboot if set to 12:xx UTC?",
+    "type": "story",
+    "url": null
+  },
+  "comments": [],
+  "comments_complete": true
+}
