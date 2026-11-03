@@ -1,0 +1,168 @@
+[
+  {
+    "id": "wb-energy",
+    "name": "World Bank procurement — energy",
+    "category": "procurement",
+    "adapter": "worldbank",
+    "url": "https://search.worldbank.org/api/v2/procnotices?format=json&rows=25&qterm=energy"
+  },
+  {
+    "id": "wb-digital",
+    "name": "World Bank procurement — digital",
+    "category": "procurement",
+    "adapter": "worldbank",
+    "url": "https://search.worldbank.org/api/v2/procnotices?format=json&rows=25&qterm=digital"
+  },
+  {
+    "id": "wb-equipment",
+    "name": "World Bank procurement — equipment",
+    "category": "procurement",
+    "adapter": "worldbank",
+    "url": "https://search.worldbank.org/api/v2/procnotices?format=json&rows=25&qterm=equipment"
+  },
+  {
+    "id": "mida",
+    "name": "MIDA general RSS (mixed promotional content; not orders)",
+    "category": "corporate_action",
+    "adapter": "rss",
+    "country": "Malaysia",
+    "url": "https://www.mida.gov.my/feed/"
+  },
+  {
+    "id": "hf-qwen",
+    "name": "Hugging Face Qwen model metadata",
+    "category": "technology",
+    "adapter": "huggingface",
+    "country": "China",
+    "url": "https://huggingface.co/api/models?author=Qwen&sort=lastModified&direction=-1&limit=15&full=true"
+  },
+  {
+    "id": "hf-deepseek",
+    "name": "Hugging Face DeepSeek model metadata",
+    "category": "technology",
+    "adapter": "huggingface",
+    "country": "China",
+    "url": "https://huggingface.co/api/models?author=deepseek-ai&sort=lastModified&direction=-1&limit=10&full=true"
+  },
+  {
+    "id": "sglang",
+    "name": "SGLang official GitHub releases",
+    "category": "technology",
+    "adapter": "github",
+    "url": "https://api.github.com/repos/sgl-project/sglang/releases?per_page=10"
+  },
+  {
+    "id": "hn-ai",
+    "name": "HN public discussion via Algolia — AI",
+    "category": "demand",
+    "adapter": "hn",
+    "url": "https://hn.algolia.com/api/v1/search_by_date?query=AI&tags=ask_hn&hitsPerPage=20"
+  },
+  {
+    "id": "hn-automation",
+    "name": "HN public discussion via Algolia — automation",
+    "category": "demand",
+    "adapter": "hn",
+    "url": "https://hn.algolia.com/api/v1/search_by_date?query=automation&tags=story&hitsPerPage=15"
+  },
+  {
+    "id": "deepseek-pricing",
+    "name": "DeepSeek official API pricing",
+    "category": "market",
+    "adapter": "page",
+    "country": "China",
+    "url": "https://api-docs.deepseek.com/quick_start/pricing"
+  },
+  {
+    "id": "deepseek-updates",
+    "name": "DeepSeek official changelog",
+    "category": "technology",
+    "adapter": "page",
+    "country": "China",
+    "url": "https://api-docs.deepseek.com/updates",
+    "published_at": "2026-10-17",
+    "event_at": "2026-10-17",
+    "event_type": "latest_changelog_entry",
+    "date_provenance": "First dated section in original changelog: Date 2026-10-17; older entries are background, not independent new events"
+  },
+  {
+    "id": "ndrc",
+    "name": "NDRC official notices",
+    "category": "policy",
+    "adapter": "ndrc",
+    "country": "China",
+    "url": "https://www.ndrc.gov.cn/xwdt/tzgg/"
+  },
+  {
+    "id": "reddit",
+    "name": "Reddit public machinelearning discussion",
+    "category": "demand",
+    "adapter": "reddit",
+    "url": "https://www.reddit.com/r/MachineLearning/new.json?limit=10"
+  },
+  {
+    "id": "sec",
+    "name": "SEC corporate filings RSS",
+    "category": "corporate_action",
+    "adapter": "rss",
+    "url": "https://www.sec.gov/Archives/edgar/usgaap.rss.xml"
+  },
+  {
+    "id": "alibaba-netherlands",
+    "name": "Alibaba Cloud official Netherlands region announcement",
+    "category": "corporate_action",
+    "adapter": "page",
+    "country": "Netherlands",
+    "published_at": "2026-10-29",
+    "event_at": "2026-10-29",
+    "event_type": "cloud_region_launch",
+    "date_provenance": "Article dated Amsterdam 29 October 2026; verify body",
+    "url": "https://www.alibabacloud.com/blog/alibaba-cloud-launches-first-public-cloud-region-in-the-netherlands_603704"
+  },
+  {
+    "id": "mida-re-supply",
+    "name": "MIDA official renewable supply-chain release",
+    "category": "corporate_action",
+    "adapter": "page",
+    "country": "Malaysia",
+    "published_at": "2026-10-14",
+    "event_at": "2026-10-08",
+    "event_type": "supplier_matching_event",
+    "date_provenance": "Release dateline 14 October; programme held 8 October 2026",
+    "url": "https://www.mida.gov.my/media-release/mida-strengthens-malaysias-renewable-energy-supply-chain-at-igem-2026/"
+  },
+  {
+    "id": "mida-dc",
+    "name": "MIDA official data-centre ecosystem release",
+    "category": "corporate_action",
+    "adapter": "page",
+    "country": "Malaysia",
+    "published_at": "2026-09-14",
+    "event_at": "2026-09-14",
+    "event_type": "ecosystem_meeting",
+    "date_provenance": "Official release dateline 14 September 2026",
+    "url": "https://www.mida.gov.my/media-release/mida-charts-next-phase-for-malaysias-data-centre-sector-from-attracting-investment-to-building-value-for-smes-and-malaysians/"
+  },
+  {
+    "id": "cloudflare-models",
+    "name": "Cloudflare official Workers AI changelog",
+    "category": "technology",
+    "adapter": "page",
+    "url": "https://developers.cloudflare.com/changelog/product/workers-ai/",
+    "published_at": "2026-08-17",
+    "event_at": "2026-08-17",
+    "event_type": "model_available_on_overseas_platform",
+    "date_provenance": "Qwen section explicitly dated Aug 17 2026; DeepSeek section Aug 14 2026; whole page snapshot also includes unrelated entries"
+  },
+  {
+    "id": "ndrc-south-market",
+    "name": "NDRC original Southern regional power market reply",
+    "category": "policy",
+    "adapter": "page",
+    "country": "China",
+    "url": "https://www.ndrc.gov.cn/xwdt/tzgg/202610/t20261028_1408425.html",
+    "published_at": "2026-10-28",
+    "event_type": "formal_policy_reply",
+    "date_provenance": "Official publication index date; document signature/effective date separate"
+  }
+]
