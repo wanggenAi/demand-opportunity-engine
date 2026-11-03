@@ -1,0 +1,129 @@
+{
+  "source_api_url": "https://api.github.com/repos/cacao-accounting/cacao-accounting/issues/1713",
+  "collected_at": "2026-11-03T09:29:28.720360+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/cacao-accounting/cacao-accounting/issues/1713",
+    "repository_url": "https://api.github.com/repos/cacao-accounting/cacao-accounting",
+    "labels_url": "https://api.github.com/repos/cacao-accounting/cacao-accounting/issues/1713/labels{/name}",
+    "comments_url": "https://api.github.com/repos/cacao-accounting/cacao-accounting/issues/1713/comments",
+    "events_url": "https://api.github.com/repos/cacao-accounting/cacao-accounting/issues/1713/events",
+    "html_url": "https://github.com/cacao-accounting/cacao-accounting/issues/1713",
+    "id": 6165653990,
+    "node_id": "I_kwDOEJGZj88AAAABb4Bp5g",
+    "number": 1713,
+    "title": "[ROOT CAUSE][TRANSVERSAL] Identidad de línea: DocumentRelation y consumo pendiente como única fuente de matching",
+    "user": {
+      "login": "williamjmorenor",
+      "id": 3522386,
+      "node_id": "MDQ6VXNlcjM1MjIzODY=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3522386?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/williamjmorenor",
+      "html_url": "https://github.com/williamjmorenor",
+      "followers_url": "https://api.github.com/users/williamjmorenor/followers",
+      "following_url": "https://api.github.com/users/williamjmorenor/following{/other_user}",
+      "gists_url": "https://api.github.com/users/williamjmorenor/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/williamjmorenor/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/williamjmorenor/subscriptions",
+      "organizations_url": "https://api.github.com/users/williamjmorenor/orgs",
+      "repos_url": "https://api.github.com/users/williamjmorenor/repos",
+      "events_url": "https://api.github.com/users/williamjmorenor/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/williamjmorenor/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 11892159670,
+        "node_id": "LA_kwDOEJGZj88AAAACxNP0tg",
+        "url": "https://api.github.com/repos/cacao-accounting/cacao-accounting/labels/needs-review",
+        "name": "needs-review",
+        "color": "FBCA04",
+        "default": false,
+        "description": "Requires review before implementation or closure",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 12917752056,
+        "node_id": "LA_kwDOEJGZj88AAAADAfVA-A",
+        "url": "https://api.github.com/repos/cacao-accounting/cacao-accounting/labels/causa-raiz",
+        "name": "causa-raiz",
+        "color": "D4C5F9",
+        "default": false,
+        "description": "Consolidación de causa raíz entre issues",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 12930385667,
+        "node_id": "LA_kwDOEJGZj88AAAADArYHAw",
+        "url": "https://api.github.com/repos/cacao-accounting/cacao-accounting/labels/root",
+        "name": "root",
+        "color": "006B75",
+        "default": false,
+        "description": "Issue paraguas de causa raíz (umbrella)",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-11-02T15:33:20Z",
+    "updated_at": "2026-11-02T17:01:50Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "Etiquetas: `root` (paraguas de causa raíz), `causa-raiz`, `needs-review` hasta que el desarrollador apruebe la causa raíz descrita. Auditoría de backlog 2026-11-02, rama `estabilizacion`; ver matriz completa en `BACKLOG_ROOT_CAUSE_ANALYSIS.md`.\n\n## B. Problema estructural\n\nAsignaciones, matching y comparativos resuelven por item_code/ocurrencia o precio promedio del grupo histórico ignorando la relación documental por línea y el consumo pendiente, atribuyendo importes a líneas equivocadas.\n\n## C. Evidencia técnica\n\n`offer_line_for_item` empareja por ocurrencia de `item_code`; `DocumentRelation.source_item_id` existe y no se consume en matching de facturas/devoluciones.\n\n## D. Issues relacionados\n\n**9 hijos.** Responsabilidad del hijo: reproducir el defecto sobre una superficie concreta y documentar el mecanismo compartido del paraguas.\n\n| Issue | Prio | Título | Nota |\n|---|---|---|---|\n| #1077 | P2 | Emparejar ofertas con su línea origen de RFQ |  |\n| #1137 | P2 | fix: permite devolver líneas repetidas de recepción |  |\n| #1424 | P1 | Resuelve notas de crédito por línea de origen |  |\n| #1425 | P2 | Calcula tarifas solo con líneas pendientes |  |\n| #1426 | P1 | Respeta la línea origen al asignar facturas |  |\n| #1431 | P1 | Usa relaciones para alinear líneas de ofertas |  |\n| #1482 | P2 | Comparativo asigna cotización a línea RFQ equivocada | dup de #1431 |\n| #1496 | P1 | Valida el tercero en relaciones documentales |  |\n| #1521 | P1 | fix: soporta devoluciones con artículos repetidos |  |\n\nCriterio de aceptación por hijo: repro corregido + prueba de regresión dentro de la batería del paraguas + revisión independiente a doble agente (implementador + QA) según `AGENTS.md`.\n\n## E. Estrategia de corrección\n\nResolver siempre por DocumentRelation/economic-line + pendiente; fallback invernale solo en registro sin relación, con advertencia estructural.\n\nSe centraliza únicamente la responsabilidad compartida real; no se agrupa por afinidad de módulo. Defectos con mecanismo propio quedan en issues independientes.\n\n## F. Estrategia de pruebas\n\nLíneas repetidas con consumo previo; oferta enlazada a línea 2; devolución por línea repetida; el importe debe aterrizar en la línea remanente.\n\nAdemás: regresión por archivo (`scripts/run_tests_by_file.sh`), cobertura ≥90% en código nuevo, y verificación Desktop/Cloud según alcance declarado en `AGENTS.md`.\n\n## G. Criterios de aceptación del paraguas\n\n1. Causa raíz contribuyente (mecanismo, archivos y contratos) confirmada por el desarrollador.\n2. Todos los hijos verificados individualmente con repro, prueba de regresión y estado actualizado (`needs-review` → `needs-work` → `fix-confirmed`/`fixed`).\n3. Batería de regresión de la familia pasa en Desktop y Cloud según aplique.\n4. Sin regresiones en módulos dependientes.\n5. Revisión independiente a doble agente y tercera ronda con contexto limpio.\n6. Los issues hijos NO se cierran por pertenecer al paraguas; se cierran al cumplir su criterio propio.\n\n**Prioridad:** P1 · **Alcance:** Multimódulo · **Tipo:** Corrección arquitectónica · **Dependencias:** —\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/cacao-accounting/cacao-accounting/issues/1713/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/cacao-accounting/cacao-accounting/issues/1713/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "williamjmorenor",
+      "text": "## Análisis\n\nLa identidad por `item_code` u ocurrencia deja de ser estable cuando hay líneas repetidas, consumos parciales o devoluciones. El vínculo de documento debe resolver la línea económica exacta y su cantidad aún disponible, no inferirla desde el catálogo.\n\n## Posible solución\n\nUsar `DocumentRelation` con `source_item_id`/`target_item_id` como ruta normal y un resolver común que reste el consumo previo por línea. Mantener fallback solo para registros antiguos sin relación, con señal diagnóstica y sin permitir que afecte documentos nuevos. Probar artículos repetidos, asignación a la segunda línea y devoluciones parciales.\n\nRefs: #1713, #1426, #1431, #1521.",
+      "at": "2026-11-02T16:54:58Z",
+      "url": "https://github.com/cacao-accounting/cacao-accounting/issues/1713#issuecomment-6582982664"
+    },
+    {
+      "author": "williamjmorenor",
+      "text": "## Análisis de agente (automatizado)\n\n**Veredicto:** Parcial — la parte de ofertas↔RFQ/comparativos por ocurrencia sigue vigente; la afirmación de que `DocumentRelation.source_item_id` \"no se consume\" es hoy desactualizada.\n\n**Evidencia verificada en código:**\n- Matching por ocurrencia vigente: `offer_line_for_item` (compras/purchase_sourcing_service.py:167-181) empareja RFQ↔oferta por `item_code` + índice de ocurrencia, sin `source_item_id`; las tasas del grupo históricas se recalculan sobre **todas** las ofertas sin pendiente (244) → #1077/#1431/#1425. En el comparativo de solicitud, `_request_item_offer_line` y `_supplier_quotation_item_at_occurrence` operan por clave comercial + ocurrencia (compras/purchase_request_comparison_service.py:124-132, 217-227) → #1482.\n- `DocumentRelation.source_item_id` **sí se consume** hoy en varios flujos, contrario a la letra del issue: validación de facturación por línea con consumo pendiente (ventas/services.py:1784-1815) y resolución de tasa de origen (1606-1614), propagación a entrega (1347-1353), y draft de factura AP ancla por línea de recepción/orden (compras/purchase_invoice_draft_service.py:392, 407); columna indexada en database/__init__.py:3742, 3773.\n- Gaps restantes confirmados: las notas de crédito de ventas se resuelven a nivel documento (`reversal_of`), no por línea (ventas/services.py:2190-2215) → #1424; hay creación de relaciones sin `source_item_id` (compras/services.py:2417) → el fallback por ocurrencia sigue accesible.\n\n**Estado de hijos:** #1077, #1137, #1424, #1425, #1426, #1431, #1482, #1496, #1521: los 9 OPEN (`needs-work`; #1077/#1137 con needs-review).\n\n**Recomendación:** mantener el paraguas pero acotar la sección C a los flujos que aún no consumen la relación (sourcing/comparativos, NC por línea) y citar los ya implementados para evitar retrabajo sobre ventas/facturas AP.\n\n---\n*Análisis generado por agente automatizado (opencode) sobre la rama `estabilizacion` @ `c62c3604`, como parte de la revisión de issues con etiqueta `root`. El veredicto queda sujeto a la aprobación del desarrollador a cargo; el issue mantiene `needs-review` hasta esa validación.*\n",
+      "at": "2026-11-02T17:01:50Z",
+      "url": "https://github.com/cacao-accounting/cacao-accounting/issues/1713#issuecomment-6583150749"
+    }
+  ],
+  "comments_complete": true
+}

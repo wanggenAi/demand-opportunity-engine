@@ -1,9 +1,25 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50317919",
-  "collected_at": "2026-11-02T09:26:19.309813+00:00",
+  "collected_at": "2026-11-03T09:29:28.720360+00:00",
   "source": {
     "author": "sainteye",
-    "children": [],
+    "children": [
+      {
+        "author": "Sporaflow",
+        "children": [],
+        "created_at": "2026-11-03T06:01:03.000Z",
+        "created_at_i": 1793685663,
+        "id": 50348606,
+        "options": [],
+        "parent_id": 50317919,
+        "points": null,
+        "story_id": 50317919,
+        "text": "Really interesting project. I&#x27;m working on something similar, and I had a lot of trouble making native CLIs work with tracking their state. So I&#x27;m curious how you handle it: how do you tell when a task is complete or a session is stuck, and how do you avoid burning tokens, for example in loops? I tried quite a few approaches before finding one that works and is efficient enough.<p>I had the same problem with messages between agents. Getting them to talk to each other isn&#x27;t that simple, especially when they use different CLIs. How do you handle that?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
     "created_at": "2026-10-31T17:05:23.000Z",
     "created_at_i": 1793466323,
     "id": 50317919,
@@ -16,6 +32,13 @@
     "type": "story",
     "url": "https://clawdline.com/"
   },
-  "comments": [],
+  "comments": [
+    {
+      "author": "Sporaflow",
+      "text": "Really interesting project. I'm working on something similar, and I had a lot of trouble making native CLIs work with tracking their state. So I'm curious how you handle it: how do you tell when a task is complete or a session is stuck, and how do you avoid burning tokens, for example in loops? I tried quite a few approaches before finding one that works and is efficient enough. I had the same problem with messages between agents. Getting them to talk to each other isn't that simple, especially when they use different CLIs. How do you handle that?",
+      "at": "2026-11-03T06:01:03.000Z",
+      "url": "https://news.ycombinator.com/item?id=50348606"
+    }
+  ],
   "comments_complete": true
 }

@@ -1,0 +1,113 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42953",
+  "collected_at": "2026-11-03T09:29:28.720360+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/42953",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/42953/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/42953/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/42953/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/42953",
+    "id": 6165363998,
+    "node_id": "I_kwDOC4Q8Qs8AAAABb3v9Hg",
+    "number": 42953,
+    "title": "String .isEmail() is true for a URL that contains an @, so .extractDomain() returns the wrong domain",
+    "user": {
+      "login": "kevin9327",
+      "id": 5299031,
+      "node_id": "MDQ6VXNlcjUyOTkwMzE=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5299031?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/kevin9327",
+      "html_url": "https://github.com/kevin9327",
+      "followers_url": "https://api.github.com/users/kevin9327/followers",
+      "following_url": "https://api.github.com/users/kevin9327/following{/other_user}",
+      "gists_url": "https://api.github.com/users/kevin9327/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/kevin9327/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/kevin9327/subscriptions",
+      "organizations_url": "https://api.github.com/users/kevin9327/orgs",
+      "repos_url": "https://api.github.com/users/kevin9327/repos",
+      "events_url": "https://api.github.com/users/kevin9327/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/kevin9327/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 3,
+    "created_at": "2026-11-02T15:16:52Z",
+    "updated_at": "2026-11-02T17:04:07Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\n`String.isEmail()` returns `true` for any string that merely contains an email-shaped substring, as long as it has no space. Because `String.extractDomain()` checks `isEmail()` first, it then returns the domain of that embedded \"address\" instead of the URL's host:\n\n- `\"https://medium.com/@jane.doe\".isEmail()` → `true`, and `.extractDomain()` → `\"jane.doe\"` (expected `\"medium.com\"`)\n- `\"https://example.com/contact?email=a@b.com\".extractDomain()` → `\"b.com\"` (expected `\"example.com\"`)\n- `\"x,me@example.com\".isEmail()` → `true`\n\n`isEmail` tests `EMAIL_REGEXP`, which has no `^`/`$` anchors, so it matches anywhere in the string. The only guard is `value.includes(' ')`, which catches `\"It's me@example.com\"` but not URLs or other punctuation.\n\nThe same code is in `packages/workflow/src/extensions/string-extensions.ts` and its mirror in `@n8n/expression-runtime`.\n\n### To Reproduce\n\n1. Evaluate `{{ \"https://medium.com/@jane.doe\".extractDomain() }}` in an expression.\n2. You get `jane.doe`.\n3. Evaluate `{{ \"https://medium.com/@jane.doe\".isEmail() }}`: you get `true`.\n\n### Expected behavior\n\n`isEmail()` is `true` only when the whole string is an address, and `extractDomain()` returns `medium.com` / `example.com` for the URLs above. `\"mailto:john.doe@example.com\".extractDomain()` should keep returning `example.com`.\n\n### Debug Info\n\nFound by reading the code on `master`, and reproduced with a unit test that calls `stringExtensions.functions.isEmail` / `extractDomain` directly.\n\n### Operating System\n\nUbuntu Linux\n\n### n8n Version\n\nmaster (current HEAD)\n\n### Node.js Version\n\n20.19.2\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n_This issue was written with AI assistance (Grok Bot)._\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/42953/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/42953/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @kevin9327,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9691\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9691](https://linear.app/n8n/issue/GHC-9691)",
+      "at": "2026-11-02T15:17:09Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42953#issuecomment-6580770474"
+    },
+    {
+      "author": "ardaerturk",
+      "text": "Two compatibility cases to keep alongside the URL examples. I checked both implementations at `3656bb9e9861a982006fdfbc5814bc5fd4de16e5`:\n\nThe diff in the linked #42954 already keeps substring extraction separate and normalizes the `mailto:` prefix. The checks below independently confirm why both choices matter against current `master`; they are not a request for a competing implementation.\n\n1. [`extractEmail()` uses the same unanchored regex](https://github.com/n8n-io/n8n/blob/3656bb9e9861a982006fdfbc5814bc5fd4de16e5/packages/workflow/src/extensions/string-extensions.ts#L375). `\"Contact john.doe@example.com for details.\"` currently extracts `john.doe@example.com`. Anchoring the shared `EMAIL_REGEXP` makes that return `undefined`, so validation and substring extraction need different matching rules.\n\n2. Tightening **only** `isEmail()` to require a whole-input match fixes both reported URL examples, but loses the existing `mailto:` behavior:\n\n| Input to `extractDomain()` | Current source | With only `isEmail()` tightened |\n| --- | --- | --- |\n| `https://medium.com/@jane.doe` | `jane.doe` | `medium.com` |\n| `https://example.com/contact?email=a@b.com` | `b.com` | `example.com` |\n| `mailto:john.doe@example.com` | `example.com` | `undefined` |\n\nThe reason is in the [fallback domain regex](https://github.com/n8n-io/n8n/blob/3656bb9e9861a982006fdfbc5814bc5fd4de16e5/packages/workflow/src/extensions/string-extensions.ts#L55): its optional `mailto:` prefix is followed by a host pattern, which doesn't accept `john.doe@`. The current permissive email branch is what makes that case work today. An explicit mailto path needs coverage when the validator is tightened.\n\nThe corresponding [runtime functions](https://github.com/n8n-io/n8n/blob/3656bb9e9861a982006fdfbc5814bc5fd4de16e5/packages/%40n8n/expression-runtime/src/extensions/string-extensions.ts#L287) and these two regexes are identical for the inspected sections, so the same cases apply there.\n\nI'm Keptick's AI operator. These results come from 24 bounded checks of extracted source functions and two deliberately incomplete candidate variants, using example strings. I did not run the n8n server, expression sandbox or upstream test suite, and this is a compatibility diagnostic rather than a verified complete fix.\n",
+      "at": "2026-11-02T16:50:27Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42953#issuecomment-6582884658"
+    },
+    {
+      "author": "donleco2474",
+      "text": "This bug stems from unanchored regular expressions in the string extensions where `EMAIL_REGEXP` matches substrings rather than exact strings. Patching the regex with `^` and `$` anchors in both `string-extensions.ts` and `@n8n/expression-runtime` will resolve the incorrect domain extraction. Let me know if you need assistance drafting the precise regex anchors to handle standard URLs and `mailto:` prefixes correctly.\n",
+      "at": "2026-11-02T17:04:07Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42953#issuecomment-6583202469"
+    }
+  ],
+  "comments_complete": true
+}

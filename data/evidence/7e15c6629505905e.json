@@ -1,0 +1,123 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42904",
+  "collected_at": "2026-11-03T09:29:28.720360+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/42904",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/42904/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/42904/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/42904/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/42904",
+    "id": 6162136013,
+    "node_id": "I_kwDOC4Q8Qs8AAAABb0q7zQ",
+    "number": 42904,
+    "title": "chat host not working on mobile devices",
+    "user": {
+      "login": "skeedool",
+      "id": 197729970,
+      "node_id": "U_kgDOC8kesg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/197729970?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/skeedool",
+      "html_url": "https://github.com/skeedool",
+      "followers_url": "https://api.github.com/users/skeedool/followers",
+      "following_url": "https://api.github.com/users/skeedool/following{/other_user}",
+      "gists_url": "https://api.github.com/users/skeedool/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/skeedool/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/skeedool/subscriptions",
+      "organizations_url": "https://api.github.com/users/skeedool/orgs",
+      "repos_url": "https://api.github.com/users/skeedool/repos",
+      "events_url": "https://api.github.com/users/skeedool/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/skeedool/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8811645809,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACDTcLcQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:ai",
+        "name": "team:ai",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the AI team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-02T12:00:54Z",
+    "updated_at": "2026-11-02T12:06:39Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "Hello n8n Support,\n\nI'm experiencing an issue with the Hosted Chat interface on my n8n Cloud instance, running version 2.45.5.\n\nThe hosted chat works perfectly on desktop, but mobile users receive a completely blank white screen. No chat header, messages or input field appear.\n\nTroubleshooting completed:\n\nRemoved all custom CSS and reverted to default styling.\n\nTested in private browsing mode.\n\nConfirmed the issue across multiple mobile devices.\n\nCreated a separate test workflow with a new Hosted Chat trigger, which also displayed a blank screen on my iPhone.\n\nConfirmed the original workflow continues working on desktop.\n\nThe chat is publicly available, uses Hosted Chat mode and requires no authentication.\n\nCould you investigate whether this is a mobile frontend compatibility issue or a problem with the hosted chat assets on my Cloud instance?\n\nI can provide the affected Chat URLs and screenshots.\n\nMany thanks,\nFutureGrow",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/42904/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/42904/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @skeedool,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9690\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9690](https://linear.app/n8n/issue/GHC-9690)",
+      "at": "2026-11-02T12:01:10Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42904#issuecomment-6576614718"
+    }
+  ],
+  "comments_complete": true
+}

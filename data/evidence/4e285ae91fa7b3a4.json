@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42983",
+  "collected_at": "2026-11-03T09:29:28.720360+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/42983",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/42983/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/42983/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/42983/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/42983",
+    "id": 6176931801,
+    "node_id": "I_kwDOC4Q8Qs8AAAABcCx_2Q",
+    "number": 42983,
+    "title": "Agent not recognizing the workflow inputs",
+    "user": {
+      "login": "inderjeetsingh21",
+      "id": 101826035,
+      "node_id": "U_kgDOBhG98w",
+      "avatar_url": "https://avatars.githubusercontent.com/u/101826035?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/inderjeetsingh21",
+      "html_url": "https://github.com/inderjeetsingh21",
+      "followers_url": "https://api.github.com/users/inderjeetsingh21/followers",
+      "following_url": "https://api.github.com/users/inderjeetsingh21/following{/other_user}",
+      "gists_url": "https://api.github.com/users/inderjeetsingh21/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/inderjeetsingh21/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/inderjeetsingh21/subscriptions",
+      "organizations_url": "https://api.github.com/users/inderjeetsingh21/orgs",
+      "repos_url": "https://api.github.com/users/inderjeetsingh21/repos",
+      "events_url": "https://api.github.com/users/inderjeetsingh21/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/inderjeetsingh21/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-03T05:36:06Z",
+    "updated_at": "2026-11-03T05:36:20Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "\n<!-- Please follow the template below. Skip the questions that are not relevant to you. -->\n\n## Describe the problem/error/question\nI created an agent and added an existing workflow. The workflow trigger is \"When Executed by Another Workflow\" and it accepts three input values. The inputs are not recognized in the agent.\n\n## What is the error message (if any)?\nThis workflow has no defined inputs. Define inputs in its trigger to configure them here.\n\n## Please share your workflow/screenshots/recording\n\n<img width=\"1524\" height=\"540\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bcf1ae4f-f96b-4ddc-9cfb-818924d6cda6\" />\n\n<img width=\"480\" height=\"793\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f585babb-99ad-4fc5-8f6c-11690767d38e\" />\n\n```\n(Select the nodes on your canvas and use the keyboard shortcuts CMD+C/CTRL+C and CMD+V/CTRL+V to copy and paste the workflow.)\n⚠️ WARNING ⚠️ If you have sensitive data in your workflow (like API keys), please remove it before sharing.\n```\n\n## Share the output returned by the last node\n<!-- If you need help with data transformations, please also share your expected output. -->\n\nNot needed\n\n<img width=\"1561\" height=\"539\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6c326e9b-2970-4a03-9439-97c58616cb0f\" />\n<img width=\"480\" height=\"793\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/01861daa-0e68-4717-849d-7f2160e6e3a2\" />\n\n## Debug info\n\n### core\n\n- n8nVersion: 2.45.6\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.12.1\n- nodeEnv: production\n- database: postgres\n- executionMode: scaling (single-main)\n- concurrency: -1\n- license: enterprise (production)\n\n### storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: database\n\n### pruning\n\n- enabled: true\n- maxAge: 336 hours\n- maxCount: 10000 executions\n\n### client\n\n- userAgent: mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/156.0.0.0 safari/537.36 edg/156.0.0.0\n- isTouchDevice: false\n\nGenerated at: 2026-11-03T05:27:10.878Z",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/42983/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/42983/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @inderjeetsingh21,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9694\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9694](https://linear.app/n8n/issue/GHC-9694)",
+      "at": "2026-11-03T05:36:18Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42983#issuecomment-6596326722"
+    }
+  ],
+  "comments_complete": true
+}

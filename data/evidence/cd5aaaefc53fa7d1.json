@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50348211",
+  "collected_at": "2026-11-03T09:29:28.720360+00:00",
+  "source": {
+    "author": "xScrubghetti",
+    "children": [],
+    "created_at": "2026-11-03T04:49:29.000Z",
+    "created_at_i": 1793681369,
+    "id": 50348211,
+    "options": [],
+    "parent_id": null,
+    "points": 1,
+    "story_id": 50348211,
+    "text": "Hi all,<p>I&#x27;ve been building Provenance, a tool for growing your specification of your code as your understanding of it becomes clearer. Currently I feel that the lifecycle around software improving feels too detached. We talk to our teams, spec things out with our agents, track work in tickets, but there&#x27;s nothing really to connect it all together and there&#x27;s no neat way to keep it all updated.<p>Provenance is my attempt to solve that problem by building direct links between planning, requirements, implementation, and verification. I&#x27;ve purposely tried to keep the concepts as agnostic to everyone&#x27;s own workflows as possible. I&#x27;ll go over some of them here:<p>Sources: a source is anything you can link to that might be of value to understanding your software. I.e. a diagram, meeting notes, legislation, a video even.<p>Requirement: a requirement is a high level description of some need of your system.<p>Resolution: A resolution is a decison made about some property of your system you believe needs to be documented. Generally resolutions are the child of one or more requirements and the parent many requirements.<p>Rule: A rule is the child of a requirement used to describe some single property of a requirement. Rules are linkable directly to functions that implement them and tests that verify them.<p>We&#x27;re still in the early stages, but I&#x27;d be interested to see what you all think.",
+    "title": "Show HN: Provenance – A Spec That Evolves with Your Code",
+    "type": "story",
+    "url": "https://github.com/quality-sh/provenance"
+  },
+  "comments": [],
+  "comments_complete": true
+}

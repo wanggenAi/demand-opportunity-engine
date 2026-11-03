@@ -1,0 +1,113 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42981",
+  "collected_at": "2026-11-03T09:29:28.720360+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/42981",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/42981/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/42981/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/42981/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/42981",
+    "id": 6176151882,
+    "node_id": "I_kwDOC4Q8Qs8AAAABcCCZSg",
+    "number": 42981,
+    "title": "Regular mode with a production concurrency limit: static data is still read before the concurrency wait (follow-up to #39653)",
+    "user": {
+      "login": "marcoo93",
+      "id": 81437916,
+      "node_id": "MDQ6VXNlcjgxNDM3OTE2",
+      "avatar_url": "https://avatars.githubusercontent.com/u/81437916?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/marcoo93",
+      "html_url": "https://github.com/marcoo93",
+      "followers_url": "https://api.github.com/users/marcoo93/followers",
+      "following_url": "https://api.github.com/users/marcoo93/following{/other_user}",
+      "gists_url": "https://api.github.com/users/marcoo93/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/marcoo93/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/marcoo93/subscriptions",
+      "organizations_url": "https://api.github.com/users/marcoo93/orgs",
+      "repos_url": "https://api.github.com/users/marcoo93/repos",
+      "events_url": "https://api.github.com/users/marcoo93/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/marcoo93/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 3,
+    "created_at": "2026-11-03T04:14:02Z",
+    "updated_at": "2026-11-03T07:17:50Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\n#39668 (released in 2.43.0) fixed the queue-mode case reported in #39653 by passing `loadStaticData` to `enqueueExecution()`. The same change in #37701 also affects regular (main) mode when `N8N_CONCURRENCY_PRODUCTION_LIMIT` is set, and that path is unchanged as of 2.45.7 (the current stable release) and `master`. #39653 notes that regular mode is not affected, which holds only without a concurrency limit.\n\nIn `WorkflowRunner.run()`, `prepareNewExecution()` loads the static data and builds the `Workflow` instance before `activeExecutions.add()`. With a production concurrency limit, `add()` is where a new execution waits for a slot (`capacityReservation.reserve()`), so the static data is read before the wait, not when the execution actually starts. `runMainProcess()` then receives `shouldReloadStaticData`, which is false for new executions, and runs the `Workflow` built before the wait. Up to and including 2.39.10, `add()` came first and `runMainProcess()` read the static data after the wait.\n\nStatic data is saved by writing the whole object at the end of an execution. So an execution that waited behind another execution of the same workflow starts from a copy read before the other one saved, and silently overwrites what that execution wrote. With `N8N_CONCURRENCY_PRODUCTION_LIMIT=1` this used to be a simple way to make static data updates safe; since 2.40.0 the limit still serializes the executions, but not the read of the static data.\n\n### To Reproduce\n\nRegular mode, SQLite, Docker image, `N8N_CONCURRENCY_PRODUCTION_LIMIT=1`: activate a workflow with a Webhook node (POST, respond immediately), a Code node\n\n```js\nconst data = $getWorkflowStaticData('global');\ndata.counter = (data.counter || 0) + 1;\nreturn [{ json: { counter: data.counter } }];\n```\n\nand a Wait node of 10 seconds. Send two POST requests to the production URL about one second apart, and when both executions have finished read the workflow's static data.\n\nObserved: `counter` is 2 on 2.39.10 and **1** on 2.45.7. On 2.45.7 the second execution was created about one second after the first, waited about nine seconds for its slot and finished with status `success`, so nothing reports the lost update. With the two requests 15 seconds apart, `counter` is 2 on both versions.\n\n### Expected behavior\n\n`counter` should be 2, as it is on 2.39.10: an execution that waited for its concurrency slot should start from the static data saved by the execution before it.\n\nRe-reading the static data once the execution holds its slot, as is already done for resumed executions, and using it for the `Workflow` instance that `prepareNewExecution()` built, would cover this case.\n\n### Debug Info\n\nNot included, as it contains instance identifiers. The relevant environment: n8n 2.45.7 (and 2.39.10 for comparison), official Docker image, SQLite, regular (main) mode, `N8N_CONCURRENCY_PRODUCTION_LIMIT=1`.\n\n### Operating System\n\nLinux (official Docker image)\n\n### n8n Version\n\n2.45.7\n\n### Node.js Version\n\n26.12.1\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/42981/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/42981/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @marcoo93,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9693\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9693](https://linear.app/n8n/issue/GHC-9693)",
+      "at": "2026-11-03T04:14:12Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42981#issuecomment-6595279971"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "Current master has the ordering described: `run()` awaits `prepareNewExecution(data, loadStaticData)` before `activeExecutions.add()`, and `add()` awaits `capacityReservation.reserve()`. After that, `shouldReloadStaticData` is only true for an existing execution. One detail for a fix: `runMainProcess()` prefers the prebuilt `executionWorkflow` over constructing a `Workflow` from `data.workflowData.staticData`. A post-reservation reload therefore needs to refresh that `Workflow` as well; changing only `data.workflowData.staticData` would leave the run using the pre-wait snapshot.",
+      "at": "2026-11-03T06:05:27Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42981#issuecomment-6596714901"
+    },
+    {
+      "author": "marcoo93",
+      "text": "Thanks for checking master. Agreed!\nThat's what the suggestion under \"Expected behavior\" means by using the re-read static data for the `Workflow` instance that `prepareNewExecution()` built: the reload has to reach `executionWorkflow`, since `runMainProcess()` uses it rather than building a new `Workflow` from `data.workflowData.staticData`.",
+      "at": "2026-11-03T07:17:50Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42981#issuecomment-6597771480"
+    }
+  ],
+  "comments_complete": true
+}

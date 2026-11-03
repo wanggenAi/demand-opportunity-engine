@@ -1,0 +1,87 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50343360",
+  "collected_at": "2026-11-03T09:29:28.720360+00:00",
+  "source": {
+    "author": "wolrah",
+    "children": [
+      {
+        "author": "spider-mario",
+        "children": [
+          {
+            "author": "wolrah",
+            "children": [],
+            "created_at": "2026-11-03T00:44:20.000Z",
+            "created_at_i": 1793666660,
+            "id": 50346443,
+            "options": [],
+            "parent_id": 50343584,
+            "points": null,
+            "story_id": 50337608,
+            "text": "I wonder how much Raspberry Pi&#x27;s choice to use Debian as the basis for their default distribution helped here, because it certainly increased the demand for plain Debian packaging of software that was previously packaged for Ubuntu.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-02T20:54:24.000Z",
+        "created_at_i": 1793652864,
+        "id": 50343584,
+        "options": [],
+        "parent_id": 50343360,
+        "points": null,
+        "story_id": 50337608,
+        "text": "&gt; Docker, Flatpack, and to a much lesser extent Snap have pretty much eliminated these reasons though.<p>And also plain Debian repositories gaining popularity over PPAs. WeeChat and Synapse (Matrix) both offer one for example.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "graemep",
+        "children": [],
+        "created_at": "2026-11-02T21:45:07.000Z",
+        "created_at_i": 1793655907,
+        "id": 50344267,
+        "options": [],
+        "parent_id": 50343360,
+        "points": null,
+        "story_id": 50337608,
+        "text": "Those are good reasons but lots of people use Ubuntu where neither apply.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-11-02T20:37:12.000Z",
+    "created_at_i": 1793651832,
+    "id": 50343360,
+    "options": [],
+    "parent_id": 50342708,
+    "points": null,
+    "story_id": 50337608,
+    "text": "&gt; None of which was a good reason to use it on servers. Even if you were familiar with Ubuntu there is very little difference between an Ubuntu server and a Debian one.<p>Something to keep in mind is that the term &quot;server&quot; covers a wide range from datacenter beasts pulling kilowatts per node to old desktops running headless to Pi Zeroes and repurposed cell phones, and some of those use cases do in fact benefit from access to proprietary drivers and even hacks like NDISWrapper.<p>Beyond that, I&#x27;ve seen two main reasons to use Ubuntu Server over Debian, and I say this as someone who has administered Ubuntu, Debian, and CentOS systems for years and always chooses Ubuntu or Debian when the options are open.<p>1. For a while there were commercial software vendors that would release Linux versions only for specific distros, and Ubuntu was on that list a lot more often than Debian, so if you liked Debian-style packaging and wanted to use commercial software there was a reason to use Ubuntu.  Zimbra was one of those when I last used it in the late &#x27;00s.<p>2. There was a time where it seemed like every F&#x2F;OSS project had a PPA which made it really convenient to install on Ubuntu with automatic updates as part of the system package manager while Debian had to manually load .debs or might not have even had a package due to older system libraries.  For personal toy servers and &quot;pet&quot; dev servers this is wonderful, obviously far less important for well-managed &quot;cattle&quot; servers.<p>Docker, Flatpack, and to a much lesser extent Snap have pretty much eliminated these reasons though.  My home server is still Ubuntu LTS because it&#x27;s easier than changing it but when it next gets rebuilt things will be changing a lot.  All of my work servers are migrating to Debian, we have one Ubuntu instance remaining that just had its last major service switched away and a bunch of CentOS systems on sites which are getting swapped out whenever our techs happen to visit.",
+    "title": null,
+    "type": "comment",
+    "url": null
+  },
+  "comments": [
+    {
+      "author": "spider-mario",
+      "text": "> Docker, Flatpack, and to a much lesser extent Snap have pretty much eliminated these reasons though. And also plain Debian repositories gaining popularity over PPAs. WeeChat and Synapse (Matrix) both offer one for example.",
+      "at": "2026-11-02T20:54:24.000Z",
+      "url": "https://news.ycombinator.com/item?id=50343584"
+    },
+    {
+      "author": "wolrah",
+      "text": "I wonder how much Raspberry Pi's choice to use Debian as the basis for their default distribution helped here, because it certainly increased the demand for plain Debian packaging of software that was previously packaged for Ubuntu.",
+      "at": "2026-11-03T00:44:20.000Z",
+      "url": "https://news.ycombinator.com/item?id=50346443"
+    },
+    {
+      "author": "graemep",
+      "text": "Those are good reasons but lots of people use Ubuntu where neither apply.",
+      "at": "2026-11-02T21:45:07.000Z",
+      "url": "https://news.ycombinator.com/item?id=50344267"
+    }
+  ],
+  "comments_complete": true
+}

@@ -1,0 +1,123 @@
+{
+  "source_api_url": "https://api.github.com/repos/openminion/openminion/issues/567",
+  "collected_at": "2026-11-03T09:29:28.720360+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/openminion/openminion/issues/567",
+    "repository_url": "https://api.github.com/repos/openminion/openminion",
+    "labels_url": "https://api.github.com/repos/openminion/openminion/issues/567/labels{/name}",
+    "comments_url": "https://api.github.com/repos/openminion/openminion/issues/567/comments",
+    "events_url": "https://api.github.com/repos/openminion/openminion/issues/567/events",
+    "html_url": "https://github.com/openminion/openminion/issues/567",
+    "id": 6166568743,
+    "node_id": "I_kwDOTCvjEc8AAAABb45fJw",
+    "number": 567,
+    "title": "Agent.run(output_type=...) fails on the console channel because of the 'openminion: ' prefix",
+    "user": {
+      "login": "SC0d3r",
+      "id": 15142562,
+      "node_id": "MDQ6VXNlcjE1MTQyNTYy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15142562?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/SC0d3r",
+      "html_url": "https://github.com/SC0d3r",
+      "followers_url": "https://api.github.com/users/SC0d3r/followers",
+      "following_url": "https://api.github.com/users/SC0d3r/following{/other_user}",
+      "gists_url": "https://api.github.com/users/SC0d3r/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/SC0d3r/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/SC0d3r/subscriptions",
+      "organizations_url": "https://api.github.com/users/SC0d3r/orgs",
+      "repos_url": "https://api.github.com/users/SC0d3r/repos",
+      "events_url": "https://api.github.com/users/SC0d3r/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/SC0d3r/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 11313194584,
+        "node_id": "LA_kwDOTCvjEc8AAAAColGmWA",
+        "url": "https://api.github.com/repos/openminion/openminion/labels/question",
+        "name": "question",
+        "color": "d876e3",
+        "default": true,
+        "description": "Further information is requested",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 12695155981,
+        "node_id": "LA_kwDOTCvjEc8AAAAC9LC1DQ",
+        "url": "https://api.github.com/repos/openminion/openminion/labels/area:sdk",
+        "name": "area:sdk",
+        "color": "1D76DB",
+        "default": false,
+        "description": "Python SDK, public API, and SDK examples",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 12780325801,
+        "node_id": "LA_kwDOTCvjEc8AAAAC-cRLqQ",
+        "url": "https://api.github.com/repos/openminion/openminion/labels/status:awaiting-contributor",
+        "name": "status:awaiting-contributor",
+        "color": "FBCA04",
+        "default": false,
+        "description": "Triaged; contributor fix invited before maintainer implementation",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-02T16:27:01Z",
+    "updated_at": "2026-11-03T02:14:52Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "**Environment:** openminion 0.1.17 (PyPI), Python 3.12.9.\n\n`Agent.run(output_type=Model)` cannot be used on the console channel: the runtime validates the channel-rendered text, which starts with the literal `openminion: ` prefix, so valid JSON never parses.\n\n**Minimal reproduction**\n\n```python\nfrom pydantic import BaseModel\nfrom openminion import Agent\n\nclass Answer(BaseModel):\n    ok: bool\n    value: int\n\nwith Agent(instructions=\"Answer in JSON.\", output_type=Answer) as agent:\n    result = agent.run('Return {\"ok\": true, \"value\": 42}')\n```\n\n**Observed**\n\n```\nAgentOutputValidationError: Reply did not validate against Answer:\n  Invalid JSON: expected value at line 1 column 1\n  input_value='openminion: {\"ok\": true, \"value\": 42}'\n```\n\nThe body is valid JSON. The literal `openminion: ` added by the console renderer is what breaks `json.loads`. Without `output_type`, `result.text == 'openminion: {\"ok\": true, \"value\": 42}'` and `result.raw[\"body\"]` has the same prefix.\n\n**Cause**\n\n`api/agent.py::_coerce_output` validates `reply_text` as returned by the console channel without stripping that channel's render prefix.\n\n**Workaround**\n\nDo not use `output_type`. Parse `result.text` after stripping `openminion: `, markdown fences, and an optional top-level array. A small helper is in `SC0d3r/bounty-scout` (`scout.agent.parse_json_object`).\n\n**Suggested fix**\n\nStrip the channel prefix before coercion, or return the raw body to the Python API and keep rendering in the CLI layer. At minimum, document that `output_type` is not usable on the console channel.\n\nThis matters for automation: typed output is the natural way to build tool-driven agents, and the failure mode points at the JSON payload rather than at the renderer.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/openminion/openminion/issues/567/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/openminion/openminion/issues/567/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "wireindevice",
+      "text": "I reproduced the prefixed raw SDK text on current dev34ce71d76 using a real APIRuntime/SQLite instance and a scripted local HTTP provider: `result.text` and `raw[\"body\"]` both contain `openminion: {\"ok\":true,\"value\":42}`. The prefix originates in `services/brain/post_execution/postprocess_response.py::_agent_response_from_postprocess`, before console rendering.\n\nHowever, the exact `Answer(ok: bool, value: int)` example successfully produces `Answer(ok=True, value=42)` in that probe. `_coerce_output` already retries validation with its existing balanced-object extraction; I also inspected the published0.1.17 wheel and found that same code (wheel SHA25684e50edf39044917df8f15d9ffb432af97a95ba5c6a88d5af60004a87bc9df2c). Wheel inspection and the source loopback probe are not an installed-package or live-provider qualification.\n\nPlease attach a complete minimal script with the actual model definition (including validators/RootModel if any), `repr()` of the raw response with private content removed, the full exception, Python/Pydantic/OpenMinion versions and `openminion.__file__`. The reported exception retains the initial JSON error even if the subsequent model validation fails, so the prefix alone does not yet establish why this case failed.\n\nKeep any eventual correction at the demonstrated canonical-result/presentation or validation owner. Do not add another generic prefix/fence/array-stripping heuristic or weaken model validation. Existing successful structured-output, raw-text, delivery and replay behavior must remain covered. Leaving this open awaiting the distinguishing reproduction evidence.\n",
+      "at": "2026-11-02T16:47:34Z",
+      "url": "https://github.com/openminion/openminion/issues/567#issuecomment-6582820278"
+    }
+  ],
+  "comments_complete": true
+}

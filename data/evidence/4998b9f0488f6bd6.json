@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50339422",
+  "collected_at": "2026-11-03T09:29:28.720360+00:00",
+  "source": {
+    "author": "nf-x",
+    "children": [],
+    "created_at": "2026-11-02T16:36:00.000Z",
+    "created_at_i": 1793637360,
+    "id": 50339422,
+    "options": [],
+    "parent_id": null,
+    "points": 1,
+    "story_id": 50339422,
+    "text": "I&#x27;m one of those who doesn&#x27;t like dangling top-level functions polluting the package namespace and has to belong to some type via receiver to make some logical sense and &quot;feel less cluttered&quot; after decade in the other language ecosystems. After leaving this exact complaint (among others) in hundreds of PR reviews, I thought it&#x27;s going to be fun automating this, as wanted to dig through golang.org&#x2F;x&#x2F;tools&#x2F;go&#x2F;analysis for quite a while now. It turned out that analysis.TextEdit is more fun than the linter itself, so that fixes could happen automatically and funcs undangle as pointer receiver methods if a concrete func is used just within one type.<p>Give it a spin and tell me what you think. My two hours of internet search didn&#x27;t yield any similar things out there. As the most of the linters, it&#x27;s a stylistic choice, that may or may not fit your orgs. Maybe it&#x27;ll make your life easier.<p>CAUTION: Don&#x27;t run with `-fix` on non-staged changes yet.<p>PRs are very welcome, especially with more corner-case fixtures.",
+    "title": "Show HN: Go (style) linter for dangling package-level functions",
+    "type": "story",
+    "url": "https://github.com/nfx/go-ownfunc"
+  },
+  "comments": [],
+  "comments_complete": true
+}

@@ -1,9 +1,9 @@
 # BUYER INTENT DISCOVERY
 
-Checked: 2026-11-02T09:26:19.309813+00:00
+Checked: 2026-11-03T09:29:28.720360+00:00
 
-Verified explicit commercial buyers: 70; published within 7 days: 20.
-Intent types: {'PAID_TASK': 4, 'PROCUREMENT_REQUEST': 10, 'QUOTE_REQUESTED': 10, 'AGENT_OR_VENDOR_REQUEST': 4, 'BUDGET_STATED': 14, 'BOUNTY': 20, 'HIRING': 8}
+Verified explicit commercial buyers: 71; published within 7 days: 18.
+Intent types: {'PAID_TASK': 4, 'PROCUREMENT_REQUEST': 11, 'QUOTE_REQUESTED': 10, 'AGENT_OR_VENDOR_REQUEST': 4, 'BUDGET_STATED': 14, 'BOUNTY': 20, 'HIRING': 8}
 Commercial intent is not a verified budget or a promise of purchase. Exact buyer-authored sentences and legitimate source paths are mandatory. No outbound messages sent.
 
 ## Independent source strategies
@@ -19,20 +19,20 @@ Additional families attempted this run: 9.
 ### public founder/operator job community
 
 - Access: Discourse public category/topic JSON; https://community.n8n.io/c/jobs/13.json?order=created
-- Records inspected: 57; primary pages opened: 29; collected observations: 29
-- Verified buyer requests: 11; explicit commercial signals: 11
+- Records inspected: 54; primary pages opened: 28; collected observations: 28
+- Verified buyer requests: 10; explicit commercial signals: 10
 - Limitations: Two newest-topic pages, not complete market coverage; max 200 extra replies per topic. Incomplete competition remains UNKNOWN unless observed high.; Last activity is not publication time. Only substantive buyer-authored follow-ups can renew a lead.
 - Errors: []
-- Audit snapshots: data/evidence/f5663f332d6bc9b1.json#sha256=c96f017d7b58d4cf57fcde36adecc1c9b5d0fde8213f680f12a677bf3448a234, data/evidence/d9f0be47fa047f2c.json#sha256=95b5b1fa6de44a2db2cf38a8d72375e230fc868c9c4397d5877cd1e5228ce2cb
+- Audit snapshots: data/evidence/f5663f332d6bc9b1.json#sha256=ddddca3e174d38db3897486cf959adf04f4c40f9b3dd18b7a2f91b52154321d6, data/evidence/d9f0be47fa047f2c.json#sha256=38f59b3372d9538d1ae62e4a1935e2f9ab1d58d791a7a312f45e847d12644bd2
 
 ### public freelance/job listings
 
 - Access: Remotive public JSON API; attributed source links; https://remotive.com/api/remote-jobs?search=automation&limit=20
-- Records inspected: 12; primary pages opened: 0; collected observations: 0
+- Records inspected: 10; primary pages opened: 0; collected observations: 0
 - Verified buyer requests: 0; explicit commercial signals: 0
 - Limitations: Employer application pages not verified. No employer-authored quote invented from aggregator job labels.; Legal warning - Hey, thanks for using Remotive's API, we appreciate it! Please note that API documentation and access is granted so that developers can share our jobs further. Please do not submit Remotive jobs to third Party websites, including but not limited to: Jooble, Neuvoo, Google Jobs, LinkedIn Jobs. Please link back to the URL found on Remotive AND mention Remotive as a source in order to Remotive to get traffic from your listing. If you don't do that, we'll terminate your API access, sorry! Jobs displayed are delayed by 24 hours, the goal being that jobs are attributed to Remotive on various platforms. Displaying our jobs in order to collect signups/email addresses to show a listing constitutes a breach of our terms of services. We offer a private, paid-for API, please email us at hello(at)remotive(dot)io for more information (starting budget is $5k/mo). Please find out terms of services on https://remotive.com/api-documentation. Please note that there is absolutely no need to request Remotive Job data too frequently. Typically, you only need to GET Remotive job data through this API a couple of times a day (we advise max. 4 times a day). Our data is not changing much faster than that anyway. Note that excessive requests will be blocked. Many thanks (Rodolphe & the Remotive team!)
 - Errors: []
-- Audit snapshots: data/evidence/071898d5d7cef09e.json#sha256=98fd3fbc101047ec684004d05b2fd0ea5012559278f0bc6faf0ad19b566af950
+- Audit snapshots: data/evidence/071898d5d7cef09e.json#sha256=07f25c32462b33450d51134d350c3a6b61ce92c963e17021879fb8d546f29513
 
 ### public procurement/RFQ
 
@@ -40,8 +40,8 @@ Additional families attempted this run: 9.
 - Records inspected: 20; primary pages opened: 0; collected observations: 0
 - Verified buyer requests: 0; explicit commercial signals: 0
 - Limitations: Search returned procurement notices; up to three detail pages attempted. No buyer request promoted: eligibility, exact remote scope, submission deadline and award status require manual verification.
-- Errors: [{"url": "https://www.contractsfinder.service.gov.uk/notice/612ec727-9bb1-4e65-99f4-1c68f8c05873", "error": "HTTPError: HTTP Error 403: Forbidden"}, {"url": "https://www.contractsfinder.service.gov.uk/notice/7616d874-383e-479e-ab24-d97c0a2ce48f", "error": "HTTPError: HTTP Error 403: Forbidden"}, {"url": "https://www.contractsfinder.service.gov.uk/notice/e004e4c9-7238-4902-80c1-52f0650e4ca0", "error": "HTTPError: HTTP Error 403: Forbidden"}]
-- Audit snapshots: data/evidence/50e3af0542f19c3a.json#sha256=b2c9dc5b9a274dd46b6058b95aca1de2a6d1f82aed86fd6c182f3956f515af02
+- Errors: [{"url": "https://www.contractsfinder.service.gov.uk/notice/d1d09455-4127-4681-9eb8-8a20958133a2", "error": "HTTPError: HTTP Error 403: Forbidden"}, {"url": "https://www.contractsfinder.service.gov.uk/notice/82e41f78-1f07-46c5-93c2-750d31f0a2ef", "error": "HTTPError: HTTP Error 403: Forbidden"}, {"url": "https://www.contractsfinder.service.gov.uk/notice/1b4a437f-0195-422a-8922-25df1afac794", "error": "HTTPError: HTTP Error 403: Forbidden"}]
+- Audit snapshots: data/evidence/50e3af0542f19c3a.json#sha256=32dfd3627c59b8fedb685c441236250165501db9e6cc9d384086cde96ae9bee6
 
 ### public bounty/paid task
 
@@ -68,59 +68,81 @@ Additional families attempted this run: 9.
 - Verified buyer requests: 0; explicit commercial signals: 0
 - Limitations: No structured primary buyer requests extracted; static shell is not commercial proof. No login or anti-bot evasion.
 - Errors: []
-- Audit snapshots: data/evidence/b5d67d420401a4bb.json#sha256=2cc7d1789abc61e42b2eaed2654b8710321423186ffddfa5ee976e545ffb530b
+- Audit snapshots: data/evidence/b5d67d420401a4bb.json#sha256=6de60a682f2bda7961e83c1fbd46f01057283481fd370b14684b2489a485169c
 
 ### freelance project marketplace (Freelancer)
 
 - Access: bounded public HTTP/JSON; no authenticated endpoint; https://www.freelancer.com/jobs/product-sourcing/
-- Records inspected: 6; primary pages opened: 1; collected observations: 1
+- Records inspected: 5; primary pages opened: 1; collected observations: 1
 - Verified buyer requests: 1; explicit commercial signals: 1
 - Limitations: Public bidCount includes competitors; only first 20 proposals may be visible. Employer identity often unresolved. Task budget is not agreement to our pilot.
 - Errors: []
-- Audit snapshots: data/evidence/abf73d1fa5782498.json#sha256=eafdd3c3db80efe1680bf22ad3ec012b80fca25684ed8da2adbddb84006158c1, data/evidence/98213439aaa8f42b.json#sha256=6e245e7a9791bef163b6bc77cf07a6fd5cb55b049ade9b6b9b7f1ce2064e72ed
+- Audit snapshots: data/evidence/abf73d1fa5782498.json#sha256=9bcbfb2d8ef58027a73e317d2bf77d042297f8240251b4ae1a36e31986547eb2, data/evidence/98213439aaa8f42b.json#sha256=47fc8b777b81fc60c5d9eb4ba4466ae6c2443a24c7e8a4a913e53a14cea0da54
 
 ### freelance project marketplace (Freelancer)
 
 - Access: bounded public HTTP/JSON; no authenticated endpoint; https://www.freelancer.com/jobs/api-integration/
-- Records inspected: 49; primary pages opened: 0; collected observations: 0
+- Records inspected: 48; primary pages opened: 0; collected observations: 0
 - Verified buyer requests: 0; explicit commercial signals: 0
 - Limitations: A different query/category on Freelancer does not count as another independent family.
 - Errors: []
-- Audit snapshots: data/evidence/eb34b643617bda88.json#sha256=968d30bf306af479ec557eddcd3d8d70e91ca6dc774e98dd6b90f76c8cc18f19
+- Audit snapshots: data/evidence/eb34b643617bda88.json#sha256=f61cb62a8f113ef6ce9395379d2fce25f223c622236b84eed2474cd2b8a62551
 
 ### commerce operator community (Shopify)
 
 - Access: bounded public HTTP/JSON; no authenticated endpoint; https://community.shopify.com/latest.json
-- Records inspected: 30; primary pages opened: 2; collected observations: 2
+- Records inspected: 30; primary pages opened: 3; collected observations: 3
 - Verified buyer requests: 0; explicit commercial signals: 0
 - Limitations: Latest activity is not original publication; support questions are PRODUCT_SIGNAL, not SALES. No more than four primary topics per run.
 - Errors: []
-- Audit snapshots: data/evidence/bda5dc3c1eb46ea5.json#sha256=0ba53dea35c99aab8799ae13c478aacce172e500bb4d8dd74d7aaa7e73d31181, data/evidence/18b8ca3fceca33ec.json#sha256=80c98286cd2db0b518e7edfa8990eb6c19bb368bf8df6cbefb5ff98ae4087cf6, data/evidence/16569aed389fbd91.json#sha256=d17d71ef495ede114b42ca477ea4a2cbfbbaf2f6ca3682020ded10fa5d4fc4be
+- Audit snapshots: data/evidence/bda5dc3c1eb46ea5.json#sha256=6ebeb328815f42c1a30d71aa1399426d878c426895d147f3d43b57738721b5b8, data/evidence/2d434b075c2e5a46.json#sha256=55ba6596aafdb0b74623c50b62c5a101bc332e8e76d66e03a9b872d96c59b063, data/evidence/b0a662a5214f2e39.json#sha256=339767384901223e875af776eaa252e2afb4128b70e7ec09ded1bc65e2b8eeea, data/evidence/17ebceae80d5fdd6.json#sha256=6e4de1af577603253366f55f01224190479cff98f381ae8ee953f09596fc1045
 
 ### founder community (Indie Hackers)
 
 - Access: bounded public HTTP/JSON; no authenticated endpoint; https://www.indiehackers.com/
-- Records inspected: 25; primary pages opened: 2; collected observations: 0
+- Records inspected: 27; primary pages opened: 1; collected observations: 0
 - Verified buyer requests: 0; explicit commercial signals: 0
 - Limitations: Only server-rendered public pages. robots disallows /api/ and sign-in; neither used. Founder self-promotion is not a buyer.
 - Errors: []
-- Audit snapshots: data/evidence/6548833164b0e7c9.json#sha256=2e0243d51014063cbd6331a89f70ff8e6aab4a2d242c6d3f77a6918efb31b69b, data/evidence/b0c5981b5f8e3511.json#sha256=52bcd8b2c3c5cf76cc2469b0a0602cc25c9b65ba066d1a7547027cbc55e7f0ae, data/evidence/61d9bc7a2d64ecfb.json#sha256=4dacb33284630b61757f74dcea4cff5d30a35946b0a09fd4bb6a79fc5f3379cd
+- Audit snapshots: data/evidence/6548833164b0e7c9.json#sha256=843cc7876c8d7b0fadd5ab28996240e059aba115fa196bf20bb06469a81bb647, data/evidence/61d9bc7a2d64ecfb.json#sha256=e48c4e1c7b2161bfe6ae14057d14a12f5542ecbb60def4cb7cc4b5d40817608f
 
 ### international physical-goods RFQ (TradeKey)
 
 - Access: bounded public HTTP/JSON; no authenticated endpoint; https://www1.tradekey.com/buyoffer_search/start_date/3/page_no/3.htm
-- Records inspected: 21; primary pages opened: 2; collected observations: 0
+- Records inspected: 25; primary pages opened: 2; collected observations: 0
 - Verified buyer requests: 2; explicit commercial signals: 2
 - Limitations: Physical goods buyers do not automatically buy research. Contact requires platform sign-in; no access bypass. No bid-count visibility => UNKNOWN.
 - Errors: []
-- Audit snapshots: data/evidence/3914e4f508c84945.json#sha256=d67a815ada33d57ff5f4c2adc4f92e486cb7f55ef623c711b32d9ec11a3244f0, data/evidence/ed9f7591bc97d329.json#sha256=4e5143d78b8dac09fc2ef48f81f5469158bd42525023d80a330b919f2ec94151, data/evidence/8436c7d4b1507490.json#sha256=b66a9b96beb7e9b7d79b0d9325721f90f3a734e3364c4b1256301010a45ce9b5
+- Audit snapshots: data/evidence/3914e4f508c84945.json#sha256=53c94b56c26058ee545f27dd983896450061310f8d490f1490afd8b50851b91f, data/evidence/ac89de0c900cb409.json#sha256=cc5d4dbba37722788b004eea2600db9aee0b1b874ef30fd349cba092b63a9fea, data/evidence/94ef92ed82dc45cb.json#sha256=9929cc7886ac8774a86b7e962393d04d1d2f39a80263fae6b94b01ed8dfd32b2
 
 ## Primary commercial evidence (distinct source URLs)
+
+### [ROOT CAUSE][TRANSVERSAL] Identidad de línea: DocumentRelation y consumo pendiente como única fuente de matching
+
+- Source: https://github.com/cacao-accounting/cacao-accounting/issues/1713
+- Buyer: GitHub:williamjmorenor; published_at: 2026-11-02T15:33:20Z; last_activity_at: 2026-11-02T17:01:50Z
+- Intent: PROCUREMENT_REQUEST; exact quote: | #1077 | P2 | Emparejar ofertas con su línea origen de RFQ |  |
+- Need (primary text): [ROOT CAUSE][TRANSVERSAL] Identidad de línea: DocumentRelation y consumo pendiente como única fuente de matching
+Etiquetas: `root` (paraguas de causa raíz), `causa-raiz`, `needs-review` hasta que el desarrollador apruebe la causa raíz descrita. Auditoría de backlog 2026-11-02, rama `estabilizacion`; ver matriz completa en `BACKLOG_ROOT_CAUSE_ANALYSIS.md`.
+
+## B. Problema estructural
+
+Asignaciones, matching y comparativos resuelven por item_code/ocurrencia o precio promedio del grupo histórico ignorando la relación documental por línea y el consumo pendiente, atribuyendo importes a líneas equivocadas.
+
+## C. Evidencia técnica
+
+`offer_line_for_item` empareja por ocurrencia de `item_code`; `Doc
+- Contact/application: https://github.com/cacao-accounting/cacao-accounting/issues/1713; public profile: https://github.com/williamjmorenor
+- Competition: LOW; replies=2; providers=0; complete=True
+- REMOTE_NOW scope: Remote supplier verification / RFQ comparison for one SKU; proposed price: USD 100–250 (proposed discovery pilot; buyer budget unverified)
+- Dependencies: []; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports.
+- First-message angle: Which SKU, destination and supplier are you evaluating? I can scope a remote verification memo; physical QC is separate.
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN
 
 ### Retroactive Grant Application - ZecHub Bounty Board security & maintenance
 
 - Source: https://github.com/Financial-Privacy-Foundation/ZcashCoinholderGrantsProgram/issues/76
-- Buyer: GitHub:tidelit4; published_at: 2026-11-01T23:34:19Z; last_activity_at: 2026-11-02T00:05:55Z
+- Buyer: GitHub:tidelit4; published_at: 2026-11-01T23:34:19Z; last_activity_at: 2026-11-02T23:42:00Z
 - Intent: BOUNTY; exact quote: - **State and data-integrity fixes.** Failed wallet imports left a stuck row so retries 409'd (#376); assignee changes silently cleared the cached assignee list (#379); saving a bounty edit with the reward unchanged was wrongly refused as a paid-field change (#392); the admin staff view sorted by weekday name and never loaded `exportedAt` (#377).
 - Need (primary text): Retroactive Grant Application - ZecHub Bounty Board security & maintenance
 ### Terms and Conditions
@@ -128,9 +150,9 @@ Additional families attempted this run: 9.
 - [x] I agree to the [Grant Agreement](https://9ba4718c-5c73-47c3-a024-4fc4e5278803.usrfiles.com/ugd/9ba471_6ff6db4095fd4c4ba21babec361e927e.pdf) terms if funded
 - [x] I agree to [Provide KYC information](https://9ba4718c-5c73-47c3-a024-4fc4e5278803.usrfiles.com/ugd/9ba471_7d9e73d16b584a61bae92282b208efc4.pdf) if funded above $50,000 USD
 - [x] I agree to disclose conflicts of interest
-- [x] I understand that this grant program is only eligible for completed work, as it is a retroactive grant program. Applications for planned or partially completed work will not be considered. All completed wo
+- [x] I understand that this grant program is only eligible for completed work, as it is a retroactive grant program. Applications for planned or partially completed work will not be considered. All complet
 - Contact/application: https://github.com/Financial-Privacy-Foundation/ZcashCoinholderGrantsProgram/issues/76; public profile: https://github.com/tidelit4
-- Competition: LOW; replies=5; providers=0; complete=True
+- Competition: LOW; replies=6; providers=0; complete=True
 - REMOTE_NOW scope: Remote diagnosis of one failing workflow, with reproduction and recovery checklist; proposed price: USD 100–200 diagnostic; USD 300–600 implementation only after scope agreement (proposal, not budget)
 - Dependencies: []; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports.
 - First-message angle: Is this still blocking your workflow? I can scope a remote reproduction and recovery audit; what is the daily volume and cost of failures?
@@ -299,7 +321,7 @@ Hi everyone!
 ### China-Based Product Sourcing Agent
 
 - Source: https://www.freelancer.com/projects/sourcing/china-based-product-sourcing-agent
-- Buyer: Freelancer:unresolved-employer; published_at: 2026-10-29T15:53:29+00:00; last_activity_at: None
+- Buyer: Freelancer:unresolved-employer; published_at: 2026-10-29T15:53:29+00:00; last_activity_at: 2026-11-02T03:11:15+00:00
 - Intent: BUDGET_STATED; exact quote: Budget: $15-25 USD / hour
 - Need (primary text): China-Based Product Sourcing Agent
 We're looking for an experienced sourcing agent based in China to help us find products directly from manufacturers.
@@ -318,7 +340,7 @@ We'll provide product photos or links, and you'll be responsible for:
 - Based in mainland China and fluent in Chinese.
 - Exper
 - Contact/application: https://www.freelancer.com/projects/sourcing/china-based-product-sourcing-agent; public profile:
-- Competition: HIGH; replies=23; providers=0; complete=False
+- Competition: HIGH; replies=24; providers=18; complete=False
 - REMOTE_NOW scope: Remote supplier verification / RFQ comparison for one SKU; proposed price: USD 100–250 (proposed discovery pilot; buyer budget unverified)
 - Dependencies: ['PARTNER_REQUIRED: on-site QC, warehouse or freight execution', 'Employer identity unresolved publicly; required portfolio must be truthful; confirm exact scope and milestone before accepting']; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports. PARTNER_REQUIRED: on-site QC, warehouse or freight execution; Project budget covers original full scope, not our narrower research. No assumed permission to substitute deliverables.
 - First-message angle: Which SKU, destination and supplier are you evaluating? I can scope a remote verification memo; physical QC is separate.
@@ -521,7 +543,7 @@ The operating loop should be:
 - REMOTE_NOW scope: Remote supplier verification / RFQ comparison for one SKU; proposed price: USD 100–250 (proposed discovery pilot; buyer budget unverified)
 - Dependencies: ['SPECIALIST_REQUIRED: compliance/customs/category expertise']; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports. SPECIALIST_REQUIRED: compliance/customs/category expertise
 - First-message angle: Which SKU, destination and supplier are you evaluating? I can scope a remote verification memo; physical QC is separate.
-- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; partner/specialist capability not currently controlled
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; source verification is future-dated or older than 7 days; 7–14-day demand is VALIDATE until buyer activity is renewed; partner/specialist capability not currently controlled
 
 ### AI/semis evening brief, Oct 26: 63 updates, 25 high [part 1/2]
 
@@ -539,7 +561,7 @@ The operating loop should be:
 - REMOTE_NOW scope: Remote supplier verification / RFQ comparison for one SKU; proposed price: USD 100–250 (proposed discovery pilot; buyer budget unverified)
 - Dependencies: ['PARTNER_REQUIRED: on-site QC, warehouse or freight execution']; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports. PARTNER_REQUIRED: on-site QC, warehouse or freight execution
 - First-message angle: Which SKU, destination and supplier are you evaluating? I can scope a remote verification memo; physical QC is separate.
-- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; partner/specialist capability not currently controlled
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; source verification is future-dated or older than 7 days; 7–14-day demand is VALIDATE until buyer activity is renewed; partner/specialist capability not currently controlled
 
 ### Growth/CRO: Homepage redesign for end users, maintenance teams, and provincial resellers
 
@@ -566,7 +588,7 @@ Redesign the MRT Supplier homepage to improve first-5-second clarity, visual imp
 - REMOTE_NOW scope: Remote supplier verification / RFQ comparison for one SKU; proposed price: USD 100–250 (proposed discovery pilot; buyer budget unverified)
 - Dependencies: []; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports.
 - First-message angle: Which SKU, destination and supplier are you evaluating? I can scope a remote verification memo; physical QC is separate.
-- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; source verification is future-dated or older than 7 days; 7–14-day demand is VALIDATE until buyer activity is renewed
 
 ### issue 82 — app-approval bounty misrouting: the free-text Quest field on any app submission closes and pays out ANY open POLLEN-QUEST issue when a maintainer approves the app (no quest-type, fulfillment, or linkage check anywhere in the chain);
 
@@ -1110,7 +1132,7 @@ Search completed: 2026-10-19 22:15 UTC
 - REMOTE_NOW scope: Remote supplier verification / RFQ comparison for one SKU; proposed price: USD 100–250 (proposed discovery pilot; buyer budget unverified)
 - Dependencies: ['SPECIALIST_REQUIRED: compliance/customs/category expertise']; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports. SPECIALIST_REQUIRED: compliance/customs/category expertise
 - First-message angle: Which SKU, destination and supplier are you evaluating? I can scope a remote verification memo; physical QC is separate.
-- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; source verification is future-dated or older than 7 days; 7–14-day demand is VALIDATE until buyer activity is renewed; partner/specialist capability not currently controlled
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; source verification is future-dated or older than 7 days; freshness gate failed: >14 days without verified buyer activity <=7 days; partner/specialist capability not currently controlled
 
 ### [find opt-out] Automation Research, Inc.: find the official opt-out route
 
@@ -1132,7 +1154,7 @@ Search completed: 2026-10-19 22:15 UTC
 - REMOTE_NOW scope: Remote diagnosis of one failing workflow, with reproduction and recovery checklist; proposed price: USD 100–200 diagnostic; USD 300–600 implementation only after scope agreement (proposal, not budget)
 - Dependencies: []; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports.
 - First-message angle: Is this still blocking your workflow? I can scope a remote reproduction and recovery audit; what is the daily volume and cost of failures?
-- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; source verification is future-dated or older than 7 days; 7–14-day demand is VALIDATE until buyer activity is renewed
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; source verification is future-dated or older than 7 days; freshness gate failed: >14 days without verified buyer activity <=7 days
 
 ### Stop calling it "workflow automation." That's what someone does in an afternoon with three Zapier nodes and a prayer. I design systems.
 
