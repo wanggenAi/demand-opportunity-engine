@@ -62,7 +62,7 @@
 - ID：`357fac86917ee0ee11f0aba3`；[Cloudflare official Workers AI changelog](https://developers.cloudflare.com/changelog/product/workers-ai)
 - 公布：2026-08-17；原始事件：2026-08-17；BACKGROUND_90D
 - UNKNOWN / ai_compute / model_available_on_overseas_platform
-- 来源摘录：Changelog New updates and improvements at Cloudflare. All products Product groups AI Analytics Application performance Application security Cloudflare One Consumer services Core platform Developer platform Docs collections Media Network security Privacy Storage Products 1.1.1.1 (DNS Resolver) Access Agent Lee Agents AI Crawl Control AI Gateway AI Search Analytics API Shield Artifacts Audit Logs Automatic Platform Optimization Basin Basin Catalog Basin Pipelines Basin SQL Billing Bots Browser Isolation Browser Run BYOIP Cache / CDN CASB Challenges China Network Cloud Workload Security Cloudflare CLI Cloudflare for SaaS Cloudflare Fundamentals 
+- 来源摘录：Aug 17, 2026 Qwen 3.8 27B now available on Workers AI Workers AI @cf/qwen/qwen3.8-27b is now available on Workers AI. Qwen 3.8 27B is a 27-billion-parameter instruction-tuned vision language model from Alibaba's Qwen family. It processes images and text together, with reasoning and function calling for agentic workflows. Key capabilities: Vision : Accept image and text inputs and generate text responses. Reasoning : Support thinking mode for complex, step-by-step problem-solving. Function calling : Build agents that invoke tools and APIs across multiple conversation turns. 262,144 token context window : Retain long conversations and multimoda
 - 重要性边界：NOT_ESTABLISHED；Official source claim; outcome not independently established。FIRST_OBSERVATION; no growth established
 - 缺口：Actual buyer budget, implementation and outcome require verification
 
@@ -80,9 +80,8 @@
 - ID：`69c7fc6b8a58bed25fa2d132`；[MIDA official renewable supply-chain release](https://www.mida.gov.my/media-release/mida-strengthens-malaysias-renewable-energy-supply-chain-at-igem-2026)
 - 公布：2026-10-14；原始事件：2026-10-08；RECENT_30D
 - Malaysia / energy_equipment / supplier_matching_event
-- 来源摘录：MIDA Strengthens Malaysia’s Renewable Energy Supply Chain at IGEM 2026 - MIDA | Malaysian Investment Development Authority Home Why Malaysia A Land of Opportunities Sustainability Agenda Investment Statistics MIDA Insights Economic Corridors ECRL Programme Industries Manufacturing Building Technology Life Sciences & Medical Technology Chemicals & Advanced Materials Machinery & Metal Electrical & Electronics Paper, Printing and Publishing Food Technology Transportation Technology Lifestyle Wood-Based and Furniture Services Business Services Logistics Services Education Services Oil & Gas Green Technology Healthcare Services Regional Establishm
+- 来源摘录：Key Highlights: MIDA’s inaugural Renewable Energy Supply Chain Programme connects TNB Power Generation Sdn. Bhd. (TNB GENCO) and TNB Renewables Sdn. Bhd. (TNB RE) with Malaysian vendors, manufacturers, engineers and service providers. Approximately 25 Malaysian domestic companies participated in the targeted business-matching sessions. MIDA’s participation supports Malaysia’s ambition to achieve 70 per cent renewable energy capacity by 2050, while strengthening local participation across the Renewable Energy (RE) value chain. KUALA LUMPUR, 14 October 2026 — The Malaysian Investment Development Authority (MIDA) through IGEM 2026 is strengtheni
 - 重要性边界：NOT_ESTABLISHED；Official source claim; outcome not independently established。Source content changed; economic significance unverified
 - 缺口：Actual buyer budget, implementation and outcome require verification
 
 完整 124 条本轮核验证据及快照路径见 `data/world_shift/events.json`；此处只列研究引用条目，其他采集条目不自动升格为信号。
-

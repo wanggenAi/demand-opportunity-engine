@@ -176,6 +176,9 @@ def normalize(item, source, observed, snapshot):
         raise ValueError('Missing source URL/title')
     pub, event = stamp(item.get('published_at')), stamp(item.get('event_at'))
     text = item.pop('text', '')
+    anchor = source.get('excerpt_anchor')
+    if anchor and anchor in text:
+        text = text[text.index(anchor):]
     item = dict(item)
     item.update(id=key(item.get('underlying_event_key') or canonical(item['url'])),
                 url=canonical(item['url']), source_id=source['id'], source_name=source['name'],

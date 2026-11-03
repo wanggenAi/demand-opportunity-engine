@@ -89,4 +89,4 @@ def generate(events, run, output, review=None):
                '来源失败不删除历史证据，也不更新其 last_verified_at。原始快照 SHA256 见运行 JSON。\n')
     for name, document in [('WORLD_SHIFT_DAILY', daily), ('EARLY_SIGNALS', early),
                            ('OPPORTUNITY_HYPOTHESES', hypo), ('SOURCE_HEALTH', health)]:
-        (output / (name + '.md')).write_text(document)
+        (output / (name + '.md')).write_text('\n'.join(line.rstrip() for line in document.splitlines()).rstrip() + '\n')

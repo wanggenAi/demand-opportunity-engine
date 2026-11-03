@@ -65,4 +65,3 @@
 **五维判断**：真实性：强（正式采购）；持续性：未知；付费性：采购意向强，未披露预算；结构性：中（数据质量与采购制度）；可进入性：低，需领域伙伴。
 
 证据：[Consulting Services for the Preparation of Functional and Technical Requirements and Procurement-Ready Technical Specification for the RVS Mobile Application and Data Collection Workflow](https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00478310)（14fe3546ba9b9b87cc9a8aaf）
-

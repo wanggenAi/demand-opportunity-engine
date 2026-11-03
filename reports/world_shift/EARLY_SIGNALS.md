@@ -41,4 +41,3 @@ DeepSeek 10-17日志声明开放自有Search API并更新Flash；效果与全球
 **未知问题**：同类需求是否反复出现、现有承包商是否真的缺技术规格能力、可委外范围与可接受价格。
 
 证据：[Consulting Services for the Preparation of Functional and Technical Requirements and Procurement-Ready Technical Specification for the RVS Mobile Application and Data Collection Workflow](https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00478310)（14fe3546ba9b9b87cc9a8aaf）；[Design,development,operationalise,commissioning and handover of the national traceability data warehouse  for EUDR (European Union Deforestation Regulation) compliance .](https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00478502)（986e589a9edae9fd72aaa3a4）
-
