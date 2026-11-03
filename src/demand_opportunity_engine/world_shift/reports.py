@@ -53,7 +53,7 @@ def generate(events, run, output, review=None):
                     for required in ('support', 'counterevidence', 'unknowns', 'falsifiers', 'dimensions'):
                         if not item.get(required):
                             raise ValueError('Incomplete hypothesis: ' + required)
-                block = f"## {item['title']}\n\n人工研究判断日期：{review['reviewed_at']}；不会随自动采集刷新。\n\n{item['analysis']}\n\n"
+                block = f"## {item['title']}\n\n研究判断日期（Codex整理，待人工审阅）：{review['reviewed_at']}；不会随自动采集刷新。\n\n{item['analysis']}\n\n"
                 for field in ('support', 'counterevidence', 'unknowns', 'falsifiers', 'dimensions'):
                     if field in item:
                         label = {'support': '支持证据', 'counterevidence': '反面证据', 'unknowns': '未知问题', 'falsifiers': '推翻条件', 'dimensions': '五维判断'}[field]
