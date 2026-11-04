@@ -1,0 +1,129 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43002",
+  "collected_at": "2026-11-04T09:07:08.032724+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43002",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43002/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43002/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43002/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43002",
+    "id": 6181248239,
+    "node_id": "I_kwDOC4Q8Qs8AAAABcG5c7w",
+    "number": 43002,
+    "title": "Editor shows a deleted credential as valid when another credential has the same name, but execution fails with \"Credential with ID ... does not exist\"",
+    "user": {
+      "login": "redgp0g",
+      "id": 107043257,
+      "node_id": "U_kgDOBmFZuQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/107043257?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/redgp0g",
+      "html_url": "https://github.com/redgp0g",
+      "followers_url": "https://api.github.com/users/redgp0g/followers",
+      "following_url": "https://api.github.com/users/redgp0g/following{/other_user}",
+      "gists_url": "https://api.github.com/users/redgp0g/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/redgp0g/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/redgp0g/subscriptions",
+      "organizations_url": "https://api.github.com/users/redgp0g/orgs",
+      "repos_url": "https://api.github.com/users/redgp0g/repos",
+      "events_url": "https://api.github.com/users/redgp0g/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/redgp0g/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 11654110784,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACtqOeQA",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:identity",
+        "name": "team:identity",
+        "color": "ededed",
+        "default": false,
+        "description": null,
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-11-03T11:02:32Z",
+    "updated_at": "2026-11-03T13:01:14Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nWhen the credential referenced by a node is deleted and a new credential with the same name and type is created, the editor treats the node as correctly configured. The credential selector shows the new credential as selected, with a check mark, and no credential issue is raised on the node.\n\nThe workflow, however, still stores the old, deleted credential ID. Any execution (manual \"Execute step\", manual workflow run, or a production trigger of the published version) fails with:\n\nCredential with ID \"0Snu055DhBPxJwpy\" does not exist for type \"httpBasicAuth\".\nSelecting the same credential again in the dropdown does not fix it. The stored ID stays the old one, so the user has no visible way to repair the node from the credential selector.\n\nAs far as I can tell, the cause is that the frontend and the backend resolve the credential differently:\n\nFrontend: useNodeHelpers.getNodeCredentialIssues first looks up the stored ID. If that fails, it falls back to a name match. When exactly one credential matches by name, no issue is reported: https://github.com/n8n-io/n8n/blob/ddfafbfbeb61bf45d5b46085e0f194df87369a3c/packages/frontend/editor-ui/src/app/composables/useNodeHelpers.ts#L645-L690\nBackend: CredentialsHelper.getCredentialsEntity looks up by ID only and throws CredentialNotFoundError: https://github.com/n8n-io/n8n/blob/ddfafbfbeb61bf45d5b46085e0f194df87369a3c/packages/cli/src/credentials-helper.ts#L348-L366\nSo the node looks valid in the editor but cannot run.\n\nMy guess about the dropdown (not verified): the selector already shows the same-name credential as the current value, so clicking that option does not emit a change. onCredentialSelected / replaceInvalidWorkflowCredentials then never run, and the stale ID is never replaced.\n\nWith the draft/publish model the problem gets worse. Even after the draft is repaired, the published version keeps the deleted ID until the workflow is published again. Scheduled runs keep failing in the meantime, and the editor gives no hint about it.\n\n### To Reproduce\n\n1. Create an HTTP Basic Auth credential named Login API.\n2. Create two workflows. Each one has a Schedule Trigger and an HTTP Request node (Authentication: Generic Credential Type → Basic Auth) using Login API. Publish both.\n3. Go to Overview → Credentials, delete Login API, and create a new HTTP Basic Auth credential with the same name, Login API.\n4. Open workflow 1 and the HTTP Request node.\n- The Basic Auth field shows Login API, and the dropdown has a check mark on the new credential.\n- The node shows no credential issue or warning.\n5. Select Login API again in the dropdown, close the node and save.\n6. Click Execute step (or run the workflow).\n- It fails with Credential with ID \"<old id>\" does not exist for type \"httpBasicAuth\".\n7. Export the workflow, or read it through the API. The node still has \"credentials\": { \"httpBasicAuth\": { \"id\": \"<old id>\", \"name\": \"Login API\" } }.\n8. The published version keeps the old ID too, so production/scheduled executions fail as well.\n\nWorkaround: change Generic Auth Type to a different type, switch back to Basic Auth, select the credential (now the change really happens), save, and publish the workflow.\n\n### Expected behavior\n\nOne of these:\n\n- The editor flags the node with a credential issue when the stored ID does not exist, even if a credential with the same name exists (\"Credential 'Login API' was deleted, select it again\"), and selecting a credential in the dropdown always writes its ID to the node, even when it already looks selected.\n\n- When the editor resolves a missing ID by a unique name match, it writes the resolved ID back to the node (marking the workflow as changed), so that what the user sees is what gets executed.\n\n\nAlso nice to have: a warning when deleting a credential that is still used by published workflows, listing the affected workflows.\n\n### Debug Info\n\n# Debug info\n\n## core\n\n- n8nVersion: 2.45.7\n- platform: docker (self-hosted)\n- nodeJsVersion: 24.13.0\n- nodeEnv: undefined\n- database: sqlite\n- executionMode: regular\n- concurrency: -1\n- license: enterprise (production)\n- consumerId: a9663f17-9575-455d-9a92-43ca5b0950f8\n\n## storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n## pruning\n\n- enabled: true\n- maxAge: 336 hours\n- maxCount: 10000 executions\n\n## client\n\n- userAgent: mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/156.0.0.0 safari/537.36\n- isTouchDevice: false\n\n## security\n\n- secureCookie: false\n\n## cluster\n\n- instanceCount: 1\n- versions: 2.45.7\n- instances:\n  - instanceKey: a8b2e068-5ca4-410e-b7d5-0b40b20e337e, hostId: main-SCHV-G02, instanceType: main, instanceRole: leader, version: 2.45.7\n- checks:\n  - check: hostid-clash, status: succeeded, warnings: -\n  - check: lifecycle, status: succeeded, warnings: -\n  - check: split-brain, status: succeeded, warnings: -\n  - check: version-mismatch, status: succeeded, warnings: -\n\nGenerated at: 2026-11-03T10:59:11.321Z\n\n### Operating System\n\nUbuntu 22.04.5 LTS\n\n### n8n Version\n\n2.45.7\n\n### Node.js Version\n\nv24.13.0\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43002/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43002/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @redgp0g,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9697\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9697](https://linear.app/n8n/issue/GHC-9697)",
+      "at": "2026-11-03T11:02:42Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43002#issuecomment-6602058691"
+    },
+    {
+      "author": "redgp0g",
+      "text": "Can I fix this issue? I already have the code, just need to send the PR",
+      "at": "2026-11-03T13:01:14Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43002#issuecomment-6604485189"
+    }
+  ],
+  "comments_complete": true
+}

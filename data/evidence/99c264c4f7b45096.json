@@ -1,0 +1,135 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43018",
+  "collected_at": "2026-11-04T09:07:08.032724+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43018",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43018/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43018/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43018/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43018",
+    "id": 6194488591,
+    "node_id": "I_kwDOC4Q8Qs8AAAABcThlDw",
+    "number": 43018,
+    "title": "Instance owner cannot view execution data in a team project when the execution uses a credential of that project",
+    "user": {
+      "login": "luka-mimi",
+      "id": 186544900,
+      "node_id": "U_kgDOCx5zBA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/186544900?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/luka-mimi",
+      "html_url": "https://github.com/luka-mimi",
+      "followers_url": "https://api.github.com/users/luka-mimi/followers",
+      "following_url": "https://api.github.com/users/luka-mimi/following{/other_user}",
+      "gists_url": "https://api.github.com/users/luka-mimi/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/luka-mimi/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/luka-mimi/subscriptions",
+      "organizations_url": "https://api.github.com/users/luka-mimi/orgs",
+      "repos_url": "https://api.github.com/users/luka-mimi/repos",
+      "events_url": "https://api.github.com/users/luka-mimi/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/luka-mimi/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 11654110784,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACtqOeQA",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:identity",
+        "name": "team:identity",
+        "color": "ededed",
+        "default": false,
+        "description": null,
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 3,
+    "created_at": "2026-11-04T01:35:38Z",
+    "updated_at": "2026-11-04T06:01:26Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nAn instance owner opens an execution of a workflow in a team project. The execution uses a credential that the same team project owns. n8n redacts the output data of the execution and shows this message:\n\n> Output data redacted\n> This execution used a credential you don't have access to, so its data is hidden.\n> Give yourself access to <credential name>\n\nThe instance owner has full access to every team project through the instance role. The project member list shows the owner as \"Full access\", with this tooltip:\n\n> <name> has full access to every project on this instance through their instance role (Owner). This can't be changed from within a project.\n\nThe owner can open, edit and run the workflow, and can open the credential. But the owner cannot see the execution data, and the \"Reveal\" action is not available.\n\nThe problem comes from two rules that do not agree:\n\n1. The execution redaction check asks only for the viewer's own access to each credential. It ignores the instance-wide `credential:use` scope. It counts a credential as accessible only when the user has a `project_relation` row in a project that owns the credential, or a direct share of the credential. See `resolveCredentialInaccessibleExecutions` in `packages/cli/src/modules/redaction/executions/execution-redaction.service.ts` (`ignoreGlobalUseScope: true`) and `findProjectCredentialIdsForUser` in `packages/@n8n/db/src/repositories/credential-access.repository.ts`.\n2. The project settings UI does not let an instance owner or admin add themselves as a project member. The comment says that they \"already have access\". See `packages/frontend/editor-ui/src/features/collaboration/projects/views/ProjectSettings.vue`.\n\nAs a result, an instance owner cannot see execution data for any team project credential unless they share each credential with themselves, one credential at a time. The redaction policy of the workflow does not change this. The check also applies when the redaction policy is `none`, and when the data redaction feature is not licensed.\n\nWorkaround: open the credential, go to the Sharing tab, and share the credential with your own user. After this, the execution data is visible.\n\n### To Reproduce\n\n1. Sign in as the instance owner (user A).\n2. Create a team project \"Project X\". Do not add user A as a project member. User A sees the project through the instance role (\"Full access\").\n3. In \"Project X\", create a credential (for example \"Acme API\") as a member of the project, or as user A from inside the project. In the credential Sharing tab, the only entry is \"Project X\" as Owner.\n4. In \"Project X\", create a workflow that uses the \"Acme API\" credential, and run it (manual or production execution).\n5. As user A, open the execution and select a node that ran.\n6. The output panel shows \"Output data redacted. This execution used a credential you don't have access to, so its data is hidden.\"\n7. Open \"Project X\" > Project settings > Members. User A shows as \"Full access\", and you cannot add user A as a member with a project role.\n\n### Expected behavior\n\nAn instance owner (or admin) with full access to a team project can see the execution data of that project when the credential belongs to the same project. There are two possible fixes:\n\n- The credential-access check for redaction accepts the implicit access that the instance role gives to team projects.\n- Or, the project settings UI lets an instance owner or admin add themselves as a project member with a project role, so that the check passes.\n\nIf this behavior is intentional, the UI must explain it. For example, the project member list must not suggest that \"Full access\" includes access to execution data that uses project credentials.\n\n### Debug Info\n\n# Debug info\n\n## core\n\n- n8nVersion: 2.46.4\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.12.1\n- nodeEnv: production\n- database: postgres\n- executionMode: scaling (multi-main)\n- concurrency: -1\n- license: enterprise (production)\n- consumerId: 91dd5fce-af6b-400a-b1ab-cb3ab247178b\n\n## storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: s3\n\n## pruning\n\n- enabled: true\n- maxAge: 4000 hours\n- maxCount: 1500000 executions\n\n## client\n\n- userAgent: mozilla/5.0 (macintosh; intel mac os x 10_15_7) applewebkit/537.36 (khtml, like gecko) chrome/156.0.0.0 safari/537.36\n- isTouchDevice: false\n\n## security\n\n- secureCookie: false\n\n## cluster\n\n- instanceCount: 14\n- versions: 2.46.4\n- instances:\n  - instanceKey: 409ae946-ba32-46b8-990d-548ff307abc6, hostId: worker-n8n-worker-697498cf57-d8gfg, instanceType: worker, instanceRole: unset, version: 2.46.4\n  - instanceKey: f193f00e-a59e-4b56-8867-90225fcdbd41, hostId: worker-n8n-worker-697498cf57-fgwrz, instanceType: worker, instanceRole: unset, version: 2.46.4\n  - instanceKey: f100bf45-1fe2-4ed0-9efc-a8ba67923071, hostId: worker-n8n-worker-697498cf57-xpwwb, instanceType: worker, instanceRole: unset, version: 2.46.4\n  - instanceKey: cc5ac3ce-2f6e-414c-85e8-e5858f6b8197, hostId: worker-n8n-worker-697498cf57-6fgqw, instanceType: worker, instanceRole: unset, version: 2.46.4\n  - instanceKey: bfc4f103-0d05-4d8a-903d-68c2cb472279, hostId: worker-n8n-worker-697498cf57-5n9bm, instanceType: worker, instanceRole: unset, version: 2.46.4\n  - instanceKey: 3bc7b6d4-a2f9-468a-994f-c314053b534e, hostId: worker-n8n-worker-697498cf57-vxwd7, instanceType: worker, instanceRole: unset, version: 2.46.4\n  - instanceKey: 35c5cdc6-674c-47ad-8442-a0053bf2063e, hostId: worker-n8n-worker-697498cf57-9xjx9, instanceType: worker, instanceRole: unset, version: 2.46.4\n  - instanceKey: e8e71418-2f84-4b06-a69b-2b1f7af0a5e3, hostId: worker-n8n-worker-697498cf57-984x8, instanceType: worker, instanceRole: unset, version: 2.46.4\n  - instanceKey: b4a9ed26-6066-4c1e-9d52-b4129f9b6fd5, hostId: worker-n8n-worker-697498cf57-b4jvw, instanceType: worker, instanceRole: unset, version: 2.46.4\n  - instanceKey: 5cf3eb29-5467-4a93-a974-d7ea3c9c37de, hostId: worker-n8n-worker-697498cf57-nzgv4, instanceType: worker, instanceRole: unset, version: 2.46.4\n  - instanceKey: 23126e52-1154-4ad1-abb7-0fb531ac0d8d, hostId: main-n8n-main-76d9dd86b8-6dxw9, instanceType: main, instanceRole: leader, version: 2.46.4\n  - instanceKey: 2123281f-6da4-42df-bedb-ccedf854e87a, hostId: main-n8n-main-76d9dd86b8-266hh, instanceType: main, instanceRole: follower, version: 2.46.4\n  - instanceKey: 096648ca-5732-4cdd-9c93-269a3aba4056, hostId: main-n8n-main-76d9dd86b8-qw4vt, instanceType: main, instanceRole: follower, version: 2.46.4\n  - instanceKey: cf09e27f-eb64-45ff-82b5-629bdbc44665, hostId: webhook-n8n-webhook-9cbbcd798-ht2dg, instanceType: webhook, instanceRole: unset, version: 2.46.4\n- checks:\n  - check: hostid-clash, status: succeeded, warnings: -\n  - check: lifecycle, status: succeeded, warnings: -\n  - check: split-brain, status: succeeded, warnings: -\n  - check: version-mismatch, status: succeeded, warnings: -\n\nGenerated at: 2026-11-04T01:35:08.487Z\n\n### Operating System\n\ndocker\n\n### n8n Version\n\n2.46.4\n\n### Node.js Version\n\n26.12.1\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nqueue\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43018/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43018/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @luka-mimi,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9702\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9702](https://linear.app/n8n/issue/GHC-9702)",
+      "at": "2026-11-04T01:35:47Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43018#issuecomment-6620139634"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "The current redaction service appears to make this distinction deliberately: `resolveCredentialInaccessibleExecutions()` calls the credential checker with `ignoreGlobalUseScope: true`, and its source comment says Owner/Admin `credential:use` must not bypass per-credential access. So the reported behavior is consistent with that policy, even though the project UI says “Full access.”\n\nThe key product question is whether instance owners should be able to reveal executions using project credentials without being explicitly shared on those credentials. If not, the project/access messaging should make that limitation clear; if yes, the redaction check needs to account for project-level access.",
+      "at": "2026-11-04T04:05:57Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43018#issuecomment-6622247805"
+    },
+    {
+      "author": "luka-mimi",
+      "text": "> 3\\. The current redaction service appears to make this distinction deliberately: `resolveCredentialInaccessibleExecutions()` calls the credential checker with `ignoreGlobalUseScope: true`, and its source comment says Owner/Admin `credential:use` must not bypass per-credential access. So the reported behavior is consistent with that policy, even though the project UI says “Full access.”\n>     The key product question is whether instance owners should be able to reveal executions using project credentials without being explicitly shared on those credentials. If not, the project/access messaging should make that limitation clear; if yes, the redaction check needs to account for project-level access.\n\nThe administrator role must be able to view and manage everything that happens on the platform.",
+      "at": "2026-11-04T06:01:26Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43018#issuecomment-6623842237"
+    }
+  ],
+  "comments_complete": true
+}

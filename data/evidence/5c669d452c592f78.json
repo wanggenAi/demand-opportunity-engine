@@ -1,0 +1,135 @@
+{
+  "source_api_url": "https://api.github.com/repos/georgemunganga/erp/issues/169",
+  "collected_at": "2026-11-04T09:07:08.032724+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/georgemunganga/erp/issues/169",
+    "repository_url": "https://api.github.com/repos/georgemunganga/erp",
+    "labels_url": "https://api.github.com/repos/georgemunganga/erp/issues/169/labels{/name}",
+    "comments_url": "https://api.github.com/repos/georgemunganga/erp/issues/169/comments",
+    "events_url": "https://api.github.com/repos/georgemunganga/erp/issues/169/events",
+    "html_url": "https://github.com/georgemunganga/erp/issues/169",
+    "id": 6186810746,
+    "node_id": "I_kwDOT3MSds8AAAABcMM9eg",
+    "number": 169,
+    "title": "PROC-05A: Governed procurement plan review",
+    "user": {
+      "login": "georgemunganga",
+      "id": 50656350,
+      "node_id": "MDQ6VXNlcjUwNjU2MzUw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/50656350?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/georgemunganga",
+      "html_url": "https://github.com/georgemunganga",
+      "followers_url": "https://api.github.com/users/georgemunganga/followers",
+      "following_url": "https://api.github.com/users/georgemunganga/following{/other_user}",
+      "gists_url": "https://api.github.com/users/georgemunganga/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/georgemunganga/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/georgemunganga/subscriptions",
+      "organizations_url": "https://api.github.com/users/georgemunganga/orgs",
+      "repos_url": "https://api.github.com/users/georgemunganga/repos",
+      "events_url": "https://api.github.com/users/georgemunganga/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/georgemunganga/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 9,
+    "created_at": "2026-11-03T16:29:38Z",
+    "updated_at": "2026-11-04T01:40:53Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "# PROC-05A governed plan review — implementation issue\n\n**Status:** Source groundwork authorized; business configuration and live activation remain pending. **Source:** [28-section child specification](PROC-05A-GOVERNED-PLAN-REVIEW.md). **Baseline:** ERP `61d5a608f9cc6069bcf8d06ef51bdca036fd8d47`.\n\n## Problem\n\nThe current plan API and UI save, edit, list and cancel owner Drafts only. There is no submission, named independent review, final approval, return/reject/withdraw, active forecast or review history. `ProcurementPlan` has no branch field; existing branchless Drafts cannot safely become branch-scoped by assuming a default branch. The shared Core Approval engine supports generic source records, but its current Procurement executor is purchase-request-specific and its existing delegation record does not establish a working plan delegation path.\n\n## Bounded implementation\n\n- Extend plan records with verified selected-branch ownership and Core organization default currency for new Drafts. Keep old branchless Drafts restricted; add `POST /plans/{id}/claim-scope` with expected version, reason, verified selected branch and explicit confirmation of the stored currency. An organization-wide claim needs an explicit Core permission; no role-name bypass, guessed branch or currency reinterpretation.\n- Add explicit, default-ungranted Core plan submission/review/approval/withdraw/read actions and a typed published plan-review policy. No monetary defaults or Finance reservation.\n- Open a shared Core approval case with `SourceType=procurement_plan`, pinned plan/line versions and exact values, policy version, branch, maker, named independent assignments and quorum. Use `ApprovalEngine`; do not copy its state machine into Procurement.\n- Implement Draft/Returned → Submitted → Reviewed → Active using exactly two initial stage purposes, Review and Final. Business assignees and quorum are configured, never source defaults. Return/reject complete a round and retain it. Withdraw cancels a pending Core case, records a Withdrawn round, and restores the parent plan to editable Draft for resubmission. Final Core Approved decision and Procurement Active state commit together.\n- Add actor-bound original-key command receipts, current Core permission/branch/SoD checks, audit/outbox, assigned queue/history and safe error/recovery contracts.\n- Extend the original live Plan UI with returned `allowedActions`, plain-language task labels, reason prompts, history and exact-key recovery. Preserve existing Draft CRUD and page layout.\n- Treat delegated decisions as unavailable until a separate shared Core current-delegation resolver and denial tests are established. Approved plan-line→PR trace is a follow-on issue.\n\n## Acceptance\n\nWorkerless Core maker, reviewer and independent final approver complete one real-cookie private journey on a finite-role PostgreSQL clone. Return/resubmit, reject and Withdraw→Draft→Edit→Resubmit retain previous rounds. Legacy branch/currency claim is explicit, CAS-audited and guarded by owner or separate Core claim permission. Same-key replay returns the original result; changed payload, stale version and concurrent decisions do not duplicate work. Wrong tenant/entity/branch/actor and maker self-approval fail without writes; current revocation is effective. Company All read includes only assigned branches, and all writes use a concrete selected branch. Original business rows and Core identities remain intact; no Finance budget or PO row changes. Original UI actions, denied paths and recovery are exercised with real API, plus source/provider tests.\n\n## Sequence and release hold\n\n1. Review the child spec and resolve business assignee/policy/period choices.\n2. Implement domain/API/source tests in a branch based on published ERP main. Do not generate or edit EF migration/snapshot while sourcing B1 owns the schema branch.\n3. After B1 is published, generate genuine additive migration from that baseline, test finite roles/ownership/readiness, then private API and original UI acceptance.\n4. Release remains default off until reviewed policy, operation evidence and business acceptance exist. No production switch, role grant, Finance posting or external supplier workflow is part of this issue.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/georgemunganga/erp/issues/169/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/georgemunganga/erp/issues/169/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "georgemunganga",
+      "text": "MANUS-PLAN-06 is now published in the ERP repository's MANUS_HANDOFF.md on main (docs PR174 merged as c2da0b6f59e8472d8af3fb6dc464485d7d2b6b34).\n\nPrerequisites are published: B1 ERP PR165 (main dc6a082d, backend product0f9/publication28) and UI PR104 (main9b5d02dc, product26d4). Start Plan backend work from PR171 branch codex/procurement-plan-approval-20261103 source a7bc1371d06edb7b39d9b29415e0da81bfc847bb or reviewed current descendant, preserving that main. Independent source review found no new workflow/security blocker; compilation/native acceptance is still unrun.\n\nPick up the full backend compile/genuine EF migration/readiness/native verification milestone in MANUS_HANDOFF. This is ERP backend work; no UI reimport is needed. Critical schema delta includes two Plan tables, branch/index changes AND the existing operational-policy identity CHECK; shared readiness must adopt its actual new captured definition. Do not invent a snapshot/fingerprint, duplicate a migration already published, change shared authority guards or touch production.\n\nClaim here with branch/input SHA before generation and re-fetch PR171/this issue immediately before scaffolding. Root retains B1 production rollout/resources and final paired Plan UI acceptance. If a genuine Plan migration is already published at pickup, verify it rather than adding another. Push a focused draft PR with exact commands, tests actually run, failures and remaining gates. Existing source/173 UI tests are separate from the still-pending backend SDK/native proof.\n",
+      "at": "2026-11-03T19:50:11Z",
+      "url": "https://github.com/georgemunganga/erp/issues/169#issuecomment-6613900367"
+    },
+    {
+      "author": "georgemunganga",
+      "text": "Root is claiming the next genuine Plan migration/readiness/verification slot now, after completing the B1 production rollout. Do not start parallel Plan scaffolding; re-read this issue before generating anything. Current published ERP main is f064f1a343e9897f4234bed7b6fd9586aebcded3 (PR176 backend868d0f/product6ec plus PR177 deployment record), UI main9b5d02dc/product26d4. Existing Plan candidate is PR171 published a2e39e595347fb328283756eab13264e330c4d0f or reviewed descendant; Root source agent is merging current published main. UI PR103 remains source-tested/held.\n\nThe single genuine migration still needs2 Plan review tables, nullable Plan branch/index and the existing shared operational-policy identity CHECK delta, followed by actual capture and shared readiness compatibility, complete tests/native/original UI acceptance. No duplicate B1 migration or invented capture is allowed. B1 technical deployment/public Playwright is complete under #175; signed-in production UAT and parent #145 remain open. Independent scanner task #153 remains separate and available to Manus.\n",
+      "at": "2026-11-03T21:00:35Z",
+      "url": "https://github.com/georgemunganga/erp/issues/169#issuecomment-6615312314"
+    },
+    {
+      "author": "georgemunganga",
+      "text": "Actual single EF generation completed: 20261103211606_ProcurementPlanGovernedReview. Raw migration/designer/snapshot retained with exact hashes and source mutation reconciliation. Full Procurement suite passed2002/0/0, then Host compilation caught two duplicate Id names in PlanSubmitted audit; original failure remains. No database or publication was created.\n\nCurrent PR171 candidate400441d1277bb1341c84bafbf7bf8853123982c4 adopts the genuine files, preserves raw designer/snapshot/Up, adds retention-safe Down, and fixes explicit audit field names. Independent review also found and corrected two storage-admission gaps: reuse shared effective HRM read projection denial; allow only five mutable submission columns while keeping snapshot/policy/maker fields sealed. Fourteen new Host cases and two migration-safety cases are authored but not yet run. Next bounded verification emits actual Up/guardedDown SQL before private schema capture. Required readiness captures and post-Plan shared CHECK selector remain intentionally unavailable.\n\nDo not scaffold a duplicate migration or merge/deploy this held source. Root owns this verification/native/UI slot; production remains the separately verified backend6ec/UI26d release.\n",
+      "at": "2026-11-03T21:31:00Z",
+      "url": "https://github.com/georgemunganga/erp/issues/169#issuecomment-6615913497"
+    },
+    {
+      "author": "georgemunganga",
+      "text": "Plan review verification checkpoint — 3 November 2026\n\nBackend `bd4ace9998314fb1b9705a7c0e7ed460d5becec0`: all **478 Host regression cases passed, zero failed/skipped**, retaining the original 477 and earlier 429 case identities. The actual **2,004 Procurement passes** were reused only after checking all 676 unchanged Procurement/Core source pins, 118 runtime files and ten owning assemblies before and after; they were not rerun in this slot. Model parity passed; genuine Plan Up/retention-guarded Down were emitted and prior B1 Up/Down SQL remained byte-identical.\n\nThe first resource preflight stopped before overlay/container work; after clearing 48 MiB of archived system logs, the explicitly reviewed run completed without OOM or resource stop. Private database capture is now in progress. Its initial preflight detected historical dropped invoice-column slots and stopped before creating or migrating a database; their exact metadata is being reviewed for the capture successor.\n\nThe original UI and backend review found closed-round action hints and uncertain cancellation handling to correct. New source fixes and native restore/provider/workflow/browser acceptance remain pending. No Plan schema, policy or processing switch has been enabled in production. Issue #145 remains **NOT READY**.\n",
+      "at": "2026-11-03T21:53:27Z",
+      "url": "https://github.com/georgemunganga/erp/issues/169#issuecomment-6616346501"
+    },
+    {
+      "author": "georgemunganga",
+      "text": "Plan review continuation — source reviewed; signed-in acceptance still pending\n\nBackend source is now `6e85bdc81c0d6b8362e36b4c6a744b934e8c2caf`. Actual private genuine Up produced 239 tables and a real pg_dump/pg_restore preserved all table data, migration history and sequences. The protected 237-table source stayed byte-equivalent under the full native capture. Empty genuine Down/Up also executed inside a rolled-back private transaction and restored the complete native state; this is not a committed rollback or retention-veto acceptance claim.\n\nThe restore exposed five exact B1 CHECK renderings; isolated fix #179 preserves the original complete fingerprint and is included in the Plan candidate. Plan captures now support exact direct/restored forms, and the actual single-CHECK-arm payment query returns the same new complete fingerprint on both copies. Other eight mappings remain unchanged.\n\nEnd-to-end setup review found the missing shared Plan-policy publication dispatch. The fix includes typed configuration UI, purpose-specific current Core approver selection, and shared Create/Update/Submit/Publish/Return/Retire commands. Independent review also closed company-wide configuration scope gaps and retirement hints after access revocation. The initial company-wide policy contract requires current organization-wide configuration actors and named approvers; branch-specific Plan policy conditions remain unsupported. No access grants are silently created, and employee links remain optional.\n\nPrior actual results remain 478 Host passes plus exactly bound 2,004 Procurement passes. The combined backend candidate has additional unexecuted regressions; its next bounded build/test/publication must complete before provider, normal-cookie, original-UI, recovery and deployment acceptance. UI source has passed focused type/unit checks; no native Plan browser acceptance is claimed. No new production schema or business switch is activated. #145 remains **NOT READY**.\n",
+      "at": "2026-11-03T22:29:09Z",
+      "url": "https://github.com/georgemunganga/erp/issues/169#issuecomment-6617076261"
+    },
+    {
+      "author": "georgemunganga",
+      "text": "Plan approval checkpoint: final candidate6e85bdc8 passed548 Host cases (0 failed/skipped); the2004 Procurement/Core baseline was exactly bound/reused, not rerun in that slot. Actual compiled finite-role Plan providers pass on both migrated239-table and true-restored239-table private databases. Owner-account admission denial passed. Existing source237-table snapshot remains unchanged. Imported UI94e5d3bd live build passed. Three new workerless Core test identities are being prepared for genuine normal-cookie/original-UI workflow acceptance; signed-in browser acceptance, production Plan activation, and overall Procurement UAT are NOT yet complete. Existing production remains6ec41f93/pub29 with UI26d4. No secrets or business snapshots are attached.",
+      "at": "2026-11-03T23:12:17Z",
+      "url": "https://github.com/georgemunganga/erp/issues/169#issuecomment-6617866486"
+    },
+    {
+      "author": "georgemunganga",
+      "text": "Actual signed-in original-UI Plan workflow passed on the private native database: Create201 → Submit201 → independent Review200 → FinalApprove200. The reviewer-only account was denied the requester GET (403). All three normal Core cookies were verified inactive and the owned browser scope/API/proxy are stopped.\n\nIndependent native reconciliation passed:13 domain/approval rows,14 procurement audit rows,3 outbox rows, exact command-response receipt bytes, immutable submitted snapshot/policy/actor pins, all original rows preserved. Owner receipt SHA-256 dc5d6c2d9b89d15dd0f69de9f990cc40a9f6456f48ef732e84bb5d7216ecb079. The imported UI new-draft guard bug (undefined pending ID equalling undefined route ID) was fixed in3e2783b1;26 focused checks/type checks and the new live build passed. Earlier failed test/verification attempts remain preserved separately.\n\nThe rollback-retention veto and six native permission denials are running next. Production inspection found three existing legitimate Core read columns rejected by the new generic projection guard; a narrow optional-read compatibility fix and a fresh Host/publication verification are required before rollout. Production remains unchanged. #145 remains NOT READY; this is bounded Plan workflow evidence, not complete Procurement UAT.",
+      "at": "2026-11-03T23:57:11Z",
+      "url": "https://github.com/georgemunganga/erp/issues/169#issuecomment-6618587993"
+    },
+    {
+      "author": "georgemunganga",
+      "text": "Release checkpoint — 4 November 2026\n\n- Candidate backend `c93e8df4`: all 551 Host tests pass (0 failed/skipped). Existing 2,004 Procurement test results are retained verified evidence, not a newly rerun suite.\n- Preserved original UI: real normal-cookie browser flow passed Create → Submit → independent Review → Final Approval. Native reconciliation verified its exact record/approval/audit/outbox graph, preservation of original rows, and session cleanup.\n- Direct and restored private database provider checks pass. Production read-only metadata checks verify the three existing optional Core reads remain compatible; no production writes occurred in that check.\n- Release image built and all 150 runtime files verified. Fresh backup, genuine migration with exact permission delta, paired deployment and live verification remain pending. Production is unchanged at this checkpoint.\n- This is bounded Plan milestone evidence. Whole-module UAT and issue #145 remain NOT READY; remaining sourcing/award and other held workflows are not completed by this release.\n",
+      "at": "2026-11-04T00:49:59Z",
+      "url": "https://github.com/georgemunganga/erp/issues/169#issuecomment-6619443263"
+    },
+    {
+      "author": "georgemunganga",
+      "text": "Production technical release verified — 4 November 2026\n\nERP PR171 and UI PR103 are merged and deployed. The release record and current Manus/UAT status are updated in PR184.\n\n- Actual551 Host passes; previous2004 Procurement results exactly verified/reused, not rerun. The earlier real-cookie original-UI primary flow retains its separate native-owner evidence.\n- Genuine237→239 migration and exactly eight new-object legacy revocations/thirteen missing finite-role rights applied once. All original237 original-column business/authentication rows were preserved. Actual production two-purpose direct-LOGIN/read-only provider checks passed; held full B1 READ was observed false, not granted.\n- The same tested API candidate completed a reviewed continuation after the retained first HTML handover failure. Health/auth/all150 runtime files and exact new HTML passed. No migration/grants/container recreation were replayed.\n- Actual live verification passed44 file hashes/sizes,22 routes/auth checks and7 anonymous Playwright renders with zero page errors/mutations and owned-scope cleanup.\n- Only Plan review was enabled. No policy, approver or business permission was seeded. A real published review policy and current Core authority remain required.\n\nIssue169 stays open for its remaining alternate/revocation/concurrency/recovery acceptance; signed-in production business UAT and whole-module145 acceptance are not claimed. Next B1c issue180/PR183 has source fixes and independent source review, but genuine migration, build/native/UI validation remain pending.\n\nRelease evidence: https://github.com/georgemunganga/erp/blob/main/docs/procurement/gap-closure/PROC-05A-PAIRED-PRODUCTION-RELEASE-20261104.md\n",
+      "at": "2026-11-04T01:40:52Z",
+      "url": "https://github.com/georgemunganga/erp/issues/169#issuecomment-6620215323"
+    }
+  ],
+  "comments_complete": true
+}

@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50362986",
+  "collected_at": "2026-11-04T09:07:08.032724+00:00",
+  "source": {
+    "author": "vovahimself",
+    "children": [],
+    "created_at": "2026-11-04T08:57:29.000Z",
+    "created_at_i": 1793782649,
+    "id": 50362986,
+    "options": [],
+    "parent_id": null,
+    "points": 2,
+    "story_id": 50362986,
+    "text": "So I&#x27;m a bit of a domain-grabbing addict, and at some point I just wanted a checker that I can quickly use instead of *<i>, which has gone somewhat slow and bulky over time.<p>I ended up building my own, and it runs entirely from the browser (the page is static, no server or tracking for searched domains); the page asks the registries itself over RDAP (or DNS-over-HTTPS where RDAP isn&#x27;t available).<p>There&#x27;s also a list of 210 names I sourced (and will keep sourcing) with Claude, along with some ideas for each, which are all available at the time of posting.<p>A small feature I initially added just for testing but which ended up to be the main time killer for me was the &quot;die&quot;, which basically just rolls a random adjective-noun using faker, and which ends up with interesting (and at times provocative) ideas.<p>Anyway, just a weekend project, I don&#x27;t and am not planning to earn anything form it, just thought to share with fellow addicts  Pls use responsibly!<p>*</i> -- not sure if I can mention (not really) a &quot;competitor&quot; here hence redacted",
+    "title": "Show HN: Unsquatted – fast domain checker and curated list",
+    "type": "story",
+    "url": "https://unsquatted.com"
+  },
+  "comments": [],
+  "comments_complete": true
+}

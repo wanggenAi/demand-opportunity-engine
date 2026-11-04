@@ -1,0 +1,135 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43017",
+  "collected_at": "2026-11-04T09:07:08.032724+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43017",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43017/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43017/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43017/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43017",
+    "id": 6194348720,
+    "node_id": "I_kwDOC4Q8Qs8AAAABcTZCsA",
+    "number": 43017,
+    "title": "RabbitMQ node: queue bindings aren't awaited before the channel is returned",
+    "user": {
+      "login": "jeonghun917",
+      "id": 109071398,
+      "node_id": "U_kgDOBoBMJg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/109071398?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/jeonghun917",
+      "html_url": "https://github.com/jeonghun917",
+      "followers_url": "https://api.github.com/users/jeonghun917/followers",
+      "following_url": "https://api.github.com/users/jeonghun917/following{/other_user}",
+      "gists_url": "https://api.github.com/users/jeonghun917/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/jeonghun917/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/jeonghun917/subscriptions",
+      "organizations_url": "https://api.github.com/users/jeonghun917/orgs",
+      "repos_url": "https://api.github.com/users/jeonghun917/repos",
+      "events_url": "https://api.github.com/users/jeonghun917/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/jeonghun917/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582010757,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cXhQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:nodes",
+        "name": "team:nodes",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Nodes team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 3,
+    "created_at": "2026-11-04T01:22:50Z",
+    "updated_at": "2026-11-04T02:10:19Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nThis happens at line 80 in packages/nodes-base/nodes/RabbitMQ/GenericFunctions.ts. forEach in options.binding.bindings.forEach(async (binding) => { ... bindQueue ... }) doesn't wait for the async callbacks. As a result, it returns the channel before bindQueue has finished, so messages that arrive right after can be missed. Also, if a bind fails, the error isn't caught by the surrounding try/catch. To fix: await each bind in a for...of loop, or use Promise.all.\n\n### To Reproduce\n\n1.Create a workflow using the RabbitMQ node or the RabbitMQ Trigger.\n\n2.In the options, choose an exchange and add at least two bindings.\n\n3. To see the failure case, set one binding to an exchange that doesn't exist.\n\n4.Run the workflow.\n\n5. Result: the logs show an error that the surrounding try/catch didn't handle. If all bindings use existing exchanges, messages that arrive right after the start can be missed.\n\n6. I found this bug by reading the code with my open source tool. I haven't reproduced it myself.\n\n### Expected behavior\n\nThe node should return the channel only after every binding has finished.\nIf a binding fails, it should show up as a node error.\n\n### Debug Info\n\nself-hosted Studio, current master\n\n### Operating System\n\nN/A (found by reading the source)\n\n### n8n Version\n\n2.47.0 (current master)\n\n### Node.js Version\n\nN/A\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43017/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43017/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @jeonghun917,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9701\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9701](https://linear.app/n8n/issue/GHC-9701)",
+      "at": "2026-11-04T01:23:02Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43017#issuecomment-6619946867"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "Confirmed in `packages/nodes-base/nodes/RabbitMQ/GenericFunctions.ts`: `rabbitmqConnectQueue()` uses `forEach(async ...)` and then immediately resolves the outer promise. The bind promises are therefore neither awaited nor connected to that `try/catch`, so the caller can receive the channel before bindings finish and a rejected bind can escape the intended error path. `await Promise.all(options.binding.bindings.map(binding => channel.bindQueue(queue, binding.exchange, binding.routingKey)))` inside the existing `try` would wait for all binds and propagate a rejection.",
+      "at": "2026-11-04T02:05:19Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43017#issuecomment-6620567129"
+    },
+    {
+      "author": "jeonghun917",
+      "text": "appreciate you confirming this!",
+      "at": "2026-11-04T02:10:18Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43017#issuecomment-6620639696"
+    }
+  ],
+  "comments_complete": true
+}

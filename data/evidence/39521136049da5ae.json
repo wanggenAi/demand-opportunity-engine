@@ -1,0 +1,129 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42999",
+  "collected_at": "2026-11-04T09:07:08.032724+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/42999",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/42999/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/42999/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/42999/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/42999",
+    "id": 6180766077,
+    "node_id": "I_kwDOC4Q8Qs8AAAABcGcBfQ",
+    "number": 42999,
+    "title": "HashiCorp Vault refresh wipes a good External Secrets cache after a failed LIST/GET",
+    "user": {
+      "login": "ArtyMaximus",
+      "id": 68598437,
+      "node_id": "MDQ6VXNlcjY4NTk4NDM3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/68598437?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/ArtyMaximus",
+      "html_url": "https://github.com/ArtyMaximus",
+      "followers_url": "https://api.github.com/users/ArtyMaximus/followers",
+      "following_url": "https://api.github.com/users/ArtyMaximus/following{/other_user}",
+      "gists_url": "https://api.github.com/users/ArtyMaximus/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/ArtyMaximus/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/ArtyMaximus/subscriptions",
+      "organizations_url": "https://api.github.com/users/ArtyMaximus/orgs",
+      "repos_url": "https://api.github.com/users/ArtyMaximus/repos",
+      "events_url": "https://api.github.com/users/ArtyMaximus/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/ArtyMaximus/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 10081993897,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACWO8EqQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:lifecycle",
+        "name": "team:lifecycle",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Lifecycle & Governance team",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-11-03T10:31:34Z",
+    "updated_at": "2026-11-03T16:05:25Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Bug Description\n\nOn a self-hosted queue-mode instance (n8n 2.36.9), credentials that pull HashiCorp Vault secrets via External Secrets fail intermittently with:\n\n```\nCould not load secrets [Error resolving credentials]\nThe credential in use tries to use secret from an external store that could not be found\n```\n\nThis is not an unreachable provider (`store that is not reachable`). The expression and KV mount path are correct: the same credential succeeds immediately before and after the failure window on the **same worker process**.\n\nWhat we see in production:\n\n1. Trigger executions resolve `$secrets.<provider>['<kv-mount-path>']['<secret-name>'].<key>` for hours.\n2. Three consecutive trigger runs fail for about 3 minutes with the error above (HTTP Request node, credential resolve).\n3. A manual run of the same workflow on the same worker about 1 minute later succeeds.\n4. The next trigger also succeeds. No credential or provider settings were changed (`updatedAt` months old).\n\nRoot cause looks to be in `VaultProvider.update()`:\n\n`getKVSecrets()` returns `null` when LIST fails (caught, debug-logged only). `update()` then **replaces** `cachedSecrets` with whatever came back. If LIST fails, that is `{}`. If LIST succeeds but an individual GET fails, that one key is dropped from the new map.\n\nExecutions only read the in-memory cache (`get-secrets-proxy.ts` → `hasSecret`). They do not re-fetch Vault. So one flaky LIST/GET during the 5-minute refresh empties or holes the cache until the next successful refresh.\n\nThis is still present on current master / 2.41.0 (`this.cachedSecrets = secrets` after filtering `null` mounts). #38866 bounded concurrency (helps 429s) but does not keep the last good snapshot — the PR review already asked for that and it was not done.\n\nRelated, not the same:\n\n- #24828 — same error text, still open; started as UI-test-ok / runtime-fail on 2.1.4, later “sometimes”. No fix for this `update()` assign.\n- #35237 — reload/swap race; already in 2.34.0 / our 2.36.9. Our provider row was not re-saved.\n- #29679 / #38257 — refresh/connect timeouts. Docs for 2.41 say previous secrets stay available **if `update()` has not assigned yet**. A completed `update()` that assigned `{}` still wipes the cache.\n\n## To Reproduce\n\nCode path (deterministic):\n\n1. Enable External Secrets → HashiCorp Vault, Username/Password or Token, KV mount path set (KV v1 or v2).\n2. Create a credential field: `{{ $secrets.<ProviderKey>['<mount>']['<secret>'].<field> }}`.\n3. Let `update()` run once so `cachedSecrets` is populated. A workflow using that credential succeeds.\n4. Make the next LIST fail (Vault 403/5xx, timeout, or inject `getKVSecrets` → `null`), **or** make GET for that one secret fail while LIST still returns the key.\n5. Wait for the periodic refresh (`N8N_EXTERNAL_SECRETS_UPDATE_INTERVAL`, default 300s) or trigger a provider refresh.\n6. Run the same workflow again without changing the credential.\n\nObserved: step 6 throws `Could not load secrets` / `could not be found` until a later refresh succeeds.\n\nIn the field this shows up as a few-minute outage whenever Vault/network blips during refresh. Other providers on the same worker can log `Error refreshing secrets from provider …` in the same window; Vault `update()` does **not** throw on LIST-null, so that provider often has no error line.\n\n## Expected behavior\n\nA failed or partial Vault refresh must not destroy a previously good cache.\n\n- LIST fail for a mount → keep the previous mount map; log a warning.\n- GET fail for one key → keep the previous value for that key.\n- Only replace a mount’s cache after a successful LIST (and merge keys whose GET failed).\n\nWorkflows should keep resolving secrets across a transient Vault error. The next successful refresh can still pick up added/changed secrets.\n\n## Debug Info\n\n```\nn8n Version: 2.36.9 (self-hosted, image based on n8n 2.36.9)\nNode.js Version: 24.18.1\nDatabase: PostgreSQL\nExecution mode: queue (main enqueues; worker runs the job)\nHosting: self-hosted, Kubernetes, one main + workers\nOS: Linux (container)\nExternal Secrets: HashiCorp Vault, userpass, KV mount path set\nError description: \"The credential in use tries to use secret from an external store that could not be found\"\n```\n\nCode (2.36.9 and still on n8n@2.41.0 / master):\n\n```ts\n// VaultProvider.update()\nconst value = await this.getKVSecrets(path, version, '');\nif (value === null) {\n  return null; // LIST failed — swallowed\n}\n// ...\nthis.cachedSecrets = secrets; // empty/partial map replaces the good cache\n```\n\n`getKVSecrets` LIST/GET failures are `catch { return null }` (debug log only).\n\n## Environment\n\n- Operating System: Linux (Kubernetes)\n- n8n Version: 2.36.9\n- Node.js Version: 24.18.1\n- Database: PostgreSQL\n- Execution mode: queue\n- Hosting: self-hosted\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/42999/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/42999/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @ArtyMaximus,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9696\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9696](https://linear.app/n8n/issue/GHC-9696)",
+      "at": "2026-11-03T10:31:47Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42999#issuecomment-6601238846"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "I checked the current `vault.ts` implementation. It now rethrows transport failures so the previous snapshot survives those, but non-transport LIST/GET errors still return `null`; `update()` filters those entries and assigns the resulting map to `cachedSecrets`. That means a transient HTTP error such as a 403/5xx represented as a normal response, or a failed GET for one key, can still remove previously cached values on the next refresh. Is preserving the old mount/key intended for these partial failures too? If so, the current snapshot needs to be merged/retained when the read fails, rather than treating the skipped entry as absent.",
+      "at": "2026-11-03T16:05:25Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42999#issuecomment-6608923764"
+    }
+  ],
+  "comments_complete": true
+}

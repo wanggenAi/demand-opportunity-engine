@@ -7,7 +7,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## workflow_reliability — UNVALIDATED CLUSTER
 
-- independent_demand_count: 75
+- independent_demand_count: 79
 - payment_evidence_count: 1
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community', 'n8n Community']
 - communities: ['Agenta-AI/agenta', 'Ask/Show HN', 'Commerce operator forum', 'n8n Jobs', 'n8n-io/n8n', 'useagenthq/useagent']
@@ -20,16 +20,16 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://github.com/n8n-io/n8n/issues/43018
+  - https://github.com/n8n-io/n8n/issues/43017
+  - https://github.com/n8n-io/n8n/issues/43002
+  - https://github.com/n8n-io/n8n/issues/42999
   - https://github.com/n8n-io/n8n/issues/42981
   - https://news.ycombinator.com/item?id=50345343
-  - https://github.com/n8n-io/n8n/issues/42977
-  - https://github.com/n8n-io/n8n/issues/42953
-  - https://news.ycombinator.com/item?id=50330567
-  - https://github.com/n8n-io/n8n/issues/42853
 
 ## browser_automation — UNVALIDATED CLUSTER
 
-- independent_demand_count: 9
+- independent_demand_count: 10
 - payment_evidence_count: 0
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community']
 - communities: ['Commerce operator forum', 'Understanding Email Encryption (2025)', 'kouweizhu/agents-radar', 'n8n-io/n8n', 'useagenthq/useagent']
@@ -42,12 +42,12 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://github.com/n8n-io/n8n/issues/43003
   - https://news.ycombinator.com/item?id=50334266
   - https://github.com/n8n-io/n8n/issues/42851
   - https://github.com/n8n-io/n8n/issues/42153
   - https://github.com/kouweizhu/agents-radar/issues/654
   - https://github.com/n8n-io/n8n/issues/41548
-  - https://github.com/n8n-io/n8n/issues/41471
 
 ## supplier_sourcing — UNVALIDATED CLUSTER
 

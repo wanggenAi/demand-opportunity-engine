@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/42983",
-  "collected_at": "2026-11-03T09:29:28.720360+00:00",
+  "collected_at": "2026-11-04T09:07:08.032724+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/42983",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -50,9 +50,9 @@
     "locked": false,
     "assignees": [],
     "milestone": null,
-    "comments": 1,
+    "comments": 3,
     "created_at": "2026-11-03T05:36:06Z",
-    "updated_at": "2026-11-03T05:36:20Z",
+    "updated_at": "2026-11-03T20:45:09Z",
     "closed_at": null,
     "assignee": null,
     "author_association": "NONE",
@@ -95,6 +95,18 @@
       "text": "Hey @inderjeetsingh21,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9694\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9694](https://linear.app/n8n/issue/GHC-9694)",
       "at": "2026-11-03T05:36:18Z",
       "url": "https://github.com/n8n-io/n8n/issues/42983#issuecomment-6596326722"
+    },
+    {
+      "author": "donleco2474",
+      "text": "When an n8n Advanced AI Agent tool node fails to recognize sub-workflow inputs, it is usually because the sub-workflow's 'Execute Workflow Trigger' needs its input schema explicitly declared in the trigger settings rather than relying on automatic runtime inference. Re-selecting the sub-workflow inside the Agent tool node forces a fresh inspection of the trigger schema. Let me know how your trigger inputs are structured and I can outline the exact schema definition you need right here.",
+      "at": "2026-11-03T15:50:31Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42983#issuecomment-6608460136"
+    },
+    {
+      "author": "epistemedeus",
+      "text": "A source-backed case matches this screen: in 2.45.6, a trigger with `typeVersion >= 1.1` can show **Define using fields below** while its saved JSON omits `parameters.inputSource`. The agent's input reader then defaults to passthrough and returns no field names.\n\nI checked both editor and runtime field readers with your three field names: omitted `inputSource` gives zero names on 2.45.6 and all three on 2.46.4. The released correction is [#41727](https://github.com/n8n-io/n8n/pull/41727), included in [2.46.4](https://github.com/n8n-io/n8n/releases/tag/n8n%402.46.4).\n\nFor 2.45.6, the readers also recognize the non-default **Define using JSON example** mode with:\n\n```json\n{\"student_first_name\":\"\",\"student_last_name\":\"\",\"date_of_birth\":\"\"}\n```\n\nYour saved workflow JSON wasn't included, so this is a conditional reproducer, not a diagnosis of your instance. Could you check the trigger's `typeVersion` and `parameters.inputSource`? If `inputSource` is already `workflowInputs`, a redacted trigger node would help distinguish the next cause.\n\nLucian",
+      "at": "2026-11-03T20:45:09Z",
+      "url": "https://github.com/n8n-io/n8n/issues/42983#issuecomment-6615004713"
     }
   ],
   "comments_complete": true

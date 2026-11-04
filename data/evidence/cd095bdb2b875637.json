@@ -1,0 +1,107 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43003",
+  "collected_at": "2026-11-04T09:07:08.032724+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43003",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43003/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43003/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43003/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43003",
+    "id": 6181319277,
+    "node_id": "I_kwDOC4Q8Qs8AAAABcG9ybQ",
+    "number": 43003,
+    "title": "Top navigation tabs (Workflows / Agents / Credentials...) jitter in Safari, fine in Edge(Chrome) (2.46.x)",
+    "user": {
+      "login": "jinside",
+      "id": 51689040,
+      "node_id": "MDQ6VXNlcjUxNjg5MDQw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/51689040?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/jinside",
+      "html_url": "https://github.com/jinside",
+      "followers_url": "https://api.github.com/users/jinside/followers",
+      "following_url": "https://api.github.com/users/jinside/following{/other_user}",
+      "gists_url": "https://api.github.com/users/jinside/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/jinside/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/jinside/subscriptions",
+      "organizations_url": "https://api.github.com/users/jinside/orgs",
+      "repos_url": "https://api.github.com/users/jinside/repos",
+      "events_url": "https://api.github.com/users/jinside/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/jinside/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-11-03T11:07:08Z",
+    "updated_at": "2026-11-03T11:15:30Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nThe top navigation tabs on the Overview page (Workflows / Agents (Preview) / Credentials / Executions / Variables / Data tables) jitter (shake horizontally) in Safari on macOS.\nalso reproduces in a private window\n\n- Happens at 100% browser zoom.\n- At other zoom levels it usually does not happen, but the tab bar can still break while the window is being resized to a narrower width.\n- Reproduces on two different Macs (Mac mini M4 and MacBook Air 15\" M5) with Safari 26.5.\n- Does NOT happen on Chrome (macOS, same window size) or on iPad Safari (same instance).\n- The \"Show scroll bars\" macOS setting makes no difference.\n\nIt looks like the tab bar keeps re-evaluating its overflow/truncation state near a width threshold. I suspect it may be related to the tab overflow / Preview badge layout change (DS-681, PR #41567, merged Oct 21, 2026), since it is in the same area, but I have not verified this in the code.\n\nA screen recording is attached below.\nhttps://github.com/user-attachments/assets/622525ec-7866-4b5e-980d-97c329e33b3f\n\n\n\n### To Reproduce\n\n1. Open n8n 2.46.4 in Safari 26.5 on macOS.\n2. Go to the Overview page (the page with the Workflows / Agents / Credentials / Executions / Variables / Data tables tabs).\n3. Keep browser zoom at 100% with a normal window width: the tab bar jitters.\n4. At a non-100% zoom, drag the window edge to make it narrower: at some widths the tab bar jitters or breaks.\n5. Open the same page in Chrome (same window size) or on iPad Safari: no jitter.\n\n### Expected behavior\n\nThe tab bar stays stable at any window width and zoom level, as it does in Chrome and on iPad Safari.\n\n### Debug Info\n\n### Debug Info\n\n#### core\n\n- n8nVersion: 2.46.4\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.12.1\n- nodeEnv: production\n- database: postgres\n- executionMode: scaling (single-main)\n- concurrency: 20\n- license: enterprise (production)\n\n#### storage\n\n- success: none\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n#### pruning\n\n- enabled: true\n- maxAge: 48 hours\n- maxCount: 12000 executions\n\n#### client\n\n- userAgent: mozilla/5.0 (macintosh; intel mac os x 10_15_7) applewebkit/605.1.15 (khtml, like gecko) version/26.5 safari/605.1.15\n- isTouchDevice: false\n\n#### security\n\n- secureCookie: false\n\n#### cluster\n\n- instanceCount: 2\n- versions: 2.46.4\n- instances:\n  - instanceKey: , hostId: worker-d2b9e820b005, instanceType: worker, instanceRole: unset, version: 2.46.4\n  - instanceKey: , hostId: main-153f193d6ad3, instanceType: main, instanceRole: leader, version: 2.46.4\n- checks:\n  - check: hostid-clash, status: succeeded, warnings: -\n  - check: lifecycle, status: succeeded, warnings: -\n  - check: split-brain, status: succeeded, warnings: -\n  - check: version-mismatch, status: succeeded, warnings: -\n\nGenerated at: 2026-11-03T10:44:11.097Z\n\n\n### Operating System\n\nmacOS 26.5.1\n\n### n8n Version\n\n2.46.4\n\n### Node.js Version\n\n26.12.1\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nqueue\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43003/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43003/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @jinside,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9698\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9698](https://linear.app/n8n/issue/GHC-9698)",
+      "at": "2026-11-03T11:07:16Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43003#issuecomment-6602188400"
+    },
+    {
+      "author": "jinside",
+      "text": "This looks like a regression: I did not notice it on 2.44.7. I believe it started with the 2.45.x line, which included a tab overflow / Preview badge layout change (DS-681, PR #41567), and it is still present in 2.46.4.",
+      "at": "2026-11-03T11:15:30Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43003#issuecomment-6602367337"
+    }
+  ],
+  "comments_complete": true
+}

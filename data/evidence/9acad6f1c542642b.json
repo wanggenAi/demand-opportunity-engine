@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43012",
+  "collected_at": "2026-11-04T09:07:08.032724+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43012",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43012/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43012/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43012/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43012",
+    "id": 6187217598,
+    "node_id": "I_kwDOC4Q8Qs8AAAABcMlyvg",
+    "number": 43012,
+    "title": "AI confirmation cards erase draft messages",
+    "user": {
+      "login": "sjrothfuss",
+      "id": 108840392,
+      "node_id": "U_kgDOBnzFyA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/108840392?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/sjrothfuss",
+      "html_url": "https://github.com/sjrothfuss",
+      "followers_url": "https://api.github.com/users/sjrothfuss/followers",
+      "following_url": "https://api.github.com/users/sjrothfuss/following{/other_user}",
+      "gists_url": "https://api.github.com/users/sjrothfuss/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/sjrothfuss/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/sjrothfuss/subscriptions",
+      "organizations_url": "https://api.github.com/users/sjrothfuss/orgs",
+      "repos_url": "https://api.github.com/users/sjrothfuss/repos",
+      "events_url": "https://api.github.com/users/sjrothfuss/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/sjrothfuss/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-03T16:53:31Z",
+    "updated_at": "2026-11-03T16:53:46Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "\n<!-- Please follow the template below. Skip the questions that are not relevant to you. -->\n\n## Describe the problem/error/question\nWhen chatting with the AI Assistant about a workflow, whenever a confirmation card appears (i.e. “Allow access to this website?”) any text drafted in the text box is deleted. This is annoying because I may be typing a long instruction while the Assistant is working and then an unexpected confirmation appears and my previous work is gone.\n\n## What is the error message (if any)?\nNone\n\n## Debug info\n\n### core\n\n- n8nVersion: 2.45.5\n- platform: docker (cloud)\n- nodeJsVersion: 26.12.1\n- nodeEnv: production\n- database: sqlite\n- executionMode: regular\n- concurrency: 5\n- license: enterprise (sandbox)\n\n### storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n### pruning\n\n- enabled: true\n- maxAge: 168 hours\n- maxCount: 2500 executions\n\n### client\n\n- userAgent: mozilla/5.0 (macintosh; intel mac os x 10_15_7) applewebkit/605.1.15 (khtml, like gecko) version/27.0.1 safari/605.1.15\n- isTouchDevice: false\n\nGenerated at: 2026-11-03T16:42:19.606Z",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43012/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43012/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @sjrothfuss,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9700\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9700](https://linear.app/n8n/issue/GHC-9700)",
+      "at": "2026-11-03T16:53:44Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43012#issuecomment-6610139640"
+    }
+  ],
+  "comments_complete": true
+}
