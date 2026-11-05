@@ -1,0 +1,119 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43048",
+  "collected_at": "2026-11-05T09:26:35.818313+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43048",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43048/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43048/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43048/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43048",
+    "id": 6210454865,
+    "node_id": "I_kwDOC4Q8Qs8AAAABciwFUQ",
+    "number": 43048,
+    "title": "Users cannot auth to n8n MCP",
+    "user": {
+      "login": "ryan-colley-tatari",
+      "id": 265387446,
+      "node_id": "U_kgDOD9F9tg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/265387446?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/ryan-colley-tatari",
+      "html_url": "https://github.com/ryan-colley-tatari",
+      "followers_url": "https://api.github.com/users/ryan-colley-tatari/followers",
+      "following_url": "https://api.github.com/users/ryan-colley-tatari/following{/other_user}",
+      "gists_url": "https://api.github.com/users/ryan-colley-tatari/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/ryan-colley-tatari/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/ryan-colley-tatari/subscriptions",
+      "organizations_url": "https://api.github.com/users/ryan-colley-tatari/orgs",
+      "repos_url": "https://api.github.com/users/ryan-colley-tatari/repos",
+      "events_url": "https://api.github.com/users/ryan-colley-tatari/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/ryan-colley-tatari/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 4,
+    "created_at": "2026-11-04T20:06:24Z",
+    "updated_at": "2026-11-05T08:05:55Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "\n<!-- Please follow the template below. Skip the questions that are not relevant to you. -->\n\n## Describe the problem/error/question\nAll of our users have been forced to reconnect their Claude n8n MCP connections, but all of them now fail and nobody can login.\n\n## What is the error message (if any)?\n\n<img width=\"1688\" height=\"1365\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/34abf64e-f8c5-4292-926d-c7fab895a340\" />\n\n## Please share your workflow/screenshots/recording\n\n```\n(Select the nodes on your canvas and use the keyboard shortcuts CMD+C/CTRL+C and CMD+V/CTRL+V to copy and paste the workflow.)\n⚠️ WARNING ⚠️ If you have sensitive data in your workflow (like API keys), please remove it before sharing.\n```\n\n\n## Share the output returned by the last node\n<!-- If you need help with data transformations, please also share your expected output. -->\n\n\n## Debug info\n\n### core\n\n- n8nVersion: 2.34.6\n- platform: docker (self-hosted)\n- nodeJsVersion: 24.18.0\n- nodeEnv: production\n- database: postgres\n- executionMode: regular\n- concurrency: -1\n- license: enterprise (production)\n\n### storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n### pruning\n\n- enabled: true\n- maxAge: 336 hours\n- maxCount: 10000 executions\n\n### client\n\n- userAgent: mozilla/5.0 (macintosh; intel mac os x 10_15_7) applewebkit/605.1.15 (khtml, like gecko) version/27.2 safari/605.1.15\n- isTouchDevice: false\n\nGenerated at: 2026-11-04T20:04:55.504Z",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43048/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43048/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @ryan-colley-tatari,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9707\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9707](https://linear.app/n8n/issue/GHC-9707)",
+      "at": "2026-11-04T20:06:43Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43048#issuecomment-6640860647"
+    },
+    {
+      "author": "donleco2474",
+      "text": "OAuth authentication failures on self-hosted MCP integrations typically stem from a mismatch in the callback redirect URI or reverse proxy headers dropping the HTTPS scheme behind Docker. Checking your container environment variables for WEBHOOK_URL alignment usually resolves the handshake breakdown. Let me know what your reverse proxy logs show during the login attempt and I can outline the exact header configuration right here.",
+      "at": "2026-11-04T21:33:35Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43048#issuecomment-6642671759"
+    },
+    {
+      "author": "ryan-colley-tatari",
+      "text": "Sorry, can you dumb that down for me a bit? We are not \"self hosting\" and\r\nthere are no real settings/options on our MCP setup in Claude\r\nEnterprise, so I am not toally clear on what you are asking us to check?\r\n\r\n\r\n[image: Screenshot 2026-11-04 at 2.08.25 PM.png]\r\n\r\nOn Wed, Nov 4, 2026 at 1:33 PM donleco2474 ***@***.***> wrote:\r\n\r\n> *donleco2474* left a comment (n8n-io/n8n#43048)\r\n> <https://github.com/n8n-io/n8n/issues/43048#issuecomment-6642671759>\r\n>\r\n> OAuth authentication failures on self-hosted MCP integrations typically\r\n> stem from a mismatch in the callback redirect URI or reverse proxy headers\r\n> dropping the HTTPS scheme behind Docker. Checking your container\r\n> environment variables for WEBHOOK_URL alignment usually resolves the\r\n> handshake breakdown. Let me know what your reverse proxy logs show during\r\n> the login attempt and I can outline the exact header configuration right\r\n> here.\r\n>\r\n> —\r\n> Reply to this email directly, view it on GitHub\r\n> <https://github.com/n8n-io/n8n/issues/43048?email_source=notifications&email_token=B7IX3NSIN3B7LZGXQ4JE7A35XOOENA5CNFSNUABFM5UWIORPF5TWS5BNNB2WEL2JONZXKZKDN5WW2ZLOOQXTMNRUGI3DOMJXGU42M4TFMFZW63VHNVSW45DJN5XKKZLWMVXHJLDGN5XXIZLSL5RWY2LDNM#issuecomment-6642671759>,\r\n> or unsubscribe\r\n> <https://github.com/notifications/unsubscribe-auth/B7IX3NSGPRYOSSKPT2BBJX35XOOENAVCNFSNUABFKJSXA33TNF2G64TZHMYTSMZSGE2TKNJUHNEXG43VMU5TMMRRGA2DKNBYGY22C5QC>\r\n> .\r\n> Triage notifications, keep track of coding agent tasks and review pull\r\n> requests on the go with GitHub Mobile for iOS\r\n> <https://github.com/notifications/mobile/ios/B7IX3NXXSORMZUFTZLM7XAD5XOOENA5CNFSNUABFM5UWIORPF5TWS5BNNB2WEL2JONZXKZKDN5WW2ZLOOQXTMNRUGI3DOMJXGU42M4TFMFZW63VHNVSW45DJN5XKKZLWMVXHJKTGN5XXIZLSL5UW64Y>\r\n> and Android\r\n> <https://github.com/notifications/mobile/android/B7IX3NXXVEKLOJRMXGAFXND5XOOENA5CNFSNUABFM5UWIORPF5TWS5BNNB2WEL2JONZXKZKDN5WW2ZLOOQXTMNRUGI3DOMJXGU42M4TFMFZW63VHNVSW45DJN5XKKZLWMVXHJLTGN5XXIZLSL5QW4ZDSN5UWI>.\r\n> Download it today!\r\n> You are receiving this because you were mentioned.Message ID:\r\n> ***@***.***>\r\n>\r\n\r\n\r\n-- \r\n\r\n[image: Photo]\r\n\r\nRyan Colley\r\n\r\nSenior Manager, Information Technology,\r\n\r\ntatari.tv\r\n<https://tatari.tv/?utm_source=WiseStamp&utm_medium=email&utm_campaign=signature>\r\n\r\nE\r\n\r\n***@***.***\r\n [image: __tpx__]\r\n",
+      "at": "2026-11-04T22:09:12Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43048#issuecomment-6643387143"
+    },
+    {
+      "author": "donleco2474",
+      "text": "Got it, that clarifies things completely! Ignore all the Docker/proxy talk—since you’re using Claude Enterprise and managed cloud setups, you don’t need to touch any servers or terminal configs.\nThe issue usually comes down to **OAuth callback permission & workspace mismatch** between Claude Enterprise and n8n. Here is the simple 3-step check:\n1. **Check the Redirect / Callback URL in your integration app:**\n   When connecting n8n and Claude, both sides need an authorized Redirect URI. In your n8n OAuth credential screen, look for the field called **\"OAuth Redirect URL\"** (or Callback URL). Copy that exact link.\n   \n2. **Authorize the URL inside your Claude Enterprise Admin Console:**\n   Head into your Claude Enterprise Settings → Integrations/MCP → and make sure that exact URL from Step 1 is pasted into the Allowed Redirects list. If even one trailing slash `/` or `https` is different, the connection fails silently.\n3. **Workspace Admin Approval:**\n   In Claude Enterprise, integrations often require workspace-level authorization. Check if the OAuth prompt shows an \"Awaiting Admin Approval\" or \"Organization Permission\" banner when you try to authenticate.\nIf you can share what the error banner or message says in that screenshot (or what happens when you click \"Connect\"), I can pinpoint the exact button to toggle for you. Happy to help you get this unblocked!\n",
+      "at": "2026-11-05T08:05:55Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43048#issuecomment-6652966849"
+    }
+  ],
+  "comments_complete": true
+}

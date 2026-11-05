@@ -1,0 +1,99 @@
+{
+  "source_api_url": "https://api.github.com/repos/georgemunganga/erp/issues/190",
+  "collected_at": "2026-11-05T09:26:35.818313+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/georgemunganga/erp/issues/190",
+    "repository_url": "https://api.github.com/repos/georgemunganga/erp",
+    "labels_url": "https://api.github.com/repos/georgemunganga/erp/issues/190/labels{/name}",
+    "comments_url": "https://api.github.com/repos/georgemunganga/erp/issues/190/comments",
+    "events_url": "https://api.github.com/repos/georgemunganga/erp/issues/190/events",
+    "html_url": "https://github.com/georgemunganga/erp/issues/190",
+    "id": 6201161419,
+    "node_id": "I_kwDOT3MSds8AAAABcZ42yw",
+    "number": 190,
+    "title": "Minimum owner launch: configure authority and verify basic purchasing",
+    "user": {
+      "login": "georgemunganga",
+      "id": 50656350,
+      "node_id": "MDQ6VXNlcjUwNjU2MzUw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/50656350?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/georgemunganga",
+      "html_url": "https://github.com/georgemunganga",
+      "followers_url": "https://api.github.com/users/georgemunganga/followers",
+      "following_url": "https://api.github.com/users/georgemunganga/following{/other_user}",
+      "gists_url": "https://api.github.com/users/georgemunganga/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/georgemunganga/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/georgemunganga/subscriptions",
+      "organizations_url": "https://api.github.com/users/georgemunganga/orgs",
+      "repos_url": "https://api.github.com/users/georgemunganga/repos",
+      "events_url": "https://api.github.com/users/georgemunganga/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/georgemunganga/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 3,
+    "created_at": "2026-11-04T10:44:25Z",
+    "updated_at": "2026-11-04T18:10:44Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "Parent #145. Prioritise this basic operational launch before advanced B1c/tender work. Updated UI106 is deployed; current backend c93 and processing flags are unchanged. Release/gaps record: docs/procurement/gap-closure/OWNER-PILOT-RELEASE-AND-LAUNCH-GAPS-20261104.md.\n\nVerified:45 public files,11 HTTP routes,13 anonymous Playwright renders; no signed-in purchasing UAT claim. Fresh production read-only counts:0 operational policy versions,0 Published operational policies,0 spending-authority grants. Request approvals/direct orders/manual payments remain off. The root filesystem emergency was mitigated, but only approximately346MiB free remains.\n\nMinimum operational acceptance:\n- [ ] Confirm real Core users, per-module permissions and branch scopes using existing Amizo company/default currency; no employee-link prerequisite.\n- [ ] Verify supplier/item/request create, edit, reload and cancel/retire using signed-in real API flows and native persistence, including wrong-branch denial.\n- [ ] Obtain actual named approvers, approval/spending limits, sourcing method and independent manual/external funding-check policy; configure using existing contracts, never invented defaults.\n- [ ] Validate production finite-role readiness and activate only the accepted basic workflow with the real scoped business configuration.\n- [ ] Run request → independent approval → linked PO → approval/issue → partial/full receipt → invoice entry in the existing UI; verify versions, audit, original-command recovery, duplicate/conflict and wrong-user paths.\n- [ ] Verify real document transport/scan/access for any attachment-required step; otherwise explicitly restrict the pilot scope.\n- [ ] Restore durable disk headroom and confirm backup/recovery/support ownership.\n- [ ] Record owner acceptance and permitted pilot scope before operational handover; do not mark whole-module145 complete.\n\nFinance/AP and bank execution remain external initially. Governed manual funding/payment reporting requires its actual approved policy and separate acceptance; no fake Finance ledger/payment facts. Portal, formal bids/evaluation/award, OCR, recurring automation, blanket agreements and full contract lifecycle are deferred capabilities, not completed ones. Keep Root/UI/backend source ownership coordinated and retain imported presentation/shared ERP components.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/georgemunganga/erp/issues/190/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/georgemunganga/erp/issues/190/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "georgemunganga",
+      "text": "Verification found implementation gaps, not merely missing business setup. The reusable Core engine passed ordered supervisor/executive and self-approval tests, but there is no Core module/document workflow configuration surface. Purchase Request rules do not bind named executive/supervisor roles or requester-role routing; BudgetOwner is offered but unresolved. Accounts approval exists for invoice-linked manual payments; general PO/request advances need their own governed source.\n\nBlocking implementation is now tracked in #192. Do not interpret zero policies/authority grants as the only remaining issue or activate purchasing to bypass the missing bindings. Audit/probe PR191 is merged;71 selected backend tests,32 UI checks and10 targeted in-memory checks passed and confirmed the limits. No production configuration or business record changed.\n\nFull verification: https://github.com/georgemunganga/erp/blob/main/docs/procurement/gap-closure/COMPANY-APPROVAL-WORKFLOW-VERIFICATION-20261104.md\n",
+      "at": "2026-11-04T13:19:03Z",
+      "url": "https://github.com/georgemunganga/erp/issues/190#issuecomment-6631682006"
+    },
+    {
+      "author": "georgemunganga",
+      "text": "M1 and M2 are implemented, merged and deployed: ERP PR193/194; preserved Procurement UI PR107; release/UAT guide in PR195.\n\nActual production API is the c93 backport, image3da35edf636057662ef30918399397e4a82fc928878fe23ec471a7f08b20293f, retaining239 tables and prior business flags. Core Settings → Workflows and Procurement Buying rules now support explicit Core users/roles, requester-role routing and branch/department conditions without requiring employees. No second workflow engine or UI replacement.\n\nActual checks: main2,033 Procurement +49 Host; release backport2,028 +49; UI984 unit tests; TypeScript/both production builds;21 unique mocked browser cases;266 exact deployed files and17 deployed anonymous Chromium pages. Earlier failed cutover check was rolled back, then bounded retry and full public verification passed. No company UAT, hosted CI pass or financial activation claim.\n\nRemaining acceptance: actual company users/roles/finite limits and policy/funding setup; signed-in supervisor → executive and independent Accounts acceptance; general PO-backed advance-payment implementation. Wider issues190/145 stay open.\n\nRelease evidence: docs/procurement/gap-closure/CORE-REQUEST-ROUTING-PRODUCTION-20261104.md. Setup/UAT: docs/procurement/operations/COMPANY-APPROVAL-SETUP-AND-UAT.md. MANUS_HANDOFF.md publishes the next bounded M3 milestone against merged prerequisites. Temporary verification services retired; production/publisher/rollback containers, database evidence and retained publications preserved.\n",
+      "at": "2026-11-04T16:26:55Z",
+      "url": "https://github.com/georgemunganga/erp/issues/190#issuecomment-6635976199"
+    },
+    {
+      "author": "georgemunganga",
+      "text": "PR198 is merged with current production and bounded owner acceptance evidence: real vendor create/edit/reload/withdraw; item create/edit and native inactive-state proof; cumulative request create/edit/reload/UI withdrawal, exact four-decimal values, workerless Core attribution, zero allocations and different-selected-permitted-branch404. Actual Core workflow directory returned five registrations; company-wide Buying rules and unsaved editor lookups succeeded with zero writes. UI108/109 are deployed; API readiness is healthy and existing financial flags are unchanged.\n\nThis does not complete staff scope/security matrix, the real supervisor/executive/Accounts chain, company policy publication, PO advances or full-module UAT. Script failures/cleanup and mocked-vs-native limitations are retained in docs/procurement/gap-closure/OWNER-CRUD-AND-COMPANY-CONTEXT-20261104.md; the remaining milestone register is published. No business sign-off or whole-module completion is claimed.\n",
+      "at": "2026-11-04T18:10:44Z",
+      "url": "https://github.com/georgemunganga/erp/issues/190#issuecomment-6638306457"
+    }
+  ],
+  "comments_complete": true
+}

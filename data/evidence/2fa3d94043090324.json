@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43041",
+  "collected_at": "2026-11-05T09:26:35.818313+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43041",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43041/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43041/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43041/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43041",
+    "id": 6203353666,
+    "node_id": "I_kwDOC4Q8Qs8AAAABcb-qQg",
+    "number": 43041,
+    "title": "Assistant: OpenAI-compatible models (e.g. z-ai/glm-5.3-flash via openRouter) drop tool-call string parameters and get stuck in a cryptic \"Invalid suspend payload\" loop in the research tool",
+    "user": {
+      "login": "Mike-FUT",
+      "id": 61519363,
+      "node_id": "MDQ6VXNlcjYxNTE5MzYz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/61519363?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Mike-FUT",
+      "html_url": "https://github.com/Mike-FUT",
+      "followers_url": "https://api.github.com/users/Mike-FUT/followers",
+      "following_url": "https://api.github.com/users/Mike-FUT/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Mike-FUT/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Mike-FUT/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Mike-FUT/subscriptions",
+      "organizations_url": "https://api.github.com/users/Mike-FUT/orgs",
+      "repos_url": "https://api.github.com/users/Mike-FUT/repos",
+      "events_url": "https://api.github.com/users/Mike-FUT/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Mike-FUT/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-04T13:07:44Z",
+    "updated_at": "2026-11-04T13:16:36Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nFor models that do not reliably fill *optional* tool parameters, the Assistant's\n`research` tool becomes unusable and fails with a cryptic internal error. Root\ncause is a combination of:\n\n1. n8n's schema sanitizer (`@n8n/instance-ai` → `sanitize-mcp-schemas.ts`) flattens\n   the `research` tool's `z.discriminatedUnion('action', [webSearchAction, fetchUrlAction])`\n   into a single object in which **only `action` is required** — `query` and `url`\n   become optional (described as `For \"web-search\": …` / `For \"fetch-url\": …`).\n2. Some OpenAI-compatible models (observed: z-ai/glm-5.3-flash, a small \"flash\" variant)\n   stochastically omit optional string parameters in large-context requests\n   (assistant system prompt ~29 KB, 47 tools). Which parameter is dropped varies per\n   run; once a bad call enters the conversation history, the pattern persists for the\n   rest of the run.\n3. When such a call then hits the `require_approval` gate, `checkWebSearchAccess()`\n   (`domain-gating.ts`) builds the suspend payload `webSearch: { query }` with\n   `query === undefined`, and `@n8n/agents` `tool-call-runner.ts` (~line 254) validates\n   it against `domainGatingSuspendSchema` (`webSearchMetaSchema` requires `query` as\n   string) and throws:\n   ```\n   Error: Invalid suspend payload: [{ \"code\": \"invalid_type\", \"expected\": \"string\",\n   \"received\": \"undefined\", \"path\": [\"webSearch\",\"query\"], \"message\": \"Required\" }]\n   ```\n   The model cannot map this internal error to its own call, retries identically and\n   loops. The approval dialog never appears, because the run dies before suspension.\n\nEmpirical law observed across three full assistant sessions + controlled tests\nagainst the exact wire schema (captured from the actual OpenRouter request):\n\n- Required string parameters (`workspace_execute_command.command`,\n  `test_credential.credentialId`, workflow `workflowId`, `search_tools.query`, …)\n  always transmitted correctly, even mid-failure.\n- Only parameters that are *optional* in merged-union schemas\n  (`research.query/url`, `n8n-docs.query`) were dropped — and not always the same ones.\n- Sending the exact production schema for `research` to `z-ai/glm-5.3-flash` in a\n  minimal single-tool request works fine — the failure requires the full harness\n  context (large system prompt + many tools).\n- Claude models via the Anthropic path fill described optional parameters reliably,\n  which is why they are unaffected.\n\n### Why is the fix important\n\nGLM 5.3 Flash is extremely powerful. And cheap. Several hours of debugging and testing this particula issue\nwith GLM 5.3 Flash and using it as n8n Assistant generated total cost about the same as one single hello\nworld test (one web search and one web fetch via n8n Assistant) using Claude Opus 5.5 (both via Openrouter).\n\n\n### To Reproduce\n\n1. Configure the openRouter provider, allow `z-ai/glm-5.3-flash`, select it as Assistant model.\n2. Ask the Assistant: \"please make a web search and a web fetch to confirm I set up everything correctly\".\n3. Observe the research tool failing repeatedly with `Invalid suspend payload: … webSearch.query Required`\n   (and `TypeError: Invalid URL` for fetch-url), no approval dialog, several identical retries.\n\n\n\n### Expected behavior\n\nAll modern tool capable models should be able to use the research tools w/o failing.\n\n### Troubleshooting\n\n## Observed\n\n- `n8n-docs` degrades silently the same way (`query` arrives as `\"\"`, zero matches) because its merged schema also marks `query` optional — no hard failure there, but wasted turns.\n- With two local patches (below), the same model completes web search and fetch\n  through the normal approval flow.\n\n## Workaround (verified working)\n\nPatched `dist/tools/research.tool.js` (mounted over via compose):\n\n1. Guard clauses returning a descriptive tool error when `query`/`url` are missing\n   (model self-corrects on retry).\n2. Replaced the sanitized union with a flat schema in which `query` and `url` are\n   **required** (plain `z.string()`, so cross-action empty strings parse fine and are\n   ignored by the respective handler). With required fields, the model fills them\n   reliably — matching its perfect record with required params of other tools.\n\n## Suggested upstream fixes\n\n1. **Descriptive input errors**: when a tool call is missing a field needed by the\n   suspend payload, return a tool error that names the missing parameter (and the\n   action), instead of failing the suspend-payload validation with a zod dump.\n2. **Schema shape**: consider marking variant-essential string fields required in\n   merged discriminated-union schemas (e.g. only for 2-variant unions like research,\n   to avoid over-constraining tools such as n8n-docs which legitimately have many\n   optional lookup fields) — or expose a per-provider quirk for this\n   (`provider-quirks.ts` already exists as the hook).\n3. Optionally: sanity-check/normalize `arguments` from OpenAI-compatible providers\n   so a dropped parameter surfaces as a normal input-validation error instead of an\n   internal crash.\n\n\n### Debug Info\n\n# Debug info\n\n## core\n\n- n8nVersion: 2.46.4\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.12.1\n- nodeEnv: production\n- database: postgres\n- executionMode: regular\n- concurrency: -1\n- license: enterprise (production)\n- consumerId: 6bffafe3-44d8-446d-87ef-b5fdcccddc1b\n\n## storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n## pruning\n\n- enabled: true\n- maxAge: 336 hours\n- maxCount: 10000 executions\n\n## client\n\n- userAgent: mozilla/5.0 (windows nt 10.0; win64; x64; rv:158.0) gecko/20100101 firefox/158.0\n- isTouchDevice: false\n\n## cluster\n\n- instanceCount: 1\n- versions: 2.46.4\n- instances:\n  - instanceKey: 79f08cc8-6a34-47a3-b79f-5a2e30575b52, hostId: main-ae34c951cea2, instanceType: main, instanceRole: leader, version: 2.46.4\n- checks:\n  - check: hostid-clash, status: succeeded, warnings: -\n  - check: lifecycle, status: succeeded, warnings: -\n  - check: split-brain, status: succeeded, warnings: -\n  - check: version-mismatch, status: succeeded, warnings: -\n\nGenerated at: 2026-11-04T13:03:49.853Z\n\n### Operating System\n\nUbuntu Server 26.04\n\n### n8n Version\n\n2.46.4\n\n### Node.js Version\n\n26.12.1\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted\n\n### Other\n- If you want extra logs or traces please let me know.\n- I can copy the patched files (confirmed working with GLM 5.3 Flash, Claude Opus 5.5, Claude Haiku 5.5) here, if needed.",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43041/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43041/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @Mike-FUT,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9706\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9706](https://linear.app/n8n/issue/GHC-9706)",
+      "at": "2026-11-04T13:07:52Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43041#issuecomment-6631440651"
+    }
+  ],
+  "comments_complete": true
+}

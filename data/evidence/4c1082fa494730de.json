@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43052",
+  "collected_at": "2026-11-05T09:26:35.818313+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43052",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43052/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43052/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43052/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43052",
+    "id": 6216312585,
+    "node_id": "I_kwDOC4Q8Qs8AAAABcoVnCQ",
+    "number": 43052,
+    "title": "parseRegexLiteral() rejects valid d and v regex flags and silently returns the whole literal as the pattern",
+    "user": {
+      "login": "indexGin",
+      "id": 166748424,
+      "node_id": "U_kgDOCfBhCA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/166748424?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/indexGin",
+      "html_url": "https://github.com/indexGin",
+      "followers_url": "https://api.github.com/users/indexGin/followers",
+      "following_url": "https://api.github.com/users/indexGin/following{/other_user}",
+      "gists_url": "https://api.github.com/users/indexGin/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/indexGin/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/indexGin/subscriptions",
+      "organizations_url": "https://api.github.com/users/indexGin/orgs",
+      "repos_url": "https://api.github.com/users/indexGin/repos",
+      "events_url": "https://api.github.com/users/indexGin/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/indexGin/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-05T03:43:13Z",
+    "updated_at": "2026-11-05T03:43:24Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\r\n\r\n`parseRegexLiteral()` only recognises a slash-delimited regex literal when all trailing flags come from the allowlist `[gimusy]*`. That is the ES2018 set; `d` (hasIndices, ES2022) and `v` (unicodeSets, ES2024) are missing.\r\n\r\nWhen either flag is present the literal is not recognised at all, and the function falls into its \"not a literal\" branch — returning the **entire input**, slashes and flags included, as the pattern source. The user gets a silently different regex with no error anywhere.\r\n\r\n### To Reproduce\r\n\r\n1. In any field that accepts a regex literal, enter `/foo/d`.\r\n2. `parseRegexLiteral('/foo/d')` returns `{ source: '/foo/d', flags: '' }`, i.e. it matches the literal text `/foo/d` rather than `foo`.\r\n\r\nExpected: `{ source: 'foo', flags: 'd' }`.\r\n\r\nThe same happens for `/foo/v` and combined flags such as `/foo/gidv`.\r\n\r\n### Why this matters\r\n\r\nThe repo requires Node >= 24 and V8 has supported `d` since Node 16 and `v` since Node 20, so nothing in the runtime prevents these flags. `v` is the modern replacement for the legacy `u` flag and is what makes set notation like `[\\p{L}\\p{N}]--\\p{White_Space}` usable.\r\n\r\nThe same stale `[gimsuy]` character class also appears in `packages/@n8n/workflow-sdk/src/workflow-builder/string-utils.ts`, so this looks like drift rather than a deliberate restriction.\r\n\r\n### Related\r\n\r\nFix proposed in #43021, with regression tests for `d`, `v`, combined flags and `ignoreCase` on top of `v`.\r\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43052/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43052/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @indexGin,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9709\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9709](https://linear.app/n8n/issue/GHC-9709)",
+      "at": "2026-11-05T03:43:22Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43052#issuecomment-6649082875"
+    }
+  ],
+  "comments_complete": true
+}

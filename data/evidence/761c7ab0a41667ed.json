@@ -1,0 +1,107 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43058",
+  "collected_at": "2026-11-05T09:26:35.818313+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43058",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43058/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43058/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43058/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43058",
+    "id": 6218396624,
+    "node_id": "I_kwDOC4Q8Qs8AAAABcqUz0A",
+    "number": 43058,
+    "title": "tryToParseObject() accepts the JSON literal null as a valid object",
+    "user": {
+      "login": "indexGin",
+      "id": 166748424,
+      "node_id": "U_kgDOCfBhCA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/166748424?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/indexGin",
+      "html_url": "https://github.com/indexGin",
+      "followers_url": "https://api.github.com/users/indexGin/followers",
+      "following_url": "https://api.github.com/users/indexGin/following{/other_user}",
+      "gists_url": "https://api.github.com/users/indexGin/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/indexGin/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/indexGin/subscriptions",
+      "organizations_url": "https://api.github.com/users/indexGin/orgs",
+      "repos_url": "https://api.github.com/users/indexGin/repos",
+      "events_url": "https://api.github.com/users/indexGin/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/indexGin/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-11-05T06:57:17Z",
+    "updated_at": "2026-11-05T09:05:53Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Describe the bug\n\n`tryToParseObject()` in `packages/workflow/src/type-validation.ts` is meant to return an object or throw `UserError('Value is not a valid object')`. It parses the input with `jsonParse(..., { acceptJSObject: true })` and then guards with:\n\n```ts\nconst o = jsonParse<object>(String(value), { acceptJSObject: true });\n\nif (typeof o !== 'object' || Array.isArray(o)) {\n\tthrow new UserError('Value is not a valid object', { extra: { value } });\n}\nreturn o;\n```\n\n`typeof null` is `'object'` and `Array.isArray(null)` is `false`, so the JSON literal `null` (and the string `'null'`) **passes the guard and is returned as `null`** — a value that is not an object, despite the function's `object` return type. `validateFieldType('field', 'null', 'object')` therefore reports `{ valid: true, newValue: null }`.\n\n### To Reproduce\n\n```ts\nimport { tryToParseObject, validateFieldType } from 'n8n-workflow';\n\ntryToParseObject('null'); // returns null instead of throwing\nvalidateFieldType('field', 'null', 'object'); // { valid: true, newValue: null }\n```\n\nOther JSON primitives are handled correctly: `'true'`, `'42'` and `'\"str\"'` are rejected by the `typeof o !== 'object'` guard. Only `null` slips through because of JavaScript's `typeof null === 'object'`.\n\n### Expected behavior\n\nBoth calls should be rejected: `tryToParseObject('null')` should throw, and `validateFieldType` should return `{ valid: false, errorMessage: ... }`, exactly as it already does for other non-object JSON values.\n\n### Impact\n\nA field declared as `object` accepts the literal text `null` as if it were a valid object. Downstream code that treats the validated value as an object (`Object.keys(...)`, property access, spreading) receives `null` and fails later with a TypeError far from the actual validation point, or silently writes `null` into a workflow item. This is reachable from the public `validateFieldType` field-type validation used by form/parameter inputs, not just from direct calls.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43058/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43058/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @indexGin,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9713\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9713](https://linear.app/n8n/issue/GHC-9713)",
+      "at": "2026-11-05T06:57:26Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43058#issuecomment-6651835499"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "The current guard needs an explicit `o === null` check: `typeof null` is `\"object\"`, so the existing `typeof o !== \"object\" || Array.isArray(o)` condition lets the parsed `null` through. Adding `o === null` there rejects both the JSON text `null` and the string value `\"null\"` while preserving object inputs. A regression case for `tryToParseObject(\"null\")` would cover it.",
+      "at": "2026-11-05T09:05:53Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43058#issuecomment-6654041055"
+    }
+  ],
+  "comments_complete": true
+}

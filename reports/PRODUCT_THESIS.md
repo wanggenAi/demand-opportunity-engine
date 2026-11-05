@@ -7,10 +7,10 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## workflow_reliability — UNVALIDATED CLUSTER
 
-- independent_demand_count: 79
+- independent_demand_count: 83
 - payment_evidence_count: 1
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community', 'n8n Community']
-- communities: ['Agenta-AI/agenta', 'Ask/Show HN', 'Commerce operator forum', 'n8n Jobs', 'n8n-io/n8n', 'useagenthq/useagent']
+- communities: ['Agenta-AI/agenta', "Ask HN: What's your current AI agentic setup?", 'Ask/Show HN', 'Commerce operator forum', 'n8n Jobs', 'n8n-io/n8n', 'useagenthq/useagent']
 - repeated_pain: Operators cannot trust workflow execution status; triggers, responses or saved definitions fail.
 - current_alternatives: Vendor bug tracker and native fixes (free), internal engineering, n8n support, freelance automation providers.
 - productization_potential: Standardize reproduction, health checks and recovery runbooks; current category still too broad for one packaged product.
@@ -20,12 +20,12 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://news.ycombinator.com/item?id=50376110
+  - https://github.com/n8n-io/n8n/issues/43059
+  - https://news.ycombinator.com/item?id=50366117
+  - https://github.com/n8n-io/n8n/issues/43041
+  - https://github.com/n8n-io/n8n/issues/43039
   - https://github.com/n8n-io/n8n/issues/43018
-  - https://github.com/n8n-io/n8n/issues/43017
-  - https://github.com/n8n-io/n8n/issues/43002
-  - https://github.com/n8n-io/n8n/issues/42999
-  - https://github.com/n8n-io/n8n/issues/42981
-  - https://news.ycombinator.com/item?id=50345343
 
 ## browser_automation — UNVALIDATED CLUSTER
 
@@ -51,10 +51,10 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## supplier_sourcing — UNVALIDATED CLUSTER
 
-- independent_demand_count: 8
+- independent_demand_count: 9
 - payment_evidence_count: 1
 - platforms: ['GitHub', 'Shopify Community']
-- communities: ['Commerce operator forum', 'n8n-io/n8n', 'zack-hum/coffee-intelligence-v1.1']
+- communities: ['AddisonJPratt/CAD-ADE', 'Commerce operator forum', 'n8n-io/n8n', 'zack-hum/coffee-intelligence-v1.1']
 - repeated_pain: supplier sourcing
 - current_alternatives: Manual research, spreadsheets and existing service providers.
 - productization_potential: Needs a narrower job-to-be-done and payment evidence.
@@ -64,12 +64,12 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://github.com/AddisonJPratt/CAD-ADE/issues/1
   - https://community.shopify.com/t/shopify-va-inventory-listings-product-sourcing-customer-support-email-marketing-seo/707251
   - https://community.shopify.com/t/feature-request-product-specific-customer-tax-exemptions-for-accurate-wholesale-and-retail-checkout/706515
   - https://github.com/n8n-io/n8n/issues/41635
   - https://community.shopify.com/t/how-often-do-you-sync-supplier-stock-with-your-shopify-store/700544
   - https://github.com/zack-hum/coffee-intelligence-v1.1/issues/11
-  - https://community.shopify.com/t/how-do-you-decide-when-to-stop-sourcing-from-one-supplier-and-diversify/607636
 
 ## lead_research — UNVALIDATED CLUSTER
 

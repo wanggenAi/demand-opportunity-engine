@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43057",
+  "collected_at": "2026-11-05T09:26:35.818313+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43057",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43057/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43057/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43057/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43057",
+    "id": 6218395907,
+    "node_id": "I_kwDOC4Q8Qs8AAAABcqUxAw",
+    "number": 43057,
+    "title": "deepCopy clones shared arrays twice and overflows on circular arrays",
+    "user": {
+      "login": "indexGin",
+      "id": 166748424,
+      "node_id": "U_kgDOCfBhCA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/166748424?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/indexGin",
+      "html_url": "https://github.com/indexGin",
+      "followers_url": "https://api.github.com/users/indexGin/followers",
+      "following_url": "https://api.github.com/users/indexGin/following{/other_user}",
+      "gists_url": "https://api.github.com/users/indexGin/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/indexGin/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/indexGin/subscriptions",
+      "organizations_url": "https://api.github.com/users/indexGin/orgs",
+      "repos_url": "https://api.github.com/users/indexGin/repos",
+      "events_url": "https://api.github.com/users/indexGin/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/indexGin/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-05T06:57:13Z",
+    "updated_at": "2026-11-05T06:57:24Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Describe the bug\n\n`deepCopy()` in `packages/workflow/src/utils.ts` registers cloned objects in its `hash` WeakMap before recursing, so repeated references to the same object (and circular object references) are handled correctly. The array branch, however, creates `clone` and recurses **without ever calling `hash.set(source, clone)`**:\n\n```ts\nif (Array.isArray(source)) {\n\tconst clone = [];\n\tconst len = source.length;\n\tfor (let i = 0; i < len; i++) {\n\t\tclone[i] = deepCopy(source[i], hash, path + `[${i}]`);\n\t}\n\treturn clone as T;\n}\n```\n\nAs a consequence:\n\n- an array referenced more than once in the input is cloned into multiple distinct arrays (reference identity is lost);\n- an array that (directly or indirectly) references itself causes unbounded recursion and a `RangeError: Maximum call stack size exceeded`.\n\n### To Reproduce\n\n```ts\nimport { deepCopy } from 'n8n-workflow';\n\nconst shared = [1, 2];\nconst source = { a: shared, b: shared };\nconst copy = deepCopy(source);\nconsole.log(copy.a === copy.b); // false, expected true\n\nconst arr: unknown[] = [];\narr.push(arr);\ndeepCopy(arr); // RangeError: Maximum call stack size exceeded\n```\n\nThe existing test `should avoid max call stack in case of circular deps` only covers circular **objects** (it pushes the root object into an array); it never puts an array itself into the cycle, so the gap is not caught.\n\n### Expected behavior\n\n`deepCopy` should deduplicate array references the same way it does objects: `copy.a === copy.b` should be `true`, and a self-referencing array should return a copy whose element points at the copy instead of overflowing the stack.\n\n### Impact\n\nItem data in n8n is routinely cloned while branching and before node execution. Any payload where the same array is reachable twice (a shared sub-array, or a cycle introduced by a Code node / function output) is silently reshaped into two independent arrays, or crashes the run with a stack overflow. This makes later equality/identity checks and downstream mutations behave differently from the original data.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43057/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43057/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @indexGin,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9712\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9712](https://linear.app/n8n/issue/GHC-9712)",
+      "at": "2026-11-05T06:57:22Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43057#issuecomment-6651834382"
+    }
+  ],
+  "comments_complete": true
+}

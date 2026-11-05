@@ -1,0 +1,129 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43059",
+  "collected_at": "2026-11-05T09:26:35.818313+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43059",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43059/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43059/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43059/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43059",
+    "id": 6218398867,
+    "node_id": "I_kwDOC4Q8Qs8AAAABcqU8kw",
+    "number": 43059,
+    "title": "redactedHeaders() misses consumed auth headers when the name casing differs",
+    "user": {
+      "login": "indexGin",
+      "id": 166748424,
+      "node_id": "U_kgDOCfBhCA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/166748424?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/indexGin",
+      "html_url": "https://github.com/indexGin",
+      "followers_url": "https://api.github.com/users/indexGin/followers",
+      "following_url": "https://api.github.com/users/indexGin/following{/other_user}",
+      "gists_url": "https://api.github.com/users/indexGin/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/indexGin/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/indexGin/subscriptions",
+      "organizations_url": "https://api.github.com/users/indexGin/orgs",
+      "repos_url": "https://api.github.com/users/indexGin/repos",
+      "events_url": "https://api.github.com/users/indexGin/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/indexGin/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 11654110784,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACtqOeQA",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:identity",
+        "name": "team:identity",
+        "color": "ededed",
+        "default": false,
+        "description": null,
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-11-05T06:57:28Z",
+    "updated_at": "2026-11-05T08:05:31Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Describe the bug\n\n`redactedHeaders()` in `packages/workflow/src/auth-redaction.ts` redacts the headers recorded by `recordConsumedAuth()` with a case-sensitive lookup:\n\n```ts\nconst headers = { ...req.headers };\n\nfor (const name of readRecord(req)) {\n\tif (name in headers) headers[name] = REDACTED;\n}\n```\n\nHTTP header names are case-insensitive (RFC 7230 section 3.2), and Node's `IncomingHttpHeaders` keys are always lower-cased. `recordConsumedAuth` is an exported API that stores the names it is given verbatim, so any caller that passes a differently-cased name (for example a header name taken from node configuration such as `X-API-Key` or `Authorization`) will have that name recorded but never matched: the credential stays in the returned headers in clear text. Conversely, a request object whose headers are not lower-cased (e.g. one constructed outside Node's HTTP parser) also fails to match a lower-cased recorded name.\n\n### To Reproduce\n\n```ts\nimport { recordConsumedAuth, redactedHeaders, REDACTED } from 'n8n-workflow';\n\nconst req = { headers: { authorization: 'Bearer secret' } };\nrecordConsumedAuth(req, ['Authorization']);\nredactedHeaders(req);\n// => { authorization: 'Bearer secret' }  (expected: REDACTED)\n```\n\nThe existing tests only ever record lower-cased names against lower-cased header keys, so the mismatch is not covered.\n\n### Expected behavior\n\n`redactedHeaders` should match recorded names against the request headers case-insensitively, so `'Authorization'`, `'AUTHORIZATION'` and `'authorization'` all redact the `authorization` header, while the header key present in the returned object keeps its original casing.\n\n### Impact\n\nWhen a consumed auth header is recorded with different casing than the (lower-cased) incoming header key, `redactedHeaders` returns the secret unredacted. These headers are used for logging and persisted request data, so the credential can leak into execution logs and stored data. The bundled call sites currently lower-case names themselves, but the exported helpers make no such guarantee for custom/community nodes, and the redaction should be correct at the point where it is applied rather than relying on every caller to normalize first.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43059/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43059/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @indexGin,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9714\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9714](https://linear.app/n8n/issue/GHC-9714)",
+      "at": "2026-11-05T06:57:37Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43059#issuecomment-6651838056"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "The implementation confirms the case-sensitive lookup: `recordConsumedAuth()` stores names verbatim, while `redactedHeaders()` checks each recorded name directly with `name in headers`. A minimal fix is to compare normalized lowercase names while assigning `REDACTED` to the original key, so the returned header casing stays unchanged. A regression test should cover `recordConsumedAuth(req, [\"Authorization\"])` against `{ authorization: \"secret\" }` (and the reverse casing if non-Node request objects are supported).",
+      "at": "2026-11-05T08:05:30Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43059#issuecomment-6652959905"
+    }
+  ],
+  "comments_complete": true
+}

@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43039",
+  "collected_at": "2026-11-05T09:26:35.818313+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43039",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43039/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43039/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43039/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43039",
+    "id": 6203097701,
+    "node_id": "I_kwDOC4Q8Qs8AAAABcbvCZQ",
+    "number": 43039,
+    "title": "n8n AI assitant is not capable of editing workflows",
+    "user": {
+      "login": "vporsnevapaleo",
+      "id": 234399578,
+      "node_id": "U_kgDODfinWg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/234399578?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/vporsnevapaleo",
+      "html_url": "https://github.com/vporsnevapaleo",
+      "followers_url": "https://api.github.com/users/vporsnevapaleo/followers",
+      "following_url": "https://api.github.com/users/vporsnevapaleo/following{/other_user}",
+      "gists_url": "https://api.github.com/users/vporsnevapaleo/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/vporsnevapaleo/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/vporsnevapaleo/subscriptions",
+      "organizations_url": "https://api.github.com/users/vporsnevapaleo/orgs",
+      "repos_url": "https://api.github.com/users/vporsnevapaleo/repos",
+      "events_url": "https://api.github.com/users/vporsnevapaleo/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/vporsnevapaleo/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-04T12:53:18Z",
+    "updated_at": "2026-11-04T12:53:36Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "\n<!-- Please follow the template below. Skip the questions that are not relevant to you. -->\n\n## Describe the problem/error/question\n\"n8n AI\nI have taken this out of another workflow, because i need to edit it to be just a one-time workflow to post a protocol from https://app.modjo.ai/call-details/147148 modjo call to https://app.notion.com/p/apaleo/Vesia-JLMW-AC-VESIA-40d04b9ee10b81e59dbac6fee1f04f1b notion page. Just once, then this will be deleted. Replace all calls logic to use the call and notion page from above instead of other's non existing modules.\n\nShow less\n\nThinking\nA one-time, manually triggered workflow that fetches the transcript from Modjo call #147148, uses Claude AI to determine the call type and draft the appropriate protocol, then appends the formatted protocol blocks directly to the specified Notion page — with a confirmation email sent at the end.\nTrigger:\nManually triggered once by clicking \"Execute\" — no schedule or webhook needed\n\nHardcode the two key values — Modjo call ID 147148 and Notion page ID 40d04b9ee10b81e59dbac6fee1f04f1b — so all downstream steps reference them directly instead of pulling from a webhook or other modules.\nFetch the full transcript for call #147148 from the Modjo API.\nCheck the call title to decide whether this is a pre-certification call or a certification call, and route accordingly.\nSend the transcript to Claude AI to draft the appropriate protocol — either the pre-certification format or the certification format — depending on the branch.\nTransform the AI-generated protocol text into the Notion block structure required by the API.\nAppend the formatted protocol blocks to the Notion page at https://app.notion.com/p/apaleo/Vesia-JLMW-AC-VESIA-40d04b9ee10b81e59dbac6fee1f04f1b.\nSend a confirmation email via Outlook once the protocol has been successfully posted to Notion.\nNotes\nThe 'Log call processed' step (database insert) from the original workflow is removed — it's not needed for a one-time run.\nThe two Anthropic branches (pre-cert and cert) merge before the Notion block builder, exactly as in the original workflow.\nAfter running once, the workflow can be deleted — no cleanup is needed on the n8n side.\nVersion #1\n(Current version)\nImplement the plan\n\nLooking at the approved plan, I need to:\n\nAdd a manual trigger + Set node to hardcode call ID 147148 and Notion page ID\nRemove the webhook trigger and Find protocol page node references\nRemove the Log call processed step\nWire everything together with the manual trigger\nLet me get the node type definitions I need.\n\n\nThinking\nGetting node definitions\"\n\n-- and this is where ai stops and doesn't do anything anymore. Workflow stays unchanged.\nIf I ask to continue - it will forget all of the context an just start imagining his new instructions.\n\n## What is the error message (if any)?\n\nn8n AI just does nothing when asked to edit a workflow.\n\n## Please share your workflow/screenshots/recording\n\n<img width=\"1795\" height=\"910\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/81194ac3-8fba-4f27-8f3c-d96a0f03fa8e\" />\n\n[My workflow 67.json](https://github.com/user-attachments/files/34372549/My.workflow.67.json)\n\n```\n(Select the nodes on your canvas and use the keyboard shortcuts CMD+C/CTRL+C and CMD+V/CTRL+V to copy and paste the workflow.)\n⚠️ WARNING ⚠️ If you have sensitive data in your workflow (like API keys), please remove it before sharing.\n```\n\n\n## Share the output returned by the last node\n<!-- If you need help with data transformations, please also share your expected output. -->\n\n\n## Debug info\n\n### core\n\n- n8nVersion: 2.45.5\n- platform: docker (cloud)\n- nodeJsVersion: 26.12.1\n- nodeEnv: production\n- database: postgres\n- executionMode: scaling (single-main)\n- concurrency: 25\n- license: enterprise (production)\n\n### storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n### pruning\n\n- enabled: true\n- maxAge: 720 hours\n- maxCount: 25000 executions\n\n### client\n\n- userAgent: mozilla/5.0 (macintosh; intel mac os x 10_15_7) applewebkit/537.36 (khtml, like gecko) chrome/155.0.0.0 safari/537.36\n- isTouchDevice: false\n\nGenerated at: 2026-11-04T12:41:16.453Z",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43039/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43039/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @vporsnevapaleo,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9705\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9705](https://linear.app/n8n/issue/GHC-9705)",
+      "at": "2026-11-04T12:53:34Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43039#issuecomment-6631112974"
+    }
+  ],
+  "comments_complete": true
+}

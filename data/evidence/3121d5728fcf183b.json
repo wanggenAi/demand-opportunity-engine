@@ -1,0 +1,65 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50376110",
+  "collected_at": "2026-11-05T09:26:35.818313+00:00",
+  "source": {
+    "author": "teekert",
+    "children": [
+      {
+        "author": "laurasg",
+        "children": [],
+        "created_at": "2026-11-05T07:43:58.000Z",
+        "created_at_i": 1793864638,
+        "id": 50376309,
+        "options": [],
+        "parent_id": 50376110,
+        "points": null,
+        "story_id": 50366117,
+        "text": "I don&#x27;t think you are doing anything wrong; it is overwhelming. But I also don&#x27;t think &quot;trusting&quot; the system more would help. IMO, now coding is a bit more like maintaining critical infrastructure; it may be built quickly, but you need to keep an eye out for random decisions agents are taking that will cost you (money, security...) in the future. I have seen Claude making many sneaky decisions and (maybe) coincidentally burning more tokens by doing so",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "Kwpolska",
+        "children": [],
+        "created_at": "2026-11-05T07:44:11.000Z",
+        "created_at_i": 1793864651,
+        "id": 50376311,
+        "options": [],
+        "parent_id": 50376110,
+        "points": null,
+        "story_id": 50366117,
+        "text": "You use Claude as a &quot;thinking buddy&quot;, meanwhile those who spend $500+ on LLMs have shut their brains off, and have delegated all thinking to the LLM, producing tons of slop.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-11-05T07:13:01.000Z",
+    "created_at_i": 1793862781,
+    "id": 50376110,
+    "options": [],
+    "parent_id": 50366117,
+    "points": null,
+    "story_id": 50366117,
+    "text": "Ok I don&#x27;t understand how people can deal with the information coming from a fleet of agents burning 100s-1000s of €&#x2F;$ as month.<p>I have a Claude Code pro subscription, and mostly have Opus as a thinking buddy, we have thoroughly designed a data model together, we have implemented it in Django. Then we designed the RBAC system and now we are making views per role.<p>It is so intense! Constant decisions, walls of text with pros and cons to decisions. I mean the speed is amazing, the code quality is also amazing, but the amount of information I get to process is just insane, and I enjoy it less than the flow-state writing of code. I think I&#x27;ll get used to it, and the speed is motivating, but man. I can not picture keeping 10&#x27;s of agents on tasks. What am I doing wrong? Should I trust the system more? Or am I just mostly working on decisions now and the 1000$ token burners are not bothered with that because they have a full backlog, where I need to fill it myself?<p>I deal with the overload by making abstractions (a visual of the data model&#x2F;db schema with color coded relations etc, a table for RBAC, think about permissions in &quot;Axes&quot;... I&#x27;m always looking for smart tricks to &quot;think better&quot;, to be able to hold more information and reason about it. What must exist in me, what can I outsource?<p>Btw, as a FOSS person I so hate that I am not owning my means of production anymore, I have a home battery for all my infra, very proud of what I build, but I can&#x27;t run my agents :( I really hope that will change soon (for privacy and for control reasons.) I pisses me off that I can&#x27;t get nice hardware, meanwhile I can get a Muse or Dot, which is an LLM with a VM with up to 12 GBs of RAM, for free, paid for by their borrowed money. This whole idea makes me die a bit inside.<p>For the company I do all IT for we have a Mistral Team subscription, I find it hard to work with anything other than Claude Opus, I really force myself to do it but I often think: Pff, Opus would have gotten this right. But I remember feeling the same when I switched from Google to DDG (3000 years ago) and I never switched back. So it&#x27;s probably just familiarity.<p>I also have HermesAgent on a nuc here in front of me, it makes small automations: Scans for positions or projects for my company, parses RSS feeds for relevant cybersecurity news, researches things when I ask, stores notes and articles with I can interrogate as a &quot;body of work&quot; &lt;- love that btw, it&#x27;s like an external memory where the faintest glimmer of a memory can help you dig up that one nugget of knowledge. Or you can find trends in TFAs you love. You can really get to know yourself a bit better. Most things it makes are LLMs out of the loop, just automations build from simple Unix-style tools that I could have made myself but never took the time for. It&#x27;s also nice that it solves edge cases itself. It burns less then €3 a month on deepseek or so (just processing public data for me). I keep it on a separate vlan and away from important stuff.",
+    "title": null,
+    "type": "comment",
+    "url": null
+  },
+  "comments": [
+    {
+      "author": "laurasg",
+      "text": "I don't think you are doing anything wrong; it is overwhelming. But I also don't think \"trusting\" the system more would help. IMO, now coding is a bit more like maintaining critical infrastructure; it may be built quickly, but you need to keep an eye out for random decisions agents are taking that will cost you (money, security...) in the future. I have seen Claude making many sneaky decisions and (maybe) coincidentally burning more tokens by doing so",
+      "at": "2026-11-05T07:43:58.000Z",
+      "url": "https://news.ycombinator.com/item?id=50376309"
+    },
+    {
+      "author": "Kwpolska",
+      "text": "You use Claude as a \"thinking buddy\", meanwhile those who spend $500+ on LLMs have shut their brains off, and have delegated all thinking to the LLM, producing tons of slop.",
+      "at": "2026-11-05T07:44:11.000Z",
+      "url": "https://news.ycombinator.com/item?id=50376311"
+    }
+  ],
+  "comments_complete": true
+}

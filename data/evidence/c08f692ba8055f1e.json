@@ -1,0 +1,131 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43049",
+  "collected_at": "2026-11-05T09:26:35.818313+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43049",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43049/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43049/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43049/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43049",
+    "id": 6211061034,
+    "node_id": "I_kwDOC4Q8Qs8AAAABcjVFKg",
+    "number": 43049,
+    "title": "Extract from PDF - memory overflow - server crash",
+    "user": {
+      "login": "ZedPrg",
+      "id": 49227803,
+      "node_id": "MDQ6VXNlcjQ5MjI3ODAz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/49227803?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/ZedPrg",
+      "html_url": "https://github.com/ZedPrg",
+      "followers_url": "https://api.github.com/users/ZedPrg/followers",
+      "following_url": "https://api.github.com/users/ZedPrg/following{/other_user}",
+      "gists_url": "https://api.github.com/users/ZedPrg/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/ZedPrg/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/ZedPrg/subscriptions",
+      "organizations_url": "https://api.github.com/users/ZedPrg/orgs",
+      "repos_url": "https://api.github.com/users/ZedPrg/repos",
+      "events_url": "https://api.github.com/users/ZedPrg/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/ZedPrg/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 6,
+    "created_at": "2026-11-04T20:45:07Z",
+    "updated_at": "2026-11-04T21:34:17Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "\n<!-- Please follow the template below. Skip the questions that are not relevant to you. -->\n\n## Describe the problem/error/question\nNode Extract from File (version 1.2) - operation Extract from PDF - fails with error and then n8n container restart itself\n\n## What is the error message (if any)?\nExecution stopped at this node\nn8n may have run out of memory while running this execution. \n{ \"name\": \"OperationalError\", \"message\": \"Node crashed, possible out-of-memory issue\" }\n\n## Please share your workflow/screenshots/recording\n\n```\n{\n  \"nodes\": [\n    {\n      \"parameters\": {\n        \"operation\": \"pdf\",\n        \"binaryPropertyName\": \"data_orig\",\n        \"options\": {\n          \"joinPages\": true,\n          \"keepSource\": \"both\"\n        }\n      },\n      \"type\": \"n8n-nodes-base.extractFromFile\",\n      \"typeVersion\": 1.2,\n      \"position\": [\n        -1120,\n        960\n      ],\n      \"id\": \"c32b52b0-a1ae-492b-b48b-d6a588bac51b\",\n      \"name\": \"Extract from PDF\"\n    }\n  ],\n  \"connections\": {\n    \"Extract from PDF\": {\n      \"main\": [\n        []\n      ]\n    }\n  },\n  \"pinData\": {},\n  \"meta\": {\n    \"instanceId\": \"30070f8554c9f94992ee0bc075cd07067504ecd3d2879bbef684d3dfc4ddc97c\"\n  }\n}\n```\n\n\n## Share the output returned by the last node\nN/A (private), but contains data blob with pdf file of 136kB\n\n## Debug info\n\n### core\n\n- n8nVersion: 2.46.6\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.12.1\n- nodeEnv: production\n- database: postgres\n- executionMode: regular\n- concurrency: -1\n- license: enterprise (production)\n\n### storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n### pruning\n\n- enabled: true\n- maxAge: 336 hours\n- maxCount: 10000 executions\n\n### client\n\n- userAgent: mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/156.0.0.0 safari/537.36 edg/156.0.0.0\n- isTouchDevice: false\n\nGenerated at: 2026-11-04T20:27:19.938Z",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43049/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43049/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @ZedPrg,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9708\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9708](https://linear.app/n8n/issue/GHC-9708)",
+      "at": "2026-11-04T20:45:23Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43049#issuecomment-6641677406"
+    },
+    {
+      "author": "Joffcom",
+      "text": "@ZedPrg I am not able to reproduce this, can you try with a different PDF? ",
+      "at": "2026-11-04T20:50:19Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43049#issuecomment-6641777157"
+    },
+    {
+      "author": "ZedPrg",
+      "text": "I’ve tried this with a few PDFs that went through without any errors two weeks ago (in version current two weeks ago), but now they won’t work.",
+      "at": "2026-11-04T20:56:59Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43049#issuecomment-6641915545"
+    },
+    {
+      "author": "Joffcom",
+      "text": "@ZedPrg do you have a pdf you can share? I have tried with a few different ones now and they seem to work.\n\nI can't rule out a bug but if I can't reproduce it fixing it will be tricky. ",
+      "at": "2026-11-04T21:17:38Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43049#issuecomment-6642347681"
+    },
+    {
+      "author": "ZedPrg",
+      "text": "[FV 2026031.pdf](https://github.com/user-attachments/files/34394331/FV.2026031.pdf)\n\nI don’t know if it makes any difference, but I’m using a setup with n8n-runners.",
+      "at": "2026-11-04T21:22:35Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43049#issuecomment-6642448319"
+    },
+    {
+      "author": "donleco2474",
+      "text": "When the Extract From File node crashes with an out-of-memory error, it is usually because the PDF parser library spikes memory usage beyond the default Node.js heap limit inside your Docker container. Increasing the --max-old-space-size environment variable or offloading the heavy PDF parsing task to a lightweight Python microservice will immediately stabilize your container. Let me know if you are running n8n on Docker Compose and I can share the exact environment variable configuration right here.",
+      "at": "2026-11-04T21:34:17Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43049#issuecomment-6642685817"
+    }
+  ],
+  "comments_complete": true
+}
