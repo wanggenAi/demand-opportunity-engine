@@ -1,0 +1,66 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50383228",
+  "collected_at": "2026-11-06T09:20:46.713266+00:00",
+  "source": {
+    "author": "yoavshmariahu",
+    "children": [
+      {
+        "author": "hkss",
+        "children": [
+          {
+            "author": "yoavshmariahu",
+            "children": [],
+            "created_at": "2026-11-05T22:48:35.000Z",
+            "created_at_i": 1793918915,
+            "id": 50385622,
+            "options": [],
+            "parent_id": 50385156,
+            "points": null,
+            "story_id": 50383228,
+            "text": "Right now the cost estimator assumes payoff needs to be met by 20 calls but its very conservative so it typically beats that. There are cases where we cut context and then it needs to be re-read e.g. <a href=\"https:&#x2F;&#x2F;thinker.sh&#x2F;see-the-data?run=click-1\" rel=\"nofollow\">https:&#x2F;&#x2F;thinker.sh&#x2F;see-the-data?run=click-1</a>. In this example it stays cost-effective since the re-read is small, but we&#x27;re continuing to experiment with how long we wait before we consider context to be safe to remove.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-05T22:05:45.000Z",
+        "created_at_i": 1793916345,
+        "id": 50385156,
+        "options": [],
+        "parent_id": 50383228,
+        "points": null,
+        "story_id": 50383228,
+        "text": "cool, you mention cuts pay off after X calls, when the agent needs something that got cut, does it just re-read it? does that ever cost more than keeping it? or have some measurements around that ?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-11-05T19:22:23.000Z",
+    "created_at_i": 1793906543,
+    "id": 50383228,
+    "options": [],
+    "parent_id": null,
+    "points": 3,
+    "story_id": 50383228,
+    "text": "I’ve been doing a lot of solo development lately and found myself hitting Claude token limits halfway through the week constantly. Even with a Max plan, I’d have to switch over to Codex or Cursor, and it would be a bit difficult to get used to the nuances of each harness.<p>It’s still a problem for me, but I finally built Thinker to save me some tokens and help me get a bit more out of my coding agent subscriptions.<p>I started off a bit in the dark about how token billing works, and had to dig deeper to figure out what workflows ended up hurting my budget the most. By far, it was large context windows. Claude tries to help out on costs by offering prompt caching - which is sort of a bandage on the bigger problem: context bloat.<p>I find that my context window gets bloated with unneeded tokens in two main ways:<p>Tool outputs from subtasks that are long finished. File reads, Bash commands, MCP outputs, etc. Main idea is that the model finished the work but carries the weight of it for every subsequent call - translating to wasted token usage.\nCLAUDE.md &#x2F; AGENTS.md getting way too big. Lots of content gets dumped into these files as your agents work in your repo. I found that it’s not clear what is actually useful to be included there. Every token here counts, because it will be paid for in every session, and its cost scales linearly with the duration of your session.<p>Thinker addresses both of these issues. We have a proxy that wires in between your harness and model to cut out old context that we determine is no longer needed for your current task. Based on the provider you’re using, we determine the right time to batch enough context to cut that justifies the cache re-write cost, which gets paid off after X subsequent calls.<p>We also analyze your sessions and figure out which parts of your instruction files don’t really get used - and send you suggestions to cut or compress those sections. Thinker will kick off a subagent to do that work for you and open a PR you can review.<p>Finally, we use your sessions to record knowledge notes by distilling your sessions with a cheap model (Haiku, Luna). These notes are then served at prompt time via a cross-encoder, also on your machine, that decides whether a note is relevant to the user’s prompt.<p>Here are some data points to show how exactly Thinker saves you coding agent costs: <a href=\"https:&#x2F;&#x2F;thinker.sh&#x2F;see-the-data\" rel=\"nofollow\">https:&#x2F;&#x2F;thinker.sh&#x2F;see-the-data</a><p>If you’re hitting problems at all with usage limits, it’d be great to hear how you’ve been trying to mitigate it.<p>Our open-source repo here (MIT License): <a href=\"https:&#x2F;&#x2F;github.com&#x2F;yoavshmariahu&#x2F;thinker\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;yoavshmariahu&#x2F;thinker</a>",
+    "title": "Show HN: Thinker – Trim context and cache knowledge to extend agent usage limits",
+    "type": "story",
+    "url": "https://thinker.sh/how-it-works"
+  },
+  "comments": [
+    {
+      "author": "hkss",
+      "text": "cool, you mention cuts pay off after X calls, when the agent needs something that got cut, does it just re-read it? does that ever cost more than keeping it? or have some measurements around that ?",
+      "at": "2026-11-05T22:05:45.000Z",
+      "url": "https://news.ycombinator.com/item?id=50385156"
+    },
+    {
+      "author": "yoavshmariahu",
+      "text": "Right now the cost estimator assumes payoff needs to be met by 20 calls but its very conservative so it typically beats that. There are cases where we cut context and then it needs to be re-read e.g.  https://thinker.sh/see-the-data?run=click-1 . In this example it stays cost-effective since the re-read is small, but we're continuing to experiment with how long we wait before we consider context to be safe to remove.",
+      "at": "2026-11-05T22:48:35.000Z",
+      "url": "https://news.ycombinator.com/item?id=50385622"
+    }
+  ],
+  "comments_complete": true
+}

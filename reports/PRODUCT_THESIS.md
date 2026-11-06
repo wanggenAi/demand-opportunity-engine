@@ -7,7 +7,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## workflow_reliability — UNVALIDATED CLUSTER
 
-- independent_demand_count: 83
+- independent_demand_count: 86
 - payment_evidence_count: 1
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community', 'n8n Community']
 - communities: ['Agenta-AI/agenta', "Ask HN: What's your current AI agentic setup?", 'Ask/Show HN', 'Commerce operator forum', 'n8n Jobs', 'n8n-io/n8n', 'useagenthq/useagent']
@@ -20,19 +20,19 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://github.com/n8n-io/n8n/issues/43072
+  - https://github.com/n8n-io/n8n/issues/43068
   - https://news.ycombinator.com/item?id=50376110
   - https://github.com/n8n-io/n8n/issues/43059
   - https://news.ycombinator.com/item?id=50366117
   - https://github.com/n8n-io/n8n/issues/43041
-  - https://github.com/n8n-io/n8n/issues/43039
-  - https://github.com/n8n-io/n8n/issues/43018
 
 ## browser_automation — UNVALIDATED CLUSTER
 
-- independent_demand_count: 10
-- payment_evidence_count: 0
+- independent_demand_count: 11
+- payment_evidence_count: 1
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community']
-- communities: ['Commerce operator forum', 'Understanding Email Encryption (2025)', 'kouweizhu/agents-radar', 'n8n-io/n8n', 'useagenthq/useagent']
+- communities: ['Commerce operator forum', 'Understanding Email Encryption (2025)', 'datnguyenquy94/news-radar', 'kouweizhu/agents-radar', 'n8n-io/n8n', 'useagenthq/useagent']
 - repeated_pain: Repeated manual browser work is costly or brittle.
 - current_alternatives: Playwright, Selenium, vendor APIs and open-source browser agents.
 - productization_potential: Needs one repeated workflow and paying buyers before standardization.
@@ -42,16 +42,16 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://github.com/datnguyenquy94/news-radar/issues/1009
   - https://github.com/n8n-io/n8n/issues/43003
   - https://news.ycombinator.com/item?id=50334266
   - https://github.com/n8n-io/n8n/issues/42851
   - https://github.com/n8n-io/n8n/issues/42153
   - https://github.com/kouweizhu/agents-radar/issues/654
-  - https://github.com/n8n-io/n8n/issues/41548
 
 ## supplier_sourcing — UNVALIDATED CLUSTER
 
-- independent_demand_count: 9
+- independent_demand_count: 10
 - payment_evidence_count: 1
 - platforms: ['GitHub', 'Shopify Community']
 - communities: ['AddisonJPratt/CAD-ADE', 'Commerce operator forum', 'n8n-io/n8n', 'zack-hum/coffee-intelligence-v1.1']
@@ -64,12 +64,12 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://community.shopify.com/t/pilot-discussion-customizable-approval-based-purchasing-workflows-for-shopify-merchants/710857
   - https://github.com/AddisonJPratt/CAD-ADE/issues/1
   - https://community.shopify.com/t/shopify-va-inventory-listings-product-sourcing-customer-support-email-marketing-seo/707251
   - https://community.shopify.com/t/feature-request-product-specific-customer-tax-exemptions-for-accurate-wholesale-and-retail-checkout/706515
   - https://github.com/n8n-io/n8n/issues/41635
   - https://community.shopify.com/t/how-often-do-you-sync-supplier-stock-with-your-shopify-store/700544
-  - https://github.com/zack-hum/coffee-intelligence-v1.1/issues/11
 
 ## lead_research — UNVALIDATED CLUSTER
 

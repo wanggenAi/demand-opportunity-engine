@@ -1,0 +1,168 @@
+{
+  "source_api_url": "https://api.github.com/repos/undone0603/authichain-unified/issues/2357",
+  "collected_at": "2026-11-06T09:20:46.713266+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/undone0603/authichain-unified/issues/2357",
+    "repository_url": "https://api.github.com/repos/undone0603/authichain-unified",
+    "labels_url": "https://api.github.com/repos/undone0603/authichain-unified/issues/2357/labels{/name}",
+    "comments_url": "https://api.github.com/repos/undone0603/authichain-unified/issues/2357/comments",
+    "events_url": "https://api.github.com/repos/undone0603/authichain-unified/issues/2357/events",
+    "html_url": "https://github.com/undone0603/authichain-unified/issues/2357",
+    "id": 6215412607,
+    "node_id": "I_kwDORZ8qPc8AAAABcnerfw",
+    "number": 2357,
+    "title": "AuthiChain anti-counterfeit evidence network — SealLock, signed issuers, A2A/MCP review pilot",
+    "user": {
+      "login": "undone0603",
+      "id": 205283008,
+      "node_id": "U_kgDODDxewA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/205283008?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/undone0603",
+      "html_url": "https://github.com/undone0603",
+      "followers_url": "https://api.github.com/users/undone0603/followers",
+      "following_url": "https://api.github.com/users/undone0603/following{/other_user}",
+      "gists_url": "https://api.github.com/users/undone0603/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/undone0603/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/undone0603/subscriptions",
+      "organizations_url": "https://api.github.com/users/undone0603/orgs",
+      "repos_url": "https://api.github.com/users/undone0603/repos",
+      "events_url": "https://api.github.com/users/undone0603/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/undone0603/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 5,
+    "created_at": "2026-11-05T02:22:03Z",
+    "updated_at": "2026-11-06T04:38:32Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Outcome\n\nBuild an **evidence-led anti-counterfeit investigation network** across AuthiChain's signed issuer attestations, QRON physical scans, and StrainChain SealLock physical package integrity. Escalate *verified safety/issuance inconsistencies*, not rumors or missing lookup records. No underlying private consumer case, seller, product identifier, photographs or personal contacts appear in this public issue.\n\n## Current reversible work\n\n- [Draft PR #2304](https://github.com/undone0603/authichain-unified/pull/2304): SealLock physical-first-opening observations and manufacturer design review with `HOLD` outcomes; no independent lab certification.\n- [Draft PR #2355](https://github.com/undone0603/authichain-unified/pull/2355): offline anti-fraud evidence triage, privacy allowlist, and redacted, **unsigned and untrusted** MCP/A2A review proposal. 15/15 source-exact JavaScript test cases passed in an isolated V8 harness, not full Node CI.\n- [Draft PR #2356](https://github.com/undone0603/authichain-unified/pull/2356): AgentZ legal agent can prepare internal unverified lead memos, not threatening cease-and-desist requests from unverified marketplace scouting. Local Python helper source hash verified; 6/6 local input scenarios passed, not full repository pytest.\n\n## Acceptance milestones\n\n- [ ] **Physical risk:** obtain controlled package-design cross-section, lot process evidence, and an independently witnessed first-opening challenge on untouched, appropriately sourced samples. Reproducible bypass is a packaging integrity finding, not necessarily counterfeit.\n- [ ] **Issuer identity:** verify genuine issuer signature, trust, durable lifecycle and revocation through the canonical AuthiChain verifier; do not equate a QR string with a signed claim.\n- [ ] **Identifier reuse:** only investigate copied serials across **distinct physical items** where the serialization policy requires unique per-unit IDs. Two identical labels on one retail package or a repeated batch identifier is NOT clone proof.\n- [ ] **COA consistency:** if a real mismatch is reported, obtain the original lab-issued report and authenticating signature/digest; compare source bytes, not screenshots or filenames.\n- [ ] **Cross-operator A2A/MCP:** agree a data-minimizing review envelope, signed agent identity and scoped permissions, independent conformance fixtures, replay protection, opt-in peer reproduction. No live agent registration or external data sharing from draft artifacts.\n- [ ] **Human review/enforcement:** record confidence limits, chain-of-custody, independent reviewer authorization and factual supplier response opportunity. Only authorized legal/regulatory reviewers may decide on filings, notices, holds, recalls or bounty outcomes.\n- [ ] **CI/deployment:** restore isolated credential-free PR CI; exact-head tests and independent security review must pass. Deploy only through SHA-pinned protected release rules. No bypass or merge of draft economic/security work.\n- [ ] **Pilot evidence:** record one independently reproducible physical-seal finding or failure-to-reproduce outcome, one authenticated issuer/identifier check, and one independent interoperability test. Distinguish reported, untested, inconclusive and verified results.\n\n## Rules\n\n- `NOT_FOUND` is not a counterfeit verdict; source/issuer uncertainty is `INDETERMINATE`, not fraud.\n- Never publish vendor accusations, private photos, labels, seller names or unredacted identifiers merely from consumer observations.\n- No direct supplier contact, regulator filing, takedown, legal threat, auto-bounty payout, charge, deployment or message without separate proper authorization.\n- Existing economic holds `humanHold=true`, AgentZ `production_send=false`, and production deployment/review gates remain unchanged.\n- Official resources: [GS1 Digital Signatures Technical Implementation Guideline](https://ref.gs1.org/guidelines/digital-signatures/), [Michigan CRA complaint process](https://www.michigan.gov/cra/file-a-complaint). They are not proof of a particular seller's wrongdoing.\n\n**Definition of success:** a neutral, independently reviewable case that improves manufacturer/retailer controls and helps distinguish copied packaging from cryptographically proven issuance; no fabricated fraud findings or unauthorized punitive action.",
+    "reactions": {
+      "url": "https://api.github.com/repos/undone0603/authichain-unified/issues/2357/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/undone0603/authichain-unified/issues/2357/timeline",
+    "performed_via_github_app": {
+      "id": 1144995,
+      "client_id": "Iv23liVemv8A9if9v0F2",
+      "slug": "chatgpt-codex-connector",
+      "node_id": "A_kwHOAOQ6Gs4AEXij",
+      "owner": {
+        "login": "openai",
+        "id": 14957082,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjE0OTU3MDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/14957082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/openai",
+        "html_url": "https://github.com/openai",
+        "followers_url": "https://api.github.com/users/openai/followers",
+        "following_url": "https://api.github.com/users/openai/following{/other_user}",
+        "gists_url": "https://api.github.com/users/openai/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/openai/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/openai/subscriptions",
+        "organizations_url": "https://api.github.com/users/openai/orgs",
+        "repos_url": "https://api.github.com/users/openai/repos",
+        "events_url": "https://api.github.com/users/openai/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/openai/received_events",
+        "type": "Organization",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "name": "ChatGPT Codex Connector",
+      "description": "Bring ChatGPT and Codex to your GitHub repositories.",
+      "external_url": "https://www.chatgpt.com",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "created_at": "2025-02-14T01:37:05Z",
+      "updated_at": "2026-09-23T18:52:59Z",
+      "permissions": {
+        "actions": "write",
+        "checks": "read",
+        "contents": "write",
+        "emails": "read",
+        "issues": "write",
+        "metadata": "read",
+        "pull_requests": "write",
+        "statuses": "read",
+        "workflows": "write"
+      },
+      "events": [
+        "check_run",
+        "check_suite",
+        "commit_comment",
+        "issues",
+        "issue_comment",
+        "pull_request",
+        "pull_request_review",
+        "pull_request_review_comment",
+        "pull_request_review_thread",
+        "repository",
+        "status",
+        "sub_issues"
+      ]
+    },
+    "state_reason": "reopened",
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "undone0603",
+      "text": "### 2026-11-04 execution evidence — casework and legal-automation safety\n\n**New PRs remain review-held, no production modifications:**\n- [#2355](https://github.com/undone0603/authichain-unified/pull/2355) exact head `7ec2bbfdc1f742a54698bee57114c6c5f6eaf4ee`: independent artifact-deduplication, four distinct signal families, NOT_FOUND ≠ counterfeit, privacy-preserving redacted agent review proposals, deny-list of external actions. **15/15 exact source-body tests passed in isolated V8**, NOT native Node CI. [CI Main #41953864292](https://github.com/undone0603/authichain-unified/actions/runs/41953864292) queued at last read.\n- [#2356](https://github.com/undone0603/authichain-unified/pull/2356) exact head `a1d8d0da89857619840990a5fb960eb7c206a913`: replaces unverified marketplace C&D threat generation with internal nonaccusatory case memos. Pure Python helper Git blob `bffe608f0138a1569f040dd99f86241b6737ca55` was reproduced exactly locally; native Python `py_compile` and **six input scenarios passed**. New repo pytest fixtures include async legacy caller no-LLM assertion but **full pytest not yet run**. [CI Main #41954621138](https://github.com/undone0603/authichain-unified/actions/runs/41954621138) queued at last read.\n- [#2304](https://github.com/undone0603/authichain-unified/pull/2304) remains a separate draft for packaging geometry and physical first-opening evidence.\n\n**Private human case:** three original user photos matched SHA-256 from the preserved packet; local triage output `TECHNICAL_REVIEW`, one physical-risk family, `NO_COUNTERFEIT_DETERMINATION`, `release_gate=HOLD`. The private packet v5 is stored outside the repo and contains photos plus redacted agent proposal. No manufacturer or package identifier was put in source control.\n\n**Independent gates still missing:** untouched sample with first-opening chain of custody, authenticated issuer signature and actual per-instance numbering policy (not a repeated batch label), independent reviewer, and exact-head CI on verified isolated runner. **No supplier accusation, regulator submission, legal threat, bounty, public data sharing, production send, or deployment.**",
+      "at": "2026-11-05T02:23:35Z",
+      "url": "https://github.com/undone0603/authichain-unified/issues/2357#issuecomment-6647956089"
+    },
+    {
+      "author": "undone0603",
+      "text": "### 2026-11-04/05 CI milestone: runner executes again; two narrow source repairs prepared\n\n**Real runner evidence:** [PR #2355 CI Main #41953864292](https://github.com/undone0603/authichain-unified/actions/runs/41953864292) assigned a runner and actually executed `Tests (shard 1/2)`. `authichain-com-worker#test` ran **174 tests: 169 passing, 5 failing**. The failures are specific and actionable:\n- AuthiChain /pricing unexpectedly contains unlisted `qron_launch` footer links.\n- QRON /pricing unexpectedly advertises an unlisted Launch checkout.\n- Apex `/` still links a $19/mo Launch checkout (CFA-460).\n- Money route `/checkout/starter` uses unsupported `no expiry` copy (CFA-758).\n- Public `/api/x402/catalog` returns the unlisted Farm checkout Payment Link.\n\n**Review-only fix [PR #2358](https://github.com/undone0603/authichain-unified/pull/2358)** at `34a286c19b62a9af8495e1f59fbd8446e37df53d`: removes the public Launch footer, homepage and sitemap links, aligns Starter copy with the published canonical plan, hides Farm Payment Link in x402, and corrects contradictory positive test assertions into negative assertions. Nine source files read back and structural guards checked. No native exact-head CI success yet; [CI Main #41956532672](https://github.com/undone0603/authichain-unified/actions/runs/41956532672) queued.\n\n**Critical independent source regression:** `src/lib/generate-api.ts` on main contains a literal comment declaring it a *partial truncated representation* and returns `{ status: 200, body: {} }` after free-sample checks, omitting four previously exported functions. The truncation entered via Oct 31 merge `7aee7656`. **Draft recovery [PR #2359](https://github.com/undone0603/authichain-unified/pull/2359)** at `43e25251b2d48238264b79221af9573abc6528fe` restores the last complete Oct 30 source Git blob `d33acc407b1257f33e6a903a5869327a3f8bf1af` **byte-for-byte**, verified on GitHub read-back. [CI Main #41956888209](https://github.com/undone0603/authichain-unified/actions/runs/41956888209) queued. Historical existence is not current compatibility or production proof.\n\n**Current release holds remain:** draft PRs #2355 (anti-fraud), #2356 (AgentZ legal safeguard), #2358 (pricing/copy), #2359 (generation restoration) are **unmerged**, with no independent reviewer approval and no confirmed green exact-head CI. No production changes, external enforcement, email sending, supplier accusations, payout, payment or deployment were performed. All anti-counterfeit physical findings remain human/independent review only.",
+      "at": "2026-11-05T02:43:17Z",
+      "url": "https://github.com/undone0603/authichain-unified/issues/2357#issuecomment-6648242564"
+    },
+    {
+      "author": "undone0603",
+      "text": "## Reopened: PR #2362 test is a placeholder, not a security regression (2026-11-05)\n\nPR [#2362](https://github.com/undone0603/authichain-unified/pull/2362) was merged as commit `cd4cad0f1bb4148e9109bfc0c4a97836bae10c59`, adding [`tests/test_issue_2357.py`](https://github.com/undone0603/authichain-unified/blob/main/tests/test_issue_2357.py). Its entire assertion is `self.assertTrue(True)`. This is an **unconditional placeholder/smoke assertion**; it does not call the AuthiChain verifier, signed-issuer trust logic, scan triage or any enforcement gate. Passing this test must **not** be represented as verification of #2357, anti-counterfeit protections, issuer authorization, or physical-product authenticity.\n\n### Required behavioral replacement (negative and positive boundaries)\n- [ ] **Unknown identifier:** feed an actual verification handler/verifier a nonexistent record ID and assert `not_found` / indeterminate semantics, **never counterfeit** or an enforcement-eligible result.\n- [ ] **Untrusted issuer:** construct a claim with a claimed issuer or structurally present signature but without canonical signature verification **and trusted issuer authorization**. Assert that identity/authority is NOT established. Also check tampered/revoked/unknown keys where supported.\n- [ ] **Uncertain physical/scan evidence:** feed an actual scan-triage/review policy with incomplete, duplicate-batch, or location/velocity-only evidence and assert `REVIEW/HOLD` or `INDETERMINATE`, **no automatic quarantine, public accusation, legal notification, payment or counterfeiting verdict**.\n- [ ] Positive controls: verified evidence may be eligible for **authorized human review**, but must not automatically convert cryptographic validity into product authenticity or enforcement.\n- [ ] All tests must import/invoke real committed implementation functions or handlers and fail on a deliberately regressed version. Do not use self-fulfilling mocks or `assertTrue(True)`.\n- [ ] Run targeted tests plus full relevant exact-head CI on a **verified credential-free isolated runner**; capture real SHA, commands, exit statuses, and logs. Any CI account / runner failures are NOT test passes.\n- [ ] Obtain **eligible independent security review** of the code and evidence. A founder alternate GitHub login, owner self-review, unrelated fork, or automated suggestion is not a substitute.\n- [ ] Only then evaluate closure. Keep #2304/#2355/#2356 and other security/economic changes review-held; preserve `humanHold=true`, `production_send=false`, and no unreviewed merge/deploy or external enforcement.\n\n**Status:** issue intentionally reopened; the five-line test is retained as historical placeholder evidence, not accepted conformance.",
+      "at": "2026-11-05T23:09:59Z",
+      "url": "https://github.com/undone0603/authichain-unified/issues/2357#issuecomment-6671929474"
+    },
+    {
+      "author": "undone0603",
+      "text": "### 2026-11-05 CURRENT validation update — exact candidate files, full local tests\n\n**Candidate (not merged or deployed):** [security/2357-failclosed-trust-kernel-20261105](https://github.com/undone0603/authichain-unified/tree/security/2357-failclosed-trust-kernel-20261105), latest commit `5fdcd4a8288663f199d346147314b9e2163fbc69`. Exactly four changed files from base `0fa5f1829ff6c19a6522e0bf6aefffc90ad5f1ef` (all commits `[skip ci]`).\n\n**Real native execution / exact Git blobs:**\n- `tests/test_issue_2357.py` blob `11bae30d724d666d40e41ae9c2ed7004dabf1446`: **15/15 native Python unittest + Node CLI PASS**, using exact MJS blob `9dc528ed964be4f2bb835b5ee396ba25968e64ba`.\n- `protocol/trust-kernel/evaluate.ts` blob `67c77e148532997b4db5a9d3e0d195ab63f41e7b` and `workers/authichain-verify-worker/src/evaluate.ts` blob `d4e496b98bec2818965192f4f6e3c490167619d3`: **standalone strict `tsc --noEmit` PASS**, 0 diagnostics, Node 22.16.0 / TypeScript installed.\n- Emitted JS from those exact two TS sources plus exact MJS evaluator: **251/251 deterministic native Node parity scenarios PASS** (including missing record, untrusted issuer, failed identity, inactive status, scan anomalies and status/evidence combinations).\n- Source-exact V8 check of all **12/12 existing adversarial fixtures PASS** against branch MJS. Fixture blob hashes captured. **Not** the native `protocol/adversarial/run.mjs` command.\n\n**Separate checkout evidence:** At draft [#2270](https://github.com/undone0603/authichain-unified/pull/2270) head `ba3870df9417f1cc8f4cb5bf89dc69de38397955`, the existing exact-source guard assertions were run in isolated V8 with import/fs shims: **39/39 PASS** across paid activation (17), canonical SKU (8), and final entitlement plan (14). Source-only, **not** signed Stripe webhook, persisted grant or buyer proof. [#2273](https://github.com/undone0603/authichain-unified/pull/2273) receipt-only fix remains separate, native offline **9/9** pass from prior evidence. The PRs overlap three files, so do not naively combine them.\n\n**Still missing:** native monorepo CI; actual HTTP Worker/endpoint integration; native adversarial command; attestation and credential-free CI executor for untrusted PR; tested rollback; explicit release permission; genuine paid-to-grant customer event. The 'no automatic enforcement' assertions inspect evaluator output only and do **not** prove side-effecting downstream services are blocked. No PR opened for trust branch, no CI dispatch, merge, deployment, payments or outbound action; `humanHold=true` and `production_send=false` remain unchanged.\n\n**Next:** run full exact-head affected integration tests on an authorized credential-isolated executor, then stage the smaller #2273 receipt correction separately ahead of #2270's larger signed-payment fulfillment changes. Keep release controls at production, not as a blanket blocker for reversible source work.\n\n---\n\n**Prior findings / historical progress:**\n\n### 2026-11-05 execution update — 4-file security branch, NOT released\n\n**New source branch:** [security/2357-failclosed-trust-kernel-20261105](https://github.com/undone0603/authichain-unified/tree/security/2357-failclosed-trust-kernel-20261105). Base `main` SHA `0fa5f1829ff6c19a6522e0bf6aefffc90ad5f1ef`. Four commits ahead; all carry `[skip ci]` because default-branch PR runner routing is not yet isolated. **No PR was opened, no native hosted CI dispatched, no merge or deploy.**\n\n**Exactly four changed files:** `protocol/trust-kernel/evaluate.mjs` (blob `9dc528ed964be4f2bb835b5ee396ba25968e64ba`), `protocol/trust-kernel/evaluate.ts` (`67c77e148532997b4db5a9d3e0d195ab63f41e7b`), `workers/authichain-verify-worker/src/evaluate.ts` (`d4e496b98bec2818965192f4f6e3c490167619d3`), and `tests/test_issue_2357.py` (`11bae30d724d666d40e41ae9c2ed7004dabf1446`, **15 real behavior test methods** replacing the no-op assertion). No network, persistence, webhook, outbound or enforcement code changed.\n\n**Safety behavior:** an explicit objectFound:false takes precedence over self-attested crypto data; signature alone, unknown issuer trust, missing/failed identity, or inactive status cannot produce `verified`; explicit identity mismatch makes `invalid` before scan-only anomaly handling. Physical binding remains unknown even for valid cryptographic checks. This is a conservative **evaluation-only boundary**, not live issuer verification, authenticated actor consensus or a counterfeit/enforcement verdict.\n\n**Genuine local evidence:** recreated candidate MJS byte-for-byte and verified `git hash-object` equals committed blob `9dc528e...`; Node v22.16.0 `node --check` succeeded; **14/14 native Python unittest behavior cases passed** against that exact MJS, plus a separately executed expired-attestation case returned `expired`. The new committed Python test file declares 15 tests, but **the committed 15-method suite has NOT been executed as a whole**: do not call this 15/15 passing. Static readback confirms the decision block and explicit missing-record condition are identical across all three committed evaluator twins. **Native TypeScript compilation, full Worker/route integration, adversarial fixtures and hosted full CI remain not tested.**\n\n**Next:** safe native exact-source test execution and Worker/TS parity on a credential-free runner; screen any compatibility changes against `protocol/adversarial/run.mjs --strict`, especially existing legacy fixtures. Security sign-off is a production-release control, not a block on further reversible documentation/offline work. Keep #2357 open; `humanHold=true`, `production_send=false`, no economic merge, no automatic quarantine or outreach.\n\n---\n\n### Actual Trust Kernel regression reproduction — review required (2026-11-05)\n\nAfter reopening #2357, replaced the meaningless `assertTrue(True)` locally with **10 behavioral Python unittest cases that spawn Node and execute the actual `protocol/trust-kernel/evaluate.mjs` implementation**. This is an **offline, local source-exact reproduction only**, not repository CI, an exploit against production, or an independent reviewer result.\n\n**Source parity:** byte-for-byte reconstruction of the current main file; exact Git blob SHA `344659a1a967c7f2cf74f94aabcb0aefa167e54e` verified. Node v22.16.0; Python unittest.\n\n**Baseline:** 8 passed / 2 failed (exit 1). Two failing assertions:\n1. `objectFound:true`, declared issuer, `crypto.signatureValid:true`, `statusActive:true`, with `issuerTrusted` **not supplied** → current evaluator returns `decision:\"verified\"`, `vector.issuer:\"unknown\"`. Expected: no verification/issuer authorization.\n2. `objectFound:true`, issuer trusted, signature valid, `identityValid:false` and mismatched serial → current evaluator returns `decision:\"verified\"` despite `identity_mismatch`. Expected: no verified identity.\n\nThe other eight cover unknown ID → `not_found`, unattested issuer claim, explicitly untrusted issuer, revocation, scan-only anomaly as non-enforcement finding, lookup scan-history uncertainty, mock digest rejection, and fully checked crypto while physical binding remains unknown. These assertions examine **only the evaluator's returned data**; they do not establish that an external enforcement path has been blocked.\n\n**Review-only local candidate**: require signature, issuer, identity, and active status to be independently marked valid before returning `verified`; treat `identity_mismatch` as `invalid`. Same ten local tests then passed **10/10** (exit 0). Source fix is NOT committed, merged, deployed, fully TypeScript-checked, or independently reviewed. It must be reconciled with both matching copies `protocol/trust-kernel/evaluate.ts` (blob `ad824d5e4e41ba465cd38f4acb0275938fdb93b4`) and `workers/authichain-verify-worker/src/evaluate.ts` (blob `2f96ae3f455013db176fd16c32b8fb6dd0e49cb4`) before any release.\n\n**Next gate:** stage replacement tests and a narrowly scoped reviewed fix on a non-production branch only after verifying PR-triggered CI routing to credential-free isolated runners. Run targeted real source tests, TypeScript twin parity, Worker/route integration, and genuine exact-head full CI. Obtain an eligible security reviewer independent of the author/founder before any merge. Do not equate a source `verified` decision with physical-product authenticity, trusted issuer rights, x402 settlement, or authority to take action.\n\n**Release status: HOLD** — #2357 remains open; do not declare #2362's five-line no-op test acceptance. Preserve `humanHold=true`, `production_send=false`, and prohibit unreviewed outbound enforcement, payments, merges, or deployments.",
+      "at": "2026-11-05T23:16:38Z",
+      "url": "https://github.com/undone0603/authichain-unified/issues/2357#issuecomment-6672040985"
+    },
+    {
+      "author": "undone0603",
+      "text": "### November 6, 2026 04:37Z — Trust Kernel security candidate is now a reviewable draft PR\n\n**Draft PR [#2375](https://github.com/undone0603/authichain-unified/pull/2375)**, exact current head `50d5e6fd4d50fcce28b9448ee2e09ae7592cce81`, four files only (MJS kernel, two TypeScript evaluator twins, Python behavioral tests). It is **one unrelated commit behind main**, and no exact-head Actions run was created at the last read. All candidate commits carry `[skip ci]` to avoid sending PR code to the un-attested shared WSL runner.\n\n**Additional independently re-executed source-derived counterexamples at candidate predecessor:**\nWith `objectFound:true` and all four `crypto` flags `true`, the previous evaluator incorrectly returned `verified` for explicit `attestation.status: inactive / suspended / blocked` and for `attestation.decision: invalid / not_found`. These are contradictory risk states, not verified identity. Reproduced against exact MJS blob `9dc528ed964be4f2bb835b5ee396ba25968e64ba`.\n\n**Committed correction** across all three evaluator copies:\n- Explicit `inactive`, `suspended`, `blocked`, `pending`, `disabled` attestation status now yields `blocked` and reason `attestation_inactive_or_blocked`.\n- Explicit `invalid` or `not_found` attestation decision conflicting with a found record now yields `invalid` and reason `attestation_decision_conflict`.\n- Existing `revoked`, `expired`, `issuer_untrusted`, `identity_mismatch` and `not_found` semantics retained.\n- New Python `unittest` cases (18 methods total, including subtests) require real Node invocation and cover these contradictory states plus a consistent active positive record. Updated exact Git blobs: MJS `34859dd171dcb08a3af9dfd62f66626759b9a959`, TS `318547e48f9f7565176ea042d1b33f9e8381eae6`, Worker TS `58b2e23f78ae191ac1317720102beca72659add2`, Python `57454bba60487fd41b6a228d6f82b4f14cbe6c8c`.\n\n**New current-head verification:** read back all four GitHub blobs; executed **20/20 deterministic scenarios** against the actual updated MJS *body* in a V8 harness (native Node/Python on the amended head is **not** yet verified); confirmed all three copies contain the same two new guards. Earlier developer-local 15/15 native unittest and 251/251 TypeScript parity results were for the **earlier** head and **cannot** be reused as passing results for this amended head.\n\n**Independent review blocker:** Verify that `crypto.signatureValid/issuerTrusted/identityValid/statusActive` come only from trusted canonical verifiers, never client-supplied truth flags. A digital `verified` outcome still does **not** prove physical authenticity or authorize counterfeit enforcement. Require credential-free isolated executor, native exact-head Python/Node/TS/Worker tests and independent signed reviewer findings before merge/deploy.\n\nNo bypass of GitHub protections, deployment, public fraud finding, supplier accusation, active scan enforcement, payment, bounty, or outbound contact was performed. Maintained `humanHold=true` and AgentZ `production_send=false`.",
+      "at": "2026-11-06T04:38:32Z",
+      "url": "https://github.com/undone0603/authichain-unified/issues/2357#issuecomment-6677038672"
+    }
+  ],
+  "comments_complete": true
+}

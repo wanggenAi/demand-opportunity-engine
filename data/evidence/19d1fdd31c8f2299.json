@@ -1,0 +1,92 @@
+{
+  "source_api_url": "https://api.github.com/repos/ebraunMFP/SWE_Library_Update/issues/52",
+  "collected_at": "2026-11-06T09:20:46.713266+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/ebraunMFP/SWE_Library_Update/issues/52",
+    "repository_url": "https://api.github.com/repos/ebraunMFP/SWE_Library_Update",
+    "labels_url": "https://api.github.com/repos/ebraunMFP/SWE_Library_Update/issues/52/labels{/name}",
+    "comments_url": "https://api.github.com/repos/ebraunMFP/SWE_Library_Update/issues/52/comments",
+    "events_url": "https://api.github.com/repos/ebraunMFP/SWE_Library_Update/issues/52/events",
+    "html_url": "https://github.com/ebraunMFP/SWE_Library_Update/issues/52",
+    "id": 6234554386,
+    "node_id": "I_kwDOVknMSc8AAAABc5vAEg",
+    "number": 52,
+    "title": "Map: cut sheets and filled fields for every team-added part",
+    "user": {
+      "login": "ebraunMFP",
+      "id": 335149516,
+      "node_id": "U_kgDOE_n5zA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/335149516?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/ebraunMFP",
+      "html_url": "https://github.com/ebraunMFP",
+      "followers_url": "https://api.github.com/users/ebraunMFP/followers",
+      "following_url": "https://api.github.com/users/ebraunMFP/following{/other_user}",
+      "gists_url": "https://api.github.com/users/ebraunMFP/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/ebraunMFP/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/ebraunMFP/subscriptions",
+      "organizations_url": "https://api.github.com/users/ebraunMFP/orgs",
+      "repos_url": "https://api.github.com/users/ebraunMFP/repos",
+      "events_url": "https://api.github.com/users/ebraunMFP/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/ebraunMFP/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 12976492774,
+        "node_id": "LA_kwDOVknMSc8AAAADBXWQ5g",
+        "url": "https://api.github.com/repos/ebraunMFP/SWE_Library_Update/labels/wayfinder:map",
+        "name": "wayfinder:map",
+        "color": "5319e7",
+        "default": false,
+        "description": "",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2026-11-06T00:58:10Z",
+    "updated_at": "2026-11-06T01:06:47Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 15,
+      "completed": 15,
+      "percent_completed": 100
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "> Copied from [brauneric/SWE_Library#52](https://github.com/brauneric/SWE_Library/issues/52) · original author `brauneric` · opened 2026-10-21\n\n## Destination\n\nEvery **team-added part** in the SWE library (12,775 as of the 2026-10-21 shared export; the 3 sample parts the team edited included, the other 420 sample parts excluded) has a decided path, in run order, to: a **cut sheet** in `\\mfp-hud-sw\\data\\Datasheets\\_CutsheetDetails` linked as its SWE datasheet (catalog link moved to userData10), and its fields filled to the verified-part standard (`audit/Checks.cs`). The order is a runbook of change sets that can be proven one at a time on TSUMMERS-LAP-21 (dry run → local write → audit diff), then handed to Eric for the shared server.\n\n## Notes\n\n- Domain: SWE shared library. Vocabulary in `GLOSSARY.md` (catalog, cut sheet, team-added part, verified datasheet). Standard and triage come from the closed map [SWE library audit and verified-part standard](https://github.com/ebraunMFP/SWE_Library_Update/issues/1); its rules hold here unless a ticket amends them.\n- Machine rules and EwAPI know-how: `docs/handoff-TSUMMERS-LAP-21.md` and `docs/agents/swe-api.md`. Planning map: tickets decide, they don't run change sets (task tickets only where a decision waits on the work).\n- **Pipeline per part:** catalog in the MFP All Staff Library → catalog and product family filed in the knowledge base (`knowledge-capture/knowledge/library/<maker>/`) → cut sheet made by the knowledge-capture `cutsheet` engine → link in SWE → fill fields from the cut sheet.\n- **MFP-made parts** (MB/MA/DA/E/EP/C/RES/…): the \"catalog\" is the released drawing in Control Docs (read only), per rule #10 of the audit map. The All Staff Library is for supplier catalogs.\n- **Catalogs not in the Library** go on the catalogs-to-get list. A candidate found on `\\Mfp-hud-sw\\Data\\Datasheets` is only a suggestion: a person confirms it before it's filed. Nothing is copied into the Library automatically.\n- **Writes:** SWE database writes only on the laptop's local Collaborative Server; the shared server stays on hold, and nothing is read or checked against it in this effort (Eric, 2026-10-21). New cut sheet files may be added to `_CutsheetDetails` from any machine, never overwriting or deleting. The Library and Control Docs are read only.\n- **Order (decided while charting):** pre-link cleanup from the audit map first (manufacturer aliases → re-source supplier parts filed under MFP → class tree → retire/move duplicates), so no cut sheet is made for a part about to go; then link the 417 existing cut sheets → make and link the 404 the engine can make now → fix the 110 that don't parse → build Parker/Sun families (3,744) → new engines manufacturer by manufacturer, largest first.\n- **Part of a larger destination (2026-11-04 meeting):** this map's runbook is stages 1–2 (datasheet, user fields) of the four-stage clean library charted in [Map: four-stage clean library on TSUMMERS-LAP-21](https://github.com/ebraunMFP/SWE_Library_Update/issues/67). A part finishing this runbook is not yet a clean-library part; symbol and 3D stages, the hold/clean split and the stage tracker belong to #67.\n- **Catalogs on demand (Eric, 2026-11-04):** a catalog in the Library `_Inbox` is harvested only when a part in the change set being worked needs a cut sheet and has no filed catalog; nothing is harvested ahead of need. Details: [How is a catalog harvested only when a part being worked needs it?](https://github.com/ebraunMFP/SWE_Library_Update/issues/78).\n- **Approval (Eric, 2026-11-04):** agents run and check each change set; Eric approves what is accepted as good (see #67).\n- Skills: `grilling` + `domain-modeling` for grilling tickets; `research` for research tickets.\n\n## Decisions so far\n\n- [Which MFP-made parts have a released drawing in Control Docs?](https://github.com/ebraunMFP/SWE_Library_Update/issues/55): 1,721 MFP-manufacturer parts; 1,497 carry an MFP number, of which 812 have an exact-variant release, 284 a bare-number or sibling release, 398 none (349 no folder, 49 empty); 1,064 have a PDF in the newest release; 224 un-numbered, 161 of them supplier parts filed under MFP (re-source).\n- [Where do SWE's user-data label files live?](https://github.com/ebraunMFP/SWE_Library_Update/issues/59): in XML files on the shared working folder, not the database; one file labels every manufacturer part, each class names its own component file; EwAPI can't change label text, so re-labelling is a share write the laptop can't test alone.\n- [Which team-added parts have no catalog in the All Staff Library?](https://github.com/ebraunMFP/SWE_Library_Update/issues/53): of 11,035 supplier parts (408 makers, 3,381 series), 2,985 have a series the Library/KB names, 4,501 sit with a Library maker but an unnamed series (Daman, Magnaloy, LDI, DMIC… lack KB codes), and 3,549 from 389 makers need a catalog got (1,438 of them with a Datasheets candidate); table in `out/catalogs-to-get/`.\n- [Which candidate catalogs are confirmed for the Library?](https://github.com/ebraunMFP/SWE_Library_Update/issues/54): confirmation tabled by Eric; instead a per-maker list of catalogs to gather or check (`docs/catalogs-to-gather.csv`: 389 makers / 3,549 parts to get, 18 makers / 4,501 parts to check Library coverage), Datasheets PDFs kept as unconfirmed hints.\n- [How does the laptop's local server get a current copy of the shared library?](https://github.com/ebraunMFP/SWE_Library_Update/issues/56): the copy Jake already made is the one we edit (separate from shared, current to 2026-10-19 17:10, method not recorded); no fresh copy now.\n- [Does a library part's update() persist on the local server?](https://github.com/ebraunMFP/SWE_Library_Update/issues/57): yes: `setX` + `update()` survives a session restart and `\"\"` clears a field; every write restamps `modifiedBy`/`modified` (no setter back), so the audit diff must expect it; the check against the shared server was dropped, as this work is localhost only.\n- [How are retired parts retired?](https://github.com/ebraunMFP/SWE_Library_Update/issues/58): only duplicates and invalid P/Ns are retired, kept not deleted: moved to root class `99_RETIRED` with a fixed `RETIRED: …; USE …; WAS …` note in userData6; discouraged parts stay live with a `DISCOURAGED: USE …` note; misfiles just move class; alias-only duplicates retire during the alias step; a person confirms a review CSV first.\n- [What does a cut sheet for an MFP-made part look like?](https://github.com/ebraunMFP/SWE_Library_Update/issues/60): the released drawing PDF copied whole (outline then schematic for assemblies) with one blue source note; named `<SWE reference>.pdf`, release pinned in the note and metadata; no-PDF releases held for Engineering; made by an `mfp` mode in the knowledge-capture cut sheet tool, exact-variant matches only.\n- [Where does an MFP part with no exact release get its cut sheet?](https://github.com/ebraunMFP/SWE_Library_Update/issues/61): only from a release whose drawing itself names the exact variant (title block, finish set, or stated variant rule; tiering re-run with a title-block read); everything else, including no/empty folders, E/RES/EP child parts and other-finish-only MB blocks, is held on one list for Engineering (`docs/mfp-drawings-to-release.csv`) with cross-prefix and Engineering Files paths as hints only; the 224 un-numbered parts moved to their own ticket.\n- [How do the user-data label files get changed on the share?](https://github.com/ebraunMFP/SWE_Library_Update/issues/62): as the last runbook step; the manufacturer-part file shows only slots 0–6 today (torque on 891 parts is invisible), so it is rewritten to slots 0–10 in order, all visible and editable, with labels from the audit's slot breakdown (slot 10 `CATALOG LINK`); tested first by repointing the laptop's own `UserDataDescription` path at a local copy, then copied over the share's file with a dated backup.\n- [How is the writer that links cut sheets and fills fields shaped?](https://github.com/ebraunMFP/SWE_Library_Update/issues/63): one generic C# writer in `writer/` applying §6.2 change-set CSVs (fixed field list, `class` by path, one all-or-nothing `update()` per part, `--undo` from the write log); it also creates the bare `99_RETIRED` class via an `add-class` row (first run proves `newEwClass`); the audit diff ignores the stamp but requires stamped parts = write-log parts.\n- [Where do MFP-filed parts with no MFP number get their cut sheet?](https://github.com/ebraunMFP/SWE_Library_Update/issues/64): supplier parts filed under MFP are re-sourced via a confirmed review CSV and join the supplier pipeline (before the duplicate step); catalog manifolds (VPOM, FPOM, …) were later ruled out of scope; LEGACY drawings count as releases; RapidMod PMAs and other unnumbered MFP designs, and custom-fab job parts, go on the Engineering hold list; `DUMMY`/`MOTOR` retire; the two typo references are corrected.\n- [Which SWE parts does the Manifold Solutions catalog cover, and from which pages?](https://github.com/ebraunMFP/SWE_Library_Update/issues/65): 8 MFP-filed parts decode exactly (VPOM 049Y/4289/4544, FPOM 1165, HEB 1521, RCM 2815, TSM 1064, PTU 1892), each from one ordering page + one dimension page; TLSM-6036 (3) is outside the catalog; SQDIN/LFG accessories stay with re-sourcing; the KB says MFP uses MA numbers, not these codes, and the bodies were re-released after 2016, so those parts were ruled out of scope (see Out of scope).\n- [How is a catalog harvested only when a part being worked needs it?](https://github.com/ebraunMFP/SWE_Library_Update/issues/78): per change set, its parts are matched to the Library `_Inbox` (catalog-finder manifest; maker + series found in the PDF text) and Eric approves one harvest plan; a matching catalog is harvested even when an older one is filed, and series built from an older print are re-checked and their cut sheets remade (old sheets copied to `_CutsheetDetails\\_superseded\\<date>\\` first: an approved exception to the no-overwrite rule); missing engine families are built automatically; all 436 Sun inbox datasheets are harvested into the KB's Sun collection, families built for every SWE-used Sun series, and the Sun engine reads Library copies first; matching is a read-only `audit/catalog_match.py`.\n\n## Not yet specified\n\n- Gathering, confirming and filing the missing catalogs into the knowledge base: tabled 2026-10-21; Eric does it later (by hand or with another agent) from `docs/catalogs-to-gather.csv`. Includes who Fluidyne/CRS really are (reseller vs maker) and the engine-order tie-break.\n- For each new engine: which catalog sections and code tables it needs; graduates manufacturer by manufacturer as their catalogs are confirmed.\n- Commodity parts sold under a supplier number (Digi-Key): whether the supplier's product page is the catalog and how it's archived.\n- Whether and how the laptop's library copy is refreshed from the shared server while the runbook is worked (Unarchive with the working folder moved off `\\mfp-hud-sw`, or a SQL restore by a DBA), and how often.\n- The long tail of catalogs to get: 275 makers with under 5 parts each (450 parts), and whether each earns a filed catalog or a lighter path.\n- How a proven change set reaches the shared server: the same writer with an override only Eric passes, SWE's own import, or another route; open while the shared server is on hold (from [How is the writer that links cut sheets and fills fields shaped?](https://github.com/ebraunMFP/SWE_Library_Update/issues/63)).\n- **Run order vs usage (2026-11-04 meeting):** the meeting wants hands-on work ordered by product family and use on released jobs (hydraulic valves, motors, pumps; Parker and Sun valves first), excluding master parts. Decide whether that re-orders this runbook after the pre-link cleanup or only the hands-on track in #67; the usage source and window are [Which released-job data shows how often a part is used, and over what window?](https://github.com/ebraunMFP/SWE_Library_Update/issues/72).\n- **High-confidence automation only (2026-11-04 meeting):** catalog-backed updates are automated and anything unresolved goes on a review list. Check that each change set writes only what its cut sheet decodes exactly, and that its leftovers land on one list per change set.\n\n## Out of scope\n\n- The 420 SWE sample parts the team never edited.\n- Verifying parts: a named person confirms datasheet, symbol and values after this map's runbook runs; an agent never marks a part verified.\n- Retired parts (`99_RETIRED`): kept only as records, so no cut sheet or field fill; see [How are retired parts retired?](https://github.com/ebraunMFP/SWE_Library_Update/issues/58).\n- Component label files (`HP_Z_…` and the other per-class files, incl. the class pointing at a missing file): they label components in projects, not library parts; see [How do the user-data label files get changed on the share?](https://github.com/ebraunMFP/SWE_Library_Update/issues/62).\n- Deliberate placeholders `MB-PLACEHOLDER` and `RESERVOIR-CSM`: kept as-is, no cut sheet or field fill; see [Where do MFP-filed parts with no MFP number get their cut sheet?](https://github.com/ebraunMFP/SWE_Library_Update/issues/64).\n- Catalog manifolds (the 8 *Manifold Solutions* parts, VPOM 049Y, TLSM-6036): they take their cut sheet from their MA release, but renumbering them and finding their source is left out of this map (Eric); see [Do the catalog manifolds take their cut sheet from the catalog or from their MA release?](https://github.com/ebraunMFP/SWE_Library_Update/issues/66).\n- McMaster-Carr parts (402 team-added parts filed under any McMaster spelling, 2026-10-15 audit): only the manufacturer alias step applies, merging `MCMASTER`, `McMASTER-CARR` and `McMASTER` into `MCMASTER-CARR` and retiring the 2 alias-only duplicates it creates (4830K173, 46635K66). Otherwise no re-sourcing, class move, cut sheet or field fill (Eric, 2026-11-03).\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/ebraunMFP/SWE_Library_Update/issues/52/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/ebraunMFP/SWE_Library_Update/issues/52/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [],
+  "comments_complete": true
+}

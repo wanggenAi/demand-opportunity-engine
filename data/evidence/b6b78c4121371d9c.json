@@ -1,0 +1,119 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43072",
+  "collected_at": "2026-11-06T09:20:46.713266+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43072",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43072/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43072/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43072/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43072",
+    "id": 6225294265,
+    "node_id": "I_kwDOC4Q8Qs8AAAABcw5zuQ",
+    "number": 43072,
+    "title": "vm expression engine: per-item parameter resolution blocks the worker event loop for minutes (lost queue locks, liveness kills)",
+    "user": {
+      "login": "arturtamborski",
+      "id": 8676740,
+      "node_id": "MDQ6VXNlcjg2NzY3NDA=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8676740?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/arturtamborski",
+      "html_url": "https://github.com/arturtamborski",
+      "followers_url": "https://api.github.com/users/arturtamborski/followers",
+      "following_url": "https://api.github.com/users/arturtamborski/following{/other_user}",
+      "gists_url": "https://api.github.com/users/arturtamborski/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/arturtamborski/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/arturtamborski/subscriptions",
+      "organizations_url": "https://api.github.com/users/arturtamborski/orgs",
+      "repos_url": "https://api.github.com/users/arturtamborski/repos",
+      "events_url": "https://api.github.com/users/arturtamborski/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/arturtamborski/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 4,
+    "created_at": "2026-11-05T14:36:21Z",
+    "updated_at": "2026-11-06T06:53:29Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nWith `N8N_EXPRESSION_ENGINE=vm`, nodes that resolve expressions for every input item spend about 2.5x longer in their synchronous parameter-resolution loop than with `legacy`. The loop doesn't yield, so on large inputs a queue-mode worker's event loop is blocked for minutes. Then:\n\n- The Bull lock isn't renewed, so after about 30 s every job on that worker fails with `job stalled more than maxStalledCount` or `Missing key for job <id> updateProgress`. That includes unrelated executions that happen to share the worker.\n- After about 2 minutes, the `/healthz` liveness probe fails and Kubernetes restarts the worker. Every execution running on it is marked `crashed`.\n\nTwo workflows trigger it for us. Both run with no problems under `legacy`.\n\n**Case 1: Postgres node (v2.5), Execute Query, 11,034 items, 33 query parameters**\n\nThe `queryReplacement` option is set to `={{ $json.a }}, {{ $json.b }}, ... ` (33 segments). In `packages/nodes-base/nodes/Postgres/v2/actions/database/executeQuery.operation.ts`, each item does two things inside a synchronous `.map()`:\n\n1. It resolves the whole option string with `getNodeParameter('options.queryReplacement', index)`.\n2. It evaluates each of the 33 resolvables again with `this.evaluateExpression(resolvable, index)`.\n\nThat's about 34 evaluations per item, roughly 375,000 per run, before any query is sent.\n\n| Engine | Node execution time (same workflow, same data size) |\n|---|---|\n| legacy | 105–111 s (includes ~11k async queries) |\n| vm | 265 s |\n\n**Case 2: Postgres node (v2), Insert or Update, 73,366 items, ~20 mapped columns**\n\n| Engine | Node execution time |\n|---|---|\n| legacy | 212 s |\n| vm | ~600 s |\n\nThe extra time is all synchronous. It works out to roughly 0.4–0.7 ms per `vm` evaluation for a simple `{{ $json.field }}`, against a fraction of that under `legacy`. Each evaluation in `IsolatedVmBridge.execute` does several things:\n\n- It creates three new `ivm.Callback`s and a `HostDataResolver`.\n- It runs `evalClosureSync` on a freshly wrapped script.\n- It makes at least two host round trips: `$json` returns `Object.keys` of the whole item, then the field itself.\n\nThe 5 s per-expression timeout doesn't help here, because no single evaluation is slow. The cost is their number, inside one loop with no awaits.\n\n### To Reproduce\n\n1. Run n8n 2.46.5 in queue mode with one worker and `N8N_EXPRESSION_ENGINE=vm`.\n2. Create a workflow with:\n   - **Code node:** returns 10,000 items, each with about 40 string fields.\n   - **Postgres node:** v2.5 or later, operation Execute Query, query `select $1, $2, ... $33`. Under Options → Query Parameters, set `={{ $json.f1 }}, {{ $json.f2 }}, ..., {{ $json.f33 }}`.\n3. Execute it. While it runs, start any other short workflow on the same worker.\n4. Watch the worker logs and its event-loop lag.\n5. Repeat the run with `N8N_EXPRESSION_ENGINE=legacy` and compare the Postgres node's execution time.\n\nObserved with `vm`:\n- The Postgres node takes about 2.5x longer.\n- The event loop is blocked for most of that time.\n- Concurrent jobs on the worker fail with `Missing key for job ... updateProgress`.\n- With big enough inputs, the liveness probe restarts the worker.\n\n### Expected behavior\n\n`vm` per-item expression resolution should cost about as much as `legacy`, or at least not block the event loop long enough to lose queue locks.\n\nPossible directions:\n- Reuse callbacks or the context across evaluations within one node execution.\n- Batch per-item evaluation inside the isolate.\n- Yield between items in nodes that resolve parameters per item.\n- In the Postgres v2.5+ Execute Query path, avoid resolving the `queryReplacement` string twice.\n\n### Debug Info\n\n- `N8N_EXPRESSION_ENGINE=vm`. Pool size, timeout and memory limit are at their defaults.\n- Queue settings (`QUEUE_WORKER_LOCK_DURATION` and related) are at their defaults.\n- Liveness probe: `/healthz`, period 20 s, failure threshold 6, timeout 5 s.\n- Changing only `N8N_EXPRESSION_ENGINE` back to `legacy` makes the stalls and restarts stop.\n- Related but different: #41322 (isolate acquisition latency on webhooks). #42571, the per-evaluation path resolution fix, is included in 2.46.5 and doesn't fix this.\n\n### Operating System\nLinux (Kubernetes, official `n8nio/n8n` image)\n\n### n8n Version\n2.46.5\n\n### Node.js Version\n26.12.1\n\n### Database\nPostgreSQL\n\n### Execution mode\nqueue\n\n### Hosting\nself hosted\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43072/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43072/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @arturtamborski,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9716\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9716](https://linear.app/n8n/issue/GHC-9716)",
+      "at": "2026-11-05T14:36:30Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43072#issuecomment-6660696505"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "I checked the current Postgres v2 `execute()` path. For each item it first calls `getNodeParameter(\"options.queryReplacement\", index)`, then, for node version 2.5+, reads the raw configured value and evaluates each resolvable again. That matches the duplicate resolution path described here; the initially resolved value is otherwise used mainly for the type/error branches. It may be worth checking whether the 2.5+ path can branch on the raw configured value before resolving it, while keeping the older-version behavior unchanged.",
+      "at": "2026-11-06T00:05:25Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43072#issuecomment-6672856301"
+    },
+    {
+      "author": "xh123637",
+      "text": "Hi, I traced the duplicate resolution path you pointed out in the Postgres v2.5+ Execute Query path: for each item, `getNodeParameter('options.queryReplacement', index)` resolves the whole option string, and then the 2.5+ branch reads the raw configured value and evaluates each resolvable again with `evaluateExpression`. The initially resolved value is otherwise only used for the type/error branches, so the second pass is doing the same work twice.\n\nI'd like to fix it along the direction you suggested — branch on the raw configured value before resolving it for node version 2.5+, while keeping the older-version behavior unchanged. Would that direction be welcome? If so, I'll open a PR with a regression test.\n",
+      "at": "2026-11-06T03:01:45Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43072#issuecomment-6675686655"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "Yes, that looks like a reasonable, focused direction for the v2.5+ path. Please open a PR with a regression test for the per-item expression case, and check that the older-version behavior stays unchanged.",
+      "at": "2026-11-06T06:53:29Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43072#issuecomment-6679092794"
+    }
+  ],
+  "comments_complete": true
+}

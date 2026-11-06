@@ -1,0 +1,174 @@
+{
+  "source_api_url": "https://api.github.com/repos/SamyrFateh/komerce-backend/issues/3420",
+  "collected_at": "2026-11-06T09:20:46.713266+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/SamyrFateh/komerce-backend/issues/3420",
+    "repository_url": "https://api.github.com/repos/SamyrFateh/komerce-backend",
+    "labels_url": "https://api.github.com/repos/SamyrFateh/komerce-backend/issues/3420/labels{/name}",
+    "comments_url": "https://api.github.com/repos/SamyrFateh/komerce-backend/issues/3420/comments",
+    "events_url": "https://api.github.com/repos/SamyrFateh/komerce-backend/issues/3420/events",
+    "html_url": "https://github.com/SamyrFateh/komerce-backend/issues/3420",
+    "id": 6234704801,
+    "node_id": "I_kwDORwaXn88AAAABc54LoQ",
+    "number": 3420,
+    "title": "[staging-op] canonical-chromium-audit",
+    "user": {
+      "login": "SamyrFateh",
+      "id": 270944292,
+      "node_id": "U_kgDOECZIJA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/270944292?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/SamyrFateh",
+      "html_url": "https://github.com/SamyrFateh",
+      "followers_url": "https://api.github.com/users/SamyrFateh/followers",
+      "following_url": "https://api.github.com/users/SamyrFateh/following{/other_user}",
+      "gists_url": "https://api.github.com/users/SamyrFateh/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/SamyrFateh/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/SamyrFateh/subscriptions",
+      "organizations_url": "https://api.github.com/users/SamyrFateh/orgs",
+      "repos_url": "https://api.github.com/users/SamyrFateh/repos",
+      "events_url": "https://api.github.com/users/SamyrFateh/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/SamyrFateh/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 6,
+    "created_at": "2026-11-06T01:12:27Z",
+    "updated_at": "2026-11-06T08:09:06Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "Audit Chromium post-reconstruction des identités E2E (run 42132145728) sur le staging Railway officiel. Lecture seule, toutes les identités configurées, comparaison stricte SHA origin/main avec /health/version. Contrôler les connexions Admin, responsable marché, agent Hub, agent Relais, visibilité des modules et redirections. Classer séparément défaut produit, faux positif du harness, redirect attendu et ancien rôle hors périmètre V1. Ne modifier ni commandes, ni colis, ni comptes, ni référentiels, ni données de recette. Le compte responsable Hub est connu comme absent faute de secrets : ne pas le considérer comme testé. Publier PASS/FAIL et preuves sans secrets.",
+    "reactions": {
+      "url": "https://api.github.com/repos/SamyrFateh/komerce-backend/issues/3420/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/SamyrFateh/komerce-backend/issues/3420/timeline",
+    "performed_via_github_app": {
+      "id": 1144995,
+      "client_id": "Iv23liVemv8A9if9v0F2",
+      "slug": "chatgpt-codex-connector",
+      "node_id": "A_kwHOAOQ6Gs4AEXij",
+      "owner": {
+        "login": "openai",
+        "id": 14957082,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjE0OTU3MDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/14957082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/openai",
+        "html_url": "https://github.com/openai",
+        "followers_url": "https://api.github.com/users/openai/followers",
+        "following_url": "https://api.github.com/users/openai/following{/other_user}",
+        "gists_url": "https://api.github.com/users/openai/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/openai/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/openai/subscriptions",
+        "organizations_url": "https://api.github.com/users/openai/orgs",
+        "repos_url": "https://api.github.com/users/openai/repos",
+        "events_url": "https://api.github.com/users/openai/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/openai/received_events",
+        "type": "Organization",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "name": "ChatGPT Codex Connector",
+      "description": "Bring ChatGPT and Codex to your GitHub repositories.",
+      "external_url": "https://www.chatgpt.com",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "created_at": "2025-02-14T01:37:05Z",
+      "updated_at": "2026-09-23T18:52:59Z",
+      "permissions": {
+        "actions": "write",
+        "checks": "read",
+        "contents": "write",
+        "emails": "read",
+        "issues": "write",
+        "metadata": "read",
+        "pull_requests": "write",
+        "statuses": "read",
+        "workflows": "write"
+      },
+      "events": [
+        "check_run",
+        "check_suite",
+        "commit_comment",
+        "issues",
+        "issue_comment",
+        "pull_request",
+        "pull_request_review",
+        "pull_request_review_comment",
+        "pull_request_review_thread",
+        "repository",
+        "status",
+        "sub_issues"
+      ]
+    },
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "SamyrFateh",
+      "text": "## Point factuel — 6 novembre 2026 (post-reconstruction)\n\n- Provisionnement final **SUCCESS** : [run 42143042538](https://github.com/SamyrFateh/komerce-backend/actions/runs/42143042538), branche main SHA `da2a0fc4`, `committed:true`, `skipped:[]`, `warnings:[]`.\n- Compte `hub_director` **créé** avec rôle technique `agent_hub`, droits distincts `purchase_commitment:granted` et `supplier_payment:granted`. Les sept profils préexistants et les relais KM/CM/CG/YT sont inchangés ; DJ demeure inactif.\n- Audit Chromium déclenché par l'ouverture de cette issue : [run 42142262144](https://github.com/SamyrFateh/komerce-backend/actions/runs/42142262144), **FAILED** (21 tests : 6 PASS / 7 FAIL / 8 SKIPPED ; 35 findings ; 55 routes ; 269 clics). SHA staging `da2a0fc4` contrôlé conforme. Le run a commencé à 01:12 UTC, avant le provisionnement de la responsable Hub (01:19 UTC), et la spec Chromium actuelle ne contient pas ses secrets/son profil : aucune validation fonctionnelle de ce rôle n'est démontrée.\n- Anomalie non classée : dans `live-screens-proof.spec.js`, les badges recette attendus sous filtre activé valent zéro. Les erreurs `CLICK_WRONG_DESTINATION` et `NO_REAL_NAVIGATION_CLICKS` exigent une requalification produit/harness/ancien rôle, sans faux GO.\n\n**Suite** : ne relancer aucune purge/aucun provisionnement ; analyser preuves du run, corriger seulement le harness ou un défaut P0/P1 avéré, ajouter le vrai contrôle authentifié de responsable Hub (2 validations distinctes), puis refaire un Chromium lecture seule au SHA déployé. Ne pas confondre SUCCESS provisionnement et GO UI exhaustif.",
+      "at": "2026-11-06T01:23:59Z",
+      "url": "https://github.com/SamyrFateh/komerce-backend/issues/3420#issuecomment-6674117135"
+    },
+    {
+      "author": "SamyrFateh",
+      "text": "### Railway + Chromium — contrôle du 06/11 (lecture seule)\n\nRailway staging `superb-presence` : backend `komerce-backend` ONLINE 1/1, dernier déploiement SUCCESS SHA `da2a0fc4`, PostgreSQL ONLINE 1/1 (1 warning non critique), sourcing-autopilot en exécution. Aucun pending deployment ; fenêtre métrique 2h : 117417 requêtes, 0 HTTP 5xx et 304 HTTP 4xx (à ne pas assimiler à des bugs sans contexte). Durant le run 42142262144, un GET `/api/admin/dashboard/context` 403 côté agent relais est visible : déterminer si refus attendu.\n\nL'audit exhaustif 42142262144 est FAILED (6 pass / 7 fail / 8 skipped, 35 findings) ; preuve de badge recette absente sur des références historiques `9BF9BA04` après remise au propre = condition de fixture à clarifier, pas raison de restaurer des données artificiellement. Le run est antérieur au provisioning Hub director.\n\nDéclenché un nouveau Chromium QUICK_READONLY en créant issue #3421, run [42143945442](https://github.com/SamyrFateh/komerce-backend/actions/runs/42143945442), état en cours lors de cette note. Aucun write staging. Test dédié de la directrice décrit dans issue #3422, pas encore implémenté : seuls les deux secrets/provisionnement sont vérifiés.\n\nNe pas déployer/restart/purger pour une anomalie du harness. Après verdict QUICK_READONLY, comparer les preuves des routes et des clics ; dissocier GO accès de GO métier 13/13 et GO UI exhaustif.",
+      "at": "2026-11-06T01:28:55Z",
+      "url": "https://github.com/SamyrFateh/komerce-backend/issues/3420#issuecomment-6674230901"
+    },
+    {
+      "author": "SamyrFateh",
+      "text": "### Résultat du QUICK post-reconstruction — run [42143945442](https://github.com/SamyrFateh/komerce-backend/actions/runs/42143945442)\n\n- `DEPLOY_SHA_MATCHED` : `da2a0fc4` attendu = observé.\n- Résumé Chromium : **2 passed / 1 failed / 3 skipped** ; navigation **6 routes / 10 clics / 0 findings**.\n- Échec unique : `tests/staging-canonical/live-screens-proof.spec.js:104`, `expected badges > 0`, `received 0` pour les commandes figées `E2E-HUB-V1-9BF9BA04-*` dans Hub/Relais filtrés. Ce test exige des fixtures métiers historiques et s'exécute à tort en mode `E2E_AUDIT_QUICK=1`, alors que le profil baseline est exclusivement READ ONLY / accès / navigation.\n- **Correction ciblée demandée** : ne pas exécuter le proof de fixtures sous QUICK_READONLY (skip explicite signalant NOT_PROVEN, pas PASS fictif) ; conserver la même assertion stricte en mode preuve métier complet lorsque les fixtures existent ; empêcher la publication de captures authentifiées sensibles dans un dépôt public. Ajouter un test de non-régression pour ce découplage. Aucun seed, purge, mutation métier, changement de permissions ou restart Railway.\n- L'API Railway backend demeure saine (0 5xx dans fenêtre 2h) ; l'échec baseline n'est pas une panne runtime. Responsable Hub encore NON VALIDÉE en Chromium malgré provisionnement réussi #42143042538.\n\nContexte: le checkout du repo depuis la machine de l'assistant est indisponible (`github.com` non résolu) : modification locale, préflight et PR non réalisés, ne pas déclarer correction livrée.",
+      "at": "2026-11-06T01:30:31Z",
+      "url": "https://github.com/SamyrFateh/komerce-backend/issues/3420#issuecomment-6674269759"
+    },
+    {
+      "author": "SamyrFateh",
+      "text": "### 2026-11-06 — correction Chromium QUICK + Hub Director (préprod)\n- **Correctif poussé** : PR #3423 `fix/chromium-quick-hub-director-20261106` — https://github.com/SamyrFateh/komerce-backend/pull/3423\n- **QUICK** : exclut uniquement le test des quatre anciennes commandes absentes, sans diminuer la preuve métier exhaustive.\n- **Hub Director** : nouvelle preuve Chromium READ ONLY, deux sessions isolées : directrice (`purchase_commitment=true`, `supplier_payment=true`) versus agent Hub ordinaire (deux grants faux), GET Administration/Board, refus admin central, version SHA.\n- **Secrets** : accès uniquement via GitHub Actions ; artefact directeur limité à JSON booléens/HTTP/SHA, aucune capture de données.\n- **Staging** : référentiels et données applicatives préservés, DJ toujours inactif. Aucune mutation DB/compte/commande/PO/colis ni PSP.\n- **État** : PR en validation CI. **Pas encore de GO** ; lancement du QUICK et du test directeur seulement après CI verte, merge et staging au nouveau SHA. Les runs et verdicts seront ajoutés ici.\n\nRefs #3422, staging-provisioning run 42143042538.",
+      "at": "2026-11-06T07:54:39Z",
+      "url": "https://github.com/SamyrFateh/komerce-backend/issues/3420#issuecomment-6680065836"
+    },
+    {
+      "author": "SamyrFateh",
+      "text": "### 2026-11-06 — Résultats réels après #3423 au SHA a1a84507f07e2bac8e02ea1ae175f6f987a7d827\n\n- **QUICK navigation**: PASS, workflow GitHub SUCCESS — https://github.com/SamyrFateh/komerce-backend/actions/runs/42184384599\n- **Hub Director Chromium**: 1 test Playwright PASS ; directrice `agent_hub` : `purchase_commitment=true`, `supplier_payment=true` ; agent Hub ordinaire : `false/false`; API administration et board 200 ; accès administration centrale refusé 403 ; SHA stable ; pas d'écritures métier. Preuve JSON publiée dans l'artefact GitHub: https://github.com/SamyrFateh/komerce-backend/actions/runs/42184386803/artifacts/13485839740\n- **Attention** : workflow Hub Director affiché **FAILURE**, mais exclusivement à cause du **générateur de synthèse** qui lit `r.findings.map` sur le format JSON dédié, où `findings` n'existe pas. Ce n'est pas un échec Playwright ou métier ; le statut global rouge reste à corriger avant clôture.\n- Correction du générateur en préparation sur branche `fix/chromium-director-summary-20261106` ; audit full métier / cas limites **NOT_PROVEN**, pas encore de GO global.\n- Préproduction staging et données requises préservées.",
+      "at": "2026-11-06T08:01:43Z",
+      "url": "https://github.com/SamyrFateh/komerce-backend/issues/3420#issuecomment-6680179231"
+    },
+    {
+      "author": "SamyrFateh",
+      "text": "### Certification Chromium staging — correction et recontrôle clôturés (6 novembre 2026)\n\n**Version réellement déployée Railway staging :** `f87a2633ff42b8cb118a7a25c550f8a71dd9cb35` (PR #3426, après PR #3423). Le même SHA est contrôlé par les deux runs.\n\n| Preuve | Run | Verdict |\n|---|---|---|\n| Navigation QUICK Admin + Responsable marché (sans dépendance aux anciennes fixtures) | [#42185425773](https://github.com/SamyrFateh/komerce-backend/actions/runs/42185425773) | **SUCCESS** |\n| Hub Director / agent Hub ordinaire, Playwright Chromium et synthèse sécurisée | [#42185242666](https://github.com/SamyrFateh/komerce-backend/actions/runs/42185242666) | **SUCCESS** |\n\n**Hub Director :** deux sessions navigateur indépendantes, authentification vraie, rôle technique `agent_hub`. `/api/hub/administration` et `/api/hub/board` : HTTP 200 pour chacun. Directrice : `purchase_commitment=true`, `supplier_payment=true`. Agent ordinaire : `false/false`. Admin central : HTTP 403 pour les deux. SHA stable, aucune écriture métier. [Artefact JSON sans données sensibles](https://github.com/SamyrFateh/komerce-backend/actions/runs/42185242666/artifacts/13487226928).\n\n**Correctifs :** #3423 (exclusion du test historique exclusivement en QUICK et création du test directeur), #3426 (synthèse ciblée + trois tests de non-régression fail-closed), CI validées et mergées.\n\n**Périmètre :** certification ciblée **PASS**. La certification complète des transitions transactionnelles, des marchés et des cas limites reste **NOT_PROVEN** ; pas de GO global de préproduction sur ces seules preuves. Aucun nettoyage supplémentaire, aucune modification de référentiels, marchés, comptes, commandes, colis ou paiements réels.",
+      "at": "2026-11-06T08:09:06Z",
+      "url": "https://github.com/SamyrFateh/komerce-backend/issues/3420#issuecomment-6680299202"
+    }
+  ],
+  "comments_complete": true
+}

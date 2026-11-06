@@ -1,0 +1,129 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43068",
+  "collected_at": "2026-11-06T09:20:46.713266+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43068",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43068/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43068/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43068/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43068",
+    "id": 6221448893,
+    "node_id": "I_kwDOC4Q8Qs8AAAABctPGvQ",
+    "number": 43068,
+    "title": "OIDC: a failed discovery is cached for one hour, so every login keeps failing until the cache expires or n8n restarts",
+    "user": {
+      "login": "zabojpetr",
+      "id": 6089349,
+      "node_id": "MDQ6VXNlcjYwODkzNDk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6089349?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/zabojpetr",
+      "html_url": "https://github.com/zabojpetr",
+      "followers_url": "https://api.github.com/users/zabojpetr/followers",
+      "following_url": "https://api.github.com/users/zabojpetr/following{/other_user}",
+      "gists_url": "https://api.github.com/users/zabojpetr/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/zabojpetr/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/zabojpetr/subscriptions",
+      "organizations_url": "https://api.github.com/users/zabojpetr/orgs",
+      "repos_url": "https://api.github.com/users/zabojpetr/repos",
+      "events_url": "https://api.github.com/users/zabojpetr/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/zabojpetr/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 11654110784,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACtqOeQA",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:identity",
+        "name": "team:identity",
+        "color": "ededed",
+        "default": false,
+        "description": null,
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-11-05T10:33:27Z",
+    "updated_at": "2026-11-05T12:05:35Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\n`OidcService.getOidcConfiguration()` caches the result of OIDC discovery for one hour. It stores the promise (not the resolved configuration) and nothing clears it when the promise rejects. If the first discovery fails for any reason (IdP or network briefly unavailable, DNS issue right after a restart), the rejected promise stays cached and every following login attempt fails immediately with the same error (`{\"code\":0,\"message\":\"fetch failed\"}`). No new request to the IdP is made until the 1h TTL expires, the OIDC config (discovery endpoint / client id / client secret) changes, or n8n restarts.\n\nCode (packages/cli/src/modules/sso-oidc/oidc.service.ee.ts, identical in master and n8n@2.43.4):\n\n```js\nprivate async getOidcConfiguration(): Promise<openidClientTypes.Configuration> {\n        const now = Date.now();\n        if (\n                this.cachedOidcConfiguration === undefined ||\n                now >= this.cachedOidcConfiguration.validTill.getTime() ||\n                /* endpoint, clientId or clientSecret changed */\n        ) {\n                this.cachedOidcConfiguration = {\n                        ...this.oidcConfig,\n                        configuration: this.createProxyAwareConfiguration(/* ... */), // not awaited, stored as a promise\n                        validTill: new Date(Date.now() + 60 * 60 * 1000), // Cache for 1 hour\n                };\n        }\n        return await this.cachedOidcConfiguration.configuration;\n}\n```\n\nThere is no try/catch, .catch() or finally that resets cachedOidcConfiguration on failure, and the TTL is hardcoded. The cache is only cleared by reload(), updateConfig(), a change of endpoint/client id/secret, or a restart. Discovery is lazy (first login, callback or logout), so the first user to log in after a start triggers it.\n\nWhat I observed: right after a deployment (new instance) the first SSO login returned HTTP 500 {\"code\":0,\"message\":\"fetch failed\"} in ~35 ms. At the same time the discovery URL was reachable from the same instance (an HTTP Request node in a workflow returned the metadata immediately). Later the login worked again without any configuration change. Unfortunetly I could not see the server logs of that instance, so the reason for the first failure is unknown; this report is about the failure not being retried.\n\nImpact: after any transient failure at startup, SSO is unusable for up to an hour for all users, with only a generic \"fetch failed\" message and no way to retry short of restarting the instance or editing the OIDC settings.\n\n### To Reproduce\n\nI could not trigger the original failure on demand, so the steps below are derived from the code:\n\n1. Configure OIDC login (SSO managed by environment variables) with a valid discovery endpoint.\n2. Start n8n while the discovery endpoint is not reachable (or make it unreachable, e.g. block it at the network/proxy level).\n3. Try to log in with SSO. It fails.\n4. Make the discovery endpoint reachable again.\n5. Try to log in with SSO again.\n\nExpected from the code: step 5 fails immediately with the same error (cached rejected promise) until one hour has passed since step 3, or n8n is restarted, or the OIDC config is changed.\n\n### Expected behavior\n\nA failed discovery should not be cached, so the next login attempt tries again. For example, reset the cache when the promise rejects, or only cache successful results. Optionally make the TTL configurable.\n\n### Debug Info\n\n# Debug info\n\n## core\n\n- n8nVersion: 2.43.4\n- platform: npm\n- nodeJsVersion: 26.7.0\n- nodeEnv: production\n- database: postgres\n- executionMode: scaling (single-main)\n- concurrency: -1\n- license: enterprise (production)\n- consumerId: ea88c24d-b97a-4d95-8495-1ae823bea632\n\n## storage\n\n- success: none\n- error: all\n- progress: false\n- manual: true\n- binaryMode: database\n\n## pruning\n\n- enabled: true\n- maxAge: 336 hours\n- maxCount: 10000 executions\n\n## client\n\n- userAgent: mozilla/5.0 (macintosh; intel mac os x 10.15; rv:159.0) gecko/20100101 firefox/159.0\n- isTouchDevice: false\n\n## cluster\n\n- instanceCount: 2\n- versions: 2.43.4\n- instances:\n  - instanceKey: e93fe619-e532-4ce8-96df-c47e6e905639, hostId: main-t3ln4MRiWkkf3udI, instanceType: main, instanceRole: leader, version: 2.43.4\n  - instanceKey: b50b9960-120b-457d-801a-ec08ad0d4c69, hostId: worker-rKv6edYIo5HhTP3a, instanceType: worker, instanceRole: unset, version: 2.43.4\n- checks:\n  - check: hostid-clash, status: succeeded, warnings: -\n  - check: lifecycle, status: succeeded, warnings: -\n  - check: split-brain, status: succeeded, warnings: -\n  - check: version-mismatch, status: succeeded, warnings: -\n\nGenerated at: 2026-11-05T10:30:12.204Z\n\n### Operating System\n\nOfficial docker image\n\n### n8n Version\n\n2.43.4\n\n### Node.js Version\n\n26.7.0\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nqueue\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43068/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43068/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @zabojpetr,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9715\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9715](https://linear.app/n8n/issue/GHC-9715)",
+      "at": "2026-11-05T10:33:35Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43068#issuecomment-6655765095"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "The source matches the reported failure mode: `getOidcConfiguration()` stores the discovery promise and returns it without clearing the cache on rejection. When resetting after a failure, guard the reset so an older rejected request cannot clear a newer cache entry created after a config change or retry. A regression test can reject the first discovery, then verify a second call invokes discovery again.",
+      "at": "2026-11-05T12:05:35Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43068#issuecomment-6657537791"
+    }
+  ],
+  "comments_complete": true
+}

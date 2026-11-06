@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43057",
-  "collected_at": "2026-11-05T09:26:35.818313+00:00",
+  "collected_at": "2026-11-06T09:20:46.713266+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/43057",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -50,9 +50,9 @@
     "locked": false,
     "assignees": [],
     "milestone": null,
-    "comments": 1,
+    "comments": 2,
     "created_at": "2026-11-05T06:57:13Z",
-    "updated_at": "2026-11-05T06:57:24Z",
+    "updated_at": "2026-11-05T10:05:27Z",
     "closed_at": null,
     "assignee": null,
     "author_association": "NONE",
@@ -95,6 +95,12 @@
       "text": "Hey @indexGin,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9712\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9712](https://linear.app/n8n/issue/GHC-9712)",
       "at": "2026-11-05T06:57:22Z",
       "url": "https://github.com/n8n-io/n8n/issues/43057#issuecomment-6651834382"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "Confirmed in `packages/workflow/src/utils.ts`: the object branch records `source → clone` in the `WeakMap` before descending, but the array branch does not. Recording the array clone before the loop should handle both shared arrays and self-references. The two reproductions in the report would make focused regressions for those cases.",
+      "at": "2026-11-05T10:05:27Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43057#issuecomment-6655207752"
     }
   ],
   "comments_complete": true

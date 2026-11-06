@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50359805",
-  "collected_at": "2026-11-05T09:26:35.818313+00:00",
+  "collected_at": "2026-11-06T09:20:46.713266+00:00",
   "source": {
     "author": "liorgrossman",
     "children": [],
@@ -9,7 +9,7 @@
     "id": 50359805,
     "options": [],
     "parent_id": null,
-    "points": 4,
+    "points": 5,
     "story_id": 50359805,
     "text": "Earlier this year, I had one of my product&#x27;s features down for 48 hours because Anthropic retired Claude 3 Haiku. In another instance, an API parameter started returning errors.<p>I grew sick of not being able to follow and track the endless changes of AI models every week, so I decided to build Modelpeers. It&#x27;s basically a feed of all these changes. You can follow models and agents that you use to see what is changing and what you need to do about it. Optionally, you can sign up to get a digest for the models&#x2F;agents you follow.<p>Every few hours, it downloads and hashes dozens of pages from the prominent AI companies&#x27; pages, like changelogs, deprecation pages, status pages, and pricing pages. Then when a page changes, it pulls the diff, validates it with two models, and if validated as true, it posts it to the feed.<p>The feed currently has about 400 changes, 21 of them breaking changes.<p>Fun fact (well, not really fun): OpenAI alone has 12 shutdowns&#x2F;cutoff planned for the next six months.<p>Would love to hear what y&#x27;all think.",
     "title": "Show HN: Modelpeers – a changelog for the AI models and agents you use",

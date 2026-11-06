@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50358314",
-  "collected_at": "2026-11-05T09:26:35.818313+00:00",
+  "collected_at": "2026-11-06T09:20:46.713266+00:00",
   "source": {
     "author": "ayanb9440",
     "children": [
@@ -326,7 +326,23 @@
                 "children": [
                   {
                     "author": "marcus_holmes",
-                    "children": [],
+                    "children": [
+                      {
+                        "author": "octoberfranklin",
+                        "children": [],
+                        "created_at": "2026-11-06T02:26:22.000Z",
+                        "created_at_i": 1793931982,
+                        "id": 50387371,
+                        "options": [],
+                        "parent_id": 50375200,
+                        "points": null,
+                        "story_id": 50358314,
+                        "text": "Ebonics is not a &quot;dialect&quot; of English.<p><a href=\"https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Ebonics_(word)\" rel=\"nofollow\">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Ebonics_(word)</a>",
+                        "title": null,
+                        "type": "comment",
+                        "url": null
+                      }
+                    ],
                     "created_at": "2026-11-05T04:29:11.000Z",
                     "created_at_i": 1793852951,
                     "id": 50375200,
@@ -475,7 +491,23 @@
           },
           {
             "author": "citguru",
-            "children": [],
+            "children": [
+              {
+                "author": "wuemeli",
+                "children": [],
+                "created_at": "2026-11-06T08:50:44.000Z",
+                "created_at_i": 1793955044,
+                "id": 50389797,
+                "options": [],
+                "parent_id": 50367231,
+                "points": null,
+                "story_id": 50358314,
+                "text": "yet asking about that with a model is pointless. do you even know what you&#x27;re talking about??",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
             "created_at": "2026-11-04T15:46:06.000Z",
             "created_at_i": 1793807166,
             "id": 50367231,
@@ -691,6 +723,12 @@
       "url": "https://news.ycombinator.com/item?id=50375200"
     },
     {
+      "author": "octoberfranklin",
+      "text": "Ebonics is not a \"dialect\" of English.  https://en.wikipedia.org/wiki/Ebonics_(word)",
+      "at": "2026-11-06T02:26:22.000Z",
+      "url": "https://news.ycombinator.com/item?id=50387371"
+    },
+    {
       "author": "factotvm",
       "text": "I love that this is open source, thank you. I'm not a fan of TypeScript on Node for this solution space. For a payment gateway, I'd want a program that can't modify itself from external sources. Programs in this runtime can rewrite themselves while running, and the Dockerfile doesn't lock it down. So as it stands, nothing at the runtime level prevents prototype pollution. And a config defect is the kind of bug that keeps on giving.",
       "at": "2026-11-04T05:38:28.000Z",
@@ -737,6 +775,12 @@
       "text": "Not just that. You could ask any more complex questions. Thats just an easy example",
       "at": "2026-11-04T15:46:06.000Z",
       "url": "https://news.ycombinator.com/item?id=50367231"
+    },
+    {
+      "author": "wuemeli",
+      "text": "yet asking about that with a model is pointless. do you even know what you're talking about??",
+      "at": "2026-11-06T08:50:44.000Z",
+      "url": "https://news.ycombinator.com/item?id=50389797"
     },
     {
       "author": "garageguideapp",
