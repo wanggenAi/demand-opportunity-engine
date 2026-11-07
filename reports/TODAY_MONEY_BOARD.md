@@ -1,6 +1,6 @@
 # DAILY MONEY PORTFOLIO
 
-Generated: 2026-11-06T09:20:46.713266+00:00
+Generated: 2026-11-07T08:44:12.214643+00:00
 
 MANY VALIDATIONS, FEW HEAVY COMMITMENTS
 Current acquisition budget = 0. No quota filling. Only verified free-contact qualified buyers enter CONTACT_TODAY.
@@ -19,11 +19,11 @@ None. No verified qualifying record; no invented action.
 ### workflow_reliability
 
 - cluster_name: workflow_reliability
-- independent_demand_count: 86
+- independent_demand_count: 89
 - payment_evidence_count: 1
 - platforms: ["GitHub", "Hacker News", "Shopify Community", "n8n Community"]
 - communities: ["Agenta-AI/agenta", "Ask HN: What's your current AI agentic setup?", "Ask/Show HN", "Commerce operator forum", "n8n Jobs", "n8n-io/n8n", "useagenthq/useagent"]
-- evidence_urls: ["https://github.com/n8n-io/n8n/issues/43072", "https://github.com/n8n-io/n8n/issues/43068", "https://news.ycombinator.com/item?id=50376110", "https://github.com/n8n-io/n8n/issues/43059"]
+- evidence_urls: ["https://news.ycombinator.com/item?id=50400117", "https://github.com/n8n-io/n8n/issues/43106", "https://news.ycombinator.com/item?id=50393105", "https://github.com/n8n-io/n8n/issues/43072"]
 - repeated_pain: Operators cannot trust workflow execution status; triggers, responses or saved definitions fail.
 - current_alternatives: Vendor bug tracker and native fixes (free), internal engineering, n8n support, freelance automation providers.
 - productization_potential: Standardize reproduction, health checks and recovery runbooks; current category still too broad for one packaged product.
@@ -65,7 +65,7 @@ None. No verified qualifying record; no invented action.
 ### supplier_sourcing
 
 - cluster_name: supplier_sourcing
-- independent_demand_count: 10
+- independent_demand_count: 11
 - payment_evidence_count: 1
 - platforms: ["GitHub", "Shopify Community"]
 - communities: ["AddisonJPratt/CAD-ADE", "Commerce operator forum", "n8n-io/n8n", "zack-hum/coffee-intelligence-v1.1"]
@@ -133,7 +133,7 @@ None. No verified qualifying record; no invented action.
 - payment_evidence: /bounty $700
 - published_at: 2026-10-24T12:04:53Z
 - buyer_activity_at: None
-- freshness_days: 12.89
+- freshness_days: 13.86
 - competition: LOW
 - competition_evidence: []
 - fit: REMOTE_NOW
@@ -152,7 +152,7 @@ None. No verified qualifying record; no invented action.
 - expected_value: {"currency": "USD", "amount": null, "basis": "UNKNOWN; no realized USD sales history"}
 - probability_of_conversion: None
 - structural_advantage: {"china_local_advantage": "NONE", "language_advantage": "NONE", "technical_advantage": "MEDIUM", "direct_contactability": "MEDIUM", "evidence": "Task explicitly mentions remote software work", "controlled_scope": "Chinese web research, translation drafts, evidence comparison; authorized remote code/tests only", "location_limit": "Desk research only; physical China location, field access and qualifications are not verified", "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"}
-- repeatability: 86
+- repeatability: 89
 - portfolio_priority: 16.103
 - priority_basis: relative allocation index, not promised revenue; neutral financial factors without history
 - learned_quote_ranges: {}
@@ -170,7 +170,7 @@ None. No verified qualifying record; no invented action.
 - payment_evidence: Circulating "bounty value" figures of **$18.9M–$66.3M** are extrapolations from Pwn2Own/TyphoonPWN comparisons, not awards, and a separate ~$1.5M figure refers to a different hardened-kernel test of 21 vulnerabilities — the two should not be combined.
 - published_at: 2026-11-05T05:22:33Z
 - buyer_activity_at: None
-- freshness_days: 1.17
+- freshness_days: 2.14
 - competition: LOW
 - competition_evidence: []
 - fit: REMOTE_NOW
@@ -189,7 +189,7 @@ None. No verified qualifying record; no invented action.
 - expected_value: {"currency": "USD", "amount": null, "basis": "UNKNOWN; no realized USD sales history"}
 - probability_of_conversion: None
 - structural_advantage: {"china_local_advantage": "LOW", "language_advantage": "MEDIUM", "technical_advantage": "MEDIUM", "direct_contactability": "MEDIUM", "evidence": "Task explicitly mentions China/Chinese", "controlled_scope": "Chinese web research, translation drafts, evidence comparison; authorized remote code/tests only", "location_limit": "Desk research only; physical China location, field access and qualifications are not verified", "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"}
-- repeatability: 86
+- repeatability: 89
 - portfolio_priority: 16.103
 - priority_basis: relative allocation index, not promised revenue; neutral financial factors without history
 - learned_quote_ranges: {}
@@ -207,7 +207,7 @@ None. No verified qualifying record; no invented action.
 - payment_evidence: - **Bounty Program**: Revert v4lend ($50,000 USDC Pool)
 - published_at: 2026-10-28T07:19:48Z
 - buyer_activity_at: None
-- freshness_days: 9.08
+- freshness_days: 10.06
 - competition: LOW
 - competition_evidence: []
 - fit: REMOTE_NOW
@@ -226,7 +226,7 @@ None. No verified qualifying record; no invented action.
 - expected_value: {"currency": "USD", "amount": null, "basis": "UNKNOWN; no realized USD sales history"}
 - probability_of_conversion: None
 - structural_advantage: {"china_local_advantage": "NONE", "language_advantage": "NONE", "technical_advantage": "MEDIUM", "direct_contactability": "MEDIUM", "evidence": "Task explicitly mentions remote software work", "controlled_scope": "Chinese web research, translation drafts, evidence comparison; authorized remote code/tests only", "location_limit": "Desk research only; physical China location, field access and qualifications are not verified", "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"}
-- repeatability: 86
+- repeatability: 89
 - portfolio_priority: 16.103
 - priority_basis: relative allocation index, not promised revenue; neutral financial factors without history
 - learned_quote_ranges: {}
@@ -244,7 +244,7 @@ None. No verified qualifying record; no invented action.
 - payment_evidence: /bounty $700
 - published_at: 2026-10-24T19:39:29Z
 - buyer_activity_at: None
-- freshness_days: 12.57
+- freshness_days: 13.54
 - competition: LOW
 - competition_evidence: []
 - fit: REMOTE_NOW
@@ -263,7 +263,7 @@ None. No verified qualifying record; no invented action.
 - expected_value: {"currency": "USD", "amount": null, "basis": "UNKNOWN; no realized USD sales history"}
 - probability_of_conversion: None
 - structural_advantage: {"china_local_advantage": "NONE", "language_advantage": "NONE", "technical_advantage": "MEDIUM", "direct_contactability": "MEDIUM", "evidence": "Task explicitly mentions remote software work", "controlled_scope": "Chinese web research, translation drafts, evidence comparison; authorized remote code/tests only", "location_limit": "Desk research only; physical China location, field access and qualifications are not verified", "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"}
-- repeatability: 86
+- repeatability: 89
 - portfolio_priority: 16.103
 - priority_basis: relative allocation index, not promised revenue; neutral financial factors without history
 - learned_quote_ranges: {}
@@ -281,7 +281,7 @@ None. No verified qualifying record; no invented action.
 - payment_evidence: (b) Commission on accepted quotes, which needs F9 payments first.
 - published_at: 2026-11-01T13:05:55Z
 - buyer_activity_at: None
-- freshness_days: 4.84
+- freshness_days: 5.82
 - competition: LOW
 - competition_evidence: []
 - fit: REMOTE_NOW
@@ -300,7 +300,7 @@ None. No verified qualifying record; no invented action.
 - expected_value: {"currency": "USD", "amount": null, "basis": "UNKNOWN; no realized USD sales history"}
 - probability_of_conversion: None
 - structural_advantage: {"china_local_advantage": "NONE", "language_advantage": "NONE", "technical_advantage": "MEDIUM", "direct_contactability": "MEDIUM", "evidence": "Task explicitly mentions remote software work", "controlled_scope": "Chinese web research, translation drafts, evidence comparison; authorized remote code/tests only", "location_limit": "Desk research only; physical China location, field access and qualifications are not verified", "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"}
-- repeatability: 10
+- repeatability: 11
 - portfolio_priority: 16.103
 - priority_basis: relative allocation index, not promised revenue; neutral financial factors without history
 - learned_quote_ranges: {}
@@ -309,13 +309,13 @@ None. No verified qualifying record; no invented action.
 
 ## SKIP / WATCH
 
-Direct SKIP: 50; product WATCH: 1; info WATCH: 2.
+Direct SKIP: 54; product WATCH: 1; info WATCH: 2.
 Full records and rejection reasons: DAILY_PORTFOLIO.json. WATCH has no forced quota and consumes no active validation time.
 
 ## G. TODAY ACTION PLAN
 
 1. Verify https://github.com/SecureBananaLabs/bug-bounty/issues/13710: zero-cost acquisition not verified: UNKNOWN; source verification is future-dated or older than 7 days; 7–14-day demand is VALIDATE until buyer activity is renewed. Stop after 20 minutes; no pitch unless all contact gates pass. (20 min)
-2. Validate workflow_reliability: Select one execution-status failure in the primary evidence; write five diagnostic acceptance checks. Compare native logs/manual diagnosis with paid support prices. Ask what one failure costs, not whether someone likes a broad tool. Evidence: https://github.com/n8n-io/n8n/issues/43072 (30 min)
+2. Validate workflow_reliability: Select one execution-status failure in the primary evidence; write five diagnostic acceptance checks. Compare native logs/manual diagnosis with paid support prices. Ask what one failure costs, not whether someone likes a broad tool. Evidence: https://news.ycombinator.com/item?id=50400117 (30 min)
 3. Verify https://github.com/diclogic/ai-daily-digest/issues/204: zero-cost acquisition not verified: UNKNOWN. Stop after 20 minutes; no pitch unless all contact gates pass. (20 min)
 4. Validate browser_automation: Compare two public-priced alternatives; define one narrow deliverable and one consent-based interview question. Record unknowns, not assumed buyers. Evidence: https://github.com/datnguyenquy94/news-radar/issues/1009 (30 min)
 5. Verify https://github.com/revert-finance/v4lend/issues/47: zero-cost acquisition not verified: UNKNOWN; source verification is future-dated or older than 7 days; 7–14-day demand is VALIDATE until buyer activity is renewed. Stop after 20 minutes; no pitch unless all contact gates pass. (20 min)

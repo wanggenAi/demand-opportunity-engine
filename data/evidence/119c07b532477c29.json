@@ -1,21 +1,430 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50379221",
-  "collected_at": "2026-11-06T09:20:46.713266+00:00",
+  "collected_at": "2026-11-07T08:44:12.214643+00:00",
   "source": {
     "author": "icyfox",
-    "children": [],
+    "children": [
+      {
+        "author": "msteffen",
+        "children": [
+          {
+            "author": "icyfox",
+            "children": [
+              {
+                "author": "msteffen",
+                "children": [],
+                "created_at": "2026-11-07T01:08:08.000Z",
+                "created_at_i": 1794013688,
+                "id": 50400611,
+                "options": [],
+                "parent_id": 50399258,
+                "points": null,
+                "story_id": 50379221,
+                "text": "Well, it was just that the models didn&#x27;t really line up.<p>To give a somewhat longer description of what Pachyderm does&#x2F;did:<p>1. Connect data-scale version control with pipeline orchestrator.<p>2. Version control tells orchestrator which shards have changed since the last run and which ones haven&#x27;t.<p>3. Orchestrator only processes changed shards from one run to the next, instead of all of them.<p>4. Profit.<p>That&#x27;s fine for e.g. one mapreduce, but,<p>1. If an action&#x27;s behavior changes, you can&#x27;t re-use its prior results (usually—sometimes you&#x27;re just adding print statements to debug a failing shard)<p>2. If the overall pipeline changes, you can&#x27;t re-use results from the first change onward<p>3. Figuring out if the overall pipeline changed is not necessarily easy, and if you&#x27;re always throwing out everything just in case, your product is not helping people.<p>So, the way Waymark uses a compiler for the orchestration layer would&#x27;ve worked <i>so well</i> with our model.<p>It&#x27;s also just satisfying—once I learned in detail how Bazel&#x2F;Nix work, I see a fit for that architecture pattern in anything remotely pipeline-y, and it drove me nuts that Airflow&#x2F;Beam&#x2F;Dataflow weren&#x27;t really using it. So I&#x27;m very happy to see this for that reason as well. And, as if that weren&#x27;t enough, it&#x27;s so cool that it introduces a pure language at the coordination layer (which this type of architecture basically needs, hence the Nix language&#x2F;Starlark) <i>without actually requiring a new language, or even a new file</i>. Amazing!",
+                "title": null,
+                "type": "comment",
+                "url": null
+              },
+              {
+                "author": "ajb",
+                "children": [],
+                "created_at": "2026-11-07T06:22:42.000Z",
+                "created_at_i": 1794032562,
+                "id": 50402148,
+                "options": [],
+                "parent_id": 50399258,
+                "points": null,
+                "story_id": 50379221,
+                "text": "Yeah, that&#x27;s an interesting use case. The problem for you with a compiler would be how to get it to work with all of the efficient python modules like pandas, script, numpy, pytorch etc that all implement their backend in C with intrinsics&#x2F;GPU usage.",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-11-06T22:19:08.000Z",
+            "created_at_i": 1794003548,
+            "id": 50399258,
+            "options": [],
+            "parent_id": 50398960,
+            "points": null,
+            "story_id": 50379221,
+            "text": "Cool thought! We have an internal version of map reduce implemented in waymark that worked pretty well (though uses Redis for its intermediate values so it&#x27;s technically not an end-to-end integrated solution).<p>In principle I would love to have something like this working for arbitrarily large ETL flows; ie. write the logic you want and it tries to figure out a good distributed algorithm to get the outputs. At the moment flowing data through the cluster is the biggest bottleneck. We generally assume that action inputs &amp; outputs themselves are pretty small at the boundary even if their containerized context is quite large.<p>Where did you hit the most snags with caching?",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-06T21:48:13.000Z",
+        "created_at_i": 1794001693,
+        "id": 50398960,
+        "options": [],
+        "parent_id": 50379221,
+        "points": null,
+        "story_id": 50379221,
+        "text": "This is so cool. I spent years at Pachyderm (YC...something) banging our head against:<p>- we&#x27;re &quot;Bazel for data&quot;<p>- but...we have no Starlark. We&#x27;re trying to port Airflow but it&#x27;s not playing well with the  way we cache partial results.<p>Amazing to me that I&#x27;m only now seeing the architecture pattern of &quot;pure coordination language connecting sandboxed imperative components&quot;, which is used by Nix and Bazel, applied to <i>distributed</i> workflows. If somebody applied this to batch data processing you might have a Pachyderm that actually works better than ours did.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "dangistan202611",
+        "children": [
+          {
+            "author": "icyfox",
+            "children": [
+              {
+                "author": "dangistan202611",
+                "children": [],
+                "created_at": "2026-11-06T23:11:28.000Z",
+                "created_at_i": 1794006688,
+                "id": 50399785,
+                "options": [],
+                "parent_id": 50399677,
+                "points": null,
+                "story_id": 50379221,
+                "text": "I dispute the &quot;better&quot; assertion. Anyhow, I don&#x27;t know how familiar or not you are with sync code, but it fully supports background jobs using queues with threads&#x2F;interpreters&#x2F;processes. It has been around for decades, far longer than async.<p>Also, it is okay to run something in the foreground. Not everything needs to run in the background. Sometimes it&#x27;s better to wait and have assurance of completion.<p>There is no natural parallelism of async code in Python. The coroutines run in a single thread.",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-11-06T23:02:32.000Z",
+            "created_at_i": 1794006152,
+            "id": 50399677,
+            "options": [],
+            "parent_id": 50399635,
+            "points": null,
+            "story_id": 50379221,
+            "text": "MIT licensed, just clarified in the repo.<p>As for async - background jobs are better modeled as async because of their natural parallelism across nodes imo. Logic in actions themselves are free to be as synchronous as you want. Why the preference?",
+            "title": null,
+            "type": "comment",
+            "url": null
+          },
+          {
+            "author": "9dev",
+            "children": [
+              {
+                "author": "dangistan202611",
+                "children": [
+                  {
+                    "author": "whilenot-dev",
+                    "children": [],
+                    "created_at": "2026-11-07T06:56:21.000Z",
+                    "created_at_i": 1794034581,
+                    "id": 50402289,
+                    "options": [],
+                    "parent_id": 50400551,
+                    "points": null,
+                    "story_id": 50379221,
+                    "text": "&gt; if my code is sync, what am I to do?<p>You&#x27;d use <i>asyncio.to_thread</i>[0].<p>I also don&#x27;t quite get your complaint... <i>asyncio</i> provides a high-level concurrency primitive with coroutines, and that&#x27;s a good enough primitive for workflow engines. Even with <i>asyncio</i> you could fork&#x2F;spawn processes easily with <i>aiomultiprocess</i>[1], if you&#x27;d ever want or need to.<p>What&#x27;s your use case for having more low-level concurrency primitives (threads&#x2F;processes) available, having to deal with their synchronization, and running workflows sync?<p>[0]: <a href=\"https:&#x2F;&#x2F;docs.python.org&#x2F;3&#x2F;library&#x2F;asyncio-task.html#asyncio.to_thread\" rel=\"nofollow\">https:&#x2F;&#x2F;docs.python.org&#x2F;3&#x2F;library&#x2F;asyncio-task.html#asyncio....</a><p>[1]: <a href=\"https:&#x2F;&#x2F;aiomultiprocess.omnilib.dev&#x2F;en&#x2F;stable&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;aiomultiprocess.omnilib.dev&#x2F;en&#x2F;stable&#x2F;</a>",
+                    "title": null,
+                    "type": "comment",
+                    "url": null
+                  }
+                ],
+                "created_at": "2026-11-07T00:55:52.000Z",
+                "created_at_i": 1794012952,
+                "id": 50400551,
+                "options": [],
+                "parent_id": 50400135,
+                "points": null,
+                "story_id": 50379221,
+                "text": "Huh. I hate neither async nor systemd. There is nothing wrong with async, but if my code is sync, what am I to do?<p>Also, the claim made that something is &quot;better modeled as async&quot; is wholly unqualified.",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-11-06T23:53:02.000Z",
+            "created_at_i": 1794009182,
+            "id": 50400135,
+            "options": [],
+            "parent_id": 50399635,
+            "points": null,
+            "story_id": 50379221,
+            "text": "I don’t understand these kinds of strong emotions async python triggers in some people. It reminds me of the irrational hate towards systemd in the Linux world.<p>This is a platform for running workflows distributed on multiple machines, sometimes long-running and with lots of IO. Every single contender in the space advertises the same code, from temporal to hatchet to dagster. Because it makes sense to write it this way.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-06T22:58:23.000Z",
+        "created_at_i": 1794005903,
+        "id": 50399635,
+        "options": [],
+        "parent_id": 50379221,
+        "points": null,
+        "story_id": 50379221,
+        "text": "It is too async heavy as per its readme -- this is very off-putting. Not everyone cares for async. There is no usage shown with sync code.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "gavmor",
+        "children": [
+          {
+            "author": "icyfox",
+            "children": [],
+            "created_at": "2026-11-07T00:02:09.000Z",
+            "created_at_i": 1794009729,
+            "id": 50400223,
+            "options": [],
+            "parent_id": 50399996,
+            "points": null,
+            "story_id": 50379221,
+            "text": "Yep, that’s exactly it. imo the main value add for agents:<p>- Each LLM call and tool call becomes a checkpoint. Without durable execution you&#x27;re pretty much stuck doing db saves&#x2F;restores if you detect that this agent might have a previous context window. Agent frameworks are fundamentally just harnesses around the underlying model: you `while loop` until some server gives you some payload back, you add that to your context window list, and you keep going until it terminates. Durable execution moves that loop into the workflow body itself (a quick example here <a href=\"https:&#x2F;&#x2F;www.waymark.sh&#x2F;python&#x2F;tutorials&#x2F;building-a-from-scratch-agent\" rel=\"nofollow\">https:&#x2F;&#x2F;www.waymark.sh&#x2F;python&#x2F;tutorials&#x2F;building-a-from-scra...</a>).<p>- Long waits. Sometimes you do want your agent to wait for an arbitrary amount of time (ie. wait for this compilation job to finish - look again in 5mins, or maybe 5 hours). Durable execution makes sure that sleep timer will wake up regardless of what happens in the system state.<p>- Easier monitorability. Instead of having to sift through interleaved logs to figure out what was going on, you can see every large function call with a clean input&#x2F;output contract. Useful especially in tracing down raised Exceptions and the data flow that it took to get there. Good for agents and regular code alike.<p>Of course, if your system is largely idempotent or your agents are mostly classifiers that are working in short internals - a simple db save&#x2F;restore can work perfectly well too.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          },
+          {
+            "author": "cgio",
+            "children": [],
+            "created_at": "2026-11-07T01:31:16.000Z",
+            "created_at_i": 1794015076,
+            "id": 50400750,
+            "options": [],
+            "parent_id": 50399996,
+            "points": null,
+            "story_id": 50379221,
+            "text": "Durable execution and orchestration are essential in some specialised uses, such as regulatory reporting for financial institutions, or other snapshot based data pipelines. The transition is happening, and temporal and conductor are the usual tools there, but good tools are not always behind good solutions to put it lightly.<p>I like this one, as in the context of workloads like these, going with anything more complex than a Postgres is overkill.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-06T23:37:33.000Z",
+        "created_at_i": 1794008253,
+        "id": 50399996,
+        "options": [],
+        "parent_id": 50379221,
+        "points": null,
+        "story_id": 50379221,
+        "text": "Durable execution has been on my radar for a minute but, although I&#x27;ve had a few pubsub usecases here and there, I&#x27;ve never had much call for long-running jobs that weren&#x27;t simply cheaper to restart, AFAIR.<p>With agentic workloads, though—especially trending towards high network calls and smaller models—I do find a lot of concurrency to be a pain in the ass to pick up where we left off. Is that what &quot;durability&quot; ameliorates?<p>I just wonder what I&#x27;m leaving on the table.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "dangistan202611",
+        "children": [],
+        "created_at": "2026-11-06T23:38:08.000Z",
+        "created_at_i": 1794008288,
+        "id": 50400003,
+        "options": [],
+        "parent_id": 50379221,
+        "points": null,
+        "story_id": 50379221,
+        "text": "This looks like something that will break easily with a newer version of Python or even with the use of third-party packages. It seems to couple too tightly with the user&#x27;s application code.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "slopnt",
+        "children": [
+          {
+            "author": "icyfox",
+            "children": [],
+            "created_at": "2026-11-07T01:08:36.000Z",
+            "created_at_i": 1794013716,
+            "id": 50400617,
+            "options": [],
+            "parent_id": 50400505,
+            "points": null,
+            "story_id": 50379221,
+            "text": "We&#x27;ll look into it! The db layer is already modeled basically like a plugin; should be pretty easy to add in whatever database support you want. Sign up to the newsletter on the website if you want the updates when it&#x27;s ready :)",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-07T00:47:54.000Z",
+        "created_at_i": 1794012474,
+        "id": 50400505,
+        "options": [],
+        "parent_id": 50379221,
+        "points": null,
+        "story_id": 50379221,
+        "text": "The idea makes sense and the work is great. Some feedback I have is that it becomes hard to try the project out when postgres is a mandatory dependency: I understand that there are scalability reasons why that choice was made, but it would be neat if sqlite was an option.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "actionfromafar",
+        "children": [],
+        "created_at": "2026-11-07T00:59:31.000Z",
+        "created_at_i": 1794013171,
+        "id": 50400572,
+        "options": [],
+        "parent_id": 50379221,
+        "points": null,
+        "story_id": 50379221,
+        "text": "Dotnet CIL + sqlite please?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "KMan2006",
+        "children": [],
+        "created_at": "2026-11-07T03:32:01.000Z",
+        "created_at_i": 1794022321,
+        "id": 50401379,
+        "options": [],
+        "parent_id": 50379221,
+        "points": null,
+        "story_id": 50379221,
+        "text": "How do you handle code changes for workflows already in flight? Say an instance is sleeping inside a loop for three days and someone deploys a new version of that loop. Is the compiled bytecode pinned per instance, or do you map the old position onto the new code?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "damndan",
+        "children": [],
+        "created_at": "2026-11-07T05:30:09.000Z",
+        "created_at_i": 1794029409,
+        "id": 50401922,
+        "options": [],
+        "parent_id": 50379221,
+        "points": null,
+        "story_id": 50379221,
+        "text": "so Temporal without the replay, Step Functions without the JSON -pretty slick",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
     "created_at": "2026-11-05T14:06:31.000Z",
     "created_at_i": 1793887591,
     "id": 50379221,
     "options": [],
     "parent_id": null,
-    "points": 4,
+    "points": 63,
     "story_id": 50379221,
-    "text": "Hey everyone! @mozgiii and I have been working on Waymark for the better part of the last year. Waymark’s an open source durable execution library with similar functionality to Temporal or DBOS. A few unique design decisions:<p>— Write jobs in normal code (right now Python but JS coming soon). Instead of running control flow as-is, which requires booting up an interpreter to replay past state, we’ll just compile your code directly. We walk your AST and map your logic to our stackless VM bytecode. We support variables, conditionals, await, sleep, helper functions, loops... basically what you’d expect in workflow logic.<p>— Since we’re compiling a language subset, we can proactively flag errors in your workflows locally instead of when they run in production.<p>— It only requires Postgres as the task broker. We’ve spent a lot of time tuning our design to play nicely with its strengths and limitations; our current benchmarks show around 1500 workflows&#x2F;second but we still have some more optimization work to do here.<p>— Actions plug-and-play with FastAPI’s dependency injection syntax. So if you already have an ecosystem based on typehinting&#x2F;DI, it should fit like a glove.<p>It allows for parallelization of workflows across one machine or a whole cluster. The bulk of the work per node is done by our central Rust core - which distributes workflows to properly saturate all cores. The idea is to be as batteries included as possible with the broker, webapp, and runtime.<p>What to use it for? It works great as the runner loop controlling agents, but it also works well for basically any task that you need to kick off in the background. It’s largely replaced our way of writing api code. Most frontend actions at this point just push to a simple REST endpoint that kick off a background job.<p>I spent an embarrassing amount of time making our <a href=\"https:&#x2F;&#x2F;waymark.sh\" rel=\"nofollow\">https:&#x2F;&#x2F;waymark.sh</a> site interactive - it’s probably the best place to learn more. We’re starting with Python support and looking for community input on what language to ship next. Would love to hear your thoughts!",
+    "text": "Hey everyone! @mozgiii and I have been working on Waymark for the better part of the last year. Waymark’s an open source durable execution library with similar functionality to Temporal or DBOS.<p>I fell in love with durable execution a few years ago, after working at a company with a heavy pubsub architecture. In comparison to job orchestrators that force a certain task design or special syntax, many of these durable libs lets you write business logic in regular code: `asyncio.gather` to parallelize tasks, `for` loops, conditionals, and let the runtime figure out how to run them efficiently across a cluster of nodes. But most of the current solutions require a heavy broker, runtime hacks to try to ensure deterministic workflow logic, and feel like you have to learn a whole new ecosystem just to get started.<p>A few unique design decisions in waymark:<p>— Write jobs in normal code (right now Python but JS coming soon). Instead of running control flow as-is, which requires booting up an interpreter to replay past state, we’ll just compile your code directly. We walk your AST and map your logic to our stackless VM bytecode. We support variables, conditionals, await, sleep, helper functions, loops... basically what you’d expect in workflow logic.<p>— Since we’re compiling a language subset, we can proactively flag errors in your workflows locally instead of when they run in production.<p>— It only requires Postgres as the task broker. We’ve spent a lot of time tuning our design to play nicely with its strengths and limitations; our current benchmarks show around 1500 workflows&#x2F;second but we still have some more optimization work to do here.<p>— Actions plug-and-play with FastAPI’s dependency injection syntax. So if you already have an ecosystem based on typehinting&#x2F;DI, it should fit like a glove.<p>It allows for parallelization of workflows across one machine or a whole cluster. The bulk of the work per node is done by our central Rust core - which distributes workflows to properly saturate all cores. The idea is to be as batteries included as possible with the broker, webapp, and runtime.<p>What to use it for? It works great as the runner loop controlling agents, but it also works well for basically any task that you need to kick off in the background. It’s largely replaced our way of writing api code. Most frontend actions at this point just push to a simple REST endpoint that kick off a background job.<p>I spent an embarrassing amount of time making our <a href=\"https:&#x2F;&#x2F;waymark.sh\" rel=\"nofollow\">https:&#x2F;&#x2F;waymark.sh</a> site interactive - it’s probably the best place to learn more. We’re starting with Python support and looking for community input on what language to ship next. Would love to hear your thoughts!",
     "title": "Show HN: Waymark – A workflow engine that compiles jobs instead of replaying",
     "type": "story",
     "url": "https://github.com/piercefreeman/waymark"
   },
-  "comments": [],
+  "comments": [
+    {
+      "author": "msteffen",
+      "text": "This is so cool. I spent years at Pachyderm (YC...something) banging our head against: - we're \"Bazel for data\" - but...we have no Starlark. We're trying to port Airflow but it's not playing well with the  way we cache partial results. Amazing to me that I'm only now seeing the architecture pattern of \"pure coordination language connecting sandboxed imperative components\", which is used by Nix and Bazel, applied to  distributed  workflows. If somebody applied this to batch data processing you might have a Pachyderm that actually works better than ours did.",
+      "at": "2026-11-06T21:48:13.000Z",
+      "url": "https://news.ycombinator.com/item?id=50398960"
+    },
+    {
+      "author": "icyfox",
+      "text": "Cool thought! We have an internal version of map reduce implemented in waymark that worked pretty well (though uses Redis for its intermediate values so it's technically not an end-to-end integrated solution). In principle I would love to have something like this working for arbitrarily large ETL flows; ie. write the logic you want and it tries to figure out a good distributed algorithm to get the outputs. At the moment flowing data through the cluster is the biggest bottleneck. We generally assume that action inputs & outputs themselves are pretty small at the boundary even if their containerized context is quite large. Where did you hit the most snags with caching?",
+      "at": "2026-11-06T22:19:08.000Z",
+      "url": "https://news.ycombinator.com/item?id=50399258"
+    },
+    {
+      "author": "msteffen",
+      "text": "Well, it was just that the models didn't really line up. To give a somewhat longer description of what Pachyderm does/did: 1. Connect data-scale version control with pipeline orchestrator. 2. Version control tells orchestrator which shards have changed since the last run and which ones haven't. 3. Orchestrator only processes changed shards from one run to the next, instead of all of them. 4. Profit. That's fine for e.g. one mapreduce, but, 1. If an action's behavior changes, you can't re-use its prior results (usually—sometimes you're just adding print statements to debug a failing shard) 2. If the overall pipeline changes, you can't re-use results from the first change onward 3. Figuring out if the overall pipeline changed is not necessarily easy, and if you're always throwing out everything just in case, your product is not helping people. So, the way Waymark uses a compiler for the orchestration layer would've worked  so well  with our model. It's also just satisfying—once I learned in detail how Bazel/Nix work, I see a fit for that architecture pattern in anything remotely pipeline-y, and it drove me nuts that Airflow/Beam/Dataflow weren't really using it. So I'm very happy to see this for that reason as well. And, as if that weren't enough, it's so cool that it introduces a pure language at the coordination layer (which this type of architecture basically needs, hence the Nix language/Starlark)  without actually requiring a new language, or even a new file . Amazing!",
+      "at": "2026-11-07T01:08:08.000Z",
+      "url": "https://news.ycombinator.com/item?id=50400611"
+    },
+    {
+      "author": "ajb",
+      "text": "Yeah, that's an interesting use case. The problem for you with a compiler would be how to get it to work with all of the efficient python modules like pandas, script, numpy, pytorch etc that all implement their backend in C with intrinsics/GPU usage.",
+      "at": "2026-11-07T06:22:42.000Z",
+      "url": "https://news.ycombinator.com/item?id=50402148"
+    },
+    {
+      "author": "dangistan202611",
+      "text": "It is too async heavy as per its readme -- this is very off-putting. Not everyone cares for async. There is no usage shown with sync code.",
+      "at": "2026-11-06T22:58:23.000Z",
+      "url": "https://news.ycombinator.com/item?id=50399635"
+    },
+    {
+      "author": "icyfox",
+      "text": "MIT licensed, just clarified in the repo. As for async - background jobs are better modeled as async because of their natural parallelism across nodes imo. Logic in actions themselves are free to be as synchronous as you want. Why the preference?",
+      "at": "2026-11-06T23:02:32.000Z",
+      "url": "https://news.ycombinator.com/item?id=50399677"
+    },
+    {
+      "author": "dangistan202611",
+      "text": "I dispute the \"better\" assertion. Anyhow, I don't know how familiar or not you are with sync code, but it fully supports background jobs using queues with threads/interpreters/processes. It has been around for decades, far longer than async. Also, it is okay to run something in the foreground. Not everything needs to run in the background. Sometimes it's better to wait and have assurance of completion. There is no natural parallelism of async code in Python. The coroutines run in a single thread.",
+      "at": "2026-11-06T23:11:28.000Z",
+      "url": "https://news.ycombinator.com/item?id=50399785"
+    },
+    {
+      "author": "9dev",
+      "text": "I don’t understand these kinds of strong emotions async python triggers in some people. It reminds me of the irrational hate towards systemd in the Linux world. This is a platform for running workflows distributed on multiple machines, sometimes long-running and with lots of IO. Every single contender in the space advertises the same code, from temporal to hatchet to dagster. Because it makes sense to write it this way.",
+      "at": "2026-11-06T23:53:02.000Z",
+      "url": "https://news.ycombinator.com/item?id=50400135"
+    },
+    {
+      "author": "dangistan202611",
+      "text": "Huh. I hate neither async nor systemd. There is nothing wrong with async, but if my code is sync, what am I to do? Also, the claim made that something is \"better modeled as async\" is wholly unqualified.",
+      "at": "2026-11-07T00:55:52.000Z",
+      "url": "https://news.ycombinator.com/item?id=50400551"
+    },
+    {
+      "author": "whilenot-dev",
+      "text": "> if my code is sync, what am I to do? You'd use  asyncio.to_thread [0]. I also don't quite get your complaint...  asyncio  provides a high-level concurrency primitive with coroutines, and that's a good enough primitive for workflow engines. Even with  asyncio  you could fork/spawn processes easily with  aiomultiprocess [1], if you'd ever want or need to. What's your use case for having more low-level concurrency primitives (threads/processes) available, having to deal with their synchronization, and running workflows sync? [0]:  https://docs.python.org/3/library/asyncio-task.html#asyncio....  [1]:  https://aiomultiprocess.omnilib.dev/en/stable/",
+      "at": "2026-11-07T06:56:21.000Z",
+      "url": "https://news.ycombinator.com/item?id=50402289"
+    },
+    {
+      "author": "gavmor",
+      "text": "Durable execution has been on my radar for a minute but, although I've had a few pubsub usecases here and there, I've never had much call for long-running jobs that weren't simply cheaper to restart, AFAIR. With agentic workloads, though—especially trending towards high network calls and smaller models—I do find a lot of concurrency to be a pain in the ass to pick up where we left off. Is that what \"durability\" ameliorates? I just wonder what I'm leaving on the table.",
+      "at": "2026-11-06T23:37:33.000Z",
+      "url": "https://news.ycombinator.com/item?id=50399996"
+    },
+    {
+      "author": "icyfox",
+      "text": "Yep, that’s exactly it. imo the main value add for agents: - Each LLM call and tool call becomes a checkpoint. Without durable execution you're pretty much stuck doing db saves/restores if you detect that this agent might have a previous context window. Agent frameworks are fundamentally just harnesses around the underlying model: you `while loop` until some server gives you some payload back, you add that to your context window list, and you keep going until it terminates. Durable execution moves that loop into the workflow body itself (a quick example here  https://www.waymark.sh/python/tutorials/building-a-from-scra... ). - Long waits. Sometimes you do want your agent to wait for an arbitrary amount of time (ie. wait for this compilation job to finish - look again in 5mins, or maybe 5 hours). Durable execution makes sure that sleep timer will wake up regardless of what happens in the system state. - Easier monitorability. Instead of having to sift through interleaved logs to figure out what was going on, you can see every large function call with a clean input/output contract. Useful especially in tracing down raised Exceptions and the data flow that it took to get there. Good for agents and regular code alike. Of course, if your system is largely idempotent or your agents are mostly classifiers that are working in short internals - a simple db save/restore can work perfectly well too.",
+      "at": "2026-11-07T00:02:09.000Z",
+      "url": "https://news.ycombinator.com/item?id=50400223"
+    },
+    {
+      "author": "cgio",
+      "text": "Durable execution and orchestration are essential in some specialised uses, such as regulatory reporting for financial institutions, or other snapshot based data pipelines. The transition is happening, and temporal and conductor are the usual tools there, but good tools are not always behind good solutions to put it lightly. I like this one, as in the context of workloads like these, going with anything more complex than a Postgres is overkill.",
+      "at": "2026-11-07T01:31:16.000Z",
+      "url": "https://news.ycombinator.com/item?id=50400750"
+    },
+    {
+      "author": "dangistan202611",
+      "text": "This looks like something that will break easily with a newer version of Python or even with the use of third-party packages. It seems to couple too tightly with the user's application code.",
+      "at": "2026-11-06T23:38:08.000Z",
+      "url": "https://news.ycombinator.com/item?id=50400003"
+    },
+    {
+      "author": "slopnt",
+      "text": "The idea makes sense and the work is great. Some feedback I have is that it becomes hard to try the project out when postgres is a mandatory dependency: I understand that there are scalability reasons why that choice was made, but it would be neat if sqlite was an option.",
+      "at": "2026-11-07T00:47:54.000Z",
+      "url": "https://news.ycombinator.com/item?id=50400505"
+    },
+    {
+      "author": "icyfox",
+      "text": "We'll look into it! The db layer is already modeled basically like a plugin; should be pretty easy to add in whatever database support you want. Sign up to the newsletter on the website if you want the updates when it's ready :)",
+      "at": "2026-11-07T01:08:36.000Z",
+      "url": "https://news.ycombinator.com/item?id=50400617"
+    },
+    {
+      "author": "actionfromafar",
+      "text": "Dotnet CIL + sqlite please?",
+      "at": "2026-11-07T00:59:31.000Z",
+      "url": "https://news.ycombinator.com/item?id=50400572"
+    },
+    {
+      "author": "KMan2006",
+      "text": "How do you handle code changes for workflows already in flight? Say an instance is sleeping inside a loop for three days and someone deploys a new version of that loop. Is the compiled bytecode pinned per instance, or do you map the old position onto the new code?",
+      "at": "2026-11-07T03:32:01.000Z",
+      "url": "https://news.ycombinator.com/item?id=50401379"
+    },
+    {
+      "author": "damndan",
+      "text": "so Temporal without the replay, Step Functions without the JSON -pretty slick",
+      "at": "2026-11-07T05:30:09.000Z",
+      "url": "https://news.ycombinator.com/item?id=50401922"
+    }
+  ],
   "comments_complete": true
 }

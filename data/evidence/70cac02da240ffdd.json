@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50381687",
-  "collected_at": "2026-11-06T09:20:46.713266+00:00",
+  "collected_at": "2026-11-07T08:44:12.214643+00:00",
   "source": {
     "author": "NathanFlurry",
     "children": [
@@ -336,7 +336,23 @@
             "children": [
               {
                 "author": "chicagobuss",
-                "children": [],
+                "children": [
+                  {
+                    "author": "Tanjreeve",
+                    "children": [],
+                    "created_at": "2026-11-06T11:41:40.000Z",
+                    "created_at_i": 1793965300,
+                    "id": 50391160,
+                    "options": [],
+                    "parent_id": 50387349,
+                    "points": null,
+                    "story_id": 50381687,
+                    "text": "I&#x27;m curious if it actually needs to be across AZs versus if it just needs a few instances but yes as written there is a trade off happening.<p>The other route for fast S3 writes others have used (Turso springs to mind) is express S3 zones but those have a lot of region specific fine print still.",
+                    "title": null,
+                    "type": "comment",
+                    "url": null
+                  }
+                ],
                 "created_at": "2026-11-06T02:24:00.000Z",
                 "created_at_i": 1793931840,
                 "id": 50387349,
@@ -761,16 +777,138 @@
         "url": null
       },
       {
-        "author": "bshafiq",
-        "children": [],
-        "created_at": "2026-11-06T07:19:00.000Z",
-        "created_at_i": 1793949540,
-        "id": 50389198,
+        "author": "alexey_anshakov",
+        "children": [
+          {
+            "author": "AlexeyBelov",
+            "children": [
+              {
+                "author": "alexey_anshakov",
+                "children": [],
+                "created_at": "2026-11-07T08:27:07.000Z",
+                "created_at_i": 1794040027,
+                "id": 50402730,
+                "options": [],
+                "parent_id": 50402458,
+                "points": null,
+                "story_id": 50381687,
+                "text": "Not a bot, just a systems engineer genuinely interested in tiered storage and state durability. SQLite with S3 persistence is a topic I build around every day.",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-11-07T07:31:35.000Z",
+            "created_at_i": 1794036695,
+            "id": 50402458,
+            "options": [],
+            "parent_id": 50390248,
+            "points": null,
+            "story_id": 50381687,
+            "text": "LLM bot.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-06T09:41:46.000Z",
+        "created_at_i": 1793958106,
+        "id": 50390248,
         "options": [],
         "parent_id": 50381687,
         "points": null,
         "story_id": 50381687,
-        "text": "Love the actor model approach here. Hibernating idle agents while keeping state durable in S3 is a huge win for cost.<p>Curious how Rivet handles the runaway loop problem though. When you have long-lived actors passing messages to each other, a simple state bug can cause them to ping-pong the exact same payload indefinitely.<p>Because the actors stay alive and keep responding (returning 200s), your infra looks perfectly healthy, but the developer&#x27;s OpenAI bill just exploded in the background.<p>Are you leaving loop detection entirely to the devs building on top of Rivet, or is there any native circuit breaker at the orchestrator level to kill an actor that&#x27;s stuck in a cyclic state?",
+        "text": "Moving state persistence to write-ahead SQLite tiered into S3 is a very clean answer to the latency-cost trap of raw object storage. The big operational win with decoupled actor state like this is avoiding zombie locks when an agent execution times out mid-turn. Curious how you handle split-brain fencing if an actor network partition occurs while a batched write is still draining to S3.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "jaekwon",
+        "children": [],
+        "created_at": "2026-11-06T10:51:18.000Z",
+        "created_at_i": 1793962278,
+        "id": 50390757,
+        "options": [],
+        "parent_id": 50381687,
+        "points": null,
+        "story_id": 50381687,
+        "text": "<i>Not</i> using the actor model, and yet massively parallel: <a href=\"https:&#x2F;&#x2F;gnosh.ai&#x2F;swarm.html\" rel=\"nofollow\">https:&#x2F;&#x2F;gnosh.ai&#x2F;swarm.html</a><p>I wonder when one approach will be used over the other. Actually, I can imagine both approaches working together.<p>Just filed two provisional patents on this stuff today; build on gno.land and let&#x27;s talk shop, I see symbiosis.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "coindefdev",
+        "children": [],
+        "created_at": "2026-11-06T13:07:40.000Z",
+        "created_at_i": 1793970460,
+        "id": 50391877,
+        "options": [],
+        "parent_id": 50381687,
+        "points": null,
+        "story_id": 50381687,
+        "text": "The hard part for me has not been getting agents to write code. It has been keeping a bunch of long-running ones alive without burning through quota every few hours. Suspend&#x2F;resume and cost tracking that I do not have to build myself would help.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "canadiantim",
+        "children": [],
+        "created_at": "2026-11-06T13:43:25.000Z",
+        "created_at_i": 1793972605,
+        "id": 50392203,
+        "options": [],
+        "parent_id": 50381687,
+        "points": null,
+        "story_id": 50381687,
+        "text": "This is soooo cool! Awesome!<p>You mention support for Turso, like we could use Turso instead of sqlite?<p>Amazing work though, definitely will be following with keen interest and likely adopting it! Love that the genesis came from trials and tribulations for game dev.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "sarathkavuru",
+        "children": [],
+        "created_at": "2026-11-06T14:03:35.000Z",
+        "created_at_i": 1793973815,
+        "id": 50392419,
+        "options": [],
+        "parent_id": 50381687,
+        "points": null,
+        "story_id": 50381687,
+        "text": "Curious how hibernation works across a multi-minute agent turn with tool calls in between. When the actor wakes, is conversation state just the SQLite snapshot, or do you keep a warm in-memory buffer for the active turn? Also would love a rough density number—actors per host—for a coding-agent style workload with a WebSocket client attached.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "petervandijck",
+        "children": [],
+        "created_at": "2026-11-06T14:19:39.000Z",
+        "created_at_i": 1793974779,
+        "id": 50392573,
+        "options": [],
+        "parent_id": 50381687,
+        "points": null,
+        "story_id": 50381687,
+        "text": "Love that architecture. I’m becoming a major fan of SQLite for agents to work with. I wonder if you looked at Cloudlfares D1 as an option. For myself, I built an easy mcp for my agents to run SQLite databases which I’m finding mostly useful for scheduled agents in Claude, they have stuff to keep track of. <a href=\"https:&#x2F;&#x2F;getairdash.com\" rel=\"nofollow\">https:&#x2F;&#x2F;getairdash.com</a> if anyone wants to try that out (it’s free, cloudflare is very very cheap)",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "takeitwhen",
+        "children": [],
+        "created_at": "2026-11-06T14:25:31.000Z",
+        "created_at_i": 1793975131,
+        "id": 50392644,
+        "options": [],
+        "parent_id": 50381687,
+        "points": null,
+        "story_id": 50381687,
+        "text": "One thing that bit me running long agent workflows: hibernate&#x2F;resume is great until tool results aren&#x27;t part of the durable snapshot. If the actor wakes from SQLite alone and the previous turn&#x27;s tool payload lived only in memory (or a temp file), the next step invents a confident continuation. We ended up treating &quot;resume&quot; as unsafe unless the last tool I&#x2F;O was written into the same durable store as the conversation before suspend. Density numbers matter less than whether wake always reconstitutes enough to refuse to continue when that evidence is missing.",
         "title": null,
         "type": "comment",
         "url": null
@@ -781,7 +919,7 @@
     "id": 50381687,
     "options": [],
     "parent_id": null,
-    "points": 96,
+    "points": 118,
     "story_id": 50381687,
     "text": "Hey HN, this is Nathan and Nicholas from Rivet (<a href=\"https:&#x2F;&#x2F;rivet.dev\">https:&#x2F;&#x2F;rivet.dev</a>) – a fast, high-density, and scalable orchestrator for agentic workloads using the actor model. Rather than running a heavyweight sandbox per agent, each agent gets a lightweight actor backed by S3.<p>Actors provide a long-lived process for long agent turns, in-memory state for context, a WebSocket server for multiplayer, durable SQLite storage backed by S3, and hibernation when idle.<p>It&#x27;s a similar model to Cloudflare Durable Objects, but it’s open source and self-hostable.<p>Here’s a video walkthrough: <a href=\"https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=3Ev6I7DOV9c\" rel=\"nofollow\">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=3Ev6I7DOV9c</a><p>When we went through YC in 2023, we were building infrastructure for multiplayer games like Diep and Krunker. This involved heavily optimizing high-throughput matchmaking, real-time player messages, and blitz scaling. Through that process, we spent a lot of time on workloads where Postgres couldn&#x27;t keep up with our throughput. We started out by hacking together Lua scripts on top of Redis, but this became too cumbersome to maintain and upgrade. This led us to extend our game server orchestrator to support what we call Rivet Actors today: many lightweight workers with in-memory state and durable storage. By using actors, we were able to serve tens of millions of monthly active users.<p>As agents grew in popularity, it became clear that running agents in sandboxes is inefficient. Sandboxes are expensive, mostly idle, and slow to start. Developers started using actors because they are far more memory efficient (72 KB baseline for actors vs 512 MB for a minimal sandbox) and fast to start (4.9 ms p99 for actors vs 1.7 s p99 for sandboxes).<p>For example, Amp is using Rivet to orchestrate multiplayer agents. They originally tried to build on Cloudflare Durable Objects, but couldn’t launch because of the platform’s limitations and unresponsive support. They migrated to Rivet Actors in a weekend and deploy on-prem. Rivet’s flexible architecture lets them adapt it to their own use cases without being constrained by a framework or the memory, storage, and runtime limits of Cloudflare Durable Objects.<p>Under the hood, Rivet is backed by S3 while maintaining SSD speeds.<p>Why S3? Previously, Rivet ran on FoundationDB. However, we were surprised to find that companies are storing orders of magnitude more data on Rivet Actors than in Postgres, such as large session transcripts, agent artifacts, and full POSIX filesystems. As their data grew, they had to start paying for SSDs that sat mostly idle with old transcripts. This led us to double down on S3 as our primary storage medium without sacrificing performance. This choice means that data stored on Rivet is 10× cheaper than on EBS gp3 while maintaining SSD speeds.<p>It’s not as simple as writing data straight to S3. Lots of PUTs for tiny blobs of data are slow and expensive. Instead, we use an SSD tier to optimize speed and cost:<p>When you write data to an actor’s SQLite database, the write is acknowledged once SSDs in 2 of 3 availability zones have it. Then, the data is batched to S3 in the background. This means that S3 is never on the write path, which lowers latency and cost. When reading data or waking an actor, Rivet reads from SSDs if already cached and falls back to S3 if not. SSD caches can be tuned to meet your needs, giving you configurable tiered storage for your actors.<p>This architecture lets Rivet provide 1.07 ms durable writes (3 AZ, p99), 1.36 ms reads (p99), and 138 ms reads from object storage (p99).<p>We’ve spent a lot of time making sure that Rivet can run wherever you need it. Self-hosting requires deploying a single Rust binary with S3 as the only dependency, Rivet Cloud lets you deploy dedicated clusters on AWS or GCP in any region, and BYOC lets us deploy Rivet to your VPC without having to operate it yourself. Rivet also runs identically in local dev as in production, since Rivet is a lightweight binary that runs anywhere<p>Rivet Actors can be written in TypeScript or Rust. Out of the box, they support agents (Pi Durable), workflows, real-time, multiplayer, running AI-generated code, Durable Streams, and integrations with tools like Vercel’s Eve and Turso. See all of our available guides, or point your agent at them: <a href=\"https:&#x2F;&#x2F;rivet.dev&#x2F;docs&#x2F;#guides\">https:&#x2F;&#x2F;rivet.dev&#x2F;docs&#x2F;#guides</a><p>Try it out now, by reading our quickstart guides (<a href=\"https:&#x2F;&#x2F;rivet.dev&#x2F;docs&#x2F;\">https:&#x2F;&#x2F;rivet.dev&#x2F;docs&#x2F;</a>) or ask your agent: “Run npx skills add rivet-dev&#x2F;skills, then build a multiplayer chat agent and run it locally.”<p>We’d love to get feedback on your experience with Rivet! We’re deeply invested in making Rivet an easy-to-self-host, flexible, and efficient way to run agentic workloads.<p>GitHub: <a href=\"https:&#x2F;&#x2F;github.com&#x2F;rivet-dev&#x2F;rivet\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;rivet-dev&#x2F;rivet</a><p>Architecture: <a href=\"https:&#x2F;&#x2F;rivet.dev&#x2F;docs&#x2F;architecture&#x2F;\">https:&#x2F;&#x2F;rivet.dev&#x2F;docs&#x2F;architecture&#x2F;</a><p>Benchmarks: <a href=\"https:&#x2F;&#x2F;rivet.dev&#x2F;docs&#x2F;benchmarking&#x2F;\">https:&#x2F;&#x2F;rivet.dev&#x2F;docs&#x2F;benchmarking&#x2F;</a><p>Self-hosting: <a href=\"https:&#x2F;&#x2F;rivet.dev&#x2F;docs&#x2F;deploy&#x2F;self-host&#x2F;\">https:&#x2F;&#x2F;rivet.dev&#x2F;docs&#x2F;deploy&#x2F;self-host&#x2F;</a>",
     "title": "Launch HN: Rivet (YC W23) – Scale and Orchestrate Agents on S3",
@@ -934,6 +1072,12 @@
       "url": "https://news.ycombinator.com/item?id=50387349"
     },
     {
+      "author": "Tanjreeve",
+      "text": "I'm curious if it actually needs to be across AZs versus if it just needs a few instances but yes as written there is a trade off happening. The other route for fast S3 writes others have used (Turso springs to mind) is express S3 zones but those have a lot of region specific fine print still.",
+      "at": "2026-11-06T11:41:40.000Z",
+      "url": "https://news.ycombinator.com/item?id=50391160"
+    },
+    {
       "author": "dragonkhoi",
       "text": "Been running Rivet v3 self-hosted on AWS and it's dope!",
       "at": "2026-11-05T20:04:54.000Z",
@@ -1084,10 +1228,58 @@
       "url": "https://news.ycombinator.com/item?id=50388994"
     },
     {
-      "author": "bshafiq",
-      "text": "Love the actor model approach here. Hibernating idle agents while keeping state durable in S3 is a huge win for cost. Curious how Rivet handles the runaway loop problem though. When you have long-lived actors passing messages to each other, a simple state bug can cause them to ping-pong the exact same payload indefinitely. Because the actors stay alive and keep responding (returning 200s), your infra looks perfectly healthy, but the developer's OpenAI bill just exploded in the background. Are you leaving loop detection entirely to the devs building on top of Rivet, or is there any native circuit breaker at the orchestrator level to kill an actor that's stuck in a cyclic state?",
-      "at": "2026-11-06T07:19:00.000Z",
-      "url": "https://news.ycombinator.com/item?id=50389198"
+      "author": "alexey_anshakov",
+      "text": "Moving state persistence to write-ahead SQLite tiered into S3 is a very clean answer to the latency-cost trap of raw object storage. The big operational win with decoupled actor state like this is avoiding zombie locks when an agent execution times out mid-turn. Curious how you handle split-brain fencing if an actor network partition occurs while a batched write is still draining to S3.",
+      "at": "2026-11-06T09:41:46.000Z",
+      "url": "https://news.ycombinator.com/item?id=50390248"
+    },
+    {
+      "author": "AlexeyBelov",
+      "text": "LLM bot.",
+      "at": "2026-11-07T07:31:35.000Z",
+      "url": "https://news.ycombinator.com/item?id=50402458"
+    },
+    {
+      "author": "alexey_anshakov",
+      "text": "Not a bot, just a systems engineer genuinely interested in tiered storage and state durability. SQLite with S3 persistence is a topic I build around every day.",
+      "at": "2026-11-07T08:27:07.000Z",
+      "url": "https://news.ycombinator.com/item?id=50402730"
+    },
+    {
+      "author": "jaekwon",
+      "text": "Not  using the actor model, and yet massively parallel:  https://gnosh.ai/swarm.html  I wonder when one approach will be used over the other. Actually, I can imagine both approaches working together. Just filed two provisional patents on this stuff today; build on gno.land and let's talk shop, I see symbiosis.",
+      "at": "2026-11-06T10:51:18.000Z",
+      "url": "https://news.ycombinator.com/item?id=50390757"
+    },
+    {
+      "author": "coindefdev",
+      "text": "The hard part for me has not been getting agents to write code. It has been keeping a bunch of long-running ones alive without burning through quota every few hours. Suspend/resume and cost tracking that I do not have to build myself would help.",
+      "at": "2026-11-06T13:07:40.000Z",
+      "url": "https://news.ycombinator.com/item?id=50391877"
+    },
+    {
+      "author": "canadiantim",
+      "text": "This is soooo cool! Awesome! You mention support for Turso, like we could use Turso instead of sqlite? Amazing work though, definitely will be following with keen interest and likely adopting it! Love that the genesis came from trials and tribulations for game dev.",
+      "at": "2026-11-06T13:43:25.000Z",
+      "url": "https://news.ycombinator.com/item?id=50392203"
+    },
+    {
+      "author": "sarathkavuru",
+      "text": "Curious how hibernation works across a multi-minute agent turn with tool calls in between. When the actor wakes, is conversation state just the SQLite snapshot, or do you keep a warm in-memory buffer for the active turn? Also would love a rough density number—actors per host—for a coding-agent style workload with a WebSocket client attached.",
+      "at": "2026-11-06T14:03:35.000Z",
+      "url": "https://news.ycombinator.com/item?id=50392419"
+    },
+    {
+      "author": "petervandijck",
+      "text": "Love that architecture. I’m becoming a major fan of SQLite for agents to work with. I wonder if you looked at Cloudlfares D1 as an option. For myself, I built an easy mcp for my agents to run SQLite databases which I’m finding mostly useful for scheduled agents in Claude, they have stuff to keep track of.  https://getairdash.com  if anyone wants to try that out (it’s free, cloudflare is very very cheap)",
+      "at": "2026-11-06T14:19:39.000Z",
+      "url": "https://news.ycombinator.com/item?id=50392573"
+    },
+    {
+      "author": "takeitwhen",
+      "text": "One thing that bit me running long agent workflows: hibernate/resume is great until tool results aren't part of the durable snapshot. If the actor wakes from SQLite alone and the previous turn's tool payload lived only in memory (or a temp file), the next step invents a confident continuation. We ended up treating \"resume\" as unsafe unless the last tool I/O was written into the same durable store as the conversation before suspend. Density numbers matter less than whether wake always reconstitutes enough to refuse to continue when that evidence is missing.",
+      "at": "2026-11-06T14:25:31.000Z",
+      "url": "https://news.ycombinator.com/item?id=50392644"
     }
   ],
   "comments_complete": true

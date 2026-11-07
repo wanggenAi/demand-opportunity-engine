@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43114",
+  "collected_at": "2026-11-07T08:44:12.214643+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43114",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43114/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43114/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43114/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43114",
+    "id": 6257040520,
+    "node_id": "I_kwDOC4Q8Qs8AAAABdPLciA",
+    "number": 43114,
+    "title": "hasKey() throws on objects created with Object.create(null)",
+    "user": {
+      "login": "indexGin",
+      "id": 166748424,
+      "node_id": "U_kgDOCfBhCA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/166748424?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/indexGin",
+      "html_url": "https://github.com/indexGin",
+      "followers_url": "https://api.github.com/users/indexGin/followers",
+      "following_url": "https://api.github.com/users/indexGin/following{/other_user}",
+      "gists_url": "https://api.github.com/users/indexGin/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/indexGin/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/indexGin/subscriptions",
+      "organizations_url": "https://api.github.com/users/indexGin/orgs",
+      "repos_url": "https://api.github.com/users/indexGin/repos",
+      "events_url": "https://api.github.com/users/indexGin/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/indexGin/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-07T08:39:50Z",
+    "updated_at": "2026-11-07T08:40:03Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## 现象\n\n`hasKey()` in `packages/workflow/src/utils.ts` calls `value.hasOwnProperty(key)` directly:\n\n```ts\nexport function hasKey<T extends PropertyKey>(value: unknown, key: T): value is Record<T, unknown> {\n\treturn value !== null && typeof value === 'object' && value.hasOwnProperty(key);\n}\n```\n\nWhen `value` is an object without a prototype (created via `Object.create(null)`), `hasOwnProperty` is not inherited, so the function throws `TypeError: value.hasOwnProperty is not a function` instead of returning a boolean.\n\n## 最小复现\n\n```ts\nimport { hasKey } from 'n8n-workflow';\n\nconst record = Object.create(null);\nrecord.key = 'value';\n\nhasKey(record, 'key');     // throws TypeError: value.hasOwnProperty is not a function\nhasKey(record, 'missing'); // throws instead of returning false\n```\n\nPrototype-less records are produced inside the repo itself (e.g. `nullProtoRecord()` in `packages/workflow/src/connections-diff.ts`) and are a common way to hold key-controlled data.\n\n## 期望\n\n`hasKey` should use `Object.prototype.hasOwnProperty.call(value, key)` and return `true`/`false` for prototype-less objects, consistent with its behaviour for ordinary objects, arrays and primitives.\n\n## 影响\n\nAny code path that feeds a prototype-less record into `hasKey` (for example error/metadata parsing built on `hasKey`) crashes with a `TypeError` instead of performing a simple key lookup. This turns an ordinary key check into an execution failure whenever the input object has no prototype.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43114/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43114/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @indexGin,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9718\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9718](https://linear.app/n8n/issue/GHC-9718)",
+      "at": "2026-11-07T08:40:01Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43114#issuecomment-6704602569"
+    }
+  ],
+  "comments_complete": true
+}

@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43115",
+  "collected_at": "2026-11-07T08:44:12.214643+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43115",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43115/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43115/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43115/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43115",
+    "id": 6257041305,
+    "node_id": "I_kwDOC4Q8Qs8AAAABdPLfmQ",
+    "number": 43115,
+    "title": "tryToParseJwt() accepts tokens with an empty signature segment",
+    "user": {
+      "login": "indexGin",
+      "id": 166748424,
+      "node_id": "U_kgDOCfBhCA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/166748424?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/indexGin",
+      "html_url": "https://github.com/indexGin",
+      "followers_url": "https://api.github.com/users/indexGin/followers",
+      "following_url": "https://api.github.com/users/indexGin/following{/other_user}",
+      "gists_url": "https://api.github.com/users/indexGin/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/indexGin/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/indexGin/subscriptions",
+      "organizations_url": "https://api.github.com/users/indexGin/orgs",
+      "repos_url": "https://api.github.com/users/indexGin/repos",
+      "events_url": "https://api.github.com/users/indexGin/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/indexGin/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-07T08:39:57Z",
+    "updated_at": "2026-11-07T08:40:09Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## 现象\n\n`tryToParseJwt()` in `packages/workflow/src/type-validation.ts` validates a token with:\n\n```ts\nconst jwtPattern = /^[A-Za-z0-9-_]+\\.[A-Za-z0-9-_]+\\.[A-Za-z0-9-_.+/=]*$/;\n```\n\nThe third (signature) segment uses `*` (zero or more), so it also matches an empty string. A string such as `header.payload.` therefore passes validation and is returned as a valid JWT, even though a JWT must contain a non-empty signature segment.\n\n## 最小复现\n\n```ts\nimport { tryToParseJwt } from 'n8n-workflow';\n\ntryToParseJwt('header.payload.'); // returns 'header.payload.' instead of throwing\ntryToParseJwt('a.b.');            // returns 'a.b.' instead of throwing\n```\n\n## 期望\n\nThe signature segment should require at least one character (`+` instead of `*`). Tokens with an empty signature must be rejected with a `UserError`, while normal three-segment tokens continue to be accepted unchanged.\n\n## 影响\n\n`tryToParseJwt` is used to validate `jwt`-typed field values. Accepting a truncated or malformed token (a copy/paste mistake, or a crafted value) lets an invalid, credential-like string pass validation and flow into downstream nodes. It then either fails later with a much less clear error or is sent to an API as a malformed `Authorization` token.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43115/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43115/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @indexGin,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9719\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9719](https://linear.app/n8n/issue/GHC-9719)",
+      "at": "2026-11-07T08:40:07Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43115#issuecomment-6704603433"
+    }
+  ],
+  "comments_complete": true
+}

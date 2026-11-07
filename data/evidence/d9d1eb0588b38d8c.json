@@ -1,0 +1,113 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43106",
+  "collected_at": "2026-11-07T08:44:12.214643+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43106",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43106/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43106/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43106/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43106",
+    "id": 6245987747,
+    "node_id": "I_kwDOC4Q8Qs8AAAABdEo1ow",
+    "number": 43106,
+    "title": "MongoDB Chat Memory node doesn't set driverInfo, unlike the other MongoDB nodes",
+    "user": {
+      "login": "atandon2024",
+      "id": 216061237,
+      "node_id": "U_kgDODODVNQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/216061237?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/atandon2024",
+      "html_url": "https://github.com/atandon2024",
+      "followers_url": "https://api.github.com/users/atandon2024/followers",
+      "following_url": "https://api.github.com/users/atandon2024/following{/other_user}",
+      "gists_url": "https://api.github.com/users/atandon2024/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/atandon2024/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/atandon2024/subscriptions",
+      "organizations_url": "https://api.github.com/users/atandon2024/orgs",
+      "repos_url": "https://api.github.com/users/atandon2024/repos",
+      "events_url": "https://api.github.com/users/atandon2024/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/atandon2024/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 3,
+    "created_at": "2026-11-06T15:57:30Z",
+    "updated_at": "2026-11-06T17:05:23Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nThe MongoDB Chat Memory node creates its `MongoClient` without `driverInfo`, so its connections don't identify themselves as n8n in the MongoDB connection handshake.\n\nn8n's other MongoDB integrations already set this:\n\n- The MongoDB node sets `driverInfo: { name: 'n8n_crud', version: <node version> }` in `packages/nodes-base/nodes/MongoDb/GenericFunctions.ts`.\n- The MongoDB Atlas Vector Store node sets `driverInfo: { name: 'n8n_vector', version: <node version> }` in `packages/@n8n/nodes-langchain/nodes/vector_store/VectorStoreMongoDBAtlas/VectorStoreMongoDBAtlas.node.ts`.\n- The MongoDB Chat Memory node, in `packages/@n8n/nodes-langchain/nodes/memory/MemoryMongoDbChat/MemoryMongoDbChat.node.ts`, only passes pool settings (`minPoolSize`, `maxPoolSize`, `maxIdleTimeMS`).\n\nAs a result, connections from the Chat Memory node can't be told apart from generic Node.js driver traffic in MongoDB Atlas, unlike connections from the other two nodes.\n\n### To Reproduce\n\n1. Create a workflow with a Chat Trigger connected to an AI Agent, then add a chat model and a MongoDB Chat Memory node using MongoDB credentials.\n2. Send a chat message so the memory node opens a connection.\n3. While the connection is open, run `db.currentOp(true)` in `mongosh` against the same deployment, and find the operation from n8n.\n4. See that `clientMetadata.driver.name` is only `nodejs`, with no n8n entry.\n\n### Expected behavior\n\nAs with the MongoDB and MongoDB Atlas Vector Store nodes, `clientMetadata.driver.name` should include an n8n entry for this node (for example `nodejs|n8n_memory`), and `clientMetadata.driver.version` should include the node version (for example `6.21.0|1.1`).\n\n### Debug Info\n\nNot available. This was found by reading the source on `master` (commit 4b5ea1de), and the same code ships in n8n@2.46.6. It applies regardless of environment.\n\n### Operating System\n\nmacOS (Darwin 25.6.0); not environment-specific\n\n### n8n Version\n\n2.46.6\n\n### Node.js Version\n\n24.1.0\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43106/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43106/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @atandon2024,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9717\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9717](https://linear.app/n8n/issue/GHC-9717)",
+      "at": "2026-11-06T15:57:39Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43106#issuecomment-6689178372"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "The current source confirms the omission: `supplyData()` constructs `MongoClient` with only pool options. The Atlas vector-store node passes `driverInfo` in the same constructor, using its selected node version. The memory node can follow that pattern with a distinct name such as `n8n_memory` and `this.getNode().typeVersion.toString()`; its description already declares versions `[1, 1.1]`, so the reported version can track the actual node version.",
+      "at": "2026-11-06T16:05:42Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43106#issuecomment-6689362251"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "One detail to account for in the fix: this node declares versions 1 and 1.1, so passing `this.getNode().typeVersion.toString()` to `driverInfo.version` will report the selected version. The Atlas vector-store helper already takes the runtime node version and passes it as a string; the memory node can use the same pattern with a distinct driver name such as `n8n_memory`.",
+      "at": "2026-11-06T17:05:23Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43106#issuecomment-6690627793"
+    }
+  ],
+  "comments_complete": true
+}

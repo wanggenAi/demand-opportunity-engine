@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/GoodDollar/GoodWidget/issues/287",
+  "collected_at": "2026-11-07T08:44:12.214643+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/GoodDollar/GoodWidget/issues/287",
+    "repository_url": "https://api.github.com/repos/GoodDollar/GoodWidget",
+    "labels_url": "https://api.github.com/repos/GoodDollar/GoodWidget/issues/287/labels{/name}",
+    "comments_url": "https://api.github.com/repos/GoodDollar/GoodWidget/issues/287/comments",
+    "events_url": "https://api.github.com/repos/GoodDollar/GoodWidget/issues/287/events",
+    "html_url": "https://github.com/GoodDollar/GoodWidget/issues/287",
+    "id": 6244776587,
+    "node_id": "I_kwDORwVjC88AAAABdDe6iw",
+    "number": 287,
+    "title": "[GoodBounty-QA] Live test the GoodReserve widget on XDC",
+    "user": {
+      "login": "L03TJ3",
+      "id": 6606028,
+      "node_id": "MDQ6VXNlcjY2MDYwMjg=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6606028?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/L03TJ3",
+      "html_url": "https://github.com/L03TJ3",
+      "followers_url": "https://api.github.com/users/L03TJ3/followers",
+      "following_url": "https://api.github.com/users/L03TJ3/following{/other_user}",
+      "gists_url": "https://api.github.com/users/L03TJ3/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/L03TJ3/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/L03TJ3/subscriptions",
+      "organizations_url": "https://api.github.com/users/L03TJ3/orgs",
+      "repos_url": "https://api.github.com/users/L03TJ3/repos",
+      "events_url": "https://api.github.com/users/L03TJ3/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/L03TJ3/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 10997641297,
+        "node_id": "LA_kwDORwVjC88AAAACj4KwUQ",
+        "url": "https://api.github.com/repos/GoodDollar/GoodWidget/labels/GoodBounties%20-%20QA",
+        "name": "GoodBounties - QA",
+        "color": "d93f0b",
+        "default": false,
+        "description": "",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-06T14:46:22Z",
+    "updated_at": "2026-11-06T15:15:45Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Summary\n\nIndependently test the GoodReserve widget through real human use on XDC production, including one small live buy and one small live sell. Check the full experience, stale-quote fixes and recovery paths, then submit a reproducible report with evidence. Developer self-tests, automation and fixture results support this work but do not replace the tester's own live use.\n\n## Request and scope\n\n- **Implementation:** [GoodWidget PR #280](https://github.com/GoodDollar/GoodWidget/pull/280).\n- **Revision to test:** `570eb00392dcba8d5862056be09f455b9d06869e`. Record the exact checked-out SHA; confirm any replacement revision with the maintainer before testing it.\n- **Original requirements:** [GoodWidget issue #279](https://github.com/GoodDollar/GoodWidget/issues/279).\n- **QA guide:** [GoodWidget QA guide](https://github.com/GoodDollar/GoodWidget/blob/main/docs/qa-guide.md).\n- **Report format:** [GoodBounties reusable QA report](https://github.com/GoodDollar/.github/blob/master/.github/ISSUE_TEMPLATE/GoodBounties-QA-Template.md), used below for the tester's submission.\n- **Bounty-Tier:** Common\n\nComment with your ETA and intended browser/wallet coverage. Wait for assignment and confirmation that the PR is ready for QA before starting.\n\nThe required transaction scope is **XDC mainnet, chain ID 50, production contracts**, with the environment fixed throughout testing. Development-contract transactions, redesign and new wallet integrations are outside this task.\n\n## Setup and test funds\n\n1. Read the PR, original requirements, review discussion and QA guide. Identify existing evidence and known gaps. Ask the maintainer about missing or conflicting requirements rather than assuming they passed.\n2. Check out the named revision and run:\n\n   ```sh\n   git rev-parse HEAD\n   pnpm install\n   pnpm build\n   pnpm storybook\n   ```\n\n3. Open `http://localhost:6006` and select **Widgets → GoodReserveWidget → InjectedWallet**. Use a dedicated injected browser wallet on XDC. This story uses the widget's default production environment; keep it fixed. Record the installed widget and reserve SDK versions, browser/version, OS, wallet/version and viewport.\n4. Before signing anything, contact the team in [GoodBounties Telegram](https://t.me/gooddollarbounties/4115) to request test funds and confirm the production token/reserve addresses, spender, XDC gas funding and approved buy/sell amounts. If these are unavailable or unclear, mark the affected cases **Blocked**.\n5. Check the wallet's network, token, spender and amount before each approval or transaction. Stop on any mismatch. Never share private keys or seed phrases, and redact sensitive data from evidence.\n\nThe **Interactive** story uses a custodial fixture wallet. Do not fund it or use its results as evidence of your own live-wallet QA. Optional automated checks, such as `pnpm test:demo tests/widgets/goodreserve-widget`, must be reported separately with the tested version, actual outcome and run evidence.\n\n## Required cases\n\nRecord each subcheck separately when outcomes differ. Include expected and actual behaviour, who performed the check and supporting evidence.\n\n1. **QA-01 Connect and recover.** Connect the wallet and verify the displayed address, XDC network and balances. Disconnect/reconnect and refresh. The widget must recover with the correct current state.\n2. **QA-02 Change accounts.** Switch accounts, including while a quote is loading and while confirmation is open, without signing. Previous-account balances or quotes must not remain actionable. Return to the funded account and verify fresh state.\n3. **QA-03 Amount validation and MAX.** Try empty, zero, non-numeric, fractional and insufficient amounts. Invalid amounts must not enable Review. Valid fractional amounts must retain the correct units and precision. MAX must not exceed the available balance. Do not execute a MAX swap unless that full amount is approved.\n4. **QA-04 Quotes and fees.** Check both USDM → G$ and G$ → USDM. Verify token labels and decimals, estimated output, rate, slippage, minimum received and exit contribution. Main-view and confirmation details must agree, allowing for display rounding. Record wallet gas fees separately.\n5. **QA-05 Changed inputs and delayed quotes.** Change amount, direction and slippage after receiving a quote. The previous quote must stop being actionable while a replacement loads. Try rapid edits and confirm that an older response cannot replace the latest quote. Record any timing scenario you could not exercise.\n6. **QA-06 Unchanged inputs.** After a valid quote loads, press MAX twice, reselect the active slippage preset and enter a character removed by amount sanitisation. When the effective input is unchanged, the widget must not clear the quote and remain stuck without a replacement.\n7. **QA-07 Live buy.** Complete one small approved USDM → G$ buy. Verify any token approval, confirmation details, pending/success states, the XDC explorer link and resulting balances. Repeated clicks must not create duplicate submissions; do not approve extra transactions to test this. Include the swap transaction link and any approval link.\n8. **QA-08 Live sell.** Complete one small approved G$ → USDM sell. Verify approval if requested, exit contribution, minimum received, pending/success states, explorer link and resulting balances. Include the swap transaction link and any approval link.\n9. **QA-09 Cancel and retry.** Cancel the widget confirmation, then separately reject a wallet request and retry. Neither cancellation may appear as success or leave the widget stuck. Report any other errors encountered and whether recovery works.\n10. **QA-10 Expired quote.** Leave a confirmation quote open for more than 60 seconds. Attempt to continue without approving a stale transaction. The expired quote must refresh and require review again before signing.\n11. **QA-11 Network changes.** Switch away from XDC while a quote is loading and, separately, while confirmation is open, without signing. Old quotes must stop being actionable. An unsupported network must show the switch-network state rather than become stuck fetching a quote. Return to XDC and verify fresh balances and a current quote. No transaction on another network is required.\n12. **QA-12 Layout and exploration.** Test desktop and mobile viewports, including 390px. Check readable copy, reachable controls, loading/error states and console/runtime errors. Explore beyond the checklist and report confusing or inconsistent behaviour. State whether mobile coverage used a resized browser or a physical device. Compare with the linked written requirements; include reference and implementation evidence for visual discrepancies.\n\nIf available, repeat connection and quote checks with a second compatible injected wallet. Identify that as additional coverage and state if it was not attempted.\n\n## Required QA report\n\nFollow the GoodWidget [QA guide’s](https://github.com/GoodDollar/GoodWidget/blob/main/docs/qa-guide.md) reporting and retesting instructions. Post your report on PR #280 and link it from this issue. Include both live XDC swap transaction links.\n\n## Testing funds.\n\nOnce assigned please reach out on telegram to request for testing funds. you can reach out through the goodbounties channel:\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/GoodDollar/GoodWidget/issues/287/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/GoodDollar/GoodWidget/issues/287/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "edehvictor",
+      "text": "Hi @L03TJ3, I'd like to take on the independent QA for the GoodReserve widget on XDC. I understand this requires my own live use on XDC mainnet (chain ID 50): one small USDM to G$ buy and one small G$ to USDM sell. Fixture and automated results will be reported separately, not as substitutes for those swaps.\n\n### ETA and coverage\n\n**ETA: 3 working days from assignment and confirmation that PR #280 is ready for QA**, assuming the approved test funds and production contract details are available. I'll give a status update within 24 hours of assignment. If funding or setup delays a live case, I'll mark it **Blocked** and update the ETA rather than claim it passed.\n\nI plan to use Brave on Windows with a dedicated MetaMask test account on XDC. I'll cover desktop and a 390px resized mobile viewport, and record the browser, wallet, OS, widget and SDK versions. If a second compatible injected wallet is available, I'll identify its results as additional coverage.\n\n### Test plan\n\n1. Review PR #280, requirements in #279, the review discussion and the GoodWidget QA guide. Check out the specified revision (`570eb00392dcba8d5862056be09f455b9d06869e`), verify the SHA and build, and use the **InjectedWallet** Storybook story with the production environment fixed. I won't fund or use the custodial Interactive fixture as live-wallet evidence.\n2. Work through the required cases individually: connect/reconnect and account switching; invalid, fractional and MAX amounts; buy/sell quotes, slippage, minimum received, exit contribution and fees; stale or delayed quotes after changed inputs; quote preservation for unchanged inputs; wallet rejection, retry and expiry; network changes; and desktop/mobile layout and runtime errors. I'll record any timing scenario I cannot reproduce.\n3. After assignment, confirm the production token and reserve addresses, spender, approved swap amounts and XDC gas funding with the GoodBounties team. Before each approval or transaction, I'll check the wallet network, token, spender and amount and stop if anything differs. I won't execute a MAX or extra transaction without approval.\n4. Complete the two approved small swaps. For each, check approval where required, confirmation details, pending/success states, explorer links and resulting balances. I'll check that repeated clicks do not create an extra submission without signing another transaction.\n\n### Evidence and handoff\n\nI'll post a case-by-case report on PR #280 using the GoodBounties QA format and link it from this issue. It will include expected versus actual results, screenshots or recordings, reproducible defect steps, **both live XDC swap transaction links**, any approval links, and wallet gas fees separately. Sensitive wallet information will be redacted.\n\nRelevant experience: I previously worked on GoodWidget's bridging correctness PR #266, including real-wallet evidence and transaction-state testing. I'll treat this GoodReserve QA as an independent test of its own requirements.",
+      "at": "2026-11-06T14:53:47Z",
+      "url": "https://github.com/GoodDollar/GoodWidget/issues/287#issuecomment-6687739914"
+    }
+  ],
+  "comments_complete": true
+}
