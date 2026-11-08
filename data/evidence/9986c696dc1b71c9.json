@@ -1,0 +1,198 @@
+{
+  "source_api_url": "https://api.github.com/repos/Iniwura/before-protocol/issues/8",
+  "collected_at": "2026-11-08T08:57:08.651888+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/Iniwura/before-protocol/issues/8",
+    "repository_url": "https://api.github.com/repos/Iniwura/before-protocol",
+    "labels_url": "https://api.github.com/repos/Iniwura/before-protocol/issues/8/labels{/name}",
+    "comments_url": "https://api.github.com/repos/Iniwura/before-protocol/issues/8/comments",
+    "events_url": "https://api.github.com/repos/Iniwura/before-protocol/issues/8/events",
+    "html_url": "https://github.com/Iniwura/before-protocol/issues/8",
+    "id": 6253515806,
+    "node_id": "I_kwDOVhVoUc8AAAABdL0UHg",
+    "number": 8,
+    "title": "Codex release captain: verify Bounty #5, security-gate WIF revoke, and complete submission readiness",
+    "user": {
+      "login": "Iniwura",
+      "id": 114838709,
+      "node_id": "U_kgDOBthMtQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/114838709?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Iniwura",
+      "html_url": "https://github.com/Iniwura",
+      "followers_url": "https://api.github.com/users/Iniwura/followers",
+      "following_url": "https://api.github.com/users/Iniwura/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Iniwura/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Iniwura/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Iniwura/subscriptions",
+      "organizations_url": "https://api.github.com/users/Iniwura/orgs",
+      "repos_url": "https://api.github.com/users/Iniwura/repos",
+      "events_url": "https://api.github.com/users/Iniwura/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Iniwura/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 10,
+    "created_at": "2026-11-07T01:09:42Z",
+    "updated_at": "2026-11-07T13:24:22Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "# Objective\n\nTake BEFORE Protocol from the current *live production build* to a **verifiably submission-ready World Is Flat hackathon release**, with test evidence, trustworthy onchain receipts, clear release notes, and an honest final GO / NO-GO. This is a single continuous Codex work order: plan, execute tests, fix actual defects, rerun, and update evidence, rather than stopping after each small check. **Do not claim you are working in the background if an agent session is not running.**\n\n## Starting state (7 Nov 2026)\n\n- Repo: https://github.com/Iniwura/before-protocol (`main` production release PR #5 merged).\n- Product: https://before-web-theta.vercel.app/ ; Bounty Studio: https://before-web-theta.vercel.app/app/bounty/ ; WIF checker: https://before-web-theta.vercel.app/app/wif/ .\n- **Public BTEST bounty #5 was reported as live by the production UI**, screenshot included in user's chat, path `/app/bounty/?id=5#sponsor`. Treat UI success as provisional. **First verify ID #5, sponsor, reviewer gate, token/reward, deadlines, and creation receipt against actual public Robinhood Testnet RPC/explorer**. Do NOT create another bounty by default.\n- BTEST escrow on chain 46630: `0xF9d644dd2024E2dFc425aA7c1059F9b4E720684a`. Mock BTEST: `0xf080A1a012F2Dd41c4F416Befd6D70074af75A4C`. Fixed practice target: `0x7e29bC6Df38e60E77513bc1084dB488FeE12947C`. Verify these against checked-in manifests.\n- PR #6 https://github.com/Iniwura/before-protocol/pull/6 is **draft, unmerged**; it contains a public-state fork integration test and `docs/PUBLIC_TESTNET_STUDIO_WALKTHROUGH.md`.\n- PR #7 https://github.com/Iniwura/before-protocol/pull/7 is **ready for review, unmerged**; it contains a new opt-in WIF `approve(spender,0)` action with wallet and receipts checks. Last known exact-head CI both jobs green: https://github.com/Iniwura/before-protocol/actions/runs/42319895305 . **No WIF mainnet transaction has been broadcast or proven through this UI.**\n- Registration confirmed by owner; **final organizer project submission NOT confirmed**. Demo video **explicitly paused** by owner.\n- Earlier organizer evidence says submissions close **2026-11-12 17:30 UTC**, but re-check live official event/rules/API and report any discrepancy. Official page: https://worldisflat.fun/build .\n- No real WIF custody, payout, vault deployment or independent audit.\n\n## Workstream A — verify and finish public BTEST #5 (highest-priority evidence)\n\n1. Query public testnet chain 46630, exact escrow and `nextChallengeId`, challenge #5, contract events and transaction receipts. Capture explorer URLs; cross-check sponsor, verifier, reward=1 BTEST, bond=0.1 BTEST and contract deadlines **as they actually exist**, not assumptions. If #5 already expired, settled, or cannot be legitimately used, document what happened and use contract-authorized recovery (with user-approved signer only); do not manufacture a PASS or silently create another bounty.\n2. If challenge #5 is live and suitable, complete **researcher commit → appointed reviewer verifies exact evidence and approves → researcher reveal after commit deadline, before reveal deadline → reward and bond settlement**. Follow `docs/PUBLIC_TESTNET_STUDIO_WALKTHROUGH.md`. Evidence text should match the training-vault example; distinguish the intentionally vulnerable practice vault from the protected vault.\n3. Use distinct researcher, reviewer and sponsor **addresses**. Do not claim reviewers were independent humans if they are accounts of one operator.\n4. Execute **genuine public testnet transactions only if secure, separately authorized testnet signing accounts and sufficient faucet gas are already available**. No private keys, seed phrases, passwords, salts, or recovery files in prompts, logs, comments, screenshots, repos or CI. If signer(s) unavailable, **stop only the real signing path**, complete all read-only verification, and report exact missing authorizations. Do not use Anvil receipts as public-chain evidence.\n5. Publish an evidence matrix with creation/commit/approval/settle tx hashes, signer identities, block numbers, receipt.status, event decode, challenge/commitment final state, net BTEST payout and bond return. Redact private recovery salt.\n6. If deadlines on #5 have passed, this may make full settlement impossible. Report this as an honest live acceptance outcome and propose a fresh short test, **only with user-approved wallet confirmations**.\n\n## Workstream B — robust engineering and security\n\n1. Inspect PR #6, PR #7 and current main thoroughly, including concurrent branches/conflicts and exact deployed artifact/runtime hashes.\n2. Run reproducible Foundry build/test with fuzz, all Node tests, local Anvil contract lifecycle, deployed-state-fork flow, browser responsive/axe checks at 320/375/768/1280, success/failure wallet EIP-1193 simulations, static checks, source links, and current GitHub Actions. Report counts, environment, commit SHA, and actual commands.\n3. Adversarially test mainnet WIF revoke: wrong chain, wrong owner, stale/edited scan, switched account, user rejection, zero allowance, RPC failures/timeouts, malformed/mismatched receipt or tx calldata, reorg/receipt permanence, amount and calldata encoding, and the fact the transaction sends **0 WIF**, costs **real gas**, and changes only a specific `allowance`. Avoid any silent wallet action or unsafe transaction.\n4. Review `approve(spender,0)` as a *real mainnet state-changing feature*, including confirmation UX, spenders, allowance warnings, and local/remote race handling. Fix meaningful flaws with focused tests, no cosmetic redesign.\n5. Prefer separate branches and small PRs. Do not merge PR #7 or deploy mainnet features without explicit product-owner release approval. Do not deploy new unaudited contracts or send real WIF. Keep `main` and approved visual design unchanged unless approval given.\n6. Check deployment routing, cache headers, wallet install errors, chain switching UX, contract code hashes, headers, CSP, accessibility, mobile usability, and broken links. Do not treat WCAG automated scans as a full security/UX audit.\n\n## Workstream C — hackathon fit and submission readiness\n\n1. Recheck **live** organizer rules, deadline and authenticated form fields (do not infer form content that cannot be inspected).\n2. Explicitly assess whether a read-only WIF reader + optional user-signed ERC20 `approve(spender,0)` qualifies as **meaningful $WIF onchain utility** and meets any repeat-use/flywheel language. State uncertainty and competitive risks; do not manufacture eligibility.\n3. No rushed staking, betting, burns, custody, or WIF transfers for eligibility optics. Propose only realistically deliverable, safe, useful improvements and document why.\n4. Review landing → real task → evidence journey against leading product standards; fix clear blockers only. No major UI redesign.\n5. Prepare accurate draft title/description/tech stack, GitHub/live links, testnet proof URLs, source/license, demo outline, screenshots and an evidence table. **Video production remains paused**; if rules require video, mark final submission as BLOCKED until owner authorizes and supplies/creates video. Do not generate or upload a video without consent.\n6. **Do not click final organizer Submit** without owner approval, and do not call registration a completed project submission.\n\n## Completion protocol\n\n- Commit evidence and updates on an audit branch. Link PRs and exact release hashes. Avoid overwriting other branches.\n- Write `docs/FINAL_SUBMISSION_READINESS.md` with PASS / FAIL / BLOCKED for each gate, reproducible commands, public evidence, rule citations, clearly labeled synthetic/fork/public outcomes and blockers.\n- Produce final concise status: **GO** only if critical eligibility, live chain evidence, CI, demo and submission package requirements are satisfied; otherwise **NO-GO** with the smallest explicit owner actions.\n- No fabricated signatures, test results, receipts, external reviewer endorsements, deployment status, organizer approval or background autonomous completion.\n\nOwner's instruction: **Take initiative and perform all non-signing testing/research/documentation to completion, minimize manual steps, do not stop at intermediate 'continue' checkpoints.**\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/Iniwura/before-protocol/issues/8/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/Iniwura/before-protocol/issues/8/timeline",
+    "performed_via_github_app": {
+      "id": 1144995,
+      "client_id": "Iv23liVemv8A9if9v0F2",
+      "slug": "chatgpt-codex-connector",
+      "node_id": "A_kwHOAOQ6Gs4AEXij",
+      "owner": {
+        "login": "openai",
+        "id": 14957082,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjE0OTU3MDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/14957082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/openai",
+        "html_url": "https://github.com/openai",
+        "followers_url": "https://api.github.com/users/openai/followers",
+        "following_url": "https://api.github.com/users/openai/following{/other_user}",
+        "gists_url": "https://api.github.com/users/openai/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/openai/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/openai/subscriptions",
+        "organizations_url": "https://api.github.com/users/openai/orgs",
+        "repos_url": "https://api.github.com/users/openai/repos",
+        "events_url": "https://api.github.com/users/openai/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/openai/received_events",
+        "type": "Organization",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "name": "ChatGPT Codex Connector",
+      "description": "Bring ChatGPT and Codex to your GitHub repositories.",
+      "external_url": "https://www.chatgpt.com",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "created_at": "2025-02-14T01:37:05Z",
+      "updated_at": "2026-09-23T18:52:59Z",
+      "permissions": {
+        "actions": "write",
+        "checks": "read",
+        "contents": "write",
+        "emails": "read",
+        "issues": "write",
+        "metadata": "read",
+        "pull_requests": "write",
+        "statuses": "read",
+        "workflows": "write"
+      },
+      "events": [
+        "check_run",
+        "check_suite",
+        "commit_comment",
+        "issues",
+        "issue_comment",
+        "pull_request",
+        "pull_request_review",
+        "pull_request_review_comment",
+        "pull_request_review_thread",
+        "repository",
+        "status",
+        "sub_issues"
+      ]
+    },
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "gjwang",
+      "text": "For Workstream A's read-only current-state checks, your existing script can also point at our public Robinhood testnet endpoint without a new key:\n\n```sh\nRH_TESTNET_RPC=https://api.blockvectra.com/v1/robinhood_testnet/public node script/check-chain.mjs\n```\n\nI maintain BlockVectra. Our [published catalog](https://api.blockvectra.com/v1/chains) snapshot from November 7, 00:31 UTC lists chain `46630`, with public `eth_chainId`, `eth_blockNumber`, `eth_getCode`, `eth_call` and known-transaction receipt reads. It advertises 3 requests/s per IP, burst 20, batch maximum 10 and a 1,000-block public history window. This could be a second source for eligible reads, rather than a reason to replace your existing provider.\n\nOne important limit for this task: **the testnet public method list does not include `eth_getLogs`**. It cannot cover your event scan or arbitrary historical verification. A null receipt or a rejected historical request would not establish that bounty #5 was never created. Keep the original creation transaction hash and cross-check the relevant block/receipt identities.\n\nThe command only checks chain identity; I have not executed your contracts or verified bounty #5. It does not complete the settlement, signing or mainnet release gates. [Published access boundaries](https://docs.blockvectra.com/en/guides/choose-rpc-provider/?ref=github-before-testnet-read-1107).\n",
+      "at": "2026-11-07T01:47:14Z",
+      "url": "https://github.com/Iniwura/before-protocol/issues/8#issuecomment-6700567641"
+    },
+    {
+      "author": "Iniwura",
+      "text": "## Owner update — fresh public BTEST bounty authorized (7 Nov 2026)\n\nThe owner confirms that Codex does **not** have access to the wallet that created Bounty #5 and asks Codex to create a **new** public-testnet BTEST bounty for the complete acceptance test. Update the plan accordingly:\n\n1. First inspect #5 publicly, record its current state and creation receipt, and leave it intact. Do not require its sponsor key to proceed, or claim it was completed by the new run. The owner will handle any eligible sponsor refund separately.\n2. Create a fresh bounty using **only authorized, isolated, disposable testnet signing accounts** for sponsor, researcher, and appointed reviewer. Ensure all three addresses differ. Fund them with free testnet ETH for gas through legitimate means and valueless freely mintable BTEST only. Confirm app-created setup and funding receipt(s).\n3. Complete real public-chain sponsor creation → researcher commitment → appointed reviewer approval → researcher reveal/settlement, and verify deployed contract addresses, event logs, exact token balances, public explorer receipts and final accounting. The tested flow must use the released browser interface where possible; if a script is used for signing, label the result as a script test rather than falsely claiming a browser-wallet journey.\n4. If no authorized testnet signer/keystore is available to Codex, do **not** generate or extract secrets from the user's wallet or fabricate results. Make a precise signer/gas blocker report and complete all remaining non-signing tests.\n5. No real WIF, mainnet transaction, new unaudited custody contract, UI redesign, automatic merge/production deployment, demo video or final organizer submission.\n\nThis instruction supersedes the earlier preference to reuse Bounty #5, **only for this acceptance test**. Issue #8's other requirements remain unchanged.",
+      "at": "2026-11-07T11:16:43Z",
+      "url": "https://github.com/Iniwura/before-protocol/issues/8#issuecomment-6706110442"
+    },
+    {
+      "author": "Iniwura",
+      "text": "## Issue #8 audit update — 2026-11-07\n\n### Verdict: NO-GO\n\nThe engineering, historical public BTEST, preview and CI gates pass. A fresh public three-wallet acceptance lifecycle is **BLOCKED before broadcast** because the owner requires three distinct authorized disposable testnet signers and only the approved `before-testnet` signer is available locally:\n\n- `0xd1061825504b30f404c0d94b745205925f251f2c`\n- chain ID `46630`\n- test ETH read-only balance: `0.009871307120000000`\n- keystore directory `0700`; keystore/password files `0600`\n\nNo other authorized signer/password pair was present. Pre-existing Foundry keystores were not used. No secret was generated, extracted, printed, transmitted or committed, and no fresh public transaction was broadcast.\n\n### Public evidence\n\n- Existing Bounty #5 was left intact. Its creation receipt is [0x9009…e3c8](https://explorer.testnet.chain.robinhood.com/tx/0x9009a56b0c5009482e80ba3b39c91a25c39125a76210b81054dc5aea2863e3c8), sponsored by `0xa35dc047f9937bf668743efbdf8ea93b31a55888`. It is expired, has zero commitments, no settlement/refund/cancel events, and still holds exactly 1 BTEST.\n- Reviewer gate: [0x1391…1eaa](https://explorer.testnet.chain.robinhood.com/address/0x1391916cc9012ece416f682227d99373f1631eaa); creation receipt [0xb973…75e8](https://explorer.testnet.chain.robinhood.com/tx/0xb9730e204566fd7ebf3d25636569715d4e6bad4528a8a84dd0e7e1671fa475e8).\n- Historical synthetic public coordinator: [0x166E…Cd1C](https://explorer.testnet.chain.robinhood.com/address/0x166E3367cdC9751A02570fedf8d700C4f70fCd1C). Its successful [deploy](https://explorer.testnet.chain.robinhood.com/tx/0x1e0e7783d9f46047c351d4b942344052892312c9f2ff0fa7f06e2b764b59e7dc), [start](https://explorer.testnet.chain.robinhood.com/tx/0x2ad4387c44ab0e1d5bf4f561318a9e8e8c493e7f8a6414cb980bf36603517789), [settle](https://explorer.testnet.chain.robinhood.com/tx/0x74df2df93542458b66ae7751ceed7e28bd66b739bd43a5f6bedc1ba903aefd08) and [cleanup](https://explorer.testnet.chain.robinhood.com/tx/0x5e35f62052dc5d8bbaed2da78cbf3df3a2fed0d6254f49e940d74f0a772e5898) receipts pass independent status/event/accounting checks. Roles were synthetic contracts controlled by one operator, not independent human reviewers.\n- Full report: [docs/ISSUE_8_PUBLIC_TESTNET_EVIDENCE.md](https://github.com/Iniwura/before-protocol/blob/cb47bf72acef218015c78bf5838d9a0d2484c336/docs/ISSUE_8_PUBLIC_TESTNET_EVIDENCE.md)\n- Read-only audit: [qa/issue-8-public-testnet-audit.mjs](https://github.com/Iniwura/before-protocol/blob/cb47bf72acef218015c78bf5838d9a0d2484c336/qa/issue-8-public-testnet-audit.mjs)\n\n### Verification\n\nCommit [`cb47bf7`](https://github.com/Iniwura/before-protocol/commit/cb47bf72acef218015c78bf5838d9a0d2484c336) is pushed on [`audit/issue-8-release-readiness`](https://github.com/Iniwura/before-protocol/tree/audit/issue-8-release-readiness); draft PR [#9](https://github.com/Iniwura/before-protocol/pull/9) is open.\n\n- Foundry: `forge build --no-cache`; **70 Solidity tests passed** with `--fuzz-runs 1024`.\n- Node: **73 tests passed**, 0 failed.\n- Anvil release gate, local bounty lifecycle, syntax checks, responsive/axe QA, bounty browser E2E and WIF fail-closed QA: **PASS**.\n- GitHub Actions run [42369054862](https://github.com/Iniwura/before-protocol/actions/runs/42369054862): `test` and `browser-quality` both **success**.\n- Vercel preview for this commit: https://before-i6f7cl2ei-iniwura-akurus-projects.vercel.app/ (protected preview; deployment [firBniURfDTrbWL4oGvfw84DbSwt](https://vercel.com/iniwura-akurus-projects/before-web/firBniURfDTrbWL4oGvfw84DbSwt)). Authenticated browser verification passed all four screens at 320/375/768/1280 with no overflow or browser errors; `/app/` showed `Testnet · Connected`; the proof panel showed three actual historical receipt links; Bounty Studio did not prompt for a wallet until a task was selected.\n- Readiness matrix: [docs/FINAL_SUBMISSION_READINESS.md](https://github.com/Iniwura/before-protocol/blob/cb47bf72acef218015c78bf5838d9a0d2484c336/docs/FINAL_SUBMISSION_READINESS.md)\n\nNo real WIF, mainnet transaction, production promotion, merge or demo video was performed. The smallest owner action for the public acceptance test is to authorize three distinct disposable testnet signers with legitimate faucet ETH; final hackathon submission remains owner-controlled.",
+      "at": "2026-11-07T11:46:25Z",
+      "url": "https://github.com/Iniwura/before-protocol/issues/8#issuecomment-6706525995"
+    },
+    {
+      "author": "Iniwura",
+      "text": "## Explicit owner authorization — disposable testnet signers (7 Nov 2026)\n\nThe project owner explicitly authorizes Codex to **generate and securely store two additional disposable Robinhood Chain Testnet-only wallets**, to accompany the already authorized `before-testnet` signer, solely for the BTEST public acceptance lifecycle. This supersedes the signer-generation blocker in the earlier audit.\n\n**Scope and guardrails**\n- Use isolated test-only wallets; generate with secure randomness locally, encrypt keys at rest, permissions 0700 directories / 0600 sensitive files, never print, log, commit, upload or transmit keys, recovery phrases or keystore passwords. Avoid accidental key exposure in shell history, process arguments, Actions logs or screenshots. Do not reuse real-wallet seeds or credentials.\n- Distinct sponsor, researcher and appointed reviewer **addresses**. Label reviews as controlled by one operator if applicable; do not claim independent human review.\n- Only Robinhood Chain **Testnet chain ID 46630**, official deployed BEFORE testnet contracts, freely mintable valueless BTEST, and faucet test ETH for gas. **No mainnet, real WIF, custody deployment or real-value transfer.**\n- If gas is unavailable, first seek legitimate faucet funding; do not source real-value ETH or spend funds without additional authorization. If faucet requires human verification, state that single actionable blocker.\n- Treat prior Bounty #5 as separate, expired and under its original sponsor account; do not attempt unauthorized refund/cancel. Create a **fresh** small bounty, with sufficiently generous deadlines for public block timestamps and reviewer workflow; run true public create → commit → appointed approval → reveal/settle with all transaction receipt identity, status, event and accounting checks, recording explorer URLs. Automated signing with authorized test wallets is permitted **only for this restricted BTEST acceptance flow**; report clearly whether test was script-driven or completed through public browser UI.\n- Run all non-signing security, contract, browser, CI and organizer audits per Issue #8; document any blockers, exact commits and evidence in the release readiness matrix. Do not fabricate evidence or call the project submission-ready if any required gate remains open.\n- **Still NOT authorized:** merging PRs, deploying/promoting production, performing real WIF mainnet actions, generating/demo editing videos, or clicking the final organizer submission.\n\nPlease execute this authorized acceptance test through to a verifiable result, without intermediate prompts unless legitimately blocked by external faucet / permissions.",
+      "at": "2026-11-07T11:59:44Z",
+      "url": "https://github.com/Iniwura/before-protocol/issues/8#issuecomment-6706656806"
+    },
+    {
+      "author": "Iniwura",
+      "text": "## Owner authorization — minimal testnet ETH gas transfers (7 Nov 2026)\n\nThe owner explicitly authorizes Codex to transfer **small, necessary amounts of valueless Robinhood Chain Testnet ETH** from the existing approved `before-testnet` signer (`0xd1061825504b30f404c0d94b745205925f251f2c`) to the two newly created, authorized disposable testnet signing wallets:\n\n- Researcher: `0x86923864B7a7C7CfA1A56398DA6cA2a622756989`\n- Reviewer: `0xC7E69617ED81A0a7dD0cD74f82B176E22555097F`\n\n**Purpose:** overcome the official faucet's mandatory verification without bypassing it, and execute the fresh public BTEST acceptance lifecycle already authorized in this issue.\n\n**Transaction constraints:**\n1. First query current **testnet** chain ID 46630, donor and recipient balances, base/priority fees, and estimate gas for each wallet's actual remaining test transactions, including donor's own sponsor creation, transfer fees, safety buffer. Calculate and document a minimal funding plan and a total upper bound **before sending**; fund only what the tests require, not the donor's full balance. If the balance is insufficient or estimates are unreliable, do not transfer; report a concrete blocker. Avoid guessing that an old balance is still current.\n2. Fund **only these two exact destination addresses**, from the **one approved testnet donor**, using the chain ID check and authenticated local signer; never ask for or expose keys, passwords, seed phrases, or recovery salts. Use encrypted local keystores and safe secret handling. Do not accidentally create transactions on another chain.\n3. Test ETH is valueless. No real ETH, mainnet, WIF, bridging, exchanges, third-party recipients, or spending real funds. No faucet automation or authentication bypass.\n4. Verify both funding receipts and recipient balances on public Robinhood testnet before starting BTEST. Record public tx hashes, block numbers and receipt statuses.\n5. Execute fresh public BTEST sponsor → researcher commitment → appointed reviewer approval → researcher reveal/settlement with the three authorized distinct accounts, verify transaction proofs and balances, and update PR #9/docs/FINAL_SUBMISSION_READINESS.md and Issue #8. Label script-driven workflow accurately if not tested via the actual browser UI.\n6. Keep all other release controls: **no production merge/deploy, real WIF transactions, video production or final organizer submission** without separate owner approval. If a required signature or external action cannot be completed, report only the minimum unblocker.\n\nThe owner has authorized these limited testnet gas transfers, not unrestricted wallet activity. Proceed within these guardrails and document exactly what was sent.",
+      "at": "2026-11-07T12:13:19Z",
+      "url": "https://github.com/Iniwura/before-protocol/issues/8#issuecomment-6706791051"
+    },
+    {
+      "author": "Iniwura",
+      "text": "## Fresh public BTEST acceptance — PASS\n\nPushed in commit `90ba926`. Owner-authorized funding and the complete three-wallet public lifecycle are independently verified on Robinhood Chain Testnet (chain ID `46630`).\n\n- Sponsor: `0xd1061825504b30f404c0d94b745205925f251f2c`\n- Researcher: `0x86923864B7a7C7CfA1A56398DA6cA2a622756989`\n- Reviewer: `0xC7E69617ED81A0a7dD0cD74f82B176E22555097F`\n- Funding: [researcher 0.0001 ETH](https://explorer.testnet.chain.robinhood.com/tx/0x03bc9186fea303c929eb3d3d3afb642ed24c7740d0c4ab395e85852172036e7b), [reviewer 0.0001 ETH](https://explorer.testnet.chain.robinhood.com/tx/0x5f3be57e953de09f6e07132cb7aab6c62faa36ec7a95735ca10dca6e637db8bf)\n- Reviewer gate: `0x375798eab2f3becd8cba137659b8f8ed028d2d46`\n- Challenge 7: [create](https://explorer.testnet.chain.robinhood.com/tx/0x5b54ab0f8db383cde66ff40a59ab7b926090d17f1854183a88ca2486b288a9a1), [commit](https://explorer.testnet.chain.robinhood.com/tx/0x4a00d1d9133670b738571823ee9e93d0dc861f938fcf832c1cbe121a4ab0ddd3), [review](https://explorer.testnet.chain.robinhood.com/tx/0x7682cbf90feac893c20cae875d4c1b8b216eae8a4faca813c2f31b505fab6bec), [reveal/settlement](https://explorer.testnet.chain.robinhood.com/tx/0x17ecb3839f4c249fa1ca7c0283a191675d6f38256a498afda83059ec21750f5c)\n- Independent audit: `node qa/issue-8-fresh-bounty-audit.mjs` → PASS for every receipt, signer/target binding, bytecode, pinned reviewer quorum, ChallengeCreated/CommitmentSubmitted/FindingApproved/RewardPaid events, no InvalidEvidence, consumed approvals, BTEST transfer-log accounting, and untouched Bounty #5.\n- Challenge 6's unused short-window attempt was transparently [refunded](https://explorer.testnet.chain.robinhood.com/tx/0x546323d0cbf985603b11f3a6df4e4a3775f17ba7268ade4b2759a181e0a312a5).\n\nFull receipt matrix: [docs/ISSUE_8_PUBLIC_TESTNET_EVIDENCE.md](https://github.com/Iniwura/before-protocol/blob/90ba926/docs/ISSUE_8_PUBLIC_TESTNET_EVIDENCE.md)\nReadiness: [docs/FINAL_SUBMISSION_READINESS.md](https://github.com/Iniwura/before-protocol/blob/90ba926/docs/FINAL_SUBMISSION_READINESS.md)\n\nRelease verdict remains **NO-GO for final submission**: no real WIF/mainnet/production action, video production is paused, and final organizer submission remains owner-controlled. PR #9 remains draft.",
+      "at": "2026-11-07T13:12:45Z",
+      "url": "https://github.com/Iniwura/before-protocol/issues/8#issuecomment-6707394176"
+    },
+    {
+      "author": "Iniwura",
+      "text": "## CI and release-check closure\n\nGitHub Actions run [42375659874](https://github.com/Iniwura/before-protocol/actions/runs/42375659874) completed successfully on `90ba926`.\n\n- `test`: success — Solidity build, 70 Foundry tests at fuzz 1024, Anvil eleven-argument gate, local bounty lifecycle, Node policy/deployment tests, web tests and syntax checks.\n- `browser-quality`: success — responsive/axe QA, local real-wallet bounty journey and WIF fail-closed browser checks.\n- Local reruns also passed: Node 73/73, Anvil E2E, local bounty lifecycle, browser widths 320/375/768/1280, 12 axe audits, 0 violations, bounty E2E and WIF QA.\n- Public read-only audit `node qa/issue-8-fresh-bounty-audit.mjs`: PASS.\n- Vercel status for the commit: success.\n\nPR #9 remains draft. Release readiness is **NO-GO only for final organizer submission** because video production is paused, WIF utility remains read-only, and production/final-submit authorization is intentionally not granted.",
+      "at": "2026-11-07T13:13:52Z",
+      "url": "https://github.com/Iniwura/before-protocol/issues/8#issuecomment-6707405495"
+    },
+    {
+      "author": "Iniwura",
+      "text": "Final CI closure on tip `67125b7`: [GitHub Actions run 42376037978](https://github.com/Iniwura/before-protocol/actions/runs/42376037978) passed both `test` and `browser-quality`. Vercel check is also green for the tip. PR #9 remains open and draft. The fresh public BTEST audit and evidence are complete; the only remaining NO-GO gates are intentionally paused video, read-only WIF utility and owner-controlled final submission/production approval.",
+      "at": "2026-11-07T13:17:22Z",
+      "url": "https://github.com/Iniwura/before-protocol/issues/8#issuecomment-6707440725"
+    },
+    {
+      "author": "Iniwura",
+      "text": "Vercel preview for tip `67125b7` is READY: [before-feggd8etl-iniwura-akurus-projects.vercel.app](https://before-feggd8etl-iniwura-akurus-projects.vercel.app/) (deployment dashboard: [67wKbDNs2z84RtSgfF7Tnd6A8xaj](https://vercel.com/iniwura-akurus-projects/before-web/67wKbDNs2z84RtSgfF7Tnd6A8xaj)). UI source was not changed; local browser QA and GitHub `browser-quality` both pass.",
+      "at": "2026-11-07T13:18:01Z",
+      "url": "https://github.com/Iniwura/before-protocol/issues/8#issuecomment-6707447092"
+    },
+    {
+      "author": "Iniwura",
+      "text": "## Next priority after public Challenge #7 PASS (7 Nov 2026)\n\nFresh three-wallet BTEST acceptance is complete and independently verified. Stop repeating this lifecycle unless a regression justifies it.\n\nThe owner has approved moving to a meaningful, repeatable **real-WIF utility implementation**, while **not** authorizing real WIF transactions, mainnet deployments, merges or production promotion. Detailed Codex execution order: **#10 — BEFORE Pay: signed request → verified preflight → explicitly user-approved WIF transfer → receipt proof** (https://github.com/Iniwura/before-protocol/issues/10). Preserve approved UI and existing BTEST evidence. Codex should implement and test #10 on a new branch/draft PR, then report readiness separately for feature and final submission. The demo video remains paused and final organizer Submit remains owner-controlled.",
+      "at": "2026-11-07T13:24:22Z",
+      "url": "https://github.com/Iniwura/before-protocol/issues/8#issuecomment-6707510699"
+    }
+  ],
+  "comments_complete": true
+}

@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50380433",
-  "collected_at": "2026-11-07T08:44:12.214643+00:00",
+  "collected_at": "2026-11-08T08:57:08.651888+00:00",
   "source": {
     "author": "ericd",
     "children": [
@@ -40,7 +40,7 @@
     "id": 50380433,
     "options": [],
     "parent_id": null,
-    "points": 7,
+    "points": 8,
     "story_id": 50380433,
     "text": "Hey all, I made this server for spinning up a local network page for our (young) kids to host videos and manage video watching time without turning them loose on main youtube, with all its random brainrot and engagement boosting optimizations (no autoplay next video here).<p>- MIT licensed, no tracking scripts anywhere, do whatever you want with it, I have no interest in commercializing this<p>- Gives them a daily &quot;video minutes allowance&quot;, and enforces it for us (ours get 10 minutes each, they watch it together, and it rolls over, so some days they watch nothing, others they watch for an hour).<p>- Science&#x2F;education videos can be set to half cost or free<p>- Includes yt-dlp baked in, the admin screen takes youtube URLs and downloads them locally<p>- Point it at other local&#x2F;network video folders<p>- Hardware transcoding with ffmpeg baked in<p>- Also includes kiwix, which hosts wikipedia, all the project gutenberg kids literature, the minecraft wiki, etc etc<p>- Has a little math practice thing, if they set new speed records, it gives them more minutes<p>This was tailor made for us, and I just cleaned it up&#x2F;open sourced it for public consumption, so there are probably still some rough edges. If you give it a try, and have any suggestions, please let me know! I&#x27;m new to open sourcing stuff, so any feedback on how to do that right welcome.",
     "title": "Show HN: Kids Shelf, your kids' own little internet",

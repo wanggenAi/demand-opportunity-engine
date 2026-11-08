@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://community.n8n.io/t/322016.json",
-  "collected_at": "2026-11-07T08:44:12.214643+00:00",
+  "collected_at": "2026-11-08T08:57:08.651888+00:00",
   "source": {
     "topic": {
       "post_stream": {
@@ -19,9 +19,9 @@
             "reply_count": 6,
             "reply_to_post_number": null,
             "quote_count": 0,
-            "incoming_link_count": 238,
-            "reads": 348,
-            "readers_count": 347,
+            "incoming_link_count": 242,
+            "reads": 349,
+            "readers_count": 348,
             "score": 1317.6,
             "yours": false,
             "topic_id": 322016,
@@ -4895,8 +4895,8 @@
             "reply_to_post_number": null,
             "quote_count": 0,
             "incoming_link_count": 0,
-            "reads": 10,
-            "readers_count": 9,
+            "reads": 11,
+            "readers_count": 10,
             "score": 1.8,
             "yours": false,
             "topic_id": 322016,
@@ -5232,7 +5232,7 @@
             "id": 601826,
             "name": "MG DIGITAL AGENCY",
             "username": "mgdigitalagency",
-            "avatar_template": "/user_avatar/community.n8n.io/mgdigitalagency/{size}/195350_2.png",
+            "avatar_template": "/user_avatar/community.n8n.io/mgdigitalagency/{size}/198925_2.png",
             "created_at": "2026-10-19T02:45:06.107Z",
             "cooked": "<h1><a name=\"p-601826-n8n-mirrorfly-video-conferencing-automation-1\" class=\"anchor\" href=\"#p-601826-n8n-mirrorfly-video-conferencing-automation-1\" aria-label=\"Heading link\"></a>n8n + MirrorFly Video Conferencing Automation</h1>\n<p>A reliable video conferencing automation system needs to do more than generate meeting links. It must keep scheduling, notifications, and CRM records synchronized throughout the entire meeting lifecycle—including rescheduling, cancellations, unexpected API responses, and webhook retries.</p>\n<p>Our approach is to build a structured, dependable automation system where each workflow has a clear purpose, predictable behavior, and a defined way to handle failures and recovery.</p>\n<h2><a name=\"p-601826-h-1-core-automation-system-2\" class=\"anchor\" href=\"#p-601826-h-1-core-automation-system-2\" aria-label=\"Heading link\"></a>1. Core Automation System</h2>\n<p>The implementation will cover:</p>\n<ul>\n<li><strong>MirrorFly integration:</strong> Create and manage 1:1 and group meetings, handle meeting details, and connect supported API events to n8n.</li>\n<li><strong>Scheduling automation:</strong> Trigger meetings from an agreed source and manage scheduling, rescheduling, and cancellations.</li>\n<li><strong>Calendar integration:</strong> Coordinate meeting schedules, invitations, and reminders through one calendar provider.</li>\n<li><strong>CRM synchronization:</strong> Connect one CRM, associate meetings with relevant contacts or deals, and update meeting status and details.</li>\n<li><strong>Notifications:</strong> Send automated email notifications for meeting confirmations, changes, reminders, and other agreed events.</li>\n<li><strong>Workflow reliability:</strong> Implement duplicate-event prevention, retry handling, conditional routing, and error logging to make the automation more resilient.</li>\n</ul>\n<h2><a name=\"p-601826-h-2-implementation-and-quality-assurance-3\" class=\"anchor\" href=\"#p-601826-h-2-implementation-and-quality-assurance-3\" aria-label=\"Heading link\"></a>2. Implementation and Quality Assurance</h2>\n<p>The workflow design will account for the complete meeting lifecycle, rather than treating each integration as an isolated task.</p>\n<p>The implementation process includes:</p>\n<ul>\n<li>Defining integration boundaries, data mapping, and expected event behavior.</li>\n<li>Configuring and validating API and webhook connections.</li>\n<li>Testing successful operations as well as cancellations, repeated events, synchronization failures, and recovery scenarios.</li>\n<li>Delivering organized, exportable n8n workflows with documentation and a handover session.</li>\n</ul>\n<p><strong>Estimated delivery:</strong> 12 working days, assuming timely access to the required systems and no substantial changes to the agreed scope.</p>\n<h2><a name=\"p-601826-h-3-advanced-automation-4\" class=\"anchor\" href=\"#p-601826-h-3-advanced-automation-4\" aria-label=\"Heading link\"></a>3. Advanced Automation</h2>\n<p>The advanced phase can extend the core system with supported recording workflows, recording-availability notifications, recording metadata and links, automated post-meeting follow-ups, and additional CRM updates.</p>\n<p>RTMP/HLS streaming, additional service providers, or a new calling interface will depend on the available integration capabilities and may require separate scoping.</p>\n<p>The current scope assumes that an existing web or mobile application can host the MirrorFly SDK. Building a new calling interface or embedding the SDK into a new application would need to be agreed separately.</p>\n<p><strong>Estimated additional delivery:</strong> 8 working days, subject to technical validation of the required capabilities.</p>\n<h2><a name=\"p-601826-h-4-post-delivery-support-5\" class=\"anchor\" href=\"#p-601826-h-4-post-delivery-support-5\" aria-label=\"Heading link\"></a>4. Post-Delivery Support</h2>\n<p>The project includes <strong>30 calendar days of bug support</strong>, starting after final delivery and client acceptance.</p>\n<ul>\n<li>Reproducible defects within the agreed scope will be corrected without additional development charges.</li>\n<li>Standard issues will receive an initial response within one business day.</li>\n<li>Critical issues will receive an initial response within four business hours during business hours.</li>\n<li>These are initial-response targets, not guaranteed resolution times.</li>\n</ul>\n<p>New features, scope changes, additional integrations, third-party outages, and breaking changes introduced by external providers are outside the included support.</p>\n<h2><a name=\"p-601826-h-5-commercial-overview-6\" class=\"anchor\" href=\"#p-601826-h-5-commercial-overview-6\" aria-label=\"Heading link\"></a>5. Commercial Overview</h2>\n<p>The base implementation is <strong>£1,000</strong>, with an estimated delivery period of 12 working days. The advanced phase is an additional <strong>£1,200</strong>, with an estimated 8 further working days. The phases can be commissioned together or agreed separately.</p>\n<p>The final scope, acceptance criteria, and payment terms can be agreed mutually through the chosen platform before work begins.</p>\n<p>The goal is to deliver a maintainable automation system that connects meetings, scheduling, communications, and CRM operations into one coherent process—with clear workflows, reliable event handling, and documentation that makes future maintenance easier.</p>\n<h2><a name=\"p-601826-one-quick-question-before-we-finalize-the-scope-7\" class=\"anchor\" href=\"#p-601826-one-quick-question-before-we-finalize-the-scope-7\" aria-label=\"Heading link\"></a>One Quick Question Before We Finalize the Scope</h2>\n<p>For the MirrorFly calling interface, which situation applies to your project?</p>\n<p><strong>A)</strong> The existing web/mobile app already has the MirrorFly SDK, so the focus is on n8n automation and integrations.</p>\n<p><strong>B)</strong> The calling interface or SDK integration also needs to be built.</p>\n<p>A or B is enough. This will help establish the right integration scope and delivery plan from the outset.</p>",
             "post_number": 75,
@@ -5278,7 +5278,7 @@
             "staff": false,
             "user_id": 199722,
             "hidden": false,
-            "trust_level": 0,
+            "trust_level": 1,
             "deleted_at": null,
             "user_deleted": false,
             "edit_reason": null,
@@ -9678,31 +9678,31 @@
       "timeline_lookup": [
         [
           1,
+          23
+        ],
+        [
+          4,
           22
         ],
         [
-          2,
+          37,
           21
         ],
         [
-          37,
+          50,
           20
         ],
         [
-          50,
+          93,
           19
         ],
         [
-          93,
+          102,
           18
         ],
         [
-          102,
-          17
-        ],
-        [
           126,
-          16
+          17
         ]
       ],
       "tags": [
@@ -9720,7 +9720,7 @@
       "title": "N8n + MirrorFly Developer for Video Conferencing Automation",
       "posts_count": 132,
       "created_at": "2026-10-16T20:38:11.146Z",
-      "views": 2420,
+      "views": 2446,
       "reply_count": 7,
       "like_count": 13,
       "last_posted_at": "2026-10-22T11:04:23.173Z",
@@ -10333,9 +10333,9 @@
         "reply_count": 6,
         "reply_to_post_number": null,
         "quote_count": 0,
-        "incoming_link_count": 238,
-        "reads": 348,
-        "readers_count": 347,
+        "incoming_link_count": 242,
+        "reads": 349,
+        "readers_count": 348,
         "score": 1317.6,
         "yours": false,
         "topic_id": 322016,
@@ -15209,8 +15209,8 @@
         "reply_to_post_number": null,
         "quote_count": 0,
         "incoming_link_count": 0,
-        "reads": 10,
-        "readers_count": 9,
+        "reads": 11,
+        "readers_count": 10,
         "score": 1.8,
         "yours": false,
         "topic_id": 322016,
@@ -15546,7 +15546,7 @@
         "id": 601826,
         "name": "MG DIGITAL AGENCY",
         "username": "mgdigitalagency",
-        "avatar_template": "/user_avatar/community.n8n.io/mgdigitalagency/{size}/195350_2.png",
+        "avatar_template": "/user_avatar/community.n8n.io/mgdigitalagency/{size}/198925_2.png",
         "created_at": "2026-10-19T02:45:06.107Z",
         "cooked": "<h1><a name=\"p-601826-n8n-mirrorfly-video-conferencing-automation-1\" class=\"anchor\" href=\"#p-601826-n8n-mirrorfly-video-conferencing-automation-1\" aria-label=\"Heading link\"></a>n8n + MirrorFly Video Conferencing Automation</h1>\n<p>A reliable video conferencing automation system needs to do more than generate meeting links. It must keep scheduling, notifications, and CRM records synchronized throughout the entire meeting lifecycle—including rescheduling, cancellations, unexpected API responses, and webhook retries.</p>\n<p>Our approach is to build a structured, dependable automation system where each workflow has a clear purpose, predictable behavior, and a defined way to handle failures and recovery.</p>\n<h2><a name=\"p-601826-h-1-core-automation-system-2\" class=\"anchor\" href=\"#p-601826-h-1-core-automation-system-2\" aria-label=\"Heading link\"></a>1. Core Automation System</h2>\n<p>The implementation will cover:</p>\n<ul>\n<li><strong>MirrorFly integration:</strong> Create and manage 1:1 and group meetings, handle meeting details, and connect supported API events to n8n.</li>\n<li><strong>Scheduling automation:</strong> Trigger meetings from an agreed source and manage scheduling, rescheduling, and cancellations.</li>\n<li><strong>Calendar integration:</strong> Coordinate meeting schedules, invitations, and reminders through one calendar provider.</li>\n<li><strong>CRM synchronization:</strong> Connect one CRM, associate meetings with relevant contacts or deals, and update meeting status and details.</li>\n<li><strong>Notifications:</strong> Send automated email notifications for meeting confirmations, changes, reminders, and other agreed events.</li>\n<li><strong>Workflow reliability:</strong> Implement duplicate-event prevention, retry handling, conditional routing, and error logging to make the automation more resilient.</li>\n</ul>\n<h2><a name=\"p-601826-h-2-implementation-and-quality-assurance-3\" class=\"anchor\" href=\"#p-601826-h-2-implementation-and-quality-assurance-3\" aria-label=\"Heading link\"></a>2. Implementation and Quality Assurance</h2>\n<p>The workflow design will account for the complete meeting lifecycle, rather than treating each integration as an isolated task.</p>\n<p>The implementation process includes:</p>\n<ul>\n<li>Defining integration boundaries, data mapping, and expected event behavior.</li>\n<li>Configuring and validating API and webhook connections.</li>\n<li>Testing successful operations as well as cancellations, repeated events, synchronization failures, and recovery scenarios.</li>\n<li>Delivering organized, exportable n8n workflows with documentation and a handover session.</li>\n</ul>\n<p><strong>Estimated delivery:</strong> 12 working days, assuming timely access to the required systems and no substantial changes to the agreed scope.</p>\n<h2><a name=\"p-601826-h-3-advanced-automation-4\" class=\"anchor\" href=\"#p-601826-h-3-advanced-automation-4\" aria-label=\"Heading link\"></a>3. Advanced Automation</h2>\n<p>The advanced phase can extend the core system with supported recording workflows, recording-availability notifications, recording metadata and links, automated post-meeting follow-ups, and additional CRM updates.</p>\n<p>RTMP/HLS streaming, additional service providers, or a new calling interface will depend on the available integration capabilities and may require separate scoping.</p>\n<p>The current scope assumes that an existing web or mobile application can host the MirrorFly SDK. Building a new calling interface or embedding the SDK into a new application would need to be agreed separately.</p>\n<p><strong>Estimated additional delivery:</strong> 8 working days, subject to technical validation of the required capabilities.</p>\n<h2><a name=\"p-601826-h-4-post-delivery-support-5\" class=\"anchor\" href=\"#p-601826-h-4-post-delivery-support-5\" aria-label=\"Heading link\"></a>4. Post-Delivery Support</h2>\n<p>The project includes <strong>30 calendar days of bug support</strong>, starting after final delivery and client acceptance.</p>\n<ul>\n<li>Reproducible defects within the agreed scope will be corrected without additional development charges.</li>\n<li>Standard issues will receive an initial response within one business day.</li>\n<li>Critical issues will receive an initial response within four business hours during business hours.</li>\n<li>These are initial-response targets, not guaranteed resolution times.</li>\n</ul>\n<p>New features, scope changes, additional integrations, third-party outages, and breaking changes introduced by external providers are outside the included support.</p>\n<h2><a name=\"p-601826-h-5-commercial-overview-6\" class=\"anchor\" href=\"#p-601826-h-5-commercial-overview-6\" aria-label=\"Heading link\"></a>5. Commercial Overview</h2>\n<p>The base implementation is <strong>£1,000</strong>, with an estimated delivery period of 12 working days. The advanced phase is an additional <strong>£1,200</strong>, with an estimated 8 further working days. The phases can be commissioned together or agreed separately.</p>\n<p>The final scope, acceptance criteria, and payment terms can be agreed mutually through the chosen platform before work begins.</p>\n<p>The goal is to deliver a maintainable automation system that connects meetings, scheduling, communications, and CRM operations into one coherent process—with clear workflows, reliable event handling, and documentation that makes future maintenance easier.</p>\n<h2><a name=\"p-601826-one-quick-question-before-we-finalize-the-scope-7\" class=\"anchor\" href=\"#p-601826-one-quick-question-before-we-finalize-the-scope-7\" aria-label=\"Heading link\"></a>One Quick Question Before We Finalize the Scope</h2>\n<p>For the MirrorFly calling interface, which situation applies to your project?</p>\n<p><strong>A)</strong> The existing web/mobile app already has the MirrorFly SDK, so the focus is on n8n automation and integrations.</p>\n<p><strong>B)</strong> The calling interface or SDK integration also needs to be built.</p>\n<p>A or B is enough. This will help establish the right integration scope and delivery plan from the outset.</p>",
         "post_number": 75,
@@ -15592,7 +15592,7 @@
         "staff": false,
         "user_id": 199722,
         "hidden": false,
-        "trust_level": 0,
+        "trust_level": 1,
         "deleted_at": null,
         "user_deleted": false,
         "edit_reason": null,

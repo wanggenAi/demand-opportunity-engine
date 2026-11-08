@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43115",
-  "collected_at": "2026-11-07T08:44:12.214643+00:00",
+  "collected_at": "2026-11-08T08:57:08.651888+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/43115",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -50,9 +50,9 @@
     "locked": false,
     "assignees": [],
     "milestone": null,
-    "comments": 1,
+    "comments": 3,
     "created_at": "2026-11-07T08:39:57Z",
-    "updated_at": "2026-11-07T08:40:09Z",
+    "updated_at": "2026-11-08T01:05:16Z",
     "closed_at": null,
     "assignee": null,
     "author_association": "NONE",
@@ -95,6 +95,18 @@
       "text": "Hey @indexGin,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9719\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9719](https://linear.app/n8n/issue/GHC-9719)",
       "at": "2026-11-07T08:40:07Z",
       "url": "https://github.com/n8n-io/n8n/issues/43115#issuecomment-6704603433"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "The current source still uses `*` for the signature segment in `packages/workflow/src/type-validation.ts`, so `header.payload.` matches and is returned. Requiring one or more signature characters (`+`) would reject this truncated form while leaving the existing three-segment check intact. Note that this remains a shape check, not cryptographic signature verification.",
+      "at": "2026-11-07T12:05:21Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43115#issuecomment-6706712741"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "The current `type-validation.ts` still uses `*` for the signature segment, so `header.payload.` passes the shape check. Changing it to `+` addresses the empty-segment case. One nuance: JWT permits an empty signature for the unsecured `alg: \"none\"` form, so if this validator intends to accept only signed tokens, that restriction should be explicit; otherwise the regex change also rejects that valid serialization.",
+      "at": "2026-11-08T01:05:16Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43115#issuecomment-6715404561"
     }
   ],
   "comments_complete": true

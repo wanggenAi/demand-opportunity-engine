@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50393105",
-  "collected_at": "2026-11-07T08:44:12.214643+00:00",
+  "collected_at": "2026-11-08T08:57:08.651888+00:00",
   "source": {
     "author": "linsomniac",
     "children": [
@@ -1097,6 +1097,21 @@
                             "title": null,
                             "type": "comment",
                             "url": null
+                          },
+                          {
+                            "author": "cassianoleal",
+                            "children": [],
+                            "created_at": "2026-11-07T11:50:16.000Z",
+                            "created_at_i": 1794052216,
+                            "id": 50403728,
+                            "options": [],
+                            "parent_id": 50399218,
+                            "points": null,
+                            "story_id": 50393105,
+                            "text": "&gt; So that people can reboot their production systems two days apart?<p>A lot of people don&#x27;t reboot their systems. They build new ones, shift workloads and traffic over, and decommission the old ones. I can do that multiple times a day if required with no disruption of services.<p>You don&#x27;t have to stay patched if you judge the risk doesn&#x27;t make it worth it, but Ubuntu is pretty much the only distro that made the choice for you.",
+                            "title": null,
+                            "type": "comment",
+                            "url": null
                           }
                         ],
                         "created_at": "2026-11-06T22:15:06.000Z",
@@ -1232,6 +1247,21 @@
                     "title": null,
                     "type": "comment",
                     "url": null
+                  },
+                  {
+                    "author": "talon8635",
+                    "children": [],
+                    "created_at": "2026-11-07T22:57:41.000Z",
+                    "created_at_i": 1794092261,
+                    "id": 50408838,
+                    "options": [],
+                    "parent_id": 50401753,
+                    "points": null,
+                    "story_id": 50393105,
+                    "text": "It’s not by RedHat. Does Ubuntu provide its own independent research and scoring?",
+                    "title": null,
+                    "type": "comment",
+                    "url": null
                   }
                 ],
                 "created_at": "2026-11-07T04:56:00.000Z",
@@ -1264,7 +1294,23 @@
             "children": [
               {
                 "author": "cromka",
-                "children": [],
+                "children": [
+                  {
+                    "author": "wredcoll",
+                    "children": [],
+                    "created_at": "2026-11-07T17:31:21.000Z",
+                    "created_at_i": 1794072681,
+                    "id": 50406323,
+                    "options": [],
+                    "parent_id": 50399959,
+                    "points": null,
+                    "story_id": 50393105,
+                    "text": "It doesn&#x27;t <i>have</i> to be, but it&#x27;s getting a bit weird that everytime this subject comes up nobody has an actual example.",
+                    "title": null,
+                    "type": "comment",
+                    "url": null
+                  }
+                ],
                 "created_at": "2026-11-06T23:33:32.000Z",
                 "created_at_i": 1794008012,
                 "id": 50399959,
@@ -1390,7 +1436,38 @@
                 "children": [
                   {
                     "author": "lp92",
-                    "children": [],
+                    "children": [
+                      {
+                        "author": "worksonmine",
+                        "children": [],
+                        "created_at": "2026-11-07T11:51:57.000Z",
+                        "created_at_i": 1794052317,
+                        "id": 50403742,
+                        "options": [],
+                        "parent_id": 50401679,
+                        "points": null,
+                        "story_id": 50393105,
+                        "text": "They run ads in MOTD IIRC. Haven&#x27;t used it in 15 years but I&#x27;ve stumbled on a lot of drama over the years.",
+                        "title": null,
+                        "type": "comment",
+                        "url": null
+                      },
+                      {
+                        "author": "unrented7977",
+                        "children": [],
+                        "created_at": "2026-11-07T14:55:58.000Z",
+                        "created_at_i": 1794063358,
+                        "id": 50405082,
+                        "options": [],
+                        "parent_id": 50401679,
+                        "points": null,
+                        "story_id": 50393105,
+                        "text": "Apt-get shows you ads for Ubuntu Plus or whatever it&#x27;s called",
+                        "title": null,
+                        "type": "comment",
+                        "url": null
+                      }
+                    ],
                     "created_at": "2026-11-07T04:41:23.000Z",
                     "created_at_i": 1794026483,
                     "id": 50401679,
@@ -1663,6 +1740,21 @@
                 "title": null,
                 "type": "comment",
                 "url": null
+              },
+              {
+                "author": "worksonmine",
+                "children": [],
+                "created_at": "2026-11-07T11:56:43.000Z",
+                "created_at_i": 1794052603,
+                "id": 50403766,
+                "options": [],
+                "parent_id": 50395959,
+                "points": null,
+                "story_id": 50393105,
+                "text": "&gt; What are the tradeoffs? (other than faster patching on Debian of course)<p>Older packages, but that&#x27;s one of the reasons I use it. On the stable branch you will only get security fixes and very rarely updates for critical bugs.<p>If you need to use newer packages the testing branch is surprisingly stable (it is the base for Ubuntu) but there are a lot of updates.",
+                "title": null,
+                "type": "comment",
+                "url": null
               }
             ],
             "created_at": "2026-11-06T18:05:47.000Z",
@@ -1787,7 +1879,23 @@
           },
           {
             "author": "opengrass",
-            "children": [],
+            "children": [
+              {
+                "author": "Biganon",
+                "children": [],
+                "created_at": "2026-11-07T21:29:33.000Z",
+                "created_at_i": 1794086973,
+                "id": 50408243,
+                "options": [],
+                "parent_id": 50397147,
+                "points": null,
+                "story_id": 50393105,
+                "text": "What&#x27;s wrong with systemd? I thought this boat had sailed",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
             "created_at": "2026-11-06T19:28:22.000Z",
             "created_at_i": 1793993302,
             "id": 50397147,
@@ -1856,6 +1964,36 @@
             "points": null,
             "story_id": 50393105,
             "text": "Honestly Ubuntu doesn&#x27;t even come to mind as a candidate... Alpine, debian, nix, distroless, scratch, Amazon Linux, coreos are what come immediately to mind that I&#x27;d expect to see.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          },
+          {
+            "author": "Zopieux",
+            "children": [],
+            "created_at": "2026-11-07T09:32:41.000Z",
+            "created_at_i": 1794043961,
+            "id": 50403038,
+            "options": [],
+            "parent_id": 50395745,
+            "points": null,
+            "story_id": 50393105,
+            "text": "NixOS, naturally.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          },
+          {
+            "author": "unrented7977",
+            "children": [],
+            "created_at": "2026-11-07T14:56:49.000Z",
+            "created_at_i": 1794063409,
+            "id": 50405092,
+            "options": [],
+            "parent_id": 50395745,
+            "points": null,
+            "story_id": 50393105,
+            "text": "Debian is the only sane answer.<p>Well, I do use Arch on a lot of my VMs but still.",
             "title": null,
             "type": "comment",
             "url": null
@@ -1947,6 +2085,51 @@
         "title": null,
         "type": "comment",
         "url": null
+      },
+      {
+        "author": "hyperman1",
+        "children": [],
+        "created_at": "2026-11-07T09:04:57.000Z",
+        "created_at_i": 1794042297,
+        "id": 50402903,
+        "options": [],
+        "parent_id": 50393105,
+        "points": null,
+        "story_id": 50393105,
+        "text": "I&#x27;ve always wondered what is going on with Ubuntu.  Right now, after the ICC rug pull, Europe is interested in an OS not controlled by the USA. Canonical should go all-in on an opportunity like this.<p>But even basic company tooling like Landscape is not doing great (Oh, look, all your machines are not fully patched 5 minutes after we released a patch.  Sound the alarms)<p>Meanwhile, they spend a lot of effort on things that ultimately not gain traction.  Upstart or snap might be technically OK, but socially they are dead ends.  Half baked Rust coreutils in an LTS?  Who asked for that?<p>I&#x27;ve seen multiple major CVEs and showstopper bugs just sit there, while Debian and Red Hat move weeks faster than them, and other individuals and big companies providing ppas with workarounds.<p>I like the company, but some major bigwigs over there need to wake up.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "pydevgo",
+        "children": [],
+        "created_at": "2026-11-07T10:22:29.000Z",
+        "created_at_i": 1794046949,
+        "id": 50403244,
+        "options": [],
+        "parent_id": 50393105,
+        "points": null,
+        "story_id": 50393105,
+        "text": "this exact scenario is why more teams are bypassing OS-level kernel patching entirely for workload",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "cweiske2",
+        "children": [],
+        "created_at": "2026-11-07T18:44:02.000Z",
+        "created_at_i": 1794077042,
+        "id": 50406887,
+        "options": [],
+        "parent_id": 50393105,
+        "points": null,
+        "story_id": 50393105,
+        "text": "Did you pay for an Ubuntu subscription to support them?",
+        "title": null,
+        "type": "comment",
+        "url": null
       }
     ],
     "created_at": "2026-11-06T14:58:33.000Z",
@@ -1954,7 +2137,7 @@
     "id": 50393105,
     "options": [],
     "parent_id": null,
-    "points": 201,
+    "points": 216,
     "story_id": 50393105,
     "text": "Ubuntu has CVE-2026-98432 marked as a 9.8, but yet it&#x27;s coming up on a week with no update to fix it.  It&#x27;s still marked as &quot;work in progress&quot; (though at least now they&#x27;ve listed a mitigation):<p>https:&#x2F;&#x2F;ubuntu.com&#x2F;security&#x2F;CVE-2026-98432<p>I&#x27;ve had mitigations in place for a week, but this response is really shaking my confidence in Ubuntu.  I&#x27;m just trying to understand what is going on with Ubuntu.  Do they have too many kernels (that page is loooong), do they not have enough automation in the build&#x2F;test pipeline, are their engineers overwhelmed?<p>We are moving into a world where there are going to be vastly more security issues; if you can&#x27;t keep up now, where are you going to be in the next 6 months?<p>For a long time keeping on top of OS updates has been a huge part of keeping the attackers at bay.    However, the world is changing.",
     "title": "Ask HN: What in the world is taking Ubuntu so long?",
@@ -2413,6 +2596,12 @@
       "url": "https://news.ycombinator.com/item?id=50402158"
     },
     {
+      "author": "cassianoleal",
+      "text": "> So that people can reboot their production systems two days apart? A lot of people don't reboot their systems. They build new ones, shift workloads and traffic over, and decommission the old ones. I can do that multiple times a day if required with no disruption of services. You don't have to stay patched if you judge the risk doesn't make it worth it, but Ubuntu is pretty much the only distro that made the choice for you.",
+      "at": "2026-11-07T11:50:16.000Z",
+      "url": "https://news.ycombinator.com/item?id=50403728"
+    },
+    {
       "author": "ravenstine",
       "text": "I was asking \"what in the world is taking Ubuntu so long\" back in 2006.",
       "at": "2026-11-06T16:33:06.000Z",
@@ -2455,6 +2644,12 @@
       "url": "https://news.ycombinator.com/item?id=50402141"
     },
     {
+      "author": "talon8635",
+      "text": "It’s not by RedHat. Does Ubuntu provide its own independent research and scoring?",
+      "at": "2026-11-07T22:57:41.000Z",
+      "url": "https://news.ycombinator.com/item?id=50408838"
+    },
+    {
       "author": "wredcoll",
       "text": "Yeah, had this ever actually been proven in the \"real world\"?",
       "at": "2026-11-06T19:35:01.000Z",
@@ -2465,6 +2660,12 @@
       "text": "Does it  have  to be? I am betting there's more people working on proving this and  not  disclose the proof than to do.",
       "at": "2026-11-06T23:33:32.000Z",
       "url": "https://news.ycombinator.com/item?id=50399959"
+    },
+    {
+      "author": "wredcoll",
+      "text": "It doesn't  have  to be, but it's getting a bit weird that everytime this subject comes up nobody has an actual example.",
+      "at": "2026-11-07T17:31:21.000Z",
+      "url": "https://news.ycombinator.com/item?id=50406323"
     },
     {
       "author": "arto",
@@ -2519,6 +2720,18 @@
       "text": "Wait what, I haven't used Ubuntu in a long time. They have ads like Windows???",
       "at": "2026-11-07T04:41:23.000Z",
       "url": "https://news.ycombinator.com/item?id=50401679"
+    },
+    {
+      "author": "worksonmine",
+      "text": "They run ads in MOTD IIRC. Haven't used it in 15 years but I've stumbled on a lot of drama over the years.",
+      "at": "2026-11-07T11:51:57.000Z",
+      "url": "https://news.ycombinator.com/item?id=50403742"
+    },
+    {
+      "author": "unrented7977",
+      "text": "Apt-get shows you ads for Ubuntu Plus or whatever it's called",
+      "at": "2026-11-07T14:55:58.000Z",
+      "url": "https://news.ycombinator.com/item?id=50405082"
     },
     {
       "author": "xandrius",
@@ -2617,6 +2830,12 @@
       "url": "https://news.ycombinator.com/item?id=50402249"
     },
     {
+      "author": "worksonmine",
+      "text": "> What are the tradeoffs? (other than faster patching on Debian of course) Older packages, but that's one of the reasons I use it. On the stable branch you will only get security fixes and very rarely updates for critical bugs. If you need to use newer packages the testing branch is surprisingly stable (it is the base for Ubuntu) but there are a lot of updates.",
+      "at": "2026-11-07T11:56:43.000Z",
+      "url": "https://news.ycombinator.com/item?id=50403766"
+    },
+    {
       "author": "mhitza",
       "text": "Rocky Linux. But I've built my career working with RHEL-compatible/derivative distros like CentOS, Fedora.",
       "at": "2026-11-06T18:08:03.000Z",
@@ -2665,6 +2884,12 @@
       "url": "https://news.ycombinator.com/item?id=50397147"
     },
     {
+      "author": "Biganon",
+      "text": "What's wrong with systemd? I thought this boat had sailed",
+      "at": "2026-11-07T21:29:33.000Z",
+      "url": "https://news.ycombinator.com/item?id=50408243"
+    },
+    {
       "author": "_mpn_",
       "text": "I use Rocky Linux on my web servers and hypervisors. However, since I run a VPS host most of my customers run Debian or Ubuntu, due to both being more approachable than RPM-based distros. I'm not a huge Ubuntu fan due to it being a very heavy downstream of Debian, versus Rocky which is 99.9% RHEL. I hold no grudge against Ubuntu, they  made  desktop Linux very approachable when Mandriva, Knoppix, et al. weren't. But Canonical is too much of a downstream versus Red Hat, constantly losing standards wars. And unlike BSD (where I can understand) Canonical is a downstream by  choice . It's like Sony who keeps losing standards wars to rivals. Even in my homelab EVE-NG runs on Ubuntu.",
       "at": "2026-11-06T19:47:33.000Z",
@@ -2687,6 +2912,18 @@
       "text": "Honestly Ubuntu doesn't even come to mind as a candidate... Alpine, debian, nix, distroless, scratch, Amazon Linux, coreos are what come immediately to mind that I'd expect to see.",
       "at": "2026-11-06T20:56:09.000Z",
       "url": "https://news.ycombinator.com/item?id=50398410"
+    },
+    {
+      "author": "Zopieux",
+      "text": "NixOS, naturally.",
+      "at": "2026-11-07T09:32:41.000Z",
+      "url": "https://news.ycombinator.com/item?id=50403038"
+    },
+    {
+      "author": "unrented7977",
+      "text": "Debian is the only sane answer. Well, I do use Arch on a lot of my VMs but still.",
+      "at": "2026-11-07T14:56:49.000Z",
+      "url": "https://news.ycombinator.com/item?id=50405092"
     },
     {
       "author": "xet7",
@@ -2717,6 +2954,24 @@
       "text": "I installed their -proposed pocket kernel, then some tools on my machine broke so I installed arch with gnome and it's business as usual... Back when I used arch last they didn't have `archinstall` which made it just as easy as anything else to configure. Arch wiki is still a great resource. Wasted a lot of time trying out desktops just to land back at gnome. Genuinely can't believe how bad Cosmic DE is after all this time. I should be nicer about that, but I'm willing to elaborate if anyone from Pop is here, no ill will. I have a... potentially false sense of security now that I'm on a distribution that can keep up with all of this CVS madness. I wonder if it's not just the best way to do it going forward. We'll see, it could be so if things go the way Greg Kroah-Hartman supposes they will; that LLMs are just like when fuzzers were new, and the issues will gradually reduce over time.",
       "at": "2026-11-07T06:36:41.000Z",
       "url": "https://news.ycombinator.com/item?id=50402198"
+    },
+    {
+      "author": "hyperman1",
+      "text": "I've always wondered what is going on with Ubuntu.  Right now, after the ICC rug pull, Europe is interested in an OS not controlled by the USA. Canonical should go all-in on an opportunity like this. But even basic company tooling like Landscape is not doing great (Oh, look, all your machines are not fully patched 5 minutes after we released a patch.  Sound the alarms) Meanwhile, they spend a lot of effort on things that ultimately not gain traction.  Upstart or snap might be technically OK, but socially they are dead ends.  Half baked Rust coreutils in an LTS?  Who asked for that? I've seen multiple major CVEs and showstopper bugs just sit there, while Debian and Red Hat move weeks faster than them, and other individuals and big companies providing ppas with workarounds. I like the company, but some major bigwigs over there need to wake up.",
+      "at": "2026-11-07T09:04:57.000Z",
+      "url": "https://news.ycombinator.com/item?id=50402903"
+    },
+    {
+      "author": "pydevgo",
+      "text": "this exact scenario is why more teams are bypassing OS-level kernel patching entirely for workload",
+      "at": "2026-11-07T10:22:29.000Z",
+      "url": "https://news.ycombinator.com/item?id=50403244"
+    },
+    {
+      "author": "cweiske2",
+      "text": "Did you pay for an Ubuntu subscription to support them?",
+      "at": "2026-11-07T18:44:02.000Z",
+      "url": "https://news.ycombinator.com/item?id=50406887"
     }
   ],
   "comments_complete": true

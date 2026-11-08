@@ -1,11 +1,11 @@
 {
-  "observed_at": "2026-11-07T08:44:12.214643+00:00",
+  "observed_at": "2026-11-08T08:57:08.651888+00:00",
   "config": "data/discovery_config.json",
   "adapters": [
     {
       "source": "Hacker News",
       "refreshed": true,
-      "collected": 23,
+      "collected": 25,
       "errors": []
     },
     {
@@ -21,7 +21,7 @@
       "source_family": "public founder/operator job community",
       "access_method": "Discourse public category/topic JSON",
       "url": "https://community.n8n.io/c/jobs/13.json?order=created",
-      "records_inspected": 49,
+      "records_inspected": 43,
       "primary_pages_opened": 25,
       "verified_buyer_requests": 11,
       "explicit_commercial_signals": 11,
@@ -32,8 +32,8 @@
         "Last activity is not publication time. Only substantive buyer-authored follow-ups can renew a lead."
       ],
       "evidence_snapshots": [
-        "data/evidence/f5663f332d6bc9b1.json#sha256=3fce97fe9779f817802be287d966798e8ffde58cd1c3965bea3f6d7b9e013804",
-        "data/evidence/d9f0be47fa047f2c.json#sha256=a825dd41f277c15b40546d0acbf0791f7d437bb66be7c0839e3c51e2178383dd"
+        "data/evidence/f5663f332d6bc9b1.json#sha256=9356cf244861a92a84bf52fbc399e1a77459cb047d7756b738ed2b39fe497f48",
+        "data/evidence/d9f0be47fa047f2c.json#sha256=acbec6201b6bc7572bcd7bc9beda0c7cf92a35d55f9ace331bf5257916a202cc"
       ]
     },
     {
@@ -51,7 +51,7 @@
         "Legal warning - Hey, thanks for using Remotive's API, we appreciate it! Please note that API documentation and access is granted so that developers can share our jobs further. Please do not submit Remotive jobs to third Party websites, including but not limited to: Jooble, Neuvoo, Google Jobs, LinkedIn Jobs. Please link back to the URL found on Remotive AND mention Remotive as a source in order to Remotive to get traffic from your listing. If you don't do that, we'll terminate your API access, sorry! Jobs displayed are delayed by 24 hours, the goal being that jobs are attributed to Remotive on various platforms. Displaying our jobs in order to collect signups/email addresses to show a listing constitutes a breach of our terms of services. We offer a private, paid-for API, please email us at hello(at)remotive(dot)io for more information (starting budget is $5k/mo). Please find out terms of services on https://remotive.com/api-documentation. Please note that there is absolutely no need to request Remotive Job data too frequently. Typically, you only need to GET Remotive job data through this API a couple of times a day (we advise max. 4 times a day). Our data is not changing much faster than that anyway. Note that excessive requests will be blocked. Many thanks (Rodolphe & the Remotive team!)"
       ],
       "evidence_snapshots": [
-        "data/evidence/071898d5d7cef09e.json#sha256=0b8a10f95c0a987b720c08fb89ac972c46cd72134bfd943924495e45acafd64d"
+        "data/evidence/071898d5d7cef09e.json#sha256=9570a432fc13bb4dca33ccf852167ed9dc35846e225ab98814f141e09094761f"
       ]
     },
     {
@@ -81,7 +81,7 @@
         "Search returned procurement notices; up to three detail pages attempted. No buyer request promoted: eligibility, exact remote scope, submission deadline and award status require manual verification."
       ],
       "evidence_snapshots": [
-        "data/evidence/50e3af0542f19c3a.json#sha256=9de884d01ee87a93940451a31092c07e2839fbd85931870e6b4e2e95a06eb142"
+        "data/evidence/50e3af0542f19c3a.json#sha256=598237679c75bce7f8961b3bb6dc408cf286786d33d27205ba4fd4af25ccf146"
       ]
     },
     {
@@ -134,7 +134,7 @@
         "No structured primary buyer requests extracted; static shell is not commercial proof. No login or anti-bot evasion."
       ],
       "evidence_snapshots": [
-        "data/evidence/b5d67d420401a4bb.json#sha256=5b25ab13e153d09f8a752b2ddc6e66995e98309f3c8b324f4f2f9acdc8533b3b"
+        "data/evidence/b5d67d420401a4bb.json#sha256=370f42510cc63c6cac9270827f2a32b0ff925c977d135cbca92fd09ae50f38f7"
       ]
     },
     {
@@ -142,25 +142,28 @@
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://www.freelancer.com/jobs/product-sourcing/",
       "records_inspected": 14,
-      "primary_pages_opened": 2,
+      "primary_pages_opened": 3,
       "verified_buyer_requests": 2,
       "explicit_commercial_signals": 2,
-      "collected": 2,
+      "collected": 3,
       "errors": [],
       "limitations": [
         "Public bidCount includes competitors; only first 20 proposals may be visible. Employer identity often unresolved. Task budget is not agreement to our pilot."
       ],
       "evidence_snapshots": [
-        "data/evidence/abf73d1fa5782498.json#sha256=437e79ede0205a54cf5dbe31f187b2eacd535b22191bd5edb608d9990444c400",
-        "data/evidence/e2cd5e73e5830b11.json#sha256=7c19e0d66187849717d8d5faca458c6ba68b89dbf726f5e9f6c82544bdffe476",
-        "data/evidence/9decfd751dbe8075.json#sha256=0b60f26befa70841da7c3aa2f2464ab8ef81a37c99346b21e6c0d23d266e6def"
+        "data/evidence/abf73d1fa5782498.json#sha256=ea3836bfc140fa72ecd34cb22378acb9bf589c8cc06b6a09c4119a898959258b",
+        "data/evidence/545486c9f6791966.json#sha256=fe2806b61a24543d60a4fc570efcef9f2eb22e7278d1d5cdfbd79dd98bbccb4c",
+        "data/evidence/e2cd5e73e5830b11.json#sha256=1f3df2105a04a61630e3b51c28eb89ce08a7adc9096ecba6de673aa63394c061",
+        "data/evidence/9decfd751dbe8075.json#sha256=850a713cc3c0fc4ee5a809e8920f8b3be86b48adfbbe895c85651fc6b7256fe4"
       ],
       "records": [],
       "opportunity_ids": [
+        "545486c9f6791966",
         "e2cd5e73e5830b11",
         "9decfd751dbe8075"
       ],
       "inspected_keys": [
+        "/projects/sourcing/china-construction-materials-sourcing",
         "/projects/sourcing/source-handmade-omani-kumma-cap",
         "/projects/sourcing/china-trend-product-sourcing",
         "/projects/sourcing/china-renewable-energy-sourcing",
@@ -172,7 +175,6 @@
         "/projects/technical-support/battery-replacement-tillamook",
         "/projects/product-sourcing/source-pre-owned-test-instruments",
         "/projects/dropshipping/ebay-dropshipping-listings-fulfillment-40803092",
-        "/projects/product-sourcing/global-product-sourcing-market-research",
         "/projects/supplier-sourcing/mencari-supplier-kebutuhan-rumah-tangga",
         "/projects/copywriting/muh-sultan"
       ]
@@ -191,13 +193,20 @@
         "A different query/category on Freelancer does not count as another independent family."
       ],
       "evidence_snapshots": [
-        "data/evidence/eb34b643617bda88.json#sha256=b6b3bd8ebc46e16ddabb14e4914da10098722acc940c205d5db8f0116aed1363"
+        "data/evidence/eb34b643617bda88.json#sha256=fe62c7892b7bba169f32ca40cc6f07677b98961ebdf8640bdbbfda2d3e4d5740"
       ],
       "records": [],
       "opportunity_ids": [],
       "inspected_keys": [
-        "/projects/inventory-management/migrate-lovable-store-square",
-        "/projects/web-development/espocrm-migration-facelift",
+        "/projects/activecampaign/xleads-integration-setup-needed",
+        "/projects/android/build-real-time-fleet-tracking",
+        "/projects/api-integration/full-stack-team-for-multiseller",
+        "/projects/ios/mobile-shopping-app-development",
+        "/projects/chatbot/meta-instagram-app-review-expert",
+        "/projects/compliance/whatsapp-api-business-verification",
+        "/projects/website-testing/bigcommerce-legacy-theme-migration",
+        "/projects/api-developmet/blueport-commerce-developer-needed",
+        "/projects/ai-video/video-automation-developer",
         "/projects/web-development/build-modern-pushpay-integrated-church",
         "/projects/inventory-management/optimize-commerce-inventory-operations",
         "/projects/powerapps/power-apps-paperless-workflow-solution",
@@ -207,6 +216,7 @@
         "/projects/web-development/zynga-poker-chips-management-dashboard",
         "/projects/web-development/website-booking-subscription-integration",
         "/projects/api-integration/configure-grade-erp-for-agency",
+        "/projects/ai-automation/automation-expert-agents-gohighlevel",
         "/projects/erp/erpnext-setup-for-egypt",
         "/projects/api-integration/customizable-igaming-platform",
         "/projects/ai-chatbot/simple-hotel-service-chatbot-integration",
@@ -236,15 +246,7 @@
         "/projects/android-app-development/android-app-enhancement-feature",
         "/projects/ai-automation/thumbnail-king-email-automation",
         "/projects/api-integration/fix-woocommerce-merchant-feed",
-        "/projects/ai-automation/dedicated-business-agent-for-operations",
-        "/projects/web-design/story-scroll-wordpress-homepage-design",
-        "/projects/php/expert-app-developer-required",
-        "/projects/ai-development/video-software-engineer-long-term",
-        "/projects/affiliate-marketing/ticketing-affiliate-integration-seo",
-        "/projects/backtesting/steady-income-nifty-options-algo",
-        "/projects/algorithmic-trading/intraday-gold-futures-trading-bot",
-        "/projects/web-development/inquiry-vendor-management-website",
-        "/projects/flutter/flutter-django-bug-fixes"
+        "/projects/ai-automation/dedicated-business-agent-for-operations"
       ]
     },
     {
@@ -252,62 +254,60 @@
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://community.shopify.com/latest.json",
       "records_inspected": 30,
-      "primary_pages_opened": 2,
+      "primary_pages_opened": 1,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
-      "collected": 2,
+      "collected": 1,
       "errors": [],
       "limitations": [
         "Latest activity is not original publication; support questions are PRODUCT_SIGNAL, not SALES. No more than four primary topics per run."
       ],
       "evidence_snapshots": [
-        "data/evidence/bda5dc3c1eb46ea5.json#sha256=9c9c3ae579d1737dd94b6963561357335982a7c2f531e7d8fd89f79024b2b4dc",
-        "data/evidence/9877aec73cfb5e0f.json#sha256=77899583cd7c14e6220f8ba0104024b44390dece27561134a7d79fb0ce16b38b",
-        "data/evidence/cf48dba4cdcfb820.json#sha256=a791498b54bf5b6ba8809aae6bcb7cc7720f15a18e8e3ee9b8872f9a117b2bf9"
+        "data/evidence/bda5dc3c1eb46ea5.json#sha256=239e50db1b0d0374ea9ebccab7474c14ed0e4aa34b569ac62efe7d1f722f3cfa",
+        "data/evidence/5b424ae8d3e7d462.json#sha256=5ad5fe1bbf415a4ccd13e9f28c6544f86527553ab6d46f10c08844e8dcd39297"
       ],
       "records": [],
       "opportunity_ids": [
-        "8c2b628f9903ca99",
-        "fac2c26f12ac16f4"
+        "01c049d4de099c8d"
       ],
       "inspected_keys": [
         "355460",
-        "710694",
-        "711383",
-        "369407",
-        "709813",
-        "578529",
-        "577203",
-        "711317",
-        "553970",
-        "681884",
-        "320908",
-        "232772",
-        "710761",
-        "699104",
-        "554939",
-        "690345",
+        "677375",
+        "638887",
+        "711779",
+        "709892",
+        "651403",
+        "711747",
+        "711767",
+        "711715",
+        "385496",
+        "709248",
         "711195",
-        "682396",
-        "709817",
-        "710688",
-        "711371",
-        "417566",
-        "553677",
-        "637085",
-        "407663",
-        "679000",
-        "669397",
-        "570825",
-        "653358",
-        "711205"
+        "709119",
+        "711739",
+        "711383",
+        "711730",
+        "708782",
+        "189201",
+        "708788",
+        "608006",
+        "644258",
+        "561054",
+        "379635",
+        "205995",
+        "711703",
+        "711635",
+        "301424",
+        "592269",
+        "615581",
+        "709817"
       ]
     },
     {
       "source_family": "founder community (Indie Hackers)",
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://www.indiehackers.com/",
-      "records_inspected": 27,
+      "records_inspected": 26,
       "primary_pages_opened": 0,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
@@ -317,45 +317,44 @@
         "Only server-rendered public pages. robots disallows /api/ and sign-in; neither used. Founder self-promotion is not a buyer."
       ],
       "evidence_snapshots": [
-        "data/evidence/6548833164b0e7c9.json#sha256=59e1a4f62dac42cb252b2101aa8cd763b480adbb7c1b70da85d5f6846d1058a3"
+        "data/evidence/6548833164b0e7c9.json#sha256=0e861c97cd8b32d9a5f86a794ba79c7784c87d52b0a3554b2d880526551ac950"
       ],
       "records": [],
       "opportunity_ids": [],
       "inspected_keys": [
+        "/post/ill-tell-you-my-product-you-tell-me-yours-BUThfNYcLQDH9VVIDGld",
+        "/post/28-downloads-in-two-weeks-0-sales-and-i-couldnt-see-where-people-dropped-off-vTUWsSLhBDm4EH2pZGOa",
         "/post/ive-shipped-four-small-products-and-sold-nothing-where-would-you-put-the-next-10-hours-9T3UwGtc8RHaR2m6UihM",
-        "/post/how-did-you-find-your-first-paying-customers-were-struggling-with-this-aUTkZW6IzB5qkjrHqVlA",
         "/post/guessing-keywords-is-the-easiest-way-to-write-posts-nobody-searches-for-vzwGpbrvarW2fDtNl3kX",
+        "/post/how-did-you-find-your-first-paying-customers-were-struggling-with-this-aUTkZW6IzB5qkjrHqVlA",
         "/post/both-language-files-had-six-keys-the-checkout-button-was-blank-0J3Y7envr1JleaFF7N6a",
-        "/post/what-are-you-currently-building-and-why-kt1qRMt6kH94CCm0df5g",
-        "/post/the-workaround-folder-is-better-research-than-any-interview-tZWkHqgO1cbw2JvVLxUu",
-        "/post/i-looked-at-20-launch-directories-for-my-free-tool-most-wanted-a-link-back-or-money-WD6I8dKia2ilR1Swup8t",
-        "/post/i-built-a-tool-that-finds-people-already-asking-for-your-product-3-weeks-in-what-actually-worked-real-numbers-3ASc9YIYwbHLB54XjPeA",
         "/post/if-an-ai-agent-did-one-job-for-your-startup-tomorrow-which-one-would-you-trust-it-with-23LP4mt48MlW7KxAcH5T",
+        "/post/built-your-saas-but-struggling-to-get-customers-bsJK9C9ytbWvTETGBLj9",
+        "/post/what-are-you-currently-building-and-why-kt1qRMt6kH94CCm0df5g",
+        "/post/tech/ahrefs-new-domain-rating-is-worse-at-predicting-how-your-domain-ranks-on-google-wuMETmw9YkOACYjkO3cW",
         "/post/tech/openai-to-buy-pierre-which-says-lovable-and-bolt-rely-on-its-git-service-WJg3ZfajMaPx5WJ9vLiP",
         "/post/tech/marc-lou-says-he-rejected-2-5m-for-trustmrr-Gd2Vs2WSq9PlQdu8TtJK",
         "/post/tech/pieter-levels-says-claude-code-found-almost-34-000-a-month-in-cost-cuts-Rtcn8vcsKPHV7ZuMQUM8",
         "/post/tech/beehiivs-third-1m-in-mrr-took-9-months-its-first-took-36-AfyfAW3nLIaUPTpr856T",
         "/post/tech/how-goguardian-grew-from-a-chrome-extension-to-100m-arr-B1qKroz4HFqqH47eGHTD",
-        "/post/tech/she-built-a-250k-month-business-around-an-ai-clone-07hKxdXQ0l7Bu3l2IBFy",
-        "/post/how-to-build-and-sell-compliance-software-for-water-treatment-plants-nVvbyeu4x39cvIZbuWwF",
-        "/post/launch-day-ends-the-product-doesnt-so-i-built-a-directory-where-the-page-keeps-going-IrWzKnzbIxHUcsihF8WF",
-        "/post/built-your-saas-but-struggling-to-get-customers-bsJK9C9ytbWvTETGBLj9",
+        "/post/4-people-uploaded-screenshots-to-my-app-none-of-them-clicked-render-here-s-what-i-changed-5Uv5Iv8Iw0WtA7LngyMk",
+        "/post/i-built-a-saas-dashboard-template-now-i-want-to-find-the-right-people-to-build-with-0T1zwQWNwfPbrd5OKbsI",
+        "/post/which-llm-do-you-use-ours-is-a-local-language-model-whenever-i-show-someone-nyata-the-first-question-is-usually-which-llm-is-it-efnswBijbSY3vJqWHEm8",
+        "/post/how-many-unbilled-hours-do-silent-api-webhook-breaking-changes-cost-your-client-projects-4WGLCi8ZZweBQe7F6Jm9",
+        "/post/im-a-solo-founder-in-iceland-building-amplify-describe-a-game-website-or-web-app-then-change-it-by-chatting-IttUrRaCPKNZKVyiXyJk",
+        "/post/product-hunt-alternatives-i-read-the-pricing-pages-of-19-of-them-lSh8tKGNc9uKRW5HUf5f",
         "/post/wick-is-an-ai-agent-that-has-to-earn-enough-to-pay-its-own-compute-costs-day-5-update-lVjYYAFoNsRFY8rKs5gZ",
-        "/post/i-built-a-fitness-app-around-the-day-you-miss-not-the-day-you-start-QzLa3PPhO5SVxC3Lbd6Q",
         "/post/developers-dont-have-an-api-problem-they-have-an-api-discovery-problem-GxYhkiT9fw3wumjZYjuT",
-        "/post/part-of-me-wants-to-quit-but-the-founder-in-me-won-t-let-me-ubxggxXMiJjJeTyY0Ab3",
-        "/post/finishing-a-marketing-course-isn-t-the-same-as-running-a-campaign-gcoppCiNrbvQpFdZOyht",
-        "/post/4-atlassian-marketplace-apps-two-weeks-live-0-installs-what-would-you-change-TW4RipArne1DzMIPj8h4",
-        "/post/tech/building-a-5k-mrr-app-while-freelancing-to-keep-the-lights-on-JhX6p14De0nagI0j1Xg1",
-        "/post/tech/this-founder-left-academia-built-four-failed-products-then-hit-12-5k-mo-xkng30lczEuiLG4983UN",
-        "/post/tech/quitting-a-career-in-venture-capital-to-build-a-150k-arr-portfolio-of-health-apps-yr495WSeWzC6A4SLoRK8"
+        "/post/tech/starting-from-scratch-and-hitting-9-5k-mrr-in-two-months-j5pMaED5FEbKw8qmeyj9",
+        "/post/tech/building-a-3m-yr-company-without-launching-publicly-tacryeGIH66SCtD2an4r",
+        "/post/services/pivoting-a-saas-into-a-mid-5-figure-mrr-service-company-g66eHSApgPWLDMHo7Ik1"
       ]
     },
     {
       "source_family": "international physical-goods RFQ (TradeKey)",
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://www1.tradekey.com/buyoffer_search/start_date/3/page_no/3.htm",
-      "records_inspected": 22,
+      "records_inspected": 25,
       "primary_pages_opened": 2,
       "verified_buyer_requests": 2,
       "explicit_commercial_signals": 2,
@@ -365,30 +364,43 @@
         "Physical goods buyers do not automatically buy research. Contact requires platform sign-in; no access bypass. No bid-count visibility => UNKNOWN."
       ],
       "evidence_snapshots": [
-        "data/evidence/3914e4f508c84945.json#sha256=d03778fee20c1b205496ea46026e1fe4d3022dba508557dd607b527674a4a578",
-        "data/evidence/e1e93e7bed9fe713.json#sha256=11b77ee394bf6a246cf1bfe6c3257c47680fe5ccad71cf10c66668af7edbbdfb",
-        "data/evidence/faa6a7ed5329ce4d.json#sha256=74ca4a1e68adc70bfccc6cc0d87c596905d4d0b1654f2ae4d8e109a0b56621a3"
+        "data/evidence/3914e4f508c84945.json#sha256=e9ccef0eb4d53548bbe5699067c3435cbfabdd35e872b984c94c1e7ceee4a81b",
+        "data/evidence/2d574169371a28b2.json#sha256=6d827279becfe01101627fd7a7e42702d5a8c7d68c4744dbc0824a166951ec83",
+        "data/evidence/438c1dbb76b0dd0f.json#sha256=d0994de840351b1335be6f07995c981a7d240b1cb12c3d7b88911a2278b6c850"
       ],
       "records": [
         {
-          "url": "https://importer1.tradekey.com/buyoffer/Buying-Refined-Sunflower-Oil-In-Retail-And-Bulk-Packs-3878311.html",
-          "primary_excerpt": "Last Updated: Posted on: 05 Nov 2026 Time Left: 27D 15H Payment Terms: T/T, L/C, D/A, D/P, Western Union, Money Gram Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details Hello, I need refined, bleached and deodorized sunflower oil for distribution. Please quote 1 L, 5 L and 20 L packs as well as flexitank supply, with FFA not above 0.10%, peroxide value up to 5 meq/kg and moisture below 0.10%. State the bottle material, filling tolerance, units per carton, pallet quantity and current production lead time. Regards, Silvester Refine by popular tags refined sunflower oil sunflower cooking oil edible oil Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.11031 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French Guiana French Polynesia Gabon Gambia Georgia Germany Ghana Gibraltar Greece Greenland Grenada Guadeloupe Guam Guatemala Gue",
+          "url": "https://importer1.tradekey.com/buyoffer/EVA-Foam-Sheets-For-Printing-And-Packaging-Work-3878349.html",
+          "primary_excerpt": "Last Updated: Posted on: 07 Nov 2026 Time Left: 27D 15H Payment Terms: T/T, L/C, D/A, D/P, Western Union, Money Gram Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details Hi there, I require EVA foam sheets in 1-10 mm thickness, with density options around 30-100 kg/m3. Please give the available sheet dimensions, hardness, colour range, closed-cell structure, thickness tolerance and whether adhesive-backed material can be supplied. Clean cutting edges and consistent colour between batches are important for our work. Regards, Zahid Refine by popular tags EVA foam sheets closed cell foam EVA sheet Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.09477 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French Guiana French Polynesia Gabon Gambia Georgia Germany Ghana Gibraltar Greece Greenland Grenada Guadeloupe Guam Guatemala Guernsey ",
           "decision": "Physical goods RFQ; not a commissioned China research service; contact gated and competition unknown",
           "buyer": true,
-          "published_at": "2026-11-05T00:00:00+00:00",
+          "published_at": "2026-11-07T00:00:00+00:00",
           "date_precision": "day; original posted date, not crawl date"
         },
         {
-          "url": "https://importer1.tradekey.com/buyoffer/Broiler-Parent-Stock-Chicks-For-Commercial-Farm-3878309.html",
-          "primary_excerpt": "Last Updated: Posted on: 05 Nov 2026 Time Left: 27D 15H Payment Terms: T/T, L/C, D/A, D/P, Western Union, Money Gram Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details Good day, I am looking for day-old broiler parent-stock chicks for a commercial breeding programme. Please identify the strain offered, such as Ross 308 or Cobb 500, and give the hatch date, average chick weight, male-to-female ratio and quantity available per shipment. I need the vaccination programme, expected livability, parent performance data and transport-crate arrangement stated clearly. Please also advise the minimum practical order and airport-to-farm handling time. Regards, Theode Masheedze Refine by popular tags broiler parent stock breeder chicks poultry breeding stock Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.08879 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands ",
+          "url": "https://importer1.tradekey.com/buyoffer/Red-Lentils-Required-In-Food-Grade-Bags-3878345.html",
+          "primary_excerpt": "Last Updated: Posted on: 07 Nov 2026 Time Left: 27D 15H Payment Terms: T/T, L/C, D/A, D/P, Western Union, Money Gram Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details Good day, I am sourcing red lentils for commercial distribution. Please state whether the offer is whole or split lentils, crop year, origin, grain size, moisture, foreign matter and discoloured-grain limits. Quote 25 kg and 50 kg food-grade bags and share a recent lot photograph. Regards, Tony Gathungu Refine by popular tags red lentils split lentils bulk pulses Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.09716 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French Guiana French Polynesia Gabon Gambia Georgia Germany Ghana Gibraltar Greece Greenland Grenada Guadeloupe Guam Guatemala Guernsey Guinea Guinea-Bissau Guyana Haiti Honduras Hong Kong Hungary Icela",
           "decision": "Physical goods RFQ; not a commissioned China research service; contact gated and competition unknown",
           "buyer": true,
-          "published_at": "2026-11-05T00:00:00+00:00",
+          "published_at": "2026-11-07T00:00:00+00:00",
           "date_precision": "day; original posted date, not crawl date"
         }
       ],
       "opportunity_ids": [],
       "inspected_keys": [
+        "https://importer1.tradekey.com/buyoffer/EVA-Foam-Sheets-For-Printing-And-Packaging-Work-3878349.html",
+        "https://importer1.tradekey.com/buyoffer/Red-Lentils-Required-In-Food-Grade-Bags-3878345.html",
+        "https://importer1.tradekey.com/buyoffer/Current-Offer-Needed-For-Refined-Edible-Oil-3878343.html",
+        "https://importer1.tradekey.com/buyoffer/NY-8658EJA-Heavy-Duty-Blender-Needed-3878341.html",
+        "https://importer1.tradekey.com/buyoffer/EKIRESIN-PCB-Resist-And-Filling-Resin-Required-3878339.html",
+        "https://importer1.tradekey.com/buyoffer/INTERNATIONAL-MANUFACTURING-amp-WHOLESALE-SUPPLY-PARTNERSHIP-REQUEST-3878337.html",
+        "https://importer1.tradekey.com/buyoffer/Granular-Sulphur-99-95-Required-3878331.html",
+        "https://importer1.tradekey.com/buyoffer/OID-Talking-Pens-For-Coded-Learning-Books-3878329.html",
+        "https://importer1.tradekey.com/buyoffer/Racket-Bags-Wanted-For-Retail-Resale-3878327.html",
+        "https://importer1.tradekey.com/buyoffer/Nutella-Hazelnut-Spread-Needed-For-Wholesale-Supply-3878325.html",
+        "https://importer1.tradekey.com/buyoffer/LME-Grade-A-Copper-Cathodes-Required-3878321.html",
+        "https://importer1.tradekey.com/buyoffer/Door-Handles-Required-In-Stainless-Steel-Finishes-3878319.html",
+        "https://importer1.tradekey.com/buyoffer/Hydroponic-Fodder-Growing-Machine-For-Farm-Use-3878317.html",
         "https://importer1.tradekey.com/buyoffer/Buying-Refined-Sunflower-Oil-In-Retail-And-Bulk-Packs-3878311.html",
         "https://importer1.tradekey.com/buyoffer/Broiler-Parent-Stock-Chicks-For-Commercial-Farm-3878309.html",
         "https://importer1.tradekey.com/buyoffer/PVC-Cable-Trunking-Needed-In-Standard-Sections-3878305.html",
@@ -400,33 +412,23 @@
         "https://importer1.tradekey.com/buyoffer/Children-Bagpack-3878291.html",
         "https://importer1.tradekey.com/buyoffer/Tenant-Union-Representative-Network-3878287.html",
         "https://importer1.tradekey.com/buyoffer/BOPP-Adhesive-Packing-Tape-Required-3878283.html",
-        "https://importer1.tradekey.com/buyoffer/Long-Fibre-Flax-Processing-Line-Required-3878281.html",
-        "https://importer1.tradekey.com/buyoffer/Refined-Peanut-Oil-Needed-In-Retail-Packs-3878279.html",
-        "https://importer1.tradekey.com/buyoffer/Automatic-Shrimp-Peeling-Machine-Required-3878277.html",
-        "https://importer1.tradekey.com/buyoffer/Gum-Arabic-Required-In-Clean-Export-Grade-3878275.html",
-        "https://importer1.tradekey.com/buyoffer/API-Grade-Barite-Powder-Required-3878273.html",
-        "https://importer1.tradekey.com/buyoffer/Coloured-Metallic-Yarn-For-Weaving-And-Embroidery-3878271.html",
-        "https://importer1.tradekey.com/buyoffer/Steel-Lid-Crimping-Machine-Required-3878269.html",
-        "https://importer1.tradekey.com/buyoffer/Stretch-Spandex-Chair-Covers-Required-3878267.html",
-        "https://importer1.tradekey.com/buyoffer/Reaper-Binder-Machine-Needed-For-Field-Harvesting-3878265.html",
-        "https://importer1.tradekey.com/buyoffer/30-Line-Intercom-System-With-Guard-Display-Required-3878263.html",
-        "https://importer1.tradekey.com/buyoffer/Men-s-Casual-Shorts-Required-For-Resale-3878255.html"
+        "https://importer1.tradekey.com/buyoffer/Long-Fibre-Flax-Processing-Line-Required-3878281.html"
       ]
     }
   ],
-  "unique_refreshed": 76,
+  "unique_refreshed": 78,
   "info_edge_refresh": [
     {
       "id": "5409f529cb2b0f7b",
       "url": "https://community.n8n.io/t/assistant-credits-top-up-now-available/318075",
-      "checked_at": "2026-11-07T08:44:12.214643+00:00",
+      "checked_at": "2026-11-08T08:57:08.651888+00:00",
       "refreshed": false,
       "reason": "event expired; no publication rejuvenation"
     },
     {
       "id": "edge-haiku-2026-10-07",
       "url": "https://www.anthropic.com/claude-haiku-5-5",
-      "checked_at": "2026-11-07T08:44:12.214643+00:00",
+      "checked_at": "2026-11-08T08:57:08.651888+00:00",
       "refreshed": false,
       "reason": "event expired; no publication rejuvenation"
     }

@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43114",
-  "collected_at": "2026-11-07T08:44:12.214643+00:00",
+  "collected_at": "2026-11-08T08:57:08.651888+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/43114",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -50,9 +50,9 @@
     "locked": false,
     "assignees": [],
     "milestone": null,
-    "comments": 1,
+    "comments": 2,
     "created_at": "2026-11-07T08:39:50Z",
-    "updated_at": "2026-11-07T08:40:03Z",
+    "updated_at": "2026-11-07T09:05:27Z",
     "closed_at": null,
     "assignee": null,
     "author_association": "NONE",
@@ -95,6 +95,12 @@
       "text": "Hey @indexGin,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9718\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9718](https://linear.app/n8n/issue/GHC-9718)",
       "at": "2026-11-07T08:40:01Z",
       "url": "https://github.com/n8n-io/n8n/issues/43114#issuecomment-6704602569"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "The current implementation calls `value.hasOwnProperty(key)` directly, which fails both for null-prototype objects and for objects that shadow that method. `Object.prototype.hasOwnProperty.call(value, key)` avoids both cases while preserving the existing object-only guard. A focused regression can cover a null-prototype record with the key present and missing; a shadowed `hasOwnProperty` case would verify the call is independent of the input method.",
+      "at": "2026-11-07T09:05:27Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43114#issuecomment-6704841543"
     }
   ],
   "comments_complete": true

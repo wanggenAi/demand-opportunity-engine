@@ -1,0 +1,1337 @@
+{
+  "source_api_url": "https://community.shopify.com/t/711715.json",
+  "collected_at": "2026-11-08T08:57:08.651888+00:00",
+  "source": {
+    "post_stream": {
+      "posts": [
+        {
+          "id": 1934392,
+          "username": "TVR_UK",
+          "avatar_template": "/user_avatar/community.shopify.com/tvr_uk/{size}/403503_2.png",
+          "created_at": "2026-11-07T22:51:20.413Z",
+          "cooked": "<p>We have two physical stores very close together.. within 2 miles. If a customer placed an order we would post as 1 shipment - transferring stock from one location to another to combine.</p>\n<p>We noticed recently that customers are being charged for two shipments. How do we stop this?</p>",
+          "post_number": 1,
+          "post_type": 1,
+          "posts_count": 6,
+          "updated_at": "2026-11-07T22:51:20.413Z",
+          "reply_count": 0,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 2,
+          "reads": 8,
+          "readers_count": 7,
+          "score": 26.6,
+          "yours": false,
+          "topic_id": 711715,
+          "topic_slug": "two-locations-shared-inventory-one-shipment",
+          "primary_group_name": "merchant",
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": "Merchant",
+          "title_is_group": true,
+          "bookmarked": false,
+          "actions_summary": [
+            {
+              "id": 2,
+              "count": 1
+            }
+          ],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 430689,
+          "hidden": false,
+          "trust_level": 1,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/two-locations-shared-inventory-one-shipment/711715/1",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "calendar_details": [],
+          "reactions": [
+            {
+              "id": "heart",
+              "type": "emoji",
+              "count": 1
+            }
+          ],
+          "current_user_reaction": null,
+          "reaction_users_count": 1,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null,
+          "can_vote": false
+        },
+        {
+          "id": 1934441,
+          "username": "hizachlee",
+          "avatar_template": "/user_avatar/community.shopify.com/hizachlee/{size}/416069_2.png",
+          "created_at": "2026-11-08T03:14:07.816Z",
+          "cooked": "<p>Shopify only charges a flat shipping rate once across two locations when both locations sit in the same location group inside one shipping profile and use flat or price-based rates.</p>\n<p>If your shipping profile uses weight-based or carrier-calculated rates, or if the two stores are in separate location groups under Settings &gt; Shipping and delivery, Shopify calculates a rate for each origin location and adds them together at checkout.</p>",
+          "post_number": 2,
+          "post_type": 1,
+          "posts_count": 6,
+          "updated_at": "2026-11-08T03:14:07.816Z",
+          "reply_count": 1,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 6,
+          "readers_count": 5,
+          "score": 6.2,
+          "yours": false,
+          "topic_id": 711715,
+          "topic_slug": "two-locations-shared-inventory-one-shipment",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": null,
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1644435,
+          "hidden": false,
+          "trust_level": 1,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/two-locations-shared-inventory-one-shipment/711715/2",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        },
+        {
+          "id": 1934449,
+          "username": "Shawn-Z",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/s/5f8ce5/{size}.png",
+          "created_at": "2026-11-08T03:41:59.738Z",
+          "cooked": "<p>Put both stores in the same location group and use a flat or price-based rate, and the double charge goes away. Right now your customers are being charged for two shipments because the two locations sit in separate location groups, so Shopify adds each location’s rate together instead of charging one. It’s a rate configuration problem, not a packing one, since checkout runs before you combine the stock.</p>\n<p>Go to Settings &gt; Shipping and delivery, open the shipping profile that covers these products, then Fulfillment locations, click the second store, choose “Use existing shipping options from another location”, pick the first store and save. Both locations are then in one group and the rate is charged once.</p>\n<p>Watch the rate name too, since rates with the same name are added together at checkout even across profiles. One limit: if the rate is weight-based or carrier-calculated, this won’t produce a single charge for an order fulfilled from two locations, because those are calculated per product and the results are combined.</p>",
+          "post_number": 3,
+          "post_type": 1,
+          "posts_count": 6,
+          "updated_at": "2026-11-08T03:41:59.738Z",
+          "reply_count": 1,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 4,
+          "readers_count": 3,
+          "score": 5.8,
+          "yours": false,
+          "topic_id": 711715,
+          "topic_slug": "two-locations-shared-inventory-one-shipment",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": null,
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1643664,
+          "hidden": false,
+          "trust_level": 1,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/two-locations-shared-inventory-one-shipment/711715/3",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        },
+        {
+          "id": 1934476,
+          "username": "TVR_UK",
+          "avatar_template": "/user_avatar/community.shopify.com/tvr_uk/{size}/403503_2.png",
+          "created_at": "2026-11-08T06:32:55.364Z",
+          "cooked": "<p>Unfortunately our shipping is weight based.</p>",
+          "post_number": 4,
+          "post_type": 1,
+          "posts_count": 6,
+          "updated_at": "2026-11-08T06:32:55.364Z",
+          "reply_count": 1,
+          "reply_to_post_number": 2,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 2,
+          "readers_count": 1,
+          "score": 5.4,
+          "yours": false,
+          "topic_id": 711715,
+          "topic_slug": "two-locations-shared-inventory-one-shipment",
+          "primary_group_name": "merchant",
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": "Merchant",
+          "title_is_group": true,
+          "reply_to_user": {
+            "id": 1644435,
+            "username": "hizachlee",
+            "avatar_template": "/user_avatar/community.shopify.com/hizachlee/{size}/416069_2.png"
+          },
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 430689,
+          "hidden": false,
+          "trust_level": 1,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/two-locations-shared-inventory-one-shipment/711715/4",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        },
+        {
+          "id": 1934477,
+          "username": "TVR_UK",
+          "avatar_template": "/user_avatar/community.shopify.com/tvr_uk/{size}/403503_2.png",
+          "created_at": "2026-11-08T06:34:01.881Z",
+          "cooked": "<p>Unfortunately our shipping is weight based, so not working for us.</p>",
+          "post_number": 5,
+          "post_type": 1,
+          "posts_count": 6,
+          "updated_at": "2026-11-08T06:34:01.881Z",
+          "reply_count": 0,
+          "reply_to_post_number": 3,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 2,
+          "readers_count": 1,
+          "score": 0.4,
+          "yours": false,
+          "topic_id": 711715,
+          "topic_slug": "two-locations-shared-inventory-one-shipment",
+          "primary_group_name": "merchant",
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": "Merchant",
+          "title_is_group": true,
+          "reply_to_user": {
+            "id": 1643664,
+            "username": "Shawn-Z",
+            "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/s/5f8ce5/{size}.png"
+          },
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 430689,
+          "hidden": false,
+          "trust_level": 1,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/two-locations-shared-inventory-one-shipment/711715/5",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        },
+        {
+          "id": 1934488,
+          "username": "hizachlee",
+          "avatar_template": "/user_avatar/community.shopify.com/hizachlee/{size}/416069_2.png",
+          "created_at": "2026-11-08T06:52:26.907Z",
+          "cooked": "<p>With weight-based rates, Shopify adds a rate for each location. Turn off “available to fulfill online orders” on the second store, so checkout sees one origin and charges once. Online orders then only use the first store’s stock.</p>",
+          "post_number": 6,
+          "post_type": 1,
+          "posts_count": 6,
+          "updated_at": "2026-11-08T06:52:26.907Z",
+          "reply_count": 0,
+          "reply_to_post_number": 4,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 1,
+          "readers_count": 0,
+          "score": 0.2,
+          "yours": false,
+          "topic_id": 711715,
+          "topic_slug": "two-locations-shared-inventory-one-shipment",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": null,
+          "reply_to_user": {
+            "id": 430689,
+            "username": "TVR_UK",
+            "avatar_template": "/user_avatar/community.shopify.com/tvr_uk/{size}/403503_2.png"
+          },
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1644435,
+          "hidden": false,
+          "trust_level": 1,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/two-locations-shared-inventory-one-shipment/711715/6",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        }
+      ],
+      "stream": [
+        1934392,
+        1934441,
+        1934449,
+        1934476,
+        1934477,
+        1934488
+      ]
+    },
+    "timeline_lookup": [
+      [
+        1,
+        0
+      ]
+    ],
+    "user_badges": {
+      "users": {
+        "430689": {
+          "id": 430689,
+          "badge_ids": [
+            108
+          ]
+        },
+        "1643664": {
+          "id": 1643664,
+          "badge_ids": [
+            110,
+            116
+          ]
+        },
+        "1644435": {
+          "id": 1644435,
+          "badge_ids": [
+            109
+          ]
+        }
+      },
+      "badges": {
+        "131": {
+          "id": 131,
+          "name": "1000 Accepted Solutions",
+          "slug": "1000-accepted-solutions",
+          "description": "You're a member of the 1000 accepted solutions club!",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 1
+        },
+        "19": {
+          "id": 19,
+          "name": "Good Topic",
+          "slug": "good-topic",
+          "description": "Received 25 likes on a topic",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 3,
+          "badge_type_id": 2
+        },
+        "7": {
+          "id": 7,
+          "name": "Good Post",
+          "slug": "good-reply",
+          "description": "Received 25 likes on a reply",
+          "icon": "reply",
+          "image_url": null,
+          "badge_grouping_id": 3,
+          "badge_type_id": 2
+        },
+        "112": {
+          "id": 112,
+          "name": "250 Posts",
+          "slug": "250-posts",
+          "description": "250 posts! Thanks for being an engaged member of the Shopify Community",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 2
+        },
+        "32": {
+          "id": 32,
+          "name": "Gives Back",
+          "slug": "gives-back",
+          "description": "Has 100 liked posts and gave 100 likes",
+          "icon": "heart",
+          "image_url": null,
+          "badge_grouping_id": 2,
+          "badge_type_id": 2
+        },
+        "110": {
+          "id": 110,
+          "name": "50 Posts",
+          "slug": "50-posts",
+          "description": "Way to go! You've posted 50 times in the Shopify Community",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 3
+        },
+        "114": {
+          "id": 114,
+          "name": "1000 Posts",
+          "slug": "1000-posts",
+          "description": "You're a member of the 1000 posts club!",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 1
+        },
+        "113": {
+          "id": 113,
+          "name": "500 Posts",
+          "slug": "500-posts",
+          "description": "Congratulations on reaching the 500 post milestone!",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 1
+        },
+        "46": {
+          "id": 46,
+          "name": "Aficionado",
+          "slug": "aficionado",
+          "description": "Visited 100 consecutive days",
+          "icon": "far-eye",
+          "image_url": null,
+          "badge_grouping_id": 2,
+          "badge_type_id": 2
+        },
+        "111": {
+          "id": 111,
+          "name": "100 Posts",
+          "slug": "100-posts",
+          "description": "100 posts! Thanks for being an engaged member of the Shopify Community",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 2
+        },
+        "109": {
+          "id": 109,
+          "name": "25 Posts",
+          "slug": "25-posts",
+          "description": "With 25 posts submitted, you help keep the conversations going",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 3
+        },
+        "122": {
+          "id": 122,
+          "name": "1000 Likes",
+          "slug": "1000-likes",
+          "description": "You're a member of the 1000 likes club!",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 1
+        },
+        "129": {
+          "id": 129,
+          "name": "250 Accepted Solutions",
+          "slug": "250-accepted-solutions",
+          "description": "250 accepted solutions! Thank you for being so helpful",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 2
+        },
+        "121": {
+          "id": 121,
+          "name": "500 Likes",
+          "slug": "500-likes",
+          "description": "Congratulations on obtaining 500 likes!",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 1
+        },
+        "135": {
+          "id": 135,
+          "name": "Power User 2024",
+          "slug": "power-user-2024",
+          "description": "Most participating users within 2024",
+          "icon": "ranking-star",
+          "image_url": null,
+          "badge_grouping_id": 6,
+          "badge_type_id": 3
+        },
+        "126": {
+          "id": 126,
+          "name": "50 Accepted Solutions",
+          "slug": "50-accepted-solutions",
+          "description": "Your knowledge has resulted in 50 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 3
+        },
+        "119": {
+          "id": 119,
+          "name": "100 Likes",
+          "slug": "100-likes",
+          "description": "Your contributions have earned you 100 likes",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 2
+        },
+        "120": {
+          "id": 120,
+          "name": "250 Likes",
+          "slug": "250-likes",
+          "description": "Your expertise has earned you 250 likes!",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 2
+        },
+        "125": {
+          "id": 125,
+          "name": "25 Accepted Solutions",
+          "slug": "25-accepted-solutions",
+          "description": "Your guidance has resulted in 25 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 3
+        },
+        "3": {
+          "id": 3,
+          "name": "Regular",
+          "slug": "regular",
+          "description": "Awarded at Trust Level 3. Recognized for regular contributions as a trusted user.",
+          "icon": "user",
+          "image_url": null,
+          "badge_grouping_id": 4,
+          "badge_type_id": 2
+        },
+        "127": {
+          "id": 127,
+          "name": "75 Accepted Solutions",
+          "slug": "75-accepted-solutions",
+          "description": "Your expertise has resulted in 75 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 2
+        },
+        "130": {
+          "id": 130,
+          "name": "500 Accepted Solutions",
+          "slug": "500-accepted-solutions",
+          "description": "Your valuable contributions have resulted in 500 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 1
+        },
+        "118": {
+          "id": 118,
+          "name": "50 Likes",
+          "slug": "50-likes",
+          "description": "Your contributions have earned you 50 likes",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 3
+        },
+        "116": {
+          "id": 116,
+          "name": "10 Likes",
+          "slug": "10-likes",
+          "description": "You've received 10 likes",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 3
+        },
+        "128": {
+          "id": 128,
+          "name": "100 Accepted Solutions",
+          "slug": "100-accepted-solutions",
+          "description": "Congratulations! You've provided 100 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 2
+        },
+        "117": {
+          "id": 117,
+          "name": "25 Likes",
+          "slug": "25-likes",
+          "description": "With 25 likes, your posts are popular",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 3
+        },
+        "124": {
+          "id": 124,
+          "name": "10 Accepted Solutions",
+          "slug": "10-accepted-solutions",
+          "description": "10 of your replies have been accepted as solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 3
+        },
+        "108": {
+          "id": 108,
+          "name": "10 Posts",
+          "slug": "10-posts",
+          "description": "Thanks for being an active member and posting 10 times",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 3
+        }
+      }
+    },
+    "suggested_topics": [],
+    "tags": [
+      {
+        "id": 4021,
+        "name": "troubleshooting",
+        "slug": "troubleshooting"
+      }
+    ],
+    "tags_descriptions": {},
+    "fancy_title": "Two locations. Shared inventory. One shipment",
+    "id": 711715,
+    "title": "Two locations. Shared inventory. One shipment",
+    "posts_count": 6,
+    "created_at": "2026-11-07T22:51:20.252Z",
+    "views": 43,
+    "reply_count": 3,
+    "like_count": 1,
+    "last_posted_at": "2026-11-08T06:52:26.907Z",
+    "visible": true,
+    "closed": false,
+    "archived": false,
+    "has_summary": false,
+    "archetype": "regular",
+    "slug": "two-locations-shared-inventory-one-shipment",
+    "category_id": 95,
+    "word_count": 350,
+    "deleted_at": null,
+    "user_id": 430689,
+    "featured_link": null,
+    "pinned_globally": false,
+    "pinned_at": null,
+    "pinned_until": null,
+    "image_url": null,
+    "slow_mode_seconds": 0,
+    "draft": null,
+    "draft_key": "topic_711715",
+    "draft_sequence": null,
+    "unpinned": null,
+    "pinned": false,
+    "current_post_number": 1,
+    "highest_post_number": 6,
+    "deleted_by": null,
+    "actions_summary": [
+      {
+        "id": 8,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 1002,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 4,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 7,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 1001,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 10,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      }
+    ],
+    "chunk_size": 20,
+    "bookmarked": false,
+    "topic_timer": {
+      "id": 2377,
+      "execute_at": "2027-05-07T06:52:26.907Z",
+      "duration_minutes": 259200,
+      "based_on_last_post": true,
+      "status_type": "close",
+      "category_id": null
+    },
+    "message_bus_last_id": 43,
+    "participant_count": 3,
+    "show_read_indicator": false,
+    "thumbnails": null,
+    "slow_mode_enabled_until": null,
+    "board_memberships": [],
+    "related_topics": [
+      {
+        "fancy_title": "How can I avoid customers being charged twice for shipping at Checkout",
+        "id": 233055,
+        "title": "How can I avoid customers being charged twice for shipping at Checkout",
+        "slug": "how-can-i-avoid-customers-being-charged-twice-for-shipping-at-checkout",
+        "posts_count": 6,
+        "reply_count": 4,
+        "highest_post_number": 0,
+        "image_url": null,
+        "created_at": "2023-07-16T10:53:40.000Z",
+        "last_posted_at": "2024-02-23T06:27:56.000Z",
+        "bumped": true,
+        "bumped_at": "2024-02-23T06:27:56.000Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "I have a client with a Shopify store that has 2 locations. The physical inventory could be in Location A or B, there is no central warehouse. \nThis is set up as a customer could order an item that is located in Store A, &hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [
+          {
+            "id": 2687,
+            "name": "shipping",
+            "slug": "shipping"
+          },
+          {
+            "id": 1406,
+            "name": "checkout",
+            "slug": "checkout"
+          }
+        ],
+        "tags_descriptions": {},
+        "like_count": 0,
+        "views": 160,
+        "category_id": 217,
+        "featured_link": null,
+        "op_like_count": 0,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 1040679,
+              "username": "ECOMHQ",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/e/ecb155/{size}.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 526901,
+              "username": "ThomKnepper",
+              "avatar_template": "/user_avatar/community.shopify.com/thomknepper/{size}/31168_2.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 2
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": 921066,
+              "username": "sniper2804",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/s/edb3f5/{size}.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 960553,
+              "username": "MiraPatil",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/m/6bbea6/{size}.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "Shipping Cost Charge Twice",
+        "id": 295583,
+        "title": "Shipping Cost Charge Twice",
+        "slug": "shipping-cost-charge-twice",
+        "posts_count": 2,
+        "reply_count": 0,
+        "highest_post_number": 0,
+        "image_url": null,
+        "created_at": "2024-02-13T22:14:39.000Z",
+        "last_posted_at": "2024-02-14T07:01:40.000Z",
+        "bumped": true,
+        "bumped_at": "2024-02-14T07:01:40.000Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Hi, we’re having trouble calculating our shipping rates, as we’re a company with two stores in separate locations. When a customer orders products from both stores on our website, they are charged twice for shipping inst&hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [
+          {
+            "id": 2995,
+            "name": "css",
+            "slug": "css"
+          },
+          {
+            "id": 4694,
+            "name": "html",
+            "slug": "html"
+          },
+          {
+            "id": 1420,
+            "name": "javascript",
+            "slug": "javascript"
+          },
+          {
+            "id": 2148,
+            "name": "canaux-de-vente",
+            "slug": "canaux-de-vente"
+          }
+        ],
+        "tags_descriptions": {},
+        "like_count": 0,
+        "views": 83,
+        "category_id": 162,
+        "featured_link": null,
+        "op_like_count": 0,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 1236140,
+              "username": "Thibault_BLK",
+              "avatar_template": "/user_avatar/community.shopify.com/thibault_blk/{size}/4441_2.png",
+              "primary_group_name": "shopifystaff",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 921066,
+              "username": "sniper2804",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/s/edb3f5/{size}.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 1
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "How can I prevent double shipping charges on multi-location orders in Shopify?",
+        "id": 185214,
+        "title": "How can I prevent double shipping charges on multi-location orders in Shopify?",
+        "slug": "how-can-i-prevent-double-shipping-charges-on-multi-location-orders-in-shopify",
+        "posts_count": 14,
+        "reply_count": 7,
+        "highest_post_number": 0,
+        "image_url": null,
+        "created_at": "2023-01-20T09:12:56.000Z",
+        "last_posted_at": "2025-03-22T02:09:40.000Z",
+        "bumped": true,
+        "bumped_at": "2025-03-22T02:09:40.000Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Hey all. I just received an order online and noticed they got charged shipping twice. Instead of £3.99 it was £7.98. I can see the reason for this is because we didn’t have one of the items in stock from our main fulfilm&hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [],
+        "tags_descriptions": {},
+        "like_count": 16,
+        "views": 1005,
+        "category_id": 217,
+        "featured_link": null,
+        "op_like_count": 3,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 781565,
+              "username": "JJBDude",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/j/8baadc/{size}.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 921066,
+              "username": "sniper2804",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/s/edb3f5/{size}.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 172549,
+              "username": "Ron-Anderson",
+              "avatar_template": "/user_avatar/community.shopify.com/ron-anderson/{size}/260518_2.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": 429025,
+              "username": "gharyan",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/g/c89c15/{size}.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 105386,
+              "username": "Parcel_Intellig",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/p/c68b51/{size}.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 1
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "Shipping Problem with 2 Locations STILL NOT SOLVED ?!?!",
+        "id": 27467,
+        "title": "Shipping Problem with 2 Locations STILL NOT SOLVED ?!?!",
+        "slug": "shipping-problem-with-2-locations-still-not-solved",
+        "posts_count": 2,
+        "reply_count": 0,
+        "highest_post_number": 0,
+        "image_url": null,
+        "created_at": "2020-12-07T17:01:05.000Z",
+        "last_posted_at": "2020-12-08T11:58:28.000Z",
+        "bumped": true,
+        "bumped_at": "2020-12-08T11:58:28.000Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Hi, \nI make it quick. Maybe Shopify support recognized then the huge amount of people who have this Problem. \n\nWe use SPOD as POD Supplier which has it own Location (If products ran out of stock they are not available wh&hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [],
+        "tags_descriptions": {},
+        "like_count": 0,
+        "views": 89,
+        "category_id": 217,
+        "featured_link": null,
+        "op_like_count": 0,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": "latest single",
+            "description": "Original Poster, Most Recent Poster",
+            "user": {
+              "id": 374544,
+              "username": "Michael1987",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/m/b4bc9f/{size}.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "Duplicate Shipping Charge - Multiple Locations",
+        "id": 92183,
+        "title": "Duplicate Shipping Charge - Multiple Locations",
+        "slug": "duplicate-shipping-charge-multiple-locations",
+        "posts_count": 7,
+        "reply_count": 2,
+        "highest_post_number": 0,
+        "image_url": null,
+        "created_at": "2022-01-18T10:24:36.000Z",
+        "last_posted_at": "2023-11-28T07:28:13.000Z",
+        "bumped": true,
+        "bumped_at": "2023-11-28T07:28:13.000Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Our Shopify store has 5x locations - with stock / inventory available from each location (each location will have different stock levels). \nCurrently when a customer adds products to their basket for delivery - stock may&hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [],
+        "tags_descriptions": {},
+        "like_count": 0,
+        "views": 156,
+        "category_id": 217,
+        "featured_link": null,
+        "op_like_count": 0,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 627799,
+              "username": "trulyfare",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/t/ac91a4/{size}.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 605276,
+              "username": "EvenGreenerNat",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/e/35a633/{size}.png",
+              "primary_group_name": "shopifyplus",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 208388,
+              "username": "AndyDetroit",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/a/779978/{size}.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": 643687,
+              "username": "ManuelWirtz_de",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/m/c6cbf5/{size}.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 921066,
+              "username": "sniper2804",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/s/edb3f5/{size}.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 1
+            }
+          }
+        ]
+      }
+    ],
+    "summarizable": true,
+    "has_cached_summary": true,
+    "ai_summary": {
+      "id": 1877894,
+      "summarized_text": "A retailer with two nearby stores combines stock and ships customer orders as one parcel, but checkout has recently charged customers for shipping from both locations. The suggested fix of placing both stores in the same location group works for flat or price-based rates; it does not prevent multiple charges with weight-based or carrier-calculated rates, which Shopify calculates separately for each fulfillment location and combines.\n\nThe retailer confirmed that its shipping rates are weight-based, so the location-group change will not solve the problem. The latest suggestion is to disable “available to fulfill online orders” for the second store, so checkout uses only the first store as an origin and charges one rate. However, this means online orders can use only the first store’s stock, limiting the ability to fulfill from or combine inventory at the second store. No solution was confirmed that preserves both locations’ online inventory while charging a single weight-based shipping rate, so the issue remains unresolved.",
+      "algorithm": "gpt-6-luna",
+      "outdated": false,
+      "created_at": "2026-11-07T22:52:38.006Z",
+      "updated_at": "2026-11-08T06:55:23.937Z"
+    },
+    "is_category_expert_question": null,
+    "has_livestream": null,
+    "livestream_chat_active": false,
+    "valid_reactions": [
+      "heart",
+      "+1",
+      "laughing",
+      "open_mouth",
+      "clap",
+      "confetti_ball",
+      "hugs"
+    ],
+    "has_accepted_answer": false,
+    "shared_issue_count": 0,
+    "can_create_shared_issue": false,
+    "shared_issue_visible": true,
+    "can_vote": false,
+    "vote_count": 0,
+    "user_voted": false,
+    "details": {
+      "can_edit": false,
+      "notification_level": 1,
+      "participants": [
+        {
+          "id": 430689,
+          "username": "TVR_UK",
+          "avatar_template": "/user_avatar/community.shopify.com/tvr_uk/{size}/403503_2.png",
+          "post_count": 3,
+          "primary_group_name": "merchant",
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 1
+        },
+        {
+          "id": 1644435,
+          "username": "hizachlee",
+          "avatar_template": "/user_avatar/community.shopify.com/hizachlee/{size}/416069_2.png",
+          "post_count": 2,
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 1
+        },
+        {
+          "id": 1643664,
+          "username": "Shawn-Z",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/s/5f8ce5/{size}.png",
+          "post_count": 1,
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 1
+        }
+      ],
+      "created_by": {
+        "id": 430689,
+        "username": "TVR_UK",
+        "avatar_template": "/user_avatar/community.shopify.com/tvr_uk/{size}/403503_2.png"
+      },
+      "last_poster": {
+        "id": 1644435,
+        "username": "hizachlee",
+        "avatar_template": "/user_avatar/community.shopify.com/hizachlee/{size}/416069_2.png"
+      }
+    },
+    "bookmarks": []
+  },
+  "comments": [
+    {
+      "author": "hizachlee",
+      "text": "Shopify only charges a flat shipping rate once across two locations when both locations sit in the same location group inside one shipping profile and use flat or price-based rates. \n If your shipping profile uses weight-based or carrier-calculated rates, or if the two stores are in separate location groups under Settings > Shipping and delivery, Shopify calculates a rate for each origin location and adds them together at checkout.",
+      "at": "2026-11-08T03:14:07.816Z",
+      "url": "https://community.shopify.com/t/two-locations-shared-inventory-one-shipment/711715/2"
+    },
+    {
+      "author": "Shawn-Z",
+      "text": "Put both stores in the same location group and use a flat or price-based rate, and the double charge goes away. Right now your customers are being charged for two shipments because the two locations sit in separate location groups, so Shopify adds each location’s rate together instead of charging one. It’s a rate configuration problem, not a packing one, since checkout runs before you combine the stock. \n Go to Settings > Shipping and delivery, open the shipping profile that covers these products, then Fulfillment locations, click the second store, choose “Use existing shipping options from another location”, pick the first store and save. Both locations are then in one group and the rate is charged once. \n Watch the rate name too, since rates with the same name are added together at checkout even across profiles. One limit: if the rate is weight-based or carrier-calculated, this won’t produce a single charge for an order fulfilled from two locations, because those are calculated per product and the results are combined.",
+      "at": "2026-11-08T03:41:59.738Z",
+      "url": "https://community.shopify.com/t/two-locations-shared-inventory-one-shipment/711715/3"
+    },
+    {
+      "author": "TVR_UK",
+      "text": "Unfortunately our shipping is weight based.",
+      "at": "2026-11-08T06:32:55.364Z",
+      "url": "https://community.shopify.com/t/two-locations-shared-inventory-one-shipment/711715/4"
+    },
+    {
+      "author": "TVR_UK",
+      "text": "Unfortunately our shipping is weight based, so not working for us.",
+      "at": "2026-11-08T06:34:01.881Z",
+      "url": "https://community.shopify.com/t/two-locations-shared-inventory-one-shipment/711715/5"
+    },
+    {
+      "author": "hizachlee",
+      "text": "With weight-based rates, Shopify adds a rate for each location. Turn off “available to fulfill online orders” on the second store, so checkout sees one origin and charges once. Online orders then only use the first store’s stock.",
+      "at": "2026-11-08T06:52:26.907Z",
+      "url": "https://community.shopify.com/t/two-locations-shared-inventory-one-shipment/711715/6"
+    }
+  ],
+  "comments_complete": true
+}
