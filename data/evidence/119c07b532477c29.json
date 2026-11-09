@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50379221",
-  "collected_at": "2026-11-08T08:57:08.651888+00:00",
+  "collected_at": "2026-11-09T09:44:42.802302+00:00",
   "source": {
     "author": "icyfox",
     "children": [
@@ -647,7 +647,23 @@
             "children": [
               {
                 "author": "icyfox",
-                "children": [],
+                "children": [
+                  {
+                    "author": "mukeshsinghnyc",
+                    "children": [],
+                    "created_at": "2026-11-08T14:20:51.000Z",
+                    "created_at_i": 1794147651,
+                    "id": 50413602,
+                    "options": [],
+                    "parent_id": 50410437,
+                    "points": null,
+                    "story_id": 50379221,
+                    "text": "Ok great thanks for the details, and apologies for assuming downvote was from you. One follow up when a workflow input changes mid run does the compiled run invalidate the earlier checkpoints  or does that stay the developers job?",
+                    "title": null,
+                    "type": "comment",
+                    "url": null
+                  }
+                ],
                 "created_at": "2026-11-08T04:34:06.000Z",
                 "created_at_i": 1794112446,
                 "id": 50410437,
@@ -707,7 +723,7 @@
     "id": 50379221,
     "options": [],
     "parent_id": null,
-    "points": 81,
+    "points": 85,
     "story_id": 50379221,
     "text": "Hey everyone! @mozgiii and I have been working on Waymark for the better part of the last year. Waymark’s an open source durable execution library with similar functionality to Temporal or DBOS.<p>I fell in love with durable execution a few years ago, after working at a company with a heavy pubsub architecture. In comparison to job orchestrators that force a certain task design or special syntax, many of these durable libs lets you write business logic in regular code: `asyncio.gather` to parallelize tasks, `for` loops, conditionals, and let the runtime figure out how to run them efficiently across a cluster of nodes. But most of the current solutions require a heavy broker, runtime hacks to try to ensure deterministic workflow logic, and feel like you have to learn a whole new ecosystem just to get started.<p>A few unique design decisions in waymark:<p>— Write jobs in normal code (right now Python but JS coming soon). Instead of running control flow as-is, which requires booting up an interpreter to replay past state, we’ll just compile your code directly. We walk your AST and map your logic to our stackless VM bytecode. We support variables, conditionals, await, sleep, helper functions, loops... basically what you’d expect in workflow logic.<p>— Since we’re compiling a language subset, we can proactively flag errors in your workflows locally instead of when they run in production.<p>— It only requires Postgres as the task broker. We’ve spent a lot of time tuning our design to play nicely with its strengths and limitations; our current benchmarks show around 1500 workflows&#x2F;second but we still have some more optimization work to do here.<p>— Actions plug-and-play with FastAPI’s dependency injection syntax. So if you already have an ecosystem based on typehinting&#x2F;DI, it should fit like a glove.<p>It allows for parallelization of workflows across one machine or a whole cluster. The bulk of the work per node is done by our central Rust core - which distributes workflows to properly saturate all cores. The idea is to be as batteries included as possible with the broker, webapp, and runtime.<p>What to use it for? It works great as the runner loop controlling agents, but it also works well for basically any task that you need to kick off in the background. It’s largely replaced our way of writing api code. Most frontend actions at this point just push to a simple REST endpoint that kick off a background job.<p>I spent an embarrassing amount of time making our <a href=\"https:&#x2F;&#x2F;waymark.sh\" rel=\"nofollow\">https:&#x2F;&#x2F;waymark.sh</a> site interactive - it’s probably the best place to learn more. We’re starting with Python support and looking for community input on what language to ship next. Would love to hear your thoughts!",
     "title": "Show HN: Waymark – A workflow engine that compiles jobs instead of replaying",
@@ -978,6 +994,12 @@
       "text": "Hey! Not sure who downvoted you. Workflow definitions looks similar to Temporal, by design. They want you to program in your native code and separate actions at boundaries - as do we. A few fundamental differences - 1. Temporal gets its durable execution properties by booting up a full interpreter (Python/JS/etc) just to replay the previous state of your workflow. This requires your full logic to be deterministic because it's actually re-serializing variables from the cached state of the action outputs. Waymark by contrast does everything by compiling your run definitions. This allows your logic to be nondeterministic as long as it implements the supported control flow. This compiled representation is also executed in our Rust VM core, so it's easily parallelizable to your whole machine. As an aside - the Temporal maintainers also have to re-implement async handling in each of their supported languages. They have a rust core iirc but because they actually hook into the native language, they need to implement their own async abstraction. There are a lot of footguns with these implementations that they need careful handling to avoid. Since we share the same workflow VM runner against all languages we anticipate being able to add language support and keep it maintained much easier. 2. Due to this compilation, it's easier to catch errors locally and in CI before it reaches production. There's no notion of 'workflow changed' / incompatibility errors with future waymark workflows. 3. We have a simpler hosting paradigm. Instead of needing a full broker that you need to scale separately, we use Postgres as the only external service required. You can leverage your existing database expertise instead of needing to move all the knobs and dials of Temporal/RabbitMQ/etc.",
       "at": "2026-11-08T04:34:06.000Z",
       "url": "https://news.ycombinator.com/item?id=50410437"
+    },
+    {
+      "author": "mukeshsinghnyc",
+      "text": "Ok great thanks for the details, and apologies for assuming downvote was from you. One follow up when a workflow input changes mid run does the compiled run invalidate the earlier checkpoints  or does that stay the developers job?",
+      "at": "2026-11-08T14:20:51.000Z",
+      "url": "https://news.ycombinator.com/item?id=50413602"
     },
     {
       "author": "MOZGIII",

@@ -1,0 +1,92 @@
+{
+  "source_api_url": "https://api.github.com/repos/myvars/supplymars/issues/217",
+  "collected_at": "2026-11-09T09:44:42.802302+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/myvars/supplymars/issues/217",
+    "repository_url": "https://api.github.com/repos/myvars/supplymars",
+    "labels_url": "https://api.github.com/repos/myvars/supplymars/issues/217/labels{/name}",
+    "comments_url": "https://api.github.com/repos/myvars/supplymars/issues/217/comments",
+    "events_url": "https://api.github.com/repos/myvars/supplymars/issues/217/events",
+    "html_url": "https://github.com/myvars/supplymars/issues/217",
+    "id": 6273912564,
+    "node_id": "I_kwDOO3HiYc8AAAABdfRO9A",
+    "number": 217,
+    "title": "Roadmap: features to showcase the project",
+    "user": {
+      "login": "myvars",
+      "id": 2104639,
+      "node_id": "MDQ6VXNlcjIxMDQ2Mzk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2104639?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/myvars",
+      "html_url": "https://github.com/myvars",
+      "followers_url": "https://api.github.com/users/myvars/followers",
+      "following_url": "https://api.github.com/users/myvars/following{/other_user}",
+      "gists_url": "https://api.github.com/users/myvars/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/myvars/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/myvars/subscriptions",
+      "organizations_url": "https://api.github.com/users/myvars/orgs",
+      "repos_url": "https://api.github.com/users/myvars/repos",
+      "events_url": "https://api.github.com/users/myvars/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/myvars/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8738650960,
+        "node_id": "LA_kwDOO3HiYc8AAAACCN07UA",
+        "url": "https://api.github.com/repos/myvars/supplymars/labels/enhancement",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "default": true,
+        "description": "New feature or request",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2026-11-08T18:01:00Z",
+    "updated_at": "2026-11-08T18:01:00Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## What this is\n\nSupplyMars is a portfolio project. This issue lists the features that would show the most to someone reviewing it, ranked, with the reasoning for each.\n\nIt tracks the list; it is not a plan. When an item is picked up, it gets its own issue (a sub-issue of this one) for the investigation and design, and this list links to it. Items can be added, dropped or reordered here as priorities change. What ships is written up in the engineering log (#216).\n\nNone of these exist yet (checked against `composer.json` and the ADRs). The Symfony 8.2 upgrade is tracked separately in #211.\n\n## Tier 1: highest impact\n\n- [ ] **1. AI features with Symfony AI** (`symfony/ai-bundle`): summarise product reviews (upgrading the existing review summary), triage support tickets in the Note context, and a staff assistant whose tools are the repository interfaces.\n  *Why:* the skill employers screen for most in 2026; building it on Symfony's own component fits the framework-first rule.\n- [ ] **2. An MCP server for SupplyMars** (`symfony/mcp-bundle`): read-only tools (order lookup, stock, reports) behind the existing Bearer token authentication.\n  *Why:* very current, builds on the API layer (ADR 011), and pairs with 1. An agent could run the simulation.\n- [ ] **3. OpenTelemetry tracing**: one trace from the HTTP request through Messenger and the worker to the Mercure publish.\n  *Why:* tracing across async boundaries is hard to show, and the system already has that shape.\n- [ ] **4. A transactional outbox for domain events.** ADR 013 records that a queued message and the change that caused it are \"separate statements, not one transaction\".\n  *Why:* fixing a dual-write gap the project's own ADR names shows an understanding of reliable messaging.\n- [ ] **5. Symfony Workflow for the order and PO lifecycles**: guards, transition events, and diagrams from `workflow:dump` in the docs.\n  *Why:* status derivation (ADR 002) is the most complex part of the domain, and an explicit state machine makes it visible. An ADR deciding *whether* to adopt it is worth having either way.\n\n## Tier 2: strong signals\n\n- [ ] **6. Playwright end-to-end tests in CI**, including two browser windows: one changes an order, the other sees the live refresh.\n  *Why:* proves the Mercure feature (ADR 017) works, and the recorded traces make good log material.\n- [ ] **7. Load testing and a performance budget**: a k6 script, published numbers, and a CI check that fails on a regression.\n  *Why:* makes the worker-mode benchmark from #85 repeatable.\n- [ ] **8. Zero-downtime deploys**: old and new containers side by side, or at least drained workers. #83 took live down for about 20 minutes, and #90 notes 1.5–2 minutes of 503s on a database restart.\n  *Why:* removing your own deploy downtime is a strong operations story.\n- [ ] **9. Supply-chain security in CI**: an SBOM, a Trivy image scan, cosign-signed images, an OpenSSF Scorecard.\n  *Why:* a current topic, cheap to add, and it builds on the GHCR image pipeline (#31).\n- [ ] **10. Inbound and outbound supplier webhooks** with Symfony's Webhook and RemoteEvent components: signed, retried through Messenger, with suppliers simulated as in ADR 003.\n  *Why:* fits multi-supplier sourcing (ADR 001) and shows integration work on Symfony's own components.\n- [ ] **11. Passkey (WebAuthn) login.**\n  *Why:* modern authentication with a short demo, adding to the existing security work.\n\n## Tier 3: worth doing, smaller signal\n\n- [ ] **12. Full-text search**: Meilisearch, or MySQL FULLTEXT behind an interface, indexed asynchronously from domain events.\n  *Why:* ports and adapters plus event-driven indexing, and users notice it.\n- [ ] **13. Mutation testing with Infection** on the domain layer, with the score published.\n  *Why:* after the test overhaul (#174–#194), it measures how good the tests are, not just how much they cover.\n- [ ] **14. Symfony UX Live Components** where they fit (live filters, or a pricing preview showing the markup cascade from ADR 004).\n  *Why:* shows the newer Symfony UX tools alongside Turbo. Needs care: live pages already use morphing.\n- [ ] **15. A public architecture tour or status page**: queue depth, scheduler runs, the Deptrac graph, recent deploys, linked from the About page.\n  *Why:* reviewers see the engineering without cloning the repo. Overlaps with #216; the two could share a home.\n- [ ] **16. PHPStan from level 7 to max**, with strict rules.\n  *Why:* a signal of rigour at low cost, mostly work through the baseline.\n\n## Suggested order\n\n1 and 2 together for the AI story, then 3 and 4, which build on the async architecture.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/myvars/supplymars/issues/217/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/myvars/supplymars/issues/217/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [],
+  "comments_complete": true
+}

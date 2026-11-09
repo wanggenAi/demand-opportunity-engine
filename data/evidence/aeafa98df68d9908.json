@@ -1,0 +1,107 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43133",
+  "collected_at": "2026-11-09T09:44:42.802302+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43133",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43133/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43133/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43133/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43133",
+    "id": 6273697850,
+    "node_id": "I_kwDOC4Q8Qs8AAAABdfEIOg",
+    "number": 43133,
+    "title": "import:workflow over a published workflow deletes its Schedule Trigger's durable job, and it is never re-provisioned (2.45.7)",
+    "user": {
+      "login": "theryguy",
+      "id": 5864469,
+      "node_id": "MDQ6VXNlcjU4NjQ0Njk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5864469?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/theryguy",
+      "html_url": "https://github.com/theryguy",
+      "followers_url": "https://api.github.com/users/theryguy/followers",
+      "following_url": "https://api.github.com/users/theryguy/following{/other_user}",
+      "gists_url": "https://api.github.com/users/theryguy/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/theryguy/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/theryguy/subscriptions",
+      "organizations_url": "https://api.github.com/users/theryguy/orgs",
+      "repos_url": "https://api.github.com/users/theryguy/repos",
+      "events_url": "https://api.github.com/users/theryguy/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/theryguy/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-11-08T17:39:41Z",
+    "updated_at": "2026-11-08T18:05:48Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nRe-importing a published workflow with `n8n import:workflow --activeState=fromJson` deletes the durable scheduler job for its Schedule Trigger. The job is never re-provisioned when the only change is one that `computeTriggerDiff` ignores, such as a node's `notes`. The workflow still shows as active in the UI and in `list:workflow --active=true`, but it never fires again until the main process restarts. On startup, the reconciler re-provisions every trigger.\n\nWe hit this with a GitOps sync that re-imports changed workflow JSON from a separate pod. A note-only edit to a daily Schedule Trigger silently stopped it for days.\n\nThe causes we traced in 2.45.7 (`dist/`):\n\n1. `ImportService.importWorkflows` calls `workflowService.deactivateWorkflow` for an already-published workflow. With the publication service on, `_unpublishViaOutbox` deletes the workflow's `scheduled_job` rows in its transaction (`scheduleTriggerJobRegistrar.removeWorkflowInTransaction`) and enqueues an unpublish outbox row.\n2. The import then publishes the new version. On Postgres, `WorkflowPublicationOutboxRepository.enqueueWithPostgresUpsert` keeps one pending row per workflow (`ON CONFLICT (\"workflowId\", status) ... DO UPDATE`), so the publish row overwrites the unpublish row before main's consumer sees it.\n3. Main applies the publish against the previously published version. `computeTriggerDiff` compares only `name, type, typeVersion, webhookId, credentials, parameters`, so the Schedule Trigger is `equal` and nothing is provisioned.\n4. The reconciler's `findMissingActiveWorkflows` sees the in-memory trigger still registered under the same node id, so it repairs nothing. The workflow has no `scheduled_job` row from then on.\n\nA first import works, because there is no previously published version and every trigger is `added`.\n\nWorkaround: run `n8n unpublish:workflow --id=<id>`, wait until main has applied it (no open outbox row and no `workflow_published_version` row for the workflow), then import. The import is then a fresh publish and the job is provisioned.\n\n### To Reproduce\n\nQueue mode, single main, Postgres, publication service and durable scheduler at their defaults. Run the CLI from a separate process, for example a worker pod or a Job using the same image and DB settings.\n\n1. Save this as `probe1.json`:\n   ```json\n   [{\n     \"id\": \"probeSchedule001\",\n     \"name\": \"probe schedule re-import\",\n     \"active\": true,\n     \"settings\": { \"executionOrder\": \"v1\" },\n     \"nodes\": [\n       { \"id\": \"91700000-0000-4000-8000-000000000001\", \"name\": \"Every minute\", \"notes\": \"v1\",\n         \"type\": \"n8n-nodes-base.scheduleTrigger\", \"typeVersion\": 1.2, \"position\": [0, 0],\n         \"parameters\": { \"rule\": { \"interval\": [{ \"field\": \"cronExpression\", \"expression\": \"0 * * * * *\" }] } } },\n       { \"id\": \"91700000-0000-4000-8000-000000000002\", \"name\": \"Nothing\",\n         \"type\": \"n8n-nodes-base.noOp\", \"typeVersion\": 1, \"position\": [220, 0], \"parameters\": {} }\n     ],\n     \"connections\": { \"Every minute\": { \"main\": [[{ \"node\": \"Nothing\", \"type\": \"main\", \"index\": 0 }]] } }\n   }]\n   ```\n   Then save a copy as `probe2.json` with only `\"notes\": \"v2\"` changed.\n2. `n8n import:workflow --input=probe1.json --activeState=fromJson`. One `scheduled_job` row appears for the workflow, and `trigger` executions run every minute.\n3. `n8n import:workflow --input=probe2.json --activeState=fromJson`. Within a few seconds, main marks the single outbox row `completed` and `workflow_publication_trigger_status` shows the new version `activated`. The `scheduled_job` row is gone, though, and no new one is created.\n4. No further `trigger` executions run, while the workflow still shows as active.\n\nObserved timeline from our run (UTC):\n\n| Time | Step | Result |\n| -- | -- | -- |\n| 07:13:28 | import probe1 | outbox row completed 07:13:32, `scheduled_job` created |\n| 07:14:00, 07:15:00 | | trigger executions |\n| 07:15:20 | import probe2 (notes only) | one outbox row, completed 07:15:32; `scheduled_job` deleted, none created |\n| 07:16, 07:17 | | no executions |\n| 07:19:44 | `unpublish:workflow`, wait for main | unpublish row completed 07:19:47 |\n| 07:19:58 | import probe1 | outbox row completed 07:20:02, `scheduled_job` created |\n| 07:21:00 | | trigger execution |\n\n### Expected behavior\n\nAfter re-importing a published workflow whose Schedule Trigger is unchanged, the workflow keeps a durable scheduler job and keeps firing. Equivalently, an import that deletes `scheduled_job` rows should leave main to re-provision them, or the import should not delete them when the trigger is unchanged.\n\n### Debug Info\n\nSelf-hosted on Kubernetes (k3s), image `n8nio/n8n:2.45.7`, Postgres 18.6 (CloudNativePG), Redis for the queue. One main, one worker, one webhook process. `EXECUTIONS_MODE=queue`. `N8N_MULTI_MAIN_SETUP_ENABLED` is unset. `N8N_USE_WORKFLOW_PUBLICATION_SERVICE` and `N8N_SCHEDULER_ENABLED` are unset, so both are at their defaults (on). The CLI runs in a separate pod with the same image and DB settings.\n\n### Operating System\n\nn8nio/n8n:2.45.7 image (Alpine Linux 3.24) on k3s\n\n### n8n Version\n\n2.45.7\n\n### Node.js Version\n\n26.12.1\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nqueue\n\n### Hosting\n\nself hosted\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43133/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43133/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @theryguy,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9720\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9720](https://linear.app/n8n/issue/GHC-9720)",
+      "at": "2026-11-08T17:39:54Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43133#issuecomment-6724809547"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "I checked the current `HEAD` publication path. It has an explicit fallback in `workflow-publication-applier.ts`: after computing the diff, it adds desired non-webhook triggers that are not registered locally to `toAdd` (`getUnregisteredNonWebhookTriggerNodeIds`). The unchanged-trigger early return happens only after that check. So the reported 2.45.7 sequence is plausible for that build, but this repair path means the current source may behave differently. Can you confirm whether the same re-import still deletes the `scheduled_job` row on a current build, and whether the Schedule Trigger is then considered registered by `getUnregisteredNonWebhookTriggerNodeIds`? That would distinguish an old-version regression from a gap in the fallback.",
+      "at": "2026-11-08T18:05:48Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43133#issuecomment-6725109584"
+    }
+  ],
+  "comments_complete": true
+}

@@ -1,11 +1,11 @@
 {
-  "observed_at": "2026-11-08T08:57:08.651888+00:00",
+  "observed_at": "2026-11-09T09:44:42.802302+00:00",
   "config": "data/discovery_config.json",
   "adapters": [
     {
       "source": "Hacker News",
       "refreshed": true,
-      "collected": 25,
+      "collected": 31,
       "errors": []
     },
     {
@@ -22,25 +22,25 @@
       "access_method": "Discourse public category/topic JSON",
       "url": "https://community.n8n.io/c/jobs/13.json?order=created",
       "records_inspected": 43,
-      "primary_pages_opened": 25,
-      "verified_buyer_requests": 11,
-      "explicit_commercial_signals": 11,
-      "collected": 25,
+      "primary_pages_opened": 24,
+      "verified_buyer_requests": 10,
+      "explicit_commercial_signals": 10,
+      "collected": 24,
       "errors": [],
       "limitations": [
         "Two newest-topic pages, not complete market coverage; max 200 extra replies per topic. Incomplete competition remains UNKNOWN unless observed high.",
         "Last activity is not publication time. Only substantive buyer-authored follow-ups can renew a lead."
       ],
       "evidence_snapshots": [
-        "data/evidence/f5663f332d6bc9b1.json#sha256=9356cf244861a92a84bf52fbc399e1a77459cb047d7756b738ed2b39fe497f48",
-        "data/evidence/d9f0be47fa047f2c.json#sha256=acbec6201b6bc7572bcd7bc9beda0c7cf92a35d55f9ace331bf5257916a202cc"
+        "data/evidence/f5663f332d6bc9b1.json#sha256=93033bc507e5d1e1ff2693c18126b0cf54ada70197699974654450e0ea20db89",
+        "data/evidence/d9f0be47fa047f2c.json#sha256=71d1d60ac07e35f3e2b175fafc6bcfd4f43f7f7a4b48003e3421ac4296ad21ee"
       ]
     },
     {
       "source_family": "public freelance/job listings",
       "access_method": "Remotive public JSON API; attributed source links",
       "url": "https://remotive.com/api/remote-jobs?search=automation&limit=20",
-      "records_inspected": 12,
+      "records_inspected": 13,
       "primary_pages_opened": 0,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
@@ -51,7 +51,7 @@
         "Legal warning - Hey, thanks for using Remotive's API, we appreciate it! Please note that API documentation and access is granted so that developers can share our jobs further. Please do not submit Remotive jobs to third Party websites, including but not limited to: Jooble, Neuvoo, Google Jobs, LinkedIn Jobs. Please link back to the URL found on Remotive AND mention Remotive as a source in order to Remotive to get traffic from your listing. If you don't do that, we'll terminate your API access, sorry! Jobs displayed are delayed by 24 hours, the goal being that jobs are attributed to Remotive on various platforms. Displaying our jobs in order to collect signups/email addresses to show a listing constitutes a breach of our terms of services. We offer a private, paid-for API, please email us at hello(at)remotive(dot)io for more information (starting budget is $5k/mo). Please find out terms of services on https://remotive.com/api-documentation. Please note that there is absolutely no need to request Remotive Job data too frequently. Typically, you only need to GET Remotive job data through this API a couple of times a day (we advise max. 4 times a day). Our data is not changing much faster than that anyway. Note that excessive requests will be blocked. Many thanks (Rodolphe & the Remotive team!)"
       ],
       "evidence_snapshots": [
-        "data/evidence/071898d5d7cef09e.json#sha256=9570a432fc13bb4dca33ccf852167ed9dc35846e225ab98814f141e09094761f"
+        "data/evidence/071898d5d7cef09e.json#sha256=07f5d02592953202e020b778c3a5acd7b111c03b52b576b0b0fbf5ff873c2c5e"
       ]
     },
     {
@@ -81,7 +81,7 @@
         "Search returned procurement notices; up to three detail pages attempted. No buyer request promoted: eligibility, exact remote scope, submission deadline and award status require manual verification."
       ],
       "evidence_snapshots": [
-        "data/evidence/50e3af0542f19c3a.json#sha256=598237679c75bce7f8961b3bb6dc408cf286786d33d27205ba4fd4af25ccf146"
+        "data/evidence/50e3af0542f19c3a.json#sha256=9e095bcecd601867e042a8b97e746dfc325cbc9beeaeb94afaf22189936befc3"
       ]
     },
     {
@@ -134,14 +134,14 @@
         "No structured primary buyer requests extracted; static shell is not commercial proof. No login or anti-bot evasion."
       ],
       "evidence_snapshots": [
-        "data/evidence/b5d67d420401a4bb.json#sha256=370f42510cc63c6cac9270827f2a32b0ff925c977d135cbca92fd09ae50f38f7"
+        "data/evidence/b5d67d420401a4bb.json#sha256=357ceb9416750c77686ddfce49b1a940faf030d9ed7b468a76c440a6bd650319"
       ]
     },
     {
       "source_family": "freelance project marketplace (Freelancer)",
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://www.freelancer.com/jobs/product-sourcing/",
-      "records_inspected": 14,
+      "records_inspected": 17,
       "primary_pages_opened": 3,
       "verified_buyer_requests": 2,
       "explicit_commercial_signals": 2,
@@ -151,10 +151,10 @@
         "Public bidCount includes competitors; only first 20 proposals may be visible. Employer identity often unresolved. Task budget is not agreement to our pilot."
       ],
       "evidence_snapshots": [
-        "data/evidence/abf73d1fa5782498.json#sha256=ea3836bfc140fa72ecd34cb22378acb9bf589c8cc06b6a09c4119a898959258b",
-        "data/evidence/545486c9f6791966.json#sha256=fe2806b61a24543d60a4fc570efcef9f2eb22e7278d1d5cdfbd79dd98bbccb4c",
-        "data/evidence/e2cd5e73e5830b11.json#sha256=1f3df2105a04a61630e3b51c28eb89ce08a7adc9096ecba6de673aa63394c061",
-        "data/evidence/9decfd751dbe8075.json#sha256=850a713cc3c0fc4ee5a809e8920f8b3be86b48adfbbe895c85651fc6b7256fe4"
+        "data/evidence/abf73d1fa5782498.json#sha256=e08fddc9707ea0fbb8e88aebdfc0437273e4604d4100c66d371fa682cbd791bd",
+        "data/evidence/545486c9f6791966.json#sha256=d40d0a6348c35dbdd84be116f81f9e694ea9d4b4262fb6fe9db860b1cdf0974e",
+        "data/evidence/e2cd5e73e5830b11.json#sha256=0744bb854cb4b9a62f6af37d6512c156107320e14429b08f2583868ab57d7f59",
+        "data/evidence/9decfd751dbe8075.json#sha256=b560ba347e00b23ffa770581c108018f78b0adc4cd67c9aeb3e62df49d9c4bff"
       ],
       "records": [],
       "opportunity_ids": [
@@ -163,6 +163,9 @@
         "9decfd751dbe8075"
       ],
       "inspected_keys": [
+        "/projects/market-research/project-40808918",
+        "/projects/amazon/amazon-ebay-private-label-product",
+        "/projects/keyword-research/project-40808795",
         "/projects/sourcing/china-construction-materials-sourcing",
         "/projects/sourcing/source-handmade-omani-kumma-cap",
         "/projects/sourcing/china-trend-product-sourcing",
@@ -183,7 +186,7 @@
       "source_family": "freelance project marketplace (Freelancer)",
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://www.freelancer.com/jobs/api-integration/",
-      "records_inspected": 49,
+      "records_inspected": 50,
       "primary_pages_opened": 0,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
@@ -193,11 +196,16 @@
         "A different query/category on Freelancer does not count as another independent family."
       ],
       "evidence_snapshots": [
-        "data/evidence/eb34b643617bda88.json#sha256=fe62c7892b7bba169f32ca40cc6f07677b98961ebdf8640bdbbfda2d3e4d5740"
+        "data/evidence/eb34b643617bda88.json#sha256=3b5a220474945cfb0d75b927b2bc12c514e4df36f1cd4d04eb0fd66e02a012ee"
       ],
       "records": [],
       "opportunity_ids": [],
       "inspected_keys": [
+        "/projects/translation/complete-website-translation-integration",
+        "/projects/automation/automate-your-workflows-with",
+        "/projects/api-integration/integrate-razer-payment-gateway",
+        "/projects/ui-design/india-super-pay-fintech-digital",
+        "/projects/woocommerce/woocommerce-auto-parts-inventory",
         "/projects/activecampaign/xleads-integration-setup-needed",
         "/projects/android/build-real-time-fleet-tracking",
         "/projects/api-integration/full-stack-team-for-multiseller",
@@ -242,11 +250,7 @@
         "/projects/api-integration/website-revamp-api-integration",
         "/projects/ios/mobile-app-maintenance-retainer",
         "/projects/web-development/virtual-clinic-website-emr-marketing",
-        "/projects/full-stack-development/udaipur-full-stack-marketing-expert",
-        "/projects/android-app-development/android-app-enhancement-feature",
-        "/projects/ai-automation/thumbnail-king-email-automation",
-        "/projects/api-integration/fix-woocommerce-merchant-feed",
-        "/projects/ai-automation/dedicated-business-agent-for-operations"
+        "/projects/full-stack-development/udaipur-full-stack-marketing-expert"
       ]
     },
     {
@@ -263,44 +267,44 @@
         "Latest activity is not original publication; support questions are PRODUCT_SIGNAL, not SALES. No more than four primary topics per run."
       ],
       "evidence_snapshots": [
-        "data/evidence/bda5dc3c1eb46ea5.json#sha256=239e50db1b0d0374ea9ebccab7474c14ed0e4aa34b569ac62efe7d1f722f3cfa",
-        "data/evidence/5b424ae8d3e7d462.json#sha256=5ad5fe1bbf415a4ccd13e9f28c6544f86527553ab6d46f10c08844e8dcd39297"
+        "data/evidence/bda5dc3c1eb46ea5.json#sha256=6a6928cfc6382c00824d619b35ac477a4591883726d4448fec2441f114e66c34",
+        "data/evidence/79a32cdc011eb9e6.json#sha256=d546d1a6bd28aaab002f1680307fa0519cbde6c4095b25a1a707526253e7e3b0"
       ],
       "records": [],
       "opportunity_ids": [
-        "01c049d4de099c8d"
+        "5c2d12a56818a8d5"
       ],
       "inspected_keys": [
         "355460",
-        "677375",
+        "712425",
+        "270223",
         "638887",
-        "711779",
-        "709892",
-        "651403",
-        "711747",
-        "711767",
-        "711715",
-        "385496",
-        "709248",
-        "711195",
-        "709119",
-        "711739",
-        "711383",
+        "396925",
+        "707397",
+        "582347",
         "711730",
-        "708782",
-        "189201",
-        "708788",
-        "608006",
-        "644258",
-        "561054",
-        "379635",
-        "205995",
-        "711703",
-        "711635",
-        "301424",
-        "592269",
-        "615581",
-        "709817"
+        "682404",
+        "615718",
+        "587455",
+        "712389",
+        "107906",
+        "712392",
+        "712344",
+        "711747",
+        "712295",
+        "709813",
+        "711789",
+        "700856",
+        "553970",
+        "554939",
+        "709817",
+        "279939",
+        "711311",
+        "711739",
+        "711767",
+        "337652",
+        "709208",
+        "573208"
       ]
     },
     {
@@ -317,118 +321,74 @@
         "Only server-rendered public pages. robots disallows /api/ and sign-in; neither used. Founder self-promotion is not a buyer."
       ],
       "evidence_snapshots": [
-        "data/evidence/6548833164b0e7c9.json#sha256=0e861c97cd8b32d9a5f86a794ba79c7784c87d52b0a3554b2d880526551ac950"
+        "data/evidence/6548833164b0e7c9.json#sha256=e8112af85a360e9cc3fdd44002d3aab4c8632d787d182b215382ed703893b70b"
       ],
       "records": [],
       "opportunity_ids": [],
       "inspected_keys": [
+        "/post/monday-again-what-are-you-building-this-week-15ncpkuk3dbtkDNS0woJ",
+        "/post/solo-founders-are-you-paying-for-too-many-separate-ai-tools-UNNbswFLcsxl7FbeY6zH",
+        "/post/i-make-a-study-tool-78-signups-0-paying-customers-here-is-what-ive-seen-so-far-wTG4Fq31YNxjG7qcLKzr",
         "/post/ill-tell-you-my-product-you-tell-me-yours-BUThfNYcLQDH9VVIDGld",
         "/post/28-downloads-in-two-weeks-0-sales-and-i-couldnt-see-where-people-dropped-off-vTUWsSLhBDm4EH2pZGOa",
-        "/post/ive-shipped-four-small-products-and-sold-nothing-where-would-you-put-the-next-10-hours-9T3UwGtc8RHaR2m6UihM",
-        "/post/guessing-keywords-is-the-easiest-way-to-write-posts-nobody-searches-for-vzwGpbrvarW2fDtNl3kX",
-        "/post/how-did-you-find-your-first-paying-customers-were-struggling-with-this-aUTkZW6IzB5qkjrHqVlA",
-        "/post/both-language-files-had-six-keys-the-checkout-button-was-blank-0J3Y7envr1JleaFF7N6a",
-        "/post/if-an-ai-agent-did-one-job-for-your-startup-tomorrow-which-one-would-you-trust-it-with-23LP4mt48MlW7KxAcH5T",
-        "/post/built-your-saas-but-struggling-to-get-customers-bsJK9C9ytbWvTETGBLj9",
-        "/post/what-are-you-currently-building-and-why-kt1qRMt6kH94CCm0df5g",
+        "/post/a-launch-week-question-turned-into-my-biggest-feature-shipped-it-the-same-week-e0TE2IWro0v176lgxlDz",
+        "/post/4-people-uploaded-screenshots-to-my-app-none-of-them-clicked-render-here-s-what-i-changed-5Uv5Iv8Iw0WtA7LngyMk",
+        "/post/product-hunt-alternatives-i-read-the-pricing-pages-of-19-of-them-lSh8tKGNc9uKRW5HUf5f",
+        "/post/how-many-unbilled-hours-do-silent-api-webhook-breaking-changes-cost-your-client-projects-4WGLCi8ZZweBQe7F6Jm9",
         "/post/tech/ahrefs-new-domain-rating-is-worse-at-predicting-how-your-domain-ranks-on-google-wuMETmw9YkOACYjkO3cW",
         "/post/tech/openai-to-buy-pierre-which-says-lovable-and-bolt-rely-on-its-git-service-WJg3ZfajMaPx5WJ9vLiP",
         "/post/tech/marc-lou-says-he-rejected-2-5m-for-trustmrr-Gd2Vs2WSq9PlQdu8TtJK",
         "/post/tech/pieter-levels-says-claude-code-found-almost-34-000-a-month-in-cost-cuts-Rtcn8vcsKPHV7ZuMQUM8",
         "/post/tech/beehiivs-third-1m-in-mrr-took-9-months-its-first-took-36-AfyfAW3nLIaUPTpr856T",
         "/post/tech/how-goguardian-grew-from-a-chrome-extension-to-100m-arr-B1qKroz4HFqqH47eGHTD",
-        "/post/4-people-uploaded-screenshots-to-my-app-none-of-them-clicked-render-here-s-what-i-changed-5Uv5Iv8Iw0WtA7LngyMk",
-        "/post/i-built-a-saas-dashboard-template-now-i-want-to-find-the-right-people-to-build-with-0T1zwQWNwfPbrd5OKbsI",
-        "/post/which-llm-do-you-use-ours-is-a-local-language-model-whenever-i-show-someone-nyata-the-first-question-is-usually-which-llm-is-it-efnswBijbSY3vJqWHEm8",
-        "/post/how-many-unbilled-hours-do-silent-api-webhook-breaking-changes-cost-your-client-projects-4WGLCi8ZZweBQe7F6Jm9",
-        "/post/im-a-solo-founder-in-iceland-building-amplify-describe-a-game-website-or-web-app-then-change-it-by-chatting-IttUrRaCPKNZKVyiXyJk",
-        "/post/product-hunt-alternatives-i-read-the-pricing-pages-of-19-of-them-lSh8tKGNc9uKRW5HUf5f",
-        "/post/wick-is-an-ai-agent-that-has-to-earn-enough-to-pay-its-own-compute-costs-day-5-update-lVjYYAFoNsRFY8rKs5gZ",
-        "/post/developers-dont-have-an-api-problem-they-have-an-api-discovery-problem-GxYhkiT9fw3wumjZYjuT",
-        "/post/tech/starting-from-scratch-and-hitting-9-5k-mrr-in-two-months-j5pMaED5FEbKw8qmeyj9",
-        "/post/tech/building-a-3m-yr-company-without-launching-publicly-tacryeGIH66SCtD2an4r",
-        "/post/services/pivoting-a-saas-into-a-mid-5-figure-mrr-service-company-g66eHSApgPWLDMHo7Ik1"
+        "/post/your-first-20-sign-ups-might-not-tell-you-whether-people-actually-want-your-product-1RUqDO4IHCS3mgO22ozK",
+        "/post/my-niche-seo-experiment-524-google-impressions-7-clicks-and-what-im-learning-4kzte4XsYUOeYP1MxCXB",
+        "/post/a-user-wrote-i-did-every-step-and-nothing-sends-my-dashboard-said-it-was-her-fault-my-logs-said-7-of-7-failed-because-of-me-zj80W5ufcNJfjIRZX7Y4",
+        "/post/trustslot-is-at-0-mrr-these-are-the-numbers-im-watching-instead-HzRtHolCVpXrKt8KD2yW",
+        "/post/the-same-200-reviews-covered-8-hours-for-spotify-and-22-months-for-things-3-FXs89e01NhN11R7QBAH2",
+        "/post/an-upvote-and-a-review-are-not-the-same-signal-rjgu2i8D8Ni95vZCYCIN",
+        "/post/i-built-answisp-to-see-if-chatgpt-recommends-my-products-TvYJzepOCaFhaFgnl9PO",
+        "/post/i-compiled-everything-from-the-reddit-vs-indie-hackers-vs-x-thread-into-one-post-NWkt6bd8tWyXujLfP4bh",
+        "/post/tech/hitting-60k-mrr-by-building-an-sdk-instead-of-an-app-0B3bsTvvOG0wqf8cAx1v",
+        "/post/tech/turning-a-freelance-gig-into-a-150k-yr-product-tDdZGZyiyNTztPfI2wkY",
+        "/post/tech/from-weekend-project-to-1m-mrr-in-two-years-YRaa1QlGTjaqh0XgzWkc"
       ]
     },
     {
       "source_family": "international physical-goods RFQ (TradeKey)",
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://www1.tradekey.com/buyoffer_search/start_date/3/page_no/3.htm",
-      "records_inspected": 25,
-      "primary_pages_opened": 2,
-      "verified_buyer_requests": 2,
-      "explicit_commercial_signals": 2,
+      "records_inspected": 0,
+      "primary_pages_opened": 0,
+      "verified_buyer_requests": 0,
+      "explicit_commercial_signals": 0,
       "collected": 0,
-      "errors": [],
-      "limitations": [
-        "Physical goods buyers do not automatically buy research. Contact requires platform sign-in; no access bypass. No bid-count visibility => UNKNOWN."
-      ],
-      "evidence_snapshots": [
-        "data/evidence/3914e4f508c84945.json#sha256=e9ccef0eb4d53548bbe5699067c3435cbfabdd35e872b984c94c1e7ceee4a81b",
-        "data/evidence/2d574169371a28b2.json#sha256=6d827279becfe01101627fd7a7e42702d5a8c7d68c4744dbc0824a166951ec83",
-        "data/evidence/438c1dbb76b0dd0f.json#sha256=d0994de840351b1335be6f07995c981a7d240b1cb12c3d7b88911a2278b6c850"
-      ],
-      "records": [
+      "errors": [
         {
-          "url": "https://importer1.tradekey.com/buyoffer/EVA-Foam-Sheets-For-Printing-And-Packaging-Work-3878349.html",
-          "primary_excerpt": "Last Updated: Posted on: 07 Nov 2026 Time Left: 27D 15H Payment Terms: T/T, L/C, D/A, D/P, Western Union, Money Gram Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details Hi there, I require EVA foam sheets in 1-10 mm thickness, with density options around 30-100 kg/m3. Please give the available sheet dimensions, hardness, colour range, closed-cell structure, thickness tolerance and whether adhesive-backed material can be supplied. Clean cutting edges and consistent colour between batches are important for our work. Regards, Zahid Refine by popular tags EVA foam sheets closed cell foam EVA sheet Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.09477 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French Guiana French Polynesia Gabon Gambia Georgia Germany Ghana Gibraltar Greece Greenland Grenada Guadeloupe Guam Guatemala Guernsey ",
-          "decision": "Physical goods RFQ; not a commissioned China research service; contact gated and competition unknown",
-          "buyer": true,
-          "published_at": "2026-11-07T00:00:00+00:00",
-          "date_precision": "day; original posted date, not crawl date"
-        },
-        {
-          "url": "https://importer1.tradekey.com/buyoffer/Red-Lentils-Required-In-Food-Grade-Bags-3878345.html",
-          "primary_excerpt": "Last Updated: Posted on: 07 Nov 2026 Time Left: 27D 15H Payment Terms: T/T, L/C, D/A, D/P, Western Union, Money Gram Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details Good day, I am sourcing red lentils for commercial distribution. Please state whether the offer is whole or split lentils, crop year, origin, grain size, moisture, foreign matter and discoloured-grain limits. Quote 25 kg and 50 kg food-grade bags and share a recent lot photograph. Regards, Tony Gathungu Refine by popular tags red lentils split lentils bulk pulses Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.09716 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French Guiana French Polynesia Gabon Gambia Georgia Germany Ghana Gibraltar Greece Greenland Grenada Guadeloupe Guam Guatemala Guernsey Guinea Guinea-Bissau Guyana Haiti Honduras Hong Kong Hungary Icela",
-          "decision": "Physical goods RFQ; not a commissioned China research service; contact gated and competition unknown",
-          "buyer": true,
-          "published_at": "2026-11-07T00:00:00+00:00",
-          "date_precision": "day; original posted date, not crawl date"
+          "url": "https://www1.tradekey.com/buyoffer_search/start_date/3/page_no/3.htm",
+          "error": "TimeoutError: The read operation timed out"
         }
       ],
+      "limitations": [],
+      "evidence_snapshots": [],
+      "records": [],
       "opportunity_ids": [],
-      "inspected_keys": [
-        "https://importer1.tradekey.com/buyoffer/EVA-Foam-Sheets-For-Printing-And-Packaging-Work-3878349.html",
-        "https://importer1.tradekey.com/buyoffer/Red-Lentils-Required-In-Food-Grade-Bags-3878345.html",
-        "https://importer1.tradekey.com/buyoffer/Current-Offer-Needed-For-Refined-Edible-Oil-3878343.html",
-        "https://importer1.tradekey.com/buyoffer/NY-8658EJA-Heavy-Duty-Blender-Needed-3878341.html",
-        "https://importer1.tradekey.com/buyoffer/EKIRESIN-PCB-Resist-And-Filling-Resin-Required-3878339.html",
-        "https://importer1.tradekey.com/buyoffer/INTERNATIONAL-MANUFACTURING-amp-WHOLESALE-SUPPLY-PARTNERSHIP-REQUEST-3878337.html",
-        "https://importer1.tradekey.com/buyoffer/Granular-Sulphur-99-95-Required-3878331.html",
-        "https://importer1.tradekey.com/buyoffer/OID-Talking-Pens-For-Coded-Learning-Books-3878329.html",
-        "https://importer1.tradekey.com/buyoffer/Racket-Bags-Wanted-For-Retail-Resale-3878327.html",
-        "https://importer1.tradekey.com/buyoffer/Nutella-Hazelnut-Spread-Needed-For-Wholesale-Supply-3878325.html",
-        "https://importer1.tradekey.com/buyoffer/LME-Grade-A-Copper-Cathodes-Required-3878321.html",
-        "https://importer1.tradekey.com/buyoffer/Door-Handles-Required-In-Stainless-Steel-Finishes-3878319.html",
-        "https://importer1.tradekey.com/buyoffer/Hydroponic-Fodder-Growing-Machine-For-Farm-Use-3878317.html",
-        "https://importer1.tradekey.com/buyoffer/Buying-Refined-Sunflower-Oil-In-Retail-And-Bulk-Packs-3878311.html",
-        "https://importer1.tradekey.com/buyoffer/Broiler-Parent-Stock-Chicks-For-Commercial-Farm-3878309.html",
-        "https://importer1.tradekey.com/buyoffer/PVC-Cable-Trunking-Needed-In-Standard-Sections-3878305.html",
-        "https://importer1.tradekey.com/buyoffer/Hair-Springs-Required-To-Technical-Drawing-3878303.html",
-        "https://importer1.tradekey.com/buyoffer/Looking-For-Clean-Scrap-Tyres-For-Recycling-3878301.html",
-        "https://importer1.tradekey.com/buyoffer/Need-Hardwood-Lump-Charcoal-In-Export-Packing-3878299.html",
-        "https://importer1.tradekey.com/buyoffer/Copper-Ore-3878297.html",
-        "https://importer1.tradekey.com/buyoffer/Bags-Note-Cover-Flip-Flops-3878295.html",
-        "https://importer1.tradekey.com/buyoffer/Children-Bagpack-3878291.html",
-        "https://importer1.tradekey.com/buyoffer/Tenant-Union-Representative-Network-3878287.html",
-        "https://importer1.tradekey.com/buyoffer/BOPP-Adhesive-Packing-Tape-Required-3878283.html",
-        "https://importer1.tradekey.com/buyoffer/Long-Fibre-Flax-Processing-Line-Required-3878281.html"
-      ]
+      "inspected_keys": []
     }
   ],
-  "unique_refreshed": 78,
+  "unique_refreshed": 83,
   "info_edge_refresh": [
     {
       "id": "5409f529cb2b0f7b",
       "url": "https://community.n8n.io/t/assistant-credits-top-up-now-available/318075",
-      "checked_at": "2026-11-08T08:57:08.651888+00:00",
+      "checked_at": "2026-11-09T09:44:42.802302+00:00",
       "refreshed": false,
       "reason": "event expired; no publication rejuvenation"
     },
     {
       "id": "edge-haiku-2026-10-07",
       "url": "https://www.anthropic.com/claude-haiku-5-5",
-      "checked_at": "2026-11-08T08:57:08.651888+00:00",
+      "checked_at": "2026-11-09T09:44:42.802302+00:00",
       "refreshed": false,
       "reason": "event expired; no publication rejuvenation"
     }

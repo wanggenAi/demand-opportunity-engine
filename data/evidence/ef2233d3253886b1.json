@@ -1,0 +1,66 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50417638",
+  "collected_at": "2026-11-09T09:44:42.802302+00:00",
+  "source": {
+    "author": "uw_rob",
+    "children": [
+      {
+        "author": "barbariangrunge",
+        "children": [
+          {
+            "author": "uw_rob",
+            "children": [],
+            "created_at": "2026-11-09T05:27:57.000Z",
+            "created_at_i": 1794202077,
+            "id": 50421416,
+            "options": [],
+            "parent_id": 50419187,
+            "points": null,
+            "story_id": 50407882,
+            "text": "I’m having it automate everything more or less end to end. Most of my current work is coding, research, and very low stakes ops work. I’m not heavy into the infra side which I think has higher stakes for agent mistakes which are easy to make.<p>Just to give a sense of my usual flow: In a private Slack channel I’ll @ my agent with a task and a few pointers. It’ll research internally (Slack, Google, Private GitHub, Jira) for evidence and if things line up it’ll open a PR. I’ll review the PR and leave comments and my Agent gets a notification when comments come into its PRs. Once the PR is merged the agent will follow along with the deploy and get notifications on each step. If needed it’ll update the Jira, send a customer a ping in Slack to let them know it’s merged and deploying and for them to test it out, and if things go wrong and need to roll back based on alerts or logs it’ll escalate to me.<p>Individually I could approve each step and sandbox it but that would limit how many of these things I can get going in parallel. Things have been OK for at least 6 months now with this flow. I suspect I could scale up to even more parallel agents if I could get this flow off of my machine but I dont think I’d ever go back to approving each of the steps. It would have to be on a new machine primarily to get a new identity which is slightly less scary but again no way I’m approving things step by step again.<p>It’s definitely scary to start with but once you are cooking it’s great.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-09T00:07:35.000Z",
+        "created_at_i": 1794182855,
+        "id": 50419187,
+        "options": [],
+        "parent_id": 50417638,
+        "points": null,
+        "story_id": 50407882,
+        "text": "Good point depending on your workflow for giving it permissions within the sandbox. Does it need those permissions though? Can&#x27;t it just ask you to do the provisioning via curl etc? Or do you have it automating your cloud infrastructure, jira, testing servers, and git etc so that you can&#x27;t disconnect it any more?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-11-08T21:44:30.000Z",
+    "created_at_i": 1794174270,
+    "id": 50417638,
+    "options": [],
+    "parent_id": 50415536,
+    "points": null,
+    "story_id": 50407882,
+    "text": "Not argumentative at all. I&#x27;ve spent the last 6 months working on these problems and built the original Agentic Identity solution at my large company this January. Getting Agents secure and scalable means a lot to me and I have some counter intuitive thoughts on it. Everyone has been working on this stuff though and there&#x27;s tons of different opinions on the matter so I think all open discussion is good and healthy.<p>I think it&#x27;s what are you trying to achieve, the risk vs. reward trade off for that, putting some thought into the aggravating vs. mitigating factors, and lastly doing some gut checks on if model improvement over time change the risk v reward calculus.<p>On paper &quot;sandbox everything&quot; sounds great but I haven&#x27;t personally seen it work work in the general sense of &quot;solving&quot; Agent security. Agents need permissions to accomplish tasks. Putting them into a sandbox opens up difficult questions like &quot;How do I provision a new identity which only has the capabilities which the tasks need&quot; -- few systems and vendors have enough knobs needed for this -- and &quot;If I give it access to the tools or permissions it needs can bad things happen regardless of the sandbox?&quot;. None of these have great answers with low friction. Once you factor in decision fatigue it gets worse as well.<p>I think if you accept that some risk is needed to accomplish meaningful tasks, that Agents are inherently statistically dangerous regardless of sandboxing, then you accept that you need statistically safety on your side. So in comes things like auto mode, system prompts which instruct some baseline behavior for your systems, being picky about model choice, and thinking about the pink elephant effect (Perhaps don&#x27;t pass Haiku ambitious tasks which require unsupervised internet research and package installations while telling it at the same time to not hide its tracks if it makes an error).<p>The infra and identity layer is the real killer. Not all vendors and apps have as many knobs as you might like -- it would be amazing if everyone supported things like OAuth&#x27;s Rich Authorization Requests. Apparently Anthropic heavily uses their cloud agents internally -- and that seems reasonable because they are all-in on it and have infinite tokens to rewrite software which doesn&#x27;t work nicely there. Much harder as an individual or as a company that isn&#x27;t a lab.<p>For me: I&#x27;m running with a mixture of both sandboxed and unsandboxed. My company has something like Claude Managed Agents internally but it isn&#x27;t integrated with everything I need, cannot compile or run all of the internal stacks I work with, and doesn&#x27;t have enough knobs to get the customization needed for success on my daily work.<p>Regardless, while my cloud agents are working away I also have things running on my machine as well for tasks which I want&#x2F;need to be more hands on with. If my machine gets rm -rf&#x27;d I&#x27;ll live. I dont have API keys on my machine -- everything is tokens which need to be refreshed daily. I use frontier models on high reasoning. Extremely destructive internal actions typically require step-up authentication and my Agent cannot do that itself. I have some common sense boundaries in my root AGENTS.md.<p>Looking around in at my company, as of a few months ago before a sandboxing solution was rolled out and before Claude shipped auto mode, around ~50% were running Claude in YOLO mode. Some large chunk of the remainder had blanket approval for &quot;python3&quot; and &quot;curl&quot; so even with manual approvals it wasn&#x27;t really offering anything. Things were mostly fine -- the cases which were spread around for the dangers of agents weren&#x27;t super meaningful -- examples being agents submitting bad data into a system or flipping dangerous feature flag. Frankly: Humans have done all of these as well and I think systems should validate input and feature flags should be automatically rolled back or be under step-up authorization before they change.<p>Could my local agents be put into a disposable sandbox? Yes but it doesn&#x27;t get me much individually imho. I might put them into a more durable and reusable sandbox one day to run locally -- but until then I&#x27;m comfortable accepting the risks given my mitigating factors and the rewards I get when my 5-10 local Agents can &quot;just do things&quot;.",
+    "title": null,
+    "type": "comment",
+    "url": null
+  },
+  "comments": [
+    {
+      "author": "barbariangrunge",
+      "text": "Good point depending on your workflow for giving it permissions within the sandbox. Does it need those permissions though? Can't it just ask you to do the provisioning via curl etc? Or do you have it automating your cloud infrastructure, jira, testing servers, and git etc so that you can't disconnect it any more?",
+      "at": "2026-11-09T00:07:35.000Z",
+      "url": "https://news.ycombinator.com/item?id=50419187"
+    },
+    {
+      "author": "uw_rob",
+      "text": "I’m having it automate everything more or less end to end. Most of my current work is coding, research, and very low stakes ops work. I’m not heavy into the infra side which I think has higher stakes for agent mistakes which are easy to make. Just to give a sense of my usual flow: In a private Slack channel I’ll @ my agent with a task and a few pointers. It’ll research internally (Slack, Google, Private GitHub, Jira) for evidence and if things line up it’ll open a PR. I’ll review the PR and leave comments and my Agent gets a notification when comments come into its PRs. Once the PR is merged the agent will follow along with the deploy and get notifications on each step. If needed it’ll update the Jira, send a customer a ping in Slack to let them know it’s merged and deploying and for them to test it out, and if things go wrong and need to roll back based on alerts or logs it’ll escalate to me. Individually I could approve each step and sandbox it but that would limit how many of these things I can get going in parallel. Things have been OK for at least 6 months now with this flow. I suspect I could scale up to even more parallel agents if I could get this flow off of my machine but I dont think I’d ever go back to approving each of the steps. It would have to be on a new machine primarily to get a new identity which is slightly less scary but again no way I’m approving things step by step again. It’s definitely scary to start with but once you are cooking it’s great.",
+      "at": "2026-11-09T05:27:57.000Z",
+      "url": "https://news.ycombinator.com/item?id=50421416"
+    }
+  ],
+  "comments_complete": true
+}

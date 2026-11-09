@@ -7,10 +7,10 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## workflow_reliability — UNVALIDATED CLUSTER
 
-- independent_demand_count: 89
+- independent_demand_count: 93
 - payment_evidence_count: 1
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community', 'n8n Community']
-- communities: ['Agenta-AI/agenta', "Ask HN: What's your current AI agentic setup?", 'Ask/Show HN', 'Commerce operator forum', 'n8n Jobs', 'n8n-io/n8n', 'useagenthq/useagent']
+- communities: ['Agenta-AI/agenta', "Ask HN: What's your current AI agentic setup?", 'Ask/Show HN', 'Commerce operator forum', "Show HN: Glassbrain – Read your agent's brain, know what your agent knows", 'n8n Jobs', 'n8n-io/n8n', 'useagenthq/useagent']
 - repeated_pain: Operators cannot trust workflow execution status; triggers, responses or saved definitions fail.
 - current_alternatives: Vendor bug tracker and native fixes (free), internal engineering, n8n support, freelance automation providers.
 - productization_potential: Standardize reproduction, health checks and recovery runbooks; current category still too broad for one packaged product.
@@ -20,12 +20,12 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://news.ycombinator.com/item?id=50423246
+  - https://news.ycombinator.com/item?id=50420252
+  - https://github.com/n8n-io/n8n/issues/43136
+  - https://github.com/n8n-io/n8n/issues/43133
   - https://news.ycombinator.com/item?id=50400117
   - https://github.com/n8n-io/n8n/issues/43106
-  - https://news.ycombinator.com/item?id=50393105
-  - https://github.com/n8n-io/n8n/issues/43072
-  - https://github.com/n8n-io/n8n/issues/43068
-  - https://news.ycombinator.com/item?id=50376110
 
 ## browser_automation — UNVALIDATED CLUSTER
 
@@ -106,3 +106,20 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Representative evidence:
   - https://github.com/HuggerHustle/ai-radar/issues/46
   - https://github.com/datnguyenquy94/news-radar/issues/777
+
+## supplier_verification — UNVALIDATED CLUSTER
+
+- independent_demand_count: 1
+- payment_evidence_count: 0
+- platforms: ['GitHub']
+- communities: ['abu-lina/uflow']
+- repeated_pain: Verify a supplier before sending a deposit.
+- current_alternatives: Alibaba badges, public company records, sourcing agents, third-party due diligence.
+- productization_potential: One supplier desk-verification memo with evidence links and missing checks.
+- suggested_product_form: Skill + Service package
+- distribution: Reply only to buyers who explicitly invite agent quotations.
+- Promotion blockers: fewer than 5 independent observations; only one community; cross-source validation missing; fewer than 2 primary payment/commercial signals; paid-market proof not independently verified
+- Action: WATCH (no standardized product build authorized by evidence)
+- Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
+- Representative evidence:
+  - https://github.com/abu-lina/uflow/issues/877

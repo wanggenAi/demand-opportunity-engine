@@ -1,0 +1,176 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43136",
+  "collected_at": "2026-11-09T09:44:42.802302+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43136",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43136/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43136/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43136/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43136",
+    "id": 6274760302,
+    "node_id": "I_kwDOC4Q8Qs8AAAABdgE-bg",
+    "number": 43136,
+    "title": "Native Agent workflow tools wait ~60s on workers: missing child job completion/failure listeners",
+    "user": {
+      "login": "santastabber",
+      "id": 204424800,
+      "node_id": "U_kgDODC9GYA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/204424800?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/santastabber",
+      "html_url": "https://github.com/santastabber",
+      "followers_url": "https://api.github.com/users/santastabber/followers",
+      "following_url": "https://api.github.com/users/santastabber/following{/other_user}",
+      "gists_url": "https://api.github.com/users/santastabber/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/santastabber/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/santastabber/subscriptions",
+      "organizations_url": "https://api.github.com/users/santastabber/orgs",
+      "repos_url": "https://api.github.com/users/santastabber/repos",
+      "events_url": "https://api.github.com/users/santastabber/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/santastabber/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 4,
+    "created_at": "2026-11-08T19:31:28Z",
+    "updated_at": "2026-11-09T07:48:37Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Bug Description\n\nA native Agent workflow tool completes its child execution in about two seconds, but the calling worker receives the result only after about 61 seconds. Main receives the completion event promptly. The caller eventually logs that it is resolving the wait from the database because it did not receive a completion event.\n\nThe root cause appears to be an event-listener omission: workers can **enqueue and await** child workflow jobs, but `ScalingService.registerWorkerListeners()` only handles `abort-job` progress messages and queue errors. It does not feed child completion/failure events into `JobOutcomeTracker`. Main/webhook listeners do.\n\nThis adds almost a minute to a successful, very small tool result and can exhaust an Agent investigation's time budget. The observed child query itself was not taking a minute.\n\n## To Reproduce\n\nObserved path: a parent workflow running on worker A uses **Message an Agent v3.1**, and the native Agent invokes an attached workflow tool. That child is enqueued and runs on worker B.\n\nMinimal setup to exercise the same path:\n\n1. Use self-hosted n8n in queue mode with main, Redis, PostgreSQL, and at least two available workers.\n2. Set `OFFLOAD_MANUAL_EXECUTIONS_TO_WORKERS=true` and `EXECUTIONS_MODE=queue`.\n3. Attach a workflow tool to a native Agent. A credentials-free child such as **Execute Sub-workflow Trigger -> Edit Fields** returning `{ \"ok\": true }` should be sufficient; save child execution data for diagnosis.\n4. Run a parent workflow containing Message an Agent, and ask it to call that tool once. Ensure a worker is the caller and another worker can run the child.\n5. Compare the child execution's stop time, main's completion log, the caller worker's fallback warning, and the Agent tool-call start/end times.\n\nThe measurements below come from an existing read-only tool. The suggested minimal child above has not been run as a separate end-to-end reproduction. A credentials-free event-level reproducer using the installed classes is included below; it fails against the unmodified worker listener.\n\n## Expected behavior\n\nThe calling worker should consume its child job's completion/failure promptly and return the result, rather than relying on the periodic database recovery check. Early completion must be buffered, failures must reject, and waiting execution metadata must be preserved.\n\n## Sanitised evidence\n\nWorker labels and identifiers are symbolic. Absolute timestamps, customer data, workflow/execution IDs, hostnames, URLs, inputs and tool payloads have been removed. The relative timings below preserve the measured gaps.\n\n```text\nSanitised timing evidence\n\nIdentifiers are symbolic, worker names are relabelled, and all absolute times\nare replaced by offsets from the child enqueue. These are measurements from\none observed run, not a synthetic benchmark.\n\nT+0.000s  worker-A: Enqueued execution <child-execution> (job <child-job>)\nT+0.007s  worker-B: Worker started execution <child-execution> (job <child-job>)\nT+2.018s  worker-B: Worker finished execution <child-execution> (job <child-job>)\nT+2.019s  main:     Execution <child-execution> (job <child-job>) finished\nT+60.846s worker-A: Execution <child-execution> ended without a completion event,\n                   resolving the wait from the DB\n\nPersisted child execution duration: 1.987s.\nNative Agent tool-call duration:    60.972s.\nChild stop to tool result return:   approximately 58.9s.\nTool result: success; 243 characters (no payload attached).\n\nThe caller worker missed the result although main received the completion\nevent promptly. This is not a one-minute database query or model inference.\n\nIsolated listener checks before the proposed compiled equivalent:\n  FAIL: Completion listener did not settle within 100ms.\n\nIsolated checks with the proposed compiled equivalent:\n  9 passed: completion, early completion, failure, early failure, Bull completed\n  fallback, Bull failed fallback, unrelated execution, abort handling, waiting\n  child status and waitTill preservation (the last combined as one check).\n\nThese event-level checks use the installed ScalingService and JobOutcomeTracker\nclasses. They do not run an AI model, contact external customer systems, or\nclaim an end-to-end production retest. The proposed patch was not deployed.\n```\n\n## Source analysis\n\n- [`ScalingService` in 2.46.6](https://github.com/n8n-io/n8n/blob/n8n%402.46.6/packages/cli/src/scaling/scaling.service.ts): `registerWorkerListeners()` ignores `job-finished` / `job-failed`, and does not register the Bull completion/failure fallbacks. `registerMainOrWebhookListeners()` does all of these.\n- [`JobOutcomeTracker`](https://github.com/n8n-io/n8n/blob/n8n%402.46.6/packages/cli/src/scaling/job-outcome-tracker.ts): `waitFor()` leaves the child pending until an event settles it or `recheckPendingWaits()` notices its terminal database status.\n- [`JOB_WAIT_RECHECK_INTERVAL_MS`](https://github.com/n8n-io/n8n/blob/n8n%402.46.6/packages/cli/src/scaling/constants.ts) is 60 seconds, which matches the observed caller delay.\n- [`WorkflowRunner`](https://github.com/n8n-io/n8n/blob/n8n%402.46.6/packages/cli/src/workflow-runner.ts) awaits `scalingService.waitForJob()` for enqueued executions.\n- [`Native Agent workflow tool factory`](https://github.com/n8n-io/n8n/blob/n8n%402.46.6/packages/cli/src/modules/agents/tools/workflow-tool-factory.ts) starts the child through `WorkflowRunner` and awaits completion.\n\nThe same worker-listener omission was also checked in the repository's current default branch. Related tracker history: #30392; this report concerns a worker acting as a **caller**, rather than a Redis disconnect on main/webhook.\n\n## Proposed fix code (inline attachment: worker-completion-fix.patch)\n\nThis is a proposed TypeScript patch against the 2.46.6 source, not a deployed workaround. It mirrors the existing main/webhook outcome handling for workers, retaining full v2 results and `waitTill`, early completion/failure buffering through the existing tracker, and Bull completion/failure fallback events. It leaves abort and queue error behavior intact, and does not add main-only MCP response handling or lower the recovery polling interval. A shared outcome handler could avoid duplication if preferred upstream.\n\n```diff\n--- a/packages/cli/src/scaling/scaling.service.ts\n+++ b/packages/cli/src/scaling/scaling.service.ts\n@@ -550,7 +550,48 @@\n \t\tqueue.on('global:progress', (jobId: JobId, msg: unknown) => {\n \t\t\tif (!this.isJobMessage(msg)) return;\n \n-\t\t\tif (msg.kind === 'abort-job') this.jobProcessor.stopJob(jobId);\n+\t\t\tswitch (msg.kind) {\n+\t\t\t\tcase 'abort-job':\n+\t\t\t\t\tthis.jobProcessor.stopJob(jobId);\n+\t\t\t\t\tbreak;\n+\t\t\t\tcase 'job-finished':\n+\t\t\t\t\tthis.jobOutcomeTracker.recordFinished(\n+\t\t\t\t\t\tqueue.name,\n+\t\t\t\t\t\tjobId,\n+\t\t\t\t\t\tmsg.executionId,\n+\t\t\t\t\t\tmsg.version === 2\n+\t\t\t\t\t\t\t? {\n+\t\t\t\t\t\t\t\t\tsuccess: msg.success,\n+\t\t\t\t\t\t\t\t\terror: msg.error,\n+\t\t\t\t\t\t\t\t\tstatus: msg.status,\n+\t\t\t\t\t\t\t\t\tlastNodeExecuted: msg.lastNodeExecuted,\n+\t\t\t\t\t\t\t\t\tusedDynamicCredentials: msg.usedDynamicCredentials,\n+\t\t\t\t\t\t\t\t\tmetadata: msg.metadata,\n+\t\t\t\t\t\t\t\t\tstartedAt: new Date(msg.startedAt),\n+\t\t\t\t\t\t\t\t\tstoppedAt: new Date(msg.stoppedAt),\n+\t\t\t\t\t\t\t\t\twaitTill: msg.waitTill ? new Date(msg.waitTill) : null,\n+\t\t\t\t\t\t\t\t\tnodeTimeSavedMinutes: msg.nodeTimeSavedMinutes,\n+\t\t\t\t\t\t\t\t}\n+\t\t\t\t\t\t\t: undefined,\n+\t\t\t\t\t);\n+\t\t\t\t\tbreak;\n+\t\t\t\tcase 'job-failed':\n+\t\t\t\t\tthis.jobOutcomeTracker.recordFailed(\n+\t\t\t\t\t\tqueue.name,\n+\t\t\t\t\t\tjobId,\n+\t\t\t\t\t\tmsg.executionId,\n+\t\t\t\t\t\tnew OperationalError(msg.errorMsg),\n+\t\t\t\t\t);\n+\t\t\t\t\tbreak;\n+\t\t\t}\n+\t\t});\n+\n+\t\t// Workers can enqueue and await child jobs too, not only process them.\n+\t\tqueue.on('global:failed', (jobId: JobId, failedReason: string) => {\n+\t\t\tthis.jobOutcomeTracker.settleByJobKey(queue.name, jobId, new OperationalError(failedReason));\n+\t\t});\n+\t\tqueue.on('global:completed', (jobId: JobId) => {\n+\t\t\tthis.jobOutcomeTracker.settleByJobKey(queue.name, jobId);\n \t\t});\n \n \t\tqueue.on('error', (error: Error) => {\n```\n\n## Regression reproducer (inline attachment: worker-completion-regression.cjs)\n\nThis exercises the real installed `ScalingService.registerWorkerListeners()` and `JobOutcomeTracker`, with an in-memory queue emitter. It does not simulate SQL or run an AI model. It intentionally fails the first check against the unmodified worker listener. An equivalent compiled patch passed all nine checks in a network-isolated container. The TypeScript diff above passes `git apply --check` against the 2.46.6 source; the full upstream TypeScript build/test suite and a patched end-to-end deployment have **not** been run. The candidate image was discarded and production was left unchanged.\n\nTo run the reproducer after saving the inline file:\n\n```sh\ndocker run --rm --network none --entrypoint node \\\n  --mount type=bind,src=\"$PWD/worker-completion-regression.cjs\",dst=/tmp/regression.cjs,readonly \\\n  n8nio/n8n:2.46.6 /tmp/regression.cjs\n```\n\n<details>\n<summary>worker-completion-regression.cjs (complete file)</summary>\n\n```js\nconst assert = require('node:assert/strict');\nconst { EventEmitter } = require('node:events');\nconst { performance } = require('node:perf_hooks');\nconst { ScalingService } = require('/usr/local/lib/node_modules/n8n/dist/scaling/scaling.service.js');\nconst { JobOutcomeTracker } = require('/usr/local/lib/node_modules/n8n/dist/scaling/job-outcome-tracker.js');\n\nconst tests = [];\nfunction setup(id = 'child') {\n  const replies = [];\n  const logger = { scoped() { return this; }, debug() {}, info() {}, warn() {}, error() {} };\n  const active = { has: execution => execution === id, resolveResponsePromise: (...args) => replies.push(args) };\n  const tracker = new JobOutcomeTracker(logger, active, { findStatusesByIds() { throw new Error('DB fallback must not run'); } }, { emit() {} });\n  const queue = Object.assign(new EventEmitter(), { name: 'jobs' });\n  const stopped = [];\n  const service = Object.assign(Object.create(ScalingService.prototype), {\n    jobOutcomeTracker: tracker, jobProcessor: { stopJob: job => stopped.push(job) }, logger,\n  });\n  service.registerWorkerListeners(queue);\n  const job = { id: '42', queue, data: { executionId: id } };\n  const finished = { kind: 'job-finished', version: 2, executionId: id, success: true, status: 'success', startedAt: '2026-11-09T00:00:00Z', stoppedAt: '2026-11-09T00:00:00.020Z', waitTill: null, lastNodeExecuted: 'Return result' };\n  return { tracker, queue, job, finished, stopped, replies };\n}\nasync function promptly(promise) {\n  let timer;\n  try { return await Promise.race([promise, new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('Completion listener did not settle within 100ms')), 100); })]); }\n  finally { clearTimeout(timer); }\n}\nasync function check(name, fn) { await fn(); tests.push(name); }\n(async () => {\n  await check('Finished child resolves immediately and preserves its full outcome', async () => {\n    const s = setup(); const start = performance.now(); const waiting = s.tracker.waitFor(s.job);\n    s.queue.emit('global:progress', s.job.id, s.finished); await promptly(waiting);\n    const result = s.tracker.popResult(s.job);\n    assert.equal(result.status, 'success'); assert.equal(result.lastNodeExecuted, 'Return result');\n    assert.equal(result.stoppedAt.toISOString(), s.finished.stoppedAt); assert.equal(result.waitTill, null);\n    assert.ok(performance.now() - start < 100); s.tracker.clear();\n  });\n  await check('Child finishing before wait registration is buffered', async () => {\n    const s = setup(); s.queue.emit('global:progress', s.job.id, s.finished);\n    await promptly(s.tracker.waitFor(s.job)); assert.equal(s.tracker.popResult(s.job).success, true); s.tracker.clear();\n  });\n  await check('Failed child rejects promptly with the native error', async () => {\n    const s = setup(); const waiting = s.tracker.waitFor(s.job);\n    const rejected = assert.rejects(waiting, /child failed/);\n    s.queue.emit('global:progress', s.job.id, { kind: 'job-failed', executionId: 'child', errorMsg: 'child failed' });\n    await promptly(rejected); s.tracker.clear();\n  });\n  await check('Early failure is retained until its caller waits', async () => {\n    const s = setup(); s.queue.emit('global:progress', s.job.id, { kind: 'job-failed', executionId: 'child', errorMsg: 'early failure' });\n    await promptly(assert.rejects(s.tracker.waitFor(s.job), /early failure/)); s.tracker.clear();\n  });\n  await check('Bull completed event recovers a missing progress event', async () => {\n    const s = setup(); const waiting = s.tracker.waitFor(s.job);\n    s.queue.emit('global:completed', s.job.id); await promptly(waiting); s.tracker.clear();\n  });\n  await check('Bull failed event rejects instead of reporting success', async () => {\n    const s = setup(); const waiting = s.tracker.waitFor(s.job); const rejected = assert.rejects(waiting, /queue failure/);\n    s.queue.emit('global:failed', s.job.id, 'queue failure'); await promptly(rejected); s.tracker.clear();\n  });\n  await check('Other executions do not accumulate result data', async () => {\n    const s = setup(); s.queue.emit('global:progress', '99', { ...s.finished, executionId: 'someone-else' });\n    assert.equal(s.tracker.getDiagnosticCounts().jobResults, 0); s.tracker.clear();\n  });\n  await check('Abort behavior remains intact and unrelated messages are ignored', async () => {\n    const s = setup(); s.queue.emit('global:progress', '42', { kind: 'abort-job' });\n    s.queue.emit('global:progress', '42', null); s.queue.emit('global:progress', '42', { kind: 'mcp-response' });\n    assert.deepEqual(s.stopped, ['42']); assert.equal(s.replies.length, 0); s.tracker.clear();\n  });\n  await check('Waiting child remains waiting, rather than being marked completed', async () => {\n    const s = setup(); const waiting = s.tracker.waitFor(s.job);\n    s.queue.emit('global:progress', '42', { ...s.finished, status: 'waiting', waitTill: '2026-11-09T00:00:05Z' });\n    await promptly(waiting); const result = s.tracker.popResult(s.job);\n    assert.equal(result.status, 'waiting'); assert.equal(result.waitTill.toISOString(), '2026-11-09T00:00:05.000Z'); s.tracker.clear();\n  });\n  console.log(JSON.stringify({ passed: tests.length, tests })); process.exit(0);\n})().catch(error => { console.error(error.stack); process.exit(1); });\n```\n\n</details>\n\n## Debug Info\n\nOnly non-identifying environment details are provided:\n\n- n8n: **2.46.6**\n- Node.js: **26.12.1**\n- OS/runtime: Linux, Docker, Alpine-based image\n- Database: PostgreSQL\n- Redis: 7.4\n- Execution mode: queue\n- Hosting: self hosted\n- Manual execution offloading: enabled\n- Caller: native Agent workflow tool invoked from Message an Agent v3.1\n- The deployment has an unrelated tokenizer/observer backport (#42436). The scaling service and job outcome tracker were unmodified when the timings were captured; the worker-listener omission is also visible in the upstream release source linked above.\n\nNo private workflow export, Agent prompt, customer evidence, screenshot, instance ID, consumer ID, credential, hostname, or absolute operational timestamp is included.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43136/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43136/timeline",
+    "performed_via_github_app": {
+      "id": 1144995,
+      "client_id": "Iv23liVemv8A9if9v0F2",
+      "slug": "chatgpt-codex-connector",
+      "node_id": "A_kwHOAOQ6Gs4AEXij",
+      "owner": {
+        "login": "openai",
+        "id": 14957082,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjE0OTU3MDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/14957082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/openai",
+        "html_url": "https://github.com/openai",
+        "followers_url": "https://api.github.com/users/openai/followers",
+        "following_url": "https://api.github.com/users/openai/following{/other_user}",
+        "gists_url": "https://api.github.com/users/openai/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/openai/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/openai/subscriptions",
+        "organizations_url": "https://api.github.com/users/openai/orgs",
+        "repos_url": "https://api.github.com/users/openai/repos",
+        "events_url": "https://api.github.com/users/openai/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/openai/received_events",
+        "type": "Organization",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "name": "ChatGPT Codex Connector",
+      "description": "Bring ChatGPT and Codex to your GitHub repositories.",
+      "external_url": "https://www.chatgpt.com",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "created_at": "2025-02-14T01:37:05Z",
+      "updated_at": "2026-09-23T18:52:59Z",
+      "permissions": {
+        "actions": "write",
+        "checks": "read",
+        "contents": "write",
+        "emails": "read",
+        "issues": "write",
+        "metadata": "read",
+        "pull_requests": "write",
+        "statuses": "read",
+        "workflows": "write"
+      },
+      "events": [
+        "check_run",
+        "check_suite",
+        "commit_comment",
+        "issues",
+        "issue_comment",
+        "pull_request",
+        "pull_request_review",
+        "pull_request_review_comment",
+        "pull_request_review_thread",
+        "repository",
+        "status",
+        "sub_issues"
+      ]
+    },
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @santastabber,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9722\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9722](https://linear.app/n8n/issue/GHC-9722)",
+      "at": "2026-11-08T19:31:43Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43136#issuecomment-6726076858"
+    },
+    {
+      "author": "santastabber",
+      "text": "A second run independently reproduced the same delay, with the core runtime unchanged.\n\nAll identifiers below are symbolic; times are relative to the child enqueue. No customer data, private URLs, actual workflow/execution IDs, inputs or result bodies are included.\n\n| Event | Relative time |\n|---|---:|\n| Calling worker A enqueues child | +0.000 s |\n| Worker B starts child | +0.012 s |\n| Worker B reports completion | +1.655 s |\n| Main receives completion | +1.657 s |\n| Calling worker A logs `ended without a completion event, resolving the wait from the DB` | +60.008 s |\n\nThe persisted child execution took **1.623 s**, while the native Agent workflow tool call took **60.083 s**. Its successful result was only **243 characters**.\n\nSame-run MCP calls returned promptly (for example, CIPP tenant listing **0.822 s**, Hudu company listing **0.387 s**, and Jitbit ticket listing **1.503 s**). These use the MCP request/response path rather than the native Agent workflow tool's caller-worker completion wait. This comparison is consistent with the missing worker outcome listeners described above.\n\nThis adds a second observed occurrence to the original timing evidence. The proposed core patch remains **undeployed**.\n\nAdditional route comparison: after exposing the **same, unchanged lookup subworkflow** through an authenticated MCP server, a built-in native Agent test called the MCP version in **1.761 s**. It used the same name-query input and returned the same `no_match` / `name_search` outcome. The test made exactly one tool call. No n8n core patch was deployed. This further isolates the long delay to the native workflow-tool dispatch/completion path rather than the lookup's database/model processing.",
+      "at": "2026-11-08T19:48:08Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43136#issuecomment-6726255320"
+    },
+    {
+      "author": "leomattos7",
+      "text": "Hi! I'd like to pick this up. I checked current `master`: `registerWorkerListeners()` still handles only `abort-job`, so a worker that enqueued a child job only learns the outcome from the 60s DB recheck. I have a fix ready that shares the outcome handling between the main/webhook and worker listeners, with unit tests that fail on `master`. Happy to open the PR if the team is fine with a community fix. @santastabber thanks for the analysis and the patch, I'll credit you in the PR.\n",
+      "at": "2026-11-09T00:11:47Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43136#issuecomment-6729140065"
+    },
+    {
+      "author": "donleco2474",
+      "text": "That ~60-second delay on distributed worker nodes stems from ScalingService.registerWorkerListeners() omitting child completion and failure event bindings in JobOutcomeTracker, which forces the caller to time out and poll the database instead of catching the pub/sub notification instantly. Patching the worker listener registration to forward child outcome events directly through Redis pub/sub eliminates the polling fallback. If you are tracking down the exact event emitter bindings in your build, let me know and I can share the specific hook adjustments right here.",
+      "at": "2026-11-09T07:48:37Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43136#issuecomment-6734953692"
+    }
+  ],
+  "comments_complete": true
+}

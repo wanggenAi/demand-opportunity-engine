@@ -1,0 +1,105 @@
+{
+  "source_api_url": "https://api.github.com/repos/myvars/supplymars/issues/216",
+  "collected_at": "2026-11-09T09:44:42.802302+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/myvars/supplymars/issues/216",
+    "repository_url": "https://api.github.com/repos/myvars/supplymars",
+    "labels_url": "https://api.github.com/repos/myvars/supplymars/issues/216/labels{/name}",
+    "comments_url": "https://api.github.com/repos/myvars/supplymars/issues/216/comments",
+    "events_url": "https://api.github.com/repos/myvars/supplymars/issues/216/events",
+    "html_url": "https://github.com/myvars/supplymars/issues/216",
+    "id": 6273821484,
+    "node_id": "I_kwDOO3HiYc8AAAABdfLrLA",
+    "number": 216,
+    "title": "Investigate a public engineering log on the site",
+    "user": {
+      "login": "myvars",
+      "id": 2104639,
+      "node_id": "MDQ6VXNlcjIxMDQ2Mzk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2104639?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/myvars",
+      "html_url": "https://github.com/myvars",
+      "followers_url": "https://api.github.com/users/myvars/followers",
+      "following_url": "https://api.github.com/users/myvars/following{/other_user}",
+      "gists_url": "https://api.github.com/users/myvars/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/myvars/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/myvars/subscriptions",
+      "organizations_url": "https://api.github.com/users/myvars/orgs",
+      "repos_url": "https://api.github.com/users/myvars/repos",
+      "events_url": "https://api.github.com/users/myvars/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/myvars/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8738650960,
+        "node_id": "LA_kwDOO3HiYc8AAAACCN07UA",
+        "url": "https://api.github.com/repos/myvars/supplymars/labels/enhancement",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "default": true,
+        "description": "New feature or request",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-11-08T17:51:12Z",
+    "updated_at": "2026-11-08T19:40:10Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Why\n\nSupplyMars is a portfolio project. Most of the work that shows engineering skill (FrankenPHP worker mode, live pages with Mercure, Deptrac rules, the Scheduler, the backup and restore work, the test overhaul) only shows in PR descriptions and ADRs. Someone reviewing the project spends a few minutes on the site and rarely opens the repository.\n\nA public **engineering log** on the site would put that work where reviewers look: dated posts, each one covering a period or a feature, with the measurements and links to the PRs and ADRs. The first post already exists as a draft: a report on 6 October – 8 November 2026 (119 PRs), covering 13 areas of work, two production incidents and the measurements from the PR descriptions.\n\nIt does not belong in `Docs/`. `Docs/` describes how the system works today; the log records what changed and why, over time.\n\n## What to investigate\n\n### 1. Where posts live\n\n| Option | For | Against |\n|---|---|---|\n| **A. Markdown files in the repo** (e.g. `content/log/2026-11-08-autumn.md` with front matter), rendered with `twig/markdown-extra` + `league/commonmark` | Posts are written and reviewed in a PR like code; versioned; no schema, no admin UI; the playground's nightly reset can't touch them | A post goes live only with a deploy |\n| **B. A `Post` entity** with staff CRUD through FormFlow | Shows the app's own patterns; publish without a deploy | A schema, a context, forms and tests for a handful of posts; the playground reset restores live's data every night, so a post written on the playground disappears |\n| **C. Twig templates per post**, like `home/about.html.twig` | No new dependencies | Writing posts in HTML; harder to keep a consistent shape |\n\nLeaning towards **A**: a post is written once, reviewed like code and rarely edited, and the PR that adds it is part of the record. Check whether Symfony has a better fit than hand-parsing front matter (e.g. `symfony/yaml` for front matter, or a small content component), per the framework-first rule.\n\n### 2. Where the code goes\n\n`Home` already owns the public pages (`HomeController`: `/about`, `/contact`, `/privacy`, `/terms`). Options: add the log to `Home`, or create a small `Content` context (register it in `doctrine.yaml` only if B, and in `deptrac.yaml` in any case). Decide which, and record it if it needs an ADR.\n\n### 3. Routes, access and links\n\n- `/log` (index) and `/log/{slug}` (post), named `app_log_index` / `app_log_show` (check the naming rule in `CLAUDE.md`).\n- Public: add to `access_control` next to `^/(about|contact|privacy|terms)$`.\n- Link from the footer (`templates/_footer.html.twig`), the About page and the repository README.\n- Optional: an Atom feed, `<meta>` description and Open Graph tags so a shared link previews well.\n\n### 4. Design\n\nUse the existing layout and the Shadcn kit components; check `templates/components/` first. The page should read well on a phone. It needs a style for long-form text (headings, tables of measurements, code, PR links); check whether Tailwind's typography plugin is available through `symfonycasts/tailwind-bundle` before hand-styling.\n\n### 5. Tests\n\nA flow test that the index and a post render for a visitor, a 404 for an unknown slug, and that a post with broken front matter fails the build (or the test suite), not the page.\n\n## Making it part of the workflow\n\nProposal, to decide in this issue:\n\n- **When to write a post:** at the end of a significant feature (one with an ADR, like Mercure or FrankenPHP), and as a roundup at the end of each period of work (e.g. monthly or per milestone).\n- **What a post contains:** what changed and why; before-and-after measurements; what went wrong and what changed afterwards; links to the PRs, issues and ADRs. Material comes from the PR descriptions, which already have \"Measurements\", \"Look closely at\" and \"Left out\" sections.\n- **How it lands:** the post goes in its own PR, labelled e.g. `log`. A short rule in `CLAUDE.md` (and the Workflow section) says when to propose one, so it is not forgotten.\n- **Voice:** the same as the About page: the full story, including mistakes, without hedging.\n\n## Done when\n\n- [ ] Decision on storage (A/B/C) and the context, with an ADR if warranted\n- [ ] `/log` and `/log/{slug}` are public, linked from the footer and About page\n- [ ] The first post (autumn 2026 roundup) is published\n- [ ] Tests as above\n- [ ] The workflow rule is in `CLAUDE.md` and `Docs/README.md` lists where posts live\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/myvars/supplymars/issues/216/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/myvars/supplymars/issues/216/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "myvars",
+      "text": "Decision: option A, Markdown files in the repo. The other investigation points (context, routes, design, tests, workflow rule) are still open; no plan yet.",
+      "at": "2026-11-08T17:54:00Z",
+      "url": "https://github.com/myvars/supplymars/issues/216#issuecomment-6724980468"
+    },
+    {
+      "author": "myvars",
+      "text": "## Plan\n\nStorage is option A (Markdown files in the repo), decided above. The rest:\n\n**Posts.** Two kinds, back to the first commit (January 2024):\n- **Period roundups**, one per period of work rather than per calendar month. Activity is uneven (67 commits in February 2026, 1–4 in most months of 2025), so a fixed monthly cadence would give thin posts.\n- **Deep dives** on the big e-commerce features and code decisions, e.g. multi-supplier sourcing, the simulation, the pricing cascade, two-layer reporting, the move to DDD, FormFlow, worker mode, Mercure.\n\nThe early commits have few issues or PRs and short messages, so the outline is built from the diffs.\n\n**From now on:** a post after an ADR-level feature, and a roundup when a period has enough in it. No fixed calendar.\n\n**Approval in three gates:**\n1. An outline of every post (title, period, key points, the commits or PRs behind it), approved before any prose is written.\n2. One PR that adds `/log` and the October–November 2026 post as the pilot, to approve the design and voice in the browser.\n3. The remaining posts, newest first, two or three per PR.\n\n**Build.**\n- `content/log/YYYY-MM-DD-slug.md` with front matter (title, period, summary, figures, refs), rendered by `twig/markdown-extra` and `league/commonmark`, using CommonMark's own front matter extension.\n- In the `Home` context next to `/about` (no new context): `/log` and `/log/{slug}` (`app_log_index`, `app_log_show`), public in `access_control`, linked from the footer, the About page and the README.\n- The site's style (as the About page): `gray-950` hero, orange eyebrow, Tailwind Typography for the body. The draft's shape is kept: figures band, measurement tables, incidents, PR and ADR links. These come from front matter through one shared template.\n- Tests: the index and a post render for a visitor, an unknown slug gives a 404, and broken front matter fails the suite.\n- Workflow: a rule in `CLAUDE.md`, posts listed in `Docs/README.md`, and a `log` label on post PRs.\n",
+      "at": "2026-11-08T19:40:10Z",
+      "url": "https://github.com/myvars/supplymars/issues/216#issuecomment-6726168830"
+    }
+  ],
+  "comments_complete": true
+}
