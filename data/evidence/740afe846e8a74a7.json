@@ -1,0 +1,107 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43259",
+  "collected_at": "2026-11-10T09:44:27.236075+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43259",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43259/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43259/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43259/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43259",
+    "id": 6290752266,
+    "node_id": "I_kwDOC4Q8Qs8AAAABdvVDCg",
+    "number": 43259,
+    "title": "Inline agent node: model picker lists no models because NodeCredentials re-anchors the usable-credentials slice",
+    "user": {
+      "login": "SBrouck",
+      "id": 202458926,
+      "node_id": "U_kgDODBFHLg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/202458926?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/SBrouck",
+      "html_url": "https://github.com/SBrouck",
+      "followers_url": "https://api.github.com/users/SBrouck/followers",
+      "following_url": "https://api.github.com/users/SBrouck/following{/other_user}",
+      "gists_url": "https://api.github.com/users/SBrouck/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/SBrouck/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/SBrouck/subscriptions",
+      "organizations_url": "https://api.github.com/users/SBrouck/orgs",
+      "repos_url": "https://api.github.com/users/SBrouck/repos",
+      "events_url": "https://api.github.com/users/SBrouck/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/SBrouck/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-11-09T17:03:19Z",
+    "updated_at": "2026-11-09T17:05:52Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Bug Description\n\nIn the NDV of an inline agent node (`Message an Agent` 3.1, `agentSource: \"inline\"`, shown as \"AI Agent V2\" with the inline agents flag), the model picker doesn't list the provider's models. Hovering the provider shows \"Connect to OpenAI\" with the existing credential, while the provider row says \"Connected\". Searching the picker returns \"No models found\", and choosing a model can end in \"No credentials found\". Editing the model in the workflow JSON works.\n\nThe credential is fine: the provider-models endpoint returns the models when it is called. We hit this with an `openAiApi` credential whose base URL points to an OpenAI-compatible gateway, but nothing in the cause is specific to that.\n\n## To Reproduce\n\n1. Run n8n 2.46.5 or 2.47.3 (Docker). Enable agents (`PUT /rest/agents/settings {\"enabled\": true}`) and the inline agents flag (`localStorage.N8N_EXPERIMENT_OVERRIDES = {\"103_inline_agents\": true}`).\n2. Create an `openAiApi` credential. A base URL pointing to any OpenAI-compatible server that lists a few models makes the missing models obvious.\n3. Create a workflow with a `messageAnAgent` node, typeVersion 3.1, `agentSource: \"inline\"`, `inlineAgent.config.model: \"openai/<model>\"` and `credential: <that credential id>`.\n4. Open the node and open the model picker, then hover OpenAI.\n\n## Expected behavior\n\nThe OpenAI submenu lists the credential's models, as it does in the agent builder.\n\n## What happens and why\n\nOrder of `GET /rest/credentials/for-workflow` when the NDV opens:\n\n```\nprojectId=<p>&forAgent=true    # useAgentModelCredentials (AgentInfoPanel)\nworkflowId=<w>                 # NodeCredentials.vue setup (initialFetchScope)\nworkflowId=<w>                 # NodeCredentials.vue setup\n```\n\nThe usable-credentials slice in `credentials.store.ts` is last-writer-wins across scopes, so it ends up holding `workflow:<w>`. `useAgentModelCredentials` only trusts the slice when `hasUsableCredentialsForScope({ projectId, forAgent: true })` is true, and it only fetches in `watch(projectId, …, { immediate: true })`. So `credentialsByProvider` stays `null` for as long as the NDV is open:\n- `getModelsForPicker(null)` is empty.\n- The provider-models request (`/agents/v2/catalog/models/openai?credentialId=…`) is never sent.\n- `onModelChange` shows `credentials.noResults`.\n\nConfirmed in the same open NDV: calling `credentialsStore.fetchUsableCredentials({ projectId, forAgent: true })` from the console brings the models back immediately. The agent builder page isn't affected, since nothing re-anchors the slice there.\n\n## Possible fixes\n\n- Have `useAgentModelCredentials` refetch its scope when the slice is re-anchored while it is mounted (`isCredentialsReady` turning false).\n- Or pass `skip-credentials-fetch` to `NodeCredentials` for inline agent nodes, as `NodeToolSettingsContent.vue` already does.\n\nHappy to open a PR for whichever you prefer.\n\n## Debug Info\n\n- n8n 2.46.5 and 2.47.3 (Docker), SQLite, Chromium.\n- `Message an Agent` typeVersion 3.1, flag `103_inline_agents`.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43259/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43259/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @SBrouck,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9724\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9724](https://linear.app/n8n/issue/GHC-9724)",
+      "at": "2026-11-09T17:03:30Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43259#issuecomment-6746220105"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "I checked the current source at `e62a554`. `useAgentModelCredentials()` fetches agent-scoped credentials from a watcher on `projectId`, while `NodeCredentials.vue` performs its own initial fetch for its current scope unless `skipCredentialsFetch` is set. The existing `NodeToolSettingsContent.vue` passes `:skip-credentials-fetch=\"true\"` alongside `:for-agent`; that looks like the focused precedent to check for the inline-agent NDV. A regression should cover opening the inline node with both fetches active and confirm the picker retains/loads the `forAgent` scope after the workflow-scoped fetch.",
+      "at": "2026-11-09T17:05:52Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43259#issuecomment-6746272007"
+    }
+  ],
+  "comments_complete": true
+}

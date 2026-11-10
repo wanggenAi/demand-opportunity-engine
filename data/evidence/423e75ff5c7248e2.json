@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43284",
+  "collected_at": "2026-11-10T09:44:27.236075+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43284",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43284/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43284/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43284/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43284",
+    "id": 6300849351,
+    "node_id": "I_kwDOC4Q8Qs8AAAABd49Uxw",
+    "number": 43284,
+    "title": "tryToParseTime accepts out-of-range hours, minutes and seconds",
+    "user": {
+      "login": "indexGin",
+      "id": 166748424,
+      "node_id": "U_kgDOCfBhCA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/166748424?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/indexGin",
+      "html_url": "https://github.com/indexGin",
+      "followers_url": "https://api.github.com/users/indexGin/followers",
+      "following_url": "https://api.github.com/users/indexGin/following{/other_user}",
+      "gists_url": "https://api.github.com/users/indexGin/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/indexGin/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/indexGin/subscriptions",
+      "organizations_url": "https://api.github.com/users/indexGin/orgs",
+      "repos_url": "https://api.github.com/users/indexGin/repos",
+      "events_url": "https://api.github.com/users/indexGin/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/indexGin/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-10T05:20:23Z",
+    "updated_at": "2026-11-10T05:20:33Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Summary\n\n`tryToParseTime` (`packages/workflow/src/type-validation.ts`) only checks the shape of a time string with a regex (two-digit hour:minute, optional seconds and UTC offset) and never validates the numeric ranges. As a result impossible values such as `24:00`, `99:00`, `12:60`, `12:30:99` and `99:99` are accepted and returned unchanged.\n\n## Minimal reproduction\n\n```ts\ntryToParseTime('99:99');    // returns '99:99', should throw \"Value is not a valid time\"\ntryToParseTime('24:00');    // returns '24:00'\ntryToParseTime('12:30:99'); // returns '12:30:99'\n```\n\nFor comparison, `tryToParseTime('00:00')` returns `'00:00'` and `tryToParseTime('1:30')` is rejected because of the shape.\n\n## Expected behavior\n\nBeyond the shape check, validate the ranges: hour 0-23, minute 0-59, second 0-59. Out-of-range values should throw the same `UserError: Value is not a valid time` as malformed input. Valid boundary values (`00:00`, `23:59:59`) and values with a UTC offset (`12:30+05:30`) should be returned unchanged; the existing shape validation should not change.\n\n## Impact\n\n`validateFieldType` calls this function for the `time` field type, so invalid times currently pass validation into execution data and only fail later in a downstream API, database or scheduling logic (or get stored as bad data), which is costly to debug. The fix is confined to `tryToParseTime` and does not touch other field types.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43284/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43284/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @indexGin,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9729\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9729](https://linear.app/n8n/issue/GHC-9729)",
+      "at": "2026-11-10T05:20:32Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43284#issuecomment-6759718304"
+    }
+  ],
+  "comments_complete": true
+}

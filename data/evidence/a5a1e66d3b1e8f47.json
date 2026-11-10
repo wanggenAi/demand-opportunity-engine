@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50393105",
-  "collected_at": "2026-11-09T09:44:42.802302+00:00",
+  "collected_at": "2026-11-10T09:44:27.236075+00:00",
   "source": {
     "author": "linsomniac",
     "children": [
@@ -1112,6 +1112,21 @@
                             "title": null,
                             "type": "comment",
                             "url": null
+                          },
+                          {
+                            "author": "gwbas1c",
+                            "children": [],
+                            "created_at": "2026-11-09T14:51:20.000Z",
+                            "created_at_i": 1794235880,
+                            "id": 50426444,
+                            "options": [],
+                            "parent_id": 50399218,
+                            "points": null,
+                            "story_id": 50393105,
+                            "text": "&gt; Or only the &quot;important&quot; CVEs?<p>This is why CVEs have severity ratings<p>&gt; And if two &quot;important&quot; ones come out two days<p>Yes<p>&gt; running through the QA pipeline<p>This is also why customers evaluate the CVE and their risk. The company I work for skipped a patch for a CVE because it was for areas that we don&#x27;t use and weren&#x27;t exposed to the public internet.",
+                            "title": null,
+                            "type": "comment",
+                            "url": null
                           }
                         ],
                         "created_at": "2026-11-06T22:15:06.000Z",
@@ -1135,6 +1150,21 @@
                     "points": null,
                     "story_id": 50393105,
                     "text": "Perhaps that&#x27;s the problem? Surely they use a version control system that allows them to branch off of older commit for these kinds of urgent patches.",
+                    "title": null,
+                    "type": "comment",
+                    "url": null
+                  },
+                  {
+                    "author": "gwbas1c",
+                    "children": [],
+                    "created_at": "2026-11-09T14:47:50.000Z",
+                    "created_at_i": 1794235670,
+                    "id": 50426389,
+                    "options": [],
+                    "parent_id": 50398757,
+                    "points": null,
+                    "story_id": 50393105,
+                    "text": "This isn&#x27;t a &quot;bug in the queue,&quot; it&#x27;s a severe security update that requires immediate patching.<p>Pretty much every software vendor has a way to ship fixes for 0-day exploits. They&#x27;re called &quot;hot fixes&quot; and generally bypass normal releases. (IE, where I work, we can bypass our normal releases and publish emergency bugfixes in a matter of hours.)<p>That&#x27;s why the fix needs a leader to basically pull everyone into a room and say &quot;get it out by EOD.&quot;",
                     "title": null,
                     "type": "comment",
                     "url": null
@@ -1250,7 +1280,23 @@
                   },
                   {
                     "author": "talon8635",
-                    "children": [],
+                    "children": [
+                      {
+                        "author": "icy-disrupt-sme",
+                        "children": [],
+                        "created_at": "2026-11-09T19:00:00.000Z",
+                        "created_at_i": 1794250800,
+                        "id": 50429983,
+                        "options": [],
+                        "parent_id": 50408838,
+                        "points": null,
+                        "story_id": 50393105,
+                        "text": "RedHat&#x27;s web site shows it as a 9.8 at <a href=\"https:&#x2F;&#x2F;access.redhat.com&#x2F;security&#x2F;cve&#x2F;cve-2026-98432\" rel=\"nofollow\">https:&#x2F;&#x2F;access.redhat.com&#x2F;security&#x2F;cve&#x2F;cve-2026-98432</a>.  Now, there may be times when Redhat downgrades a score...say for example you have SELinux and the vulnerability is blocked by it but they usually track with the official number.",
+                        "title": null,
+                        "type": "comment",
+                        "url": null
+                      }
+                    ],
                     "created_at": "2026-11-07T22:57:41.000Z",
                     "created_at_i": 1794092261,
                     "id": 50408838,
@@ -2146,6 +2192,21 @@
         "title": null,
         "type": "comment",
         "url": null
+      },
+      {
+        "author": "icy-disrupt-sme",
+        "children": [],
+        "created_at": "2026-11-09T18:21:51.000Z",
+        "created_at_i": 1794248511,
+        "id": 50429383,
+        "options": [],
+        "parent_id": 50393105,
+        "points": null,
+        "story_id": 50393105,
+        "text": "I suspect they, like Redhat, are including other non-critical updates in the updated kernel and who knows how many kernels they need to build&#x2F;test since I know they produce custom kernels for cloud providers like AWS and Oracle.  I really don&#x27;t understand why they are all treating a critical update like this as &quot;business as usual&quot;...I saw evidence they kept rescoring the vulnerability to lower and then higher scores.  I did see their blog posting saying they are moving from 4 week to a 2 week cadence for kernel updates which is a move in the right direction but AI is coming for our servers...someone needs to send a copy of Spencer Johnson&#x27;s &quot;Who Moved My Cheese&quot; to Canonical, Redhat, Suse, et al who have made their fortunes back porting code...",
+        "title": null,
+        "type": "comment",
+        "url": null
       }
     ],
     "created_at": "2026-11-06T14:58:33.000Z",
@@ -2153,7 +2214,7 @@
     "id": 50393105,
     "options": [],
     "parent_id": null,
-    "points": 217,
+    "points": 218,
     "story_id": 50393105,
     "text": "Ubuntu has CVE-2026-98432 marked as a 9.8, but yet it&#x27;s coming up on a week with no update to fix it.  It&#x27;s still marked as &quot;work in progress&quot; (though at least now they&#x27;ve listed a mitigation):<p>https:&#x2F;&#x2F;ubuntu.com&#x2F;security&#x2F;CVE-2026-98432<p>I&#x27;ve had mitigations in place for a week, but this response is really shaking my confidence in Ubuntu.  I&#x27;m just trying to understand what is going on with Ubuntu.  Do they have too many kernels (that page is loooong), do they not have enough automation in the build&#x2F;test pipeline, are their engineers overwhelmed?<p>We are moving into a world where there are going to be vastly more security issues; if you can&#x27;t keep up now, where are you going to be in the next 6 months?<p>For a long time keeping on top of OS updates has been a huge part of keeping the attackers at bay.    However, the world is changing.",
     "title": "Ask HN: What in the world is taking Ubuntu so long?",
@@ -2618,6 +2679,18 @@
       "url": "https://news.ycombinator.com/item?id=50403728"
     },
     {
+      "author": "gwbas1c",
+      "text": "> Or only the \"important\" CVEs? This is why CVEs have severity ratings > And if two \"important\" ones come out two days Yes > running through the QA pipeline This is also why customers evaluate the CVE and their risk. The company I work for skipped a patch for a CVE because it was for areas that we don't use and weren't exposed to the public internet.",
+      "at": "2026-11-09T14:51:20.000Z",
+      "url": "https://news.ycombinator.com/item?id=50426444"
+    },
+    {
+      "author": "gwbas1c",
+      "text": "This isn't a \"bug in the queue,\" it's a severe security update that requires immediate patching. Pretty much every software vendor has a way to ship fixes for 0-day exploits. They're called \"hot fixes\" and generally bypass normal releases. (IE, where I work, we can bypass our normal releases and publish emergency bugfixes in a matter of hours.) That's why the fix needs a leader to basically pull everyone into a room and say \"get it out by EOD.\"",
+      "at": "2026-11-09T14:47:50.000Z",
+      "url": "https://news.ycombinator.com/item?id=50426389"
+    },
+    {
       "author": "ravenstine",
       "text": "I was asking \"what in the world is taking Ubuntu so long\" back in 2006.",
       "at": "2026-11-06T16:33:06.000Z",
@@ -2664,6 +2737,12 @@
       "text": "It’s not by RedHat. Does Ubuntu provide its own independent research and scoring?",
       "at": "2026-11-07T22:57:41.000Z",
       "url": "https://news.ycombinator.com/item?id=50408838"
+    },
+    {
+      "author": "icy-disrupt-sme",
+      "text": "RedHat's web site shows it as a 9.8 at  https://access.redhat.com/security/cve/cve-2026-98432 .  Now, there may be times when Redhat downgrades a score...say for example you have SELinux and the vulnerability is blocked by it but they usually track with the official number.",
+      "at": "2026-11-09T19:00:00.000Z",
+      "url": "https://news.ycombinator.com/item?id=50429983"
     },
     {
       "author": "wredcoll",
@@ -2994,6 +3073,12 @@
       "text": "Did you pay for an Ubuntu subscription to support them?",
       "at": "2026-11-07T18:44:02.000Z",
       "url": "https://news.ycombinator.com/item?id=50406887"
+    },
+    {
+      "author": "icy-disrupt-sme",
+      "text": "I suspect they, like Redhat, are including other non-critical updates in the updated kernel and who knows how many kernels they need to build/test since I know they produce custom kernels for cloud providers like AWS and Oracle.  I really don't understand why they are all treating a critical update like this as \"business as usual\"...I saw evidence they kept rescoring the vulnerability to lower and then higher scores.  I did see their blog posting saying they are moving from 4 week to a 2 week cadence for kernel updates which is a move in the right direction but AI is coming for our servers...someone needs to send a copy of Spencer Johnson's \"Who Moved My Cheese\" to Canonical, Redhat, Suse, et al who have made their fortunes back porting code...",
+      "at": "2026-11-09T18:21:51.000Z",
+      "url": "https://news.ycombinator.com/item?id=50429383"
     }
   ],
   "comments_complete": true

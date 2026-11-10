@@ -1,0 +1,107 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43273",
+  "collected_at": "2026-11-10T09:44:27.236075+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43273",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43273/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43273/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43273/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43273",
+    "id": 6297876394,
+    "node_id": "I_kwDOC4Q8Qs8AAAABd2H3qg",
+    "number": 43273,
+    "title": "AWS Bedrock Chat Model: real token usage is never read, and completion tokens are recorded as 0 when Claude extended thinking is enabled",
+    "user": {
+      "login": "danielreisjj",
+      "id": 195132844,
+      "node_id": "U_kgDOC6F9rA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/195132844?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/danielreisjj",
+      "html_url": "https://github.com/danielreisjj",
+      "followers_url": "https://api.github.com/users/danielreisjj/followers",
+      "following_url": "https://api.github.com/users/danielreisjj/following{/other_user}",
+      "gists_url": "https://api.github.com/users/danielreisjj/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/danielreisjj/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/danielreisjj/subscriptions",
+      "organizations_url": "https://api.github.com/users/danielreisjj/orgs",
+      "repos_url": "https://api.github.com/users/danielreisjj/repos",
+      "events_url": "https://api.github.com/users/danielreisjj/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/danielreisjj/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-11-10T00:57:24Z",
+    "updated_at": "2026-11-10T03:06:00Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nThe AWS Bedrock Chat Model node (`@n8n/n8n-nodes-langchain.lmChatAwsBedrock`, uses `ChatBedrockConverse` from `@langchain/aws`) never records the real token usage returned by Bedrock. It always falls back to `tokenUsageEstimate`.\n\nOn top of that, when the model returns extended-thinking content (e.g. Claude Haiku 5.5, where adaptive thinking is on by default), the estimate for `completionTokens` is always `0`, so the output tokens disappear from the execution data entirely.\n\nWe bill our customers from the token usage stored in the execution data, so this makes per-execution cost tracking impossible for Bedrock + thinking, and only approximate (tokenizer estimate) for Bedrock without thinking.\n\nRoot cause, as far as I can tell (same code in 2.45.6, 2.46.7, 2.47.3 and master):\n\n1. `N8nLlmTracing` (`packages/@n8n/ai-utilities/src/utils/n8n-llm-tracing.ts`) uses the default `tokensUsageParser`, which only reads `result.llmOutput.tokenUsage`. `ChatBedrockConverse` reports usage on the message (`generation.message.usage_metadata` → `input_tokens` / `output_tokens`), not in `llmOutput.tokenUsage`, so the parser always returns `completionTokens: 0` and the node falls back to the estimate. `LmChatAwsBedrock.node.ts` instantiates `new N8nLlmTracing(this)` without a provider-specific parser.\n2. The estimate is computed from `generation.text`. When the response content is an array of blocks (`reasoning_content` + `text`), `generation.text` is `\"\"` (also visible in the stored run data: `response.generations[0][0].text === \"\"`), so `estimateTokensFromGeneration` returns `0`.\n\n### To Reproduce\n\n1. Create a workflow with a Basic LLM Chain (with or without Structured Output Parser) connected to an AWS Bedrock Chat Model node.\n2. Model: `global.anthropic.claude-haiku-5-5` (thinking enabled by default), no `additionalModelRequestFields`.\n3. Execute the workflow.\n4. Inspect the AWS Bedrock Chat Model output in the execution data:\n   - `tokenUsageEstimate.completionTokens` is `0`\n   - `response.generations[0][0].text` is `\"\"` even though the chain received a valid answer\n   - no `tokenUsage` (real usage) is present\n5. Now set `additionalModelRequestFields` to `{\"thinking\":{\"type\":\"disabled\"}}` and execute again: `completionTokens` is now > 0, but it is still only `tokenUsageEstimate`, never the real `usage_metadata` returned by Bedrock.\n\n### Expected behavior\n\n- The Bedrock node records the real usage returned by Bedrock (`usage_metadata.input_tokens` / `output_tokens`) as `tokenUsage`, like other providers that populate `llmOutput.tokenUsage`.\n- When only an estimate is possible, text content blocks are considered (not only `generation.text`), so the completion estimate is not `0` for responses that contain reasoning blocks.\n\nPossible fix: pass a `tokensUsageParser` in `LmChatAwsBedrock.node.ts` that falls back to `generations[0][0].message.usage_metadata` when `llmOutput.tokenUsage` is missing (the default parser could also do this generically for all chat models).\n\n\n### Debug Info\n\n# Debug info\n\n## core\n\n- n8nVersion: 2.45.6\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.12.1\n- nodeEnv: sandbox\n- database: postgres\n- executionMode: regular\n- concurrency: -1\n- license: enterprise (production)\n- consumerId: a1feb158-3b8f-4566-91ea-53b50c715c77\n\n## storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: database\n\n## pruning\n\n- enabled: true\n- maxAge: 336 hours\n- maxCount: 10000 executions\n\n## client\n\n- userAgent: mozilla/5.0 (x11; linux x86_64) applewebkit/537.36 (khtml, like gecko) chrome/157.0.0.0 safari/537.36\n- isTouchDevice: false\n\n## security\n\n- secureCookie: false\n\n## cluster\n\n- instanceCount: 1\n- versions: 2.45.6\n- instances:\n  - instanceKey: 684c1e27-57cf-49c2-a478-6bf91ef85dc8, hostId: main-0fed2823c689, instanceType: main, instanceRole: leader, version: 2.45.6\n- checks:\n  - check: hostid-clash, status: succeeded, warnings: -\n  - check: lifecycle, status: succeeded, warnings: -\n  - check: split-brain, status: succeeded, warnings: -\n  - check: version-mismatch, status: succeeded, warnings: -\n\nGenerated at: 2026-11-10T00:56:41.099Z\n\n### Operating System\n\nLinux (Docker)\n\n### n8n Version\n\n2.45.6 (code unchanged in 2.46.7, 2.47.3 and master)\n\n### Node.js Version\n\n26.12.1\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43273/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43273/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @danielreisjj,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9726\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9726](https://linear.app/n8n/issue/GHC-9726)",
+      "at": "2026-11-10T00:57:32Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43273#issuecomment-6755775815"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "I checked the current `N8nLlmTracing` and Bedrock node source. Bedrock still constructs the tracer without a provider-specific `tokensUsageParser`, and the default parser reads only `llmOutput.tokenUsage`; the reported `message.usage_metadata` therefore is not consumed here. The fallback estimator also maps each generation to `g.text`, so an array-content response with an empty `text` field would estimate zero completion tokens. A Bedrock parser for the message usage metadata plus estimation from text content blocks (when needed) would address these two distinct paths.",
+      "at": "2026-11-10T03:05:59Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43273#issuecomment-6757808872"
+    }
+  ],
+  "comments_complete": true
+}

@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50366117",
-  "collected_at": "2026-11-09T09:44:42.802302+00:00",
+  "collected_at": "2026-11-10T09:44:27.236075+00:00",
   "source": {
     "author": "eggbrain",
     "children": [
@@ -388,6 +388,21 @@
                         "title": null,
                         "type": "comment",
                         "url": null
+                      },
+                      {
+                        "author": "thefourthchime",
+                        "children": [],
+                        "created_at": "2026-11-10T07:40:04.000Z",
+                        "created_at_i": 1794296404,
+                        "id": 50437241,
+                        "options": [],
+                        "parent_id": 50377542,
+                        "points": null,
+                        "story_id": 50366117,
+                        "text": "You&#x27;re right. I don&#x27;t need to do these projects. But for me it&#x27;s fun. I&#x27;ve always liked exploring ideas. For 20 years I kept notes of ideas that I had that at one time I might have the idea the time to fulfill. At some point the ideas, my original ideas were so antiquated they wouldn&#x27;t even make sense anymore. And now I feel like I finally have the freedom to explore my ideas.<p>I don&#x27;t do it for financial reward or admiration or maybe secretly I do. But I just always enjoy building things. And at the end of the day, if I can put something out there that makes people happy and rewards them, that&#x27;s great.<p>I did it once moderately successfully back in 2000 with a project called StreamRipper. Then I got a more serious job and relationships and marriage and the time went away. Now I feel like I have my time back.",
+                        "title": null,
+                        "type": "comment",
+                        "url": null
                       }
                     ],
                     "created_at": "2026-11-05T10:36:17.000Z",
@@ -603,7 +618,23 @@
                   },
                   {
                     "author": "fishtoaster",
-                    "children": [],
+                    "children": [
+                      {
+                        "author": "thefourthchime",
+                        "children": [],
+                        "created_at": "2026-11-10T07:41:39.000Z",
+                        "created_at_i": 1794296499,
+                        "id": 50437246,
+                        "options": [],
+                        "parent_id": 50384905,
+                        "points": null,
+                        "story_id": 50366117,
+                        "text": "Colour to those, but the problem is that I need a ton of compute to do what I&#x27;m doing. My MacBook is generally melting down half the time. And if you do that with cloud, it costs a ton.",
+                        "title": null,
+                        "type": "comment",
+                        "url": null
+                      }
+                    ],
                     "created_at": "2026-11-05T21:46:38.000Z",
                     "created_at_i": 1793915198,
                     "id": 50384905,
@@ -2001,7 +2032,23 @@
       },
       {
         "author": "AaronAPU",
-        "children": [],
+        "children": [
+          {
+            "author": "hoatrinhdev",
+            "children": [],
+            "created_at": "2026-11-09T15:34:18.000Z",
+            "created_at_i": 1794238458,
+            "id": 50427034,
+            "options": [],
+            "parent_id": 50368566,
+            "points": null,
+            "story_id": 50366117,
+            "text": "Separate virtual desktop per task is how I work, too. When a run takes a while, do you stay on that task&#x27;s desktop and wait, or switch to another?",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
         "created_at": "2026-11-04T17:13:16.000Z",
         "created_at_i": 1793812396,
         "id": 50368566,
@@ -6211,7 +6258,39 @@
             "children": [
               {
                 "author": "nedt",
-                "children": [],
+                "children": [
+                  {
+                    "author": "matltc",
+                    "children": [
+                      {
+                        "author": "nedt",
+                        "children": [],
+                        "created_at": "2026-11-10T00:02:20.000Z",
+                        "created_at_i": 1794268940,
+                        "id": 50434217,
+                        "options": [],
+                        "parent_id": 50433229,
+                        "points": null,
+                        "story_id": 50366117,
+                        "text": "Did I parse the jsonl files? No. I just asked Claude to create a skill to read all previous conversations across all projects or anywhere else in Claude, Cursor, Github Copilot and Windsurf. For the last one it failed (they are encrypted). The rest it just picked up whatever location and format they are stored in. So yes the skill is parsing the jsonl files in projects&#x2F;. Only exception are Claude Desktop sessions that are only stored in the cloud.<p>The skill itself is also the basis for my memory across sessions and projects. With that Claude can recall what I can remember. It&#x27;s using a subagent so only the important bits land in context.<p>From there it&#x27;s easy to get some benchmarks. Let it find common themes across your sessions and let it mock them to create benchmarks strong enough so not everything gets the same score. My benchmarks are now based on me designing new tools, debugging live issues going through log files, finding clues in bigger code bases etc. pp.<p>But no they are not open. First of all they depend on my use cases (but I also got one colleague to contribute cases) and second of all they are based on the work at my company, so I can&#x27;t share them.",
+                        "title": null,
+                        "type": "comment",
+                        "url": null
+                      }
+                    ],
+                    "created_at": "2026-11-09T22:32:04.000Z",
+                    "created_at_i": 1794263524,
+                    "id": 50433229,
+                    "options": [],
+                    "parent_id": 50378628,
+                    "points": null,
+                    "story_id": 50366117,
+                    "text": "Is your benchmark open? Can I get a link if so?<p>If not, did you parse the .jsonl files in the projects&#x2F; directory?",
+                    "title": null,
+                    "type": "comment",
+                    "url": null
+                  }
+                ],
                 "created_at": "2026-11-05T13:05:53.000Z",
                 "created_at_i": 1793883953,
                 "id": 50378628,
@@ -7238,7 +7317,23 @@
                     "children": [
                       {
                         "author": "OSaMaBiNLoGiN",
-                        "children": [],
+                        "children": [
+                          {
+                            "author": "4ggr0",
+                            "children": [],
+                            "created_at": "2026-11-09T10:49:05.000Z",
+                            "created_at_i": 1794221345,
+                            "id": 50423844,
+                            "options": [],
+                            "parent_id": 50411951,
+                            "points": null,
+                            "story_id": 50366117,
+                            "text": "yeah i wasn&#x27;t being that serious :D i mean, LoL is not my type of game, but in the end it&#x27;s hugely popular for a reason.<p>&gt; I also played through some singleplayer games [...] I had a lot of fun in all of them.<p>nice!",
+                            "title": null,
+                            "type": "comment",
+                            "url": null
+                          }
+                        ],
                         "created_at": "2026-11-08T10:19:29.000Z",
                         "created_at_i": 1794133169,
                         "id": 50411951,
@@ -9764,7 +9859,23 @@
       },
       {
         "author": "alentred",
-        "children": [],
+        "children": [
+          {
+            "author": "2ero_wf",
+            "children": [],
+            "created_at": "2026-11-09T18:04:45.000Z",
+            "created_at_i": 1794247485,
+            "id": 50429130,
+            "options": [],
+            "parent_id": 50380849,
+            "points": null,
+            "story_id": 50366117,
+            "text": "i just give agent a VM, whether the agent is hermes or claude code.\ni made sure the VM sleeps when idle, and i made sure i can copy, resize, delete VM when i want to change my setup.<p>I have 6 VMs hosting claude code coding agent, 2 hermes agent, 1 pi agent when i am out of claude sub, 2 other host some personal-saas softwares. all in VMs.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
         "created_at": "2026-11-05T16:04:08.000Z",
         "created_at_i": 1793894648,
         "id": 50380849,
@@ -10575,6 +10686,21 @@
         "title": null,
         "type": "comment",
         "url": null
+      },
+      {
+        "author": "Sevii",
+        "children": [],
+        "created_at": "2026-11-09T16:55:28.000Z",
+        "created_at_i": 1794243328,
+        "id": 50428201,
+        "options": [],
+        "parent_id": 50366117,
+        "points": null,
+        "story_id": 50366117,
+        "text": "I have both the Claude and ChatGPT $100&#x2F;plans. And a suno plan.\nI also use OpenRouter for a lot of stuff. \nI use Claude Code, the ChatGPT app and the pi harness. \nI don&#x27;t use any swarm tools but most of my apps at abstractwriter.com use the pi agent harness internally. \nI tried OpenClaw back in the day and didn&#x27;t really use it, now since I have dots I&#x27;m trying to use it more.",
+        "title": null,
+        "type": "comment",
+        "url": null
       }
     ],
     "created_at": "2026-11-04T14:37:22.000Z",
@@ -10582,7 +10708,7 @@
     "id": 50366117,
     "options": [],
     "parent_id": null,
-    "points": 565,
+    "points": 569,
     "story_id": 50366117,
     "text": "I&#x27;m curious how people on HN are using AI day to day, and came up with a list of questions I thought could be interesting to know. No need to answer every question of course, just wanted to get a gut feel how people are using AI.<p>1) What AI subscriptions are you personally paying for? (Claude, ChatGPT&#x2F;Codex, Cursor, etc)<p>- Which tiers?<p>- Have you purchased multiple subscriptions from the same provider (eg two Claude accounts)?<p>2) Are you using models outside (or instead) of those subscriptions? For example, pay-as-you-go APIs, OpenRouter, or locally hosted models.<p>- Which models and providers?<p>3) What coding harnesses and interfaces are you using? Are you sticking with the default CLIs or IDE integrations, or using alternatives like OpenCode, Pi, Aider, Muse Code, or custom-built harnesses?<p>- What made you switch harnesses (if you switched)?<p>4) Are you using any agent orchestration or swarm tools?<p>- For example, Munder Difflin, Gas Town, Ruflo, or something custom.<p>5) Are you using broader agent platforms like OpenClaw &#x2F; Hermes Agent &#x2F; Grok bot &#x2F; Dots &#x2F; Muse?<p>- If you are using them, what are your main use cases?<p>-----<p>I know my workflow has differed significantly from a year ago, and so it would be interesting to capture a snapshot today of what people are using and why.",
     "title": "Ask HN: What's your current AI agentic setup?",
@@ -10759,6 +10885,12 @@
       "url": "https://news.ycombinator.com/item?id=50380775"
     },
     {
+      "author": "thefourthchime",
+      "text": "You're right. I don't need to do these projects. But for me it's fun. I've always liked exploring ideas. For 20 years I kept notes of ideas that I had that at one time I might have the idea the time to fulfill. At some point the ideas, my original ideas were so antiquated they wouldn't even make sense anymore. And now I feel like I finally have the freedom to explore my ideas. I don't do it for financial reward or admiration or maybe secretly I do. But I just always enjoy building things. And at the end of the day, if I can put something out there that makes people happy and rewards them, that's great. I did it once moderately successfully back in 2000 with a project called StreamRipper. Then I got a more serious job and relationships and marriage and the time went away. Now I feel like I have my time back.",
+      "at": "2026-11-10T07:40:04.000Z",
+      "url": "https://news.ycombinator.com/item?id=50437241"
+    },
+    {
       "author": "themoose8",
       "text": "They look like awesome apps*, as long as you're balancing your time by using them (they're outdoorsy and social!) I'd say you're doing fine. Take some extended time off if you need! *unfortunately I'm android",
       "at": "2026-11-05T11:29:27.000Z",
@@ -10841,6 +10973,12 @@
       "text": "> I haven't rebooted my laptop for weeks because there is always an agent building something. I'm pretty pilled on cloud agents these days.  If I've got 5 agents going at once, each is in their own dedicated, isolated cloud environment.  There are a bazillion services for this now ampcode, hoplite.sh, cursor's cloud agents, devin.ai cloud, and more. I haven't had an agent do anything from my laptop in a month or two.",
       "at": "2026-11-05T21:46:38.000Z",
       "url": "https://news.ycombinator.com/item?id=50384905"
+    },
+    {
+      "author": "thefourthchime",
+      "text": "Colour to those, but the problem is that I need a ton of compute to do what I'm doing. My MacBook is generally melting down half the time. And if you do that with cloud, it costs a ton.",
+      "at": "2026-11-10T07:41:39.000Z",
+      "url": "https://news.ycombinator.com/item?id=50437246"
     },
     {
       "author": "LittleBox",
@@ -11375,6 +11513,12 @@
       "text": "$100 ChatGPT sub\n$100 Claude sub Most coding via Opus 5.5. Codex for text and some non-coding tasks. Separate virtual desktop and clone on dev drive with VScode for each task (much prefer its diff tool and use it to launch builds etc). I never come close to running out of tokens because I still do code reviews often enough to throttle usage.",
       "at": "2026-11-04T17:13:16.000Z",
       "url": "https://news.ycombinator.com/item?id=50368566"
+    },
+    {
+      "author": "hoatrinhdev",
+      "text": "Separate virtual desktop per task is how I work, too. When a run takes a while, do you stay on that task's desktop and wait, or switch to another?",
+      "at": "2026-11-09T15:34:18.000Z",
+      "url": "https://news.ycombinator.com/item?id=50427034"
     },
     {
       "author": "robgough",
@@ -13039,6 +13183,18 @@
       "url": "https://news.ycombinator.com/item?id=50378628"
     },
     {
+      "author": "matltc",
+      "text": "Is your benchmark open? Can I get a link if so? If not, did you parse the .jsonl files in the projects/ directory?",
+      "at": "2026-11-09T22:32:04.000Z",
+      "url": "https://news.ycombinator.com/item?id=50433229"
+    },
+    {
+      "author": "nedt",
+      "text": "Did I parse the jsonl files? No. I just asked Claude to create a skill to read all previous conversations across all projects or anywhere else in Claude, Cursor, Github Copilot and Windsurf. For the last one it failed (they are encrypted). The rest it just picked up whatever location and format they are stored in. So yes the skill is parsing the jsonl files in projects/. Only exception are Claude Desktop sessions that are only stored in the cloud. The skill itself is also the basis for my memory across sessions and projects. With that Claude can recall what I can remember. It's using a subagent so only the important bits land in context. From there it's easy to get some benchmarks. Let it find common themes across your sessions and let it mock them to create benchmarks strong enough so not everything gets the same score. My benchmarks are now based on me designing new tools, debugging live issues going through log files, finding clues in bigger code bases etc. pp. But no they are not open. First of all they depend on my use cases (but I also got one colleague to contribute cases) and second of all they are based on the work at my company, so I can't share them.",
+      "at": "2026-11-10T00:02:20.000Z",
+      "url": "https://news.ycombinator.com/item?id=50434217"
+    },
+    {
       "author": "nycdatasci",
       "text": "Based on blended benchmarks from Artificial Analysis, Opus 5.5 is stronger than Fable 5.1.  Are you finding use cases where Fable is superior?",
       "at": "2026-11-05T14:23:13.000Z",
@@ -13451,6 +13607,12 @@
       "text": "It's my childhood game. I find that if you just don't engage with the players who make it less fun, it's perfectly fine. I think the core game is very polished. There's some around-game systems and decisions that I don't completely understand/agree with/think are really really bad/$500 skins are cringe nonsense. But overall, I enjoy my time playing the game. If someone engages in behavior that makes me have less fun, I mute them and go back to having fun. It's fun. I also played through some singleplayer games for the first time since I was a pre-teen. Expedition 33, Transistor, Hades, Bastion, Sleeping Dogs, etc. I had a lot of fun in all of them.",
       "at": "2026-11-08T10:19:29.000Z",
       "url": "https://news.ycombinator.com/item?id=50411951"
+    },
+    {
+      "author": "4ggr0",
+      "text": "yeah i wasn't being that serious :D i mean, LoL is not my type of game, but in the end it's hugely popular for a reason. > I also played through some singleplayer games [...] I had a lot of fun in all of them. nice!",
+      "at": "2026-11-09T10:49:05.000Z",
+      "url": "https://news.ycombinator.com/item?id=50423844"
     },
     {
       "author": "kshri24",
@@ -14431,6 +14593,12 @@
       "url": "https://news.ycombinator.com/item?id=50380849"
     },
     {
+      "author": "2ero_wf",
+      "text": "i just give agent a VM, whether the agent is hermes or claude code.\ni made sure the VM sleeps when idle, and i made sure i can copy, resize, delete VM when i want to change my setup. I have 6 VMs hosting claude code coding agent, 2 hermes agent, 1 pi agent when i am out of claude sub, 2 other host some personal-saas softwares. all in VMs.",
+      "at": "2026-11-09T18:04:45.000Z",
+      "url": "https://news.ycombinator.com/item?id=50429130"
+    },
+    {
       "author": "bookdood",
       "text": "Work: Enterprise OpenAI and Anthropic Personal: $20/mo subscription to Anthropic and OpenAI.  Default app \"harness\"",
       "at": "2026-11-05T16:07:45.000Z",
@@ -14747,6 +14915,12 @@
       "text": "I have been using Claude Code mostly vanilla with some of my custom skills for repeatable workflows I recently started using Orca as earlier I was using CMUX",
       "at": "2026-11-09T00:38:54.000Z",
       "url": "https://news.ycombinator.com/item?id=50419445"
+    },
+    {
+      "author": "Sevii",
+      "text": "I have both the Claude and ChatGPT $100/plans. And a suno plan.\nI also use OpenRouter for a lot of stuff. \nI use Claude Code, the ChatGPT app and the pi harness. \nI don't use any swarm tools but most of my apps at abstractwriter.com use the pi agent harness internally. \nI tried OpenClaw back in the day and didn't really use it, now since I have dots I'm trying to use it more.",
+      "at": "2026-11-09T16:55:28.000Z",
+      "url": "https://news.ycombinator.com/item?id=50428201"
     }
   ],
   "comments_complete": true

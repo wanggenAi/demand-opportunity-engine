@@ -1,11 +1,11 @@
 {
-  "observed_at": "2026-11-09T09:44:42.802302+00:00",
+  "observed_at": "2026-11-10T09:44:27.236075+00:00",
   "config": "data/discovery_config.json",
   "adapters": [
     {
       "source": "Hacker News",
       "refreshed": true,
-      "collected": 31,
+      "collected": 28,
       "errors": []
     },
     {
@@ -21,7 +21,7 @@
       "source_family": "public founder/operator job community",
       "access_method": "Discourse public category/topic JSON",
       "url": "https://community.n8n.io/c/jobs/13.json?order=created",
-      "records_inspected": 43,
+      "records_inspected": 41,
       "primary_pages_opened": 24,
       "verified_buyer_requests": 10,
       "explicit_commercial_signals": 10,
@@ -32,15 +32,15 @@
         "Last activity is not publication time. Only substantive buyer-authored follow-ups can renew a lead."
       ],
       "evidence_snapshots": [
-        "data/evidence/f5663f332d6bc9b1.json#sha256=93033bc507e5d1e1ff2693c18126b0cf54ada70197699974654450e0ea20db89",
-        "data/evidence/d9f0be47fa047f2c.json#sha256=71d1d60ac07e35f3e2b175fafc6bcfd4f43f7f7a4b48003e3421ac4296ad21ee"
+        "data/evidence/f5663f332d6bc9b1.json#sha256=83495d04125dda905d33ea9bf23cb59f0f69fd87b4a8bb776210bef2566e5efb",
+        "data/evidence/d9f0be47fa047f2c.json#sha256=eb4a83475233279c7afe5b9d06246358c5634edd64823c006ff592eee7b2a9e3"
       ]
     },
     {
       "source_family": "public freelance/job listings",
       "access_method": "Remotive public JSON API; attributed source links",
       "url": "https://remotive.com/api/remote-jobs?search=automation&limit=20",
-      "records_inspected": 13,
+      "records_inspected": 12,
       "primary_pages_opened": 0,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
@@ -51,7 +51,7 @@
         "Legal warning - Hey, thanks for using Remotive's API, we appreciate it! Please note that API documentation and access is granted so that developers can share our jobs further. Please do not submit Remotive jobs to third Party websites, including but not limited to: Jooble, Neuvoo, Google Jobs, LinkedIn Jobs. Please link back to the URL found on Remotive AND mention Remotive as a source in order to Remotive to get traffic from your listing. If you don't do that, we'll terminate your API access, sorry! Jobs displayed are delayed by 24 hours, the goal being that jobs are attributed to Remotive on various platforms. Displaying our jobs in order to collect signups/email addresses to show a listing constitutes a breach of our terms of services. We offer a private, paid-for API, please email us at hello(at)remotive(dot)io for more information (starting budget is $5k/mo). Please find out terms of services on https://remotive.com/api-documentation. Please note that there is absolutely no need to request Remotive Job data too frequently. Typically, you only need to GET Remotive job data through this API a couple of times a day (we advise max. 4 times a day). Our data is not changing much faster than that anyway. Note that excessive requests will be blocked. Many thanks (Rodolphe & the Remotive team!)"
       ],
       "evidence_snapshots": [
-        "data/evidence/071898d5d7cef09e.json#sha256=07f5d02592953202e020b778c3a5acd7b111c03b52b576b0b0fbf5ff873c2c5e"
+        "data/evidence/071898d5d7cef09e.json#sha256=04cec34a872d8cee1917f7bf294adc048e58044a5f4f6055e090aff69981df6d"
       ]
     },
     {
@@ -65,15 +65,15 @@
       "collected": 0,
       "errors": [
         {
-          "url": "https://www.contractsfinder.service.gov.uk/notice/4f8dd678-fc5e-44d4-92d5-f49c188cdc92",
+          "url": "https://www.contractsfinder.service.gov.uk/notice/54b0711f-b275-443a-bd8f-6f43f8dd7e40",
           "error": "HTTPError: HTTP Error 403: Forbidden"
         },
         {
-          "url": "https://www.contractsfinder.service.gov.uk/notice/160bc360-ae12-461e-abc5-885754941f41",
+          "url": "https://www.contractsfinder.service.gov.uk/notice/132d7197-02c1-4923-a036-f77eefa5959b",
           "error": "HTTPError: HTTP Error 403: Forbidden"
         },
         {
-          "url": "https://www.contractsfinder.service.gov.uk/notice/1bd10227-ca24-4db1-9a27-0152448ac0e8",
+          "url": "https://www.contractsfinder.service.gov.uk/notice/5a2b8e87-f4ab-4500-ab05-3aa8840878f0",
           "error": "HTTPError: HTTP Error 403: Forbidden"
         }
       ],
@@ -81,7 +81,7 @@
         "Search returned procurement notices; up to three detail pages attempted. No buyer request promoted: eligibility, exact remote scope, submission deadline and award status require manual verification."
       ],
       "evidence_snapshots": [
-        "data/evidence/50e3af0542f19c3a.json#sha256=9e095bcecd601867e042a8b97e746dfc325cbc9beeaeb94afaf22189936befc3"
+        "data/evidence/50e3af0542f19c3a.json#sha256=17771ac1b19768dbdde77d769e0639e9c4af14df44bf5b5a4f999c270d7306e5"
       ]
     },
     {
@@ -134,14 +134,14 @@
         "No structured primary buyer requests extracted; static shell is not commercial proof. No login or anti-bot evasion."
       ],
       "evidence_snapshots": [
-        "data/evidence/b5d67d420401a4bb.json#sha256=357ceb9416750c77686ddfce49b1a940faf030d9ed7b468a76c440a6bd650319"
+        "data/evidence/b5d67d420401a4bb.json#sha256=1d468927a9007f7d1c66cf7ac0e7f88c84e1a32c5d1a36c1fe3770f97f534990"
       ]
     },
     {
       "source_family": "freelance project marketplace (Freelancer)",
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://www.freelancer.com/jobs/product-sourcing/",
-      "records_inspected": 17,
+      "records_inspected": 16,
       "primary_pages_opened": 3,
       "verified_buyer_requests": 2,
       "explicit_commercial_signals": 2,
@@ -151,10 +151,10 @@
         "Public bidCount includes competitors; only first 20 proposals may be visible. Employer identity often unresolved. Task budget is not agreement to our pilot."
       ],
       "evidence_snapshots": [
-        "data/evidence/abf73d1fa5782498.json#sha256=e08fddc9707ea0fbb8e88aebdfc0437273e4604d4100c66d371fa682cbd791bd",
-        "data/evidence/545486c9f6791966.json#sha256=d40d0a6348c35dbdd84be116f81f9e694ea9d4b4262fb6fe9db860b1cdf0974e",
-        "data/evidence/e2cd5e73e5830b11.json#sha256=0744bb854cb4b9a62f6af37d6512c156107320e14429b08f2583868ab57d7f59",
-        "data/evidence/9decfd751dbe8075.json#sha256=b560ba347e00b23ffa770581c108018f78b0adc4cd67c9aeb3e62df49d9c4bff"
+        "data/evidence/abf73d1fa5782498.json#sha256=9611bf787801a028a81a4ff513f1e1bd62b7887177c73e3e672ae3c5a3d64543",
+        "data/evidence/545486c9f6791966.json#sha256=2db38c289d4417a9c4598a68c827dfff49095a7f16a3a71d84a5ce0dc2fe9df7",
+        "data/evidence/e2cd5e73e5830b11.json#sha256=5db5e911d9ad648e775c0495eddc2e410f81f29448a37323498938f3b72ee815",
+        "data/evidence/9decfd751dbe8075.json#sha256=68d5f7b002377e48d98c5c105f4ca0577eb52e94965b032b9f4b32b4fe30f801"
       ],
       "records": [],
       "opportunity_ids": [
@@ -164,7 +164,6 @@
       ],
       "inspected_keys": [
         "/projects/market-research/project-40808918",
-        "/projects/amazon/amazon-ebay-private-label-product",
         "/projects/keyword-research/project-40808795",
         "/projects/sourcing/china-construction-materials-sourcing",
         "/projects/sourcing/source-handmade-omani-kumma-cap",
@@ -186,7 +185,7 @@
       "source_family": "freelance project marketplace (Freelancer)",
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://www.freelancer.com/jobs/api-integration/",
-      "records_inspected": 50,
+      "records_inspected": 48,
       "primary_pages_opened": 0,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
@@ -196,11 +195,17 @@
         "A different query/category on Freelancer does not count as another independent family."
       ],
       "evidence_snapshots": [
-        "data/evidence/eb34b643617bda88.json#sha256=3b5a220474945cfb0d75b927b2bc12c514e4df36f1cd4d04eb0fd66e02a012ee"
+        "data/evidence/eb34b643617bda88.json#sha256=07eba0b4474eeab24570ca3154f030da7e1c0e7b885bc7cb264a99b579bd2b2c"
       ],
       "records": [],
       "opportunity_ids": [],
       "inspected_keys": [
+        "/projects/rest-api/python-web-service-integration",
+        "/projects/nodejs/build-pulse-business-operating-system",
+        "/projects/web-development/live-spiritual-healing-platform",
+        "/projects/bitcoin/low-risk-bitcoin-trading-bot",
+        "/projects/affiliate-marketing/referral-program-design-setup",
+        "/projects/algorithmic-trading/build-nse-algo-trading-platform",
         "/projects/translation/complete-website-translation-integration",
         "/projects/automation/automate-your-workflows-with",
         "/projects/api-integration/integrate-razer-payment-gateway",
@@ -212,7 +217,6 @@
         "/projects/ios/mobile-shopping-app-development",
         "/projects/chatbot/meta-instagram-app-review-expert",
         "/projects/compliance/whatsapp-api-business-verification",
-        "/projects/website-testing/bigcommerce-legacy-theme-migration",
         "/projects/api-developmet/blueport-commerce-developer-needed",
         "/projects/ai-video/video-automation-developer",
         "/projects/web-development/build-modern-pushpay-integrated-church",
@@ -238,19 +242,12 @@
         "/projects/react-native/gcc-peer-peer-marketplace-mvp",
         "/projects/odoo/odoo-based-commerce-store-setup",
         "/projects/angular/angular-primeng-enterprise-developer",
-        "/projects/web-development/install-configure-adult-video-script",
         "/projects/android-app-development/complete-railway-app-play-store",
         "/projects/ai-chatbot/whatsapp-sales-agent-mvp-aura",
-        "/projects/api-integration/industrial-iot-machine-monitoring-system",
         "/projects/api-integration/uae-tyre-commerce-platform-development",
         "/projects/woocommerce/uae-tyre-commerce-platform-development",
         "/projects/windows-server/thingboard-server-maintenance-dashboards",
-        "/projects/woocommerce/wix-woocommerce-migration-payments",
-        "/projects/api-integration/simultaneous-stock-order-broadcaster",
-        "/projects/api-integration/website-revamp-api-integration",
-        "/projects/ios/mobile-app-maintenance-retainer",
-        "/projects/web-development/virtual-clinic-website-emr-marketing",
-        "/projects/full-stack-development/udaipur-full-stack-marketing-expert"
+        "/projects/woocommerce/wix-woocommerce-migration-payments"
       ]
     },
     {
@@ -258,60 +255,57 @@
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://community.shopify.com/latest.json",
       "records_inspected": 30,
-      "primary_pages_opened": 1,
+      "primary_pages_opened": 0,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
-      "collected": 1,
+      "collected": 0,
       "errors": [],
       "limitations": [
         "Latest activity is not original publication; support questions are PRODUCT_SIGNAL, not SALES. No more than four primary topics per run."
       ],
       "evidence_snapshots": [
-        "data/evidence/bda5dc3c1eb46ea5.json#sha256=6a6928cfc6382c00824d619b35ac477a4591883726d4448fec2441f114e66c34",
-        "data/evidence/79a32cdc011eb9e6.json#sha256=d546d1a6bd28aaab002f1680307fa0519cbde6c4095b25a1a707526253e7e3b0"
+        "data/evidence/bda5dc3c1eb46ea5.json#sha256=c6f40580f247fdac9de34b4f68ed7113eba1d9aeb9f28c0c7ef69cd8252a9598"
       ],
       "records": [],
-      "opportunity_ids": [
-        "5c2d12a56818a8d5"
-      ],
+      "opportunity_ids": [],
       "inspected_keys": [
         "355460",
-        "712425",
-        "270223",
-        "638887",
-        "396925",
-        "707397",
-        "582347",
-        "711730",
-        "682404",
-        "615718",
-        "587455",
-        "712389",
-        "107906",
-        "712392",
-        "712344",
-        "711747",
-        "712295",
-        "709813",
-        "711789",
-        "700856",
-        "553970",
-        "554939",
-        "709817",
-        "279939",
-        "711311",
         "711739",
+        "713122",
+        "683208",
+        "713127",
+        "711195",
+        "713040",
+        "709869",
+        "712392",
+        "713114",
+        "713096",
+        "712947",
+        "713044",
+        "711340",
+        "117419",
+        "712997",
+        "712940",
+        "712983",
+        "711320",
         "711767",
-        "337652",
-        "709208",
-        "573208"
+        "573208",
+        "709829",
+        "129301",
+        "677281",
+        "706533",
+        "709817",
+        "712295",
+        "712425",
+        "709924",
+        "713020"
       ]
     },
     {
       "source_family": "founder community (Indie Hackers)",
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://www.indiehackers.com/",
-      "records_inspected": 26,
+      "records_inspected": 27,
       "primary_pages_opened": 0,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
@@ -321,37 +315,38 @@
         "Only server-rendered public pages. robots disallows /api/ and sign-in; neither used. Founder self-promotion is not a buyer."
       ],
       "evidence_snapshots": [
-        "data/evidence/6548833164b0e7c9.json#sha256=e8112af85a360e9cc3fdd44002d3aab4c8632d787d182b215382ed703893b70b"
+        "data/evidence/6548833164b0e7c9.json#sha256=799700bb33e1e2a4421348143388a3aaf7638f2d03f2cec7e52c6c715e37b6a0"
       ],
       "records": [],
       "opportunity_ids": [],
       "inspected_keys": [
         "/post/monday-again-what-are-you-building-this-week-15ncpkuk3dbtkDNS0woJ",
+        "/post/your-first-20-sign-ups-might-not-tell-you-whether-people-actually-want-your-product-1RUqDO4IHCS3mgO22ozK",
         "/post/solo-founders-are-you-paying-for-too-many-separate-ai-tools-UNNbswFLcsxl7FbeY6zH",
+        "/post/an-seo-audit-said-we-rank-for-0-keywords-search-console-said-thousands-of-impressions-turns-out-google-is-poisoning-rank-trackers-0qSq1Eqw8hzDLkAzhDlU",
         "/post/i-make-a-study-tool-78-signups-0-paying-customers-here-is-what-ive-seen-so-far-wTG4Fq31YNxjG7qcLKzr",
+        "/post/adding-a-part-can-repaint-its-neighbour-preview-before-applying-or-apply-with-undo-dpX9UNiF2Vdyb9NdQIA0",
         "/post/ill-tell-you-my-product-you-tell-me-yours-BUThfNYcLQDH9VVIDGld",
-        "/post/28-downloads-in-two-weeks-0-sales-and-i-couldnt-see-where-people-dropped-off-vTUWsSLhBDm4EH2pZGOa",
-        "/post/a-launch-week-question-turned-into-my-biggest-feature-shipped-it-the-same-week-e0TE2IWro0v176lgxlDz",
-        "/post/4-people-uploaded-screenshots-to-my-app-none-of-them-clicked-render-here-s-what-i-changed-5Uv5Iv8Iw0WtA7LngyMk",
-        "/post/product-hunt-alternatives-i-read-the-pricing-pages-of-19-of-them-lSh8tKGNc9uKRW5HUf5f",
-        "/post/how-many-unbilled-hours-do-silent-api-webhook-breaking-changes-cost-your-client-projects-4WGLCi8ZZweBQe7F6Jm9",
+        "/post/a-user-wrote-i-did-every-step-and-nothing-sends-my-dashboard-said-it-was-her-fault-my-logs-said-7-of-7-failed-because-of-me-zj80W5ufcNJfjIRZX7Y4",
+        "/post/i-built-answisp-to-see-if-chatgpt-recommends-my-products-TvYJzepOCaFhaFgnl9PO",
+        "/post/tech/a-gtm-startup-just-over-a-year-old-became-trustmrrs-first-1m-sale-UoBr2KJLNKSXL6Nqrg3Q",
+        "/post/tech/loom-bill-jumps-from-about-125-to-800-after-free-seats-go-paid-founder-says-mJZbdiM0Z3HbpJcq5iGu",
+        "/post/tech/marc-lou-says-he-now-rejects-about-30-of-customers-at-mailcheap-kitDfWDG4RYWk0pz9fjt",
+        "/post/tech/pieter-levels-shuts-down-infinite-slop-tv-after-17-8m-clip-views-Ql8zS8Nv5IXmtVo3D9nf",
         "/post/tech/ahrefs-new-domain-rating-is-worse-at-predicting-how-your-domain-ranks-on-google-wuMETmw9YkOACYjkO3cW",
         "/post/tech/openai-to-buy-pierre-which-says-lovable-and-bolt-rely-on-its-git-service-WJg3ZfajMaPx5WJ9vLiP",
-        "/post/tech/marc-lou-says-he-rejected-2-5m-for-trustmrr-Gd2Vs2WSq9PlQdu8TtJK",
-        "/post/tech/pieter-levels-says-claude-code-found-almost-34-000-a-month-in-cost-cuts-Rtcn8vcsKPHV7ZuMQUM8",
-        "/post/tech/beehiivs-third-1m-in-mrr-took-9-months-its-first-took-36-AfyfAW3nLIaUPTpr856T",
-        "/post/tech/how-goguardian-grew-from-a-chrome-extension-to-100m-arr-B1qKroz4HFqqH47eGHTD",
-        "/post/your-first-20-sign-ups-might-not-tell-you-whether-people-actually-want-your-product-1RUqDO4IHCS3mgO22ozK",
-        "/post/my-niche-seo-experiment-524-google-impressions-7-clicks-and-what-im-learning-4kzte4XsYUOeYP1MxCXB",
-        "/post/a-user-wrote-i-did-every-step-and-nothing-sends-my-dashboard-said-it-was-her-fault-my-logs-said-7-of-7-failed-because-of-me-zj80W5ufcNJfjIRZX7Y4",
-        "/post/trustslot-is-at-0-mrr-these-are-the-numbers-im-watching-instead-HzRtHolCVpXrKt8KD2yW",
-        "/post/the-same-200-reviews-covered-8-hours-for-spotify-and-22-months-for-things-3-FXs89e01NhN11R7QBAH2",
-        "/post/an-upvote-and-a-review-are-not-the-same-signal-rjgu2i8D8Ni95vZCYCIN",
-        "/post/i-built-answisp-to-see-if-chatgpt-recommends-my-products-TvYJzepOCaFhaFgnl9PO",
-        "/post/i-compiled-everything-from-the-reddit-vs-indie-hackers-vs-x-thread-into-one-post-NWkt6bd8tWyXujLfP4bh",
-        "/post/tech/hitting-60k-mrr-by-building-an-sdk-instead-of-an-app-0B3bsTvvOG0wqf8cAx1v",
-        "/post/tech/turning-a-freelance-gig-into-a-150k-yr-product-tDdZGZyiyNTztPfI2wkY",
-        "/post/tech/from-weekend-project-to-1m-mrr-in-two-years-YRaa1QlGTjaqh0XgzWkc"
+        "/post/you-built-it-but-how-do-you-get-people-to-use-it-eiVUxm8sscxSgiPBLUwy",
+        "/post/why-ahrefs-and-semrush-are-officially-legacy-bloatware-how-we-engineered-serpspur-to-outperform-the-old-giants-on-every-metric-HyU7zTH5mHI40s273hHO",
+        "/post/i-built-an-ai-twin-that-turns-your-expertise-into-personal-guidance-TipmcGDP6o69ju6bmhr2",
+        "/post/emailing-a-cold-waitlist-on-launch-day-without-landing-in-spam-hyUxHuxSJU7L33ysk3rq",
+        "/post/image-seo-tripled-my-google-images-traffic-in-2-weeks-and-my-new-titles-didn-t-move-clicks-WAxfwRjQqkNajEUcdo5D",
+        "/post/six-small-b2b-ideas-no-evidence-yet-which-one-would-you-pay-for-ODSLxXRg812Uow0yox13",
+        "/post/i-asked-5-ais-about-7-indie-products-heres-what-actually-got-one-of-them-named-kImqSC9C2VnROCARAuD6",
+        "/post/saas-founders-have-a-feature-usage-problem-and-it-s-bigger-than-analytics-lXcqttcD6xxYmq0huvt5",
+        "/post/i-open-sourced-a-tamper-evident-sha-256-audit-ledger-and-pre-call-budget-gateway-for-ai-agents-3Mb6yCFxBMNXYdUqGzZ2",
+        "/post/creators/buying-chess-com-for-56k-and-growing-it-to-200m-in-annual-revenue-GkkdbA1ibyb3KUxKhFyT",
+        "/post/tech/this-founder-solved-his-agencys-problem-and-turned-the-solution-into-a-3m-arr-saas-uS8zjhggjKA4eoXFAUZi",
+        "/post/tech/growing-a-side-project-in-a-crowded-market-to-1m-arr-by-playing-the-long-game-eL15KZvm2ax20BtiM5i8"
       ]
     },
     {
@@ -366,7 +361,7 @@
       "errors": [
         {
           "url": "https://www1.tradekey.com/buyoffer_search/start_date/3/page_no/3.htm",
-          "error": "TimeoutError: The read operation timed out"
+          "error": "HTTPError: HTTP Error 503: Service Unavailable"
         }
       ],
       "limitations": [],
@@ -376,19 +371,19 @@
       "inspected_keys": []
     }
   ],
-  "unique_refreshed": 83,
+  "unique_refreshed": 79,
   "info_edge_refresh": [
     {
       "id": "5409f529cb2b0f7b",
       "url": "https://community.n8n.io/t/assistant-credits-top-up-now-available/318075",
-      "checked_at": "2026-11-09T09:44:42.802302+00:00",
+      "checked_at": "2026-11-10T09:44:27.236075+00:00",
       "refreshed": false,
       "reason": "event expired; no publication rejuvenation"
     },
     {
       "id": "edge-haiku-2026-10-07",
       "url": "https://www.anthropic.com/claude-haiku-5-5",
-      "checked_at": "2026-11-09T09:44:42.802302+00:00",
+      "checked_at": "2026-11-10T09:44:27.236075+00:00",
       "refreshed": false,
       "reason": "event expired; no publication rejuvenation"
     }

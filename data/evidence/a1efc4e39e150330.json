@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43136",
-  "collected_at": "2026-11-09T09:44:42.802302+00:00",
+  "collected_at": "2026-11-10T09:44:27.236075+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/43136",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -50,9 +50,9 @@
     "locked": false,
     "assignees": [],
     "milestone": null,
-    "comments": 4,
+    "comments": 5,
     "created_at": "2026-11-08T19:31:28Z",
-    "updated_at": "2026-11-09T07:48:37Z",
+    "updated_at": "2026-11-10T05:40:26Z",
     "closed_at": null,
     "assignee": null,
     "author_association": "NONE",
@@ -170,6 +170,12 @@
       "text": "That ~60-second delay on distributed worker nodes stems from ScalingService.registerWorkerListeners() omitting child completion and failure event bindings in JobOutcomeTracker, which forces the caller to time out and poll the database instead of catching the pub/sub notification instantly. Patching the worker listener registration to forward child outcome events directly through Redis pub/sub eliminates the polling fallback. If you are tracking down the exact event emitter bindings in your build, let me know and I can share the specific hook adjustments right here.",
       "at": "2026-11-09T07:48:37Z",
       "url": "https://github.com/n8n-io/n8n/issues/43136#issuecomment-6734953692"
+    },
+    {
+      "author": "santastabber",
+      "text": "Additional production evidence: two native Agent workflow-tool calls in one later run reproduced this with the caller and child executing on the **same worker**. This therefore is not limited to a child running on a different worker.\n\nIdentifiers and worker names are symbolic below. Customer data, prompts, inputs/results, absolute timestamps, hostnames and real execution/job IDs are omitted.\n\n| Measurement | Child A | Child B |\n|---|---:|---:|\n| Persisted child workflow duration | 13.916 s | 12.943 s |\n| Agent tool-call duration | 60.104 s | 60.088 s |\n| Difference between those durations | 46.188 s | 47.145 s |\n\nFor **both** children, the calling worker logged this sequence (identifiers replaced):\n\n```text\nworker-A: Enqueued execution <child> (job <job>)\nworker-A: Worker started execution <child> (job <job>)\nworker-A: Worker finished execution <child> (job <job>)\nworker-A: Execution <child> ended without a completion event, resolving the wait from the DB\n```\n\nThe main process also logged `Execution <child> (job <job>) finished` for both jobs. Both child workflows and both tool results were successful; there was no workflow retry. Across these two calls, the difference between agent tool-call time and persisted child runtime was **93.333 seconds**.\n\nRead-only inspection of the installed code again confirms the same path described in this issue: worker `global:progress` handling processes `abort-job` but not `job-finished`; the main/webhook listener feeds completion into `JobOutcomeTracker`; the database recheck interval is 60 seconds. This matches the observed durations and fallback warnings.\n\nThis deployment remains on n8n 2.46.6 with the unrelated observer/tokenizer backport already disclosed in the original report. No completion-handling core patch was applied, and no image was rebuilt or deployed for this investigation. This update adds measured traces only; it does not claim a patched end-to-end retest.",
+      "at": "2026-11-10T05:40:26Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43136#issuecomment-6759997401"
     }
   ],
   "comments_complete": true

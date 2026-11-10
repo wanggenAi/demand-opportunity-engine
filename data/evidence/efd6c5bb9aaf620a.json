@@ -1,0 +1,129 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43263",
+  "collected_at": "2026-11-10T09:44:27.236075+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43263",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43263/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43263/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43263/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43263",
+    "id": 6292375357,
+    "node_id": "I_kwDOC4Q8Qs8AAAABdw4HPQ",
+    "number": 43263,
+    "title": "Discord node (v2, Webhook → Send Legacy) throws NodeOperationError with empty errorMessage, while the same webhook works via HTTP Request node",
+    "user": {
+      "login": "rizwansk23",
+      "id": 185694547,
+      "node_id": "U_kgDOCxF5Uw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/185694547?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/rizwansk23",
+      "html_url": "https://github.com/rizwansk23",
+      "followers_url": "https://api.github.com/users/rizwansk23/followers",
+      "following_url": "https://api.github.com/users/rizwansk23/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rizwansk23/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rizwansk23/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rizwansk23/subscriptions",
+      "organizations_url": "https://api.github.com/users/rizwansk23/orgs",
+      "repos_url": "https://api.github.com/users/rizwansk23/repos",
+      "events_url": "https://api.github.com/users/rizwansk23/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rizwansk23/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582010757,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cXhQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:nodes",
+        "name": "team:nodes",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Nodes team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-11-09T18:41:48Z",
+    "updated_at": "2026-11-10T05:05:15Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "\n## Describe the problem/error/question\n\nThe Discord node (v2, Connection Type: Webhook, operation `sendLegacy`) fails on every execution with a `NodeOperationError` that has an **empty `errorMessage`**. This happens even with a plain hard-coded message in the Content field (e.g. \"test\"), so it is not related to message length or content.\n\nThe same Discord webhook URL works fine when called directly:\n- `curl` with a valid JSON body `{\"content\":\"test message\"}` from the same server returns `204 No Content` and the message appears in the channel.\n- An HTTP Request node (POST, JSON body) to the same webhook URL also works.\n\nSo network access, DNS and the webhook itself are fine. Only the Discord node fails, and because the error message is empty I can't tell what Discord rejected.\n\nExpected: the Discord node sends the message, or at least surfaces the actual error returned by Discord (status code / `message` / `code`) instead of an empty string.\n\n## What is the error message (if any)?\n\n```\n{\n  \"errorMessage\": \"\",\n  \"errorDetails\": {},\n  \"n8nDetails\": {\n    \"nodeName\": \"Discord\",\n    \"nodeType\": \"n8n-nodes-base.discord\",\n    \"nodeVersion\": 2,\n    \"operation\": \"sendLegacy\",\n    \"itemIndex\": 0,\n    \"time\": \"11/9/2026, 11:57:47 PM\",\n    \"n8nVersion\": \"2.46.7 (Self Hosted)\",\n    \"binaryDataMode\": \"filesystem\",\n    \"stackTrace\": [\n      \"NodeOperationError: \",\n      \"    at ExecuteContext.parseDiscordError (.../nodes/Discord/v2/helpers/utils.ts:79:9)\",\n      \"    at ExecuteContext.execute (.../nodes/Discord/v2/actions/webhook/sendLegacy.operation.ts:153:34)\",\n      \"    at ExecuteContext.router (.../nodes/Discord/v2/actions/router.ts:65:17)\",\n      \"    at ExecuteContext.execute (.../nodes/Discord/v2/DiscordV2.node.ts:33:10)\",\n      \"    at WorkflowExecute.executeNode (.../n8n-core/src/execution-engine/workflow-execute.ts:1157:8)\"\n    ]\n  }\n}\n```\n\n## Please share your workflow/screenshots/recording\n\nWorkflow: Schedule Trigger → HTTP Request (NewsAPI, top tech headlines) → Code node (builds message/embeds) → Discord node (Webhook, Send Legacy).\n\n```\n(paste your workflow JSON here, with the webhook URL and NewsAPI key removed)\n```\n\n## Share the output returned by the last node\n\nThe Discord node returns no output, only the error above. For comparison, the direct request returns:\n\n```\nHTTP/1.1 204 No Content   (curl with valid JSON body)\n```\n\n## Debug info\n\n### core\n\n- n8nVersion: 2.46.7\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.12.1\n- nodeEnv: production\n- database: sqlite\n- executionMode: regular\n- concurrency: -1\n- license: community\n\n### storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n### pruning\n\n- enabled: true\n- maxAge: 336 hours\n- maxCount: 10000 executions\n\n### client\n\n- userAgent: mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/157.0.0.0 safari/537.36\n- isTouchDevice: false\n\nGenerated at: 2026-11-09T18:38:59.675Z",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43263/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43263/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @rizwansk23,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9725\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9725](https://linear.app/n8n/issue/GHC-9725)",
+      "at": "2026-11-09T18:42:01Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43263#issuecomment-6748339195"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "The stack trace narrows the empty message to `parseDiscordError()` at `nodes/Discord/v2/helpers/utils.ts:79`, but the report does not include the Discord response status/body, so the underlying rejection is still unknown. Could you capture the response status and sanitized body from the failing execution (remove the webhook URL and any IDs)? That would distinguish an API validation error from a transport or response-parsing issue. The HTTP Request success confirms the webhook works for that separate request, but does not establish that the Discord node sends the same payload.",
+      "at": "2026-11-10T05:05:15Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43263#issuecomment-6759503749"
+    }
+  ],
+  "comments_complete": true
+}

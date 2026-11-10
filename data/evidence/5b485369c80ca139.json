@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43283",
+  "collected_at": "2026-11-10T09:44:27.236075+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43283",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43283/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43283/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43283/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43283",
+    "id": 6300849077,
+    "node_id": "I_kwDOC4Q8Qs8AAAABd49TtQ",
+    "number": 43283,
+    "title": "nodeNameToToolName returns an empty tool name after truncation",
+    "user": {
+      "login": "indexGin",
+      "id": 166748424,
+      "node_id": "U_kgDOCfBhCA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/166748424?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/indexGin",
+      "html_url": "https://github.com/indexGin",
+      "followers_url": "https://api.github.com/users/indexGin/followers",
+      "following_url": "https://api.github.com/users/indexGin/following{/other_user}",
+      "gists_url": "https://api.github.com/users/indexGin/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/indexGin/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/indexGin/subscriptions",
+      "organizations_url": "https://api.github.com/users/indexGin/orgs",
+      "repos_url": "https://api.github.com/users/indexGin/repos",
+      "events_url": "https://api.github.com/users/indexGin/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/indexGin/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-10T05:20:21Z",
+    "updated_at": "2026-11-10T05:20:32Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Summary\n\n`nodeNameToToolName` (`packages/workflow/src/tool-helpers.ts`) converts a node name into a model tool name: it replaces invalid characters, truncates to 64 characters, then strips trailing `_` / `-` left by truncation. When the first 64 characters after truncation are all `_` or `-`, the trailing cleanup wipes the entire name and returns an empty string.\n\n## Minimal reproduction\n\n```ts\nnodeNameToToolName('-'.repeat(64) + 'Suffix'); // returns ''\nnodeNameToToolName('_'.repeat(64) + 'Suffix'); // returns ''\n```\n\nFor comparison, `nodeNameToToolName('a'.repeat(100))` returns `'a'.repeat(64)` and `nodeNameToToolName('a'.repeat(63) + ' more text')` returns `'a'.repeat(63)`.\n\n## Expected behavior\n\nTrailing cleanup after truncation may only remove trailing separators, never the whole name. The inputs above should return a non-empty, valid tool name containing only `[a-zA-Z0-9_-]` and no longer than 64 characters. Ordinary long names should still have their trailing underscore/hyphen removed (existing behavior unchanged).\n\n## Impact\n\nThis helper is shared by ToolWorkflow, ToolCalculator, ToolCode, ToolHttpRequest, ToolVectorStore, ToolWikipedia, McpTrigger and other AI tool nodes to generate the tool name / server name sent to the model API. A node name starting with a long run of hyphens or underscores (users can name nodes freely) produces an empty tool name, which the model API rejects; the workflow then fails with an error that does not point back to the node name. The fix only affects the truncation branch.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43283/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43283/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @indexGin,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9728\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9728](https://linear.app/n8n/issue/GHC-9728)",
+      "at": "2026-11-10T05:20:30Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43283#issuecomment-6759718050"
+    }
+  ],
+  "comments_complete": true
+}
