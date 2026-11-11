@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43441",
+  "collected_at": "2026-11-11T09:20:07.956178+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43441",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43441/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43441/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43441/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43441",
+    "id": 6319571028,
+    "node_id": "I_kwDOC4Q8Qs8AAAABeK0AVA",
+    "number": 43441,
+    "title": "Verification helpers run on the main model instead of their pinned Haiku and Sonnet models on the AI service proxy",
+    "user": {
+      "login": "PavleProd",
+      "id": 96532387,
+      "node_id": "U_kgDOBcD3ow",
+      "avatar_url": "https://avatars.githubusercontent.com/u/96532387?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/PavleProd",
+      "html_url": "https://github.com/PavleProd",
+      "followers_url": "https://api.github.com/users/PavleProd/followers",
+      "following_url": "https://api.github.com/users/PavleProd/following{/other_user}",
+      "gists_url": "https://api.github.com/users/PavleProd/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/PavleProd/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/PavleProd/subscriptions",
+      "organizations_url": "https://api.github.com/users/PavleProd/orgs",
+      "repos_url": "https://api.github.com/users/PavleProd/repos",
+      "events_url": "https://api.github.com/users/PavleProd/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/PavleProd/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-11T01:28:34Z",
+    "updated_at": "2026-11-11T01:28:47Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nn8n Assistant verifies a built workflow with two LLM helpers:\n- **Destructiveness classifier:** pinned to `anthropic/claude-haiku-5-5` at low effort ([classify-node-destructiveness.service.ts#L32-L33](https://github.com/n8n-io/n8n/blob/28f60cebe5d5303e13867c2afe15d44b35b9e9d7/packages/@n8n/instance-ai/src/tools/workflows/classify-node-destructiveness.service.ts#L32-L33)).\n- **Simulation fixture generator:** pinned to `anthropic/claude-sonnet-5-5` at low effort ([generate-simulation-fixtures.service.ts#L48-L49](https://github.com/n8n-io/n8n/blob/28f60cebe5d5303e13867c2afe15d44b35b9e9d7/packages/@n8n/instance-ai/src/tools/workflows/generate-simulation-fixtures.service.ts#L48-L49)).\n\nOn the AI service proxy, the helpers do not use these models.\n- `resolveAgentModel` looks for an eval model API key in the environment ([eval-agents.ts#L215-L227](https://github.com/n8n-io/n8n/blob/28f60cebe5d5303e13867c2afe15d44b35b9e9d7/packages/@n8n/instance-ai/src/utils/eval-agents.ts#L215-L227)). The proxy has no such key, so the helpers use the fallback.\n- The fallback is the run's main model (`context.modelId`, for example [build-workflow.tool.ts#L1539](https://github.com/n8n-io/n8n/blob/28f60cebe5d5303e13867c2afe15d44b35b9e9d7/packages/@n8n/instance-ai/src/tools/workflows/build-workflow.tool.ts#L1539)).\n- When the main model is Opus 5.5, both helpers run on Opus 5.5.\n\n#34627 added this fallback, which fixed empty simulations on the proxy. It noted that restoring the cheaper tiers needs host-resolved tier-specific models, and left that as a follow-up. #42231 then pinned the 5.5 models at low effort, and noted that the pin does not apply on the fallback path. Since #41137, `resolveProxyModel` accepts a model name ([instance-ai-model.service.ts#L164-L170](https://github.com/n8n-io/n8n/blob/28f60cebe5d5303e13867c2afe15d44b35b9e9d7/packages/cli/src/modules/instance-ai/instance-ai-model.service.ts#L164-L170)), so the host can now build the pinned models on the proxy.\n\n**Measured cost per verification.** Real calls to the Anthropic API, using the real helper code on a six-node workflow:\n- the workflow: schedule trigger → HTTP POST search → Code with `helpers.httpRequest` → Google Sheets append → Slack post → Gmail send;\n- Slack and Gmail have no credentials, so 2 nodes go to the classifier and 3 nodes get fixtures;\n- 3 runs for each variant, list prices.\n\n| Helper | Fallback: Opus 5.5, effort low | Pinned model, effort low |\n|---|---|---|\n| Classifier (803 input tokens, ~125 output) | $0.0057 | Haiku 5.5: $0.00015 |\n| Fixtures (2,471 input tokens, ~600–730 output) | $0.0236 | Sonnet 5.5: $0.0110 |\n| **Total for each verification** | **$0.0293** | **$0.0111 (−62%)** |\n\nAll 6 runs gave the same verdicts for all five nodes, and fixtures for the same three nodes. The planner runs on each saved build iteration (create or update), and again when credentials change.\n\n### To Reproduce\n\n1. Use a deployment where the model comes from the AI service proxy (n8n Cloud). Do not set `N8N_INSTANCE_AI_MODEL_API_KEY`, `N8N_AI_ANTHROPIC_KEY` or `ANTHROPIC_API_KEY`.\n2. Ask n8n Assistant to build a workflow that posts to Slack, with no Slack credential.\n3. Open the trace of the build. Find the `verification-destructiveness-classifier` and `verification-simulation-fixtures` calls.\n4. See that both calls use the run's main model, not `claude-haiku-5-5` and `claude-sonnet-5-5`.\n\nThe same code path shows in a unit test: call `createEvalAgent('x', { model: 'anthropic/claude-haiku-5-5', fallbackModelConfig: 'anthropic/claude-opus-5-5' })` with no API key in the environment. The agent gets the Opus model.\n\n### Expected behavior\n\nOn the AI service proxy, the classifier uses Haiku 5.5 and the fixture generator uses Sonnet 5.5, the same as on deployments with an eval API key and in CI. When the host cannot build the pinned model, the helpers use the main model, as they do now.\n\n### Debug Info\n\nNot available. This is a code-level report from a source checkout at master `28f60cebe5` (2026-11-10), not from a running instance. The measurement script and the raw usage data are available on request.\n\n### Operating System\n\nmacOS (source checkout)\n\n### n8n Version\n\nmaster `28f60cebe5` (2.48.0)\n\n### Node.js Version\n\n26.13.0\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nn8n cloud (the affected path is the AI service proxy)\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43441/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43441/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @PavleProd,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9739\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9739](https://linear.app/n8n/issue/GHC-9739)",
+      "at": "2026-11-11T01:28:44Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43441#issuecomment-6784276726"
+    }
+  ],
+  "comments_complete": true
+}

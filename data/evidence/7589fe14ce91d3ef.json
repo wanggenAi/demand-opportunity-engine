@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50442093",
+  "collected_at": "2026-11-11T09:20:07.956178+00:00",
+  "source": {
+    "author": "WayHow",
+    "children": [],
+    "created_at": "2026-11-10T15:50:33.000Z",
+    "created_at_i": 1794325833,
+    "id": 50442093,
+    "options": [],
+    "parent_id": null,
+    "points": 1,
+    "story_id": 50442093,
+    "text": "Hi HN!<p>Suppose you have notes, skills, and agent instructions that are part of your personal workflow, so you do not want them committed to the public repo, but at the same time, you want them to be in the workspace at the correct locations (e.g., AGENTS.md file locations matter), and these files cannot be simply gitignored because you also want versioning for them.<p>The solution to this is actually just a bit more plain Git.<p><pre><code>  $ git status --short                                 # public repo\n  ?? AGENTS.md\n  ?? notes&#x2F;\n\n  $ git dupe init                                      # private repo\n  Initialized empty Git repository in &#x2F;home&#x2F;brian&#x2F;code&#x2F;project&#x2F;.git&#x2F;dupe&#x2F;\n\n  $ git dupe add notes&#x2F; AGENTS.md                      # private repo\n  hint: notes is now hidden from the project&#x27;s Git; run from the root, &#x27;git dupe unhide -- notes&#x27; stops hiding it\n\n  $ git dupe commit -m &quot;Notes and agent instructions&quot;  # private repo\n  [main (root-commit) 3eb3af9] Notes and agent instructions\n   3 files changed, 3 insertions(+)\n   create mode 100644 .gitdupe\n   create mode 100644 AGENTS.md\n   create mode 100644 notes&#x2F;todo.md\n\n  $ git status --short                                 # public repo: nothing\n\n  $ git dupe log --oneline                             # private repo: your files\n  3eb3af9 Notes and agent instructions\n</code></pre>\nThe solution, in short, is versioning those agent files in a repo, say &lt;private-repo&gt; (this repo is private to you and holds the history for your agent files), and that repo shares the same worktree as the public repo &lt;public-repo&gt;. You essentially overlap the two, with &lt;private-repo&gt; put in .git&#x2F; (and .git&#x2F; is that of the public repo) for a convenient solution.<p>If you want to read more about the strategy used, there is more comprehensive documentation in the repo.<p>git-dupe supports macOS, Linux, and Windows and is under the MIT License.",
+    "title": "Show HN: Git-dupe – plain Git per-project private versioning for agent files",
+    "type": "story",
+    "url": "https://github.com/BrianWeiHaoMa/git-dupe"
+  },
+  "comments": [],
+  "comments_complete": true
+}

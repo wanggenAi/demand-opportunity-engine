@@ -1,0 +1,107 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43397",
+  "collected_at": "2026-11-11T09:20:07.956178+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43397",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43397/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43397/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43397/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43397",
+    "id": 6309295637,
+    "node_id": "I_kwDOC4Q8Qs8AAAABeBA2FQ",
+    "number": 43397,
+    "title": "GHCR image builds fail with uppercase repository owners",
+    "user": {
+      "login": "Youness331",
+      "id": 115558382,
+      "node_id": "U_kgDOBuNH7g",
+      "avatar_url": "https://avatars.githubusercontent.com/u/115558382?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Youness331",
+      "html_url": "https://github.com/Youness331",
+      "followers_url": "https://api.github.com/users/Youness331/followers",
+      "following_url": "https://api.github.com/users/Youness331/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Youness331/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Youness331/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Youness331/subscriptions",
+      "organizations_url": "https://api.github.com/users/Youness331/orgs",
+      "repos_url": "https://api.github.com/users/Youness331/repos",
+      "events_url": "https://api.github.com/users/Youness331/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Youness331/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-11-10T14:50:37Z",
+    "updated_at": "2026-11-10T16:07:07Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nGitHub Actions image workflows can fail when the repository owner contains uppercase letters. The workflow can create an image reference such as `ghcr.io/Youness331/n8n-benchmark:latest`. Docker rejects this reference because image names must be lowercase.\n\n### To Reproduce\n\n1. Run an affected image build workflow in a repository or fork with an uppercase owner name.\n2. Check the image reference created by the workflow.\n3. See the build fail with `repository name must be lowercase`.\n\n### Expected behavior\n\nThe workflow should use a lowercase owner in every GHCR image reference so the image build can continue.\n\n### Debug Info\n\nThis is a GitHub Actions workflow issue, not an n8n runtime issue. The observed error was: `invalid tag ghcr.io/Youness331/n8n-benchmark:latest: repository name must be lowercase`.\n\n## Environment\n\n- Operating System: GitHub-hosted Ubuntu runner\n- n8n Version: Not applicable; this issue affects CI workflows\n- Node.js Version: Not applicable; the image reference fails validation\n- Database: Not applicable; no n8n instance is running\n- Execution mode: Not applicable; no n8n instance is running\n- Hosting: GitHub Actions; not an n8n-hosted instance",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43397/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43397/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @Youness331,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9737\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9737](https://linear.app/n8n/issue/GHC-9737)",
+      "at": "2026-11-10T14:50:50Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43397#issuecomment-6770493659"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "The current workflow source uses `${{ github.repository_owner }}` directly in the benchmark image tag (`.github/workflows/build-benchmark-image.yml:41`). The same unnormalized value also appears in the base-image workflow (line 140), node-pc workflow (lines 74–96), and release-channel workflow (lines 154–164). A shared lowercased owner value, reused for GHCR image references, would address the benchmark case and these other paths too. This is a source review; I have not run the affected workflows.",
+      "at": "2026-11-10T16:07:06Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43397#issuecomment-6772410666"
+    }
+  ],
+  "comments_complete": true
+}

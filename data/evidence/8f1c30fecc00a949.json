@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50442692",
+  "collected_at": "2026-11-11T09:20:07.956178+00:00",
+  "source": {
+    "author": "zmcddn",
+    "children": [],
+    "created_at": "2026-11-10T16:34:46.000Z",
+    "created_at_i": 1794328486,
+    "id": 50442692,
+    "options": [],
+    "parent_id": null,
+    "points": 1,
+    "story_id": 50442692,
+    "text": "I built Crewplane because I wanted more control and flexibility over how my coding agents work together, and a way to trace what happened.<p>Workflow is defined in Markdown, and Crewplane runs the nodes defined in the workflow using native coding CLIs such as Codex and Claude Code. So the control is back to you: different workflows for different tasks with different models, what they depend on, and how they run (parallel or sequential or both). Every input, intermediate output, log, manifest, and final result is preserved on disk so you can trace a run after the fact.<p>Workflows can be reused and composed into larger pipelines, and interrupted workflows can be resumed. There is no vendor lock in, and it’s easy to adapt your workflows for various tasks - research, design, implementation, debugging, deployment, anything that works as structured procedures.<p>Give it a try and adapt your own workflows, there is a built-in Mock CLI so you can just try the workflow syntax and composition without worrying about costs (no model calls). Any feedback or suggestions would be greatly appreciated.<p>Open source (Apache-2.0): <a href=\"https:&#x2F;&#x2F;github.com&#x2F;crewplaneai&#x2F;crewplane\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;crewplaneai&#x2F;crewplane</a>",
+    "title": "Show HN: Crewplane, you design and own the workflows, agents run them",
+    "type": "story",
+    "url": "https://github.com/crewplaneai/crewplane"
+  },
+  "comments": [],
+  "comments_complete": true
+}

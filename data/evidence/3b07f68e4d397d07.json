@@ -1,0 +1,113 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43381",
+  "collected_at": "2026-11-11T09:20:07.956178+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43381",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43381/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43381/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43381/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43381",
+    "id": 6308353353,
+    "node_id": "I_kwDOC4Q8Qs8AAAABeAHVSQ",
+    "number": 43381,
+    "title": "AI Agent tool observations return the literal empty string under executionOrder \"v0\"",
+    "user": {
+      "login": "sinehypernova-0718",
+      "id": 245732647,
+      "node_id": "U_kgDODqWVJw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/245732647?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/sinehypernova-0718",
+      "html_url": "https://github.com/sinehypernova-0718",
+      "followers_url": "https://api.github.com/users/sinehypernova-0718/followers",
+      "following_url": "https://api.github.com/users/sinehypernova-0718/following{/other_user}",
+      "gists_url": "https://api.github.com/users/sinehypernova-0718/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/sinehypernova-0718/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/sinehypernova-0718/subscriptions",
+      "organizations_url": "https://api.github.com/users/sinehypernova-0718/orgs",
+      "repos_url": "https://api.github.com/users/sinehypernova-0718/repos",
+      "events_url": "https://api.github.com/users/sinehypernova-0718/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/sinehypernova-0718/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 3,
+    "created_at": "2026-11-10T13:59:32Z",
+    "updated_at": "2026-11-11T04:06:14Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nWhen an AI Agent node runs in a workflow with `settings.executionOrder: \"v0\"`, every tool call in the turn produces the two-character string `\"\"` as its observation in `intermediateSteps`. The tool node itself executes successfully and its real output is present in the saved execution data, but the agent never sees it. The LLM then either hallucinates a plausible value or reports that the tool returned nothing. No error is raised. The workflow produces a wrong answer silently.\n\nThe failure is deterministic under v0, not intermittent. Every tool call in the turn gets the empty observation, on every execution.\n\nRoot cause, confirmed by source read and A/B test:\n\n- In `packages/core/src/execution-engine/requests-response.ts`, `handleRequest` builds `nodesToBeExecuted` and inserts the resumed agent entry via an unconditional `nodesToBeExecuted.unshift(...)` at around line 277. The `executionOrder === 'v1'` check at line 271 only guards the `reverse()` of the tool entries above it.\n- Under v1: reverse at 271, then unshift at 277, then `addNodeToBeExecuted` also enqueues with `unshift` into the stack (`workflow-execute.ts:481`). The two inversions cancel, tools drain first, the agent resumes after.\n- Under v0: no reverse, same unshift at 277, but `addNodeToBeExecuted` enqueues with `push`. The resume entry ends up at the front of a FIFO drain and pops before any tool runs.\n- `initializeNodeRunData` (`requests-response.ts:55-86`) pre-creates a placeholder run slot for each tool, with `inputOverride`, `source`, `executionIndex: 0`, `executionTime: 0`, `startTime: 0`, and no `data` field.\n- `collectSubNodeResults` (`workflow-execute.ts:1901-1918`) only checks whether the slot exists, not whether it has `.data`. Under v0 the agent reads the placeholder.\n- `buildObservation` in `packages/@n8n/nodes-langchain/utils/agent-execution/buildSteps.ts` (around lines 373-389) finds no `ai_tool` output, no error, and falls through to `JSON.stringify('')` at line 388.\n\nEvidence from a 4-node reproduction on 2.46.6, same workflow, same prompt, same credential, only `settings.executionOrder` changed between the two groups:\n\n| executionOrder | agent executionIndex | tool executionIndex | tool start minus last LLM call end | observation length |\n|---|---|---|---|---|\n| v0 | 3 | 5 | +6 ms | 2 chars (`\"\"`) |\n| v0 | 3 | 5 | +5 ms | 2 chars (`\"\"`) |\n| v0 | 3 | 5 | +6 ms | 2 chars (`\"\"`) |\n| v1 | 4 | 3 | -1974 ms | 1656 chars |\n| v1 | 4 | 3 | -1945 ms | 1656 chars |\n| v1 | 4 | 3 | -2091 ms | 1656 chars |\n\nSame measurement on a 110-node production workflow showed +305 ms under v0.\n\nThe correlation in the failing executions is correct. Right node name, right runIndex, right `toolCallId`. The saved `runData['Gmail MCP'][0].data.ai_tool[0][0].json` contains 3790 characters of real payload. The observation is still `\"\"`.\n\nNot specific to one tool type. Reproduces with `mcpClientTool` against Gmail, Google Contacts, data.gouv.fr, Firecrawl, and with `toolWorkflow` calling SerpAPI. Not auth-related: reproduces on public MCP servers with no auth. Not model-related: reproduces on gpt-4.1-mini with `responsesApiEnabled: false`.\n\nWhy this matters for users who didn't write the workflow by hand: workflows created through the public REST API, imported, or generated via the CLI or SDK without an explicit `executionOrder` fall back to v0. Workflows created in the editor get v1 and do not hit this. The editor does not warn anyone that an AI Agent in a v0 workflow will silently receive empty tool results.\n\nLikely fix direction (for triage, not part of this report): make the resume insertion at `requests-response.ts:277` order-aware, using `unshift` under v1 and `push` under v0. Two lines of code. The v0 test at `requests-response.test.ts:549-593` currently asserts the buggy order `['AI Agent', 'Tool A', 'Tool B']` and would need updating to `['Tool A', 'Tool B', 'AI Agent']`. A regression test for v0 + agent + tool + correct observation does not exist today.\n\nDisclosure: this issue was filed after investigation in #38870, where the mechanism was confirmed on a reproduction by @lwiart and the source was cross-checked by several people in that thread. The original reporter of #38870 is on v1 and that issue is separate.\n\n\n\n### To Reproduce\n\n1. Create a 4-node workflow: Chat Trigger, an AI Agent node (v3.1) with a language model (e.g. `lmChatOpenAi`) and one tool (e.g. `mcpClientTool` pointed at a public server such as https://mcp.data.gouv.fr/mcp, or a `toolWorkflow` calling any sub-workflow).\n2. Enable `returnIntermediateSteps: true` on the AI Agent node, or set `forceToolCallOnFirstIteration: true` so the tool is called on every run.\n3. Set the workflow's `settings.executionOrder` to `\"v0\"`. The easiest way is to import a workflow JSON with that setting, or create the workflow via the public API without an explicit executionOrder (which also falls back to v0).\n4. Trigger the agent with a prompt that causes it to call the tool.\n5. Inspect `intermediateSteps[0].observation` in the agent's execution result. It will be the two-character string `\"\"`.\n6. Inspect the tool node's own execution data via `GET /rest/executions/<id>`. It will show `executionStatus: \"success\"` and `data.ai_tool[0][0].json` populated with the real payload.\n7. Change only `settings.executionOrder` to `\"v1\"`, keep the same workflow, prompt, and credential. Repeat. The observation is now correct.\n\n### Expected behavior\n\n`intermediateSteps[i].observation` for a tool call should contain the tool's real output whenever the tool node executed successfully. It should never be the literal `\"\"` when the tool produced a result.\n\n\n### Debug Info\n\n# Debug info\n\n## core\n\n- n8nVersion: 2.48.0\n- platform: npm\n- nodeJsVersion: 26.8.2\n- nodeEnv: undefined\n- database: sqlite\n- executionMode: regular\n- concurrency: -1\n- license: enterprise (production)\n- consumerId: 79a6e2c6-ec31-4f94-8388-813d1376eac9\n\n## storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n## pruning\n\n- enabled: true\n- maxAge: 336 hours\n- maxCount: 10000 executions\n\n## client\n\n- userAgent: mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/157.0.0.0 safari/537.36\n- isTouchDevice: false\n\n## cluster\n\n- instanceCount: 1\n- versions: 2.48.0\n- instances:\n  - instanceKey: 80df4d43-c8b3-4372-8452-617f75f6a057, hostId: main-vRZHlT5kyQq0NG4J, instanceType: main, instanceRole: leader, version: 2.48.0\n- checks:\n  - check: hostid-clash, status: succeeded, warnings: -\n  - check: lifecycle, status: succeeded, warnings: -\n  - check: split-brain, status: succeeded, warnings: -\n  - check: version-mismatch, status: succeeded, warnings: -\n\nGenerated at: 2026-11-10T13:58:49.830Z\n\n### Operating System\n\nWindows\n\n### n8n Version\n\n2.48.0\n\n### Node.js Version\n\n26.8.2\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43381/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43381/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @sinehypernova-0718,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9736\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9736](https://linear.app/n8n/issue/GHC-9736)",
+      "at": "2026-11-10T13:59:42Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43381#issuecomment-6769269271"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "The reported ordering is consistent with the current source: `handleRequest` reverses requested nodes only for v1, then unconditionally prepends the resumed node; `addNodeToBeExecuted` uses `unshift` for v1 but `push` for v0. That makes the resume entry eligible before the requested tool entries under v0. A targeted regression should assert the resumed agent runs only after the tool output is available under v0 (and that the observation contains that output), not just assert the queue order. This also protects against changing the ordering in a way that breaks multi-tool requests.",
+      "at": "2026-11-10T14:05:36Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43381#issuecomment-6769402753"
+    },
+    {
+      "author": "blucca",
+      "text": "Thanks for pinning down the `executionOrder` distinction. It exposed a related regression-harness bug in my n8n-check runner: cloning a workflow filled an omitted setting with `v1`.\n\nFixed in [0.1.8](https://github.com/blucca/n8n-check/releases/tag/v0.1.8). The harness keeps omission, `v0`, and `v1` as exported. In a credential-free native n8n 2.41.7 branch control, both runs return identical items, while Upper/Lower execution indices reverse (3/2 versus 2/3). Both item checks pass.\n\n[Runnable fixture and recorded indices](https://github.com/blucca/n8n-check/tree/v0.1.8/examples/execution-order).\n\nFor Agent/model/tool graphs, the [current fixture scope](https://github.com/blucca/n8n-check/blob/12cfcb1/README.md#L289) is a self-contained standard-node portion; independent AI dependencies produce a named preparation error.\n\nHow are you testing API-generated workflows before activating them?",
+      "at": "2026-11-10T23:59:59Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43381#issuecomment-6782720662"
+    }
+  ],
+  "comments_complete": true
+}

@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50439671",
+  "collected_at": "2026-11-11T09:20:07.956178+00:00",
+  "source": {
+    "author": "pgrekovich",
+    "children": [],
+    "created_at": "2026-11-10T12:56:17.000Z",
+    "created_at_i": 1794315377,
+    "id": 50439671,
+    "options": [],
+    "parent_id": null,
+    "points": 1,
+    "story_id": 50439671,
+    "text": "Hey there HN!<p>Simstim is a local-first and privacy-focused call transcription app for Mac. It records your mic and system audio (no bot joining calls) and transcribes everything on your machine. No account, no telemetry, audio never leaves your machine and all your data is in plain .md files (Obsidian native btw). Your AI subscription, free forever, MIT.<p>I built it because I used to use Granola, and it was super annoying that I couldn&#x27;t export my transcripts in some convenient manner. I needed an account and a subscription for doing basic things. And all my data was locked inside.<p>I started looking for alternatives, and it drove me mad - &quot;privacy-focused&quot; apps require me to create an account and log in, and &quot;local-first&quot; apps store my data in a proprietary format and ask for money for export.<p>I just wanted to read my transcripts in any normal editor or Obsidian and use my existing Claude workflow (and subscription) to process my transcripts. If I wanna share it, I can send a file or use a gist, you know.<p>That&#x27;s why I built Simstim, and it has all these features, and a bit more. But I&#x27;m trying to prevent feature bloat, so don&#x27;t expect more fancy stuff there. In the end you can use your current Claude or Codex to do any stuff, like generate a .pdf from a transcript or share it via link.<p>Summaries are optional, so if you wanna fly under the radar you can turn it off, and use your local llm on the files. But if you want: Claude &amp; ChatGPT via your own subscription, or OpenAI, Anthropic and OpenRouter API keys are supported. Settings are in a TOML file, so you can keep it in your dotfiles.<p>Under the hood it is Rust &amp; Tauri. Parakeet for live text during the call, Whisper does a second pass after you stop. Models download on first run, around 1.5 GB.<p>Apple Silicon &amp; macOS 14.2+ only.<p>I&#x27;ll be around in the comments if you wanna ask something. See ya!",
+    "title": "Show HN: Simstim – local call transcription on Mac into .md files",
+    "type": "story",
+    "url": "https://github.com/pgrekovich/simstim"
+  },
+  "comments": [],
+  "comments_complete": true
+}

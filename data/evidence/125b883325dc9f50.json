@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43327",
+  "collected_at": "2026-11-11T09:20:07.956178+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43327",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43327/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43327/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43327/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43327",
+    "id": 6305368920,
+    "node_id": "I_kwDOC4Q8Qs8AAAABd9RLWA",
+    "number": 43327,
+    "title": "Agents: Gemini 3 through an OpenAI-compatible gateway fails after a tool call because the runtime rewrites the tool-call ID",
+    "user": {
+      "login": "SBrouck",
+      "id": 202458926,
+      "node_id": "U_kgDODBFHLg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/202458926?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/SBrouck",
+      "html_url": "https://github.com/SBrouck",
+      "followers_url": "https://api.github.com/users/SBrouck/followers",
+      "following_url": "https://api.github.com/users/SBrouck/following{/other_user}",
+      "gists_url": "https://api.github.com/users/SBrouck/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/SBrouck/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/SBrouck/subscriptions",
+      "organizations_url": "https://api.github.com/users/SBrouck/orgs",
+      "repos_url": "https://api.github.com/users/SBrouck/repos",
+      "events_url": "https://api.github.com/users/SBrouck/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/SBrouck/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-10T10:53:29Z",
+    "updated_at": "2026-11-10T10:53:40Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Bug Description\n\nAn agent that uses a Gemini 3 model through an OpenAI-compatible gateway (LiteLLM) fails on the request after a tool call:\n\n```\nFunction call is missing a thought_signature in functionCall parts. This is required for tools to work correctly, and missing thought_signature may lead to degraded model performance. Additional data, function call `default_api:fetch_input_data` , position 2.\n```\n\nWe use a `Message an Agent` node (inline agent) with an `openAiApi` credential whose base URL points to the gateway, and the model `openai/gemini-3.x-flash`. Runs with no tool call succeed. The node has no tools of its own, but the runtime adds `fetch_input_data` and `get_environment`, so most runs call a tool. Claude models through the same gateway work.\n\n## To Reproduce\n\nYou do not need a Gemini key. A small server that acts like LiteLLM shows the problem.\n\n1. Run n8n 2.46.5 or 2.47.3 (Docker) and enable agents.\n2. Start an OpenAI-compatible server that streams `/v1/responses`. On the first request, it returns a function call with `call_id: \"call_1779362__thought__AY89a1+JiipVUqj7/74Q\"`. This is the format that LiteLLM uses.\n3. Create an `openAiApi` credential with the server as the base URL.\n4. Create a workflow: Webhook, then `Message an Agent` (inline, `openai/gemini-3.8-flash`, that credential).\n5. Call the webhook, then look at the second request that the server gets.\n\n## Expected behavior\n\nThe `function_call` and `function_call_output` items in the second request have the `call_id` that the server returned.\n\n## What happens and why\n\nThe second request has `call_id: \"n8n_a746e645b8da4245c6d34b16c1e84e2a\"` on both items.\n\n- LiteLLM puts Gemini's thought signature in the tool-call ID, after `__thought__`, in standard base64. On the next request, it reads the signature back from the ID (`encode_tool_call_id_with_signature` and `get_thought_signature_from_tool` in `litellm/litellm_core_utils/prompt_templates/factory.py`).\n- `replayableToolCallId()` in `packages/@n8n/agents/src/runtime/model/messages.ts` replaces each ID that does not match `^[A-Za-z0-9_-]+$` with `n8n_<hash>` when the runtime replays history. It does this for all providers. Standard base64 contains `+`, `/` and `=`, so the signature is lost.\n- The gateway then sends the function call to Gemini without a signature, and Gemini rejects it.\n\nThe replacement came with #39640, for Anthropic, which rejects these characters. #43234 fixes Gemini's own OpenAI-compatible endpoint, but it does not change this code. LiteLLM servers also stay on the `/responses` route.\n\n## Possible fix\n\nReplay the ID unchanged for providers that do not need the repair. A `keepsToolCallIds` provider quirk for `openai` and `custom` fixes it, and Anthropic keeps the repair. PR to follow.\n\n## Debug info\n\n- n8n 2.46.5 and 2.47.3 (Docker), self-hosted\n- Gateway: LiteLLM, OpenAI-compatible, `/v1/responses`\n- Models: gemini-3.8-flash, gemini-3.5-flash-lite\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43327/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43327/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @SBrouck,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9733\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9733](https://linear.app/n8n/issue/GHC-9733)",
+      "at": "2026-11-10T10:53:37Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43327#issuecomment-6765474037"
+    }
+  ],
+  "comments_complete": true
+}

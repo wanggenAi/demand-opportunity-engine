@@ -1,0 +1,44 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50439324",
+  "collected_at": "2026-11-11T09:20:07.956178+00:00",
+  "source": {
+    "author": "pSYoniK",
+    "children": [
+      {
+        "author": "waximabbax",
+        "children": [],
+        "created_at": "2026-11-10T12:42:43.000Z",
+        "created_at_i": 1794314563,
+        "id": 50439541,
+        "options": [],
+        "parent_id": 50439324,
+        "points": null,
+        "story_id": 50439324,
+        "text": "Serena is worth trying for code. Ast-grep and Semgrep could also be reliable for deterministic code checks. But overall, I agree, there aren&#x27;t many tools for this specific case that work out of the box.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-11-10T12:23:42.000Z",
+    "created_at_i": 1794313422,
+    "id": 50439324,
+    "options": [],
+    "parent_id": null,
+    "points": 1,
+    "story_id": 50439324,
+    "text": "I&#x27;m asking the question focusing specifically on what I could use&#x2F;download&#x2F;configure right now, not necessarily on any custom written harness you might be using which isn&#x27;t shared and fits your specific workflow.<p>I have been finding Alibaba&#x27;s OCR (https:&#x2F;&#x2F;github.com&#x2F;alibaba&#x2F;open-code-review) very useful and getting good results as part of my own automated flow and at work. However, apart from this project, I haven&#x27;t found anything else out there that gives me some deterministic output so that even when running multiple LLMs on various effort levels I get mostly the same 2-3 high-importance fixes.<p>Jev seemed to be quite a big change and I&#x27;ve noticed some people using it as a decision model alongside a request router - jev decides where a request goes and aims to save you money, but even that doesn&#x27;t seem to hit Hacker News that much, so apart from the few medium articles, I haven&#x27;t seen much more around that.<p>People in the comments seem to build their own harnesses, discuss their own specific tools that might be vibecoded or not (I don&#x27;t mean this in a derogatory way, but rather state it as fact - I have an easier time navigating non-LLM code for the most part).<p>However, I don&#x27;t seem to find a lot of tooling that can be general purpose and added into an existing harness via a skill and have it be invoked as such or as an MCP&#x2F;plugin&#x2F;whatever else. Not that it makes it to this page at least.<p>So to repeat the question - is there anything that you use that is available out there that helps your workflow, gets you better results in terms of lowering resource usage, costs and&#x2F;or quality?<p>On the other hand, if there really isn&#x27;t anything out there or it&#x27;s slim pickings, what made you build your own tool, how did you start the process and how have you measured its impact upon the previously mentioned metrics?",
+    "title": "Ask HN: What other tools similar to Alibaba OCR do people use with LLMs?",
+    "type": "story",
+    "url": null
+  },
+  "comments": [
+    {
+      "author": "waximabbax",
+      "text": "Serena is worth trying for code. Ast-grep and Semgrep could also be reliable for deterministic code checks. But overall, I agree, there aren't many tools for this specific case that work out of the box.",
+      "at": "2026-11-10T12:42:43.000Z",
+      "url": "https://news.ycombinator.com/item?id=50439541"
+    }
+  ],
+  "comments_complete": true
+}

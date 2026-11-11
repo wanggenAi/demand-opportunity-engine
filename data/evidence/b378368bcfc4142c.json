@@ -1,0 +1,123 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43313",
+  "collected_at": "2026-11-11T09:20:07.956178+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43313",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43313/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43313/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43313/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43313",
+    "id": 6304547931,
+    "node_id": "I_kwDOC4Q8Qs8AAAABd8fEWw",
+    "number": 43313,
+    "title": "This execution data is redacted. SelfHosted/CommunityRegistered/Personal WF and Creddentials",
+    "user": {
+      "login": "pbalochini",
+      "id": 54287694,
+      "node_id": "MDQ6VXNlcjU0Mjg3Njk0",
+      "avatar_url": "https://avatars.githubusercontent.com/u/54287694?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/pbalochini",
+      "html_url": "https://github.com/pbalochini",
+      "followers_url": "https://api.github.com/users/pbalochini/followers",
+      "following_url": "https://api.github.com/users/pbalochini/following{/other_user}",
+      "gists_url": "https://api.github.com/users/pbalochini/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/pbalochini/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/pbalochini/subscriptions",
+      "organizations_url": "https://api.github.com/users/pbalochini/orgs",
+      "repos_url": "https://api.github.com/users/pbalochini/repos",
+      "events_url": "https://api.github.com/users/pbalochini/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/pbalochini/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 11654110784,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACtqOeQA",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:identity",
+        "name": "team:identity",
+        "color": "ededed",
+        "default": false,
+        "description": null,
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-10T10:00:36Z",
+    "updated_at": "2026-11-10T10:05:23Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Describe the problem/error/question\nUnable to see executation data. \n\n## What is the error message (if any)?\nThis execution data is redacted appears on execution\n\n## Please share your workflow/screenshots/recording\n\nInput data redacted\nThis execution used a credential you don't have access to, so its data is hidden.\nGive yourself access to the credential\n[Learn more](https://docs.n8n.io/workflows/executions/execution-data-redaction/)\n\n\n## Debug info\nboth workflows and credentials are on personal workspace.\nthere are just one user.\ncommunity version registered.\nbehavior starts after upgrade to 2.46.x\nbehavior redact turn off in both workflows and policies\n\n### core\n\n- n8nVersion: 2.47.3\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.12.1\n- nodeEnv: production\n- database: postgres\n- executionMode: regular\n- concurrency: -1\n- license: enterprise (production)\n\n### storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n### pruning\n\n- enabled: true\n- maxAge: 168 hours\n- maxCount: 5000 executions\n\n### client\n\n- userAgent: mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/157.0.0.0 safari/537.36 edg/157.0.0.0\n- isTouchDevice: false\n\n### cluster\n\n- instanceCount: 1\n- versions: 2.47.3\n- instances:\n  - instanceKey: 7d16aced-2f87-4494-8008-d39d2f7ea372, hostId: main-3015a0855e5f, instanceType: main, instanceRole: leader, version: 2.47.3\n- checks:\n  - check: hostid-clash, status: succeeded, warnings: -\n  - check: lifecycle, status: succeeded, warnings: -\n  - check: split-brain, status: succeeded, warnings: -\n  - check: version-mismatch, status: succeeded, warnings: -\n\nGenerated at: 2026-11-10T09:41:44.738Z",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43313/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43313/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @pbalochini,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9732\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9732](https://linear.app/n8n/issue/GHC-9732)",
+      "at": "2026-11-10T10:00:58Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43313#issuecomment-6764448146"
+    }
+  ],
+  "comments_complete": true
+}

@@ -1,0 +1,123 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43354",
+  "collected_at": "2026-11-11T09:20:07.956178+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43354",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43354/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43354/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43354/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43354",
+    "id": 6306665852,
+    "node_id": "I_kwDOC4Q8Qs8AAAABd-gVfA",
+    "number": 43354,
+    "title": "ConvertAPI credential test passes with an invalid API token",
+    "user": {
+      "login": "tomasr78",
+      "id": 2582291,
+      "node_id": "MDQ6VXNlcjI1ODIyOTE=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2582291?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/tomasr78",
+      "html_url": "https://github.com/tomasr78",
+      "followers_url": "https://api.github.com/users/tomasr78/followers",
+      "following_url": "https://api.github.com/users/tomasr78/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tomasr78/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/tomasr78/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tomasr78/subscriptions",
+      "organizations_url": "https://api.github.com/users/tomasr78/orgs",
+      "repos_url": "https://api.github.com/users/tomasr78/repos",
+      "events_url": "https://api.github.com/users/tomasr78/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/tomasr78/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582010757,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cXhQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:nodes",
+        "name": "team:nodes",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Nodes team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-10T12:19:58Z",
+    "updated_at": "2026-11-10T12:25:25Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nThe ConvertAPI credential test says \"Connection successful!\" for any API token, even a wrong or empty one. Users find out only when a workflow runs and ConvertAPI answers with 401.\n\nThe test sends `GET https://v2.convertapi.com/convert/docx/to/pdf` with `ignoreHttpStatusErrors: true`. It has one `responseSuccessBody` rule, which fails the test when the body has `Code` 4013. The API no longer returns 4013. A wrong or missing token now gets HTTP 401 with this body:\n\n```json\n{\"Code\":4011,\"Message\":\"Unauthorized. Invalid or missing API credentials.\"}\n```\n\nNo rule matches this body, so the test passes. 4011 is the documented code for invalid or missing credentials: https://www.convertapi.com/docs/response-codes\n\nI'm from [ConvertAPI](https://www.convertapi.com). I have a fix with a regression test ready and will open a PR that links this issue.\n\n### To Reproduce\n\n1. Go to Credentials and add a ConvertAPI credential.\n2. Enter a wrong API token, for example `abc`, or leave the field empty.\n3. Save the credential. The test shows \"Connection successful!\".\n\n### Expected behavior\n\nThe test fails for a wrong or empty API token and passes for a valid one.\n\n### Debug Info\n\nI reproduced it on a clean `n8nio/n8n:2.47.3` container with SQLite and default settings. The test rule is the same on master, in `packages/nodes-base/credentials/ConvertApi.credentials.ts`.\n\n### Operating System\n\nDocker (n8nio/n8n:2.47.3) on macOS\n\n### n8n Version\n\n2.47.3\n\n### Node.js Version\n\n26.12.1\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43354/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43354/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @tomasr78,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9735\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9735](https://linear.app/n8n/issue/GHC-9735)",
+      "at": "2026-11-10T12:20:06Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43354#issuecomment-6767135718"
+    }
+  ],
+  "comments_complete": true
+}

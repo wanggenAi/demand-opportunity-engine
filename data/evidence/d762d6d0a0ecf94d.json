@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50440317",
+  "collected_at": "2026-11-11T09:20:07.956178+00:00",
+  "source": {
+    "author": "realsirjoe",
+    "children": [],
+    "created_at": "2026-11-10T13:49:15.000Z",
+    "created_at_i": 1794318555,
+    "id": 50440317,
+    "options": [],
+    "parent_id": null,
+    "points": 2,
+    "story_id": 50440317,
+    "text": "Hey HN,<p>I made Relinos, an open-source programmable browser that lets you turn websites into reusable APIs.<p>The idea is to make browser interactions and extractions easy to create, export, and share. I&#x27;d like to build a community of shared website automations that anyone can understand and maintain.<p>Isn&#x27;t this just Playwright?\nNo, Relinos runs locally and exposes a language-agnostic REST API. It handles much of the underlying complexity and common problems for you. This includes:<p>- Site actions ( click, type, scroll, ... ) with visual debug files<p>- Concurrency for rendered ( chromium ) and simple http requests<p>- Built-in caching of request results<p>- Per Request proxies<p>- Passes Cloudflare and reCAPTCHA v3<p>- Html to Markdown<p>- Html to JSON with xpathschema format<p>- Reusable routines with parameters and extractions<p>A Google Search automation that opens Google, enters a query, handles pagination and extracts structured data can be defined in just 24 lines of JSON.<p><pre><code>  {\n      &quot;url&quot;: &quot;https:&#x2F;&#x2F;www.google.com&quot;,\n      &quot;render&quot;: true,\n      &quot;actions&quot;: [\n          [&quot;actionWaitForAndSelect&quot;, &quot;&#x2F;&#x2F;textarea[@name=&#x27;q&#x27;]&quot;, &quot;1&quot;],\n          [&quot;actionType&quot;,&quot;your search term&quot;,&quot;&quot;],\n          [&quot;actionSleep&quot;, &quot;1&quot;, &quot;&quot;],\n          [&quot;actionKeyboardEnter&quot;, &quot;&quot;, &quot;&quot;],\n          [&quot;actionSleep&quot;, &quot;2&quot;, &quot;&quot;]\n      ],\n      &quot;pagination&quot;: [&quot;&#x2F;&#x2F;*[@id=&#x27;pnnext&#x27;]&quot;, &quot;2&quot;],\n      &quot;cache&quot;: &quot;1d&quot;,\n      &quot;format&quot;: &quot;json&quot;,\n      &quot;extraction&quot;: {\n          &quot;results&quot;: {\n          &quot;$xpath&quot;: &quot;&#x2F;&#x2F;div[contains(@class, &#x27;MjjYud&#x27;)]&quot;,\n          &quot;$list&quot;: true,\n          &quot;title&quot;: { &quot;$xpath&quot;: &quot;.&#x2F;&#x2F;h3[contains(@class, &#x27;LC20lb MBeuO DKV0Md&#x27;)]&quot; },\n          &quot;url&quot;: { &quot;$xpath&quot;: &quot;.&#x2F;&#x2F;a[contains(@class, &#x27;zReHs&#x27;)]&#x2F;@href&quot; },\n          &quot;site&quot;: { &quot;$xpath&quot;: &quot;.&#x2F;&#x2F;span[contains(@class, &#x27;VuuXrf&#x27;)]&quot; },\n          &quot;snippet&quot;: { &quot;$xpath&quot;: &quot;.&#x2F;&#x2F;div[contains(@data-snf, &#x27;nke7rc&#x27;)]&quot; }\n          }\n      }\n  }\n</code></pre>\nWe can make this routine easy to reuse by parametrizing and saving it.<p>The vision: Make the web programmable: imagine being able to use any website as an API, whether in your own applications or for an LLM.<p>I would love to hear your thoughts and feedback. Where should I focus my efforts next to support your use cases? \nSergio",
+    "title": "Show HN: A Hacker's Web Browser – Any Site to API (Open-Source)",
+    "type": "story",
+    "url": "https://github.com/realsirjoe/relinos"
+  },
+  "comments": [],
+  "comments_complete": true
+}

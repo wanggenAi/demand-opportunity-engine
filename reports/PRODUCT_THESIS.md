@@ -7,7 +7,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## workflow_reliability — UNVALIDATED CLUSTER
 
-- independent_demand_count: 95
+- independent_demand_count: 100
 - payment_evidence_count: 1
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community', 'n8n Community']
 - communities: ['Agenta-AI/agenta', "Ask HN: What's your current AI agentic setup?", 'Ask/Show HN', 'Commerce operator forum', "Show HN: Glassbrain – Read your agent's brain, know what your agent knows", 'n8n Jobs', 'n8n-io/n8n', 'useagenthq/useagent']
@@ -20,12 +20,34 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
-  - https://github.com/n8n-io/n8n/issues/43273
-  - https://github.com/n8n-io/n8n/issues/43259
-  - https://news.ycombinator.com/item?id=50423246
-  - https://news.ycombinator.com/item?id=50420252
-  - https://github.com/n8n-io/n8n/issues/43136
-  - https://github.com/n8n-io/n8n/issues/43133
+  - https://github.com/n8n-io/n8n/issues/43455
+  - https://github.com/n8n-io/n8n/issues/43441
+  - https://github.com/n8n-io/n8n/issues/43397
+  - https://github.com/n8n-io/n8n/issues/43381
+  - https://news.ycombinator.com/item?id=50439324
+  - https://github.com/n8n-io/n8n/issues/43354
+
+## supplier_sourcing — UNVALIDATED CLUSTER
+
+- independent_demand_count: 12
+- payment_evidence_count: 1
+- platforms: ['GitHub', 'Shopify Community']
+- communities: ['AddisonJPratt/CAD-ADE', 'Commerce operator forum', 'n8n-io/n8n', 'zack-hum/coffee-intelligence-v1.1']
+- repeated_pain: supplier sourcing
+- current_alternatives: Manual research, spreadsheets and existing service providers.
+- productization_potential: Needs a narrower job-to-be-done and payment evidence.
+- suggested_product_form: Service package
+- distribution: Not yet demonstrated
+- Promotion blockers: fewer than 2 primary payment/commercial signals; paid-market proof not independently verified; problem too broad to standardize
+- Action: WATCH (no standardized product build authorized by evidence)
+- Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
+- Representative evidence:
+  - https://community.shopify.com/t/pilot-discussion-customizable-approval-based-purchasing-workflows-for-shopify-merchants/710857
+  - https://github.com/AddisonJPratt/CAD-ADE/issues/1
+  - https://community.shopify.com/t/shopify-va-inventory-listings-product-sourcing-customer-support-email-marketing-seo/707251
+  - https://community.shopify.com/t/feature-request-product-specific-customer-tax-exemptions-for-accurate-wholesale-and-retail-checkout/706515
+  - https://github.com/n8n-io/n8n/issues/41635
+  - https://community.shopify.com/t/how-often-do-you-sync-supplier-stock-with-your-shopify-store/700544
 
 ## browser_automation — UNVALIDATED CLUSTER
 
@@ -48,28 +70,6 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
   - https://github.com/n8n-io/n8n/issues/42851
   - https://github.com/n8n-io/n8n/issues/42153
   - https://github.com/kouweizhu/agents-radar/issues/654
-
-## supplier_sourcing — UNVALIDATED CLUSTER
-
-- independent_demand_count: 11
-- payment_evidence_count: 1
-- platforms: ['GitHub', 'Shopify Community']
-- communities: ['AddisonJPratt/CAD-ADE', 'Commerce operator forum', 'n8n-io/n8n', 'zack-hum/coffee-intelligence-v1.1']
-- repeated_pain: supplier sourcing
-- current_alternatives: Manual research, spreadsheets and existing service providers.
-- productization_potential: Needs a narrower job-to-be-done and payment evidence.
-- suggested_product_form: Service package
-- distribution: Not yet demonstrated
-- Promotion blockers: fewer than 2 primary payment/commercial signals; paid-market proof not independently verified; problem too broad to standardize
-- Action: WATCH (no standardized product build authorized by evidence)
-- Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
-- Representative evidence:
-  - https://community.shopify.com/t/pilot-discussion-customizable-approval-based-purchasing-workflows-for-shopify-merchants/710857
-  - https://github.com/AddisonJPratt/CAD-ADE/issues/1
-  - https://community.shopify.com/t/shopify-va-inventory-listings-product-sourcing-customer-support-email-marketing-seo/707251
-  - https://community.shopify.com/t/feature-request-product-specific-customer-tax-exemptions-for-accurate-wholesale-and-retail-checkout/706515
-  - https://github.com/n8n-io/n8n/issues/41635
-  - https://community.shopify.com/t/how-often-do-you-sync-supplier-stock-with-your-shopify-store/700544
 
 ## lead_research — UNVALIDATED CLUSTER
 

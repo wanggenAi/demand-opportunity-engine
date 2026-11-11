@@ -1,0 +1,130 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43455",
+  "collected_at": "2026-11-11T09:20:07.956178+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43455",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43455/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43455/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43455/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43455",
+    "id": 6323975640,
+    "node_id": "I_kwDOC4Q8Qs8AAAABePA12A",
+    "number": 43455,
+    "title": "fix(core-workflow): blank number $fromAI default is coerced to 0",
+    "user": {
+      "login": "indexGin",
+      "id": 166748424,
+      "node_id": "U_kgDOCfBhCA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/166748424?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/indexGin",
+      "html_url": "https://github.com/indexGin",
+      "followers_url": "https://api.github.com/users/indexGin/followers",
+      "following_url": "https://api.github.com/users/indexGin/following{/other_user}",
+      "gists_url": "https://api.github.com/users/indexGin/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/indexGin/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/indexGin/subscriptions",
+      "organizations_url": "https://api.github.com/users/indexGin/orgs",
+      "repos_url": "https://api.github.com/users/indexGin/repos",
+      "events_url": "https://api.github.com/users/indexGin/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/indexGin/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 5176033697,
+        "node_id": "LA_kwDOC4Q8Qs8AAAABNIQBoQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/Needs%20Feedback",
+        "name": "Needs Feedback",
+        "color": "34F826",
+        "default": false,
+        "description": "Waiting for further input or clarification.",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 4,
+    "created_at": "2026-11-11T07:41:49Z",
+    "updated_at": "2026-11-11T08:55:01Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\n`extractFromAICalls()` in `packages/workflow` parses `$fromAI()` placeholders and returns each argument's `defaultValue`. When the declared type is `number` and the default is an empty or whitespace-only string, the parser silently converts it to the number `0`.\n\nThis contradicts the helper's documented contract (\"Parses the default value, preserving its original type\") and is inconsistent with the `string` branch, which keeps an empty default as `''`. Downstream consumers (the generated Zod schema and the tool parameter description) then treat `0` as a real default.\n\n### To Reproduce\n\n```ts\nimport { extractFromAICalls } from 'n8n-workflow';\n\nextractFromAICalls('$fromAI(\"count\", \"how many\", \"number\", \"\")');\n// actual:   defaultValue === 0\n// expected: defaultValue === ''\n\nextractFromAICalls('$fromAI(\"count\", \"how many\", \"number\", \"   \")');\n// actual:   defaultValue === 0\n// expected: defaultValue === '   '\n\n// the string branch already behaves correctly\nextractFromAICalls('$fromAI(\"name\", \"label\", \"string\", \"\")');\n// -> defaultValue === ''\n```\n\n### Expected Behavior\n\nA blank default value stays as-is for every argument type; only non-blank values are coerced to the declared type.\n\n### Root Cause\n\n`parseDefaultValue()` in `packages/workflow/src/from-ai-parse-utils.ts`:\n\n```ts\nif (type === 'number' && !isNaN(Number(value))) return Number(value);\n```\n\n`Number('')` and `Number('   ')` are both `0` and `isNaN(0)` is `false`, so a blank value passes the guard and becomes `0` instead of falling through to the raw-value fallback used by the other branches.\n\n### Environment\n\nn8n master (checked on d48891758), `packages/workflow` unit tests.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43455/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43455/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @indexGin,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9740\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9740](https://linear.app/n8n/issue/GHC-9740)",
+      "at": "2026-11-11T07:41:58Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43455#issuecomment-6790141276"
+    },
+    {
+      "author": "Joffcom",
+      "text": "@indexGin do you happen to have a workflow where this has caused an issue?",
+      "at": "2026-11-11T07:42:46Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43455#issuecomment-6790157310"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "I don’t have a workflow reproducer; this is a parser-level report. The source matches the reported behavior: the number branch calls `Number(value)` without excluding blank strings, and the existing parser tests cover an empty string default for `string` but not `number`. A regression case for both `\"\"` and whitespace-only numeric defaults would pin it down; the coercion can be skipped when `value.trim() === \"\"` so the original blank value reaches the fallback unchanged.",
+      "at": "2026-11-11T08:05:45Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43455#issuecomment-6790581075"
+    },
+    {
+      "author": "indexGin",
+      "text": "Workflow-level reproducer, using the **node-as-tool** path (`packages/core/src/execution-engine/node-execution-context/utils/create-node-as-tool.ts:98` and `packages/@n8n/ai-utilities/src/utils/fromai-helpers.ts:37`, both call `generateZodSchema`):\n\n1. Add an **AI Agent** node, and attach a node as a tool whose numeric parameter is filled by the AI, e.g. a Google Sheets *Get Many Rows* / Slack *Get Many Messages* node with\n\n   ```\n   Limit: {{ $fromAI('limit', 'how many rows to return', 'number', '') }}\n   ```\n\n   The author leaves the 4th argument blank on purpose — \"let the model decide, otherwise use the node's own default\".\n\n2. `extractFromAICalls()` returns `defaultValue: 0`, and `generateZodSchema()` then does `schema.default(0)` (`packages/workflow/src/from-ai-parse-utils.ts:104`) on the `z.number()` field.\n\n3. The agent calls the tool **without** `limit` (it is an optional argument, and the description says nothing forces it). Zod applies the default, so the node receives `limit = 0` instead of no value — and the node returns zero rows / takes the `0` branch instead of falling back to its own default (which is what happens for the `string` type, where the blank default stays `''` and the node's own defaulting applies).\n\nThe inconsistency is the bug: identical blank defaults behave differently depending on the declared type — `string` keeps `''`, `number` silently becomes `0`, `boolean`/`json` keep the raw string. So the same workflow behaves correctly for a text parameter and incorrectly for a numeric one.\n\nThe fix in #43456 is the early return `if (value.trim() === '') return value;` before the type coercion, which makes all four branches consistent and leaves non-blank numeric defaults (`\"5\"`, `\"-3\"`, `\"2.5\"`, `\"0\"`) untouched. Tests cover both `''` and `'   '` plus the existing 93 cases in `from-ai-parse-utils.test.ts` (`102 passed` with the fix, `2 failed | 100 passed` with only the source reverted).\n",
+      "at": "2026-11-11T08:55:00Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43455#issuecomment-6791531402"
+    }
+  ],
+  "comments_complete": true
+}
