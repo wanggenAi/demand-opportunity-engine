@@ -1,0 +1,1384 @@
+{
+  "source_api_url": "https://community.shopify.com/t/714098.json",
+  "collected_at": "2026-11-12T09:46:15.756996+00:00",
+  "source": {
+    "post_stream": {
+      "posts": [
+        {
+          "id": 1937769,
+          "username": "bnp1",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/b/13edae/{size}.png",
+          "created_at": "2026-11-11T21:17:21.899Z",
+          "cooked": "<p>For stores with suppliers that take 3+ weeks, how do you decide when to reorder? Do you go by a set number of days of stock, a minimum quantity, or gut feel? And has a supplier ever been late enough that you sold out anyway?</p>\n<p>I’m asking because I build a reorder app and I want to get this part right for people with slow suppliers. Curious how others handle it.</p>",
+          "post_number": 1,
+          "post_type": 1,
+          "posts_count": 6,
+          "updated_at": "2026-11-11T21:17:21.899Z",
+          "reply_count": 0,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 5,
+          "reads": 19,
+          "readers_count": 18,
+          "score": 73.8,
+          "yours": false,
+          "topic_id": 714098,
+          "topic_slug": "how-far-ahead-do-you-reorder-from-slow-suppliers",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": null,
+          "bookmarked": false,
+          "actions_summary": [
+            {
+              "id": 2,
+              "count": 3
+            }
+          ],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1650612,
+          "hidden": false,
+          "trust_level": 1,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/how-far-ahead-do-you-reorder-from-slow-suppliers/714098/1",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "calendar_details": [],
+          "reactions": [
+            {
+              "id": "heart",
+              "type": "emoji",
+              "count": 3
+            }
+          ],
+          "current_user_reaction": null,
+          "reaction_users_count": 3,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null,
+          "can_vote": false
+        },
+        {
+          "id": 1937785,
+          "username": "dreyagency001",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/d/a587f6/{size}.png",
+          "created_at": "2026-11-11T21:53:43.139Z",
+          "cooked": "<p>This post was flagged by the community and is temporarily hidden.</p>",
+          "cooked_hidden": true,
+          "post_number": 2,
+          "post_type": 1,
+          "posts_count": 6,
+          "updated_at": "2026-11-11T21:53:45.853Z",
+          "reply_count": 0,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 1,
+          "reads": 15,
+          "readers_count": 14,
+          "score": 8.0,
+          "yours": false,
+          "topic_id": 714098,
+          "topic_slug": "how-far-ahead-do-you-reorder-from-slow-suppliers",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": null,
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1650988,
+          "hidden": true,
+          "hidden_reason_id": 1,
+          "trust_level": 1,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": false,
+          "wiki": false,
+          "post_url": "/t/how-far-ahead-do-you-reorder-from-slow-suppliers/714098/2",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        },
+        {
+          "id": 1937827,
+          "username": "hizachlee",
+          "avatar_template": "/user_avatar/community.shopify.com/hizachlee/{size}/416069_2.png",
+          "created_at": "2026-11-12T01:08:26.247Z",
+          "cooked": "<p>Days of cover works better than a fixed minimum once lead times get long, because a min that’s fine in a slow month is too low in a busy one. With a 3+ week supplier I’d set it up like this:</p>\n<p>Reorder point = average daily sales × (lead time in days + days between your orders) + safety stock. Use the last 30 to 60 days of sales rather than the whole year so seasonality shows up.</p>\n<p>For safety stock, go by how late that supplier has actually been, not what they quote. If they say 21 days but your last few POs landed in 28 to 35, plan on 30 and hold about a week of extra stock on top.</p>\n<p>And yes, late suppliers sell people out all the time. What helps most is logging quoted vs actual arrival for every PO and updating each supplier’s lead time every few orders.</p>",
+          "post_number": 3,
+          "post_type": 1,
+          "posts_count": 6,
+          "updated_at": "2026-11-12T01:08:26.247Z",
+          "reply_count": 1,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 12,
+          "readers_count": 11,
+          "score": 37.4,
+          "yours": false,
+          "topic_id": 714098,
+          "topic_slug": "how-far-ahead-do-you-reorder-from-slow-suppliers",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": null,
+          "bookmarked": false,
+          "actions_summary": [
+            {
+              "id": 2,
+              "count": 2
+            }
+          ],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1644435,
+          "hidden": false,
+          "trust_level": 1,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/how-far-ahead-do-you-reorder-from-slow-suppliers/714098/3",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [
+            {
+              "id": "heart",
+              "type": "emoji",
+              "count": 2
+            }
+          ],
+          "current_user_reaction": null,
+          "reaction_users_count": 2,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        },
+        {
+          "id": 1937833,
+          "username": "bnp1",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/b/13edae/{size}.png",
+          "created_at": "2026-11-12T01:22:59.410Z",
+          "cooked": "<p>This post was flagged by the community and is temporarily hidden.</p>",
+          "cooked_hidden": true,
+          "post_number": 4,
+          "post_type": 1,
+          "posts_count": 6,
+          "updated_at": "2026-11-12T01:23:01.946Z",
+          "reply_count": 0,
+          "reply_to_post_number": 3,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 8,
+          "readers_count": 7,
+          "score": 1.6,
+          "yours": false,
+          "topic_id": 714098,
+          "topic_slug": "how-far-ahead-do-you-reorder-from-slow-suppliers",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": null,
+          "reply_to_user": {
+            "id": 1644435,
+            "username": "hizachlee",
+            "avatar_template": "/user_avatar/community.shopify.com/hizachlee/{size}/416069_2.png"
+          },
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1650612,
+          "hidden": true,
+          "hidden_reason_id": 1,
+          "trust_level": 1,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": false,
+          "wiki": false,
+          "post_url": "/t/how-far-ahead-do-you-reorder-from-slow-suppliers/714098/4",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        },
+        {
+          "id": 1937866,
+          "username": "WayneParker",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/w/46a35a/{size}.png",
+          "created_at": "2026-11-12T03:12:35.881Z",
+          "cooked": "<p>One thing I’d add to what’s already here: I don’t use one reorder point for a whole product. Different colors of the same style can move at really different speeds, so the number has to sit on the variant. A fixed minimum burned me on that — a slow color still looked fine while the popular one was already too late to catch.</p>\n<p>And for lead time, I use the actual average from PO sent to units being sellable, not the factory’s quoted production time. Door to door is usually longer once you count packing, freight, and the odd customs hold.</p>",
+          "post_number": 5,
+          "post_type": 1,
+          "posts_count": 6,
+          "updated_at": "2026-11-12T03:12:35.881Z",
+          "reply_count": 0,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 6,
+          "readers_count": 5,
+          "score": 31.2,
+          "yours": false,
+          "topic_id": 714098,
+          "topic_slug": "how-far-ahead-do-you-reorder-from-slow-suppliers",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": null,
+          "bookmarked": false,
+          "actions_summary": [
+            {
+              "id": 2,
+              "count": 2
+            }
+          ],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1651022,
+          "hidden": false,
+          "trust_level": 0,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/how-far-ahead-do-you-reorder-from-slow-suppliers/714098/5",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [
+            {
+              "id": "+1",
+              "type": "emoji",
+              "count": 1
+            },
+            {
+              "id": "heart",
+              "type": "emoji",
+              "count": 1
+            }
+          ],
+          "current_user_reaction": null,
+          "reaction_users_count": 2,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        },
+        {
+          "id": 1938021,
+          "username": "Nobolevsk",
+          "avatar_template": "/user_avatar/community.shopify.com/nobolevsk/{size}/414165_2.png",
+          "created_at": "2026-11-12T08:38:10.594Z",
+          "cooked": "<p>One thing I’d add to the formula answers: with a slow supplier, how often you order matters as much as the lead time. If you place one order every six weeks with a four-week supplier, each order has to cover about ten weeks of sales, so a late shipment hurts twice as much. Ordering a bit more often, in smaller lots, usually cuts the stockout risk more than extra safety stock does.</p>\n<p>For the “late enough that I sold out anyway” case, I’d decide the fallback in advance: which top few sellers you’d pay to air freight or split off a smaller rush order, and whether you’d switch the product to preorder instead of letting it show sold out. Deciding that while it’s calm is much easier than during a stockout.</p>\n<p>And take the slowest of the last 3 to 5 deliveries as your lead time, not the average.</p>",
+          "post_number": 6,
+          "post_type": 1,
+          "posts_count": 6,
+          "updated_at": "2026-11-12T08:38:10.594Z",
+          "reply_count": 0,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 1,
+          "readers_count": 0,
+          "score": 0.2,
+          "yours": false,
+          "topic_id": 714098,
+          "topic_slug": "how-far-ahead-do-you-reorder-from-slow-suppliers",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": null,
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1640774,
+          "hidden": false,
+          "trust_level": 1,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/how-far-ahead-do-you-reorder-from-slow-suppliers/714098/6",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        }
+      ],
+      "stream": [
+        1937769,
+        1937785,
+        1937827,
+        1937833,
+        1937866,
+        1938021
+      ]
+    },
+    "timeline_lookup": [
+      [
+        1,
+        1
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "user_badges": {
+      "users": {
+        "1640774": {
+          "id": 1640774,
+          "badge_ids": [
+            109,
+            116
+          ]
+        },
+        "1644435": {
+          "id": 1644435,
+          "badge_ids": [
+            109
+          ]
+        }
+      },
+      "badges": {
+        "131": {
+          "id": 131,
+          "name": "1000 Accepted Solutions",
+          "slug": "1000-accepted-solutions",
+          "description": "You're a member of the 1000 accepted solutions club!",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 1
+        },
+        "19": {
+          "id": 19,
+          "name": "Good Topic",
+          "slug": "good-topic",
+          "description": "Received 25 likes on a topic",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 3,
+          "badge_type_id": 2
+        },
+        "7": {
+          "id": 7,
+          "name": "Good Post",
+          "slug": "good-reply",
+          "description": "Received 25 likes on a reply",
+          "icon": "reply",
+          "image_url": null,
+          "badge_grouping_id": 3,
+          "badge_type_id": 2
+        },
+        "112": {
+          "id": 112,
+          "name": "250 Posts",
+          "slug": "250-posts",
+          "description": "250 posts! Thanks for being an engaged member of the Shopify Community",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 2
+        },
+        "32": {
+          "id": 32,
+          "name": "Gives Back",
+          "slug": "gives-back",
+          "description": "Has 100 liked posts and gave 100 likes",
+          "icon": "heart",
+          "image_url": null,
+          "badge_grouping_id": 2,
+          "badge_type_id": 2
+        },
+        "110": {
+          "id": 110,
+          "name": "50 Posts",
+          "slug": "50-posts",
+          "description": "Way to go! You've posted 50 times in the Shopify Community",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 3
+        },
+        "114": {
+          "id": 114,
+          "name": "1000 Posts",
+          "slug": "1000-posts",
+          "description": "You're a member of the 1000 posts club!",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 1
+        },
+        "113": {
+          "id": 113,
+          "name": "500 Posts",
+          "slug": "500-posts",
+          "description": "Congratulations on reaching the 500 post milestone!",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 1
+        },
+        "46": {
+          "id": 46,
+          "name": "Aficionado",
+          "slug": "aficionado",
+          "description": "Visited 100 consecutive days",
+          "icon": "far-eye",
+          "image_url": null,
+          "badge_grouping_id": 2,
+          "badge_type_id": 2
+        },
+        "111": {
+          "id": 111,
+          "name": "100 Posts",
+          "slug": "100-posts",
+          "description": "100 posts! Thanks for being an engaged member of the Shopify Community",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 2
+        },
+        "109": {
+          "id": 109,
+          "name": "25 Posts",
+          "slug": "25-posts",
+          "description": "With 25 posts submitted, you help keep the conversations going",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 3
+        },
+        "119": {
+          "id": 119,
+          "name": "100 Likes",
+          "slug": "100-likes",
+          "description": "Your contributions have earned you 100 likes",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 2
+        },
+        "122": {
+          "id": 122,
+          "name": "1000 Likes",
+          "slug": "1000-likes",
+          "description": "You're a member of the 1000 likes club!",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 1
+        },
+        "129": {
+          "id": 129,
+          "name": "250 Accepted Solutions",
+          "slug": "250-accepted-solutions",
+          "description": "250 accepted solutions! Thank you for being so helpful",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 2
+        },
+        "121": {
+          "id": 121,
+          "name": "500 Likes",
+          "slug": "500-likes",
+          "description": "Congratulations on obtaining 500 likes!",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 1
+        },
+        "135": {
+          "id": 135,
+          "name": "Power User 2024",
+          "slug": "power-user-2024",
+          "description": "Most participating users within 2024",
+          "icon": "ranking-star",
+          "image_url": null,
+          "badge_grouping_id": 6,
+          "badge_type_id": 3
+        },
+        "126": {
+          "id": 126,
+          "name": "50 Accepted Solutions",
+          "slug": "50-accepted-solutions",
+          "description": "Your knowledge has resulted in 50 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 3
+        },
+        "120": {
+          "id": 120,
+          "name": "250 Likes",
+          "slug": "250-likes",
+          "description": "Your expertise has earned you 250 likes!",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 2
+        },
+        "125": {
+          "id": 125,
+          "name": "25 Accepted Solutions",
+          "slug": "25-accepted-solutions",
+          "description": "Your guidance has resulted in 25 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 3
+        },
+        "3": {
+          "id": 3,
+          "name": "Regular",
+          "slug": "regular",
+          "description": "Awarded at Trust Level 3. Recognized for regular contributions as a trusted user.",
+          "icon": "user",
+          "image_url": null,
+          "badge_grouping_id": 4,
+          "badge_type_id": 2
+        },
+        "118": {
+          "id": 118,
+          "name": "50 Likes",
+          "slug": "50-likes",
+          "description": "Your contributions have earned you 50 likes",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 3
+        },
+        "127": {
+          "id": 127,
+          "name": "75 Accepted Solutions",
+          "slug": "75-accepted-solutions",
+          "description": "Your expertise has resulted in 75 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 2
+        },
+        "130": {
+          "id": 130,
+          "name": "500 Accepted Solutions",
+          "slug": "500-accepted-solutions",
+          "description": "Your valuable contributions have resulted in 500 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 1
+        },
+        "116": {
+          "id": 116,
+          "name": "10 Likes",
+          "slug": "10-likes",
+          "description": "You've received 10 likes",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 3
+        },
+        "128": {
+          "id": 128,
+          "name": "100 Accepted Solutions",
+          "slug": "100-accepted-solutions",
+          "description": "Congratulations! You've provided 100 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 2
+        },
+        "117": {
+          "id": 117,
+          "name": "25 Likes",
+          "slug": "25-likes",
+          "description": "With 25 likes, your posts are popular",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 3
+        },
+        "124": {
+          "id": 124,
+          "name": "10 Accepted Solutions",
+          "slug": "10-accepted-solutions",
+          "description": "10 of your replies have been accepted as solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 3
+        },
+        "108": {
+          "id": 108,
+          "name": "10 Posts",
+          "slug": "10-posts",
+          "description": "Thanks for being an active member and posting 10 times",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 3
+        }
+      }
+    },
+    "suggested_topics": [],
+    "tags": [
+      {
+        "id": 4775,
+        "name": "shopify-apps",
+        "slug": "shopify-apps"
+      },
+      {
+        "id": 2716,
+        "name": "inventory-management",
+        "slug": "inventory-management"
+      }
+    ],
+    "tags_descriptions": {},
+    "fancy_title": "How far ahead do you reorder from slow suppliers?",
+    "id": 714098,
+    "title": "How far ahead do you reorder from slow suppliers?",
+    "posts_count": 6,
+    "created_at": "2026-11-11T21:17:21.671Z",
+    "views": 58,
+    "reply_count": 1,
+    "like_count": 7,
+    "last_posted_at": "2026-11-12T08:38:10.594Z",
+    "visible": true,
+    "closed": false,
+    "archived": false,
+    "has_summary": false,
+    "archetype": "regular",
+    "slug": "how-far-ahead-do-you-reorder-from-slow-suppliers",
+    "category_id": 95,
+    "word_count": 683,
+    "deleted_at": null,
+    "user_id": 1650612,
+    "featured_link": null,
+    "pinned_globally": false,
+    "pinned_at": null,
+    "pinned_until": null,
+    "image_url": null,
+    "slow_mode_seconds": 0,
+    "draft": null,
+    "draft_key": "topic_714098",
+    "draft_sequence": null,
+    "unpinned": null,
+    "pinned": false,
+    "current_post_number": 1,
+    "highest_post_number": 6,
+    "deleted_by": null,
+    "actions_summary": [
+      {
+        "id": 8,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 1002,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 4,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 7,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 1001,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 10,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      }
+    ],
+    "chunk_size": 20,
+    "bookmarked": false,
+    "topic_timer": {
+      "id": 2475,
+      "execute_at": "2027-05-11T08:38:10.594Z",
+      "duration_minutes": 259200,
+      "based_on_last_post": true,
+      "status_type": "close",
+      "category_id": null
+    },
+    "message_bus_last_id": 67,
+    "participant_count": 5,
+    "show_read_indicator": false,
+    "thumbnails": null,
+    "slow_mode_enabled_until": null,
+    "board_memberships": [],
+    "related_topics": [
+      {
+        "fancy_title": "How are you deciding what to reorder since Stocky shut down?",
+        "id": 713044,
+        "title": "How are you deciding what to reorder since Stocky shut down?",
+        "slug": "how-are-you-deciding-what-to-reorder-since-stocky-shut-down",
+        "posts_count": 6,
+        "reply_count": 0,
+        "highest_post_number": 6,
+        "image_url": null,
+        "created_at": "2026-11-10T00:50:20.484Z",
+        "last_posted_at": "2026-11-10T13:58:52.121Z",
+        "bumped": true,
+        "bumped_at": "2026-11-10T13:58:52.121Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Curious how other shops are handling this now that Stocky’s reorder suggestions are gone. \nThe simplest method I’ve found: \n• Days left = stock ÷ average daily sales \n• Reorder when days left ≤ supplier delivery time + a&hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [],
+        "tags_descriptions": {},
+        "like_count": 6,
+        "views": 60,
+        "category_id": 103,
+        "featured_link": null,
+        "op_like_count": 4,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": "latest",
+            "description": "Original Poster, Most Recent Poster",
+            "user": {
+              "id": 1650612,
+              "username": "bnp1",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/b/13edae/{size}.png",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 1644435,
+              "username": "hizachlee",
+              "avatar_template": "/user_avatar/community.shopify.com/hizachlee/{size}/416069_2.png",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": 1650511,
+              "username": "Badhon_Rafi",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/b/34f0e0/{size}.png",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": 1640774,
+              "username": "Nobolevsk",
+              "avatar_template": "/user_avatar/community.shopify.com/nobolevsk/{size}/414165_2.png",
+              "trust_level": 1
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "How to stop losing money on stockouts (The exact math for &ldquo;Safety Stock&rdquo;)",
+        "id": 600720,
+        "title": "How to stop losing money on stockouts (The exact math for \"Safety Stock\")",
+        "slug": "how-to-stop-losing-money-on-stockouts-the-exact-math-for-safety-stock",
+        "posts_count": 4,
+        "reply_count": 1,
+        "highest_post_number": 4,
+        "image_url": null,
+        "created_at": "2026-04-04T15:43:24.642Z",
+        "last_posted_at": "2026-07-07T00:25:07.442Z",
+        "bumped": true,
+        "bumped_at": "2026-07-07T00:25:07.442Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Hey guys. I’m seeing a lot of store owners panicking about exactly how much inventory to order. \nMost people just guess or reorder when their Shopify dashboard drops to 10 units. That’s a massive mistake. If you run out &hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [
+          {
+            "id": 2716,
+            "name": "inventory-management",
+            "slug": "inventory-management"
+          }
+        ],
+        "tags_descriptions": {},
+        "like_count": 4,
+        "views": 193,
+        "category_id": 95,
+        "featured_link": null,
+        "op_like_count": 2,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 1618877,
+              "username": "Hector_Lopez",
+              "avatar_template": "/user_avatar/community.shopify.com/hector_lopez/{size}/399770_2.png",
+              "trust_level": 0
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": 1615571,
+              "username": "lumine",
+              "avatar_template": "/user_avatar/community.shopify.com/lumine/{size}/397511_2.png",
+              "trust_level": 2
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 1623018,
+              "username": "codequal",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/c/e95f7d/{size}.png",
+              "trust_level": 2
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "How to calculate reorder points without an app - the spreadsheet version",
+        "id": 669667,
+        "title": "How to calculate reorder points without an app - the spreadsheet version",
+        "slug": "how-to-calculate-reorder-points-without-an-app-the-spreadsheet-version",
+        "posts_count": 1,
+        "reply_count": 0,
+        "highest_post_number": 1,
+        "image_url": null,
+        "created_at": "2026-08-21T18:49:22.718Z",
+        "last_posted_at": "2026-08-21T18:49:22.948Z",
+        "bumped": true,
+        "bumped_at": "2026-08-21T18:58:19.950Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "(topic deleted by author)",
+        "visible": true,
+        "closed": true,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [
+          {
+            "id": 1352,
+            "name": "stocky",
+            "slug": "stocky"
+          }
+        ],
+        "tags_descriptions": {},
+        "like_count": 0,
+        "views": 60,
+        "category_id": 95,
+        "featured_link": null,
+        "op_like_count": 0,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": "latest single",
+            "description": "Original Poster, Most Recent Poster",
+            "user": {
+              "id": 1637363,
+              "username": "Zecathop",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/z/e0b2c6/{size}.png",
+              "trust_level": 0
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "How are you handling supplier lead times and reorder triggers post-Stocky?",
+        "id": 675803,
+        "title": "How are you handling supplier lead times and reorder triggers post-Stocky?",
+        "slug": "how-are-you-handling-supplier-lead-times-and-reorder-triggers-post-stocky",
+        "posts_count": 28,
+        "reply_count": 6,
+        "highest_post_number": 30,
+        "image_url": null,
+        "created_at": "2026-09-02T14:50:42.295Z",
+        "last_posted_at": "2026-09-24T09:12:41.633Z",
+        "bumped": true,
+        "bumped_at": "2026-09-24T09:12:41.633Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Hey everyone, \nLike a lot of you, I’ve been looking closely at how to handle purchase orders and reorder points now that Stocky is out of the picture. \nNative Shopify handles basic PO creation, but it completely leaves o&hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [
+          {
+            "id": 4021,
+            "name": "troubleshooting",
+            "slug": "troubleshooting"
+          },
+          {
+            "id": 4775,
+            "name": "shopify-apps",
+            "slug": "shopify-apps"
+          },
+          {
+            "id": 1352,
+            "name": "stocky",
+            "slug": "stocky"
+          }
+        ],
+        "tags_descriptions": {},
+        "like_count": 5,
+        "views": 692,
+        "category_id": 95,
+        "featured_link": null,
+        "op_like_count": 3,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 1638879,
+              "username": "Berend_Verstegen17",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/b/c37758/{size}.png",
+              "trust_level": 0
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 1635055,
+              "username": "juhyun_han",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/j/ccd318/{size}.png",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 1640948,
+              "username": "nandor_nasolv",
+              "avatar_template": "/user_avatar/community.shopify.com/nandor_nasolv/{size}/416338_2.png",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": 1641001,
+              "username": "BloomBuddy",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/b/ba8739/{size}.png",
+              "trust_level": 2
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 1638719,
+              "username": "Arkadas_Kilic",
+              "avatar_template": "/user_avatar/community.shopify.com/arkadas_kilic/{size}/412949_2.png",
+              "trust_level": 1
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "How to calculate reorder points without an app — the spreadsheet version",
+        "id": 669669,
+        "title": "How to calculate reorder points without an app — the spreadsheet version",
+        "slug": "how-to-calculate-reorder-points-without-an-app-the-spreadsheet-version",
+        "posts_count": 8,
+        "reply_count": 0,
+        "highest_post_number": 8,
+        "image_url": null,
+        "created_at": "2026-08-21T19:02:35.036Z",
+        "last_posted_at": "2026-09-03T17:13:57.618Z",
+        "bumped": true,
+        "bumped_at": "2026-09-03T17:13:57.618Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "How to calculate reorder points without an app — the spreadsheet version\nEveryone’s asking which app replaces Stocky. Before you pay for one, here’s the actual math Stocky was doing for you. It fits in a spreadsheet, and&hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [
+          {
+            "id": 2716,
+            "name": "inventory-management",
+            "slug": "inventory-management"
+          },
+          {
+            "id": 1352,
+            "name": "stocky",
+            "slug": "stocky"
+          }
+        ],
+        "tags_descriptions": {},
+        "like_count": 1,
+        "views": 328,
+        "category_id": 186,
+        "featured_link": null,
+        "op_like_count": 1,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 1637363,
+              "username": "Zecathop",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/z/e0b2c6/{size}.png",
+              "trust_level": 0
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 1627612,
+              "username": "Denyslg",
+              "avatar_template": "/user_avatar/community.shopify.com/denyslg/{size}/405593_2.png",
+              "trust_level": 2
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 1638844,
+              "username": "Sermes_Sol",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/s/3e96dc/{size}.png",
+              "trust_level": 0
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": 1638107,
+              "username": "SamanthaB2",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/s/8e7dd6/{size}.png",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 1637355,
+              "username": "vishalkundar",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/v/ce7236/{size}.png",
+              "trust_level": 2
+            }
+          }
+        ]
+      }
+    ],
+    "summarizable": true,
+    "has_cached_summary": true,
+    "ai_summary": {
+      "id": 1884592,
+      "summarized_text": "For suppliers with lead times of three weeks or more, participants recommend basing reorder decisions on expected demand during replenishment—not relying on a fixed minimum or gut feel. One suggested formula is average daily sales multiplied by supplier lead time plus the interval between orders, with safety stock added. Recent sales (roughly 30–60 days) can better reflect current demand, while actual delivery records should replace supplier estimates when calculating lead times.\n\nSeveral details affect the calculation: set reorder points for each product variant, since colors or sizes may sell at different rates, and include the full time from placing an order until stock is sellable. Ordering smaller quantities more frequently may reduce risk, especially when orders are otherwise spaced far apart. For protection against unreliable suppliers, suggestions include using the slowest of the last few deliveries, tracking quoted versus actual arrival dates, and planning fallback options such as air freight, rush orders, or preorders for top sellers. No single policy was adopted; the discussion offers practical guidance, while the appropriate thresholds remain dependent on each store’s sales and supplier history.",
+      "algorithm": "gpt-6-luna",
+      "outdated": false,
+      "created_at": "2026-11-11T21:19:55.887Z",
+      "updated_at": "2026-11-12T08:40:26.300Z"
+    },
+    "is_category_expert_question": null,
+    "has_livestream": null,
+    "livestream_chat_active": false,
+    "valid_reactions": [
+      "heart",
+      "+1",
+      "laughing",
+      "open_mouth",
+      "clap",
+      "confetti_ball",
+      "hugs"
+    ],
+    "has_accepted_answer": false,
+    "shared_issue_count": 0,
+    "can_create_shared_issue": false,
+    "shared_issue_visible": true,
+    "can_vote": false,
+    "vote_count": 0,
+    "user_voted": false,
+    "details": {
+      "can_edit": false,
+      "notification_level": 1,
+      "participants": [
+        {
+          "id": 1650612,
+          "username": "bnp1",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/b/13edae/{size}.png",
+          "post_count": 2,
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 1
+        },
+        {
+          "id": 1644435,
+          "username": "hizachlee",
+          "avatar_template": "/user_avatar/community.shopify.com/hizachlee/{size}/416069_2.png",
+          "post_count": 1,
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 1
+        },
+        {
+          "id": 1640774,
+          "username": "Nobolevsk",
+          "avatar_template": "/user_avatar/community.shopify.com/nobolevsk/{size}/414165_2.png",
+          "post_count": 1,
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 1
+        },
+        {
+          "id": 1651022,
+          "username": "WayneParker",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/w/46a35a/{size}.png",
+          "post_count": 1,
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 0
+        },
+        {
+          "id": 1650988,
+          "username": "dreyagency001",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/d/a587f6/{size}.png",
+          "post_count": 1,
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 1
+        }
+      ],
+      "created_by": {
+        "id": 1650612,
+        "username": "bnp1",
+        "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/b/13edae/{size}.png"
+      },
+      "last_poster": {
+        "id": 1640774,
+        "username": "Nobolevsk",
+        "avatar_template": "/user_avatar/community.shopify.com/nobolevsk/{size}/414165_2.png"
+      }
+    },
+    "bookmarks": []
+  },
+  "comments": [
+    {
+      "author": "dreyagency001",
+      "text": "This post was flagged by the community and is temporarily hidden.",
+      "at": "2026-11-11T21:53:43.139Z",
+      "url": "https://community.shopify.com/t/how-far-ahead-do-you-reorder-from-slow-suppliers/714098/2"
+    },
+    {
+      "author": "hizachlee",
+      "text": "Days of cover works better than a fixed minimum once lead times get long, because a min that’s fine in a slow month is too low in a busy one. With a 3+ week supplier I’d set it up like this: \n Reorder point = average daily sales × (lead time in days + days between your orders) + safety stock. Use the last 30 to 60 days of sales rather than the whole year so seasonality shows up. \n For safety stock, go by how late that supplier has actually been, not what they quote. If they say 21 days but your last few POs landed in 28 to 35, plan on 30 and hold about a week of extra stock on top. \n And yes, late suppliers sell people out all the time. What helps most is logging quoted vs actual arrival for every PO and updating each supplier’s lead time every few orders.",
+      "at": "2026-11-12T01:08:26.247Z",
+      "url": "https://community.shopify.com/t/how-far-ahead-do-you-reorder-from-slow-suppliers/714098/3"
+    },
+    {
+      "author": "bnp1",
+      "text": "This post was flagged by the community and is temporarily hidden.",
+      "at": "2026-11-12T01:22:59.410Z",
+      "url": "https://community.shopify.com/t/how-far-ahead-do-you-reorder-from-slow-suppliers/714098/4"
+    },
+    {
+      "author": "WayneParker",
+      "text": "One thing I’d add to what’s already here: I don’t use one reorder point for a whole product. Different colors of the same style can move at really different speeds, so the number has to sit on the variant. A fixed minimum burned me on that — a slow color still looked fine while the popular one was already too late to catch. \n And for lead time, I use the actual average from PO sent to units being sellable, not the factory’s quoted production time. Door to door is usually longer once you count packing, freight, and the odd customs hold.",
+      "at": "2026-11-12T03:12:35.881Z",
+      "url": "https://community.shopify.com/t/how-far-ahead-do-you-reorder-from-slow-suppliers/714098/5"
+    },
+    {
+      "author": "Nobolevsk",
+      "text": "One thing I’d add to the formula answers: with a slow supplier, how often you order matters as much as the lead time. If you place one order every six weeks with a four-week supplier, each order has to cover about ten weeks of sales, so a late shipment hurts twice as much. Ordering a bit more often, in smaller lots, usually cuts the stockout risk more than extra safety stock does. \n For the “late enough that I sold out anyway” case, I’d decide the fallback in advance: which top few sellers you’d pay to air freight or split off a smaller rush order, and whether you’d switch the product to preorder instead of letting it show sold out. Deciding that while it’s calm is much easier than during a stockout. \n And take the slowest of the last 3 to 5 deliveries as your lead time, not the average.",
+      "at": "2026-11-12T08:38:10.594Z",
+      "url": "https://community.shopify.com/t/how-far-ahead-do-you-reorder-from-slow-suppliers/714098/6"
+    }
+  ],
+  "comments_complete": true
+}

@@ -7,7 +7,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## workflow_reliability — UNVALIDATED CLUSTER
 
-- independent_demand_count: 100
+- independent_demand_count: 102
 - payment_evidence_count: 1
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community', 'n8n Community']
 - communities: ['Agenta-AI/agenta', "Ask HN: What's your current AI agentic setup?", 'Ask/Show HN', 'Commerce operator forum', "Show HN: Glassbrain – Read your agent's brain, know what your agent knows", 'n8n Jobs', 'n8n-io/n8n', 'useagenthq/useagent']
@@ -20,16 +20,16 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
-  - https://github.com/n8n-io/n8n/issues/43455
+  - https://github.com/n8n-io/n8n/issues/43630
+  - https://github.com/n8n-io/n8n/issues/43567
+  - https://github.com/n8n-io/n8n/issues/43556
   - https://github.com/n8n-io/n8n/issues/43441
   - https://github.com/n8n-io/n8n/issues/43397
   - https://github.com/n8n-io/n8n/issues/43381
-  - https://news.ycombinator.com/item?id=50439324
-  - https://github.com/n8n-io/n8n/issues/43354
 
 ## supplier_sourcing — UNVALIDATED CLUSTER
 
-- independent_demand_count: 12
+- independent_demand_count: 13
 - payment_evidence_count: 1
 - platforms: ['GitHub', 'Shopify Community']
 - communities: ['AddisonJPratt/CAD-ADE', 'Commerce operator forum', 'n8n-io/n8n', 'zack-hum/coffee-intelligence-v1.1']
@@ -42,19 +42,19 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://community.shopify.com/t/how-far-ahead-do-you-reorder-from-slow-suppliers/714098
   - https://community.shopify.com/t/pilot-discussion-customizable-approval-based-purchasing-workflows-for-shopify-merchants/710857
   - https://github.com/AddisonJPratt/CAD-ADE/issues/1
   - https://community.shopify.com/t/shopify-va-inventory-listings-product-sourcing-customer-support-email-marketing-seo/707251
   - https://community.shopify.com/t/feature-request-product-specific-customer-tax-exemptions-for-accurate-wholesale-and-retail-checkout/706515
   - https://github.com/n8n-io/n8n/issues/41635
-  - https://community.shopify.com/t/how-often-do-you-sync-supplier-stock-with-your-shopify-store/700544
 
 ## browser_automation — UNVALIDATED CLUSTER
 
 - independent_demand_count: 11
 - payment_evidence_count: 1
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community']
-- communities: ['Commerce operator forum', 'Understanding Email Encryption (2025)', 'datnguyenquy94/news-radar', 'kouweizhu/agents-radar', 'n8n-io/n8n', 'useagenthq/useagent']
+- communities: ['Commerce operator forum', 'Understanding Email Encryption (2025)', 'datnguyenquy94/news-radar', 'n8n-io/n8n', 'useagenthq/useagent', 'yaojiejia/agents-radar']
 - repeated_pain: Repeated manual browser work is costly or brittle.
 - current_alternatives: Playwright, Selenium, vendor APIs and open-source browser agents.
 - productization_potential: Needs one repeated workflow and paying buyers before standardization.
@@ -64,12 +64,12 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://github.com/yaojiejia/agents-radar/issues/462
   - https://github.com/datnguyenquy94/news-radar/issues/1009
   - https://github.com/n8n-io/n8n/issues/43003
   - https://news.ycombinator.com/item?id=50334266
   - https://github.com/n8n-io/n8n/issues/42851
   - https://github.com/n8n-io/n8n/issues/42153
-  - https://github.com/kouweizhu/agents-radar/issues/654
 
 ## lead_research — UNVALIDATED CLUSTER
 

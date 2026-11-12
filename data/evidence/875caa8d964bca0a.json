@@ -1,0 +1,107 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43577",
+  "collected_at": "2026-11-12T09:46:15.756996+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43577",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43577/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43577/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43577/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43577",
+    "id": 6336983537,
+    "node_id": "I_kwDOC4Q8Qs8AAAABebax8Q",
+    "number": 43577,
+    "title": "Weaviate Vector Store: Clear Data keeps only the last insert batch",
+    "user": {
+      "login": "dudanogueira",
+      "id": 1761174,
+      "node_id": "MDQ6VXNlcjE3NjExNzQ=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1761174?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dudanogueira",
+      "html_url": "https://github.com/dudanogueira",
+      "followers_url": "https://api.github.com/users/dudanogueira/followers",
+      "following_url": "https://api.github.com/users/dudanogueira/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dudanogueira/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dudanogueira/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dudanogueira/subscriptions",
+      "organizations_url": "https://api.github.com/users/dudanogueira/orgs",
+      "repos_url": "https://api.github.com/users/dudanogueira/repos",
+      "events_url": "https://api.github.com/users/dudanogueira/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dudanogueira/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-11-11T20:53:50Z",
+    "updated_at": "2026-11-11T21:04:54Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\n\"Clear Data\" in the Weaviate Vector Store insert keeps only the last batch of documents.\n\nFrom node version 1.1, the insert writes the documents in batches (\"Embedding Batch Size\", default 200). The node deletes the collection (or the tenant) before each batch, not one time before the insert. So an insert of more documents than the batch size loses data, and the node shows no error.\n\n### To Reproduce\n\n1. Add a Weaviate Vector Store node (version 1.1 or later). Select the \"Insert Documents\" operation.\n2. Turn on \"Clear Data\". Set \"Embedding Batch Size\" to 1.\n3. Insert 3 documents.\n4. Count the objects in the collection. It has 1 object.\n\n### Expected behavior\n\nThe node clears the collection one time, before the first batch. After the insert, the collection has all 3 documents.\n\n### Debug Info\n\nFound in a code review of `VectorStoreWeaviate.node.ts`. Reproduced on `master` with a local Weaviate 1.39.16 server. Fix: #43518.\n\n### Operating System\n\nmacOS 26.6.2\n\n### n8n Version\n\n2.48.0 (master)\n\n### Node.js Version\n\n24.21.0\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43577/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43577/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @dudanogueira,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9747\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9747](https://linear.app/n8n/issue/GHC-9747)",
+      "at": "2026-11-11T20:54:04Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43577#issuecomment-6806824996"
+    },
+    {
+      "author": "grinem",
+      "text": "Hi @dudanogueira,\n\nExcellent catch and thorough root-cause identification. Having the collection/tenant deletion hook nested directly inside the batch execution loop instead of executing once prior to the document chunking explains the silent data loss whenever `Embedding Batch Size` is smaller than the total record count.\n\nUntil PR #43518 is reviewed, merged, and cut into an official release, you can prevent this silent overwrite right now without downgrading your node by separating the collection purge from the insertion pipeline:\n\n### Immediate Workaround Protocol\n\n1. **Disable In-Node Purge:** Open your **Weaviate Vector Store** node and toggle **Clear Data** to **OFF** (`false`).\n2. **Explicit Pre-flight Deletion:** Add an **HTTP Request** node immediately before your embedding/document loader branch to reset the collection once at the start of the execution.\n3. Configure the HTTP Request node to target the Weaviate Schema endpoint with `DELETE`. Enable \"Never Error\" (or ignore HTTP 404) so first-time executions do not halt if the class has not been instantiated yet.\n\n### Ready-to-use Workflow Snippet (Pre-flight Purge Pattern)\n\nYou can copy and paste this JSON snippet directly onto your n8n workflow canvas:\n\n```json\n{\n  \"nodes\": [\n    {\n      \"parameters\": {\n        \"method\": \"DELETE\",\n        \"url\": \"[https]://YOUR_WEAVIATE_HOST/v1/schema/YOUR_CLASS_NAME\",\n        \"authentication\": \"genericCredentialType\",\n        \"genericAuthType\": \"httpHeaderAuth\",\n        \"options\": {\n          \"allowUnauthorizedCerts\": false,\n          \"response\": {\n            \"response\": {\n              \"neverError\": true\n            }\n          }\n        }\n      },\n      \"id\": \"e0b82142-9999-4d22-b5e1-9871c5a00001\",\n      \"name\": \"Weaviate - Purge Collection Once\",\n      \"type\": \"n8n-nodes-base.httpRequest\",\n      \"typeVersion\": 4.2,\n      \"position\": [\n        260,\n        300\n      ]\n    }\n  ],\n  \"connections\": {}\n}\n```\n\n*(Note: Replace `YOUR_WEAVIATE_HOST` with your local or cloud Weaviate endpoint formatted as `[http]://localhost:8080` or `[https]://your-cluster[.]weaviate[.]cloud`, and replace `YOUR_CLASS_NAME` with your target class).*\n\nAlternatively, if you are working with a modest dataset that will not exceed your embedding model's rate limits or context window, temporarily setting the **Embedding Batch Size** parameter higher than the total document count forces a single batch execution, bypassing the looping deletion.\n\nIf you'd like, I can also share the complete JSON blueprint / flow template with you for free—just let me know and I'll send it over.\n\nLet me know if your tenant setup requires multi-tenancy headers or if you hit any edge cases while testing the workaround!",
+      "at": "2026-11-11T21:04:54Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43577#issuecomment-6807006665"
+    }
+  ],
+  "comments_complete": true
+}

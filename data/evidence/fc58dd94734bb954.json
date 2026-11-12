@@ -1,0 +1,203 @@
+{
+  "source_api_url": "https://api.github.com/repos/topmaster-joseph/ekodi-platform/issues/9350",
+  "collected_at": "2026-11-12T09:46:15.756996+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/topmaster-joseph/ekodi-platform/issues/9350",
+    "repository_url": "https://api.github.com/repos/topmaster-joseph/ekodi-platform",
+    "labels_url": "https://api.github.com/repos/topmaster-joseph/ekodi-platform/issues/9350/labels{/name}",
+    "comments_url": "https://api.github.com/repos/topmaster-joseph/ekodi-platform/issues/9350/comments",
+    "events_url": "https://api.github.com/repos/topmaster-joseph/ekodi-platform/issues/9350/events",
+    "html_url": "https://github.com/topmaster-joseph/ekodi-platform/issues/9350",
+    "id": 6338100774,
+    "node_id": "I_kwDOTf93mc8AAAABece-Jg",
+    "number": 9350,
+    "title": "[EKODI AI][Mall] 1차 자체상품→2차 공급처→3차 외부비교→4차 AI 소싱 통합검색 및 도매꾹 메일 점검",
+    "user": {
+      "login": "topmaster-joseph",
+      "id": 213826185,
+      "node_id": "U_kgDODL66iQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/213826185?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/topmaster-joseph",
+      "html_url": "https://github.com/topmaster-joseph",
+      "followers_url": "https://api.github.com/users/topmaster-joseph/followers",
+      "following_url": "https://api.github.com/users/topmaster-joseph/following{/other_user}",
+      "gists_url": "https://api.github.com/users/topmaster-joseph/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/topmaster-joseph/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/topmaster-joseph/subscriptions",
+      "organizations_url": "https://api.github.com/users/topmaster-joseph/orgs",
+      "repos_url": "https://api.github.com/users/topmaster-joseph/repos",
+      "events_url": "https://api.github.com/users/topmaster-joseph/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/topmaster-joseph/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 12115467375,
+        "node_id": "LA_kwDOTf93mc8AAAAC0iNcbw",
+        "url": "https://api.github.com/repos/topmaster-joseph/ekodi-platform/labels/ai-task",
+        "name": "ai-task",
+        "color": "ededed",
+        "default": false,
+        "description": null,
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 12115467379,
+        "node_id": "LA_kwDOTf93mc8AAAAC0iNccw",
+        "url": "https://api.github.com/repos/topmaster-joseph/ekodi-platform/labels/agent:chatgpt",
+        "name": "agent:chatgpt",
+        "color": "ededed",
+        "default": false,
+        "description": null,
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 7,
+    "created_at": "2026-11-11T22:13:25Z",
+    "updated_at": "2026-11-12T05:19:47Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Owner intent (2026-11-12 KST)\n\nBuild https://ekodi.kr/ekodimall/?q=... as single ordered discovery: first Mall verified products; second approved official suppliers such as Domeggook/Domemae only when licensing and readiness allow; third trusted external comparison as links only; fourth AI sourcing request (read-only/consent); fifth checkout only under existing authorized gates.\n\nPreserve quote-verified bookstore, affiliate external checkout, approved provider identity, no fake hose-reel products or fabricated prices. No new public paid API, no cross-tenant data, no supplier buyer PII handoff or global auto-order enablement.\n\n## Email evidence\n\nLatest techsupport@ggook.com 2026-11-03: setOrder v4.3 member error may be malformed deliinfo, Domemae supply orders require registered business buyer. Follow-up remains DRAFT since 2026-11-04. 8000P scheduled expiry 2026-11-08; actual balance on 2026-11-12 unknown. Latest 2026-11-09 email is educational promotion, not technical.\n\n## Delivery and governance\n\nAI-ORCHESTRATE-001: enter through EKODI AI; isolated agent branch, permission checks, vendor scope, tests and responsive 320/390/768/1080/1440, npm run doctor, required CI, exact SHA protected PR, staging, production live verification. This issue is intent only, not purchase authority or production override. Keep payments/auto-orders/PII OFF and account scope restricted. Browser design mockup was not a deployment.\n\nNo direct push to protected main or payment/credential changes. If supplier API not permitted, show truthful unavailable state and approved outbound comparison links; never call unsupported private endpoints.",
+    "reactions": {
+      "url": "https://api.github.com/repos/topmaster-joseph/ekodi-platform/issues/9350/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/topmaster-joseph/ekodi-platform/issues/9350/timeline",
+    "performed_via_github_app": {
+      "id": 1144995,
+      "client_id": "Iv23liVemv8A9if9v0F2",
+      "slug": "chatgpt-codex-connector",
+      "node_id": "A_kwHOAOQ6Gs4AEXij",
+      "owner": {
+        "login": "openai",
+        "id": 14957082,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjE0OTU3MDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/14957082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/openai",
+        "html_url": "https://github.com/openai",
+        "followers_url": "https://api.github.com/users/openai/followers",
+        "following_url": "https://api.github.com/users/openai/following{/other_user}",
+        "gists_url": "https://api.github.com/users/openai/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/openai/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/openai/subscriptions",
+        "organizations_url": "https://api.github.com/users/openai/orgs",
+        "repos_url": "https://api.github.com/users/openai/repos",
+        "events_url": "https://api.github.com/users/openai/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/openai/received_events",
+        "type": "Organization",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "name": "ChatGPT Codex Connector",
+      "description": "Bring ChatGPT and Codex to your GitHub repositories.",
+      "external_url": "https://www.chatgpt.com",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "created_at": "2025-02-14T01:37:05Z",
+      "updated_at": "2026-09-23T18:52:59Z",
+      "permissions": {
+        "actions": "write",
+        "checks": "read",
+        "contents": "write",
+        "emails": "read",
+        "issues": "write",
+        "metadata": "read",
+        "pull_requests": "write",
+        "statuses": "read",
+        "workflows": "write"
+      },
+      "events": [
+        "check_run",
+        "check_suite",
+        "commit_comment",
+        "issues",
+        "issue_comment",
+        "pull_request",
+        "pull_request_review",
+        "pull_request_review_comment",
+        "pull_request_review_thread",
+        "repository",
+        "status",
+        "sub_issues"
+      ]
+    },
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "github-actions[bot]",
+      "text": "EKODI isolated task branch allocated.\n\n- agent: `chatgpt`\n- task: `issue-9350-ekodi-ai-mall-1-2-3-4-ai`\n- branch: `ai/chatgpt/issue-9350-ekodi-ai-mall-1-2-3-4-ai`\n\nCreate an isolated workspace with `node scripts/ekodi-task-start.mjs --agent chatgpt --task-id issue-9350-ekodi-ai-mall-1-2-3-4-ai --base main`. Do not work from a shared mutable checkout.",
+      "at": "2026-11-11T22:13:37Z",
+      "url": "https://github.com/topmaster-joseph/ekodi-platform/issues/9350#issuecomment-6808318205"
+    },
+    {
+      "author": "topmaster-joseph",
+      "text": "[EKODI AI checkpoint 2026-11-12 KST] Task #9350, official recovery PR #9363 only (source #9358 superseded, redundant #9365 closed). Four-tier search code and tests were submitted and initial source exact SHA 1f09cd700111df0a6a19e6c6895fdafe83217a3b passed Mall validation workflow 43111171685 and root CI workflow 43111171793. Official recovery PR auto-rebased against later main; verified 7 changed Mall files' blob SHAs identical to reviewed source/rebase, no other changed paths. Current official PR head 49821def0d6e01720587451bab060f2cec58851f remained unmerged at last inspection. Nine GitHub Actions pull_request runs on this recovery head completed conclusion=action_required with ZERO jobs (e.g. CI https://github.com/topmaster-joseph/ekodi-platform/actions/runs/43112066913, Orchestration Gate https://github.com/topmaster-joseph/ekodi-platform/actions/runs/43112066902). This appears to be GitHub required workflow authorization for GitHub-Actions-bot-created PR, **not a test failure**; cannot claim recovery CI, staging, deployment, or live verify. Minimal owner-side gate: in repository Actions/checks for PR #9363, review/approve any 'Approve and run' prompts on the bot PR's pending workflows. Do not create synthetic success/checks, bypass protected branch, or trigger paid supplier orders. After authentic approval, re-check required CI and freshness, official EKODI merge/stage/prod and actual /ekodimall?q= endpoint. 2026-11-03 supplier tech answer remains last; Nov4 email draft unsent; 8000P expiry Nov8; current points unverified.",
+      "at": "2026-11-11T22:31:27Z",
+      "url": "https://github.com/topmaster-joseph/ekodi-platform/issues/9350#issuecomment-6808651515"
+    },
+    {
+      "author": "topmaster-joseph",
+      "text": "[EKODI AI release result 2026-11-12 07:33 KST] Official orchestrator PR #9363 MERGED to protected main at 765ca940554eb6c5b96815d4cefc809eea24a8ac (2026-11-11T22:30:53Z). Official Mall stage/production workflow https://github.com/topmaster-joseph/ekodi-platform/actions/runs/43112397904 completed SUCCESS on the exact merge SHA. Verified jobs: build/API contracts passed; staging schema, isolated rehearsal and Access protections passed; production Mall API+Pages both deployed; production API check, canonical Mall UI smoke and read-only route checks succeeded. Production smoke receipt confirms routesChecked [/ekodimall/, /ekodimall/admin/channel-settings, /workspace-admin.js, /marketing-publish-api/health], ok=true. **Scoped limitation:** This smoke did NOT exercise /ekodimall/?q=... full four-tier UI, nor prove actual supplier search output, nor authorize or execute orders. Source regression checked stages/strict reference-only handling. Public Domeggook live GET remains intentionally DISABLED until supplier catalog display rights and protected rate limiter are provisioned and approved; no real purchase, buyer PII transfer, or member points debit. Related Shared Site Core workflow 43112401046 is pending and separate. Earlier technical support last reply 2026-11-03, follow-up draft unsent; 8,000P expiry 2026-11-08, current balance unverified. Full supplier browsing/sale-ready checkout requires separate vendor rights, privacy/merchant terms and checkout gates, not inferred from this release.",
+      "at": "2026-11-11T22:34:24Z",
+      "url": "https://github.com/topmaster-joseph/ekodi-platform/issues/9350#issuecomment-6808705180"
+    },
+    {
+      "author": "topmaster-joseph",
+      "text": "[EKODI AI follow-up, 2026-11-12 13:xx KST] Read-only production browser verification completed on https://ekodi.kr/ekodimall/?q=자동%20릴%20호스: four search stages are visible and public supplier endpoint returns {\"enabled\":false,\"state\":\"rights-unverified\",\"items\":[],\"checkoutReady\":false}. Found operational bug: official Domeggook external search link used UTF-8 percent encoding, but vendor legacy page expects CP949/EUC-KR. Opera verified broken UTF-8 link showed mojibake and “no search results,” while same term with CP949 %C0%DA%B5%BF%20%B8%B1%20%C8%A3%BD%BA displayed actual search listings. Corrective PR source #9468 (CI + Mall validate passed) was made ready and EKODI automated recovery #9469 was issued; protected convergence in progress. Changes are strictly 3 Mall files: legacy provider encoding, opt-in '호수'→'호스' query suggestion, mobile CSS, execution regression, no external scraping or auto-orders. Separate live Domeggook account readback from authenticated browser: reward points now 0P; ledger has two expiry transactions on 2026-11-09, -3,000P and -5,000P. E-money 50,000 KRW remains available but is a separate prepaid balance, NOT approved for current purchase, and was untouched. Therefore 8,000P points-based purchase test cannot proceed; do not substitute e-money, charge card, or trigger setOrder without new financial authorization. Latest vendor API tech response remains 2026-11-03; 2026-11-04 follow-up is draft not sent; no new technical response in searched mail through 2026-11-12. Official supplier public catalog display rights and rate-limiter approval remain unverified and should remain OFF. Production browser retest of PR #9469 needed after guarded deploy; do not claim code as live until verified.",
+      "at": "2026-11-12T04:33:51Z",
+      "url": "https://github.com/topmaster-joseph/ekodi-platform/issues/9350#issuecomment-6814624794"
+    },
+    {
+      "author": "topmaster-joseph",
+      "text": "[EKODI AI COMPLETE — read-only external vendor search release, 2026-11-12 13:xx KST]\n\n## Authorized code release evidence\n- Functional source PR #9468 exact source SHA `fffad68f8aca507c44507520576b0cb2ce855e44` was superseded by EKODI official recovery PR #9469.\n- Recovery PR #9469 **protected-merged**, merge SHA `f93c1e382f49c050c19f01f8566031491bc5bb39`.\n- Source CI #43155181381, official authenticated CI #43155868997 and #43156231057 succeeded after owner-connected non-executable continuity notes; official orchestrator gate passed. Protected main provenance retained, no manual merge or bypass.\n- Official Mall staging→production workflow [43156466453](https://github.com/topmaster-joseph/ekodi-platform/actions/runs/43156466453) **completed SUCCESS** at exact merge SHA. Staging isolation/access/schema checks, API and Pages production deployment, basic production UI smoke all success.\n\n## Real-browser acceptance (Opera)\n- Read-only `https://ekodi.kr/ekodimall/?q=자동%20릴%20호스` renders all four search stages; provider public catalog remains rights-unverified.\n- **Actual production hyperlink** contains vendor-compatible CP949 bytes `sw=%C0%DA%B5%BF%20%B8%B1%20%C8%A3%BD%BA&sf=ttl` (no stale UTF-8 bytes), confirmed in accessibility DOM after deployment.\n- Navigated that exact vendor URL; page heading displays `자동 릴 호스 검색결과`, and item listings exist. This is externally hosted vendor results, not an EKODI catalog copy.\n- `https://ekodi.kr/ekodimall/?q=자동%20릴%20호수` shows opt-in link `‘자동 릴 호스’로 다시 검색` (no forced change), also confirmed.\n- Public supplier API exact live response remains `enabled:false,state:rights-unverified,items:[],checkoutReady:false` as designed.\n\n## Financial and vendor boundaries\n- Authenticated vendor point ledger: 3,000P + 5,000P expired on 2026-11-09; current point balance **0P**; distinct e-money balance **KRW 50,000** was not spent. No point-funded trial order can be placed now and no unauthorized e-money substitution was attempted.\n- Latest OpenAPI technical reply is 2026-11-03; existing 11-04 follow-up **Gmail DRAFT updated, not sent**, to request first-party permission for public getItemList product name/price/media display and official quotas/cache/image usage. Without vendor written rights, the public provider API stays disabled; auto-order and PII-forwarding remain OFF.\n\nScope verdict: **Korean supplier external-search integration bug FIXED + DEPLOYED + LIVE VERIFIED**. **Public vendor catalog ingestion, true automatic supplier ordering and any money transaction are NOT implemented/approved** and must be treated as separate gated work.",
+      "at": "2026-11-12T04:45:15Z",
+      "url": "https://github.com/topmaster-joseph/ekodi-platform/issues/9350#issuecomment-6814795869"
+    },
+    {
+      "author": "topmaster-joseph",
+      "text": "### 도매꾹 메일·권한 재점검 및 에코디몰 계속작업 — 2026-11-12 KST\n- `ekodibiz@gmail.com`에서 11/08 이후 도매꾹/도매매 신규 기술회신 없음. 마지막 기술지원 답변은 11/03 `setOrder v4.3` 수령인 `deliinfo` 형식 의심, 도매매 주문 사업자회원 요건. 11/09 메일은 교육 광고. `to:techsupport@ggook.com after:2026/11/03 in:sent`에서 후속 발송 이력 없음.\n- 이전 8,316자 중복 인용문이 포함된 **기존 기술지원 Gmail 초안을 약 1,144자**로 정돈. 세 항목 (1) getItemList 응답의 제3자 검색·이미지·가격·설명 표시 권한 및 호출량/캐시 조건, (2) 위탁판매/사업자회원/개인정보/취소책임, (3) `deliinfo` 필수·형식·비결제 검증을 문의. **초안 저장만 완료; 메일 발송하지 않음.** #6891의 명시적 발송 승인 정책 준수.\n- 공식 도매꾹 API 가이드: https://openapi.domeggook.com/ko/articles/OPEN-API-%EC%9D%B4%EC%9A%A9-%EB%B0%A9%EB%B2%95-bd7265d8 (Open API는 KEY 발급 후 호출 가능, Private API는 별도 승인), https://docs.channel.io/domeggook_api/ko/articles/43780628 (`getItemList v4.1` 문서). **API 호출권을 제3자 공개 전재/이미지 사용권·위탁주문 권한으로 동일시하지 말 것.**\n- UI 안전 개선 authoring source PR #9476: 공개 상품권한(권리+쿼터) 상태와 운영자 조회 상태 분리, 네트워크 공급처 호출 없는 `GET /api/public/supplier/status`, 주문/PII/autoOrder 항상 OFF. Source review/CI→EKODI 회복 PR→정본 병합→스테이징→운영 확인만 완료 판단.\n- 11/12 로그인 도매꾹 마이페이지 실증: 포인트 8,000P 기간 만료, 현재 0P; 이머니 50,000원은 별도 충전 잔액이므로 임의 구매·차감 금지. 실제 주문·포인트 차감·고객 PII 전송은 하지 않음.\n- Remaining external dependency: owner-reviewed support mail send authorization and written vendor response, supplier catalog publication/use rights, contracted dropship terms, audited e-money/customer PII gates. All unverified public catalog/auto ordering remain fail-closed.\n",
+      "at": "2026-11-12T05:09:51Z",
+      "url": "https://github.com/topmaster-joseph/ekodi-platform/issues/9350#issuecomment-6815251408"
+    },
+    {
+      "author": "topmaster-joseph",
+      "text": "### [EKODI Mall vendor permission gate LIVE COMPLETE] 2026-11-12 KST\n- Source authoring PR #9476 and original functional SHA `cfeade5f61692b4377f283d378cddb773a32c2eb`, official Orchestrator recovery PR **#9477 merged** through protected checks.\n- Exact protected merge commit: `dee2590a7633b4134f0cdcd1048ee389124932bb`.\n- Mall staging→production workflow [43160234814](https://github.com/topmaster-joseph/ekodi-platform/actions/runs/43160234814) **completed success on exact merge SHA**; staging access/safety, worker API, production Pages, UI smoke checks all succeeded.\n- Actual signed-in-browser independent GET: `https://ekodi.kr/ekodimall/api/api/public/supplier/status` returned `{\"enabled\":false,\"state\":\"rights-unverified\",\"checkoutReady\":false,\"autoOrderReady\":false}`. This new status endpoint did not issue an upstream supplier API call and never exposes API key/member details.\n- Actual `https://ekodi.kr/ekodimall/supplier-connectors?tab=gates` rendered separate rows **운영자 전용 상품조회** vs **에코디몰 공개 카탈로그**, with public `공개 이용권·호출한도 확인 전 · OFF`, homepage card `공개권한 미확인`, and **실주문**/**고객정보 · 자동발주** as **차단**. Current browser account lacked operator connector role; no unauthorized admin actions attempted.\n- November 3 is last technical support response; 11/09 training promotion. Unsent vendor follow-up draft was rewritten into concise three-part request (Open API product syndication+image rights, contracted dropship/PII, `setOrder` `deliinfo` formatting) for explicit owner approval before send. The email **was NOT sent**, no approval inferred.\n- Current vendor points **0P** from 11/09 expiry, distinct 50,000 KRW e-money unspent; no supplier order, customer PII, refund or payment attempted.\n- Exit criteria still pending: vendor written publication/right-to-display terms, formal Private API order+merchant terms, buyer PII responsibilities, explicit authorized trial purchase. Until these pass EKODI AI keeps public catalog/auto-order OFF. This release is **complete only for rights status visibility**, not vendor selling capability.\n",
+      "at": "2026-11-12T05:19:46Z",
+      "url": "https://github.com/topmaster-joseph/ekodi-platform/issues/9350#issuecomment-6815401689"
+    }
+  ],
+  "comments_complete": true
+}

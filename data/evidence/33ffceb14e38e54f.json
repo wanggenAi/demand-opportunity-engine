@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43567",
+  "collected_at": "2026-11-12T09:46:15.756996+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43567",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43567/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43567/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43567/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43567",
+    "id": 6333882765,
+    "node_id": "I_kwDOC4Q8Qs8AAAABeYdhjQ",
+    "number": 43567,
+    "title": "ErrorReporter logs every error at error level when Sentry is not configured",
+    "user": {
+      "login": "moajo",
+      "id": 9291732,
+      "node_id": "MDQ6VXNlcjkyOTE3MzI=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9291732?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/moajo",
+      "html_url": "https://github.com/moajo",
+      "followers_url": "https://api.github.com/users/moajo/followers",
+      "following_url": "https://api.github.com/users/moajo/following{/other_user}",
+      "gists_url": "https://api.github.com/users/moajo/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/moajo/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/moajo/subscriptions",
+      "organizations_url": "https://api.github.com/users/moajo/orgs",
+      "repos_url": "https://api.github.com/users/moajo/repos",
+      "events_url": "https://api.github.com/users/moajo/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/moajo/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-11T17:36:07Z",
+    "updated_at": "2026-11-11T17:36:21Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nWithout a Sentry DSN, `ErrorReporter.defaultReport` (`packages/core/src/errors/error-reporter.ts`) logs every reported error and every error in its `cause` chain with `logger.error`. It ignores the error's `level` and the `level` in the reporting options, so `ErrorReporter.warn()` also ends up at error level.\n\nn8n already gives errors a level: `UserError` is `info`, `NodeOperationError` / `NodeApiError` / `OperationalError` are `warning`, and `UnexpectedError` is `error`. With Sentry enabled, `beforeSend` drops `warning` and `info`. Without Sentry, the same errors are logged as `level: \"error\"`.\n\nBecause of this, a self-hosted instance that alerts on error-level logs gets alerted for user mistakes in Code nodes and for 4xx responses from third-party APIs. On our instance, more than half of the error-level log lines in one week came from a `TypeError` in a single workflow's Code node.\n\nLog output from the steps below:\n\n```\n{\"level\":\"error\",\"message\":\"Cannot read properties of undefined (reading 'channel') [line 2]\",\"metadata\":{\"file\":\"error-reporter.js\",\"function\":\"defaultReport\",...}}\n{\"level\":\"error\",\"message\":\"Cannot read properties of undefined (reading 'channel') [line 2]\\nTypeError: Cannot read properties of undefined (reading 'channel')\\n    at VmCodeWrapper ...\",\"metadata\":{\"file\":\"error-reporter.js\",\"function\":\"defaultReport\",...}}\n{\"level\":\"error\",\"message\":\"The resource you are requesting could not be found\",\"metadata\":{\"file\":\"error-reporter.js\",\"function\":\"defaultReport\",...}}\n{\"level\":\"error\",\"message\":\"404 - ...\\nAxiosError: Request failed with status code 404 ...\",\"metadata\":{\"file\":\"error-reporter.js\",\"function\":\"defaultReport\",...}}\n```\n\nThe code is the same on `master` today. #42905 adds level filtering, but only for redacted executions.\n\nA possible fix: in `defaultReport`, pick the level the same way the Sentry path does (`options.level` if it is set and not `error`, otherwise the error's own `level`, otherwise `error`), and log the whole cause chain with the matching logger method. We run this as a patch on our instance. Since this is under `packages/core`, we'd like to check whether you'd accept this approach before opening a PR with a regression test in `error-reporter.test.ts`.\n\n### To Reproduce\n\n1. `docker run -p 5678:5678 -e N8N_LOG_FORMAT=json n8nio/n8n:2.46.6` (no Sentry DSN)\n2. Create and activate a workflow: Webhook → Code (Run Once for Each Item) with `const x = undefined; return {json: {a: x.channel}};`\n3. Create and activate a workflow: Webhook → HTTP Request to `http://localhost:5678/rest/nonexistent` (returns 404)\n4. Call both production webhook URLs\n5. See the container logs\n\n### Expected behavior\n\nThe Code node error (`UserError`, level `info`) is logged at `info`, and the 404 (`NodeApiError`, level `warning`) is logged at `warn`. Only errors with level `error` or `fatal` are logged at `error`.\n\n### Debug Info\n\nOfficial Docker image `n8nio/n8n:2.46.6`, default settings except `N8N_LOG_FORMAT=json`, no Sentry DSN. Also seen in production with PostgreSQL and task runners in external mode.\n\n### Operating System\n\nDocker Hardened Images / Alpine Linux v3.24 (official image)\n\n### n8n Version\n\n2.46.6\n\n### Node.js Version\n\nv26.12.1\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43567/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43567/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @moajo,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9744\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9744](https://linear.app/n8n/issue/GHC-9744)",
+      "at": "2026-11-11T17:36:19Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43567#issuecomment-6802861280"
+    }
+  ],
+  "comments_complete": true
+}

@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50441350",
-  "collected_at": "2026-11-11T09:20:07.956178+00:00",
+  "collected_at": "2026-11-12T09:46:15.756996+00:00",
   "source": {
     "author": "peetle",
     "children": [
@@ -15,7 +15,23 @@
                 "children": [
                   {
                     "author": "peetle",
-                    "children": [],
+                    "children": [
+                      {
+                        "author": "brudgers",
+                        "children": [],
+                        "created_at": "2026-11-11T20:06:41.000Z",
+                        "created_at_i": 1794427601,
+                        "id": 50457950,
+                        "options": [],
+                        "parent_id": 50448925,
+                        "points": null,
+                        "story_id": 50441350,
+                        "text": "If it is a B2B product, price it like a B2B product so you canbuild a B2B company with B2B service.",
+                        "title": null,
+                        "type": "comment",
+                        "url": null
+                      }
+                    ],
                     "created_at": "2026-11-11T01:56:57.000Z",
                     "created_at_i": 1794362217,
                     "id": 50448925,
@@ -43,7 +59,23 @@
               },
               {
                 "author": "flowerthoughts",
-                "children": [],
+                "children": [
+                  {
+                    "author": "brudgers",
+                    "children": [],
+                    "created_at": "2026-11-11T20:04:37.000Z",
+                    "created_at_i": 1794427477,
+                    "id": 50457927,
+                    "options": [],
+                    "parent_id": 50450147,
+                    "points": null,
+                    "story_id": 50441350,
+                    "text": "Adjusted for inflation AutoCAD probably costs less today. And a system including hardware is much much less.<p>The moat has always been stability (except for r13 which was a complete rewrite).",
+                    "title": null,
+                    "type": "comment",
+                    "url": null
+                  }
+                ],
                 "created_at": "2026-11-11T05:58:04.000Z",
                 "created_at_i": 1794376684,
                 "id": 50450147,
@@ -52,6 +84,21 @@
                 "points": null,
                 "story_id": 50441350,
                 "text": "AutoCAD can charge a high price exactly because they have the moat GP is talking about. I wonder what price they started at.<p>(The argument put forth is similar to &quot;no one was ever fired for hiring IBM.&quot; I think that&#x27;s true in some circles. To me it&#x27;s a red flag that you hire by name and not ability.)",
+                "title": null,
+                "type": "comment",
+                "url": null
+              },
+              {
+                "author": "brudgers",
+                "children": [],
+                "created_at": "2026-11-11T20:10:39.000Z",
+                "created_at_i": 1794427839,
+                "id": 50457997,
+                "options": [],
+                "parent_id": 50448663,
+                "points": null,
+                "story_id": 50441350,
+                "text": "<i>a small team building on modern infrastructure has much lower costs</i><p>Support, training, documentation, UX design, testing, etc. don’t.<p>In a B2B setting, those matter a lot.<p>And it is a good strategy to not compete with zero dollars.",
                 "title": null,
                 "type": "comment",
                 "url": null
@@ -252,6 +299,37 @@
         "title": null,
         "type": "comment",
         "url": null
+      },
+      {
+        "author": "androiddrew",
+        "children": [
+          {
+            "author": "peetle",
+            "children": [],
+            "created_at": "2026-11-11T19:21:50.000Z",
+            "created_at_i": 1794424910,
+            "id": 50457340,
+            "options": [],
+            "parent_id": 50452576,
+            "points": null,
+            "story_id": 50441350,
+            "text": "Interesting. What kind of workflows and toolchains are you looking for? MasterCAM?",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-11T12:20:13.000Z",
+        "created_at_i": 1794399613,
+        "id": 50452576,
+        "options": [],
+        "parent_id": 50441350,
+        "points": null,
+        "story_id": 50441350,
+        "text": "I don&#x27;t want cad. I want CAM. Where are the AI generated CAM clones?",
+        "title": null,
+        "type": "comment",
+        "url": null
       }
     ],
     "created_at": "2026-11-10T15:01:19.000Z",
@@ -259,7 +337,7 @@
     "id": 50441350,
     "options": [],
     "parent_id": null,
-    "points": 37,
+    "points": 46,
     "story_id": 50441350,
     "text": "Aircad is a professional CAD system running in the browser with deep AI integration. It includes professional grade drafting and documentation tools, NURBS-based solid modeling, and a lot more. You can make professional quality design documents with it. It is all integrated behind a scripting API that can do anything you can do in the interface and also perform complex modeling operations efficiently. It reads and writes file formats like DXF, DWG, STEP, and 3DM.<p>I built Aircad because I was frustrated with what was out there. Current CAD tools are expensive and slow to improve. New features barely move the needle. With Aircad, you have fast, powerful geometry tools for just about anything, from conceptual models to your final design.<p>The newer generation of web-based CAD isn’t comprehensive enough to complete a project or is slower than existing desktop products because it sends performance-sensitive work to a server (OnShape), or isn’t designed to scale to real work in a collaborative setting (many &quot;toy&quot; CAD tools).<p>Current CAD collaboration workflows are fragile, costly, and complex. They’re file-based and separate the design artifacts (eg PDFs) from the source. Collaboration is often an expensive add-on that raises your subscription, is hard to learn, and feels unnatural. Aircad builds it in: version history, drawing comparison, forking, and realtime collaboration.<p>AI in most CAD tools is tacked on as a plug-in instead of being deeply integrated, and those plug-ins are often inefficient, hard to adopt, and costly. Aircad has a built-in AI agent and a comprehensive scripting API with a stage-and-commit workflow, so you know exactly what is happening during a complex change. You can use AI to write new scripts and commands that extend Aircad with repeatable, shareable workflows.",
     "title": "Show HN: Aircad – Professional drafting and 3D modeling in the browser",
@@ -292,10 +370,28 @@
       "url": "https://news.ycombinator.com/item?id=50448925"
     },
     {
+      "author": "brudgers",
+      "text": "If it is a B2B product, price it like a B2B product so you canbuild a B2B company with B2B service.",
+      "at": "2026-11-11T20:06:41.000Z",
+      "url": "https://news.ycombinator.com/item?id=50457950"
+    },
+    {
       "author": "flowerthoughts",
       "text": "AutoCAD can charge a high price exactly because they have the moat GP is talking about. I wonder what price they started at. (The argument put forth is similar to \"no one was ever fired for hiring IBM.\" I think that's true in some circles. To me it's a red flag that you hire by name and not ability.)",
       "at": "2026-11-11T05:58:04.000Z",
       "url": "https://news.ycombinator.com/item?id=50450147"
+    },
+    {
+      "author": "brudgers",
+      "text": "Adjusted for inflation AutoCAD probably costs less today. And a system including hardware is much much less. The moat has always been stability (except for r13 which was a complete rewrite).",
+      "at": "2026-11-11T20:04:37.000Z",
+      "url": "https://news.ycombinator.com/item?id=50457927"
+    },
+    {
+      "author": "brudgers",
+      "text": "a small team building on modern infrastructure has much lower costs  Support, training, documentation, UX design, testing, etc. don’t. In a B2B setting, those matter a lot. And it is a good strategy to not compete with zero dollars.",
+      "at": "2026-11-11T20:10:39.000Z",
+      "url": "https://news.ycombinator.com/item?id=50457997"
     },
     {
       "author": "sincman",
@@ -362,6 +458,18 @@
       "text": "Figure I try pitching at least, but would you consider evaluating my Aetheris kernel to use as Aircad's geometry kernel over OCCT?  https://github.com/yuechen-li-dev/Aetheris  There are currently a lot of newer browser CAD projects that already wraps OCCT WASM, like FluidCAD and Chili3D. And as you said previously, current CAD tools are slow to improve, and part of the reason is because of using kernels first built in the 1980s, and projects like Shapr3D and Plasticity both hit limitations of their existing kernels and switched to Parasolid when their project got bigger, and OCCT's per entity tolerance issue is pretty well know by now. On another topic, getting a plate with thousands of holes to mesh in under a second is some serious performance, and I do agree with your conclusion that most CAD apps are slow not because of programming language but because accurate NURBS math is inherently slow, but their is also the issues with the 2D constraint solver and fillet/boolean algorithms too. Happy to talk more about the geometry kernel stuff too.",
       "at": "2026-11-11T04:34:51.000Z",
       "url": "https://news.ycombinator.com/item?id=50449784"
+    },
+    {
+      "author": "androiddrew",
+      "text": "I don't want cad. I want CAM. Where are the AI generated CAM clones?",
+      "at": "2026-11-11T12:20:13.000Z",
+      "url": "https://news.ycombinator.com/item?id=50452576"
+    },
+    {
+      "author": "peetle",
+      "text": "Interesting. What kind of workflows and toolchains are you looking for? MasterCAM?",
+      "at": "2026-11-11T19:21:50.000Z",
+      "url": "https://news.ycombinator.com/item?id=50457340"
     }
   ],
   "comments_complete": true

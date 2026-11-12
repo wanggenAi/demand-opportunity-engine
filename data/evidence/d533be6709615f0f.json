@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43455",
-  "collected_at": "2026-11-11T09:20:07.956178+00:00",
+  "collected_at": "2026-11-12T09:46:15.756996+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/43455",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -61,12 +61,12 @@
     "locked": false,
     "assignees": [],
     "milestone": null,
-    "comments": 4,
+    "comments": 5,
     "created_at": "2026-11-11T07:41:49Z",
-    "updated_at": "2026-11-11T08:55:01Z",
+    "updated_at": "2026-11-11T10:02:04Z",
     "closed_at": null,
     "assignee": null,
-    "author_association": "NONE",
+    "author_association": "CONTRIBUTOR",
     "issue_field_values": [],
     "type": null,
     "active_lock_reason": null,
@@ -124,6 +124,12 @@
       "text": "Workflow-level reproducer, using the **node-as-tool** path (`packages/core/src/execution-engine/node-execution-context/utils/create-node-as-tool.ts:98` and `packages/@n8n/ai-utilities/src/utils/fromai-helpers.ts:37`, both call `generateZodSchema`):\n\n1. Add an **AI Agent** node, and attach a node as a tool whose numeric parameter is filled by the AI, e.g. a Google Sheets *Get Many Rows* / Slack *Get Many Messages* node with\n\n   ```\n   Limit: {{ $fromAI('limit', 'how many rows to return', 'number', '') }}\n   ```\n\n   The author leaves the 4th argument blank on purpose — \"let the model decide, otherwise use the node's own default\".\n\n2. `extractFromAICalls()` returns `defaultValue: 0`, and `generateZodSchema()` then does `schema.default(0)` (`packages/workflow/src/from-ai-parse-utils.ts:104`) on the `z.number()` field.\n\n3. The agent calls the tool **without** `limit` (it is an optional argument, and the description says nothing forces it). Zod applies the default, so the node receives `limit = 0` instead of no value — and the node returns zero rows / takes the `0` branch instead of falling back to its own default (which is what happens for the `string` type, where the blank default stays `''` and the node's own defaulting applies).\n\nThe inconsistency is the bug: identical blank defaults behave differently depending on the declared type — `string` keeps `''`, `number` silently becomes `0`, `boolean`/`json` keep the raw string. So the same workflow behaves correctly for a text parameter and incorrectly for a numeric one.\n\nThe fix in #43456 is the early return `if (value.trim() === '') return value;` before the type coercion, which makes all four branches consistent and leaves non-blank numeric defaults (`\"5\"`, `\"-3\"`, `\"2.5\"`, `\"0\"`) untouched. Tests cover both `''` and `'   '` plus the existing 93 cases in `from-ai-parse-utils.test.ts` (`102 passed` with the fix, `2 failed | 100 passed` with only the source reverted).\n",
       "at": "2026-11-11T08:55:00Z",
       "url": "https://github.com/n8n-io/n8n/issues/43455#issuecomment-6791531402"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "Thanks, this workflow-level reproducer answers my question. It confirms the downstream impact: when the agent omits the optional numeric argument, the generated default becomes `0` and overrides the node’s own default. The comparison with the string case makes the type-dependent behavior clear. I also noticed the review question about how `generateZodSchema()` handles a preserved blank default, so I’ll leave whether this patch fully resolves that part to the PR discussion.",
+      "at": "2026-11-11T10:02:04Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43455#issuecomment-6792872514"
     }
   ],
   "comments_complete": true

@@ -1,9 +1,41 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50450457",
-  "collected_at": "2026-11-11T09:20:07.956178+00:00",
+  "collected_at": "2026-11-12T09:46:15.756996+00:00",
   "source": {
     "author": "ThePhysicist",
-    "children": [],
+    "children": [
+      {
+        "author": "dns_snek",
+        "children": [
+          {
+            "author": "throwaway63467",
+            "children": [],
+            "created_at": "2026-11-11T11:25:36.000Z",
+            "created_at_i": 1794396336,
+            "id": 50452138,
+            "options": [],
+            "parent_id": 50451771,
+            "points": null,
+            "story_id": 50441707,
+            "text": "For serious smart home automation anything else is a nightmare, KNX is made to industrial standards and can be installed directly in the breaker box, most smart home devices aren’t cheap either I think most hubs cost at least 200-400 USD and you need actors, a large 24 channel KNX actor costs maybe 400 USD and is enough to switch all lights in a small to medium house. And again you program that stuff once and can forget about it, I know installations that have been running for 10 years plus without any kind of maintenance, the tech is designed to last 30-50 years, while most smart home gadgets are just trash after 5-10 years, look at all the defunc and obsolete stuff there is. With that in mind prices are quite reasonable, that stuff is made to last. WiFi and Zigbee devices are so fickle in comparison, I used them a lot as well but at some point the will always randomly reset or lose connectivity and I have to go and figure out what’s wrong, it’s a nightmare. I have around 50-100 switching points and actuators in my house, oh the horror of managing each with zigbee or consumer smart home approaches… KNX just never fails, it uses almost zero power, doesn’t need updates or apps (beyond initial programming), and its actually designed for large use cases so it provides actual programmability not this toy stuff that smart home makers offer, entire hospitals run on it. And I can communicate with it using IP routing, so it’s still fully dynamically controllable e.g. via Home Automation. It’s also not a company but a foundation that is governed by many industry players, they pulled of what Matter tried to do (different focus of course), in serious home automation no one really doubts KNX (there is Loxone but less popular). I don’t care about open source I don’t want to program firmware for my actuators, they expose a clean fully fledged API that I can use as I see fit.<p>So not sure but having your rug pulled is so much more likely with any of these other standards, KNX has been around since 1999, that’s almost 30 years! Zigbee &#x2F; Matter devices aren’t open source either, it’s the protocol so no difference to KNX.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-11T10:27:17.000Z",
+        "created_at_i": 1794392837,
+        "id": 50451771,
+        "options": [],
+        "parent_id": 50450457,
+        "points": null,
+        "story_id": 50441707,
+        "text": "Everything you listed + exorbitant prices of KNX devices. Why would I buy into an ecosystem like KNX when Zigbee, Matter&#x2F;Thread, and local wifi-based devices exist and work well?<p>One potential benefit is that a wired KNX is unlikely to suffer from any reliability issues but I don&#x27;t think that&#x27;s enough to justify everything else for me. The reliance on proprietary software is a deal-breaker for me, I&#x27;ve seen that rug get pulled too many times.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
     "created_at": "2026-11-11T06:57:55.000Z",
     "created_at_i": 1794380275,
     "id": 50450457,
@@ -16,6 +48,19 @@
     "type": "comment",
     "url": null
   },
-  "comments": [],
+  "comments": [
+    {
+      "author": "dns_snek",
+      "text": "Everything you listed + exorbitant prices of KNX devices. Why would I buy into an ecosystem like KNX when Zigbee, Matter/Thread, and local wifi-based devices exist and work well? One potential benefit is that a wired KNX is unlikely to suffer from any reliability issues but I don't think that's enough to justify everything else for me. The reliance on proprietary software is a deal-breaker for me, I've seen that rug get pulled too many times.",
+      "at": "2026-11-11T10:27:17.000Z",
+      "url": "https://news.ycombinator.com/item?id=50451771"
+    },
+    {
+      "author": "throwaway63467",
+      "text": "For serious smart home automation anything else is a nightmare, KNX is made to industrial standards and can be installed directly in the breaker box, most smart home devices aren’t cheap either I think most hubs cost at least 200-400 USD and you need actors, a large 24 channel KNX actor costs maybe 400 USD and is enough to switch all lights in a small to medium house. And again you program that stuff once and can forget about it, I know installations that have been running for 10 years plus without any kind of maintenance, the tech is designed to last 30-50 years, while most smart home gadgets are just trash after 5-10 years, look at all the defunc and obsolete stuff there is. With that in mind prices are quite reasonable, that stuff is made to last. WiFi and Zigbee devices are so fickle in comparison, I used them a lot as well but at some point the will always randomly reset or lose connectivity and I have to go and figure out what’s wrong, it’s a nightmare. I have around 50-100 switching points and actuators in my house, oh the horror of managing each with zigbee or consumer smart home approaches… KNX just never fails, it uses almost zero power, doesn’t need updates or apps (beyond initial programming), and its actually designed for large use cases so it provides actual programmability not this toy stuff that smart home makers offer, entire hospitals run on it. And I can communicate with it using IP routing, so it’s still fully dynamically controllable e.g. via Home Automation. It’s also not a company but a foundation that is governed by many industry players, they pulled of what Matter tried to do (different focus of course), in serious home automation no one really doubts KNX (there is Loxone but less popular). I don’t care about open source I don’t want to program firmware for my actuators, they expose a clean fully fledged API that I can use as I see fit. So not sure but having your rug pulled is so much more likely with any of these other standards, KNX has been around since 1999, that’s almost 30 years! Zigbee / Matter devices aren’t open source either, it’s the protocol so no difference to KNX.",
+      "at": "2026-11-11T11:25:36.000Z",
+      "url": "https://news.ycombinator.com/item?id=50452138"
+    }
+  ],
   "comments_complete": true
 }

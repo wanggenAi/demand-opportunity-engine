@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43630",
+  "collected_at": "2026-11-12T09:46:15.756996+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43630",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43630/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43630/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43630/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43630",
+    "id": 6347005285,
+    "node_id": "I_kwDOC4Q8Qs8AAAABek-dZQ",
+    "number": 43630,
+    "title": "Object .compact() expression extension turns array values into plain objects",
+    "user": {
+      "login": "indexGin",
+      "id": 166748424,
+      "node_id": "U_kgDOCfBhCA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/166748424?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/indexGin",
+      "html_url": "https://github.com/indexGin",
+      "followers_url": "https://api.github.com/users/indexGin/followers",
+      "following_url": "https://api.github.com/users/indexGin/following{/other_user}",
+      "gists_url": "https://api.github.com/users/indexGin/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/indexGin/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/indexGin/subscriptions",
+      "organizations_url": "https://api.github.com/users/indexGin/orgs",
+      "repos_url": "https://api.github.com/users/indexGin/repos",
+      "events_url": "https://api.github.com/users/indexGin/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/indexGin/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-12T09:38:54Z",
+    "updated_at": "2026-11-12T09:39:04Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Summary\r\n\r\nThe `.compact()` expression extension corrupts array values: any array stored in an object field is converted into a plain object whose keys are the array indices.\r\n\r\n## Steps to reproduce\r\n\r\nUse the expression editor (or any workflow expression) with:\r\n\r\n```\r\n={{ ({ items: [1, 2, 3], name: 'cart' }).compact() }}\r\n```\r\n\r\n## Current behavior\r\n\r\nThe result is `{ items: { '0': 1, '1': 2, '2': 3 }, name: 'cart' }`. The `items` value is no longer an array.\r\n\r\nNested arrays are affected too:\r\n\r\n```\r\n={{ ({ matrix: [[1, 2], [3, 4]] }).compact() }}\r\n```\r\n\r\nreturns `{ matrix: { '0': { '0': 1, '1': 2 }, '1': { '0': 3, '1': 4 } } }`.\r\n\r\n## Expected behavior\r\n\r\n`items` should stay `[1, 2, 3]` and `matrix` should stay `[[1, 2], [3, 4]]`. Empty arrays should still be removed and empty values should still be filtered, matching the array `.compact()` extension. Plain objects and the removal of `null`, `undefined`, `\"nil\"` and `\"\"` should keep working unchanged.\r\n\r\n## Impact\r\n\r\n`compact()` is commonly used to clean up JSON from HTTP requests, webhooks and database nodes before mapping fields. Arrays are extremely common in such payloads (line items, tags, IDs, attachments). After compaction the field becomes an object, so downstream expressions such as `.length`, `.join()`, `.map()` or indexing either throw or silently return wrong results. Data written to later nodes is structurally wrong and hard to debug because no error is raised. The array `.compact()` extension already behaves correctly, so the same workflow produces different shapes depending on where the array sits.\r\n\r\n## Root cause\r\n\r\n`compact()` in `packages/workflow/src/extensions/object-extensions.ts` treats every value with `typeof === 'object'` as a plain object and rebuilds it through `Object.entries()` into a fresh `{}`. Arrays fall into this branch, so their numeric indices become string keys. The mirrored copy in `packages/@n8n/expression-runtime/src/extensions/object-extensions.ts` has the same behavior.\r\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43630/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43630/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @indexGin,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9749\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9749](https://linear.app/n8n/issue/GHC-9749)",
+      "at": "2026-11-12T09:39:03Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43630#issuecomment-6820090919"
+    }
+  ],
+  "comments_complete": true
+}

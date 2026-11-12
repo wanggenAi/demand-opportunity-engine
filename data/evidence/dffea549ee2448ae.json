@@ -1,0 +1,92 @@
+{
+  "source_api_url": "https://api.github.com/repos/noahdgrant/netsmith/issues/451",
+  "collected_at": "2026-11-12T09:46:15.756996+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/noahdgrant/netsmith/issues/451",
+    "repository_url": "https://api.github.com/repos/noahdgrant/netsmith",
+    "labels_url": "https://api.github.com/repos/noahdgrant/netsmith/issues/451/labels{/name}",
+    "comments_url": "https://api.github.com/repos/noahdgrant/netsmith/issues/451/comments",
+    "events_url": "https://api.github.com/repos/noahdgrant/netsmith/issues/451/events",
+    "html_url": "https://github.com/noahdgrant/netsmith/issues/451",
+    "id": 6340348325,
+    "node_id": "I_kwDOVhgvYc8AAAABeeoJpQ",
+    "number": 451,
+    "title": "Epic: porting KiCad boards",
+    "user": {
+      "login": "noahdgrant",
+      "id": 105687410,
+      "node_id": "U_kgDOBkypcg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/105687410?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/noahdgrant",
+      "html_url": "https://github.com/noahdgrant",
+      "followers_url": "https://api.github.com/users/noahdgrant/followers",
+      "following_url": "https://api.github.com/users/noahdgrant/following{/other_user}",
+      "gists_url": "https://api.github.com/users/noahdgrant/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/noahdgrant/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/noahdgrant/subscriptions",
+      "organizations_url": "https://api.github.com/users/noahdgrant/orgs",
+      "repos_url": "https://api.github.com/users/noahdgrant/repos",
+      "events_url": "https://api.github.com/users/noahdgrant/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/noahdgrant/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 13046115342,
+        "node_id": "LA_kwDOVhgvYc8AAAADCZvsDg",
+        "url": "https://api.github.com/repos/noahdgrant/netsmith/labels/epic",
+        "name": "epic",
+        "color": "d8bade",
+        "default": false,
+        "description": "",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2026-11-12T01:09:57Z",
+    "updated_at": "2026-11-12T03:50:23Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "Porting an existing KiCad board into netsmith, for people and for agents. A port moves a design in five stages (scaffold and licence, parts, nets proven equal to the original's, the physical file, the parity gate), and the work here is to make each stage need less hand work, less guessing and fewer re-runs. This epic is the work queue: an orchestrating agent ticks the items as pull requests open and merge.\n\n## Where it comes from\n\nThree ports (the Easyduino, Orbit and RP2350 boards) and a fourth, the Power Manifold charger module (#417, PR #450: 89 parts, nets equal to the original's, parity 144 ok and 2 failed). The charger port took about four hours, most of it spent writing a netlist script, sourcing catalog rows, and re-running placement and parity. The tools that prove a port (`compare`, the parity checker and overlay, checks that name the file and the fix) worked well. The friction was in getting started, in the sourcing, in the placer and router on a dense board, and in gaps in the language and the solver.\n\n## Order\n\nDo the stages in order, and the steps of a stage in the order numbered, except where a step says it is independent. A stage is finished when each of its steps is done or dropped (the reason goes on the step). Stage 5 is the owner's own work on the router and the 3D viewer and runs beside stages 1 to 4. **The four showcase boards are stage 6, the last thing in this epic.** **They do not start until the owner gives express permission (see stage 6).**\n\nWhy this order: the language settles first, because every later tool writes source in it; then the tools that start and check a port; then the placer and the physical file; then the model and compare gaps that large boards meet; then the router and the 3D viewer; and only then the showcase boards, which need all of it.\n\n### Stage 0: a chore, any time\n\n- [x] **Ignore `out/` and `fab/` inside examples**: #464 (PR #475)\n\n### Stage 1: language and std gaps (the owner decided each, 2026-11-11)\n\nEach issue records the decision.\n\n- [ ] 1. **A `Net` type, a name for a net that is not a `Rail`**: #459. First, so that the skeleton command (#452) can write the original's net names.\n- [ ] 2. **An `open_drain` pin kind**: #460\n- [ ] 3. **Separate source and dual-role USB-C receptacle generics**: #463\n- [ ] 4. **A picks file: pin a generic part to a catalog row**: #462 (19 of the charger's ceramics pick a different row than the original's; see #31)\n- [ ] 5. **A strap: tie an I/O pin to a rail without an ERC finding**: #461. The spelling is still open and the owner chooses it first; the other steps do not wait for it.\n\n### Stage 2: tools to start and check a port\n\n- [ ] 1. **Structured and quiet output**: #455 (json, grouped notes, `check`). First, because agents run every later step and read its output.\n- [ ] 2. **One `parts.toml` and a shared nets-proof harness**: #456. Defines `parts.toml` and moves the four ports onto it (the three older ports' test files are about 2.9k lines each; this also drops `designators.toml`; see #166).\n- [ ] 3. **A first `.nsm` from a KiCad board**: #452 (parts and nets). After #456, since it writes `parts.toml`, and after #459.\n- [ ] 4. **A part file from a KiCad symbol's pins**: #453. It needs its own reader of a symbol's pins; #5's reader is for `compare`.\n- [ ] 5. **`catalog add --lcsc`**: #454 (writes a sourced row). Independent of steps 2 to 4.\n\n### Stage 3: placer and physical file\n\n- [ ] 1. **Physical file by footprint origin; bottom-face mirroring**: #457. Related: #56 (its \"a requirement between two parts\" is the nearest item) and #52 (mostly built; what is left is editor work).\n- [ ] 2. **Placer: other seeds, and the cause when none places the board**: #458. Related: #58, whose list has \"seed variance\", \"a board that is too dense is refused only after the annealer has tried\" and a `--json` list of the offenders; and #99 (also an outcome that depends on the seed, but a different rule). The charger needed seed search by hand: 8 of 12 seeds failed.\n- [ ] 3. #57 **Polygon outline**: the board model is a rectangle with equal rounded corners. The charger's PCIe tab and key slot (lines and an arc, and edge cuts drawn inside a footprint) can never match, so its parity gate has `known_failures`. The showcase boards' outlines were not checked; a laptop board (Virgo) is unlikely to be a rectangle.\n\n### Stage 4: gaps the charger port found that no stage above covers\n\n- [ ] 1. **Models for a buck-boost, a USB-C port protector and an NTC thermistor**: #473. Not in #63, whose list has a buck model and neither of these. The charger's solver run had 73 \"not evaluated\" notes.\n- [ ] 2. #67 **compare limits**: pin numbers are identity, so a swapped pair is reported as a difference, and a search of more than 20,000 refinements ends as \"could not decide\", which a board of thousands of pads may reach.\n\nRelated tickets that are not dependencies of any step (read at stage 4's start, 2026-11-11):\n\n- #5 **Self-contained libraries and netlist reader**: what is left is reading a `.kicad_sch` directly for `compare` (it goes through `kicad-cli` today). A `.kicad_pcb`, which the ports compare, needs no KiCad, and #452 reads the board file.\n- #73 **fab: parts with no supplier number**: `.assembly &= \"hand\"` is the stand-in and the owner decided on 2026-11-04 to review a \"consigned\" design later. Today a part with no number says `.assembly &= \"hand\"` (or `\"none\"`, as the charger's edge fingers do).\n- #63 **Switching regulators and standard kinds**: a buck model and catalog gaps; see #473 for what it does not cover.\n- #420 **Capacitor ESR**: on hold by its own decision until a capacitor row has a sourced ESR cell.\n- #31 **Generic parts**: mostly done (PR #72); what is left is the editor's swap action.\n- #64 **IC parts, assembly and designators**: two items matter to the big boards, \"the PCB side of an IC: an exposed pad, fine pitch and several pads on a net have not been tried in the placer, ratsnest and router\" and \"logic levels for a net driven by a plain or open-drain output\" (see #460).\n- #15 **Footprint generators** (QFP, BGA, DPAK and others) and #66 **catalog rows**: a port brings its own footprints (`libs/*.pretty`) and its own catalog rows today.\n- #166 **Reference designators**: on hold (owner, 2026-11-07). Ports keep a designator map because designators are renumbered (see #456).\n- #16 **Hierarchical modules and connectors**: its \"modules as sheets\" is about the exported KiCad schematic, which is one flat sheet today (a build of the Orbit board, which has a module, writes none), and its connectors are about boards joined to each other. No port needs either. It would make the showcase boards' exported schematics easier to open in KiCad, so decide at stage 6 whether to do it first.\n\n### Stage 5: router and 3D viewer (own epics, the owner's work)\n\n- [ ] **Epic: a world-class router**: #431. What the showcase boards need from it: diff pairs (S9) and tight boards (S10, #3: 252 of the charger's 256 connections after 5 minutes, so that example is in `no_fab`), and length matching (S11) for the DDR5 and PCIe boards.\n- [ ] **Epic: a world-class 3D board viewer**: #430. The showcase assets (renders, the 3D view, a case) come from it.\n\n### Stage 6: showcase boards (last; owner, 2026-11-11)\n\n> **Do not start stage 6 until the owner gives express permission, in words, on this epic or in the conversation.** That holds when stages 1 to 5 are finished and when an agent or a person thinks the time has come. Do not start a showcase port, a branch or a pull request for one of #467 to #470, and do not file work that depends on one, without that permission.\n\nFour open-source boards that show what netsmith does once everything above has landed. In this order, since each is a step to the next. Each port files what it finds under this epic.\n\n- [ ] 1. **Jetson Orin baseboard** (Apache-2.0, 681 footprints, 8 layers): #467. Also decides how a reference file of 36 MB or more is held.\n- [ ] 2. **Jetson AGX Thor baseboard** (Apache-2.0, 1,213 footprints, 10 layers, 100 x 180 mm): #468. The main showpiece, with an open enclosure.\n- [ ] 3. **COM Express 7 baseboard** (Apache-2.0, 815 footprints, 8 layers): #469.\n- [ ] 4. **System76 Virgo laptop motherboard** (CERN-OHL-S-2.0, 591 footprints, 10 layers, a 1,744-ball BGA, mostly unrouted in the source): #470. Build, route and render only; it cannot be ordered.\n\n\n\n\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/noahdgrant/netsmith/issues/451/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/noahdgrant/netsmith/issues/451/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [],
+  "comments_complete": true
+}

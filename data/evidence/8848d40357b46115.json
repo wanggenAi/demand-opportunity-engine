@@ -1,0 +1,89 @@
+{
+  "source_api_url": "https://api.github.com/repos/gimbalabs/season7-2026/issues/20",
+  "collected_at": "2026-11-12T09:46:15.756996+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/gimbalabs/season7-2026/issues/20",
+    "repository_url": "https://api.github.com/repos/gimbalabs/season7-2026",
+    "labels_url": "https://api.github.com/repos/gimbalabs/season7-2026/issues/20/labels{/name}",
+    "comments_url": "https://api.github.com/repos/gimbalabs/season7-2026/issues/20/comments",
+    "events_url": "https://api.github.com/repos/gimbalabs/season7-2026/issues/20/events",
+    "html_url": "https://github.com/gimbalabs/season7-2026/issues/20",
+    "id": 6337208240,
+    "node_id": "I_kwDOUHTKaM8AAAABebofsA",
+    "number": 20,
+    "title": "Discord maintenance and opportunities",
+    "user": {
+      "login": "Newman5",
+      "id": 1620405,
+      "node_id": "MDQ6VXNlcjE2MjA0MDU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1620405?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Newman5",
+      "html_url": "https://github.com/Newman5",
+      "followers_url": "https://api.github.com/users/Newman5/followers",
+      "following_url": "https://api.github.com/users/Newman5/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Newman5/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Newman5/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Newman5/subscriptions",
+      "organizations_url": "https://api.github.com/users/Newman5/orgs",
+      "repos_url": "https://api.github.com/users/Newman5/repos",
+      "events_url": "https://api.github.com/users/Newman5/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Newman5/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-11T21:10:38Z",
+    "updated_at": "2026-11-12T04:36:52Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "# Gimbalabs Discord Maintenance — November 2026\n\n**Status:** Initial assessment and discussion  \n**Scope:** Discord channels, organization, and future use  \n**Approach:** Incremental improvements, not a complete redesign\n\n## 1. Background\n\nThe Gimbalabs Discord server has accumulated channels over several seasons, projects, learning cohorts, and community initiatives.\n\nSome channels remain active and useful. Others represent completed activities or projects that have changed direction. The current structure does not always reflect what Gimbalabs is doing today.\n\nThis creates an opportunity to simplify the server, make current activities easier to find, and reconsider how Discord can serve the wider Gimbalabs community.\n\nWe should approach this as an ongoing maintenance activity: assess the current structure, identify improvements, make incremental changes, and evaluate the results.\n\n## 2. Initial Observations and Opportunities\n\n### Season 7 and Current Projects\n\nThe server currently has a Season 7 category containing:\n\n- `open-spaces-link`\n- `share-your-proposal`\n\nThere is also a separate CURRENT PROJECTS category containing eight channels.\n\n**Opportunities:**\n\n- Make Season 7 the primary place to find current Gimbalabs activities.\n- Review the CURRENT PROJECTS category to distinguish active projects from completed initiatives.\n- Archive channels associated with completed activities, particularly `piece-of-pie-feedback-requests` and `piece-of-pie-hackathon`.\n- Retain ongoing projects such as `cardano-feedback-tool` and `cardano-bounties-platform`.\n- Consider whether collaborative projects such as SIDAN/Vespr and 45B belong under Partner Projects instead.\n\nWe should clarify the distinction between Gimbalabs programs, independent projects, and partner initiatives.\n\n### Project Based Learning\n\nThis category contains seven channels associated with learning programs, technologies, and past cohorts.\n\nThe larger question is whether Gimbalabs intends to continue organizing and supporting learning cohorts.\n\n**Opportunities:**\n\n- Review which learning programs remain active.\n- Archive completed cohorts while preserving useful history.\n- Decide whether Project Based Learning should remain a prominent part of the server and Gimbalabs efforts.\n- If new cohorts are planned, establish a consistent approach to creating and retiring their channels.\n\nThis is partly a question about Gimbalabs' future activities, not merely Discord organization.\n\n### DRep Governance\n\nThe DREP GOVERNANCE category contains four channels.\n\nThese appear to be candidates for archiving as a group.\n\n**Proposed action:** Review for any ongoing activity or valuable resources, then archive the category if it is no longer serving an active purpose.\n\n### Partner Projects\n\nThe PARTNER-PROJECTS category currently contains:\n\n- `andamio`\n- `dandelion`\n\nThis category may have considerable potential beyond its current use.\n\n**Opportunities:**\n\n- Expand it to represent affiliated, friendly, and collaborating projects throughout the Gimbalabs network.\n- Consider moving SIDAN/Vespr and 45B into this category.\n- Explore how partner announcements and project updates could be collected automatically.\n- Provide members with a convenient way to discover activity across the broader Cardano builder ecosystem.\n\nThis raises an interesting possibility: **Discord could become a network information hub, rather than simply a collection of discussion channels.**\n\n### Discussion\n\nThe DISCUSSION category currently contains six channels, including general chat, technical discussion, social media, music, and informal meetups.\n\n**Opportunities:**\n\n- Consider simplifying the category around a primary general discussion channel.\n- Review whether specialized channels still generate meaningful activity.\n- Explore repurposing `social-media` as an automated feed of relevant community posts.\n\nFor example, members might be able to catch up on selected posts from X without needing to visit X and navigate its recommendation algorithm.\n\nThe intention would be to reduce noise while improving access to useful information.\n\n### Other Categories\n\nINFO, Admin, and LOCAL COMMUNITY have not yet been assessed in detail.\n\nThey should be included in a later maintenance pass, along with server roles, permissions, integrations, bots, and onboarding.\n\n## 3. A Larger Opportunity: Discord as a Community Network Hub\n\nGimbalabs has relationships with many builders, projects, organizations, and communities.\n\nAt present, information about their activities is distributed across Discord servers, websites, GitHub repositories, social media, and other communication channels.\n\nWe could explore using the Gimbalabs Discord server as a place to discover and follow this activity.\n\nPotential capabilities include:\n\n- Subscribing to announcements from partner Discord servers where supported.\n- Using webhooks or bots to publish selected project updates.\n- Collecting relevant GitHub activity, releases, and announcements.\n- Curating social media posts from trusted community accounts.\n- Making upcoming events and opportunities more visible.\n\nThe objective would NOT  be to automate everything or create a high-volume news feed.\n\nInstead, we would curate a useful collection of information from the Gimbalabs network.\n\nThis could help community members discover projects, find collaborators, follow developments, and identify opportunities to participate.\n\n**An important design question:** Should partner channels be places for discussion, automated updates, or both?\n\nWe can experiment with a small number of partners before making broader changes.\n\n## 4. Proposed Maintenance Process\n\nRather than redesigning the server all at once, we propose an incremental approach.\n\n**Step 1 — Inventory**\n\nDocument the current channels, categories, roles, and integrations.\n\n**Step 2 — Assess**\n\nIdentify which channels are active, inactive, duplicated, confusing, or associated with completed projects.\n\n**Step 3 — Prioritize**\n\nChoose a small number of improvements, beginning with obvious cleanup opportunities.\n\n**Step 4 — Implement**\n\nMake changes in manageable batches. Preserve useful history and communicate significant changes to members.\n\n**Step 5 — Review and Adapt**\n\nObserve the effects of the changes, gather informal feedback, and adjust as necessary.\n\nWe can track maintenance work using GitHub issues and briefly discuss significant changes during Open Spaces. A large community survey or formal governance process should not be necessary for routine maintenance.\n\n## 5. Suggested First Actions\n\n- [ ] Review the CURRENT PROJECTS category and identify completed projects.\n- [ ] Archive completed Piece of Pie channels after checking for useful history.\n- [ ] Review the DREP GOVERNANCE category for archiving.\n- [ ] Clarify the purpose of the Season 7 category.\n- [ ] Review whether PBL cohorts are an ongoing Gimbalabs activity.\n- [ ] Consider moving SIDAN/Vespr and 45B into Partner Projects.\n- [ ] Review the DISCUSSION channels for opportunities to simplify.\n- [ ] Investigate Discord announcement subscriptions, webhooks, and other options for collecting partner updates.\n- [ ] Select one partner project for a small automation experiment.\n\n## 6. Questions for the Team\n\n1. What activities should be most visible in the Gimbalabs Discord during Season 7?\n2. Are learning cohorts still a core activity we intend to support?\n3. How should we distinguish Gimbalabs projects from partner projects?\n4. Would a curated feed of activity from our partner network make Discord more useful?\n5. Who should take responsibility for occasional server maintenance?\n\n## 7. Next Steps\n\nBegin with a small cleanup of clearly completed activities while discussing the larger possibilities.\n\nThe long-term objective is a Discord server that is easier to navigate, requires less maintenance, and helps members stay connected to meaningful activity across the Gimbalabs network.\n\n**Guiding principle:** Simplify what we have, preserve what is valuable, and experiment with improvements before expanding them.",
+    "reactions": {
+      "url": "https://api.github.com/repos/gimbalabs/season7-2026/issues/20/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/gimbalabs/season7-2026/issues/20/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "Newman5",
+      "text": "Current channel list - ## Discord channels\n2 Events\n\nMembers\n\nServer Boosts\n\nCategory - INFO\n\nrules\n\nverification\n\nstart-here\n\nannouncements\n\ngive-feedback\n\n\nCategory - Season 7\n\nopen-spaces-link\n\nshare-your-proposal\n\nCategory - CURRENT PROJECTS v\n\ncardano-go-pbl-course\n\ngimbalabs-x-45b\n\npiece-of-pie-feedback-requests\n\npiece-of-pie-hackathon\n\ncardano-feedback-tool\n\ncardano-bounties-platform\n\nsidan- -vespr-cardano-onboarding-\n\nlive-collab\n\nCategory - PROJECT BASED LEARNING\n\nplutus-pbl\n\naiken-pbl\n\nall-things-go\n\nppbl-maintainers\n\nmarlowe-pbl-2025\n\nmesh-pbl\n\ndrep-experiments\n\nCategory - DREP GOVERNANCE\n\ndrep-community-platform\n\ncurrent-cardano-proposals\n\ndrep-chat\n\nlearn-cardano-governance\n\nCategory - PARTNER-PROJECTS\n\nandamio\n\ndandelion\n\nCategory - DISCUSSION\n\ngeneral-chill-chat\n\ntechnical-chat\n\nother-topics\n\nsocial-media\n\ngimbalabs-music\n\ndrop-in-and-meet-up\n\nCategory - LOCAL COMMUNITY\n\nlocalization-strategy\n",
+      "at": "2026-11-11T21:12:15Z",
+      "url": "https://github.com/gimbalabs/season7-2026/issues/20#issuecomment-6807143760"
+    }
+  ],
+  "comments_complete": true
+}

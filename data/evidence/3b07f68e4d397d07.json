@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43381",
-  "collected_at": "2026-11-11T09:20:07.956178+00:00",
+  "collected_at": "2026-11-12T09:46:15.756996+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/43381",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -50,9 +50,9 @@
     "locked": false,
     "assignees": [],
     "milestone": null,
-    "comments": 3,
+    "comments": 6,
     "created_at": "2026-11-10T13:59:32Z",
-    "updated_at": "2026-11-11T04:06:14Z",
+    "updated_at": "2026-11-12T07:11:30Z",
     "closed_at": null,
     "assignee": null,
     "author_association": "CONTRIBUTOR",
@@ -107,6 +107,24 @@
       "text": "Thanks for pinning down the `executionOrder` distinction. It exposed a related regression-harness bug in my n8n-check runner: cloning a workflow filled an omitted setting with `v1`.\n\nFixed in [0.1.8](https://github.com/blucca/n8n-check/releases/tag/v0.1.8). The harness keeps omission, `v0`, and `v1` as exported. In a credential-free native n8n 2.41.7 branch control, both runs return identical items, while Upper/Lower execution indices reverse (3/2 versus 2/3). Both item checks pass.\n\n[Runnable fixture and recorded indices](https://github.com/blucca/n8n-check/tree/v0.1.8/examples/execution-order).\n\nFor Agent/model/tool graphs, the [current fixture scope](https://github.com/blucca/n8n-check/blob/12cfcb1/README.md#L289) is a self-contained standard-node portion; independent AI dependencies produce a named preparation error.\n\nHow are you testing API-generated workflows before activating them?",
       "at": "2026-11-10T23:59:59Z",
       "url": "https://github.com/n8n-io/n8n/issues/43381#issuecomment-6782720662"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "The v0 failure mechanism is still present at current HEAD: `handleRequest()` reverses requested tool entries only for v1, then unconditionally prepends the resumed node at `requests-response.ts:277`. Since the v0 execution stack drains with `push`, the resumed agent can run before those tools. One useful edge case for the regression is a request with multiple tools: assert each tool has populated `.data` before the agent resumes, and that each observation contains its corresponding result. Queue order alone would not catch a placeholder being mistaken for completed output.",
+      "at": "2026-11-11T11:05:35Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43381#issuecomment-6794138892"
+    },
+    {
+      "author": "techaurah",
+      "text": "Hi, TechAura will reproduce this and dig into the root cause, and will share findings and a proposed fix direction in this thread. I saw that the earlier PR #43428 was closed because core-file changes are not accepted from community contributors, so I will check whether the fix can be done without touching core files. If this repo gates work on assignment, could a maintainer please assign this issue to techaurah?",
+      "at": "2026-11-12T07:03:54Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43381#issuecomment-6817118787"
+    },
+    {
+      "author": "techaurah",
+      "text": "Verified the reported mechanism against current main (HEAD 0ab1817) by reading the source. It checks out exactly as reported: in packages/core/src/execution-engine/requests-response.ts the reverse at line 272 runs only under executionOrder v1, while the resume unshift at line 277 is unconditional; addNodeToBeExecuted enqueues with unshift under v1 and push under v0; initializeNodeRunData pre-creates a placeholder run slot with inputOverride, source and zeroed timings but no data field; collectSubNodeResults in workflow-execute.ts (line 2064) only checks whether the slot exists, not whether it has data; and buildObservation in packages/@n8n/nodes-langchain/utils/agent-execution/buildSteps.ts falls through to JSON.stringify('') at line 411. I also confirmed the v0 test in requests-response.test.ts still asserts the buggy order ['AI Agent', 'Tool A', 'Tool B']. On the question in my earlier comment: the ordering fix itself lives in packages/core, so it needs a maintainer or collaborator. A change outside core cannot deliver the real output, because under v0 the tool genuinely has not run yet when the agent resumes; at most buildObservation could avoid emitting the misleading empty string. I verified the mechanism by source read on current main, not by a live run, since that needs a full n8n plus agent plus MCP setup.",
+      "at": "2026-11-12T07:11:30Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43381#issuecomment-6817246264"
     }
   ],
   "comments_complete": true

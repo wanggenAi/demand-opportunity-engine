@@ -1,0 +1,432 @@
+{
+  "source_api_url": "https://api.github.com/repos/Brahmadathanu/sasv-workspace-dev/issues/284",
+  "collected_at": "2026-11-12T09:46:15.756996+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/Brahmadathanu/sasv-workspace-dev/issues/284",
+    "repository_url": "https://api.github.com/repos/Brahmadathanu/sasv-workspace-dev",
+    "labels_url": "https://api.github.com/repos/Brahmadathanu/sasv-workspace-dev/issues/284/labels{/name}",
+    "comments_url": "https://api.github.com/repos/Brahmadathanu/sasv-workspace-dev/issues/284/comments",
+    "events_url": "https://api.github.com/repos/Brahmadathanu/sasv-workspace-dev/issues/284/events",
+    "html_url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284",
+    "id": 6331485321,
+    "node_id": "I_kwDOPIJxLM8AAAABeWLMiQ",
+    "number": 284,
+    "title": "PEC modernisation — global UI/UX parity, server-client reconciliation and hybrid PR replenishment (planning gate)",
+    "user": {
+      "login": "Brahmadathanu",
+      "id": 185048196,
+      "node_id": "U_kgDOCwechA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/185048196?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Brahmadathanu",
+      "html_url": "https://github.com/Brahmadathanu",
+      "followers_url": "https://api.github.com/users/Brahmadathanu/followers",
+      "following_url": "https://api.github.com/users/Brahmadathanu/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Brahmadathanu/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Brahmadathanu/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Brahmadathanu/subscriptions",
+      "organizations_url": "https://api.github.com/users/Brahmadathanu/orgs",
+      "repos_url": "https://api.github.com/users/Brahmadathanu/repos",
+      "events_url": "https://api.github.com/users/Brahmadathanu/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Brahmadathanu/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 49,
+    "created_at": "2026-11-11T15:18:27Z",
+    "updated_at": "2026-11-12T09:38:24Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Purpose\nGovern a comprehensive Procurement Execution Console (PEC) modernisation while retaining existing production approvals, contracts, security, and shared Electron/PWA implementation.\n\n## Owner requirements (2026-11-11)\n1. All applicable tables: bounded infinite scroll with deterministic ordering, latest-wins and filter reset.\n2. Wide screens: descriptive icon + text buttons; narrow screens: accessible icon-only controls.\n3. Draft manual/non-PR indents: editable quantities with server enforcement.\n4. Draft manual/non-PR indents: editable indent dates with server enforcement.\n5. Display indent date separately from approval date in indent lens.\n6. Inventory server controls versus client surfaces, classify expose/retain backend-only/park.\n7. Hybrid PR demand: production-plan requirement plus stock-replenishment need, without double counting; governed policy requiring owner review.\n8. Make newly created indent immediately available for vendor mapping; investigate snapshot refresh and client cache dependencies.\n9. Review 'Excess & Overshoot' terminology; distinguish its actual workflows.\n10. End-to-end server/client review and responsive visual audit.\n\n## Existing repository governance\nRead docs/procurement-execution/{README,MASTER_PROGRAMME,IMPLEMENTATION_RULES,CHANGELOG_DECISIONS}.md. Existing programme covers prior WP01 and is not blanket authorisation for new changes. Extend rather than duplicate documentation. Prior PR #238 vendor-wise latest-wins fix is baseline; protect it. Work on isolated PEC branch; do not touch costing/e-Aushadhi or local protected WIP.\n\n## Preliminary read-only server evidence\npublic.proc_indent_header has indent_date, approved_date, status, source_pr_id; public.proc_indent_line has requested_qty. Existing server operations include proc_indent_add_line, proc_indent_create, proc_indent_create_from_pr, proc_indent_set_status, proc_indent_recommend_vendor, proc_indent_recommend_vendors_bulk, proc_indent_resync_from_pr and snapshot generation functions. Presence of functions does not establish client exposure or safe draft-edit semantics.\n\n## Staged gate\nG0 full repo and server baseline: lens-by-lens screenshot/DOM inventory, action inventory, RPC/function privileges and schema, shared design components, shared source-of-truth Electron/PWA, baseline tests.\nG1 contract proposal: exact draft-only predicates, date semantics, quote/replenishment formula alternatives, snapshot freshness and role controls. Independent ChatGPT audit and owner approval of materially new policies.\nG2 server changes: migrations/RPC wrappers/permissions and regression proof (ChatGPT-owned, only after approval).\nG3 Claude bulk client branch: autonomous analysis, changes, tests, self-review, correction and PR within locked scope; no merge/deploy/version bump.\nG4 independent review: security, functional correctness, responsive visuals and parity, all tables, cross-module regression; report evidence.\nG5 owner acceptance, explicit merge approval, PWA verification, Electron release deferred to subsequent release.\n\n## Design acceptance\nProfessional consistent titles, home/back, spacing, colour tokens, font families/sizes/weights, headings, button labels, accessible focus/title/tooltips, tables, error/empty/loading states, modals and narrow-screen behavior. Avoid introducing duplicated HTML/JS/CSS for Electron and PWA; inspect canonical shared paths. Verify refresh and permissions.\n\n## Hybrid PR design considerations (decision pending)\nUse demand forecast/production consumption + lead-time demand + safety stock minus available stock and confirmed inbound, with reserved stock/expiry/UOM adjustments where appropriate. Net additional PR qty must not double count plan requirements or existing open PRs/indents/POs. Show source breakdown, snapshot, assumptions and override audit. Evaluate item-level min/max/reorder-point, demand variability and supplier lead times; no invented parameters, no automatic purchases.\n\n## Safety\nNo production data mutation or SQL deployment via this issue. Preserve manual indent entry order, canonical indent_line_sort_no, existing historical dates, quantity totals, vendor selection, and authorization. No silent changes to service-worker cache/version or PWA release behavior.\n\n## Next\nDeliver a concise evidence-based G0/G1 contract and Claude bulk execution brief for owner review before modifying sensitive server behaviour or merging client changes.",
+    "reactions": {
+      "url": "https://api.github.com/repos/Brahmadathanu/sasv-workspace-dev/issues/284/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/Brahmadathanu/sasv-workspace-dev/issues/284/timeline",
+    "performed_via_github_app": {
+      "id": 1144995,
+      "client_id": "Iv23liVemv8A9if9v0F2",
+      "slug": "chatgpt-codex-connector",
+      "node_id": "A_kwHOAOQ6Gs4AEXij",
+      "owner": {
+        "login": "openai",
+        "id": 14957082,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjE0OTU3MDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/14957082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/openai",
+        "html_url": "https://github.com/openai",
+        "followers_url": "https://api.github.com/users/openai/followers",
+        "following_url": "https://api.github.com/users/openai/following{/other_user}",
+        "gists_url": "https://api.github.com/users/openai/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/openai/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/openai/subscriptions",
+        "organizations_url": "https://api.github.com/users/openai/orgs",
+        "repos_url": "https://api.github.com/users/openai/repos",
+        "events_url": "https://api.github.com/users/openai/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/openai/received_events",
+        "type": "Organization",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "name": "ChatGPT Codex Connector",
+      "description": "Bring ChatGPT and Codex to your GitHub repositories.",
+      "external_url": "https://www.chatgpt.com",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "created_at": "2025-02-14T01:37:05Z",
+      "updated_at": "2026-09-23T18:52:59Z",
+      "permissions": {
+        "actions": "write",
+        "checks": "read",
+        "contents": "write",
+        "emails": "read",
+        "issues": "write",
+        "metadata": "read",
+        "pull_requests": "write",
+        "statuses": "read",
+        "workflows": "write"
+      },
+      "events": [
+        "check_run",
+        "check_suite",
+        "commit_comment",
+        "issues",
+        "issue_comment",
+        "pull_request",
+        "pull_request_review",
+        "pull_request_review_comment",
+        "pull_request_review_thread",
+        "repository",
+        "status",
+        "sub_issues"
+      ]
+    },
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "Brahmadathanu",
+      "text": "## 2026-11-11 — Scope refinement and historical programme reconciliation (read-only review)\n\n**Owner directive:** PEC shall become professional, future-proof and ERP-style end to end, including server business rules, execution lifecycle and global SASV design language. Keep implementation economical: reuse canonical code, no gratuitous migrations, no documentation churn; finish unresolved earlier items. Maintain progress indicators in every PEC update.\n\n**Verified by reading current repository documentation:**\n- Existing docs/procurement-execution/MASTER_PROGRAMME.md covers a **bounded corrective programme**, not the new ERP modernisation. WP00/WP01 are stated CLOSED; their actual historical outcomes must be preserved.\n- WP02 (operational stabilisation) remains NOT OPEN.\n- WP02-A (PR PDF continuation header, DEC-016) remains IN REVIEW in master; PR #58 exists but its merge/release/operator acceptance state must be independently rechecked.\n- Parked other indent-reference popups should be re-evaluated in the global UI parity audit.\n- The November vendor-wise search fix has its own VWL_SEARCH_RELIABILITY_20261108.md; main master does not yet reflect newer reliability work.\n- Master contains stale historical G0/G1 checkboxes alongside its WP01 closure. Reconcile as documentation discrepancy, not automatic functional regression.\n- Previously noted global migration-history drift remains separate; no bulk repair under PEC.\n\n**New phase:** PEC-ERP-MOD (within existing docs tree, preserving WP00/WP01 history). Six outcome gates:\n1. G0 documented current-state baseline and unresolved legacy triage.\n2. G1 approved function/policy contract: inventory, draft edits, immediate vendor mapping, hybrid replenishment.\n3. G2 verified server contract implementation.\n4. G3 autonomous Claude bulk client implementation tested on isolated shared-code branch.\n5. G4 independent functional, security, responsive and integration acceptance.\n6. G5 approved merge + live PWA verification; Electron rollout in later release.\n\n**Progress protocol:** report `verified gates / 6`, not subjective percent. Distinguish evidence complete, in progress, pending and parked. Current: 0/6 verified; G0 ACTIVE. Historical WP00/WP01 remain closed and are not counted as newly completed gates.\n\n**Documentation protocol:** existing README / MASTER_PROGRAMME / IMPLEMENTATION_RULES / CHANGELOG_DECISIONS remain canonical. Update them through a focused reviewed documentation PR as investigation and implementation advance; use this issue for immediate rolling evidence. No unreviewed direct-to-main edits, no premature 'completed' labels.\n\n**Next gate:** reconcile PR #58 plus other existing PEC open items, current module client surfaces, and authoritative live RPC capabilities before defining G1. No production changes authorized by this comment.",
+      "at": "2026-11-11T15:30:33Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6799961813"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## Parallel execution decision — 2026-11-11\nOwner directed parallel server and Claude bulk client work, keeping scope economical and ERP-grade. Client lane issue #288 and autonomous brief `docs/procurement-execution/ERP_CLAUDE_CLIENT_BULK_BRIEF_20261111.md` added to draft governance PR #287. Claude may implement visual/responsive/contract-independent fixes on an isolated branch with one PR; must not alter SQL, permissions, replenishment semantics, draft write endpoints or service-worker/release state. ChatGPT server lane continues G0/G1 contract discovery and will issue one consolidated interface delta. Neither Claude session nor client implementation has been started through this GitHub issue; no PR merger or database change authorized by this decision. Progress: overall 0/6 verified gates, G0 active; client handover READY.",
+      "at": "2026-11-11T16:04:00Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6800739931"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## Server Lane A kickoff — 2026-11-11 (read-only verified)\nLive Supabase inventory confirmed `create_pr_from_mrp_plan` signature `(p_pr_number text, p_effective_from_date date, p_horizon_start_month date, p_horizon_end_month date, p_material_class_id integer, p_generation_filters jsonb, p_notes text)` and `proc_request_snapshot_refresh(p_request_source text DEFAULT 'manual')`; both are SECURITY DEFINER wrappers, require PEC edit permission via `public.require_permission('module:procurement-execution-console','t')`, and call private `_pec_internal` implementations. Other existing exposed wrappers: `proc_indent_create`, `proc_indent_add_line`, `proc_indent_recommend_vendor`, `proc_pec_indent_headers`, `proc_pec_indent_lines`. Authenticated EXECUTE exists on these wrappers, but server-internal eligibility governs actual write access. No named replenishment/reorder function found in selected function search; not conclusive of absence in wider MRP logic. **Next:** inspect `create_pr_from_mrp_plan_pec_internal`, sourcing and snapshot generation details plus draft mutation invariants; propose bounded G1 server contract. No data, SQL or permission changes made. Client lane #288 is now ready for an external Claude Code invocation; no direct execution from this chat.",
+      "at": "2026-11-11T16:07:13Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6800819276"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## Lane A findings — 2026-11-11 (live read-only definition audit)\n1. `create_pr_from_mrp_plan_pec_internal` sums `v_mrp_procurement_plan.procure_qty` over chosen months; MRP already handles opening stock, gross demand, MOQ, carry and closing. Additional replenishment must be netted against existing demand, not naively added.\n2. `v_proc_indent_line_buylist_base` relies on `published_run_id` snapshot generation; `proc_indent_set_status_pec_internal` enqueues refresh on approval but does not synchronously publish. Vendor mapping step also uses published balances/candidates. This explains the temporary readiness delay, while exact latency/correct mitigation still needs proof. Snapshot was caught up at revision 110/110/110, published run 180 at 2026-11-11 12:13 UTC.\n3. Existing `proc_indent_add_line_pec_internal` UPSERT replaces requested_qty for existing lines and allows edits outside draft (with reason for approved/issued). It does not enforce manual/no-PR draft eligibility. Do not expose it naively for the requested UI; propose narrow governed draft-edit RPCs without silently breaking legacy behavior.\n4. `proc_indent_recommend_vendor_pec_internal` uses live ranking, but bulk recommendation uses published snapshot candidates/balance. Evaluate parity and freshness before any fix.\n5. SQL evidence documented in draft PR #287's `ERP_MODERNISATION_G0_20261111.md` (updated commit `5d287cd`). No production changes. Progress remains G0 ACTIVE, 0/6 independently verified.",
+      "at": "2026-11-11T16:15:17Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6801006496"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## 2026-11-11 — G1 server proposal committed and PR #291 client review\nNew governed design document `docs/procurement-execution/ERP_SERVER_G1_CONTRACT_PROPOSAL_20261111.md` committed to documentation branch in draft PR #287 (commit `7b932c2`). It proposes S1 draft-only editing, S2 snapshot readiness/vendor-action parity, S3 paged lenses and S4 hybrid replenishment preview. **Not a production SQL authorization.** Live `proc_pec_indent_headers()` returns SETOF `v_proc_indent_console`, whose confirmed columns include `indent_date` and `approved_date`; no schema fix needed for #291's date column. Current `proc_indent_add_line_pec_internal` broader UPSERT semantics are unsuitable for restricted editing without a new guarded contract. PR #291 preliminary independent audit: shared code and tests look sound, but installed PWA release gate remains because HTML navigation network-first while PEC JS and new CSS use cache-first generic SW path. Review comment posted to #291; no merge/release. Overall 0/6 verified, G0 active; parallel client candidate produced.",
+      "at": "2026-11-11T16:34:41Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6801453428"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## Lane A S1/S2 contract precision update — 2026-11-11\n- Live `proc_indent_header` and `proc_indent_line` already have AFTER INSERT/UPDATE/DELETE lifecycle-audit triggers, capturing before/after records; S1 can reuse these with mandatory edit reason and optimistic concurrency, no duplicate audit architecture.\n- Current read-only data shape: **35 standalone approved indents** (12 with sourcing decisions), **6 PR-linked approved indents** (all 6 with sourcing decisions), **0 draft indents**. Cannot claim live draft mutation acceptance; test with isolated/nonproduction fixtures before any deployment.\n- **Critical distinction:** `proc_indent_set_vendor_selection_pec_internal` permits manual vendor assignment on draft/approved/issued lines, requiring active vendor and a reason when no recommendation/rate or an override. `proc_indent_recommend_vendors_bulk` uses live ranked candidates but is approved/issued only; `proc_indent_recommend_and_accept_vendors_step_pec_internal` uses published generation and is approved/issued only. Vendor-wise Buying List is published only. Do not mistakenly block existing draft mapping, nor claim all vendor actions wait on a snapshot.\n- Active cron **job 65** runs every minute and processes one of **four** snapshot stages per call; readiness after approval may take multiple ticks despite near-zero reported stage execution duration. Aim for immediate **manual draft vendor selection** from fresh current-state reads and explicit 'preparing vendor candidates' readiness for published bulk/buylist. Consider only separately validated improvements to publish latency, retaining atomic generation integrity.\n- Updated G1 proposal in draft PR #287 commit `8f7ba533`. No production SQL, data, grants, refresh triggers or client merges.",
+      "at": "2026-11-11T16:56:22Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6801946697"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## PEC ERP-S1 implementation candidate prepared (2026-11-11)\nCommitted **review-only, not deployed** `docs/procurement-execution/ERP_S1_DRAFT_EDIT_SQL_CANDIDATE_20261111.sql` on draft governance PR #287 (commit `a237a780`). Includes two new permission-checked, draft-only standalone-indent RPC candidates: compare-and-swap quantity using expected parent `updated_at` + expected current qty; date edit using expected parent `updated_at`; row locks, active PR-map guard, mandatory edit reason, lifecycle audit, no changes to existing add-line RPC/exports/snapshots and explicit anon/PUBLIC revokes. Embeds a nonproduction PG17.4 test matrix; no live draft records available to test. **STOP until review, isolated PostgreSQL verification, owner approval and migration version governance.**\n\nReview of Claude PR #291 commit `2182bcc`: follow-up changes touch dynamic labels, test and vendor wording only, no SQL or SW. New first-pass checks look aligned; signed-in and PWA freshness gates remain. Progress G0 active, 0/6 independently accepted.",
+      "at": "2026-11-11T17:07:23Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6802197571"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## S1 candidate and S2 narrowed integration — 2026-11-11\nReview-only S1 SQL candidate in draft documentation PR #287 has a hard STOP marker: `proc_indent_next_number` can generate date-coded `IND/YYYY-MM/...` identifiers. Read-only check of 41 existing indents found **0 currently following that generated format** (recent numbers are numeric), so this is a *future-format consistency decision*, not evidence of present bad records. No auto-renumbering authorised. New S1 quantity/date RPC proposals use parent version CAS, expected qty, row locks, editor permission, active PR-link restriction and existing audit triggers. PostgreSQL 17.4 runtime/concurrency tests have **not** run; no production deploy.\n\nS2 tracked as #294. Draft/manual vendor selection already works in server via `proc_indent_set_vendor_selection`, but current client entry mostly comes from snapshot-backed Action Queue. Proposed next bounded C2: Indents modal line -> reuse existing `openVendorModal` with explicit adaptation of governed `proc_pec_indent_lines` data and absence of L1–L3 suggestions; load active vendors via existing search; save and refresh live indent immediately. Published bulk recommendation and Buying List remain separate. Doc updated in #287 commit `f64c24f`. Main gates 0/6 verified, G0 active.",
+      "at": "2026-11-11T17:16:19Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6802408206"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## S1 implementation candidate static checkpoint — 2026-11-11\nReview-only SQL `docs/procurement-execution/ERP_S1_DRAFT_EDIT_SQL_CANDIDATE_20261111.sql` revised to fail-closed on cross-month edits when indent_number uses date-coded `IND/YYYY-MM/...` format, preserving numeric legacy IDs; immutable identifier policy remains G1 approval-dependent. Source-level independent assertions: **16/16 PASS** (two new functions, server edit permission, draft-only, no PR source/map, parent revision/qty CAS, row locks, vendor decision guard, reason/audit, ACL revokes/grants, legacy function untouched, no snapshot-refresh call). Reproducible basic test added `scripts/pec-erp-s1-contract-smoke.mjs`. **Not a PostgreSQL runtime test**: this environment has no PG, package-source refresh timed out, and Supabase has no dev branches. No production SQL or test records were created. G2 remains blocked pending isolated PG17.4 fixture + concurrency/role matrix and owner approval. S2 C2 integration details posted to #294; per-line live vendor selection should not wait for Action Queue snapshots. Docs evidence in draft PR #287 commit `72b2b28`. Gates 0/6, G0 active.",
+      "at": "2026-11-11T17:28:49Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6802693673"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## PEC S1/S2 current execution evidence — 2026-11-11\n- New **isolated, executable PostgreSQL 17.4** S1 test package added to draft governance PR #287: `scripts/pec-erp-s1/fixture.sql` (`2d65301`), `scripts/pec-erp-s1/verify.mjs` (`515f1fd`, audit fixture correction `d2b1194`). Uses existing repository ephemeral Unix-socket cluster harness and synthetic roles/data; no production connections. It **exits 2 / fails closed** if exact PG17.4 is unavailable. Includes real RPC eligibility, permissions, stale CAS, quantity/date, audit, active PR mapping, vendor-assignment and date-coded guard scenarios. **NOT EXECUTED** here: no PG binaries; no runtime PASS claimed. Independent *source-level* invariant inspection previously 16/16 PASS only.\n- C2 implementation-ready client brief posted on issue #294 (`6802806687`), reusing Indents line data + existing vendor modal + existing RPC; immediate line refresh before non-blocking Action Queue refresh. No C2 PR created or executed automatically.\n- All updated in G1 proposal (`8749278`) on docs branch; PR #291 remains separate and unmerged, PWA SW cache/signed-in gates open. No live SQL, cron, auth, data, deploy or merge changes. G0 active 0/6 formally verified.",
+      "at": "2026-11-11T17:34:46Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6802826892"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## 2026-11-11 S1/S2 execution checkpoint\nS1 isolated PG17.4 runner on draft governance branch now includes an **actual commit followed by a stale second write attempt**, asserting that the original committed quantity is retained (commit `f1e2d90`). This expands deterministic optimistic-concurrency test coverage but has **NOT EXECUTED** due to absent PG17.4 binary. Need exact PG17.4 run, simultaneous sessions, audit-trigger fidelity and authenticated denial before G2. Docs updated commit `f558072`. No live changes.\n\nC2 Claude invocation prompt prepared for Issue #294. It scopes immediate manual vendor selection from Indents modal via existing `proc_indent_set_vendor_selection`, requiring isolated branch/new PR, exact read-after-write and role tests, no SW/SQL/version changes or auto merge. PR #291 remains unmerged. Current programme gates: 0/6 independently verified, G0 active.",
+      "at": "2026-11-11T17:39:05Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6802920872"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## PEC S3 pagination evidence + next package — 2026-11-11\nRead-only live row counts: `v_proc_pr_header` **7**, `v_proc_indent_console` **41**, `v_proc_purchase_excess_console` **13,297**, `v_proc_excess_acceptance_audit_console` **0**, `v_proc_vendorwise_buylist` **829**. Chose **Excess Purchases first** for actual server pagination, rather than prematurely changing low-volume PR/Indent lists.\n\nPinned live C1-client filtering: Excess quick-name search, canonical material class code, minimum net unallocated qty, inclusive resolved ISO date range, vendor substring, item-name-or-code substring, unmapped-only null/empty vendor; current display sorts unallocated qty DESC then voucher date DESC (proposed ID tie breaker). Important vendorwise split-only and operational bucket filters currently apply **after** the unpaged filtered RPC, so simple server LIMIT/OFFSET would be wrong. Vendorwise CSV/TSV explicitly exports the full filtered set; retain this.\n\nRead-only bounded check for 2026-10-12..2026-11-11: 169 excess records, 169 distinct fact IDs, 30 in first ranked page/next starts at row 31; this is not an RPC installation or a p95 measure.\n\nNew detailed contract: `docs/procurement-execution/ERP_S3_PAGED_READ_PARITY_20261111.md` on docs PR #287, commit `8bf6253`. Proposed S3-E read-only paged RPC, full count, 1..200 limit, deterministic sort, view-permission gate and literal-substring semantics; **not implemented or deployed**. C2 remains with Claude, #291 unmerged. G0 active 0/6 formally verified.",
+      "at": "2026-11-11T17:45:13Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6803051941"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## PEC S3-E server review candidate — 2026-11-11\nPrepared **review-only, NOT deployed** SQL candidate at `docs/procurement-execution/ERP_S3_EXCESS_PAGED_SQL_CANDIDATE_20261111.sql` on docs PR #287, commit `4d62d6a`, with source-level static script `scripts/pec-erp-s3-excess-contract-smoke.mjs` commit `3e3ba1b`. New guarded read-only `proc_pec_purchase_excess_paged` returns `{rows,total_count,limit,offset}` even on an empty page; permission View, `PUBLIC/anon` revoke, 1..200 limit, offset guard, filters matching JS literal substring semantics, canonical PM/PLM, inclusive date, minimum qty, unmapped only, stable qty/date/fact-id sort. Existing RPC unchanged; C2 Claude lane undisturbed.\n\n**Evidence:** independent 14/14 source assertions PASS, *not SQL runtime*. Read-only baseline *view* observations (2026-10-12 to 2026-11-11): 169 rows; class RM + qty≥1 yields 161 distinct fact IDs, pages 30 + 30 + 101; 'oil' filter intersection yields zero. SQL candidate has NOT been installed or executed, PostgreSQL17.4 unavailable. Performance, role execution, pagination under concurrent ingestion and export parity NOT TESTED. Report in `ERP_S3_PAGED_READ_PARITY_20261111.md` updated at commit `4fae0d9`. Formal gates remain 0/6; no live SQL/grants/refresh/merge/deploy.",
+      "at": "2026-11-11T17:49:08Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6803137360"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## C2 independent review + S3-E isolated fixture package, 2026-11-11\nC2 Claude stacked PR **#301** compared against C1 branch head `2182bcc`: exactly one new commit, independent source review PASS WITH NOTES. Live `v_proc_indent_lines_console_ordered` **does** include recommended/selected/resolved vendor IDs, names and rates (and indent line order). Posted review comment #301 identifying follow-ups: failed line-refresh feedback, stale loading indicator test and explicit unauthorised-role case; synthetic tests not independently rerun, no approval/merge. C1 #291 still release-blocked on PWA PEC asset freshness and signed-in acceptance.\n\nS3-E read-only excess paging candidate now has an **authored isolated PG17.4 runtime verifier**: `scripts/pec-erp-s3/fixture.sql` (65 synthetic cases, commit `69a5e55`) + `scripts/pec-erp-s3/verify.mjs` (commit `e904e46`), exercising the actual candidate RPC in ephemeral Unix-socket PostgreSQL, filters, counts, pages, permissions, and invalid inputs. **NOT EXECUTED** (PG17.4 unavailable). Existing source-only checks 14/14, not runtime evidence. Docs updated `d515627`. No production SQL, data, cache, client merge or release. Formal programme gates still 0/6, G0 active.",
+      "at": "2026-11-11T17:53:43Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6803236172"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## S4 hybrid replenishment G0 evidence — 12 Nov 2026\nOpened tracked workpack **#305**; researched live recursive MRP, current stock, item-specific Tally consumption issue provenance, PR/indent and policy coverage. Key overlap: label Punarnavasavam 450 ML item 1638 already in MRP (13 months) but current Nov/Dec requirement 0 with latest consumption Oct 2837 and stock 0. Current consumption-rate view averages sparse recorded months; independently zero-filled 12-month mean 1048.917, not published 3146.75. Existing active PR final requested qty 0; no item-specific lead/MOQ; no indent line. Material issue vouchers not tagged nonproduction, thus additional demand BLOCKED pending provenance and policy. Stock as_of_date source watermark 2026-11-11 for RM/PLM/consumable/fuel, but combined view omits date. No additive PR generation. Doc in draft PR #287, latest `0e597e2`. G0 active, 0/6 gates formally verified, C2 with Claude. No live changes.",
+      "at": "2026-11-12T02:16:58Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6812419752"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## 2026-11-12 S4 owner proposal → governed CCF calculation candidate\nOwner proposed monthly average consumption + MOQ-normalised PR floor for both underquantified and omitted items. Refined **Consumption Coverage Floor** contract in PR #287 `ERP_S4_CONSUMPTION_COVERAGE_FLOOR_PROPOSAL_20261112.md` commit `3e8b9a6`; synthetic calculation oracle `scripts/pec-erp-s4-coverage-floor-oracle.mjs` commit `1ddf6bc`. Core: compare (never add) existing MRP/effective PR quantity against stock/inbound-netted period consumption floor; MOQ round **once per period**, not each month; candidate PR excluded from firm inbound; manual reduction flagged for review; missing stock/ETA/UOM/policy fail closed. Six example arithmetic cases independently checked 6/6, no repo runtime or DB verification. Issue #305 carries details and D1–D5 **not yet approved**. Separately reviewed Claude C2 PR #301 commit `9b7f2bc` source improvements and requested one navigation-race handling verification; installed PWA and signed-in role acceptance still pending. 0/6 formal gates; no production changes, no merges.",
+      "at": "2026-11-12T02:33:51Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6812677019"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## S4 diagnostic progress — 12 Nov 2026\nExecuted *committed SELECT-only* `ERP_S4_PREVIEW_READBACK_SELECT_ONLY_20261112.sql` from PR #287 against live Supabase (no writes). Item 1638 PLM: Nov26-Jan27 MRP net=0, stock=0 (source dated Nov11), Oct-ending 12m recorded consumption=12587/12=1048.917 monthly and 3-month illustrative target=3146.75 Nos. Missing MOQ and unresolved incoming supply => NO authorized purchase quantity (null); `MOQ_POLICY_REVIEW`. Detailed evidence in S4 policy doc commit `ad083cc`. Further item-wide preview and D1–D5 decisions still open; G0 active, 0/6 gates verified, no deployments.",
+      "at": "2026-11-12T02:54:24Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6812984205"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## 12 Nov S4 executed paired diagnostics (read-only)\nOwner correction: UOM `Nos` → ceil final net requirement to whole count even if MOQ absent, distinct from supplier MOQ. Exact committed SELECT-only dual-item fixture `ERP_S4_RM_PM_TRIAL_SELECT_ONLY_20261112.sql` executed successfully. PM label #1638: 3146.75 → 3147 Nos; RM Panchasara #733: net usage coverage 11780.170 Kg with effective 50 Kg MOQ → 11800 Kg; MRP counterpart 10200 Kg, *not yet comparable as approved top-up*. Both `approved_pr_increment=NULL` due to anchor/commitment reconciliation. No live mutations. Updated PR #287 governance docs `a03ee78`; S4 issue #305 records details. Gates 0/6.",
+      "at": "2026-11-12T03:00:04Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6813071929"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "S4 active-indent trace completed (read-only). Existing MRP->PR/rebuild do **not** directly subtract approved indent balance; approved/issued indent FIFO balance used later in execution Buying List/snapshots. Panchasara #733 has 61,250 Kg open across 3 older approved indents, zero recorded FIFO allocations; must not treat as certain inbound. Proposed pre-PR commitment evidence bridge and review gate documented at `ERP_S4_ACTIVE_INDENT_PIPELINE_RECONCILIATION_20261112.md`, commit `7b1dd37`; #305 has full detail. No production mutation; 0/6 formal programme gates.",
+      "at": "2026-11-12T03:04:42Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6813141984"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "S4 verified PR/indent execution separation: live published Vendor-wise Buying List still contains Panchasara 3 approved indent lines #118/#156/#191 qty 61,250 Kg. Live `proc_indent_create_from_pr_pec_internal` excludes PR lines whose effective final qty <=0, so a zero new PR line creates no new indent line; it does not remove old ones. One lifecycle issue: header may still be created empty when all new PR lines are zero (review-before-fix). Evidence in draft docs PR #287 commit `21b17ba`. No live mutations; #305 holds detail.",
+      "at": "2026-11-12T03:21:42Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6813403324"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "S4 execution checkpoint: committed and ran SELECT-only pre-PR indent reconciliation on live Supabase; Panchasara 3 outstanding old indents 61,250 Kg vs MRP 10,200 Kg, Label PM no outstanding indent and zero MRP. Neither result authorizes new PR quantity; eligible confirmed credit and approved PR increment NULL pending PO/ETA/receipt/stock-anchor review. Draft PR #287 commits `491ae93`, `6bc5937`; detailed Issue #305. No live changes. Formal gates 0/6.",
+      "at": "2026-11-12T03:24:21Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6813444454"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "S4 PO freshness gate discovered: live Tally purchase-order snapshot's latest as-of is **2025-11-04** (227 rows), too stale for Nov 2026 inbound confirmation. Panchasara 7,100 Kg historically pending in that snapshot must NOT count as present firm supply; three current old approved indent balances 61,250 Kg still in Buying List but actionability uncertain. Governance doc draft PR #287 commit `90e5667`; Issue #305 details. No production mutations, 0/6 formal gates.",
+      "at": "2026-11-12T03:41:04Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6813702845"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "S4 owner correction: Tally purchase orders are NOT dependable/used; do not integrate or require PO/ETA freshness. Canonical pre-PR deduction source is approved/issued `v_proc_indent_line_balance` remaining (FIFO purchases already netted), once per class/item/UOM. Existing indents remain buy-list backlog; old age alone cannot exclude approved indent. Superseding docs PR #287 commits f79c390 / efb4998 / 94e4c0b. No live mutation/merge. Formal G0 ongoing.",
+      "at": "2026-11-12T03:45:14Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6813766125"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "Executed no-PO S4 hybrid pre-PR SELECT-only proof on real RM/PM: Panchasara MRP 10,200, consumption floor 11,780.17, approved old indent 61,250 => diagnostic new PR 0 Kg; label PM MRP 0, consumption floor 3,146.75, prior indent 0 => 3,147 Nos. Both approved quantities NULL pending stock anchor/usage/lineage. Docs PR #287 commits 1a3d8a1 / 02a0c07, issue #305 full evidence. G0, no writes/merges.",
+      "at": "2026-11-12T03:51:06Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6813870954"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "S4 read-only G0 broad audit: 1312 RM/PM MRP item/UOM tuples, 654 with open prior indents; 439 with old balance >= positive MRP. Among 1344 consumption-bearing items, 239 absent from RM/PM MRP entirely (21 with open indent, 218 without), eligibility not yet filtered. Two PR-line-map gaps are legitimate manual additions to approved indent #158 and must count as balances. See #305 and draft docs PR #287 commit d388993. No production changes; formal gates 0/6.",
+      "at": "2026-11-12T03:57:24Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6813995843"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "S4 generalised SELECT-only RM/PM candidate cohort executed on live data: 231 active consumption-bearing items absent from current MRP (140 RM/91 PM); 226 stock-source matched, 5 RM not; 13 in-MRP RM UOM/default differences requiring conversion contract. No Tally PO dependency, no PR writes. Docs PR #287 commits 0635814/f24a81a/f3f2f8c; issue #305 detail. G0/0 of 6 formal gates.",
+      "at": "2026-11-12T04:15:56Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6814334131"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "S4 read-only source UOM audit: 230/231 missing-MRP RM/PM items have consistent master-aligned issue UOM; one exception #165 (Kg master / Nos issues). Five RM lacking latest stock-source rows actually have valid mapped aliases and Kg issues; stock unknown, not zero. Thirteen in-MRP UOM differences: four g↔Kg convertible with governed factor, nine incompatible Nos↔Kg. Source monthly consumption view drops Tally issue UOM and merges consumables; recommend UOM-aware source contract. Docs PR #287 commit e432151; #305 full detail. No live writes; G0.",
+      "at": "2026-11-12T04:29:16Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6814556638"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "S4 audited existing PR/indent UOM behavior before hybrid implementation: PR creation/rebuild take MRP `uom_id`; indent create/resync and manual add preserve line UOM, no default-UOM replacement or direct conversion. Existing `inv_uom_conversion` and `inv_rm_form_conversion` identified; no direct g→Kg conversion row, and 9 cross-dimensional planning/default cases. `default_uom_id` is reference not always purchase UOM. Governance doc PR #287 commit 9558ef2, #305 detail; no production changes. G0 active.",
+      "at": "2026-11-12T04:36:12Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6814659221"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "Priority MRP correction audit: 13 UOM differences include probable upstream stock-netting unit bug (`v_mrp_opening_stock_snapshot` no UOM; MRP subtracts stock per item/UOM), 4 g-default versus Kg demand, and Kasthoori mixed g+Kg requirements. Nine Nos/Kg cases require controlled master/BOM review. Example Kumkumapoo stock numeral 865 with g default vs 1.2903158 Kg demand, MRP procure 0 suspect. Plan in PR #287 commit 29214df; no live changes, G0.",
+      "at": "2026-11-12T04:45:26Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6814799594"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "Owner-corrected UOM investigation: four ordinary RM items #64/#291/#424/#517 must be g; master+Tally issues already g, but 13 of 21 BOM lines still Kg. Gomatha previous correction BOM 24g/MOQ100g/indent #84 1000g verified; materialised future MRP still stale Kg. All nine other Nos/Kg mismatches are RM `finished_bulk_material` classification, not presumed master-data defects; reassess external procurement scope. Docs PR #287 commit c2fb09b, bounded SELECT-only conversion manifest 32e3e8d, #305 details. No production writes/merge; G0.",
+      "at": "2026-11-12T05:02:24Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6815133096"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "OWNER UOM correction EXECUTED in live database: guarded 13 RM BOM lines Kg→g ×1000; post-verification 21/21 lines across Ampar/Javvadu/Kasthoori/Kumkumapoo now g. Existing MRP rebuild function hard-deletes monthly runs and has unsafe sum across differing UOM, so refresh withheld. Confirmed 272 internal RM items (`finished_bulk_material` 86, `semifinished_goods` 186) and 18 positive MRP period rows incorrectly candidate for external PR; PR create/rebuild presently lack filter. Preserve existing approved PR/indents. Code/evidence docs PR #287 commits bd67201, 0f4906f; #305 detail. G0 0/6.",
+      "at": "2026-11-12T05:37:39Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6815669013"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "Live owner-requested corrections deployed + readback verified: 21/21 four g-item BOM lines uniform, strict MRP UOM normalization, safer monthly MRP rollup, finished-bulk/semi-finished exclusions in PR create/rebuild and PR→indent create/resync, empty-indent guard. Kumkumapoo corrected to 1500g new MRP quantity (gross 1290.316g); 0 ordinary RM UOM mismatches. Full destructive MRP refresh **not** run: 2158 new December rows vs 5447 old in rolled-back dry test, requires plan drift review. Captured live definitions as migration in unmerged docs PR #287 commit 8b160a5; ledger 30e644b; #305 details. Historical approved records preserved. PEC G0/0 of 6 formal gates.",
+      "at": "2026-11-12T05:51:36Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6815873385"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## G0 acceptance continuation — source-level MRP drift reconciled; repo evidence updated (12 Nov 2026)\n**Dec rebuild 5,447 old → 2,158 in rollback is principally a production-plan driver drift, NOT a four-item UOM regression.** Existing MRP had 357 December product drivers; the *current* `v_product_bulk_consolidated_effective` has only 141 positive products. Of old 357: **250 no longer appear, 46 have changed planned quantities, 61 unchanged**; 34 positive current products are new relative to that prior snapshot. Nov: old 193 / current 99, 126 disappeared, 43 qty changed, 24 same. Jan: old 197 / current 382, 40 disappeared, 48 changed, 109 same. The rebuild function re-reads *current* production plans, so it is not a pure UOM data refresh. Do NOT overwrite old MRP runs without production-plan owner reconciliation.\n\n**Read-only PR/indent acceptance:** Nov–Jan current MRP 3,936 period rows; 1,195 positive, **18 internal-category** excluded by deployed PR eligibility filters, 1,177 eligible external-positive rows (not distinct PR lines). Four live create/rebuild/resync functions contain internal-category filter; PR→indent creation additionally rejects empty eligible sets. One classification row per stock item, no duplicates. Old active PRs have **3** still-positive internal lines (PR-2026-01 items #427 97 Nos and #545 +20 Box manual delta; PR-2026-04 #427 107 Nos). Historical **7 positive internal-category indent balances** persist across #84/#156/#191/#220 and are preserved, not cancelled. No dummy PRs or indents were created, since audit triggers exist; writer end-to-end access tests remain pending.\n\nRepo updated on **unmerged PR #287**: reproducible SELECT-only verification `ERP_G0_REBUILD_DRIFT_AND_WRITER_READONLY_ACCEPTANCE_20261112.sql` commit `4030bb7`; appended execution/acceptance ledger `ERP_G0_LIVE_UOM_PR_INDENT_CORRECTION_LEDGER_20261112.md` commit `5513130`. Existing UOM and exclusion production changes remain live; **no new production data writes or destructive rebuild in this continuation**. Formal G0 active, 0/6 gates verified; full MRP rebase and security/UX acceptance still pending.",
+      "at": "2026-11-12T06:01:58Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6816026507"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## PEC G0 follow-on acceptance (12 Nov 2026) — read-only, repository updated\n**Read-only old-PR simulation:** PR-2026-01 would copy 206/208 positive PR lines, excluding 2 finished-bulk lines; PR-2026-04 would copy 243/244, excluding 1 finished-bulk line. Historic PR/indent rows unchanged. **9/9 synthetic class/UOM-independent quantity eligibility cases PASS** including normal RM, PM, internal finished-bulk/semi, manual deltas, zero/negative final qty, and inactive item. Static wrapper check: all four public authenticated entrypoints invoke `require_permission('module:procurement-execution-console','t')` before restricted internal functions. No logged-in UX session writer acceptance yet.\n\n**Migration parity:** live `pg_get_functiondef` for all 6 corrected functions matches exactly (6/6) the content of source-controlled migration `supabase/migrations/20261112114000_pec_uom_and_internal_pr_guard.sql` in unmerged docs PR #287. **Security review finding:** the raw-material gross view lacks `security_invoker=true` unlike adjacent views. A fully rolled-back test toggling it found that a *bare* authenticated role without JWT sees 0 rows. No security mode or grants changed; signed-in session/RLS parity remains an explicit acceptance blocker.\n\n**MRP plan drift:** Dec old 357 product drivers, current 141; 250 old no longer present, 46 changed, 61 unchanged; 34 current newly present. Do not run destructive rebuild until baseline owner decision. Seven open legacy internal-indent lines preserved.\n\nRepo evidence: `ERP_G0_WRITER_SECURITY_ACCEPTANCE_FOLLOWUP_20261112.md` commit `ab2f339`; SELECT-only 9-case fixture `ERP_G0_PR_INDENT_ELIGIBILITY_9_CASE_FIXTURE_20261112.sql` commit `9164cf2`; prior drift SQL commit `4030bb7`. **G0 still active; 0/6 formal gates verified**, no production mutations or new PR/indent/test records in this continuation.",
+      "at": "2026-11-12T06:14:55Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6816253555"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## PEC G0 acceptance continuation — denial verified, remaining writer paths discovered (12 Nov 2026)\n**No-JWT denial passed:** `require_permission('module:procurement-execution-console',true)` and permission-gated public `proc_pr_rebuild_from_mrp(1,'safe')` both denied calls by a bare `authenticated` role with `Not authenticated` in rollback-only sessions. This confirms rejection without an authorized session, **not** authenticated success or E2E writer acceptance. No live PR/indent/MRP data modified.\n\n**Two additional forward-writer gaps:** (1) `proc_indent_add_line_pec_internal` allows manual positive additions of RM `finished_bulk_material`/`semifinished_goods`; automatic writer guards do not cover it. Guard must distinguish new/increased lines from reducing or zeroing **seven existing approved open internal indent lines**, so historical lifecycle controls are preserved. (2) `proc_pr_create_revision_from_active_pec_internal` copies every old PR line into a new draft revision, so the 3 positive internal lines in old active PRs can carry into revised drafts (though PR→indent currently blocks them). Need forward-only revision filtering and regression tests, not retroactive deletion.\n\nSource + governance updated in unmerged PR #287: `ERP_G0_DENIAL_AND_MANUAL_INDENT_GAP_20261112.md`, commit `16f911c`. Latest positive-check evidence remains 9/9 synthetic, 6/6 migration definition parity, but **formal G0 remains 0/6**, signed-in success, revision/legacy lineage and view JWT/RLS parity not proven. MRP destructive refresh remains held due changed current production drivers, not UOM defect. Tally purchase orders excluded.",
+      "at": "2026-11-12T06:26:56Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6816454205"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## PEC G0 forward-only writer closure deployed — 12 Nov 2026\n**New live corrections:** (1) `proc_pr_create_revision_from_active_pec_internal` now excludes active RM `finished_bulk_material` and `semifinished_goods` from **new draft revisions** (historical source PRs untouched); old PR-2026-01 499→450 prospective rows and PR-2026-04 492→443, each filtering 49 internal-category rows, most zero. (2) `proc_indent_add_line_pec_internal` now **prohibits new or increased positive internal-material commitments**, but preserves ability to leave existing legacy quantities unchanged, reduce or zero them under existing lifecycle/reason rules. Existing approved indents remain unchanged.\n\n**Live testing:** source guard checks PASS; **7/7** read-only manual-indent policy cases PASS. **Two direct actual-writer denial tests PASS in one explicit rolled-back transaction**: new item #1070 (+1 Nos) prohibited; increase of existing #427 indent #84 line (260→261 Nos) prohibited. `no_internal_insert=true`, `legacy_quantity_preserved=true` verified before ROLLBACK; no procurement records modified. No authenticated permit-path, revision activation, or manual-decrease behavioural acceptance yet; G0 remains **0/6 formal gates**, no claim of complete end-to-end acceptance.\n\nSource-control parity: unmerged PR #287 migration `supabase/migrations/20261112122500_pec_revision_and_manual_indent_internal_guard.sql` commit `290aeac`, SELECT-only fixture `ERP_G0_REVISION_MANUAL_INDENT_POLICY_FIXTURE_20261112.sql` commit `aee1195`, acceptance ledger `ERP_G0_DENIAL_AND_MANUAL_INDENT_GAP_20261112.md` update commit `617c573`. Prior main live MRP UOM corrections remain active. Destructive MRP rebase held on changed production-plan drivers. No Tally PO dependence.",
+      "at": "2026-11-12T06:30:04Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6816510908"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## PEC G0 continuation — manual PR editing paths secured (12 Nov 2026)\nBroader database writer inventory discovered two remaining draft-PR quantity paths that bypassed earlier internal-material filters: `proc_pr_add_line_pec_internal` and `proc_pr_set_manual_delta_pec_internal`. **Both are now patched in live Supabase** to reject new/increased positive RM `finished_bulk_material` or `semifinished_goods` commitments, retaining reductions, zeroing and non-internal edits. Public wrappers remain module-permission-gated; internal functions remain non-executable directly for authenticated/anon.\n\nSource-controlled live definitions: `supabase/migrations/20261112133000_pec_manual_pr_internal_item_guards.sql`, commit `c01cc34`, unmerged PR #287. Reproducible SELECT-only fixture `ERP_G0_MANUAL_PR_EDIT_9_CASE_ORACLE_20261112.sql`, commit `5ac6eaf`, executed **9/9 PASS**. Ledger `ERP_G0_DENIAL_AND_MANUAL_INDENT_GAP_20261112.md` updated commit `3bb52e0`. **0 draft PRs** currently exist, so no actual positive allowed writer test was staged in production.\n\nAdditional source audit: authenticated `proc_pr_set_requested_qty` is an invoker-mode callable function without its own category guard; current `proc_pr_line` RLS has only authenticated SELECT policy and no UPDATE policy, so standard authenticated callers cannot update through it under present permissions. Keep as a future grant/RLS regression concern. Approved/issued manual indent reductions call a permission-gated snapshot-refresh wrapper after editing; need valid authorized session or isolated harness for positive-path test; no fake JWT or live writer test record created.\n\nNo MRP run replaced; production plan drift still unresolved (December old 357 products vs current 141). Seven historical open internal-material indent lines preserved. **PEC G0 remains active, 0/6 formal gates**. S4 hybrid remains not deployed; Tally PO excluded.",
+      "at": "2026-11-12T07:08:06Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6817189405"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## PEC G0 follow-up — actual approved legacy reduction reaches snapshot permission boundary (12 Nov 2026)\nControlled transactional test against approved indent **#84** / stock item **#427** attempted **260→259 Nos** through the live `proc_indent_add_line_pec_internal` (BEGIN/ROLLBACK). **The new internal-material guard permitted the decrease** and execution reached `proc_request_snapshot_refresh('indent_line_changed')`; its `require_permission('module:procurement-execution-console',true)` rejected the unauthenticated administrative test context with **`Not authenticated`**. The transaction failed/rolled back, so the existing requested quantity remains **260 Nos**, audit test-event count 0 and snapshot refresh requested/completed/published revision **120/120/120** at readback. No fake JWT/grant/RLS change and no committed procurement test data.\n\nAdditional grant check: `authenticated` does **not** hold table-level UPDATE on `proc_pr_line` (service_role does), so invoker-mode `proc_pr_set_requested_qty` is not presently an ordinary authenticated UPDATE bypass. Existing public wrapper ACL/module edit checks remain.\n\n**Outcome:** corrected quantity guard confirmed on the actual reduction route; full approved-line reduction+snapshot publication still requires real authorized PEC editor session. Reproducible evidence `ERP_G0_APPROVED_INDENT_REDUCTION_ROLLBACK_EVIDENCE_20261112.md`, commit `ab7ea6d`; appended existing G0 ledger commit `d3436b1` on **unmerged PR #287**. Full MRP rebase held due production driver drift; no S4 hybrid writer released. **PEC G0 active 0/6 formal gates.**",
+      "at": "2026-11-12T07:19:03Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6817373124"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## PEC G0 accelerated DB integration — live safe-resync bug fixed and tested (12 Nov 2026)\n**Actual rollback-only end-to-end DB function test PASSED:** existing PR-2026-01 → new draft PR revision (450 lines) → generated indent (206 positive lines) with **0** finished-bulk/semi-finished lines and **206/206** line mappings. Full ROLLBACK verified no PR/indent/mapping/audit fixture persisted. This is DB-internal integration, not authenticated editor RPC acceptance.\n\n**Additional defect discovered and corrected live:** `proc_indent_resync_from_pr_pec_internal(...,'safe')` previously deleted manual indent lines absent from PR. Fixed to delete only obsolete PR-mapped lines, preserving unmapped manual items; `reset` still fully rebuilds. Rollback integration: SAFE 205 mapped + 1 manually-added Ampar 10g, obsolete mapped line removed, total206; RESET 206 mapped, no manual line. Tests rolled back. Exact live function captured in migration `supabase/migrations/20261112143000_pec_safe_resync_preserve_manual_lines.sql` commit `afc8db5`, execution report `ERP_G0_ROLLBACK_WRITER_INTEGRATION_SAFE_RESYNC_20261112.md` commit `8317a68` on PR #287 branch.\n\n**Integration risk:** `main` and docs PR #287 branch are substantially diverged (76 ahead, 20 behind at review; baseline main `013e2ba`); do not blindly merge #287. Review narrowly scoped migrations on latest main with ordered replay. Authenticated positive-path acceptance (incl. approved legacy reduction triggering snapshot refresh) needs genuine authorized PEC editor session; no fake JWT. Destructive MRP rebuild still held on production-plan driver drift, 7 open legacy internal indent lines preserved. G0 remains 0/6 formal gates; S4 hybrid not deployed.",
+      "at": "2026-11-12T07:25:24Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6817480632"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## PEC G0 acceleration — narrow integration PR #317 and rollback tests (12 Nov 2026)\n**New clean draft PR:** https://github.com/Brahmadathanu/sasv-workspace-dev/pull/317, branch `fix/pec-g0-uom-writer-integration-20261112` based on current main. Contains only **five ordered server migrations plus one compact acceptance report**, not the 76-ahead/20-behind documentary PR #287. Compare initially 6 ahead/0 behind; deploy-preview status success at its first head. **No merge/deploy approved**; draft retained.\n\n**Actual DB-internal rollback integration passed:** old PR-2026-01 → new PR revision 450 rows → draft indent 206 positive rows, **zero internal finished-bulk/semi-finished**, 206/206 lineage maps; post-ROLLBACK zero test PR/indent/mapping/audit rows. Discovered and **fixed live** `proc_indent_resync_from_pr_pec_internal('safe')` incorrectly deleting unmatched manual indent lines. Re-test SAFE retained manual Ampar 10g, removed obsolete mapped line (205 mappings + 1 manual =206); RESET removed manual and rebuilt 206 mappings. Source migration #5 `20261112143000_pec_safe_resync_preserve_manual_lines.sql`; docs PR #287 retains full evidence.\n\n**Migration verification:** all **five ordered narrow PR #317 migrations replayed in a single live-schema BEGIN…ROLLBACK successfully**: 0 non-gram BOM rows for four governed materials, safe-resync guard present. No changes committed. New PR #317 acceptance report updated commit `e5c7df2`.\n\n**Remaining meaningful blockers:** authorized real PEC editor RPC positive-path incl approved legacy indent reduction + snapshot publication; real-session JWT/RLS view parity; independent CI/merge review; owner decision to rebase MRP historic driver sets (old Dec 357 vs current 141). Historical seven positive internal indent balances preserved. S4 hybrid engine remains disabled. **Formal G0 0/6** until complete acceptance; Tally PO excluded.",
+      "at": "2026-11-12T07:29:20Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6817547112"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## PEC G0 ongoing acceptance, with progress indicator — 12 Nov 2026\n**Narrow integration:** draft PR #317 stays based on current main (latest compare **9 ahead / 0 behind**, 7 files); most recent Netlify preview status **PENDING**, previously successful on prior heads. No GitHub Actions workflow run was returned for prior checked head; do not equate preview with all CI. PR is UNMERGED.\n\n**Added executable postmigration contract regression** `scripts/pec-g0-postmigration-contract-verify.sql` commit `b5be2c0` on PR #317 and ran on live Supabase: **PASS** (`PEC_G0_POSTMIGRATION_PASS`). It asserts all 4 g-item BOM defaults/lines, Kg↔g factors and incompatible Kg/Nos failure, no ordinary RM UOM mismatches or null RM gross requirements for Nov–Jan, all **8** procurement class writer guards and safe-resync preservation. No DB data mutations. Narrow PR #317 acceptance report updated commit `ec3ba73`.\n\n**Started broader G0 baseline inventory from actual current main:** 5 primary PEC lenses (`tab-pr`,`tab-action`,`tab-indents`,`tab-vendor-buylist`,`tab-excess`), 44 literal `.rpc()` occurrences/43 unique names in canonical shared JS. Full DOM/permission/control inventory still needed. Evidence in docs PR #287 `ERP_G0_CURRENT_MAIN_CLIENT_RPC_INVENTORY_20261112.md` commit `eeaee50`.\n\n**Formal programme progress remains 0/6 gates verified (G0 ACTIVE).** Database internal test evidence and migration replay robust, but authenticated editor positive-path, approved-indent reduction + published snapshot, signed-in RLS parity, full baseline acceptance and owner approved merge remain required. Current production-plan MRP destructive rebase HELD (Dec 357 historic vs 141 current drivers); S4 hybrid not deployed. Seven legacy internal indent balances preserved.",
+      "at": "2026-11-12T07:34:53Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6817643479"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## PEC G0 fast-track — client bugfix PR #319 + targeted Claude Code brief (12 Nov 2026)\n**Real bug confirmed** in canonical shared PWA/Electron JS: full indent resync modal sent `p_mode='full'` while live server permits only `safe`/`reset`. Fixed one line in shared client, Full→reset, Safe→safe; **3/3 source contract assertions PASS**. Small **draft PR #319** https://github.com/Brahmadathanu/sasv-workspace-dev/pull/319 (2 commits ahead/0 behind current main, 2 files, Netlify deploy-preview SUCCESS). No merge/production UI deployment yet; coordinate with server draft PR #317, which already fixed SAFE preservation of manually entered lines.\n\n**Five-lens main DOM inventory** added to docs PR #287: `ERP_G0_FIVE_LENS_DOM_STATIC_MATRIX_20261112.md` commit `9e364b5`. Source-only ID-bearing control counts: PR 8, Action 10, Indents 9, Vendor-wise 16, Excess 16; modal/dynamic controls not counted. Existing Indents table shows Approved Date but not Indent Date. Verified both `indent_date` and `approved_date` are present in live `v_proc_indent_console`, exposed by `proc_pec_indent_headers`; suitable for client-only fix. Also 43 unique direct `.rpc` symbols in main JS.\n\n**Claude Code fast-track handoff** written into docs PR #287: `ERP_CLAUDE_C1_FAST_TRACK_DELTA_20261112.md` commit `a4943ac`. Bounded one client-only draft PR from latest main; full five-lens UX/control/accessibility/responsive/export/paging matrix, date display, design parity, permission state, static and browser tests, no DB code; explicitly avoid overlapping PR #319 and server PR #317. This is a READY brief, not evidence a Claude session has started. User remains merge approval authority.\n\nServer PR #317 remains draft: latest main advanced one commit (9 ahead/1 behind at check), previous Netlify preview success; independent review and authenticated editor RPC acceptance pending. **Formal G0 0/6**; do not promote without full criterion evidence. MRP rebase blocked by changed production plan; S4 hybrid undeployed. No Tally PO assumptions.",
+      "at": "2026-11-12T07:53:49Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6818005807"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## PEC G0 server lane — authenticated UOM RLS defect and future rollup corrected (12 Nov 2026)\n**Found critical RLS blocker:** `mrp_uom_factor_strict` was invoker-security; `inv_uom_conversion` is RLS-protected and has no authenticated SELECT grant/policy. Authenticated database role failed Kg→g lookup. **Live fix:** helper is now narrowly `SECURITY DEFINER`, qualified read-only SQL and fixed search_path; REVOKE PUBLIC/anon EXECUTE, GRANT authenticated/service_role EXECUTE. Base conversion table grants/RLS unchanged. Live bare-role tests: auth factor 1000/0.001/identity PASS, anon invocation DENIED, raw conversion SELECT for auth still false. Source-controlled migration #6 `20261112150000_pec_mrp_uom_factor_auth_rbac.sql` commit `9300d1d`; postmigration smoke extended commit `a5832aa` and live PASS `PEC_G0_AUTH_UOM_HELPER_PASS`.\n\n**Future MRP monthly rebuild corrected** to use same strict governed conversion helper instead of arbitrary `LIMIT 1` conversion factor selection. Rollback-only December build PASSED: 360 monthly rows, 0 null/negative; old December plan remains **5,447 detail rows / 1 run**. Migration #7 `20261112152000_pec_mrp_rollup_use_strict_factor.sql` commit `c7a6a72`. **All seven ordered migrations from draft PR #317 replayed in one BEGIN/ROLLBACK on current live corrected schema: PASS** (`non_gram=0`, `helper_definer=true`, `rollup_strict=true`). No MRP history replaced, no historical PR/indent changed. Seven legacy internal-indent positive balances preserved.\n\nPR #317 review ledger updated commit `89ebb067`. Claude independently handling client C1; no client files touched in this server turn. Still outstanding: actual authenticated PEC editor public RPC/legacy reduction→snapshot publish, JWT/RLS full view parity, owner approved merge, and separate MRP production-plan rebase (Dec old 357 product drivers vs current 141). **Formal G0 0/6** pending complete gate exit criteria; server evidence markedly stronger.",
+      "at": "2026-11-12T08:19:43Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6818497135"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## PEC G0 reproducible DB writer acceptance retained — 12 Nov 2026\nDraft server PR #317 now contains `scripts/pec-g0-db-transactional-writer-acceptance.sql` commit `2c0e888`, executed on live Supabase with output **`PEC_G0_ROLLBACK_WRITER_INTEGRATION_PASS`** (450 new revision lines; generated indent 206 lines; 0 internal-category lines; 206 mappings). The SAME fixture asserts SAFE resync retains manual Ampar line while pruning one obsolete PR-mapped line (205 maps + 1 manual), and RESET restores PR-only 206 mappings. Entire test transaction rolled back.\n\n**Independent post-test production readback:** zero persisted fixture PRs, indent headers or related audit entries; approved #84/#427 quantity still **260 Nos**; seven legacy internal-category indent balances unchanged; December MRP detail **5447 rows / one active run**. No MRP history replaced.\n\nThe narrow PR #317 acceptance ledger updated commit `f443678` with concrete real-user acceptance protocol (public signed-in edit RPCs, view/JWT/RLS read parity, disposable draft PR→indent, approved-line reduction only in expressly authorized fixture with snapshot publication). **No fake JWT or real approved-line edits.** Latest PR branch 16 ahead / 2 behind current main; the main-only files are WP05 Costing documentation, no PEC file overlap; rebase prior to integration. Netlify preview for latest head **pending**, not claimed passed. Formal PEC 0/6 gates, awaiting independent G0/actual session acceptance and owner merge.",
+      "at": "2026-11-12T08:30:46Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6818716105"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## PEC fast-track orchestration — Claude PR #320 independent review + new G1 paging server contracts (12 Nov 2026)\n**Claude client** draft #320 independently reviewed at source/ledger level, without altering Claude's branch. Stacked prerequisites **#291 → #301 → #320**, and separate Full→RESET bugfix **#319** must be reconciled before hosted acceptance. Synthetic checks reported 23,118,53 and 253-control inventory; no real-session testing or packaged Electron proof. Three unreachable modals intentionally DEFER; do not remove without owner policy. Reviewer concern recorded on #320: inventory script exits nonzero only on FAIL, not FIX, so later unwired controls could slip through despite current reported 0 FIX/0 FAIL. Asked for test gate strengthening.\n\n**Server paging gap addressed by additive live RPCs**: PR #323 https://github.com/Brahmadathanu/sasv-workspace-dev/pull/323 (draft, based on current main; **3 commits ahead/0 behind**, 3 files; Netlify deploy preview SUCCESS). Five new read-only functions: `proc_pec_pr_headers_paged`, `proc_pec_indent_headers_paged`, `proc_vendorwise_buylist_filtered_paged`, `proc_pec_purchase_excess_paged`, `proc_pec_excess_acceptance_audit_paged`. Common `TABLE(row_data jsonb,total_count bigint)`, bounded limit 1..200, offset 0..100000, deterministic source unique-key ordering, same PEC VIEW permission check, authenticated EXECUTE true / anon false. Existing unpaged read functions remain unchanged; **no client switched yet**. Source and limitations in `ERP_G1_FIVE_PAGED_READ_SERVER_CONTRACT_20261112.md` commit `c26487e`, migration `e19cfe5`, verifier `0bd045d`. Live catalog/key verifier PASS: PR7/7, Indents45/45, Vendor834/834, Excess13311/13311, Audit0. Bare administrative RPC call without auth correctly denied, so **authenticated successful RPC retrieval NOT TESTED**. Offset paging cannot guarantee snapshot continuity during concurrent writes and currently PR/Indents/Excess UI filters are client-only; actual filtered paging needs further contract work before claiming infinite scroll.\n\n**Governance:** PR #317 still draft server-correction integration, PR #319 draft client fix; #323 separate contract branch to prevent collision with active Claude PR #320. No purchase/PR/indent/stock/MRP data changed by new read RPC DDL; no S4 hybrid writer launch. Seven legacy internal-indent commitments and old MRP run preserved. Formal PEC **G0 active, 0/6** gates until complete baseline/owner approval, real JWT/RLS acceptance, and independent merge/deploy proof.",
+      "at": "2026-11-12T08:40:07Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6818895267"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## 12 Nov 2026 — PEC G0 catalogue parity and G1 read pagination fast-track\n**Independent Claude #320 review:** Source/ledger confirm client-only changes, synthetic/static 23/118/53 tests and 253-control inventory; no real-account/packaged Electron acceptance. Stacked merge order #291→#301→#320; reconcile client Full→RESET bugfix #319. No client branch modifications by ChatGPT. On PR #320 review comment, flagged source inventory gate currently exits nonzero for FAIL only (not FIX). Current generated inventory happens to show zero FIX, zero FAIL, 28 DEFER from three unreachable modals; recommend gate strengthening and preserve dead modals for later policy decision rather than deleting without evidence.\n\n**Five new additive live paged-read RPCs** now source-controlled in server draft PR **#323** https://github.com/Brahmadathanu/sasv-workspace-dev/pull/323: PR headers, Indents, Vendor-wise filtered groups, Purchase Excess, Excess Audit. All bounded 1–200 rows; stable unique ordering; legacy JSONB row content + `total_count`; authenticated EXECUTE and PEC VIEW checks, anonymous denied. Existing read RPCs untouched. Contract SQL test PASSED: 7 PR,45 indents,834 vendor groups,13,311 excess rows,0 audits, all unique keys. **Not a real JWT positive read**, and no client switch. Offset can drift on concurrent changes, `count(*) OVER()` could still be expensive and PR/Indent/Excess filtering is not yet server-side; performance and filtered infinite scroll not accepted. Doc `ERP_G1_FIVE_PAGED_READ_SERVER_CONTRACT_20261112.md`, migration e19cfe5, tests 0bd045d; PR #323 preview success. Now 4 commits ahead/1 behind because of unrelated WP05 documentation on main.\n\n**G0 server RPC catalogue parity:** independently extracted 43 direct literal `.rpc` names from current PEC shared JS and looked up live signatures/ACLs: **43/43 distinct names resolve uniquely**, 0 missing/overloaded; all 43 SECURITY DEFINER, authenticated EXECUTE true, anon EXECUTE false. Exact per-RPC signatures documented in `ERP_G0_CLIENT_RPC_TO_LIVE_CATALOG_PARITY_20261112.md` commit dfe330c on #323. These ACL results do not prove actual user permissions, dynamic RPCs, signed-in actions, or full lens DOM mapping.\n\nNo procurement PR/indent/stock/MRP content mutated by new paging DDL. S4 hybrid not deployed, historical seven internal commitments preserved. Formal PEC modernisation remains G0 active, 0/6 gates verified.",
+      "at": "2026-11-12T08:42:16Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6818937024"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "PEC server/client integration follow-up (12 Nov 2026): Paged-read PR #323 extended with repeatable two-page contract checks, commit `8ceabcc`; executed live SQL `PEC_G1_FIRST_TWO_SOURCE_PAGES_PASS`: Purchase Excess 13,311 source rows, pages 1/2 each 200, overlap 0; Vendor-wise 834 source groups, pages 1/2 each 200, overlap 0. These are **admin read source-equivalence tests**, not actual authenticated RPC, concurrent update stability, or p95 latency; current client still unpaged. PR #323 documentation updated through `39cb294`, zero procurement data writes. Five RPCs retain authenticated EXECUTE, anon denial, internal PEC VIEW check.\n\n**Critical stacked-PR review risk:** Independent comparison of current Claude #320 head against C2 branch reports **23 commits and unrelated WP05 Costing workflows/docs, lab SQL migration and `public/sw.js`**, so its suggested 3-dot diff is not PEC-only. Posted actionable review note on #320 (comment 6819161573). Preserve owner merge order #291→#301→clean PEC-only #320, reconcile #319 Full→RESET and do not merge unexpected WP05/lab/SW changes through client stream. The 253-control/23-check synthetic client evidence remains useful, but not real account acceptance. G0 **0/6 formal gates**, no MRP rebuild and no S4 hybrid deployment.",
+      "at": "2026-11-12T08:54:19Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6819180103"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## PEC G1 server pagination — legacy ordering parity corrections verified (12 Nov 2026)\nIndependent review found that new paged RPCs originally changed UI sorting: Vendor-wise should place UNASSIGNED last and sort by vendor/item names, PR/Indent tables should sort by descending ID, and Excess must prioritise `net_unallocated_qty DESC`, then voucher date DESC and purchase fact ID tie-break. **All four live RPCs corrected** and the single unmerged migration updated in draft PR #323 (commits `d051cd9`, `be12b7f`). Repeatable source/metadata regression (latest `scripts/pec-g1-paged-read-contract-verify.sql`, commit `f85a82d`) executed **PASS** (`PEC_G1_LEGACY_CLIENT_SORT_PARITY_PASS`). Vendor 834/834 order positions matched legacy exactly (0 mismatches, first UNASSIGNED at #636); Excess full 13,311/13,311 positions matched current stable client sort (0 mismatches). First two 200-row pages remain disjoint in both high-volume lists. PR/Indent live function sort clauses confirmed. No procurement data altered.\n\n**Performance diagnostic:** single admin EXPLAIN ANALYZE runs: Excess `count(*) OVER()` page of 100 rows ~1116.9ms and 18,253 cache buffer hits; legacy unpaged view ~943.1ms and 18,285 hits. NOT controlled p95 or representative network timings; **do not claim server speedup**. Bounded response helps transfer/render size but full-window count still computes. **Client filtering correctness blocker:** PR, Indents and Excess currently filter full datasets client-side *before* page slicing. Their new server paging functions lack equivalent server filter inputs; switching now would produce wrong matching-page/total results. Exact filter contract and sorting/benchmark caveat documented in PR #323 ledger commit `8003017`. Vendor-wise existing upstream filters exist but operational vendor filter requires further check. Do not switch any lens until pagination/filter/export and real-account tests pass.\n\n**Correction to earlier Claude PR #320 warning:** actual GitHub #320 changed-file list vs main is **52/52 PEC-scope**; 0 WP05/lab/SW files. The prior 23-commit C2 branch ancestry compare was misleading; earlier unrelated-merge warning **retracted on #320** (comment 6819885243). Maintain merge prerequisite order #291→#301→#320 and reconcile #319; still no signed-in or packaged Electron acceptance.\n\nPR #323 current 4 changed files; latest Netlify preview success, branch 15 ahead/4 behind moving main (no uncontrolled merge). **Formal PEC G0 remains 0/6** pending user-session and programme acceptance. No historic MRP rebuild or S4 hybrid release.",
+      "at": "2026-11-12T09:32:03Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6819949012"
+    },
+    {
+      "author": "Brahmadathanu",
+      "text": "## PEC G1 filtered-before-page server contracts complete (12 Nov 2026)\nAddressed the remaining server filter-gap without changing existing APIs: **three additional additive read-only RPCs now live**: `proc_pec_pr_headers_filtered_paged(status,class,q,limit,offset)`, `proc_pec_indent_headers_filtered_paged(status,class,q,limit,offset)`, and `proc_pec_purchase_excess_filtered_paged(q,class,date_from,date_to,min_qty,vendor_q,item_q,unmapped_only,limit,offset)`. Each applies the filters **before `count(*) OVER()` and `LIMIT/OFFSET`**, preserves established PR/Indent descending ID and Excess quantity/date order, enforces 1..200 bound and PEC view permission, allows authenticated EXECUTE and denies anon. Old read RPCs remain intact. No client switched and no purchase records written.\n\nSource controlled on draft PR #323: migration `supabase/migrations/20261112173000_pec_g1_filtered_paged_read_contracts.sql` commit `bc4ba34` (transactional replay PASS), verifier `scripts/pec-g1-filtered-paging-contract-verify.sql` commit `48821c7` (live `PEC_G1_FILTER_BEFORE_PAGE_CONTRACT_PASS`), ledger updated `30d30da`. Representative source-equivalent filters: active PR/class/search **4 results**, page2/2 unique; approved Indent/class/search **12**, page5/5 unique; 30-day Excess + minimum-qty **175**, page75/75 unique. Stored indent numbers are numeric-looking text, confirmed query semantics. These are admin-source/predicate tests; **real authenticated call and frontend filtered total/export acceptance remain unverified**.\n\nServer paging now offers 8 additive endpoints total (original five page-only and three filtered); VWL's existing paged endpoint already accepts its five server filters. Excess view may still require full work for window count; prior single diagnostic ~1.12s/100-page versus ~0.94s unpaged; no p95 or claimed speedup. Client integration should target the filtered three, never apply client-only filters *after* reading one server page. Respect Claude #291→#301→#320 dependency and #319 Full→RESET fix; no direct edits to active Claude branch. Formal PEC G0 0/6 gates remain open; owner approval required to merge/release. Historical MRP and seven legacy internal indent balances untouched.",
+      "at": "2026-11-12T09:38:24Z",
+      "url": "https://github.com/Brahmadathanu/sasv-workspace-dev/issues/284#issuecomment-6820077573"
+    }
+  ],
+  "comments_complete": true
+}

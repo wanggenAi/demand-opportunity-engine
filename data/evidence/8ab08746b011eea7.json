@@ -1,0 +1,129 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43556",
+  "collected_at": "2026-11-12T09:46:15.756996+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43556",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43556/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43556/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43556/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43556",
+    "id": 6332580084,
+    "node_id": "I_kwDOC4Q8Qs8AAAABeXOA9A",
+    "number": 43556,
+    "title": "Workflow version restore blocked by deleted credential in a disabled, disconnected node",
+    "user": {
+      "login": "rjSampaio",
+      "id": 27835485,
+      "node_id": "MDQ6VXNlcjI3ODM1NDg1",
+      "avatar_url": "https://avatars.githubusercontent.com/u/27835485?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/rjSampaio",
+      "html_url": "https://github.com/rjSampaio",
+      "followers_url": "https://api.github.com/users/rjSampaio/followers",
+      "following_url": "https://api.github.com/users/rjSampaio/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rjSampaio/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rjSampaio/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rjSampaio/subscriptions",
+      "organizations_url": "https://api.github.com/users/rjSampaio/orgs",
+      "repos_url": "https://api.github.com/users/rjSampaio/repos",
+      "events_url": "https://api.github.com/users/rjSampaio/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rjSampaio/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 10081993897,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACWO8EqQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:lifecycle",
+        "name": "team:lifecycle",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Lifecycle & Governance team",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-11-11T16:20:32Z",
+    "updated_at": "2026-11-11T19:25:58Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\n**Bug description**\n\nRestoring a historical workflow version fails if it references a deleted project credential, even when the node referencing it is disabled and disconnected.\n\nI encountered this while restoring a previously working production version published on Nov 9. After publishing it, I deleted old, unused project credentials. One was still referenced in a disabled, disconnected node within that version.\nToday i was testing some changes on the workflow, and i want to restore to the published version.\n\nThe entire restore is now blocked. The error incorrectly says I don’t have access to the credential and should ask its owner to share it, although the credential was deleted.\n\n<img width=\"762\" height=\"681\" alt=\"2026-11-11_16-09\" src=\"https://github.com/user-attachments/assets/76329b2b-6911-4074-b0d8-9e0c0bfe68ab\" />\n\n**Impact**\n\nRoutine credential cleanup can make previously working production versions impossible to restore through workflow history. Downloading and reimporting is not equivalent to the normal restore process and complicates tracking individual node changes.\n\n\nScreenshot attached.\n\n### To Reproduce\n\n1. Assign a project credential to a node.\n2. Disable the node and disconnect it from the workflow.\n3. Publish the workflow.\n4. Delete the credential.\n5. Make any change to the workflow, such as moving a node or changing a parameter, and save.\n6. Attempt to restore the version published in step 3 through workflow history.\n7. Restore should fail, as the credentials used in the version, even if currently published, no longer exist.\n\n### Expected behavior\n\nAllow restoring the version as an editable draft, flagging the missing credential for resolution before the affected node can execute.\n\n### Debug Info\n\n# Debug info\n\n## core\n\n- n8nVersion: 2.31.5\n- platform: docker (self-hosted)\n- nodeJsVersion: 24.16.0\n- nodeEnv: production\n- database: postgres\n- executionMode: scaling (single-main)\n- concurrency: -1\n- license: enterprise (production)\n- consumerId: REDACTED \n\n## storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: database\n\n## pruning\n\n- enabled: true\n- maxAge: 720 hours\n- maxCount: 350000 executions\n\n## client\n\n- userAgent: mozilla/5.0 (macintosh; intel mac os x 10_15_7) applewebkit/537.36 (khtml, like gecko) chrome/154.0.0.0 safari/537.36\n- isTouchDevice: false\n\n## cluster\n\n- instanceCount: 5\n- versions: 2.31.5\n- instances:\n  REDACTED\n- checks:\n  - check: hostid-clash, status: succeeded, warnings: -\n  - check: lifecycle, status: succeeded, warnings: -\n  - check: split-brain, status: succeeded, warnings: -\n  - check: version-mismatch, status: succeeded, warnings: -\n\nGenerated at: 2026-11-11T16:10:33.004Z\n\n### Operating System\n\nN/A\n\n### n8n Version\n\n 2.31.5\n\n### Node.js Version\n\n24.16.0\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43556/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43556/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @rjSampaio,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9743\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9743](https://linear.app/n8n/issue/GHC-9743)",
+      "at": "2026-11-11T16:20:43Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43556#issuecomment-6801132814"
+    },
+    {
+      "author": "grinem",
+      "text": "Hi @rjSampaio,\n\nThis is a known structural edge case with n8n's RBAC/credential validator during version history restores.\n\nWhen triggering a restore, `WorkflowHistoryService` deserializes the snapshot and verifies every credential ID declared in `nodes[].credentials`, even if the node has `\"disabled\": true` or disconnected edges. If the credential was deleted from the database, the foreign key fails and halts the rollback transaction.\n\nQuick SQL bypass for self-hosted PostgreSQL (no manual redraw needed):\nYou can sanitize the snapshot in PostgreSQL to strip the orphaned credential reference so the native UI \"Restore\" button immediately succeeds:\n\n```sql\n-- 1. Identify the version ID in workflow_history\nSELECT id, \"workflowId\", \"createdAt\"\nFROM workflow_history\nWHERE \"workflowId\" = 'YOUR_WORKFLOW_ID'\nORDER BY \"createdAt\" DESC;\n\n-- 2. Strip the orphaned credentials block on the disabled node\nUPDATE workflow_history\nSET nodes = (\n  SELECT jsonb_agg(\n    CASE\n      WHEN elem->>'name' = 'YOUR_DISABLED_NODE_NAME'\n      THEN elem - 'credentials' || '{\"credentials\": {}}'::jsonb\n      ELSE elem\n    END\n  )\n  FROM jsonb_array_elements(nodes::jsonb) AS elem\n)\nWHERE id = 'YOUR_VERSION_ID';\n```\n\nOnce executed, refresh your n8n browser tab and hit \"Restore version\" again—it will restore cleanly without errors.",
+      "at": "2026-11-11T19:25:58Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43556#issuecomment-6805227792"
+    }
+  ],
+  "comments_complete": true
+}

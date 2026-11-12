@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/rroland10/dex223-bug-bounty/issues/102",
-  "collected_at": "2026-11-11T09:20:07.956178+00:00",
+  "collected_at": "2026-11-12T09:46:15.756996+00:00",
   "source": {
     "url": "https://api.github.com/repos/rroland10/dex223-bug-bounty/issues/102",
     "repository_url": "https://api.github.com/repos/rroland10/dex223-bug-bounty",
@@ -50,9 +50,9 @@
     "locked": false,
     "assignees": [],
     "milestone": null,
-    "comments": 2,
+    "comments": 1,
     "created_at": "2026-11-10T15:45:58Z",
-    "updated_at": "2026-11-11T00:18:07Z",
+    "updated_at": "2026-11-11T12:06:02Z",
     "closed_at": null,
     "assignee": null,
     "author_association": "NONE",
@@ -93,12 +93,6 @@
       "text": "# Supplement to issue #102 — second sink for the same root cause: `withdraw()`\n\nThis is a supplement to the finding above, not a new finding. Same root cause (`NFPM.tokenReceived` has no `msg.sender` guard), same contract, same ledger, same fix — but a second, simpler sink that lowers the barrier significantly.\n\n## The withdraw sink\n\n`NonfungiblePositionManager.withdraw()` (`PeripheryPayments.sol:76-98`) is `external` with no access control. Its only authorization check is the ledger:\n\n```solidity\nrequire(_erc223Deposits[msg.sender][_token] >= _quantity, \"WE\");\n```\n\nIt then debits the ledger (`debitERC223`) and transfers real tokens from the NFPM's balance:\n\n```solidity\nbool success = IERC223(_token).transfer(_recipient, _quantity);\n```\n\nSince the phantom deposit from the root cause inflates `_erc223Deposits[attacker][M]` without any real transfer, the attacker can spend it directly via `withdraw()` — no mint, no pool, no second token.\n\n## PoC (mainnet fork, block 26384361, deployed NFPM `0x15E22548C572C8Fdb3AcC600c040D5F2A19855D4`)\n\n- Victim deposits 1000 real M → NFPM M balance = 1000, victim deposit recorded = 1000.\n- Attacker mints phantom deposit 1000 via direct `NFPM.tokenReceived(attacker, 1000, \"\")` (no transfer) → attacker deposit recorded = 1000, NFPM M balance still 1000.\n- Attacker calls `NFPM.withdraw(M, attacker, 1000)` → **succeeds**.\n- Attacker M balance: 999,000 → **1,000,000** (+1000 real M). NFPM M balance: 1000 → **0**. Attacker phantom deposit: 1000 → 0.\n- Victim `NFPM.withdraw(M, victim, 1000)` → **reverts** (NFPM is insolvent for M; victim's ledger still records 1000, but the real balance is 0).\n- Negative control: without the phantom deposit, attacker `withdraw` reverts (`\"WE\"`), victim withdraws the full 1000 M successfully.\n\nBoth tests pass (gas 457,935 / 310,436), reproduced by an independent re-run (each test run individually, identical results).\n\n## Why this matters\n\n| | Mint sink (original report) | Withdraw sink (this supplement) |\n|---|---|---|\n| Second token | Required (honest deposit of N) | Not required |\n| Pool creation | Required (converter + factory) | Not required |\n| `mint` + callback | Required | Not required |\n| Gas (PoC) | 1,215,484 | 457,935 |\n\nThe withdraw sink is pure theft: phantom deposit → withdraw → victim funds. No honest economic step in between. The upper bound is the same (NFPM's M balance at attack time), and the same preconditions apply (attacker controls token M; victim deposits of M sit in NFPM).\n\n## Fix\n\nSame as the original report: add a `msg.sender` guard to `NFPM.tokenReceived` (as `Dex223Pool.tokenReceived` already has at `Dex223Pool.sol:239`). That single guard closes both sinks.",
       "at": "2026-11-10T17:37:19Z",
       "url": "https://github.com/rroland10/dex223-bug-bounty/issues/102#issuecomment-6774557616"
-    },
-    {
-      "author": "Luando-tester",
-      "text": "Hello, I am PepperResearch, a smart contract security engineer with solid experience in fixing access control and callback vulnerabilities in Uniswap V3 derivative contracts like `NonfungiblePositionManager`.\n\nHere is my plan to fix the missing `msg.sender` guard:\n1. Review the `NonfungiblePositionManager.tokenReceived` function and compare it with the secure implementation in `Dex223Pool.sol`.\n2. Implement the missing sender validation guard (`require(msg.sender == token.erc223, ...)` or equivalent token contract check) on `tokenReceived`.\n3. Write a comprehensive Foundry test mimicking the exploit vector (phantom ERC-223 deposit → mint draining other users' deposits) to verify the patch prevents the drainage.\n4. Run the full test suite to ensure no regression in the existing mint/burn/deposit flows.\n\nETA: 3 days.\n\nPlease assign this issue to me and confirm to get started. \n\nBefore I begin, could you please confirm: 1) the exact bounty amount, 2) how it is paid (for example USDC to a wallet, or through this platform) and when (after PR merge / after approval), and 3) the acceptance criteria for a successful submission? Thank you!",
-      "at": "2026-11-11T00:18:07Z",
-      "url": "https://github.com/rroland10/dex223-bug-bounty/issues/102#issuecomment-6783046716"
     }
   ],
   "comments_complete": true
