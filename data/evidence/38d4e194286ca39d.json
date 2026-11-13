@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50467154",
+  "collected_at": "2026-11-13T09:29:05.668695+00:00",
+  "source": {
+    "author": "diancodes",
+    "children": [],
+    "created_at": "2026-11-12T13:57:52.000Z",
+    "created_at_i": 1794491872,
+    "id": 50467154,
+    "options": [],
+    "parent_id": null,
+    "points": 1,
+    "story_id": 50467154,
+    "text": "Hi HN, the main idea around MergeMax is that the user can look themselves up and compare themselves against all the other people on the board. No sign-in required. We currently support monthly and daily leaderboards.<p>I built MergeMax since I kept seeing people post on X about @poteto&#x27;s merge count and I knew I could probably create something to easily see her and other popular dev&#x27;s GitHub public PRs. I quickly found out however that her PRs aren&#x27;t visible via our methods, since most of her PRs are private&#x2F;not on GitHub. I also wanted to create a place where people can easily see the amount of merges top accounts do each month, now that agents have the ability to create thousands of PRs themselves.<p>Currently we only support public PRs as well as the contribution total that gets provided by GitHub directly:<p>- A public PR only counts if it&#x27;s public, merged, and authored by the account that&#x27;s being looked up, and merged within the specified period.<p>- I use GitHub&#x27;s search API for PR counts. In a single GraphQL query we ask for 1 day per alias (is:pr is:merged is:public author:X merged:DATE), a whole month costs about 1 rate-limit point. If we had to page through PRs it would cost about 400 points per busy account.<p>- Initially I tried GH Archive first, but PR events there no longer say whether a PR was merged.<p>Current limitations include:<p>- People that merged their own PRs also count.<p>- Agent workflows can increase a person&#x27;s PR count by a lot. So a bot can generate thousands of small PRs.<p>- Private work and pushes directly to main don&#x27;t show as public PRs. Those profiles do, however, show up in GitHub&#x27;s contribution count if they&#x27;ve activated private contributions on GitHub.<p>I had to seed about 1,000 accounts at launch and anyone who&#x27;s been looked up since is also tracked. We obviously cannot track every single account on GitHub.<p>It really became one of my most fun projects to work on. Especially loved creating the colorscheme&#x2F;theme. Itterating through top 3 leaderboard designs, user profile look &amp; feel, etc.<p>I do support sponsor cards like some other popular similar sites but we don&#x27;t have any sponsors yet.<p>The stack I used was Tanstack Start deployed to Vercel with Convex as the backend.<p>I&#x27;m open to any questions and feedback regarding the site, how it functions etc. Also would love to hear what you would like to see added to profiles, new boards, etc?",
+    "title": "Show HN: MergeMax, a monthly ranking of public merged PRs on GitHub",
+    "type": "story",
+    "url": "https://mergemax.dev"
+  },
+  "comments": [],
+  "comments_complete": true
+}

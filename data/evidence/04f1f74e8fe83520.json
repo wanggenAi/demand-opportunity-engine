@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50455811",
-  "collected_at": "2026-11-12T09:46:15.756996+00:00",
+  "collected_at": "2026-11-13T09:29:05.668695+00:00",
   "source": {
     "author": "alanjm23",
     "children": [
@@ -273,7 +273,23 @@
         "children": [
           {
             "author": "alanjm23",
-            "children": [],
+            "children": [
+              {
+                "author": "bshafiq",
+                "children": [],
+                "created_at": "2026-11-12T11:02:38.000Z",
+                "created_at_i": 1794481358,
+                "id": 50465546,
+                "options": [],
+                "parent_id": 50457606,
+                "points": null,
+                "story_id": 50455811,
+                "text": "Makes sense. But what happens if the repair agent itself gets stuck looping?<p>If the MCP call returns a 200 OK while the underlying browser times out silently, you&#x27;re just burning tokens. Are you using a deterministic state hash to hard-kill the run, or relying entirely on the repair agent?",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
             "created_at": "2026-11-11T19:44:26.000Z",
             "created_at_i": 1794426266,
             "id": 50457606,
@@ -282,6 +298,21 @@
             "points": null,
             "story_id": 50455811,
             "text": "Thanks! When a browser action fails or times out, the repair agent should step in to fix the integration and prevent retries from looping. There are also a few conditions where we automatically kick off a repair without a failing job, such as a streak of rejected inputs or site errors. This is to try and prevent silent failures.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          },
+          {
+            "author": "JerradBe",
+            "children": [],
+            "created_at": "2026-11-13T08:07:36.000Z",
+            "created_at_i": 1794557256,
+            "id": 50479970,
+            "options": [],
+            "parent_id": 50457395,
+            "points": null,
+            "story_id": 50455811,
+            "text": "this failure mode is worse when the tool has a side effect in the real world. we&#x27;ve had agents retry a call or a text because the tool returned 200 while the action was still in flight, or had already happened. what happens is that you burn tokens on the web and you annoy the same person twice on a phone. so what the tool needs is an explicit state (queued &#x2F; in-flight &#x2F; done &#x2F; failed), an idempotency key the agent has to pass back, and a way for later events to arrive without a second invoke. if you just retry based on the HTTP status, it probably won&#x27;t catch it.",
             "title": null,
             "type": "comment",
             "url": null
@@ -668,6 +699,51 @@
         "title": null,
         "type": "comment",
         "url": null
+      },
+      {
+        "author": "nightmoose",
+        "children": [],
+        "created_at": "2026-11-12T13:05:17.000Z",
+        "created_at_i": 1794488717,
+        "id": 50466542,
+        "options": [],
+        "parent_id": 50455811,
+        "points": null,
+        "story_id": 50455811,
+        "text": "Interesting approach. Curious how you handle silent drift: the site changes, your API still returns 200, but a field goes null or gets renamed. Do you validate every response against the published schema before it reaches the agent, or only re-generate when something hard-fails? In my pipelines the scary failures are the ones that still return 200 and look fine.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "dionnam",
+        "children": [],
+        "created_at": "2026-11-12T14:47:49.000Z",
+        "created_at_i": 1794494869,
+        "id": 50468189,
+        "options": [],
+        "parent_id": 50455811,
+        "points": null,
+        "story_id": 50455811,
+        "text": "hahaha it really is interesting approach. \nBasically, you guys are making crawler for all the websites.\nBut still, it might not be that useful if we need to log in again all the time when we wanna use the api.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "hank2000",
+        "children": [],
+        "created_at": "2026-11-12T14:53:49.000Z",
+        "created_at_i": 1794495229,
+        "id": 50468310,
+        "options": [],
+        "parent_id": 50455811,
+        "points": null,
+        "story_id": 50455811,
+        "text": "MCPs are already often wildly inefficient. One thing I saw said the agent had to process 8x tokens just to read the instructions vs the actual tool calls it made.<p>I would imagine this makes wildly inefficient instructions? Yes usable. But at what cost? Or am I wrong?",
+        "title": null,
+        "type": "comment",
+        "url": null
       }
     ],
     "created_at": "2026-11-11T17:11:56.000Z",
@@ -675,7 +751,7 @@
     "id": 50455811,
     "options": [],
     "parent_id": null,
-    "points": 55,
+    "points": 61,
     "story_id": 50455811,
     "text": "Hi HN, we’re Alan and Akshay from Pomerado (<a href=\"https:&#x2F;&#x2F;pomerado.ai&#x2F;\">https:&#x2F;&#x2F;pomerado.ai&#x2F;</a>). We connect your agents to any website by turning sites into deterministic, self-healing APIs in minutes, fully self-serve.<p>Agents are no longer limited by their intelligence, but rather by their ability to interact with systems. Airlines, banks, e-commerce, insurance portals, government sites, and legacy portals all lack APIs or MCPs and are common parts of personal assistant or business workflows. Agents instead rely on browser automation or computer use, which can be slow, expensive, and unreliable. And even if computer use were perfect, most companies have banned it out of security and compliance concerns.<p>We discovered this problem while tinkering with our own personal assistants. When OpenClaw came out, we wanted to “live our lives through our agents” and have them do everything for us. We soon found their usefulness was restricted by what tools they could connect to. For example, when trying to book flights, they fell back on computer use, which failed to checkout. These issues got magnified on repeated workflows, like searching many airlines at once.<p>Pomerado started off as a project to improve these personal assistant workflows. As we started building, we realized that just-in-time tool creation could have significant applications for AI builders in legacy verticals.<p>We’re ex-McKinsey and Scale AI, where we drove agent deployments in healthcare, professional services, and telecom. Each time, the biggest bottleneck was getting agents to interface well with legacy websites and apps.<p>Pomerado is what we built. It’s a self-serve platform where devs can create APIs for any website (even those they don’t own), in minutes. Users (or their coding agents) provide a short natural language description, answer a few questions about their workflow, and receive a MCP in less than an hour. Future tool calls use the deterministic MCP, which usually returns results in 5-30 seconds.<p>Here’s a walkthrough of our product: <a href=\"https:&#x2F;&#x2F;youtu.be&#x2F;Bi4jci7rgHo\" rel=\"nofollow\">https:&#x2F;&#x2F;youtu.be&#x2F;Bi4jci7rgHo</a><p>In practice:<p>- Our agent opens a browser, explores the website, and performs the requested task once by writing HTTP requests or a Playwright script. This example run establishes how to navigate the website, interact with the relevant controls, and obtain the desired result. If any additional user input is needed (e.g., login, clarification) the agent will ask the user over MCP.<p>- Afterwards, the agent uses the example run, along with all of the data it recorded, to create a generalizable and repeatable API. Throughout this process, a separate Guardian model reviews the coding agent’s calls against a set of guardrails. We also run a battery of tests with synthetic inputs to ensure that the API is generalized and not overfit to one input. A final publication agent ensures that the integration publishes a reasonable and generalized input&#x2F;output schema<p>- We also handle sites that require authentication and 2FA. For authentication, we pass off to a deterministic sign-in process to ensure the model and our recorders never read customer credentials. Users can store 2FA TOTP seeds or link their account to a Pomerado phone number for us to autofill 2FA for them as well<p>- If future runs fail, a maintenance job is kicked off to repair and improve the tool. The maintenance job can fix broken steps (e.g., a renamed button), add additional functionality (e.g., searching for business class flights in addition to economy), or add new guardrails (e.g., reservation dates must be in the future). We’ve even seen people improve tools by just saying “please make this faster”<p>Unlike computer use, our MCPs are deterministic at runtime, which makes them much faster and cheaper. By taking slightly longer to do a task the first time, you reap the benefits much more in the future. It’s a great fit for repeated, high-volume tasks you want your agent to do.<p>We’d love to have you try it! We have both an open-source (MIT) (<a href=\"https:&#x2F;&#x2F;github.com&#x2F;Pomerado&#x2F;pomerado\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;Pomerado&#x2F;pomerado</a>) and a free hosted version (<a href=\"https:&#x2F;&#x2F;app.pomerado.ai\">https:&#x2F;&#x2F;app.pomerado.ai</a>).<p>So far, users of Pomerado include:<p>- A personal trainer using agents to prepare workouts and message clients. Before Pomerado, agents couldn’t login and use the site reliably, so this was all manual<p>- Car dealerships connecting their Grok Bots to legacy dealer systems, including marketplaces, CRMs, and ERPs. Dealers switched from computer use, which could take 1hr+<p>- Personal assistants using Pomerado to integrate with a broad range of consumer websites<p>Please ask any questions or share any feedback in the comments, thanks!",
     "title": "Launch HN: Pomerado (YC F26) – Turn any website into an MCP for agents",
@@ -796,6 +872,18 @@
       "text": "Thanks! When a browser action fails or times out, the repair agent should step in to fix the integration and prevent retries from looping. There are also a few conditions where we automatically kick off a repair without a failing job, such as a streak of rejected inputs or site errors. This is to try and prevent silent failures.",
       "at": "2026-11-11T19:44:26.000Z",
       "url": "https://news.ycombinator.com/item?id=50457606"
+    },
+    {
+      "author": "bshafiq",
+      "text": "Makes sense. But what happens if the repair agent itself gets stuck looping? If the MCP call returns a 200 OK while the underlying browser times out silently, you're just burning tokens. Are you using a deterministic state hash to hard-kill the run, or relying entirely on the repair agent?",
+      "at": "2026-11-12T11:02:38.000Z",
+      "url": "https://news.ycombinator.com/item?id=50465546"
+    },
+    {
+      "author": "JerradBe",
+      "text": "this failure mode is worse when the tool has a side effect in the real world. we've had agents retry a call or a text because the tool returned 200 while the action was still in flight, or had already happened. what happens is that you burn tokens on the web and you annoy the same person twice on a phone. so what the tool needs is an explicit state (queued / in-flight / done / failed), an idempotency key the agent has to pass back, and a way for later events to arrive without a second invoke. if you just retry based on the HTTP status, it probably won't catch it.",
+      "at": "2026-11-13T08:07:36.000Z",
+      "url": "https://news.ycombinator.com/item?id=50479970"
     },
     {
       "author": "dogscatstrees",
@@ -940,6 +1028,24 @@
       "text": "Congrats on the launch. One question from our own work (we build a tool that finds hidden text in documents before an agent reads them): when you turn a page into an API, what happens to text the page hides from people? Think display:none, zero-size fonts, off-screen elements and HTML comments. Some sites now put instructions aimed at agents in exactly those places. Does the generated API pass that text through to the agent, or only what a person would see on the page?",
       "at": "2026-11-12T07:52:41.000Z",
       "url": "https://news.ycombinator.com/item?id=50464250"
+    },
+    {
+      "author": "nightmoose",
+      "text": "Interesting approach. Curious how you handle silent drift: the site changes, your API still returns 200, but a field goes null or gets renamed. Do you validate every response against the published schema before it reaches the agent, or only re-generate when something hard-fails? In my pipelines the scary failures are the ones that still return 200 and look fine.",
+      "at": "2026-11-12T13:05:17.000Z",
+      "url": "https://news.ycombinator.com/item?id=50466542"
+    },
+    {
+      "author": "dionnam",
+      "text": "hahaha it really is interesting approach. \nBasically, you guys are making crawler for all the websites.\nBut still, it might not be that useful if we need to log in again all the time when we wanna use the api.",
+      "at": "2026-11-12T14:47:49.000Z",
+      "url": "https://news.ycombinator.com/item?id=50468189"
+    },
+    {
+      "author": "hank2000",
+      "text": "MCPs are already often wildly inefficient. One thing I saw said the agent had to process 8x tokens just to read the instructions vs the actual tool calls it made. I would imagine this makes wildly inefficient instructions? Yes usable. But at what cost? Or am I wrong?",
+      "at": "2026-11-12T14:53:49.000Z",
+      "url": "https://news.ycombinator.com/item?id=50468310"
     }
   ],
   "comments_complete": true

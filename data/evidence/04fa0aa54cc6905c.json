@@ -1,0 +1,119 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43759",
+  "collected_at": "2026-11-13T09:29:05.668695+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43759",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43759/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43759/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43759/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43759",
+    "id": 6364995597,
+    "node_id": "I_kwDOC4Q8Qs8AAAABe2IgDQ",
+    "number": 43759,
+    "title": "Form Trigger execution succeeds but editor remains stuck on \"Waiting for you to submit the form\"",
+    "user": {
+      "login": "tolani-co",
+      "id": 324106273,
+      "node_id": "U_kgDOE1F4IQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/324106273?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/tolani-co",
+      "html_url": "https://github.com/tolani-co",
+      "followers_url": "https://api.github.com/users/tolani-co/followers",
+      "following_url": "https://api.github.com/users/tolani-co/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tolani-co/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/tolani-co/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tolani-co/subscriptions",
+      "organizations_url": "https://api.github.com/users/tolani-co/orgs",
+      "repos_url": "https://api.github.com/users/tolani-co/repos",
+      "events_url": "https://api.github.com/users/tolani-co/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/tolani-co/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 4,
+    "created_at": "2026-11-13T04:48:46Z",
+    "updated_at": "2026-11-13T07:55:38Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nI am running a self-hosted n8n instance using Docker on Windows 11 pro.\n\nWhen testing a workflow that starts with a Form Trigger, the form submission succeeds and the workflow executes successfully. However, the n8n editor does not update to reflect the completed execution.\n\nThe editor remains on \"Waiting for you to submit the form\", even though the execution has already completed successfully.\n\nRefreshing the editor page clears the waiting state and allows me to test the workflow again.\n\n<img width=\"809\" height=\"562\" alt=\"Screenshot 2026-11-13 054724\" src=\"https://github.com/user-attachments/assets/9da8a77d-1ea2-47d7-b481-f7ef6fd42745\" />\n<img width=\"936\" height=\"550\" alt=\"Screenshot 2026-11-13 053710\" src=\"https://github.com/user-attachments/assets/86d04be2-252e-4c6a-bb8d-d972fc656b29\" />\n\n### To Reproduce\n\n1. Create a new workflow with a Form Trigger connected to an Edit Fields node.\n2. Click Execute Workflow.\n3. Open the Form Trigger's Test URL.\n4. Submit the form.\n5. Observe the editor.\n\n\n### Expected behavior\n\nAfter submitting the form, the editor should receive the execution update, stop waiting and display the completed nodes and their outputs.\n\n\n### Debug Info\n\n# Debug info\n\n## core\n\n- n8nVersion: 2.47.5\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.13.0\n- nodeEnv: production\n- database: sqlite\n- executionMode: regular\n- concurrency: -1\n- license: enterprise (production)\n- consumerId: 347b2959-28bf-4d1c-987d-717b5a80fcc3\n\n## storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n## pruning\n\n- enabled: true\n- maxAge: 336 hours\n- maxCount: 10000 executions\n\n## client\n\n- userAgent: mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/156.0.0.0 safari/537.36 edg/156.0.0.0\n- isTouchDevice: false\n\n## cluster\n\n- instanceCount: 1\n- versions: 2.47.5\n- instances:\n  - instanceKey: f6632aec-d735-4b32-9de1-0e99b0a81af1, hostId: main-63120ca68f6f, instanceType: main, instanceRole: leader, version: 2.47.5\n- checks:\n  - check: hostid-clash, status: succeeded, warnings: -\n  - check: lifecycle, status: succeeded, warnings: -\n  - check: split-brain, status: succeeded, warnings: -\n  - check: version-mismatch, status: succeeded, warnings: -\n\nGenerated at: 2026-11-13T04:48:55.777Z\n\n### Operating System\n\nWindows 11 pro\n\n### n8n Version\n\n2.46.7 and 2.47.5\n\n### Node.js Version\n\nv26.13.0\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43759/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43759/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @tolani-co,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9756\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9756](https://linear.app/n8n/issue/GHC-9756)",
+      "at": "2026-11-13T04:48:54Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43759#issuecomment-6844362887"
+    },
+    {
+      "author": "Arin004joshi",
+      "text": "Hey @tolani-co. Thanks for reporting the issue. I tested the Form Trigger workflow locally(not the docker setup tho) and on a cloud-hosted n8n instance, but un/fortunately, it worked as expected. Could it be a real time communication issue in your backend? \nRefer this: line 85 in [FormTriggerV2.node.ts](https://github.com/n8n-io/n8n/blob/master/packages/nodes-base/nodes/Form/v2/FormTriggerV2.node.ts)",
+      "at": "2026-11-13T06:32:36Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43759#issuecomment-6846003193"
+    },
+    {
+      "author": "blucca",
+      "text": "Building on Arin's native/Cloud check: in **2.47.5**, the editor clears this exact waiting flag in [`testWebhookReceived`](https://github.com/n8n-io/n8n/blob/n8n%402.47.5/packages/frontend/editor-ui/src/app/composables/usePushConnection/handlers/testWebhookReceived.ts#L16-L19) when the message's `workflowId` matches the current editor document.\n\nCould you repeat the test once with DevTools → Network open on the **editor's `/rest/push` connection**, and report:\n\n- Does a `testWebhookReceived` message arrive? If yes, its `workflowId` and `executionId` fields are enough.\n- Is the saved execution #33's `mode` **`manual`** or **`webhook`**?\n\nThose observations give us a specific point to trace between test registration, push delivery and the editor's workflow-ID match. The pinned backend uses `manual` for a test webhook and `webhook` for a production webhook, so the saved mode is a useful second control alongside the message.\n",
+      "at": "2026-11-13T06:52:27Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43759#issuecomment-6846334644"
+    },
+    {
+      "author": "grinem",
+      "text": "Hi @tolani-co,\n\nBuilding on @blucca's `/rest/push` check, on **Docker + Windows 11** this stuck *\"Waiting for you to submit the form\"* state almost always comes from one of two origin/WebSocket mismatches between the editor and the container:\n\n1. **Host Origin Mismatch (`localhost` vs `127.0.0.1`):**  \n   If your editor tab is open on `localhost:5678` while `WEBHOOK_URL` / the Form Test URL resolves to `127.0.0.1:5678` (or vice versa), the browser session/push channel won't match the incoming `testWebhookReceived` event. Make sure both the canvas URL and `WEBHOOK_URL` use the exact same host.\n\n2. **Explicit Docker Push & Base URL Env Vars:**  \n   In your `docker-compose.yml`, explicitly pin the push backend and base URLs:\n```yaml\nenvironment:\n  - N8N_HOST=localhost\n  - N8N_PORT=5678\n  - N8N_PROTOCOL=http\n  - WEBHOOK_URL=[http]://localhost:5678/\n  - N8N_EDITOR_BASE_URL=[http]://localhost:5678/\n  - N8N_PUSH_BACKEND=websocket\n```\n*(If you're sitting behind Nginx/Caddy/Traefik on Windows, make sure `Upgrade` and `Connection \"upgrade\"` headers are forwarded and `proxy_buffering off;` is set so `/rest/push` doesn't stall.)*\n\nIf `/rest/push` shows `101 Switching Protocols` in DevTools -> Network -> WS and `testWebhookReceived` still never arrives after pinning `N8N_PUSH_BACKEND=websocket`, sharing the `/rest/push` frame screenshot will pinpoint whether it's an event emission or session-ID issue.",
+      "at": "2026-11-13T07:14:13Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43759#issuecomment-6846690628"
+    }
+  ],
+  "comments_complete": true
+}

@@ -1,5 +1,5 @@
 {
-  "observed_at": "2026-11-12T09:46:15.756996+00:00",
+  "observed_at": "2026-11-13T09:29:05.668695+00:00",
   "config": "data/discovery_config.json",
   "adapters": [
     {
@@ -21,19 +21,19 @@
       "source_family": "public founder/operator job community",
       "access_method": "Discourse public category/topic JSON",
       "url": "https://community.n8n.io/c/jobs/13.json?order=created",
-      "records_inspected": 38,
-      "primary_pages_opened": 25,
+      "records_inspected": 36,
+      "primary_pages_opened": 23,
       "verified_buyer_requests": 12,
       "explicit_commercial_signals": 12,
-      "collected": 25,
+      "collected": 23,
       "errors": [],
       "limitations": [
         "Two newest-topic pages, not complete market coverage; max 200 extra replies per topic. Incomplete competition remains UNKNOWN unless observed high.",
         "Last activity is not publication time. Only substantive buyer-authored follow-ups can renew a lead."
       ],
       "evidence_snapshots": [
-        "data/evidence/f5663f332d6bc9b1.json#sha256=17b9793b0cfbbc92094a63d29f7169a497dc20efa4e8d0360a856fd7ea5f3013",
-        "data/evidence/d9f0be47fa047f2c.json#sha256=b06e59ebc20815dc67f86b75d62c75197b52621f5da14debad04ef171204b27d"
+        "data/evidence/f5663f332d6bc9b1.json#sha256=a486c3c9307f8d951ebbd357056103819841542be7681094f5f9f3f0059b8212",
+        "data/evidence/d9f0be47fa047f2c.json#sha256=ed5b0c21972a65be0fb5bd6c5b5e9a9dbd19d0b5200c00996e9f7e303d05f541"
       ]
     },
     {
@@ -51,7 +51,7 @@
         "Legal warning - Hey, thanks for using Remotive's API, we appreciate it! Please note that API documentation and access is granted so that developers can share our jobs further. Please do not submit Remotive jobs to third Party websites, including but not limited to: Jooble, Neuvoo, Google Jobs, LinkedIn Jobs. Please link back to the URL found on Remotive AND mention Remotive as a source in order to Remotive to get traffic from your listing. If you don't do that, we'll terminate your API access, sorry! Jobs displayed are delayed by 24 hours, the goal being that jobs are attributed to Remotive on various platforms. Displaying our jobs in order to collect signups/email addresses to show a listing constitutes a breach of our terms of services. We offer a private, paid-for API, please email us at hello(at)remotive(dot)io for more information (starting budget is $5k/mo). Please find out terms of services on https://remotive.com/api-documentation. Please note that there is absolutely no need to request Remotive Job data too frequently. Typically, you only need to GET Remotive job data through this API a couple of times a day (we advise max. 4 times a day). Our data is not changing much faster than that anyway. Note that excessive requests will be blocked. Many thanks (Rodolphe & the Remotive team!)"
       ],
       "evidence_snapshots": [
-        "data/evidence/071898d5d7cef09e.json#sha256=6dee138e4dfafe167f7475b28fe7a126184898c6206801837689945b1322dbe9"
+        "data/evidence/071898d5d7cef09e.json#sha256=b1857426ef300ffdf57ef591cf731cc438d1772c78c2e7973f55c0ccb4e934ad"
       ]
     },
     {
@@ -65,15 +65,15 @@
       "collected": 0,
       "errors": [
         {
-          "url": "https://www.contractsfinder.service.gov.uk/notice/bcc14c1a-bd54-43d5-ae60-d01bdbca9f40",
+          "url": "https://www.contractsfinder.service.gov.uk/notice/8728806a-3e2f-4620-b040-51189fe7d749",
           "error": "HTTPError: HTTP Error 403: Forbidden"
         },
         {
-          "url": "https://www.contractsfinder.service.gov.uk/notice/cbc8d975-376f-4c40-b602-3b8a9b2435cc",
+          "url": "https://www.contractsfinder.service.gov.uk/notice/f652720e-81b8-4338-83df-752e0b8243bb",
           "error": "HTTPError: HTTP Error 403: Forbidden"
         },
         {
-          "url": "https://www.contractsfinder.service.gov.uk/notice/ae4880a1-15a2-4002-9cc7-377765f6a16e",
+          "url": "https://www.contractsfinder.service.gov.uk/notice/12d94fa2-36a2-4efa-b756-516875f08792",
           "error": "HTTPError: HTTP Error 403: Forbidden"
         }
       ],
@@ -81,7 +81,7 @@
         "Search returned procurement notices; up to three detail pages attempted. No buyer request promoted: eligibility, exact remote scope, submission deadline and award status require manual verification."
       ],
       "evidence_snapshots": [
-        "data/evidence/50e3af0542f19c3a.json#sha256=b9e9e35e3b91fea52250ff4c7863d9c45a9d31ff6b8c1dcc7d6b6f36718ed62e"
+        "data/evidence/50e3af0542f19c3a.json#sha256=05c99f0ab7e7aa53423330ab38f3da857628bc7359b903af66a662e92926c241"
       ]
     },
     {
@@ -134,14 +134,14 @@
         "No structured primary buyer requests extracted; static shell is not commercial proof. No login or anti-bot evasion."
       ],
       "evidence_snapshots": [
-        "data/evidence/b5d67d420401a4bb.json#sha256=ae305ef5307578995e23c112eb8aff3851068ccb0d24781f3d5ab1174f2fce71"
+        "data/evidence/b5d67d420401a4bb.json#sha256=7e29f0eee3d29be177a74750fef53e8a2478a3f957f07f6500f0f97cd93648ac"
       ]
     },
     {
       "source_family": "freelance project marketplace (Freelancer)",
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://www.freelancer.com/jobs/product-sourcing/",
-      "records_inspected": 14,
+      "records_inspected": 12,
       "primary_pages_opened": 3,
       "verified_buyer_requests": 2,
       "explicit_commercial_signals": 2,
@@ -151,10 +151,10 @@
         "Public bidCount includes competitors; only first 20 proposals may be visible. Employer identity often unresolved. Task budget is not agreement to our pilot."
       ],
       "evidence_snapshots": [
-        "data/evidence/abf73d1fa5782498.json#sha256=c15e13a4be01de99036a664b46131e53d135404012c105496b76cfd3540b788a",
-        "data/evidence/545486c9f6791966.json#sha256=ddbbf3408bec79d716fb42643b67e77edaef006ecce71064f62230ef09367019",
-        "data/evidence/e2cd5e73e5830b11.json#sha256=667a9b31f15e6ac27d89e94e7f2160ebdb9e76e82d633c58a18fe68baf2a0963",
-        "data/evidence/9decfd751dbe8075.json#sha256=c45a5430e91b538f08e1847596f4a8822c3c3dfa9fc4ec1ea9d48a4709990830"
+        "data/evidence/abf73d1fa5782498.json#sha256=618fb767e4c39099bd668757cee1152e4540e28e0685f40d105ead6654548e34",
+        "data/evidence/545486c9f6791966.json#sha256=60603bd68f3700e69f651f5252076f977e3bfba3d87f3b1f5db3f72485829f5f",
+        "data/evidence/e2cd5e73e5830b11.json#sha256=f6a3745935ab8c549673b0b8cbe542a8dee5083e83c65973a03f91f900c8c1de",
+        "data/evidence/9decfd751dbe8075.json#sha256=3d665285c55f2b5e04080c2b1a0c6aaa91593d44626e9c831e48344a4632f405"
       ],
       "records": [],
       "opportunity_ids": [
@@ -174,9 +174,7 @@
         "/projects/sourcing/china-trend-product-sourcing",
         "/projects/sourcing/china-renewable-energy-sourcing",
         "/projects/sourcing/long-term-sourcing-consultant-for",
-        "/projects/supplier-verification/verify-passive-component-suppliers",
-        "/projects/dropshipping/instagram-focused-shopify-dropshipping",
-        "/projects/kitchen-design/home-finish-selection-guidance"
+        "/projects/supplier-verification/verify-passive-component-suppliers"
       ]
     },
     {
@@ -193,11 +191,18 @@
         "A different query/category on Freelancer does not count as another independent family."
       ],
       "evidence_snapshots": [
-        "data/evidence/eb34b643617bda88.json#sha256=6381e38674e4fb111af5dfb9b6881ec2038497789592005094f65281fa072d2b"
+        "data/evidence/eb34b643617bda88.json#sha256=cdc858cafac67ea36d8196d350d7051277c70a4abdb66ea583604f30df6200c0"
       ],
       "records": [],
       "opportunity_ids": [],
       "inspected_keys": [
+        "/projects/api-integration/activated-smart-plug-payments",
+        "/projects/api/meta-api-permissions-setup",
+        "/projects/api-integration/custom-school-labelling-commerce",
+        "/projects/android/bengali-bank-transfer-app-developments",
+        "/projects/api-developmet/account-automation-setup",
+        "/projects/full-stack-development/build-corporate-gifting-apparel-commerce",
+        "/projects/ai-chatbot/whatsapp-faq-bot-setup",
         "/projects/lead-email-automation-expert-with",
         "/projects/api-integration/connect-whatsapp-cloud-api-crm",
         "/projects/api-integration/website-app-development-needed",
@@ -214,13 +219,11 @@
         "/projects/php/connect-bigcommerce-google-shopping",
         "/projects/google-ads/connect-bigcommerce-google-shopping",
         "/projects/api-integration/whatsapp-account-unban",
-        "/projects/fintech/complete-fintech-remittance-app-launch",
         "/projects/rest-api/python-web-service-integration",
         "/projects/nodejs/build-pulse-business-operating-system",
         "/projects/web-development/live-spiritual-healing-platform",
         "/projects/bitcoin/low-risk-bitcoin-trading-bot",
         "/projects/affiliate-marketing/referral-program-design-setup",
-        "/projects/algorithmic-trading/build-nse-algo-trading-platform",
         "/projects/translation/complete-website-translation-integration",
         "/projects/automation/automate-your-workflows-with",
         "/projects/api-integration/integrate-razer-payment-gateway",
@@ -237,13 +240,8 @@
         "/projects/web-development/build-modern-pushpay-integrated-church",
         "/projects/inventory-management/optimize-commerce-inventory-operations",
         "/projects/powerapps/power-apps-paperless-workflow-solution",
-        "/projects/web-development/build-moving-marketplace-website",
         "/projects/dot-net/update-legacy-software-for-windows",
-        "/projects/odoo/odoo-whatsapp-api-integration-40806279",
-        "/projects/web-development/zynga-poker-chips-management-dashboard",
-        "/projects/web-development/website-booking-subscription-integration",
-        "/projects/api-integration/configure-grade-erp-for-agency",
-        "/projects/ai-automation/automation-expert-agents-gohighlevel"
+        "/projects/odoo/odoo-whatsapp-api-integration-40806279"
       ]
     },
     {
@@ -251,65 +249,67 @@
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://community.shopify.com/latest.json",
       "records_inspected": 30,
-      "primary_pages_opened": 3,
+      "primary_pages_opened": 4,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
-      "collected": 3,
+      "collected": 4,
       "errors": [],
       "limitations": [
         "Latest activity is not original publication; support questions are PRODUCT_SIGNAL, not SALES. No more than four primary topics per run."
       ],
       "evidence_snapshots": [
-        "data/evidence/bda5dc3c1eb46ea5.json#sha256=876221d0561173f5fb0a75068d321e442020584c15cea43a19229562ba33c370",
-        "data/evidence/f47e689b78965873.json#sha256=ff35b0902ecc5d7e0657135128307cf34c7961845a48611f365022426a869529",
-        "data/evidence/d9041d68dc6599a0.json#sha256=53070a471ae2fe22a483e173bb4911603136621f3f0b080a1f3077576bb2dd09",
-        "data/evidence/3a4adcd5c138f620.json#sha256=54a85f12b3f5fc3fdc0a1e6d122a49dc3607bee2e434e8b1eaa6e48b5fb0afac"
+        "data/evidence/bda5dc3c1eb46ea5.json#sha256=988182f25a66d1f699f7f41b8aed7960f3b7fdaef4ffaaee991407bee84cabc6",
+        "data/evidence/a3e54cc823eb0dbf.json#sha256=9438115f772b5891b2bc7bb1233cb7116745872cf3682fa8954114cd744e6336",
+        "data/evidence/cc503cbb45cb8597.json#sha256=cd4cf568214c3479d2e59150ec5700eca0b853bf97da0158f498ecc1fac53b6b",
+        "data/evidence/3a4adcd5c138f620.json#sha256=63b0756e54ec2740df69edb00c019ce47539d6b8eaab6b023faf7517ad46e66a",
+        "data/evidence/4b831b4add19cc1f.json#sha256=12df0da50d4f8a9e739732f1d1129dcb399617710ca1359fc7d324984d306aca"
       ],
       "records": [],
       "opportunity_ids": [
-        "412d4c87321f39c4",
-        "5db415a210bfe42b",
-        "f993190563a14723"
+        "87e120fb1ad6f615",
+        "4e59e391f6f69d97",
+        "f993190563a14723",
+        "559d3a94fd935f92"
       ],
       "inspected_keys": [
         "355460",
-        "561340",
-        "711730",
-        "646221",
-        "669060",
-        "668230",
-        "714085",
-        "682404",
-        "573208",
-        "714098",
-        "651074",
-        "673369",
-        "653016",
-        "701042",
-        "714179",
-        "657644",
-        "676429",
-        "233530",
-        "714048",
-        "713673",
-        "713040",
-        "711195",
-        "709869",
-        "714121",
-        "672567",
         "713114",
-        "660749",
-        "714200",
-        "246608",
-        "712295"
+        "714937",
+        "714048",
+        "713994",
+        "714698",
+        "701601",
+        "714950",
+        "714773",
+        "714085",
+        "703567",
+        "714807",
+        "714768",
+        "710777",
+        "686891",
+        "291184",
+        "550291",
+        "711789",
+        "568280",
+        "377745",
+        "644258",
+        "714098",
+        "714735",
+        "585319",
+        "577195",
+        "679097",
+        "714121",
+        "714828",
+        "669060",
+        "711739"
       ]
     },
     {
       "source_family": "founder community (Indie Hackers)",
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://www.indiehackers.com/",
-      "records_inspected": 26,
-      "primary_pages_opened": 2,
+      "records_inspected": 27,
+      "primary_pages_opened": 1,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
       "collected": 0,
@@ -318,9 +318,8 @@
         "Only server-rendered public pages. robots disallows /api/ and sign-in; neither used. Founder self-promotion is not a buyer."
       ],
       "evidence_snapshots": [
-        "data/evidence/6548833164b0e7c9.json#sha256=5657f924c62dbad66ba3017fc42bba39567f2f81d9fb00855463d307246f6e89",
-        "data/evidence/8a05f0c866d7c342.json#sha256=26afd3374538aa108adb18d85a6466feab41f49dbe859138e6b4a62a483408ce",
-        "data/evidence/4d479518e2f90fe7.json#sha256=da28b7a79e86e45d5ecd11e5482929a5fe513f4c055aa106c928c920ef375510"
+        "data/evidence/6548833164b0e7c9.json#sha256=3c69408d2087841f2c557a5d086af42317b98c7871ed43f3609aee334c410c28",
+        "data/evidence/8a05f0c866d7c342.json#sha256=9f50a3785c3ed9ff33939b77913e138a3ea45a4b7e676f63f0fcf875358ab2cf"
       ],
       "records": [
         {
@@ -359,80 +358,37 @@
             }
           ],
           "decision": "Discussion/seller/product research only; no paid buyer or complete competition/contact evidence"
-        },
-        {
-          "url": "https://www.indiehackers.com/post/the-ultimate-saas-directory-submission-guide-how-to-find-active-directories-and-automate-your-startup-distribution-in-2026-RuTTjq1Ii5JaRajnPHko",
-          "author_body": "Author body unresolved; no buyer promotion",
-          "metadata": [
-            {
-              "@context": "https://schema.org",
-              "@type": "Article",
-              "mainEntityOfPage": {
-                "@type": "WebPage",
-                "@id": "https://www.indiehackers.com/post/the-ultimate-saas-directory-submission-guide-how-to-find-active-directories-and-automate-your-startup-distribution-in-2026-RuTTjq1Ii5JaRajnPHko"
-              },
-              "headline": "The ultimate SaaS directory submission guide: how to find active directories and automate your startup distribution in 2026",
-              "image": [
-                {
-                  "@type": "ImageObject",
-                  "url": "https://storage.googleapis.com/indie-hackers.appspot.com/post-images/RuTTjq1Ii5JaRajnPHko/MDFRXZRFkLXgVia8FasT9fHtKuI3/launchonit-home.png"
-                }
-              ],
-              "datePublished": "2026-11-11T09:19:21.911Z",
-              "dateModified": "2026-11-11T09:19:21.911Z",
-              "author": [
-                {
-                  "@type": "Person",
-                  "name": "Alex",
-                  "sameAs": [
-                    "https://www.indiehackers.com/launchonit"
-                  ]
-                }
-              ],
-              "publisher": {
-                "@type": "Organization",
-                "name": "Indie Hackers",
-                "logo": {
-                  "@type": "ImageObject",
-                  "url": "https://www.indiehackers.com/images/logos/apple-touch-icon.png",
-                  "width": 152,
-                  "height": 152
-                }
-              },
-              "thumbnailUrl": "https://storage.googleapis.com/indie-hackers.appspot.com/post-images/RuTTjq1Ii5JaRajnPHko/MDFRXZRFkLXgVia8FasT9fHtKuI3/launchonit-home.png"
-            }
-          ],
-          "decision": "Discussion/seller/product research only; no paid buyer or complete competition/contact evidence"
         }
       ],
       "opportunity_ids": [],
       "inspected_keys": [
-        "/post/i-posted-every-weekday-since-august-heres-what-actually-drove-installs-SI1OvVb3Kkf6vBuBcXg5",
-        "/post/my-reddit-chart-got-153k-views-and-sent-about-5-visitors-what-i-learned-in-month-one-of-a-data-site-P710WeoMTtA2pEiINKtu",
-        "/post/my-small-tool-site-went-from-48-to-166-google-clicks-in-28-days-heres-what-i-actually-changed-AEh4kTIZ4D5zwAt9XYPC",
-        "/post/how-are-you-hard-capping-ai-agent-spend-before-a-retry-loop-burns-your-budget-nW8IMnEYXWQfi3YPO4l6",
-        "/post/which-launch-sites-have-you-actually-combined-and-in-what-order-dKN2sB0JikUlgP679kAg",
-        "/post/nobody-switches-tools-on-a-calm-tuesday-zNS64apmuO3WK5eBgVlg",
-        "/post/3-months-3-000-spent-400-earned-what-our-aliexpress-price-checker-taught-us-LJ1UUld8zZ2tzcmodY8t",
-        "/post/you-built-it-but-how-do-you-get-people-to-use-it-eiVUxm8sscxSgiPBLUwy",
-        "/post/monday-again-what-are-you-building-this-week-15ncpkuk3dbtkDNS0woJ",
-        "/post/tech/beehiiv-says-its-new-mail-servers-send-to-1m-subscribers-in-about-16-seconds-mK96AKMF4Vf2HAJvUaj2",
-        "/post/tech/marc-lou-makes-his-100k-hackathon-free-and-hours-later-700-have-signed-up-mhRFHWV3mepKbUa8Cex2",
-        "/post/tech/anthropic-gives-claude-subscribers-a-full-usage-reset-after-limit-issues-SEySXdRlLVK6y9tdIJHt",
-        "/post/tech/stripe-now-owns-openrouter-whose-token-volume-is-up-about-125-since-august-NS7l20uqMBg2qt6D4Khg",
-        "/post/tech/openai-now-shows-businesses-how-often-chatgpt-mentions-them-ZRZuldm8fdNvkBFfyfLT",
-        "/post/tech/marc-lous-hackathon-will-pay-100k-to-one-new-startup-on-the-basis-of-profit-02lnfVSCuMAeTt6jkv2d",
+        "/post/we-just-launched-cardboard-for-mac-and-you-can-edit-videos-on-it-for-free-ZLNXcvg09B6JyBfqln6X",
         "/post/when-a-waitlist-signup-asks-how-much-will-it-cost-i-d-answer-with-a-real-number-the-same-day-even-if-it-changes-later-IwbKVqo6y8J7AnUZUzom",
-        "/post/my-welcome-dms-went-from-88-delivered-to-98-in-a-week-then-i-checked-who-was-sending-them-mxgklGKY3etDKF29SuE1",
+        "/post/two-prelaunch-products-one-week-0-sign-ups-mAtzfhbBkIK1YLF1e9X3",
         "/post/the-hardest-part-of-building-wasnt-building-it-was-stopping-qSJSH5Xx7MVDMNfPQcnY",
-        "/post/there-isnt-one-way-to-build-in-public-i-found-eight-and-most-founders-copy-the-one-that-fits-someone-else-fYTrFbY4C8zuHJRDI0e9",
         "/post/i-built-a-small-invoice-follow-up-app-for-solo-freelancers-looking-for-honest-feedback-not-a-victory-lap-oP4UssvBCJEqsDllev1H",
+        "/post/which-launch-sites-have-you-actually-combined-and-in-what-order-dKN2sB0JikUlgP679kAg",
+        "/post/i-posted-every-weekday-since-august-heres-what-actually-drove-installs-SI1OvVb3Kkf6vBuBcXg5",
+        "/post/my-small-tool-site-went-from-48-to-166-google-clicks-in-28-days-heres-what-i-actually-changed-AEh4kTIZ4D5zwAt9XYPC",
+        "/post/my-reddit-chart-got-153k-views-and-sent-about-5-visitors-what-i-learned-in-month-one-of-a-data-site-P710WeoMTtA2pEiINKtu",
+        "/post/tech/tyler-denk-says-an-ai-agent-helped-him-make-500k-from-his-newsletter-this-year-aY3yZCTDt71GzGdbgmro",
+        "/post/tech/marc-lous-agent-built-an-iphone-app-in-4-hours-apple-s-review-took-336-hours-Qmc7bI6d5b3zdRuopvQ3",
+        "/post/tech/pieter-levels-ships-video-to-3d-in-interior-ai-three-hours-after-his-demo-EQSz8p9a14J6SiCtLP5k",
+        "/post/tech/anthropics-ipo-filing-shows-17-billion-in-quarterly-revenue-up-over-12x-ZbwGoAzkYaBPSsuOj7F0",
+        "/post/tech/google-will-double-gemini-4-carbon-and-argon-api-prices-on-december-1-VxfhC3TfBvf80kKrf5dI",
+        "/post/tech/marc-lou-makes-his-100k-hackathon-free-and-hours-later-700-have-signed-up-mhRFHWV3mepKbUa8Cex2",
+        "/post/share-the-list-of-product-launch-websites-i-use-personally-26BvC9VZw3VZCcNLmw0b",
+        "/post/apple-search-ads-five-weeks-in-i-still-can-t-tell-if-they-really-work-pEDsycH9LiEDK6TI83VL",
+        "/post/replaced-by-ai-i-guess-im-an-indie-hacker-now-eksO2aMYwbUaQ6g5L4iY",
+        "/post/when-an-ai-edit-changes-saved-records-what-should-undo-restore-TkRLaHawnXWTu60HRsPD",
+        "/post/250-tools-taught-me-the-same-lesson-my-failed-product-did-K1W7rgjyyiBi63dvwHBc",
+        "/post/i-didnt-hire-an-seo-agency-i-gave-my-ai-access-to-the-data-instead-SKcJIJNIC7RQOmZiNZol",
+        "/post/i-launched-an-ai-consultant-for-founders-this-week-revenue-is-0-heres-what-building-it-actually-took-h52diShjI5rPq9WTbJji",
+        "/post/my-welcome-dms-went-from-88-delivered-to-98-in-a-week-then-i-checked-who-was-sending-them-mxgklGKY3etDKF29SuE1",
         "/post/how-to-catch-user-friction-before-it-becomes-churn-ivlHcdpBrSCXxkkwm1AX",
-        "/post/at-what-point-did-your-business-outgrow-its-software-stack-wx8MTYJ23dfDnWrbYeKK",
-        "/post/the-ultimate-saas-directory-submission-guide-how-to-find-active-directories-and-automate-your-startup-distribution-in-2026-RuTTjq1Ii5JaRajnPHko",
-        "/post/tech/starting-from-scratch-and-hitting-9-5k-mrr-in-two-months-j5pMaED5FEbKw8qmeyj9",
-        "/post/tech/turning-a-freelance-gig-into-a-150k-yr-product-tDdZGZyiyNTztPfI2wkY",
-        "/post/tech/growing-a-side-project-in-a-crowded-market-to-1m-arr-by-playing-the-long-game-eL15KZvm2ax20BtiM5i8"
+        "/post/tech/hitting-60k-mrr-by-building-an-sdk-instead-of-an-app-0B3bsTvvOG0wqf8cAx1v",
+        "/post/tech/this-founder-solved-his-agencys-problem-and-turned-the-solution-into-a-3m-arr-saas-uS8zjhggjKA4eoXFAUZi",
+        "/post/tech/building-a-3m-yr-company-without-launching-publicly-tacryeGIH66SCtD2an4r"
       ]
     },
     {
@@ -449,71 +405,71 @@
         "Physical goods buyers do not automatically buy research. Contact requires platform sign-in; no access bypass. No bid-count visibility => UNKNOWN."
       ],
       "evidence_snapshots": [
-        "data/evidence/3914e4f508c84945.json#sha256=845d303cd62f14dd091fb0af7db225207a41c8138e2fc9c45243358151ab8f28",
-        "data/evidence/d470ef7c5d2d7ee5.json#sha256=63f3b9556ad759d951cedd6cf89e437fbeacc10ea4c2788f5caeeaebdd63c4c8",
-        "data/evidence/2dfd5503a1e37264.json#sha256=151a55713ce6ce27a21e938bf67de3566c6a0316a5bdff164346c63742103604"
+        "data/evidence/3914e4f508c84945.json#sha256=32336de10e4ca42453f242f6bb240594a5a5f9926d1a0e58a1fa43c1a7ed951d",
+        "data/evidence/83dc2da60bb1d4e3.json#sha256=c88eaf6e26bb687910a515a8255d7b0888150d47f7e02f3a42d40e1e5b3f77ee",
+        "data/evidence/6d6b6b5871123f46.json#sha256=13b248772a674628f58a9d6f14a9cd5e923c1a5280f03fefa5582c162df539d7"
       ],
       "records": [
         {
-          "url": "https://importer1.tradekey.com/buyoffer/Aluminium-Metal-With-Declared-Grade-And-Form-3878623.html",
-          "primary_excerpt": "Last Updated: Posted on: 10 Nov 2026 Time Left: 27D 14H Payment Terms: T/T, L/C, D/A, D/P, Western Union, Money Gram Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details Hello there, I am sourcing aluminium and need the seller to identify the exact form availableâ€”primary ingot, alloy ingot, billet, sheet or clean scrap. Quote by grade and state aluminium content, principal alloying elements, unit dimensions and weight, surface condition and bundle or pallet weight. For ingots, indicate whether A7/99.7%, ADC12, A356 or another specification is offered and provide the corresponding analysis. Kind regards, Vladislav Refine by popular tags aluminium metal aluminum ingots aluminium alloy primary aluminum Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.07511 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French Guiana French Polyne",
+          "url": "https://importer1.tradekey.com/buyoffer/Womens-Clothing-Stock-Lots-3878703.html",
+          "primary_excerpt": "Last Updated: Posted on: 11 Nov 2026 Time Left: 27D 14H Payment Terms: T/T, L/C, D/A, D/P, Western Union, Money Gram Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details Hi, I am buying womenâ€™s clothing stock lots. Send the exact item mix, brands or private labels, size ratio, season, condition, quantity per style and carton packing; offers with current warehouse photos will be reviewed first. Regards, Baird Refine by popular tags womens clothing stock garment stock lots ladies apparel Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.06762 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French Guiana French Polynesia Gabon Gambia Georgia Germany Ghana Gibraltar Greece Greenland Grenada Guadeloupe Guam Guatemala Guernsey Guinea Guinea-Bissau Guyana Haiti Honduras Hong Kong Hungary Iceland India Indonesia Iraq Ireland Isle of Man",
           "decision": "Physical goods RFQ; not a commissioned China research service; contact gated and competition unknown",
           "buyer": true,
-          "published_at": "2026-11-10T00:00:00+00:00",
+          "published_at": "2026-11-11T00:00:00+00:00",
           "date_precision": "day; original posted date, not crawl date"
         },
         {
-          "url": "https://importer1.tradekey.com/buyoffer/Portable-Mesh-Nebulizers-With-Measured-Output-3878621.html",
-          "primary_excerpt": "Last Updated: Posted on: 10 Nov 2026 Time Left: 27D 14H Payment Terms: T/T, L/C, D/A, D/P, Western Union, Money Gram Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details Good day, I need portable mesh nebulizers and will compare models by aerosol performance. Please state the mesh frequency, medication cup capacity, nebulization rate in mL/min, MMAD in microns, fine-particle fraction, residual volume and operating noise in dB. I am interested in compact units producing roughly 2.5â€“4.0 micron particles, with low residual medication and both USB and battery operation. Show the adult and child masks, mouthpiece, cable and storage pouch included in each set, plus the finished device dimensions, unit weight and retail-box configuration. Best regards, Abdul Refine by popular tags mesh nebulizer portable nebulizer aerosol therapy device medical nebulizer Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.05954 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Ti",
+          "url": "https://importer1.tradekey.com/buyoffer/UPVC-Material-And-Finished-Product-Options-3878701.html",
+          "primary_excerpt": "Last Updated: Posted on: 11 Nov 2026 Time Left: 27D 14H Payment Terms: T/T, L/C, D/A, D/P, Western Union, Money Gram Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details Good day, I need uPVC and want suppliers to identify the exact form they can provideâ€”resin or compound, pipe, profile, sheet or another finished product. For raw material, state K-value, density, filler loading, colour and packing; for finished items, give dimensions, wall thickness and application. Please quote only the form physically available. Kind regards, Dhiya Abushihiwa Refine by popular tags uPVC PVC compound uPVC profiles PVC products Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.06982 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French Guiana French Polynesia Gabon Gambia Georgia Germany Ghana Gibraltar Greece Greenland Grenada Guadeloupe Guam ",
           "decision": "Physical goods RFQ; not a commissioned China research service; contact gated and competition unknown",
           "buyer": true,
-          "published_at": "2026-11-10T00:00:00+00:00",
+          "published_at": "2026-11-11T00:00:00+00:00",
           "date_precision": "day; original posted date, not crawl date"
         }
       ],
       "opportunity_ids": [],
       "inspected_keys": [
-        "https://importer1.tradekey.com/buyoffer/Aluminium-Metal-With-Declared-Grade-And-Form-3878623.html",
-        "https://importer1.tradekey.com/buyoffer/Portable-Mesh-Nebulizers-With-Measured-Output-3878621.html",
-        "https://importer1.tradekey.com/buyoffer/Polyester-Filament-Yarn-In-Commercial-Counts-3878617.html",
-        "https://importer1.tradekey.com/buyoffer/Baled-UBC-Aluminium-Can-Scrap-3878615.html",
-        "https://importer1.tradekey.com/buyoffer/Filtered-Used-Cooking-Oil-For-Biodiesel-Processing-3878613.html",
-        "https://importer1.tradekey.com/buyoffer/Ram-Horn-Shofars-In-Assorted-Lengths-3878611.html",
-        "https://importer1.tradekey.com/buyoffer/Power-And-Building-Cables-By-Conductor-Size-3878609.html",
-        "https://importer1.tradekey.com/buyoffer/Tin-Ingots-With-Declared-Sn-Purity-3878605.html",
-        "https://importer1.tradekey.com/buyoffer/Pakistani-Style-Bangles-For-Wholesale-3878603.html",
-        "https://importer1.tradekey.com/buyoffer/Mixed-Herbs-Spices-And-Seeds-For-Bulk-Trade-3878601.html",
-        "https://importer1.tradekey.com/buyoffer/Regular-UCO-Supply-With-Defined-Quality-Limits-3878599.html",
-        "https://importer1.tradekey.com/buyoffer/Pure-Agarwood-Oil-With-Origin-Details-3878597.html",
-        "https://importer1.tradekey.com/buyoffer/Used-Cooking-Oil-For-Biodiesel-Processing-3878595.html",
-        "https://importer1.tradekey.com/buyoffer/Wholesale-Wristwatches-In-Current-Models-3878593.html",
-        "https://importer1.tradekey.com/buyoffer/Need-250-MT-Raw-Popcorn-Kernels-In-25kg-Bags-10x20ft-To-Aden-Yemen-3878591.html",
-        "https://importer1.tradekey.com/buyoffer/Bulk-Paracetamol-500mg-650mg-Tablets-100-000-Pcs-USA-3878587.html",
-        "https://importer1.tradekey.com/buyoffer/Lifestyle-Sneakers-In-Adult-EU-Sizes-36-46-3878585.html",
-        "https://importer1.tradekey.com/buyoffer/60-65-Kg-Export-Sacks-For-Cocoa-Beans-3878583.html",
-        "https://importer1.tradekey.com/buyoffer/Adult-Retail-Shoes-In-EU-Sizes-36-45-3878581.html",
-        "https://importer1.tradekey.com/buyoffer/Human-Hair-Extensions-In-10-30-Inch-Lengths-3878579.html",
-        "https://importer1.tradekey.com/buyoffer/Retail-Makeup-Assortment-With-Current-Shade-Ranges-3878575.html",
-        "https://importer1.tradekey.com/buyoffer/Glass-Bottles-From-100-Ml-To-1-000-Ml-3878573.html",
-        "https://importer1.tradekey.com/buyoffer/Eau-De-Parfum-In-50-Ml-And-100-Ml-Bottles-3878571.html",
-        "https://importer1.tradekey.com/buyoffer/Oak-Beech-Or-Hornbeam-Fireplace-Firewood-3878569.html",
-        "https://importer1.tradekey.com/buyoffer/Kiln-Dried-Hardwood-Firewood-In-Split-Logs-3878567.html"
+        "https://importer1.tradekey.com/buyoffer/Womens-Clothing-Stock-Lots-3878703.html",
+        "https://importer1.tradekey.com/buyoffer/UPVC-Material-And-Finished-Product-Options-3878701.html",
+        "https://importer1.tradekey.com/buyoffer/Huggies-Baby-Diapers-In-Export-Lots-3878699.html",
+        "https://importer1.tradekey.com/buyoffer/Hoses-By-Application-And-Material-3878697.html",
+        "https://importer1.tradekey.com/buyoffer/Men-s-Denim-Jeans-In-Mixed-Sizes-3878693.html",
+        "https://importer1.tradekey.com/buyoffer/Automotive-Engine-Valves-By-Part-Number-3878691.html",
+        "https://importer1.tradekey.com/buyoffer/Recycled-Cotton-Texturised-Yarn-3878689.html",
+        "https://importer1.tradekey.com/buyoffer/PET-Strapping-For-Pallet-Loads-3878687.html",
+        "https://importer1.tradekey.com/buyoffer/Men-s-Wallets-In-Leather-And-PU-3878685.html",
+        "https://importer1.tradekey.com/buyoffer/N55-Neodymium-Magnets-To-Drawing-3878683.html",
+        "https://importer1.tradekey.com/buyoffer/Secondary-TFS-TMBP-And-Misprinted-Tin-Mill-Stock-3878681.html",
+        "https://importer1.tradekey.com/buyoffer/Gold-Dust-With-Assay-And-Material-Form-Declared-3878679.html",
+        "https://importer1.tradekey.com/buyoffer/Player-Version-Football-Jerseys-3878677.html",
+        "https://importer1.tradekey.com/buyoffer/Cotton-Drawstring-And-Dust-Bags-For-Custom-Packing-3878675.html",
+        "https://importer1.tradekey.com/buyoffer/Refurbished-Smartphones-With-Battery-Health-Declared-3878673.html",
+        "https://importer1.tradekey.com/buyoffer/Gold-Bearing-Mineral-Material-For-Assay-Review-3878671.html",
+        "https://importer1.tradekey.com/buyoffer/Fresh-Passion-Fruit-By-Size-Grade-3878669.html",
+        "https://importer1.tradekey.com/buyoffer/Evening-Dresses-In-Current-Wholesale-Designs-3878667.html",
+        "https://importer1.tradekey.com/buyoffer/Floor-to-Ceiling-Windows-Made-To-Project-Sizes-3878665.html",
+        "https://importer1.tradekey.com/buyoffer/Commercial-Vending-Machines-With-Cashless-Payment-3878663.html",
+        "https://importer1.tradekey.com/buyoffer/Processed-Chicken-Feets-boneless--3878659.html",
+        "https://importer1.tradekey.com/buyoffer/Wanting-To-Buy-Dhol-3878655.html",
+        "https://importer1.tradekey.com/buyoffer/Big-Machines-3878651.html",
+        "https://importer1.tradekey.com/buyoffer/Calcium-Chloride-94-And-Gilsonite-Ash-10--3878649.html",
+        "https://importer1.tradekey.com/buyoffer/Long-Grain-White-Rice-5-Broken-3878647.html"
       ]
     }
   ],
-  "unique_refreshed": 79,
+  "unique_refreshed": 78,
   "info_edge_refresh": [
     {
       "id": "5409f529cb2b0f7b",
       "url": "https://community.n8n.io/t/assistant-credits-top-up-now-available/318075",
-      "checked_at": "2026-11-12T09:46:15.756996+00:00",
+      "checked_at": "2026-11-13T09:29:05.668695+00:00",
       "refreshed": false,
       "reason": "event expired; no publication rejuvenation"
     },
     {
       "id": "edge-haiku-2026-10-07",
       "url": "https://www.anthropic.com/claude-haiku-5-5",
-      "checked_at": "2026-11-12T09:46:15.756996+00:00",
+      "checked_at": "2026-11-13T09:29:05.668695+00:00",
       "refreshed": false,
       "reason": "event expired; no publication rejuvenation"
     }

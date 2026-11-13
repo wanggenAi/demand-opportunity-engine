@@ -1,0 +1,109 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50474106",
+  "collected_at": "2026-11-13T09:29:05.668695+00:00",
+  "source": {
+    "author": "lakshays",
+    "children": [
+      {
+        "author": "leetrout",
+        "children": [
+          {
+            "author": "lakshays",
+            "children": [],
+            "created_at": "2026-11-13T00:50:46.000Z",
+            "created_at_i": 1794531046,
+            "id": 50476680,
+            "options": [],
+            "parent_id": 50476545,
+            "points": null,
+            "story_id": 50474106,
+            "text": "Thanks! Tell me about it… btw you don’t need to have a ROS stack to try Cerulion! Try giving the quickstart prompt to your agent and lmk if something breaks :)",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-13T00:36:01.000Z",
+        "created_at_i": 1794530161,
+        "id": 50476545,
+        "options": [],
+        "parent_id": 50474106,
+        "points": null,
+        "story_id": 50474106,
+        "text": "I hate ROS so much. Such a misguided effort given what we have with both common &#x2F; existing and modern dev tooling. Sorry I don&#x27;t use it now only because I can&#x27;t test your replacement.<p>Good luck! Excited to see more stuff like this coming.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "noxs",
+        "children": [
+          {
+            "author": "lakshays",
+            "children": [],
+            "created_at": "2026-11-13T02:48:14.000Z",
+            "created_at_i": 1794538094,
+            "id": 50477467,
+            "options": [],
+            "parent_id": 50477300,
+            "points": null,
+            "story_id": 50474106,
+            "text": "I feel you! Too many seams, no sane defaults, and inefficiencies by design. We ended up keeping the nomenclature and message types due to entrenched design patterns. But we&#x27;ve tried to cut boilerplate and not gate performance deep behind nested docs pages. The tutorial graph is dead simple to set up and runs faster than the most optimized ROS2 code by orders of magnitude! And we&#x27;ve tried to bring this same performance to legacy ROS2 stacks as well :)",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-13T02:25:40.000Z",
+        "created_at_i": 1794536740,
+        "id": 50477300,
+        "options": [],
+        "parent_id": 50474106,
+        "points": null,
+        "story_id": 50474106,
+        "text": "I hate ROS so much as well:<p>- Robot Operating System - it is not even an operating system<p>- ROS Node - okay a process&#x2F;thread that runs the application logic (but why name it as node? it is a service)<p>for ROS Node to talking to another ROS Node:<p>- I need a ROS topic<p>- I need a ROS Message<p>- in C++ I need rclcpp that is a C++ client<p>- which then uses rcl which is a C implementation<p>- it goes through a ROS Middleware (rmw) that is an abstract DDS (hey what is DDS)<p>- now you have many implementation choices, FastDDS, Cycloe DDS etc. which one should I pick?<p>- finally it would make some syscall<p>oh you want to build this with your application?<p>- use some weird command line called ros2 pkg create<p>- you need to use ament_cmake (what the heck is this?)<p>- and yet another tool called colcon to build the package",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-11-12T20:53:04.000Z",
+    "created_at_i": 1794516784,
+    "id": 50474106,
+    "options": [],
+    "parent_id": null,
+    "points": 11,
+    "story_id": 50474106,
+    "text": "Hey HN! I&#x27;m Lakshay. Raveen and I have built Cerulion, a ROS2-compatible robotics runtime written in Rust. We&#x27;ve worked hard on lowering IPC transport latencies without making the single process tradeoff or forcing POD message types. These fast multi-process graphs can then be resimmed deterministically, and existing ROS2 nodes&#x2F;launch files can run unmodified alongside native Cerulion Rust&#x2F;Python code. Installation and quickstart (with a one-shot prompt for your favorite coding agent) here at the repo README: <a href=\"https:&#x2F;&#x2F;github.com&#x2F;cerulion-inc&#x2F;cerulion\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;cerulion-inc&#x2F;cerulion</a><p>I worked on off-road autonomy during my PhD at MIT, and we kept running into inter-process latency in ROS (2 lidars and 6 cameras). Loaned messages need POD types, which nukes standard, vendor-agnostic Image&#x2F;PointCloud2. We ended up running some hot paths in a brittle single process, which made debugging a nightmare. I&#x27;m sure you&#x27;ve seen the heisenbugs ROS-based stacks can produce, with no way to easily reproduce the consumption order or interleaving of callbacks. Valuable data of runtime failures on the robot was hard to use effectively without deterministic reproducibility.<p>This is what we fix. Cerulion bags record per-input reads and scheduler traces alongside message content in standard MCAPs. <i>cerulion bag play --resim all --verify</i> re-executes node code on the recorded schedule and compares each byte for exact matches or within defined tolerances. Exit 0 is a match, 1 shows the first topic&#x2F;frame that diverges, 6 shows schedule divergence and <i>--report</i> gives an optional CI verdict. Eligible ROS2 processes can replay deterministically as well.<p>Here&#x27;s the data loop:<p>1. Run: Dependency-ordered level-based DAG scheduler with periodic&#x2F;data&#x2F;sync triggers, I&#x2F;O deadlines, backpressure, and automatic profiling for process partitioning. Each node by default free-runs in its own process while preserving deterministic replay. Live runs pause&#x2F;resume, and UMWAIT&#x2F;WFE parks idle consumers on CPUs that support it. Wall-clock reads and runtime thread spawns in user code rejected at compile time by macros.<p>ROS 2 is supported with rmw_cerulion for Foxy, Humble, Jazzy and Lyrical, that lets you run ROS2 nodes&#x2F;launch files unmodified in the same graph as native Cerulion nodes. LD_PRELOAD gives ROS2 code shared memory loans through std::vector&#x2F;std::string. <i>cerulion ros2 attach</i> folds in already-running ROS2 robots, and <i>cerulion ros2 run&#x2F;launch</i> lets you run existing ROS2 workspaces on Cerulion without any additional setup (with an optional automatic migrate suggested that rewrites C++ publish sites).<p>2. Move: iceoryx2 shared memory with no serialization, no payload copy and no payload-sized allocation, including for variable-length messages like sensor_msgs&#x2F;Image and PointCloud2. Round trip latency for a 1MiB sensor_msgs&#x2F;Image between two processes is 4.08µs p50, with a tight tail of 7.38µs p99 (under 2x p50), <i>with recording on</i>. This is default Cerulion, against 10.95 ms for default ROS 2 Jazzy. Cerulion&#x27;s p50 and p99 stay flat from 64B to 16 MiB.<p>3. Capture: With this round-trip latency, there are no tradeoffs, not for process isolation and not for bagging. We can afford always-on or event-based logging. Flashback is our robot dashcam: keeps ~30s of all logs and message contents in memory and saves it automatically on process crashes, topic stalls or declared incidents&#x2F;manual triggers.<p>4. Reach: A free account lets you pair robots and desks, letting all your devices find each other with no config, IP addresses or discovery chatter. Pubsub is authenticated and on-demand, with signed grants that the robot verifies offline. We use Iroh to hole-punch or relay over WAN, and mDNS over LAN to transmit data using QUIC. Remote topics mirror into local shared memory, and each device has a single network gateway.<p>5. Diagnose: <i>cerulion doctor</i> scans for compile&#x2F;run-time issues (better than Windows Troubleshooter I promise) and suggests fixes. Hindsight is an early access MCP to let agents analyze your bags.<p>To get started: go to the repo, install Cerulion with the curl one-liner, and paste the prompt in Claude Code&#x2F;Codex: <a href=\"https:&#x2F;&#x2F;github.com&#x2F;cerulion-inc&#x2F;cerulion#quickstart-run-record-and-verify\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;cerulion-inc&#x2F;cerulion#quickstart-run-reco...</a>. Or shift your own gears, it&#x27;s all in the repo that you should star!<p>The CLI needs a free account, which we use to make device pairing as easy as AirDrop USED to be ;) Everything runs on Linux (x86_64&#x2F;ARM64), macOS and Android (JNI), with more platforms coming.<p>We&#x27;d love to hear your feedback! If you run ROS 2 on a real robot, point this at your stack and tell us what breaks.<p>Docs: <a href=\"https:&#x2F;&#x2F;docs.cerulion.com\">https:&#x2F;&#x2F;docs.cerulion.com</a><p>Site: <a href=\"https:&#x2F;&#x2F;cerulion.com\">https:&#x2F;&#x2F;cerulion.com</a>",
+    "title": "Show HN: Cerulion – ROS 2-compatible robotics runtime with multi-process replay",
+    "type": "story",
+    "url": "https://github.com/cerulion-inc/cerulion"
+  },
+  "comments": [
+    {
+      "author": "leetrout",
+      "text": "I hate ROS so much. Such a misguided effort given what we have with both common / existing and modern dev tooling. Sorry I don't use it now only because I can't test your replacement. Good luck! Excited to see more stuff like this coming.",
+      "at": "2026-11-13T00:36:01.000Z",
+      "url": "https://news.ycombinator.com/item?id=50476545"
+    },
+    {
+      "author": "lakshays",
+      "text": "Thanks! Tell me about it… btw you don’t need to have a ROS stack to try Cerulion! Try giving the quickstart prompt to your agent and lmk if something breaks :)",
+      "at": "2026-11-13T00:50:46.000Z",
+      "url": "https://news.ycombinator.com/item?id=50476680"
+    },
+    {
+      "author": "noxs",
+      "text": "I hate ROS so much as well: - Robot Operating System - it is not even an operating system - ROS Node - okay a process/thread that runs the application logic (but why name it as node? it is a service) for ROS Node to talking to another ROS Node: - I need a ROS topic - I need a ROS Message - in C++ I need rclcpp that is a C++ client - which then uses rcl which is a C implementation - it goes through a ROS Middleware (rmw) that is an abstract DDS (hey what is DDS) - now you have many implementation choices, FastDDS, Cycloe DDS etc. which one should I pick? - finally it would make some syscall oh you want to build this with your application? - use some weird command line called ros2 pkg create - you need to use ament_cmake (what the heck is this?) - and yet another tool called colcon to build the package",
+      "at": "2026-11-13T02:25:40.000Z",
+      "url": "https://news.ycombinator.com/item?id=50477300"
+    },
+    {
+      "author": "lakshays",
+      "text": "I feel you! Too many seams, no sane defaults, and inefficiencies by design. We ended up keeping the nomenclature and message types due to entrenched design patterns. But we've tried to cut boilerplate and not gate performance deep behind nested docs pages. The tutorial graph is dead simple to set up and runs faster than the most optimized ROS2 code by orders of magnitude! And we've tried to bring this same performance to legacy ROS2 stacks as well :)",
+      "at": "2026-11-13T02:48:14.000Z",
+      "url": "https://news.ycombinator.com/item?id=50477467"
+    }
+  ],
+  "comments_complete": true
+}

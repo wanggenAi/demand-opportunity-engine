@@ -1,0 +1,135 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43678",
+  "collected_at": "2026-11-13T09:29:05.668695+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43678",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43678/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43678/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43678/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43678",
+    "id": 6349740635,
+    "node_id": "I_kwDOC4Q8Qs8AAAABenlaWw",
+    "number": 43678,
+    "title": "HubSpot node: stage and ticket-pipeline lists still call Pipelines API V1 (/crm-pipelines/v1), which HubSpot stops on 4 December 2026",
+    "user": {
+      "login": "Donrulezz",
+      "id": 180787033,
+      "node_id": "U_kgDOCsaXWQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/180787033?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Donrulezz",
+      "html_url": "https://github.com/Donrulezz",
+      "followers_url": "https://api.github.com/users/Donrulezz/followers",
+      "following_url": "https://api.github.com/users/Donrulezz/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Donrulezz/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Donrulezz/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Donrulezz/subscriptions",
+      "organizations_url": "https://api.github.com/users/Donrulezz/orgs",
+      "repos_url": "https://api.github.com/users/Donrulezz/repos",
+      "events_url": "https://api.github.com/users/Donrulezz/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Donrulezz/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582010757,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cXhQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:nodes",
+        "name": "team:nodes",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Nodes team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 3,
+    "created_at": "2026-11-12T12:25:10Z",
+    "updated_at": "2026-11-12T13:05:28Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nHubSpot's changelog says the Pipelines API V1 endpoints stop responding after 4 December 2026 (announced 14 August 2026: https://developers.hubspot.com/changelog/pipelines-api-v1-sunset). V1 is the `/crm-pipelines/v1/pipelines/...` path.\n\nThe HubSpot node still calls V1 to fill three option lists in the editor (master, read 12 November 2026):\n\n- `packages/nodes-base/nodes/Hubspot/V2/HubspotV2.node.ts`: `getDealStages` (line 565), `getTicketPipelines` (line 725), `getTicketStages` (line 822)\n- `packages/nodes-base/nodes/Hubspot/V1/HubspotV1.node.ts`: lines 534, 653 and 750\n\n`getDealPipelines` in V2 already uses `/crm/v3/pipelines/deals`.\n\nAfter the cut-off the \"Deal Stage\", \"Ticket Pipeline\" and \"Ticket Stage\" lists will stop loading. Workflows that already have a stage saved should keep running, because these calls only happen in `loadOptions`.\n\n### To Reproduce\n\n1. Add a HubSpot node, resource Deal, operation Create.\n2. Open the \"Deal Stage\" list: the node requests `GET /crm-pipelines/v1/pipelines/deals`.\n3. Same for resource Ticket (\"Ticket Pipeline\", \"Ticket Stage\"): `GET /crm-pipelines/v1/pipelines/tickets`.\n\n### Expected behavior\n\nThe lists load from a Pipelines API that stays: `/crm/v3/pipelines/deals` and `/crm/v3/pipelines/tickets` (the node already uses v3 for `getDealPipelines`, and v3 is not named in the sunset notice), or the date-versioned path in HubSpot's current guide, `/crm/pipelines/2026-09/{objectType}` (https://developers.hubspot.com/docs/api-reference/latest/crm/pipelines/guide). In both, a stage's `stageId` becomes `id` and a pipeline's `pipelineId` becomes `id`.\n\nA smaller thing in the same function: `getDealStages` reads only `results[0].stages`, so an account with several deal pipelines sees the stages of the first pipeline only.\n\nI read this from the node source and HubSpot's changelog; I have not tested it against a live HubSpot account. I can open a PR if that helps.\n\n### Debug Info\n\nn8n-nodes-base 2.48.0 on master (12 November 2026). Found by reading the source, so it is not specific to a deployment. The fields below are filled only because the form requires them; the dropdowns are left at their defaults.\n\n### Operating System\n\nNot applicable (found in source)\n\n### n8n Version\n\n2.48.0 (master)\n\n### Node.js Version\n\nNot applicable\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nn8n cloud",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43678/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43678/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @Donrulezz,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9750\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9750](https://linear.app/n8n/issue/GHC-9750)",
+      "at": "2026-11-12T12:25:22Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43678#issuecomment-6823549030"
+    },
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @Donrulezz,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9751\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9751](https://linear.app/n8n/issue/GHC-9751)",
+      "at": "2026-11-12T12:25:33Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43678#issuecomment-6823552921"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "The source confirms this affects both HubSpot node versions, and the stage-list behavior is already narrower than the issue title suggests: `getDealStages()` in V1 and V2 reads only `results[0].stages`, so it drops stages from every later deal pipeline even before the sunset. When moving those option loaders to the newer response shape, it would be useful to cover multiple deal pipelines as well as mapping the returned stage and pipeline IDs; the ticket loader currently selects stages by matching the chosen pipeline ID.",
+      "at": "2026-11-12T13:05:28Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43678#issuecomment-6824414161"
+    }
+  ],
+  "comments_complete": true
+}

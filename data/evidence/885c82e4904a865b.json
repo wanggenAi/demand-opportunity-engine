@@ -1,0 +1,44 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50467717",
+  "collected_at": "2026-11-13T09:29:05.668695+00:00",
+  "source": {
+    "author": "prmph",
+    "children": [
+      {
+        "author": "prmph",
+        "children": [],
+        "created_at": "2026-11-12T15:25:04.000Z",
+        "created_at_i": 1794497104,
+        "id": 50468927,
+        "options": [],
+        "parent_id": 50467717,
+        "points": null,
+        "story_id": 50467717,
+        "text": "Should mention that a Show HN is on its way soon, and that this is a project started years ago, not a vibe coded project.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-11-12T14:23:23.000Z",
+    "created_at_i": 1794493403,
+    "id": 50467717,
+    "options": [],
+    "parent_id": null,
+    "points": 2,
+    "story_id": 50467717,
+    "text": "I&#x27;m creating a tool (starting with a TUI MVP) for exploring and managing user files with tags, breaking out of rigid hierarchical silos across devices. I&#x27;d love your feedback on how useful my approach could be to you.<p>Here are the core features of my MVP, addressing typical concerns with tag-based&#x2F;non-hierarchical approaches, like efficient discovery, the tedium of creating&#x2F;managing tags, lock-in, and portability:<p>- <i>Query DSL:</i><p>A simple but expressive query language is provided to search for files&#x2F;folders, based on their tags stored in a local db. Tags can be bare or categorized, and the categories can be user-defined or system generated.<p>- <i>Dynamic Virtual Folders:</i><p>Guided drill-down file browsing via query-backed dynamic virtual folders as a first-class feature. Research shows spatial browsing&#x2F;exploration is just as critical to file discovery as direct search.<p>- <i>Heuristic auto-tagging &amp; triage queue:</i><p>Tags are automatically generated on initial indexing using sophisticated heuristics based on file&#x2F;folder metadata (path, name, os metadata, etc). Any existing or newly created files&#x2F;folders that remain under-tagged go into a triage queue for quick manual bulk or individual tagging.<p>- <i>Managed, flat, sharded storage:</i><p>On import, files are moved, flattened and name-normalized with their tags, into a sharded internal store, with all subsequent access routed through the tool&#x27;s interfaces. While this breaks from file managers that typically leave files in place, it enforces the workflow shift needed for non-hierarchical organization to work well. Tags can be exported back to standard folder structures at any time.<p>- <i>&quot;Project&quot; folders as atomic units:</i><p>Project directories like code repositories are not flattened, and can be tagged and retrieved as single, atomic units (in addition to their contents), which avoids flooding listings with thousands of their nested files&#x2F;folders.<p><i>Portability &amp; Privacy:</i><p>All files and project folders retain their exact contents. Since their tags are embedded in their names, and the original structure can be exported back if desired, there is no lock-in or loss of tags if the tool and its metadata db are uninstalled. Also, although file paths and metadata might be sent to a central API server to support features like the automatic tags and dynamic virtual folders generation, file contents stay strictly local.<p><i>Roadmap</i><p>As mentioned, the initial MVP is a TUI which provides a rich interface for browsing, search, basic file operations, and import, plus a CLI for some basic administrative actions. Eventually, I plan to support:\n- A native GUI interface\n- Self-hosted and Cloud-hosted servers for web UI access\n- Bring-Your-Own-Cloud-Storage (e.g., S3 and&#x2F;or Google Drive) to replicate the internal flat shared storage in the cloud, for backup and access from other devices\n- Import from IMAP, mobile devices, etc.\n- Versioning<p>What are your thoughts? Do you think these approaches address the limitations of hierarchical file organization, as well as the friction involved with typical tag-based tools? Would you be comfortable with file metadata being processed or stored in the cloud? And, do you think this tool could provide you enough value to pay for it?",
+    "title": "Tell HN: I'm working on original approaches to tag-based file organization",
+    "type": "story",
+    "url": null
+  },
+  "comments": [
+    {
+      "author": "prmph",
+      "text": "Should mention that a Show HN is on its way soon, and that this is a project started years ago, not a vibe coded project.",
+      "at": "2026-11-12T15:25:04.000Z",
+      "url": "https://news.ycombinator.com/item?id=50468927"
+    }
+  ],
+  "comments_complete": true
+}

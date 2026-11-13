@@ -1,0 +1,44 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50472340",
+  "collected_at": "2026-11-13T09:29:05.668695+00:00",
+  "source": {
+    "author": "harshkrjha",
+    "children": [
+      {
+        "author": "harshkrjha",
+        "children": [],
+        "created_at": "2026-11-12T19:01:23.000Z",
+        "created_at_i": 1794510083,
+        "id": 50472423,
+        "options": [],
+        "parent_id": 50472340,
+        "points": null,
+        "story_id": 50472340,
+        "text": "Took a lot of heart to launch this here (my first time here). Would really appreciate any feedback.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-11-12T18:57:22.000Z",
+    "created_at_i": 1794509842,
+    "id": 50472340,
+    "options": [],
+    "parent_id": null,
+    "points": 1,
+    "story_id": 50472340,
+    "text": "Hey HN! I am Harsh, been developing software for quite sometime now. Since agents came into my local SD workflow I had been facing a bottleneck. Event though agents are great in working parallelly, testing their changes and iterating is a pain. (Brain, storage &amp; memory overhead)<p>We all use Git worktrees to code in parallel. But how do we test those changes? Still linearly. Or patched up multi-environment setup.<p>And what if you have multiple microservices in an application? How do you test different combinations?<p>I am building Headwig to help me with this.<p>It lets me run multiple agents on my app, isolate their changes across services, and test and iterate on each one independently, even while other agents are working, without the storage overhead of duplicating workspaces for every task.<p>I&#x27;ve been using it for my own webapp, and I want you guys to look at the workflow and see if it makes sense and give me any suggestions or feedback. <a href=\"https:&#x2F;&#x2F;harsh-kr-jha.github.io&#x2F;headwig&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;harsh-kr-jha.github.io&#x2F;headwig&#x2F;</a>",
+    "title": "Show HN: Headwig - Run and test parallel AI agents without Git worktrees",
+    "type": "story",
+    "url": "https://harsh-kr-jha.github.io/headwig/"
+  },
+  "comments": [
+    {
+      "author": "harshkrjha",
+      "text": "Took a lot of heart to launch this here (my first time here). Would really appreciate any feedback.",
+      "at": "2026-11-12T19:01:23.000Z",
+      "url": "https://news.ycombinator.com/item?id=50472423"
+    }
+  ],
+  "comments_complete": true
+}

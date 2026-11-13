@@ -1,0 +1,239 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50471281",
+  "collected_at": "2026-11-13T09:29:05.668695+00:00",
+  "source": {
+    "author": "alirezamshi",
+    "children": [
+      {
+        "author": "granthamctaylor",
+        "children": [
+          {
+            "author": "alirezamshi",
+            "children": [
+              {
+                "author": "alirezamshi",
+                "children": [],
+                "created_at": "2026-11-12T19:28:22.000Z",
+                "created_at_i": 1794511702,
+                "id": 50472853,
+                "options": [],
+                "parent_id": 50472775,
+                "points": null,
+                "story_id": 50471281,
+                "text": "I am very interested to hear others&#x27; perspectives on this topic:<p>Should we integrate experimental learnings by evolving the agent harness, or do RL-based post-training, and leave it in LLM&#x27;s weights? Or Both?",
+                "title": null,
+                "type": "comment",
+                "url": null
+              },
+              {
+                "author": "granthamctaylor",
+                "children": [
+                  {
+                    "author": "alirezamshi",
+                    "children": [
+                      {
+                        "author": "granthamctaylor",
+                        "children": [],
+                        "created_at": "2026-11-12T21:13:15.000Z",
+                        "created_at_i": 1794517995,
+                        "id": 50474360,
+                        "options": [],
+                        "parent_id": 50474207,
+                        "points": null,
+                        "story_id": 50471281,
+                        "text": "Woah, now that is extremely impressive.<p>I think Kapso could be used as an _incredible_ resource to AB test internal \narchitectural changes to complex models with many moving parts ...",
+                        "title": null,
+                        "type": "comment",
+                        "url": null
+                      },
+                      {
+                        "author": "alirezamshi",
+                        "children": [],
+                        "created_at": "2026-11-12T21:16:58.000Z",
+                        "created_at_i": 1794518218,
+                        "id": 50474409,
+                        "options": [],
+                        "parent_id": 50474207,
+                        "points": null,
+                        "story_id": 50471281,
+                        "text": "&gt; Woah, now that is extremely impressive.\nI think Kapso could be used as an _incredible_ resource to AB test internal architectural changes to complex models with many moving parts ...<p>I think if a task is iterative and needs experimentation to find the optimal solution, then Kapso can be used there (hopefully helps)!",
+                        "title": null,
+                        "type": "comment",
+                        "url": null
+                      }
+                    ],
+                    "created_at": "2026-11-12T21:00:20.000Z",
+                    "created_at_i": 1794517220,
+                    "id": 50474207,
+                    "options": [],
+                    "parent_id": 50473705,
+                    "points": null,
+                    "story_id": 50471281,
+                    "text": "Yeah, I agree with that. We have started Kapso for predictive modelling on relational databases before RelArena came out, so Relbench was the only popular public benchmark. We surely try Kapso on it too.<p>To test it further in live environment (additional to enterprise environment of our customers), we participated with Kapso in AI olympiad this year, and surpassed all human participants, and became top 3 AI systems: <a href=\"https:&#x2F;&#x2F;ioai-official.org&#x2F;ai-models-track&#x2F;ioai%c2%b2-2026-report&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;ioai-official.org&#x2F;ai-models-track&#x2F;ioai%c2%b2-2026-re...</a>. In IOAI2, six expert-designed tasks, a single-GPU, and 2 hours budget were given to autonomous agents for deliver solutions without any human intervention.",
+                    "title": null,
+                    "type": "comment",
+                    "url": null
+                  }
+                ],
+                "created_at": "2026-11-12T20:26:49.000Z",
+                "created_at_i": 1794515209,
+                "id": 50473705,
+                "options": [],
+                "parent_id": 50472775,
+                "points": null,
+                "story_id": 50471281,
+                "text": "Thank you for sharing!<p>I can appreciate surpassing foundation models in RelBench, but I’ve found that peers in our space strongly prefer RelArena because it reruns submitted implementations under shared evaluation protocols. IMHO Prior Labs does a great job of providing a controlled and transparent environment.<p>In RelBench, hypothetically, a solution could mine for days, weeks, or months for specialized, handcrafted features. I’d would be extremely interested in how the cumulative cost of that exhaustive search scales to new, enterprise-scale databases.<p>As per the leaderboards you reference: &quot;The RelBench leaderboard uses self-reported prediction files, so we rely on the authors to submit in good faith ... For a more controlled and transparent evaluation on RelBench tasks, please see RelArena&quot;.<p>I would love to see Kapso’s performance in a controlled environment like RelArena, to understand how this approach compares with Relflow and other relational learning methods in an apples-to-apples comparison!",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-11-12T19:24:01.000Z",
+            "created_at_i": 1794511441,
+            "id": 50472775,
+            "options": [],
+            "parent_id": 50472579,
+            "points": null,
+            "story_id": 50471281,
+            "text": "Thanks for your comment. We have also tried it ourselves in relbench (Stanford&#x27;s predictive modelling on relational databases), and surpassed tabular foundational models: <a href=\"https:&#x2F;&#x2F;github.com&#x2F;Leeroo-AI&#x2F;kapso&#x2F;tree&#x2F;main&#x2F;benchmarks&#x2F;relbench\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;Leeroo-AI&#x2F;kapso&#x2F;tree&#x2F;main&#x2F;benchmarks&#x2F;relb...</a><p>Our hypothesis is that similar to RL principle, you can experiment in the environment (predictive modelling on relational databases), learn from it, and compound your domain harness with these bank of lessons, instead of re-training foundational table model, which puts these learnings in model weights. This enables faster iteration, and transparent learning over time.<p>As a proof for this domain, Kapso leads in classification, regression and recommendation tasks vs. best tabular foundational model (Kumo AI&#x2F;Nvidia): <a href=\"https:&#x2F;&#x2F;star-project.stanford.edu&#x2F;relbench&#x2F;leaderboard&#x2F;#classification\" rel=\"nofollow\">https:&#x2F;&#x2F;star-project.stanford.edu&#x2F;relbench&#x2F;leaderboard&#x2F;#clas...</a>",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-12T19:11:02.000Z",
+        "created_at_i": 1794510662,
+        "id": 50472579,
+        "options": [],
+        "parent_id": 50471281,
+        "points": null,
+        "story_id": 50471281,
+        "text": "Over at <a href=\"https:&#x2F;&#x2F;relflow.ai\" rel=\"nofollow\">https:&#x2F;&#x2F;relflow.ai</a> (an OSS model factory) used Kapso to help harness an HPO loop on RelArena. RelArena is like RelBench, but is maintained and regulated by Prior Labs to isolate data leakage that can taint modern benchmarks.<p>Kapso was able to efficiently calibrate Relflow&#x27;s hyperparameters on 21 structured data modeling tasks, and we were able to outperform TabPFN on the majority of the larger data modeling tasks despite not using any ICL, and using ~1% of the number of params of TabPFN.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "fcortes",
+        "children": [
+          {
+            "author": "alirezamshi",
+            "children": [
+              {
+                "author": "salomonk_mur",
+                "children": [],
+                "created_at": "2026-11-13T02:18:21.000Z",
+                "created_at_i": 1794536301,
+                "id": 50477242,
+                "options": [],
+                "parent_id": 50473694,
+                "points": null,
+                "story_id": 50471281,
+                "text": "As a very heavy Kapso user (the WhatsApp product), I really think you should change the name.<p>Not only because they were first and it&#x27;s an amazing product. It&#x27;s also growing tons, in a market with many people (basically everywhere WhatsApp is the defacto communication channel).<p>Your product will be buried under their success in SEO and GEO.",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-11-12T20:25:58.000Z",
+            "created_at_i": 1794515158,
+            "id": 50473694,
+            "options": [],
+            "parent_id": 50473597,
+            "points": null,
+            "story_id": 50471281,
+            "text": "Yeah, originally, it came from first letters of &quot;Knowledge-grounded framework for Autonomous Program Synthesis and Optimization&quot;, then a few weeks later, we saw this Whatsapp integration product. For the moment, our pip is &quot;leeroo-kapso&quot;, but we&#x27;re considering to change the name! Thanks for the recommendation.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-12T20:20:03.000Z",
+        "created_at_i": 1794514803,
+        "id": 50473597,
+        "options": [],
+        "parent_id": 50471281,
+        "points": null,
+        "story_id": 50471281,
+        "text": "FYI, you may want to reconsider the naming as there&#x27;s already a fairly popular service named Kapso [1] for integrating WhatsApp into other products (not related btw).<p>[1] <a href=\"https:&#x2F;&#x2F;kapso.com&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;kapso.com&#x2F;</a>",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-11-12T17:51:23.000Z",
+    "created_at_i": 1794505883,
+    "id": 50471281,
+    "options": [],
+    "parent_id": null,
+    "points": 45,
+    "story_id": 50471281,
+    "text": "Hey HN! We&#x27;re Alireza and Majid building Leeroo (<a href=\"https:&#x2F;&#x2F;leeroo.com&#x2F;\">https:&#x2F;&#x2F;leeroo.com&#x2F;</a>). Previously we’ve built AI systems for products with millions of users, including at LinkedIn and Meta. We’re now focusing on building AI systems for enterprise data. Today, we&#x27;re open-sourcing Kapso (<a href=\"https:&#x2F;&#x2F;github.com&#x2F;Leeroo-AI&#x2F;kapso\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;Leeroo-AI&#x2F;kapso</a>), an engine that runs experiments, deploys the best solution, and learns from every run.<p>The nature of data work is iterative: investigate, form hypotheses, experiment, and improve based on what you learn. This bottom-up process is the only way to deliver meaningful outcomes quickly in large, messy enterprise data environments. Consultants gathering context in meetings or teams defining a business ontology upfront to fit into the data has no chance of execution, in quarters and sometimes years. An AI-native system should automate this process, compounding learning to each new investigation and implementation.<p>For instance, one of our enterprise projects was moving a company off its old data estate onto a lakehouse with more than 30 source-system families, thousands of tables and transformations, and hundreds of BI reports. No individual or AI agent knew how that data estate was connected and operated. The only way to learn it was to investigate the company&#x27;s repos, dbt models, documentation, and data itself and propose hypotheses about the estate, run experiments, and learn from them, until we understand how each system behaves and under which conditions.<p>The iterative work goes beyond understanding how data and systems fit together, and the business operations. Building useful software is iterative too. Whether you’re optimizing a warehouse, building a lakehouse pipeline or predicting churn, you need to run experiments and learn what works best in that environment. As you deliver more projects, that know-how compounds, similar in principle to RL. RAGing documentation has little value until it has been tried in a specific environment and the consequences are learned. As with human engineering work, experimentation and learning should happen in a sandbox.<p>We built Kapso for this kind of work, you give it an objective and success criteria, and it works towards an optimum solution that can be deployed on your stack.<p>You can view a video walkthrough here: <a href=\"https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=W4FHlza1fRs\" rel=\"nofollow\">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=W4FHlza1fRs</a><p>Here’s how it works…<p>Kapso has a bank of lessons that are induced or deduced from the past experiments, and each carries a credence score, conditions on where it applies, and the evidence behind it.  For each new experiment, an ideation module proposes ideas considering the earlier lessons, re-ranks them by expected return against the budget each would use, and sends the top-ranked ones to the implementor. Because the bank keeps learning from the past experiments in that environment, the proposed ideas are better suited to it than generic hypotheses from an LLM or RAG. Also, results of each experiment are verified by a verifier module that no experiment can access and cheat. As we’ve found when building such systems, sometimes the success criteria and evaluation tests need to be evolved. The experimentation modules can propose updates to the metrics and criteria for the verifier to approve or reject.<p>After each run, learn() updates the bank of lessons’ scores and boundaries using the evidence from that run. Changes to the bank can also be A&#x2F;B tested by running otherwise identical builds with the previous and updated banks. The bank is built on git, so you can share your experience with others, list the banks available to you, and update them (`kapso experience share&#x2F;list&#x2F;update` in CLI). The system is model-agnostic and coding-agent-agnostic.<p>kapso.deploy(solution, target_stack) follows the same workflow, runs a shorter experimentation loop to adapt the best solution to the target stack (e.g. Docker, Modal, BentoCloud, LangGraph). Every domain has a harness to start from, you can write your own domain harness with &#x2F;kapso:harness in the plugin or through CLI (kapso harness new &lt;name&gt;), and compound over that by running experimentations.<p>We ran it on some public benchmarks and live competitions, with the following results…<p>- Predictive modelling on relational databases: first on RelBench, Kumo AI (now Nvidia) and Stanford&#x27;s benchmark, ahead of the best tabular foundation model (<a href=\"https:&#x2F;&#x2F;star-project.stanford.edu&#x2F;relbench&#x2F;leaderboard&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;star-project.stanford.edu&#x2F;relbench&#x2F;leaderboard&#x2F;</a>). This shows that keeping the learning in the harness-level can beat foundational table models. Updating a bank of lessons costs far less than retraining a tabular foundation model.<p>- ML Engineering: First on OpenAI&#x27;s MLE-bench at submission, still among the top open-source systems (<a href=\"https:&#x2F;&#x2F;github.com&#x2F;openai&#x2F;mle-bench&#x2F;pull&#x2F;107\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;openai&#x2F;mle-bench&#x2F;pull&#x2F;107</a>).<p>- AI competitions: ahead of the best agent the ALE-Bench authors at Sakana AI reported, and running autonomously at the live International Olympiad in AI 2026, above all 471 human contestants and in the top three AI systems (<a href=\"https:&#x2F;&#x2F;ioai-official.org&#x2F;ai-models-track&#x2F;ioai%c2%b2-2026-report&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;ioai-official.org&#x2F;ai-models-track&#x2F;ioai%c2%b2-2026-re...</a>).<p>We have a public bank for ML and Data at Leeroopedia (<a href=\"https:&#x2F;&#x2F;leeroopedia.com&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;leeroopedia.com&#x2F;</a>): around 100k pages extracted by experimenting on papers and repos, about 6M requests a month, about 28% from AI agents.<p>If you are at a growing company with a complex data estate across multiple systems and functions, and your data and AI team is stretched, we would love to help!<p><a href=\"https:&#x2F;&#x2F;github.com&#x2F;Leeroo-AI&#x2F;kapso\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;Leeroo-AI&#x2F;kapso</a>",
+    "title": "Show HN: Kapso – Iterative learning from enterprise data",
+    "type": "story",
+    "url": null
+  },
+  "comments": [
+    {
+      "author": "granthamctaylor",
+      "text": "Over at  https://relflow.ai  (an OSS model factory) used Kapso to help harness an HPO loop on RelArena. RelArena is like RelBench, but is maintained and regulated by Prior Labs to isolate data leakage that can taint modern benchmarks. Kapso was able to efficiently calibrate Relflow's hyperparameters on 21 structured data modeling tasks, and we were able to outperform TabPFN on the majority of the larger data modeling tasks despite not using any ICL, and using ~1% of the number of params of TabPFN.",
+      "at": "2026-11-12T19:11:02.000Z",
+      "url": "https://news.ycombinator.com/item?id=50472579"
+    },
+    {
+      "author": "alirezamshi",
+      "text": "Thanks for your comment. We have also tried it ourselves in relbench (Stanford's predictive modelling on relational databases), and surpassed tabular foundational models:  https://github.com/Leeroo-AI/kapso/tree/main/benchmarks/relb...  Our hypothesis is that similar to RL principle, you can experiment in the environment (predictive modelling on relational databases), learn from it, and compound your domain harness with these bank of lessons, instead of re-training foundational table model, which puts these learnings in model weights. This enables faster iteration, and transparent learning over time. As a proof for this domain, Kapso leads in classification, regression and recommendation tasks vs. best tabular foundational model (Kumo AI/Nvidia):  https://star-project.stanford.edu/relbench/leaderboard/#clas...",
+      "at": "2026-11-12T19:24:01.000Z",
+      "url": "https://news.ycombinator.com/item?id=50472775"
+    },
+    {
+      "author": "alirezamshi",
+      "text": "I am very interested to hear others' perspectives on this topic: Should we integrate experimental learnings by evolving the agent harness, or do RL-based post-training, and leave it in LLM's weights? Or Both?",
+      "at": "2026-11-12T19:28:22.000Z",
+      "url": "https://news.ycombinator.com/item?id=50472853"
+    },
+    {
+      "author": "granthamctaylor",
+      "text": "Thank you for sharing! I can appreciate surpassing foundation models in RelBench, but I’ve found that peers in our space strongly prefer RelArena because it reruns submitted implementations under shared evaluation protocols. IMHO Prior Labs does a great job of providing a controlled and transparent environment. In RelBench, hypothetically, a solution could mine for days, weeks, or months for specialized, handcrafted features. I’d would be extremely interested in how the cumulative cost of that exhaustive search scales to new, enterprise-scale databases. As per the leaderboards you reference: \"The RelBench leaderboard uses self-reported prediction files, so we rely on the authors to submit in good faith ... For a more controlled and transparent evaluation on RelBench tasks, please see RelArena\". I would love to see Kapso’s performance in a controlled environment like RelArena, to understand how this approach compares with Relflow and other relational learning methods in an apples-to-apples comparison!",
+      "at": "2026-11-12T20:26:49.000Z",
+      "url": "https://news.ycombinator.com/item?id=50473705"
+    },
+    {
+      "author": "alirezamshi",
+      "text": "Yeah, I agree with that. We have started Kapso for predictive modelling on relational databases before RelArena came out, so Relbench was the only popular public benchmark. We surely try Kapso on it too. To test it further in live environment (additional to enterprise environment of our customers), we participated with Kapso in AI olympiad this year, and surpassed all human participants, and became top 3 AI systems:  https://ioai-official.org/ai-models-track/ioai%c2%b2-2026-re... . In IOAI2, six expert-designed tasks, a single-GPU, and 2 hours budget were given to autonomous agents for deliver solutions without any human intervention.",
+      "at": "2026-11-12T21:00:20.000Z",
+      "url": "https://news.ycombinator.com/item?id=50474207"
+    },
+    {
+      "author": "granthamctaylor",
+      "text": "Woah, now that is extremely impressive. I think Kapso could be used as an _incredible_ resource to AB test internal \narchitectural changes to complex models with many moving parts ...",
+      "at": "2026-11-12T21:13:15.000Z",
+      "url": "https://news.ycombinator.com/item?id=50474360"
+    },
+    {
+      "author": "alirezamshi",
+      "text": "> Woah, now that is extremely impressive.\nI think Kapso could be used as an _incredible_ resource to AB test internal architectural changes to complex models with many moving parts ... I think if a task is iterative and needs experimentation to find the optimal solution, then Kapso can be used there (hopefully helps)!",
+      "at": "2026-11-12T21:16:58.000Z",
+      "url": "https://news.ycombinator.com/item?id=50474409"
+    },
+    {
+      "author": "fcortes",
+      "text": "FYI, you may want to reconsider the naming as there's already a fairly popular service named Kapso [1] for integrating WhatsApp into other products (not related btw). [1]  https://kapso.com/",
+      "at": "2026-11-12T20:20:03.000Z",
+      "url": "https://news.ycombinator.com/item?id=50473597"
+    },
+    {
+      "author": "alirezamshi",
+      "text": "Yeah, originally, it came from first letters of \"Knowledge-grounded framework for Autonomous Program Synthesis and Optimization\", then a few weeks later, we saw this Whatsapp integration product. For the moment, our pip is \"leeroo-kapso\", but we're considering to change the name! Thanks for the recommendation.",
+      "at": "2026-11-12T20:25:58.000Z",
+      "url": "https://news.ycombinator.com/item?id=50473694"
+    },
+    {
+      "author": "salomonk_mur",
+      "text": "As a very heavy Kapso user (the WhatsApp product), I really think you should change the name. Not only because they were first and it's an amazing product. It's also growing tons, in a market with many people (basically everywhere WhatsApp is the defacto communication channel). Your product will be buried under their success in SEO and GEO.",
+      "at": "2026-11-13T02:18:21.000Z",
+      "url": "https://news.ycombinator.com/item?id=50477242"
+    }
+  ],
+  "comments_complete": true
+}

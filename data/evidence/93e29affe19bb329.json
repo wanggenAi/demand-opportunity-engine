@@ -1,0 +1,159 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43713",
+  "collected_at": "2026-11-13T09:29:05.668695+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43713",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43713/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43713/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43713/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43713",
+    "id": 6353150812,
+    "node_id": "I_kwDOC4Q8Qs8AAAABeq1jXA",
+    "number": 43713,
+    "title": "HTTP Request node (v3+) re-decodes valid UTF-8 JSON responses as GB18030 when the text contains Latin-1 range characters",
+    "user": {
+      "login": "dami1A",
+      "id": 44978183,
+      "node_id": "MDQ6VXNlcjQ0OTc4MTgz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/44978183?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dami1A",
+      "html_url": "https://github.com/dami1A",
+      "followers_url": "https://api.github.com/users/dami1A/followers",
+      "following_url": "https://api.github.com/users/dami1A/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dami1A/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dami1A/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dami1A/subscriptions",
+      "organizations_url": "https://api.github.com/users/dami1A/orgs",
+      "repos_url": "https://api.github.com/users/dami1A/repos",
+      "events_url": "https://api.github.com/users/dami1A/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dami1A/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582010757,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cXhQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:nodes",
+        "name": "team:nodes",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Nodes team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 7,
+    "created_at": "2026-11-12T15:30:18Z",
+    "updated_at": "2026-11-13T05:17:31Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\n**Describe the bug**\n\nWith the response format left to automatic detection, the HTTP Request node can return mojibake for a perfectly valid\n\nUTF-8 response, even when the server sends `Content-Type: application/json; charset=utf-8`. French text is enough to\n\ntrigger it: a guillemet, a non-breaking space (U+00A0) and an accented letter, e.g. `« écoute »`. Once triggered,\n\nthe whole response body is re-decoded, so every accented character in every field is corrupted, not only the passage that\n\ntriggered it.\n\nExample: `{\"titre\":\"Point d'étape\",\"corps\":\"Décision : « élargir » le périmètre.\"}` comes out as\n\n`{\"titre\":\"Point d'茅tape\",\"corps\":\"D茅cision : 芦聽茅largir聽禄 le p茅rim猫tre.\"}` (output reproduced on 2.46.6 with the\n\nnode's own helpers; the space before the colon is a regular space in this example, the two around the word are U+00A0).\n\n**Root cause**\n\n`packages/nodes-base/nodes/HttpRequest/V3/utils/buffer-decoding.ts`, `binaryToStringWithEncodingDetection`:\n\n1. A declared `charset=utf-8` is not treated as authoritative, because it equals `DEFAULT_ENCODING`.\n\n2. The body is decoded as UTF-8. Then `HIGH_ASCII_PATTERN` (`/[\\x80-\\xFF]{3,}/`) is tested on the decoded **string**, where\n\nit matches three consecutive code points in U+0080 to U+00FF (`«`, U+00A0, `é`...) of a correctly decoded text, not raw\n\nhigh bytes.\n\n3. `detectBinaryEncoding` returns UTF-8, so the loop over `gb18030`, `gbk` and `gb2312` runs and keeps the first decoding\n\nwithout U+FFFD. The UTF-8 bytes of Latin text very often pair up as valid GB18030, so the corrupted text is returned.\n\n**Workaround**\n\nSet the node's Response Format explicitly to JSON: the body is then parsed as JSON, without encoding detection.\n\n### To Reproduce\n\nAny endpoint returning `application/json; charset=utf-8` with the body above, called by an HTTP Request node with the\n\ndefault response format. Or directly, inside the n8n container:\n\n`js`\n\nconst f = require('n8n-nodes-base/dist/nodes/HttpRequest/V3/utils/buffer-decoding.js').binaryToStringWithEncodingDetection;\n\n// helpers = the node's own helpers (binaryToBuffer, binaryToString, detectBinaryEncoding)\n\nconst s = '{\"t\":\"Il a dit « écoute ».\"}';\n\nconsole.log(await f(Buffer.from(s, 'utf8'), 'application/json; charset=utf-8', helpers));\n\n// -> {\"t\":\"Il a dit 芦聽茅coute聽禄.\"}\n\n### Expected behavior\n\nA body that decodes as UTF-8 without any U+FFFD is valid UTF-8 and should be returned as is. Re-decoding it in another\n\ncharset can only corrupt it.\n\n### Debug Info\n\nOnly fall back to detection when UTF-8 decoding actually failed, for example\n\n`if (decodedString.includes(REPLACEMENT_CHAR)) { ... }` instead of also testing `HIGH_ASCII_PATTERN` on the decoded\n\nstring. Optionally, honor a declared `charset=utf-8` when the decoding has no replacement character.\n\n### Operating System\n\nUbuntu\n\n### n8n Version\n\nn8n 2.46.6 (self-hosted, Docker image `n8nio/n8n:2.46.6`); the same logic is still on `master` as of 2026-11-12.\n\n### Node.js Version\n\nHTTP Request node typeVersion 3 and above.\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43713/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43713/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @dami1A,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9752\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9752](https://linear.app/n8n/issue/GHC-9752)",
+      "at": "2026-11-12T15:30:28Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43713#issuecomment-6827923924"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "I checked the current `buffer-decoding.ts`: the report matches the code path. Even when `charset=utf-8` is present, it falls through because that equals `DEFAULT_ENCODING`; after UTF-8 decoding, `HIGH_ASCII_PATTERN` is applied to the decoded string and can trigger a GB18030/GBK/GB2312 retry. One important edge case for a fix: checking only for U+FFFD does not prove the original bytes were invalid UTF-8, since a valid UTF-8 body can contain the literal replacement character. It would be safer to make the declared UTF-8 charset authoritative, or validate the original bytes before using the legacy charset fallback.",
+      "at": "2026-11-12T16:05:16Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43713#issuecomment-6828816566"
+    },
+    {
+      "author": "dami1A",
+      "text": "Thanks for confirming, and good catch on the literal U+FFFD. A strict decoder settles it without any heuristic: `new TextDecoder('utf-8', {fatal: true }).decode(buf)` succeeds on any valid UTF-8 body, including one that contains a literal U+FFFD, and throws on invalid bytes. The legacy fallback (chardet, then the GB18030 family) would then run only when that strict decode throws.\n\nI tried it on 2.46.6: valid UTF-8 with non-breaking spaces and accents, and valid UTF-8 with a literal U+FFFD, are both kept as is; real Latin-1 bytes and real GBK bytes throw, so they still reach the fallback, which decodes the GBK correctly. Making a declared `charset=utf-8` authoritative is a good extra guard, but the strict check also covers servers that send no charset at all.\n\nFor triage: on our instance we also found stored text with the same pattern (French UTF-8 read back as GB18030) written as early as June 2026, so older releases are likely affected too.",
+      "at": "2026-11-12T16:18:57Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43713#issuecomment-6829189297"
+    },
+    {
+      "author": "fejzadenis",
+      "text": "Confirmed on 2.46.6 as well. Two things that may help triage:\n\n**The trigger is not exotic French punctuation.** `HIGH_ASCII_PATTERN` matches any three *consecutive* code points in U+0080-U+00FF, and ordinary European data produces those runs all the time (\"Küçük\", \"Příliš\", a non-breaking space next to an accent, \"«C»\"). In a sample of 24 realistic address/invoice records (DE, FR, PL, CS, HR, TR, SE), 1 contains such a run (4.2%). Because the test runs on the whole body rather than per field, a 50-row export hits it with roughly 88% probability and a 200-row payload with ~100% - so on real customer data with the response format left to automatic, corruption is the normal case, not the edge case. That is consistent with the stored rows dating back to June.\n\n**Rows already written are recoverable, not lost.** GB18030 was selected precisely because it decoded the body without U+FFFD, i.e. the wrong decode is a valid bijection on those bytes, so the original bytes are still sitting inside the stored string:\n\n```python\nfixed = mojibake.encode(\"gb18030\").decode(\"utf-8\")\n```\n\nVerified against the reporter's example (`Décision : « élargir » le périmètre.`) and against whole records: bytes in == bytes out. This holds only for rows produced by this path - text that also went through a lossy step (U+FFFD, truncation, `.toString()` on a buffer with invalid sequences) is not recoverable this way.\n\n**On the fix:** +1 for making a declared `charset=utf-8` authoritative, gated by `new TextDecoder(\"utf-8\", {fatal: true})` before any legacy fallback. That covers the no-charset case too, and real GBK bodies still throw and reach the detector, so nothing regresses for them. Strict/fatal only rejects invalid *bytes*, so a body that legitimately contains a literal U+FFFD character still decodes and is kept as UTF-8.",
+      "at": "2026-11-13T01:48:17Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43713#issuecomment-6841387987"
+    },
+    {
+      "author": "ardaerturk",
+      "text": "One small correction to the suggested fixture list: `\"Příliš\"` and `\"«C»\"` do **not** match `/[\\x80-\\xFF]{3,}/`. The first has no three-character run within U+0080–U+00FF (`ř` and `š` are outside that range); the ASCII `C` splits the second. `\"Küçük\"` does match, through `üçü`.\n\nFor regression inputs, I checked the [pattern at this commit](https://github.com/n8n-io/n8n/blob/df043ec5bedd736c437c5e962845b47dc7436635/packages/nodes-base/nodes/HttpRequest/V3/utils/buffer-decoding.ts#L6) alongside `new TextDecoder('utf-8', { fatal: true }).decode(bytes)` in an isolated Node v22.23.2 process:\n\n| Input | High-ASCII regex on the text | Strict UTF-8 decode |\n| --- | --- | --- |\n| `\"Plain ASCII\"` | false | passes unchanged |\n| `\"«\\u00a0écoute\\u00a0»\"` | true | passes unchanged |\n| `\"Küçük\"` | true | passes unchanged |\n| `\"Příliš\"` | false | passes unchanged |\n| `\"«C»\"` | false | passes unchanged |\n| Literal U+FFFD (`efbfbd` in UTF-8) | false | passes unchanged |\n| Latin-1 bytes `636166e9` | not evaluated | throws |\n| GBK bytes `d6d0cec4` | not evaluated | throws |\n\nThe text rows use `Buffer.from(text, 'utf8')`; the last two use `Buffer.from(hex, 'hex')`. Keeping the negative regex controls alongside the positive ones prevents a test from treating every accented string as a trigger. Literal U+FFFD is a separate control: its bytes are valid UTF-8, but it still satisfies the current `.includes(REPLACEMENT_CHAR)` condition.\n\nThese checks cover the source regex and strict decoder only. I have not exercised n8n's helper, encoding detector or legacy decoders here, and these fixtures do not establish corruption incidence or whether any stored row can be recovered.\n\nKeptick AI operator — sharing checked regression inputs.\n",
+      "at": "2026-11-13T04:00:55Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43713#issuecomment-6843448718"
+    },
+    {
+      "author": "blucca",
+      "text": "@dami1A Confirmed with complete HTTP Request 4.2 workflows on **2.41.7 and 2.46.6**, using loopback UTF-8 JSON fixtures: both modes finish successfully and every HTTP response is 200. Auto corrupts your French example and `Küçük`; changing only Response Format to JSON preserves all six records.\n\n[Runnable workflow exports, the same case, and JSON/JUnit results](https://github.com/blucca/n8n-check/tree/6dc3fd1/examples/http-utf8). ASCII, Czech, separated-guillemet and literal-U+FFFD controls remain intact in these runs. The README also has a manual two-version Action for reruns.\n\nIs the historical row cleanup your next task?",
+      "at": "2026-11-13T04:59:04Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43713#issuecomment-6844565082"
+    },
+    {
+      "author": "fejzadenis",
+      "text": "**Correction to my earlier fixture list — @ardaerturk is right on both, and the corrected version narrows the trigger.**\n\nChecked against the code at df043ec: `decodedString` is the plain UTF-8 decode and `HIGH_ASCII_PATTERN` is tested on that text, so a trigger needs three **consecutive** code points in U+0080–U+00FF:\n\n- `\"Příliš\"` — ř U+0159 and š U+0161 are outside the range → no match. My example was wrong.\n- `\"«C»\"` — the ASCII `C` splits the run → no match. My example was wrong.\n- `\"Küçük\"` — ü, ç, ü are adjacent → match, as you say.\n\nIt also narrows what I said about incidence. Re-measured on 18 realistic address/invoice records (DE, FR, PL, CS, ES, TR, SE, HR): **1** triggers. German, French, Polish and Czech records with isolated accents do **not** — the ASCII letters around the accent break the run. The trigger is *adjacent* Latin-1-range characters (Turkish vowel clusters like üçü; typographic guillemet + NBSP + accented letter), not accent density in general.\n\nThe severity point survives, because the test runs on the whole body rather than per field: one such record in a 50-row response corrupts every row of it. But someone estimating blast radius from this thread should not conclude that all non-English exports are affected — the practical advice is still to remove the guess, not to widen the pattern.\n\nDisclosure: I maintain a free in-browser cleaner for files already damaged by this path (https://fejzadenis.github.io/leadflow/free/) — irrelevant to fixing the node, mentioned only because the recovery recipe above assumes a terminal.",
+      "at": "2026-11-13T05:17:31Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43713#issuecomment-6844861387"
+    }
+  ],
+  "comments_complete": true
+}

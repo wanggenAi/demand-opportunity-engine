@@ -1,0 +1,65 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50473926",
+  "collected_at": "2026-11-13T09:29:05.668695+00:00",
+  "source": {
+    "author": "utemissov",
+    "children": [
+      {
+        "author": "bemeeker",
+        "children": [],
+        "created_at": "2026-11-12T22:07:15.000Z",
+        "created_at_i": 1794521235,
+        "id": 50475008,
+        "options": [],
+        "parent_id": 50473926,
+        "points": null,
+        "story_id": 50473926,
+        "text": "I think there are 2 different types of internal tools that are being defined as AI gains traction.<p>The first is what you mentioned in this post. Tools that are widely used, built and maintained by a dedicated team, and carry highly sensitive data or act as critical infrastructure.<p>The second is small, simple tools built by an individual or team to address a very specific problem in a tailored way.<p>The first type doesn’t need to change. The same dedicated team can keep bringing their knowledge and abilities, and the use of AI can broaden that across the organization. The second type is something that is owned by a specific person, or a team. These should not be handed off to an IT or engineering team\nto maintain, and should be built, owned, and maintained by the user.<p>I work on an open-source project called Pando (<a href=\"https:&#x2F;&#x2F;github.com&#x2F;trypando&#x2F;pando\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;trypando&#x2F;pando</a>) that helps give these sort of things a place, and makes it easy to track what users are building by enabling them to take ownership over their apps.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "sjdh76",
+        "children": [],
+        "created_at": "2026-11-12T22:40:17.000Z",
+        "created_at_i": 1794523217,
+        "id": 50475435,
+        "options": [],
+        "parent_id": 50473926,
+        "points": null,
+        "story_id": 50473926,
+        "text": "Depends on both team bosses political skills, more than the tech, because these are changes in Power structure and relationships within the org.<p>Its one of the things Sam Altman has flagged along with chip shortages thats blocking uptake in enterprise.<p>We saw the same story with Cloud. Central IT vs local business head fought over who had control of the cloud account. Local boss didnt want to wait for central IT, so they would swipe card and create shadow IT. Then we got sprawl where hundreds of teams had cloud accounts no one knew about and suddenly surprise bills would turn up. Too much sprawl triggers security and other issues and centralisation reasserts itself. Someone builds something good locally and leaves and local team has no clue where&#x2F;how it runs. That type of stuff brings back centralisation.<p>In short term whoever has more political capital wins. Longer term,  orgs that handle it well usually define what&#x27;s safe to selfserve (low risk, non production) and develop fast path for review of anything else, rather than blocking it and pushing it underground.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-11-12T20:40:04.000Z",
+    "created_at_i": 1794516004,
+    "id": 50473926,
+    "options": [],
+    "parent_id": null,
+    "points": 2,
+    "story_id": 50473926,
+    "text": "In a large company, a dedicated team might build an internal tool that dozens of other teams use. If your team needs a feature for its own workflow, you have to explain the use case, agree on how it fits into the shared tool, and wait for it to get prioritised.<p>With AI coding tools, it might now be faster for the team that needs the feature to build and maintain its own tool or completely scratch the tool and rebuild it if need. I’m curious how that plays out once the tool has been in use for a while.<p>So is paradigm shifting where we remove centralisation of building internal tools and let teams decide?",
+    "title": "Ask HN: Has AI coding changed who builds your internal tools?",
+    "type": "story",
+    "url": null
+  },
+  "comments": [
+    {
+      "author": "bemeeker",
+      "text": "I think there are 2 different types of internal tools that are being defined as AI gains traction. The first is what you mentioned in this post. Tools that are widely used, built and maintained by a dedicated team, and carry highly sensitive data or act as critical infrastructure. The second is small, simple tools built by an individual or team to address a very specific problem in a tailored way. The first type doesn’t need to change. The same dedicated team can keep bringing their knowledge and abilities, and the use of AI can broaden that across the organization. The second type is something that is owned by a specific person, or a team. These should not be handed off to an IT or engineering team\nto maintain, and should be built, owned, and maintained by the user. I work on an open-source project called Pando ( https://github.com/trypando/pando ) that helps give these sort of things a place, and makes it easy to track what users are building by enabling them to take ownership over their apps.",
+      "at": "2026-11-12T22:07:15.000Z",
+      "url": "https://news.ycombinator.com/item?id=50475008"
+    },
+    {
+      "author": "sjdh76",
+      "text": "Depends on both team bosses political skills, more than the tech, because these are changes in Power structure and relationships within the org. Its one of the things Sam Altman has flagged along with chip shortages thats blocking uptake in enterprise. We saw the same story with Cloud. Central IT vs local business head fought over who had control of the cloud account. Local boss didnt want to wait for central IT, so they would swipe card and create shadow IT. Then we got sprawl where hundreds of teams had cloud accounts no one knew about and suddenly surprise bills would turn up. Too much sprawl triggers security and other issues and centralisation reasserts itself. Someone builds something good locally and leaves and local team has no clue where/how it runs. That type of stuff brings back centralisation. In short term whoever has more political capital wins. Longer term,  orgs that handle it well usually define what's safe to selfserve (low risk, non production) and develop fast path for review of anything else, rather than blocking it and pushing it underground.",
+      "at": "2026-11-12T22:40:17.000Z",
+      "url": "https://news.ycombinator.com/item?id=50475435"
+    }
+  ],
+  "comments_complete": true
+}

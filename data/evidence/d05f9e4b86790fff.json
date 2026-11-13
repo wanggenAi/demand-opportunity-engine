@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43749",
+  "collected_at": "2026-11-13T09:29:05.668695+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43749",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43749/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43749/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43749/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43749",
+    "id": 6360123733,
+    "node_id": "I_kwDOC4Q8Qs8AAAABexfJVQ",
+    "number": 43749,
+    "title": "Project-level agents cannot access workflows outside of the project root",
+    "user": {
+      "login": "dakotapierson",
+      "id": 158359379,
+      "node_id": "U_kgDOCXBfUw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/158359379?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dakotapierson",
+      "html_url": "https://github.com/dakotapierson",
+      "followers_url": "https://api.github.com/users/dakotapierson/followers",
+      "following_url": "https://api.github.com/users/dakotapierson/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dakotapierson/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dakotapierson/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dakotapierson/subscriptions",
+      "organizations_url": "https://api.github.com/users/dakotapierson/orgs",
+      "repos_url": "https://api.github.com/users/dakotapierson/repos",
+      "events_url": "https://api.github.com/users/dakotapierson/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dakotapierson/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-12T22:16:24Z",
+    "updated_at": "2026-11-12T22:16:44Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "\n<!-- Please follow the template below. Skip the questions that are not relevant to you. -->\n\n## Describe the problem/error/question\nWhen trying to give an agent access to a workflow in the same project, the workflow cannot be connected unless it sits in the root of the project. If it is inside folders, they cannot be connected to the agent. Workflows are in the same project and published.\n\n## What is the error message (if any)?\nNo error message, just no workflows visible in the agent screen to connect.\n\n## Please share your workflow/screenshots/recording\n\n<img width=\"1219\" height=\"683\" alt=\"image\" src=\"https://github.com/user-attachments/assets/4153572d-dc2b-42fe-847e-6993f5548962\" />\n\n<img width=\"756\" height=\"561\" alt=\"image\" src=\"https://github.com/user-attachments/assets/10592e0c-e677-4917-8cb9-b9feb740842c\" />\n\n<img width=\"1240\" height=\"394\" alt=\"image\" src=\"https://github.com/user-attachments/assets/bd1e60c4-0767-4847-a623-02f5b06b1481\" />\n\n<img width=\"1203\" height=\"512\" alt=\"image\" src=\"https://github.com/user-attachments/assets/4758f126-f8bc-4d93-a714-cac59a601fea\" />\n\n```\n(Select the nodes on your canvas and use the keyboard shortcuts CMD+C/CTRL+C and CMD+V/CTRL+V to copy and paste the workflow.)\n⚠️ WARNING ⚠️ If you have sensitive data in your workflow (like API keys), please remove it before sharing.\n```\nN/A\n\n## Share the output returned by the last node\n<!-- If you need help with data transformations, please also share your expected output. -->\nN/A\n\n## Debug info\n\n### core\n\n- n8nVersion: 2.46.6\n- platform: docker (cloud)\n- nodeJsVersion: 26.12.1\n- nodeEnv: production\n- database: sqlite\n- executionMode: regular\n- concurrency: 200\n- license: enterprise (production)\n\n### storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n### pruning\n\n- enabled: true\n- maxAge: 876600 hours\n- maxCount: 25000 executions\n\n### client\n\n- userAgent: mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/157.0.0.0 safari/537.36\n- isTouchDevice: false\n\nGenerated at: 2026-11-12T20:54:21.581Z",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43749/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43749/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @dakotapierson,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9755\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9755](https://linear.app/n8n/issue/GHC-9755)",
+      "at": "2026-11-12T22:16:39Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43749#issuecomment-6837443744"
+    }
+  ],
+  "comments_complete": true
+}

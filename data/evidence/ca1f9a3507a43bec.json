@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50441350",
-  "collected_at": "2026-11-12T09:46:15.756996+00:00",
+  "collected_at": "2026-11-13T09:29:05.668695+00:00",
   "source": {
     "author": "peetle",
     "children": [
@@ -18,7 +18,54 @@
                     "children": [
                       {
                         "author": "brudgers",
-                        "children": [],
+                        "children": [
+                          {
+                            "author": "Eisenstein",
+                            "children": [
+                              {
+                                "author": "wondering5du",
+                                "children": [],
+                                "created_at": "2026-11-12T15:54:25.000Z",
+                                "created_at_i": 1794498865,
+                                "id": 50469447,
+                                "options": [],
+                                "parent_id": 50466891,
+                                "points": null,
+                                "story_id": 50441350,
+                                "text": "The product must be both amazing and extremely cheap to have a long term chance against the free and opensource vibed cads like solidcraft (and lets not forget freecad although it has lower vibe levels). And fusion for example is free for hobby use if you are ok with the limitations. I really wonder how you can compete in the hobbyist circles against stuff you can fork and tell ai to create the exact feature you want without asking permission or convincing anyone about your use case. The serious business is a different story since you need accountability and stability, but also there the attitudes may change eventually since some companies are already ditching autodesk products for cheaper yet very capable stuff like bricscad that offers also a fairly priced perpetual license. I am never again buying a subscription to cad software. If I cannot actually buy your product and own it I am simply not interested anymore.",
+                                "title": null,
+                                "type": "comment",
+                                "url": null
+                              },
+                              {
+                                "author": "brudgers",
+                                "children": [],
+                                "created_at": "2026-11-12T20:31:01.000Z",
+                                "created_at_i": 1794515461,
+                                "id": 50473768,
+                                "options": [],
+                                "parent_id": 50466891,
+                                "points": null,
+                                "story_id": 50441350,
+                                "text": "The odds that the people who hate everything in the space will love your product are close to zero.<p>Particularly when what they hate is paying.<p>If you want to stay in business, customers who want you to stay in business are much much much better than competing on price.<p>Consumer CAD has a long history and the absence of good products in the space is a consequence of its economic viability.<p>For context, I’ve been involved with CAD since 1989. I’ve seen many things come and go.",
+                                "title": null,
+                                "type": "comment",
+                                "url": null
+                              }
+                            ],
+                            "created_at": "2026-11-12T13:37:30.000Z",
+                            "created_at_i": 1794490650,
+                            "id": 50466891,
+                            "options": [],
+                            "parent_id": 50457950,
+                            "points": null,
+                            "story_id": 50441350,
+                            "text": "Or, capture the hobbyist and DIY market. Lots of people have 3D printers now. Lots of people hate the existing CAD offerings and especially the fact that the affordable offerings tie you to a cloud service. A product like this is very welcome.",
+                            "title": null,
+                            "type": "comment",
+                            "url": null
+                          }
+                        ],
                         "created_at": "2026-11-11T20:06:41.000Z",
                         "created_at_i": 1794427601,
                         "id": 50457950,
@@ -165,6 +212,53 @@
                 "title": null,
                 "type": "comment",
                 "url": null
+              },
+              {
+                "author": "misnome",
+                "children": [
+                  {
+                    "author": "alright2565",
+                    "children": [
+                      {
+                        "author": "ricardobeat",
+                        "children": [],
+                        "created_at": "2026-11-12T15:26:43.000Z",
+                        "created_at_i": 1794497203,
+                        "id": 50468958,
+                        "options": [],
+                        "parent_id": 50468186,
+                        "points": null,
+                        "story_id": 50441350,
+                        "text": "It still generates invalid solids apparently: <a href=\"https:&#x2F;&#x2F;github.com&#x2F;Open-Cascade-SAS&#x2F;OCCT&#x2F;pull&#x2F;1625\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;Open-Cascade-SAS&#x2F;OCCT&#x2F;pull&#x2F;1625</a>",
+                        "title": null,
+                        "type": "comment",
+                        "url": null
+                      }
+                    ],
+                    "created_at": "2026-11-12T14:47:43.000Z",
+                    "created_at_i": 1794494863,
+                    "id": 50468186,
+                    "options": [],
+                    "parent_id": 50466331,
+                    "points": null,
+                    "story_id": 50441350,
+                    "text": "It does in the next (8.1) release: <a href=\"https:&#x2F;&#x2F;github.com&#x2F;Open-Cascade-SAS&#x2F;OCCT&#x2F;issues&#x2F;172\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;Open-Cascade-SAS&#x2F;OCCT&#x2F;issues&#x2F;172</a>",
+                    "title": null,
+                    "type": "comment",
+                    "url": null
+                  }
+                ],
+                "created_at": "2026-11-12T12:43:15.000Z",
+                "created_at_i": 1794487395,
+                "id": 50466331,
+                "options": [],
+                "parent_id": 50448638,
+                "points": null,
+                "story_id": 50441350,
+                "text": "OCCT doesn’t handle “complete” fillet&#x2F;chamfer, right? Where the operation replaces the top line?",
+                "title": null,
+                "type": "comment",
+                "url": null
               }
             ],
             "created_at": "2026-11-11T01:16:20.000Z",
@@ -271,6 +365,84 @@
             "title": null,
             "type": "comment",
             "url": null
+          },
+          {
+            "author": "jfindley",
+            "children": [
+              {
+                "author": "filcuk",
+                "children": [
+                  {
+                    "author": "seesthruya",
+                    "children": [
+                      {
+                        "author": "filcuk",
+                        "children": [],
+                        "created_at": "2026-11-12T15:27:04.000Z",
+                        "created_at_i": 1794497224,
+                        "id": 50468963,
+                        "options": [],
+                        "parent_id": 50468852,
+                        "points": null,
+                        "story_id": 50441350,
+                        "text": "Fair, I only do 3D printing, so my experience is limited to that",
+                        "title": null,
+                        "type": "comment",
+                        "url": null
+                      },
+                      {
+                        "author": "jfindley",
+                        "children": [],
+                        "created_at": "2026-11-12T16:25:02.000Z",
+                        "created_at_i": 1794500702,
+                        "id": 50469926,
+                        "options": [],
+                        "parent_id": 50468852,
+                        "points": null,
+                        "story_id": 50441350,
+                        "text": "Solidworks have a &quot;for makers&quot; product if you&#x27;re not doing this professionally that has integrated CAM (assuming you don&#x27;t need 4&#x2F;5 axis support). It&#x27;s not free but it&#x27;s very cheap. If it worked on Linux I&#x27;d probably be using it.",
+                        "title": null,
+                        "type": "comment",
+                        "url": null
+                      }
+                    ],
+                    "created_at": "2026-11-12T15:21:18.000Z",
+                    "created_at_i": 1794496878,
+                    "id": 50468852,
+                    "options": [],
+                    "parent_id": 50468586,
+                    "points": null,
+                    "story_id": 50441350,
+                    "text": "This is reasonable criticism of Fusion, but I stick with it for the integrated CAM. Can&#x27;t really find any other easy to use &quot;professional&quot; caliber software with CAD &amp; CAM at that price.",
+                    "title": null,
+                    "type": "comment",
+                    "url": null
+                  }
+                ],
+                "created_at": "2026-11-12T15:07:54.000Z",
+                "created_at_i": 1794496074,
+                "id": 50468586,
+                "options": [],
+                "parent_id": 50468223,
+                "points": null,
+                "story_id": 50441350,
+                "text": "Fusion is arguably the easiest and best free option to pick up, yet I would urge people to avoid it. No linux support, won&#x27;t work with any workarounds, mostly online, with the non-CAD part of the UI being absolutely horrible and slow.  \nOh you want to add a new project? Let me animated from the bottom of a hundred of other projects laggily, then wait 5 seconds to be able to name the project, only for it to animate all the way down again!  \nThe project title is too long? Guess the only option is to view it online!\nSearch is slow as butt too.  \nThere are issues with some of the CAD features too, chamfer&#x2F;fillet sometimes just don&#x27;t work for no obvious reason (where solidworks has no trouble filleting the same geometry) and patterns are extremely, painfully slow.",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-11-12T14:49:18.000Z",
+            "created_at_i": 1794494958,
+            "id": 50468223,
+            "options": [],
+            "parent_id": 50449441,
+            "points": null,
+            "story_id": 50441350,
+            "text": "Onshape, which is also free and runs in the browser, is probably the better choice. This looks more similar to an autocad style drafting application, which isn&#x27;t an ideal fit for most 3D printing applications. This app is ideal for doing things like architectural work, or traditional machining where the 2D drafts are vital for sharing with the engineers who will actually make the part on a lathe or whatever.<p>3D printing doesn&#x27;t need 2D drafts so you&#x27;re usually better with a solid modelling CAD app. Fusion360, Solidworks and Onshape are all reasonable choices for this - I use onshape because I dislike fusion and solidworks doesn&#x27;t work on Linux.",
+            "title": null,
+            "type": "comment",
+            "url": null
           }
         ],
         "created_at": "2026-11-11T03:26:51.000Z",
@@ -287,7 +459,39 @@
       },
       {
         "author": "YuechenLi",
-        "children": [],
+        "children": [
+          {
+            "author": "ricardobeat",
+            "children": [
+              {
+                "author": "YuechenLi",
+                "children": [],
+                "created_at": "2026-11-12T20:07:31.000Z",
+                "created_at_i": 1794514051,
+                "id": 50473417,
+                "options": [],
+                "parent_id": 50469115,
+                "points": null,
+                "story_id": 50441350,
+                "text": "Not to brag too much, but I believe that my own code CAD language, Aetheris&#x27; Firmament, is a bit ahead of KCL in terms of language design, so maybe take a look and see if Firmament is a better target for you to map to?<p><a href=\"https:&#x2F;&#x2F;github.com&#x2F;yuechen-li-dev&#x2F;Aetheris&#x2F;blob&#x2F;master&#x2F;fixtures&#x2F;Regression&#x2F;Decompile&#x2F;ctc-01.firmament\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;yuechen-li-dev&#x2F;Aetheris&#x2F;blob&#x2F;master&#x2F;fixtu...</a>",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-11-12T15:35:27.000Z",
+            "created_at_i": 1794497727,
+            "id": 50469115,
+            "options": [],
+            "parent_id": 50449784,
+            "points": null,
+            "story_id": 50441350,
+            "text": "That&#x27;s awesome. I&#x27;m also working on a new B-Rep kernel for my own modelling app.<p>It&#x27;s small, ~2MB, but already handles a lot of complex modelling and has constraint-based sketching - I&#x27;m focusing on watertight shapes for 3D printing, not exact accuracy. All operations map to KCL (KittyCad - now Zoo) so it&#x27;s possible to edit the code directly.<p>Might be worth exchanging notes at some point :)",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
         "created_at": "2026-11-11T04:34:51.000Z",
         "created_at_i": 1794371691,
         "id": 50449784,
@@ -317,6 +521,21 @@
             "title": null,
             "type": "comment",
             "url": null
+          },
+          {
+            "author": "gntech",
+            "children": [],
+            "created_at": "2026-11-12T15:44:30.000Z",
+            "created_at_i": 1794498270,
+            "id": 50469287,
+            "options": [],
+            "parent_id": 50452576,
+            "points": null,
+            "story_id": 50441350,
+            "text": "Here is one recently released (commercial) full 3D 3-axis (+4th axis) with automatic feature recognition\n<a href=\"https:&#x2F;&#x2F;takshakcam.com&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;takshakcam.com&#x2F;</a><p>Solidcraft (fusion look-alike) have a CAM-module in the works but not released yet.\n<a href=\"https:&#x2F;&#x2F;github.com&#x2F;tangency-labs&#x2F;solidcraft\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;tangency-labs&#x2F;solidcraft</a><p>I bet Mitcad (also fusion look-alike) will also have a CAM-module soonish.\n<a href=\"https:&#x2F;&#x2F;github.com&#x2F;mitcad&#x2F;Mitcad\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;mitcad&#x2F;Mitcad</a><p>Here is one 2.5D CAM software (developed by me) although not a direct clone of anything.\n<a href=\"https:&#x2F;&#x2F;github.com&#x2F;chipload&#x2F;chipload\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;chipload&#x2F;chipload</a>",
+            "title": null,
+            "type": "comment",
+            "url": null
           }
         ],
         "created_at": "2026-11-11T12:20:13.000Z",
@@ -330,6 +549,113 @@
         "title": null,
         "type": "comment",
         "url": null
+      },
+      {
+        "author": "ur-whale",
+        "children": [],
+        "created_at": "2026-11-12T13:28:15.000Z",
+        "created_at_i": 1794490095,
+        "id": 50466783,
+        "options": [],
+        "parent_id": 50441350,
+        "points": null,
+        "story_id": 50441350,
+        "text": "Can test it w&#x2F;o signing in. Pass.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "carterschonwald",
+        "children": [
+          {
+            "author": "peetle",
+            "children": [],
+            "created_at": "2026-11-12T15:33:31.000Z",
+            "created_at_i": 1794497611,
+            "id": 50469089,
+            "options": [],
+            "parent_id": 50468154,
+            "points": null,
+            "story_id": 50441350,
+            "text": "STEP export is on our public roadmap: <a href=\"https:&#x2F;&#x2F;aircad.com&#x2F;roadmap#building\" rel=\"nofollow\">https:&#x2F;&#x2F;aircad.com&#x2F;roadmap#building</a><p>I&#x27;ll ping this thread when it&#x27;s ready.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-12T14:45:50.000Z",
+        "created_at_i": 1794494750,
+        "id": 50468154,
+        "options": [],
+        "parent_id": 50441350,
+        "points": null,
+        "story_id": 50441350,
+        "text": "i noticed you dont have step export! why is that?<p>i actually recently stood up my own end to end step reader writer as part of my own cad shenanigans, where i can have time to first geometry be in milliseconds even if the overal file is half a gig and physically needs a few seconds to parse. is there some reason why you dont have step export?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "pingudiver",
+        "children": [
+          {
+            "author": "peetle",
+            "children": [],
+            "created_at": "2026-11-12T15:35:03.000Z",
+            "created_at_i": 1794497703,
+            "id": 50469111,
+            "options": [],
+            "parent_id": 50468782,
+            "points": null,
+            "story_id": 50441350,
+            "text": "Thanks so much. Let me know if there&#x27;s anything you think is missing. There&#x27;s still a lot to build on our roadmap: <a href=\"https:&#x2F;&#x2F;aircad.com&#x2F;roadmap\" rel=\"nofollow\">https:&#x2F;&#x2F;aircad.com&#x2F;roadmap</a>",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-12T15:17:53.000Z",
+        "created_at_i": 1794496673,
+        "id": 50468782,
+        "options": [],
+        "parent_id": 50441350,
+        "points": null,
+        "story_id": 50441350,
+        "text": "This is super, just checked it out.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "kabes",
+        "children": [],
+        "created_at": "2026-11-12T20:12:49.000Z",
+        "created_at_i": 1794514369,
+        "id": 50473472,
+        "options": [],
+        "parent_id": 50441350,
+        "points": null,
+        "story_id": 50441350,
+        "text": "What&#x27;s the current state of foss in regards to replacing parasolid?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "akadeepesh",
+        "children": [],
+        "created_at": "2026-11-13T09:04:25.000Z",
+        "created_at_i": 1794560665,
+        "id": 50480450,
+        "options": [],
+        "parent_id": 50441350,
+        "points": null,
+        "story_id": 50441350,
+        "text": "Browser-based CAD with real professional-grade capabilities is a big deal. Especially the scripting API + AI integration that&#x27;s a much more interesting direction than simply adding an AI chatbot to existing tools. Great work!",
+        "title": null,
+        "type": "comment",
+        "url": null
       }
     ],
     "created_at": "2026-11-10T15:01:19.000Z",
@@ -337,7 +663,7 @@
     "id": 50441350,
     "options": [],
     "parent_id": null,
-    "points": 46,
+    "points": 90,
     "story_id": 50441350,
     "text": "Aircad is a professional CAD system running in the browser with deep AI integration. It includes professional grade drafting and documentation tools, NURBS-based solid modeling, and a lot more. You can make professional quality design documents with it. It is all integrated behind a scripting API that can do anything you can do in the interface and also perform complex modeling operations efficiently. It reads and writes file formats like DXF, DWG, STEP, and 3DM.<p>I built Aircad because I was frustrated with what was out there. Current CAD tools are expensive and slow to improve. New features barely move the needle. With Aircad, you have fast, powerful geometry tools for just about anything, from conceptual models to your final design.<p>The newer generation of web-based CAD isn’t comprehensive enough to complete a project or is slower than existing desktop products because it sends performance-sensitive work to a server (OnShape), or isn’t designed to scale to real work in a collaborative setting (many &quot;toy&quot; CAD tools).<p>Current CAD collaboration workflows are fragile, costly, and complex. They’re file-based and separate the design artifacts (eg PDFs) from the source. Collaboration is often an expensive add-on that raises your subscription, is hard to learn, and feels unnatural. Aircad builds it in: version history, drawing comparison, forking, and realtime collaboration.<p>AI in most CAD tools is tacked on as a plug-in instead of being deeply integrated, and those plug-ins are often inefficient, hard to adopt, and costly. Aircad has a built-in AI agent and a comprehensive scripting API with a stage-and-commit workflow, so you know exactly what is happening during a complex change. You can use AI to write new scripts and commands that extend Aircad with repeatable, shareable workflows.",
     "title": "Show HN: Aircad – Professional drafting and 3D modeling in the browser",
@@ -374,6 +700,24 @@
       "text": "If it is a B2B product, price it like a B2B product so you canbuild a B2B company with B2B service.",
       "at": "2026-11-11T20:06:41.000Z",
       "url": "https://news.ycombinator.com/item?id=50457950"
+    },
+    {
+      "author": "Eisenstein",
+      "text": "Or, capture the hobbyist and DIY market. Lots of people have 3D printers now. Lots of people hate the existing CAD offerings and especially the fact that the affordable offerings tie you to a cloud service. A product like this is very welcome.",
+      "at": "2026-11-12T13:37:30.000Z",
+      "url": "https://news.ycombinator.com/item?id=50466891"
+    },
+    {
+      "author": "wondering5du",
+      "text": "The product must be both amazing and extremely cheap to have a long term chance against the free and opensource vibed cads like solidcraft (and lets not forget freecad although it has lower vibe levels). And fusion for example is free for hobby use if you are ok with the limitations. I really wonder how you can compete in the hobbyist circles against stuff you can fork and tell ai to create the exact feature you want without asking permission or convincing anyone about your use case. The serious business is a different story since you need accountability and stability, but also there the attitudes may change eventually since some companies are already ditching autodesk products for cheaper yet very capable stuff like bricscad that offers also a fairly priced perpetual license. I am never again buying a subscription to cad software. If I cannot actually buy your product and own it I am simply not interested anymore.",
+      "at": "2026-11-12T15:54:25.000Z",
+      "url": "https://news.ycombinator.com/item?id=50469447"
+    },
+    {
+      "author": "brudgers",
+      "text": "The odds that the people who hate everything in the space will love your product are close to zero. Particularly when what they hate is paying. If you want to stay in business, customers who want you to stay in business are much much much better than competing on price. Consumer CAD has a long history and the absence of good products in the space is a consequence of its economic viability. For context, I’ve been involved with CAD since 1989. I’ve seen many things come and go.",
+      "at": "2026-11-12T20:31:01.000Z",
+      "url": "https://news.ycombinator.com/item?id=50473768"
     },
     {
       "author": "flowerthoughts",
@@ -418,6 +762,24 @@
       "url": "https://news.ycombinator.com/item?id=50449092"
     },
     {
+      "author": "misnome",
+      "text": "OCCT doesn’t handle “complete” fillet/chamfer, right? Where the operation replaces the top line?",
+      "at": "2026-11-12T12:43:15.000Z",
+      "url": "https://news.ycombinator.com/item?id=50466331"
+    },
+    {
+      "author": "alright2565",
+      "text": "It does in the next (8.1) release:  https://github.com/Open-Cascade-SAS/OCCT/issues/172",
+      "at": "2026-11-12T14:47:43.000Z",
+      "url": "https://news.ycombinator.com/item?id=50468186"
+    },
+    {
+      "author": "ricardobeat",
+      "text": "It still generates invalid solids apparently:  https://github.com/Open-Cascade-SAS/OCCT/pull/1625",
+      "at": "2026-11-12T15:26:43.000Z",
+      "url": "https://news.ycombinator.com/item?id=50468958"
+    },
+    {
       "author": "bpiroman",
       "text": "the landing page and copy is top quality",
       "at": "2026-11-11T01:08:56.000Z",
@@ -454,10 +816,52 @@
       "url": "https://news.ycombinator.com/item?id=50449622"
     },
     {
+      "author": "jfindley",
+      "text": "Onshape, which is also free and runs in the browser, is probably the better choice. This looks more similar to an autocad style drafting application, which isn't an ideal fit for most 3D printing applications. This app is ideal for doing things like architectural work, or traditional machining where the 2D drafts are vital for sharing with the engineers who will actually make the part on a lathe or whatever. 3D printing doesn't need 2D drafts so you're usually better with a solid modelling CAD app. Fusion360, Solidworks and Onshape are all reasonable choices for this - I use onshape because I dislike fusion and solidworks doesn't work on Linux.",
+      "at": "2026-11-12T14:49:18.000Z",
+      "url": "https://news.ycombinator.com/item?id=50468223"
+    },
+    {
+      "author": "filcuk",
+      "text": "Fusion is arguably the easiest and best free option to pick up, yet I would urge people to avoid it. No linux support, won't work with any workarounds, mostly online, with the non-CAD part of the UI being absolutely horrible and slow.  \nOh you want to add a new project? Let me animated from the bottom of a hundred of other projects laggily, then wait 5 seconds to be able to name the project, only for it to animate all the way down again!  \nThe project title is too long? Guess the only option is to view it online!\nSearch is slow as butt too.  \nThere are issues with some of the CAD features too, chamfer/fillet sometimes just don't work for no obvious reason (where solidworks has no trouble filleting the same geometry) and patterns are extremely, painfully slow.",
+      "at": "2026-11-12T15:07:54.000Z",
+      "url": "https://news.ycombinator.com/item?id=50468586"
+    },
+    {
+      "author": "seesthruya",
+      "text": "This is reasonable criticism of Fusion, but I stick with it for the integrated CAM. Can't really find any other easy to use \"professional\" caliber software with CAD & CAM at that price.",
+      "at": "2026-11-12T15:21:18.000Z",
+      "url": "https://news.ycombinator.com/item?id=50468852"
+    },
+    {
+      "author": "filcuk",
+      "text": "Fair, I only do 3D printing, so my experience is limited to that",
+      "at": "2026-11-12T15:27:04.000Z",
+      "url": "https://news.ycombinator.com/item?id=50468963"
+    },
+    {
+      "author": "jfindley",
+      "text": "Solidworks have a \"for makers\" product if you're not doing this professionally that has integrated CAM (assuming you don't need 4/5 axis support). It's not free but it's very cheap. If it worked on Linux I'd probably be using it.",
+      "at": "2026-11-12T16:25:02.000Z",
+      "url": "https://news.ycombinator.com/item?id=50469926"
+    },
+    {
       "author": "YuechenLi",
       "text": "Figure I try pitching at least, but would you consider evaluating my Aetheris kernel to use as Aircad's geometry kernel over OCCT?  https://github.com/yuechen-li-dev/Aetheris  There are currently a lot of newer browser CAD projects that already wraps OCCT WASM, like FluidCAD and Chili3D. And as you said previously, current CAD tools are slow to improve, and part of the reason is because of using kernels first built in the 1980s, and projects like Shapr3D and Plasticity both hit limitations of their existing kernels and switched to Parasolid when their project got bigger, and OCCT's per entity tolerance issue is pretty well know by now. On another topic, getting a plate with thousands of holes to mesh in under a second is some serious performance, and I do agree with your conclusion that most CAD apps are slow not because of programming language but because accurate NURBS math is inherently slow, but their is also the issues with the 2D constraint solver and fillet/boolean algorithms too. Happy to talk more about the geometry kernel stuff too.",
       "at": "2026-11-11T04:34:51.000Z",
       "url": "https://news.ycombinator.com/item?id=50449784"
+    },
+    {
+      "author": "ricardobeat",
+      "text": "That's awesome. I'm also working on a new B-Rep kernel for my own modelling app. It's small, ~2MB, but already handles a lot of complex modelling and has constraint-based sketching - I'm focusing on watertight shapes for 3D printing, not exact accuracy. All operations map to KCL (KittyCad - now Zoo) so it's possible to edit the code directly. Might be worth exchanging notes at some point :)",
+      "at": "2026-11-12T15:35:27.000Z",
+      "url": "https://news.ycombinator.com/item?id=50469115"
+    },
+    {
+      "author": "YuechenLi",
+      "text": "Not to brag too much, but I believe that my own code CAD language, Aetheris' Firmament, is a bit ahead of KCL in terms of language design, so maybe take a look and see if Firmament is a better target for you to map to?  https://github.com/yuechen-li-dev/Aetheris/blob/master/fixtu...",
+      "at": "2026-11-12T20:07:31.000Z",
+      "url": "https://news.ycombinator.com/item?id=50473417"
     },
     {
       "author": "androiddrew",
@@ -470,6 +874,54 @@
       "text": "Interesting. What kind of workflows and toolchains are you looking for? MasterCAM?",
       "at": "2026-11-11T19:21:50.000Z",
       "url": "https://news.ycombinator.com/item?id=50457340"
+    },
+    {
+      "author": "gntech",
+      "text": "Here is one recently released (commercial) full 3D 3-axis (+4th axis) with automatic feature recognition\n https://takshakcam.com/  Solidcraft (fusion look-alike) have a CAM-module in the works but not released yet.\n https://github.com/tangency-labs/solidcraft  I bet Mitcad (also fusion look-alike) will also have a CAM-module soonish.\n https://github.com/mitcad/Mitcad  Here is one 2.5D CAM software (developed by me) although not a direct clone of anything.\n https://github.com/chipload/chipload",
+      "at": "2026-11-12T15:44:30.000Z",
+      "url": "https://news.ycombinator.com/item?id=50469287"
+    },
+    {
+      "author": "ur-whale",
+      "text": "Can test it w/o signing in. Pass.",
+      "at": "2026-11-12T13:28:15.000Z",
+      "url": "https://news.ycombinator.com/item?id=50466783"
+    },
+    {
+      "author": "carterschonwald",
+      "text": "i noticed you dont have step export! why is that? i actually recently stood up my own end to end step reader writer as part of my own cad shenanigans, where i can have time to first geometry be in milliseconds even if the overal file is half a gig and physically needs a few seconds to parse. is there some reason why you dont have step export?",
+      "at": "2026-11-12T14:45:50.000Z",
+      "url": "https://news.ycombinator.com/item?id=50468154"
+    },
+    {
+      "author": "peetle",
+      "text": "STEP export is on our public roadmap:  https://aircad.com/roadmap#building  I'll ping this thread when it's ready.",
+      "at": "2026-11-12T15:33:31.000Z",
+      "url": "https://news.ycombinator.com/item?id=50469089"
+    },
+    {
+      "author": "pingudiver",
+      "text": "This is super, just checked it out.",
+      "at": "2026-11-12T15:17:53.000Z",
+      "url": "https://news.ycombinator.com/item?id=50468782"
+    },
+    {
+      "author": "peetle",
+      "text": "Thanks so much. Let me know if there's anything you think is missing. There's still a lot to build on our roadmap:  https://aircad.com/roadmap",
+      "at": "2026-11-12T15:35:03.000Z",
+      "url": "https://news.ycombinator.com/item?id=50469111"
+    },
+    {
+      "author": "kabes",
+      "text": "What's the current state of foss in regards to replacing parasolid?",
+      "at": "2026-11-12T20:12:49.000Z",
+      "url": "https://news.ycombinator.com/item?id=50473472"
+    },
+    {
+      "author": "akadeepesh",
+      "text": "Browser-based CAD with real professional-grade capabilities is a big deal. Especially the scripting API + AI integration that's a much more interesting direction than simply adding an AI chatbot to existing tools. Great work!",
+      "at": "2026-11-13T09:04:25.000Z",
+      "url": "https://news.ycombinator.com/item?id=50480450"
     }
   ],
   "comments_complete": true

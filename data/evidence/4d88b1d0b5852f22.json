@@ -1,0 +1,87 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50469325",
+  "collected_at": "2026-11-13T09:29:05.668695+00:00",
+  "source": {
+    "author": "vidarh",
+    "children": [
+      {
+        "author": "Ancalagon",
+        "children": [
+          {
+            "author": "vidarh",
+            "children": [],
+            "created_at": "2026-11-12T16:01:07.000Z",
+            "created_at_i": 1794499267,
+            "id": 50469556,
+            "options": [],
+            "parent_id": 50469380,
+            "points": null,
+            "story_id": 50458900,
+            "text": "Too high-level. That requires judgment, and takes unnecessarily much time.<p>I&#x27;m thinking more having a human effectively act like Playwright or other browser automation.<p>For lots of sites you won&#x27;t even need to farm out much. E.g. I have a workflow where an agent needs to occasionally bypass CloudFlare&#x27;s captcha to log in, and it just opens a VNC viewer on my desktop to let me interact with a non-remote-controlled browser (because they <i>do</i> detect that), to log in, captures the cookies, spins up a remote controlled browser and happily continues without me - the rest of the site doesn&#x27;t do any detection.<p>It happens rarely enough that it&#x27;s not been worth figuring out a fully automated workaround.<p>That&#x27;s the kind of thing I have in mind.<p>You can then if you want record all the interactions, and use it to improve detection bypass and feed a smaller and smaller proportion of tasks to humans.<p>Any attempt at detecting bots for these types of things in the long term only has a hope in hell of working for services <i>so low value</i> that the cost of a &quot;human Playwright&quot; for the occasional form filling and button pressing is too costly.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-12T15:50:28.000Z",
+        "created_at_i": 1794498628,
+        "id": 50469380,
+        "options": [],
+        "parent_id": 50469325,
+        "points": null,
+        "story_id": 50458900,
+        "text": "So, like, a travel planner?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "lastofthemojito",
+        "children": [],
+        "created_at": "2026-11-12T15:54:57.000Z",
+        "created_at_i": 1794498897,
+        "id": 50469454,
+        "options": [],
+        "parent_id": 50469325,
+        "points": null,
+        "story_id": 50458900,
+        "text": "The service called Going (formerly known as Scott&#x27;s Cheap Flights) reminds me of this.<p>It&#x27;s a subscription service to be alerted to cheap flights from your airport(s) of choice.<p>Essentially a few people scan Google Flights every day looking for flights that are priced abnormally low; if they find something, they send out alerts.<p>Technically, this is made worse by the human in the loop.  A computer program could analyze this data more quickly, more accurately, etc.<p>Legally, it would be against Google&#x27;s terms of service for Google Flights to do this programmatically.  So there are some people just running essentially the same searches every day.<p>And Going even credits which employee found each deal (I suspect to make it very clear that there is a human in the loop and they are not violating Google&#x27;s TOS).<p>But yeah, I wouldn&#x27;t be surprised if we see more of this sort of thing.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-11-12T15:46:28.000Z",
+    "created_at_i": 1794498388,
+    "id": 50469325,
+    "options": [],
+    "parent_id": 50459506,
+    "points": null,
+    "story_id": 50458900,
+    "text": "Prediction: For a short time we&#x27;ll see a market for services where humans will act as flesh-puppets for agents.<p>Mostly for offline services not otherwise accessible to agents (e.g. things requiring physical presence), but also for things where providers are get sufficiently aggressive at blocking that it&#x27;s cheaper to provide an API to request a human to do something than playing cat and mouse with blocking attempts.<p>Mostly - beyond fringe services - for a short time because most of the gaps people are willing to pay for will be closed by proper automation pretty quickly.",
+    "title": null,
+    "type": "comment",
+    "url": null
+  },
+  "comments": [
+    {
+      "author": "Ancalagon",
+      "text": "So, like, a travel planner?",
+      "at": "2026-11-12T15:50:28.000Z",
+      "url": "https://news.ycombinator.com/item?id=50469380"
+    },
+    {
+      "author": "vidarh",
+      "text": "Too high-level. That requires judgment, and takes unnecessarily much time. I'm thinking more having a human effectively act like Playwright or other browser automation. For lots of sites you won't even need to farm out much. E.g. I have a workflow where an agent needs to occasionally bypass CloudFlare's captcha to log in, and it just opens a VNC viewer on my desktop to let me interact with a non-remote-controlled browser (because they  do  detect that), to log in, captures the cookies, spins up a remote controlled browser and happily continues without me - the rest of the site doesn't do any detection. It happens rarely enough that it's not been worth figuring out a fully automated workaround. That's the kind of thing I have in mind. You can then if you want record all the interactions, and use it to improve detection bypass and feed a smaller and smaller proportion of tasks to humans. Any attempt at detecting bots for these types of things in the long term only has a hope in hell of working for services  so low value  that the cost of a \"human Playwright\" for the occasional form filling and button pressing is too costly.",
+      "at": "2026-11-12T16:01:07.000Z",
+      "url": "https://news.ycombinator.com/item?id=50469556"
+    },
+    {
+      "author": "lastofthemojito",
+      "text": "The service called Going (formerly known as Scott's Cheap Flights) reminds me of this. It's a subscription service to be alerted to cheap flights from your airport(s) of choice. Essentially a few people scan Google Flights every day looking for flights that are priced abnormally low; if they find something, they send out alerts. Technically, this is made worse by the human in the loop.  A computer program could analyze this data more quickly, more accurately, etc. Legally, it would be against Google's terms of service for Google Flights to do this programmatically.  So there are some people just running essentially the same searches every day. And Going even credits which employee found each deal (I suspect to make it very clear that there is a human in the loop and they are not violating Google's TOS). But yeah, I wouldn't be surprised if we see more of this sort of thing.",
+      "at": "2026-11-12T15:54:57.000Z",
+      "url": "https://news.ycombinator.com/item?id=50469454"
+    }
+  ],
+  "comments_complete": true
+}

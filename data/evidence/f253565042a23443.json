@@ -1,0 +1,261 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50468121",
+  "collected_at": "2026-11-13T09:29:05.668695+00:00",
+  "source": {
+    "author": "ponoru",
+    "children": [
+      {
+        "author": "jurglic",
+        "children": [
+          {
+            "author": "ponoru",
+            "children": [],
+            "created_at": "2026-11-12T15:01:23.000Z",
+            "created_at_i": 1794495683,
+            "id": 50468471,
+            "options": [],
+            "parent_id": 50468302,
+            "points": null,
+            "story_id": 50468121,
+            "text": "While building turri, I build quite some internal tools that I&#x27;m still using. I&#x27;m planning to open-source some of them.<p>Please, try it yourself and let me know what you think.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-12T14:53:35.000Z",
+        "created_at_i": 1794495215,
+        "id": 50468302,
+        "options": [],
+        "parent_id": 50468121,
+        "points": null,
+        "story_id": 50468121,
+        "text": "Really interesting idea. We need more tools like this to see if regenerative software actually works in practice. Nice to see someone trying it.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "dusano",
+        "children": [],
+        "created_at": "2026-11-12T14:54:21.000Z",
+        "created_at_i": 1794495261,
+        "id": 50468321,
+        "options": [],
+        "parent_id": 50468121,
+        "points": null,
+        "story_id": 50468121,
+        "text": "Check Chad Fowler&#x27;s The Phoenix architecture series for more information on regenerative software: <a href=\"https:&#x2F;&#x2F;chadfowler.com&#x2F;regenerative-software&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;chadfowler.com&#x2F;regenerative-software&#x2F;</a>",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "mariusziskra",
+        "children": [
+          {
+            "author": "ponoru",
+            "children": [
+              {
+                "author": "mariusziskra",
+                "children": [],
+                "created_at": "2026-11-13T07:11:28.000Z",
+                "created_at_i": 1794553888,
+                "id": 50479507,
+                "options": [],
+                "parent_id": 50469740,
+                "points": null,
+                "story_id": 50468121,
+                "text": "I went the other way: I do not generate code from scratch. In my workflow, the specification sis the source of truth. Every change goes in as a change request that becomes new tasks in the plan. Instead of recreating code, the agent modifies existing code. Migrations are strictly additive. Every schema change results in a new file, leaving previous files untouched. Each migration is backward-compatible. Destructive operations, such as DROP commands, are isolated into a separate, subsequent phase that I personally review.<p>The largest project I’ve managed this way has been in production for about six months and has already gone through 45 versions. So far I haven&#x27;t had encountered no no data loss so far”.<p>Renaming is where I would be wary of generating code from scratch. Based solely on a schema diff, a rename appears as the deletion of one element followed by the addition of a new one. Does turri ask about what you meant in such cases, or is there a way to specify this directly within the specification?",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-11-12T16:11:51.000Z",
+            "created_at_i": 1794499911,
+            "id": 50469740,
+            "options": [],
+            "parent_id": 50469347,
+            "points": null,
+            "story_id": 50468121,
+            "text": "Yes, turri will generate migrations with every change, so if you need to deploy a new version it will check against the current schema and generate it properly.<p>Honestly, I haven&#x27;t used it on some reasonable scale to fell the real issues of migrations yet. I consider this to be one of the biggest problems with the approach, but I think it&#x27;s addressable.<p>How do you approach this problem?",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-12T15:47:50.000Z",
+        "created_at_i": 1794498470,
+        "id": 50469347,
+        "options": [],
+        "parent_id": 50468121,
+        "points": null,
+        "story_id": 50468121,
+        "text": "How does regeneration deal with persistent state? If a **plain change leads to a different DB schema, does turri generate migrations, or is the data layer treated as something that can’t just be thrown away? This has been the hardest part for me with spec-first generation.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "radanskoric",
+        "children": [
+          {
+            "author": "ponoru",
+            "children": [
+              {
+                "author": "radanskoric",
+                "children": [
+                  {
+                    "author": "ponoru",
+                    "children": [
+                      {
+                        "author": "radanskoric",
+                        "children": [],
+                        "created_at": "2026-11-13T08:22:45.000Z",
+                        "created_at_i": 1794558165,
+                        "id": 50480100,
+                        "options": [],
+                        "parent_id": 50471774,
+                        "points": null,
+                        "story_id": 50468121,
+                        "text": "I was expecting it to generate the application twice and then do automatic testing side by side to confirm it works the same, or something like that.<p>Does it do anything similar?",
+                        "title": null,
+                        "type": "comment",
+                        "url": null
+                      }
+                    ],
+                    "created_at": "2026-11-12T18:22:58.000Z",
+                    "created_at_i": 1794507778,
+                    "id": 50471774,
+                    "options": [],
+                    "parent_id": 50470900,
+                    "points": null,
+                    "story_id": 50468121,
+                    "text": "Through multiple steps I would say.<p>First, it automatically confirms that all defined tests are passing but it&#x27;s hard to say if the defined tests are covering all the edge cases that are important.<p>It will also write a bunch of mutation tests and do the automatic tests based on the type of application.<p>At the end, you would still need to manually check to confirm the functionality (unless until you are confirming inital deletion test for a certain module).",
+                    "title": null,
+                    "type": "comment",
+                    "url": null
+                  }
+                ],
+                "created_at": "2026-11-12T17:28:19.000Z",
+                "created_at_i": 1794504499,
+                "id": 50470900,
+                "options": [],
+                "parent_id": 50470806,
+                "points": null,
+                "story_id": 50468121,
+                "text": "Ok, that makes a lot of sense. But how do you do it in practice? How do you test if the spec passes the deletion check?",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-11-12T17:22:32.000Z",
+            "created_at_i": 1794504152,
+            "id": 50470806,
+            "options": [],
+            "parent_id": 50470512,
+            "points": null,
+            "story_id": 50468121,
+            "text": "I consider this to be the most important concept of the regenerative software approach. Basically, if you can regenerate a certain module multiple times you are certain that you nailed down every detail that are describes that module.<p>If this is true, it means that each new change in the system can be reliably described with a small change in the system knowledge (usually it includes some small update in specs and tests) and regenerate with very high certainty that the produced code will be correct.<p>Basically, the regeneration test is putting a solid ground for all future improvements.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-12T17:03:52.000Z",
+        "created_at_i": 1794503032,
+        "id": 50470512,
+        "options": [],
+        "parent_id": 50468121,
+        "points": null,
+        "story_id": 50468121,
+        "text": "How do you enforce the deletion check? I understand that it is important to make sure the regeneration can be trusted but do I really need that?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-11-12T14:43:35.000Z",
+    "created_at_i": 1794494615,
+    "id": 50468121,
+    "options": [],
+    "parent_id": null,
+    "points": 8,
+    "story_id": 50468121,
+    "text": "Coding agents let me move fast. To keep up, I stopped reading the code, and with it I stopped understanding my own software. I lost my sense of engineering along with it. I was still the one accountable for software I didn&#x27;t understand. No workflow or better model fixed that, so I built turri.<p>turri is based on Pi and the concept of regenerative software introduced by Chad Fowler. The ability to regenerate the same piece of code multiple times and always get the same results in terms of functionality is called the deletion test and proves that your coding agent completely understands you. The idea is that every time part of the software needs to be changed, you regenerate a new version of the code based on the durable information you have about the system.<p>The durable system information includes specs, tests, ADRs, and other types of documents, and it is written in ***plain. You write these with the help of an agent, and Turri starts partial regeneration of the software you&#x27;re changing. You can repeat this process as many times as you want until you&#x27;re happy with the change you&#x27;re implementing. The regeneration also includes proofs that the generated code completely conforms to the system knowledge on which it was based (it implements all the tests that are part of the definition and automatically adds additional tests).<p>You can try this by cloning the repo or by installing it from my landing page. I created a desktop app to improve usability. Currently, it&#x27;s only suitable for new projects, but I&#x27;m working on adding support for existing projects.<p>I also wrote the full story in case you&#x27;re interested: <a href=\"https:&#x2F;&#x2F;turri.dev&#x2F;blog&#x2F;why-i-built-turri&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;turri.dev&#x2F;blog&#x2F;why-i-built-turri&#x2F;</a>",
+    "title": "Show HN: Turri – a coding agent with the power of regenerative software",
+    "type": "story",
+    "url": "https://github.com/turri-oss/turri"
+  },
+  "comments": [
+    {
+      "author": "jurglic",
+      "text": "Really interesting idea. We need more tools like this to see if regenerative software actually works in practice. Nice to see someone trying it.",
+      "at": "2026-11-12T14:53:35.000Z",
+      "url": "https://news.ycombinator.com/item?id=50468302"
+    },
+    {
+      "author": "ponoru",
+      "text": "While building turri, I build quite some internal tools that I'm still using. I'm planning to open-source some of them. Please, try it yourself and let me know what you think.",
+      "at": "2026-11-12T15:01:23.000Z",
+      "url": "https://news.ycombinator.com/item?id=50468471"
+    },
+    {
+      "author": "dusano",
+      "text": "Check Chad Fowler's The Phoenix architecture series for more information on regenerative software:  https://chadfowler.com/regenerative-software/",
+      "at": "2026-11-12T14:54:21.000Z",
+      "url": "https://news.ycombinator.com/item?id=50468321"
+    },
+    {
+      "author": "mariusziskra",
+      "text": "How does regeneration deal with persistent state? If a **plain change leads to a different DB schema, does turri generate migrations, or is the data layer treated as something that can’t just be thrown away? This has been the hardest part for me with spec-first generation.",
+      "at": "2026-11-12T15:47:50.000Z",
+      "url": "https://news.ycombinator.com/item?id=50469347"
+    },
+    {
+      "author": "ponoru",
+      "text": "Yes, turri will generate migrations with every change, so if you need to deploy a new version it will check against the current schema and generate it properly. Honestly, I haven't used it on some reasonable scale to fell the real issues of migrations yet. I consider this to be one of the biggest problems with the approach, but I think it's addressable. How do you approach this problem?",
+      "at": "2026-11-12T16:11:51.000Z",
+      "url": "https://news.ycombinator.com/item?id=50469740"
+    },
+    {
+      "author": "mariusziskra",
+      "text": "I went the other way: I do not generate code from scratch. In my workflow, the specification sis the source of truth. Every change goes in as a change request that becomes new tasks in the plan. Instead of recreating code, the agent modifies existing code. Migrations are strictly additive. Every schema change results in a new file, leaving previous files untouched. Each migration is backward-compatible. Destructive operations, such as DROP commands, are isolated into a separate, subsequent phase that I personally review. The largest project I’ve managed this way has been in production for about six months and has already gone through 45 versions. So far I haven't had encountered no no data loss so far”. Renaming is where I would be wary of generating code from scratch. Based solely on a schema diff, a rename appears as the deletion of one element followed by the addition of a new one. Does turri ask about what you meant in such cases, or is there a way to specify this directly within the specification?",
+      "at": "2026-11-13T07:11:28.000Z",
+      "url": "https://news.ycombinator.com/item?id=50479507"
+    },
+    {
+      "author": "radanskoric",
+      "text": "How do you enforce the deletion check? I understand that it is important to make sure the regeneration can be trusted but do I really need that?",
+      "at": "2026-11-12T17:03:52.000Z",
+      "url": "https://news.ycombinator.com/item?id=50470512"
+    },
+    {
+      "author": "ponoru",
+      "text": "I consider this to be the most important concept of the regenerative software approach. Basically, if you can regenerate a certain module multiple times you are certain that you nailed down every detail that are describes that module. If this is true, it means that each new change in the system can be reliably described with a small change in the system knowledge (usually it includes some small update in specs and tests) and regenerate with very high certainty that the produced code will be correct. Basically, the regeneration test is putting a solid ground for all future improvements.",
+      "at": "2026-11-12T17:22:32.000Z",
+      "url": "https://news.ycombinator.com/item?id=50470806"
+    },
+    {
+      "author": "radanskoric",
+      "text": "Ok, that makes a lot of sense. But how do you do it in practice? How do you test if the spec passes the deletion check?",
+      "at": "2026-11-12T17:28:19.000Z",
+      "url": "https://news.ycombinator.com/item?id=50470900"
+    },
+    {
+      "author": "ponoru",
+      "text": "Through multiple steps I would say. First, it automatically confirms that all defined tests are passing but it's hard to say if the defined tests are covering all the edge cases that are important. It will also write a bunch of mutation tests and do the automatic tests based on the type of application. At the end, you would still need to manually check to confirm the functionality (unless until you are confirming inital deletion test for a certain module).",
+      "at": "2026-11-12T18:22:58.000Z",
+      "url": "https://news.ycombinator.com/item?id=50471774"
+    },
+    {
+      "author": "radanskoric",
+      "text": "I was expecting it to generate the application twice and then do automatic testing side by side to confirm it works the same, or something like that. Does it do anything similar?",
+      "at": "2026-11-13T08:22:45.000Z",
+      "url": "https://news.ycombinator.com/item?id=50480100"
+    }
+  ],
+  "comments_complete": true
+}
