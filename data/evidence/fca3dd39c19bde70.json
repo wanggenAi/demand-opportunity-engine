@@ -1,0 +1,141 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43911",
+  "collected_at": "2026-11-14T08:56:19.406620+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43911",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43911/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43911/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43911/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43911",
+    "id": 6383103934,
+    "node_id": "I_kwDOC4Q8Qs8AAAABfHZvvg",
+    "number": 43911,
+    "title": "AI Agent merges the trigger item into tool-call arguments; Chat Trigger's `action` reaches MCP tools that have an `action` parameter",
+    "user": {
+      "login": "mawagoner",
+      "id": 96206542,
+      "node_id": "U_kgDOBbv-zg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/96206542?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mawagoner",
+      "html_url": "https://github.com/mawagoner",
+      "followers_url": "https://api.github.com/users/mawagoner/followers",
+      "following_url": "https://api.github.com/users/mawagoner/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mawagoner/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mawagoner/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mawagoner/subscriptions",
+      "organizations_url": "https://api.github.com/users/mawagoner/orgs",
+      "repos_url": "https://api.github.com/users/mawagoner/repos",
+      "events_url": "https://api.github.com/users/mawagoner/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mawagoner/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582010757,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cXhQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:nodes",
+        "name": "team:nodes",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Nodes team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 4,
+    "created_at": "2026-11-14T01:12:54Z",
+    "updated_at": "2026-11-14T03:04:28Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nWhen an AI Agent calls a tool, n8n builds the tool node's input by spreading the **agent's own input item** underneath the arguments the model produced. Behind a Chat Trigger, that item contains `action: \"sendMessage\"`, `sessionId` and `chatInput`.\n\nThe MCP Client Tool then keeps only the keys that appear in the MCP tool's `inputSchema`. So any MCP tool with a parameter named `action` receives `action: \"sendMessage\"` whenever the model leaves that parameter out. The model never sent it, and the tool node's Input panel does not show it.\n\nI found this with a real MCP server whose `create_signing_session` tool has an optional `action` object parameter. Every call from an n8n agent failed with `path: [\"action\"], Expected object, received string`. The model correctly stated it had not sent `action`, and the MCP Client node's Input panel (JSON view included) agreed with it.\n\n#### Cause\n\n`packages/core/src/execution-engine/requests-response.ts` (n8n-core 2.47.2, compiled `dist/execution-engine/requests-response.js`):\n\n```js\nconst agentInputData = executionData.data.main?.[0]?.[itemIndex];\nconst mergedJson = {\n  ...(agentInputData?.json ?? {}),   // the trigger item: action, sessionId, chatInput, ...\n  ...action.input,                   // the model's tool arguments\n  toolCallId: action.id,\n};\nconst displayJson = { ...action.input };   // what the tool node's Input panel shows\n```\n\n`mergedJson` becomes the tool node's input item. In `@n8n/n8n-nodes-langchain` 2.47.3, `nodes/mcp/shared/runtime.ts`, `runToolCall` then does:\n\n```js\nconst sanitizedToolArguments = schema.additionalProperties !== true\n  ? pick(toolArguments, Object.keys(schema.properties ?? {}))\n  : toolArguments;\n```\n\nSo a trigger field survives exactly when its name matches a tool parameter. With `additionalProperties: true`, every trigger field would be sent.\n\n#### Scope\n\n- **Confirmed by observation:** `action` from the Chat Trigger reaching an MCP tool with an `action` parameter.\n- **Follows from the code but not observed:** any field of the agent's input item, for example `sessionId`, `chatInput`, or the fields of whatever trigger feeds the agent, colliding with a same-named tool parameter. Other tool types that read parameters from the input item may be affected as well; I only tested the MCP Client Tool.\n\n#### Why it is hard to debug\n\nThe Input panel renders `displayJson`, not `mergedJson`. The tool node's input as shown contains no `action`, while the request that went out did. Combined with an error naming a field nobody sent, a user (and the agent itself) will look for the problem everywhere except n8n. I needed server-side logging of argument names to see it.\n\nRelated in theme though not the same bug: #36863 reports a different MCP Client Tool failure that is likewise recorded as a successful execution, with a message that does not name its cause.\n\n### To Reproduce\n\nMinimal server: one tool, no validation. `echo(text: string, action?: string)` returns exactly the arguments it received and logs each call.\n\n<details><summary><code>server.mjs</code> (~60 lines, only dependency <code>@modelcontextprotocol/sdk</code>)</summary>\n\n```js\n// Minimal MCP server (Streamable HTTP, stateless) with one tool, `echo`,\n// that returns EXACTLY the arguments it received. No validation, no zod:\n// whatever the client sends is what comes back.\n//\n//   npm install && node server.mjs          # listens on 0.0.0.0:3333/mcp\n//   PORT=4000 node server.mjs\nimport http from 'node:http';\nimport { Server } from '@modelcontextprotocol/sdk/server/index.js';\nimport { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';\nimport { ListToolsRequestSchema, CallToolRequestSchema } from '@modelcontextprotocol/sdk/types.js';\n\nconst PORT = Number(process.env.PORT ?? 3333);\n\nfunction buildServer() {\n  const server = new Server({ name: 'echo-mcp', version: '1.0.0' }, { capabilities: { tools: {} } });\n\n  server.setRequestHandler(ListToolsRequestSchema, async () => ({\n    tools: [\n      {\n        name: 'echo',\n        description:\n          'Echo back the arguments exactly as received. `text` is required. ' +\n          '`action` is optional: only send it if the user explicitly gives an action.',\n        inputSchema: {\n          type: 'object',\n          properties: {\n            text: { type: 'string', description: 'Text to echo.' },\n            action: { type: 'string', description: 'Optional. Leave out unless the user gives one.' },\n          },\n          required: ['text'],\n          additionalProperties: false,\n        },\n      },\n    ],\n  }));\n\n  server.setRequestHandler(CallToolRequestSchema, async (req) => {\n    const received = req.params.arguments ?? {};\n    console.log(new Date().toISOString(), 'tools/call', req.params.name, JSON.stringify(received));\n    return { content: [{ type: 'text', text: JSON.stringify({ received }) }] };\n  });\n\n  return server;\n}\n\nhttp\n  .createServer(async (req, res) => {\n    if (!req.url?.startsWith('/mcp')) { res.writeHead(404).end(); return; }\n    if (req.method !== 'POST') { res.writeHead(405, { Allow: 'POST' }).end(); return; }\n    let raw = '';\n    for await (const chunk of req) raw += chunk;\n    let body;\n    try { body = JSON.parse(raw); } catch { res.writeHead(400).end('bad json'); return; }\n\n    // Stateless: a fresh server + transport per request.\n    const server = buildServer();\n    const transport = new StreamableHTTPServerTransport({ sessionIdGenerator: undefined });\n    res.on('close', () => { transport.close(); server.close(); });\n    await server.connect(transport);\n    await transport.handleRequest(req, res, body);\n  })\n  .listen(PORT, '0.0.0.0', () => console.log(`echo-mcp listening on http://0.0.0.0:${PORT}/mcp`));\n```\n\n</details>\n\n1. Save it as `server.mjs`, then:\n   ```\n   npm init -y && npm pkg set type=module && npm install @modelcontextprotocol/sdk@1.29.0\n   node server.mjs        # listens on 0.0.0.0:3333/mcp\n   ```\n2. Workflow: **When chat message received** -> **AI Agent** (any chat model) with an **MCP Client** tool pointed at `http://<host>:3333/mcp` (HTTP Streamable, no auth, no memory node).\n3. Chat: `Call the echo tool with text \"hello\". Do not pass an action.`\n\n**Expected:** server receives `{\"text\":\"hello\"}`.\n**Actual:** server receives `{\"text\":\"hello\",\"action\":\"sendMessage\"}`.\n\nEcho server console (n8n 2.47.4, no memory, two separate fresh chat sessions, 2/2 reproduced):\n\n```\n2026-11-14T00:31:05.829Z tools/call echo {\"text\":\"hello\",\"action\":\"sendMessage\"}\n2026-11-14T00:32:53.059Z tools/call echo {\"text\":\"hello\",\"action\":\"sendMessage\"}\n```\n\nMCP Client node, same execution:\n\n- **Input** panel: `text: hello`, `tool: MCP_Client_echo` (no `action`)\n- **Output**: `{\"received\":{\"text\":\"hello\",\"action\":\"sendMessage\"}}`\n\n(`tool: MCP_Client_echo` is n8n's internal dispatch key and is expected. It is only visible here because an echo tool returns everything it is given.)\n\nThe agent's own reply: *\"The response also included \"action\": \"sendMessage\", even though I didn't pass an action. I'm not sure where that value came from.\"*\n\nAlso observed on the original server, which logs argument names and types but never values on failed calls. Two calls whose n8n Input panel (JSON view) contained no `action` arrived as:\n\n```\n\"action\": \"string(11)\"      // length of \"sendMessage\"\n```\n\nAcross retries the model varied its arguments in response to an error naming a field it had not sent, with no way to see the request that was actually issued.\n\nA direct MCP client (`@modelcontextprotocol/sdk` `Client` plus `StreamableHTTPClientTransport`) calling the same server with `{text:\"hello\"}` receives `{\"text\":\"hello\"}` back, so the extra field is added inside n8n.\n\n### Expected behavior\n\nOnly the arguments the model produced should reach the MCP tool. A trigger field should never be able to collide with a tool's declared parameter.\n\n#### Workaround\n\nPut an **Edit Fields (Set)** node between the Chat Trigger and the AI Agent that keeps only `chatInput` and `sessionId`, with \"Include Other Input Fields\" off. `action` no longer reaches the agent's input item, so it no longer reaches tools.\n\nVerified with the same workflow, same message and same server, the only change being the Edit Fields node, in a fresh session:\n\n```\n2026-11-14T00:50:15.243Z tools/call echo {\"text\":\"hello\"}\n```\n\n#### Suggested fix\n\nBuild the tool's arguments only from `action.input` plus `toolCallId`. If nodes need the parent item for expressions, pass it separately rather than merging it into the same object as the arguments. At minimum, render the merged object in the Input panel so the request that was sent is visible.\n\nHappy to open a PR if you agree on the approach.\n\n### Debug Info\n\n<details><summary>Copy debug info output</summary>\n\n```\n# Debug info\n\n## core\n\n- n8nVersion: 2.47.4\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.13.0\n- nodeEnv: production\n- database: sqlite\n- executionMode: regular\n- concurrency: -1\n- license: community\n- consumerId: unknown\n\n## storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n## pruning\n\n- enabled: true\n- maxAge: 336 hours\n- maxCount: 10000 executions\n\n## client\n\n- userAgent: mozilla/5.0 (x11; linux x86_64; rv:145.0) gecko/20100101 firefox/145.0\n- isTouchDevice: false\n\n## cluster\n\n- instanceCount: 1\n- versions: 2.47.4\n- instances:\n  - instanceKey: 2eb71ed9-dc52-4ba2-8c49-6c991f3870d4, hostId: main-bc4b7cb0a5c5, instanceType: main, instanceRole: leader, version: 2.47.4\n- checks:\n  - check: hostid-clash, status: succeeded, warnings: -\n  - check: lifecycle, status: succeeded, warnings: -\n  - check: split-brain, status: succeeded, warnings: -\n  - check: version-mismatch, status: succeeded, warnings: -\n\nGenerated at: 2026-11-14T00:56:28.491Z\n\nRelated packages: n8n-core 2.47.2, @n8n/n8n-nodes-langchain 2.47.3, MCP Client Tool node v1.4\n```\n\n</details>\n\n### Operating System\n\nFedora Linux 43 (Workstation Edition), Podman, image `ghcr.io/n8n-io/n8n:latest`\n\n### n8n Version\n\n2.47.4\n\n### Node.js Version\n\n26.13.0\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43911/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43911/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @mawagoner,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9763\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9763](https://linear.app/n8n/issue/GHC-9763)",
+      "at": "2026-11-14T01:13:05Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43911#issuecomment-6869150886"
+    },
+    {
+      "author": "mawagoner",
+      "text": "Screenshots, since they make the discrepancy quicker to read than the logs.\n\nWithout the workaround. MCP Client node: Input shows only text: hello and the internal tool key; Output shows action: \"sendMessage\" coming back from the echo server. The agent's reply states it did not pass an action.\n\n<img width=\"1920\" height=\"1075\" alt=\"issue-1-bug\" src=\"https://github.com/user-attachments/assets/86c7d981-0c99-4bab-b568-6ed5fa32c973\" />\n\nWith the Edit Fields node. Its Input still carries action: sendMessage from the trigger; its Output carries only chatInput and sessionId, and the echo server receives {\"text\":\"hello\"}.\n\n<img width=\"1920\" height=\"1075\" alt=\"issue-2-workaround\" src=\"https://github.com/user-attachments/assets/d0c25ad8-85fd-400d-bc34-27385cf231bd\" />",
+      "at": "2026-11-14T01:23:34Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43911#issuecomment-6869294290"
+    },
+    {
+      "author": "grinem",
+      "text": "Spot-on analysis. Spreading trigger items at the root of `mergedJson` while only rendering `displayJson` in the canvas makes this silent collision a nightmare to trace.\n\nUntil core separates execution context from tool arguments in `requests-response.ts`, a quick Code node between the Chat Trigger and the AI Agent stripping `action` will unblock the tool call without breaking the agent:\n\n```javascript\ndelete $input.item.json.action;\nreturn $input.item;\n```\n\nThe agent only needs `chatInput` (and `sessionId` if memory is attached). A PR scoping tool arguments strictly to `action.input` would definitely be the right long-term fix here.",
+      "at": "2026-11-14T01:30:48Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43911#issuecomment-6869394853"
+    },
+    {
+      "author": "brunnojob",
+      "text": "I confirmed the two code paths in the current source: `requests-response.ts` merges the parent item into the dispatched tool input, while the MCP runtime filters that merged object against the tool schema. That makes a trigger field such as `action` indistinguishable from a model-provided argument when the names collide.\n\nA useful regression test would invoke an MCP tool with an optional field matching a Chat Trigger field (for example, `action`) and omit that field from the model's tool call. Assert that the server receives only the model arguments, while item pairing and parent-item access for expressions remain available. It would also help to assert that the MCP node's displayed input matches the payload actually dispatched, so this class of hidden-input mismatch is diagnosable.",
+      "at": "2026-11-14T03:04:28Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43911#issuecomment-6870673863"
+    }
+  ],
+  "comments_complete": true
+}

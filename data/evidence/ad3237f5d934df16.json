@@ -1,0 +1,135 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43839",
+  "collected_at": "2026-11-14T08:56:19.406620+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43839",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43839/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43839/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43839/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43839",
+    "id": 6371643957,
+    "node_id": "I_kwDOC4Q8Qs8AAAABe8eSNQ",
+    "number": 43839,
+    "title": "HTTP Request with \"Never Error\" keeps returning 401 when a credential with an expiring token (preAuthentication) needs a refresh",
+    "user": {
+      "login": "CSchulz",
+      "id": 1520593,
+      "node_id": "MDQ6VXNlcjE1MjA1OTM=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1520593?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/CSchulz",
+      "html_url": "https://github.com/CSchulz",
+      "followers_url": "https://api.github.com/users/CSchulz/followers",
+      "following_url": "https://api.github.com/users/CSchulz/following{/other_user}",
+      "gists_url": "https://api.github.com/users/CSchulz/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/CSchulz/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/CSchulz/subscriptions",
+      "organizations_url": "https://api.github.com/users/CSchulz/orgs",
+      "repos_url": "https://api.github.com/users/CSchulz/repos",
+      "events_url": "https://api.github.com/users/CSchulz/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/CSchulz/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582010757,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cXhQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:nodes",
+        "name": "team:nodes",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Nodes team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 3,
+    "created_at": "2026-11-13T12:52:56Z",
+    "updated_at": "2026-11-13T14:24:20Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nCredentials that fetch a short-lived token in `preAuthentication` (for example the GitHub App API credential, whose installation token expires after one hour) ar\ne refreshed in `requestWithAuthentication` only in the `catch` block, by calling `credentialsHelper.preAuthentication(..., true)` after a thrown error (`packages\n/core/src/execution-engine/node-execution-context/utils/request-helpers/authentication.ts`).\n\nThe HTTP Request node sets `requestOptions.simple = false` when \"Never Error\" is on (`HttpRequestV3.node.ts`). Then a 401 does not throw, it resolves as a respon\nse, so the `catch` block never runs. The expired token stays in the credential, and every request with \"Never Error\" returns the 401 to the workflow as data unti\nl a different request without \"Never Error\" throws a 401 and triggers the refresh.\n\nThis is easy to hit in scheduled workflows. A run every 30 or 60 minutes can refresh the token at the start of one run, and the token then expires during a later\n run.\n\nThe OAuth2 path already handles this case: `requestOAuth2` turns a resolved 401 under `simple: false` into its refresh path (`retryWithNewToken` in `request-help\ners/oauth.ts`, see the comment \"resolves with the original response under `simple: false` instead of throwing\"). The `preAuthentication` path has no equivalent.\n\n`httpRequestWithAuthentication` has the same shape: it refreshes only in its `catch`, based on `error.response?.status`, so with `ignoreHttpStatusErrors` it shou\nld have the same gap. I read this in the code but did not run it.\n\n### To Reproduce\n\n1. Create a GitHub App API credential.\n2. Add an HTTP Request node: GET `https://api.github.com/installation/repositories`, with \"Never Error\" and \"Include Response Headers and Status\" on.\n3. Run the node. Wait more than one hour and run it again.\n4. The node returns `statusCode: 401` with \"Bad credentials\". The credential is not refreshed, so every following run returns 401 as well.\n\n### Expected behavior\n\nA 401 for a credential with an expiring token starts one refresh and one resend of the request, with or without \"Never Error\", as it does without it today. Other\n statuses keep the current behavior: with \"Never Error\" they are valid results for the workflow and must not be resent.\n\nA request whose body was consumed (stream or multipart) cannot be sent again. The existing `catch` path already skips the resend in that case, and the same shoul\nd hold here.\n\n### Proposed fix\n\nI have a tested change for `requestWithAuthentication`: read the status of a `simple: false` response, request the full response for the first attempt, return on\nly the body when the caller did not ask for the full response, and refresh and resend once on a 401 only. It comes with 7 new tests that fail without the change.\n I opened it as #43834, which was closed automatically because `packages/core` and the HTTP Request node are maintained by the team. The diff is there for reuse\nif it helps.\n\n### Debug Info\n\n# Debug info\n\n## core\n\n- n8nVersion: 2.47.5 / 3.2.0\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.13.0\n- nodeEnv: production\n- database: postgres\n- executionMode: regular\n- concurrency: -1\n- license: community\n- consumerId: unknown\n\n## storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n## pruning\n\n- enabled: true\n- maxAge: 336 hours\n- maxCount: 10000 executions\n\n## client\n\n- userAgent: mozilla/5.0 (macintosh; intel mac os x 10_15_7) applewebkit/537.36 (khtml, like gecko) chrome/156.0.0.0 safari/537.36\n- isTouchDevice: false\n\n## security\n\n- secureCookie: false\n\n## cluster\n\n- instanceCount: 1\n- versions: 2.47.5\n- instances:\n  - instanceKey: 7262cb6f-6ec7-4281-8266-a00dade57640, hostId: main-813746d4f45f, instanceType: main, instanceRole: leader, version: 2.47.5\n- checks:\n  - check: hostid-clash, status: succeeded, warnings: -\n  - check: lifecycle, status: succeeded, warnings: -\n  - check: split-brain, status: succeeded, warnings: -\n  - check: version-mismatch, status: succeeded, warnings: -\n\nGenerated at: 2026-11-13T12:51:46.693Z\n\n### Operating System\n\nMacOS\n\n### n8n Version\n\n2.47.5 / 3.2.0\n\n### Node.js Version\n\n26\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43839/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43839/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @CSchulz,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9757\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9757](https://linear.app/n8n/issue/GHC-9757)",
+      "at": "2026-11-13T12:53:05Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43839#issuecomment-6853515129"
+    },
+    {
+      "author": "grinem",
+      "text": "Spot on diagnosis. The discrepancy between `requestOAuth2` (which explicitly handles resolved 401s under `simple: false`) and `requestWithAuthentication` (which strictly encapsulates `credentialsHelper.preAuthentication` in `catch`) is definitely an oversight in the execution engine.\n\nIf you already have a working patch mirroring the `oauth.ts` retry pattern, please open a PR against `master` and link it to Linear ticket `GHC-9757`.\n\nIn the meantime, handling the failure via the node's generic **Settings > On Error > Continue Regular Output** rather than the HTTP-level \"Never Error\" (`simple: false`) lets the underlying client throw, hit the `catch` block to refresh the token, and keep your workflow running.",
+      "at": "2026-11-13T14:15:07Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43839#issuecomment-6855487513"
+    },
+    {
+      "author": "CSchulz",
+      "text": "@grinem Thanks for the review. The PR is open: #43834\n\nIt follows the `requestOAuth2` pattern. A resolved 401 with `simple: false` now refreshes the credential and resends the request once. The retry runs outside the existing try/catch, so a failed refresh does not start a second refresh.\n\n`httpRequestWithAuthentication` with `ignoreHttpStatusErrors` has the same gap. The PR does not change it. I can do that in a follow-up PR.",
+      "at": "2026-11-13T14:24:20Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43839#issuecomment-6855730323"
+    }
+  ],
+  "comments_complete": true
+}

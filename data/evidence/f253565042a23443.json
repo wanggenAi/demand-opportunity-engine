@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50468121",
-  "collected_at": "2026-11-13T09:29:05.668695+00:00",
+  "collected_at": "2026-11-14T08:56:19.406620+00:00",
   "source": {
     "author": "ponoru",
     "children": [
@@ -182,7 +182,7 @@
     "id": 50468121,
     "options": [],
     "parent_id": null,
-    "points": 8,
+    "points": 9,
     "story_id": 50468121,
     "text": "Coding agents let me move fast. To keep up, I stopped reading the code, and with it I stopped understanding my own software. I lost my sense of engineering along with it. I was still the one accountable for software I didn&#x27;t understand. No workflow or better model fixed that, so I built turri.<p>turri is based on Pi and the concept of regenerative software introduced by Chad Fowler. The ability to regenerate the same piece of code multiple times and always get the same results in terms of functionality is called the deletion test and proves that your coding agent completely understands you. The idea is that every time part of the software needs to be changed, you regenerate a new version of the code based on the durable information you have about the system.<p>The durable system information includes specs, tests, ADRs, and other types of documents, and it is written in ***plain. You write these with the help of an agent, and Turri starts partial regeneration of the software you&#x27;re changing. You can repeat this process as many times as you want until you&#x27;re happy with the change you&#x27;re implementing. The regeneration also includes proofs that the generated code completely conforms to the system knowledge on which it was based (it implements all the tests that are part of the definition and automatically adds additional tests).<p>You can try this by cloning the repo or by installing it from my landing page. I created a desktop app to improve usability. Currently, it&#x27;s only suitable for new projects, but I&#x27;m working on adding support for existing projects.<p>I also wrote the full story in case you&#x27;re interested: <a href=\"https:&#x2F;&#x2F;turri.dev&#x2F;blog&#x2F;why-i-built-turri&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;turri.dev&#x2F;blog&#x2F;why-i-built-turri&#x2F;</a>",
     "title": "Show HN: Turri – a coding agent with the power of regenerative software",

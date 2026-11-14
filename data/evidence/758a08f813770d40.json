@@ -1,0 +1,123 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43892",
+  "collected_at": "2026-11-14T08:56:19.406620+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43892",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43892/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43892/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43892/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43892",
+    "id": 6375629507,
+    "node_id": "I_kwDOC4Q8Qs8AAAABfARiww",
+    "number": 43892,
+    "title": "OpenAI node: the default image model `gpt-image-1-mini` stops working on December 1, 2026",
+    "user": {
+      "login": "nabuhadba",
+      "id": 7405169,
+      "node_id": "MDQ6VXNlcjc0MDUxNjk=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7405169?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/nabuhadba",
+      "html_url": "https://github.com/nabuhadba",
+      "followers_url": "https://api.github.com/users/nabuhadba/followers",
+      "following_url": "https://api.github.com/users/nabuhadba/following{/other_user}",
+      "gists_url": "https://api.github.com/users/nabuhadba/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/nabuhadba/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/nabuhadba/subscriptions",
+      "organizations_url": "https://api.github.com/users/nabuhadba/orgs",
+      "repos_url": "https://api.github.com/users/nabuhadba/repos",
+      "events_url": "https://api.github.com/users/nabuhadba/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/nabuhadba/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582010757,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cXhQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:nodes",
+        "name": "team:nodes",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Nodes team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-13T16:35:13Z",
+    "updated_at": "2026-11-13T16:44:55Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nOpenAI retires `gpt-image-1-mini` on December 1, 2026 (https://developers.openai.com/api/docs/deprecations). After that date, requests that name it fail. It is the default model of the OpenAI node's Generate an Image operation from node version 2.2:\n\n- https://github.com/n8n-io/n8n/blob/91d943c44a008cf473e67712c02dd8ed0cfee028/packages/@n8n/nodes-langchain/nodes/vendors/OpenAi/v2/actions/image/generate.operation.ts#L43 (`default: { mode: 'list', value: 'gpt-image-1-mini' }`)\n\nSo every new Generate an Image step that keeps the default stops working on December 1. Workflows on node versions before 2.2 use the list at lines 19 to 32, and all three of its models are already retired: `dall-e-2` and `dall-e-3` on May 12, 2026, `gpt-image-1` on October 23, 2026.\n\n### To Reproduce\n\n1. Add an OpenAI node, Image resource, Generate an Image operation, and keep the default model.\n2. Run it after December 1, 2026.\n3. OpenAI rejects the request because the model is retired.\n\n### Expected behavior\n\nThe default is a model OpenAI still serves. OpenAI's replacement is `gpt-image-2.6-sunburst` (or `gpt-image-2.6-flare`). Those models use `complexity: high` when it's left out, which may change cost and speed for existing workflows.\n\n### Debug Info\n\nNot applicable: found by reading the code at commit 91d943c.\n\n### Operating System\n\nAny\n\n### n8n Version\n\nAny version where the OpenAI node is 2.2 or later\n\n### Node.js Version\n\nAny\n\n### Database\n\nAny\n\n### Execution mode\n\nAny\n\n### Hosting\n\nAny\n\n---\nFound by [Since](https://since.dev), which watches code for model, API and runtime retirements and opens the fix before the date. It's free for open source, and I work on it.\n\nHappy to open a PR if that helps.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43892/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43892/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @nabuhadba,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9759\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9759](https://linear.app/n8n/issue/GHC-9759)",
+      "at": "2026-11-13T16:35:25Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43892#issuecomment-6858952612"
+    }
+  ],
+  "comments_complete": true
+}

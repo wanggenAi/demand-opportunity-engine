@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50484892",
+  "collected_at": "2026-11-14T08:56:19.406620+00:00",
+  "source": {
+    "author": "ghmeier",
+    "children": [],
+    "created_at": "2026-11-13T15:23:59.000Z",
+    "created_at_i": 1794583439,
+    "id": 50484892,
+    "options": [],
+    "parent_id": null,
+    "points": 1,
+    "story_id": 50484892,
+    "text": "After spending quite a bit of time using various coding agents and a workflow that uses markdown-based research&#x2F;plan&#x2F;handoff documents to hold context across sessions, I kept on running into an this question of how and where to store the generated markdown. The contents are usually useful for posterity and future projects in the same feature area. However, it felt burdensome for myself or reviewers to clutter up diffs with largeish markdown documents. This left me with a mess of uncommitted markdown and a waste of tokens having LLMs collate the documentation.<p>I figured this was the perfect usecase for a small CLI tool and some hooks that automatically create and sync planning documentation for the team. That&#x27;s how agent-plan got started. It uses an orphan git branch a worktree checkout and symlinks to keep all the planning files available from any branch. There&#x27;s a claude and codex plugin that install a couple hooks to sync and commit any edits as they happen.<p>Myself and my team have been using this for the last month or so, and have found that it really smooths out document-driven development. It&#x27;s straightforward to hand off plans between people, and easy to reference all the older documentation. It also solves a small (but frequent) papercut I had where I&#x27;d have to remember file names to reference them in subsequent chats. Since agent-plan stores everything in consistent formatting with some added frontmatter metadata, it&#x27;s really easily searchable with plain text search.<p>I figure lots of teams might have a similar sort of problem and I could save you some time.",
+    "title": "Show HN: Agent-plan a CLI that automatically commits your agent's plans",
+    "type": "story",
+    "url": "https://github.com/ghmeier/agent-plan"
+  },
+  "comments": [],
+  "comments_complete": true
+}

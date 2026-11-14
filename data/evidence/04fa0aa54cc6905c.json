@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43759",
-  "collected_at": "2026-11-13T09:29:05.668695+00:00",
+  "collected_at": "2026-11-14T08:56:19.406620+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/43759",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -50,9 +50,9 @@
     "locked": false,
     "assignees": [],
     "milestone": null,
-    "comments": 4,
+    "comments": 7,
     "created_at": "2026-11-13T04:48:46Z",
-    "updated_at": "2026-11-13T07:55:38Z",
+    "updated_at": "2026-11-13T18:32:29Z",
     "closed_at": null,
     "assignee": null,
     "author_association": "NONE",
@@ -113,6 +113,24 @@
       "text": "Hi @tolani-co,\n\nBuilding on @blucca's `/rest/push` check, on **Docker + Windows 11** this stuck *\"Waiting for you to submit the form\"* state almost always comes from one of two origin/WebSocket mismatches between the editor and the container:\n\n1. **Host Origin Mismatch (`localhost` vs `127.0.0.1`):**  \n   If your editor tab is open on `localhost:5678` while `WEBHOOK_URL` / the Form Test URL resolves to `127.0.0.1:5678` (or vice versa), the browser session/push channel won't match the incoming `testWebhookReceived` event. Make sure both the canvas URL and `WEBHOOK_URL` use the exact same host.\n\n2. **Explicit Docker Push & Base URL Env Vars:**  \n   In your `docker-compose.yml`, explicitly pin the push backend and base URLs:\n```yaml\nenvironment:\n  - N8N_HOST=localhost\n  - N8N_PORT=5678\n  - N8N_PROTOCOL=http\n  - WEBHOOK_URL=[http]://localhost:5678/\n  - N8N_EDITOR_BASE_URL=[http]://localhost:5678/\n  - N8N_PUSH_BACKEND=websocket\n```\n*(If you're sitting behind Nginx/Caddy/Traefik on Windows, make sure `Upgrade` and `Connection \"upgrade\"` headers are forwarded and `proxy_buffering off;` is set so `/rest/push` doesn't stall.)*\n\nIf `/rest/push` shows `101 Switching Protocols` in DevTools -> Network -> WS and `testWebhookReceived` still never arrives after pinning `N8N_PUSH_BACKEND=websocket`, sharing the `/rest/push` frame screenshot will pinpoint whether it's an event emission or session-ID issue.",
       "at": "2026-11-13T07:14:13Z",
       "url": "https://github.com/n8n-io/n8n/issues/43759#issuecomment-6846690628"
+    },
+    {
+      "author": "tolani-co",
+      "text": "Hi @blucca  I tried it again and checked the execution. Its mode is `manual`, and its workflow ID is `sXHADPKxi0ccPFh0`, matching the workflow ID in the executions request. The form submission succeeds, but I cannot see a `testWebhookReceived` message in the editor's `/rest/push` WebSocket Messages tab.",
+      "at": "2026-11-13T12:26:49Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43759#issuecomment-6852858467"
+    },
+    {
+      "author": "tolani-co",
+      "text": "Thank you for the suggestions @grinem . I've tested both approaches, but the issue persists.\n\nI explicitly configured `N8N_HOST=localhost`, `N8N_PORT=5678`, `N8N_PROTOCOL=http`, `N8N_PUSH_BACKEND=websocket` and the editor/webhook base URLs. I also tested with both `localhost` and the ngrok address, ensuring the editor and form use matching hosts.\n\nI enabled debug logging and obtained some additional findings:\n\n- n8n logs `testWebhookReceived` being pushed to the correct active `pushRef`.\n- The subsequent `executionStarted`, node execution events and `executionFinished` events are also logged as successfully pushed.\n- The WebSocket connection returns `101 Switching Protocols`, but the Messages tab in DevTools remains completely empty.\n- The same behaviour occurs in both Edge and Chrome, and when accessing the editor through either localhost or ngrok.\n\nFor example, execution 44 was pushed to the active `pushRef` (`9pv84agr7p`), and all execution events were logged, but the editor remained stuck on \"Waiting for you to submit the form\".\n\nCould this indicate an issue with the WebSocket message delivery rather than an origin or session-ID mismatch? Is there another way to verify whether the frames are actually being transmitted to the browser?",
+      "at": "2026-11-13T16:50:07Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43759#issuecomment-6859288907"
+    },
+    {
+      "author": "grinem",
+      "text": "\nThank you for these detailed debug logs — having confirmation that execution #44 logged `testWebhookReceived`, `executionStarted`, and `executionFinished` sent to `pushRef: 9pv84agr7p` while the connection returned HTTP `101 Switching Protocols` narrows this down significantly.\n\nHere is what is happening and how to quickly confirm and resolve it:\n\n### Why the WebSocket \"Messages\" tab remains empty despite HTTP 101\nIn Docker on Windows (WSL2 networking bridge) and through tunnels like ngrok, the initial HTTP upgrade handshake (`101 Switching Protocols`) is successfully negotiated at the HTTP proxy level. However, raw duplex WebSocket TCP frames can be buffered, swallowed, or dispatched to a zombie socket if the client's push channel suffered a micro-reconnect when opening or submitting the form. When `PushWebSocket.ts` executes `ws.send()`, Node.js logs the event as flushed, but the frame never crosses the transport bridge into the active DevTools inspector.\n\n---\n\n### Step 1: Hook the browser WebSocket to see if frames actually arrive\nTo determine if frames are reaching your browser but bypassing DevTools, or if they are stalled in transport, paste this lightweight WebSocket listener into your **browser console** on the editor tab, then press Enter:\n\n```javascript\n(() => {\n  const origWS = window.WebSocket;\n  window.WebSocket = function(...args) {\n    const ws = new origWS(...args);\n    ws.addEventListener('open', () => console.log('[n8n WS Connected]:', args[0]));\n    ws.addEventListener('message', (e) => console.log('[n8n WS Frame Received]:', JSON.parse(e.data)));\n    ws.addEventListener('close', (e) => console.log('[n8n WS Closed]:', e));\n    return ws;\n  };\n  console.log(' WebSocket hook installed. Submit the form now.');\n})();\n```\n\n- If you see ` [n8n WS Frame Received]` in the Console upon submitting the form, the frame is arriving and the issue is an internal UI reactive store hydration bug.\n- If no message appears, frames are indeed blocked at the TCP transport/proxy layer.\n\n---\n\n### Step 2: The Proven Industrial Fix — Switch to Server-Sent Events (`N8N_PUSH_BACKEND=sse`)\nThe most reliable solution for local Docker on Windows and ngrok setups is to use n8n's native Server-Sent Events backend instead of WebSockets. SSE operates over standard persistent HTTP streaming (`text/event-stream`), completely eliminating WebSocket upgrade stalling, frame buffering, and tunnel incompatibilities.\n\nIn your `docker-compose.yml`, change:\n```yaml\nenvironment:\n  - N8N_PUSH_BACKEND=sse\n```\n\nThen restart your container:\n```bash\ndocker compose down && docker compose up -d\n```\n\nWith SSE enabled:\n1. In the editor, click \"Listen for test event\".\n2. In DevTools Network, look for `/rest/push` — it will now show an **EventStream** tab where incoming events (`testWebhookReceived`, `executionFinished`) appear clearly with full payloads.\n3. Submit the form: the editor will immediately transition out of \"Waiting for you to submit the form\" and display the received test submission data.",
+      "at": "2026-11-13T18:32:29Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43759#issuecomment-6861626529"
     }
   ],
   "comments_complete": true

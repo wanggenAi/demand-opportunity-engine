@@ -1,0 +1,132 @@
+{
+  "source_api_url": "https://api.github.com/repos/Ikalus1988/MisakaNet/issues/4875",
+  "collected_at": "2026-11-14T08:56:19.406620+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/Ikalus1988/MisakaNet/issues/4875",
+    "repository_url": "https://api.github.com/repos/Ikalus1988/MisakaNet",
+    "labels_url": "https://api.github.com/repos/Ikalus1988/MisakaNet/issues/4875/labels{/name}",
+    "comments_url": "https://api.github.com/repos/Ikalus1988/MisakaNet/issues/4875/comments",
+    "events_url": "https://api.github.com/repos/Ikalus1988/MisakaNet/issues/4875/events",
+    "html_url": "https://github.com/Ikalus1988/MisakaNet/issues/4875",
+    "id": 6386449156,
+    "node_id": "I_kwDOSP_2Ts8AAAABfKl7BA",
+    "number": 4875,
+    "title": "[Bounty][$0][i18n] lessons/en 镜像：20 篇确认过期、43 篇没有来源，并补一道门禁",
+    "user": {
+      "login": "Ikalus1988",
+      "id": 136884451,
+      "node_id": "U_kgDOCCiw4w",
+      "avatar_url": "https://avatars.githubusercontent.com/u/136884451?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Ikalus1988",
+      "html_url": "https://github.com/Ikalus1988",
+      "followers_url": "https://api.github.com/users/Ikalus1988/followers",
+      "following_url": "https://api.github.com/users/Ikalus1988/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Ikalus1988/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Ikalus1988/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Ikalus1988/subscriptions",
+      "organizations_url": "https://api.github.com/users/Ikalus1988/orgs",
+      "repos_url": "https://api.github.com/users/Ikalus1988/repos",
+      "events_url": "https://api.github.com/users/Ikalus1988/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Ikalus1988/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 10822128627,
+        "node_id": "LA_kwDOSP_2Ts8AAAAChQyT8w",
+        "url": "https://api.github.com/repos/Ikalus1988/MisakaNet/labels/enhancement",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "default": true,
+        "description": "New feature or request",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 11225802310,
+        "node_id": "LA_kwDOSP_2Ts8AAAACnRwmRg",
+        "url": "https://api.github.com/repos/Ikalus1988/MisakaNet/labels/needs-ac",
+        "name": "needs-ac",
+        "color": "ededed",
+        "default": false,
+        "description": null,
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 11237994585,
+        "node_id": "LA_kwDOSP_2Ts8AAAACndYwWQ",
+        "url": "https://api.github.com/repos/Ikalus1988/MisakaNet/labels/area:lessons",
+        "name": "area:lessons",
+        "color": "ededed",
+        "default": false,
+        "description": null,
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 11393972658,
+        "node_id": "LA_kwDOSP_2Ts8AAAACpyI5sg",
+        "url": "https://api.github.com/repos/Ikalus1988/MisakaNet/labels/bounty",
+        "name": "bounty",
+        "color": "ededed",
+        "default": false,
+        "description": null,
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-14T06:40:50Z",
+    "updated_at": "2026-11-14T06:51:35Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## 背景\n\n`lessons/en/` 是主语料的英文镜像，每篇应当有 `translated_from:` 指回源课程。实测（2026-11-14）：\n\n- **20 篇的源课程在翻译之后又被改过**——译文描述的行为可能与今天的源不一致；\n- **43 篇没有 `translated_from`**——既不能判断是否过期，也说不清它在翻译什么。\n\n这是语料里唯一一处\"内容会静默落后于另一个文件\"的地方，而且没有任何门禁看着它。\n\n## 范围 A：确认过期（20 篇，机械判定，不是印象）\n\n<details><summary>点开：20 对（译文 ← 源）</summary>\n\n- `lessons/en/agent-manual-update-timeout.md` ← `lessons/contrib/agent-manual-update-timeout.md`\n- `lessons/en/api-rate-limit-handling.md` ← `lessons/contrib/api-rate-limit-handling.md`\n- `lessons/en/cloudflare-email-worker-registration-trap.md` ← `lessons/contrib/cloudflare-email-worker-registration-trap.md`\n- `lessons/en/feishu-webhook-url-env-config.md` ← `lessons/contrib/feishu-webhook-url-env-config.md`\n- `lessons/en/git-credential-helper-gh-path-mismatch.md` ← `lessons/contrib/git-credential-helper-gh-path-mismatch.md`\n- `lessons/en/git-credentials-and-node-id-setup.md` ← `lessons/contrib/git-credentials-and-node-id-setup.md`\n- `lessons/en/git-credentials-automation.md` ← `lessons/contrib/git-credentials-automation.md`\n- `lessons/en/git-merge-conflict-resolution.md` ← `lessons/contrib/git-merge-conflict-resolution.md`\n- `lessons/en/github-401-credential-lookup.md` ← `lessons/contrib/github-401-credential-lookup.md`\n- `lessons/en/json-parse-failure-handling.md` ← `lessons/contrib/json-parse-failure-handling.md`\n- `lessons/en/openai-compatible-api-call.md` ← `lessons/contrib/openai-compatible-api-call.md`\n- `lessons/en/permission-denied-fix.md` ← `lessons/contrib/permission-denied-fix.md`\n- `lessons/en/pip-install-timeout-ssl.md` ← `lessons/contrib/pip-install-timeout-ssl.md`\n- `lessons/en/python-sandbox-path-isolation.md` ← `lessons/contrib/python-sandbox-path-isolation.md`\n- `lessons/en/python-venv-tiktoken-module-not-found.md` ← `lessons/contrib/python-venv-tiktoken-module-not-found.md`\n- `lessons/en/python-venv-troubleshoot.md` ← `lessons/contrib/python-venv-troubleshoot.md`\n- `lessons/en/regex-greedy-matching.md` ← `lessons/contrib/regex-greedy-matching.md`\n- `lessons/en/shell-script-debugging.md` ← `lessons/contrib/shell-script-debugging.md`\n- `lessons/en/wsl-proxy-setup.md` ← `lessons/contrib/wsl-proxy-setup.md`\n- `lessons/en/wsl2-memory-leak-fix.md` ← `lessons/contrib/wsl2-memory-leak-fix.md`\n\n</details>\n\n复现命令：\n\n```console\n$ for f in $(git ls-files 'lessons/en/*.md'); do\n    src=$(grep -oE 'translated_from\"?[\": ]+\"?[^\"]+' \"$f\" | grep -oE 'lessons/[^\"]+' | head -1)\n    [ -n \"$src\" ] && [ \"$(git log -1 --format=%ct -- \"$f\")\" -lt \"$(git log -1 --format=%ct -- \"$src\")\" ] && echo \"STALE $f <- $src\"\n  done | wc -l\n20\n```\n\n## 范围 B：没有来源（43 篇）\n\n```console\n$ for f in $(git ls-files 'lessons/en/*.md'); do grep -qE 'translated_from' \"$f\" || echo \"$f\"; done | wc -l\n43\n```\n\n## 硬性验收标准（AC）\n\n**0. 可复现证据**：每条结论附**命令与输出**，或 `文件:行`。翻译是否落后于源是**可以机械判定**的——用上面的命令，不要靠读。\n\n**1. B 组（43 篇）每篇二选一**\n\n- 加 `translated_from: <源路径>`，且该源文件**必须存在**、`title` 与译文语义一致（不是同一篇就如实写\"无源\"）；\n- 或证明它是**英文原创**（`lang: en`、无镜像措辞），在 PR 正文给出依据。\n\n**2. A 组（20 篇）刷新**\n\n- 与源的 `Problem` / `Root Cause` / `Fix` 三段对齐，源里新增的验证步骤要进译文；\n- 若某处**故意**与源不同（本地化命令、路径），在文件末尾加 `> Divergence: <原因>`——否则下一轮无法区分\"故意\"与\"漏译\"。\n\n**3. 本任务真正的产出是一道门禁**\n\n新增 `tests/test_translations_are_current.py`：对每个带 `translated_from` 的译文，若源文件的最近 commit 时间晚于译文，则失败；带 `Divergence:` 行或出现在显式允许清单（清单必须写日期与理由）的除外。写法参考 `tests/test_handoff_size_limit.py`——从文件里读数字，不在测试里重复定义。\n\n**4. 交付**：`pytest tests/test_translations_are_current.py tests/test_lesson_status_vocabulary.py -q` 绿；≤6 个 PR，每个 ≤10 篇。\n\n## 不算交付\n\n- 把 43 篇无来源的全部指向同一个源；\n- 只刷新译文、不加门禁（下一轮会照着漂回去）；\n- 用 `git log` 输出当\"读过了\"的证据却不改任何文件。\n\n## 备注\n\n`$0` = 只算信用（合并记录 + 天梯 + Hall of Fame）；有人用 Opire `/reward` 资助才成为真赏金。\n\n<br/>\n<hr/>\n\n<details><summary>This repo is using Opire - what does it mean? 👇</summary><br/>💵 Everyone can add rewards for this issue commenting <code>/reward 100</code> (replace <code>100</code> with the amount).<br/>🕵️‍♂️ If someone starts working on this issue to earn the rewards, they can comment <code>/try</code> to let everyone know!<br/>🙌 And when they open the PR, they can comment <code>/claim #4875</code> either in the PR description or in a PR's comment.<br/><br/>🪙 Also, everyone can tip any user commenting <code>/tip 20 @Ikalus1988</code> (replace <code>20</code> with the amount, and <code>@Ikalus1988</code> with the user to tip).<br/><br/>📖 If you want to learn more, check out our <a href=\"https://docs.opire.dev\">documentation</a>.</details>",
+    "reactions": {
+      "url": "https://api.github.com/repos/Ikalus1988/MisakaNet/issues/4875/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/Ikalus1988/MisakaNet/issues/4875/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "nazarijlarin402-pixel",
+      "text": "你好！我可以协助完成“[Bounty][$0][i18n] lessons/en 镜像：20 篇确认过期、43 篇没有来源，并补一道门禁”。我使用人工智能辅助工具。开始前，我们会确认工作范围、交付结果和付款方式。你能提供期望结果的示例吗？\n\nOriginal GIA demos (not client work): https://github.com/nazarijlarin402-pixel/gia-digital-services-demo",
+      "at": "2026-11-14T06:46:57Z",
+      "url": "https://github.com/Ikalus1988/MisakaNet/issues/4875#issuecomment-6873334570"
+    }
+  ],
+  "comments_complete": true
+}

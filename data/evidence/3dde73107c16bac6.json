@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50484264",
+  "collected_at": "2026-11-14T08:56:19.406620+00:00",
+  "source": {
+    "author": "wkrause",
+    "children": [],
+    "created_at": "2026-11-13T14:45:14.000Z",
+    "created_at_i": 1794581114,
+    "id": 50484264,
+    "options": [],
+    "parent_id": null,
+    "points": 1,
+    "story_id": 50484264,
+    "text": "Hi, I built TriageLab, a tool that investigates technical issues by trying to reproduce them in secure sandboxes in Kubernetes. It can import issues from common ticketing systems like JIRA, Zendesk and Github and through a combination of human in the loop and automation, tries to experimentally test hypotheses.<p>It’s built on top of the recently released kagent 1.0 which itself is built on Agent Substrate. Those tools run the investigator, its process and file tools, sessions, and sandbox lifecycle. TriageLab is a UI + CEL based policy engine that decides what work gets picked up, routed and which agents respond with which tools.<p>If you saw the Agent Substrate demos at the recent Kubecon and wondered what you&#x27;d run in those sandboxes, this is one answer. It could be a great fit for anyone supporting a technical product and looking to safely introduce more automation&#x2F;self-service into their triaging processes.",
+    "title": "Show HN: TriageLab – reproduce bugs in a disposable Kubernetes sandbox",
+    "type": "story",
+    "url": "https://github.com/bondrenai/TriageLab"
+  },
+  "comments": [],
+  "comments_complete": true
+}

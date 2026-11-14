@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43917",
+  "collected_at": "2026-11-14T08:56:19.406620+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43917",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43917/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43917/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43917/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43917",
+    "id": 6387607014,
+    "node_id": "I_kwDOC4Q8Qs8AAAABfLsl5g",
+    "number": 43917,
+    "title": "toSnakeCase() does not treat Unicode whitespace as separators",
+    "user": {
+      "login": "indexGin",
+      "id": 166748424,
+      "node_id": "U_kgDOCfBhCA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/166748424?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/indexGin",
+      "html_url": "https://github.com/indexGin",
+      "followers_url": "https://api.github.com/users/indexGin/followers",
+      "following_url": "https://api.github.com/users/indexGin/following{/other_user}",
+      "gists_url": "https://api.github.com/users/indexGin/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/indexGin/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/indexGin/subscriptions",
+      "organizations_url": "https://api.github.com/users/indexGin/orgs",
+      "repos_url": "https://api.github.com/users/indexGin/repos",
+      "events_url": "https://api.github.com/users/indexGin/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/indexGin/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-14T08:33:26Z",
+    "updated_at": "2026-11-14T08:33:36Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Description\r\n\r\nThe `.toSnakeCase()` string expression extension only converts the plain ASCII\r\nspace (U+0020) and `-` into `_`. Other Unicode whitespace is either kept in the\r\noutput as an invisible character or deleted entirely, which silently corrupts\r\nthe generated identifier.\r\n\r\n### Minimal reproduction\r\n\r\nIn the JS snippets below, `\\u00A0` is a non-breaking space, `\\t` a tab and\r\n`\\u2003` an em space. The actual expression inputs contain those characters,\r\nnot the escape sequences.\r\n\r\n```js\r\n'first\\u00A0name'.toSnakeCase() // 'first\\u00A0name', expected 'first_name'  (NBSP retained)\r\n'first\\tname'.toSnakeCase()     // 'first\\tname',     expected 'first_name'  (tab retained)\r\n'first\\u2003name'.toSnakeCase() // 'firstname',       expected 'first_name'  (em space deleted, words glued)\r\n'I am a test!'.toSnakeCase()    // 'i_am_a_test'      (plain ASCII space, works as expected)\r\n```\r\n\r\nThe same calls as n8n expressions (the special whitespace is invisible in the\r\nsource; NBSP = U+00A0, TAB = U+0009, EMSP = U+2003):\r\n\r\n```\r\n={{ \"first<NBSP>name\".toSnakeCase() }}  // \"first<NBSP>name\", expected \"first_name\"\r\n={{ \"first<TAB>name\".toSnakeCase() }}   // \"first<TAB>name\",  expected \"first_name\"\r\n={{ \"first<EMSP>name\".toSnakeCase() }}  // \"firstname\",       expected \"first_name\"\r\n={{ \"I am a test!\".toSnakeCase() }}     // \"i_am_a_test\"      (works as expected)\r\n```\r\n\r\n### Expected behavior\r\n\r\nAll Unicode whitespace separators should behave like a plain ASCII space and\r\nproduce `_`, i.e. `\"first_name\"`. Plain spaces, hyphens, lowercasing,\r\npunctuation removal and existing underscores should keep working as before.\r\n\r\n### Impact\r\n\r\nThe output of `.toSnakeCase()` is typically used as an object key, file name,\r\ncolumn name or field name. Invisible characters (NBSP, tab, newline, ideographic\r\nspace) survive into the key, so later lookups and comparisons fail; whitespace\r\nin the U+2000-U+206F range is removed and two words are glued together. Both\r\ncases produce silently wrong data in workflows that normalise incoming text.\r\nText copied from web pages, PDFs and spreadsheets frequently contains these\r\ncharacters, so this is a common input path.\r\n\r\n### Additional context\r\n\r\nThe implementation lives in\r\n`packages/workflow/src/extensions/string-extensions.ts` and is mirrored in\r\n`packages/@n8n/expression-runtime/src/extensions/string-extensions.ts` for the\r\nisolated VM; both copies are affected.",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43917/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43917/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @indexGin,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9765\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9765](https://linear.app/n8n/issue/GHC-9765)",
+      "at": "2026-11-14T08:33:35Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43917#issuecomment-6874598435"
+    }
+  ],
+  "comments_complete": true
+}

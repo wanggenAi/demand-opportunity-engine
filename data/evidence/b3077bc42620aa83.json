@@ -1,0 +1,135 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43864",
+  "collected_at": "2026-11-14T08:56:19.406620+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43864",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43864/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43864/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43864/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43864",
+    "id": 6374202787,
+    "node_id": "I_kwDOC4Q8Qs8AAAABe-6dow",
+    "number": 43864,
+    "title": "Sort Node Incorrectly Sorts Numbers in Descending Order",
+    "user": {
+      "login": "lowik2005",
+      "id": 170518391,
+      "node_id": "U_kgDOCinndw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/170518391?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lowik2005",
+      "html_url": "https://github.com/lowik2005",
+      "followers_url": "https://api.github.com/users/lowik2005/followers",
+      "following_url": "https://api.github.com/users/lowik2005/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lowik2005/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lowik2005/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lowik2005/subscriptions",
+      "organizations_url": "https://api.github.com/users/lowik2005/orgs",
+      "repos_url": "https://api.github.com/users/lowik2005/repos",
+      "events_url": "https://api.github.com/users/lowik2005/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lowik2005/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582010757,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cXhQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:nodes",
+        "name": "team:nodes",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Nodes team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 3,
+    "created_at": "2026-11-13T15:14:51Z",
+    "updated_at": "2026-11-13T16:19:26Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nThe Sort node does not correctly sort numeric values when using the following configuration:\n\nType: Simple\n\nOrder: Descending\n\nWhen sorting numbers in descending order, the output is incorrect. However, changing the order to Ascending produces the expected results.\n\nThis suggests that there may be an issue specifically with the descending numeric sorting implementation.\n\n\n<img width=\"1167\" height=\"697\" alt=\"зображення\" src=\"https://github.com/user-attachments/assets/509988d4-0e27-4d3f-8269-3b12cbb134aa\" />\n\n### To Reproduce\n\n1. Add a Sort node to a workflow.\n2. Set Type to Simple.\n3. Select a numeric field to sort by.\n4. Set Order to Descending.\n5. Execute the workflow and inspect the output.\n\n\n### Expected behavior\n\n\nNumeric values should be sorted from highest to lowest when Descending is selected. \n\n### Debug Info\n\n# Debug info\n\n## core\n\n- n8nVersion: 2.47.7\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.13.0\n- nodeEnv: production\n- database: postgres\n- executionMode: scaling (single-main)\n- concurrency: -1\n- license: enterprise (production)\n- consumerId: e1a0c650-5177-4ea0-8974-f13a169c1ba4\n\n## storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: database\n\n## pruning\n\n- enabled: true\n- maxAge: 336 hours\n- maxCount: 10000 executions\n\n## client\n\n- userAgent: mozilla/5.0 (windows nt 10.0; win64; x64; rv:160.0) gecko/20100101 firefox/160.0\n- isTouchDevice: false\n\n## cluster\n\n- instanceCount: 2\n- versions: 2.47.7\n- instances:\n  - instanceKey: 7f0c62b3-f669-417f-b372-4a705e3255c6, hostId: main-eddc9af53b9d, instanceType: main, instanceRole: leader, version: 2.47.7\n  - instanceKey: f19e5e12-cbb4-475d-b236-4cf9a1b42680, hostId: worker-8361d7e42714, instanceType: worker, instanceRole: unset, version: 2.47.7\n- checks:\n  - check: hostid-clash, status: succeeded, warnings: -\n  - check: lifecycle, status: succeeded, warnings: -\n  - check: split-brain, status: succeeded, warnings: -\n  - check: version-mismatch, status: succeeded, warnings: -\n\nGenerated at: 2026-11-13T15:11:24.588Z\n\n### Operating System\n\nUbuntu 24.04.5 LTS\n\n### n8n Version\n\n2.47.7\n\n### Node.js Version\n\n26.13.0\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43864/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43864/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @lowik2005,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9758\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9758](https://linear.app/n8n/issue/GHC-9758)",
+      "at": "2026-11-13T15:15:11Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43864#issuecomment-6857109420"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "Could you share a few input values and the output, including whether the field values are JSON numbers or strings? The Simple sorter uses `lodash/lt` for comparisons: numbers compare numerically, but numeric strings compare lexicographically (for example, \"9\" sorts after \"10\" ascending). That distinction, plus the exact field path, would help narrow down whether this is input typing or the descending-order handling.",
+      "at": "2026-11-13T16:06:10Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43864#issuecomment-6858288702"
+    },
+    {
+      "author": "lowik2005",
+      "text": "When the field values are JSON numbers, both ascending and descending sorting work correctly.\n\nHowever, when the field values are strings:\n\n- **Ascending** sorting works correctly, sorting values numerically as if they were numbers.\n- **Descending** sorting does not work correctly, as values are compared lexicographically (for example, `\"9\"` is sorted after `\"10\"`).\n\nThis issue occurs only when using string values with descending sorting.\n\nP.S.: I wouldn't have paid much attention to this issue, but this exact workflow using the Sort node is part of the n8n Quickstart training program. :-)",
+      "at": "2026-11-13T16:16:31Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43864#issuecomment-6858525942"
+    }
+  ],
+  "comments_complete": true
+}
