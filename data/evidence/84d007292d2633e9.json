@@ -1,0 +1,162 @@
+{
+  "source_api_url": "https://api.github.com/repos/rdidale-jpg/CIOS/issues/615",
+  "collected_at": "2026-11-15T09:19:17.933130+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/rdidale-jpg/CIOS/issues/615",
+    "repository_url": "https://api.github.com/repos/rdidale-jpg/CIOS",
+    "labels_url": "https://api.github.com/repos/rdidale-jpg/CIOS/issues/615/labels{/name}",
+    "comments_url": "https://api.github.com/repos/rdidale-jpg/CIOS/issues/615/comments",
+    "events_url": "https://api.github.com/repos/rdidale-jpg/CIOS/issues/615/events",
+    "html_url": "https://github.com/rdidale-jpg/CIOS/issues/615",
+    "id": 6395246847,
+    "node_id": "I_kwDOTHqICM8AAAABfS-4_w",
+    "number": 615,
+    "title": "FLORA SI-1 — Cross-stream Strategic Issues and Leadership Agenda design",
+    "user": {
+      "login": "rdidale-jpg",
+      "id": 297654141,
+      "node_id": "U_kgDOEb3XfQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/297654141?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/rdidale-jpg",
+      "html_url": "https://github.com/rdidale-jpg",
+      "followers_url": "https://api.github.com/users/rdidale-jpg/followers",
+      "following_url": "https://api.github.com/users/rdidale-jpg/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rdidale-jpg/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rdidale-jpg/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rdidale-jpg/subscriptions",
+      "organizations_url": "https://api.github.com/users/rdidale-jpg/orgs",
+      "repos_url": "https://api.github.com/users/rdidale-jpg/repos",
+      "events_url": "https://api.github.com/users/rdidale-jpg/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rdidale-jpg/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 4,
+    "created_at": "2026-11-14T19:58:04Z",
+    "updated_at": "2026-11-15T07:52:18Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "# FLORA SI-1 — Cross-stream Strategic Issues and Leadership Agenda contract (design / architecture first)\n\n**Owner decision (14 Nov 2026):** Pain points are **not an independent intelligence stream**. The central commercial product output is an **evidence-backed Leadership Agenda / Strategic Issues synthesis**, derived across Inside, Landscape, Forces and future News. SWOT is useful as the analytical framework but the default customer-facing experience should not be an obligatory four-box SWOT or checklist. User approved doing this design before NEWS-1 implementation [#614](https://github.com/rdidale-jpg/CIOS/issues/614).\n\n## Mission\nFor each UK, Industry (Banking pilot), and Enterprise (Lloyds pilot), explain:\n- What are the most consequential strengths, weaknesses, opportunities and threats (appropriately scoped)?\n- What leadership-stated priorities and externally evidenced strategic issues matter now and over the next decision horizon?\n- What **verified adverse outcomes** exist, what are merely **hypothesised pain points**, and what action/customer confirmation is required?\n- What may already be decided / implemented / covered by incumbents, and what might be open to influence?\n- Which precisely evidenced issues relate to which enterprise operating areas, external actors and dated events?\n- What would change or falsify the assessment? What next action should a seller take?\n\nProvide an extremely useful **Leadership Agenda** synthesis with 3–5 material issues *where evidence supports them*, not padded invented priorities, arbitrary confidence percentages or automatic opportunities.\n\n## Important semantic distinctions\n1. **Facts / source-grounded claims** retain owner, identity, publication/effective/verification date, applicability and rights.\n2. **Executive-stated priority** must link to a dated attributable statement by a correctly identified leader or authorised corporate report; an analyst-inferred concern is NOT 'what the CEO thinks'.\n3. **SWOT interpretation** remains categorised, with explicit scope, arguments, contradictions, dated evidence and temporal context; strengths can be counter-evidence to an outsourced sales play.\n4. **Strategic issue** connects meaningful internal strengths/weaknesses and external opportunities/threats to a current/future enterprise decision with material consequences. May be a derived VIEW over current canonical objects rather than a new durable entity.\n5. **Pain point** is an observed, evidenced adverse business consequence, or else a clearly labelled unvalidated hypothesis. An announced initiative or abstract pressure does not prove a pain point.\n6. **Commercial opportunity** is separate seller-specific reasoning through approved Offer fit, early-influence/remaining decisions and customer validation; no automatic sales Pipeline promotion. Prioritise research ≠ customer demand.\n7. **Material Pressure** remains governed by accepted ADR-026; do not bypass qualification or create an ungoverned duplicate.\n8. Evidence / Observation / Enterprise Model are authoritative at their respective layers; individual streamed reports are projections.\n\n## Architecture first (no parallel intelligence engine)\nAudit current GitHub accepted ADRs (especially ADR-026), Enterprise/Industry Twin and macro model, source/Evidence/Observation, existing material pressure and assessment semantics, Enterprise Understanding, Offers matching/Sprint B buying triggers, seller development/Pipeline, Executive Voice concept #593, Opportunity Assurance #600, Intelligence Ripple #597, early-influence #604, current seven visual streams and NEWS-1 #614.\n\nProduce an exact concept/ownership map and recommend the **smallest compatible representation**. Explicitly compare:\n(A) a read-only derived issue/agenda projection over current governed objects;\n(B) a governed durable Strategic Issue contract only if genuinely required.\nDo not implement (B) without a narrow architecture decision and Chief Architect review. No generic autonomous agent, new canonical source, duplicate pressure store or unsupported weighted scores.\n\n## Proof using real, bounded existing evidence\n1. UK: no more than three nationally material issue examples; cross-industry implications only if relevant evidence permits. Distinguish industry-wide challenges from unverified enterprise applicability.\n2. Banking: selected differentiated structural strengths and weaknesses vs market/regulatory/technical opportunities/threats; distinguish major banking groups, challengers, infrastructure, regulation, consumers; show one meaningful counterexample.\n3. Lloyds: use existing public cost:income **2030 target**, dated customer deposits and 9-month statutory pretax profit with proper stock/flow boundaries, and other retained statements; do not claim measured cost-to-serve pain without actual operating-cost baseline; existing Envoy/Google capabilities can defeat a generic unmet-AI-needs thesis; current legal/segment/supplier/leadership and 9 research gaps stay unverified.\n4. Santander negative: significant 10 Nov 2026 integration announcement may be too late for shaping; no open sourcing requirement, procurement or future external scope assumed.\n5. Quiet/rejected case where evidence supports no leadership issue or no credible external commercial interest.\n6. Demonstrate same issue may draw inputs from Inside, Landscape, Forces and News when News becomes available, but does not become four duplicates; source/event updates lead to controlled stale/contradicted state only, no silent rewrite of seller notes/Pipeline.\n\n## Seller-facing design\n- Keep seven accepted FLORA art assets/UK→Banking→Lloyds experience untouched.\n- **Leadership Agenda** should be a concise shared cross-stream synthesis accessible in scope, NOT a fifth forced navigation level or a new parallel scene by default. Make it discoverable from any current stream with 3–5 grounded strategic issues, executive-specific stakes, relevant operating areas, what is known/inferred/unknown, a challenge/decision question, and 'Explore source' on demand.\n- SWOT analytical four categories can sit in optional depth; default shows issue-driven executive decisions, no PESTLE/SWOT geek speak wall.\n- Distinguish leadership-stated priorities from FLORA-derived analysis in plain language.\n- A News story should update/improve an existing Strategic Issue or seed a research candidate only after evidence and scope review; no invented pain point for every headline.\n- Show short desktop and iPad prototypes with real source references, plus an explicit source/date and absence/negative UI. No changes to existing renderers during design sprint.\n\n## Acceptance and completion\n- Deliver concept/architecture ownership map, source-backed cross-stream examples, proposal/ADR only where necessary, concise UI storyboard, existing-versus-missing data ledger, explicit quality/anti-fabrication tests and critique.\n- Define a commercial usefulness test: a strategic seller can name (which leader role, which evidenced issue, consequence, source, why now, influence state, counter-case and next test) without mistaking projections for customer-confirmed need.\n- Provide before/after assessment of current generic UK/Banking/Lloyds insight language, and define precise editorial standard for issue title / materiality / evidence / counter-evidence / timing / output.\n- No new model or app functionality, no merge, Render deployment, research collection, paid subscription, private record access or customer data writes in this sprint.\n- Output design-only draft PR, visual evidence, acceptance checklist and exact SHA. Owner approval before NEWS-1 implementation or lasting model change.\n\n**Sequence:** SI-1 architecture/design approval → NEWS-1 #614 implementation with material dated stories → targeted governed Lloyds and macro/industry research enrichment → early-influence #604 and strategic quality measurement #600.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/rdidale-jpg/CIOS/issues/615/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/rdidale-jpg/CIOS/issues/615/timeline",
+    "performed_via_github_app": {
+      "id": 1144995,
+      "client_id": "Iv23liVemv8A9if9v0F2",
+      "slug": "chatgpt-codex-connector",
+      "node_id": "A_kwHOAOQ6Gs4AEXij",
+      "owner": {
+        "login": "openai",
+        "id": 14957082,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjE0OTU3MDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/14957082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/openai",
+        "html_url": "https://github.com/openai",
+        "followers_url": "https://api.github.com/users/openai/followers",
+        "following_url": "https://api.github.com/users/openai/following{/other_user}",
+        "gists_url": "https://api.github.com/users/openai/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/openai/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/openai/subscriptions",
+        "organizations_url": "https://api.github.com/users/openai/orgs",
+        "repos_url": "https://api.github.com/users/openai/repos",
+        "events_url": "https://api.github.com/users/openai/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/openai/received_events",
+        "type": "Organization",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "name": "ChatGPT Codex Connector",
+      "description": "Bring ChatGPT and Codex to your GitHub repositories.",
+      "external_url": "https://www.chatgpt.com",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "created_at": "2025-02-14T01:37:05Z",
+      "updated_at": "2026-09-23T18:52:59Z",
+      "permissions": {
+        "actions": "write",
+        "checks": "read",
+        "contents": "write",
+        "emails": "read",
+        "issues": "write",
+        "metadata": "read",
+        "pull_requests": "write",
+        "statuses": "read",
+        "workflows": "write"
+      },
+      "events": [
+        "check_run",
+        "check_suite",
+        "commit_comment",
+        "issues",
+        "issue_comment",
+        "pull_request",
+        "pull_request_review",
+        "pull_request_review_comment",
+        "pull_request_review_thread",
+        "repository",
+        "status",
+        "sub_issues"
+      ]
+    },
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "rdidale-jpg",
+      "text": "## Owner amendment — PESTLE is mandatory in SI-1 (14 November 2026)\n\n**Do not omit PESTLE.** The cross-stream Leadership Agenda must integrate a rigorous, evidence-backed **Political, Economic, Social, Technological, Legal and Environmental (PESTLE)** analysis alongside SWOT, existing Material Pressures, Executive Voice, Inside, Landscape, Forces and future News. PESTLE is the **external-environment analytical lens**; SWOT is the **strategic synthesis** (internal strengths/weaknesses vs external opportunities/threats); Leadership Agenda communicates the resulting executive issues and choices. These are complementary, not competing frameworks.\n\nRequired scope: UK macro PESTLE → differentiated Banking industry PESTLE and applicability → Lloyds-specific exposure/impact, with evidence for transmission mechanisms. A national force is NOT automatically a Banking pressure, nor a Banking pressure automatically a Lloyds pain point, regulatory duty or external sales opportunity. Preserve causal pathways, geography/entity scope, dates, source rights, contradictions, counter-evidence and explicit unknowns. Each of the six PESTLE dimensions may contain zero evidenced material issues; never pad coverage or assign unsupported numerical severity. Existing governed macro/PESTLE models and ADR-026 Material Pressure qualification remain authoritative, no second engine or auto-promotion.\n\nSI-1 deliverables must add a **PESTLE→enterprise exposure→SWOT→Strategic Issue→Leadership Agenda** trace for each representative pilot, plus a negative case demonstrating source or applicability failure. Keep user-facing copy simple ('Forces of Change' rather than jargon-heavy PESTLE), while PESTLE method and full six-factor analysis are inspectable in optional deeper analysis. The seven approved FLORA illustrations and parallel-view navigation remain unchanged. Architecture/design-only, draft PR, no merge/deploy.",
+      "at": "2026-11-14T19:59:51Z",
+      "url": "https://github.com/rdidale-jpg/CIOS/issues/615#issuecomment-6883389471"
+    },
+    {
+      "author": "rdidale-jpg",
+      "text": "## Owner refinement — SI-1 must encompass complete CIOS strategic analysis model (14 Nov 2026)\n\nOwner requests reconfirmation that **Porter's Five Forces and other essential strategic/operating/economic analyses** remain included. Do not narrow SI-1 to PESTLE + SWOT alone. Confirm a **minimum coherent, reusable analytical coverage model** across three discovery scopes, while keeping these as behind-the-scenes analyses / optional explainable views, **NOT** a tab per framework.\n\n**External and industry understanding:** (1) PESTLE by Political/Economic/Social/Technological/Legal/Environmental, with evidenced scope/applicability; (2) **Porter’s Five Forces** — rivalry, entrants, substitutes, supplier power, buyer power, with industry-structural economics and historical/trend comparison; (3) industry size, growth, market structure, segments, profit pools and capital economics; (4) **industry value chain** and how actors create/deliver/capture value, with customers, suppliers, platform/infrastructure, peer groups and partnership dependencies; (5) competitor/strategic group positioning and business-model differentiation, including observed relative metrics and genuine sources.\n\n**Enterprise understanding:** (6) reported enterprise financial performance — revenue, income, operating cost, margins, profit, cash/capital, investment and growth with definitions/periods; (7) business and operating model, business lines/brands, customer segments/journeys, processes, organisation/governance/leadership, decisions/accountability; (8) technology/data/cyber/AI estate, capabilities, suppliers, incumbent arrangements, change programmes and risk/dependency mapping; (9) enterprise/industry relationships and stakeholder ecosystem. Missing source support stays UNKNOWN; distinguish group, segment and subsidiary scope.\n\n**Synthesis and commercial:** (10) SWOT (strengths/weaknesses grounded in internal enterprise; opportunities/threats grounded in external analysis; both at UK/Industry/Enterprise appropriate scope), plus tensions, tradeoffs, alternative explanations and strategic choices; (11) evidence-backed **Leadership Agenda** with explicitly attributed leader statements vs inferred strategic issues, verified adverse pain vs hypotheses, consequence, horizon, relevance and counter-evidence; (12) earliest viable influence window, what is already decided/owned internally, qualified Material Pressure gates per ADR-026, Offer fit/customer validation and Pipeline as separately governed concepts. News is a dated evidence/observation input, not a new canonical truth owner.\n\n**Traceability** must demonstrate e.g. PESTLE → Banking Five Forces / value-chain pressure → specific Lloyds exposure → SWOT/Strategic Issue → executive role/decision → potential commercial test. Five Forces may influence SWOT through bargaining, substitutes, structure and margins, but must not automatically imply a Lloyds pain or supplier opportunity.\n\n**Architecture priorities:** inspect existing PESTLE / Five Forces / value-chain / capability / ecosystem and financial-intelligence assets, Industry/Enterprise twins, accepted ADRs and current visual stream contracts BEFORE proposing any new component. Produce a coverage/ownership matrix that distinguishes existing verified model, presentation-only diagram, research gap and unsupported synthesis. No invented coefficients, arbitrary weighted scores, generated specific financial figures, automatic opportunity qualification or redundant engines. Prefer simple read-only derivation, preserve contradictory/temporal evidence, and use a deeper inspection mode for analytical frameworks rather than cluttering beautiful default image scenes.\n\n**Demonstrations:** UK macro external changes, Banking industry 5-forces/profit pool/value chain, Lloyds internal finance/capabilities and scoped external exposure, combined SWOT→Leadership Agenda, and Santander late influence negative. Explicitly articulate what a sales director could do differently with the analysis. All SI-1 remains design/architecture only: no production changes, merge or Render deployment. NEWS-1 #614 follows SI-1 acceptance.",
+      "at": "2026-11-14T20:04:18Z",
+      "url": "https://github.com/rdidale-jpg/CIOS/issues/615#issuecomment-6883444778"
+    },
+    {
+      "author": "rdidale-jpg",
+      "text": "## Owner decision — seller-facing presentation excludes Missing / Unknown (15 November 2026)\n\n**Hard UX/product rule:** In ordinary seller-facing FLORA UK, Industry, Enterprise, Inside, Landscape, Forces, News and Leadership Agenda views, **never display “Missing”, “Unknown”, “Not researched”, empty framework slots, gaps, coverage scores, completeness percentages or research-deficiency lists as user-visible content**. If an item cannot be meaningfully supported, **omit it from the default presentation**. Do not fill gaps with fiction or silently convert uncertain inputs into facts.\n\n**Positive semantic types to present, subtly:** (i) source-reported/accepted evidence-backed factual claim, with source status distinct from acceptance; (ii) calculated from identified inputs; (iii) estimated with method/range/quality basis; (iv) explicit working assumption (especially in scenarios), owned/versioned; (v) inferred analytical insight, with premise/lineage; (vi) hypothesis / commercial question framed as such; (vii) recommendation/next test, not fact. Not all of these require eye-catching badges—quiet typography/inline annotation, detail-on-demand, and consistent accessible non-colour indicators.\n\n**Authority remains multidimensional:** informational type ≠ evidence quality ≠ acceptance status. An externally reported claim is not necessarily accepted canonical evidence; a deterministic calculation over estimated inputs remains assumption-dependent; a cited hypothesis remains a hypothesis. No upgrades through presentation, maths or AI reasoning.\n\n**Owner Command Centre (#599 / #603):** evidence gaps, source insufficiency, coverage/completeness by dimension, stale/conflicted facts, blocked analytical transmission, unverified source rights/authority, imports, and research queue belong in **owner-only assurance/inspection**, with existing IAM and owner permissions. Do not leak owner research metadata to public or private seller view by hidden HTML, API, export, page counts or tooltip.\n\n**Nuance:** Preserve honest *meaningful limitations and counter-evidence* for any claim that IS presented. Do not suppress a material caveat and leave an overconfident or misleading financial/commercial assertion. If a caveat cannot be expressed without undermining the claim, omit/reframe the claim. A seller-facing decision question like “Which remaining choices should we validate?” is welcome; a data-quality placeholder like “Decision owner: Unknown” is not. Keep genuine user-facing working assumptions, conditional interpretations and sourced time periods visible. Lack of a displayed issue is not evidence of absence; avoid “no risks/no pressure” conclusions.\n\n**Implementation requirement:** audit existing renderer and future SI-1/News presentation for exposed unknown markers, gaps and empty slots. Build a centrally tested view projection/presentation policy, without erasing underlying Unknown/Evidence/Observation/contradiction source objects or mutating canonical models. Seller journeys must retain useful substantive issues, not all vanish due to incomplete research; interpretation/hypothesis views may be admitted if clearly labelled and defensible. Accessibility should announce classifications without relying only on colour.\n\n**Acceptance:** A strategic seller sees only intelligible reported / calculated / estimated / assumed / inferred / hypothesised material, plus optional evidence and relevant caveats; owner sees complete deficiencies and research queue behind strict assurance gates. No scope hides verified adverse evidence merely because it challenges the commercial thesis; avoid selective cherry-picking.\n\nDesign/policy decision only, no production change/merge/Render deployment by this comment.",
+      "at": "2026-11-15T07:45:12Z",
+      "url": "https://github.com/rdidale-jpg/CIOS/issues/615#issuecomment-6891242572"
+    },
+    {
+      "author": "rdidale-jpg",
+      "text": "## Owner product decision — no questions in core intelligence UX (15 Nov 2026)\n\n**Firm requirement:** Ordinary FLORA Industry/Enterprise Twins and UK/Industry/Enterprise **Inside, Landscape, Forces, News, SWOT and Leadership Agenda** views must **NOT present questions** as their intelligence output. This includes rhetorical questions, suggested customer/discovery questions, \"what to investigate next\", \"what decision is still open?\", \"questions for leadership\", or empty research-question placeholders. **Questions and recommendations are not core intelligence types.**\n\n**Permitted positive presentations only:** reported/evidence-backed statements, calculated measures, method-supported estimates, declared working assumptions, carefully labelled analytical insights/inferences, and explicit hypotheses (written as **declarative, falsifiable propositions**, not questions). Every rendered item retains type, source/authority distinction, date/period and relevant caveats/contradictions in proportionate disclosure. Omit content that cannot support one of these categories; never invent certainty to fill a void.\n\n**Leadership Agenda adjustment:** Existing SI-1 / RIE-1 / RIE-2 artifacts contain 'decision questions', 'next learning action' and similar research-oriented fields. Those may remain within governed analysis or internal review records but are **not to be displayed in the default seller-facing Leadership Agenda**. Translate eligible material to substantive declarative issue/consequence/decision-status statements **only where supported**. Example:\n- Not user-facing: \"Which Lloyds asset-return decisions remain open?\" \n- User-facing: \"Lloyds Retail reported increased lease depreciation broadly offsetting other-income growth; product-level return and the status of remaining remedial choices are not established.\" Better: show the supported financial movement, labelled Insight about the offset and, only if sufficiently grounded, a labelled conditional Hypothesis. Avoid displaying 'unknown' / 'missing' as a separate field.\n- Do not show a weak declarative non-finding merely to fill an agenda. A Leadership Agenda can contain fewer items or be omitted.\n\n**Routing:** Owner-side research acquisition, source insufficiency, evidence coverage, contradiction/reconciliation tasks and investigation questions belong in protected **Owner Command Centre** (#599/#603). Persona-directed customer/discovery questions, recommended meetings, next sales actions, etc. belong **only** to future independently authorised Role-Specific Actions #621 (or appropriate existing private authorised seller workflow), not current shared public/enterprise intelligence. Do not imply #621 is now authorised to build.\n\n**Implementation/design checks:** Audit SI-1 draft #616, current VEX-1 presentation, future RIC, RIE-1/#618, RIE-2/#620 and News #614 for leaked seller-oriented question labels. Keep research questions in internal records for analyst reasoning but ensure no customer/seller-facing projection exposes them. Test omission, nonempty valuable declarative issue, suitable caveat and no inadvertent rights/tenant leaks. Preserve existing evidence and source history.\n\nThis is a UX/semantic contract amendment, **not** approval to edit source owners, merge PRs, implement role-action features or deploy Render.",
+      "at": "2026-11-15T07:52:18Z",
+      "url": "https://github.com/rdidale-jpg/CIOS/issues/615#issuecomment-6891316079"
+    }
+  ],
+  "comments_complete": true
+}

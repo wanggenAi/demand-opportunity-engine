@@ -7,7 +7,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## workflow_reliability — UNVALIDATED CLUSTER
 
-- independent_demand_count: 113
+- independent_demand_count: 116
 - payment_evidence_count: 1
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community', 'n8n Community']
 - communities: ['Agenta-AI/agenta', "Ask HN: What's your current AI agentic setup?", 'Ask/Show HN', 'Commerce operator forum', "Show HN: Glassbrain – Read your agent's brain, know what your agent knows", '[dead]', 'farmmer938-lgtm/autonomous-zero-baht', 'n8n Jobs', 'n8n-io/n8n', 'useagenthq/useagent']
@@ -20,12 +20,12 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://github.com/n8n-io/n8n/issues/43932
+  - https://github.com/n8n-io/n8n/issues/43926
+  - https://github.com/n8n-io/n8n/issues/43924
   - https://github.com/n8n-io/n8n/issues/43916
   - https://github.com/n8n-io/n8n/issues/43911
   - https://github.com/farmmer938-lgtm/autonomous-zero-baht/issues/36
-  - https://github.com/n8n-io/n8n/issues/43892
-  - https://news.ycombinator.com/item?id=50485228
-  - https://github.com/n8n-io/n8n/issues/43864
 
 ## supplier_sourcing — UNVALIDATED CLUSTER
 
@@ -51,7 +51,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## browser_automation — UNVALIDATED CLUSTER
 
-- independent_demand_count: 11
+- independent_demand_count: 12
 - payment_evidence_count: 1
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community']
 - communities: ['Commerce operator forum', 'Understanding Email Encryption (2025)', 'datnguyenquy94/news-radar', 'n8n-io/n8n', 'useagenthq/useagent', 'yaojiejia/agents-radar']
@@ -64,12 +64,12 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://github.com/n8n-io/n8n/issues/43947
   - https://github.com/yaojiejia/agents-radar/issues/462
   - https://github.com/datnguyenquy94/news-radar/issues/1009
   - https://github.com/n8n-io/n8n/issues/43003
   - https://news.ycombinator.com/item?id=50334266
   - https://github.com/n8n-io/n8n/issues/42851
-  - https://github.com/n8n-io/n8n/issues/42153
 
 ## lead_research — UNVALIDATED CLUSTER
 

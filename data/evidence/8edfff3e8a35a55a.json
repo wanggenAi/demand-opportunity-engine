@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50499357",
+  "collected_at": "2026-11-15T09:19:17.933130+00:00",
+  "source": {
+    "author": "lis05",
+    "children": [],
+    "created_at": "2026-11-14T18:18:33.000Z",
+    "created_at_i": 1794680313,
+    "id": 50499357,
+    "options": [],
+    "parent_id": null,
+    "points": 1,
+    "story_id": 50499357,
+    "text": "Hello HN!<p>I&#x27;d like to share the project I&#x27;ve been working on for the last couple of months.<p>On microcontrollers with only a few kilobytes of memory (both Flash and SRAM) heatshrink [1] and tamp [2] are the current meta when it comes to decompression of static assets. They are small, configurable, and produce good compression ratio.<p>However, when random-access workflows are concerned (like extracting a single parameter from a configuration file), both compressors require the exact same window to be allocated. This means that, to decompress a small (4-32 bytes) chunk, memory consumption stays the same as when decompression the entire payload.<p>blaris is a Windowless LZSS algorithm, meaning that it is LZSS but does not allocate a window. This allows it to reach the same compression ratio (and sometimes even better) as heatshrink and tamp, while keeping memory usage extremely minimal (around 100 bytes of SRAM).<p>Typical LZ77&#x2F;LZSS works by copying a byte from the window buffer when resolving a match. Windowless version works by resolving this match using the compressed payload itself - following the chain of matches until it finds a literal run token.<p>To facilitate this, tokens are split into 3 streams:<p>1. controls (1 byte per value) - encode either literal run length (1 to 16) or 240 different pairs (match_len, match_distance_log2).<p>2. literals (1 byte per value) - raw literals.<p>3. distance bits (bit-packed) - contains bit-packed match offsets.<p>Because controls are 1 byte and determine the size of the token, we can traverse all 3 streams in both directions, which enables the windowless LZSS!<p>There are additional optimizations used to speed this up:<p>1. checkpoints contain decoder state at each 2^SPREAD_LOG positions, which enables the decoder to jump to the closest checkpoint in constant time.<p>2. matches&#x27; offsets can be forced to align to a power of two, increasing the match range paying the price of unaligned matches.<p>3. optimal parser on compression side comes up with the best possible representation of the input.<p>4. chain-flattening can significantly reduce average number of match to match hops while sacrificing just 1-2% of the compression ratio.<p>When decompressing small slices (4-32 bytes), blaris significantly outperforms both heatshrink and tamp (500x for 1B reads). For bigger slices, since its decompression time depends linearly on the data, blaris performs worse, but it isn&#x27;t really made for that.<p>And the best part, it is extremely lightweight in terms of memory. When compiled for RV32IMC architecture, it takes only 548-784 bytes of Flash memory, while using just 104-112B of SRAM regardless of the file size. For comparison, heatshrink is 1300-1464 bytes of Flash and uses 206-16594 bytes of SRAM depending on the window size, and tamp is 2238-3238 bytes of Flash while also using 520-16672 bytes of SRAM.<p>[1] <a href=\"https:&#x2F;&#x2F;github.com&#x2F;atomicobject&#x2F;heatshrink\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;atomicobject&#x2F;heatshrink</a><p>[2] <a href=\"https:&#x2F;&#x2F;github.com&#x2F;BrianPugh&#x2F;tamp\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;BrianPugh&#x2F;tamp</a>",
+    "title": "Show HN: Blaris – Windowless Random-Access LZSS for Constrained Microcontrollers",
+    "type": "story",
+    "url": "https://github.com/lis05/blaris"
+  },
+  "comments": [],
+  "comments_complete": true
+}

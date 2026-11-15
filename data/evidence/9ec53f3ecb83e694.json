@@ -1,0 +1,123 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43947",
+  "collected_at": "2026-11-15T09:19:17.933130+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43947",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43947/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43947/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43947/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43947",
+    "id": 6401111916,
+    "node_id": "I_kwDOC4Q8Qs8AAAABfYk3bA",
+    "number": 43947,
+    "title": "Stop all executions toast says \"Stopped 1 executions.\" for one execution",
+    "user": {
+      "login": "burrows99",
+      "id": 69508267,
+      "node_id": "MDQ6VXNlcjY5NTA4MjY3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/69508267?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/burrows99",
+      "html_url": "https://github.com/burrows99",
+      "followers_url": "https://api.github.com/users/burrows99/followers",
+      "following_url": "https://api.github.com/users/burrows99/following{/other_user}",
+      "gists_url": "https://api.github.com/users/burrows99/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/burrows99/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/burrows99/subscriptions",
+      "organizations_url": "https://api.github.com/users/burrows99/orgs",
+      "repos_url": "https://api.github.com/users/burrows99/repos",
+      "events_url": "https://api.github.com/users/burrows99/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/burrows99/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 10081993897,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACWO8EqQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:lifecycle",
+        "name": "team:lifecycle",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Lifecycle & Governance team",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-15T07:00:38Z",
+    "updated_at": "2026-11-15T07:04:13Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nThe \"Stop executions\" dialog on the Executions list shows a toast when it finishes. When the dialog stops one execution, the toast says \"Stopped 1 executions.\" The text has no singular form.\n\n<img width=\"1440\" height=\"900\" alt=\"Toast that says Stopped 1 executions\" src=\"https://github.com/user-attachments/assets/11e8b498-5346-48a4-b3bf-84e3172a5547\" />\n\n### To Reproduce\n\n1. Create a workflow that runs for some time. For example, a Webhook node followed by a Wait node with 60 seconds. Publish the workflow.\n2. Start one execution. For example, call the production webhook URL one time.\n3. Open Overview > Executions.\n4. Click \"Stop all\".\n5. Keep the three checkboxes selected and click \"Stop Executions\".\n6. Read the toast at the bottom right.\n\nThe toast says \"Stopped 1 executions.\"\n\n### Expected behavior\n\nThe toast says \"Stopped 1 execution.\" For other counts, the plural form stays, for example \"Stopped 3 executions.\" and \"Stopped 0 executions.\"\n\nThe message is `executionStopManyModal.success` in `packages/frontend/@n8n/i18n/src/locales/en.json`. It has one form, and `StopManyExecutionsModal.vue` does not pass the count for pluralization.\n\n### Debug Info\n\nI reproduced this on a local source build of `master` at `51f8cf6249`, not on a released version.\n\n- n8nVersion: 2.48.0\n- platform: npm (built from source)\n- nodeJsVersion: 24.22.3\n- database: sqlite\n- executionMode: regular\n- license: community\n- browser: Chrome on macOS\n\n### Operating System\n\nmacOS 27.0.1\n\n### n8n Version\n\n2.48.0 (master at 51f8cf6249)\n\n### Node.js Version\n\n24.22.3\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43947/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43947/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @burrows99,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9772\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9772](https://linear.app/n8n/issue/GHC-9772)",
+      "at": "2026-11-15T07:00:46Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43947#issuecomment-6890780995"
+    }
+  ],
+  "comments_complete": true
+}

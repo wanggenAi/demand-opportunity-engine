@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50497513",
+  "collected_at": "2026-11-15T09:19:17.933130+00:00",
+  "source": {
+    "author": "jdefr89",
+    "children": [],
+    "created_at": "2026-11-14T14:55:16.000Z",
+    "created_at_i": 1794668116,
+    "id": 50497513,
+    "options": [],
+    "parent_id": null,
+    "points": 3,
+    "story_id": 50497513,
+    "text": "SrcWranglr my open-source, Rust-powered C&#x2F;C++ source-code exploration and security analysis toolkit. I had originally developed this in Python as a prototype for a couple years…  That’s until you Rustaceans got in my damn year…<p>If you ever used SourceTrail or Understand, this is my idea of how it should have been done. It helps visualize  complex codebases C&#x2F;C++ it combines interactive call graphs, cross-references, semantic code search, reachability analysis, and inter-procedural value tracing.<p>Security-focused features include vulnerability discovery, attack-surface analysis, automated fuzz harness generation, and integration with external static analyzers. My favorite feature is the ability to generate semgrep rules for the specific code base.<p>Powered by tree-sitter, SrcWranglr can analyze codebases without requiring a successful build or compilation database.<p>Using this tool and my AAVR (Agentic Augmented Vuln Research) methodology I found several vulnerabilities in projects I won’t name as I just disclose to maintainers, in just a couple of hours.<p><a href=\"https:&#x2F;&#x2F;github.com&#x2F;jdefrancesco&#x2F;SrcWranglr\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;jdefrancesco&#x2F;SrcWranglr</a>",
+    "title": "Show HN: SrcWranglr v0.13 – A C/C++ Graphical Code Explorer for Vuln. Research",
+    "type": "story",
+    "url": "https://github.com/jdefrancesco/SrcWranglr"
+  },
+  "comments": [],
+  "comments_complete": true
+}

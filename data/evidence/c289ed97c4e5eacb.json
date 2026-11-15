@@ -1,0 +1,92 @@
+{
+  "source_api_url": "https://api.github.com/repos/rroland10/dex223-bug-bounty/issues/110",
+  "collected_at": "2026-11-15T09:19:17.933130+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/rroland10/dex223-bug-bounty/issues/110",
+    "repository_url": "https://api.github.com/repos/rroland10/dex223-bug-bounty",
+    "labels_url": "https://api.github.com/repos/rroland10/dex223-bug-bounty/issues/110/labels{/name}",
+    "comments_url": "https://api.github.com/repos/rroland10/dex223-bug-bounty/issues/110/comments",
+    "events_url": "https://api.github.com/repos/rroland10/dex223-bug-bounty/issues/110/events",
+    "html_url": "https://github.com/rroland10/dex223-bug-bounty/issues/110",
+    "id": 6391257871,
+    "node_id": "I_kwDOPP3aj88AAAABfPLbDw",
+    "number": 110,
+    "title": "Forged Onramp widget events via unauthenticated postMessage show a fake \"Sale complete\" (fiat on/off-ramp)",
+    "user": {
+      "login": "belski21-growl",
+      "id": 157978354,
+      "node_id": "U_kgDOCWqO8g",
+      "avatar_url": "https://avatars.githubusercontent.com/u/157978354?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/belski21-growl",
+      "html_url": "https://github.com/belski21-growl",
+      "followers_url": "https://api.github.com/users/belski21-growl/followers",
+      "following_url": "https://api.github.com/users/belski21-growl/following{/other_user}",
+      "gists_url": "https://api.github.com/users/belski21-growl/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/belski21-growl/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/belski21-growl/subscriptions",
+      "organizations_url": "https://api.github.com/users/belski21-growl/orgs",
+      "repos_url": "https://api.github.com/users/belski21-growl/repos",
+      "events_url": "https://api.github.com/users/belski21-growl/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/belski21-growl/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8975710669,
+        "node_id": "LA_kwDOPP3aj88AAAACFv55zQ",
+        "url": "https://api.github.com/repos/rroland10/dex223-bug-bounty/labels/bug",
+        "name": "bug",
+        "color": "d73a4a",
+        "default": true,
+        "description": "Something isn't working",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2026-11-14T14:28:01Z",
+    "updated_at": "2026-11-14T14:28:01Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "# Bug Report Template\n\n## Executive Summary\n\n**Vulnerability Title**: Forged Onramp widget events via unauthenticated `postMessage` show a fake \"Sale complete\" (fiat on/off-ramp)\n\n**Severity**: Medium\n\n**CVSS Score**: 4.2 - CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:L/A:L\n\n**Affected Component**: Web App / API — fiat on/off-ramp integration (`test-app.dex223.io/en/buy-crypto`, Onramp widget)\n\n**Discovery Date**: 2026-11-14\n\n**Researcher**: Belski Raizo (GitHub: belski21-growl)\n\n**Scope Verification**: In scope per the program docs — \"all public and authenticated APIs, including Fiat on/off-ramp integration\" and the web application at `test-app.dex223.io`. This is NOT one of the 3 documented known issues, NOT a Beosin finding, and NOT a duplicate of any filed issue: all 108 issues on `rroland10/dex223-bug-bounty` were checked (14 Nov 2026). No issue mentions `postMessage`, Onramp, widget events, or `isOnramp`. See \"Related Vulnerabilities\".\n\n## Vulnerability Details\n\n### Description\n\nThe DEX223 buy-crypto page trusts Onramp widget events delivered via `window.postMessage` without ever verifying the sender's origin. The Onramp SDK's `_widgetMessageHandler` in the deployed bundle gates only on `eventData.isOnramp === true`; `event.origin` is only logged, never compared. The app's own handler (`BuyOnramp.tsx:100`, `handleTxEvents`) then passes `e.data` wholesale to `onCompleted` when it sees `ONRAMP_WIDGET_TX_COMPLETED` — again with no origin check anywhere in the file.\n\nWorse, DEX223 keeps **no order state at all** for the fiat ramp: no callback/webhook, no stored order ID, no backend verification of a completed fiat transaction. The only signal that a buy/sell \"completed\" is the widget `postMessage` event. So any page that can `postMessage` to a DEX223 buy-crypto window can forge a completed fiat transaction — arbitrary `coinCode`, `fiatAmount`, `cryptoAmount`, `orderId` — and the victim's page renders the success card for a fiat transaction that never happened.\n\n### Impact Assessment\n\n- **Technical Impact**: Unauthenticated cross-origin `postMessage` is accepted as proof of a fiat transaction. `ONRAMP_WIDGET_TX_COMPLETED` forges a success state; `TX_FAILED` / `WIDGET_FAILED` forge an error state; `CLOSE_REQUEST_CONFIRMED` closes the widget mid-flow.\n- **Data Impact**: No DEX223 user data is exposed and no DEX223 funds move directly. The forged data is attacker-chosen, not leaked.\n- **Business Impact**: The fiat ramp's only completion signal is forgeable, so the \"Sale complete\" state cannot be trusted as settlement proof.\n- **User Impact**: A victim who believes a fiat purchase/sale settled may stop checking, release goods or payment off-platform, or treat a sale as in progress — while no real Onramp transaction exists. Precondition: the victim must have the buy-crypto widget open at forgery time (the SDK registers the listener in its constructor).\n- **Financial Impact**: Indirect — no funds move on DEX223 itself. The loss is a false confirmation of a fiat buy/sell, which can lead to off-platform losses. This is why the severity is Medium, not High.\n\n### Attack Vector\n\n1. Attacker page opens the DEX223 buy-crypto page in a popup: `w = window.open(\"https://test-app.dex223.io/en/buy-crypto\")`. (Framing is blocked — issue #3's fix holds: `X-Frame-Options: SAMEORIGIN` + `frame-ancestors 'self'` — so the iframe route is closed; the popup route is not.)\n2. Victim connects their wallet and clicks \"Buy D223 with Onramp\", opening the widget. The SDK registers its message listener.\n3. Attacker posts a forged completion event to the popup window:\n   `w.postMessage({eventData:{isOnramp:true,type:\"ONRAMP_WIDGET_TX_COMPLETED\",data:{coinCode:\"d223\",fiatAmount:1000,cryptoAmount:500000,orderId:\"fake-1\"}}}, \"https://test-app.dex223.io\")`\n4. The victim's page renders the \"Sale complete\" card with no real Onramp transaction behind it.\n5. Alternative delivery: a malicious or compromised third-party iframe already embedded in the page posts the same message to the parent window.\n\n### Prerequisites\n\n- Victim has the buy-crypto page open with the Onramp widget active (the SDK listener is registered in its constructor).\n- Attacker can open the DEX223 page as a popup or has script execution in a frame that can reach the page's `window` object. No authentication, no account, and no Onramp account are needed by the attacker.\n\n## Proof of Concept\n\n### Evidence (code-verified, 14 Nov 2026 — live end-to-end reproduction NOT attempted)\n\n**Reproduction status: UNCONFIRMED end-to-end.** The forgery was not executed against a live victim window (that would need a real user session with the widget open). What is verified, verbatim, from the deployed bundle and the repo:\n\n1. Deployed chunk `https://test-app.dex223.io/_next/static/chunks/2970-1a54b2ce50d96c26.js` — the Onramp SDK's `_widgetMessageHandler` gates only on `eventData.isOnramp === true`. `event.origin` is only logged, never compared against any allowlist.\n2. Repo `EthereumCommonwealth/Dex223-UI`, `apps/web/app/[locale]/buy-crypto/components/BuyOnramp.tsx:100` — `handleTxEvents` passes `e.data` wholesale to `onCompleted` on `ONRAMP_WIDGET_TX_COMPLETED`. No origin check exists anywhere in the file.\n3. Context (verified): the fiat ramp is LIVE — production Onramp (onramp.money, not sandbox), appId `1708478`, buy/sell D223/ETH/USDC/USDT. DEX223 stores no order state: no callback/webhook, no stored order ID, no backend verification. KYC/payment/settlement are Onramp's.\n\n### Reproduction steps (for the team to confirm)\n\n1. Open `https://test-app.dex223.io/en/buy-crypto` in a window (victim side) and start an Onramp buy so the widget is open.\n2. From a different origin (attacker page), run:\n   ```js\n   const w = window.open(\"https://test-app.dex223.io/en/buy-crypto\");\n   // after the victim opens the widget:\n   w.postMessage(\n     { eventData: { isOnramp: true, type: \"ONRAMP_WIDGET_TX_COMPLETED\",\n       data: { coinCode: \"d223\", fiatAmount: 1000, cryptoAmount: 500000, orderId: \"fake-1\" } } },\n     \"https://test-app.dex223.io\"\n   );\n   ```\n3. Expected (unconfirmed): the victim's page shows the \"Sale complete\" card for order `fake-1`, with no corresponding transaction in Onramp.\n\n### Test Environment\n\n- **URL**: https://test-app.dex223.io/en/buy-crypto\n- **Smart Contract Address**: Not applicable (web/API finding; Onramp itself is a third party and out of scope — the finding is DEX223's trust in the `postMessage` channel and its lack of order verification).\n- **Test Account**: Not applicable (no account or authentication is involved).\n\n## Technical Analysis\n\n### Root Cause\n\nTwo compounding defects:\n\n1. **No origin validation on widget events.** Neither the Onramp SDK handler in the deployed bundle nor DEX223's `handleTxEvents` compares `event.origin` against `https://onramp.money` / `https://test.onramp.money`. Any origin that can obtain a reference to the page's `window` can dispatch a widget event.\n2. **No order verification.** DEX223 treats the widget event as settlement proof, but it holds no order state and never checks the `orderId` against Onramp's status API. A forged `TX_COMPLETED` is indistinguishable from a real one from the app's point of view.\n\n### Affected Code\n\n- Deployed bundle: `https://test-app.dex223.io/_next/static/chunks/2970-1a54b2ce50d96c26.js` — `_widgetMessageHandler`: gates only on `eventData.isOnramp === true`; `e.origin` only logged, never compared.\n- Repo `EthereumCommonwealth/Dex223-UI`, `apps/web/app/[locale]/buy-crypto/components/BuyOnramp.tsx:100` — `handleTxEvents` forwards `e.data` to `onCompleted` on `ONRAMP_WIDGET_TX_COMPLETED` with no origin check anywhere in the file.\n\n### Exploitability\n\n- **Difficulty**: Medium — requires the victim to have the widget open and the attacker to hold a window reference (popup) or script execution in a reachable frame.\n- **Reliability**: Always, once the preconditions hold — the handler performs no origin check at all.\n- **Automation**: Semi-automated (needs a live victim window).\n\n## Remediation\n\n### Suggested Fix\n\n1. In `BuyOnramp.tsx` (or the SDK wrapper), validate `event.origin` against `https://onramp.money` / `https://test.onramp.money` before dispatching any widget event. Drop events from any other origin.\n2. Do not treat `TX_COMPLETED` as settlement proof on the client alone — verify the `orderId` against Onramp's order-status API server-side before rendering a success state.\n\n### Alternative Solutions\n\n- Move the widget-event handling server-side (the server holds the expected `orderId` and polls Onramp for its status).\n- Require the widget to run in an iframe with a restrictive `allow` / sandbox policy so only Onramp's origin can post to it (note: the page currently blocks framing of itself, which is a different direction — the widget is the framed party here).\n\n## Additional Information\n\n### Related Vulnerabilities — why this is NOT a duplicate\n\n- #3 (clickjacking — framing): different mechanism (framing vs `postMessage` trust), and the framing vector is already fixed. This report is about the event channel, not the frame.\n- #103 (Next.js Image Optimizer SSRF): unrelated.\n- #42 / #71 / #72 (feedback endpoint / API keys in bundles): unrelated.\n- #106–#108 (UI / native-ETH handling): unrelated.\n- No filed issue mentions `postMessage`, Onramp, widget events, or `isOnramp`. Duplicate risk: Low.\n\n### References\n\n- Deployed chunk: https://test-app.dex223.io/_next/static/chunks/2970-1a54b2ce50d96c26.js\n- `BuyOnramp.tsx` in `EthereumCommonwealth/Dex223-UI` (`apps/web/app/[locale]/buy-crypto/components/BuyOnramp.tsx:100`)\n- Onramp (third party, out of scope): https://onramp.money\n\n### Timeline\n\n- **Discovery**: 2026-11-14\n- **Verification**: 2026-11-14 (code-verified against the deployed bundle and repo; live end-to-end reproduction not attempted — see PoC section)\n- **Report Submission**: 2026-11-14\n\n## Researcher Information\n\n**Name**: Belski Raizo (GitHub: belski21-growl)\n\n**Email**: belskiraizo@gmail.com\n\n**Preferred Payment Method**: D223 Tokens only\n\n**Disclosure Preference**: Coordinated — private advisories are unavailable on this repo (creation page returns 404), so filed via GitHub Issues per SECURITY.md; no public disclosure before this filing.",
+    "reactions": {
+      "url": "https://api.github.com/repos/rroland10/dex223-bug-bounty/issues/110/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/rroland10/dex223-bug-bounty/issues/110/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [],
+  "comments_complete": true
+}

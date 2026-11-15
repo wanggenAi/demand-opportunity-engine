@@ -1,0 +1,123 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43924",
+  "collected_at": "2026-11-15T09:19:17.933130+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43924",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43924/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43924/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43924/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43924",
+    "id": 6389647250,
+    "node_id": "I_kwDOC4Q8Qs8AAAABfNpHkg",
+    "number": 43924,
+    "title": "Executions filter startedAfter/startedBefore shifted by the Postgres session time zone offset (zone-less UTC string vs timestamptz)",
+    "user": {
+      "login": "AlexFet",
+      "id": 5980794,
+      "node_id": "MDQ6VXNlcjU5ODA3OTQ=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5980794?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/AlexFet",
+      "html_url": "https://github.com/AlexFet",
+      "followers_url": "https://api.github.com/users/AlexFet/followers",
+      "following_url": "https://api.github.com/users/AlexFet/following{/other_user}",
+      "gists_url": "https://api.github.com/users/AlexFet/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/AlexFet/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/AlexFet/subscriptions",
+      "organizations_url": "https://api.github.com/users/AlexFet/orgs",
+      "repos_url": "https://api.github.com/users/AlexFet/repos",
+      "events_url": "https://api.github.com/users/AlexFet/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/AlexFet/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 10081993897,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACWO8EqQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:lifecycle",
+        "name": "team:lifecycle",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Lifecycle & Governance team",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-14T11:56:13Z",
+    "updated_at": "2026-11-14T12:05:11Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nWhen n8n uses PostgreSQL and the PostgreSQL session time zone is not UTC (e.g. the server's `timezone` setting is a local zone, which is the Debian `initdb` default), the `startedAfter` / `startedBefore` filters of the executions list are applied shifted by the zone's UTC offset. With a UTC+2 server time zone, both bounds act 2 hours earlier than requested.\n\nAffected: the instance-level MCP tool `search_workflow_executions` and the date filter of the executions list (same query path). The stored `startedAt` values and the values returned in responses are correct; only the filter is shifted.\n\n**Root cause (from the source of `n8n@2.47.7`):**\n\n1. `packages/@n8n/db/src/repositories/execution.repository.ts`, `startedAtCondition()`:\n   `MoreThanOrEqual(DateUtils.mixedDateToUtcDatetimeString(new Date(startedAfter)))` (same for `startedBefore`).\n2. `DateUtils.mixedDateToUtcDatetimeString` (`@n8n/typeorm`) builds `YYYY-MM-DD HH:mm:ss.SSS` from `getUTC*()` — a UTC wall-clock string **without a zone designator**.\n3. On Postgres, `execution_entity.\"startedAt\"` is `timestamptz` (`datetimeColumnType`).\n4. Postgres interprets a zone-less literal compared against `timestamptz` in the **session** `TimeZone`. n8n does not set the session time zone in its connection options, so the server default applies.\n\nSo `08:20:00` (meant as UTC) is read as `08:20:00+02` = `06:20:00Z`.\n\nThe same pattern is used in `getIdsSince()` and `getWorkflowIdsWithExecutionsSince()`. The `waitTill` queries only use it for SQLite and pass `Date` objects on Postgres, so they are not affected.\n\nRelated: #25054 (same helper, write path of `startedAt`, also non-UTC Postgres) was closed without merge; the write path is correct in 2.47.7, the filter path is not.\n\n### To Reproduce\n\n1. Run n8n with `DB_TYPE=postgresdb` against a Postgres whose `timezone` is a non-UTC zone with a positive offset (e.g. `ALTER DATABASE n8n SET timezone = 'Etc/GMT-2'`, i.e. UTC+2), restart n8n.\n2. Have an execution with `startedAt = 2026-11-14T06:20:30Z`.\n3. Call `search_workflow_executions` with `startedAfter=2026-11-14T06:20:00Z`, `startedBefore=2026-11-14T06:21:00Z` → empty result.\n4. Call it with `startedAfter=2026-11-14T08:20:00Z`, `startedBefore=2026-11-14T08:21:00Z` → the 06:20:30Z execution is returned.\n5. Set the session zone to UTC for the n8n role (`ALTER ROLE n8n IN DATABASE n8n SET timezone = 'UTC'`), restart n8n → step 3 returns the execution, step 4 is empty.\n\n### Expected behavior\n\nThe filter bounds are compared as absolute instants, independent of the Postgres session time zone — e.g. pass `Date` objects (or ISO strings with an offset) for Postgres instead of zone-less UTC strings, or set the session time zone to UTC in the Postgres connection options.\n\n### Debug Info\n\nSelf-hosted, official Docker image `n8nio/n8n:2.47.7`, container `TZ=UTC`, `GENERIC_TIMEZONE` set to a UTC+2 zone (not relevant to the bug; the shift follows the Postgres session time zone). External PostgreSQL 17 with server `timezone` UTC+2. Workaround applied: role-level `timezone = 'UTC'`.\n\n### Operating System\n\nDebian 13 (Docker)\n\n### n8n Version\n\n2.47.7\n\n### Node.js Version\n\nbundled with the official Docker image 2.47.7\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43924/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43924/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @AlexFet,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9766\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9766](https://linear.app/n8n/issue/GHC-9766)",
+      "at": "2026-11-14T11:56:24Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43924#issuecomment-6876900600"
+    }
+  ],
+  "comments_complete": true
+}

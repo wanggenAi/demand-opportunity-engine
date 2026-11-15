@@ -1,0 +1,92 @@
+{
+  "source_api_url": "https://api.github.com/repos/rroland10/dex223-bug-bounty/issues/113",
+  "collected_at": "2026-11-15T09:19:17.933130+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/rroland10/dex223-bug-bounty/issues/113",
+    "repository_url": "https://api.github.com/repos/rroland10/dex223-bug-bounty",
+    "labels_url": "https://api.github.com/repos/rroland10/dex223-bug-bounty/issues/113/labels{/name}",
+    "comments_url": "https://api.github.com/repos/rroland10/dex223-bug-bounty/issues/113/comments",
+    "events_url": "https://api.github.com/repos/rroland10/dex223-bug-bounty/issues/113/events",
+    "html_url": "https://github.com/rroland10/dex223-bug-bounty/issues/113",
+    "id": 6391318152,
+    "node_id": "I_kwDOPP3aj88AAAABfPPGiA",
+    "number": 113,
+    "title": "RPC/subgraph proxy rate limits keyed by spoofable first X-Forwarded-For entry (per-Vercel-instance only)",
+    "user": {
+      "login": "belski21-growl",
+      "id": 157978354,
+      "node_id": "U_kgDOCWqO8g",
+      "avatar_url": "https://avatars.githubusercontent.com/u/157978354?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/belski21-growl",
+      "html_url": "https://github.com/belski21-growl",
+      "followers_url": "https://api.github.com/users/belski21-growl/followers",
+      "following_url": "https://api.github.com/users/belski21-growl/following{/other_user}",
+      "gists_url": "https://api.github.com/users/belski21-growl/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/belski21-growl/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/belski21-growl/subscriptions",
+      "organizations_url": "https://api.github.com/users/belski21-growl/orgs",
+      "repos_url": "https://api.github.com/users/belski21-growl/repos",
+      "events_url": "https://api.github.com/users/belski21-growl/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/belski21-growl/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8975710669,
+        "node_id": "LA_kwDOPP3aj88AAAACFv55zQ",
+        "url": "https://api.github.com/repos/rroland10/dex223-bug-bounty/labels/bug",
+        "name": "bug",
+        "color": "d73a4a",
+        "default": true,
+        "description": "Something isn't working",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2026-11-14T14:33:10Z",
+    "updated_at": "2026-11-14T14:33:10Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "# Bug Report Template\n\n## Executive Summary\n\n**Vulnerability Title**: RPC/subgraph proxy rate limits keyed by spoofable first `X-Forwarded-For` entry (per-Vercel-instance only)\n\n**Severity**: Info\n\n**CVSS Score**: 5.3 - CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L (CVSS reflects availability impact only; submitted as Info per the program tier because the impact is quota/availability, not fund loss — see the triage caveat below)\n\n**Affected Component**: Web App / API — RPC and subgraph proxies (`test-app.dex223.io`)\n\n**Discovery Date**: 2026-11-14\n\n**Researcher**: Belski Raizo (GitHub: belski21-growl)\n\n**Scope Verification**: In scope per the program docs — the web application at `test-app.dex223.io` and all public APIs. This is NOT one of the 3 documented known issues, NOT a Beosin finding, and NOT a duplicate of any filed issue: no issue covers the proxies, rate limiting, `X-Forwarded-For`, or key-quota abuse (#71/#72 are about keys *in bundles* — the opposite side of this fix). All 108 issues on `rroland10/dex223-bug-bounty` were checked (14 Nov 2026). Duplicate risk: Low.\n\n**Triage caveat (stated in this report, not hidden): the program explicitly excludes DoS/DDoS, and this finding's impact is availability/quota burn. It may be triaged as out of scope or Info. It is filed because the mechanism — client-IP spoofing defeating the limiter — is a concrete logic flaw, not a volume attack, and the fix is trivial. Live rate-limit behaviour is UNCONFIRMED (see PoC section).**\n\n## Vulnerability Details\n\n### Description\n\nThe RPC and subgraph proxies derive the rate-limit key from the **first** `X-Forwarded-For` entry, which a client connecting to Vercel can prepend arbitrarily (Vercel appends the real peer IP after the client-supplied entries). Rotating the first entry yields a fresh rate-limit bucket per request, defeating the 600/min RPC and 120/min subgraph caps. The limiter is also in-memory per server instance (admitted in a file comment), so the effective global cap is N × the per-instance limit, where N is the number of Vercel instances.\n\n### Impact Assessment\n\n- **Technical Impact**: An attacker can burn DEX223's Alchemy/Infura/The Graph quota at will through an unauthenticated endpoint, degrading or disabling the app's reads (and the `eth_sendRawTransaction` relay) for real users.\n- **Data Impact**: No user data is exposed — upstream responses are public chain/subgraph data.\n- **Business Impact**: Paid API quota is consumed by unauthenticated traffic; the app's reads can be degraded until quota resets or is increased.\n- **User Impact**: Degraded or unavailable reads (balances, quotes, subgraph data) while the quota is exhausted. No fund loss.\n- **Financial Impact**: Cost of consumed third-party API quota only. No user funds are at risk.\n\n### Attack Vector\n\n1. Attacker sends requests to the RPC proxy (`/api/rpc` or equivalent) with a rotating first `X-Forwarded-For` entry, e.g. `X-Forwarded-For: 1.2.3.4`, then `5.6.7.8`, etc. Each distinct first entry is treated as a different client IP and gets a fresh 600/min bucket.\n2. The attacker sustains traffic above the intended per-client cap, consuming DEX223's Alchemy/Infura quota.\n3. Same technique against the subgraph proxy (120/min cap) consumes The Graph quota.\n4. No authentication is required at any step; the proxies are unauthenticated by design (they relay public data).\n\n### Prerequisites\n\n- None. No account, no authentication, no special access. Any client that can reach the proxies can prepend `X-Forwarded-For` entries.\n\n## Proof of Concept\n\n### Evidence (code-verified, 14 Nov 2026 — live behaviour UNCONFIRMED)\n\n**Reproduction status: UNCONFIRMED.** The code path was verified verbatim in the repo, but live rate-limit behaviour was not confirmed — confirming it would require sending many requests against the live proxies, which was not attempted. The code evidence:\n\n- Repo `EthereumCommonwealth/Dex223-UI`, `apps/web/lib/server/rateLimit.ts:37-40` — `clientIp` returns `forwarded.split(\",\")[0].trim()`, the first `X-Forwarded-For` entry. A client connecting to Vercel can prepend arbitrary entries; Vercel appends the real peer IP after them.\n- The limiter is in-memory per server instance (admitted in a file comment), so the effective global cap is N × the per-instance limit.\n- Deployed-build match: the proxy code was committed 7 Nov 2026; the deployed chunks are dated 8 Nov 2026 — the deployed build carries this code.\n- The proxies are otherwise well-built, which bounds this finding: the chain is allowlisted to exactly `mainnet`/`sepolia`, the subgraph target is allowlisted via `GATEWAY_SUBGRAPHS`, there is a method allowlist (17 methods; `debug_*` / `trace_*` / filters refused), and API keys are never echoed in responses.\n\n### Reproduction steps (for the team to confirm)\n\n1. Send two bursts of requests to the RPC proxy with different first `X-Forwarded-For` entries (e.g. `X-Forwarded-For: 203.0.113.1` and `X-Forwarded-For: 203.0.113.2`), each burst exceeding 600 requests/min.\n2. Expected (unconfirmed): neither burst is rate-limited, because each entry is treated as a distinct client.\n3. Contrast: sending the same burst with a single fixed first entry should hit the 600/min cap.\n\n### Test Environment\n\n- **URL**: https://test-app.dex223.io (RPC and subgraph proxies)\n- **Smart Contract Address**: Not applicable (web/API finding).\n- **Test Account**: Not applicable (no authentication is involved).\n\n## Technical Analysis\n\n### Root Cause\n\nThe limiter trusts client-controlled input as the identity key: it takes the *first* `X-Forwarded-For` entry, which is the leftmost — and therefore the most easily spoofed — position. A correct implementation behind a trusted proxy takes the *last* entry (or the platform-provided connecting IP), because the trusted proxy appends the real peer IP at the end. Compounding this, the limiter state is in-memory per serverless instance rather than in a shared store, so even a correct key would only cap per-instance traffic.\n\n### Affected Code\n\nRepo `EthereumCommonwealth/Dex223-UI`, `apps/web/lib/server/rateLimit.ts:37-40`:\n\n```ts\nclientIp returns forwarded.split(\",\")[0].trim()\n// — the first X-Forwarded-For entry, which a client can prepend arbitrarily\n// (Vercel appends the real peer IP after the client-supplied entries).\n```\n\nPer-instance in-memory limiter (admitted in a file comment): the effective global cap is N × the per-instance limit.\n\n### Exploitability\n\n- **Difficulty**: Easy — setting a header is trivial.\n- **Reliability**: Always, if the code path is as deployed (code-verified; live behaviour unconfirmed).\n- **Automation**: Fully automated.\n\n## Remediation\n\n### Suggested Fix\n\n1. Key the limiter by the *last* `X-Forwarded-For` entry / `x-real-ip` as set by Vercel, or use Vercel's `x-vercel-forwarded-for` / the connecting IP — i.e. the entry the trusted proxy appended, not the client-supplied first entry.\n2. Move the limiter to a shared store (e.g. Upstash/Redis) so the cap is global rather than per-instance.\n\n### Alternative Solutions\n\n- Require a lightweight proof-of-work or CAPTCHA for unauthenticated proxy use above a low threshold (heavier; only if quota abuse becomes a real problem).\n\n## Additional Information\n\n### Related Vulnerabilities — why this is NOT a duplicate\n\nNo filed issue covers the proxies, rate limiting, `X-Forwarded-For`, or key-quota abuse. #71/#72 are about API keys exposed *in bundles* — the opposite side of this fix (keys are now server-side; this report is about the server-side limiter trusting spoofable input). Duplicate risk: Low. **Triage risk: HIGH** — the program excludes DoS/DDoS, and this finding's impact is availability/quota burn, so it may be ruled out of scope or Info. Filed with that caveat intact.\n\n### References\n\n- `apps/web/lib/server/rateLimit.ts:37-40` in `EthereumCommonwealth/Dex223-UI`\n- Vercel `X-Forwarded-For` handling: Vercel appends the real peer IP after client-supplied entries\n\n### Timeline\n\n- **Discovery**: 2026-11-14\n- **Verification**: 2026-11-14 (code-verified against the repo; live behaviour unconfirmed — see PoC section)\n- **Report Submission**: 2026-11-14\n\n## Researcher Information\n\n**Name**: Belski Raizo (GitHub: belski21-growl)\n\n**Email**: belskiraizo@gmail.com\n\n**Preferred Payment Method**: D223 Tokens only\n\n**Disclosure Preference**: Coordinated — private advisories are unavailable on this repo (creation page returns 404), so filed via GitHub Issues per SECURITY.md; no public disclosure before this filing.",
+    "reactions": {
+      "url": "https://api.github.com/repos/rroland10/dex223-bug-bounty/issues/113/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/rroland10/dex223-bug-bounty/issues/113/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [],
+  "comments_complete": true
+}

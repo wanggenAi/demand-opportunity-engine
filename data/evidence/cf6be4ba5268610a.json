@@ -1,0 +1,179 @@
+{
+  "source_api_url": "https://api.github.com/repos/d85rcrcy27-creator/ArbiVault/issues/97",
+  "collected_at": "2026-11-15T09:19:17.933130+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/d85rcrcy27-creator/ArbiVault/issues/97",
+    "repository_url": "https://api.github.com/repos/d85rcrcy27-creator/ArbiVault",
+    "labels_url": "https://api.github.com/repos/d85rcrcy27-creator/ArbiVault/issues/97/labels{/name}",
+    "comments_url": "https://api.github.com/repos/d85rcrcy27-creator/ArbiVault/issues/97/comments",
+    "events_url": "https://api.github.com/repos/d85rcrcy27-creator/ArbiVault/issues/97/events",
+    "html_url": "https://github.com/d85rcrcy27-creator/ArbiVault/issues/97",
+    "id": 6388644061,
+    "node_id": "I_kwDOU1lIvM8AAAABfMr43Q",
+    "number": 97,
+    "title": "Draco: audit and activate safe ArbiVault monetization opportunities",
+    "user": {
+      "login": "d85rcrcy27-creator",
+      "id": 300611850,
+      "node_id": "U_kgDOEer5Cg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/300611850?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/d85rcrcy27-creator",
+      "html_url": "https://github.com/d85rcrcy27-creator",
+      "followers_url": "https://api.github.com/users/d85rcrcy27-creator/followers",
+      "following_url": "https://api.github.com/users/d85rcrcy27-creator/following{/other_user}",
+      "gists_url": "https://api.github.com/users/d85rcrcy27-creator/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/d85rcrcy27-creator/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/d85rcrcy27-creator/subscriptions",
+      "organizations_url": "https://api.github.com/users/d85rcrcy27-creator/orgs",
+      "repos_url": "https://api.github.com/users/d85rcrcy27-creator/repos",
+      "events_url": "https://api.github.com/users/d85rcrcy27-creator/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/d85rcrcy27-creator/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 12476813462,
+        "node_id": "LA_kwDOU1lIvM8AAAAC560Qlg",
+        "url": "https://api.github.com/repos/d85rcrcy27-creator/ArbiVault/labels/enhancement",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "default": true,
+        "description": "New feature or request",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 13077986019,
+        "node_id": "LA_kwDOU1lIvM8AAAADC4I64w",
+        "url": "https://api.github.com/repos/d85rcrcy27-creator/ArbiVault/labels/monetization",
+        "name": "monetization",
+        "color": "ededed",
+        "default": false,
+        "description": null,
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 3,
+    "created_at": "2026-11-14T10:16:40Z",
+    "updated_at": "2026-11-14T10:25:53Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Objective\nDraco (KingAlpha; existing Superteam Earn handle `chatgptagent-aqua-46`) should identify and prepare every legitimate, technically supportable revenue stream already present in ArbiVault, prioritizing low-cost, verifiable revenue and preserving the existing ArbiVault Shared Backend.\n\n## Initial repository findings\n- `src/pages/RevenueStream.jsx` and `supabase/functions/mad-man-revenue-stream/index.ts` provide a read-only, evidence-based revenue ledger for payments, paid tasks, opportunities, confirmed trades, and bot runs.\n- `services/solana-revenue/server.ts` implements a paid premium opportunity report checkout using native SOL and on-chain payment verification. Its README says it is NOT production-ready until treasury, price, production RPC, secrets, build, and on-chain validation are completed.\n- `config/agents/kingalpha-superteam.json` and `.agents/skills/superteam-earn/SKILL.md` configure Draco for read-only scouting and draft-only Superteam Earn submissions. The existing agent registration must be reused.\n- Stripe is currently only evidenced by the browser SDK dependency and public-key loader; repository search did not establish a working server-side checkout, Stripe Connect revenue collection, or webhook-to-ledger flow.\n- Flash-loan execution documentation explicitly keeps routes discovery-only until executor, signer, source, payout and runtime verification pass.\n\n## Work requested\n1. Perform a bounded, rate-limited repository and runtime configuration audit. Use cached data and incremental checks; do not repeatedly poll services or incur paid API usage.\n2. Build a monetization matrix for: premium verified opportunity reports; agent/bot research and automation services; paid task fulfillment and Superteam Earn; read-only market/route intelligence; partner/API access; and any properly authorized platform/service fees.\n3. For each opportunity document buyer, value delivered, price hypothesis (clearly marked as a hypothesis), implementation dependencies, payment rail, expected costs, margin drivers, compliance risks, fraud/chargeback risks, and proof required before counting revenue.\n4. Prioritize a no-new-infrastructure pilot using existing capabilities. Assess the Solana paid-report service first, but do not enable it until all production readiness gates are verified.\n5. Design a server-side payment flow with idempotent provider webhooks, verified payment evidence, owner-scoped records, refunds/disputes handling, and ledger reconciliation. Reuse Stripe Connect if it is already configured; do not add Stripe Billing subscriptions or invent account state.\n6. Keep earned revenue, pending invoices, awards, estimates, trading P&L, and unverified opportunities separate. Never count estimates or bounty wins as revenue before confirmed receipt.\n7. Preserve all existing strategy, wallet custody, signing, transaction, database, and auth boundaries. Do not turn on live trading, change payout destinations, transfer funds, claim awards, or submit applications.\n8. Produce a staged implementation PR with tests and documentation only after documenting the audit findings. Any price, fee, customer charge, payout, or external submission requires operator review before activation.\n\n## Guardrails\n- No mock/demo balances, fabricated payments, simulated success, or guaranteed-profit claims.\n- No use of wallet private keys, seed phrases, Turnkey credentials, or service-role keys in source control or browser code.\n- No automatic withdrawal or payout routing.\n- Do not impose a trading performance fee without explicit customer consent, clear fee disclosure, verified net-profit accounting, and legal/compliance review.\n- Respect provider rate limits, database egress, quotas, and monthly usage budgets; bounded concurrency, cache, backoff, and stop on missing credentials or paid access.\n- Keep ArbiVault on its designated shared Supabase backend; do not substitute another project's database.\n\n## Acceptance criteria\n- Monetization matrix ranks opportunities by readiness, expected cost, and time-to-first-confirmed-revenue.\n- Blockers are proven, not guessed; credential checks report presence only.\n- At least one safe pilot is prepared with a complete payment-to-ledger reconciliation test plan.\n- No charge, application submission, payout, wallet signing, or production activation occurs without separate operator approval.\n- PR includes tests, rollback notes, and a production checklist.",
+    "reactions": {
+      "url": "https://api.github.com/repos/d85rcrcy27-creator/ArbiVault/issues/97/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/d85rcrcy27-creator/ArbiVault/issues/97/timeline",
+    "performed_via_github_app": {
+      "id": 1144995,
+      "client_id": "Iv23liVemv8A9if9v0F2",
+      "slug": "chatgpt-codex-connector",
+      "node_id": "A_kwHOAOQ6Gs4AEXij",
+      "owner": {
+        "login": "openai",
+        "id": 14957082,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjE0OTU3MDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/14957082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/openai",
+        "html_url": "https://github.com/openai",
+        "followers_url": "https://api.github.com/users/openai/followers",
+        "following_url": "https://api.github.com/users/openai/following{/other_user}",
+        "gists_url": "https://api.github.com/users/openai/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/openai/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/openai/subscriptions",
+        "organizations_url": "https://api.github.com/users/openai/orgs",
+        "repos_url": "https://api.github.com/users/openai/repos",
+        "events_url": "https://api.github.com/users/openai/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/openai/received_events",
+        "type": "Organization",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "name": "ChatGPT Codex Connector",
+      "description": "Bring ChatGPT and Codex to your GitHub repositories.",
+      "external_url": "https://www.chatgpt.com",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "created_at": "2025-02-14T01:37:05Z",
+      "updated_at": "2026-09-23T18:52:59Z",
+      "permissions": {
+        "actions": "write",
+        "checks": "read",
+        "contents": "write",
+        "emails": "read",
+        "issues": "write",
+        "metadata": "read",
+        "pull_requests": "write",
+        "statuses": "read",
+        "workflows": "write"
+      },
+      "events": [
+        "check_run",
+        "check_suite",
+        "commit_comment",
+        "issues",
+        "issue_comment",
+        "pull_request",
+        "pull_request_review",
+        "pull_request_review_comment",
+        "pull_request_review_thread",
+        "repository",
+        "status",
+        "sub_issues"
+      ]
+    },
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "d85rcrcy27-creator",
+      "text": "## Scope correction: portfolio-wide implementation\n\nThis initiative is not limited to ArbiVault. Draco's monetization audit and implementation plan must cover all four connected product workstreams:\n\n1. **ArbiVault** — paid intelligence/reports, verified trading-related services, approved transaction/service fees.\n2. **Quantum Lead AI** — lead discovery, qualification, enrichment, and paid lead-generation workflows.\n3. **AutonomIQ** — monetizable agent workflows, automation services, and marketplace offerings.\n4. **Nexus Core AI** — agent orchestration, reusable AI services, and metered API/workflow access.\n\n### Required architecture and controls\n- Produce one portfolio-level monetization map and a separate implementation/revenue report for each app.\n- Reuse shared payment infrastructure only where appropriate; preserve each product's tenant boundaries, authorization, data ownership, and accounting.\n- Attribute every payment to the correct product, customer, service, and settlement; reconcile provider evidence before counting revenue.\n- Keep gross receipts, fees, refunds, disputes, pending payments, bounty awards, trading P&L, and forecasts distinct.\n- Identify existing monetization paths before adding new providers or duplicating infrastructure.\n- Respect API, database, egress, compute, and provider quotas using bounded incremental scans, caching, backoff, and monthly usage budgets.\n- Do not enable live trading, wallet signing/transfers, payout routing, new charges/prices, or external submissions without explicit operator approval.\n- Deliver a phased plan, per-app findings, shared-component boundaries, security/rate-limit review, tests, rollback plan, and production-readiness evidence.\n\nThe existing ArbiVault findings are only the first workstream, not the full scope. Verify the actual repository and deployment mapping for Quantum Lead AI, AutonomIQ, and Nexus Core AI before making changes. Do not assume they share a repository or database.",
+      "at": "2026-11-14T10:19:26Z",
+      "url": "https://github.com/d85rcrcy27-creator/ArbiVault/issues/97#issuecomment-6875808597"
+    },
+    {
+      "author": "d85rcrcy27-creator",
+      "text": "## Non-negotiable production integrity + Web3 Atomic Builder scope\n\nThe zero-placeholder rule is a production acceptance criterion across every product from day one:\n- No mock, fake, demo, seed, or fabricated production balances, revenue, customers, payment events, quotes, route results, fills, or execution outcomes.\n- No simulated success responses presented as completed payments, trades, settlements, or withdrawals.\n- No opportunity, forecast, pending invoice, queued payment, unverified bounty, or estimated trading P&L may be represented as earned, settled, or withdrawable revenue.\n- Every production metric must be sourced from its authoritative system and carry its real status/provenance. If data is unavailable, show unavailable/unknown—not a fallback number.\n\n### Web3 Atomic Builder — explicit monetization workstream\nAudit and monetize every legitimate, already-supported path, including:\n- Paid route discovery / route intelligence and premium execution analysis.\n- Builder access, developer/API usage, and metered quote/build requests.\n- Integration, partner, and white-label services.\n- Transparent service fees for successfully completed and independently verifiable eligible executions, only after operator approval and legal/security review.\n- Premium automation, monitoring, analytics, and reporting around builder workflows.\n\nKeep route estimates, unsigned transactions, simulations used strictly in clearly labeled tests, submitted transactions, confirmed on-chain executions, realized proceeds, and net revenue as separate states. Never charge for or claim success on a route merely because it was discovered or built. Do not enable live execution, signing, wallet transfers, fee collection, or payout changes without explicit operator approval.\n\n### Known repository/backend mapping to use carefully\n- ArbiVault: d85rcrcy27-creator/ArbiVault; preserve its designated ArbiVault Shared Backend.\n- Nexus Core AI: d85rcrcy27-creator/nexus-core-ai; previously mapped to Supabase project nexus-core-ai, ref gbfqnbemoqvvrhxysgoe, under KingAlpha's Org. Its source was identified as the nexus1.zip export uploaded into that renamed repository.\n- Quantum Lead AI: exact production repository was not verified in the connected GitHub account; do not substitute similarly named public repositories.\n- AutonomIQ: the user's identified product is the Replit AutonomIQ app, not Revenue Bot (1); confirm its actual Replit workspace/repository/backend mapping before edits.\n\nAudit all four products and Atomic Builder as one coordinated portfolio while preserving each app's own ledger, tenant boundaries, payment ownership, and backend authority. Use bounded incremental scans, cached results, strict API/database/egress quotas, and monthly usage budgets.",
+      "at": "2026-11-14T10:22:50Z",
+      "url": "https://github.com/d85rcrcy27-creator/ArbiVault/issues/97#issuecomment-6875848367"
+    },
+    {
+      "author": "d85rcrcy27-creator",
+      "text": "## Enterprise architecture requirement — portfolio-wide governance and financial evidence\n\nTreat ArbiVault, Quantum Lead AI, AutonomIQ, and Nexus Core AI as independently deployable products that are being prepared for a future enterprise consolidation under Draco's portfolio oversight.\n\n### Target architecture\n- **Draco control plane:** read-only-by-default portfolio orchestration, health/status monitoring, policy enforcement, bounded discovery, audit coordination, reconciliation alerts, and consolidated reporting. Draco may coordinate approved workflows but must not bypass each product's authorization boundary.\n- **Product domains:** each application retains its own identity, tenant isolation, service permissions, secrets, authoritative data store, and product-level ledger. Do not collapse databases or merge tenant records prematurely.\n- **Shared enterprise contracts:** define versioned event schemas, stable product/tenant/account identifiers, correlation IDs, idempotency keys, UTC timestamps, currency and chain/network identifiers, and explicit event provenance. Use adapters/anti-corruption layers rather than tightly coupling application internals.\n- **Evidence and receipts registry:** maintain an append-only, tamper-evident record of every payment or transfer received, with the authoritative provider/on-chain evidence and a link to the originating product ledger. Preserve the original evidence; corrections are additional linked events, never silent overwrites.\n\n### Required receipt/evidence fields\nFor each payment or on-chain receipt, capture where applicable:\n- product, tenant, customer/payer reference, and receiving legal/entity/account owner;\n- payment provider, provider account/environment (test vs live), payment/invoice/charge/transfer/payout identifiers;\n- blockchain, network/chain ID, asset/token contract, transaction hash, sender, recipient, amount, and decimals;\n- confirmation/finality status and block number/hash, or provider settlement/availability status;\n- gross amount, currency, provider/network fees, refunds, disputes/chargebacks, net received amount;\n- event type, source system, event timestamp, ingestion timestamp, correlation/idempotency IDs, verification method, and evidence reference;\n- reconciliation state, reviewer/approval reference where required, and immutable audit history.\n\nDo not assume a transaction hash exists for off-chain payments; retain the provider's authoritative IDs and signed/webhook/API evidence instead. Do not treat a submitted transaction, pending payment, invoice, route quote, or unconfirmed transfer as received revenue. Verify provider events and on-chain confirmations independently, deduplicate idempotently, and reconcile refunds, reversals, fees, and disputes.\n\n### Enterprise controls and migration gates\n1. Establish canonical event, receipt, ledger, identity, and policy contracts with schema versioning and backward compatibility.\n2. Map each product's actual repository, deployment, backend, secrets owner, and ledger authority before connecting it; unresolved mappings remain explicitly unverified.\n3. Enforce least privilege, scoped service identities, RLS/tenant isolation, secret separation, signed webhook verification, replay protection, encryption, retention policies, and auditable access.\n4. Use bounded queues, incremental/delta polling, caching, rate-limit-aware backoff, per-provider budgets, and monthly caps for database, egress, API, and compute usage.\n5. Build reconciliation and exception handling before consolidated revenue dashboards. Distinguish received/settled revenue from pending funds, opportunities, awards not yet paid, refunds, fees, and realized trading proceeds.\n6. Require migration dry-runs, data lineage checks, duplicate detection, balance reconciliation, security review, rollback plans, and explicit operator sign-off before any production cutover.\n\n### Authority boundary\nThis issue authorizes architecture and read-only audit work only. It does not authorize live trading, wallet signing/transfers, fee collection, new charges/pricing, payout destination changes, external submissions, or production data migration. Those actions require explicit approval and appropriate security/legal review.\n\n**Acceptance criterion:** Draco can produce a portfolio-wide, traceable activity and receipts report while each product remains independently secure and authoritative; every claimed receipt can be traced to verified provider or on-chain evidence and reconciled to the correct product ledger.",
+      "at": "2026-11-14T10:25:53Z",
+      "url": "https://github.com/d85rcrcy27-creator/ArbiVault/issues/97#issuecomment-6875882384"
+    }
+  ],
+  "comments_complete": true
+}

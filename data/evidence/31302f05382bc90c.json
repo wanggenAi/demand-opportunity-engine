@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43932",
+  "collected_at": "2026-11-15T09:19:17.933130+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43932",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43932/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43932/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43932/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43932",
+    "id": 6394463473,
+    "node_id": "I_kwDOC4Q8Qs8AAAABfSPE8Q",
+    "number": 43932,
+    "title": "Broken relative links in @n8n/expression-runtime docs (README.md, ARCHITECTURE.md)",
+    "user": {
+      "login": "DZH166",
+      "id": 248446924,
+      "node_id": "U_kgDODs7_zA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/248446924?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/DZH166",
+      "html_url": "https://github.com/DZH166",
+      "followers_url": "https://api.github.com/users/DZH166/followers",
+      "following_url": "https://api.github.com/users/DZH166/following{/other_user}",
+      "gists_url": "https://api.github.com/users/DZH166/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/DZH166/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/DZH166/subscriptions",
+      "organizations_url": "https://api.github.com/users/DZH166/orgs",
+      "repos_url": "https://api.github.com/users/DZH166/repos",
+      "events_url": "https://api.github.com/users/DZH166/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/DZH166/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-14T18:44:13Z",
+    "updated_at": "2026-11-14T18:44:28Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Bug Description\n\nThree relative links in the `@n8n/expression-runtime` package docs 404 on GitHub. The\npackage used to live at `packages/expression-runtime`; after it moved to\n`packages/@n8n/expression-runtime`, these two relative paths stopped resolving:\n\n- `packages/@n8n/expression-runtime/README.md`, License section:\n  `[LICENSE.md](../../LICENSE.md)` resolves to `packages/LICENSE.md` (does not exist).\n  The license file is at the repository root: `LICENSE.md`.\n- `packages/@n8n/expression-runtime/README.md`, Related section:\n  `[n8n workflow package](../workflow/)` resolves to `packages/@n8n/workflow/` (does not\n  exist). The workflow package is at `packages/workflow`.\n- `packages/@n8n/expression-runtime/ARCHITECTURE.md`, References section:\n  `[n8n workflow package](../workflow/)` — same as above.\n\nGitHub renders relative links against the file's directory, so all three show\n\"Page not found\" for readers.\n\n## To Reproduce\n\n1. Open https://github.com/n8n-io/n8n/blob/master/packages/%40n8n/expression-runtime/README.md\n2. Click the `LICENSE.md` link in the License section -> 404.\n3. Click `n8n workflow package` in the Related section -> 404.\n4. Same for the References section of\n   https://github.com/n8n-io/n8n/blob/master/packages/%40n8n/expression-runtime/ARCHITECTURE.md\n\n## Expected behavior\n\nAll relative links resolve:\n- `../../../LICENSE.md` -> repository root `LICENSE.md`\n- `../../workflow/` -> `packages/workflow`\n\n## Environment\n\n- Commit `master` @ `251c44bc5e072afcc3daab3c3d1baf525afd8d41` (2026-11-14)\n- GitHub web rendering of relative links\n\nI have a small docs fix ready (3 link paths) and will link a PR here shortly. (Prepared with the help of an AI coding assistant; verified with a repo-wide relative-link check.)\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43932/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43932/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @DZH166,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9770\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9770](https://linear.app/n8n/issue/GHC-9770)",
+      "at": "2026-11-14T18:44:26Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43932#issuecomment-6882435601"
+    }
+  ],
+  "comments_complete": true
+}

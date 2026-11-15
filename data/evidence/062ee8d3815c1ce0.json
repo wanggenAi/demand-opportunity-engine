@@ -1,0 +1,92 @@
+{
+  "source_api_url": "https://api.github.com/repos/rroland10/dex223-bug-bounty/issues/112",
+  "collected_at": "2026-11-15T09:19:17.933130+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/rroland10/dex223-bug-bounty/issues/112",
+    "repository_url": "https://api.github.com/repos/rroland10/dex223-bug-bounty",
+    "labels_url": "https://api.github.com/repos/rroland10/dex223-bug-bounty/issues/112/labels{/name}",
+    "comments_url": "https://api.github.com/repos/rroland10/dex223-bug-bounty/issues/112/comments",
+    "events_url": "https://api.github.com/repos/rroland10/dex223-bug-bounty/issues/112/events",
+    "html_url": "https://github.com/rroland10/dex223-bug-bounty/issues/112",
+    "id": 6391300212,
+    "node_id": "I_kwDOPP3aj88AAAABfPOAdA",
+    "number": 112,
+    "title": "Factory accepts ERC-223 transfers with no way to recover them (funds permanently locked)",
+    "user": {
+      "login": "belski21-growl",
+      "id": 157978354,
+      "node_id": "U_kgDOCWqO8g",
+      "avatar_url": "https://avatars.githubusercontent.com/u/157978354?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/belski21-growl",
+      "html_url": "https://github.com/belski21-growl",
+      "followers_url": "https://api.github.com/users/belski21-growl/followers",
+      "following_url": "https://api.github.com/users/belski21-growl/following{/other_user}",
+      "gists_url": "https://api.github.com/users/belski21-growl/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/belski21-growl/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/belski21-growl/subscriptions",
+      "organizations_url": "https://api.github.com/users/belski21-growl/orgs",
+      "repos_url": "https://api.github.com/users/belski21-growl/repos",
+      "events_url": "https://api.github.com/users/belski21-growl/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/belski21-growl/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8975710669,
+        "node_id": "LA_kwDOPP3aj88AAAACFv55zQ",
+        "url": "https://api.github.com/repos/rroland10/dex223-bug-bounty/labels/bug",
+        "name": "bug",
+        "color": "d73a4a",
+        "default": true,
+        "description": "Something isn't working",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2026-11-14T14:31:33Z",
+    "updated_at": "2026-11-14T14:31:33Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "# Bug Report Template\n\n## Executive Summary\n\n**Vulnerability Title**: Factory accepts ERC-223 transfers with no way to recover them (funds permanently locked)\n\n**Severity**: Info\n\n**CVSS Score**: 3.1 - CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:L/A:N\n\n**Affected Component**: Smart Contract — `Dex223Factory` (Ethereum mainnet)\n\n**Discovery Date**: 2026-11-14\n\n**Researcher**: Belski Raizo (GitHub: belski21-growl)\n\n**Scope Verification**: Audited against the pinned in-scope commit `00ad2a0df71852d8dc7ebc039058c440b4bc8572` of `EthereumCommonwealth/Dex223-contracts` (28 Oct 2026). This is NOT one of the 3 documented known issues, NOT a Beosin finding, and NOT a duplicate of any filed issue: no filed issue touches the factory's `tokenReceived` (factory issues #2, #14, #28, #37, #57, #63, #84 — none this function). All 108 issues on `rroland10/dex223-bug-bounty` were checked (14 Nov 2026). This finding was derived independently from two different audit surfaces, which is the strongest cross-check in this pass. Duplicate risk: Low — the only risk is a \"by design / wontfix\" response, not a duplicate.\n\n## Vulnerability Details\n\n### Description\n\n`Dex223Factory.tokenReceived()` returns the ERC-223 magic value `0x8943ec02`, which tells the sending token that the transfer was accepted. But the factory holds no balances, records nothing about the transfer, and — critically — has **no rescue, sweep, withdraw or extract function at all** (grep-verified: zero matches for `rescue|withdraw|sweep` in `Dex223Factory.sol`). Any ERC-223 tokens sent to the factory — user error, a misdirected payment, a frontend defaulting a recipient to the factory address — are accepted and then **permanently locked**: no function can move them out, and the factory is not upgradeable.\n\nThis contradicts the codebase's own stated principle elsewhere. `RevenueV2.tokenReceived()` (`RevenueV2.sol:330-341`) rejects every token except the ERC-223 staking token precisely so misdirected transfers bounce back instead of being stranded. And `Dex223MarginModule.sol:345-348` states the principle explicitly: \"NOTE: deliberately no `receive()`. Every ETH inflow already arrives through a payable entry … `receive()` would accept ETH that no order or position is credited for, leaving it stranded …\" — the team refuses uncredited ETH inflows for exactly the stranded-asset reason, but the factory accepts uncredited ERC-223 inflows. The factory itself has no `receive()`, so plain ETH transfers revert — while ERC-223 transfers are deliberately accepted and then lost.\n\n### Impact Assessment\n\n- **Technical Impact**: Any ERC-223 tokens transferred to the factory address are permanently locked in a non-upgradeable contract with no recovery path.\n- **Data Impact**: No user data is exposed.\n- **Business Impact**: Low — the factory is not a normal payment recipient, so this requires a sender mistake (or a misconfigured frontend) to trigger.\n- **User Impact**: The sender loses the full transferred amount. No attacker profit is possible (nobody can extract the tokens, including the owner), which is why this is rated Info rather than higher.\n- **Financial Impact**: Unbounded in principle per incident (whatever amount is misdirected), but each incident requires a sender error; there is no way for an attacker to force tokens into the factory or to profit from the lock.\n\n### Attack Vector\n\nThere is no attacker-driven exploit path — this is a fail-open acceptance of misdirected transfers:\n\n1. A user (or a frontend) sends ERC-223 tokens to the factory address `0x899097B427cd04e1BD07FD3445cc90493300C3a5` by mistake.\n2. The token calls `tokenReceived` on the factory; the factory returns `0x8943ec02` (accepted).\n3. The tokens sit in the factory forever. No function exists to move them out.\n\n### Prerequisites\n\n- ERC-223 tokens are transferred to the factory address (sender error or misconfigured integration). No attacker privilege is needed.\n\n## Proof of Concept\n\n### PoC sketch (NOT executed in Foundry — stated plainly)\n\n1. `wrapper.transfer(factory, 100e18)` succeeds (the factory returns the magic value instead of reverting); `wrapper.balanceOf(factory) == 100e18`.\n2. No factory function moves tokens out; the owner has no rescue path; the tokens sit forever.\n\nThis is a code-level finding (presence of the accepting `tokenReceived` plus absence of any rescue function), verified by reading the pinned source. No Foundry execution was run for this candidate because there is no state transition to prove beyond the two code facts above.\n\n### Test Environment\n\n- **Smart Contract Address**: Factory v2 on Ethereum mainnet `0x899097B427cd04e1BD07FD3445cc90493300C3a5` (deployed 7 Oct 2026). No live-contract interaction was performed.\n- **Commit**: `00ad2a0df71852d8dc7ebc039058c440b4bc8572` (`EthereumCommonwealth/Dex223-contracts`).\n\n## Technical Analysis\n\n### Root Cause\n\n`tokenReceived` was written to accept ERC-223 transfers \"so they do not revert\", but the factory was never given a corresponding recovery path. The comment in the code even acknowledges the factory \"holds no balances\" — yet the function accepts balances anyway. The correct fail-closed posture (reject uncredited inflows, as `RevenueV2` does for non-staking tokens and as the factory itself does for plain ETH via the absent `receive()`) was not applied to ERC-223 transfers.\n\n### Affected Code\n\n`contracts/dex-core/Dex223Factory.sol:57-64` (pinned commit `00ad2a0`):\n\n```solidity\n/// @dev Accepts ERC-223 transfers so they do not revert. The factory holds no balances and the\n/// former `tokenReceivedCaller` bookkeeping was write-only, so nothing is recorded here.\nfunction tokenReceived(address, uint, bytes memory) public pure returns (bytes4)\n{\n    return 0x8943ec02;\n}\n```\n\nNo rescue/sweep/extract function exists in `Dex223Factory.sol` (grep-verified: zero matches for `rescue|withdraw|sweep`).\n\nContrast — `contracts/dex-periphery/RevenueV2.sol:330-341`, which rejects everything except the ERC-223 staking token so misdirected transfers bounce back instead of being stranded:\n\n```solidity\n/// @notice ERC-223 hook. Only the ERC-223 staking token is accepted; it is credited to the sender as a\n///         deposit to stake() or withdrawDeposit(). Everything else is rejected so that it bounces\n///         back instead of being stranded here.\nfunction tokenReceived(address _from, uint256 _value, bytes calldata) external returns (bytes4) {\n    require(msg.sender == staking_token_erc223, 'Only the ERC-223 staking token is accepted');\n```\n\n### Exploitability\n\n- **Difficulty**: Not applicable — no attacker action is required or possible; the loss comes from sender error.\n- **Reliability**: Always — any ERC-223 transfer to the factory is accepted and then unrecoverable.\n- **Automation**: Not applicable.\n\n## Remediation\n\n### Suggested Fix\n\nEither:\n\n1. **Make `tokenReceived` revert** — fail closed at the token level, matching the no-`receive()` posture for ETH (misdirected transfers bounce back to the sender); or\n2. **Add an owner-only `rescueERC223(token, to, amount)`** so tokens sent to the factory by mistake can be returned.\n\n### Alternative Solutions\n\n- Accept only from a known set of token addresses (none are legitimate factory recipients, so the set is empty in practice — equivalent to option 1).\n\n## Additional Information\n\n### Related Vulnerabilities — why this is NOT a duplicate\n\nNo filed issue touches the factory's `tokenReceived` (factory issues #2, #14, #28, #37, #57, #63, #84 — none this function). Not a Beosin finding. Derived independently by two auditors from different surfaces. Duplicate risk: Low. The only realistic triage outcome other than acceptance is \"by design / wontfix\".\n\n### References\n\n- `Dex223Factory.sol:57-64`, `RevenueV2.sol:330-341` at pinned commit `00ad2a0df71852d8dc7ebc039058c440b4bc8572`\n- Mainnet factory: https://etherscan.io/address/0x899097B427cd04e1BD07FD3445cc90493300C3a5\n\n### Timeline\n\n- **Discovery**: 2026-11-14\n- **Verification**: 2026-11-14 (source-verified against the pinned commit; PoC is a code-level sketch, not executed)\n- **Report Submission**: 2026-11-14\n\n## Researcher Information\n\n**Name**: Belski Raizo (GitHub: belski21-growl)\n\n**Email**: belskiraizo@gmail.com\n\n**Preferred Payment Method**: D223 Tokens only\n\n**Disclosure Preference**: Coordinated — private advisories are unavailable on this repo (creation page returns 404), so filed via GitHub Issues per SECURITY.md; no public disclosure before this filing.",
+    "reactions": {
+      "url": "https://api.github.com/repos/rroland10/dex223-bug-bounty/issues/112/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/rroland10/dex223-bug-bounty/issues/112/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [],
+  "comments_complete": true
+}

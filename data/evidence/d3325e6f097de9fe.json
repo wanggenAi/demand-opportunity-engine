@@ -1,0 +1,182 @@
+{
+  "source_api_url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/12182",
+  "collected_at": "2026-11-15T09:19:17.933130+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/12182",
+    "repository_url": "https://api.github.com/repos/Luminous-Dynamics/symthaea",
+    "labels_url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/12182/labels{/name}",
+    "comments_url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/12182/comments",
+    "events_url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/12182/events",
+    "html_url": "https://github.com/Luminous-Dynamics/symthaea/issues/12182",
+    "id": 6394748171,
+    "node_id": "I_kwDOQ7glz88AAAABfSgdCw",
+    "number": 12182,
+    "title": "ATELIER-CLOTHING-CAPSULE-001: build an everyday-first clothing product system",
+    "user": {
+      "login": "Tristan-Stoltz-ERC",
+      "id": 215346314,
+      "node_id": "U_kgDODNXsig",
+      "avatar_url": "https://avatars.githubusercontent.com/u/215346314?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Tristan-Stoltz-ERC",
+      "html_url": "https://github.com/Tristan-Stoltz-ERC",
+      "followers_url": "https://api.github.com/users/Tristan-Stoltz-ERC/followers",
+      "following_url": "https://api.github.com/users/Tristan-Stoltz-ERC/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Tristan-Stoltz-ERC/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Tristan-Stoltz-ERC/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Tristan-Stoltz-ERC/subscriptions",
+      "organizations_url": "https://api.github.com/users/Tristan-Stoltz-ERC/orgs",
+      "repos_url": "https://api.github.com/users/Tristan-Stoltz-ERC/repos",
+      "events_url": "https://api.github.com/users/Tristan-Stoltz-ERC/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Tristan-Stoltz-ERC/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 7,
+    "created_at": "2026-11-14T19:09:51Z",
+    "updated_at": "2026-11-15T08:17:07Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Objective\n\nEstablish an **Everyday-first Atelier clothing capsule** that turns the existing apparel engineering infrastructure into tangible, wearable garments. This issue owns product-line coherence, design direction, capsule sequencing and the first physical product briefs. It does not duplicate pattern CAD, textile qualification, garment simulation, sewing-plan compilation, wearer-profile capture or lifecycle records.\n\n## Parent and composition\n\nParent: [APPAREL-ENG-TWIN-001 #11731](https://github.com/Luminous-Dynamics/symthaea/issues/11731).\n\nCompose existing owners:\n- [EVERYDAY-WEAR-001 #12157](https://github.com/Luminous-Dynamics/symthaea/issues/12157): whole-garment comfort, fit, care and service-life qualification.\n- [TRAVEL-ROBE-001 #12163](https://github.com/Luminous-Dynamics/symthaea/issues/12163): Continuum robe brief and TravelRobeBench.\n- [TEXTILE-INVERSE-DESIGN-001 #11746](https://github.com/Luminous-Dynamics/symthaea/issues/11746): material candidate design and experiment selection.\n- [SEWING-PLAN-COMPILER-001 #12134](https://github.com/Luminous-Dynamics/symthaea/issues/12134): typed construction plans.\n- [PERSONAL-GARMENT-STUDIO-001 #12093](https://github.com/Luminous-Dynamics/symthaea/issues/12093): wearer-authored intent and fit constraints.\n- Existing Symtropy, Sol-Atlas and Mycelix owners retain their respective physics, spatial and lifecycle authorities.\n\n## Product philosophy\n\nClothing is the primary product. Electronics, connected services and exosuit compatibility are optional future extensions, never prerequisites for ordinary garments to be useful.\n\nDesign goals:\n- comfort across real activities and postures, not only a static fit photograph;\n- aesthetic distinction without sacrificing daily practicality;\n- fit adaptability without assuming one universal body or preference;\n- repairable construction and replaceable wear components;\n- care routines compatible with ordinary household realities;\n- materials selected by measured use-case performance, provenance, cost and availability;\n- transparent trade-offs rather than a universal opaque garment score;\n- inclusive design that preserves wearer agency, privacy, cultural expression and personal style.\n\nDo not claim PPE, medical, protective, weatherproof, antimicrobial or universal ergonomic performance without the relevant product-specific qualification.\n\n## Product-family architecture\n\nTreat these as coordinated product families sharing patterns, materials knowledge, construction semantics and qualification infrastructure—not separate brands or software platforms:\n\n1. **Atelier Everyday** — shirts, overshirts, trousers and foundational garments.\n2. **Atelier Continuum** — travel robe, wrap coat and convertible comfort layers.\n3. **Atelier Elements** — weather-adaptive shells, insulation and modular layers.\n4. **Atelier Rest** — sleepwear and loungewear.\n5. **Atelier Utility** — durable task/work garments; protective claims remain out of scope until separately qualified.\n6. **Atelier Motion** — movement-oriented clothing and, later, clothing-native exosuit interfaces.\n\n## First capsule: two reference garments\n\n### A. Everyday Overshirt v0.1 — engineering anchor\nA non-PPE woven overshirt with a restrained silhouette, comfortable reach and seated movement, useful pockets, durable high-stress seams, replaceable buttons/closures where practical, and accessible repair construction.\n\nUse one frozen pattern/silhouette for the first fabric comparison. Separate material experiments from later pattern/construction experiments to avoid confounding.\n\n### B. Continuum Travel Robe v0.1 — signature design exploration\nA hybrid of architectural robe and practical travel over-layer: elegant drape, secure but unobtrusive closure, seated-accessible pockets, side vents, adjustable sleeves and an optional removable warmth panel. The garment must remain attractive and useful without the panel.\n\nKeep these as separate product briefs and benchmarks. Share material and construction knowledge only where technically justified.\n\nA trouser/base-layer article may follow after the overshirt protocol is stable; do not expand the first sampling campaign into a broad collection.\n\n## Paradigm shifts to test\n\n1. **Garment as a serviceable system:** design seams, closures, pockets, linings and wear zones for inspection, repair and selective replacement.\n2. **Fit as a movement envelope:** specify and test standing, sitting, reaching, bending, walking and dressing—not only static body measurements.\n3. **Material architecture by garment zone:** use different fabric structures or reinforcements only where the use case justifies them; verify comfort and seam compatibility.\n4. **Evidence-calibrated digital prototyping:** use 3D tools for rapid screening, but measure virtual-to-physical deviation and retain physical fit gates.\n5. **Climate adaptability without overengineering:** use removable layers, ventilation and modular warmth where they solve a demonstrated need.\n6. **Local manufacturability as a design constraint:** map South African and regional fabric, trim, patternmaking and small-batch capabilities before freezing designs; retain global alternatives where local supply is unavailable or unsuitable.\n7. **Aesthetic and functional co-equality:** no performance metric may silently override wearer-declared aesthetic, cultural, modesty or sensory constraints.\n\n## Benchmark programme\n\nUse the existing EverydayWearBench and TravelRobeBench rather than inventing a single Atelier score. Add a capsule-level dashboard reporting:\n\n- fit/mobility by task and body region;\n- wearer-reported tactile, thermal, moisture and aesthetic acceptance as separate outcomes;\n- garment mass and packed volume where relevant;\n- material and seam durability, dimensional stability, pilling and appearance retention;\n- care burden, drying time and measured water/energy where feasible;\n- repair completion rate, repair time, parts availability and requalification;\n- cost per verified wear-hour with transparent assumptions;\n- pattern-to-sample lead time, number of physical iterations and expert correction burden;\n- first-pass assembly yield and defects;\n- material-lot and finished-garment traceability;\n- virtual-to-physical fit/drape error on matched specimens.\n\nCompare with commercially available garments in the same use and price class, with exact model, size, purchase date, market, material label and test method recorded. Use standards as method anchors only after confirming current edition and applicability. No marketing claims based on simulation alone.\n\n## Initial research hypotheses (not results)\n\nAfter pilot variance and comparator baselines are known, evaluate:\n- zero accepted hard wearer constraints lost between brief, pattern, assembly and revision;\n- zero unsupported material, comfort, durability, weather or sustainability claims;\n- at least 20% fewer avoidable physical rework events against a matched baseline;\n- at least 25% fewer physical sample iterations to reach the same independently accepted fit/quality result;\n- at least 15% improvement in a preregistered wearer-valued outcome without worsening lower-tail or subgroup outcomes;\n- 100% traceability from accepted sample to exact pattern, BOM, material lot, sewing plan and inspection record.\n\nTargets are hypotheses to calibrate, not achieved performance or universal standards.\n\n## First execution tranche\n\n1. Audit the two existing product issues and the shared apparel thread; preserve owner boundaries.\n2. Freeze the overshirt and robe design briefs, intended-use boundaries and separate acceptance criteria.\n3. Produce three silhouette/feature directions for each garment before selecting one physical sampling direction.\n4. Map South African supplier/manufacturer options and identify material/trim gaps; distinguish confirmed stock from unverified supplier claims.\n5. Build a compact, rights-cleared material shortlist with sample/lot identity, price, composition evidence, care instructions and supplier provenance.\n6. Define a common pattern/garment revision and BOM identity contract, reusing #11731.\n7. Create deterministic synthetic fixtures for brief-to-pattern-to-BOM-to-sewing-plan traceability and stale-evidence rejection.\n8. Produce one overshirt sample first; use its results to decide whether to proceed with robe sampling.\n9. Keep physical testing, wearer trials, software checks and CI evidence as separate qualification lanes.\n\n## Research note: current digital-fit limitations\n\nA 2026 study comparing virtual and physical fit reported continuing limitations involving avatar posture, body-fat distribution and fabric representation. A separate 2026 comparison of CLO3D and Browzwear found differences in simulation consistency and noted fabric/avatar representation issues. These results reinforce a calibration-first workflow: use virtual tools for screening and iteration, not as a substitute for physical fitting.\n\nReferences:\n- https://doi.org/10.1080/17543266.2026.2618270\n- https://doi.org/10.1108/IJCST-12-2025-0239\n- https://link.springer.com/article/10.1186/s40691-024-00398-4\n\nSouth African context:\n- https://www.investsa.gov.za/key-sectors/clothing-textiles-footwear-and-leather/\n- https://www.thedtic.gov.za/wp-content/uploads/IDC-Integrated-Report-2025.pdf\n\n## Claim ceiling\n\nThis issue authorizes product architecture, briefs, supplier research and prototype planning. It does not establish physical garment quality, comfort, durability, manufacturing scalability, environmental superiority, regulatory compliance or commercial demand. Each claim requires its own matched evidence and declared scope.",
+    "reactions": {
+      "url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/12182/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/12182/timeline",
+    "performed_via_github_app": {
+      "id": 1144995,
+      "client_id": "Iv23liVemv8A9if9v0F2",
+      "slug": "chatgpt-codex-connector",
+      "node_id": "A_kwHOAOQ6Gs4AEXij",
+      "owner": {
+        "login": "openai",
+        "id": 14957082,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjE0OTU3MDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/14957082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/openai",
+        "html_url": "https://github.com/openai",
+        "followers_url": "https://api.github.com/users/openai/followers",
+        "following_url": "https://api.github.com/users/openai/following{/other_user}",
+        "gists_url": "https://api.github.com/users/openai/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/openai/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/openai/subscriptions",
+        "organizations_url": "https://api.github.com/users/openai/orgs",
+        "repos_url": "https://api.github.com/users/openai/repos",
+        "events_url": "https://api.github.com/users/openai/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/openai/received_events",
+        "type": "Organization",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "name": "ChatGPT Codex Connector",
+      "description": "Bring ChatGPT and Codex to your GitHub repositories.",
+      "external_url": "https://www.chatgpt.com",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "created_at": "2025-02-14T01:37:05Z",
+      "updated_at": "2026-09-23T18:52:59Z",
+      "permissions": {
+        "actions": "write",
+        "checks": "read",
+        "contents": "write",
+        "emails": "read",
+        "issues": "write",
+        "metadata": "read",
+        "pull_requests": "write",
+        "statuses": "read",
+        "workflows": "write"
+      },
+      "events": [
+        "check_run",
+        "check_suite",
+        "commit_comment",
+        "issues",
+        "issue_comment",
+        "pull_request",
+        "pull_request_review",
+        "pull_request_review_comment",
+        "pull_request_review_thread",
+        "repository",
+        "status",
+        "sub_issues"
+      ]
+    },
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "## Design direction approved — first collection product briefs\n\nThe selected direction is now recorded:\n- Hybrid architectural / tactile aesthetic.\n- Mixed fit by garment.\n- Hybrid natural/technical material strategy.\n- Comfort as the leading optimization objective.\n\nNew garment-specific overshirt work: [ATELIER-EVERYDAY-OVERSHIRT-001 #12196](https://github.com/Luminous-Dynamics/symthaea/issues/12196). It defines AO-01 “Quiet Architecture”, the pattern-piece inventory, fit measurement vocabulary, first material-screening route and prototype gates.\n\nThe existing [TRAVEL-ROBE-001 #12163](https://github.com/Luminous-Dynamics/symthaea/issues/12163) now receives the CR-01 “Continuum / Aperture Wrap” design and pattern brief: adjustable wrap fit, seated-accessible pockets, soft architectural collar, side vents, repairable closures and a detachable warmth/lap panel.\n\nLocal sourcing leads are recorded with their limitations:\n- Millar Textiles lists 70/30 cotton-linen at 130, 225 and 315 gsm; swatch, current stock and exact lot/specification must be confirmed: https://www.millartextiles.co.za/cotton-linen/\n- M&P Trikam lists Egyptian cotton shirting, linen/ramie and cotton chino among its ranges; request physical swatches and confirm availability: https://www.mptrikam.com/\n- African Root Studios advertises patternmaking, grading, one-off work and small-batch development; verify sample pricing/capacity: https://africanrootstudios.com/\n- CG Studios advertises technical packs, patterns, fit assessment and sampling: https://cgstudiosjhb.co.za/\n- The Joburg CMT advertises in-house patterns/sampling and a 10-unit production minimum; confirm one-off prototype terms: https://www.thejoburgcmt.co.za/\n\nThe current standards references have been updated in the briefs: ISO 11092:2026, ISO 13935-2:2026, ISO 6330:2021, ISO 12947-2:2016 and ISO 12945-2:2020, subject to method applicability. In particular, ISO 11092 reports steady-state material thermal/water-vapour resistance; it does not itself define real-world physiological comfort.\n\nThe first pattern deliverables are pattern-piece inventories, fit/measurement specs, grain/notch/seam semantics and toile plans. Exact cut dimensions and graded patterns remain unapproved until a fit block and body/garment measurements are selected and a physical toile is reviewed.\n\nNo suppliers have been contacted; no fabric stock, prices, sample-room availability, physical garments, lab results, wearer trials or CI pass are claimed.",
+      "at": "2026-11-14T20:43:44Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/12182#issuecomment-6883929305"
+    },
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "## Industry positioning and local development discipline\n\nThe comfort-trajectory extension is in [draft PR #12220](https://github.com/Luminous-Dynamics/symthaea/pull/12220).\n\nThe market scan confirms that repairability and travel-wrap features are established capabilities, not Atelier inventions:\n- Patagonia has operated repairs for decades and reports substantial repair/resale throughput in its 2026 update.\n- Nudie Jeans offers free repairs for its jeans through stores and repair partners.\n- ASKET publishes repair guides and offers spare parts.\n- MERSEA already offers a securing-loop travel wrap; Dryrobe already offers a lightweight, packable technical changing robe.\n\nAtelier's differentiator must be measured, use-case-specific wearer comfort over time, calibrated fit-to-physical evidence, garment-specific repair/requalification and exact revision/lot lineage—not a novelty claim about repair or modular layers.\n\nFor the first Johannesburg sample campaign, keep textile sourcing separate from patternmaking/CMT. The local lead set now includes Millar Textiles and M&P Trikam for swatches/cloth; Pattern Dynamics, African Root Studios and CG Studios for pattern/technical development; and The Joburg CMT and KOOP Studio as CMT/sample-development enquiries. These are leads only: current stock, one-off sample willingness, pricing, pattern/IP ownership, confidentiality and quality capability remain unverified. Do not treat a directory listing as supplier qualification.",
+      "at": "2026-11-15T03:20:41Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/12182#issuecomment-6888482834"
+    },
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "## Johannesburg sourcing verification — capability notes\n\nAdditional current supplier-page checks refine the earlier lead list:\n\n### Cloth\n- **Millar Textiles:** its published cotton-linen range lists 70/30 cotton/linen at 130 gsm (144 cm width) and 225/315 gsm (145 cm width), plus other heavier blends. It explicitly asks buyers to confirm exact current specs and suitability with sales. Request physical swatches and lot/stock confirmation before treating any entry as orderable: https://www.millartextiles.co.za/cotton-linen/\n- **M&P Trikam:** its published fashion range includes Egyptian cotton shirting, linen and ramie linen. It cautions that monitor colours are not true colour references and asks buyers to request real swatches: https://www.mptrikam.com/the-finance-pulse\n\n### Pattern and sample development\n- **Pattern Dynamics:** the clearest first enquiry for pattern engineering: it advertises design development, patternmaking, grading, sample making, marker making, CMT, fitting, alterations and QC: https://www.patterndynamicssa.com/\n- **African Root Studios:** advertises full-scale pattern drafting, grading, samples/prototypes and one-off custom garments. Its public pages state different production minimums for different service categories (one-off service, 10-unit entrepreneur page, 20-unit FAQ/standard production, 5-unit corporate page); confirm which applies to a one-off prototype and request the complete quote. The FAQ lists a R650 appointment consultation: https://africanrootstudios.com/about-2/\n- **The Joburg CMT:** its site confirms an in-house patternmaker and product sampling support, while stating production begins at 10 units. Ask explicitly whether they will accept a standalone one-off sample/toile: https://www.thejoburgcmt.co.za/\n- **KOOP Studio:** advertises patternmaking, in-house/outsourced CMT, QA, fabric selection/sourcing and design/mentorship support. Ask what is performed in-house and its prototype minimum: https://www.koopstudio.co.za/\n\nNone has been contacted or qualified. The next procurement gate is a written quote covering one toile, one corrected sample, pattern file ownership/export, fitting iterations, material responsibility, confidentiality, sample lead time, grading exclusions and production MOQ.",
+      "at": "2026-11-15T03:22:45Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/12182#issuecomment-6888503256"
+    },
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "## 3D apparel and cloth-simulation SOTA: what Atelier should and should not compete against\n\nA current market/research check sharpens the benchmark boundaries:\n\n- **CLO** already combines 2D pattern editing, 3D drape/fit simulation, digital fabric/material libraries, grading and production handoff. Its product claims are vendor claims, not an independent matched study: https://www.clo3d.com/en/product/clo\n- **Browzwear VStitcher** similarly offers 2D/3D garment development, avatar fitting, grading, tension/pressure maps and digital-sample workflows. Its claims such as fewer physical samples should be recorded as vendor-stated until independently matched: https://browzwear.com/products/v-stitcher\n- **RGBench (AAAI 2026)** is a serious cloth-simulation sim-to-real benchmark, but its public task is robotic garment manipulation (grasp, fold, fling), not wearer fit or subjective comfort. The currently released evaluation data contains 9 garments and 98 real capture sessions; the 6,000+ asset library and simulator expansion are described as future releases. Use its measured-trajectory methodology as an adjacent Symtropy/Sol-Atlas benchmark, not as a direct AO-01/CR-01 comfort comparator: https://rgbench.github.io/ and https://huggingface.co/datasets/RGBench/RGBench-Cloth-Sim2Real-v1\n- **2026 virtual-vs-physical fit research** still reports limitations in avatar posture, body-fat distribution and fabric representation (four models; 21 experienced assessors): https://doi.org/10.1080/17543266.2026.2618270. A separate five-avatar-pair exploratory study finds proportional deviations can persist despite identical patterns and solver settings: https://doi.org/10.1108/RJTA-07-2026-0223\n\nStrategic consequence:\n\nAtelier should not spend its first resources rebuilding a weaker CLO/Browzwear. The differentiated layer is the calibrated, portable evidence thread that can sit across existing tools:\n1. Preserve pattern, piece, seam, grain, BOM and material-lot semantics across 2D/3D/factory handoff.\n2. Calibrate avatars and fabric inputs against physical toiles, then report per-landmark/per-posture residuals.\n3. Separate cloth-dynamics accuracy, static fit, movement envelope, wearer comfort and manufacturing feasibility.\n4. Re-run qualification when a dependent pattern, fabric lot, avatar profile, lining, closure or build revision changes.\n5. Keep the user/designer in control of style and fit decisions; no model-generated visual is an approved cut pattern.\n\nFor physical simulation, first reproduce an open benchmark such as RGBench within its declared manipulation domain. Then add garment-specific physical captures for the overshirt and wrap. Do not claim that a cloth-manipulation score predicts comfort or tailored fit.",
+      "at": "2026-11-15T03:34:14Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/12182#issuecomment-6888619925"
+    },
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "## Collection expansion: from two product briefs to a multi-family route architecture\n\nDraft PR [#12260](https://github.com/Luminous-Dynamics/symthaea/pull/12260) adds a collection-level architecture with a machine-readable 13-family catalog and full design-to-manufacture workflow.\n\nThe key structure is three independent axes:\n\n1. **Style family:** woven tops/bottoms, dresses, knit foundations/advanced knitwear, wraps/travel layers, outer layers, movement, adaptive, task/work (non-PPE), rest/sleepwear, occasion/ceremonial/expressive and accessories.\n2. **Construction family:** woven cut-and-sew, knit cut-and-sew, fully fashioned/whole-garment knitting, layered/quilted, laminated where qualified, modular assembly and hand/industrial hybrid.\n3. **Functional profile:** everyday, travel, climate transition, movement, rest, task, adaptive dressing, sensory, occasion/ceremonial and conservation.\n\nThis prevents us from trying to solve every garment through one pattern block or one sewing route. It also lets route selection happen early: design and manufacturing are co-designed rather than treating factory feasibility as a late-stage correction.\n\n### Proposed waves\n\n- **Wave 1:** AO-01 woven overshirt, one knit foundation and one trouser/bottom.\n- **Wave 2:** CR-01 travel wrap, adaptive-access garment and non-PPE task/work garment.\n- **Wave 3:** whole-garment knit where a named machine route exists, outer layer/shell, occasion/ceremonial piece, rest/sleepwear and accessories.\n\nAO-01 remains first physical anchor. Additional families are catalogued, not yet physically sampled or qualified.\n\n### Machinery companion\n\nSymtropy [TEXTILE-MACHINE-OBSERVABILITY-001 #5311](https://github.com/Luminous-Dynamics/symtropy/issues/5311) and its draft [PR #5313](https://github.com/Luminous-Dynamics/symtropy/pull/5313) establish a separate passive machine observability/retrofit lane. It complements #4865 robotic seam work, #4878 knitting preflight, #4875 factory scheduling and MFG-PROC #5686.",
+      "at": "2026-11-15T08:10:13Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/12182#issuecomment-6891502169"
+    },
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "## Textile product-passport readiness\n\nThe multi-family PR #12260 now adds a passport-readiness section. The European Commission currently lists a planned Q4 2027 adoption of the textile/apparel delegated act under ESPR; the textile-specific data requirements are not yet fixed. Atelier should preserve product/configuration, material/component, lot, care, repair and inspection evidence with privacy and disclosure boundaries, but must not claim current EU DPP compliance.\n\nOfficial reference: https://single-market-economy.ec.europa.eu/single-market/digital-product-passport/textile-apparel_en\n\nThe machine observability companion is Symtropy #5311 / draft PR #5313, and its passive observer-kit reference is included in that branch.",
+      "at": "2026-11-15T08:14:01Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/12182#issuecomment-6891542497"
+    },
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "## Two additional product briefs opened to expand manufacturing-route coverage\n\nThe next two bounded style briefs are now open:\n\n- [#12261 — K-01 Everyday Knit Tee / Quiet Second Skin](https://github.com/Luminous-Dynamics/symthaea/issues/12261): the first knit-construction reference. It compares a purchased knit-fabric cut-and-sew route with a fully-fashioned/whole-garment route only if a named machine and operator are available.\n- [#12262 — T-01 Everyday Trouser / Quiet Structure](https://github.com/Luminous-Dynamics/symthaea/issues/12262): the first lower-body fit and construction reference, covering rise/crotch/seat/waist/leg geometry, seated comfort, pockets, closure, and repairability.\n\nThis gives the initial family programme four intentionally different engineering anchors:\n1. AO-01 woven overshirt;\n2. K-01 knit tee;\n3. T-01 woven trouser;\n4. CR-01 modular travel wrap.\n\nOnly AO-01 remains the first physical prototype priority. K-01 and T-01 are design/engineering briefs until fabric, fit profile, machine access, toile and sampling resources are declared. The broader style-family catalog remains a roadmap, not a commitment to sample every family at once.",
+      "at": "2026-11-15T08:17:07Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/12182#issuecomment-6891575918"
+    }
+  ],
+  "comments_complete": true
+}

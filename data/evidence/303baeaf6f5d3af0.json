@@ -1,0 +1,107 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43926",
+  "collected_at": "2026-11-15T09:19:17.933130+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43926",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43926/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43926/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43926/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43926",
+    "id": 6390463120,
+    "node_id": "I_kwDOC4Q8Qs8AAAABfOa6kA",
+    "number": 43926,
+    "title": "Successful retries are not retained when saving successful executions is disabled",
+    "user": {
+      "login": "shustovTE",
+      "id": 151925802,
+      "node_id": "U_kgDOCQ40Kg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/151925802?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/shustovTE",
+      "html_url": "https://github.com/shustovTE",
+      "followers_url": "https://api.github.com/users/shustovTE/followers",
+      "following_url": "https://api.github.com/users/shustovTE/following{/other_user}",
+      "gists_url": "https://api.github.com/users/shustovTE/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/shustovTE/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/shustovTE/subscriptions",
+      "organizations_url": "https://api.github.com/users/shustovTE/orgs",
+      "repos_url": "https://api.github.com/users/shustovTE/repos",
+      "events_url": "https://api.github.com/users/shustovTE/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/shustovTE/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-11-14T13:20:13Z",
+    "updated_at": "2026-11-14T20:17:06Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nWhen saving successful production executions is disabled, a retry that finishes successfully is also discarded. The original failed execution can remain without a `retrySuccessId`, even though it has been retried successfully.\n\nThis happens both when retrying manually through the UI and when using the public API.\n\nAs a result, execution history does not reliably indicate which failures have been resolved. Retry automation that checks `retrySuccessId` can select the same failed execution again and repeat operations that have already succeeded.\n\n### To Reproduce\n\n1. Create a workflow with a **Webhook → Code** sequence.\n2. Enable saving failed production executions and disable saving successful production executions.\n3. Configure the Code node to fail:\n   ```javascript\n   throw new Error('Retry retention test');\n   ```\n4. Publish the workflow and call its production webhook to create a failed execution.\n5. Change the Code node to:\n   ```javascript\n   return $input.all();\n   ```\n6. Save the workflow.\n7. Open the failed execution in the UI and retry it using the currently saved workflow.\n8. Observe that the retry succeeds, but its result is not retained and the original execution may still have no `retrySuccessId`.\n\nThe same behavior can be reproduced through the API:\n\n```http\nPOST /api/v1/executions/<failed-execution-id>/retry\nContent-Type: application/json\nX-N8N-API-KEY: <api-key>\n\n{\"loadWorkflow\": true}\n```\n\n### Expected behavior\n\nSuccessful retry executions should remain available even when saving ordinary successful executions is disabled.\n\nThe original failed execution should reference the retained successful retry through `retrySuccessId`, allowing users and automation to distinguish resolved failures from executions that still need attention.\n\n### Debug Info\n\n# Debug info\n\n## core\n\n- n8nVersion: 2.46.6\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.12.1\n- nodeEnv: production\n- database: postgres\n- executionMode: regular\n- concurrency: 60\n- license: enterprise (production)\n- consumerId: 38e914f0-bb43-459c-9cf2-f4bcb5c0747a\n\n## storage\n\n- success: none\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n## pruning\n\n- enabled: true\n- maxAge: 336 hours\n- maxCount: 10000 executions\n\n## client\n\n- userAgent: mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/157.0.0.0 safari/537.36\n- isTouchDevice: false\n\n## cluster\n\n- instanceCount: 1\n- versions: 2.46.6\n- instances:\n  - instanceKey: 6b72d47c-157f-4ebe-b133-0f9e337bcd17, hostId: main-2407b6acbbd4, instanceType: main, instanceRole: leader, version: 2.46.6\n- checks:\n  - check: hostid-clash, status: succeeded, warnings: -\n  - check: lifecycle, status: succeeded, warnings: -\n  - check: split-brain, status: succeeded, warnings: -\n  - check: version-mismatch, status: succeeded, warnings: -\n\nGenerated at: 2026-11-14T13:19:28.566Z\n\n### Operating System\n\nUbuntu Linux 26.04\n\n### n8n Version\n\n2.41.3; also reproduced in regression tests against master (2.48.0)\n\n### Node.js Version\n\nv26.12.1\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43926/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43926/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @shustovTE,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9767\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9767](https://linear.app/n8n/issue/GHC-9767)",
+      "at": "2026-11-14T13:20:30Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43926#issuecomment-6877887764"
+    },
+    {
+      "author": "grinem",
+      "text": "This is an accurate catch. The issue is that the runner's execution persistence policy evaluates the child retry independently: because `EXECUTIONS_DATA_SAVE_ON_SUCCESS=none`, the child record is dropped before or without committing the foreign key update (`execution_entity.retrySuccessId`) back onto the parent failed execution.\n\nUntil core decouples retry-lineage tracking from raw success retention, two practical workarounds:\n1. Enable `EXECUTIONS_DATA_SAVE_ON_SUCCESS=all` paired with aggressive pruning (`EXECUTIONS_DATA_MAX_AGE=24` or lower) so metadata is written and settled before being pruned.\n2. If retrying via API, check the synchronous response of `POST /api/v1/executions/{id}/retry` directly for `status: \"success\"` and track settled parent IDs in an external set/cache rather than polling `retrySuccessId` from n8n's DB.",
+      "at": "2026-11-14T20:17:06Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43926#issuecomment-6883603027"
+    }
+  ],
+  "comments_complete": true
+}
