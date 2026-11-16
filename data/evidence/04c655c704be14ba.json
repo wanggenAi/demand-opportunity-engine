@@ -1,0 +1,107 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43964",
+  "collected_at": "2026-11-16T09:36:31.158430+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43964",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43964/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43964/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43964/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43964",
+    "id": 6415142081,
+    "node_id": "I_kwDOC4Q8Qs8AAAABfl9MwQ",
+    "number": 43964,
+    "title": "Object.hasField() returns true for inherited prototype names like toString",
+    "user": {
+      "login": "muhammad-wasif-code",
+      "id": 79788351,
+      "node_id": "MDQ6VXNlcjc5Nzg4MzUx",
+      "avatar_url": "https://avatars.githubusercontent.com/u/79788351?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/muhammad-wasif-code",
+      "html_url": "https://github.com/muhammad-wasif-code",
+      "followers_url": "https://api.github.com/users/muhammad-wasif-code/followers",
+      "following_url": "https://api.github.com/users/muhammad-wasif-code/following{/other_user}",
+      "gists_url": "https://api.github.com/users/muhammad-wasif-code/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/muhammad-wasif-code/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/muhammad-wasif-code/subscriptions",
+      "organizations_url": "https://api.github.com/users/muhammad-wasif-code/orgs",
+      "repos_url": "https://api.github.com/users/muhammad-wasif-code/repos",
+      "events_url": "https://api.github.com/users/muhammad-wasif-code/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/muhammad-wasif-code/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-11-16T05:52:35Z",
+    "updated_at": "2026-11-16T07:05:36Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\n`Object.hasField()` uses the `in` operator, so inherited `Object.prototype` names are treated as present fields even when the object has no such own key. That contradicts the docs, which say it \"only checks top-level keys\".\n\n`({}).hasField('toString')` returns `true`, and so do `constructor` and `hasOwnProperty`. An expression like `{{ $json.hasField('constructor') }}` therefore returns `true` for every item.\n\n### To Reproduce\n\n1. In any node's expression editor, evaluate `{{ ({}).hasField('toString') }}`.\n2. Also try `{{ ({}).hasField('constructor') }}` and `{{ ({}).hasField('hasOwnProperty') }}`.\n3. All three return `true`.\n\n### Expected behavior\n\nAll of the above return `false`, because the object has no such top-level field. `{{ ({ toString: 'custom' }).hasField('toString') }}` should still return `true`.\n\n### Debug Info\n\nNot instance-specific; reproduces on current master in expression evaluation (n8n-workflow object extensions).\n\n### Operating System\n\nAny (Linux tested)\n\n### n8n Version\n\nmaster (2.x)\n\n### Node.js Version\n\n22\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43964/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43964/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @muhammad-wasif-code,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9777\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9777](https://linear.app/n8n/issue/GHC-9777)",
+      "at": "2026-11-16T05:52:45Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43964#issuecomment-6908571419"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "One nuance from the current tests: `object-extensions.test.ts` explicitly expects `hasField()` to return true for a key exposed by a Proxy `has`/`get` trap even when there is no own property descriptor. Replacing `in` with `Object.hasOwn()` would make the reported prototype cases false, but would also break that tested Proxy behavior. Is supporting Proxy-exposed fields intentional? If so, an own-property check may need to distinguish ordinary objects from proxies (which JavaScript does not provide a direct general-purpose test for); otherwise the test and docs should be aligned around own keys.",
+      "at": "2026-11-16T07:05:36Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43964#issuecomment-6909816755"
+    }
+  ],
+  "comments_complete": true
+}

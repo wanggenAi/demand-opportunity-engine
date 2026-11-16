@@ -1,9 +1,25 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50497513",
-  "collected_at": "2026-11-15T09:19:17.933130+00:00",
+  "collected_at": "2026-11-16T09:36:31.158430+00:00",
   "source": {
     "author": "jdefr89",
-    "children": [],
+    "children": [
+      {
+        "author": "AlbertoGP",
+        "children": [],
+        "created_at": "2026-11-15T23:20:38.000Z",
+        "created_at_i": 1794784838,
+        "id": 50511952,
+        "options": [],
+        "parent_id": 50497513,
+        "points": null,
+        "story_id": 50497513,
+        "text": "This is way better than my recollection of SourceTrail when I tried it years ago. SourceTrail was terribly slow and clunky, to the point of being useless for me.<p>This SrcWranglr compiles and runs without issues on my Linux machine, and I’ve been using it for a few hours.<p>There are some glitches like the click event on a menu punching through and triggering actions under the menu, for instance the “Reindex” action will also select whatever symbol happens to be under it which is confusing as it makes the central graph display (which looks amazing by the way!) to change giving the impression that the re-index made you lose your position.<p>Still, it is already very useful and I have added to the handful of tools I use while programming.<p>I added the shortcut C-R to trigger Reindex. I am preparing the tiny PR although it might be faster for you to just do it by yourself than to adapt my commit.<p>Ironically, since SrcWranglr does not support Rust I used my own code navigator written in C, which supports more programming languages including Rust although not nearly as many features, to find quickly the places where the shortcuts and menus are defined. I find that you have implemented many things I had hoped to do some day, specifically the value tracing. This is a great tool.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
     "created_at": "2026-11-14T14:55:16.000Z",
     "created_at_i": 1794668116,
     "id": 50497513,
@@ -16,6 +32,13 @@
     "type": "story",
     "url": "https://github.com/jdefrancesco/SrcWranglr"
   },
-  "comments": [],
+  "comments": [
+    {
+      "author": "AlbertoGP",
+      "text": "This is way better than my recollection of SourceTrail when I tried it years ago. SourceTrail was terribly slow and clunky, to the point of being useless for me. This SrcWranglr compiles and runs without issues on my Linux machine, and I’ve been using it for a few hours. There are some glitches like the click event on a menu punching through and triggering actions under the menu, for instance the “Reindex” action will also select whatever symbol happens to be under it which is confusing as it makes the central graph display (which looks amazing by the way!) to change giving the impression that the re-index made you lose your position. Still, it is already very useful and I have added to the handful of tools I use while programming. I added the shortcut C-R to trigger Reindex. I am preparing the tiny PR although it might be faster for you to just do it by yourself than to adapt my commit. Ironically, since SrcWranglr does not support Rust I used my own code navigator written in C, which supports more programming languages including Rust although not nearly as many features, to find quickly the places where the shortcuts and menus are defined. I find that you have implemented many things I had hoped to do some day, specifically the value tracing. This is a great tool.",
+      "at": "2026-11-15T23:20:38.000Z",
+      "url": "https://news.ycombinator.com/item?id=50511952"
+    }
+  ],
   "comments_complete": true
 }

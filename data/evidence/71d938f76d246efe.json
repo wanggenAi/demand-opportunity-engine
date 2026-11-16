@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50509386",
+  "collected_at": "2026-11-16T09:36:31.158430+00:00",
+  "source": {
+    "author": "kevinlinxc",
+    "children": [],
+    "created_at": "2026-11-15T18:32:23.000Z",
+    "created_at_i": 1794767543,
+    "id": 50509386,
+    "options": [],
+    "parent_id": null,
+    "points": 4,
+    "story_id": 50509386,
+    "text": "Hi HN!<p>Here to show off a project that took 18 months, 7KLOC, and more importantly, 194 kilometres of walking! In a nutshell, I wanted to make the famous silhouette animation “Bad Apple” with Strava, which is an exercise tracking app that visualizes where you walk&#x2F;run on a map. To use the earth as my canvas, I had to do a  lot of coding in the prep work to plan where I would walk for each frame of the animation. As I explain in the video, my problem solving&#x2F;coding steps were something like this:<p>- split video into frames, determine a good framerate<p>- detect contours with OpenCV for each frame. Since frames are very diverse, I had to start with some heuristics for choosing contours and ultimately make a GUI to manually curate all 438 of them (e.g. some frames had many small contours while others had a few important ones, and the video is constantly inverting colours). Output of this work was an intermediate json list of x,y coordinates representing the path along contours<p>- convert these cartesian coordinates into the Universal Transverse Mercator coordinate system, which represents the earth in a cartesian system (as opposed to GPS which doesn’t lend to adding relative distances in degrees very well)<p>- convert UTM to GPS using a package, then to the GPX file format which is universally accepted<p>- Import GPX files into an app that shows where I am and where I need to walk (I used Gaia GPS). Then I turned on Strava in the background and walked for ~18 months until this was done.<p>I also had to make a bunch of custom software to visualize these walks and make montages of them, like a script to pull polylines from the Strava API, a custom polyline renderer, a script to censor my strava activities a bit, and much more. I’m so proud of this work, it feels like it stands out in a sea of code-only bad apple projects that have become easier to automate with AI, and I hope it can go down as one of the greats in the bad apple colossus of work!<p>Video: <a href=\"https:&#x2F;&#x2F;youtu.be&#x2F;HxdQawDIlnU\" rel=\"nofollow\">https:&#x2F;&#x2F;youtu.be&#x2F;HxdQawDIlnU</a>\nGitHub: <a href=\"https:&#x2F;&#x2F;github.com&#x2F;kevinlinxc&#x2F;badapple-strava\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;kevinlinxc&#x2F;badapple-strava</a><p>Happy to answer any questions!",
+    "title": "Show HN: Bad Apple but it's Strava [video]",
+    "type": "story",
+    "url": "https://www.youtube.com/watch?v=HxdQawDIlnU"
+  },
+  "comments": [],
+  "comments_complete": true
+}

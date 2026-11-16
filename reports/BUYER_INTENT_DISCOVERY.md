@@ -1,8 +1,8 @@
 # BUYER INTENT DISCOVERY
 
-Checked: 2026-11-15T09:19:17.933130+00:00
+Checked: 2026-11-16T09:36:31.158430+00:00
 
-Verified explicit commercial buyers: 108; published within 7 days: 25.
+Verified explicit commercial buyers: 108; published within 7 days: 16.
 Intent types: {'PAID_TASK': 6, 'PROCUREMENT_REQUEST': 19, 'QUOTE_REQUESTED': 12, 'AGENT_OR_VENDOR_REQUEST': 5, 'BUDGET_STATED': 20, 'BOUNTY': 34, 'HIRING': 12}
 Commercial intent is not a verified budget or a promise of purchase. Exact buyer-authored sentences and legitimate source paths are mandatory. No outbound messages sent.
 
@@ -19,11 +19,11 @@ Additional families attempted this run: 9.
 ### public founder/operator job community
 
 - Access: Discourse public category/topic JSON; https://community.n8n.io/c/jobs/13.json?order=created
-- Records inspected: 32; primary pages opened: 22; collected observations: 22
-- Verified buyer requests: 11; explicit commercial signals: 11
+- Records inspected: 30; primary pages opened: 20; collected observations: 20
+- Verified buyer requests: 10; explicit commercial signals: 10
 - Limitations: Two newest-topic pages, not complete market coverage; max 200 extra replies per topic. Incomplete competition remains UNKNOWN unless observed high.; Last activity is not publication time. Only substantive buyer-authored follow-ups can renew a lead.
 - Errors: []
-- Audit snapshots: data/evidence/f5663f332d6bc9b1.json#sha256=a0cd8ce6487f062d7862061ba69cf3ca1a9e0cedfff84063876bdb79011f5b81, data/evidence/d9f0be47fa047f2c.json#sha256=af23a391c089f33a0a2bb95676bc826091257328ceee817daf7b33106c4927c8
+- Audit snapshots: data/evidence/f5663f332d6bc9b1.json#sha256=f573b0ed8b291c38f873a36db0fa44fb492ebbf3de3b66c38a9905bfc698f2bf, data/evidence/d9f0be47fa047f2c.json#sha256=87ed909d388f44614018379d34dbaf162e55b0d63b359186ede0c777b4fa4f68
 
 ### public freelance/job listings
 
@@ -32,16 +32,16 @@ Additional families attempted this run: 9.
 - Verified buyer requests: 0; explicit commercial signals: 0
 - Limitations: Employer application pages not verified. No employer-authored quote invented from aggregator job labels.; Legal warning - Hey, thanks for using Remotive's API, we appreciate it! Please note that API documentation and access is granted so that developers can share our jobs further. Please do not submit Remotive jobs to third Party websites, including but not limited to: Jooble, Neuvoo, Google Jobs, LinkedIn Jobs. Please link back to the URL found on Remotive AND mention Remotive as a source in order to Remotive to get traffic from your listing. If you don't do that, we'll terminate your API access, sorry! Jobs displayed are delayed by 24 hours, the goal being that jobs are attributed to Remotive on various platforms. Displaying our jobs in order to collect signups/email addresses to show a listing constitutes a breach of our terms of services. We offer a private, paid-for API, please email us at hello(at)remotive(dot)io for more information (starting budget is $5k/mo). Please find out terms of services on https://remotive.com/api-documentation. Please note that there is absolutely no need to request Remotive Job data too frequently. Typically, you only need to GET Remotive job data through this API a couple of times a day (we advise max. 4 times a day). Our data is not changing much faster than that anyway. Note that excessive requests will be blocked. Many thanks (Rodolphe & the Remotive team!)
 - Errors: []
-- Audit snapshots: data/evidence/071898d5d7cef09e.json#sha256=8cb36169635290f4dafaaf9e8bc05d6d86accf8964e4ffbb2edca5e4467aad15
+- Audit snapshots: data/evidence/071898d5d7cef09e.json#sha256=d28b37eb4f225eb2900b19658afc26473dd4f31c68cc92902585edd535f1610b
 
 ### public procurement/RFQ
 
 - Access: bounded public HTTP page inspection; https://www.contractsfinder.service.gov.uk/Search/Results?keywords=automation
-- Records inspected: 20; primary pages opened: 0; collected observations: 0
+- Records inspected: 0; primary pages opened: 0; collected observations: 0
 - Verified buyer requests: 0; explicit commercial signals: 0
 - Limitations: Search returned procurement notices; up to three detail pages attempted. No buyer request promoted: eligibility, exact remote scope, submission deadline and award status require manual verification.
-- Errors: [{"url": "https://www.contractsfinder.service.gov.uk/notice/42c80b0b-fbe7-49d7-8ac2-07a1a30e6e1a", "error": "HTTPError: HTTP Error 403: Forbidden"}, {"url": "https://www.contractsfinder.service.gov.uk/notice/8ecce09c-950c-4d69-af94-eaeb733d7b35", "error": "HTTPError: HTTP Error 403: Forbidden"}, {"url": "https://www.contractsfinder.service.gov.uk/notice/e22d5d91-9b44-4aa7-9bbb-97d3e4e7efad", "error": "HTTPError: HTTP Error 403: Forbidden"}]
-- Audit snapshots: data/evidence/50e3af0542f19c3a.json#sha256=334b450f0a7d287fbeb650519eae8875bf2825602fd3046da07ce5c17e967e61
+- Errors: []
+- Audit snapshots: data/evidence/50e3af0542f19c3a.json#sha256=63140389757fea479bdd1604d77d94b88d0b9e6113fc95019aadd477953acf95
 
 ### public bounty/paid task
 
@@ -68,43 +68,43 @@ Additional families attempted this run: 9.
 - Verified buyer requests: 0; explicit commercial signals: 0
 - Limitations: No structured primary buyer requests extracted; static shell is not commercial proof. No login or anti-bot evasion.
 - Errors: []
-- Audit snapshots: data/evidence/b5d67d420401a4bb.json#sha256=e42cd89048adc9c9da34acdcd216fd38da929afd9cc4d1e0616aea7b5de689d1
+- Audit snapshots: data/evidence/b5d67d420401a4bb.json#sha256=acb1784939252914e27b2de8a889c6aa41d3e4e88fe464a52b456bdc7faea7cf
 
 ### freelance project marketplace (Freelancer)
 
 - Access: bounded public HTTP/JSON; no authenticated endpoint; https://www.freelancer.com/jobs/product-sourcing/
-- Records inspected: 7; primary pages opened: 0; collected observations: 0
+- Records inspected: 5; primary pages opened: 0; collected observations: 0
 - Verified buyer requests: 0; explicit commercial signals: 0
 - Limitations: Public bidCount includes competitors; only first 20 proposals may be visible. Employer identity often unresolved. Task budget is not agreement to our pilot.
 - Errors: []
-- Audit snapshots: data/evidence/abf73d1fa5782498.json#sha256=d7b6fca719f061b93a2921f51eef889784856338925e1650950ece2ed6bc8aba
+- Audit snapshots: data/evidence/abf73d1fa5782498.json#sha256=a38fc872a0341f10df72607ef8177537232377837411647e7b641dab06e17e24
 
 ### freelance project marketplace (Freelancer)
 
 - Access: bounded public HTTP/JSON; no authenticated endpoint; https://www.freelancer.com/jobs/api-integration/
-- Records inspected: 47; primary pages opened: 0; collected observations: 0
+- Records inspected: 49; primary pages opened: 0; collected observations: 0
 - Verified buyer requests: 0; explicit commercial signals: 0
 - Limitations: A different query/category on Freelancer does not count as another independent family.
 - Errors: []
-- Audit snapshots: data/evidence/eb34b643617bda88.json#sha256=c7c90bcc2e12788cf054677e876429212315523ccb6fa8ac7169e009dddaf626
+- Audit snapshots: data/evidence/eb34b643617bda88.json#sha256=e36391596c8fafc329fc0bf576fbf54bebf3fc5ddc74ebf6bbeafbd901483039
 
 ### commerce operator community (Shopify)
 
 - Access: bounded public HTTP/JSON; no authenticated endpoint; https://community.shopify.com/latest.json
-- Records inspected: 30; primary pages opened: 1; collected observations: 1
+- Records inspected: 30; primary pages opened: 2; collected observations: 2
 - Verified buyer requests: 0; explicit commercial signals: 0
 - Limitations: Latest activity is not original publication; support questions are PRODUCT_SIGNAL, not SALES. No more than four primary topics per run.
 - Errors: []
-- Audit snapshots: data/evidence/bda5dc3c1eb46ea5.json#sha256=0ec0c17c08e2f127fd62d9c5e0e7d2a2c506b42a4dfd1cb95520a196b935f20e, data/evidence/4b831b4add19cc1f.json#sha256=8c780a45fd4f550634ab03e8dbe088c75b396cc4d71d5ba417d32148a6afb80e
+- Audit snapshots: data/evidence/bda5dc3c1eb46ea5.json#sha256=64d2f53ccf7b9bf39ce736185d3f2021d2ea3d81a08b9058ff00d8ec19071615, data/evidence/ab4dc788895f25ab.json#sha256=80ee1793f0fde16b7d480afccc507086070b409e5e3cae469bd197a19c2ca534, data/evidence/37baf98a210aa7e9.json#sha256=22ca783fbf6a0b680f8788ce7c05f4a6411fff0ac4ff11e98c10dcf70c203f70
 
 ### founder community (Indie Hackers)
 
 - Access: bounded public HTTP/JSON; no authenticated endpoint; https://www.indiehackers.com/
-- Records inspected: 26; primary pages opened: 1; collected observations: 0
+- Records inspected: 27; primary pages opened: 1; collected observations: 0
 - Verified buyer requests: 0; explicit commercial signals: 0
 - Limitations: Only server-rendered public pages. robots disallows /api/ and sign-in; neither used. Founder self-promotion is not a buyer.
 - Errors: []
-- Audit snapshots: data/evidence/6548833164b0e7c9.json#sha256=8e729dd0016c93bd171faf7c7e7fe26b27aa681c2be28e5f9ebc353c09a5bc13, data/evidence/6be1d6e52ddc1966.json#sha256=7c139519e5856eb9232121cb2840448d79b2cde20ff4201e4435b4ac680c41b5
+- Audit snapshots: data/evidence/6548833164b0e7c9.json#sha256=99d7cda3c7d3fd00ff5ba36b6da55d3501bd5e96f4776af8d87e779f2dad33e1, data/evidence/f8874676ce97cf98.json#sha256=25a02415a8b4ed916ee5a50992dba40941b1aedd66c8a178c01198e8f8f4b90b
 
 ### international physical-goods RFQ (TradeKey)
 
@@ -113,7 +113,7 @@ Additional families attempted this run: 9.
 - Verified buyer requests: 2; explicit commercial signals: 2
 - Limitations: Physical goods buyers do not automatically buy research. Contact requires platform sign-in; no access bypass. No bid-count visibility => UNKNOWN.
 - Errors: []
-- Audit snapshots: data/evidence/3914e4f508c84945.json#sha256=edbc524787db47441e893e2199dc0edf9cda34d427b6b1a9bf73b0d419f5f08e, data/evidence/2d42445425d2bb1f.json#sha256=3df1d91fdbc83389a0bca75b9a924b8e18605cf599b45d1aa531c20633bd4f5a, data/evidence/aa1b3d0e81edd542.json#sha256=61d2bfcd9848ee47ebed1d38281cabc80250c47e0f2cdaed82b70c43c04d4683
+- Audit snapshots: data/evidence/3914e4f508c84945.json#sha256=9960f7b8b61f4c193897d08f0a8009360efb3a8472a8b44fdc5aed608c09d0d3, data/evidence/2d42445425d2bb1f.json#sha256=440b69c3f7a69aad60a8a8d0d9da82751f02304fb586cd919c9add7cff800f21, data/evidence/aa1b3d0e81edd542.json#sha256=433bca517548e0d29f91579dea054ff75a90613d5cc1de0adc22b61668a3678c
 
 ## Primary commercial evidence (distinct source URLs)
 
@@ -539,7 +539,7 @@ Member
 - REMOTE_NOW scope: Remote supplier verification / RFQ comparison for one SKU; proposed price: USD 100–250 (proposed discovery pilot; buyer budget unverified)
 - Dependencies: []; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports.
 - First-message angle: Which SKU, destination and supplier are you evaluating? I can scope a remote verification memo; physical QC is separate.
-- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; 7–14-day demand is VALIDATE until buyer activity is renewed
 
 ### [Miner] PURCHASE_ORDER_VERIFY, INVOICE_LEDGER_RECONCILE, VENDOR_VERIFY, DOCUMENT_AUTHENTICITY: rejected schema fields, false length-0 warnings, and Chicago-only PO scope
 
@@ -557,7 +557,7 @@ Praman Desk (Mission 04, Legal & Compliance Automation; https://praman-desk.verc
 - REMOTE_NOW scope: Remote diagnosis of one failing workflow, with reproduction and recovery checklist; proposed price: USD 100–200 diagnostic; USD 300–600 implementation only after scope agreement (proposal, not budget)
 - Dependencies: []; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports.
 - First-message angle: Is this still blocking your workflow? I can scope a remote reproduction and recovery audit; what is the daily volume and cost of failures?
-- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; 7–14-day demand is VALIDATE until buyer activity is renewed
 
 ### NIBIRU-051: Texas pilot engineering quotes and capital-readiness controls
 
@@ -578,7 +578,7 @@ Public coordination only. Created 2026-11-08. NO confidential parcel identifiers
 - REMOTE_NOW scope: Remote supplier verification / RFQ comparison for one SKU; proposed price: USD 100–250 (proposed discovery pilot; buyer budget unverified)
 - Dependencies: ['PARTNER_REQUIRED: on-site QC, warehouse or freight execution']; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports. PARTNER_REQUIRED: on-site QC, warehouse or freight execution
 - First-message angle: Which SKU, destination and supplier are you evaluating? I can scope a remote verification memo; physical QC is separate.
-- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; partner/specialist capability not currently controlled
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; 7–14-day demand is VALIDATE until buyer activity is renewed; partner/specialist capability not currently controlled
 
 ### [Follow-up] [Bounty #743] Validate /api/users payload before persistence
 
@@ -596,7 +596,7 @@ Reproduced on `main` (`apps/api`): a request with `{"email":"not-an-email","full
 - REMOTE_NOW scope: Remote diagnosis of one failing workflow, with reproduction and recovery checklist; proposed price: USD 100–200 diagnostic; USD 300–600 implementation only after scope agreement (proposal, not budget)
 - Dependencies: []; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports.
 - First-message angle: Is this still blocking your workflow? I can scope a remote reproduction and recovery audit; what is the daily volume and cost of failures?
-- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; 7–14-day demand is VALIDATE until buyer activity is renewed
 
 ### Not argumentative at all. I've spent the last 6 months working on these problems and built the original Agentic Identity solution at my large company
 
@@ -610,7 +610,7 @@ Not argumentative at all. I've spent the last 6 months working on these problems
 - REMOTE_NOW scope: Remote diagnosis of one failing workflow, with reproduction and recovery checklist; proposed price: USD 100–200 diagnostic; USD 300–600 implementation only after scope agreement (proposal, not budget)
 - Dependencies: []; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports.
 - First-message angle: Is this still blocking your workflow? I can scope a remote reproduction and recovery audit; what is the daily volume and cost of failures?
-- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; 7–14-day demand is VALIDATE until buyer activity is renewed
 
 ### [Follow-up] [Bounty #743] Validate /api/users payload before persistence
 
@@ -630,7 +630,7 @@ Add a strict Zod schema for user creation and validate the request in userContro
 - REMOTE_NOW scope: Remote diagnosis of one failing workflow, with reproduction and recovery checklist; proposed price: USD 100–200 diagnostic; USD 300–600 implementation only after scope agreement (proposal, not budget)
 - Dependencies: []; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports.
 - First-message angle: Is this still blocking your workflow? I can scope a remote reproduction and recovery audit; what is the daily volume and cost of failures?
-- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; 7–14-day demand is VALIDATE until buyer activity is renewed
 
 ### [Follow-up] [Bounty #743] Validate /api/upload files and reject missing or dangerous uploads
 
@@ -653,7 +653,7 @@ Harden the upload endpoint in uploadController and uploadRoutes:
 - REMOTE_NOW scope: Remote diagnosis of one failing workflow, with reproduction and recovery checklist; proposed price: USD 100–200 diagnostic; USD 300–600 implementation only after scope agreement (proposal, not budget)
 - Dependencies: []; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports.
 - First-message angle: Is this still blocking your workflow? I can scope a remote reproduction and recovery audit; what is the daily volume and cost of failures?
-- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; 7–14-day demand is VALIDATE until buyer activity is renewed
 
 ### AF alert: 1 new paid opportunity(ies)
 
@@ -672,7 +672,7 @@ _Automated by AF; K is not in the loop._
 - REMOTE_NOW scope: Remote diagnosis of one failing workflow, with reproduction and recovery checklist; proposed price: USD 100–200 diagnostic; USD 300–600 implementation only after scope agreement (proposal, not budget)
 - Dependencies: []; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports.
 - First-message angle: Is this still blocking your workflow? I can scope a remote reproduction and recovery audit; what is the daily volume and cost of failures?
-- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; 7–14-day demand is VALIDATE until buyer activity is renewed
 
 ### [Bounty] [Bounty $1,150] perf(automation): share static canvas seed and batch nonce acros
 
@@ -699,7 +699,7 @@ In `src/automation_session_guard.py`, `verify_worker_profile_isolation(profiles)
 - REMOTE_NOW scope: Remote diagnosis of one failing workflow, with reproduction and recovery checklist; proposed price: USD 100–200 diagnostic; USD 300–600 implementation only after scope agreement (proposal, not budget)
 - Dependencies: []; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports.
 - First-message angle: Is this still blocking your workflow? I can scope a remote reproduction and recovery audit; what is the daily volume and cost of failures?
-- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; 7–14-day demand is VALIDATE until buyer activity is renewed
 
 ### Weekly AI News Digest — 2026-W45
 
@@ -1051,7 +1051,7 @@ Asignaciones, matching y comparativos resuelven por item_code/ocurrencia o preci
 - REMOTE_NOW scope: Remote diagnosis of one failing workflow, with reproduction and recovery checklist; proposed price: USD 100–200 diagnostic; USD 300–600 implementation only after scope agreement (proposal, not budget)
 - Dependencies: []; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports.
 - First-message angle: Is this still blocking your workflow? I can scope a remote reproduction and recovery audit; what is the daily volume and cost of failures?
-- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; source verification is future-dated or older than 7 days; 7–14-day demand is VALIDATE until buyer activity is renewed
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; source verification is future-dated or older than 7 days; freshness gate failed: >14 days without verified buyer activity <=7 days
 
 ### F5 Directory and marketplace: vendor, venue and professional listings, search, enquiries, quotes and reviews
 
@@ -1071,7 +1071,7 @@ An organiser finds, compares and engages vendors, venues and freelance professio
 - REMOTE_NOW scope: Remote supplier verification / RFQ comparison for one SKU; proposed price: USD 100–250 (proposed discovery pilot; buyer budget unverified)
 - Dependencies: []; effort: 2–4 hours diagnostic; implementation estimate after discovery; risk: Payment and exact scope require confirmation; do not pitch unsolicited on bug reports.
 - First-message angle: Which SKU, destination and supplier are you evaluating? I can scope a remote verification memo; physical QC is separate.
-- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; source verification is future-dated or older than 7 days; 7–14-day demand is VALIDATE until buyer activity is renewed
+- DO NOW gate failures: zero-cost acquisition not verified: UNKNOWN; source verification is future-dated or older than 7 days; freshness gate failed: >14 days without verified buyer activity <=7 days
 
 ### Decentralized Vector Embedding Search & Indexing Engine for FVM
 

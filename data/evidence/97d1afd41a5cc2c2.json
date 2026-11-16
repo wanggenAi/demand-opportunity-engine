@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50514317",
+  "collected_at": "2026-11-16T09:36:31.158430+00:00",
+  "source": {
+    "author": "oxydizer",
+    "children": [],
+    "created_at": "2026-11-16T05:17:15.000Z",
+    "created_at_i": 1794806235,
+    "id": 50514317,
+    "options": [],
+    "parent_id": null,
+    "points": 1,
+    "story_id": 50514317,
+    "text": "Hi All!\nJust wanted to share this funky little desktop (was gonna say I but now there are a few of us) been developing.\nMost notable features is it’s a single process (&lt;200mb rss idle), you don’t need another compositor (such as niri,hyperland) and everything is in Zig (220k+ LOC), with occasional C mixed in (and 1000+ automation tests in Python). A single process apart from the built-in apps obviously, custom scene graph and UI toolkit (not based on QT or GTK) from scratch using Opengl GLES2<p>Just wanted to build sometihng that looks good, is themeable, boots faster than Gnome or Plasma (or even XFCE, Mate and Cinnamon now on my machine).\nworks on nvidia and recently ported to FreeBSD 15.1 ( running as a standalone desktop on real hardware)<p>code: <a href=\"https:&#x2F;&#x2F;github.com&#x2F;oxydizer&#x2F;rediwm\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;oxydizer&#x2F;rediwm</a>",
+    "title": "Show HN: RediWM – A complete Wayland Desktop Environment built in Zig 0.17",
+    "type": "story",
+    "url": "https://github.com/oxydizer/rediwm"
+  },
+  "comments": [],
+  "comments_complete": true
+}

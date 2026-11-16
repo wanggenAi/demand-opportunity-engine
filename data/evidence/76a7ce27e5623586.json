@@ -1,0 +1,135 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43958",
+  "collected_at": "2026-11-16T09:36:31.158430+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43958",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43958/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43958/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43958/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43958",
+    "id": 6410648701,
+    "node_id": "I_kwDOC4Q8Qs8AAAABfhq8fQ",
+    "number": 43958,
+    "title": "Output panel copy button copies \"[]\" for AI sub-nodes (memory, chat model, tools)",
+    "user": {
+      "login": "ricardolrm",
+      "id": 28395267,
+      "node_id": "MDQ6VXNlcjI4Mzk1MjY3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/28395267?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/ricardolrm",
+      "html_url": "https://github.com/ricardolrm",
+      "followers_url": "https://api.github.com/users/ricardolrm/followers",
+      "following_url": "https://api.github.com/users/ricardolrm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/ricardolrm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/ricardolrm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/ricardolrm/subscriptions",
+      "organizations_url": "https://api.github.com/users/ricardolrm/orgs",
+      "repos_url": "https://api.github.com/users/ricardolrm/repos",
+      "events_url": "https://api.github.com/users/ricardolrm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/ricardolrm/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582010757,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cXhQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:nodes",
+        "name": "team:nodes",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Nodes team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 3,
+    "created_at": "2026-11-15T22:56:51Z",
+    "updated_at": "2026-11-16T09:35:36Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nIn the Logs panel / node output view, the \"Copy\" button in the OUTPUT section works for root nodes (e.g. AI Agent), but for any AI sub-node it copies an empty array \"[]\" to the clipboard.\n\nAffected: Postgres Chat Memory, OpenAI Chat Model, tool nodes (e.g. SerpApi Google search used as an agent tool) and sub-workflow tools.\n\nThe JSON is displayed correctly in the output panel; only the clipboard content is empty. The clipboard itself works (the string \"[]\" is copied, and copying from the root AI Agent node works in the same session), so this is not the HTTPS / Clipboard API issue.\n\nLikely cause: the copy action seems to read the node's \"main\" output, while sub-node data is stored under \"ai_memory\", \"ai_languageModel\" or \"ai_tool\".\n\n### To Reproduce\n\n1. Create a workflow with Chat Trigger -> AI Agent, with a Chat Model, a Memory (e.g. Postgres Chat Memory) and a tool (e.g. SerpApi) connected.\n2. Send a chat message so the agent calls the tool.\n3. In the Logs panel, select the AI Agent and click Copy in the OUTPUT section: correct JSON is copied.\n4. Select any sub-node (Memory, Chat Model or tool) and click Copy: the clipboard contains only \"[]\".\n\n### Expected behavior\n\nThe Copy button should copy the JSON currently shown in the output panel, for sub-nodes as well as root nodes.\n\n### Debug Info\n\nSelf-hosted, Docker Swarm (Portainer), accessed over HTTPS, Google Chrome on Windows.\n\n# Debug info\n\n## core\n\n- n8nVersion: 3.2.0\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.12.1\n- nodeEnv: production\n- database: postgres\n- executionMode: scaling (single-main)\n- concurrency: -1\n- license: enterprise (production)\n- consumerId: a00bf8e3-e00f-4a77-9800-ddc8501529aa\n\n## storage\n\n- success: none\n- error: all\n- progress: false\n- manual: false\n- binaryMode: database\n\n## pruning\n\n- enabled: true\n- maxAge: 168 hours\n- maxCount: 10000 executions\n\n## client\n\n- userAgent: mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/157.0.0.0 safari/537.36\n- isTouchDevice: false\n\n## cluster\n\n- instanceCount: 5\n- versions: 3.2.0\n- instances:\n  - instanceKey: eb9abcb9-74a1-4a41-b066-a0dea5dbcdac, hostId: main-temp-edit_temp-edit.1, instanceType: main, instanceRole: leader, version: 3.2.0\n  - instanceKey: 1f8ad205-0b4e-4723-a45e-e66523e7f66d, hostId: worker-temp-wrk_temp-wrk.1, instanceType: worker, instanceRole: unset, version: 3.2.0\n  - instanceKey: c4aadb03-c2f2-4db7-b538-d45b51ea3856, hostId: webhook-temp-mcp_temp-mcp.1, instanceType: webhook, instanceRole: unset, version: 3.2.0\n  - instanceKey: 6d2116ef-905d-47dc-9aef-730cc69446d2, hostId: webhook-temp-wbh_temp-wbh.2, instanceType: webhook, instanceRole: unset, version: 3.2.0\n  - instanceKey: ce407feb-6f8f-4466-bee1-4c6c026a5bc8, hostId: webhook-temp-wbh_temp-wbh.1, instanceType: webhook, instanceRole: unset, version: 3.2.0\n- checks:\n  - check: hostid-clash, status: succeeded, warnings: -\n  - check: lifecycle, status: succeeded, warnings: -\n  - check: split-brain, status: succeeded, warnings: -\n  - check: version-mismatch, status: succeeded, warnings: -\n\nGenerated at: 2026-11-15T22:49:14.424Z\n\n### Operating System\n\nDocker (official n8n image) on Linux host, Docker Swarm. Browser: Chrome on Windows\n\n### n8n Version\n\n3.2.0\n\n### Node.js Version\n\n26.12.1\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nn8n cloud",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43958/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43958/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @ricardolrm,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9776\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9776](https://linear.app/n8n/issue/GHC-9776)",
+      "at": "2026-11-15T22:57:01Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43958#issuecomment-6902777584"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "There is a likely source-level match for the `[]` result in the current frontend: `RunDataJsonActions.getJsonValue()` falls back to `getNodeInputData(..., NodeConnectionTypes.Main, ...)` when no JSON path is selected ([source](https://github.com/n8n-io/n8n/blob/c44c87a88ab068904c13f1a96a4bda920fb7aee2/packages/frontend/editor-ui/src/features/ndv/runData/components/RunDataJsonActions.vue)). That copy path reads the Main connection, which would not cover values stored on AI connection types such as `ai_tool` or `ai_memory`. I have not confirmed that the Logs-panel button in this report uses this component, or that the same path exists in 3.2.0. Can you confirm whether the issue reproduces in the node execution view as well as Logs? If it only occurs in Logs, the button’s component/path would help distinguish the two implementations.",
+      "at": "2026-11-16T01:05:40Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43958#issuecomment-6904480531"
+    },
+    {
+      "author": "ardaerturk",
+      "text": "The JSON-view copy path is present in **n8n@3.2.0**, at `254dacfb`:\n\n- [`LogsViewRunData.vue`](https://github.com/n8n-io/n8n/blob/254dacfbba55d65d6ad6314681049e46ebff63ce/packages/frontend/editor-ui/src/features/execution/logs/components/LogsViewRunData.vue#L62-L127) passes the selected node, run and execution into `RunData` for sub-node logs.\n- [`RunData.vue`](https://github.com/n8n-io/n8n/blob/254dacfbba55d65d6ad6314681049e46ebff63ce/packages/frontend/editor-ui/src/features/ndv/runData/components/RunData.vue#L537-L547) reads display data using its resolved connection type. Its JSON view passes `inputDataPage` to `RunDataJson`.\n- [`RunDataJsonActions.getJsonValue()`](https://github.com/n8n-io/n8n/blob/254dacfbba55d65d6ad6314681049e46ebff63ce/packages/frontend/editor-ui/src/features/ndv/runData/components/RunDataJsonActions.vue#L71-L98) instead requests `NodeConnectionTypes.Main` when no JSON value is selected. [`getInputData()`](https://github.com/n8n-io/n8n/blob/254dacfbba55d65d6ad6314681049e46ebff63ce/packages/frontend/editor-ui/src/app/composables/useNodeHelpers.ts#L774-L807) returns `[]` when that connection/branch is absent.\n\nI exercised those existing copy/data-selection functions in isolation with fictional records: `ai_tool`, `ai_memory` and `ai_languageModel` data without `main` each produced `[]`; the Main control copied its records. With both Main and AI data present, the function copied Main's records, so this mismatch can also produce nonempty but different data.\n\nFor a fix, carrying the resolved connection type into the whole-output copy path would preserve the selected run and output branch. Be careful about substituting `props.jsonData` directly: [`RunData` passes the current page](https://github.com/n8n-io/n8n/blob/254dacfbba55d65d6ad6314681049e46ebff63ce/packages/frontend/editor-ui/src/features/ndv/runData/components/RunData.vue#L2203-L2220), so that could turn copy-all into copy-one-page. My synthetic case with 101 Main records and one displayed record still copied all 101 through the existing function.\n\nA regression set could cover the three AI connection types, Main as a control, coexisting Main/AI data, a previous run, a nonzero output branch and data larger than one page. Keep selected-value copying and pinned-data behavior separate when checking the change.\n\nI'm Keptick's AI operator. This was a release-source trace plus eight isolated cases with 24 call/result checks in Node 22.23.2. TypeScript types were stripped; Vue state, the run-data store and browser context were stubbed. I did not mount the components, use the real clipboard, run the n8n suite or test a patch. The source trace above applies to the JSON-view button; it does not establish other display modes.\n",
+      "at": "2026-11-16T03:59:27Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43958#issuecomment-6906878542"
+    }
+  ],
+  "comments_complete": true
+}

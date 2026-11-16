@@ -1,0 +1,107 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43956",
+  "collected_at": "2026-11-16T09:36:31.158430+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/43956",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/43956/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/43956/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/43956/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/43956",
+    "id": 6406227447,
+    "node_id": "I_kwDOC4Q8Qs8AAAABfddF9w",
+    "number": 43956,
+    "title": "Handled, caller- or user-caused failures are logged with `logger.error` directly (unknown webhook, form-data length, polling triggers)",
+    "user": {
+      "login": "moajo",
+      "id": 9291732,
+      "node_id": "MDQ6VXNlcjkyOTE3MzI=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9291732?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/moajo",
+      "html_url": "https://github.com/moajo",
+      "followers_url": "https://api.github.com/users/moajo/followers",
+      "following_url": "https://api.github.com/users/moajo/following{/other_user}",
+      "gists_url": "https://api.github.com/users/moajo/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/moajo/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/moajo/subscriptions",
+      "organizations_url": "https://api.github.com/users/moajo/orgs",
+      "repos_url": "https://api.github.com/users/moajo/repos",
+      "events_url": "https://api.github.com/users/moajo/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/moajo/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-11-15T16:04:16Z",
+    "updated_at": "2026-11-16T09:27:49Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nSeveral code paths catch an error that is caused by an external caller, the user's workflow, or a third-party API, handle it, and then log it with `logger.error` directly. They don't go through `ErrorReporter`, so the levels that n8n already gives errors (and the fix proposed in #43567) don't apply. A self-hosted instance that alerts on error-level logs gets alerted for things the operator cannot act on.\n\n1. **Unknown webhook** — `packages/cli/src/webhooks/webhook-request-handler.ts`: when a `WebhookNotFoundError` is caught, it logs `Received request for unknown webhook: ...` at error and returns 404. The cause is a sender that still points at a deleted or deactivated workflow. On our instance, a Slack Events API subscription left behind after its workflow was deleted sent about 13,000 requests in 30 days, and our error-log alert fired almost every hour.\n2. **Form-data length** — `packages/@n8n/backend-network/src/http/axios/utils.ts`: when `FormData.getLength` fails (e.g. a stream without a path in a multipart body of an HTTP Request node), it logs `Unable to calculate form data length` at error and sends the request without `content-length`. 16 of the 17 error-level lines on our instance over three days were this one.\n3. **Polling triggers** — `GmailTrigger` (poll and simplify), `SalesforceTrigger`, `MicrosoftOneDriveTrigger`: in non-manual mode after the first poll, a failed API call is logged as `There was a problem in '<node>' node in workflow '<id>': ...` at error. Gmail swallows the error; Salesforce and OneDrive rethrow it, so the same failure is reported twice. Example: Gmail API `400 FAILED_PRECONDITION`.\n\nThe code is the same on `master` today.\n\nA possible fix: log these at `warn`, or report them through `ErrorReporter` with the error's own level (`NodeApiError` / `NodeOperationError` already carry `level: 'warning'`), and keep `error` for issues the instance operator must act on. We run all three as patches on our instance. We'd like to check whether you'd accept this direction before opening a PR.\n\n### To Reproduce\n\nFor 1:\n\n1. `docker run -p 5678:5678 -e N8N_LOG_FORMAT=json n8nio/n8n:2.47.4`\n2. `curl -X POST http://localhost:5678/webhook/does-not-exist`\n3. See the container logs:\n\n```\n{\"level\":\"error\",\"message\":\"Received request for unknown webhook: The requested webhook \\\"POST does-not-exist\\\" is not registered.\",...}\n```\n\n2 and 3 depend on the payload or the third-party API response, so we point to the code paths above instead of giving exact steps.\n\n### Expected behavior\n\nRequests to unknown webhooks, form-data length fallbacks, and API failures in polling triggers are logged at `warn`. Only issues the instance operator must act on are logged at `error`.\n\n### Debug Info\n\nOfficial Docker image `n8nio/n8n:2.47.4`, `N8N_LOG_FORMAT=json`, no Sentry DSN. Seen in production with PostgreSQL and task runners in external mode.\n\n### Operating System\n\nDocker Hardened Images / Alpine Linux v3.24 (official image)\n\n### n8n Version\n\n2.47.4\n\n### Node.js Version\n\nv26.13.0\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/43956/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/43956/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @moajo,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9775\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9775](https://linear.app/n8n/issue/GHC-9775)",
+      "at": "2026-11-15T16:04:38Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43956#issuecomment-6897325152"
+    },
+    {
+      "author": "grinem",
+      "text": "Fully agree with this direction. Firing `error`-level logs on 404s/unknown webhooks and handled stream fallbacks breaks log-based alerting for self-hosted instances.\n\nDowngrading `WebhookNotFoundError` to `warn` and the `FormData` length fallback to `debug`/`warn` is completely sane. For the polling triggers, delegating to `ErrorReporter` (or aligning on `NodeApiError` / `NodeOperationError` severity) makes a lot more sense than direct `logger.error` calls that cause duplicate reports.\n\nIf you open a PR, splitting the network/webhook log levels from the polling node refactor into separate commits (or PRs) will make it much faster for the core team to review and merge.",
+      "at": "2026-11-15T16:30:47Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43956#issuecomment-6897662447"
+    }
+  ],
+  "comments_complete": true
+}

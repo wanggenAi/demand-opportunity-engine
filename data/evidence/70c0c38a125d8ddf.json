@@ -1,0 +1,65 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50508364",
+  "collected_at": "2026-11-16T09:36:31.158430+00:00",
+  "source": {
+    "author": "iamflimflam1",
+    "children": [
+      {
+        "author": "zahlman",
+        "children": [],
+        "created_at": "2026-11-15T17:04:40.000Z",
+        "created_at_i": 1794762280,
+        "id": 50508526,
+        "options": [],
+        "parent_id": 50508364,
+        "points": null,
+        "story_id": 50508364,
+        "text": "&gt; This is the point where, in the before times, I’d push it up to GitHub. But why would I? You can build it yourself, with a UI that suits you.<p>Because the technology is neither free, nor instant, nor fully deterministic; and it will not and cannot ever be as inexpensive, fast or reproducible as a download. I cannot find a bug in your version and warn you about it (and certainly can&#x27;t propose to fix it for you). If I get an idea and improve my own version, nobody else benefits from my insight.<p>Why would I expect the software to be useful if that prompt block represents the entire essential complexity of the code, which should be seen as enough information to reproduce the program?<p>Nothing fundamentally changes about the virtues of open-source simply because software is easier to create.<p>&gt; I know some people will be thinking, come on man, you’ve done the hard part of building the app, just give it to us. But really, that’s not the hard part anymore. In fact, none of this was particularly difficult.<p>Okay, so thus far we&#x27;ve considered the developer&#x27;s perspective. Let&#x27;s also imagine a user&#x27;s perspective:<p>There are a lot of things that someone might suggest in the prompt that would be counterproductive; and I see there&#x27;s mention of a &quot;gotcha&quot; which indicates that the author must have tried something more naive and then realized that a correction would be needed. Not to mention, there&#x27;s been an explicit attempt to design an API. I would wager that the large majority of people who might want an &quot;app for browsing and bulk-deleting my Prime Video and Netflix watch history.&quot; have no idea what an API is, never mind what GET and POST methods are etc. That is, <i>they would need the insight of a post like this</i> to succeed in getting a reasonable result.<p>This kind of analysis is, in fact, the hard part, once the actual code writing is made easier.<p>&gt; What would be difficult is supporting an open-source project that does this. It’s built on Prime’s undocumented API, so it will break. If I open-sourced it, I’d be signing up for a steady stream of “it’s stopped working” issues. There would also be the usual bunch of feature requests for things I don’t need. Open-source projects can quickly become a thankless task.<p>Again: OP did the research <i>of an undocumented API</i>, so what&#x27;s described is out of reach of many end users <i>anyway</i>.<p>But if you don&#x27;t want to take responsibility, you could just not. There&#x27;s tons of stuff out there that&#x27;s basically just abandoned; the world is still better for it having existed in the first place. Just offering a binary release and the appropriate license disclaimers is already putting end users way ahead of where they&#x27;d be otherwise.<p>&gt; if building things is this easy now, why do these services have such terrible UIs for managing your watch history?<p>What incentive do they have to provide a better UI?<p>Why would we suppose that they&#x27;ve even considered that a problem exists?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "elxr",
+        "children": [],
+        "created_at": "2026-11-15T19:39:54.000Z",
+        "created_at_i": 1794771594,
+        "id": 50509956,
+        "options": [],
+        "parent_id": 50508364,
+        "points": null,
+        "story_id": 50508364,
+        "text": "There&#x27;s still value in seeing the source of a polished LLM-written app made by someone with attention to detail.<p>Obsidian&#x27;s still one of the most used notes apps today, despite it being technically possible to clone it yourself. Cloning real apps in a way that you can maintain them without wasting precious free time is hard. Definitely not as easy as the AI-rebuild-everything people make it seem.<p>Plus, not everyone&#x27;s on a $100&#x2F;month plan. Which is what it takes to do these &quot;build it yourself&quot; clones regularly.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-11-15T16:47:03.000Z",
+    "created_at_i": 1794761223,
+    "id": 50508364,
+    "options": [],
+    "parent_id": null,
+    "points": 5,
+    "story_id": 50508364,
+    "text": null,
+    "title": "I'm not open-sourcing this – you can build it yourself",
+    "type": "story",
+    "url": "https://www.atomic14.com/2026/11/15/im-not-open-sourcing-this"
+  },
+  "comments": [
+    {
+      "author": "zahlman",
+      "text": "> This is the point where, in the before times, I’d push it up to GitHub. But why would I? You can build it yourself, with a UI that suits you. Because the technology is neither free, nor instant, nor fully deterministic; and it will not and cannot ever be as inexpensive, fast or reproducible as a download. I cannot find a bug in your version and warn you about it (and certainly can't propose to fix it for you). If I get an idea and improve my own version, nobody else benefits from my insight. Why would I expect the software to be useful if that prompt block represents the entire essential complexity of the code, which should be seen as enough information to reproduce the program? Nothing fundamentally changes about the virtues of open-source simply because software is easier to create. > I know some people will be thinking, come on man, you’ve done the hard part of building the app, just give it to us. But really, that’s not the hard part anymore. In fact, none of this was particularly difficult. Okay, so thus far we've considered the developer's perspective. Let's also imagine a user's perspective: There are a lot of things that someone might suggest in the prompt that would be counterproductive; and I see there's mention of a \"gotcha\" which indicates that the author must have tried something more naive and then realized that a correction would be needed. Not to mention, there's been an explicit attempt to design an API. I would wager that the large majority of people who might want an \"app for browsing and bulk-deleting my Prime Video and Netflix watch history.\" have no idea what an API is, never mind what GET and POST methods are etc. That is,  they would need the insight of a post like this  to succeed in getting a reasonable result. This kind of analysis is, in fact, the hard part, once the actual code writing is made easier. > What would be difficult is supporting an open-source project that does this. It’s built on Prime’s undocumented API, so it will break. If I open-sourced it, I’d be signing up for a steady stream of “it’s stopped working” issues. There would also be the usual bunch of feature requests for things I don’t need. Open-source projects can quickly become a thankless task. Again: OP did the research  of an undocumented API , so what's described is out of reach of many end users  anyway . But if you don't want to take responsibility, you could just not. There's tons of stuff out there that's basically just abandoned; the world is still better for it having existed in the first place. Just offering a binary release and the appropriate license disclaimers is already putting end users way ahead of where they'd be otherwise. > if building things is this easy now, why do these services have such terrible UIs for managing your watch history? What incentive do they have to provide a better UI? Why would we suppose that they've even considered that a problem exists?",
+      "at": "2026-11-15T17:04:40.000Z",
+      "url": "https://news.ycombinator.com/item?id=50508526"
+    },
+    {
+      "author": "elxr",
+      "text": "There's still value in seeing the source of a polished LLM-written app made by someone with attention to detail. Obsidian's still one of the most used notes apps today, despite it being technically possible to clone it yourself. Cloning real apps in a way that you can maintain them without wasting precious free time is hard. Definitely not as easy as the AI-rebuild-everything people make it seem. Plus, not everyone's on a $100/month plan. Which is what it takes to do these \"build it yourself\" clones regularly.",
+      "at": "2026-11-15T19:39:54.000Z",
+      "url": "https://news.ycombinator.com/item?id=50509956"
+    }
+  ],
+  "comments_complete": true
+}

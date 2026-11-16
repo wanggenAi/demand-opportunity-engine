@@ -1,17 +1,17 @@
 {
-  "observed_at": "2026-11-15T09:19:17.933130+00:00",
+  "observed_at": "2026-11-16T09:36:31.158430+00:00",
   "config": "data/discovery_config.json",
   "adapters": [
     {
       "source": "Hacker News",
       "refreshed": true,
-      "collected": 30,
+      "collected": 27,
       "errors": []
     },
     {
       "source": "GitHub",
       "refreshed": true,
-      "collected": 24,
+      "collected": 23,
       "errors": []
     }
   ],
@@ -21,19 +21,19 @@
       "source_family": "public founder/operator job community",
       "access_method": "Discourse public category/topic JSON",
       "url": "https://community.n8n.io/c/jobs/13.json?order=created",
-      "records_inspected": 32,
-      "primary_pages_opened": 22,
-      "verified_buyer_requests": 11,
-      "explicit_commercial_signals": 11,
-      "collected": 22,
+      "records_inspected": 30,
+      "primary_pages_opened": 20,
+      "verified_buyer_requests": 10,
+      "explicit_commercial_signals": 10,
+      "collected": 20,
       "errors": [],
       "limitations": [
         "Two newest-topic pages, not complete market coverage; max 200 extra replies per topic. Incomplete competition remains UNKNOWN unless observed high.",
         "Last activity is not publication time. Only substantive buyer-authored follow-ups can renew a lead."
       ],
       "evidence_snapshots": [
-        "data/evidence/f5663f332d6bc9b1.json#sha256=a0cd8ce6487f062d7862061ba69cf3ca1a9e0cedfff84063876bdb79011f5b81",
-        "data/evidence/d9f0be47fa047f2c.json#sha256=af23a391c089f33a0a2bb95676bc826091257328ceee817daf7b33106c4927c8"
+        "data/evidence/f5663f332d6bc9b1.json#sha256=f573b0ed8b291c38f873a36db0fa44fb492ebbf3de3b66c38a9905bfc698f2bf",
+        "data/evidence/d9f0be47fa047f2c.json#sha256=87ed909d388f44614018379d34dbaf162e55b0d63b359186ede0c777b4fa4f68"
       ]
     },
     {
@@ -51,37 +51,24 @@
         "Legal warning - Hey, thanks for using Remotive's API, we appreciate it! Please note that API documentation and access is granted so that developers can share our jobs further. Please do not submit Remotive jobs to third Party websites, including but not limited to: Jooble, Neuvoo, Google Jobs, LinkedIn Jobs. Please link back to the URL found on Remotive AND mention Remotive as a source in order to Remotive to get traffic from your listing. If you don't do that, we'll terminate your API access, sorry! Jobs displayed are delayed by 24 hours, the goal being that jobs are attributed to Remotive on various platforms. Displaying our jobs in order to collect signups/email addresses to show a listing constitutes a breach of our terms of services. We offer a private, paid-for API, please email us at hello(at)remotive(dot)io for more information (starting budget is $5k/mo). Please find out terms of services on https://remotive.com/api-documentation. Please note that there is absolutely no need to request Remotive Job data too frequently. Typically, you only need to GET Remotive job data through this API a couple of times a day (we advise max. 4 times a day). Our data is not changing much faster than that anyway. Note that excessive requests will be blocked. Many thanks (Rodolphe & the Remotive team!)"
       ],
       "evidence_snapshots": [
-        "data/evidence/071898d5d7cef09e.json#sha256=8cb36169635290f4dafaaf9e8bc05d6d86accf8964e4ffbb2edca5e4467aad15"
+        "data/evidence/071898d5d7cef09e.json#sha256=d28b37eb4f225eb2900b19658afc26473dd4f31c68cc92902585edd535f1610b"
       ]
     },
     {
       "source_family": "public procurement/RFQ",
       "access_method": "bounded public HTTP page inspection",
       "url": "https://www.contractsfinder.service.gov.uk/Search/Results?keywords=automation",
-      "records_inspected": 20,
+      "records_inspected": 0,
       "primary_pages_opened": 0,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
       "collected": 0,
-      "errors": [
-        {
-          "url": "https://www.contractsfinder.service.gov.uk/notice/42c80b0b-fbe7-49d7-8ac2-07a1a30e6e1a",
-          "error": "HTTPError: HTTP Error 403: Forbidden"
-        },
-        {
-          "url": "https://www.contractsfinder.service.gov.uk/notice/8ecce09c-950c-4d69-af94-eaeb733d7b35",
-          "error": "HTTPError: HTTP Error 403: Forbidden"
-        },
-        {
-          "url": "https://www.contractsfinder.service.gov.uk/notice/e22d5d91-9b44-4aa7-9bbb-97d3e4e7efad",
-          "error": "HTTPError: HTTP Error 403: Forbidden"
-        }
-      ],
+      "errors": [],
       "limitations": [
         "Search returned procurement notices; up to three detail pages attempted. No buyer request promoted: eligibility, exact remote scope, submission deadline and award status require manual verification."
       ],
       "evidence_snapshots": [
-        "data/evidence/50e3af0542f19c3a.json#sha256=334b450f0a7d287fbeb650519eae8875bf2825602fd3046da07ce5c17e967e61"
+        "data/evidence/50e3af0542f19c3a.json#sha256=63140389757fea479bdd1604d77d94b88d0b9e6113fc95019aadd477953acf95"
       ]
     },
     {
@@ -134,14 +121,14 @@
         "No structured primary buyer requests extracted; static shell is not commercial proof. No login or anti-bot evasion."
       ],
       "evidence_snapshots": [
-        "data/evidence/b5d67d420401a4bb.json#sha256=e42cd89048adc9c9da34acdcd216fd38da929afd9cc4d1e0616aea7b5de689d1"
+        "data/evidence/b5d67d420401a4bb.json#sha256=acb1784939252914e27b2de8a889c6aa41d3e4e88fe464a52b456bdc7faea7cf"
       ]
     },
     {
       "source_family": "freelance project marketplace (Freelancer)",
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://www.freelancer.com/jobs/product-sourcing/",
-      "records_inspected": 7,
+      "records_inspected": 5,
       "primary_pages_opened": 0,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
@@ -151,7 +138,7 @@
         "Public bidCount includes competitors; only first 20 proposals may be visible. Employer identity often unresolved. Task budget is not agreement to our pilot."
       ],
       "evidence_snapshots": [
-        "data/evidence/abf73d1fa5782498.json#sha256=d7b6fca719f061b93a2921f51eef889784856338925e1650950ece2ed6bc8aba"
+        "data/evidence/abf73d1fa5782498.json#sha256=a38fc872a0341f10df72607ef8177537232377837411647e7b641dab06e17e24"
       ],
       "records": [],
       "opportunity_ids": [],
@@ -160,16 +147,14 @@
         "/projects/shipping/thai-personal-shopper-shipper",
         "/projects/amazon-fba/amazon-fba-fbm-growth-partner",
         "/projects/sourcing/chi-minh-electronics-sourcing-agent",
-        "/projects/product-sourcing/battery-replacement-franklin",
-        "/projects/market-research/project-40808918",
-        "/projects/keyword-research/project-40808795"
+        "/projects/product-sourcing/battery-replacement-franklin"
       ]
     },
     {
       "source_family": "freelance project marketplace (Freelancer)",
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://www.freelancer.com/jobs/api-integration/",
-      "records_inspected": 47,
+      "records_inspected": 49,
       "primary_pages_opened": 0,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
@@ -179,12 +164,23 @@
         "A different query/category on Freelancer does not count as another independent family."
       ],
       "evidence_snapshots": [
-        "data/evidence/eb34b643617bda88.json#sha256=c7c90bcc2e12788cf054677e876429212315523ccb6fa8ac7169e009dddaf626"
+        "data/evidence/eb34b643617bda88.json#sha256=e36391596c8fafc329fc0bf576fbf54bebf3fc5ddc74ebf6bbeafbd901483039"
       ],
       "records": [],
       "opportunity_ids": [],
       "inspected_keys": [
-        "/projects/three-js/immersive-barber-website-build",
+        "/projects/smm-storefront-with-guest-checkout",
+        "/projects/automation/multi-platform-job-application-automator",
+        "/projects/svelte/global-football-scores-pwa",
+        "/projects/api-integration/woocommerce-smm-panel-monthly-rental",
+        "/projects/ai-chatbot-development/website-chat-content-generator",
+        "/projects/woocommerce/crypto-friendly-vape-commerce-website",
+        "/projects/ai-workflow-automation/workflow-automation-multi-model-agents",
+        "/projects/woocommerce/automated-hands-free-bulletproof",
+        "/projects/project-management/comprehensive-crm-for-charger-projects",
+        "/projects/web-development/restaurant-review-website-development",
+        "/projects/n8n/whatsapp-mould-repair-intake-automation",
+        "/projects/web-development/exact-web-clone-android",
         "/projects/api-developmet/whatsapp-business-api-debugging",
         "/projects/web-development/ready-launch-grocery-app-suite",
         "/projects/twilio/twilio-autodialer-integration-server",
@@ -221,16 +217,7 @@
         "/projects/api/api-access-kiss-mega-pussy",
         "/projects/saas-development/audit-enhance-real-estate-marketplace",
         "/projects/api-integration/google-calendar-api-integration",
-        "/projects/payment-gateway-integration/create-payment-link",
-        "/projects/payment-processing/paddle-payment-link-creation",
-        "/projects/php/connect-bigcommerce-google-shopping",
-        "/projects/google-ads/connect-bigcommerce-google-shopping",
-        "/projects/api-integration/whatsapp-account-unban",
-        "/projects/rest-api/python-web-service-integration",
-        "/projects/nodejs/build-pulse-business-operating-system",
-        "/projects/web-development/live-spiritual-healing-platform",
-        "/projects/bitcoin/low-risk-bitcoin-trading-bot",
-        "/projects/affiliate-marketing/referral-program-design-setup"
+        "/projects/payment-gateway-integration/create-payment-link"
       ]
     },
     {
@@ -238,60 +225,62 @@
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://community.shopify.com/latest.json",
       "records_inspected": 30,
-      "primary_pages_opened": 1,
+      "primary_pages_opened": 2,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
-      "collected": 1,
+      "collected": 2,
       "errors": [],
       "limitations": [
         "Latest activity is not original publication; support questions are PRODUCT_SIGNAL, not SALES. No more than four primary topics per run."
       ],
       "evidence_snapshots": [
-        "data/evidence/bda5dc3c1eb46ea5.json#sha256=0ec0c17c08e2f127fd62d9c5e0e7d2a2c506b42a4dfd1cb95520a196b935f20e",
-        "data/evidence/4b831b4add19cc1f.json#sha256=8c780a45fd4f550634ab03e8dbe088c75b396cc4d71d5ba417d32148a6afb80e"
+        "data/evidence/bda5dc3c1eb46ea5.json#sha256=64d2f53ccf7b9bf39ce736185d3f2021d2ea3d81a08b9058ff00d8ec19071615",
+        "data/evidence/ab4dc788895f25ab.json#sha256=80ee1793f0fde16b7d480afccc507086070b409e5e3cae469bd197a19c2ca534",
+        "data/evidence/37baf98a210aa7e9.json#sha256=22ca783fbf6a0b680f8788ce7c05f4a6411fff0ac4ff11e98c10dcf70c203f70"
       ],
       "records": [],
       "opportunity_ids": [
-        "559d3a94fd935f92"
+        "c8c603acf1fb50cf",
+        "b9272b7afc5a5f0f"
       ],
       "inspected_keys": [
         "355460",
-        "715965",
-        "715590",
-        "715833",
-        "715874",
-        "709892",
-        "606841",
-        "607408",
-        "679097",
-        "715817",
-        "708780",
-        "688240",
-        "592958",
-        "580216",
-        "197796",
-        "715747",
-        "176592",
+        "716672",
         "715425",
-        "715903",
-        "715901",
-        "713673",
-        "704247",
-        "709869",
-        "714048",
-        "580832",
-        "715887",
-        "199183",
-        "567940",
-        "715857",
-        "574186"
+        "323195",
+        "600755",
+        "636819",
+        "716651",
+        "576560",
+        "403378",
+        "715565",
+        "698844",
+        "707122",
+        "701601",
+        "714157",
+        "715590",
+        "714768",
+        "176770",
+        "716662",
+        "716601",
+        "711383",
+        "713556",
+        "716654",
+        "716577",
+        "716533",
+        "716622",
+        "351044",
+        "709892",
+        "716516",
+        "659483",
+        "599381"
       ]
     },
     {
       "source_family": "founder community (Indie Hackers)",
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://www.indiehackers.com/",
-      "records_inspected": 26,
+      "records_inspected": 27,
       "primary_pages_opened": 1,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
@@ -301,12 +290,12 @@
         "Only server-rendered public pages. robots disallows /api/ and sign-in; neither used. Founder self-promotion is not a buyer."
       ],
       "evidence_snapshots": [
-        "data/evidence/6548833164b0e7c9.json#sha256=8e729dd0016c93bd171faf7c7e7fe26b27aa681c2be28e5f9ebc353c09a5bc13",
-        "data/evidence/6be1d6e52ddc1966.json#sha256=7c139519e5856eb9232121cb2840448d79b2cde20ff4201e4435b4ac680c41b5"
+        "data/evidence/6548833164b0e7c9.json#sha256=99d7cda3c7d3fd00ff5ba36b6da55d3501bd5e96f4776af8d87e779f2dad33e1",
+        "data/evidence/f8874676ce97cf98.json#sha256=25a02415a8b4ed916ee5a50992dba40941b1aedd66c8a178c01198e8f8f4b90b"
       ],
       "records": [
         {
-          "url": "https://www.indiehackers.com/post/i-built-a-way-to-see-competitor-pages-before-they-rank-looking-for-honest-feedback-SmRkkNMdgwzB7Tx3OLCd",
+          "url": "https://www.indiehackers.com/post/your-confidence-gets-five-tries-how-many-does-it-need-FNqxWQ1VAwXUEkC0hZLt",
           "author_body": "Author body unresolved; no buyer promotion",
           "metadata": [
             {
@@ -314,23 +303,23 @@
               "@type": "Article",
               "mainEntityOfPage": {
                 "@type": "WebPage",
-                "@id": "https://www.indiehackers.com/post/i-built-a-way-to-see-competitor-pages-before-they-rank-looking-for-honest-feedback-SmRkkNMdgwzB7Tx3OLCd"
+                "@id": "https://www.indiehackers.com/post/your-confidence-gets-five-tries-how-many-does-it-need-FNqxWQ1VAwXUEkC0hZLt"
               },
-              "headline": "I built a way to see competitor pages before they rank. Looking for honest feedback.",
+              "headline": "Your confidence gets five tries. How many does it need?",
               "image": [
                 {
                   "@type": "ImageObject",
-                  "url": "https://outpublished.com/static/press/outpublished-overview.png"
+                  "url": "https://storage.googleapis.com/indie-hackers.appspot.com/post-images/FNqxWQ1VAwXUEkC0hZLt/IuEnjGlI13c6nTdWXmHw6IEisOm2/Screenshot-2026-11-15-150236.png"
                 }
               ],
-              "datePublished": "2026-11-13T17:37:12.648Z",
-              "dateModified": "2026-11-13T17:39:22.508Z",
+              "datePublished": "2026-11-15T13:03:21.922Z",
+              "dateModified": "2026-11-15T13:03:21.922Z",
               "author": [
                 {
                   "@type": "Person",
-                  "name": "coderbunny",
+                  "name": "Danik",
                   "sameAs": [
-                    "https://www.indiehackers.com/coderbunny"
+                    "https://www.indiehackers.com/daniku99"
                   ]
                 }
               ],
@@ -344,7 +333,7 @@
                   "height": 152
                 }
               },
-              "thumbnailUrl": "https://outpublished.com/static/press/outpublished-overview.png"
+              "thumbnailUrl": "https://storage.googleapis.com/indie-hackers.appspot.com/post-images/FNqxWQ1VAwXUEkC0hZLt/IuEnjGlI13c6nTdWXmHw6IEisOm2/Screenshot-2026-11-15-150236.png"
             }
           ],
           "decision": "Discussion/seller/product research only; no paid buyer or complete competition/contact evidence"
@@ -352,32 +341,33 @@
       ],
       "opportunity_ids": [],
       "inspected_keys": [
+        "/post/my-first-customer-left-and-the-backlinks-were-probably-not-the-villain-month-4-of-the-kinetixseo-bet-miqH19uDerZqLj7qJjid",
+        "/post/12-years-building-mobile-apps-6-weeks-of-marketing-here-are-my-embarrassing-numbers-g7XT2YE97EUiysRkddQA",
+        "/post/i-built-a-saas-for-six-months-my-paying-customer-found-another-way-with-claude-and-google-sheets-pgxVdxvdwnsIAoNDubhW",
         "/post/ai-makes-building-software-easier-but-does-it-make-building-a-business-easier-4t7wHCEkO7NyEnq1I5WT",
-        "/post/i-built-88-browser-tools-and-my-traffic-is-281-direct-8-organic-heres-what-i-got-wrong-pXWwBN52r3Xu1SK6WiVv",
         "/post/a-waitlist-is-not-demand-XPDPQ9nDH7z4hET4QPbQ",
         "/post/i-built-a-tool-that-finds-people-already-asking-for-your-product-5-weeks-in-i-rebuilt-it-real-numbers-6of0L9IadkSso5cGpJqA",
+        "/post/i-built-88-browser-tools-and-my-traffic-is-281-direct-8-organic-heres-what-i-got-wrong-pXWwBN52r3Xu1SK6WiVv",
         "/post/i-published-6-500-pages-in-2-weeks-google-sent-my-impressions-to-zero-heres-what-i-built-instead-x1p6zpGSAD6KLkDrZJfU",
-        "/post/we-just-launched-cardboard-for-mac-and-you-can-edit-videos-on-it-for-free-ZLNXcvg09B6JyBfqln6X",
-        "/post/founding-member-price-for-your-first-10-customers-id-lock-it-for-12-months-not-forever-qPxFMmo2sykpHdci7SH5",
-        "/post/we-told-the-press-our-launch-date-apple-had-other-plans-UOsQlg1vR4AhuNiBoU4O",
-        "/post/two-prelaunch-products-one-week-0-sign-ups-mAtzfhbBkIK1YLF1e9X3",
+        "/post/i-asked-who-approves-your-ai-agents-refunds-and-emails-here-s-what-you-told-me-wIa8RE3G2GsQwXX4LFLH",
+        "/post/launches/tony-dinh-gives-his-offline-hacker-news-app-a-500-a-month-claude-code-budget-tPULYVYwMurKRXio1g7Y",
+        "/post/numbers/theo-says-his-free-coding-app-t3-code-has-cost-him-more-than-800k-B5gUi7PXRWZdp7DqjkYn",
+        "/post/numbers/ilias-isms-homemade-click-fraud-check-caught-206-of-bot-clicks-in-a-morning-32jmuiBgVPYqH8epuGRc",
         "/post/pricing/apps-on-anthropics-sdk-hit-the-5-hour-cap-up-to-2-9x-faster-than-claude-code-SD6K7klik5yOKVZyhe5x",
         "/post/exits/stripe-now-owns-parafin-which-powers-financing-at-doordash-amazon-and-gusto-I8pkEnsGWmU7J8obJ5DM",
         "/post/launches/google-says-gemini-4-hydrogen-edges-its-pricier-argon-model-on-one-index-SWemvsQa17Wvt4LsfW4O",
-        "/post/tech/marc-lou-says-about-4-000-in-ai-made-mailcheap-his-first-unprofitable-product-irCgb7dhykbqxOik9U2j",
-        "/post/tech/nevo-davids-postiz-holds-back-a-beehiiv-integration-most-people-couldn-t-use-cFUHseGGMpn508Pzgsdd",
-        "/post/tech/conductor-will-keep-developing-its-app-8-days-after-saying-its-joining-meta-bekp3irOaANkQaNpOGzY",
-        "/post/12-years-building-mobile-apps-6-weeks-of-marketing-here-are-my-embarrassing-numbers-g7XT2YE97EUiysRkddQA",
-        "/post/i-ran-a-20-point-pre-launch-audit-on-my-own-ai-built-game-heres-what-it-found-Fs8uhrv4sPXeotRWQWcv",
-        "/post/i-built-a-saas-for-six-months-my-paying-customer-found-another-way-with-claude-and-google-sheets-pgxVdxvdwnsIAoNDubhW",
+        "/post/launching-a-privacy-first-website-blocker-as-a-solo-dev-lessons-from-week-1-vR50R24YGziijUsCArUg",
+        "/post/5-months-2-13-and-its-the-best-money-i-ve-ever-made-eEZbXSAkylxNPEYH1Jms",
+        "/post/i-asked-5-ais-about-60-small-businesses-4-364-answers-36-were-never-named-once-kbeVsnX43s2RdxaklVUD",
+        "/post/ai-can-build-your-saas-but-who-makes-sure-it-actually-works-vu9Uj8zuGvL77gUktvnu",
+        "/post/building-a-claude-skills-pack-for-solo-freelancers-with-a-card-that-says-what-each-skill-touches-grg5yGIXDoXWBxflfmE9",
+        "/post/i-built-a-self-hosted-pipeline-to-make-my-local-gpus-and-cloud-coding-agents-work-together-safely-just-open-sourced-it-apache-2-0-QpPWgfddssi4yM7Nau2R",
+        "/post/your-confidence-gets-five-tries-how-many-does-it-need-FNqxWQ1VAwXUEkC0hZLt",
+        "/post/how-many-startup-directories-are-you-subscribed-to-and-do-you-actually-read-their-newsletters-FcUT8tMR6GD9OC3T6jLJ",
         "/post/i-built-three-easy-challenges-which-one-would-humble-you-oBK583wt9AHDemK1dWFo",
-        "/post/i-built-a-3d-plant-anatomy-simulator-to-explore-plants-from-the-inside-out-eRyq9HxESu4bUoR9eVIv",
-        "/post/the-5-line-threshold-i-write-before-every-launch-copy-it-9RLlxL4wNrDUM1JitUAr",
-        "/post/i-asked-who-approves-your-ai-agents-refunds-and-emails-here-s-what-you-told-me-wIa8RE3G2GsQwXX4LFLH",
-        "/post/i-built-a-way-to-see-competitor-pages-before-they-rank-looking-for-honest-feedback-SmRkkNMdgwzB7Tx3OLCd",
-        "/post/tech/building-a-3m-yr-company-without-launching-publicly-tacryeGIH66SCtD2an4r",
-        "/post/tech/from-weekend-project-to-1m-mrr-in-two-years-YRaa1QlGTjaqh0XgzWkc",
-        "/post/tech/using-custom-infrastructure-as-a-competitive-advantage-and-hitting-31k-mrr-KgfHz813vyyWeszqJMIi"
+        "/post/tech/starting-from-scratch-and-hitting-9-5k-mrr-in-two-months-j5pMaED5FEbKw8qmeyj9",
+        "/post/tech/this-founder-solved-his-agencys-problem-and-turned-the-solution-into-a-3m-arr-saas-uS8zjhggjKA4eoXFAUZi",
+        "/post/tech/how-rasty-turek-built-vaultaire-in-three-weeks-and-grew-it-to-40k-month-1BjFvs2akwfIVjMGYO54"
       ]
     },
     {
@@ -394,14 +384,14 @@
         "Physical goods buyers do not automatically buy research. Contact requires platform sign-in; no access bypass. No bid-count visibility => UNKNOWN."
       ],
       "evidence_snapshots": [
-        "data/evidence/3914e4f508c84945.json#sha256=edbc524787db47441e893e2199dc0edf9cda34d427b6b1a9bf73b0d419f5f08e",
-        "data/evidence/2d42445425d2bb1f.json#sha256=3df1d91fdbc83389a0bca75b9a924b8e18605cf599b45d1aa531c20633bd4f5a",
-        "data/evidence/aa1b3d0e81edd542.json#sha256=61d2bfcd9848ee47ebed1d38281cabc80250c47e0f2cdaed82b70c43c04d4683"
+        "data/evidence/3914e4f508c84945.json#sha256=9960f7b8b61f4c193897d08f0a8009360efb3a8472a8b44fdc5aed608c09d0d3",
+        "data/evidence/2d42445425d2bb1f.json#sha256=440b69c3f7a69aad60a8a8d0d9da82751f02304fb586cd919c9add7cff800f21",
+        "data/evidence/aa1b3d0e81edd542.json#sha256=433bca517548e0d29f91579dea054ff75a90613d5cc1de0adc22b61668a3678c"
       ],
       "records": [
         {
           "url": "https://importer1.tradekey.com/buyoffer/Modular-3D-Welding-Tables-With-D16-D22-Or-D28-Bore-Systems-3878799.html",
-          "primary_excerpt": "Last Updated: Posted on: 12 Nov 2026 Time Left: 26D 14H Payment Terms: T/T, L/C, D/A, D/P, Western Union, Money Gram Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details Good day, I am sourcing modular 3D welding tables and matching tooling. Please quote nitrided table options for D16, D22 and D28 bore systems, showing tabletop length and width, plate thickness, hole diameter and grid spacing in mm, flatness tolerance, load rating and total weight. Identify the steel grade and nitriding depth, and list the clamps, stops, squares and connectors included with each set. I also need your capability for custom steel weldments from drawings, together with packing dimensions and production time. Regards, Lily Shi Refine by popular tags 3D welding table nitrided welding table welding clamp welding fixture table Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.09448 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea",
+          "primary_excerpt": "Last Updated: Posted on: 12 Nov 2026 Time Left: 25D 14H Payment Terms: T/T, L/C, D/A, D/P, Western Union, Money Gram Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details Good day, I am sourcing modular 3D welding tables and matching tooling. Please quote nitrided table options for D16, D22 and D28 bore systems, showing tabletop length and width, plate thickness, hole diameter and grid spacing in mm, flatness tolerance, load rating and total weight. Identify the steel grade and nitriding depth, and list the clamps, stops, squares and connectors included with each set. I also need your capability for custom steel weldments from drawings, together with packing dimensions and production time. Regards, Lily Shi Refine by popular tags 3D welding table nitrided welding table welding clamp welding fixture table Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.07912 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea",
           "decision": "Physical goods RFQ; not a commissioned China research service; contact gated and competition unknown",
           "buyer": true,
           "published_at": "2026-11-12T00:00:00+00:00",
@@ -409,7 +399,7 @@
         },
         {
           "url": "https://importer1.tradekey.com/buyoffer/Whole-Dried-Hibiscus-Flowers-For-Bulk-Packing-3878785.html",
-          "primary_excerpt": "Last Updated: Posted on: 12 Nov 2026 Time Left: 26D 14H Payment Terms: T/T, L/C, D/A, D/P, Western Union, Money Gram Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details I am interested in whole dried hibiscus flowers with bright colour and low foreign matter. Please give the harvest season, moisture percentage, broken-calix tolerance, available mesh or whole-flower grade, 20â€“25 kg bag packing and sample cost. Regards, Habib Zaitawa Refine by popular tags dried hibiscus hibiscus flower roselle calyx Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.25838 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French Guiana French Polynesia Gabon Gambia Georgia Germany Ghana Gibraltar Greece Greenland Grenada Guadeloupe Guam Guatemala Guernsey Guinea Guinea-Bissau Guyana Haiti Honduras Hong Kong Hungary Iceland India Indonesia Iraq Irela",
+          "primary_excerpt": "Last Updated: Posted on: 12 Nov 2026 Time Left: 25D 14H Payment Terms: T/T, L/C, D/A, D/P, Western Union, Money Gram Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details I am interested in whole dried hibiscus flowers with bright colour and low foreign matter. Please give the harvest season, moisture percentage, broken-calix tolerance, available mesh or whole-flower grade, 20â€“25 kg bag packing and sample cost. Regards, Habib Zaitawa Refine by popular tags dried hibiscus hibiscus flower roselle calyx Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.07242 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French Guiana French Polynesia Gabon Gambia Georgia Germany Ghana Gibraltar Greece Greenland Grenada Guadeloupe Guam Guatemala Guernsey Guinea Guinea-Bissau Guyana Haiti Honduras Hong Kong Hungary Iceland India Indonesia Iraq Irela",
           "decision": "Physical goods RFQ; not a commissioned China research service; contact gated and competition unknown",
           "buyer": true,
           "published_at": "2026-11-12T00:00:00+00:00",
@@ -446,19 +436,19 @@
       ]
     }
   ],
-  "unique_refreshed": 77,
+  "unique_refreshed": 72,
   "info_edge_refresh": [
     {
       "id": "5409f529cb2b0f7b",
       "url": "https://community.n8n.io/t/assistant-credits-top-up-now-available/318075",
-      "checked_at": "2026-11-15T09:19:17.933130+00:00",
+      "checked_at": "2026-11-16T09:36:31.158430+00:00",
       "refreshed": false,
       "reason": "event expired; no publication rejuvenation"
     },
     {
       "id": "edge-haiku-2026-10-07",
       "url": "https://www.anthropic.com/claude-haiku-5-5",
-      "checked_at": "2026-11-15T09:19:17.933130+00:00",
+      "checked_at": "2026-11-16T09:36:31.158430+00:00",
       "refreshed": false,
       "reason": "event expired; no publication rejuvenation"
     }

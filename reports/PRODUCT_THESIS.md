@@ -7,7 +7,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## workflow_reliability — UNVALIDATED CLUSTER
 
-- independent_demand_count: 116
+- independent_demand_count: 117
 - payment_evidence_count: 1
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community', 'n8n Community']
 - communities: ['Agenta-AI/agenta', "Ask HN: What's your current AI agentic setup?", 'Ask/Show HN', 'Commerce operator forum', "Show HN: Glassbrain – Read your agent's brain, know what your agent knows", '[dead]', 'farmmer938-lgtm/autonomous-zero-baht', 'n8n Jobs', 'n8n-io/n8n', 'useagenthq/useagent']
@@ -20,16 +20,16 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://github.com/n8n-io/n8n/issues/43964
+  - https://github.com/n8n-io/n8n/issues/43956
   - https://github.com/n8n-io/n8n/issues/43932
   - https://github.com/n8n-io/n8n/issues/43926
   - https://github.com/n8n-io/n8n/issues/43924
   - https://github.com/n8n-io/n8n/issues/43916
-  - https://github.com/n8n-io/n8n/issues/43911
-  - https://github.com/farmmer938-lgtm/autonomous-zero-baht/issues/36
 
 ## supplier_sourcing — UNVALIDATED CLUSTER
 
-- independent_demand_count: 15
+- independent_demand_count: 16
 - payment_evidence_count: 1
 - platforms: ['GitHub', 'Shopify Community']
 - communities: ['AddisonJPratt/CAD-ADE', 'Commerce operator forum', 'n8n-io/n8n', 'zack-hum/coffee-intelligence-v1.1']
@@ -44,14 +44,14 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Representative evidence:
   - https://community.shopify.com/t/whats-the-messiest-supplier-file-youve-ever-had-to-import/714937
   - https://community.shopify.com/t/two-pet-shops-on-shopify-pos-how-do-you-handle-supplier-invoices-and-repricing/714773
+  - https://community.shopify.com/t/importing-a-supplier-excel-file-as-shopify-draft-products-without-installing-an-app/714157
   - https://community.shopify.com/t/how-far-ahead-do-you-reorder-from-slow-suppliers/714098
   - https://community.shopify.com/t/pilot-discussion-customizable-approval-based-purchasing-workflows-for-shopify-merchants/710857
   - https://github.com/AddisonJPratt/CAD-ADE/issues/1
-  - https://community.shopify.com/t/shopify-va-inventory-listings-product-sourcing-customer-support-email-marketing-seo/707251
 
 ## browser_automation — UNVALIDATED CLUSTER
 
-- independent_demand_count: 12
+- independent_demand_count: 13
 - payment_evidence_count: 1
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community']
 - communities: ['Commerce operator forum', 'Understanding Email Encryption (2025)', 'datnguyenquy94/news-radar', 'n8n-io/n8n', 'useagenthq/useagent', 'yaojiejia/agents-radar']
@@ -64,12 +64,12 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://github.com/n8n-io/n8n/issues/43958
   - https://github.com/n8n-io/n8n/issues/43947
   - https://github.com/yaojiejia/agents-radar/issues/462
   - https://github.com/datnguyenquy94/news-radar/issues/1009
   - https://github.com/n8n-io/n8n/issues/43003
   - https://news.ycombinator.com/item?id=50334266
-  - https://github.com/n8n-io/n8n/issues/42851
 
 ## lead_research — UNVALIDATED CLUSTER
 

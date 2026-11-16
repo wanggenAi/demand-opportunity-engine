@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/43924",
-  "collected_at": "2026-11-15T09:19:17.933130+00:00",
+  "collected_at": "2026-11-16T09:36:31.158430+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/43924",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -72,9 +72,9 @@
     "locked": false,
     "assignees": [],
     "milestone": null,
-    "comments": 1,
+    "comments": 2,
     "created_at": "2026-11-14T11:56:13Z",
-    "updated_at": "2026-11-14T12:05:11Z",
+    "updated_at": "2026-11-15T18:05:27Z",
     "closed_at": null,
     "assignee": null,
     "author_association": "NONE",
@@ -117,6 +117,12 @@
       "text": "Hey @AlexFet,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9766\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9766](https://linear.app/n8n/issue/GHC-9766)",
       "at": "2026-11-14T11:56:24Z",
       "url": "https://github.com/n8n-io/n8n/issues/43924#issuecomment-6876900600"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "The repository source confirms the filter path passes `DateUtils.mixedDateToUtcDatetimeString(new Date(...))` into the `startedAt` comparison. That helper emits a UTC-formatted timestamp without an offset, while PostgreSQL compares it to `timestamptz` using the session time zone. Passing a `Date` (or a timestamp with an explicit UTC offset) for Postgres should keep the bound an absolute instant; this should also be checked in the related `getIdsSince()` and `getWorkflowIdsWithExecutionsSince()` paths noted in the report.",
+      "at": "2026-11-15T18:05:27Z",
+      "url": "https://github.com/n8n-io/n8n/issues/43924#issuecomment-6898890831"
     }
   ],
   "comments_complete": true

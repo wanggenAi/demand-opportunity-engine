@@ -1,0 +1,192 @@
+{
+  "source_api_url": "https://api.github.com/repos/SamyrFateh/komerce-backend/issues/4258",
+  "collected_at": "2026-11-16T09:36:31.158430+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/SamyrFateh/komerce-backend/issues/4258",
+    "repository_url": "https://api.github.com/repos/SamyrFateh/komerce-backend",
+    "labels_url": "https://api.github.com/repos/SamyrFateh/komerce-backend/issues/4258/labels{/name}",
+    "comments_url": "https://api.github.com/repos/SamyrFateh/komerce-backend/issues/4258/comments",
+    "events_url": "https://api.github.com/repos/SamyrFateh/komerce-backend/issues/4258/events",
+    "html_url": "https://github.com/SamyrFateh/komerce-backend/issues/4258",
+    "id": 6410959884,
+    "node_id": "I_kwDORwaXn88AAAABfh98DA",
+    "number": 4258,
+    "title": "G13 FINAL — clôture du catalogue 9×3 et passation des 46 E2E à Opus",
+    "user": {
+      "login": "SamyrFateh",
+      "id": 270944292,
+      "node_id": "U_kgDOECZIJA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/270944292?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/SamyrFateh",
+      "html_url": "https://github.com/SamyrFateh",
+      "followers_url": "https://api.github.com/users/SamyrFateh/followers",
+      "following_url": "https://api.github.com/users/SamyrFateh/following{/other_user}",
+      "gists_url": "https://api.github.com/users/SamyrFateh/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/SamyrFateh/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/SamyrFateh/subscriptions",
+      "organizations_url": "https://api.github.com/users/SamyrFateh/orgs",
+      "repos_url": "https://api.github.com/users/SamyrFateh/repos",
+      "events_url": "https://api.github.com/users/SamyrFateh/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/SamyrFateh/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 9,
+    "created_at": "2026-11-15T23:28:43Z",
+    "updated_at": "2026-11-16T09:21:34Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "# G13 final — contrat de reprise Opus avant les 46 E2E\n\n**Instruction du propriétaire (16/11/2026)** : terminer G13 puis transmettre l'exécution des 46 scénarios E2E à Opus. **Ne pas déclarer GO avant preuve finale multi-marché.** Cette issue est le point de passage unique, sans réécrire les sous-branches Opus.\n\n## Prouvé (ne pas recommencer)\n- Canary G13-01 KSC-000490 : 4/4 SKU CJ natifs exacts, API 200, brouillon préservé [run #43769518127](https://github.com/SamyrFateh/komerce-backend/actions/runs/43769518127).\n- 16/17 CJ restaurés, 50 SKU natifs exacts ; G13-10 exclu car 12/12 unités source V2 inactives [run #43770276976](https://github.com/SamyrFateh/komerce-backend/actions/runs/43770276976).\n- CJ16 : FR+curation [#43771017100](https://github.com/SamyrFateh/komerce-backend/actions/runs/43771017100), mapping D3 [#43771119758](https://github.com/SamyrFateh/komerce-backend/actions/runs/43771119758), revue visuelle/approbation [#43771256152](https://github.com/SamyrFateh/komerce-backend/actions/runs/43771256152) — 16/16 PASS à chaque étape.\n- Oracle staging SQL [#43771411499](https://github.com/SamyrFateh/komerce-backend/actions/runs/43771411499) : 16 produits CJ actifs, 50 SKU actifs/stockés, 16 liaisons fournisseur actives.\n- `docs/chantier/STATUS.md` G13 indique bien NO GO commercial, owner Opus.\n\n## Restant réellement bloquant — ordre impératif\n1. **Enfant** : remplacer G13-10 par un candidat fournisseur réellement commandable avec unités SKU actives et identité fournisseur native ; pas de réactivation factice du pyjama inactif. Revue média/FR/D3/approbation via APIs canoniques ; comparer la couverture des 9 catégories.\n2. **3 produits central Hub** : G13-06 (torchons Maison), G13-12 (tournevis Bricolage), G13-14 (mug Créations personnelles). Compléter catégorie douanière, contrat source V2, identité fournisseur central, prix d'achat et économie ; rescan. Les WATCH « faits manquants » ne sont pas éligibles à un override. Si impossibles, substituer 3 produits Hub réels documentés et modifier le manifeste avec preuves d'images.\n3. **Prix et exposition des 3 marchés** : vérifier la délégation opérateur et le corridor de chaque produit/market ; disposer d'une décision `LOCAL_ACTIVE` et exposition `ENABLED` pour chaque produit destiné aux 27 cellules. En CM/CG, local XAF observé READY (>=3 observations si outil automatisé) : **aucune conversion KMF→XAF, aucun prix concurrent inventé, aucune activation sans autorité de marché**. Pour KM, prix conforme au moteur économique + décision locale réelle.\n4. **Stock et vendabilité** : établir les SKUs/stock source et local W3 requis sans stock factice, vérifier URLs/produits publics avec images, prix, options, fournisseur (inclure AliExpress, CJ, 3 Hub, multi-SKU, volumineux).\n5. **Oracle final** : traiter [PR #4257](https://github.com/SamyrFateh/komerce-backend/pull/4257) (nouvel oracle fail-closed 27 cellules, **Required verdict non vert à cet instant**, donc pas fusionnée). Exécuter `G13 catalogue seed (staging)` → `mode=dry-run`, `phase=census`, propriétaire, confirmation requise ; contrôler empreinte DB et SHA Railway. Résultat attendu : 9×KM/CM/CG, >=2 références distinctes au SQL et HTTP public par cellule, 27/27 PASS ; Chromium desktop/mobile confirme la visibilité/variantes sans achat.\n6. **Handoff E2E** : inscrire les liens de runs, artefacts SQL/HTTP/Chromium, identités de la cohorte et SHA staging dans `docs/chantier/STATUS.md`. Puis G7 gel de fusions coordonné, matrice des 46 scénarios identique pour Opus et GPT, pas d'actions simultanées sur mêmes identités Relais, aucun PSP/fournisseur externe en réel. **Un GO propriétaire explicite pour les E2E reste requis dans STATUS**.\n\n## Conditions de clôture\n- [ ] Vraie alternative Enfant vérifiée.\n- [ ] 3 Hub avec identité V2/douane/économie et approbation prouvées.\n- [ ] Prix `LOCAL_ACTIVE` et exposition marché prouvés sur KM/CM/CG.\n- [ ] SQL + HTTP public 27/27 PASS et Chromium justifié sur le même SHA staging.\n- [ ] PR #4257 Required SUCCESS et fusionnée, ou preuve équivalente revue.\n- [ ] STATUS.md à jour ; Opus reprend ensuite les 46 E2E sous GO du propriétaire.\n\n**Pas de raccourci** : `G13=NO GO` tant que ces conditions ne sont pas prouvées. La réussite CJ16 n'est pas un GO complet.\n\n## Revue éditoriale CJ3 et pièces Hub à réunir\n\nRevue des 47 originaux CJ dans [l’artefact média #14204234735](https://github.com/SamyrFateh/komerce-backend/actions/runs/43822157753/artifacts/14204234735). Résultat avant approbation Catalogue :\n\n| Référence | Constat sur les originaux | Action Catalogue |\n| --- | --- | --- |\n| KPR-000245 — sac scolaire | 005, 006, 007 et 009 portent des textes anglais. Les cinq coloris sont représentés sur les vues produit ; l’écusson reste visible. | Garder la couverture des cinq coloris, vérifier l’écusson, et localiser ou retirer les infographies. Reporter les dimensions vérifiées dans la fiche FR : 45 × 30 × 15 cm selon l’image 009. |\n| KPR-000246 — ciseaux | Le marquage HSD est visible sur la lame et sur l’emballage, notamment 015–016. | Confirmer une référence Bricolage conforme au critère visuel G13. Si HSD est exclu, substituer un article fournisseur réellement commandable et revoir ses propres médias. |\n| KPR-000247 — collier prénom | Les médias `1377142388740460544:media:7` (029) et `1377142388740460544:media:9` (031) montrent un bijou porté à la cheville. Le rapport média n’atteste aucune association aux options. | Vérifier les 60 combinaisons fournisseur avant de retirer les vues cheville ou de qualifier une variante correspondante. Localiser les finitions (doré, argenté, or rose) et distinguer les exemples de prénoms des libellés d’option. |\n\nLe [diagnostic staging #43831674595](https://github.com/SamyrFateh/komerce-backend/actions/runs/43831674595) confirme WATCH, zéro SKU stocké, douane vide et aucun prix pour les trois références manuelles. Pour chacune — torchons G13-06 / KPR-000234, tournevis G13-12 / KPR-000238, mug G13-14 / KPR-000240 — réunir la photo de l’article réel, sa provenance, le justificatif du coût dans sa devise, la quantité disponible et la catégorie douanière validée. Une référence de remplacement documentée peut servir si l’article historique est indisponible. Le rattachement d’un produit manuel passe par le fournisseur interne protégé `central_hub` ([#4283](https://github.com/SamyrFateh/komerce-backend/pull/4283)).\n\nDernière couverture SQL/HTTP prouvée : **18/27** ([#43777303103](https://github.com/SamyrFateh/komerce-backend/actions/runs/43777303103)). Aucune approbation ni publication CJ3 émise pendant cette revue. Le 27/27 et Chromium desktop restent à prouver avant passation.\n\n**Rattachement Hub prouvé après fusion.** [PR #4283](https://github.com/SamyrFateh/komerce-backend/pull/4283) fusionnée sur `4ce1b6f84ff7` après [Required SUCCESS](https://github.com/SamyrFateh/komerce-backend/actions/runs/43832315048). Le [rejeu staging #43832650079](https://github.com/SamyrFateh/komerce-backend/actions/runs/43832650079) confirme `hub_procurement_owner_proven: true` pour les trois références (base `8acbf99fef010c23eac7d252`). Toutes restent WATCH, avec zéro SKU stocké et catégorie douanière vide. Les pièces opérateur restent à réunir avant de publier.\n\n**Recontrôle staging du 16/11.** Le [recensement #43834057044](https://github.com/SamyrFateh/komerce-backend/actions/runs/43834057044) confirme 18/27 PASS et neuf cellules à une référence chacune (Enfant, Bricolage, Créations personnelles sur KM, CM, CG). [Inventaire source #43834133583](https://github.com/SamyrFateh/komerce-backend/actions/runs/43834133583) : aucune unité fournisseur active pour les coffrets CJ KSC-000526/527/528 et aucun dossier opérateur Hub exploitable dans le pool staging. Les trois fiches Hub historiques portent des quantités déclaratives dans Sourcing, avec zéro SKU stocké en Catalogue et aucune catégorie douanière. Les trois références EN E2E-HUB-V1 sont des fixtures historiques sans provenance et sans images. Pour éviter un nouveau blocage sur Bricolage et Créations personnelles, un vrai tournevis et un vrai mug manuel, une fois publiés sur les trois marchés, couvriraient aussi ces deux catégories si le recensement le confirme. Le sac CJ reste le chemin court pour Enfant.\n\n**Décision propriétaire — création manuelle Hub.** Les trois fiches doivent partir de la création manuelle par l’opérateur du Catalogue. Un dossier produit préexistant n’est pas un prérequis à la création. La [PR #4290](https://github.com/SamyrFateh/komerce-backend/pull/4290) prépare trois nouveaux brouillons de recette via l’API Catalogue, avec rattachement interne vérifié en PostgreSQL. Les données qui conditionnent leur mise en vente seront renseignées ensuite par le parcours opérateur.\n\n**Création manuelle prouvée sur staging.** [Run #43835648627](https://github.com/SamyrFateh/komerce-backend/actions/runs/43835648627), verdict `THREE_MANUAL_DRAFTS_PROVEN` : 3 POST Catalogue HTTP 201 et relecture PostgreSQL du fournisseur interne `central_hub` pour **KPR-000251** torchons (Maison/Cuisine), **KPR-000252** tournevis (Bricolage/Outillage) et **KPR-000253** mug (Créations personnelles/Cadeau). Ces références remplacent les anciennes entrées WATCH comme cibles de la qualification manuelle. Elles sont actuellement inactives, indisponibles et à stock zéro. La valeur technique de 1 KMF imposée à la création par le schéma est documentée dans [#4292](https://github.com/SamyrFateh/komerce-backend/pull/4292). Reste la complétion opérateur, l’activation des prix de recette par marché, la publication et la preuve publique/Chromium.\n\n### Enfant — textes vérifiés sur les originaux du sac CJ\n\nPour KPR-000245, la légende française peut être enregistrée via le contrôle visuel source lié. Le motif visible sur le sac se lit « QY / Fashion ». Une autre inscription est visible sur la lunch bag. La revue du critère de marquage doit être résolue avant publication. Légendes proposées pour les quatre infographies (préfixe source `2601060946311626300`) :\n\n| Média | Légende FR |\n| --- | --- |\n| `media:5` | Compartiment principal de grande capacité et poches séparées pour ranger et retrouver les affaires scolaires. |\n| `media:6` | Sac à dos bicolore, présenté en rose, lilas, vert et bleu. |\n| `media:7` | Le fournisseur indique que le sac est lavable en machine. |\n| `media:9` | Modèle rose, grand format : 45 × 30 × 15 cm. Le visuel présente un pompon, une trousse et un sac-repas. |\n\nL’[inventaire #43834133583](https://github.com/SamyrFateh/komerce-backend/actions/runs/43834133583) fournit deux alternatives Enfant avec unités source actives : `KSC-000619` (gourde isotherme, 4) et `KSC-000623` (gourde à paille, 6). Elles demandent confirmation de catégorie, préparation Catalogue et revue de leurs propres médias avant publication. Aucune approbation n’a été enregistrée à cette étape.\n\n## Résultat Hub manuel de recette — 24/27 en boutique\n\nSur décision propriétaire, les trois fiches Hub manuelles ont été complétées avec des descriptions marquées recette, visuels illustratifs, stocks simulés et prix fictifs. [Run #43838714154](https://github.com/SamyrFateh/komerce-backend/actions/runs/43838714154) : KPR-000251 stock 12, KPR-000252 stock 8, KPR-000253 stock 10. Pour chacune, PostgreSQL prouve `LOCAL_ACTIVE` et `ENABLED` sur KM/CM/CG après activation canonique. Les hypothèses de coût du rapport sont des données simulées, sans écriture comptable ni achat. \n\n[Recensement public #43838842952](https://github.com/SamyrFateh/komerce-backend/actions/runs/43838842952) : **24/27 PASS**, seules les trois cellules Enfant demandent encore une deuxième référence vendable. Le résultat reste `CENSUS_27_NO_GO` jusqu’à Enfant et à la vérification Chromium desktop.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/SamyrFateh/komerce-backend/issues/4258/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/SamyrFateh/komerce-backend/issues/4258/timeline",
+    "performed_via_github_app": {
+      "id": 1144995,
+      "client_id": "Iv23liVemv8A9if9v0F2",
+      "slug": "chatgpt-codex-connector",
+      "node_id": "A_kwHOAOQ6Gs4AEXij",
+      "owner": {
+        "login": "openai",
+        "id": 14957082,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjE0OTU3MDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/14957082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/openai",
+        "html_url": "https://github.com/openai",
+        "followers_url": "https://api.github.com/users/openai/followers",
+        "following_url": "https://api.github.com/users/openai/following{/other_user}",
+        "gists_url": "https://api.github.com/users/openai/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/openai/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/openai/subscriptions",
+        "organizations_url": "https://api.github.com/users/openai/orgs",
+        "repos_url": "https://api.github.com/users/openai/repos",
+        "events_url": "https://api.github.com/users/openai/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/openai/received_events",
+        "type": "Organization",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "name": "ChatGPT Codex Connector",
+      "description": "Bring ChatGPT and Codex to your GitHub repositories.",
+      "external_url": "https://www.chatgpt.com",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "created_at": "2025-02-14T01:37:05Z",
+      "updated_at": "2026-09-23T18:52:59Z",
+      "permissions": {
+        "actions": "write",
+        "checks": "read",
+        "contents": "write",
+        "emails": "read",
+        "issues": "write",
+        "metadata": "read",
+        "pull_requests": "write",
+        "statuses": "read",
+        "workflows": "write"
+      },
+      "events": [
+        "check_run",
+        "check_suite",
+        "commit_comment",
+        "issues",
+        "issue_comment",
+        "pull_request",
+        "pull_request_review",
+        "pull_request_review_comment",
+        "pull_request_review_thread",
+        "repository",
+        "status",
+        "sub_issues"
+      ]
+    },
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "SamyrFateh",
+      "text": "## Nouveau diagnostic staging vérifié — 16/11, #43775712317 (READ-ONLY)\n\n[Exécution SUCCESS](https://github.com/SamyrFateh/komerce-backend/actions/runs/43775712317), [artefact](https://github.com/SamyrFateh/komerce-backend/actions/runs/43775712317/artifacts/14185524352). Rapport complet consulté, empreinte PG `8acbf99fef010c23eac7d252`; opérateur marché ACCESSIBLE KM/CM/CG. **22/22 références diagnostiquées, 18 ACTIVES (16 CJ + 2 AliExpress), 4 non actives** :\n- `G13-10` Enfant `KPR-000203` : 0 SKU/0 unité V2 active, aucune liaison active, 12 unités source V2 connues INACTIVES dans #43770276976. Substitution réelle impérative.\n- `G13-06` Maison `KPR-000234` : WATCH, douane NULL, contrat V2 0 unité active, 0 liaison.\n- `G13-12` Bricolage `KPR-000238` : WATCH, douane NULL, contrat V2 0 unité active, 0 liaison.\n- `G13-14` Créations personnelles `KPR-000240` : WATCH, douane NULL, contrat V2 0 unité active, 0 liaison.\n\n**18/18 autres actifs avec SKU source actifs+stockés et fournisseurs liés ;** le GET corridor KM renvoie une référence économique KMF positive pour chacun. **CM et CG : 0 observation locale, tous `LOCAL_EVIDENCE_MISSING` → prix XAF non justifiable dans le runner**. Aucun `LOCAL_ACTIVE` n'est affirmé par ce diagnostic. Les produits `Enfant`, `Bricolage` et `Créations personnelles` nécessitent une seconde référence vendable ; Maison a déjà CJ+AliExpress possibles sous réserve de prix/exposition.\n\n**Décision** : on peut avancer sur le prix KM via l'autorité marché et l'économie déjà mesurée, mais aucune triche XAF/Hub. G13 reste NO GO ; certifier chaque marche avant GO global. PR oracle 27/27 #4257 : les sections Why/Tests de gouvernance ont été corrigées, Required CI en cours. Aucun changement au backend ou au staging effectué pendant le diagnostic.",
+      "at": "2026-11-15T23:38:55Z",
+      "url": "https://github.com/SamyrFateh/komerce-backend/issues/4258#issuecomment-6903305499"
+    },
+    {
+      "author": "SamyrFateh",
+      "text": "## CM/CG XAF — clarification doctrinale et mesure réelle (16/11)\n- **Procurement** : déjà centralisé fournisseur → Hub → Market Leg par marché ; `docs/doctrine/DOCTRINE_PROCUREMENT_FULFILLMENT.md` permet explicitement des lignes KM/CM/CG dans les PO groupées, puis séparation physique à la sortie Hub. Les campagnes CM/CG historiques certifient HTTP+PG+Chromium en recette ; les tarifs de transport `RECETTE` CM/CG sont provisoires et ne valent pas validation commerciale.\n- **Pricing** : le corridor de prix concurrent est `OBSERVED_REFERENCE_NOT_GATE` (contrat 4X). Zéro observation XAF ne doit pas bloquer par principe la décision de prix XAF par le responsable pays. Un prix économique projeté depuis KMF via Currency Boundary = un **repère**, jamais une fausse observation du marché.\n- **Production/durable** : [PR #4261](https://github.com/SamyrFateh/komerce-backend/pull/4261) ajoute dans la file Prêts à vendre un repère économique si le coût complet est valide, label explicite et confirmation humaine ; bulk impossible. Aucune écriture automatique, CI en cours.\n- **Staging E2E** : [PR #4263](https://github.com/SamyrFateh/komerce-backend/pull/4263) propose une voie propriétaire `market-price-18`, 18×3 décisions RECETTE via comptes opérateurs, mêmes gates économiques et FX canonique, sans observation concurrentielle inventée. Pas de fusion/exécution tant que Required CI non vert.\n- **Mesure buyer réelle** : [census #43776600747](https://github.com/SamyrFateh/komerce-backend/actions/runs/43776600747) a inspecté **27/27** cellules et a trouvé **0/27 PASS** ; seules les cellules `Maison|KM` et `Tech|KM` ont 1 produit public chacune ; CM/CG zéro. Empreinte staging `8acbf99fef010c23eac7d252`; verdict `CENSUS_27_NO_GO`, pas échec technique du lecteur.\n- **Suite sans rustine** : vérifier le flux PO↔Hub↔market leg sur 1 commande CM et CG lorsque les produits seront vendables, ainsi que prix transport par marché, preuve stock et rôle opérateur. Puis rejouer le census et les 46 E2E avec Opus. Ne jamais déclarer GO sur seule projection de prix, et ne jamais créer de vraie commande fournisseur ni paiement PSP durant la préparation.\n",
+      "at": "2026-11-15T23:49:51Z",
+      "url": "https://github.com/SamyrFateh/komerce-backend/issues/4258#issuecomment-6903440944"
+    },
+    {
+      "author": "SamyrFateh",
+      "text": "## G13 — résultat des actions staging 16/11 : XAF opérationnel en RECETTE, 18/27 cellules publiques\n\n**Faits prouvés (empreinte PostgreSQL identique `8acbf99fef010c23eac7d252`)**\n1. [PR #4263](https://github.com/SamyrFateh/komerce-backend/pull/4263) fusionnée, Railway staging SHA `f9a945462ed24886c8dc7125a129943d348c7688` SUCCESS.\n2. [Prix RECETTE #43777126934](https://github.com/SamyrFateh/komerce-backend/actions/runs/43777126934) — verdict `MARKET_TEST_PRICES_APPLIED_NOT_G13_GO`, 18/18 références sources actives avec prix `LOCAL_ACTIVE` sur **KM (KMF), CM (XAF), CG (XAF)** ; 16 nouvelles activations KM et 18 + 18 CM/CG, deux KM déjà actives conservées ; **0 BLOCKED**. Montants dérivés des repères économiques du moteur et du pivot FX canonique par comptes opérateurs staging, prévisualisation puis garde économique et activation via API ; **pas des prix concurrentiels observés ni des tarifs commerciaux définitifs**. Aucune commande client, PSP, PO fournisseur ou achat réel. [Artefact](https://github.com/SamyrFateh/komerce-backend/actions/runs/43777126934/artifacts/14186976486).\n3. [Recensement strict public #43777303103](https://github.com/SamyrFateh/komerce-backend/actions/runs/43777303103) — `CENSUS_27_NO_GO`, **18/27 PASS**, six catégories × 3 marchés entièrement vendables : Mode & Beauté, Maison, Tech, Sport, Sur-mesure, Auto. Les **9 cellules manquantes** concernent seulement Enfant, Bricolage, Créations personnelles (1 produit public au lieu des 2 exigés sur chacun des 3 marchés). [Artefact](https://github.com/SamyrFateh/komerce-backend/actions/runs/43777303103/artifacts/14186413294).\n\n**Vrai reste métier** : substituer une référence Enfant à G13-10 (12/12 SKU fournisseurs inactifs), qualifier réellement les 3 références Fournisseur central Hub G13-06/12/14 (WATCH, douane + contrat V2 absents) ou les remplacer par 3 achats Hub réels acceptables. Puis faire leurs 3×3 activations de prix marché et contrôle Chromium + SQL/HTTP 27/27. Les frais de transport CM/CG historiques sont `RECETTE` provisoires : ils ne suffisent pas à certifier économiquement le modèle de production ni la chaîne physique sur ce SHA.\n\n**Architecture durable XAF** : [PR #4261](https://github.com/SamyrFateh/komerce-backend/pull/4261) permet à un responsable pays de voir un repère *économique*, distinct des observations concurrentes optionnelles (`OBSERVED_REFERENCE_NOT_GATE`), avec choix humain explicite, jamais en bulk. Ne pas attribuer à l'absence de 3 observations concurrentes une interdiction canonique de fixer un prix XAF. PR #4261 en synchronisation/CI après progression de main.\n\n**G13 = NO GO**, les 46 E2E restent en attente du 27/27 complet, des preuves Hub et du GO propriétaire ; Opus conserve le pilotage.",
+      "at": "2026-11-15T23:58:41Z",
+      "url": "https://github.com/SamyrFateh/komerce-backend/issues/4258#issuecomment-6903550048"
+    },
+    {
+      "author": "SamyrFateh",
+      "text": "### G13 — inventaire réellement exécuté le 16/11\n\n[Run inventaire owner-only en lecture seule #43817846624](https://github.com/SamyrFateh/komerce-backend/actions/runs/43817846624), [artefact JSON #14203695757](https://github.com/SamyrFateh/komerce-backend/actions/runs/43817846624/artifacts/14203695757). Empreinte staging `8acbf99fef010c23eac7d252`, `DRY_RUN_OK`, 299 sourcing_candidates ; 274 CJ, 19 AliExpress, 3 central Hub, 3 fixtures Hub ; 90 `TEST`, 199 `WATCH`, 7 `EXCLUDED`, 3 historiques sans décision. Recommandation : exploiter d'abord le pool, ne pas importer en masse.\n\n**Pistes réelles TEST, encore NON qualifiées SKU V2/médias** :\n- Enfant : `KSC-000515` (jeu de construction enfant, CJ `2601040212471629500`), `KSC-000524` (sac scolaire, CJ `2601060946311626300`), `KSC-000619` (gourde isotherme enfant, CJ `2605040701161608500`), `KSC-000623` (gourde paille, CJ `2606180903171639400`).\n- Bricolage : `KSC-000688` (ciseaux universels, CJ `1775800548592193536`), à examiner métier/visuel ; `KSC-000769` semble davantage Auto, donc ne pas classer arbitrairement.\n- Créations personnelles : `KSC-000725` (collier à prénom personnalisable, CJ `1377142388740460544`).\n- Les 3 Hub `G13-06/12/14` restent WATCH avec faits manquants et ne sont pas rendus TEST.\n\n**Contrôle suivant** : la PR #4271 ajoute au dump les compteurs source V2 actifs à identité fournisseur exacte (et la douane), avant toute promotion. Si une piste est incomplète, la conserver bloquée ; ne jamais inventer SKU/stock, ne jamais forcer WATCH. Après preuve V2, revue visuelle source réelle, puis curation/liaison fournisseur/publication et prix RECETTE marchés via routes canoniques, et enfin 27/27 SQL/HTTP + Chromium sur même SHA.",
+      "at": "2026-11-16T06:40:27Z",
+      "url": "https://github.com/SamyrFateh/komerce-backend/issues/4258#issuecomment-6909379077"
+    },
+    {
+      "author": "SamyrFateh",
+      "text": "### Canary CJ réel #43819682562 : effet fournisseur positif, handoff Catalogue en échec explicite\n\nCanary owner-only sur `KSC-000524` / source CJ `2601060946311626300`. Avant : 0 unité native active ; après : **5 unités V2 exactes actives avec stock** ; décision Sourcing conservée `TEST`, base staging `8acbf99fef010c23eac7d252`. Mais POST Sourcing a renvoyé **500 `sourcing_catalogue_handoff_failed`**. [Artefact](https://github.com/SamyrFateh/komerce-backend/actions/runs/43819682562/artifacts/14204225717).\n\nLa chaîne `services/sourcing-candidate-actions.js::handoffCertifiedImport` tente une promotion Catalogue après import TEST ; sans catégorie boutique confirmée, cette étape peut échouer alors que la mise à jour Sourcing est déjà validée. Ne pas masquer le HTTP500 ni déclarer produit publié. Traiter via classification officielle `Enfant / École`, promote contrôlé et lecture SQL SKU + lien D3 + revue média. Les tests source et catalogue sont deux gates distincts.\n\nLe fournisseur CJ a prouvé qu'il peut réhydrater les unités natives d'un candidat ancien. Après contrôle du périmètre et de l'idempotence, extension bornée aux 5 autres refs proposées (Enfant x3, Bricolage x1, Créations x1) pour qualifier la source ; aucune activation de prix ni commande.",
+      "at": "2026-11-16T06:56:21Z",
+      "url": "https://github.com/SamyrFateh/komerce-backend/issues/4258#issuecomment-6909655219"
+    },
+    {
+      "author": "SamyrFateh",
+      "text": "## 16/11/2026 — source CJ réelle + 3 brouillons prêts sur staging\n\n**Fait (aucun contournement)** :\n- [#4273](https://github.com/SamyrFateh/komerce-backend/pull/4273) + [#4275](https://github.com/SamyrFateh/komerce-backend/pull/4275) fusionnées Required CI vert : refresh ciblé Sourcing par API officielle avec gate propriétaire et base cible épinglée.\n- [canary #43819682562](https://github.com/SamyrFateh/komerce-backend/actions/runs/43819682562) + [batch #43820240455](https://github.com/SamyrFateh/komerce-backend/actions/runs/43820240455) : 6 CJ TEST rehydratés, 80 unités fournisseur V2 actives et stockées **à identité native exacte** (KSC-000524 5 ; 515 4 ; 619 4 ; 623 6 ; 688 1 ; 725 60). Les appels import ont eu HTTP500 `sourcing_catalogue_handoff_failed` à l'étape Catalogue automatique, après upsert source : **ne pas annoncer ces imports comme entièrement réussis**, mais les unités ont été relues et confirmées en PG.\n- [#4278](https://github.com/SamyrFateh/komerce-backend/pull/4278) fusionnée Required CI vert puis [staging #43820974536](https://github.com/SamyrFateh/komerce-backend/actions/runs/43820974536) **SUCCESS** : trois véritables brouillons source CJ **INACTIFS** déjà classés/FR avec SKU exacts stockés, D3 map :\n  * `KPR-000245` sac scolaire `Enfant/École`, 5 SKU, médias source présents ;\n  * `KPR-000246` ciseaux `Bricolage/Outillage`, 1 SKU, médias source présents ;\n  * `KPR-000247` collier prénom `Créations personnelles/Cadeau`, 60 SKU, médias source présents.\n  Empreinte staging `8acbf99fef010c23eac7d252`. **Aucun produit approuvé, ni publié, ni prix activé**.\n- Revue des vraies images en cours, proposition [PR #4280](https://github.com/SamyrFateh/komerce-backend/pull/4280) : télécharger images exactes du CDN CJ à partir de `catalog_media` en lecture seule, produire hashes et artefact, vérifier humainement les textes/correspondance avant tout acte de revue `AUTOMATED_STAGING`.\n\n**Blocages GO à ne pas maquiller :** les nouvelles fiches restent à visualiser, approuver et rendre localement vendables KM/CM/CG, puis recenser 27/27 SQL+HTTP/Chromium. Les **3 produits central Hub G13-06/12/14 restent WATCH, sans fait de stock/source V2/douane fiable** : ils ne sont pas remplacés par les trois nouveaux CJ, car l'exigence de couverture fournisseur Hub distincte persiste. Tarifs transport CM/CG toujours RECETTE provisoires. `STATUS.md` doit rester **NO GO G13** jusqu'à certification complète, GO propriétaire explicite ensuite pour les 46 E2E.",
+      "at": "2026-11-16T07:10:49Z",
+      "url": "https://github.com/SamyrFateh/komerce-backend/issues/4258#issuecomment-6909909098"
+    },
+    {
+      "author": "SamyrFateh",
+      "text": "## 16/11 — preuve média source authentique (post-brouillons)\n\n[PR #4280](https://github.com/SamyrFateh/komerce-backend/pull/4280) Required SUCCESS, fusionnée `0df2e124`; run [#43822157753](https://github.com/SamyrFateh/komerce-backend/actions/runs/43822157753) **SUCCESS**, artefact [images + report #14204234735](https://github.com/SamyrFateh/komerce-backend/actions/runs/43822157753/artifacts/14204234735). SQL lecture seule de `catalog_media` et téléchargement CDN CJ avec signature images et SHA256 : **47 images/47 téléchargées** (KPR-000245 10, KPR-000246 12, KPR-000247 25), 8,06 Mo, empreinte BDD `8acbf99fef010c23eac7d252`.\n\n**Inspection visuelle réelle des 3 planches** : \n- Enfant sac scolaire : photos conformes au sac et ses couleurs, mais plusieurs images ont du texte anglais (« Holds all of your... », « Step 1 », « Pink », dimensions) ; un motif stylisé ressemblant à `NY` est visible. Traductions/attestation FR nécessaires.\n- Bricolage ciseaux : photos du bon outil, mais la lame et le packaging portent le marquage fournisseur `HSD`, et la majorité des visuels contiennent des infographies anglaises denses ; à contrôler au regard du critère G13 sans marque/logo identifiable, et revoir localisation. Ne pas approuver `NONE` mensonger.\n- Créations personnelles collier : 25 photos authentiques montrant modèles/prénoms, finitions et polices (y compris arabe), avec légendes anglais `Golden`, `Rose Gold`, `Silver`, `Name with heart`, `Arabic font`, etc. Localiser explicitement et vérifier les options.\n\n**Strictement aucun POST de revue ni approbation ni publication n'a été émis.** L'audit des octets ne vaut pas review éditoriale. Ne pas lancer tarification de ces 3 produits avant revue FR complète et garde catalogue. La couverture publique demeure **18/27**, et les 3 Hub restent WATCH.",
+      "at": "2026-11-16T07:17:28Z",
+      "url": "https://github.com/SamyrFateh/komerce-backend/issues/4258#issuecomment-6910030370"
+    },
+    {
+      "author": "SamyrFateh",
+      "text": "## 16/11 — G13 Hub manuel : correction effective en PR + preuve staging récente\n\n**PR [#4283](https://github.com/SamyrFateh/komerce-backend/pull/4283), HEAD `91b93a0a887c3b0658cf82a4990a4edb7fe752a9` (CI Required encore en attente) :** le runner G13 distinguera désormais la preuve d'approvisionnement interne `products.procurement_supplier_id → suppliers.system_key='central_hub'` pour les produits manuels de l'association externe `product_suppliers.supplier_sku` CJ/AliExpress. Aucune SOI externe ni SKU CJ n'est imposé à un Hub manuel. Garde opérateur sur origine visuelle, coût, quantité et douane pour les fixtures du manifeste, sur toutes les phases écrivant ou publiant ; le census reste READ ONLY. Les trois anciennes entrées Hub utilisent des photos CDN CJ et des chiffres sans pièce opérateur : ne pas les publier sous identité Hub.\n\n**Diagnostic actuel en lecture seule [#43831674595](https://github.com/SamyrFateh/komerce-backend/actions/runs/43831674595), artefact #14207784960, fingerprint DB `8acbf99fef010c23eac7d252`, verdict `DIAGNOSTIC_OK_NOT_G13_GO` :**\n- `G13-06` / `KSC-000783` → `KPR-000234`, Maison : **WATCH**, customs_category NULL, pas de SKUs stockés, zéro prix ; \n- `G13-12` / `KSC-000784` → `KPR-000238`, Bricolage : idem ;\n- `G13-14` / `KSC-000785` → `KPR-000240`, Créations personnelles : idem.\n- Causes exactes : `Catégorie Komerce non résolue — décision impossible`, source V2 absente dans les trois fiches historiques ; cela n'autorise **ni** WATCH→TEST forcé **ni** réutilisation mensongère de l'image CJ comme preuve de stock Hub.\n\nLa prochaine action métier n'est PAS une modification du classificateur Fable : trois véritables fiches manuelles Hub attestées (origine média, coût, stock/achat, douane et catégorie validés), via l'API manuelle canonique, puis parcours prix+publication sous contrôle. En parallèle les 3 CJ `KPR-000245/246/247` possèdent vraies unités mais demandent la revue visuelle et publication. Le census public reste **18/27**, le GO E2E n'est pas encore prononcé.",
+      "at": "2026-11-16T08:31:59Z",
+      "url": "https://github.com/SamyrFateh/komerce-backend/issues/4258#issuecomment-6911405174"
+    },
+    {
+      "author": "SamyrFateh",
+      "text": "### POST-FUSION G13 Hub manuel — certifié sur Railway staging (16/11)\n\n✅ [PR #4283](https://github.com/SamyrFateh/komerce-backend/pull/4283) fusionnée automatiquement après `Required verdict=SUCCESS`, tests backend et `npm run pr:preflight` verts, commit `4ce1b6f84ff758c381297a54d9f85b9a33242f6e`. ✅ Railway staging déployé `SUCCESS` même SHA.\n\n✅ [Diagnostic staging après déploiement #43832786798](https://github.com/SamyrFateh/komerce-backend/actions/runs/43832786798), artefact #14208933856, même fingerprint PG `8acbf99fef010c23eac7d252`, verdict `DIAGNOSTIC_OK_NOT_G13_GO`. **Résultat nouveau : les 3 vrais candidats Hub historiques possèdent bien déjà le rattachement interne, désormais vérifié par le bon oracle !**\n- G13-06 `KPR-000234` : `hub_procurement_owner_proven=true`, `supplier_links=1` (identité interne), `WATCH`, douane NULL ;\n- G13-12 `KPR-000238` : idem ;\n- G13-14 `KPR-000240` : idem.\n\n**La fausse dette « SKU CJ/SOI V2 pour un produit Hub manuel » est levée.** Le rail Fournisseur central Hub interne D3 est prouvé 3/3 sur staging, sans inventer fournisseur externe.\n\n**Ce qui demeure NON CERTIFIÉ et demande geste opérateur réel :** les trois anciennes fixtures Hub ont `WATCH` (catégorie douanière non résolue), images issues du CDN CJ et coûts/quantités sans attestations. Les images et quantités ne doivent pas être revendiquées comme provenant du Hub. Nécessité de compléter/qualifier trois créations manuelles attestées et leur approbation prix/exposition. Côté CJ3 `KPR-000245/246/247`, revue visuelle FR puis approbation/prix/exposition. Ensuite le census public 27/27 SQL+HTTP et Chromium. G13 reste NO GO 18/27 ; aucun GO propriétaire pour les 46 E2E n'est prétendu.",
+      "at": "2026-11-16T08:39:19Z",
+      "url": "https://github.com/SamyrFateh/komerce-backend/issues/4258#issuecomment-6911549272"
+    }
+  ],
+  "comments_complete": true
+}
