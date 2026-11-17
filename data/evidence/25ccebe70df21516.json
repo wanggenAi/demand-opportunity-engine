@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://community.shopify.com/t/608148.json",
-  "collected_at": "2026-10-16T07:07:16.259711+00:00",
+  "collected_at": "2026-11-17T10:40:42.801876+00:00",
   "source": {
     "post_stream": {
       "posts": [
@@ -12,15 +12,15 @@
           "cooked": "<p>Running into a wall that I suspect a lot of sellers here have hit.</p>\n<p>We’re selling across Shopify and two marketplaces. Everything runs fine during normal trading. The moment we run any kind of promotional event flash sale, limited drop, festive season push inventory starts drifting across channels.</p>\n<p>A sale happens on one platform and by the time the other channels update, we’ve already taken orders we can’t fulfil. It’s not a huge volume problem - it’s a timing problem. The sync just isn’t fast enough when orders are coming in quickly from multiple places simultaneously.</p>\n<p>We’ve tried a few apps from the App Store but most of them seem to operate on a scheduled sync every 10, 15 or 30 minutes. Which is fine at low volume but completely breaks down the moment anything sells quickly.</p>\n<p>What I think we actually need is something event-driven, where a sale on any channel immediately triggers an update everywhere else, rather than waiting for the next scheduled job to run.</p>\n<p>Has anyone solved this properly? Specifically looking for:</p>\n<p>-&gt; Real-time sync across Shopify and external marketplaces → Somthing that handles concurrent orders without overselling → Ideally a single dashboard for orders across all channels too</p>\n<p>Would genuinely love to know what’s working for people here whether that’s an App Store solution, a custom setup or something else entirely.</p>",
           "post_number": 1,
           "post_type": 1,
-          "posts_count": 6,
+          "posts_count": 7,
           "updated_at": "2026-04-17T09:50:48.978Z",
           "reply_count": 1,
           "reply_to_post_number": null,
           "quote_count": 0,
-          "incoming_link_count": 112,
-          "reads": 28,
-          "readers_count": 27,
-          "score": 585.6,
+          "incoming_link_count": 125,
+          "reads": 34,
+          "readers_count": 33,
+          "score": 666.8,
           "yours": false,
           "topic_id": 608148,
           "topic_slug": "has-anyone-built-a-reliable-multichannel-inventory-system-that-actually-keeps-up-during-flash-sales",
@@ -43,7 +43,7 @@
           "actions_summary": [
             {
               "id": 2,
-              "count": 1
+              "count": 2
             }
           ],
           "moderator": false,
@@ -67,11 +67,11 @@
             {
               "id": "heart",
               "type": "emoji",
-              "count": 1
+              "count": 2
             }
           ],
           "current_user_reaction": null,
-          "reaction_users_count": 1,
+          "reaction_users_count": 2,
           "current_user_used_main_reaction": false,
           "can_accept_answer": false,
           "can_unaccept_answer": false,
@@ -87,15 +87,15 @@
           "cooked": "<p>Hey, what exact marketplaces do you sell on?</p>",
           "post_number": 2,
           "post_type": 1,
-          "posts_count": 6,
+          "posts_count": 7,
           "updated_at": "2026-04-23T07:30:55.454Z",
           "reply_count": 0,
           "reply_to_post_number": null,
           "quote_count": 0,
           "incoming_link_count": 1,
-          "reads": 16,
-          "readers_count": 15,
-          "score": 8.2,
+          "reads": 19,
+          "readers_count": 18,
+          "score": 8.8,
           "yours": false,
           "topic_id": 608148,
           "topic_slug": "has-anyone-built-a-reliable-multichannel-inventory-system-that-actually-keeps-up-during-flash-sales",
@@ -149,15 +149,15 @@
           "cooked": "<p>Hi,</p>\n<p>We’ve taken a similar approach to what you’re describing — polling for inventory changes every <em>n</em> minutes and pushing updates for anything that changed.</p>\n<p>In theory, real-time updates sound ideal, but in practice they don’t always solve the problem, especially when you don’t control the system on the other side.</p>\n<p>For example, with retailer integrations (Macys, Nordstrom, etc.), even if you send an 846 immediately, it can take 30–60 minutes before availability is actually reflected on their site. So the bottleneck just moves downstream. In the case of Nordstrom, you can send updates in real-time via the DSCO API, but there is still a delay before those updates propagate through Nordstrom’s internal systems and are reflected on their website.</p>\n<p>Shopify has similar constraints with API rate limits. You can only push so many updates at once, so at higher volumes you can still end up with a backlog even if your system is “real-time.”</p>\n<p>What’s worked well for us is introducing a threshold buffer during high-volume events:</p>\n<ul>\n<li>\n<p>When inventory drops to or below a configured threshold, we publish <strong>0</strong> instead of the actual available quantity</p>\n</li>\n<li>\n<p>This avoids overselling and downstream cancellations</p>\n</li>\n<li>\n<p>Tradeoff is potentially leaving some units unsold after the event</p>\n</li>\n</ul>\n<p>We’ve also implemented channel-specific inventory reservations, which helps eliminate race conditions entirely for controlled scenarios (e.g., flash sales tied to a specific channel).</p>",
           "post_number": 4,
           "post_type": 1,
-          "posts_count": 6,
+          "posts_count": 7,
           "updated_at": "2026-04-24T21:33:31.829Z",
           "reply_count": 0,
           "reply_to_post_number": null,
           "quote_count": 0,
-          "incoming_link_count": 1,
-          "reads": 14,
-          "readers_count": 13,
-          "score": 22.8,
+          "incoming_link_count": 2,
+          "reads": 18,
+          "readers_count": 17,
+          "score": 28.6,
           "yours": false,
           "topic_id": 608148,
           "topic_slug": "has-anyone-built-a-reliable-multichannel-inventory-system-that-actually-keeps-up-during-flash-sales",
@@ -223,15 +223,15 @@
           "cooked": "<aside class=\"quote no-group quote-modified\" data-username=\"Techspawn2\" data-post=\"1\" data-topic=\"608148\" data-full=\"true\">\n<div class=\"title\">\n<div class=\"quote-controls\"></div>\n<img alt=\"\" width=\"24\" height=\"24\" src=\"https://avatars.discourse-cdn.com/v4/letter/t/b5ac83/48.png\" class=\"avatar\"> Techspawn2:</div>\n<blockquote></blockquote>\n</aside>\n<p>Hello,</p>\n<p>We had a very similar issue, especially during promotions when orders could come in from different channels at almost the same time. Scheduled inventory syncs were fine normally, but during busy periods they could definitely lead to overselling.</p>\n<p>We ended up using <strong>Commercium by ConstaCloud</strong>, and it helped us move away from relying purely on fixed-interval syncing. It connects Shopify with marketplaces and keeps inventory and orders synchronized across the channels, with a single place to manage the different sales channels.</p>\n<p>If the main issue you’re having is the delay between a sale and the inventory update on your other channels, it might be worth checking out. I’d still recommend discussing your specific flash-sale scenario with their team to make sure the marketplaces you’re using support the real-time/event-based flows you need.</p>\n<p>You can have a look here: <a href=\"https://constacloud.com/commercium/index.html\" class=\"inline-onebox\" rel=\"noopener nofollow ugc\">Commerce Orchestration System | Commercium by ConstaCloud</a></p>",
           "post_number": 6,
           "post_type": 1,
-          "posts_count": 6,
+          "posts_count": 7,
           "updated_at": "2026-10-05T11:19:41.901Z",
           "reply_count": 0,
           "reply_to_post_number": null,
           "quote_count": 1,
-          "incoming_link_count": 2,
-          "reads": 8,
-          "readers_count": 7,
-          "score": 11.6,
+          "incoming_link_count": 3,
+          "reads": 13,
+          "readers_count": 12,
+          "score": 17.6,
           "yours": false,
           "topic_id": 608148,
           "topic_slug": "has-anyone-built-a-reliable-multichannel-inventory-system-that-actually-keeps-up-during-flash-sales",
@@ -295,15 +295,15 @@
           "cooked": "<p>For Etsy specifically, an inventory update is a full listing-inventory write (all variations at once), not a single quantity change, so “real-time” is bounded by how the app batches writes and by Etsy’s rate limits. During a drop, a threshold rule (publish 0 below N units on the secondary channel) is the safest net.</p>\n<p>Disclosure: I’m the founder of StockPont, a Shopify↔Etsy sync for EU sellers, pre-launch: <a href=\"https://stockpont.com/en\" class=\"inline-onebox\" rel=\"noopener nofollow ugc\">Etsy &amp; Shopify guides for sellers | StockPont</a></p>",
           "post_number": 7,
           "post_type": 1,
-          "posts_count": 6,
+          "posts_count": 7,
           "updated_at": "2026-10-13T20:33:17.916Z",
           "reply_count": 0,
           "reply_to_post_number": null,
           "quote_count": 0,
-          "incoming_link_count": 0,
-          "reads": 5,
-          "readers_count": 4,
-          "score": 1.0,
+          "incoming_link_count": 1,
+          "reads": 9,
+          "readers_count": 8,
+          "score": 6.8,
           "yours": false,
           "topic_id": 608148,
           "topic_slug": "has-anyone-built-a-reliable-multichannel-inventory-system-that-actually-keeps-up-during-flash-sales",
@@ -366,15 +366,15 @@
           "cooked": "<p>Brian’s point about downstream delay is important. One Shopify-side piece I’d add is that you can use an <code>orders/create</code> webhook to trigger sync work instead of waiting for the next scheduled poll. That’s near-real-time notification, though, not a guarantee that every channel has updated before the next customer buys.</p>\n<p>I’d put those notifications through a queue, deduplicate processing, and keep a periodic reconciliation job. Shopify doesn’t guarantee webhook ordering or delivery, so replacing polling entirely with webhooks would leave another way for inventory to drift. Also avoid subtracting a Shopify sale twice: receiving its notification doesn’t mean Shopify hasn’t already adjusted stock.</p>\n<p>For an external inventory system acting as the source of truth, <code>inventorySetQuantities</code> has a compare-and-set check to reject stale Shopify writes. If it fails, reconcile and recalculate the intended quantity before retrying. That protects the write; it doesn’t reserve the last unit across independent marketplace checkouts. Brian’s channel-allocation or buffer approach still matters for that gap, and a buffer reduces risk rather than guaranteeing zero oversells.</p>\n<p>When evaluating an app, I’d ask it to demonstrate two simultaneous orders for the last unit, a delayed or duplicate event, and recovery after downtime on your actual channels. That would tell you more than a “real-time sync” label.</p>\n<p>Shopify’s webhook caveats: <a href=\"https://shopify.dev/docs/apps/build/webhooks#what-to-expect\" class=\"inline-onebox\" rel=\"noopener nofollow ugc\">About webhooks</a></p>\n<p>--<br>\nCuong, founder of Trooix</p>",
           "post_number": 8,
           "post_type": 1,
-          "posts_count": 6,
+          "posts_count": 7,
           "updated_at": "2026-10-16T03:19:07.140Z",
           "reply_count": 0,
           "reply_to_post_number": null,
           "quote_count": 0,
-          "incoming_link_count": 0,
-          "reads": 2,
-          "readers_count": 1,
-          "score": 0.4,
+          "incoming_link_count": 1,
+          "reads": 8,
+          "readers_count": 7,
+          "score": 6.6,
           "yours": false,
           "topic_id": 608148,
           "topic_slug": "has-anyone-built-a-reliable-multichannel-inventory-system-that-actually-keeps-up-during-flash-sales",
@@ -428,6 +428,68 @@
           "can_unaccept_answer": false,
           "accepted_answer": false,
           "topic_accepted_answer": null
+        },
+        {
+          "id": 1942658,
+          "username": "JaumeG",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/j/7ea924/{size}.png",
+          "created_at": "2026-11-17T09:35:42.128Z",
+          "cooked": "<p>Event-driven updates can shorten the delay, but they cannot reserve the same last unit across independent marketplace checkouts. I would first measure each channel’s order-event latency, inventory-write latency and storefront propagation time during a controlled test.</p>\n<p>Use one inventory ledger as the authority. Process Shopify and marketplace order events through an idempotent queue, reject stale writes with version or compare-and-set checks, and run periodic reconciliation for missed or out-of-order events. During a flash sale, allocate stock per channel or publish zero below a safety threshold based on the slowest channel’s observed delay and order rate. That may leave units unsold, but it makes the risk explicit.</p>\n<p>Before choosing an app, ask it to demonstrate your exact marketplaces with two simultaneous orders for the final unit, a duplicate event, a delayed event and recovery after downtime. Also confirm whether its dashboard shows accepted orders only or the inventory state each channel has actually published.</p>\n<p>Disclosure: I work on Girofeeds. To improve the system on cases like this, we can run the solution free in Girofeeds with free tokens; if it helps, we’ll provide free access to connect it—message me privately here.</p>",
+          "post_number": 9,
+          "post_type": 1,
+          "posts_count": 7,
+          "updated_at": "2026-11-17T09:35:42.128Z",
+          "reply_count": 0,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 1,
+          "readers_count": 0,
+          "score": 0.2,
+          "yours": false,
+          "topic_id": 608148,
+          "topic_slug": "has-anyone-built-a-reliable-multichannel-inventory-system-that-actually-keeps-up-during-flash-sales",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": null,
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1632828,
+          "hidden": false,
+          "trust_level": 1,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/has-anyone-built-a-reliable-multichannel-inventory-system-that-actually-keeps-up-during-flash-sales/608148/9",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
         }
       ],
       "stream": [
@@ -436,32 +498,37 @@
         1782323,
         1906050,
         1913521,
-        1915498
+        1915498,
+        1942658
       ]
     },
     "timeline_lookup": [
       [
         1,
-        182
+        214
       ],
       [
         2,
-        176
+        208
       ],
       [
         3,
-        174
+        207
       ],
       [
         4,
-        11
+        43
       ],
       [
         5,
-        2
+        35
       ],
       [
         6,
+        32
+      ],
+      [
+        7,
         0
       ]
     ],
@@ -473,10 +540,17 @@
             108
           ]
         },
+        "1553792": {
+          "id": 1553792,
+          "badge_ids": [
+            108
+          ]
+        },
         "1573052": {
           "id": 1573052,
           "badge_ids": [
-            109
+            109,
+            116
           ]
         },
         "1618621": {
@@ -505,15 +579,15 @@
           "badge_grouping_id": 9,
           "badge_type_id": 1
         },
-        "110": {
-          "id": 110,
-          "name": "50 Posts",
-          "slug": "50-posts",
-          "description": "Way to go! You've posted 50 times in the Shopify Community",
+        "19": {
+          "id": 19,
+          "name": "Good Topic",
+          "slug": "good-topic",
+          "description": "Received 25 likes on a topic",
           "icon": "file-signature",
           "image_url": null,
-          "badge_grouping_id": 7,
-          "badge_type_id": 3
+          "badge_grouping_id": 3,
+          "badge_type_id": 2
         },
         "7": {
           "id": 7,
@@ -525,25 +599,15 @@
           "badge_grouping_id": 3,
           "badge_type_id": 2
         },
-        "19": {
-          "id": 19,
-          "name": "Good Topic",
-          "slug": "good-topic",
-          "description": "Received 25 likes on a topic",
-          "icon": "file-signature",
-          "image_url": null,
-          "badge_grouping_id": 3,
-          "badge_type_id": 2
-        },
-        "114": {
-          "id": 114,
-          "name": "1000 Posts",
-          "slug": "1000-posts",
-          "description": "You're a member of the 1000 posts club!",
+        "112": {
+          "id": 112,
+          "name": "250 Posts",
+          "slug": "250-posts",
+          "description": "250 posts! Thanks for being an engaged member of the Shopify Community",
           "icon": "file-signature",
           "image_url": null,
           "badge_grouping_id": 7,
-          "badge_type_id": 1
+          "badge_type_id": 2
         },
         "32": {
           "id": 32,
@@ -555,15 +619,25 @@
           "badge_grouping_id": 2,
           "badge_type_id": 2
         },
-        "109": {
-          "id": 109,
-          "name": "25 Posts",
-          "slug": "25-posts",
-          "description": "With 25 posts submitted, you help keep the conversations going",
+        "110": {
+          "id": 110,
+          "name": "50 Posts",
+          "slug": "50-posts",
+          "description": "Way to go! You've posted 50 times in the Shopify Community",
           "icon": "file-signature",
           "image_url": null,
           "badge_grouping_id": 7,
           "badge_type_id": 3
+        },
+        "114": {
+          "id": 114,
+          "name": "1000 Posts",
+          "slug": "1000-posts",
+          "description": "You're a member of the 1000 posts club!",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 1
         },
         "113": {
           "id": 113,
@@ -575,14 +649,14 @@
           "badge_grouping_id": 7,
           "badge_type_id": 1
         },
-        "112": {
-          "id": 112,
-          "name": "250 Posts",
-          "slug": "250-posts",
-          "description": "250 posts! Thanks for being an engaged member of the Shopify Community",
-          "icon": "file-signature",
+        "46": {
+          "id": 46,
+          "name": "Aficionado",
+          "slug": "aficionado",
+          "description": "Visited 100 consecutive days",
+          "icon": "far-eye",
           "image_url": null,
-          "badge_grouping_id": 7,
+          "badge_grouping_id": 2,
           "badge_type_id": 2
         },
         "111": {
@@ -595,24 +669,24 @@
           "badge_grouping_id": 7,
           "badge_type_id": 2
         },
-        "46": {
-          "id": 46,
-          "name": "Aficionado",
-          "slug": "aficionado",
-          "description": "Visited 100 consecutive days",
-          "icon": "far-eye",
+        "109": {
+          "id": 109,
+          "name": "25 Posts",
+          "slug": "25-posts",
+          "description": "With 25 posts submitted, you help keep the conversations going",
+          "icon": "file-signature",
           "image_url": null,
-          "badge_grouping_id": 2,
-          "badge_type_id": 2
+          "badge_grouping_id": 7,
+          "badge_type_id": 3
         },
-        "3": {
-          "id": 3,
-          "name": "Regular",
-          "slug": "regular",
-          "description": "Awarded at Trust Level 3. Recognized for regular contributions as a trusted user.",
-          "icon": "user",
+        "120": {
+          "id": 120,
+          "name": "250 Likes",
+          "slug": "250-likes",
+          "description": "Your expertise has earned you 250 likes!",
+          "icon": "thumbs-up",
           "image_url": null,
-          "badge_grouping_id": 4,
+          "badge_grouping_id": 8,
           "badge_type_id": 2
         },
         "122": {
@@ -655,16 +729,6 @@
           "badge_grouping_id": 6,
           "badge_type_id": 3
         },
-        "119": {
-          "id": 119,
-          "name": "100 Likes",
-          "slug": "100-likes",
-          "description": "Your contributions have earned you 100 likes",
-          "icon": "thumbs-up",
-          "image_url": null,
-          "badge_grouping_id": 8,
-          "badge_type_id": 2
-        },
         "126": {
           "id": 126,
           "name": "50 Accepted Solutions",
@@ -674,6 +738,16 @@
           "image_url": null,
           "badge_grouping_id": 9,
           "badge_type_id": 3
+        },
+        "3": {
+          "id": 3,
+          "name": "Regular",
+          "slug": "regular",
+          "description": "Awarded at Trust Level 3. Recognized for regular contributions as a trusted user.",
+          "icon": "user",
+          "image_url": null,
+          "badge_grouping_id": 4,
+          "badge_type_id": 2
         },
         "125": {
           "id": 125,
@@ -685,11 +759,11 @@
           "badge_grouping_id": 9,
           "badge_type_id": 3
         },
-        "120": {
-          "id": 120,
-          "name": "250 Likes",
-          "slug": "250-likes",
-          "description": "Your expertise has earned you 250 likes!",
+        "119": {
+          "id": 119,
+          "name": "100 Likes",
+          "slug": "100-likes",
+          "description": "Your contributions have earned you 100 likes",
           "icon": "thumbs-up",
           "image_url": null,
           "badge_grouping_id": 8,
@@ -715,21 +789,21 @@
           "badge_grouping_id": 9,
           "badge_type_id": 1
         },
-        "116": {
-          "id": 116,
-          "name": "10 Likes",
-          "slug": "10-likes",
-          "description": "You've received 10 likes",
-          "icon": "thumbs-up",
-          "image_url": null,
-          "badge_grouping_id": 8,
-          "badge_type_id": 3
-        },
         "118": {
           "id": 118,
           "name": "50 Likes",
           "slug": "50-likes",
           "description": "Your contributions have earned you 50 likes",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 3
+        },
+        "116": {
+          "id": 116,
+          "name": "10 Likes",
+          "slug": "10-likes",
+          "description": "You've received 10 likes",
           "icon": "thumbs-up",
           "image_url": null,
           "badge_grouping_id": 8,
@@ -745,14 +819,14 @@
           "badge_grouping_id": 9,
           "badge_type_id": 2
         },
-        "117": {
-          "id": 117,
-          "name": "25 Likes",
-          "slug": "25-likes",
-          "description": "With 25 likes, your posts are popular",
-          "icon": "thumbs-up",
+        "124": {
+          "id": 124,
+          "name": "10 Accepted Solutions",
+          "slug": "10-accepted-solutions",
+          "description": "10 of your replies have been accepted as solutions",
+          "icon": "check",
           "image_url": null,
-          "badge_grouping_id": 8,
+          "badge_grouping_id": 9,
           "badge_type_id": 3
         },
         "108": {
@@ -765,14 +839,14 @@
           "badge_grouping_id": 7,
           "badge_type_id": 3
         },
-        "124": {
-          "id": 124,
-          "name": "10 Accepted Solutions",
-          "slug": "10-accepted-solutions",
-          "description": "10 of your replies have been accepted as solutions",
-          "icon": "check",
+        "117": {
+          "id": 117,
+          "name": "25 Likes",
+          "slug": "25-likes",
+          "description": "With 25 likes, your posts are popular",
+          "icon": "thumbs-up",
           "image_url": null,
-          "badge_grouping_id": 9,
+          "badge_grouping_id": 8,
           "badge_type_id": 3
         }
       }
@@ -789,12 +863,12 @@
     "fancy_title": "Has anyone built a reliable multichannel inventory system that actually keeps up during flash sales?",
     "id": 608148,
     "title": "Has anyone built a reliable multichannel inventory system that actually keeps up during flash sales?",
-    "posts_count": 6,
+    "posts_count": 7,
     "created_at": "2026-04-17T09:50:48.789Z",
-    "views": 333,
+    "views": 508,
     "reply_count": 1,
-    "like_count": 2,
-    "last_posted_at": "2026-10-16T03:19:07.140Z",
+    "like_count": 3,
+    "last_posted_at": "2026-11-17T09:35:42.128Z",
     "visible": true,
     "closed": false,
     "archived": false,
@@ -802,7 +876,7 @@
     "archetype": "regular",
     "slug": "has-anyone-built-a-reliable-multichannel-inventory-system-that-actually-keeps-up-during-flash-sales",
     "category_id": 186,
-    "word_count": 960,
+    "word_count": 1161,
     "deleted_at": null,
     "user_id": 1618621,
     "featured_link": null,
@@ -817,7 +891,7 @@
     "unpinned": null,
     "pinned": false,
     "current_post_number": 1,
-    "highest_post_number": 8,
+    "highest_post_number": 9,
     "deleted_by": null,
     "actions_summary": [
       {
@@ -860,11 +934,12 @@
     "chunk_size": 20,
     "bookmarked": false,
     "topic_timer": null,
-    "message_bus_last_id": 18,
-    "participant_count": 6,
+    "message_bus_last_id": 5,
+    "participant_count": 7,
     "show_read_indicator": false,
     "thumbnails": null,
     "slow_mode_enabled_until": null,
+    "board_memberships": [],
     "related_topics": [
       {
         "fancy_title": "Check your inventory app&rsquo;s sync frequency — most sellers don&rsquo;t realise what it actually is",
@@ -898,7 +973,7 @@
         ],
         "tags_descriptions": {},
         "like_count": 0,
-        "views": 222,
+        "views": 280,
         "category_id": 186,
         "featured_link": null,
         "op_like_count": 0,
@@ -968,7 +1043,7 @@
         ],
         "tags_descriptions": {},
         "like_count": 2,
-        "views": 785,
+        "views": 1040,
         "category_id": 186,
         "featured_link": null,
         "op_like_count": 1,
@@ -1034,12 +1109,12 @@
         "slug": "overselling-across-channels",
         "posts_count": 8,
         "reply_count": 1,
-        "highest_post_number": 11,
+        "highest_post_number": 12,
         "image_url": null,
         "created_at": "2026-01-06T13:08:25.390Z",
-        "last_posted_at": "2026-09-24T09:53:09.182Z",
+        "last_posted_at": "2026-11-14T07:24:11.384Z",
         "bumped": true,
-        "bumped_at": "2026-09-24T09:53:09.182Z",
+        "bumped_at": "2026-11-14T07:24:11.384Z",
         "archetype": "regular",
         "unseen": false,
         "pinned": false,
@@ -1064,7 +1139,7 @@
         ],
         "tags_descriptions": {},
         "like_count": 3,
-        "views": 667,
+        "views": 945,
         "category_id": 186,
         "featured_link": null,
         "op_like_count": 2,
@@ -1082,12 +1157,22 @@
           },
           {
             "extras": null,
-            "description": "Frequent Poster, Accepted Answer",
+            "description": "Accepted Answer",
             "user": {
               "id": 1585160,
               "username": "Shopifymerchant01",
               "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/s/ec9cab/{size}.png",
               "trust_level": 2
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 1638835,
+              "username": "akber",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/a/ed655f/{size}.png",
+              "trust_level": 1
             }
           },
           {
@@ -1101,22 +1186,12 @@
             }
           },
           {
-            "extras": null,
-            "description": "Recent Poster",
-            "user": {
-              "id": 1638835,
-              "username": "akber",
-              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/a/ed655f/{size}.png",
-              "trust_level": 1
-            }
-          },
-          {
             "extras": "latest",
             "description": "Most Recent Poster",
             "user": {
-              "id": 1640775,
-              "username": "LyleonChe",
-              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/l/779978/{size}.png",
+              "id": 1651399,
+              "username": "Kevin_l1",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/k/ba9def/{size}.png",
               "trust_level": 1
             }
           }
@@ -1154,7 +1229,7 @@
         ],
         "tags_descriptions": {},
         "like_count": 6,
-        "views": 181,
+        "views": 223,
         "category_id": 103,
         "featured_link": null,
         "op_like_count": 4,
@@ -1219,7 +1294,7 @@
         ],
         "tags_descriptions": {},
         "like_count": 0,
-        "views": 260,
+        "views": 299,
         "category_id": 186,
         "featured_link": null,
         "op_like_count": 0,
@@ -1265,14 +1340,15 @@
     "has_cached_summary": true,
     "ai_summary": {
       "id": 1565786,
-      "summarized_text": "Flash-sale inventory drift across Shopify and two marketplaces is causing overselling when scheduled syncs run every 10–30 minutes. The original poster is seeking fast cross-channel updates, protection against simultaneous orders, and ideally unified order management; no specific marketplaces were identified.\n\nReplies caution that “real-time” syncing cannot guarantee immediate availability everywhere: marketplace systems may take 30–60 minutes to reflect updates, and Shopify API limits can create backlogs. Suggested safeguards include publishing zero inventory once stock falls below a threshold and reserving inventory by channel, though buffers can leave stock unsold and reduce risk rather than eliminate it. A commenter also recommended Commercium, while an Etsy-focused reply noted that full-listing writes and rate limits constrain update speed.\n\nTechnical guidance favored Shopify order webhooks for near-real-time triggers, processed through a queue with deduplication and periodic reconciliation. Webhooks can arrive late, out of order, or more than once, so they should not replace reconciliation; compare-and-set inventory writes help reject stale updates but do not reserve the last unit across separate checkouts. Sellers are advised to test simultaneous last-unit orders, duplicate or delayed events, and downtime recovery on their actual channels. The discussion remains open, with no verified solution established.",
+      "summarized_text": "Flash sales expose delays in keeping Shopify and marketplace inventory aligned, causing sellers to accept orders they cannot fulfill. Scheduled syncs may work in normal trading, but event-driven updates are not a complete fix: marketplaces can take time to reflect changes, and Shopify API limits, webhook delays, or missed events can create backlogs or drift.\n\nSuggested safeguards include:\n- Use a single inventory ledger, process order events through a queued, deduplicated workflow, and periodically reconcile channel stock.\n- Reserve or allocate inventory by channel, or publish zero when stock falls below a safety threshold. These measures reduce overselling risk but may leave units unsold; independent checkouts cannot reliably reserve the same last unit.\n- Test apps on the actual marketplaces, including simultaneous orders for the last unit, duplicate or delayed events, and recovery after downtime. Measure update and storefront-propagation delays, not just advertised sync speed.\n\nOne commenter recommended a specific Shopify-marketplace app, but the thread provides no independent performance evidence or confirmed solution. The discussion remains open, with no universally reliable system established.",
       "algorithm": "gpt-6-luna",
       "outdated": false,
       "created_at": "2026-04-17T09:52:27.763Z",
-      "updated_at": "2026-10-16T03:19:56.526Z"
+      "updated_at": "2026-11-17T09:49:03.358Z"
     },
     "is_category_expert_question": null,
     "has_livestream": null,
+    "livestream_chat_active": false,
     "valid_reactions": [
       "heart",
       "+1",
@@ -1289,8 +1365,6 @@
     "can_vote": false,
     "vote_count": 0,
     "user_voted": false,
-    "discourse_zendesk_plugin_zendesk_id": null,
-    "discourse_zendesk_plugin_zendesk_url": "https://your-url.zendesk.com/agent/tickets/",
     "details": {
       "can_edit": false,
       "notification_level": 1,
@@ -1307,6 +1381,19 @@
           "flair_bg_color": null,
           "flair_group_id": null,
           "trust_level": 2
+        },
+        {
+          "id": 1632828,
+          "username": "JaumeG",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/j/7ea924/{size}.png",
+          "post_count": 1,
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 1
         },
         {
           "id": 1646184,
@@ -1380,9 +1467,9 @@
         "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/t/b5ac83/{size}.png"
       },
       "last_poster": {
-        "id": 1630267,
-        "username": "cuongnm_trooix",
-        "avatar_template": "/user_avatar/community.shopify.com/cuongnm_trooix/{size}/407395_2.png"
+        "id": 1632828,
+        "username": "JaumeG",
+        "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/j/7ea924/{size}.png"
       }
     },
     "bookmarks": []
@@ -1417,6 +1504,12 @@
       "text": "Brian’s point about downstream delay is important. One Shopify-side piece I’d add is that you can use an  orders/create  webhook to trigger sync work instead of waiting for the next scheduled poll. That’s near-real-time notification, though, not a guarantee that every channel has updated before the next customer buys. \n I’d put those notifications through a queue, deduplicate processing, and keep a periodic reconciliation job. Shopify doesn’t guarantee webhook ordering or delivery, so replacing polling entirely with webhooks would leave another way for inventory to drift. Also avoid subtracting a Shopify sale twice: receiving its notification doesn’t mean Shopify hasn’t already adjusted stock. \n For an external inventory system acting as the source of truth,  inventorySetQuantities  has a compare-and-set check to reject stale Shopify writes. If it fails, reconcile and recalculate the intended quantity before retrying. That protects the write; it doesn’t reserve the last unit across independent marketplace checkouts. Brian’s channel-allocation or buffer approach still matters for that gap, and a buffer reduces risk rather than guaranteeing zero oversells. \n When evaluating an app, I’d ask it to demonstrate two simultaneous orders for the last unit, a delayed or duplicate event, and recovery after downtime on your actual channels. That would tell you more than a “real-time sync” label. \n Shopify’s webhook caveats:  About webhooks  \n -- \nCuong, founder of Trooix",
       "at": "2026-10-16T03:19:07.140Z",
       "url": "https://community.shopify.com/t/has-anyone-built-a-reliable-multichannel-inventory-system-that-actually-keeps-up-during-flash-sales/608148/8"
+    },
+    {
+      "author": "JaumeG",
+      "text": "Event-driven updates can shorten the delay, but they cannot reserve the same last unit across independent marketplace checkouts. I would first measure each channel’s order-event latency, inventory-write latency and storefront propagation time during a controlled test. \n Use one inventory ledger as the authority. Process Shopify and marketplace order events through an idempotent queue, reject stale writes with version or compare-and-set checks, and run periodic reconciliation for missed or out-of-order events. During a flash sale, allocate stock per channel or publish zero below a safety threshold based on the slowest channel’s observed delay and order rate. That may leave units unsold, but it makes the risk explicit. \n Before choosing an app, ask it to demonstrate your exact marketplaces with two simultaneous orders for the final unit, a duplicate event, a delayed event and recovery after downtime. Also confirm whether its dashboard shows accepted orders only or the inventory state each channel has actually published. \n Disclosure: I work on Girofeeds. To improve the system on cases like this, we can run the solution free in Girofeeds with free tokens; if it helps, we’ll provide free access to connect it—message me privately here.",
+      "at": "2026-11-17T09:35:42.128Z",
+      "url": "https://community.shopify.com/t/has-anyone-built-a-reliable-multichannel-inventory-system-that-actually-keeps-up-during-flash-sales/608148/9"
     }
   ],
   "comments_complete": true

@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/44090",
+  "collected_at": "2026-11-17T10:40:42.801876+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/44090",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/44090/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/44090/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/44090/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/44090",
+    "id": 6424381968,
+    "node_id": "I_kwDOC4Q8Qs8AAAABfuxKEA",
+    "number": 44090,
+    "title": "Editor: Step and question arrows in the AI builder are hardcoded English",
+    "user": {
+      "login": "Pushkal-Gupta",
+      "id": 161060351,
+      "node_id": "U_kgDOCZmV_w",
+      "avatar_url": "https://avatars.githubusercontent.com/u/161060351?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Pushkal-Gupta",
+      "html_url": "https://github.com/Pushkal-Gupta",
+      "followers_url": "https://api.github.com/users/Pushkal-Gupta/followers",
+      "following_url": "https://api.github.com/users/Pushkal-Gupta/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Pushkal-Gupta/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Pushkal-Gupta/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Pushkal-Gupta/subscriptions",
+      "organizations_url": "https://api.github.com/users/Pushkal-Gupta/orgs",
+      "repos_url": "https://api.github.com/users/Pushkal-Gupta/repos",
+      "events_url": "https://api.github.com/users/Pushkal-Gupta/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Pushkal-Gupta/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-16T15:17:48Z",
+    "updated_at": "2026-11-16T15:18:00Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nIn the AI builder chat on the canvas, some navigation text is written in English straight into the code, so it does not get translated:\n\n- In plan mode, the question card has back and forward arrows. Their labels, \"Previous question\" and \"Next question\", are hardcoded.\n- The setup cards that the builder shows after it builds a workflow have the step arrows \"Previous step\" and \"Next step\", and a step counter such as \"2 of 4\". All three are hardcoded.\n\nhttps://github.com/n8n-io/n8n/blob/5ee5c2bf152c1a5c6eb0c1183a8d4c9b202ed4bf/packages/frontend/editor-ui/src/features/ai/assistant/components/Agent/PlanQuestionsMessage.vue#L549\n\nhttps://github.com/n8n-io/n8n/blob/5ee5c2bf152c1a5c6eb0c1183a8d4c9b202ed4bf/packages/frontend/editor-ui/src/features/ai/assistant/components/Agent/PlanQuestionsMessage.vue#L565\n\nhttps://github.com/n8n-io/n8n/blob/5ee5c2bf152c1a5c6eb0c1183a8d4c9b202ed4bf/packages/frontend/editor-ui/src/features/ai/assistant/components/Agent/BuilderSetupCard.vue#L208-L221\n\nhttps://github.com/n8n-io/n8n/blob/5ee5c2bf152c1a5c6eb0c1183a8d4c9b202ed4bf/packages/frontend/editor-ui/src/features/ai/assistant/components/Agent/BuilderNodeGroupCard.vue#L235-L248\n\nThe setup wizard in n8n Assistant already uses i18n keys for the same arrows and counter (`instanceAi.workflowSetup.prevStep`, `nextStep` and `stepCounter`).\n\n### To Reproduce\n\n1. Set the UI to a language other than English.\n2. Open a workflow and open the AI builder chat.\n3. Switch the mode to **Plan** and ask for a workflow.\n4. When the builder asks its questions, inspect the arrows next to the question counter. Their labels are still in English.\n\nThe setup cards only show for instances in the AI builder setup wizard experiment. When they do, their arrows and the \"2 of 4\" counter are also still in English.\n\n### Expected behavior\n\nThe arrow labels and the step counter show in the selected language.\n\n### Debug Info\n\nI found this while reading the code on `master` (2.48.0). The text is written into the code, so it happens on every setup.\n\n### Environment\n\n- Operating System: macOS (platform independent)\n- n8n Version: 2.48.0 (`master`)\n- Node.js Version: 24.x\n- Database: n/a\n- Execution mode: n/a\n\n### Note\n\nI have a fix ready and will open a PR.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/44090/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/44090/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @Pushkal-Gupta,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9790\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9790](https://linear.app/n8n/issue/GHC-9790)",
+      "at": "2026-11-16T15:17:58Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44090#issuecomment-6920512222"
+    }
+  ],
+  "comments_complete": true
+}

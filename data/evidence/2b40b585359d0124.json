@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50471281",
-  "collected_at": "2026-11-16T09:36:31.158430+00:00",
+  "collected_at": "2026-11-17T10:40:42.801876+00:00",
   "source": {
     "author": "alirezamshi",
     "children": [
@@ -210,7 +210,55 @@
       },
       {
         "author": "alsiola",
-        "children": [],
+        "children": [
+          {
+            "author": "granthamctaylor",
+            "children": [
+              {
+                "author": "alsiola",
+                "children": [
+                  {
+                    "author": "alirezamshi",
+                    "children": [],
+                    "created_at": "2026-11-16T23:43:07.000Z",
+                    "created_at_i": 1794872587,
+                    "id": 50525225,
+                    "options": [],
+                    "parent_id": 50518673,
+                    "points": null,
+                    "story_id": 50471281,
+                    "text": "Hey, congrats on being +0.1% better on one of the categories of Relbench v1. Is there an open-source repo for your framework that achieved this performance? Would like to understand its generality and other aspects. Thanks in avdance :)",
+                    "title": null,
+                    "type": "comment",
+                    "url": null
+                  }
+                ],
+                "created_at": "2026-11-16T15:32:42.000Z",
+                "created_at_i": 1794843162,
+                "id": 50518673,
+                "options": [],
+                "parent_id": 50518108,
+                "points": null,
+                "story_id": 50471281,
+                "text": "Agree - that&#x27;s why my submission is completely open, and can be examined and criticised at will",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-11-16T14:43:09.000Z",
+            "created_at_i": 1794840189,
+            "id": 50518108,
+            "options": [],
+            "parent_id": 50515674,
+            "points": null,
+            "story_id": 50471281,
+            "text": "Thank you for your comment here: you are proving a very valuable point...<p>Relbench is a bad benchmark. They say so on their own site:<p>&gt; The RelBench leaderboard uses self-reported prediction files, so we rely on the authors to submit in good faith. Submissions must follow the rules.<p>&gt; For a more controlled and transparent evaluation on RelBench tasks, please see RelArena.<p>Relbench result publications can _easily_ be rigged:<p>- Data Leakage<p>- Self Reported predictions<p>- Overfit directly to test data with &quot;impractical&quot; solutions (a million handcrafted features)<p>RelArena requires reproducible solutions, prevents hand crafted features, prevents data leakage in the close model runtime, prevents arbitrary hyperparameters per task.<p>Relbench is basically &quot;trust me bro&quot;",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
         "created_at": "2026-11-16T09:29:27.000Z",
         "created_at_i": 1794821367,
         "id": 50515674,
@@ -320,6 +368,24 @@
       "text": "Hi guys, cool product and wish you the best with it :) Unfortunately, you are no longer number 1 on RelBench Recommendation leaderboard... as the developer of an agent orchestration platform (not shilling it here, you'll be able to find it if you want to), I wanted to see how my stochastic friends would do if I let them have a crack. Arms race?",
       "at": "2026-11-16T09:29:27.000Z",
       "url": "https://news.ycombinator.com/item?id=50515674"
+    },
+    {
+      "author": "granthamctaylor",
+      "text": "Thank you for your comment here: you are proving a very valuable point... Relbench is a bad benchmark. They say so on their own site: > The RelBench leaderboard uses self-reported prediction files, so we rely on the authors to submit in good faith. Submissions must follow the rules. > For a more controlled and transparent evaluation on RelBench tasks, please see RelArena. Relbench result publications can _easily_ be rigged: - Data Leakage - Self Reported predictions - Overfit directly to test data with \"impractical\" solutions (a million handcrafted features) RelArena requires reproducible solutions, prevents hand crafted features, prevents data leakage in the close model runtime, prevents arbitrary hyperparameters per task. Relbench is basically \"trust me bro\"",
+      "at": "2026-11-16T14:43:09.000Z",
+      "url": "https://news.ycombinator.com/item?id=50518108"
+    },
+    {
+      "author": "alsiola",
+      "text": "Agree - that's why my submission is completely open, and can be examined and criticised at will",
+      "at": "2026-11-16T15:32:42.000Z",
+      "url": "https://news.ycombinator.com/item?id=50518673"
+    },
+    {
+      "author": "alirezamshi",
+      "text": "Hey, congrats on being +0.1% better on one of the categories of Relbench v1. Is there an open-source repo for your framework that achieved this performance? Would like to understand its generality and other aspects. Thanks in avdance :)",
+      "at": "2026-11-16T23:43:07.000Z",
+      "url": "https://news.ycombinator.com/item?id=50525225"
     }
   ],
   "comments_complete": true

@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50455811",
-  "collected_at": "2026-11-16T09:36:31.158430+00:00",
+  "collected_at": "2026-11-17T10:40:42.801876+00:00",
   "source": {
     "author": "alanjm23",
     "children": [
@@ -759,6 +759,21 @@
         "title": null,
         "type": "comment",
         "url": null
+      },
+      {
+        "author": "BtoAgent",
+        "children": [],
+        "created_at": "2026-11-16T23:55:59.000Z",
+        "created_at_i": 1794873359,
+        "id": 50525364,
+        "options": [],
+        "parent_id": 50455811,
+        "points": null,
+        "story_id": 50455811,
+        "text": "Congrats on the launch. Curious about the e-commerce side: do you see store owners using Pomerado to make their own shops agent-readable, or is it mostly consumers automating other people&#x27;s sites? From the owner&#x27;s side it&#x27;s striking how often no API layer is needed at all - the catalog is already public, just buried behind client-side rendering and lazy-loaded prices, and fixing that gets you most of the way.",
+        "title": null,
+        "type": "comment",
+        "url": null
       }
     ],
     "created_at": "2026-11-11T17:11:56.000Z",
@@ -1067,6 +1082,12 @@
       "text": "My worry would be compliance. On Salesforce projects, security teams approve an integration user with narrow permissions and an audit log much sooner than any kind of browser automation. Can the generated MCP run under a dedicated service account and log every call? Then I could bring it to a client's security review.",
       "at": "2026-11-15T19:48:15.000Z",
       "url": "https://news.ycombinator.com/item?id=50510026"
+    },
+    {
+      "author": "BtoAgent",
+      "text": "Congrats on the launch. Curious about the e-commerce side: do you see store owners using Pomerado to make their own shops agent-readable, or is it mostly consumers automating other people's sites? From the owner's side it's striking how often no API layer is needed at all - the catalog is already public, just buried behind client-side rendering and lazy-loaded prices, and fixing that gets you most of the way.",
+      "at": "2026-11-16T23:55:59.000Z",
+      "url": "https://news.ycombinator.com/item?id=50525364"
     }
   ],
   "comments_complete": true

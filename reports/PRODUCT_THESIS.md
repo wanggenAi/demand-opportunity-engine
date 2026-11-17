@@ -7,7 +7,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## workflow_reliability — UNVALIDATED CLUSTER
 
-- independent_demand_count: 117
+- independent_demand_count: 122
 - payment_evidence_count: 1
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community', 'n8n Community']
 - communities: ['Agenta-AI/agenta', "Ask HN: What's your current AI agentic setup?", 'Ask/Show HN', 'Commerce operator forum', "Show HN: Glassbrain – Read your agent's brain, know what your agent knows", '[dead]', 'farmmer938-lgtm/autonomous-zero-baht', 'n8n Jobs', 'n8n-io/n8n', 'useagenthq/useagent']
@@ -20,12 +20,12 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
-  - https://github.com/n8n-io/n8n/issues/43964
-  - https://github.com/n8n-io/n8n/issues/43956
-  - https://github.com/n8n-io/n8n/issues/43932
-  - https://github.com/n8n-io/n8n/issues/43926
-  - https://github.com/n8n-io/n8n/issues/43924
-  - https://github.com/n8n-io/n8n/issues/43916
+  - https://github.com/n8n-io/n8n/issues/44157
+  - https://github.com/n8n-io/n8n/issues/44145
+  - https://github.com/n8n-io/n8n/issues/44139
+  - https://github.com/n8n-io/n8n/issues/44101
+  - https://news.ycombinator.com/item?id=50518749
+  - https://github.com/n8n-io/n8n/issues/44090
 
 ## supplier_sourcing — UNVALIDATED CLUSTER
 

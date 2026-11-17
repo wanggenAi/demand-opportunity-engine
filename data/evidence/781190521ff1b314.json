@@ -1,0 +1,123 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/44084",
+  "collected_at": "2026-11-17T10:40:42.801876+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/44084",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/44084/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/44084/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/44084/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/44084",
+    "id": 6424313571,
+    "node_id": "I_kwDOC4Q8Qs8AAAABfus-4w",
+    "number": 44084,
+    "title": "Editor: Rendered and JSON switch in AI node logs is hardcoded English",
+    "user": {
+      "login": "Pushkal-Gupta",
+      "id": 161060351,
+      "node_id": "U_kgDOCZmV_w",
+      "avatar_url": "https://avatars.githubusercontent.com/u/161060351?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Pushkal-Gupta",
+      "html_url": "https://github.com/Pushkal-Gupta",
+      "followers_url": "https://api.github.com/users/Pushkal-Gupta/followers",
+      "following_url": "https://api.github.com/users/Pushkal-Gupta/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Pushkal-Gupta/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Pushkal-Gupta/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Pushkal-Gupta/subscriptions",
+      "organizations_url": "https://api.github.com/users/Pushkal-Gupta/orgs",
+      "repos_url": "https://api.github.com/users/Pushkal-Gupta/repos",
+      "events_url": "https://api.github.com/users/Pushkal-Gupta/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Pushkal-Gupta/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582010757,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cXhQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:nodes",
+        "name": "team:nodes",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Nodes team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-16T15:14:20Z",
+    "updated_at": "2026-11-16T15:24:55Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nWhen you open an AI node after a run, such as an AI Agent, the **Logs** view in the output panel shows each input and output block with a small switch: \"Rendered\" and \"JSON\". These two labels are written in English straight into the code, so they do not get translated.\n\nhttps://github.com/n8n-io/n8n/blob/d919f0f131c358fee20142c1e719bf6ee803c96f/packages/frontend/editor-ui/src/features/ndv/runData/components/ai/AiRunContentBlock.vue#L108-L109\n\nThe display mode switch above the output already uses `runData.rendered` and `runData.json` for the same words.\n\n### To Reproduce\n\n1. Set the UI to a language other than English.\n2. Run a workflow with an AI Agent node and a chat model.\n3. Open the AI Agent node and go to the **Logs** view in the output panel.\n4. Look at an input or output block. The \"Rendered\" and \"JSON\" switch is still in English.\n\n### Expected behavior\n\nThe switch labels show in the selected language, like the display mode switch above them.\n\n### Debug Info\n\nI found this while reading the code on `master` (2.48.0). The text is written into the code, so it happens on every setup.\n\n### Environment\n\n- Operating System: macOS (platform independent)\n- n8n Version: 2.48.0 (`master`)\n- Node.js Version: 24.x\n- Database: n/a\n- Execution mode: n/a\n\n### Note\n\nI have a fix ready and will open a PR.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/44084/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/44084/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @Pushkal-Gupta,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9788\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9788](https://linear.app/n8n/issue/GHC-9788)",
+      "at": "2026-11-16T15:14:29Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44084#issuecomment-6920421696"
+    }
+  ],
+  "comments_complete": true
+}

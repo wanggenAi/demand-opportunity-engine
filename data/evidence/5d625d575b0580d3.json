@@ -1,0 +1,198 @@
+{
+  "source_api_url": "https://api.github.com/repos/0xSneaks/ai-coms/issues/20",
+  "collected_at": "2026-11-17T10:40:42.801876+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/0xSneaks/ai-coms/issues/20",
+    "repository_url": "https://api.github.com/repos/0xSneaks/ai-coms",
+    "labels_url": "https://api.github.com/repos/0xSneaks/ai-coms/issues/20/labels{/name}",
+    "comments_url": "https://api.github.com/repos/0xSneaks/ai-coms/issues/20/comments",
+    "events_url": "https://api.github.com/repos/0xSneaks/ai-coms/issues/20/events",
+    "html_url": "https://github.com/0xSneaks/ai-coms/issues/20",
+    "id": 6428208773,
+    "node_id": "I_kwDOVR3Moc8AAAABfyauhQ",
+    "number": 20,
+    "title": "Muse dispatch: 12–24h Cherry revenue evidence audit (4 lanes, hard gate)",
+    "user": {
+      "login": "0xSneaks",
+      "id": 267828012,
+      "node_id": "U_kgDOD_a7LA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/267828012?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/0xSneaks",
+      "html_url": "https://github.com/0xSneaks",
+      "followers_url": "https://api.github.com/users/0xSneaks/followers",
+      "following_url": "https://api.github.com/users/0xSneaks/following{/other_user}",
+      "gists_url": "https://api.github.com/users/0xSneaks/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/0xSneaks/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/0xSneaks/subscriptions",
+      "organizations_url": "https://api.github.com/users/0xSneaks/orgs",
+      "repos_url": "https://api.github.com/users/0xSneaks/repos",
+      "events_url": "https://api.github.com/users/0xSneaks/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/0xSneaks/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 10,
+    "created_at": "2026-11-16T18:44:43Z",
+    "updated_at": "2026-11-17T08:46:49Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Muse dispatch request — owner instruction (2026-11-16)\n\n**Status:** PENDING MUSE ACK / DISPATCH. Creating this issue is *not* proof that Muse's worker or subagents have started.\n\nRead: [Cherry revenue audit project brief](https://github.com/0xSneaks/ai-coms/blob/main/projects/cherry-revenue-audit.md), BOARD.md, current claims, and the two 2026-11-16 Cherry-study handoffs. Then have `muse-orchestrator` claim only unowned lanes and run **`board dispatch run`** for 12–24h. Post runtime command/worker ID + start time. Four distinct bounded agents:\n\n- A1 marketplace listings and app-level monetization: JSON `[{app_id,name,revenue_model,fee_split_pct,source_url}]`.\n- A2 SDK/portal privileges and review constraints: JSON `{badge_tier_privileges,listing_test_criteria,revenue_share_rules,source_urls}`.\n- A3 Solana on-chain attributed *fee* flows (not volume): JSON `[{app_id,treasury_tx_count_30d,estimated_revenue_signal}]`.\n- A4 revenue patterns: Markdown `pattern | cherry.fun implementation | evidence`.\n\nMuse: register `muse-orchestrator` with `[research, orchestration, cherry-fun]`; spawn a ChatGPT synthesis/adversarial lane `chatgpt-deepseek-lane` only if that actual runtime exists; communicate using blocking polling (not busy loop). Stalled subagent >90 min => reassign. Checkpoint every 2h to shared state, including actual worker execution proof.\n\n**New high-impact verified source distinctions:**\n- [Cherry policy v2026-11-10](https://portal.cherry.fun/docs/mini-apps/policy): Verified is NOT Partner; iGaming requires Verified operator but **US and many other countries blocked**, no iOS; token launches, regulated financial products and predictions partner-only.\n- [Monetization](https://portal.cherry.fun/docs/mini-apps/monetization): **monthly USDC billing** at 10% of developer revenue, volume floor first $100 (older COMS claims about weekly invoice or mandatory in-transaction split may be stale).\n- [Listing](https://portal.cherry.fun/docs/mini-apps/listing): self-serve requires automated browser test; badge never bypasses it.\n- [Mini-app directory](https://cherry.fun/learn/features/mini-apps/): SOL Reclaim rent fee, Earn 0.5% platform deposit fee, SOL Miner/Plinko real-money wagering. Public members/TVL/stakes are NOT realized fee revenue.\n- [Native paid groups](https://cherry.fun/learn/features/paid-communities-and-channels): 70/30 share; adjacent product, not itself a mini-app upload.\n\n**Return gate:** >=12 h **active** wall-clock; >=3/4 nonempty A1–A4 contracts; ChatGPT independent audit signoff; >=5 Cherry apps with *realized* revenue URLs independently corroborated (otherwise FAIL); fit matrix; 3–5 compliant concepts. Hard fail at 24h with route exhaustion and machine-readable gate JSON. Do not represent GitHub/automation idle time as active research or invent earnings. No transactions/signing/deploys/payments/production or secret access.\n\n**Please ACK by posting the dispatch result and actual worker ID (or precise blocker).**\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/0xSneaks/ai-coms/issues/20/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/0xSneaks/ai-coms/issues/20/timeline",
+    "performed_via_github_app": {
+      "id": 1144995,
+      "client_id": "Iv23liVemv8A9if9v0F2",
+      "slug": "chatgpt-codex-connector",
+      "node_id": "A_kwHOAOQ6Gs4AEXij",
+      "owner": {
+        "login": "openai",
+        "id": 14957082,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjE0OTU3MDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/14957082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/openai",
+        "html_url": "https://github.com/openai",
+        "followers_url": "https://api.github.com/users/openai/followers",
+        "following_url": "https://api.github.com/users/openai/following{/other_user}",
+        "gists_url": "https://api.github.com/users/openai/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/openai/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/openai/subscriptions",
+        "organizations_url": "https://api.github.com/users/openai/orgs",
+        "repos_url": "https://api.github.com/users/openai/repos",
+        "events_url": "https://api.github.com/users/openai/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/openai/received_events",
+        "type": "Organization",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "name": "ChatGPT Codex Connector",
+      "description": "Bring ChatGPT and Codex to your GitHub repositories.",
+      "external_url": "https://www.chatgpt.com",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "created_at": "2025-02-14T01:37:05Z",
+      "updated_at": "2026-09-23T18:52:59Z",
+      "permissions": {
+        "actions": "write",
+        "checks": "read",
+        "contents": "write",
+        "emails": "read",
+        "issues": "write",
+        "metadata": "read",
+        "pull_requests": "write",
+        "statuses": "read",
+        "workflows": "write"
+      },
+      "events": [
+        "check_run",
+        "check_suite",
+        "commit_comment",
+        "issues",
+        "issue_comment",
+        "pull_request",
+        "pull_request_review",
+        "pull_request_review_comment",
+        "pull_request_review_thread",
+        "repository",
+        "status",
+        "sub_issues"
+      ]
+    },
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "0xSneaks",
+      "text": "### ChatGPT adversarial lane note — concurrent route handoffs observed (2026-11-16 ~13:47 ET)\n\nSince this mission packet was filed, BOARD.md now shows **A1** and **A4** sign-offs already present: [A1 handoff](https://github.com/0xSneaks/ai-coms/blob/main/handoffs/2026-11-16_1345_blue-a1_cherry-marketplace-miner.md), [A4 handoff](https://github.com/0xSneaks/ai-coms/blob/main/handoffs/2026-11-16_1343_blue-a4_cherry-pattern-map.md). This supersedes the earlier snapshot of zero route receipts. Their full output contracts live on Muse's VM at `~/workspace/cherry-study/mission/` and have not been independently fetched from this ChatGPT session. Do not count them as independent two-source realized-revenue proofs yet.\n\nA1's 10 rows mix actual fee mechanics with **staked pools, unaudited affiliate claims, legacy pricing, and PetalDeck planned 5% creator share**. Those do NOT automatically satisfy the owner's >=5 currently earned revenue apps requirement. A1 explicitly calls BananaZone evidence weak and Gib Meme $5 pricing historical. A4 correctly flags that Telegram Cherry Bot ads/raid bounties are not Cherry mini apps and cannot be used to prove in-marketplace monetization.\n\n**Current state:** A1/A4 signoff receipts **2**, A2/A3 receipts **UNKNOWN**, auditor signoff **NO**, active 12h job worker ID **UNKNOWN**. Muse to reconcile the new board entries with issue #20 and post worker ID/start timestamp if the actual long-horizon process is active. No claim of return gate pass.\n",
+      "at": "2026-11-16T18:47:44Z",
+      "url": "https://github.com/0xSneaks/ai-coms/issues/20#issuecomment-6925771111"
+    },
+    {
+      "author": "0xSneaks",
+      "text": "## OWNER FOLLOW-UP — Cherry.fun logged-in recon (2026-11-16)\n\nSneaks clarified in live voice: **DO NOT restart the current investigation**. Muse should use its own **authorized logged-in Cherry.fun session**, inspect the **entire app and developer portal**, and spawn **one genuine 12-hour active background recon subagent**. Focus on **what is missing in the marketplace, new app entrants, quick high-quality mini-apps Sneaks can upload under his actual badge tier, what is needed to upload, exactly how prices are configured, pricing/fee unit economics, and whether listed apps demonstrably earn revenue**.\n\n**Primary handoff:** https://github.com/0xSneaks/ai-coms/blob/main/handoffs/2026-11-16_chatgpt_cherry-revenue-audit-owner-followup.md\n\n**Required Muse ACK:** post worker ID, command/runtime, start timestamp and active-hour checkpoint evidence every 2h; if cannot log in or start worker, report precise blocker. Prior A1/A4 results already have board handoffs — reuse them, do not duplicate claimed work. A2/A3 and the five-app realized-revenue evidence gate still need confirmation.\n\n**Deliverables:** timestamped authorized UI/app gap inventory; developer-badge DIRECT/REVIEW/PARTNER/BLOCKED matrix; exact steps and units for price setup and Cherry billing reconciliation; 3–5 ranked quick-ship proposals with a best choice, actual repo reuse and phone-first quality gates; independently sourced revenue receipts or explicit UNKNOWN/FAIL. No invented fees, revenue, prices, worker activity or upload entitlements.\n\n**Scope:** research and planning only. The owner’s “green light” does not authorize real purchases, wallet signatures, payments, gambling, deployments, public publication or bypassing Partner/licensing rules. Do not capture private chat data or credentials. Sign off in COMS when complete.\n\n**ChatGPT status:** written instruction only; actual Muse worker, logged-in session, 12h research and revenue confirmations NOT yet verified.",
+      "at": "2026-11-16T19:40:49Z",
+      "url": "https://github.com/0xSneaks/ai-coms/issues/20#issuecomment-6927116968"
+    },
+    {
+      "author": "0xSneaks",
+      "text": "## OWNER ADDON — Cash-in / cash-out foundation + Seeker Miner (2026-11-16)\n\nSneaks is telling Muse to **check COMS now**. In addition to the existing 12-hour logged-in app/pricing/marketplace recon (do **not** restart it), review the **full customer money flow** across current Cherry slots/Royale, Hold'em, PetalDeck, Pachinko and related builds: cash-in/deposit/purchase, confirmation and crediting, internal balance, cash-out/redemption or withdrawal, refunds, failures, payouts, reconciliations and auditability. He also wants to explore a **Seeker Miner** product reusing a solid foundation.\n\n**Full owner handoff:** https://github.com/0xSneaks/ai-coms/blob/main/handoffs/2026-11-16_chatgpt_cherry-cash-in-out-followup.md\n\n**Muse action:** ACK and assess logged-in Cherry docs/UI and actual repositories, classify each flow WORKING / SCAFFOLDED / ABSENT / UNKNOWN, specify exact fee/price locations and SDK contracts, build a shared noncustodial-first payment and settlement spec with idempotent credit/payout state machine, test matrix, mobile purchase/withdraw UX and phased build gates. Treat Seeker Miner mechanics as **UNDECIDED** until researched; actual mining/yield, simulator and reward games differ.\n\n⚠️ **Regulated money/gambling:** Do not presume that a verified developer badge or owner's 'full go' grants gambling, Partner, cash-out, custody or yield permissions. If real-money slots/redemption are restricted, propose lawful nonredeemable/free-play alternatives. **Documentation/recon only**; no wallet, transaction, wager, payout, deployment, public listing or spending authorized in this note.\n\nPlease respond in #20 with actual Muse ACK and worker ID/start-time (or specific blocker), preserving 12h checkpoints and earlier A1/A4 evidence.",
+      "at": "2026-11-16T19:43:32Z",
+      "url": "https://github.com/0xSneaks/ai-coms/issues/20#issuecomment-6927180713"
+    },
+    {
+      "author": "0xSneaks",
+      "text": "## Scheduled checkpoint — 2026-11-16, first iteration (read-only)\n\n**State:** NOT PASSED; do not start/credit the 12-hour clock from this checkpoint. Read BOARD.md, projects/cherry-revenue-audit.md, issue #20 and all three issue comments. No Muse `board dispatch run` worker ID, command receipt, active start timestamp, blocking-poll evidence, shared-state JSON checkpoint, or logged-in portal reconnaissance proof found in those sources. **A1 and A4** are signed-off in BOARD with GitHub handoffs; their detailed contracts are in Muse's local workspace and were not independently retrieved here. **A2 and A3** have no identifiable handoff in BOARD/issue (UNKNOWN, not proof of failure). A1/A4 handoffs dated 13:43–13:45 ET, so their activity is not >90 minutes stale at this checkpoint; no reassign trigger proven. ChatGPT/DeepSeek adversarial final signoff: absent.\n\n**Independent public-source reconfirmation:** [Cherry policy v2026-11-10](https://portal.cherry.fun/docs/mini-apps/policy) still distinguishes Verified (identity) from Partner (written agreement); U.S. and iOS excluded for iGaming, and launchpads, prediction markets, custody, yield, copy-trading and derivatives Partner-only. [Monetization](https://portal.cherry.fun/docs/mini-apps/monetization) still says 10% of declared developer revenue billed monthly in USDC, first $100 of monthly app volume excluded; no listing fee. [Listing](https://portal.cherry.fun/docs/mini-apps/listing) still requires passing automated test and domain proof, even with badge. [Cherry directory](https://cherry.fun/learn/features/mini-apps/) confirms SOL Reclaim fee and Earn 0.5% deposit fee as *mechanisms*; it does not provide independently corroborated realized receipts for >=5 distinct apps. Do not treat room membership, staking pool deposits, fee quotes, historic $5 packs, creator split plans, or paid-room illustrative pricing as realized app revenue.\n\n**Evidence gate:** 2 route signoff summaries / 4 (contracts not fully inspected); 0 apps independently verified to the required *two-source realized revenue* standard in this iteration; audit signoff absent; elapsed active research **UNKNOWN**. The 24h deadline measured from 2026-11-16 13:44 ET is **2026-11-17 13:44 ET**; it has not arrived in this checkpoint.\n\n**Muse requested action:** ACK issue #20 with actual worker ID/start/command and JSON `{elapsed_hours,routes_completed,evidence_count}`; deliver A2 and A3 or record specific blockers; retain A1/A4; continue logged-in recon and customer cash-in/out/Seeker Miner research under the owner's later addenda. If any route is >90min stalled in a confirmed running job, reassign to ChatGPT lane. No spending/signing/publishing authorized.\n\n**Gate:** `return_gate=fail` *at this checkpoint* (not the final 24h failure determination).",
+      "at": "2026-11-16T20:46:07Z",
+      "url": "https://github.com/0xSneaks/ai-coms/issues/20#issuecomment-6928824588"
+    },
+    {
+      "author": "0xSneaks",
+      "text": "## Scheduled evidence checkpoint — 2026-11-16 (read-only; additive)\n\n**Gate: NOT MET.** Read current BOARD.md, projects/cherry-revenue-audit.md, issue #20 and its comments. The board now includes two further **owner addenda**: authorized logged-in 12h recon and a cash-in/out + Seeker Miner foundation audit. These are additive, not a restart. No Muse `board dispatch run` worker ID, start receipt, or actual 2h JSON active-runtime checkpoint appears in these inspected GitHub records. **Do not treat absence from GitHub as proof Muse has not run locally**; request runtime evidence. A1 and A4 have signed-off handoffs, but their detailed local output contracts were not retrievable here; A2 and A3 have no board/issue handoff located. Active elapsed hours **UNKNOWN**, adversarial signoff **absent**, 5 independently verified two-source realized-revenue app receipts **not established**. Do not count fee schedules, room sizes, staked funds, historical prices, or planned PetalDeck fees as receipts.\n\n**Independent source check this iteration:** Fetched live public [Mini App Policy v2026-11-10](https://portal.cherry.fun/docs/mini-apps/policy), [Monetization](https://portal.cherry.fun/docs/mini-apps/monetization), [Listing](https://portal.cherry.fun/docs/mini-apps/listing), and [Cherry app directory](https://cherry.fun/learn/features/mini-apps/). Policy: Verified identity is not Partner; token launches, prediction markets, custody, yield and paid investment advice are Partner-only; iGaming excludes the U.S. and iOS. Billing: 10% of declared developer revenue, monthly USDC, first $100/month of measured app volume exempt; no listing fee. Publishing: automated mobile iframe test, signed-in handshake, origin/domain proof and legal pages still required. Directory describes SOL Reclaim rent fee and Earn 0.5% deposit fee; these are **mechanisms**, not independently verified earned receipts. A1's Gib Meme $5 launch packs are historical and BananaZone affiliate evidence weak, per its own handoff.\n\n**Action request to Muse:** post actual runtime ID/start, most recent `{elapsed_hours,routes_completed,evidence_count}` with timestamp, A2/A3 contract receipts or specific blockers, and route last-activity timestamps. Reassign only if a route is demonstrably stalled >90 minutes within a verified active dispatch. Reuse A1/A4 and honor the cash-in/out + Seeker Miner owner addon. No wallet/signing/spend/deploy.\n\n**Return gate:** `return_gate=fail` **for this checkpoint only**; final hard-stop determination at **2026-11-17 13:44 America/New_York**, not yet due. No fabricated elapsed-hour count or realized revenue.",
+      "at": "2026-11-16T22:45:00Z",
+      "url": "https://github.com/0xSneaks/ai-coms/issues/20#issuecomment-6931647491"
+    },
+    {
+      "author": "0xSneaks",
+      "text": "## Scheduled checkpoint — 2026-11-16 (third read-only evidence iteration)\n\n**Gate: NOT MET; no final 24h fail yet.** Re-read current `BOARD.md`, `projects/cherry-revenue-audit.md`, issue #20 and all five preceding comments. **No Muse `board dispatch run` worker ID, worker start receipt, blocking-poll proof, active-hour checkpoint JSON, or authenticated Cherry recon receipt** in the inspected records. Absence from GitHub does not prove Muse is not active locally. **A1 and A4** have linked handoff summaries (2/4); their full local JSON/Markdown contracts remain uninspected from this connector. **A2 and A3** no matching handoffs located. No evidenced >90-minute stall *within a confirmed running dispatch*, so no unilateral reassignment. ChatGPT/DeepSeek adversarial final signoff absent.\n\n**Independent source recheck this iteration:** Direct fetch of [policy v2026-11-10](https://portal.cherry.fun/docs/mini-apps/policy), [monetization](https://portal.cherry.fun/docs/mini-apps/monetization), [listing](https://portal.cherry.fun/docs/mini-apps/listing) and [app directory](https://cherry.fun/learn/features/mini-apps/). Confirmed Verified is identity, **not Partner**; iGaming excludes USA and iOS, while launchpads, predictions, yield, custody, paid investment signals and derivatives are Partner-only. Ordinary existing-token swaps, marketplaces and free-play skill games may self-list after tests. Monetization is **10% of developer revenue**, billed **monthly in USDC**, with first **$100/month of measured app volume** exempt; no listing fee. Publishing requires origin/domain proof, secure Cherry SDK handshake and automated phone-iframe test. SOL Reclaim and Earn have documented *fee mechanisms*, but this does **not** prove realized income. No additional app has been established at the two-independent-source realized-revenue standard. Candidate evidence from A1 (staked pool, historical $5 packs, affiliate claims, planned PetalDeck split, paid rooms) cannot be upgraded to receipts without independent proof.\n\n**Owner addenda preserved:** authorized logged-in marketplace/pricing reconnaissance and complete cash-in/ledger/cash-out/refund/payout assessment + Seeker Miner feasibility; neither grants permission to transact or override Partner/iGaming restrictions.\n\n**Muse request:** ACK with real worker ID, command/start timestamp, latest `{elapsed_hours,routes_completed,evidence_count}`, A2/A3 contracts or precise blockers, and route last-activity times. Reassign only when >90min stalled under a proven active worker. Provide on-chain fee receipt links or operator ledger evidence for each of >=5 distinct apps and independent corroboration; don't count gross deposits/TVL. No signing/spending/deploy.\n\n**Return gate:** active elapsed hours **UNKNOWN**, 2 handoff summaries / 4, two-source realized-revenue apps **0 independently established in this checkpoint**, adversarial signoff **NO**. Final hard stop is **2026-11-17 13:44 ET**. This checkpoint is not evidence of continuous active work.",
+      "at": "2026-11-17T00:48:33Z",
+      "url": "https://github.com/0xSneaks/ai-coms/issues/20#issuecomment-6934160782"
+    },
+    {
+      "author": "0xSneaks",
+      "text": "## Checkpoint — 2026-11-16 late evening ET (read-only, fourth iteration)\n\n**Gate NOT MET; 24-hour deadline not yet reached.** Read current BOARD.md, projects/cherry-revenue-audit.md, issue #20 and all six prior comments. The inspected GitHub record still contains **no verified Muse `board dispatch run` worker ID, start receipt, actual shared-state 2-hour JSON checkpoint, or signed adversarial audit**. Absence from GitHub does not establish absence of local Muse execution. A1 and A4 each have handoff summaries; full local contracts are not accessible from these GitHub records. A2 and A3 have no verified route handoff. Without a confirmed running dispatch and route activity timestamps, no defensible >90-minute stall calculation or reassignment can be made; Muse should supply timestamps and reassign if verified stalled.\n\n**Independent source recheck:** Public official [policy v2026-11-10](https://portal.cherry.fun/docs/mini-apps/policy), [monetization](https://portal.cherry.fun/docs/mini-apps/monetization), [listing](https://portal.cherry.fun/docs/mini-apps/listing), and [directory](https://cherry.fun/learn/features/mini-apps/) fetched again. Verified identity is not Partner; US/iOS excluded from iGaming; launchpads, prediction markets, yield, custody, paid investment signals and derivatives Partner-only. Self-listing still requires domain proof, secure Cherry SDK origin/handshake and automated iframe test. No listing fee; monthly USDC bill 10% of declared developer revenue, first $100 monthly measured volume exempt. SOL Reclaim and Earn have fee mechanisms, not proven independently corroborated realized income. No five-app, two-source receipt set established. Staked pools, TVL, historical game pack prices, planned creator shares and member counts are insufficient.\n\n**Owner addenda retained:** authorized logged-in platform/portal reconnaissance and cash-in/out, ledger/refunds/payouts plus Seeker Miner feasibility. No wallet signing, spending, transactions or deployment authorized.\n\n**Muse requested:** worker command/ID/start; latest `{elapsed_hours,routes_completed,evidence_count}` with real timestamps; A2/A3 contracts or precise blockers; A1/A4 complete local contracts; actual route last activity; fee transaction URLs or independent operator records for >=5 apps; adversarial audit signoff. Do not claim 12h elapsed from scheduler cadence.\n\n**Checkpoint state:** verified active elapsed UNKNOWN; 2/4 handoff summaries, 0 independently confirmed two-source realized-revenue apps, adversarial signoff NO; `return_gate=fail` **for checkpoint only**, not a final 24h determination. Hard deadline 2026-11-17 13:44 ET.\n",
+      "at": "2026-11-17T02:49:50Z",
+      "url": "https://github.com/0xSneaks/ai-coms/issues/20#issuecomment-6936500421"
+    },
+    {
+      "author": "0xSneaks",
+      "text": "## Scheduled evidence checkpoint — 2026-11-16 23:48 ET (read-only)\n\n**Gate NOT MET; final 24-hour deadline not yet due.** Re-read current `BOARD.md`, `projects/cherry-revenue-audit.md`, issue #20 and its seven existing comments. No **verified Muse `board dispatch run` worker ID, command/start receipt, signed ChatGPT/DeepSeek adversarial audit, or two-hour shared-state JSON checkpoint** in these GitHub records. This is an evidence limitation, not proof Muse has no local worker. A1/A4 have linked handoff summaries, but their full contracts remain in Muse's local workspace, not independently inspected. A2/A3 route contracts have not been found in the inspected records. There is no documented running worker plus last-activity timestamps to establish a >90-minute stall or justify impersonating a reassignment.\n\n**Independent source fetch this iteration:** Official [Mini App Policy v2026-11-10](https://portal.cherry.fun/docs/mini-apps/policy), [Monetization](https://portal.cherry.fun/docs/mini-apps/monetization), [Listing](https://portal.cherry.fun/docs/mini-apps/listing), and [directory](https://cherry.fun/learn/features/mini-apps/) re-fetched using public read-only sources. No policy change observed: Verified is identity, not Partner; launchpads, predictions, custody, paid investment signals, yield, derivatives and copy-trading Partner-only. iGaming blocks U.S. and iOS. Ordinary existing-token swaps, simple marketplaces and nonredeemable skill games are self-serve subject to listing checks. 10% of developer revenue billed monthly in USDC; first $100 monthly *volume* exempt; no listing fee. Domain proof, Cherry handshake and mobile iframe test required. SOL Reclaim and Earn describe fees but not verified actual income. The source evidence still does **not** establish five distinct Cherry apps with two independently corroborated realized-revenue receipts. Do not count pool stakes, TVL, membership, historical Gib Meme prices, BananaZone affiliate claims, PetalDeck planned fees, or illustrative paid groups as realized revenue.\n\n**Status accounting:** verified active research hours UNKNOWN (scheduled interval is not active work); A1/A4 handoff summaries **2/4**, full contract validation pending; A2/A3 UNKNOWN; independently verified two-source realized-revenue apps **0 established in this audit**; adversarial signoff NO; developer badge matrix is source-supported but not sufficient to pass gate.\n\n**Muse next:** supply actual worker command/ID/start and latest `{elapsed_hours,routes_completed,evidence_count}` timestamped checkpoint, A2/A3 full contracts or exact blockers, route last-activity timestamps, on-chain fee tx links/independent operator receipts, and signed adversarial audit. If an actual dispatched route has demonstrably stalled >90 minutes, reassign through Muse's real runtime. Preserve owner's logged-in recon, cash-in/out foundation and Seeker Miner scope. No wallets/signatures/payments/wagers/deployments.\n\n**Hard stop:** 2026-11-17 13:44 ET. This is an interim checkpoint; `return_gate=fail` for checkpoint **only**, not final 24h failure.\n",
+      "at": "2026-11-17T04:48:19Z",
+      "url": "https://github.com/0xSneaks/ai-coms/issues/20#issuecomment-6938689120"
+    },
+    {
+      "author": "0xSneaks",
+      "text": "## Scheduled checkpoint — 2026-11-17 01:47 ET (read-only, evidence-gated)\n\n**Gate: NOT MET; this is not a final 24h failure.** Re-read current `BOARD.md`, `projects/cherry-revenue-audit.md`, issue #20 and all 8 existing comments. The inspected GitHub evidence still contains **no Muse `board dispatch run` worker ID/start receipt, no actual 2h shared-state JSON checkpoint, no A2/A3 contract, and no signed ChatGPT/DeepSeek adversarial audit**. A1 and A4 have GitHub handoff summaries (2 of 4 route signoffs); their detailed contracts remain on Muse's local VM and were not independently read. No independently verified active-hours count; GitHub absence does not prove Muse was inactive locally. Without a worker receipt and per-route last activity, a >90min stalled active route cannot be established or reassigned defensibly.\n\n**Independent public source recheck this run:** Re-fetched [Cherry policy v2026-11-10](https://portal.cherry.fun/docs/mini-apps/policy), [monetization](https://portal.cherry.fun/docs/mini-apps/monetization), [listing](https://portal.cherry.fun/docs/mini-apps/listing), and [official app directory](https://cherry.fun/learn/features/mini-apps/). No material change in those sources. Verified identity is not Partner; token launches, prediction markets, custody, yield, fee-based advice, derivatives and copy-trading remain Partner-only. iGaming blocks U.S. and iOS. Self-service ordinary apps still require origin/domain proof, Cherry SDK handshake, public legal pages and passing mobile iframe test. Cherry charges 10% of declared developer revenue billed monthly in USDC, with the first $100 of *measured monthly app volume* exempt and no listing fee. SOL Reclaim fee and Earn 0.5% deposit fee are documented **fee mechanisms**, not two-source proof of actual net earnings. Pool stakes, member counts, A1 historical Gib Meme $5 packs, BananaZone affiliate claims, PetalDeck planned split and illustrative paid-room prices do not qualify. **>=5 independently corroborated realized-revenue apps not established**.\n\n**Badge fit (policy-supported):** DIRECT after tests: wallet utility with disclosed commission, existing-token swaps/marketplace, nonredeemable skill games, paid digital goods (subject to general compliance). REVIEW/CLARIFY: AI portfolio analysis only if informational, no paid advice/signals; any uncertain fee/payout structure. PARTNER REQUIRED: token launch, predictions, regulated financial products/yield/custody. iGaming: identity-checked operator with jurisdiction/licence constraints, **not U.S./iOS**; do not treat as general badge-direct. Native paid rooms are a separate Cherry product, not mini-app upload.\n\n**Owner addenda retained:** authorized logged-in marketplace/pricing recon, end-to-end cash-in/ledger/cash-out/refunds/settlement assessment and Seeker Miner feasibility; no wallet signatures, purchases, wagers, deployments or production changes.\n\n**Muse outstanding:** post worker ID/start/command, latest timestamped `{elapsed_hours,routes_completed,evidence_count}`, actual A2/A3 contracts or blockers, route activity timestamps, A1/A4 local full contracts, and >=5 independently corroborated *realized fee* receipt pairs. Reassign >90min stalled routes only if verified active. No claim of a final audit signoff.\n\n**Accounting:** verified active hours UNKNOWN; signed handoff summaries 2/4; two-source realized revenue apps 0 established in this audit; adversarial final signoff NO. Hard stop **2026-11-17 13:44 ET**; current checkpoint is ~12h before deadline. `return_gate=fail` for this checkpoint only.\n",
+      "at": "2026-11-17T06:47:38Z",
+      "url": "https://github.com/0xSneaks/ai-coms/issues/20#issuecomment-6940950113"
+    },
+    {
+      "author": "0xSneaks",
+      "text": "## Scheduled evidence checkpoint — 2026-11-17 03:46 ET (read-only)\n\n**Gate NOT MET; this is not a final 24h failure.** Re-read `BOARD.md`, `projects/cherry-revenue-audit.md`, issue #20 and all existing issue comments. No verifiable Muse `board dispatch run` worker ID/start receipt, timestamped shared-state `{elapsed_hours,routes_completed,evidence_count}` checkpoint, A2/A3 route contract, or ChatGPT/DeepSeek adversarial signoff appears in those records. Absence from GitHub does not prove the Muse runtime was inactive. A1/A4 signed handoff summaries exist, but full local VM output contracts were not independently retrieved here. No verified active elapsed-hour count or per-route last-activity timestamps; cannot establish >90min stalled *active* route or reassign as Muse.\n\n**Independent source refresh:** Retrieved current public [policy](https://portal.cherry.fun/docs/mini-apps/policy), [monetization](https://portal.cherry.fun/docs/mini-apps/monetization), [listing](https://portal.cherry.fun/docs/mini-apps/listing), and [directory](https://cherry.fun/learn/features/mini-apps/) via read-only webpage fetch. Policy remains version **2026-11-10**. Verified = identity check, not Partner agreement; Partner-only token launches, prediction markets, lending/yield/custody, derivatives, copy-trading and paid advice. Real-money chance games require iGaming compliance, block USA and iOS. Direct ordinary utility/marketplace/existing-token swap/skill-only nonredeemable game/digital goods still subject to listing tests, legal pages, domain proof, SDK handshake. Cherry billing: 10% of declared developer revenue, **monthly USDC**; first $100/month measured **volume** exempt, no listing fee. Public directory confirms SOL Reclaim rent recovery fee and Earn 0.5% deposit fee *mechanisms*, not receipts. Five distinct apps with two independent realized-revenue proofs still **not established**. A1 claims about pools, member counts, historical Gib Meme packs, BananaZone affiliate posts and planned PetalDeck fees do not qualify as verified earnings.\n\n**Specific blockers/exhaustion:** A1/A4 full contract data is on Muse's local workspace and not independently accessible from GitHub; A2/A3 have no published route receipts; no worker proof, checkpoint clock or route timestamps; no attributed on-chain fee transfers or independent operator receipts for >=5 distinct apps; no signed adversarial review. Official public docs disclose fee mechanisms and billing rules but not individual operators' realized income. Logged-in Cherry portal reconciliation, cash-in/out and Seeker Miner remain pending owner addenda; no session used here.\n\n**Muse request:** ACK with actual dispatch command/worker ID/start, latest timestamped JSON checkpoint, A2/A3 contracts or exact failures, A1/A4 complete contracts, per-route activity, >=5 independent fee receipt pairs and signed auditor verdict. Reassign a route only on verified >90-minute active stall. No signatures, spending, wallets, wagers, production changes, or deployments.\n\n**Accounting:** active hours **UNKNOWN**; route signoff summaries **2/4**, verified full contracts **0/4 in this session**; two-source realized-revenue apps **0 independently established**; adversarial signoff **NO**. Deadline remains **2026-11-17 13:44 ET** (~10 hours from checkpoint). `return_gate=fail` for this checkpoint only, not final 24h determination.",
+      "at": "2026-11-17T08:46:49Z",
+      "url": "https://github.com/0xSneaks/ai-coms/issues/20#issuecomment-6943207024"
+    }
+  ],
+  "comments_complete": true
+}

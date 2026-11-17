@@ -1,0 +1,119 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/44101",
+  "collected_at": "2026-11-17T10:40:42.801876+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/44101",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/44101/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/44101/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/44101/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/44101",
+    "id": 6424840760,
+    "node_id": "I_kwDOC4Q8Qs8AAAABfvNKOA",
+    "number": 44101,
+    "title": "Microsoft Outlook v1 Add attachment reads the binary field name from item 0 for every item",
+    "user": {
+      "login": "MychelGarzon",
+      "id": 94682307,
+      "node_id": "U_kgDOBaS8ww",
+      "avatar_url": "https://avatars.githubusercontent.com/u/94682307?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/MychelGarzon",
+      "html_url": "https://github.com/MychelGarzon",
+      "followers_url": "https://api.github.com/users/MychelGarzon/followers",
+      "following_url": "https://api.github.com/users/MychelGarzon/following{/other_user}",
+      "gists_url": "https://api.github.com/users/MychelGarzon/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/MychelGarzon/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/MychelGarzon/subscriptions",
+      "organizations_url": "https://api.github.com/users/MychelGarzon/orgs",
+      "repos_url": "https://api.github.com/users/MychelGarzon/repos",
+      "events_url": "https://api.github.com/users/MychelGarzon/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/MychelGarzon/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 4,
+    "created_at": "2026-11-16T15:41:12Z",
+    "updated_at": "2026-11-16T19:05:45Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nIn packages/nodes-base/nodes/Microsoft/Outlook/v1/MicrosoftOutlookV1.node.ts, resource Message Attachment, operation Add, the per-item loop reads the binary property name with item index 0: this.getNodeParameter('binaryPropertyName', 0). The binary data checks right after it use items[i].\n\nIf the field name is an expression that differs per item, every item uses the field name of the first item. messageId and additionalFields in the same loop already use the current index i.\n\nThis is the same kind of bug as #44021, but not a duplicate. That issue covers the v2 operation (v2/actions/messageAttachment/add.operation.ts). This one covers the v1 node file, which is not fixed by the v2 PR.\n\n### To Reproduce\n\n1. Use Microsoft Outlook node version 1 (existing workflow). Resource: Message Attachment. Operation: Add.\n2. Two input items. Item 1 has binary data on the field \"data\". Item 2 has binary data on the field \"attachment\". Each item has a \"field\" value in its JSON that names its binary field.\n3. Set \"Binary Property\" to {{ $json.field }}.\n4. Run the node.\n5. Item 2 looks up \"data\" instead of \"attachment\" and fails.\n\n### Expected behavior\n\nThe binary field name is read with the current item index. Item 2 uses \"attachment\".\n\n### Debug Info\n\nFound by reading the source on master. Verified with a unit test that uses two items with different binary field names. The test fails without the fix. A fix PR will follow.\n\n### Operating System\n\nmacOS\n\n### n8n Version\n\n2.48.0\n\n### Node.js Version\n\n24.20.0\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/44101/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/44101/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @MychelGarzon,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9793\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9793](https://linear.app/n8n/issue/GHC-9793)",
+      "at": "2026-11-16T15:41:19Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44101#issuecomment-6921116185"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "Confirmed in current `MicrosoftOutlookV1.node.ts`: the Add operation loop is at lines 654–658, and it calls `this.getNodeParameter(\"binaryPropertyName\", 0)` while `messageId` and `additionalFields` use `i`. The later binary lookup uses `items[i]`, so an item-specific expression can select one name for every item. Passing `i` to `getNodeParameter` matches the surrounding loop and the v1 download operation’s per-item lookup. The issue’s two-item case is a focused regression test for this.",
+      "at": "2026-11-16T16:05:37Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44101#issuecomment-6921750411"
+    },
+    {
+      "author": "grinem",
+      "text": "Spot on, thanks for tracking down that parity gap with #44021. Swapping `0` for `i` in `this.getNodeParameter('binaryPropertyName', i)` is definitely the right fix.",
+      "at": "2026-11-16T16:08:14Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44101#issuecomment-6921818992"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "I verified the mismatch in the current source: the Message Attachment Add loop reads `messageId` and `additionalFields` with index `i`, but reads `binaryPropertyName` with index `0` before looking up binary data on `items[i]`. That makes the reported per-item expression case consistent with the implementation; using `i` for that parameter also matches the download operation immediately below.",
+      "at": "2026-11-16T19:05:45Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44101#issuecomment-6926213475"
+    }
+  ],
+  "comments_complete": true
+}

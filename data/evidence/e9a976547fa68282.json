@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/44064",
+  "collected_at": "2026-11-17T10:40:42.801876+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/44064",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/44064/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/44064/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/44064/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/44064",
+    "id": 6424000615,
+    "node_id": "I_kwDOC4Q8Qs8AAAABfuZ4Zw",
+    "number": 44064,
+    "title": "Editor: Select trigger node label on the execute workflow button is hardcoded English",
+    "user": {
+      "login": "Pushkal-Gupta",
+      "id": 161060351,
+      "node_id": "U_kgDOCZmV_w",
+      "avatar_url": "https://avatars.githubusercontent.com/u/161060351?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Pushkal-Gupta",
+      "html_url": "https://github.com/Pushkal-Gupta",
+      "followers_url": "https://api.github.com/users/Pushkal-Gupta/followers",
+      "following_url": "https://api.github.com/users/Pushkal-Gupta/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Pushkal-Gupta/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Pushkal-Gupta/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Pushkal-Gupta/subscriptions",
+      "organizations_url": "https://api.github.com/users/Pushkal-Gupta/orgs",
+      "repos_url": "https://api.github.com/users/Pushkal-Gupta/repos",
+      "events_url": "https://api.github.com/users/Pushkal-Gupta/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Pushkal-Gupta/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-16T14:58:36Z",
+    "updated_at": "2026-11-16T14:58:48Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nWhen a workflow has more than one trigger, the **Execute workflow** button on the canvas gets a small arrow next to it. You click the arrow to choose which trigger to run from. The arrow button has the label \"Select trigger node\", which screen readers read out. That label is written in English straight into the code, so it does not get translated.\n\nhttps://github.com/n8n-io/n8n/blob/3895cb31de5731c8425e56e56ff6f1dad1e2aa50/packages/frontend/editor-ui/src/features/workflows/canvas/components/elements/buttons/CanvasRunWorkflowButton.vue#L218\n\nThe rest of this button already uses i18n keys under `nodeView.runButtonText.*`.\n\n### To Reproduce\n\n1. Set the UI to a language other than English.\n2. Open a workflow with two or more trigger nodes.\n3. Inspect the arrow button next to **Execute workflow**, or move to it with a screen reader on.\n4. The label is still \"Select trigger node\" in English.\n\n### Expected behavior\n\nThe button label is in the selected language, like the rest of the button.\n\n### Debug Info\n\nI found this while reading the code on `master` (2.47.0). The text is written into the code, so it happens on every setup.\n\n### Environment\n\n- Operating System: macOS (platform independent)\n- n8n Version: 2.47.0 (`master`)\n- Node.js Version: 24.x\n- Database: n/a\n- Execution mode: n/a\n\n### Note\n\nI have a fix ready and will open a PR.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/44064/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/44064/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @Pushkal-Gupta,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9782\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9782](https://linear.app/n8n/issue/GHC-9782)",
+      "at": "2026-11-16T14:58:46Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44064#issuecomment-6920013080"
+    }
+  ],
+  "comments_complete": true
+}

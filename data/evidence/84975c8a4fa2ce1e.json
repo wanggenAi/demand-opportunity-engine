@@ -1,0 +1,119 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/44139",
+  "collected_at": "2026-11-17T10:40:42.801876+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/44139",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/44139/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/44139/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/44139/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/44139",
+    "id": 6433115324,
+    "node_id": "I_kwDOC4Q8Qs8AAAABf3GMvA",
+    "number": 44139,
+    "title": "[Microsoft SharePoint Node] Creating or updating list items with Multi-Choice columns fails with 500 Internal Server Error",
+    "user": {
+      "login": "ratheesh-aot",
+      "id": 108045773,
+      "node_id": "U_kgDOBnClzQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/108045773?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/ratheesh-aot",
+      "html_url": "https://github.com/ratheesh-aot",
+      "followers_url": "https://api.github.com/users/ratheesh-aot/followers",
+      "following_url": "https://api.github.com/users/ratheesh-aot/following{/other_user}",
+      "gists_url": "https://api.github.com/users/ratheesh-aot/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/ratheesh-aot/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/ratheesh-aot/subscriptions",
+      "organizations_url": "https://api.github.com/users/ratheesh-aot/orgs",
+      "repos_url": "https://api.github.com/users/ratheesh-aot/repos",
+      "events_url": "https://api.github.com/users/ratheesh-aot/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/ratheesh-aot/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 4,
+    "created_at": "2026-11-16T23:27:59Z",
+    "updated_at": "2026-11-17T03:01:38Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\n### Bug Description\nWhen using the built-in **Microsoft SharePoint** node (`n8n-nodes-base.microsoftSharepoint`) to create or update a SharePoint list item that includes a **Choice (multi-select)** column, the node fails with a `500 Internal Server Error` error from the Microsoft Graph API.\n\n\n\n\n\n\n\n\n### To Reproduce\n\n1. Create a SharePoint List containing a **Choice** column with **\"Allow multiple selections\"** enabled (e.g., options `\"Option A\"`, `\"Option B\"`).\n2. Add the **Microsoft SharePoint** node to an n8n workflow.\n3. Select **Resource:** `Item` and **Operation:** `Create` (or `Update`).\n4. Select your Site and List.\n5. Under **Columns to Send**, send a string to the multi-choice column.\n6. Execute the node.\n\n### Expected behavior\n\nThe Microsoft SharePoint node should detect that the target column is a multi-choice collection and automatically compose the request.\n\n\n### Actual Behavior\nThe node throws in a `500 Internal Server Error` error\n\n### Workaround\nBypassing the Microsoft SharePoint node and using the **HTTP Request** node to `POST` directly to `https://microsoft.com{site-id}/lists/{list-id}/items` with `\"<ColumnInternalName>@odata.type\": \"Collection(Edm.String)\"` manually included in the JSON body succeeds immediately.\n\n### Debug Info\n- **n8n version:** [Insert your n8n version, e.g., 1.xx.x]\n- **Node version:** Microsoft SharePoint (v1 / v2)\n- **Database (default: SQLite):** [e.g., SQLite / PostgreSQL]\n- **Running n8n via:** [e.g., Docker / n8n Cloud / npm]\n- **Operating system:** [e.g., Ubuntu / Windows / macOS]\n\nScreenshot\n\nIn the below the \"Activities\" coumn is a multi choice column in a Sharepoint List\n\n<img width=\"153\" height=\"423\" alt=\"image\" src=\"https://github.com/user-attachments/assets/8406ccd1-fb89-494c-83b2-5a2751c0371a\" />\n\n<img width=\"1872\" height=\"902\" alt=\"image\" src=\"https://github.com/user-attachments/assets/9bfe9f95-0814-49e7-ba9c-cdc00c7c9398\" />\n\n# Error Output\n\n\nNodeApiError: Microsoft Graph rejected the request (HTTP 500). Check the operation's inputs and the app registration's permissions. at ExecuteContext.servicePrincipalApiError (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file++++home+runner+_work+n8n+n8n+packages+nodes-base/node_modules/n8n-nodes-base/nodes/Microsoft/SharePoint/transport/index.ts:181:9) at ExecuteContext.microsoftApiRequest (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file++++home+runner+_work+n8n+n8n+packages+nodes-base/node_modules/n8n-nodes-base/nodes/Microsoft/SharePoint/transport/index.ts:263:31) at processTicksAndRejections (node:internal/process/task_queues:104:5) at ExecuteContext.execute (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file++++home+runner+_work+n8n+n8n+packages+nodes-base/node_modules/n8n-nodes-base/nodes/Microsoft/SharePoint/v2/actions/item/create.operation.ts:65:10) at ExecuteContext.router (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file++++home+runner+_work+n8n+n8n+packages+nodes-base/node_modules/n8n-nodes-base/nodes/Microsoft/SharePoint/v2/actions/router.ts:69:21) at ExecuteContext.execute (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file++++home+runner+_work+n8n+n8n+packages+nodes-base/node_modules/n8n-nodes-base/nodes/Microsoft/SharePoint/v2/MicrosoftSharePointV2.node.ts:30:10) at WorkflowExecute.executeNode (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file++++home+runner+_work+n8n+n8n+packages+core/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:1158:8) at WorkflowExecute.runNode (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file++++home+runner+_work+n8n+n8n+packages+core/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:1460:11) at /usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file++++home+runner+_work+n8n+n8n+packages+core/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:2419:27 at /usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file++++home+runner+_work+n8n+n8n+packages+core/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:2900:11\n\n### Operating System\n\nLinux\n\n### n8n Version\n\n2.45.6\n\n### Node.js Version\n\n24\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/44139/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/44139/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @ratheesh-aot,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9795\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9795](https://linear.app/n8n/issue/GHC-9795)",
+      "at": "2026-11-16T23:28:07Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44139#issuecomment-6932528391"
+    },
+    {
+      "author": "grinem",
+      "text": "Graph API's OData parser throws a generic 500 whenever multi-choice collection fields lack explicit OData annotations or receive plain strings instead of arrays.\n\nIn `n8n-nodes-base/nodes/Microsoft/SharePoint/v2/actions/item/create.operation.ts` (and `update.operation.ts`), the node simply assigns inputs raw to `body.fields[key] = value` without checking for arrays or decorating them.\n\nFor maintainers looking at Linear ticket GHC-9795, a clean fix when building the payload is checking for arrays and appending the OData collection tag:\n\n**Patch Preview (First 3 lines of verified fix):**\n```typescript\nfor (const [key, val] of Object.entries(fields)) {\n\tif (Array.isArray(val)) {\n\t\tfields[`${key}@odata.type`] = 'Collection(Edm.String)';\n# ... [TRUNCATED — Full production patch & verification steps locked below]\n```",
+      "at": "2026-11-16T23:50:06Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44139#issuecomment-6932964797"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "The v2 source has one shared write path for both create and update: `buildItemFieldsPayload` in `v2/item/index.ts`. The list-column mapper in `v2/list/columns.ts` maps every `choice` column to `options` from `choice.choices`; it does not retain whether `allowMultipleSelection` is enabled. The payload helper then forwards that value without adding an OData annotation. That looks like the schema detail to address, rather than adding an annotation to every array indiscriminately (other fields can also be arrays). Could you confirm what value shape you sent for the multi-choice field—an array of option strings or a comma-separated string? The distinction should help pin down both the mapper UI and the Graph payload.",
+      "at": "2026-11-17T02:06:34Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44139#issuecomment-6935693457"
+    },
+    {
+      "author": "Mrandrew9",
+      "text": "Greeting n8n team,\n\nI am  interested in contributing a focused fix for this issue. Before starting, could you confirm whether it's available for a community contribution or already being addressed internally?\n\nIf available, I'd like to add a regression test for multi-select SharePoint Choice columns, investigate the expected Microsoft Graph request format, and implement a narrowly scoped fix that preserves existing behavior for other column types.\n\nI'd also appreciate confirmation of the intended input format an array of selected values or a comma-separated string.\n\nThanks!\nAndrew ",
+      "at": "2026-11-17T03:01:38Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44139#issuecomment-6936721297"
+    }
+  ],
+  "comments_complete": true
+}

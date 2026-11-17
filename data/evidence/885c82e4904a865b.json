@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50467717",
-  "collected_at": "2026-11-16T09:36:31.158430+00:00",
+  "collected_at": "2026-11-17T10:40:42.801876+00:00",
   "source": {
     "author": "prmph",
     "children": [
@@ -15,6 +15,21 @@
         "points": null,
         "story_id": 50467717,
         "text": "Should mention that a Show HN is on its way soon, and that this is a project started years ago, not a vibe coded project.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "cyai",
+        "children": [],
+        "created_at": "2026-11-15T03:12:29.000Z",
+        "created_at_i": 1794712349,
+        "id": 50503627,
+        "options": [],
+        "parent_id": 50467717,
+        "points": null,
+        "story_id": 50467717,
+        "text": "I&#x27;ve been building something under the same constraint from the other end, so\ntwo observations that might be useful.<p>The first is that &quot;tags embedded in the name&quot; is the right instinct and worth\npaying a real cost for. I keep stories in the browser&#x27;s own database and export\nthem as one self-contained file, mostly because anything stored only in my app&#x27;s\nprivate store is data the user can&#x27;t see, can&#x27;t grep and can&#x27;t rescue when the\napp is gone. The price is ugly filenames and handling collisions, renames and\nunicode. I&#x27;d take that price.<p>The second is about sending metadata to a server while contents stay local. Paths\nplus timestamps plus auto-tags describe the shape of somebody&#x27;s whole working\nlife, which is often more revealing than the contents of any one file. If I were\nbuilding it, auto-tagging would be opt-in per folder rather than per account.<p>And one caution: every tagging system I&#x27;ve tried died the day the tags stopped\nbeing true. A triage queue only helps if it can show me what changed since I last\nlooked. Good luck with it — flattening the store is the brave decision and I\nthink it&#x27;s the correct one.",
         "title": null,
         "type": "comment",
         "url": null
@@ -53,6 +68,12 @@
       "text": "Should mention that a Show HN is on its way soon, and that this is a project started years ago, not a vibe coded project.",
       "at": "2026-11-12T15:25:04.000Z",
       "url": "https://news.ycombinator.com/item?id=50468927"
+    },
+    {
+      "author": "cyai",
+      "text": "I've been building something under the same constraint from the other end, so\ntwo observations that might be useful. The first is that \"tags embedded in the name\" is the right instinct and worth\npaying a real cost for. I keep stories in the browser's own database and export\nthem as one self-contained file, mostly because anything stored only in my app's\nprivate store is data the user can't see, can't grep and can't rescue when the\napp is gone. The price is ugly filenames and handling collisions, renames and\nunicode. I'd take that price. The second is about sending metadata to a server while contents stay local. Paths\nplus timestamps plus auto-tags describe the shape of somebody's whole working\nlife, which is often more revealing than the contents of any one file. If I were\nbuilding it, auto-tagging would be opt-in per folder rather than per account. And one caution: every tagging system I've tried died the day the tags stopped\nbeing true. A triage queue only helps if it can show me what changed since I last\nlooked. Good luck with it — flattening the store is the brave decision and I\nthink it's the correct one.",
+      "at": "2026-11-15T03:12:29.000Z",
+      "url": "https://news.ycombinator.com/item?id=50503627"
     },
     {
       "author": "meretext",

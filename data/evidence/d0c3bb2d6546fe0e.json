@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/44157",
+  "collected_at": "2026-11-17T10:40:42.801876+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/44157",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/44157/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/44157/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/44157/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/44157",
+    "id": 6439319976,
+    "node_id": "I_kwDOC4Q8Qs8AAAABf9A5qA",
+    "number": 44157,
+    "title": "Task request cut short by shutdown is reported as a runner timeout",
+    "user": {
+      "login": "o-mid",
+      "id": 86771298,
+      "node_id": "MDQ6VXNlcjg2NzcxMjk4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/86771298?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/o-mid",
+      "html_url": "https://github.com/o-mid",
+      "followers_url": "https://api.github.com/users/o-mid/followers",
+      "following_url": "https://api.github.com/users/o-mid/following{/other_user}",
+      "gists_url": "https://api.github.com/users/o-mid/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/o-mid/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/o-mid/subscriptions",
+      "organizations_url": "https://api.github.com/users/o-mid/orgs",
+      "repos_url": "https://api.github.com/users/o-mid/repos",
+      "events_url": "https://api.github.com/users/o-mid/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/o-mid/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-17T07:03:23Z",
+    "updated_at": "2026-11-17T07:03:36Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nWhen n8n shuts down while a Code node is still waiting for a task runner, the execution fails with \"Task request timed out\". The body says the runner is down, not ready, or at capacity, and on a self-hosted instance it suggests raising `N8N_RUNNERS_TASK_REQUEST_TIMEOUT`.\n\nThe request did not hit that timeout. Shutdown capped it. With a short shutdown budget the message says the task waited 0 or 1 second. The default request timeout is 60 seconds.\n\nThe same shutdown already uses a different error once a runner has taken the task (\"Task aborted because the n8n instance was shutting down\"). A request that never got a runner still looks like a capacity problem.\n\n### To Reproduce\n\nOn n8n 2.48.0 (`fec3317ec2`), internal task runner, `N8N_RUNNERS_MAX_CONCURRENCY=1`, `N8N_GRACEFUL_SHUTDOWN_TIMEOUT=1`:\n\n1. Run a workflow whose Code node holds the only runner slot.\n2. Start a second workflow whose Code node is waiting for a runner.\n3. Send SIGTERM.\n4. Open the second execution.\n\nThe node error title is \"Task request timed out\". The body says the runner is at capacity, says it waited 1 second, and suggests `N8N_RUNNERS_TASK_REQUEST_TIMEOUT`.\n\nA request expired at the shutdown deadline with no time elapsed reports \"waited 0 seconds\" through the same path.\n\n### Expected behavior\n\nThe error should say the instance was shutting down, and that the task never reached a runner. It should not suggest raising the request timeout, and it should not be reported as a runner failure.\n\n### Debug Info\n\nn8n 2.48.0 (self-hosted), commit fec3317ec25fa68c69b7347813f60c8357048cf3. Internal task runner. Reproduced locally on SQLite. Node.js 24.22.1.\n\n## Environment\n\n- Operating System: macOS\n- n8n Version: 2.48.0\n- Node.js Version: 24.22.1\n- Database: SQLite (default)\n- Execution mode: main (default)\n- Hosting: self hosted\n\nI have a fix and a regression test ready and would like to open the PR, if that is welcome.",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/44157/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/44157/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @o-mid,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9800\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9800](https://linear.app/n8n/issue/GHC-9800)",
+      "at": "2026-11-17T07:03:34Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44157#issuecomment-6941224108"
+    }
+  ],
+  "comments_complete": true
+}

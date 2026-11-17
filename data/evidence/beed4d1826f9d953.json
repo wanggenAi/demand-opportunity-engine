@@ -1,0 +1,44 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50524918",
+  "collected_at": "2026-11-17T10:40:42.801876+00:00",
+  "source": {
+    "author": "nathan_f77",
+    "children": [
+      {
+        "author": "scottfalconer",
+        "children": [],
+        "created_at": "2026-11-16T23:27:08.000Z",
+        "created_at_i": 1794871628,
+        "id": 50525068,
+        "options": [],
+        "parent_id": 50524918,
+        "points": null,
+        "story_id": 50524768,
+        "text": "Love the idea of the convention.<p>I tend to find it frustrating when I&#x27;m using a tool and can&#x27;t just type &#x2F;feedback or say &quot;send that as feedback&quot; when something goes wrong.<p>So I&#x27;d break it into two parts<p>1) when I ask the agent to file feedback, then I&#x27;ve delegated to the agent - but it&#x27;s from me - and I most likely want a follow up. \n2) when the agent stumbles and reports something itself. I don&#x27;t really expect to hear back on this any more than I would on &quot;your application crashed would you like to send feedback&quot;.<p>Also remember support is more than just reporting bugs - if you can solve the problem it the moment it&#x27;s even better - i.e. maybe my agent just didn&#x27;t rtfm, so maybe it&#x27;s not: &quot;support_open_ticket&quot;, it&#x27;s &quot;support_get_help&quot; which may escalate to a ticket.<p>That also makes me much more likely to use it if it&#x27;s &quot;let your agent ask for help&quot; vs &quot;let you agent open tickets&quot;",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-11-16T23:12:20.000Z",
+    "created_at_i": 1794870740,
+    "id": 50524918,
+    "options": [],
+    "parent_id": 50524768,
+    "points": null,
+    "story_id": 50524768,
+    "text": "Hi HN, I&#x27;m Nathan, the founder of DocSpring [1] (an API for filling in and signing documents).<p>We recently put a lot of work into our MCP server and API, because more of our customers&#x27; setup work is done by their AI agents: creating templates, testing them with tool calls, and writing their integrations. We get error reports automatically, but a lot of bugs and friction never reach us unless someone tells us about it.<p>I asked one of my AI agents to help me write up how an agent could report a problem and get an answer back. We decided on four MCP tools (open a ticket, list, read, reply), the same operations over HTTP, and a status URL per ticket that a background script can poll. Some people set up email inboxes for their agents, but most people running Claude Code probably won&#x27;t have those set up. We also decided that tickets belong to the customer, not the ephemeral agent session, so a fresh session tomorrow can pick up any replies.<p>A few projects already do something like this. What I couldn&#x27;t find was a written-down set of decisions anyone could copy. You can consider this more of a suggestion and a reference implementation than a &quot;standard&quot;, but I liked the name Standard Support. Nothing breaks if you implement it differently, and you&#x27;re free to build your own support tools that work differently. Agents will read the tool descriptions either way.<p>We haven&#x27;t shipped it in DocSpring yet and it&#x27;s still a WIP draft. I decided to publish this early because I&#x27;d be interested in hearing your feedback. For example, what do you think about the following:<p>- Polling a status URL instead of webhooks. Coding agents could make this easier by letting an agent keep an MCP tool call polling in the background. There&#x27;s also work on MCP Tasks and MCP Events [2].<p>- The default that the agent asks the user before opening a ticket. I actually lean towards inviting more reports for our own product, but I didn&#x27;t want the default to flood anyone&#x27;s inbox. However, we worked with a partner recently and their AI agent gave us a huge list of feedback for how we can improve our API to work better with HTML templates. There were a lot of really good suggestions and we implemented almost everything.<p>- The rules for when agents are on both sides of a ticket. Reports and replies are both untrusted text. This is the thing that worries me the most. We don&#x27;t do automated support at DocSpring (although we use AI tools to help us with tickets.) I believe that some companies go all-in on agentic support workflows where a support agent can even push fixes to production.<p>We&#x27;ve included a reference server and an agent skill in the repo [3] in case you would like to explore this further.<p>[1] <a href=\"https:&#x2F;&#x2F;docspring.com\" rel=\"nofollow\">https:&#x2F;&#x2F;docspring.com</a><p>[2] <a href=\"https:&#x2F;&#x2F;modelcontextprotocol.io&#x2F;community&#x2F;working-groups&#x2F;tasks-events\" rel=\"nofollow\">https:&#x2F;&#x2F;modelcontextprotocol.io&#x2F;community&#x2F;working-groups&#x2F;tas...</a><p>[3] <a href=\"https:&#x2F;&#x2F;github.com&#x2F;DocSpring&#x2F;standardsupport\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;DocSpring&#x2F;standardsupport</a>",
+    "title": null,
+    "type": "comment",
+    "url": null
+  },
+  "comments": [
+    {
+      "author": "scottfalconer",
+      "text": "Love the idea of the convention. I tend to find it frustrating when I'm using a tool and can't just type /feedback or say \"send that as feedback\" when something goes wrong. So I'd break it into two parts 1) when I ask the agent to file feedback, then I've delegated to the agent - but it's from me - and I most likely want a follow up. \n2) when the agent stumbles and reports something itself. I don't really expect to hear back on this any more than I would on \"your application crashed would you like to send feedback\". Also remember support is more than just reporting bugs - if you can solve the problem it the moment it's even better - i.e. maybe my agent just didn't rtfm, so maybe it's not: \"support_open_ticket\", it's \"support_get_help\" which may escalate to a ticket. That also makes me much more likely to use it if it's \"let your agent ask for help\" vs \"let you agent open tickets\"",
+      "at": "2026-11-16T23:27:08.000Z",
+      "url": "https://news.ycombinator.com/item?id=50525068"
+    }
+  ],
+  "comments_complete": true
+}
