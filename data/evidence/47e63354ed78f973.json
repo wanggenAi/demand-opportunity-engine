@@ -1,0 +1,92 @@
+{
+  "source_api_url": "https://api.github.com/repos/Moon-Knight13/my_claude_dev/issues/370",
+  "collected_at": "2026-11-18T10:05:38.959560+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/Moon-Knight13/my_claude_dev/issues/370",
+    "repository_url": "https://api.github.com/repos/Moon-Knight13/my_claude_dev",
+    "labels_url": "https://api.github.com/repos/Moon-Knight13/my_claude_dev/issues/370/labels{/name}",
+    "comments_url": "https://api.github.com/repos/Moon-Knight13/my_claude_dev/issues/370/comments",
+    "events_url": "https://api.github.com/repos/Moon-Knight13/my_claude_dev/issues/370/events",
+    "html_url": "https://github.com/Moon-Knight13/my_claude_dev/issues/370",
+    "id": 6456014685,
+    "node_id": "I_kwDOTVYV9M8AAAABgM73XQ",
+    "number": 370,
+    "title": "Repo audit: main branch code review findings",
+    "user": {
+      "login": "Moon-Knight13",
+      "id": 195570009,
+      "node_id": "U_kgDOC6gpWQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/195570009?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Moon-Knight13",
+      "html_url": "https://github.com/Moon-Knight13",
+      "followers_url": "https://api.github.com/users/Moon-Knight13/followers",
+      "following_url": "https://api.github.com/users/Moon-Knight13/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Moon-Knight13/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Moon-Knight13/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Moon-Knight13/subscriptions",
+      "organizations_url": "https://api.github.com/users/Moon-Knight13/orgs",
+      "repos_url": "https://api.github.com/users/Moon-Knight13/repos",
+      "events_url": "https://api.github.com/users/Moon-Knight13/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Moon-Knight13/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 13001629131,
+        "node_id": "LA_kwDOTVYV9M8AAAADBvUdyw",
+        "url": "https://api.github.com/repos/Moon-Knight13/my_claude_dev/labels/platform-ops",
+        "name": "platform-ops",
+        "color": "0E8A16",
+        "default": false,
+        "description": "Platform operations and maintenance",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2026-11-17T23:06:21Z",
+    "updated_at": "2026-11-17T23:06:21Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Security\n\n### S1 — HIGH: `remote-thread-approval-guard.sh:59` — eval without shlex.quote on TOOL_NAME\nThe hook uses `eval \"$(printf '%s' \"$input\" | python3 -I ...)\"` where the Python outputs `TOOL_NAME={tool_name}` without `shlex.quote()`. RUNTIME_MODE is correctly quoted (line 92), but TOOL_NAME is not. If a crafted tool_name contained shell metacharacters, eval would execute them.\n**Mitigation:** Claude Code controls tool_name values, so exploitation requires a compromised MCP server.\n**Fix:** Apply `shlex.quote()` to ALL emitted values, or avoid eval entirely.\n\n### S2 — HIGH: `spoke-health/SKILL.md:38-40` — range hostnames in public repo\nHardcoded URLs `https://providentia.crp.cr14.net`, `https://wiki.crp.cr14.net`, `https://git.crp.cr14.net` in a public repository. Violates PROJECT.md rule: \"No domains, hostnames, IP addresses... in code, comments, commit messages, issues, or documentation.\"\n**Fix:** Replace with `${SPOKE_PROVIDENTIA_URL}`, `${SPOKE_WIKI_URL}`, `${SPOKE_GIT_URL}` env var references.\n\n### S3 — MEDIUM: `bloodhound-mcp/BloodHound-MCP.py:12-14` — hardcoded fallback credentials\n`BLOODHOUND_PASSWORD` defaults to `\"bloodhound\"`, `BLOODHOUND_USERNAME` to `\"neo4j\"` via `os.getenv()` fallbacks. If env vars are unset, server silently connects with default creds instead of failing. Also uses `load_dotenv()` (line 10) which creates a secondary .env load path bypassing mcp-wrapper's secret scoping.\n**Fix:** Use `os.environ[\"BLOODHOUND_URI\"]` (fail-closed). Remove `load_dotenv()`.\n\n### S4 — MEDIUM: `tuoni-secret-guard.sh` — no fail-closed trap\nMissing `trap 'exit 2' ERR` unlike all other PreToolUse gates (mode-tool-gate, pretooluse-ctp, research-dispatch-guard, skill-mode-gate all have it). If python3 or grep fail, `set -euo pipefail` causes non-zero exit but NOT exit 2. Claude Code treats non-2 non-zero as error (not deny), so the hook fails **open**.\n**Fix:** Add `trap 'exit 2' ERR` after `set -euo pipefail`.\n\n### S5 — MEDIUM: `guard-stack.sh` — path guard uses logical paths, not resolved paths\nPath guard checks file paths as-given without `realpath` resolution. A symlink from an allowed path to a blocked path (e.g., `.claude/hooks/`) could bypass the guard.\n**Fix:** Resolve paths with `realpath` before checking against blocked patterns.\n\n### S6 — MEDIUM: `mode-tool-gate.sh:34` — MODE used in path without character validation\n`POLICY_FILE=\"$PROJECT_DIR/.claude/modes/$MODE/tool-policy.yaml\"` — if `.active-mode` contained path traversal characters, it reads an arbitrary file. Mitigated by operator-controlled mode file writes.\n**Fix:** Validate MODE against `^[a-z0-9-]+$` pattern before path construction.\n\n### S7 — MEDIUM: `settings.local.json` — no Write deny rules for Tuoni secret paths\nRead and Edit deny rules exist for `.pem`, `.keystore`, `.jks`, tuoni config — but no Write deny. The Write tool could overwrite `tuoni.env` or key files.\n**Fix:** Add Write deny rules mirroring existing Read/Edit ones.\n\n### S8 — LOW: `bloodhound-mcp/` — missing .gitignore for .env\nNo `.gitignore` in `mcp-servers/bloodhound-mcp/`. The top-level `.env` rule only applies at repo root. A `.env` file dropped in bloodhound-mcp dir could be accidentally committed. The `load_dotenv()` call would read it.\n**Fix:** Add `mcp-servers/bloodhound-mcp/.gitignore` with `.env` entry.\n\n### S9 — LOW: `response-scanner.sh:116-127` — shell variable interpolation inside Python string\n`\"tool\": \"'\"$TOOL_NAME\"'\"` — if TOOL_NAME contained a single quote, it breaks the Python string literal.\n**Fix:** Pass TOOL_NAME as Python argv instead of string interpolation.\n\n### S10 — LOW: `skill-mode-gate.sh:70`, `mode-inject.sh:73` — grep -qw without -F flag\n`grep -qw \"$MODE\"` interprets MODE as regex. If MODE contained `.` or `*`, it would match unintended patterns. E.g., `r.d-team` matches `red-team`.\n**Fix:** Use `grep -Fqw` for literal matching.\n\n---\n\n## Correctness\n\n### C1 — HIGH: `pretooluse-source-priority.sh` — completely non-functional (dual failure)\n**Line 15:** Reads `CLAUDE_TOOL_NAME` from env var — always empty. PreToolUse hooks receive tool info on stdin as JSON. The case statement on line 33 falls through to `*) exit 0`, making the ENTIRE hook a no-op.\n**Line 23-25:** Reads mode from `settings.json._mode` — no such key exists. Always returns `\"unknown\"`.\n**Registration:** NOT wired in main `settings.json` — but IS registered in red-team and purple mode `settings.json` files. If mode settings merge, this broken hook fires on every PreToolUse in those modes.\n**Fix:** Rewrite to read tool_name from stdin JSON (like all other hooks). Read mode from `.active-mode` file. Wire in main settings.json if intended to be active.\n\n### C2 — MEDIUM: `research-dispatch-guard.sh:55-63` — stale MCP name prefixes\nPrefixes `mcp__range-intel-mcp__providentia_` and `mcp__range-intel-mcp__readme_` don't match actual tool names. MCP server is named `range-intel` (not `range-intel-mcp`), so actual tools are `mcp__range-intel__*`. Guard never fires for range-intel tools.\nAlso references non-existent MCPs: `ghidra-mcp`, `gtfobins-mcp`, `velociraptor-mcp`, `wazuh-mcp`.\n**Fix:** Update to `mcp__range-intel__range_` prefix. Remove or comment non-existent MCP prefixes until those servers are installed.\n\n### C3 — MEDIUM: `ctp-bridge.sh` — unquoted `$*` in SSH command\nSSH command uses `ssh \"$DEPLOY_HOST\" \"cd $DEPLOY_DIR && ctp $*\"`. If ctp arguments contain spaces or shell metacharacters, they could be misinterpreted by the remote shell.\n**Fix:** Use `printf '%q '` to escape each argument, or use `--` separator.\n\n### C4 — MEDIUM: `base/settings.json` — stale hook set diverged from root settings\n`.claude/modes/base/settings.json` has only 8 hooks. Root `settings.json` has 13. Missing from base: `research-dispatch-guard.sh`, `skill-mode-gate.sh`, `remote-thread-approval-guard.sh`, `auto-log-finding.sh`, `session-end-sync.sh`. If mode settings replacement (not merge) is used, base mode loses 5 hooks including security gates.\n**Fix:** Sync base mode settings.json with root, or document the merge/override semantics.\n\n### C5 — MEDIUM: Skill `modes:` body text contradicts frontmatter\nMultiple offensive skills have `modes: [red-team, purple]` in frontmatter but body text says \"Active in: **red-team** mode only.\" Affected: `persist-swarm`, `lateral-move`, `discovery`, `cred-harvest`.\n**Fix:** Update body text to match frontmatter, or narrow frontmatter.\n\n### C6 — MEDIUM: `engagement-state` missing from ctf mode\n`engagement-orchestration` has `modes: [red-team, purple, ctf, bounty, pentest]` and its CTF flow references engagement-state. But `engagement-state` has `modes: [red-team, purple]` — blocked in ctf mode by skill-mode-gate.sh. CTF engagement flow could fail unexpectedly.\n**Fix:** Add `ctf` (and possibly `bounty`, `pentest`) to engagement-state modes.\n\n### C7 — MEDIUM: `opsec-exploit-hygiene` missing purple mode\nFrontmatter: `modes: [red-team, red-dev]`. Purple inherits offensive-base rules including exploit hygiene. If purple attempts to invoke this OPSEC guard, skill-mode-gate denies it.\n**Fix:** Add `purple` to modes list. Consider adding `ctf`, `bounty`, `pentest`.\n\n### C8 — LOW: `note-search` skill vs command mode mismatch\nSkill SKILL.md: `modes: [red-team, purple, ctf, red-dev]` — missing pentest and bounty.\nCommand note-search.md: `modes: [red-team, purple, red-dev, ctf, pentest, bounty]` — broader.\n**Fix:** Align skill modes to match command.\n\n### C9 — LOW: `auto-log-finding.sh:116-117` — incomplete JSON escaping\n`sed 's/\"/\\\\\"/g'` does not escape backslashes, newlines, or other control characters. Tool results containing these produce invalid JSON in hookSpecificOutput.\n**Fix:** Use python or jq for JSON escaping.\n\n### C10 — LOW: `spoke-health` modes missing several modes\n`modes: [base, platform-ops, red-team, purple, red-dev, green-dev]` — missing bounty, ctf, dev, homelab, pentest. Operators in those modes cannot check spoke connectivity.\n**Fix:** Add all modes, or drop `modes:` entirely to make universal.\n\n---\n\n## Consistency\n\n### K1 — MEDIUM: mode-inject.sh skill filter omits universal skills\nSkills WITHOUT `modes:` frontmatter are excluded from mode-inject.sh filtered list (line 71 `continue` on empty modes_line). Soft guidance says these don't exist; hard gate (skill-mode-gate.sh) allows them. All 48 bmad-* skills are invisible in filtered guidance but callable.\n\n### K2 — MEDIUM: pretooluse-source-priority.sh reads env var instead of stdin\nOnly hook that reads tool name from `CLAUDE_TOOL_NAME` env var. All other PreToolUse hooks read JSON from stdin via `cat` and parse with jq or python3.\n\n### K3 — LOW: audit-trail.sh passes JSON via argv instead of stdin to python\nAll other hooks pipe JSON via stdin to python3. Audit-trail passes full input as `sys.argv[1]`. Works but inconsistent and has shell argv length limits (~2MB).\n\n### K4 — LOW: Mixed jq vs python3 for JSON parsing across hooks\npretooluse-ctp.sh uses jq; others use python3 -I. Not a bug, but adds two runtime dependencies where one would suffice.\n\n### K5 — LOW: `session-end-sync.sh:65` — hardcoded user-specific memory path\n`$HOME/.claude/projects/-home-chris-Documents-my-claude-dev/memory` — ties hook to one machine's directory structure. Breaks on different install paths.\n\n---\n\n## Dead Code / Stale References\n\n### D1 — MEDIUM: `pretooluse-source-priority.sh` — dead hook\nNot wired in main settings.json. Even if wired, completely non-functional (reads wrong input source). Registered in red-team and purple mode settings.json only — if those merge, it fires but does nothing useful.\n\n### D2 — LOW: `research-dispatch-guard.sh` — 6 of 8 MCP prefixes reference non-existent servers\n`ghidra-mcp`, `gtfobins-mcp`, `velociraptor-mcp`, `wazuh-mcp` don't exist. `range-intel-mcp` is wrong name (should be `range-intel`). Only `hacktricks-mcp` and `mitre-mcp` match actual servers.\n\n### D3 — LOW: `scripts/docker-housekeeping.sh` and `scripts/memory-health.sh` — unreferenced\nNot called by any hook, automation, or documented procedure. Manual-only utilities.\n\n### D4 — LOW: `scripts/install-bloodhound-mcp.sh` — zero references\nNot called by any install script, provisioning step, or documentation.\n\n---\n\n## Architecture Gaps\n\n### A1 — MEDIUM: bmad-* skills are soft-gated only in offensive modes\nAll 48 bmad-* skills have no `modes:` frontmatter. Mode prompts say \"Do NOT invoke bmad-*\" but `skill-mode-gate.sh` allows them (no modes = all modes). The \"blocked\" claim in green-dev, red-team, etc. mode prompts is **soft enforcement only**.\n**Fix:** Add `modes:` frontmatter to bmad-* skills listing only dev, platform-ops, homelab, base. Or add negative-mode-gating to skill-mode-gate.sh.\n\n### A2 — MEDIUM: No Write deny guard for `.claude/hooks/` path\nHooks gate Bash and Skill tools, but no guard prevents using the Write tool to overwrite hook scripts themselves. If a compromised model writes to `.claude/hooks/`, it could disable safety gates. Path guard in guard-stack may cover this but only for Bash commands, not Write tool calls.\n**Fix:** Add Write deny rules for `.claude/hooks/*` and `.claude/settings*` in settings.json.\n\n### A3 — MEDIUM: source-priority enforcement is inconsistent across offensive modes\nOnly red-team and purple modes register `pretooluse-source-priority.sh` (broken hook). Other offensive modes (ctf, bounty, pentest, red-dev) don't even register it. The source priority concept from shared-rules.md is unenforced across all modes.\n\n### A4 — LOW: `GUARD_STACK_SKIP` env var allows bypassing guards\n`guard-stack.sh` supports `GUARD_STACK_SKIP` for testing. If set in production, specific guards can be bypassed. Script logs a warning but doesn't prevent it.\n\n### A5 — LOW: `ctp-guard.sh` target hostname regex not anchored\nRegex `[a-zA-Z0-9._-]+` for hostname extraction is not anchored (`^...$`). Partial match could pass validation for unexpected hostname patterns.\n\n---\n\n## Documentation\n\n### DOC1 — MEDIUM: PROJECT.md mode count stale\nSays \"7 modes\" (line 17). Actual: 11 selectable + 1 shared fragment = 12 mode directories.\n\n### DOC2 — MEDIUM: SAFETY_GATES.md missing 2 newer gates\nDoes not document `research-dispatch-guard.sh` or `remote-thread-approval-guard.sh`.\n\n### DOC3 — MEDIUM: SAFETY_GATES.md hook table missing session-end-sync.sh\nTable at line 238 lists 11 hooks. `session-end-sync.sh` (registered in settings.json) is omitted.\n\n### DOC4 — LOW: SAFETY_GATES.md overstates response-scanner line limit\nClaims \"scans only first 200 lines.\" In reality, only key-value pattern scan is limited to 200 lines; API token regex patterns scan full output.\n\n### DOC5 — LOW: MCP_ENV_MAP.md lists env vars not implemented in load-env.sh\n`LOCAL_MODEL_ENDPOINT` → `OLLAMA_HOST` derivation, `HASHCAT_PATH`, `GHIDRA_INSTALL_DIR` / `JAVA_HOME` defaults — none exist in load-env.sh.\n\n### DOC6 — LOW: base/system-prompt.md \"Available Modes\" table lists 6, should be 11\nMissing bounty, ctf, dev, pentest, homelab from routing guidance.\n\n---\n\n## Summary\n\n**38 total findings. 2 critical (S1 eval injection, C1 dead hook). 15 high/medium. 21 low/info.**\n\n| Category | Critical | High | Medium | Low |\n|----------|----------|------|--------|-----|\n| Security | 0 | 2 | 5 | 3 |\n| Correctness | 0 | 1 | 6 | 3 |\n| Consistency | 0 | 0 | 2 | 3 |\n| Dead Code | 0 | 0 | 1 | 3 |\n| Architecture | 0 | 0 | 3 | 2 |\n| Documentation | 0 | 0 | 3 | 3 |\n\n**Top 5 priority fixes:**\n1. **C1** — Rewrite `pretooluse-source-priority.sh` or remove entirely\n2. **S1** — Add `shlex.quote()` to all eval-emitted values in `remote-thread-approval-guard.sh`\n3. **S2** — Replace hardcoded range URLs in `spoke-health/SKILL.md` with env var refs\n4. **S4** — Add `trap 'exit 2' ERR` to `tuoni-secret-guard.sh`\n5. **C2** — Fix stale MCP name prefixes in `research-dispatch-guard.sh`",
+    "reactions": {
+      "url": "https://api.github.com/repos/Moon-Knight13/my_claude_dev/issues/370/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/Moon-Knight13/my_claude_dev/issues/370/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [],
+  "comments_complete": true
+}

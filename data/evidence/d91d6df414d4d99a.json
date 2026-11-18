@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50532610",
+  "collected_at": "2026-11-18T10:05:38.959560+00:00",
+  "source": {
+    "author": "arpitagarwal",
+    "children": [],
+    "created_at": "2026-11-17T15:22:53.000Z",
+    "created_at_i": 1794928973,
+    "id": 50532610,
+    "options": [],
+    "parent_id": null,
+    "points": 3,
+    "story_id": 50532610,
+    "text": "Hi folks ,<p>I built CodeMany [1] - to run your actions on a Mac&#x2F;Linux box that you own. Stop paying by the minute, as your agents scale. Own your infra, and let CodeMany manage it.<p>Over the last year, we scaled our commits&#x2F;month by 30x [2]. Over the coming year, I don&#x27;t see that slowing down.<p>Some highlights about CodeMany:<p><pre><code>  - CodeMany is 3x faster than Github Actions. Benchmarks published [3]. \n  - small Go daemon inside a native mac&#x2F;linux app. \n  - has brought my CI monthly bill down from $582 to &lt;$5. \n  - each job gets an isolated just-in-time (JIT) runner, recycled when done. \n  - Manages multiple machines out-of-box. \n\n</code></pre>\nSetup is easy: install it, connect GitHub, select repos, and use runs-on: [self-hosted, codemany] in a workflow. Add Linux or macOS to pick one kind of machine.<p>Cost: $20&#x2F;mo for 2 machines and $10&#x2F;mo for each extra, Mac or Linux, one subscription per GitHub account or org, after a 14-day trial, no card.<p>Would love to hear what would you like to see in CodeMany?<p>Arpit<p>[1] CodeMany: <a href=\"https:&#x2F;&#x2F;codemany.com\" rel=\"nofollow\">https:&#x2F;&#x2F;codemany.com</a>.<p>[2] AI agents made my CI bill 5× bigger. So I built Codemany: <a href=\"https:&#x2F;&#x2F;codemany.com&#x2F;articles&#x2F;ai-coding-agents-ci-costs\" rel=\"nofollow\">https:&#x2F;&#x2F;codemany.com&#x2F;articles&#x2F;ai-coding-agents-ci-costs</a>.<p>[3] Benchmarks published nightly on Github: <a href=\"https:&#x2F;&#x2F;github.com&#x2F;codemanyhq&#x2F;bench\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;codemanyhq&#x2F;bench</a>",
+    "title": "Show HN: Codemany – Run GitHub Actions on Your Mac/Linux. 3x Faster, Save $$$$",
+    "type": "story",
+    "url": null
+  },
+  "comments": [],
+  "comments_complete": true
+}

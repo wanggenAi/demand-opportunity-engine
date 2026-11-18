@@ -1,0 +1,860 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50536468",
+  "collected_at": "2026-11-18T10:05:38.959560+00:00",
+  "source": {
+    "author": "yonasb",
+    "children": [
+      {
+        "author": "gkoberger",
+        "children": [
+          {
+            "author": "dbworku",
+            "children": [],
+            "created_at": "2026-11-17T19:28:28.000Z",
+            "created_at_i": 1794943708,
+            "id": 50536855,
+            "options": [],
+            "parent_id": 50536781,
+            "points": null,
+            "story_id": 50536468,
+            "text": "Oof. It&#x27;s hard to pick one! I like the subtle fixes like swapping sleeps in tests with DB readiness checks or pinpointing a single long running test causing a shard to run slow.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          },
+          {
+            "author": "yonasb",
+            "children": [],
+            "created_at": "2026-11-18T00:15:36.000Z",
+            "created_at_i": 1794960936,
+            "id": 50540164,
+            "options": [],
+            "parent_id": 50536781,
+            "points": null,
+            "story_id": 50536468,
+            "text": "I was surprised that mature projects got some of the biggest wins. gogs is a 48K-star repo and one 20 line fix got it a 5x speedup:<p><a href=\"https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-gogs&#x2F;blob&#x2F;showcase&#x2F;patches&#x2F;stack-0.patch\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-gogs&#x2F;blob&#x2F;sh...</a>",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-17T19:23:26.000Z",
+        "created_at_i": 1794943406,
+        "id": 50536781,
+        "options": [],
+        "parent_id": 50536468,
+        "points": null,
+        "story_id": 50536468,
+        "text": "Congrats on the launch! These benchmarks look really great, can&#x27;t wait to start using this.<p>What are some of the most interesting things the AI has caught + fixed so far?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "dotmike",
+        "children": [
+          {
+            "author": "dbworku",
+            "children": [],
+            "created_at": "2026-11-17T19:53:16.000Z",
+            "created_at_i": 1794945196,
+            "id": 50537183,
+            "options": [],
+            "parent_id": 50537089,
+            "points": null,
+            "story_id": 50536468,
+            "text": "Our primary difference is self-improving PRs from continuously analyzing the telemetry from your CI. Most folks just sell fast hardware and are happy to charge you for jobs that don&#x27;t saturate the host.<p>In our examples with open-source repos above you&#x27;ll see that most of speedups that lead to a 10X speedup come from code changes or optimizations.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-17T19:44:31.000Z",
+        "created_at_i": 1794944671,
+        "id": 50537089,
+        "options": [],
+        "parent_id": 50536468,
+        "points": null,
+        "story_id": 50536468,
+        "text": "Congrats on the launch! Will give it a run. Why is your CI fast? Curious to hear the technical details",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "d-sanoj",
+        "children": [
+          {
+            "author": "yonasb",
+            "children": [],
+            "created_at": "2026-11-17T20:29:23.000Z",
+            "created_at_i": 1794947363,
+            "id": 50537723,
+            "options": [],
+            "parent_id": 50537456,
+            "points": null,
+            "story_id": 50536468,
+            "text": "Thanks! If CI is on your priorities list, give us a shot.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-17T20:11:04.000Z",
+        "created_at_i": 1794946264,
+        "id": 50537456,
+        "options": [],
+        "parent_id": 50536468,
+        "points": null,
+        "story_id": 50536468,
+        "text": "Congrats on the launch. This seems interesting.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "jstrasner",
+        "children": [
+          {
+            "author": "yonasb",
+            "children": [],
+            "created_at": "2026-11-17T20:28:16.000Z",
+            "created_at_i": 1794947296,
+            "id": 50537708,
+            "options": [],
+            "parent_id": 50537537,
+            "points": null,
+            "story_id": 50536468,
+            "text": "We use Mastra to run the agents in our CI harness. It&#x27;s been great for being able to swap out models easily. More details here <a href=\"https:&#x2F;&#x2F;starsling.dev&#x2F;blog&#x2F;agent-loop\">https:&#x2F;&#x2F;starsling.dev&#x2F;blog&#x2F;agent-loop</a>.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-17T20:15:28.000Z",
+        "created_at_i": 1794946528,
+        "id": 50537537,
+        "options": [],
+        "parent_id": 50536468,
+        "points": null,
+        "story_id": 50536468,
+        "text": "So good! CI is still such a pain. Out of curiosity, do you use any open source harnesses under the hood or did you roll your own?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "kinfish",
+        "children": [
+          {
+            "author": "yonasb",
+            "children": [],
+            "created_at": "2026-11-17T21:51:44.000Z",
+            "created_at_i": 1794952304,
+            "id": 50538737,
+            "options": [],
+            "parent_id": 50537542,
+            "points": null,
+            "story_id": 50536468,
+            "text": "Thank you!",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-17T20:15:42.000Z",
+        "created_at_i": 1794946542,
+        "id": 50537542,
+        "options": [],
+        "parent_id": 50536468,
+        "points": null,
+        "story_id": 50536468,
+        "text": "congrats on the launch!",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "colek42",
+        "children": [
+          {
+            "author": "dbworku",
+            "children": [],
+            "created_at": "2026-11-17T20:40:09.000Z",
+            "created_at_i": 1794948009,
+            "id": 50537861,
+            "options": [],
+            "parent_id": 50537612,
+            "points": null,
+            "story_id": 50536468,
+            "text": "Definitely agree that agent volume will push beyond pipelined CI. Most teams we’ve talked to are still working to get up to 100 PR&#x2F;hour.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          },
+          {
+            "author": "jwilliams",
+            "children": [
+              {
+                "author": "dbworku",
+                "children": [
+                  {
+                    "author": "jwilliams",
+                    "children": [],
+                    "created_at": "2026-11-18T02:49:03.000Z",
+                    "created_at_i": 1794970143,
+                    "id": 50541240,
+                    "options": [],
+                    "parent_id": 50540807,
+                    "points": null,
+                    "story_id": 50536468,
+                    "text": "Thanks! We actually call it the poor-mans Bazel :)",
+                    "title": null,
+                    "type": "comment",
+                    "url": null
+                  }
+                ],
+                "created_at": "2026-11-18T01:41:21.000Z",
+                "created_at_i": 1794966081,
+                "id": 50540807,
+                "options": [],
+                "parent_id": 50540069,
+                "points": null,
+                "story_id": 50536468,
+                "text": "Clever use of a git trailer! This seems like a great middle ground to cut some CI minutes without the full rigor of a CI engine.<p>We love Buck2 and Bazel, from first principles. Unfortunately, the DX hurdles of making a codebase hermetic have prevented widespread adoption IMO.",
+                "title": null,
+                "type": "comment",
+                "url": null
+              },
+              {
+                "author": "Bnjoroge",
+                "children": [
+                  {
+                    "author": "jwilliams",
+                    "children": [],
+                    "created_at": "2026-11-18T05:02:12.000Z",
+                    "created_at_i": 1794978132,
+                    "id": 50542082,
+                    "options": [],
+                    "parent_id": 50541685,
+                    "points": null,
+                    "story_id": 50536468,
+                    "text": "We still run the lot on merge to main. But there are a lot of branch builds along the way. That’s where the savings come in.",
+                    "title": null,
+                    "type": "comment",
+                    "url": null
+                  }
+                ],
+                "created_at": "2026-11-18T03:55:52.000Z",
+                "created_at_i": 1794974152,
+                "id": 50541685,
+                "options": [],
+                "parent_id": 50540069,
+                "points": null,
+                "story_id": 50536468,
+                "text": "I experimented with something similar, but running the actual gha jobs locally. Were you doing any verification to ensure the agent actually run all tests? do you sitll run remote CI? how do you deal with side effects of work that integrates with other PRs in some way? Were you sandboxing them?",
+                "title": null,
+                "type": "comment",
+                "url": null
+              },
+              {
+                "author": "colek42",
+                "children": [],
+                "created_at": "2026-11-18T05:42:22.000Z",
+                "created_at_i": 1794980542,
+                "id": 50542301,
+                "options": [],
+                "parent_id": 50540069,
+                "points": null,
+                "story_id": 50536468,
+                "text": "I love this.  I&#x27;m thinking we could make a git trailer of the evidence oid we create -- would make the UX much better.<p>I maintain witness.dev (CNCF) and cilock.dev (Apache 2.0 open core) that builds provenance around SDLC (or ADLC steps).  We are experimenting using this to just let the agents land code after they prove their testing.  Right now we are expecting a 2x increase in throughput at the same amount of compute",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-11-18T00:05:13.000Z",
+            "created_at_i": 1794960313,
+            "id": 50540069,
+            "options": [],
+            "parent_id": 50537612,
+            "points": null,
+            "story_id": 50536468,
+            "text": "&gt; 3 -- How many times you have to run that critical path. Most orgs run it 2-3x<p>This is the one we went after. Our agents have to run tsc, lint and the unit tests before they push (it&#x27;s in a hook), and CI was then doing all three again from scratch. Now the agent records what it ran as a git trailer on the commit and the PR build skips those steps [1]. Anything headed to main still runs everything, so the trailer only has to be trusted on the intermediate pushes.<p>Builds went from ~10 minutes to 1.5 over a few weeks, and a good third&#x2F;half of that was this change. It tends to compound too - getting the build time down led to lower contention, warmer caches, faster throughput. All the usual queuing theory stuff.<p>[1] <a href=\"https:&#x2F;&#x2F;jonathannen.com&#x2F;dont-run-it-twice&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;jonathannen.com&#x2F;dont-run-it-twice&#x2F;</a>",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-17T20:21:15.000Z",
+        "created_at_i": 1794946875,
+        "id": 50537612,
+        "options": [],
+        "parent_id": 50536468,
+        "points": null,
+        "story_id": 50536468,
+        "text": "We should probably be measuring deployable merges to main.  The math just doesn&#x27;t work for pipeline based CI as you add more agents.<p>Three things matter.<p>1 -- How many non-conflicting changes can actually be made at one time (Fan Out)<p>2 -- How long a critical path takes<p>3 -- How many times you have to run that critical path.  Most orgs run it 2-3x, once before the PR in the agent loop, once in CI, and another in the MQ<p>This is why most orgs cant get past about 12 PRs an hour.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "buildwrangler",
+        "children": [
+          {
+            "author": "dbworku",
+            "children": [],
+            "created_at": "2026-11-17T21:00:33.000Z",
+            "created_at_i": 1794949233,
+            "id": 50538109,
+            "options": [],
+            "parent_id": 50537855,
+            "points": null,
+            "story_id": 50536468,
+            "text": "Thanks! It’s an unappreciated bottleneck so we feel your pain.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          },
+          {
+            "author": "yonasb",
+            "children": [],
+            "created_at": "2026-11-17T21:45:54.000Z",
+            "created_at_i": 1794951954,
+            "id": 50538659,
+            "options": [],
+            "parent_id": 50537855,
+            "points": null,
+            "story_id": 50536468,
+            "text": "Thank you! Yeah most teams don&#x27;t have someone with your experience so they end up with really inefficient GHA setups. Doing our best to help!",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-17T20:39:45.000Z",
+        "created_at_i": 1794947985,
+        "id": 50537855,
+        "options": [],
+        "parent_id": 50536468,
+        "points": null,
+        "story_id": 50536468,
+        "text": "Congrats! I spent alot of time scaling really large and complex CI and integration testing builds so its great seeing a product that can help devs with this.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "esafak",
+        "children": [
+          {
+            "author": "yonasb",
+            "children": [],
+            "created_at": "2026-11-17T21:51:19.000Z",
+            "created_at_i": 1794952279,
+            "id": 50538733,
+            "options": [],
+            "parent_id": 50538645,
+            "points": null,
+            "story_id": 50536468,
+            "text": "That&#x27;s fair. At a certain point, once you value all of those things enough, you&#x27;ll just move off of YAML entirely (we think of this as Level 4 of CI <a href=\"https:&#x2F;&#x2F;starsling.dev&#x2F;blog&#x2F;levels-of-ci#level-4\">https:&#x2F;&#x2F;starsling.dev&#x2F;blog&#x2F;levels-of-ci#level-4</a>). But I think there are a lot of people still trying to get the biggest gains with the least amount of effort. That&#x27;s who we&#x27;re going after first.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          },
+          {
+            "author": "Bnjoroge",
+            "children": [
+              {
+                "author": "yonasb",
+                "children": [],
+                "created_at": "2026-11-18T00:04:33.000Z",
+                "created_at_i": 1794960273,
+                "id": 50540063,
+                "options": [],
+                "parent_id": 50539777,
+                "points": null,
+                "story_id": 50536468,
+                "text": "Yeah YAML written by agents seems like it&#x27;s gonna be around for a while. GitHub Actions has 90%+ market share for Claude recommendations: <a href=\"https:&#x2F;&#x2F;amplifying.ai&#x2F;research&#x2F;claude-code-picks&#x2F;report#rankings\" rel=\"nofollow\">https:&#x2F;&#x2F;amplifying.ai&#x2F;research&#x2F;claude-code-picks&#x2F;report#rank...</a>. The problem is, nobody is going back to clean it up until it&#x27;s a real bottleneck.",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-11-17T23:36:04.000Z",
+            "created_at_i": 1794958564,
+            "id": 50539777,
+            "options": [],
+            "parent_id": 50538645,
+            "points": null,
+            "story_id": 50536468,
+            "text": "I think YAML used to matter more when humans were writing much of the code, but they matter alot less now, especially because you can already write much of your YAML workflows in high level code. It&#x27;s still matters, but alot less than it used to or enough to be a pain. I agree with the rest of the concerns though.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-17T21:44:48.000Z",
+        "created_at_i": 1794951888,
+        "id": 50538645,
+        "options": [],
+        "parent_id": 50536468,
+        "points": null,
+        "story_id": 50536468,
+        "text": "As you note, we can do those optimizations ourselves. The kind of person looking for CI runners is likely doing that already. What I value is speed, cost, scheduling delay, reliability, observability, local reproducibility, not using YAML... There is a lot of value to provide but workflow optimization is not where I would look.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "sochs",
+        "children": [
+          {
+            "author": "yonasb",
+            "children": [],
+            "created_at": "2026-11-17T22:09:48.000Z",
+            "created_at_i": 1794953388,
+            "id": 50538954,
+            "options": [],
+            "parent_id": 50538729,
+            "points": null,
+            "story_id": 50536468,
+            "text": "We chose the name because our original inspiration was an agentic developer portal. So we thought Stargate + Dr. Strange&#x27;s sling ring that opens portals was a cool mashup. Sorry to disappoint :(",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-17T21:51:07.000Z",
+        "created_at_i": 1794952267,
+        "id": 50538729,
+        "options": [],
+        "parent_id": 50536468,
+        "points": null,
+        "story_id": 50536468,
+        "text": "Off topic but every time I read a name like &quot;Star Sling&quot; I get excited to see another space startup tackling a difficult challenge; and so when it turns out to be CI for agents, it&#x27;s a letdown and an annoyance. Idk, this project seems cool, but maybe pick a less pretentious name.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "bekacru",
+        "children": [
+          {
+            "author": "yonasb",
+            "children": [],
+            "created_at": "2026-11-17T23:48:44.000Z",
+            "created_at_i": 1794959324,
+            "id": 50539911,
+            "options": [],
+            "parent_id": 50539469,
+            "points": null,
+            "story_id": 50536468,
+            "text": "Merging the runner migration was such a proud moment for us! So glad we&#x27;ve been able to take CI off your plate :)",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-17T23:00:44.000Z",
+        "created_at_i": 1794956444,
+        "id": 50539469,
+        "options": [],
+        "parent_id": 50536468,
+        "points": null,
+        "story_id": 50536468,
+        "text": "Bereket from Better Auth - we&#x27;ve been on StarSling for about a year now, it&#x27;s been such a hard a problem for us ot solve CI to the amount of PRs we get and continues need of optimization and faster runners, im so bullish!",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "emscb",
+        "children": [
+          {
+            "author": "yonasb",
+            "children": [
+              {
+                "author": "emscb",
+                "children": [],
+                "created_at": "2026-11-18T02:46:11.000Z",
+                "created_at_i": 1794969971,
+                "id": 50541218,
+                "options": [],
+                "parent_id": 50540594,
+                "points": null,
+                "story_id": 50536468,
+                "text": "When I trimmed my tests, I looked for ones that could be merged. Many unit tests shared the same setup and teardown, so when I merged their middle parts, that setup and teardown only had to run once. Even after merging, the tests still had to stay independent of execution order, so I checked that. In another case, some infrastructure checks were repeated across tests in one folder. For example, “the app needs environment variable A at startup” is already a test of its own, but every application-layer test also asserted it at the start. I kept that check in one place instead.",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-11-18T01:09:29.000Z",
+            "created_at_i": 1794964169,
+            "id": 50540594,
+            "options": [],
+            "parent_id": 50540199,
+            "points": null,
+            "story_id": 50536468,
+            "text": "Good question! In terms of the what counts as a win for our agents: speed alone isn&#x27;t enough. A change only counts if the patched run and the unchanged run executed the same tests (same test IDs, same coverage).<p>Re-sharding is allowed because it only changes where tests run, not what runs. It has the same sort of parity check as other patches but it also has a cost check to make sure the change doesn&#x27;t increase runner time by more than 5% by default. We added the cost check after seeing the agents crush wall clock while 10x&#x27;ing costs on some test :)<p>Judging whether or not a test should be trimmed isn&#x27;t something our agents do yet, because as you alluded to, it&#x27;s hard. But we&#x27;re working on it! If you have any ideas or an approach that&#x27;s worked for you, would love to hear it.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-18T00:20:18.000Z",
+        "created_at_i": 1794961218,
+        "id": 50540199,
+        "options": [],
+        "parent_id": 50536468,
+        "points": null,
+        "story_id": 50536468,
+        "text": "So the agent compares the changed workflow with the existing one and judges whether the speedup is significant. But a change that re-shards or skips tests would always look like a win on speed alone, wouldn&#x27;t it? How do you check that such changes still catch the bugs the old workflow caught? I had the same worry when I trimmed our tests because CI was too slow.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "brunoarueira",
+        "children": [
+          {
+            "author": "dbworku",
+            "children": [],
+            "created_at": "2026-11-18T01:07:07.000Z",
+            "created_at_i": 1794964027,
+            "id": 50540574,
+            "options": [],
+            "parent_id": 50540293,
+            "points": null,
+            "story_id": 50536468,
+            "text": "Yeah it accelerates the whole team! If you remember, what was the biggest lever? We&#x27;re always looking to expand the patterns in our &#x2F;speed-up skill. :)",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-18T00:32:19.000Z",
+        "created_at_i": 1794961939,
+        "id": 50540293,
+        "options": [],
+        "parent_id": 50536468,
+        "points": null,
+        "story_id": 50536468,
+        "text": "Congrats on the launch! In the past pre-AI I did an improvement to the github actions pipeline from 20 minutes down to 6, it&#x27;s a relief when you improve things like this and improve the team throughput!",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "tristenharr",
+        "children": [
+          {
+            "author": "yonasb",
+            "children": [],
+            "created_at": "2026-11-18T01:13:45.000Z",
+            "created_at_i": 1794964425,
+            "id": 50540612,
+            "options": [],
+            "parent_id": 50540299,
+            "points": null,
+            "story_id": 50536468,
+            "text": "Thanks! Give it a shot, let us know what you think :)",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-18T00:33:38.000Z",
+        "created_at_i": 1794962018,
+        "id": 50540299,
+        "options": [],
+        "parent_id": 50536468,
+        "points": null,
+        "story_id": 50536468,
+        "text": "Hmm this is very interesting! Good idea.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "jbqueries",
+        "children": [],
+        "created_at": "2026-11-18T09:25:57.000Z",
+        "created_at_i": 1794993957,
+        "id": 50543955,
+        "options": [],
+        "parent_id": 50536468,
+        "points": null,
+        "story_id": 50536468,
+        "text": "An agent that opens PRs to speed up the CI for the PRs opened by agents. Ouroboros, now with per-second billing.<p>Actual problem tho, congrats on the launch!",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "poxlr",
+        "children": [],
+        "created_at": "2026-11-18T09:50:00.000Z",
+        "created_at_i": 1794995400,
+        "id": 50544169,
+        "options": [],
+        "parent_id": 50536468,
+        "points": null,
+        "story_id": 50536468,
+        "text": "Curious how the inference cost of the agent loop compares to the CI minutes it saves. On a smaller repo I could see it eating most of the savings. Is there a repo size where it starts to clearly pay off?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-11-17T19:01:43.000Z",
+    "created_at_i": 1794942103,
+    "id": 50536468,
+    "options": [],
+    "parent_id": null,
+    "points": 69,
+    "story_id": 50536468,
+    "text": "We’re Yonas and Daniel and we’re building StarSling (<a href=\"https:&#x2F;&#x2F;starsling.dev\">https:&#x2F;&#x2F;starsling.dev</a>), fast GitHub Actions runners with AI agents that ship PRs to continuously improve your tests and workflows.<p>Every CI job gets its own ephemeral sandbox on the fastest Zen 5 machines and NVMe Disk with unlimited concurrency so a burst of agent PRs all run at once. We’re different from other runners because ours come with agents that cut down your CI bill over time. PRs are generated through our CI harness, which runs an agent loop that’s tuned to improve your CI speed and reduce cost.<p>Mastra now merges over 1,800 PRs a month and we got their slowest workflow from 29m 56s on GitHub-hosted runners down to 5m 06s (5.87x) on StarSling. We realized the true value of having an agent loop running on top of fast runners when our agents found an 11-month-old performance bottleneck in better-auth. The fix made one of their test jobs 5.4x faster: <a href=\"https:&#x2F;&#x2F;github.com&#x2F;better-auth&#x2F;better-auth&#x2F;pull&#x2F;10762\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;better-auth&#x2F;better-auth&#x2F;pull&#x2F;10762</a>.<p>I previously founded StackShare, which grew to over 1.5M developers. Daniel helped build Netflix&#x27;s internal developer portal. Last year we started building AI agents for DevOps because shipping code to prod fell way behind agentic coding. We hit the CI bottleneck ourselves as we were building agents. Our own agents shipped so many PRs that at peak our job queues were backed up for hours and our CI bill got close to our inference bill.<p>We now support per-second billing, and just shipped StarSling Disks - persistent disks that give you a 4.9x speedup in dependencies ready over actions&#x2F;cache. You can see a quick demo of disks in action here : <a href=\"https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=2JrrpRm9Mww\" rel=\"nofollow\">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=2JrrpRm9Mww</a>.<p>Our CI harness runs a loop that has agents:\n- Analyze your workflows, run logs, and machine telemetry\n- Propose an optimization\n- Test your unchanged workflow side by side the proposed change\n- Deterministically judge that the difference is statistically significant\n- Ship the winner to you as a PR with benchmarks evidence<p>We benchmarked open source repos on our runners and average 10x speedup in wall clock time with 70% less runner time:\n- <a href=\"https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-gogs\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-gogs</a> (12.8x)\n- <a href=\"https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-shellcheck\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-shellcheck</a> (5.5x)\n- <a href=\"https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-chatwoot\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-chatwoot</a> (3.9x)\n- <a href=\"https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-transfer.sh\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-transfer.sh</a> (11.7x)\n- <a href=\"https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-mirotalksfu\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-mirotalksfu</a> (36.4x)<p>Yes, you can do these optimizations yourself with prompts so we’ve released skills for this: <a href=\"https:&#x2F;&#x2F;github.com&#x2F;starslingdev&#x2F;skills\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;starslingdev&#x2F;skills</a>. The benefit of using our agents is that you don’t need to spend tokens and CI compute finding optimizations yourself.<p>We started building our runners on AWS at the beginning of the year and realized that was too expensive. But at that time there weren’t any cloud providers that could give us the same machines we were getting on AWS, billed per minute (microVMs). So we convinced a handful of sandbox providers to get Zen 5s and started benchmarking them publicly (<a href=\"https:&#x2F;&#x2F;github.com&#x2F;starslingdev&#x2F;hpc-sandbox-benchmarks\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;starslingdev&#x2F;hpc-sandbox-benchmarks</a>).<p>We’ve learned that fast infrastructure is table stakes for CI, but it’s not sufficient on its own. To get fast and cost effective CI you need a process that continues making improvements. We turned CI optimizations from OpenAI, Anthropic, Linear and others into playbooks for your agent: <a href=\"https:&#x2F;&#x2F;starsling.dev&#x2F;ci-playbooks\">https:&#x2F;&#x2F;starsling.dev&#x2F;ci-playbooks</a>.<p>To try it, give your agent this URL: <a href=\"https:&#x2F;&#x2F;docs.starsling.dev&#x2F;start\">https:&#x2F;&#x2F;docs.starsling.dev&#x2F;start</a>. You get 2,000 free minutes. Our agents start opening PRs once you&#x27;ve hit about 10,000 minutes.<p>Today we announced our CI Challenge: if StarSling can&#x27;t save you at least 10% on your next CI bill, we&#x27;ll literally give you $1,000. Eligibility and rules here: <a href=\"https:&#x2F;&#x2F;starsling.dev&#x2F;blog&#x2F;ci-challenge\">https:&#x2F;&#x2F;starsling.dev&#x2F;blog&#x2F;ci-challenge</a>.<p>We’d love your feedback on the headless experience and what you’d like to see improved in your own CI setup!",
+    "title": "Launch HN: StarSling (YC P25) – Self-improving CI for agent-volume repos",
+    "type": "story",
+    "url": "https://starsling.dev"
+  },
+  "comments": [
+    {
+      "author": "gkoberger",
+      "text": "Congrats on the launch! These benchmarks look really great, can't wait to start using this. What are some of the most interesting things the AI has caught + fixed so far?",
+      "at": "2026-11-17T19:23:26.000Z",
+      "url": "https://news.ycombinator.com/item?id=50536781"
+    },
+    {
+      "author": "dbworku",
+      "text": "Oof. It's hard to pick one! I like the subtle fixes like swapping sleeps in tests with DB readiness checks or pinpointing a single long running test causing a shard to run slow.",
+      "at": "2026-11-17T19:28:28.000Z",
+      "url": "https://news.ycombinator.com/item?id=50536855"
+    },
+    {
+      "author": "yonasb",
+      "text": "I was surprised that mature projects got some of the biggest wins. gogs is a 48K-star repo and one 20 line fix got it a 5x speedup:  https://github.com/starsling-demo-org/benchmark-gogs/blob/sh...",
+      "at": "2026-11-18T00:15:36.000Z",
+      "url": "https://news.ycombinator.com/item?id=50540164"
+    },
+    {
+      "author": "dotmike",
+      "text": "Congrats on the launch! Will give it a run. Why is your CI fast? Curious to hear the technical details",
+      "at": "2026-11-17T19:44:31.000Z",
+      "url": "https://news.ycombinator.com/item?id=50537089"
+    },
+    {
+      "author": "dbworku",
+      "text": "Our primary difference is self-improving PRs from continuously analyzing the telemetry from your CI. Most folks just sell fast hardware and are happy to charge you for jobs that don't saturate the host. In our examples with open-source repos above you'll see that most of speedups that lead to a 10X speedup come from code changes or optimizations.",
+      "at": "2026-11-17T19:53:16.000Z",
+      "url": "https://news.ycombinator.com/item?id=50537183"
+    },
+    {
+      "author": "d-sanoj",
+      "text": "Congrats on the launch. This seems interesting.",
+      "at": "2026-11-17T20:11:04.000Z",
+      "url": "https://news.ycombinator.com/item?id=50537456"
+    },
+    {
+      "author": "yonasb",
+      "text": "Thanks! If CI is on your priorities list, give us a shot.",
+      "at": "2026-11-17T20:29:23.000Z",
+      "url": "https://news.ycombinator.com/item?id=50537723"
+    },
+    {
+      "author": "jstrasner",
+      "text": "So good! CI is still such a pain. Out of curiosity, do you use any open source harnesses under the hood or did you roll your own?",
+      "at": "2026-11-17T20:15:28.000Z",
+      "url": "https://news.ycombinator.com/item?id=50537537"
+    },
+    {
+      "author": "yonasb",
+      "text": "We use Mastra to run the agents in our CI harness. It's been great for being able to swap out models easily. More details here  https://starsling.dev/blog/agent-loop .",
+      "at": "2026-11-17T20:28:16.000Z",
+      "url": "https://news.ycombinator.com/item?id=50537708"
+    },
+    {
+      "author": "kinfish",
+      "text": "congrats on the launch!",
+      "at": "2026-11-17T20:15:42.000Z",
+      "url": "https://news.ycombinator.com/item?id=50537542"
+    },
+    {
+      "author": "yonasb",
+      "text": "Thank you!",
+      "at": "2026-11-17T21:51:44.000Z",
+      "url": "https://news.ycombinator.com/item?id=50538737"
+    },
+    {
+      "author": "colek42",
+      "text": "We should probably be measuring deployable merges to main.  The math just doesn't work for pipeline based CI as you add more agents. Three things matter. 1 -- How many non-conflicting changes can actually be made at one time (Fan Out) 2 -- How long a critical path takes 3 -- How many times you have to run that critical path.  Most orgs run it 2-3x, once before the PR in the agent loop, once in CI, and another in the MQ This is why most orgs cant get past about 12 PRs an hour.",
+      "at": "2026-11-17T20:21:15.000Z",
+      "url": "https://news.ycombinator.com/item?id=50537612"
+    },
+    {
+      "author": "dbworku",
+      "text": "Definitely agree that agent volume will push beyond pipelined CI. Most teams we’ve talked to are still working to get up to 100 PR/hour.",
+      "at": "2026-11-17T20:40:09.000Z",
+      "url": "https://news.ycombinator.com/item?id=50537861"
+    },
+    {
+      "author": "jwilliams",
+      "text": "> 3 -- How many times you have to run that critical path. Most orgs run it 2-3x This is the one we went after. Our agents have to run tsc, lint and the unit tests before they push (it's in a hook), and CI was then doing all three again from scratch. Now the agent records what it ran as a git trailer on the commit and the PR build skips those steps [1]. Anything headed to main still runs everything, so the trailer only has to be trusted on the intermediate pushes. Builds went from ~10 minutes to 1.5 over a few weeks, and a good third/half of that was this change. It tends to compound too - getting the build time down led to lower contention, warmer caches, faster throughput. All the usual queuing theory stuff. [1]  https://jonathannen.com/dont-run-it-twice/",
+      "at": "2026-11-18T00:05:13.000Z",
+      "url": "https://news.ycombinator.com/item?id=50540069"
+    },
+    {
+      "author": "dbworku",
+      "text": "Clever use of a git trailer! This seems like a great middle ground to cut some CI minutes without the full rigor of a CI engine. We love Buck2 and Bazel, from first principles. Unfortunately, the DX hurdles of making a codebase hermetic have prevented widespread adoption IMO.",
+      "at": "2026-11-18T01:41:21.000Z",
+      "url": "https://news.ycombinator.com/item?id=50540807"
+    },
+    {
+      "author": "jwilliams",
+      "text": "Thanks! We actually call it the poor-mans Bazel :)",
+      "at": "2026-11-18T02:49:03.000Z",
+      "url": "https://news.ycombinator.com/item?id=50541240"
+    },
+    {
+      "author": "Bnjoroge",
+      "text": "I experimented with something similar, but running the actual gha jobs locally. Were you doing any verification to ensure the agent actually run all tests? do you sitll run remote CI? how do you deal with side effects of work that integrates with other PRs in some way? Were you sandboxing them?",
+      "at": "2026-11-18T03:55:52.000Z",
+      "url": "https://news.ycombinator.com/item?id=50541685"
+    },
+    {
+      "author": "jwilliams",
+      "text": "We still run the lot on merge to main. But there are a lot of branch builds along the way. That’s where the savings come in.",
+      "at": "2026-11-18T05:02:12.000Z",
+      "url": "https://news.ycombinator.com/item?id=50542082"
+    },
+    {
+      "author": "colek42",
+      "text": "I love this.  I'm thinking we could make a git trailer of the evidence oid we create -- would make the UX much better. I maintain witness.dev (CNCF) and cilock.dev (Apache 2.0 open core) that builds provenance around SDLC (or ADLC steps).  We are experimenting using this to just let the agents land code after they prove their testing.  Right now we are expecting a 2x increase in throughput at the same amount of compute",
+      "at": "2026-11-18T05:42:22.000Z",
+      "url": "https://news.ycombinator.com/item?id=50542301"
+    },
+    {
+      "author": "buildwrangler",
+      "text": "Congrats! I spent alot of time scaling really large and complex CI and integration testing builds so its great seeing a product that can help devs with this.",
+      "at": "2026-11-17T20:39:45.000Z",
+      "url": "https://news.ycombinator.com/item?id=50537855"
+    },
+    {
+      "author": "dbworku",
+      "text": "Thanks! It’s an unappreciated bottleneck so we feel your pain.",
+      "at": "2026-11-17T21:00:33.000Z",
+      "url": "https://news.ycombinator.com/item?id=50538109"
+    },
+    {
+      "author": "yonasb",
+      "text": "Thank you! Yeah most teams don't have someone with your experience so they end up with really inefficient GHA setups. Doing our best to help!",
+      "at": "2026-11-17T21:45:54.000Z",
+      "url": "https://news.ycombinator.com/item?id=50538659"
+    },
+    {
+      "author": "esafak",
+      "text": "As you note, we can do those optimizations ourselves. The kind of person looking for CI runners is likely doing that already. What I value is speed, cost, scheduling delay, reliability, observability, local reproducibility, not using YAML... There is a lot of value to provide but workflow optimization is not where I would look.",
+      "at": "2026-11-17T21:44:48.000Z",
+      "url": "https://news.ycombinator.com/item?id=50538645"
+    },
+    {
+      "author": "yonasb",
+      "text": "That's fair. At a certain point, once you value all of those things enough, you'll just move off of YAML entirely (we think of this as Level 4 of CI  https://starsling.dev/blog/levels-of-ci#level-4 ). But I think there are a lot of people still trying to get the biggest gains with the least amount of effort. That's who we're going after first.",
+      "at": "2026-11-17T21:51:19.000Z",
+      "url": "https://news.ycombinator.com/item?id=50538733"
+    },
+    {
+      "author": "Bnjoroge",
+      "text": "I think YAML used to matter more when humans were writing much of the code, but they matter alot less now, especially because you can already write much of your YAML workflows in high level code. It's still matters, but alot less than it used to or enough to be a pain. I agree with the rest of the concerns though.",
+      "at": "2026-11-17T23:36:04.000Z",
+      "url": "https://news.ycombinator.com/item?id=50539777"
+    },
+    {
+      "author": "yonasb",
+      "text": "Yeah YAML written by agents seems like it's gonna be around for a while. GitHub Actions has 90%+ market share for Claude recommendations:  https://amplifying.ai/research/claude-code-picks/report#rank... . The problem is, nobody is going back to clean it up until it's a real bottleneck.",
+      "at": "2026-11-18T00:04:33.000Z",
+      "url": "https://news.ycombinator.com/item?id=50540063"
+    },
+    {
+      "author": "sochs",
+      "text": "Off topic but every time I read a name like \"Star Sling\" I get excited to see another space startup tackling a difficult challenge; and so when it turns out to be CI for agents, it's a letdown and an annoyance. Idk, this project seems cool, but maybe pick a less pretentious name.",
+      "at": "2026-11-17T21:51:07.000Z",
+      "url": "https://news.ycombinator.com/item?id=50538729"
+    },
+    {
+      "author": "yonasb",
+      "text": "We chose the name because our original inspiration was an agentic developer portal. So we thought Stargate + Dr. Strange's sling ring that opens portals was a cool mashup. Sorry to disappoint :(",
+      "at": "2026-11-17T22:09:48.000Z",
+      "url": "https://news.ycombinator.com/item?id=50538954"
+    },
+    {
+      "author": "bekacru",
+      "text": "Bereket from Better Auth - we've been on StarSling for about a year now, it's been such a hard a problem for us ot solve CI to the amount of PRs we get and continues need of optimization and faster runners, im so bullish!",
+      "at": "2026-11-17T23:00:44.000Z",
+      "url": "https://news.ycombinator.com/item?id=50539469"
+    },
+    {
+      "author": "yonasb",
+      "text": "Merging the runner migration was such a proud moment for us! So glad we've been able to take CI off your plate :)",
+      "at": "2026-11-17T23:48:44.000Z",
+      "url": "https://news.ycombinator.com/item?id=50539911"
+    },
+    {
+      "author": "emscb",
+      "text": "So the agent compares the changed workflow with the existing one and judges whether the speedup is significant. But a change that re-shards or skips tests would always look like a win on speed alone, wouldn't it? How do you check that such changes still catch the bugs the old workflow caught? I had the same worry when I trimmed our tests because CI was too slow.",
+      "at": "2026-11-18T00:20:18.000Z",
+      "url": "https://news.ycombinator.com/item?id=50540199"
+    },
+    {
+      "author": "yonasb",
+      "text": "Good question! In terms of the what counts as a win for our agents: speed alone isn't enough. A change only counts if the patched run and the unchanged run executed the same tests (same test IDs, same coverage). Re-sharding is allowed because it only changes where tests run, not what runs. It has the same sort of parity check as other patches but it also has a cost check to make sure the change doesn't increase runner time by more than 5% by default. We added the cost check after seeing the agents crush wall clock while 10x'ing costs on some test :) Judging whether or not a test should be trimmed isn't something our agents do yet, because as you alluded to, it's hard. But we're working on it! If you have any ideas or an approach that's worked for you, would love to hear it.",
+      "at": "2026-11-18T01:09:29.000Z",
+      "url": "https://news.ycombinator.com/item?id=50540594"
+    },
+    {
+      "author": "emscb",
+      "text": "When I trimmed my tests, I looked for ones that could be merged. Many unit tests shared the same setup and teardown, so when I merged their middle parts, that setup and teardown only had to run once. Even after merging, the tests still had to stay independent of execution order, so I checked that. In another case, some infrastructure checks were repeated across tests in one folder. For example, “the app needs environment variable A at startup” is already a test of its own, but every application-layer test also asserted it at the start. I kept that check in one place instead.",
+      "at": "2026-11-18T02:46:11.000Z",
+      "url": "https://news.ycombinator.com/item?id=50541218"
+    },
+    {
+      "author": "brunoarueira",
+      "text": "Congrats on the launch! In the past pre-AI I did an improvement to the github actions pipeline from 20 minutes down to 6, it's a relief when you improve things like this and improve the team throughput!",
+      "at": "2026-11-18T00:32:19.000Z",
+      "url": "https://news.ycombinator.com/item?id=50540293"
+    },
+    {
+      "author": "dbworku",
+      "text": "Yeah it accelerates the whole team! If you remember, what was the biggest lever? We're always looking to expand the patterns in our /speed-up skill. :)",
+      "at": "2026-11-18T01:07:07.000Z",
+      "url": "https://news.ycombinator.com/item?id=50540574"
+    },
+    {
+      "author": "tristenharr",
+      "text": "Hmm this is very interesting! Good idea.",
+      "at": "2026-11-18T00:33:38.000Z",
+      "url": "https://news.ycombinator.com/item?id=50540299"
+    },
+    {
+      "author": "yonasb",
+      "text": "Thanks! Give it a shot, let us know what you think :)",
+      "at": "2026-11-18T01:13:45.000Z",
+      "url": "https://news.ycombinator.com/item?id=50540612"
+    },
+    {
+      "author": "jbqueries",
+      "text": "An agent that opens PRs to speed up the CI for the PRs opened by agents. Ouroboros, now with per-second billing. Actual problem tho, congrats on the launch!",
+      "at": "2026-11-18T09:25:57.000Z",
+      "url": "https://news.ycombinator.com/item?id=50543955"
+    },
+    {
+      "author": "poxlr",
+      "text": "Curious how the inference cost of the agent loop compares to the CI minutes it saves. On a smaller repo I could see it eating most of the savings. Is there a repo size where it starts to clearly pay off?",
+      "at": "2026-11-18T09:50:00.000Z",
+      "url": "https://news.ycombinator.com/item?id=50544169"
+    }
+  ],
+  "comments_complete": true
+}

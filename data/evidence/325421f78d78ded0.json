@@ -1,0 +1,107 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/44333",
+  "collected_at": "2026-11-18T10:05:38.959560+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/44333",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/44333/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/44333/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/44333/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/44333",
+    "id": 6462031631,
+    "node_id": "I_kwDOC4Q8Qs8AAAABgSrHDw",
+    "number": 44333,
+    "title": "Regression in 2.46.0: $('Node').first() returns null for a node's error output in webhook executions (vm engine)",
+    "user": {
+      "login": "cdmx-in",
+      "id": 137166088,
+      "node_id": "U_kgDOCCz9CA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/137166088?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/cdmx-in",
+      "html_url": "https://github.com/cdmx-in",
+      "followers_url": "https://api.github.com/users/cdmx-in/followers",
+      "following_url": "https://api.github.com/users/cdmx-in/following{/other_user}",
+      "gists_url": "https://api.github.com/users/cdmx-in/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/cdmx-in/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/cdmx-in/subscriptions",
+      "organizations_url": "https://api.github.com/users/cdmx-in/orgs",
+      "repos_url": "https://api.github.com/users/cdmx-in/repos",
+      "events_url": "https://api.github.com/users/cdmx-in/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/cdmx-in/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-11-18T07:15:26Z",
+    "updated_at": "2026-11-18T08:56:54Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\n**Severity: high. The failure is silent and it affects the current stable release.**\n\nIn production webhook executions, an expression that reads items from a node set to \"Continue (using error output)\" resolves to `null` instead of the item. n8n shows no error, so downstream nodes silently receive `null`. In my case the whole parameter of a Redis node became null and the push failed with \"Invalid argument type\"; with other nodes it could silently write empty values (similar to the impact described in #41588).\n\nIt is a regression: it works up to 2.45.0 and fails from 2.46.0. Still failing on 2.47.5 and on the current stable 2.48.4. `N8N_EXPRESSION_ENGINE=legacy` is the only workaround I found, and the config marks `legacy` as soon to be deprecated.\n\nOnly the reference to the node that produced the error output fails. `$json` and a reference to the node right after the error output work. Inside a try/catch the expression throws `#<Object> could not be cloned.`\n\nRelated but different: #41588 / #42335 (1.x, Code node with task runners disabled, fixed in #42249). This is 2.x with the default `vm` engine. Forum thread: https://community.n8n.io/t/regression-in-2-46-0-node-first-returns-null-for-a-nodes-error-output-in-webhook-executions-fixed-by-n8n-expression-engine-legacy/329337\n\n### To Reproduce\n\n1. Import the workflow below (Webhook, a Code node \"Thrower\" that throws with \"Continue (using error output)\", a passthrough Code node on its error output, and a Set node \"Check\"), then publish it.\n2. Call `GET /webhook/repro` on the production URL.\n3. Compare the returned fields.\n\nResult, 8-12 calls per version, identical every time:\n\n| Version / engine | `$('Thrower').first().json.error` | `$('Thrower').first(1).json.error` | `$json.error` | try/catch around `$('Thrower').first(1)` |\n|---|---|---|---|---|\n| 2.34.5, 2.40.0, 2.44.0, 2.45.0 | boom | boom | boom | OK |\n| 2.46.0, 2.47.5, 2.48.4 (default engine) | **null** | **null** | boom | `ERR: #<Object> could not be cloned.` |\n| 2.47.5, `N8N_EXPRESSION_ENGINE=legacy` | boom | boom | boom | OK |\n\nNotes:\n- Only webhook (production) executions fail. Running the same workflow with `n8n execute` on 2.47.5 passes.\n- `N8N_EXPRESSION_ENGINE_ALLOW_WEBHOOK_ISOLATE_SKIP=false`, `N8N_EXPRESSION_ENGINE_LAZY_ACQUIRE=false` and `N8N_EXPRESSION_ENGINE_NATIVE_EVALUATION=false` do not change the result on 2.47.5.\n- I only tested a Code node as the failing node.\n- I did not find the commit. It is somewhere between n8n@2.45.0 and n8n@2.46.0.\n\n<details><summary>Workflow JSON</summary>\n\n```json\n[{\"id\":\"repro2\",\"name\":\"repro webhook\",\"active\":false,\"settings\":{\"executionOrder\":\"v1\"},\"nodes\":[{\"id\":\"n1\",\"name\":\"Webhook\",\"type\":\"n8n-nodes-base.webhook\",\"typeVersion\":2,\"position\":[0,0],\"webhookId\":\"11111111-2222-4333-8444-555555555555\",\"parameters\":{\"httpMethod\":\"GET\",\"path\":\"repro\",\"responseMode\":\"lastNode\",\"responseData\":\"firstEntryJson\",\"options\":{}}},{\"id\":\"n2\",\"name\":\"Thrower\",\"type\":\"n8n-nodes-base.code\",\"typeVersion\":2,\"position\":[220,0],\"onError\":\"continueErrorOutput\",\"parameters\":{\"jsCode\":\"throw new Error('boom');\"}},{\"id\":\"n3\",\"name\":\"Pass\",\"type\":\"n8n-nodes-base.code\",\"typeVersion\":2,\"position\":[440,100],\"parameters\":{\"jsCode\":\"return $input.all();\"}},{\"id\":\"n4\",\"name\":\"Check\",\"type\":\"n8n-nodes-base.set\",\"typeVersion\":3.4,\"position\":[660,100],\"parameters\":{\"mode\":\"manual\",\"includeOtherFields\":false,\"assignments\":{\"assignments\":[{\"id\":\"a1\",\"name\":\"first_default\",\"type\":\"string\",\"value\":\"={{ $('Thrower').first().json.error }}\"},{\"id\":\"a2\",\"name\":\"first_1\",\"type\":\"string\",\"value\":\"={{ $('Thrower').first(1).json.error }}\"},{\"id\":\"a3\",\"name\":\"json_error\",\"type\":\"string\",\"value\":\"={{ $json.error }}\"},{\"id\":\"a4\",\"name\":\"pass_first\",\"type\":\"string\",\"value\":\"={{ $('Pass').first().json.error }}\"},{\"id\":\"a5\",\"name\":\"try_catch\",\"type\":\"string\",\"value\":\"={{ (() => { try { $('Thrower').first(1); return 'OK' } catch (e) { return 'ERR: ' + e.message } })() }}\"}]},\"options\":{}}}],\"connections\":{\"Webhook\":{\"main\":[[{\"node\":\"Thrower\",\"type\":\"main\",\"index\":0}]]},\"Thrower\":{\"main\":[[],[{\"node\":\"Pass\",\"type\":\"main\",\"index\":0}]]},\"Pass\":{\"main\":[[{\"node\":\"Check\",\"type\":\"main\",\"index\":0}]]}}}]\n```\n\n</details>\n\n### Expected behavior\n\n`$('Thrower').first().json.error` returns \"boom\", as on 2.45.0 and on the legacy engine.\n\n### Debug Info\n\nReproduced with the official `docker.n8n.io/n8nio/n8n` images in throwaway containers (n8n CLI `import:workflow` + `publish:workflow`, then `n8n start`), default settings, no custom environment variables except those listed above. Not taken from the UI.\n\n### Operating System\n\nDocker Hardened Images / Alpine Linux v3.24 (official image), on an AlmaLinux 9 host\n\n### n8n Version\n\n2.47.5 (also 2.46.0 and 2.48.4)\n\n### Node.js Version\n\n26.13.0\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/44333/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/44333/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @cdmx-in,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9806\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9806](https://linear.app/n8n/issue/GHC-9806)",
+      "at": "2026-11-18T07:15:36Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44333#issuecomment-6971824026"
+    },
+    {
+      "author": "grinem",
+      "text": "The `# could not be cloned` error points directly to V8 structured cloning failing when the `vm` engine serializes raw `runData` across the isolate boundary for error output branches (un-clonable `Error` prototype/property descriptors).",
+      "at": "2026-11-18T07:30:11Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44333#issuecomment-6972097926"
+    }
+  ],
+  "comments_complete": true
+}

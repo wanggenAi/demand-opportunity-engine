@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50532699",
+  "collected_at": "2026-11-18T10:05:38.959560+00:00",
+  "source": {
+    "author": "wwind123",
+    "children": [],
+    "created_at": "2026-11-17T15:28:42.000Z",
+    "created_at_i": 1794929322,
+    "id": 50532699,
+    "options": [],
+    "parent_id": null,
+    "points": 1,
+    "story_id": 50532699,
+    "text": "Over the last couple of years, I have observed many people (including myself) researching tricky topics by asking the same question to multiple AI&#x27;s. If those answers conflict, we manually copy the answers back-and-forth between the AI apps to make them debate each other, to get a fuller picture of the topic.<p>I developed AI Spar to organize and automate this debate process. When the user asks a question:<p>1) Multiple AI&#x27;s answer the question independent of each other.<p>2) An analyzer (also an AI model) finds the consensuses and disagreements between those answers, and what important points are missed by which answer.<p>3) For each disagreement point, each AI tries to defend its stance when presented with its original answer and the other side&#x27;s opinion (it can concede if it feels the other side is right); and for each missed point, each AI tries to clarify whether it agrees with the point.<p>4) If all disagreement points have consensus, or the debate has reached max number of rounds, then go to 5); otherwise, go to 3) for the next round of debate with the latest arguments from each side.<p>5) The analyzer summarizes the debate, synthesizes a final answer, and lists the consensus points, resolved disagreements, unresolved disagreements, and clarified missed points.<p>Note that it might feel slow compared to those AI apps, because of all the steps taken above.  Also worth a disclaimer: even if all AI&#x27;s eventually agree on one point, that doesn&#x27;t necessarily mean it&#x27;s correct.<p>Some friends have been testing this system. They mention that sometimes reading the back-and-forth debate details is a lot more fun than reading the final synthesis.<p>Without signing in, you can try two separate questions, with entry-level models from 3 AI providers (Gemini, GPT, Claude).<p>Signing in enables additional features: asking follow-up questions, attaching images or PDFs, saving and sharing conversations. Also, stronger models from these providers are available for signed-in users. In addition, you can enable web-search grounded debates, and optional fact-checking during the debates. You pay as you go, no subscription at this point. Cost of each debate depends on the models and settings. We also support BYOK for these providers, with a separate system fee. CLI&#x2F;API access is also available if you need them.<p>An interesting debate example: <a href=\"https:&#x2F;&#x2F;aispar.app&#x2F;share&#x2F;5f503127-4b4a-4c5c-9b2a-74081016b686\" rel=\"nofollow\">https:&#x2F;&#x2F;aispar.app&#x2F;share&#x2F;5f503127-4b4a-4c5c-9b2a-74081016b68...</a>\n&quot;Should junior developers use coding agents from their first day? &quot; Even though all three AI&#x27;s (Gemini, GPT, Claude) initially broadly agree on the surface, after the debate, each has made pretty big changes on the substance, and at the end there&#x27;s still unresolved disagreement.",
+    "title": "Show HN: AI Spar – Turn conflicting AI answers into a structured debate",
+    "type": "story",
+    "url": "https://aispar.app"
+  },
+  "comments": [],
+  "comments_complete": true
+}

@@ -1,0 +1,113 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/44330",
+  "collected_at": "2026-11-18T10:05:38.959560+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/44330",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/44330/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/44330/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/44330/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/44330",
+    "id": 6460244323,
+    "node_id": "I_kwDOC4Q8Qs8AAAABgQ-BYw",
+    "number": 44330,
+    "title": "isEmail() returns true for strings containing an email plus extra characters",
+    "user": {
+      "login": "indexGin",
+      "id": 166748424,
+      "node_id": "U_kgDOCfBhCA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/166748424?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/indexGin",
+      "html_url": "https://github.com/indexGin",
+      "followers_url": "https://api.github.com/users/indexGin/followers",
+      "following_url": "https://api.github.com/users/indexGin/following{/other_user}",
+      "gists_url": "https://api.github.com/users/indexGin/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/indexGin/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/indexGin/subscriptions",
+      "organizations_url": "https://api.github.com/users/indexGin/orgs",
+      "repos_url": "https://api.github.com/users/indexGin/repos",
+      "events_url": "https://api.github.com/users/indexGin/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/indexGin/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 3,
+    "created_at": "2026-11-18T04:51:11Z",
+    "updated_at": "2026-11-18T09:05:32Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Describe the problem\n\nThe `isEmail()` string extension returns `true` for strings that merely\ncontain a valid email address plus extra characters. The `EMAIL_REGEXP`\nused by `isEmail()` has no `^`/`$` anchors, and the function only\ncompensates for spaces through an ad-hoc `value.includes(' ')` check.\nAny other surrounding characters, such as trailing punctuation, a path\nsegment, or angle brackets, are silently ignored.\n\nThis contradicts the documented behaviour, where\n`\"It's me@example.com\".isEmail()` is documented to return `false`, i.e.\n`isEmail()` is meant to answer \"is this entire string an email?\".\n\n## To reproduce\n\n1. Open any workflow expression field (or a Code node) that supports\n   string extensions.\n2. Evaluate the following expressions:\n\n   ```js\n   \"test@example.com!\".isEmail()\n   \"test@example.com;\".isEmail()\n   \"test@example.com/extra\".isEmail()\n   \"<test@example.com>\".isEmail()\n   ```\n\n   The same result can be observed directly on the extension:\n\n   ```ts\n   import { stringExtensions } from '@n8n/expression-runtime';\n   const isEmail = stringExtensions.functions.isEmail;\n   isEmail('test@example.com!'); // true\n   ```\n\n## Expected behavior\n\nAll four expressions above should return `false`, matching the\ndocumented `\"It's me@example.com\".isEmail()` returning `false`. A plain\n`\"me@example.com\".isEmail()` should still return `true`, and\n`extractEmail()` should keep extracting an email from a larger sentence.\n\n## Actual behavior\n\nAll four expressions above return `true`. Only inputs containing a\nspace are rejected, so strings with trailing punctuation, appended path\nsegments or surrounding angle brackets are treated as valid email\naddresses.\n\n## Impact\n\nWorkflows that use `isEmail()` to validate or route incoming data (form\nsubmissions, webhook payloads, contact imports, conditional branches)\ncan accept malformed values as valid emails. Invalid addresses may then\nbe stored, forwarded to downstream services, or used in recipient\nfields, and validation becomes inconsistent with `extractEmail()` and\n`extractDomain()`.\n\n## Affected code\n\n- `packages/@n8n/expression-runtime/src/extensions/string-extensions.ts`\n  - `EMAIL_REGEXP` (unanchored) and `isEmail()`.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/44330/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/44330/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @indexGin,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9805\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9805](https://linear.app/n8n/issue/GHC-9805)",
+      "at": "2026-11-18T04:51:23Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44330#issuecomment-6969414242"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "I checked the current implementation: `isEmail()` calls the same unanchored `EMAIL_REGEXP` used by `extractEmail()`, then only rejects values containing a space. That explains why punctuation, path suffixes, and angle brackets can pass while extraction still needs to find an address inside surrounding text.\n\nOne way to preserve that extraction behavior is to keep `EMAIL_REGEXP` unchanged and require the `isEmail()` match to cover the whole input (for example, check both `match.index === 0` and `match[0].length === value.length`). That avoids broadening the validation regex while leaving `extractEmail()` unchanged. The existing sentence example and the four reported suffix/prefix cases would be useful regression cases.",
+      "at": "2026-11-18T06:05:29Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44330#issuecomment-6970600118"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "One implementation detail is worth preserving in the fix: `extractEmail()` uses the same unanchored `EMAIL_REGEXP` to find an address inside text, so anchoring that shared regex would change extraction behavior. `isEmail()` can instead require its match to start at index 0 and span the full input (and keep the existing space check); that rejects the reported wrappers/suffixes without changing extraction. The documented sentence example plus the four cases in the report would cover both contracts.",
+      "at": "2026-11-18T09:05:32Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44330#issuecomment-6973975561"
+    }
+  ],
+  "comments_complete": true
+}

@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50531208",
+  "collected_at": "2026-11-18T10:05:38.959560+00:00",
+  "source": {
+    "author": "neprotivo",
+    "children": [],
+    "created_at": "2026-11-17T13:40:28.000Z",
+    "created_at_i": 1794922828,
+    "id": 50531208,
+    "options": [],
+    "parent_id": null,
+    "points": 4,
+    "story_id": 50531208,
+    "text": "Hi, I&#x27;m Tzanko and I&#x27;m the author of Belay.<p>Belay is a Lean 4 library for doing formal verification of SQLite queries and migrations. It implements a semantic model of a subset of SQLite, validated by differential tests that compare the output against native SQLite.<p>With Belay I wanted to see how difficult it is to use formal verification for everyday development tasks. It turns out it can be made not much harder than writing an integration test: you state the claim, the agent writes the proof, and Lean&#x27;s kernel checks it, so the only thing you have to read is the claim (longer write-up on the\nmotivation and agent workflow: <a href=\"https:&#x2F;&#x2F;vihren.dev&#x2F;blog&#x2F;20261112-belay&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;vihren.dev&#x2F;blog&#x2F;20261112-belay&#x2F;</a>).<p>While a migration is being written, your agent can run #sql_check, which searches small databases for counterexamples to a claim, and is as easy to run as a linter.<p>Once the migration is settled, the agent writes a proof of the claims you need, for example that the migration preserves the results of existing queries and succeeds on valid data.<p>Currently Belay supports a subset of SQLite 3.51.0, cross-checked against native SQLite on 5,768 differential test cases, most of which come from SQLite&#x27;s own test suite. Unsupported SQL is rejected with a reason and never approximated. Not every rule of the model has had a human audit yet. The model covers single-connection operational semantics only: it says nothing about query plans, locks, concurrency or crash behavior.<p>I think this approach can make formal verification as routine as testing, though two things stand in the way. The first is coverage: the model has to cover the full semantics of SQLite and all of its recent versions, and the same work has to be done for other engines such as PostgreSQL and ClickHouse. The second is proof cost: the proofs of common claims are still long for the agent to write, and they have to become short. I&#x27;m looking for design partners who want this for their workloads on SQLite or other open-source databases, because a real workload is the best guide to what to cover first. The models that come out of that work become part of Belay as open source. Reach out at contact@vihren.dev.<p>If you know a tricky SQLite edge case where the model might diverge from native SQLite, or a gnarly migration bug you&#x27;ve hit in production, I&#x27;d love to test it and hear your thoughts.",
+    "title": "Show HN: Belay – formal verification for SQLite migrations and queries in Lean 4",
+    "type": "story",
+    "url": "https://github.com/vihren-dev/belay"
+  },
+  "comments": [],
+  "comments_complete": true
+}

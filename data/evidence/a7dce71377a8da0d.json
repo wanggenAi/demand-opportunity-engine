@@ -1,0 +1,188 @@
+{
+  "source_api_url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/12688",
+  "collected_at": "2026-11-18T10:05:38.959560+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/12688",
+    "repository_url": "https://api.github.com/repos/Luminous-Dynamics/symthaea",
+    "labels_url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/12688/labels{/name}",
+    "comments_url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/12688/comments",
+    "events_url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/12688/events",
+    "html_url": "https://github.com/Luminous-Dynamics/symthaea/issues/12688",
+    "id": 6449641550,
+    "node_id": "I_kwDOQ7glz88AAAABgG24Tg",
+    "number": 12688,
+    "title": "ROBOT-LIGHTSHELL-001: develop an Atelier textile-first modular second skin for humanoid and mobile robots",
+    "user": {
+      "login": "Tristan-Stoltz-ERC",
+      "id": 215346314,
+      "node_id": "U_kgDODNXsig",
+      "avatar_url": "https://avatars.githubusercontent.com/u/215346314?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Tristan-Stoltz-ERC",
+      "html_url": "https://github.com/Tristan-Stoltz-ERC",
+      "followers_url": "https://api.github.com/users/Tristan-Stoltz-ERC/followers",
+      "following_url": "https://api.github.com/users/Tristan-Stoltz-ERC/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Tristan-Stoltz-ERC/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Tristan-Stoltz-ERC/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Tristan-Stoltz-ERC/subscriptions",
+      "organizations_url": "https://api.github.com/users/Tristan-Stoltz-ERC/orgs",
+      "repos_url": "https://api.github.com/users/Tristan-Stoltz-ERC/repos",
+      "events_url": "https://api.github.com/users/Tristan-Stoltz-ERC/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Tristan-Stoltz-ERC/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 8,
+    "created_at": "2026-11-17T16:52:57Z",
+    "updated_at": "2026-11-18T06:16:45Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Mission\n\nDevelop **Atelier Lightshell**: a textile-first, modular, lightweight second skin for humanoid and other non-weaponized civil, industrial, service, inspection, construction and rescue robots.\n\nThe Lightshell is not a costume, a replacement for load-bearing structure, or a universal soft armor claim. It is a product-engineered protection system that combines textile construction, local compliant structures, replaceable hard/soft guards and optional sensing. Its purpose is to protect robot surfaces and selected subsystems from defined environmental/handling hazards, reduce harsh contact surfaces, improve maintainability and provide a coherent serviceable outer architecture.\n\nNo ballistic protection or weaponized application is in scope.\n\n## Parent and composition\n\n- Parent protective architecture: Symtropy [ROBOT-PROTECTIVE-SHELL-001 #5868](https://github.com/Luminous-Dynamics/symtropy/issues/5868).\n- Product / requirements / construction / lifecycle integration: Symthaea [APPAREL-ENG-TWIN-001 #11731](https://github.com/Luminous-Dynamics/symthaea/issues/11731).\n- Fabric/yarn inverse design and experiment selection: Symthaea [TEXTILE-INVERSE-DESIGN-001 #11746](https://github.com/Luminous-Dynamics/symthaea/issues/11746).\n- Pattern/3D geometry/machine semantic preservation: Symthaea [APPAREL-INTEROP-001 #11750](https://github.com/Luminous-Dynamics/symthaea/issues/11750).\n- Human–AI design and designer agency: Symthaea [FASHION-CO-DESIGN-001 #11753](https://github.com/Luminous-Dynamics/symthaea/issues/11753).\n- Robotic cloth manipulation and seam execution: Symtropy [TEXTILE-ROBOTICS-CLOTH-001 #4865](https://github.com/Luminous-Dynamics/symtropy/issues/4865).\n- Cloth/deformable physical modelling: Symtropy [PHYS-SOFT-05 #456](https://github.com/Luminous-Dynamics/symtropy/issues/456).\n- Textile material/function qualification: Symthaea [TEXTILE-HYG-MFG-000 #5984](https://github.com/Luminous-Dynamics/symthaea/issues/5984).\n- Pattern/drape/fit spatial projection: Sol-Atlas [APPAREL-SPATIAL-001 #738](https://github.com/Luminous-Dynamics/sol-atlas-leptos/issues/738).\n- Textile product passport and lifecycle projection: Mycelix [TEXTILE-DPP-PROJECTION-001 #6092](https://github.com/Luminous-Dynamics/mycelix/issues/6092).\n- As-built robotic shell, material lot, maintenance and requalification: Mycelix [ROBOT-LIFECYCLE-EVID-001 #5985](https://github.com/Luminous-Dynamics/mycelix/issues/5985).\n\nThis issue composes these owners; it must not create another pattern CAD system, cloth solver, materials ledger, factory scheduler, safety controller, or lifecycle database.\n\n## Why textile-first is strategically justified\n\nThere are already commercial and research baselines:\n- 1X describes NEO as having external joint coverage, a soft deformable lattice, and machine-washable nylon suit/shoes. Treat manufacturer statements as product claims, not independent qualification.\n- A September 2026 Shanghai municipal report describes a manufacturer supplying thousands of protective suits for industrial robots and expanding into humanoid robot garments, with sensor-bearing textiles still under development.\n- A 2023 IEEE publication describes a textile robot cover with distributed proximity sensors and passive cushioning.\n- A 2026 patent publication describes a humanoid exterior cover combining a textile cover and lattice-based energy attenuation. A patent is not proof of a tested or deployed design.\n- 3D spacer fabric reviews identify cushioning/impact-attenuation potential; a 2022 open-access study explicitly identifies limitations in adapting flat-textile standards to 3D spacer structures, including compression, shear/tilting, air permeability and abrasion test methods.\n\nThe opportunity is not to claim that textile robot covers are new. It is to build a **robot-specific, kinematic, zone-optimized, replaceable, evidence-qualified second skin** whose physical properties, motion effects, thermal effects, maintenance and lifecycle are measured as a system.\n\n## Paradigm shift\n\nMove from:\n\n1. Static plastic housings or one-off sewn covers -> a **kinematic garment** generated from the robot's exact CAD frames, joint envelopes, cable routes, vents, sensors, service access and operating domain.\n2. One fabric across the body -> **functionally zoned material architecture**, choosing a distinct textile, spacer structure, flexible laminate or local guard for each region.\n3. Fabric selected by feel or appearance -> inverse design from measured functional requirements, manufacturability, uncertainty and repair/recovery constraints.\n4. Visual draping alone -> a revision-bound digital twin linking 2D pattern, seam topology, 3D fit, cloth parameters, machine route, as-built article and test record.\n5. Soft skin treated as passive decoration -> optional sensor-ready architecture with independent safety authority and fail-closed sensor-health semantics.\n6. Permanent covers -> repairable zone cartridges with traceable panels, replaceable sacrificial surfaces and explicit service procedures.\n7. Generic protection claims -> exact protection claims scoped to material lot, construction, seam, mounting, conditioning, test method, article revision and operating domain.\n\n## Candidate system architecture\n\nA. **Robot-side carrier and attachment interfaces**\n- Use rated structural mounting points and approved non-load-bearing attachment interfaces.\n- Do not attach textile tension or impact loads to an actuator, gearbox, encoder, cable connector, cooling grille or sensor housing unless that interface is explicitly rated for it.\n- Use keyed, captive and mechanically retained attachments. Magnets may aid alignment but must not be the sole retention mechanism in snag or vibration environments.\n- Provide dual retention where detachment could create a hazard.\n\nB. **Zone-specific textile face**\n- Candidate families: high-tenacity woven/knitted polyamide or polyester; stretch knit panels; coated woven textiles; aramid-containing blends only where a defined heat/cut/abrasion hazard justifies their trade-offs.\n- Use a verified lot, construction and finish. Recycled content is a sourcing attribute until the exact article's material and functional performance are measured.\n- Avoid exposed loops, cords, dangling tabs and unprotected fasteners.\n\nC. **Compliant 3D spacer / cushioning layer**\n- Compare warp-knit, weft-knit and woven spacer structures.\n- Measure thickness, density, compression response, recovery, cyclic set, bending/shear and air permeability on the exact structure.\n- Treat low-energy cushioning as a hypothesis until instrumented tests. Spacer textile is not a structural guard or human-contact safety certification.\n\nD. **Local reinforcement / impact modules**\n- Candidate local TPU/TPE, elastomeric, thermoformed or printed lattice patches around elbows, knees, shoulders, hips, forearms, sensor surrounds and exposed service interfaces.\n- Compare fabric-only, textile + spacer, and textile + spacer + local lattice/guard.\n- Rigid guard modules remain necessary where the hazard requires penetration, crushing, sharp-edge, high-energy impact, electrical or thermal isolation beyond textile capability.\n\nE. **Inner liner, joint gaiters and service openings**\n- Smooth, non-shedding, inspectable liners where needed.\n- Use articulated bellows, gussets, pleats or segmented overlaps only after motion-envelope and snag tests.\n- Keep cable bend radii, cooling paths, battery removal, charging, emergency stops, connectors, access panels and sensor fields of view clear.\n- Provide drain/vent/cleaning logic appropriate to each ODD. No concealed moisture or residue traps.\n\nF. **Optional sensor-ready textile**\n- Reserve removable routes and attachment zones for validated pressure/proximity/temperature/strain sensor arrays.\n- Textile sensor output is an observation, not an independent safety-rated protective device.\n- Sensor loss, delamination, broken conductors, wet-state drift or calibration expiry must be detected and must not be treated as a clear/no-contact state.\n- Keep sensing and actuation separated; no textile signal directly authorizes hazardous robot motion.\n\n## Product family and zoning\n\nDevelop distinct, interoperable modules rather than one full-body suit:\n- head/camera/sensor shroud (optics and thermal openings remain unobstructed);\n- torso and back service panels;\n- shoulder/upper-arm and forearm sleeves;\n- elbow/knee/hip joint gaiters;\n- hand/gripper guards that cannot impair tactile/grasp operation or snag;\n- thigh/shin/ankle coverings;\n- foot/base and mobile-platform covers;\n- battery/power-bay covers with thermal and emergency-access boundaries.\n\nInitial demonstrator: one forearm/elbow/joint shell on the existing Symtropy #4337 rotary-joint research article, instrumented through Symthaea #4814. Start with a non-functional or safely isolated fit article, then controlled motion only after risk review. No full-body dimensions or manufacturing release until the exact robot CAD, cable routing, joint ROM, thermal map, load cases and ODD are supplied.\n\n## Hygiene and environmental limits\n\nA textile cover can protect the robot from dust, abrasion or selected splashes, but can also trap liquids, dust, fibres and residues in folds, seams and overlaps. For food, pharmaceutical, cleanroom or other hygienic/product-contact tasks, do not assume a textile cover is acceptable: conduct an application-specific hygienic design review and consider smooth sealed surfaces or no cover in product-contact zones. The Sirris hygienic-robotics guide specifically warns that conventional flexible covers can create contamination-retaining folds and cleaning/reinstallation risks.\n\nDo not claim ingress protection from the outer textile alone. Any IP, chemical, ESD, flame, heat, cleanroom or biological-contact claim requires a separate exact profile and qualified test method.\n\n## P0 — freeze the pilot and baselines\n\nBefore material or pattern optimization, freeze:\n- exact robot/joint article revision and spatial frames;\n- task and ODD, including indoor/outdoor, dust, water, abrasion, temperature, chemicals and cleaning;\n- zones covered and hazards each zone must address;\n- allowable added mass, centre-of-mass/inertia change and torque/power budget;\n- motion envelope and cable/hose/connector keep-outs;\n- motor/drive thermal envelope and ventilation;\n- sensor FOV/thermal openings and service access;\n- cleaning and maintenance method;\n- textile and local guard candidates plus material-lot evidence;\n- calibrated instrument, specimen conditioning and measurement uncertainty.\n\nCompare at least four matched candidates:\n1. exposed baseline / existing robot outer surface;\n2. conventional rigid panel or standard commercial robot cover, whichever fits the same task;\n3. textile-only cover;\n4. hybrid textile + spacer + local compliant lattice/guard.\n\nUse the same robot geometry, ODD, coverage boundary, mounting locations and verification task. Do not compare different platforms or unrelated vendor demonstrations.\n\n## P1 — material and construction coupons\n\nFor each candidate, bind sample identity, yarn/fibre, textile construction, finish/coating, thickness, areal density, orientation, supplier/lot, conditioning and process.\n\nMeasure as applicable:\n- areal density, thickness and dimensional stability;\n- tensile, tear, seam strength and fastener pull-out;\n- abrasion/pilling and surface damage;\n- air permeability and water behaviour;\n- spacer compression curve, recovery, cyclic compression set and shear/tilting stability;\n- thermal transfer and heat/moisture retention where relevant;\n- cleaning/washing change, shrinkage, delamination and colour/finish change;\n- static/surface resistance where ESD is required;\n- flammability/heat response only against a declared hazard profile.\n\nPotential method references include ISO 12947-2:2016 (textile abrasion specimen breakdown), ISO 13935-1:2014 (seam tensile strength, strip method), ISO 13937-2:2000 (tear force) and ISO 6330:2021 (domestic laundering procedures). These methods do not alone qualify a robot shell or establish PPE protection. For 3D spacer fabrics, add structure-specific compression/shear/airflow protocols because flat-textile methods may be inadequate.\n\n## P2 — robot-module test\n\nInstrument the module and unprotected baseline:\n- added mass, centre of mass and inertia by zone;\n- change in joint ROM and clearance;\n- torque/current/energy and thermal rise during identical movement profiles;\n- cable bend, connector access and repeated flex fatigue;\n- snag/entanglement and fastener retention;\n- sensor FOV/occlusion and perception error;\n- instrumented low-energy impact / compression transmission on an agreed fixture;\n- dust/water/chemical testing only for the declared profile;\n- installation, removal, inspection, cleaning and repair times.\n\nImpact energy alone is not an acceptance metric. Record exact impactor mass, velocity, contact geometry, support condition, location, transmitted force/acceleration/strain, deformation and uncertainty. Repeatability and failure mode matter.\n\n## P3 — integrated robot and lifecycle qualification\n\n- Compare baseline task success, energy, thermal state, sensing, locomotion/manipulation and safety before/after fitting the Lightshell.\n- Run representative motion-cycle testing; inspect seam creep, fabric migration, abrasion, lattice cracking, delamination, fastener loss and cable wear.\n- Test repeated removal/refit and post-cleaning performance.\n- Bind every physical article to BOM, pattern revision, source files, material lot, process recipe, inspection, repairs and requalification.\n- Promote no simulation, synthetic fixture or coupon result to integrated or field qualification.\n\n## Benchmark scorecard\n\nReport disaggregated measures, not one weighted \"protection score\":\n- coverage fraction and unprotected critical zones;\n- added mass and mass per covered area;\n- local and whole-body centre-of-mass/inertia shift;\n- joint-ROM loss and clearance margin;\n- torque/current/energy delta on matched trajectories;\n- motor/drive temperature and cooling margin;\n- peak transmitted force/acceleration/strain and residual deformation;\n- abrasion cycles to defined failure, seam/fastener fatigue and snag failures;\n- air/moisture/thermal behaviour by exact profile;\n- sensor occlusion, detection error and sensor-health detection;\n- time to install/remove/inspect/clean/repair;\n- cost per accepted service-hour, replacement waste and recovery yield.\n\nAmbitious hypotheses to test after baseline freeze:\n- materially lower added mass than an equivalent all-rigid cover at equal tested coverage and hazard performance;\n- lower repair time and lower whole-module replacement rate through panel-level repair;\n- no measurable loss of required joint ROM, task success or safety envelope;\n- no unqualified thermal or energy regression;\n- higher service life per unit mass under the same abrasion/flex/cleaning profile;\n- 100% of released panels traceable to design revision, material lot, construction and inspection evidence.\n\nThese are targets/hypotheses, not achieved results. Quantitative margins must be preregistered after the baseline and measurement system are established.\n\n## Claim ceiling and safety\n\nThe first article is a research prototype. No claims of ballistic protection, PPE compliance, human-contact safety, pinch-proof operation, whole-robot impact resistance, ingress rating, fire safety, hygienic design, or certification are allowed without exact independent qualification.\n\nA soft cover can hide pinch/shear interfaces, alter collision geometry, trap heat, create snag points, add inertia and affect perception. Any human-facing application requires the relevant robot/system risk assessment to be repeated with the cover fitted. The base robot's safety controller and emergency stop remain authoritative.\n\n## Deliverables\n\n1. CAD-registered zone / keep-out map and interface-control sheet.\n2. Patterned pilot module and versioned textile/material BOM.\n3. Candidate fabric/spacer/lattice trade matrix with uncertainty.\n4. Coupon test plan and data schema.\n5. Matched baseline and robot-module benchmark fixtures.\n6. Fit/motion/thermal/sensor non-regression report.\n7. As-built, repair and requalification evidence chain.\n\n## Research anchors\n\n- 1X NEO product description: https://www.1x.tech/neo\n- 2023 IEEE textile robot skin: https://ieeexplore.ieee.org/document/10379882/\n- 2024 critical review of 3D woven/knitted spacer fabrics: https://doi.org/10.1177/15280837241253614\n- 2022 spacer-fabric test-method research: https://doi.org/10.1007/s10443-021-09959-y\n- September 2026 Shanghai report on humanoid/industrial robot protective suits: https://english.shanghai.gov.cn/en-BusinessEnvironmentJiading/20260915/276b40bfbb32491696ba26e33ec2b166.html\n- Sirris guide to hygienic design of robot-based automation: https://www.sirris.be/system/files/documents/2024-01/GUIDE%20TO%20HYGIENIC%20DESIGN%20OF%20ROBOT-BASED%20AUTOMATION%20SYSTEMS.pdf\n\nThis programme should make Atelier's textile engineering capabilities useful beyond human apparel: textiles become engineered, measurable, serviceable robotic products.",
+    "reactions": {
+      "url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/12688/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/Luminous-Dynamics/symthaea/issues/12688/timeline",
+    "performed_via_github_app": {
+      "id": 1144995,
+      "client_id": "Iv23liVemv8A9if9v0F2",
+      "slug": "chatgpt-codex-connector",
+      "node_id": "A_kwHOAOQ6Gs4AEXij",
+      "owner": {
+        "login": "openai",
+        "id": 14957082,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjE0OTU3MDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/14957082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/openai",
+        "html_url": "https://github.com/openai",
+        "followers_url": "https://api.github.com/users/openai/followers",
+        "following_url": "https://api.github.com/users/openai/following{/other_user}",
+        "gists_url": "https://api.github.com/users/openai/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/openai/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/openai/subscriptions",
+        "organizations_url": "https://api.github.com/users/openai/orgs",
+        "repos_url": "https://api.github.com/users/openai/repos",
+        "events_url": "https://api.github.com/users/openai/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/openai/received_events",
+        "type": "Organization",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "name": "ChatGPT Codex Connector",
+      "description": "Bring ChatGPT and Codex to your GitHub repositories.",
+      "external_url": "https://www.chatgpt.com",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "created_at": "2025-02-14T01:37:05Z",
+      "updated_at": "2026-09-23T18:52:59Z",
+      "permissions": {
+        "actions": "write",
+        "checks": "read",
+        "contents": "write",
+        "emails": "read",
+        "issues": "write",
+        "metadata": "read",
+        "pull_requests": "write",
+        "statuses": "read",
+        "workflows": "write"
+      },
+      "events": [
+        "check_run",
+        "check_suite",
+        "commit_comment",
+        "issues",
+        "issue_comment",
+        "pull_request",
+        "pull_request_review",
+        "pull_request_review_comment",
+        "pull_request_review_thread",
+        "repository",
+        "status",
+        "sub_issues"
+      ]
+    },
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "## Comparative test protocol added\n\nThe candidate branch now includes [ROBOT_LIGHTSHELL_COMPARATIVE_TEST_PLAN_V0_1.md](https://github.com/Luminous-Dynamics/symthaea/blob/research/robot-lightshell-atelier-v0-1-20261117/docs/research/ROBOT_LIGHTSHELL_COMPARATIVE_TEST_PLAN_V0_1.md).\n\nThe matched comparison is now explicit: bare robot, existing rigid/production cover, an ODD-matched commercial cover, textile-only, textile + 3D spacer, and textile + spacer + local guard. It separates coupon testing, kinematic fit, instrumented module comparison, motion/flex/cleaning, and lifecycle qualification. Hard safety/thermal/ROM/perception gates apply before Pareto ranking.\n\nIndustry research also supports two separate product archetypes: (1) conformal soft garment (domestic/service/research/selected industrial), and (2) sealed process cover (specific dust/liquid/chemical/food-process use). 1X NEO and ASP Protection are useful product-level comparators, but their published claims are not independent matched test results.\n\nExact pilot CAD, attachment interfaces, ODD, thermal/cable constraints and mass budget remain open. No physical article or material has been selected or tested.",
+      "at": "2026-11-17T17:06:30Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/12688#issuecomment-6955123463"
+    },
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "Added a machine-readable comparative benchmark manifest to draft [PR #12691](https://github.com/Luminous-Dynamics/symthaea/pull/12691):\n\n- `lightshell_benchmark.schema.json`\n- `lightshell_benchmark.example.json`\n\nThe unrun seed fixture names six candidate architectures (B0–B2, L1–L3), seven initial metrics, and nine hard gates. Baselines remain unassessed, thresholds and baseline values are null, and every hard gate is unknown. This is deliberately an inputs-pending benchmark contract, not a result or qualification claim. Both JSON files parse, and a lightweight nested required-key/enum/constant check reported no errors.",
+      "at": "2026-11-17T17:11:10Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/12688#issuecomment-6955242318"
+    },
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "### New work added — sensor-ready textile research and executable evidence gate\n\n- [LIGHTSHELL-SENSOR-FABRIC-001 #12704](https://github.com/Luminous-Dynamics/symthaea/issues/12704) now owns removable tactile/strain/temperature sensing textiles. It compares 2026 fibre-piezoresistive and self-powered minimal-channel research with CushSense, requires wash/flex/humidity/calibration/fault testing, and explicitly keeps this layer observational—not safety-rated or motion-authorizing.\n- Draft PR [#12691](https://github.com/Luminous-Dynamics/symthaea/pull/12691) now includes a Rust qualification validator in `symthaea-engineering::lightshell_qualification`, plus a qualification contract and per-candidate benchmark manifest.\n- The benchmark is no longer globally gated: it has 42 candidate-scoped metric rows and 54 candidate-scoped hard-gate rows (6 candidates × 7 metrics and 6 × 9 gates). It remains inputs-pending, with null measurements/thresholds and unknown gates.\n- The validator only returns ranking-eligible candidates with a matched B0 baseline, same coverage boundary, passed per-candidate gates, an evidence-complete physical module/integrated test, no adverse run, and observed core metrics with method/uncertainty refs. It does not calculate a protection rating or authorize actuation.\n\nRust tests are authored but have not been executed in this environment. Exact-head CI status is read separately; skipped jobs are not passes. No CAD or physical qualification is claimed.",
+      "at": "2026-11-17T18:16:10Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/12688#issuecomment-6956851812"
+    },
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "Further extension: [ROBOT-GARMENT-COMPILER-001 #12710](https://github.com/Luminous-Dynamics/symthaea/issues/12710) is now open. It will take exact robot CAD, kinematics, swept link/cable envelopes and thermal/sensor/service keep-outs and generate *candidate* textile zones, panels, seams and manufacturing packages. The initial corpus is synthetic single-joint/elbow fixtures with unit/frame/seam/clearance negative controls. It composes #11731, #11750, Sol-Atlas #738 and Symtropy #456/#4865; it does not duplicate CAD or cloth solver owners.",
+      "at": "2026-11-17T18:19:39Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/12688#issuecomment-6956932946"
+    },
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "The robot-garment compiler is no longer only a proposal. [ROBOT-GARMENT-COMPILER-001 #12710](https://github.com/Luminous-Dynamics/symthaea/issues/12710) now has P0 implementation in [draft PR #12719](https://github.com/Luminous-Dynamics/symthaea/pull/12719): synthetic elbow fixture + schema + Rust AABB geometry admission for panel-to-zone containment and clearance/uncertainty-expanded joint/cable/sensor/vent/service keep-outs. It is a conservative fit-screen gate, not mesh collision or physical safety qualification.",
+      "at": "2026-11-17T18:29:53Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/12688#issuecomment-6957176783"
+    },
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "### New material-science work opened\n\n[LIGHTSHELL-SPACER-DOE-001 #12724](https://github.com/Luminous-Dynamics/symthaea/issues/12724) applies the existing Atelier inverse-textile-design and experiment-selection stack to robot-zone spacer constructions. It adds a five-control comparison and a proposed 18-structure campaign (12 screening + 6 conditional transition refinements), with compression/impact, vibration, airflow, thermal, flex, cleaning and repair measured separately.\n\nThe January 2026 spacer-knit paper shows the relevant trade-off: in its tests, square-wave silicone inlays improved compression-energy absorption/force reduction, while some higher spacer-course frequencies improved vibration isolation but lowered impact-force absorption; the paper did not test washability/durability. The proposed DoE therefore avoids a universal best-fabric score and makes lifecycle a required response.\n\nThe schema, fixture and protocol plan are added to draft PR [#12691](https://github.com/Luminous-Dynamics/symthaea/pull/12691). All samples remain proposed; no machine, yarn lot, material lot or process capability is assumed.",
+      "at": "2026-11-17T20:36:52Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/12688#issuecomment-6960294516"
+    },
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "The spacer textile DoE now has a typed Rust admission module in draft [PR #12691](https://github.com/Luminous-Dynamics/symthaea/pull/12691), alongside the Lightshell benchmark validator. It prevents confounded transition-spacing/frequency comparisons and requires the machine/process capability and preregistration evidence before the matrix can move into execution. Both modules have authored tests; neither has been compiled or executed yet.",
+      "at": "2026-11-17T20:44:03Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/12688#issuecomment-6960476100"
+    },
+    {
+      "author": "Tristan-Stoltz-ERC",
+      "text": "Follow-on engineering added: #12759 now includes ISO 25086-1:2026 snagging-method applicability; #12774 adds uncertainty-aware, process-bound robust zone candidate admission and interval-Pareto shortlisting. Both remain draft and software-only; this is not physical material or robot qualification. See the linked PRs for exact claim boundaries.",
+      "at": "2026-11-18T06:16:44Z",
+      "url": "https://github.com/Luminous-Dynamics/symthaea/issues/12688#issuecomment-6970794889"
+    }
+  ],
+  "comments_complete": true
+}
