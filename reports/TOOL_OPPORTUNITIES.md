@@ -1,6 +1,6 @@
 # TOOL / MICRO-SAAS OPPORTUNITIES (PRODUCT_SIGNAL)
 
-Evaluated: 2026-11-18T10:05:38.959560+00:00
+Evaluated: 2026-11-19T10:16:04.965298+00:00
 
 Keyword/demand phrases are hypotheses, not search-volume measurements. No fabricated CPC, traffic or Trends volume. Public SERPs discover alternatives; primary user posts prove pain separately. No paid SEO API required.
 

@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/44319",
-  "collected_at": "2026-11-18T10:05:38.959560+00:00",
+  "collected_at": "2026-11-19T10:16:04.965298+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/44319",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -50,9 +50,9 @@
     "locked": false,
     "assignees": [],
     "milestone": null,
-    "comments": 1,
+    "comments": 5,
     "created_at": "2026-11-18T01:30:10Z",
-    "updated_at": "2026-11-18T01:30:22Z",
+    "updated_at": "2026-11-18T18:49:49Z",
     "closed_at": null,
     "assignee": null,
     "author_association": "NONE",
@@ -152,6 +152,30 @@
       "text": "Hey @WilkoMarketing,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9803\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9803](https://linear.app/n8n/issue/GHC-9803)",
       "at": "2026-11-18T01:30:20Z",
       "url": "https://github.com/n8n-io/n8n/issues/44319#issuecomment-6966232375"
+    },
+    {
+      "author": "vaibhav375",
+      "text": "Hi, I looked into this and have a small fix ready. I would like to check the approach with you before I open a PR.\n\n**Cause:** `checkConditions` in `packages/workflow/src/node-helpers.ts` runs displayOptions `_cnd.regex` patterns through `safeRegex`. `safeRegex` uses a `vm` timeout of 250 ms, and that timeout is wall-clock time. CPU throttling or a GC pause can make it fire for a short pattern and a short input. `checkReadyForExecution` calls this check before the first node, so the timeout aborts the full execution. The resource locator `regex` validation in the same file has the same problem.\n\n**Proposed fix:** these patterns come from node descriptions, not from user input. Run them with the native `RegExp` engine. User-authored patterns (If, Switch, Filter, Rename Keys) stay on `safeRegex`. The change is 6 lines in `node-helpers.ts`. It includes a test that forces the engine into the timeout state. The test fails before the fix and passes after it.\n\nBranch: https://github.com/vaibhav375/n8n/compare/master...fix/44319\n\nI saw the draft refactor in #38490. It keeps n8n's own patterns on `safeRegex`, so this fix takes a different direction for these two call sites. Is a PR with this approach welcome, or do you prefer a different fix?\n",
+      "at": "2026-11-18T13:41:26Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44319#issuecomment-6980303021"
+    },
+    {
+      "author": "WilkoMarketing",
+      "text": "Thank you, @vaibhav375, for investigating this and preparing a focused fix.\n\nYour proposed change targets the exact preflight path we observed: `checkReadyForExecution` → internal node-parameter validation → `checkConditions` / `safeRegex`, before any workflow node executes. We reviewed the proposed diff and regression test, but have not run or deployed your branch. We also still cannot attribute the original incident specifically to CPU throttling or GC.\n\nAs the reporters affected by this issue, **yes, we would very much appreciate you opening a PR and linking it here for the n8n maintainers to review**. We cannot approve the implementation on their behalf, but an upstream fix for these internal checks would be preferable to maintaining per-workflow workarounds.\n\nIt would be helpful for the regression coverage to include both internal call sites and to confirm that protections for user-authored patterns remain unchanged.\n\nTo the n8n team: could you please review the proposed fix and, if accepted, include it in a supported release? Please let us know the PR and the first released version containing the fix, including any relevant backport or upgrade guidance for existing 2.x deployments.\n\nOur temporary constant-expression workaround is currently limited to one pilot workflow, with the same model IDs and options. Its first user-initiated production smoke test passed; sustained organic validation is still in progress. We have not rolled it out across all agents and would prefer to validate an official correction before deciding whether a broader workaround is necessary.\n\nWe can help validate an official candidate/release in a controlled environment before changing production. Thank you again.",
+      "at": "2026-11-18T14:26:34Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44319#issuecomment-6981432130"
+    },
+    {
+      "author": "vaibhav375",
+      "text": "Thanks for the review. I opened #44419 with the fix.\n\nAs you asked, the tests now cover:\n\n- both internal call sites: the displayOptions `_cnd.regex` condition and the resource locator `regex` validation\n- a user-authored Filter `regex` condition, which still runs through `safeRegex` and still throws the timeout error\n\nAfter this change, `getNodeParametersIssues` (the check that `checkReadyForExecution` runs before the first node) does not call `safeRegex`. A slow regex engine can no longer abort the execution at this point.\n\nRelease version and backport decisions are for the n8n team.\n",
+      "at": "2026-11-18T18:14:26Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44319#issuecomment-6987389197"
+    },
+    {
+      "author": "WilkoMarketing",
+      "text": "Thank you, @vaibhav375, for opening #44419 and adding the requested tests. We appreciate your help. We'll follow the n8n team's review and await confirmation of the first supported release containing the fix. Meanwhile, we'll keep our temporary workaround in place.",
+      "at": "2026-11-18T18:49:49Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44319#issuecomment-6988270270"
     }
   ],
   "comments_complete": true

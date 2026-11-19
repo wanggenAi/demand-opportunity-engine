@@ -1,0 +1,107 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/44438",
+  "collected_at": "2026-11-19T10:16:04.965298+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/44438",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/44438/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/44438/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/44438/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/44438",
+    "id": 6485390321,
+    "node_id": "I_kwDOC4Q8Qs8AAAABgo8z8Q",
+    "number": 44438,
+    "title": "Array .chunk() expression should reject fractional and infinite sizes",
+    "user": {
+      "login": "indexGin",
+      "id": 166748424,
+      "node_id": "U_kgDOCfBhCA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/166748424?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/indexGin",
+      "html_url": "https://github.com/indexGin",
+      "followers_url": "https://api.github.com/users/indexGin/followers",
+      "following_url": "https://api.github.com/users/indexGin/following{/other_user}",
+      "gists_url": "https://api.github.com/users/indexGin/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/indexGin/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/indexGin/subscriptions",
+      "organizations_url": "https://api.github.com/users/indexGin/orgs",
+      "repos_url": "https://api.github.com/users/indexGin/repos",
+      "events_url": "https://api.github.com/users/indexGin/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/indexGin/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-11-19T08:19:29Z",
+    "updated_at": "2026-11-19T08:29:20Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Phenomenon\n\nThe `chunk()` array expression extension validates its size argument with\n`typeof chunkSize !== 'number' || Number.isNaN(chunkSize) || chunkSize <= 0`.\nThis lets fractional values (for example `2.5`) and non-finite values (for\nexample `Infinity`) through. Instead of being rejected, those values are used\ndirectly as the loop step in `for (let i = 0; i < value.length; i += chunkSize)`\nand as the bound in `value.slice(i, i + chunkSize)`. `Array.prototype.slice`\ntruncates fractional indices, so the returned groups are uneven and do not match\nthe requested size, and the call completes silently with no error.\n\n### Minimal reproduction\n\nIn any expression that has an array in scope:\n\n```\n{{ [1, 2, 3, 4, 5].chunk(2.5) }}\n```\n\nActual result: `[[1, 2], [3, 4, 5]]` — groups of two and three, with no error.\n\n```\n{{ [1, 2, 3].chunk(1/0) }}\n```\n\nActual result: `[[1, 2, 3]]` — a single group, with no error.\n\nFractional sizes are easy to reach when the size comes from upstream data, such\nas a computed batch size or a number read from a JSON field. Note that `chunk(0)`,\n`chunk(-1)`, `chunk(NaN)` and `chunk(\"5\")` are already rejected today.\n\n### Expected behavior\n\n`chunk()` should reject any size that is not a positive integer with a clear\n`ExpressionExtensionError`, consistent with the existing rejection of `0`,\nnegative numbers, `NaN` and non-numeric values. The error message should refer\nto a \"positive integer\" rather than a \"positive numeric\" argument.\n\n### Impact\n\nWorkflows that split items into batches with `chunk()` receive silently\nmalformed groups: some batches are larger or smaller than requested, and with\n`Infinity` the entire array is placed into one group. Because no error is raised,\nthe problem is hard to notice and downstream nodes operate on the wrong batch\nboundaries, producing uneven API payloads or skipped/duplicated items. Both the\n`n8n-workflow` copy of the extension and the `@n8n/expression-runtime` mirror\nare affected, so the behaviour is the same regardless of the expression engine.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/44438/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/44438/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @indexGin,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9812\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9812](https://linear.app/n8n/issue/GHC-9812)",
+      "at": "2026-11-19T08:19:39Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44438#issuecomment-7003678493"
+    },
+    {
+      "author": "grinem",
+      "text": "Spot on analysis. Swapping the guard to `!Number.isInteger(chunkSize) || chunkSize <= 0` cleanly handles floats, `Infinity`, `NaN`, and non-numbers in a single check without needing multiple conditions.",
+      "at": "2026-11-19T08:29:20Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44438#issuecomment-7003886006"
+    }
+  ],
+  "comments_complete": true
+}

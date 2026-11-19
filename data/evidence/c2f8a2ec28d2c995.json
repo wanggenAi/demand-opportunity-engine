@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50549454",
+  "collected_at": "2026-11-19T10:16:04.965298+00:00",
+  "source": {
+    "author": "tralfamadorian8",
+    "children": [],
+    "created_at": "2026-11-18T17:42:50.000Z",
+    "created_at_i": 1795023770,
+    "id": 50549454,
+    "options": [],
+    "parent_id": null,
+    "points": 1,
+    "story_id": 50549454,
+    "text": "I built Goldcrest in Toronto for my own use in the hope it helps others. I&#x27;ve been discussing a rent vs buy scenario with my partner and found that it requires a surprising number of variables and complexity to do proper modelling&#x2F;forecasting (the model implementation is a Monte-Carlo simulation under the hood). I then extended it to financial planning since most of the groundwork was already built from the rent vs buy model.<p>I did look at some other financial planning tools and noticed that the main difference between all other tools and my workflow was that I was primarily interfacing with an LLM to discuss, learn, plan, and build my models vs filling out form inputs (rather tediously). So, I thought that could be something that other people would like to do as well. Most of my friends aren&#x27;t in software, and if they use LLMs it&#x27;s for fairly basic things. For me at least, it&#x27;s easier to type into a chat, &quot;Hey, I make $x&#x2F;year, have a wife and kids, a house valued at $x, a TFSA&#x2F;Roth IRA with $x, etc.&quot; Right now I have the chat agent prompting the user. It&#x27;s a similar experience to how one might have a conversation with a financial advisor, however with slightly more guardrails (e.g. the LLM never does math, just translates your input to form inputs).<p>The other tedious aspect of financial planning that I unfortunately can&#x27;t solve right now is financial data integrations (investment platforms, banks, etc). So users have to collect their financials on their own for now.<p>I also wanted to put an emphasis on privacy given my personal detest for companies that don&#x27;t value it, so everything is pseudonymized (similar to anonymization).<p>The model leverages open-source data to ensure everyone (well, USA and Canada at the moment) has a tailored forecast that calculates in-depth tax considerations for various registered investment accounts, full-time vs self-employed income, detailed future expense considerations and &quot;events&quot; like having a child or selling a house, Social Security&#x2F;CPP&#x2F;OAS, etc. Everything is also manually reviewable and configurable for users inclined to do so. I&#x27;m working on an educational aspect&#x2F;feature so users can ask the LLM questions. I also have plans to expose an MCP for power users so you can hook-in with your own LLM.<p>There&#x27;s also a Sankey diagram for income breakdown. Everyone loves a Sankey diagram.<p>Thanks for reading.<p>I&#x27;d love to hear your thoughts and feedback.",
+    "title": "Show HN: Goldcrest, a household financial model you fill in by talking",
+    "type": "story",
+    "url": "https://app.getgoldcrest.com"
+  },
+  "comments": [],
+  "comments_complete": true
+}

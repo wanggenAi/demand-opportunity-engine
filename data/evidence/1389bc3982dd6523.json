@@ -1,0 +1,198 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/44408",
+  "collected_at": "2026-11-19T10:16:04.965298+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/44408",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/44408/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/44408/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/44408/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/44408",
+    "id": 6470577642,
+    "node_id": "I_kwDOC4Q8Qs8AAAABga0t6g",
+    "number": 44408,
+    "title": "Pushbullet file uploads resolve the binary field name from item 0 for every item",
+    "user": {
+      "login": "ProMBZ",
+      "id": 144327624,
+      "node_id": "U_kgDOCJpDyA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/144327624?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/ProMBZ",
+      "html_url": "https://github.com/ProMBZ",
+      "followers_url": "https://api.github.com/users/ProMBZ/followers",
+      "following_url": "https://api.github.com/users/ProMBZ/following{/other_user}",
+      "gists_url": "https://api.github.com/users/ProMBZ/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/ProMBZ/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/ProMBZ/subscriptions",
+      "organizations_url": "https://api.github.com/users/ProMBZ/orgs",
+      "repos_url": "https://api.github.com/users/ProMBZ/repos",
+      "events_url": "https://api.github.com/users/ProMBZ/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/ProMBZ/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582010757,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cXhQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:nodes",
+        "name": "team:nodes",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Nodes team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 4,
+    "created_at": "2026-11-18T15:28:11Z",
+    "updated_at": "2026-11-18T16:08:57Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug description\n\nThe Pushbullet node's File > Upload operation loops over input items, but resolves the **Input Binary Field** parameter with item index `0` on every iteration.\n\nWhen the parameter is an expression that resolves to a different binary property per item, later items reuse the first item's property name. The node then looks up the wrong binary field and the upload fails.\n\n### To reproduce\n\n1. Add a Pushbullet node configured for File > Upload.\n2. Set **Input Binary Field** to an expression that reads a field from each input item, for example `{{ $json.binaryField }}`.\n3. Pass two items:\n   - Item 0: `binaryField: \"data\"` and binary property `data`.\n   - Item 1: `binaryField: \"attachment\"` and binary property `attachment`.\n4. Execute the node.\n\n### Expected behavior\n\nEach item resolves **Input Binary Field** using its own item index, so item 0 reads `data` and item 1 reads `attachment`.\n\n### Actual behavior\n\nThe upload loop resolves the parameter with item index `0` for every item. The second item therefore reuses `data` instead of its own `attachment` field.\n\nA regression test should cover at least two items whose expressions resolve to different binary property names.",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/44408/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/44408/timeline",
+    "performed_via_github_app": {
+      "id": 1144995,
+      "client_id": "Iv23liVemv8A9if9v0F2",
+      "slug": "chatgpt-codex-connector",
+      "node_id": "A_kwHOAOQ6Gs4AEXij",
+      "owner": {
+        "login": "openai",
+        "id": 14957082,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjE0OTU3MDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/14957082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/openai",
+        "html_url": "https://github.com/openai",
+        "followers_url": "https://api.github.com/users/openai/followers",
+        "following_url": "https://api.github.com/users/openai/following{/other_user}",
+        "gists_url": "https://api.github.com/users/openai/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/openai/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/openai/subscriptions",
+        "organizations_url": "https://api.github.com/users/openai/orgs",
+        "repos_url": "https://api.github.com/users/openai/repos",
+        "events_url": "https://api.github.com/users/openai/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/openai/received_events",
+        "type": "Organization",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "name": "ChatGPT Codex Connector",
+      "description": "Bring ChatGPT and Codex to your GitHub repositories.",
+      "external_url": "https://www.chatgpt.com",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "created_at": "2025-02-14T01:37:05Z",
+      "updated_at": "2026-09-23T18:52:59Z",
+      "permissions": {
+        "actions": "write",
+        "checks": "read",
+        "contents": "write",
+        "emails": "read",
+        "issues": "write",
+        "metadata": "read",
+        "pull_requests": "write",
+        "statuses": "read",
+        "workflows": "write"
+      },
+      "events": [
+        "check_run",
+        "check_suite",
+        "commit_comment",
+        "issues",
+        "issue_comment",
+        "pull_request",
+        "pull_request_review",
+        "pull_request_review_comment",
+        "pull_request_review_thread",
+        "repository",
+        "status",
+        "sub_issues"
+      ]
+    },
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @ProMBZ,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9809\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9809](https://linear.app/n8n/issue/GHC-9809)",
+      "at": "2026-11-18T15:28:48Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44408#issuecomment-6983081877"
+    },
+    {
+      "author": "grinem",
+      "text": "Nice catch @ProMBZ. Classic off-by-loop-index issue in the node's execute block.\n\n### Root Cause & Fix\nInside `packages/nodes-base/nodes/Pushbullet/Pushbullet.node.ts`, the parameter lookup passes hardcoded index `0`:\n\n**Patch Preview (First 3 lines of verified fix):**\n```typescript\n// Buggy\nconst binaryPropertyName = this.getNodeParameter('binaryPropertyName', 0) as string;\n# ... [TRUNCATED — Full production patch & verification steps locked below]\n```",
+      "at": "2026-11-18T15:48:12Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44408#issuecomment-6983608030"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "The source confirms the item-index mismatch: inside the upload loop, `assertBinaryData(i, ...)` and `getBinaryDataBuffer(i, ...)` use the current item, but `getNodeParameter(\"binaryPropertyName\", 0)` is fixed to item 0. Resolving that parameter with `i` should make an expression such as `{{$json.binaryField}}` use each item’s own property name. I have not run this workflow or a regression test.",
+      "at": "2026-11-18T16:05:30Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44408#issuecomment-6984070060"
+    },
+    {
+      "author": "ProMBZ",
+      "text": "I already linked a pull request.",
+      "at": "2026-11-18T16:08:56Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44408#issuecomment-6984160989"
+    }
+  ],
+  "comments_complete": true
+}

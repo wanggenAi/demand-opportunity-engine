@@ -7,25 +7,25 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## workflow_reliability — UNVALIDATED CLUSTER
 
-- independent_demand_count: 125
-- payment_evidence_count: 1
+- independent_demand_count: 130
+- payment_evidence_count: 2
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community', 'n8n Community']
-- communities: ['Agenta-AI/agenta', "Ask HN: What's your current AI agentic setup?", 'Ask/Show HN', 'Commerce operator forum', "Show HN: Glassbrain – Read your agent's brain, know what your agent knows", '[dead]', 'farmmer938-lgtm/autonomous-zero-baht', 'n8n Jobs', 'n8n-io/n8n', 'useagenthq/useagent']
+- communities: ['Agenta-AI/agenta', "Ask HN: What's your current AI agentic setup?", 'Ask/Show HN', 'Codeberg.org Not Reachable', 'Commerce operator forum', "Show HN: Glassbrain – Read your agent's brain, know what your agent knows", '[dead]', 'farmmer938-lgtm/autonomous-zero-baht', 'n8n Jobs', 'n8n-io/n8n', 'useagenthq/useagent']
 - repeated_pain: Operators cannot trust workflow execution status; triggers, responses or saved definitions fail.
 - current_alternatives: Vendor bug tracker and native fixes (free), internal engineering, n8n support, freelance automation providers.
 - productization_potential: Standardize reproduction, health checks and recovery runbooks; current category still too broad for one packaged product.
 - suggested_product_form: Service package + Workflow checklist
 - distribution: Consent-based workflow diagnostic referrals; do not pitch to all bug reporters.
-- Promotion blockers: fewer than 2 primary payment/commercial signals; paid-market proof not independently verified; problem too broad to standardize
+- Promotion blockers: problem too broad to standardize
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://github.com/n8n-io/n8n/issues/44423
+  - https://news.ycombinator.com/item?id=50550948
+  - https://news.ycombinator.com/item?id=50547137
+  - https://github.com/n8n-io/n8n/issues/44398
+  - https://github.com/n8n-io/n8n/issues/44362
   - https://github.com/n8n-io/n8n/issues/44333
-  - https://news.ycombinator.com/item?id=50542654
-  - https://github.com/n8n-io/n8n/issues/44330
-  - https://github.com/n8n-io/n8n/issues/44319
-  - https://github.com/n8n-io/n8n/issues/44157
-  - https://github.com/n8n-io/n8n/issues/44145
 
 ## supplier_sourcing — UNVALIDATED CLUSTER
 

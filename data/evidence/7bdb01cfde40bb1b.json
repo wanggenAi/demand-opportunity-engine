@@ -1,0 +1,44 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50548480",
+  "collected_at": "2026-11-19T10:16:04.965298+00:00",
+  "source": {
+    "author": "timshell",
+    "children": [
+      {
+        "author": "nilail",
+        "children": [],
+        "created_at": "2026-11-18T17:41:41.000Z",
+        "created_at_i": 1795023701,
+        "id": 50549435,
+        "options": [],
+        "parent_id": 50548480,
+        "points": null,
+        "story_id": 50548480,
+        "text": "Really cool idea and working pretty good but I found some bug. \nFor exemple I gave the landing page of my website which is accessible by default and it is show &quot;at risk&quot; because it can read the page.\nAlso I am not sure about the &quot;legal&quot; part of this tool i think that you should add a message asking the authorization to test the website when trying this tool and to verify that the website is yours because you can test any website like goverment website and maybe you could be in trouble.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-11-18T16:40:57.000Z",
+    "created_at_i": 1795020057,
+    "id": 50548480,
+    "options": [],
+    "parent_id": null,
+    "points": 8,
+    "story_id": 50548480,
+    "text": "As part of our red-teaming efforts, we recently configured GPT-6 Astra to test how easily an AI agent can bypass existing bot detection and human verification systems.<p>We built a tool that lets you run the same test on your own website: <a href=\"https:&#x2F;&#x2F;assess.poh.org\">https:&#x2F;&#x2F;assess.poh.org</a><p>Enter your website URL, and we&#x27;ll launch an AI agent to test your workflows, record its actions, and show how we evaluate the session.<p>Below are three recorded tests. In the recorded tests below, agents were able to complete CAPTCHAs, bypass existing bot detection mechanisms, create and verify accounts, access gated resources, and carry out end-to-end workflows intended for humans.<p>Hugging Face: <a href=\"https:&#x2F;&#x2F;assess.poh.org&#x2F;test&#x2F;2d75a3b713e2719e87a4b85c6b3aff70\">https:&#x2F;&#x2F;assess.poh.org&#x2F;test&#x2F;2d75a3b713e2719e87a4b85c6b3aff70</a>\n(bypassed hCAPTCHA)<p>Cloudflare: <a href=\"https:&#x2F;&#x2F;assess.poh.org&#x2F;test&#x2F;0eb218ca6e2d7be993b689dd69a1cb20\">https:&#x2F;&#x2F;assess.poh.org&#x2F;test&#x2F;0eb218ca6e2d7be993b689dd69a1cb20</a>\n(bypassed Turnstile)<p>YouGov: <a href=\"https:&#x2F;&#x2F;assess.poh.org&#x2F;test&#x2F;144f6d014fbf006b61ec6bc32ee8c3f4\">https:&#x2F;&#x2F;assess.poh.org&#x2F;test&#x2F;144f6d014fbf006b61ec6bc32ee8c3f4</a>\n(bypassed reCAPTCHA)<p>AI agents are ushering in a new age of online security, and we’re excited to hear your thoughts!",
+    "title": "Show HN: Can an AI Agent Bypass Your Website Security?",
+    "type": "story",
+    "url": "https://assess.poh.org/"
+  },
+  "comments": [
+    {
+      "author": "nilail",
+      "text": "Really cool idea and working pretty good but I found some bug. \nFor exemple I gave the landing page of my website which is accessible by default and it is show \"at risk\" because it can read the page.\nAlso I am not sure about the \"legal\" part of this tool i think that you should add a message asking the authorization to test the website when trying this tool and to verify that the website is yours because you can test any website like goverment website and maybe you could be in trouble.",
+      "at": "2026-11-18T17:41:41.000Z",
+      "url": "https://news.ycombinator.com/item?id=50549435"
+    }
+  ],
+  "comments_complete": true
+}

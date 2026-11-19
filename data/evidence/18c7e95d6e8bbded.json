@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/44398",
+  "collected_at": "2026-11-19T10:16:04.965298+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/44398",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/44398/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/44398/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/44398/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/44398",
+    "id": 6469338770,
+    "node_id": "I_kwDOC4Q8Qs8AAAABgZpGkg",
+    "number": 44398,
+    "title": "Anthropic Chat Model v1.3: default model `claude-sonnet-4-5-20250929` retires on 30 Nov 2026",
+    "user": {
+      "login": "sarvesh-pathak",
+      "id": 87622234,
+      "node_id": "MDQ6VXNlcjg3NjIyMjM0",
+      "avatar_url": "https://avatars.githubusercontent.com/u/87622234?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/sarvesh-pathak",
+      "html_url": "https://github.com/sarvesh-pathak",
+      "followers_url": "https://api.github.com/users/sarvesh-pathak/followers",
+      "following_url": "https://api.github.com/users/sarvesh-pathak/following{/other_user}",
+      "gists_url": "https://api.github.com/users/sarvesh-pathak/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/sarvesh-pathak/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/sarvesh-pathak/subscriptions",
+      "organizations_url": "https://api.github.com/users/sarvesh-pathak/orgs",
+      "repos_url": "https://api.github.com/users/sarvesh-pathak/repos",
+      "events_url": "https://api.github.com/users/sarvesh-pathak/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/sarvesh-pathak/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-18T14:25:39Z",
+    "updated_at": "2026-11-18T14:25:55Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "**Bug Description**\nAnthropic Chat Model nodes on version 1.3 default to `claude-sonnet-4-5-20250929`:\n\nhttps://github.com/n8n-io/n8n/blob/70ca02fb96a6090d8ad118cf168bb6b90ff0ce8e/packages/@n8n/nodes-langchain/nodes/llms/LMChatAnthropic/LmChatAnthropic.node.ts#L208\n\n(shown for `@version: [1.3]`, L235).\n\nAnthropic retires that model on November 30, 2026; the recommended replacement is `claude-sonnet-5-5` (https://platform.claude.com/docs/en/about-claude/model-deprecations, read 18 Nov 2026). After that, v1.3 nodes that kept the default model will fail.\n\nMoving the default to `claude-sonnet-5-5` needs two more things on that version, per Anthropic's migration guide (https://platform.claude.com/docs/en/models/sonnet-5-5/migration-guide, read 18 Nov 2026):\n- **Enable Thinking.** On v<1.5, Enable Thinking = on sends `thinking: {type: \"enabled\", budget_tokens}` (L632). Enable Thinking added and left off sends `thinking: {type: \"disabled\"}` (L645). Sonnet 5.5 rejects both with a 400. The guide's replacements are `{type: \"adaptive\"}` with an effort level, and `{type: \"between_tools\"}` to turn up-front thinking off (accepted at `high` effort or below, no other fields). The current error message for v<1.5 suggests adding a new node, so a v1.3 user who turned thinking off has no way to fix this in place.\n- **`max_tokens`.** With no `thinking` field, Sonnet 5.5 thinks by default. The guide says to revisit `max_tokens`, and the node default is 4096 (L92).\n\nSampling parameters are already handled by `modelSupportsSamplingParams`.\n\nRelated:\n- #42209 covers v1.5's explicit Disabled.\n- The v1/1.1/1.2 defaults (`claude-2`, `claude-3-sonnet-20240229`, `claude-3-5-sonnet-20240620`) and the hint at L35 (`claude-3-5-sonnet-20241022`) are already retired models. PR #32802 tried the v1 one.\n- `Agent.node.ts:133` shows the AI builder a v1.6 example using `claude-sonnet-4-5`.\n\n**To Reproduce**\nNot run. Found by reading the source at the commit above. Any v1.3 Anthropic Chat Model node that kept the default model, after 30 Nov.\n\n**Expected behavior**\nExisting v1.3 nodes keep working after the retirement, and thinking settings on v1.3 still map to something Sonnet 5.5 accepts.\n\n**Debug Info / Environment**\nN/A. Source review of `master` @ 70ca02f (latest release n8n@2.48.5); not run on an instance.\n\nQuestion for maintainers: does n8n store a parameter that equals its default in saved workflows? If not, changing the v1.3 default moves those nodes to the new model with no edit, which is what you'd want here. Either way, I'm happy to send a PR with tests once you've said how you'd like the thinking mapping handled.\n\nFound with Vitasta, a source-available scanner for AI model and API retirements: https://github.com/vitasta-dev/vitasta\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/44398/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/44398/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @sarvesh-pathak,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9808\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9808](https://linear.app/n8n/issue/GHC-9808)",
+      "at": "2026-11-18T14:25:53Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44398#issuecomment-6981414062"
+    }
+  ],
+  "comments_complete": true
+}

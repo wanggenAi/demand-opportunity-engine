@@ -1,0 +1,113 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/44423",
+  "collected_at": "2026-11-19T10:16:04.965298+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/44423",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/44423/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/44423/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/44423/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/44423",
+    "id": 6475786933,
+    "node_id": "I_kwDOC4Q8Qs8AAAABgfyqtQ",
+    "number": 44423,
+    "title": "Two Merge nodes inside a loop wait for each other, and the execution stops without an error",
+    "user": {
+      "login": "dpbutter",
+      "id": 85628587,
+      "node_id": "MDQ6VXNlcjg1NjI4NTg3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/85628587?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dpbutter",
+      "html_url": "https://github.com/dpbutter",
+      "followers_url": "https://api.github.com/users/dpbutter/followers",
+      "following_url": "https://api.github.com/users/dpbutter/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dpbutter/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dpbutter/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dpbutter/subscriptions",
+      "organizations_url": "https://api.github.com/users/dpbutter/orgs",
+      "repos_url": "https://api.github.com/users/dpbutter/repos",
+      "events_url": "https://api.github.com/users/dpbutter/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dpbutter/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 3,
+    "created_at": "2026-11-18T20:11:16Z",
+    "updated_at": "2026-11-19T02:06:00Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nA loop body contains two Merge nodes (Append mode). Each Merge node gets data on only one of its inputs. n8n does not execute either Merge node. The execution stops in the first loop iteration and shows the status \"Success\". The workflow shows no error.\n\nThis occurs when:\n\n- The workflow uses the current v1 execution order.\n- The loop connects back to an earlier node (here, Aggregate → Loop Over Items).\n- Two Merge nodes in the loop body each wait with partial input at the same time.\n\nThe workflow below reproduces the problem on every run. It is possibly the root cause of #37895: that report also has a Merge node that does not execute in a large graph, and the problem does not occur in an isolated copy of the nodes around the Merge.\n\n### Cause\n\nWhen the execution stack is empty, `WorkflowExecute.processRunExecutionData` (`packages/core/src/execution-engine/workflow-execute.ts`) examines the nodes in `waitingExecution`. For each waiting node, it gets all ancestors with `workflow.getParentNodes(nodeName)`. If an ancestor is also waiting (`parentIsWaiting`), it skips the node.\n\n`getParentNodes` follows the connections back through the loop. Thus each Merge node is an ancestor of the other:\n\n- `Merge1` ← `Merge` (direct connection).\n- `Merge` ← `Switch` ← `If first item` ← `Split Out` ← `Loop Over Items` ← `Aggregate` ← `Merge1` (through the loop).\n\nThe engine skips both Merge nodes. The `waitingExecution` loop ends without a node to execute, and the execution finishes.\n\nIf you remove the connection from `Aggregate` to `Loop Over Items`, the same graph executes correctly.\n\n\n### Possible fix\n\nIn the `parentIsWaiting` check, ignore ancestors that the node reaches only through a loop back connection. Another option: if the check skips all waiting nodes, execute the waiting node that is most upstream in the graph without its loop back connections.\n\n### Workaround\n\nMove the loop body into a sub-workflow. Call it with an **Execute Workflow** node in **Run once for each item** mode, and remove **Loop Over Items**. The sub-workflow has no loop, so the Merge nodes are not ancestors of each other.\n\n\n### To Reproduce\n\n1. Import the workflow below. It uses pinned trigger data: 2 items, each with a `docs` array of 2 elements.\n2. Click **Execute workflow**.\n3. Iteration 1 (docs 1 and 2):\n   - Doc 1 is the first item. It goes to `If first item` → true → `Switch` → output `odd` → `Merge` input 2. `Merge` waits for input 1.\n   - Doc 2 goes to `If first item` → false → `Merge1` input 2. `Merge1` waits for input 1.\n4. Neither Merge node executes. `Aggregate`, the second loop iteration (docs 3 and 4), and the `return` node do not execute. The execution status is \"Success\".\n\n```json\n{\n  \"nodes\": [\n    { \"parameters\": {}, \"type\": \"n8n-nodes-base.manualTrigger\", \"typeVersion\": 1, \"position\": [-224, 80], \"id\": \"37b77447-41bb-4dbc-804f-5c287df4db0f\", \"name\": \"When clicking ‘Execute workflow’\" },\n    { \"parameters\": { \"fieldToSplitOut\": \"docs\", \"options\": {} }, \"type\": \"n8n-nodes-base.splitOut\", \"typeVersion\": 1.1, \"position\": [224, 80], \"id\": \"94de52fc-2a78-456c-89db-73be47f4dd07\", \"name\": \"Split Out\" },\n    { \"parameters\": { \"aggregate\": \"aggregateAllItemData\", \"options\": {} }, \"type\": \"n8n-nodes-base.aggregate\", \"typeVersion\": 1, \"position\": [1344, 160], \"id\": \"78061351-94a6-48db-aadd-9371f8191a1e\", \"name\": \"Aggregate\" },\n    { \"parameters\": { \"rules\": { \"values\": [\n      { \"conditions\": { \"options\": { \"caseSensitive\": true, \"leftValue\": \"\", \"typeValidation\": \"strict\", \"version\": 4 }, \"conditions\": [ { \"leftValue\": \"={{ $('Split Out').item.json.doc %2 }}\", \"rightValue\": 0, \"operator\": { \"type\": \"number\", \"operation\": \"equals\" }, \"id\": \"776e9f26-ac61-4198-9c5a-bb956e061e73\" } ], \"combinator\": \"and\" }, \"renameOutput\": true, \"outputKey\": \"even\" },\n      { \"conditions\": { \"options\": { \"caseSensitive\": true, \"leftValue\": \"\", \"typeValidation\": \"strict\", \"version\": 4 }, \"conditions\": [ { \"id\": \"34f9aa34-e01a-429b-a4a1-c632951e5f4a\", \"leftValue\": \"={{ $('Split Out').item.json.doc % 2 }}\", \"rightValue\": 1, \"operator\": { \"type\": \"number\", \"operation\": \"equals\" } } ], \"combinator\": \"and\" }, \"renameOutput\": true, \"outputKey\": \"odd\" }\n    ] }, \"options\": {} }, \"type\": \"n8n-nodes-base.switch\", \"typeVersion\": 3.5, \"position\": [672, -16], \"id\": \"7e9c925c-07ff-46fa-b926-d420d5338269\", \"name\": \"Switch\" },\n    { \"parameters\": {}, \"type\": \"n8n-nodes-base.merge\", \"typeVersion\": 3.2, \"position\": [1120, 80], \"id\": \"c21a6b20-62b7-40e8-81b7-8af0628a8beb\", \"name\": \"Merge1\" },\n    { \"parameters\": { \"options\": {} }, \"type\": \"n8n-nodes-base.splitInBatches\", \"typeVersion\": 3, \"position\": [0, 80], \"id\": \"bdedb80a-1bdc-410a-8362-fb653a6a3b85\", \"name\": \"Loop Over Items\" },\n    { \"parameters\": { \"options\": {} }, \"type\": \"n8n-nodes-base.set\", \"typeVersion\": 3.5, \"position\": [224, -112], \"id\": \"c70731de-f78f-43b2-a0db-57ea58496ace\", \"name\": \"return\" },\n    { \"parameters\": {}, \"type\": \"n8n-nodes-base.merge\", \"typeVersion\": 3.2, \"position\": [896, 16], \"id\": \"c4fd5020-f86c-467b-b5bb-75b9630bbc7b\", \"name\": \"Merge\" },\n    { \"parameters\": { \"conditions\": { \"options\": { \"caseSensitive\": true, \"leftValue\": \"\", \"typeValidation\": \"strict\", \"version\": 4 }, \"conditions\": [ { \"id\": \"4381a252-5be9-4963-bc79-0b6c1a25ddf8\", \"leftValue\": \"={{ $itemIndex == 0 }}\", \"rightValue\": \"\", \"operator\": { \"type\": \"boolean\", \"operation\": \"true\", \"singleValue\": true } } ], \"combinator\": \"and\" }, \"options\": {} }, \"type\": \"n8n-nodes-base.if\", \"typeVersion\": 2.4, \"position\": [448, 80], \"id\": \"10e2a6af-d2f5-45c4-9e08-33605494a8f0\", \"name\": \"If first item\" }\n  ],\n  \"connections\": {\n    \"When clicking ‘Execute workflow’\": { \"main\": [[{ \"node\": \"Loop Over Items\", \"type\": \"main\", \"index\": 0 }]] },\n    \"Split Out\": { \"main\": [[{ \"node\": \"If first item\", \"type\": \"main\", \"index\": 0 }]] },\n    \"Aggregate\": { \"main\": [[{ \"node\": \"Loop Over Items\", \"type\": \"main\", \"index\": 0 }]] },\n    \"Switch\": { \"main\": [[{ \"node\": \"Merge\", \"type\": \"main\", \"index\": 0 }], [{ \"node\": \"Merge\", \"type\": \"main\", \"index\": 1 }]] },\n    \"Merge1\": { \"main\": [[{ \"node\": \"Aggregate\", \"type\": \"main\", \"index\": 0 }]] },\n    \"Loop Over Items\": { \"main\": [[{ \"node\": \"return\", \"type\": \"main\", \"index\": 0 }], [{ \"node\": \"Split Out\", \"type\": \"main\", \"index\": 0 }]] },\n    \"Merge\": { \"main\": [[{ \"node\": \"Merge1\", \"type\": \"main\", \"index\": 0 }]] },\n    \"If first item\": { \"main\": [[{ \"node\": \"Switch\", \"type\": \"main\", \"index\": 0 }], [{ \"node\": \"Merge1\", \"type\": \"main\", \"index\": 1 }]] }\n  },\n  \"pinData\": {\n    \"When clicking ‘Execute workflow’\": [\n      { \"docs\": [{ \"doc\": 1 }, { \"doc\": 2 }] },\n      { \"docs\": [{ \"doc\": 3 }, { \"doc\": 4 }] }\n    ]\n  }\n}\n```\n\n### Expected behavior\n\n`Merge` executes first, because it is upstream of `Merge1` in the current iteration. Then `Merge1` executes with the output of `Merge` and the item from the false branch. `Aggregate` executes, and the loop continues to the second iteration. At the end, `return` gets 2 items, one for each input item.\n\nIf the engine cannot select a node to execute, the execution must fail with a clear error. It must not finish with the status \"Success\".\n\n\n### Debug Info\n\n- n8nVersion: 2.45.0\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.12.1\n- nodeEnv: production\n- database: postgres\n- executionMode: regular\n- concurrency: -1\n- license: community\n\n\n### Operating System\n\nMacOS\n\n### n8n Version\n\n2.45.0\n\n### Node.js Version\n\n26.12.1\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nqueue\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/44423/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/44423/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @dpbutter,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9811\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9811](https://linear.app/n8n/issue/GHC-9811)",
+      "at": "2026-11-18T20:11:30Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44423#issuecomment-6990268379"
+    },
+    {
+      "author": "grinem",
+      "text": "Great trace on `processRunExecutionData`. A silent `Success` exit when `waitingExecution` deadlocks without an empty graph is definitely a bug in the scheduler.\n\nThe root issue is that `workflow.getParentNodes()` in `packages/core/src/Workflow.ts` does a standard BFS/DFS traversal over `node.connections` without checking for cyclic back-edges leading back into loop controllers.\n\nIf you want to PR this, the cleanest path is usually modifying `getParentNodes` (or passing a `skipLoopBackEdges = true` flag) to ignore connections feeding back into input `0` of the active `Loop Over Items` node when evaluating `parentIsWaiting`. Otherwise, breaking the cycle in `processRunExecutionData` by falling back to topological depth from the active iteration root would prevent the silent drop.",
+      "at": "2026-11-18T20:44:03Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44423#issuecomment-6991090438"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "I confirmed the scheduler still defers each waiting node when any name from `workflow.getParentNodes(nodeName)` is also in `waitingExecution` (`packages/core/src/execution-engine/workflow-execute.ts`, `processRunExecutionData`). The ancestor helper is cycle-safe, but cycle safety is not the same as excluding loop-back ancestors: `getParentNodes` delegates to `getConnectedNodes`, which follows the configured connections. That leaves the cycle described here relevant to the deferral check. The reproduction’s two waiting Merge nodes therefore warrant checking against current source; a useful regression assertion would ensure the execution cannot finish as Success while waiting nodes remain but none is runnable.",
+      "at": "2026-11-19T02:06:00Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44423#issuecomment-6997459980"
+    }
+  ],
+  "comments_complete": true
+}

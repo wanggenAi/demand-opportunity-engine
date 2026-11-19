@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50536468",
-  "collected_at": "2026-11-18T10:05:38.959560+00:00",
+  "collected_at": "2026-11-19T10:16:04.965298+00:00",
   "source": {
     "author": "yonasb",
     "children": [
@@ -349,7 +349,39 @@
         "children": [
           {
             "author": "yonasb",
-            "children": [],
+            "children": [
+              {
+                "author": "esafak",
+                "children": [
+                  {
+                    "author": "yonasb",
+                    "children": [],
+                    "created_at": "2026-11-18T22:43:43.000Z",
+                    "created_at_i": 1795041823,
+                    "id": 50553411,
+                    "options": [],
+                    "parent_id": 50550809,
+                    "points": null,
+                    "story_id": 50536468,
+                    "text": "Ha, you&#x27;re just further along the CI journey :)",
+                    "title": null,
+                    "type": "comment",
+                    "url": null
+                  }
+                ],
+                "created_at": "2026-11-18T19:23:17.000Z",
+                "created_at_i": 1795029797,
+                "id": 50550809,
+                "options": [],
+                "parent_id": 50538733,
+                "points": null,
+                "story_id": 50536468,
+                "text": "Fair enough, brother. I am a fussy customer :) More power to you.",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
             "created_at": "2026-11-17T21:51:19.000Z",
             "created_at_i": 1794952279,
             "id": 50538733,
@@ -488,6 +520,21 @@
                 "title": null,
                 "type": "comment",
                 "url": null
+              },
+              {
+                "author": "slaser79",
+                "children": [],
+                "created_at": "2026-11-18T12:21:00.000Z",
+                "created_at_i": 1795004460,
+                "id": 50545437,
+                "options": [],
+                "parent_id": 50540594,
+                "points": null,
+                "story_id": 50536468,
+                "text": "The parity check on test IDs plus the cost cap is a good deterministic checker. For trimming tests, where judgment comes in, I&#x27;d have a separate reviewer agent decide it and not the one that proposed the change.",
+                "title": null,
+                "type": "comment",
+                "url": null
               }
             ],
             "created_at": "2026-11-18T01:09:29.000Z",
@@ -579,7 +626,23 @@
       },
       {
         "author": "jbqueries",
-        "children": [],
+        "children": [
+          {
+            "author": "yonasb",
+            "children": [],
+            "created_at": "2026-11-18T20:30:16.000Z",
+            "created_at_i": 1795033816,
+            "id": 50551720,
+            "options": [],
+            "parent_id": 50543955,
+            "points": null,
+            "story_id": 50536468,
+            "text": "Ha! Agents keep making CI slower, so we figured agents should be the ones making it faster again :)",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
         "created_at": "2026-11-18T09:25:57.000Z",
         "created_at_i": 1794993957,
         "id": 50543955,
@@ -594,7 +657,23 @@
       },
       {
         "author": "poxlr",
-        "children": [],
+        "children": [
+          {
+            "author": "yonasb",
+            "children": [],
+            "created_at": "2026-11-18T20:15:18.000Z",
+            "created_at_i": 1795032918,
+            "id": 50551543,
+            "options": [],
+            "parent_id": 50544169,
+            "points": null,
+            "story_id": 50536468,
+            "text": "Great question! We included some details on agent PR token usage and runner minutes usage in the actual benchmark PRs (example <a href=\"https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-chatwoot&#x2F;pull&#x2F;1\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-chatwoot&#x2F;pul...</a>). For that optimization, it cut merges to main time in half which is far more than the inference cost us (based on their public usage <a href=\"https:&#x2F;&#x2F;github.com&#x2F;chatwoot&#x2F;chatwoot&#x2F;actions&#x2F;metrics&#x2F;usage?dateRangeType=DATE_RANGE_TYPE_PREVIOUS_MONTH\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;chatwoot&#x2F;chatwoot&#x2F;actions&#x2F;metrics&#x2F;usage?d...</a>).<p>So short answer is that usually the CI min savings our agent loop finds far outweigh our spend on the optimizations themselves on large repos. On smaller repos less so (I don&#x27;t have a clear answer on exactly what size). But we also don&#x27;t charge for optimizations (they&#x27;re included in runner minutes which are priced the same as competitors) so it&#x27;s more of an internal question for us we&#x27;ll figure out as our business matures.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
         "created_at": "2026-11-18T09:50:00.000Z",
         "created_at_i": 1794995400,
         "id": 50544169,
@@ -606,6 +685,82 @@
         "title": null,
         "type": "comment",
         "url": null
+      },
+      {
+        "author": "MisterMunchkin",
+        "children": [],
+        "created_at": "2026-11-18T16:35:36.000Z",
+        "created_at_i": 1795019736,
+        "id": 50548409,
+        "options": [],
+        "parent_id": 50536468,
+        "points": null,
+        "story_id": 50536468,
+        "text": "What’s stopping Anthropic from just reading your agent logs and reproducing your product in 30 minutes?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "codedrift_",
+        "children": [
+          {
+            "author": "yonasb",
+            "children": [],
+            "created_at": "2026-11-18T22:39:40.000Z",
+            "created_at_i": 1795041580,
+            "id": 50553358,
+            "options": [],
+            "parent_id": 50552815,
+            "points": null,
+            "story_id": 50536468,
+            "text": "That constant battle you&#x27;re describing is exactly why having agents part of your hosted runners is valuable. Our agents continuously watch your telemetry, code changes, and runs to find more optimizations. When a PR merges, the agents will catch any regressions and open a fix or revert.<p>Given your past experience, is StarSling solving the drift issue the way you&#x27;d want it to be solved? Would love to hear any ideas you have for what the ideal solution would look like.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-18T22:00:43.000Z",
+        "created_at_i": 1795039243,
+        "id": 50552815,
+        "options": [],
+        "parent_id": 50536468,
+        "points": null,
+        "story_id": 50536468,
+        "text": "In a former life, I ran platform teams and the CI speedups we fought for rarely lasted. A few months later someone adds a sleep to a test or a new job skips the cache, and the build is slow again.<p>How does StarSling handle that drift? Does the loop keep watching a workflow after a PR merges, and will it catch a regression on a win it already shipped?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "Shexfer",
+        "children": [],
+        "created_at": "2026-11-19T00:34:06.000Z",
+        "created_at_i": 1795048446,
+        "id": 50554411,
+        "options": [],
+        "parent_id": 50536468,
+        "points": null,
+        "story_id": 50536468,
+        "text": "The parity check — same test IDs, same coverage — answers the &quot;re-sharding vs deleting tests&quot; worry, but it still trusts the test set as the oracle. The failure I&#x27;d want guarded is a change that keeps the same tests but makes them faster by weakening what they assert: a looser timeout, a mocked dependency, a skipped setup.<p>Is the agent diffing the test bodies as well as the run results? A guard on test-file changes would make the speedup claim much easier to trust.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "ansh25lehri",
+        "children": [],
+        "created_at": "2026-11-19T09:38:13.000Z",
+        "created_at_i": 1795081093,
+        "id": 50557949,
+        "options": [],
+        "parent_id": 50536468,
+        "points": null,
+        "story_id": 50536468,
+        "text": "Interesting concept. Is there a plan to support Kubernetes-native CI like\nArgo Workflows, or is GitHub Actions the focus for now?<p>Also, since some wins come from app code (like the better-auth fix), how do\nyou decide when a change outside the workflow&#x2F;test files is in scope? Beyond\nthe test-parity check, is there a guardrail on how much business code the\nagent can touch?",
+        "title": null,
+        "type": "comment",
+        "url": null
       }
     ],
     "created_at": "2026-11-17T19:01:43.000Z",
@@ -613,12 +768,12 @@
     "id": 50536468,
     "options": [],
     "parent_id": null,
-    "points": 69,
+    "points": 87,
     "story_id": 50536468,
-    "text": "We’re Yonas and Daniel and we’re building StarSling (<a href=\"https:&#x2F;&#x2F;starsling.dev\">https:&#x2F;&#x2F;starsling.dev</a>), fast GitHub Actions runners with AI agents that ship PRs to continuously improve your tests and workflows.<p>Every CI job gets its own ephemeral sandbox on the fastest Zen 5 machines and NVMe Disk with unlimited concurrency so a burst of agent PRs all run at once. We’re different from other runners because ours come with agents that cut down your CI bill over time. PRs are generated through our CI harness, which runs an agent loop that’s tuned to improve your CI speed and reduce cost.<p>Mastra now merges over 1,800 PRs a month and we got their slowest workflow from 29m 56s on GitHub-hosted runners down to 5m 06s (5.87x) on StarSling. We realized the true value of having an agent loop running on top of fast runners when our agents found an 11-month-old performance bottleneck in better-auth. The fix made one of their test jobs 5.4x faster: <a href=\"https:&#x2F;&#x2F;github.com&#x2F;better-auth&#x2F;better-auth&#x2F;pull&#x2F;10762\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;better-auth&#x2F;better-auth&#x2F;pull&#x2F;10762</a>.<p>I previously founded StackShare, which grew to over 1.5M developers. Daniel helped build Netflix&#x27;s internal developer portal. Last year we started building AI agents for DevOps because shipping code to prod fell way behind agentic coding. We hit the CI bottleneck ourselves as we were building agents. Our own agents shipped so many PRs that at peak our job queues were backed up for hours and our CI bill got close to our inference bill.<p>We now support per-second billing, and just shipped StarSling Disks - persistent disks that give you a 4.9x speedup in dependencies ready over actions&#x2F;cache. You can see a quick demo of disks in action here : <a href=\"https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=2JrrpRm9Mww\" rel=\"nofollow\">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=2JrrpRm9Mww</a>.<p>Our CI harness runs a loop that has agents:\n- Analyze your workflows, run logs, and machine telemetry\n- Propose an optimization\n- Test your unchanged workflow side by side the proposed change\n- Deterministically judge that the difference is statistically significant\n- Ship the winner to you as a PR with benchmarks evidence<p>We benchmarked open source repos on our runners and average 10x speedup in wall clock time with 70% less runner time:\n- <a href=\"https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-gogs\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-gogs</a> (12.8x)\n- <a href=\"https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-shellcheck\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-shellcheck</a> (5.5x)\n- <a href=\"https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-chatwoot\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-chatwoot</a> (3.9x)\n- <a href=\"https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-transfer.sh\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-transfer.sh</a> (11.7x)\n- <a href=\"https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-mirotalksfu\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-mirotalksfu</a> (36.4x)<p>Yes, you can do these optimizations yourself with prompts so we’ve released skills for this: <a href=\"https:&#x2F;&#x2F;github.com&#x2F;starslingdev&#x2F;skills\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;starslingdev&#x2F;skills</a>. The benefit of using our agents is that you don’t need to spend tokens and CI compute finding optimizations yourself.<p>We started building our runners on AWS at the beginning of the year and realized that was too expensive. But at that time there weren’t any cloud providers that could give us the same machines we were getting on AWS, billed per minute (microVMs). So we convinced a handful of sandbox providers to get Zen 5s and started benchmarking them publicly (<a href=\"https:&#x2F;&#x2F;github.com&#x2F;starslingdev&#x2F;hpc-sandbox-benchmarks\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;starslingdev&#x2F;hpc-sandbox-benchmarks</a>).<p>We’ve learned that fast infrastructure is table stakes for CI, but it’s not sufficient on its own. To get fast and cost effective CI you need a process that continues making improvements. We turned CI optimizations from OpenAI, Anthropic, Linear and others into playbooks for your agent: <a href=\"https:&#x2F;&#x2F;starsling.dev&#x2F;ci-playbooks\">https:&#x2F;&#x2F;starsling.dev&#x2F;ci-playbooks</a>.<p>To try it, give your agent this URL: <a href=\"https:&#x2F;&#x2F;docs.starsling.dev&#x2F;start\">https:&#x2F;&#x2F;docs.starsling.dev&#x2F;start</a>. You get 2,000 free minutes. Our agents start opening PRs once you&#x27;ve hit about 10,000 minutes.<p>Today we announced our CI Challenge: if StarSling can&#x27;t save you at least 10% on your next CI bill, we&#x27;ll literally give you $1,000. Eligibility and rules here: <a href=\"https:&#x2F;&#x2F;starsling.dev&#x2F;blog&#x2F;ci-challenge\">https:&#x2F;&#x2F;starsling.dev&#x2F;blog&#x2F;ci-challenge</a>.<p>We’d love your feedback on the headless experience and what you’d like to see improved in your own CI setup!",
+    "text": "We’re Yonas and Daniel and we’re building StarSling (<a href=\"https:&#x2F;&#x2F;starsling.dev\">https:&#x2F;&#x2F;starsling.dev</a>), fast GitHub Actions runners with AI agents that ship PRs to continuously improve your tests and workflows.<p>Every CI job gets its own ephemeral sandbox on the fastest Zen 5 machines and NVMe Disk with unlimited concurrency so a burst of agent PRs all run at once. We’re different from other runners because ours come with agents that cut down your CI bill over time. PRs are generated through our CI harness, which runs an agent loop that’s tuned to improve your CI speed and reduce cost.<p>Mastra now merges over 1,800 PRs a month and we got their slowest workflow from 29m 56s on GitHub-hosted runners down to 5m 06s (5.87x) on StarSling. We realized the true value of having an agent loop running on top of fast runners when our agents found an 11-month-old performance bottleneck in better-auth. The fix made one of their test jobs 5.4x faster: <a href=\"https:&#x2F;&#x2F;github.com&#x2F;better-auth&#x2F;better-auth&#x2F;pull&#x2F;10762\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;better-auth&#x2F;better-auth&#x2F;pull&#x2F;10762</a>.<p>I previously founded StackShare, which grew to over 1.5M developers. Daniel helped build Netflix&#x27;s internal developer portal. Last year we started building AI agents for DevOps because shipping code to prod fell way behind agentic coding. We hit the CI bottleneck ourselves as we were building agents. Our own agents shipped so many PRs that at peak our job queues were backed up for hours and our CI bill got close to our inference bill.<p>We now support per-second billing, and just shipped StarSling Disks - persistent disks that give you a 4.9x speedup in dependencies ready over actions&#x2F;cache. You can see a quick demo of disks in action here : <a href=\"https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=2JrrpRm9Mww\" rel=\"nofollow\">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=2JrrpRm9Mww</a>.<p>Our CI harness runs a loop that has agents:\n- Analyze your workflows, run logs, and machine telemetry\n- Propose an optimization\n- Test your unchanged workflow side by side the proposed change\n- Deterministically judge that the difference is statistically significant\n- Ship the winner to you as a PR with benchmarks evidence<p>We benchmarked open source repos on our runners and average 10x speedup in wall clock time with 70% less runner time:\n- <a href=\"https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-gogs\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-gogs</a> (12.8x)\n- <a href=\"https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-shellcheck\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-shellcheck</a> (5.5x)\n- <a href=\"https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-chatwoot\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-chatwoot</a> (3.9x)\n- <a href=\"https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-transfer.sh\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-transfer.sh</a> (11.7x)\n- <a href=\"https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-mirotalksfu\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;starsling-demo-org&#x2F;benchmark-mirotalksfu</a> (36.4x)<p>Yes, you can do these optimizations yourself with prompts so we’ve released skills for this: <a href=\"https:&#x2F;&#x2F;github.com&#x2F;starslingdev&#x2F;skills\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;starslingdev&#x2F;skills</a>. The benefit of using our agents is that you don’t need to spend tokens and CI compute finding optimizations yourself.<p>We started building our runners on AWS at the beginning of the year and realized that was too expensive. But at that time there weren’t any cloud providers that could give us the same machines we were getting on AWS, billed per minute (microVMs). So we convinced a handful of sandbox providers to get Zen 5s and started benchmarking them publicly (<a href=\"https:&#x2F;&#x2F;github.com&#x2F;starslingdev&#x2F;hpc-sandbox-benchmarks\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;starslingdev&#x2F;hpc-sandbox-benchmarks</a>).<p>We’ve learned that fast infrastructure is table stakes for CI, but it’s not sufficient on its own. To get fast and cost effective CI you need a process that continues making improvements. We turned CI optimizations from OpenAI, Anthropic, Linear and others into playbooks for your agent: <a href=\"https:&#x2F;&#x2F;starsling.dev&#x2F;ci-playbooks\">https:&#x2F;&#x2F;starsling.dev&#x2F;ci-playbooks</a>.<p>To try it, give your agent this URL: <a href=\"https:&#x2F;&#x2F;docs.starsling.dev&#x2F;start\">https:&#x2F;&#x2F;docs.starsling.dev&#x2F;start</a>. You get 2,000 free minutes. Our agents start opening PRs once you&#x27;ve hit about 10,000 minutes.<p>Today we announced our CI Challenge: if StarSling can&#x27;t save you at least 10% on your next CI bill, we&#x27;ll literally give you $1,000. Eligibility and rules here: <a href=\"https:&#x2F;&#x2F;starsling.dev&#x2F;blog&#x2F;ci-challenge\">https:&#x2F;&#x2F;starsling.dev&#x2F;blog&#x2F;ci-challenge</a>.<p>We’d love your feedback on the headless experience and what you’d like to see improved in your own CI setup!<p><a href=\"https:&#x2F;&#x2F;starsling.dev\">https:&#x2F;&#x2F;starsling.dev</a>",
     "title": "Launch HN: StarSling (YC P25) – Self-improving CI for agent-volume repos",
     "type": "story",
-    "url": "https://starsling.dev"
+    "url": null
   },
   "comments": [
     {
@@ -766,6 +921,18 @@
       "url": "https://news.ycombinator.com/item?id=50538733"
     },
     {
+      "author": "esafak",
+      "text": "Fair enough, brother. I am a fussy customer :) More power to you.",
+      "at": "2026-11-18T19:23:17.000Z",
+      "url": "https://news.ycombinator.com/item?id=50550809"
+    },
+    {
+      "author": "yonasb",
+      "text": "Ha, you're just further along the CI journey :)",
+      "at": "2026-11-18T22:43:43.000Z",
+      "url": "https://news.ycombinator.com/item?id=50553411"
+    },
+    {
       "author": "Bnjoroge",
       "text": "I think YAML used to matter more when humans were writing much of the code, but they matter alot less now, especially because you can already write much of your YAML workflows in high level code. It's still matters, but alot less than it used to or enough to be a pain. I agree with the rest of the concerns though.",
       "at": "2026-11-17T23:36:04.000Z",
@@ -820,6 +987,12 @@
       "url": "https://news.ycombinator.com/item?id=50541218"
     },
     {
+      "author": "slaser79",
+      "text": "The parity check on test IDs plus the cost cap is a good deterministic checker. For trimming tests, where judgment comes in, I'd have a separate reviewer agent decide it and not the one that proposed the change.",
+      "at": "2026-11-18T12:21:00.000Z",
+      "url": "https://news.ycombinator.com/item?id=50545437"
+    },
+    {
       "author": "brunoarueira",
       "text": "Congrats on the launch! In the past pre-AI I did an improvement to the github actions pipeline from 20 minutes down to 6, it's a relief when you improve things like this and improve the team throughput!",
       "at": "2026-11-18T00:32:19.000Z",
@@ -850,10 +1023,52 @@
       "url": "https://news.ycombinator.com/item?id=50543955"
     },
     {
+      "author": "yonasb",
+      "text": "Ha! Agents keep making CI slower, so we figured agents should be the ones making it faster again :)",
+      "at": "2026-11-18T20:30:16.000Z",
+      "url": "https://news.ycombinator.com/item?id=50551720"
+    },
+    {
       "author": "poxlr",
       "text": "Curious how the inference cost of the agent loop compares to the CI minutes it saves. On a smaller repo I could see it eating most of the savings. Is there a repo size where it starts to clearly pay off?",
       "at": "2026-11-18T09:50:00.000Z",
       "url": "https://news.ycombinator.com/item?id=50544169"
+    },
+    {
+      "author": "yonasb",
+      "text": "Great question! We included some details on agent PR token usage and runner minutes usage in the actual benchmark PRs (example  https://github.com/starsling-demo-org/benchmark-chatwoot/pul... ). For that optimization, it cut merges to main time in half which is far more than the inference cost us (based on their public usage  https://github.com/chatwoot/chatwoot/actions/metrics/usage?d... ). So short answer is that usually the CI min savings our agent loop finds far outweigh our spend on the optimizations themselves on large repos. On smaller repos less so (I don't have a clear answer on exactly what size). But we also don't charge for optimizations (they're included in runner minutes which are priced the same as competitors) so it's more of an internal question for us we'll figure out as our business matures.",
+      "at": "2026-11-18T20:15:18.000Z",
+      "url": "https://news.ycombinator.com/item?id=50551543"
+    },
+    {
+      "author": "MisterMunchkin",
+      "text": "What’s stopping Anthropic from just reading your agent logs and reproducing your product in 30 minutes?",
+      "at": "2026-11-18T16:35:36.000Z",
+      "url": "https://news.ycombinator.com/item?id=50548409"
+    },
+    {
+      "author": "codedrift_",
+      "text": "In a former life, I ran platform teams and the CI speedups we fought for rarely lasted. A few months later someone adds a sleep to a test or a new job skips the cache, and the build is slow again. How does StarSling handle that drift? Does the loop keep watching a workflow after a PR merges, and will it catch a regression on a win it already shipped?",
+      "at": "2026-11-18T22:00:43.000Z",
+      "url": "https://news.ycombinator.com/item?id=50552815"
+    },
+    {
+      "author": "yonasb",
+      "text": "That constant battle you're describing is exactly why having agents part of your hosted runners is valuable. Our agents continuously watch your telemetry, code changes, and runs to find more optimizations. When a PR merges, the agents will catch any regressions and open a fix or revert. Given your past experience, is StarSling solving the drift issue the way you'd want it to be solved? Would love to hear any ideas you have for what the ideal solution would look like.",
+      "at": "2026-11-18T22:39:40.000Z",
+      "url": "https://news.ycombinator.com/item?id=50553358"
+    },
+    {
+      "author": "Shexfer",
+      "text": "The parity check — same test IDs, same coverage — answers the \"re-sharding vs deleting tests\" worry, but it still trusts the test set as the oracle. The failure I'd want guarded is a change that keeps the same tests but makes them faster by weakening what they assert: a looser timeout, a mocked dependency, a skipped setup. Is the agent diffing the test bodies as well as the run results? A guard on test-file changes would make the speedup claim much easier to trust.",
+      "at": "2026-11-19T00:34:06.000Z",
+      "url": "https://news.ycombinator.com/item?id=50554411"
+    },
+    {
+      "author": "ansh25lehri",
+      "text": "Interesting concept. Is there a plan to support Kubernetes-native CI like\nArgo Workflows, or is GitHub Actions the focus for now? Also, since some wins come from app code (like the better-auth fix), how do\nyou decide when a change outside the workflow/test files is in scope? Beyond\nthe test-parity check, is there a guardrail on how much business code the\nagent can touch?",
+      "at": "2026-11-19T09:38:13.000Z",
+      "url": "https://news.ycombinator.com/item?id=50557949"
     }
   ],
   "comments_complete": true

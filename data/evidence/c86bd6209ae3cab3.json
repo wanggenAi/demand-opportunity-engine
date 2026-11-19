@@ -1,0 +1,107 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/44362",
+  "collected_at": "2026-11-19T10:16:04.965298+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/44362",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/44362/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/44362/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/44362/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/44362",
+    "id": 6465028258,
+    "node_id": "I_kwDOC4Q8Qs8AAAABgViAog",
+    "number": 44362,
+    "title": "Microsoft SQL node: \\ inside [bracketed] identifier treated as unbound query parameter",
+    "user": {
+      "login": "Sweta0519",
+      "id": 85302587,
+      "node_id": "MDQ6VXNlcjg1MzAyNTg3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/85302587?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Sweta0519",
+      "html_url": "https://github.com/Sweta0519",
+      "followers_url": "https://api.github.com/users/Sweta0519/followers",
+      "following_url": "https://api.github.com/users/Sweta0519/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Sweta0519/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Sweta0519/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Sweta0519/subscriptions",
+      "organizations_url": "https://api.github.com/users/Sweta0519/orgs",
+      "repos_url": "https://api.github.com/users/Sweta0519/repos",
+      "events_url": "https://api.github.com/users/Sweta0519/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Sweta0519/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-11-18T10:24:36Z",
+    "updated_at": "2026-11-18T15:05:45Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nThe Microsoft SQL node fails on queries that use a bracketed identifier containing `$` followed by digits, even when no query parameters are set. The query never reaches the server:\n\n```\nThe query references $123, but only 0 query parameter(s) are set\n```\n\nTable names like `[Company$Table 1$123-456-789]` are standard in Microsoft Dynamics NAV / Business Central databases, so these workflows broke after the v3 upgrade.\n\nCause: the unbound placeholder check in `bindQueryParameters` (`packages/nodes-base/nodes/Microsoft/Sql/GenericFunctions.ts`) skips `$N` inside `'...'` and `\"...\"` via `isInsideQuotes`, but not inside SQL Server `[...]` identifiers, so `$123` in the table name is read as a parameter reference.\n\nReported on the community forum: https://community.n8n.io/t/329049\n\n### To Reproduce\n\n1. Add a Microsoft SQL node, operation Execute Query, with no Query Parameters.\n2. Query: `SELECT TOP 1 * FROM [Company$Table 1$123-456-789]` (any table whose bracketed name contains `$` followed by digits).\n3. Execute the node.\n4. See error: `The query references $123, but only 0 query parameter(s) are set`.\n\nWorkaround: write the identifier with double quotes instead, e.g. `\"Company$Table 1$123-456-789\"`.\n\n### Expected behavior\n\n`$N` inside a `[bracketed]` identifier is treated as part of the identifier, as it already is inside quoted strings, and the query runs. A real unbound placeholder outside brackets should still throw.\n\n### Debug Info\n\nNot available from the forum reporter. Reproduced in the node's unit tests against current master; see the linked PR.\n\n### Operating System\n\nUbuntu 24.04 LTS (forum reporter)\n\n### n8n Version\n\n3.2\n\n### Node.js Version\n\nNot provided (official Docker image)\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/44362/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/44362/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @Sweta0519,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9807\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9807](https://linear.app/n8n/issue/GHC-9807)",
+      "at": "2026-11-18T10:24:46Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44362#issuecomment-6975760088"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "The current helper only tracks single- and double-quoted spans. In `packages/nodes-base/utils/sql-query-parameters.ts`, `isInsideQuotes()` explicitly does not handle SQL comments; in the Microsoft SQL path, the caller also needs to recognize SQL Server bracketed identifiers. A focused fix could extend the lexical scan for `[...]` (including escaped `]]`) and use it when filtering unbound `$N` matches, so `$123` in `[Company$Table 1$123-456-789]` is ignored while placeholders outside the identifier still fail. Please include a case with a closing bracket escaped as `]]` if adding bracket tracking.",
+      "at": "2026-11-18T15:05:45Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44362#issuecomment-6982459034"
+    }
+  ],
+  "comments_complete": true
+}
