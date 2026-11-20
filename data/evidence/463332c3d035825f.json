@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50563435",
+  "collected_at": "2026-11-20T09:58:49.456682+00:00",
+  "source": {
+    "author": "MichalKrk",
+    "children": [],
+    "created_at": "2026-11-19T17:51:49.000Z",
+    "created_at_i": 1795110709,
+    "id": 50563435,
+    "options": [],
+    "parent_id": 50563434,
+    "points": null,
+    "story_id": 50563434,
+    "text": "Hey HN, Misho &amp; Lukas here. We&#x27;re two data science students from ETH Zurich and we love building stuff with AI.<p>We just built an agent that automates tasks for you in your own Chrome. You give it a task (&quot;launch a Google Ads campaign&quot;, &quot;build a post-purchase email flow in Klaviyo&quot;), it asks a few questions, then clicks and types its way through it.<p>We want to turn this into a startup. We started with marketing tasks because Misho worked on marketing automation software before.<p>Demo: <a href=\"https:&#x2F;&#x2F;youtu.be&#x2F;d1_LeuYmKrA\" rel=\"nofollow\">https:&#x2F;&#x2F;youtu.be&#x2F;d1_LeuYmKrA</a><p>How it works:\n* The agent runs on AWS on OpenAI&#x27;s open-source Codex runtime.\n* Playwright drives your Chrome through our extension. No API integrations, and no passwords leave your browser. If you can click it, it can click it.\n* Approvals and Stop are enforced on the server, not with &quot;please ask first&quot; in a prompt. We don&#x27;t trust the model with that.<p>And we&#x27;re kind of stuck. The agent works, and we think it&#x27;s pretty cool... but we just can&#x27;t figure out who it&#x27;s for. We tried six different landing pages with Google Ads for each... and spent $214 on 26 clicks, zero sign-ups :(<p>So, help us out please:\n* What&#x27;s the browser chore you&#x27;d happily never do again?\n* Have you ever paid a VA or a freelancer just to set up or click through some mundane task for you (e.g. setting up a Shopify integration)? What was it?\n* Roast the landing page: shoppilot.ch. It&#x27;s clearly not converting.<p>If you want to try it: app.shoppilot.ch. Happy to hear any thoughts.",
+    "title": null,
+    "type": "comment",
+    "url": null
+  },
+  "comments": [],
+  "comments_complete": true
+}

@@ -1,0 +1,119 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/44599",
+  "collected_at": "2026-11-20T09:58:49.456682+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/44599",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/44599/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/44599/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/44599/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/44599",
+    "id": 6507585088,
+    "node_id": "I_kwDOC4Q8Qs8AAAABg-HeQA",
+    "number": 44599,
+    "title": "Editor: Load more error toast on the templates page is hardcoded English",
+    "user": {
+      "login": "Pushkal-Gupta",
+      "id": 161060351,
+      "node_id": "U_kgDOCZmV_w",
+      "avatar_url": "https://avatars.githubusercontent.com/u/161060351?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Pushkal-Gupta",
+      "html_url": "https://github.com/Pushkal-Gupta",
+      "followers_url": "https://api.github.com/users/Pushkal-Gupta/followers",
+      "following_url": "https://api.github.com/users/Pushkal-Gupta/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Pushkal-Gupta/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Pushkal-Gupta/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Pushkal-Gupta/subscriptions",
+      "organizations_url": "https://api.github.com/users/Pushkal-Gupta/orgs",
+      "repos_url": "https://api.github.com/users/Pushkal-Gupta/repos",
+      "events_url": "https://api.github.com/users/Pushkal-Gupta/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Pushkal-Gupta/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 4,
+    "created_at": "2026-11-20T08:15:31Z",
+    "updated_at": "2026-11-20T09:15:14Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nOn the workflow templates page, more templates load as you scroll. If that fails, n8n shows a toast with the title \"Error\" and the message \"Could not load more workflows\". Both are written in English straight into the code, so they do not get translated.\n\nhttps://github.com/n8n-io/n8n/blob/28b1d8ad1ac3ac2ad0db6f2f4e616926996a8807/packages/frontend/editor-ui/src/features/workflows/templates/views/TemplatesSearchView.vue#L249-L250\n\nOther text on the same page, such as \"Nothing found. Try adjusting your search to see more.\", already uses `templates.*` keys.\n\n### To Reproduce\n\n1. Set the UI to a language other than English.\n2. Open the workflow templates page.\n3. In the browser dev tools, block the requests to the templates API.\n4. Scroll down so the page tries to load more templates.\n5. The toast says \"Error\" and \"Could not load more workflows\" in English.\n\n### Expected behavior\n\nThe toast shows in the selected language, like the rest of the page.\n\n### Debug Info\n\nI found this while reading the code on `master` (2.49.0). The text is written into the code, so it happens on every setup.\n\n### Environment\n\n- Operating System: macOS (platform independent)\n- n8n Version: 2.49.0 (`master`)\n- Node.js Version: 24.x\n- Database: n/a\n- Execution mode: n/a\n\n### Note\n\nI have a fix ready and will open a PR.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/44599/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/44599/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @Pushkal-Gupta,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9818\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9818](https://linear.app/n8n/issue/GHC-9818)",
+      "at": "2026-11-20T08:15:40Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44599#issuecomment-7034159960"
+    },
+    {
+      "author": "grinem",
+      "text": "Mapping those toast arguments to `this.locale.baseText('generic.error')` (or `generic.errorTitle`) along with a dedicated `templates.search.loadMoreError` key in `packages/frontend/editor-ui/src/locales/e...",
+      "at": "2026-11-20T08:27:32Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44599#issuecomment-7034383222"
+    },
+    {
+      "author": "Pushkal-Gupta",
+      "text": "Thanks for taking a look! I kept the title under the existing `error` key because `generic.error` displays “Something went wrong,” which would change the message. The fix is in #44600.",
+      "at": "2026-11-20T08:39:08Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44599#issuecomment-7034607409"
+    },
+    {
+      "author": "grinem",
+      "text": "Makes total sense to stick with the dedicated `error` key here; falling back to `generic.error` and wiping out the specific message would just make debugging annoying for users. Checked out #44600 and scoping the translation key directly to that toast keeps it nice and clean without messing with the rest of the bundle.",
+      "at": "2026-11-20T09:15:13Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44599#issuecomment-7035432715"
+    }
+  ],
+  "comments_complete": true
+}

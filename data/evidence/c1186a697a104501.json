@@ -1,0 +1,66 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50561824",
+  "collected_at": "2026-11-20T09:58:49.456682+00:00",
+  "source": {
+    "author": "gilad",
+    "children": [
+      {
+        "author": "toomuchtodo",
+        "children": [
+          {
+            "author": "gilad",
+            "children": [],
+            "created_at": "2026-11-19T17:41:12.000Z",
+            "created_at_i": 1795110072,
+            "id": 50563296,
+            "options": [],
+            "parent_id": 50561883,
+            "points": null,
+            "story_id": 50561824,
+            "text": "Thanks for the supportive comment. Graylog is a mature tool, with many more capabilities than dayfile offers. I&#x27;d emphasize Graylog&#x27;s ability to handle volume, variety of sources - storage, search and response to events. dayfile&#x27;s total volume, ingest and response is smaller, but more targeted - informative, yet limited events (&quot;backup finished&quot;, &quot;TODO xyz&quot; + open&#x2F;close feature). The tradeoff is size and complexity of the application itself. Graylog packages multiple Java applications - its server, OpenSearch for search, and MongoDB. dayfile is a single Python-based application and a single SQLite file you can export at any time. dayfile uses token-based access controls - a read token can be limited to an audience, and a feed can be filtered by tag and made public. One log can serve multiple audiences and views without exposing all of it.<p>I can imagine these working together, processing + HTTP notifications from Graylog, into a post-processed, actionable event using dayfile.<p>From your comment I assume you operate multiple systems; which events would you want in a short daily record, as opposed to the full log?",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-19T16:04:26.000Z",
+        "created_at_i": 1795104266,
+        "id": 50561883,
+        "options": [],
+        "parent_id": 50561824,
+        "points": null,
+        "story_id": 50561824,
+        "text": "Interesting idea! I use Graylog community edition for something similar, where everything technology I operate emits a logging event and Graylog is the append only log. Did you consider a traditional logging solution for this use case? If so, what differentiates this from such an approach?<p><a href=\"https:&#x2F;&#x2F;graylog.org&#x2F;free&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;graylog.org&#x2F;free&#x2F;</a>",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-11-19T16:00:33.000Z",
+    "created_at_i": 1795104033,
+    "id": 50561824,
+    "options": [],
+    "parent_id": null,
+    "points": 4,
+    "story_id": 50561824,
+    "text": "Hi HN, I&#x27;m Gilad.<p>dayfile.app is a &quot;git log for scripts and agents&quot;, with ordered history, append-only logging as foundational characteristics. The service is currently in beta, AGPL-licensed.<p>As I was looking at various ways to record and retrieve a day&#x27;s to-dos, automation and operational outputs (update successes and failures), the idea of  a running event log. dayfile.app&#x27;s primary use case is DevOps tracking and event logging. Building this, I&#x27;ve emphasized simplifying posting - one HTTP request with a title and optional tags (used for filtering when reading the log), AI access via MCP server (an assistant can read, post or close to-dos) and self-hosting as a first-class citizen (`pip install dayfile`, SQLite database is local in this mode).<p>A demo is available at <a href=\"https:&#x2F;&#x2F;dayfile.app&#x2F;demo\" rel=\"nofollow\">https:&#x2F;&#x2F;dayfile.app&#x2F;demo</a>. If using the cloud service and after generating a write token on the site, an example of posting an entry would be:<p><pre><code>  curl -X POST https:&#x2F;&#x2F;USERNAME.dayfile.cloud&#x2F;events \\\n  -H &quot;Authorization: Bearer WRITE_TOKEN&quot; \\\n  -H &quot;content-type: application&#x2F;json&quot; \\\n  -d &#x27;{&quot;title&quot;:&quot;Nightly backup finished&quot;,&quot;tags&quot;:[&quot;backup&quot;]}&#x27;\n</code></pre>\nTo read back (filtering using tag):<p><pre><code>  curl -H &quot;Authorization: Bearer READ_TOKEN&quot; \\\n  &quot;https:&#x2F;&#x2F;USERNAME.dayfile.cloud&#x2F;events?tag=backup&amp;within=7d&quot;\n</code></pre>\nor paste <a href=\"https:&#x2F;&#x2F;USERNAME.dayfile.cloud&#x2F;t&#x2F;READ_TOKEN&#x2F;f&#x2F;backup.atom\" rel=\"nofollow\">https:&#x2F;&#x2F;USERNAME.dayfile.cloud&#x2F;t&#x2F;READ_TOKEN&#x2F;f&#x2F;backup.atom</a> into a feed reader (you need to create a feed called `backup`).<p>What a local file can&#x27;t do is notice something didn&#x27;t happen - this is the heartbeat. dayfile.app can be configured to create an event if no associated event arrives. Imagine a backup which didn&#x27;t run. A to-do event is created if no evidence of a successful backup shows up within a certain period. When the backup reports again, dayfile closes the associated to-do.<p>Current limits: logs are not end-to-end encrypted, sign-in is via GitHub only, the free beta allows 50,000 events and log size of 25MB. Pricing will be sorted out after this launch and as user feedback rolls in.<p>I&#x27;d love to hear in the comments on how you&#x27;d use it, what would prevent you from doing so, feature requests and suggestions. Bug reports can be submitted as issues on GitHub.",
+    "title": "Show HN: Dayfile.app – Append-only log for your scripts and agents",
+    "type": "story",
+    "url": "https://github.com/dayfile/dayfile"
+  },
+  "comments": [
+    {
+      "author": "toomuchtodo",
+      "text": "Interesting idea! I use Graylog community edition for something similar, where everything technology I operate emits a logging event and Graylog is the append only log. Did you consider a traditional logging solution for this use case? If so, what differentiates this from such an approach?  https://graylog.org/free/",
+      "at": "2026-11-19T16:04:26.000Z",
+      "url": "https://news.ycombinator.com/item?id=50561883"
+    },
+    {
+      "author": "gilad",
+      "text": "Thanks for the supportive comment. Graylog is a mature tool, with many more capabilities than dayfile offers. I'd emphasize Graylog's ability to handle volume, variety of sources - storage, search and response to events. dayfile's total volume, ingest and response is smaller, but more targeted - informative, yet limited events (\"backup finished\", \"TODO xyz\" + open/close feature). The tradeoff is size and complexity of the application itself. Graylog packages multiple Java applications - its server, OpenSearch for search, and MongoDB. dayfile is a single Python-based application and a single SQLite file you can export at any time. dayfile uses token-based access controls - a read token can be limited to an audience, and a feed can be filtered by tag and made public. One log can serve multiple audiences and views without exposing all of it. I can imagine these working together, processing + HTTP notifications from Graylog, into a post-processed, actionable event using dayfile. From your comment I assume you operate multiple systems; which events would you want in a short daily record, as opposed to the full log?",
+      "at": "2026-11-19T17:41:12.000Z",
+      "url": "https://news.ycombinator.com/item?id=50563296"
+    }
+  ],
+  "comments_complete": true
+}

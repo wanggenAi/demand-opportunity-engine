@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50572101",
+  "collected_at": "2026-11-20T09:58:49.456682+00:00",
+  "source": {
+    "author": "yayachiken",
+    "children": [],
+    "created_at": "2026-11-20T09:11:56.000Z",
+    "created_at_i": 1795165916,
+    "id": 50572101,
+    "options": [],
+    "parent_id": 50570983,
+    "points": null,
+    "story_id": 50569226,
+    "text": "SSL&#x2F;TLS has always been a wonky and complicated standard built upon other wonky standards like x509 and ASN.1 (for PKI) that nobody would touch unless they are forced to.<p>There is a reason why people did not do a lot of TLS (outside of anything involving monetary transactions) before Firesheep, the NSA leaks were the final nail in the coffin for unencrypted HTTP. On top of that Let&#x27;s Encrypt and ACME did not exist, so TLS was behind a paywall on top of that.<p>And then everything proliferated relatively quick even for tech standards. I guess people  grabbed onto the next available tooling just like a drowning person would take any piece of driftwood.<p>Not so fun fact: AFAIK the openssl binary was initially explicitly meant to be only used for testing. That is why its command line is so strange. It was initially meant to expose a couple of low-level primitives, not to implement workflows. One example would be the openssl-ca man page, which explicitly mentions this. People didn&#x27;t care because unfortunately you could somehow do everything you could ever want with the openssl binary and I guess that is also something how the impression stuck that openssl is the most advanced library.",
+    "title": null,
+    "type": "comment",
+    "url": null
+  },
+  "comments": [],
+  "comments_complete": true
+}

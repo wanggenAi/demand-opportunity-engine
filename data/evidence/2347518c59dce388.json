@@ -1,0 +1,150 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50562508",
+  "collected_at": "2026-11-20T09:58:49.456682+00:00",
+  "source": {
+    "author": "desilva78_",
+    "children": [
+      {
+        "author": "kidnertom",
+        "children": [
+          {
+            "author": "desilva78_",
+            "children": [],
+            "created_at": "2026-11-19T17:24:51.000Z",
+            "created_at_i": 1795109091,
+            "id": 50563049,
+            "options": [],
+            "parent_id": 50562724,
+            "points": null,
+            "story_id": 50562508,
+            "text": "We map out and manage scripts for each of the merchants, which is much cheaper and faster than the generic cloud browser use providers like those you mentioned. Those providers make sense imo for the long tail of tasks, where there is no script available.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-19T17:00:04.000Z",
+        "created_at_i": 1795107604,
+        "id": 50562724,
+        "options": [],
+        "parent_id": 50562508,
+        "points": null,
+        "story_id": 50562508,
+        "text": "how is this different to browserbase or kernel??",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "henrylamb07",
+        "children": [],
+        "created_at": "2026-11-19T17:31:07.000Z",
+        "created_at_i": 1795109467,
+        "id": 50563153,
+        "options": [],
+        "parent_id": 50562508,
+        "points": null,
+        "story_id": 50562508,
+        "text": "I would love for an agent to do my grocery shopping for me, but then I have to give it access to my bank card. No way.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "y_els",
+        "children": [],
+        "created_at": "2026-11-19T22:20:26.000Z",
+        "created_at_i": 1795126826,
+        "id": 50567290,
+        "options": [],
+        "parent_id": 50562508,
+        "points": null,
+        "story_id": 50562508,
+        "text": "Are you planning to run it on airline sites? They change things very regularly and have anti-scraping.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "purrkey",
+        "children": [],
+        "created_at": "2026-11-20T07:00:00.000Z",
+        "created_at_i": 1795158000,
+        "id": 50571087,
+        "options": [],
+        "parent_id": 50562508,
+        "points": null,
+        "story_id": 50562508,
+        "text": "congrats on the launch<p>curious how the remaining ~30% of failures break down: anti-bot, OTP, or the checkout flow changing?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "Sasha_Devi",
+        "children": [],
+        "created_at": "2026-11-20T09:45:32.000Z",
+        "created_at_i": 1795167932,
+        "id": 50572377,
+        "options": [],
+        "parent_id": 50562508,
+        "points": null,
+        "story_id": 50562508,
+        "text": "Curious how you guy&#x27;s feed data back to the users through the PA in edge cases? (ie desired item sold out etc.)",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-11-19T16:46:14.000Z",
+    "created_at_i": 1795106774,
+    "id": 50562508,
+    "options": [],
+    "parent_id": null,
+    "points": 19,
+    "story_id": 50562508,
+    "text": "Hey HN, we’re Nel and Kosi.<p>We noticed personal agents like Instinct, Muse were terrible at buying stuff. Most of the time the checkout would fail.<p>So we built reliable automations for agents to checkout at 9 leading grocery merchants.<p>We grapple with anti bot, logins, OTP codes, and changing checkout structures.<p>Loved revisiting this stuff given our backgrounds sneaker-botting and building computer use models. Honestly full circle haha.<p>It currently works on these sites with ~70% checkout success rate:<p>- Walmart\n- Albertsons\n- Ocado\n- Wegmans\n- FreshDirect\n- Best Buy\n- Instacart<p>Our goal is to hill climb to 90%+ across each.<p>Test keys are free and run the real flow without placing an order.<p>New accounts get 10 free completed orders.<p><a href=\"https:&#x2F;&#x2F;docs.getagentmall.com&#x2F;quickstart\" rel=\"nofollow\">https:&#x2F;&#x2F;docs.getagentmall.com&#x2F;quickstart</a>",
+    "title": "Show HN: AgentMall – Let your AI agent buy groceries",
+    "type": "story",
+    "url": "https://getagentmall.com"
+  },
+  "comments": [
+    {
+      "author": "kidnertom",
+      "text": "how is this different to browserbase or kernel??",
+      "at": "2026-11-19T17:00:04.000Z",
+      "url": "https://news.ycombinator.com/item?id=50562724"
+    },
+    {
+      "author": "desilva78_",
+      "text": "We map out and manage scripts for each of the merchants, which is much cheaper and faster than the generic cloud browser use providers like those you mentioned. Those providers make sense imo for the long tail of tasks, where there is no script available.",
+      "at": "2026-11-19T17:24:51.000Z",
+      "url": "https://news.ycombinator.com/item?id=50563049"
+    },
+    {
+      "author": "henrylamb07",
+      "text": "I would love for an agent to do my grocery shopping for me, but then I have to give it access to my bank card. No way.",
+      "at": "2026-11-19T17:31:07.000Z",
+      "url": "https://news.ycombinator.com/item?id=50563153"
+    },
+    {
+      "author": "y_els",
+      "text": "Are you planning to run it on airline sites? They change things very regularly and have anti-scraping.",
+      "at": "2026-11-19T22:20:26.000Z",
+      "url": "https://news.ycombinator.com/item?id=50567290"
+    },
+    {
+      "author": "purrkey",
+      "text": "congrats on the launch curious how the remaining ~30% of failures break down: anti-bot, OTP, or the checkout flow changing?",
+      "at": "2026-11-20T07:00:00.000Z",
+      "url": "https://news.ycombinator.com/item?id=50571087"
+    },
+    {
+      "author": "Sasha_Devi",
+      "text": "Curious how you guy's feed data back to the users through the PA in edge cases? (ie desired item sold out etc.)",
+      "at": "2026-11-20T09:45:32.000Z",
+      "url": "https://news.ycombinator.com/item?id=50572377"
+    }
+  ],
+  "comments_complete": true
+}

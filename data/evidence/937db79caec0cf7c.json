@@ -1,0 +1,65 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50560051",
+  "collected_at": "2026-11-20T09:58:49.456682+00:00",
+  "source": {
+    "author": "kriztle",
+    "children": [
+      {
+        "author": "vira28",
+        "children": [],
+        "created_at": "2026-11-19T15:45:05.000Z",
+        "created_at_i": 1795103105,
+        "id": 50561618,
+        "options": [],
+        "parent_id": 50560051,
+        "points": null,
+        "story_id": 50560051,
+        "text": "Glad to see how y’all keep adopting to changes.<p>I think it’s a tough market to crack. All the best.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "charly_builds",
+        "children": [],
+        "created_at": "2026-11-19T19:35:33.000Z",
+        "created_at_i": 1795116933,
+        "id": 50565107,
+        "options": [],
+        "parent_id": 50560051,
+        "points": null,
+        "story_id": 50560051,
+        "text": "Looks very good and congrats on the good work - adapting make sense. Defo AI harnesses &#x2F; models are improving at such a speed that any attempt to simplify dev age in the bat of an eye",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-11-19T13:46:49.000Z",
+    "created_at_i": 1795096009,
+    "id": 50560051,
+    "options": [],
+    "parent_id": null,
+    "points": 6,
+    "story_id": 50560051,
+    "text": "Founder here, I posted the beta version of ToolJet on HN in 2021 as a no-code&#x2F;low-code builder. Ended up getting 400 upvotes.<p>I wrote the first version in 7 weeks during the covid lockdown, and the drag and drop builder was the whole product. Over the last few months our customers wanted the UI flexibility and convenience of vibe coding without giving up the governance they came to ToolJet for. We resisted for a while.<p>We did not pivot, but we did rebuild the app builder so an app can be built with code or without it. The frontend of apps is a React codebase, written by Claude Code, Codex, Cursor or by hand, and ToolJet is the platform it runs on.<p>How it works:\n- Internal tools can be generated using your own coding agents or using our agent.<p>- Frontend is React codebase, it can be edited from our app builder, VS code, or any other IDE.Code will be scanned for security issues before saving. Scanning policies can be set by admins.<p>- Frontend never interacts with APIs, databases or other data sources. Every interaction with data source goes through our backend where we enforce access control. We have 100+ data source integrations.<p>- Platform comes with version, environment and release management.<p>- Changes can be reviewed visually as well before promoting to prod. Workflows can be setup to have reviewers and reviews&#x2F;approvals.<p>- Platform handles SSO, RBAC and more granular access control.<p>Would love to hear where this breaks for you.",
+    "title": "Show HN: ToolJet 4.0 – vibe-code internal tools with governance",
+    "type": "story",
+    "url": "https://tooljet.com"
+  },
+  "comments": [
+    {
+      "author": "vira28",
+      "text": "Glad to see how y’all keep adopting to changes. I think it’s a tough market to crack. All the best.",
+      "at": "2026-11-19T15:45:05.000Z",
+      "url": "https://news.ycombinator.com/item?id=50561618"
+    },
+    {
+      "author": "charly_builds",
+      "text": "Looks very good and congrats on the good work - adapting make sense. Defo AI harnesses / models are improving at such a speed that any attempt to simplify dev age in the bat of an eye",
+      "at": "2026-11-19T19:35:33.000Z",
+      "url": "https://news.ycombinator.com/item?id=50565107"
+    }
+  ],
+  "comments_complete": true
+}

@@ -1,0 +1,109 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50560170",
+  "collected_at": "2026-11-20T09:58:49.456682+00:00",
+  "source": {
+    "author": "leetheguy",
+    "children": [
+      {
+        "author": "sambejk",
+        "children": [
+          {
+            "author": "leetheguy",
+            "children": [],
+            "created_at": "2026-11-19T16:28:42.000Z",
+            "created_at_i": 1795105722,
+            "id": 50562234,
+            "options": [],
+            "parent_id": 50560266,
+            "points": null,
+            "story_id": 50560170,
+            "text": "Totally fair. In order for an AI to use N8N, it has to use an elaborate MCP connection and sift through a ton of heavy JSON to manage a system that was designed to be built visually by humans. So basically, N8N was designed to be a visual tool for humans to create workflows quickly and easily. AI access to that tool was added much later.<p>Purple Flow was designed to allow AIs to create workflows with simple, lightweight TOML files and a minimal connector that lets them manage those files. AI doesn&#x27;t have to do any gymnastics and wrap its head around layers of human-first complexity to do its job.<p>And yes, you could use scripts to build just about anything. These tools are designed to be universal connectors to make it easy to transfer data from point A to point B without all the boilerplate. These tools can replace a lot of scripts and keep you from having to set up servers and connectors and web calls and cron jobs and keep everything organized and tidy. With Purple Flow, it&#x27;s all tucked away. The credentials are kept out of your agent&#x27;s hands and the scripts are easy enough for even cheap, lightweight models to build and manage.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-19T14:03:57.000Z",
+        "created_at_i": 1795097037,
+        "id": 50560266,
+        "options": [],
+        "parent_id": 50560170,
+        "points": null,
+        "story_id": 50560170,
+        "text": "Isn&#x27;t n8n already AI-first Zapier? So this is AI-first AI-first Zapier? I wonder if these tools still have a purpose if I can just ask Claude to do it. Don&#x27;t know what your experience is with this? Probably also more efficient to just make everything in a script rather than these GUI workflows. End rant",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "leoprctmp",
+        "children": [
+          {
+            "author": "leetheguy",
+            "children": [],
+            "created_at": "2026-11-20T04:51:29.000Z",
+            "created_at_i": 1795150289,
+            "id": 50570322,
+            "options": [],
+            "parent_id": 50570121,
+            "points": null,
+            "story_id": 50560170,
+            "text": "Finding tools that match the way you think is the only way to go. I&#x27;m not too familiar with dify. But from what I saw on the landing page, I&#x27;m confident that Purple Flow can do everything that it can do. The big difference is that it takes the human out of the equation. You&#x27;re basically giving the AI the power to do all of those things itself.<p>Purple Flow includes a sample project called Purple Goo that allows an agent to spin up an agentic swarm with a snippet of JSON. As I&#x27;m writing this, Claude is in the background using Purple Goo and Purple Flow to create a swarm of agents that are designed to act with judgment and solve complex problems while storing and sharing memories with the swarm.<p>And because Purple Flow is AI first, it&#x27;s possible for the swarm to actually improve the swarm. Basically giving it the ability to learn and grow and get better at its job all on its own.<p>Also, since Purple Flow is so efficient, you can have thousands of agents solving problems at the same time for a fraction of the memory cost of a tool built with Python or JavaScript.<p>And Purple Flow is free and open source.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-20T04:20:54.000Z",
+        "created_at_i": 1795148454,
+        "id": 50570121,
+        "options": [],
+        "parent_id": 50560170,
+        "points": null,
+        "story_id": 50560170,
+        "text": "many details of n8n also confuse me, I&#x27;m using dify.ai now.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-11-19T13:57:14.000Z",
+    "created_at_i": 1795096634,
+    "id": 50560170,
+    "options": [],
+    "parent_id": null,
+    "points": 5,
+    "story_id": 50560170,
+    "text": "Hey all!\nI ran into a wall with n8n - hard and expensive to scale, limited streaming, heavy MCP is confusing for agents.<p>That scaling was becoming more and more critical as I was beginning to build agentic swarms.\nSo I built my own alternative with Elixir and Beam. Been using it in production for almost 2 months.<p>It connects my agent to multiple databases, sandboxes, and APIs.\nI&#x27;ve even migrated over my most used n8n workflows without a hiccup.<p>I ran some benchmarks and 10,000 concurrent workflows executed in 3 seconds and cost about 330MB of ram (listed as 512 in the case study). Equivalent workflows in n8n took 2GB of ram to run 100. It&#x27;s roughly 200x the memory efficiency of the usual Node&#x2F;Python stacks. And while you don&#x27;t edit the workflows yourself visually, you can see and manage them through a UI, along with credentials that the agent never sees.<p>The workflows themselves are pure TOML. Not as easy as dragging node connectors. But the idea is that AI creates the flows and you can easily understand them.<p>This isn&#x27;t a shaky demo. I&#x27;m using it as my daily driver to create complex multi-agent personas, run research and info gathering swarms, and whatever else my agent needs to get its job done. (it&#x27;s built more than 70 so far)<p>I have a live working demo on my website that was built by an agent using Purple Flow to connect to my server. The demo itself lets an agent using Purple Flow access live (Adventure Works) data and generate reports, documents, and slides on demand. My agent and I built it in an afternoon. It runs on a lightweight model (to save money for a public demo) with very few hiccups.<p>- Repo: <a href=\"https:&#x2F;&#x2F;github.com&#x2F;leetheguy&#x2F;purple_flow\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;leetheguy&#x2F;purple_flow</a>\n- Discord, benchmarks, and demo links in the repo.",
+    "title": "Show HN: Purple Flow – AI-first n8n alternative, 10k+ workflows on 512MB",
+    "type": "story",
+    "url": "https://github.com/leetheguy/purple_flow"
+  },
+  "comments": [
+    {
+      "author": "sambejk",
+      "text": "Isn't n8n already AI-first Zapier? So this is AI-first AI-first Zapier? I wonder if these tools still have a purpose if I can just ask Claude to do it. Don't know what your experience is with this? Probably also more efficient to just make everything in a script rather than these GUI workflows. End rant",
+      "at": "2026-11-19T14:03:57.000Z",
+      "url": "https://news.ycombinator.com/item?id=50560266"
+    },
+    {
+      "author": "leetheguy",
+      "text": "Totally fair. In order for an AI to use N8N, it has to use an elaborate MCP connection and sift through a ton of heavy JSON to manage a system that was designed to be built visually by humans. So basically, N8N was designed to be a visual tool for humans to create workflows quickly and easily. AI access to that tool was added much later. Purple Flow was designed to allow AIs to create workflows with simple, lightweight TOML files and a minimal connector that lets them manage those files. AI doesn't have to do any gymnastics and wrap its head around layers of human-first complexity to do its job. And yes, you could use scripts to build just about anything. These tools are designed to be universal connectors to make it easy to transfer data from point A to point B without all the boilerplate. These tools can replace a lot of scripts and keep you from having to set up servers and connectors and web calls and cron jobs and keep everything organized and tidy. With Purple Flow, it's all tucked away. The credentials are kept out of your agent's hands and the scripts are easy enough for even cheap, lightweight models to build and manage.",
+      "at": "2026-11-19T16:28:42.000Z",
+      "url": "https://news.ycombinator.com/item?id=50562234"
+    },
+    {
+      "author": "leoprctmp",
+      "text": "many details of n8n also confuse me, I'm using dify.ai now.",
+      "at": "2026-11-20T04:20:54.000Z",
+      "url": "https://news.ycombinator.com/item?id=50570121"
+    },
+    {
+      "author": "leetheguy",
+      "text": "Finding tools that match the way you think is the only way to go. I'm not too familiar with dify. But from what I saw on the landing page, I'm confident that Purple Flow can do everything that it can do. The big difference is that it takes the human out of the equation. You're basically giving the AI the power to do all of those things itself. Purple Flow includes a sample project called Purple Goo that allows an agent to spin up an agentic swarm with a snippet of JSON. As I'm writing this, Claude is in the background using Purple Goo and Purple Flow to create a swarm of agents that are designed to act with judgment and solve complex problems while storing and sharing memories with the swarm. And because Purple Flow is AI first, it's possible for the swarm to actually improve the swarm. Basically giving it the ability to learn and grow and get better at its job all on its own. Also, since Purple Flow is so efficient, you can have thousands of agents solving problems at the same time for a fraction of the memory cost of a tool built with Python or JavaScript. And Purple Flow is free and open source.",
+      "at": "2026-11-20T04:51:29.000Z",
+      "url": "https://news.ycombinator.com/item?id=50570322"
+    }
+  ],
+  "comments_complete": true
+}

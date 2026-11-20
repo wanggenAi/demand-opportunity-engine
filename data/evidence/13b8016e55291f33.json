@@ -1,0 +1,113 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/44559",
+  "collected_at": "2026-11-20T09:58:49.456682+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/44559",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/44559/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/44559/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/44559/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/44559",
+    "id": 6496253713,
+    "node_id": "I_kwDOC4Q8Qs8AAAABgzT3EQ",
+    "number": 44559,
+    "title": "DateTime.diffTo() silently returns undefined for the units weekday, weekNumber and yearDayNumber",
+    "user": {
+      "login": "DZH166",
+      "id": 248446924,
+      "node_id": "U_kgDODs7_zA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/248446924?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/DZH166",
+      "html_url": "https://github.com/DZH166",
+      "followers_url": "https://api.github.com/users/DZH166/followers",
+      "following_url": "https://api.github.com/users/DZH166/following{/other_user}",
+      "gists_url": "https://api.github.com/users/DZH166/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/DZH166/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/DZH166/subscriptions",
+      "organizations_url": "https://api.github.com/users/DZH166/orgs",
+      "repos_url": "https://api.github.com/users/DZH166/repos",
+      "events_url": "https://api.github.com/users/DZH166/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/DZH166/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 3,
+    "created_at": "2026-11-19T18:22:53Z",
+    "updated_at": "2026-11-19T19:55:29Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "n8n version: master at 59604870 (2026-11-19). Affects both expression engines (legacy\n`n8n-workflow` and the isolated `@n8n/expression-runtime` engine: VM and QuickJS).\n\n### Describe the problem\n\n`DateTime.diffTo()` accepts a unit or an array of units. The code validates each unit against a\nset built from `dateParts` and `durationUnits`. `dateParts` contains the `extract()` parts\n`weekday`, `weekNumber` and `yearDayNumber`, which are not valid Luxon `diff()` units. These\nthree names therefore pass the validation and reach Luxon, which throws an internal\n`InvalidUnitError`. The expression sandbox only forwards `ExpressionError` and\n`ExpressionExtensionError` instances, so the internal error is swallowed and the expression\nsilently evaluates to `undefined`.\n\nFor any other unknown unit, for example `fortnight`, the function throws the intended friendly\nerror: `Unsupported unit 'fortnight'. Supported: 'milliseconds', ...`.\n\n### Steps to reproduce\n\n1. Open the expression editor.\n2. Evaluate `={{ DateTime.fromISO(\"2024-03-30T18:49:00Z\").diffTo(\"2024-03-25T18:49:00Z\", \"weekday\") }}`.\n3. The result is `undefined`. The same happens for `weekNumber` and `yearDayNumber`.\n4. Compare with `={{ ...diffTo(..., \"fortnight\") }}`, which throws the friendly error.\n\n### Expected behavior\n\nThe three get-only parts should fail the unit check like any other unsupported unit and throw\n`Unsupported unit 'weekday'. Supported: ...`, in both engines.\n\n### Actual behavior\n\nThe expression silently evaluates to `undefined` in the legacy, VM and QuickJS engines.\n\n### Root cause\n\n`diffTo()` in `packages/workflow/src/extensions/date-extensions.ts` and its mirror in\n`packages/@n8n/expression-runtime/src/extensions/date-extensions.ts` builds the allowed-unit set\nfrom `dateParts` and `durationUnits`, but only the `durationUnits` (and their singular forms,\nwhich Luxon normalizes) are valid `diff()` units.\n\nI have a small fix ready (friendly Unsupported-unit error in the two mirrored date-extensions files, regression tests included) and will link a PR here shortly. (Prepared with the help of an AI coding assistant; verified red→green across the three expression engines.)",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/44559/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/44559/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @DZH166,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9814\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9814](https://linear.app/n8n/issue/GHC-9814)",
+      "at": "2026-11-19T18:23:02Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44559#issuecomment-7018076267"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "I checked both implementations at the reported commit: diffTo() builds allowedUnitSet from dateParts and durationUnits in packages/workflow/src/extensions/date-extensions.ts and packages/@n8n/expression-runtime/src/extensions/date-extensions.ts. Since dateParts also contains weekday, weekNumber, and yearDayNumber, validating against durationUnits alone would reject these extraction-only values before calling Luxon. Please keep the fix mirrored in both files.",
+      "at": "2026-11-19T19:05:25Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44559#issuecomment-7019226109"
+    },
+    {
+      "author": "grinem",
+      "text": "Great catch and spot-on root-cause analysis.\n\nRestricting `diffTo()` validation strictly to `durationUnits` (and their singular forms) makes complete sense so it fails fast with an `ExpressionExtensionError` rather than hitting Luxon's unhandled `InvalidUnitError`.\n\nLooking forward to the PR—feel free to link it here once opened!",
+      "at": "2026-11-19T19:55:29Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44559#issuecomment-7020537295"
+    }
+  ],
+  "comments_complete": true
+}

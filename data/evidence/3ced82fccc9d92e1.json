@@ -1,0 +1,65 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50560882",
+  "collected_at": "2026-11-20T09:58:49.456682+00:00",
+  "source": {
+    "author": "tniich",
+    "children": [
+      {
+        "author": "tniich",
+        "children": [],
+        "created_at": "2026-11-19T14:51:31.000Z",
+        "created_at_i": 1795099891,
+        "id": 50560883,
+        "options": [],
+        "parent_id": 50560882,
+        "points": null,
+        "story_id": 50560882,
+        "text": "A few words about the architecture.<p>The architecture is simple and very Unix-y: it&#x27;s basically the macOS API as a CLI. Any executable can talk to it over stdin&#x2F;stdout and draw native UI using a plain-text protocol (or something fancier using custom SwiftUI views). Permissions, logs and all the tools live in a single place, and each tool can be shared via one signed file.<p>Every shared spot is signed with Nostr keys, so you can always verify who made it. We chose Nostr because we don&#x27;t want to control what people are allowed to share.<p>All the spots are run in yolo mode by default, so they get the same permissions as Openspot, but you can always ask your agent to verify the code if necessary. We plan to add a sandboxing mechanism in the near future.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "charly_builds",
+        "children": [],
+        "created_at": "2026-11-19T19:52:46.000Z",
+        "created_at_i": 1795117966,
+        "id": 50565355,
+        "options": [],
+        "parent_id": 50560882,
+        "points": null,
+        "story_id": 50560882,
+        "text": "Like it - nifty little thing",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-11-19T14:51:21.000Z",
+    "created_at_i": 1795099881,
+    "id": 50560882,
+    "options": [],
+    "parent_id": null,
+    "points": 6,
+    "story_id": 50560882,
+    "text": "Hi HN! We&#x27;re Tony, Kolom and Anastasiia, a small team from Ukraine.<p>Today we are open-sourcing Openspot, our research project on using generative UI in day-to-day work.<p>The idea is simple: generate a tool (spot) for your current task using coding agent, and keep it if you like it or remove it after use if you don&#x27;t. We are using Openspot daily and really enjoying the possibilities it unlocks. Some examples of spots:<p>- caffeinate, which allows the Mac to work with the lid closed<p>- local file and screenshot search in natural language using EmbeddingGemma 2<p>- draw on screen during calls or before screenshots<p>- AI agents monitoring<p>- AirDrop, but over the network (using iroh)<p>We built it because of two things:<p>1. Over the past year, we (and almost every designer and engineer we know) have started making small tools using coding agents. But the DX for macOS applications is very frustrating even for coders, and you have to pay for a developer account to share them.<p>2. And we kind of miss the days of custom Winamp skins and Twitter clients. That&#x27;s why every part of Openspot is customizable, so anyone can give it their own look and feel.<p>This is a very early stage. The code is MIT-licensed, and the core will remain free forever. We&#x27;re sticking to macOS 26+ for now (because of Liquid Glass).<p>Ask us anything, or roast it. Any feedback is very appreciated.",
+    "title": "Show HN: Openspot – macOS launcher for disposable tools",
+    "type": "story",
+    "url": "https://github.com/celishq/openspot"
+  },
+  "comments": [
+    {
+      "author": "tniich",
+      "text": "A few words about the architecture. The architecture is simple and very Unix-y: it's basically the macOS API as a CLI. Any executable can talk to it over stdin/stdout and draw native UI using a plain-text protocol (or something fancier using custom SwiftUI views). Permissions, logs and all the tools live in a single place, and each tool can be shared via one signed file. Every shared spot is signed with Nostr keys, so you can always verify who made it. We chose Nostr because we don't want to control what people are allowed to share. All the spots are run in yolo mode by default, so they get the same permissions as Openspot, but you can always ask your agent to verify the code if necessary. We plan to add a sandboxing mechanism in the near future.",
+      "at": "2026-11-19T14:51:31.000Z",
+      "url": "https://news.ycombinator.com/item?id=50560883"
+    },
+    {
+      "author": "charly_builds",
+      "text": "Like it - nifty little thing",
+      "at": "2026-11-19T19:52:46.000Z",
+      "url": "https://news.ycombinator.com/item?id=50565355"
+    }
+  ],
+  "comments_complete": true
+}

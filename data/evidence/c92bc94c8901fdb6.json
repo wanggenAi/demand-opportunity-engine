@@ -1,0 +1,107 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/44587",
+  "collected_at": "2026-11-20T09:58:49.456682+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/44587",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/44587/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/44587/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/44587/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/44587",
+    "id": 6506703792,
+    "node_id": "I_kwDOC4Q8Qs8AAAABg9RrsA",
+    "number": 44587,
+    "title": "String length() counts emoji as two characters instead of one",
+    "user": {
+      "login": "indexGin",
+      "id": 166748424,
+      "node_id": "U_kgDOCfBhCA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/166748424?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/indexGin",
+      "html_url": "https://github.com/indexGin",
+      "followers_url": "https://api.github.com/users/indexGin/followers",
+      "following_url": "https://api.github.com/users/indexGin/following{/other_user}",
+      "gists_url": "https://api.github.com/users/indexGin/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/indexGin/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/indexGin/subscriptions",
+      "organizations_url": "https://api.github.com/users/indexGin/orgs",
+      "repos_url": "https://api.github.com/users/indexGin/repos",
+      "events_url": "https://api.github.com/users/indexGin/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/indexGin/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-11-20T07:10:27Z",
+    "updated_at": "2026-11-20T09:05:38Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Description\n\nThe `length()` string extension is documented as \"Returns the character count of a string\", but it is implemented as `return value.length;`, which counts UTF-16 code units instead of characters. Any character outside the Basic Multilingual Plane (an emoji, or an astral CJK ideograph) is stored as a surrogate pair, so `length()` reports `2` for a single character.\n\nThis shows up in ordinary workflows: text coming from APIs, chat messages, form fields or CSV files often contains emoji. A user who writes `{{ $json.message.length() }}` in a Set or IF node to validate, truncate or display text length gets the wrong number, and comparisons such as \"the message must be at most one character\" are wrong.\n\n### To Reproduce\n\nIn any expression field, evaluate (each string below contains one emoji, U+1F600):\n\n```\n{{ \"😀\".length() }}\n{{ \"a😀b\".length() }}\n```\n\nActual results: `2` and `4`. The same happens for any astral-plane character, for example CJK Extension B ideographs such as U+20000.\n\n### Expected behavior\n\n`length()` should return the number of characters (Unicode code points), as its documentation states:\n\n- `{{ \"😀\".length() }}` -> `1`\n- `{{ \"a😀b\".length() }}` -> `3`\n- `{{ \"String\".length() }}` -> `6` (ASCII unchanged)\n- a two-character BMP string (e.g. two CJK characters) -> `2` (BMP non-ASCII unchanged)\n\nStrings containing only BMP characters must keep their current results; only astral-plane characters (surrogate pairs) should be counted as one character.\n\n### Notes\n\nThe string extensions are intentionally mirrored between `packages/workflow/src/extensions/string-extensions.ts` and `packages/@n8n/expression-runtime/src/extensions/string-extensions.ts`; both implementations are affected.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/44587/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/44587/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @indexGin,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9815\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9815](https://linear.app/n8n/issue/GHC-9815)",
+      "at": "2026-11-20T07:10:36Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44587#issuecomment-7032992092"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "One behavior detail worth deciding before changing this: should “character count” mean Unicode code points or user-perceived grapheme clusters? Code-point counting would make `\"😀\"` return 1, but a flag emoji or a letter plus a combining mark can still count as 2. The issue examples establish the surrogate-pair case, but not those multi-code-point characters. Also, the current implementation is `value.length` in the workflow extension; the file says it is intentionally mirrored in the expression-runtime package, so both paths need to agree.",
+      "at": "2026-11-20T09:05:38Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44587#issuecomment-7035187804"
+    }
+  ],
+  "comments_complete": true
+}
