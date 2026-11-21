@@ -1,0 +1,179 @@
+{
+  "source_api_url": "https://api.github.com/repos/cloyboy0904360-ai/Ultron/issues/51",
+  "collected_at": "2026-11-21T09:44:48.255855+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/cloyboy0904360-ai/Ultron/issues/51",
+    "repository_url": "https://api.github.com/repos/cloyboy0904360-ai/Ultron",
+    "labels_url": "https://api.github.com/repos/cloyboy0904360-ai/Ultron/issues/51/labels{/name}",
+    "comments_url": "https://api.github.com/repos/cloyboy0904360-ai/Ultron/issues/51/comments",
+    "events_url": "https://api.github.com/repos/cloyboy0904360-ai/Ultron/issues/51/events",
+    "html_url": "https://github.com/cloyboy0904360-ai/Ultron/issues/51",
+    "id": 6526162677,
+    "node_id": "I_kwDOU7aObM8AAAABhP1W9Q",
+    "number": 51,
+    "title": "TASK: Find and implement a verified no-card supplier payment and automatic fulfilment route",
+    "user": {
+      "login": "cloyboy0904360-ai",
+      "id": 311761473,
+      "node_id": "U_kgDOEpUaQQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/311761473?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/cloyboy0904360-ai",
+      "html_url": "https://github.com/cloyboy0904360-ai",
+      "followers_url": "https://api.github.com/users/cloyboy0904360-ai/followers",
+      "following_url": "https://api.github.com/users/cloyboy0904360-ai/following{/other_user}",
+      "gists_url": "https://api.github.com/users/cloyboy0904360-ai/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/cloyboy0904360-ai/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/cloyboy0904360-ai/subscriptions",
+      "organizations_url": "https://api.github.com/users/cloyboy0904360-ai/orgs",
+      "repos_url": "https://api.github.com/users/cloyboy0904360-ai/repos",
+      "events_url": "https://api.github.com/users/cloyboy0904360-ai/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/cloyboy0904360-ai/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 12538384875,
+        "node_id": "LA_kwDOU7aObM8AAAAC61iR6w",
+        "url": "https://api.github.com/repos/cloyboy0904360-ai/Ultron/labels/enhancement",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "default": true,
+        "description": "New feature or request",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 12992051404,
+        "node_id": "LA_kwDOU7aObM8AAAADBmL4zA",
+        "url": "https://api.github.com/repos/cloyboy0904360-ai/Ultron/labels/status:blocked",
+        "name": "status:blocked",
+        "color": "b60205",
+        "default": false,
+        "description": "Task blocked by dependency",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 3,
+    "created_at": "2026-11-21T07:44:32Z",
+    "updated_at": "2026-11-21T07:57:43Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Mission\nULTRON must independently research, diagnose, implement and verify a reliable supplier-to-customer fulfilment route for Tiny Harbour, without relying on an unworkable payment assumption.\n\n## Current verified problem\n- AW Dropship account balance was previously reported as £0.00; re-check live before relying on it.\n- AW Dropship supports manual PayPal balance top-ups, but automatic connected-store order charging uses the AW balance first and a saved debit/credit card as fallback.\n- PayPal is not an automatic saved-card fallback. An order with insufficient balance can remain Unpaid and not reach the warehouse.\n- Shopify store Tiny Harbour is connected (GBP, UK). A previously inspected AW-linked product was not published to the Online Store; no live customer checkout, paid order, supplier dispatch or tracking flow has been proven.\n- Do not assume Stripe payouts can be sent to a PayPal email. Verify the actual payout and funding rails before designing around them.\n\n## Required work\n1. Audit the current ULTRON codebase, existing tasks, connectors, supplier integrations and GitHub Actions. Reuse existing working components; avoid duplicate agents or fake integrations.\n2. Research supplier alternatives and payment models that can meet all of these constraints:\n   - UK customer delivery and transparent delivery estimates.\n   - Shopify integration; eBay support is desirable but not required for the first route.\n   - No compulsory paid subscription, upfront wallet minimum, stored bank card, or unapproved spend.\n   - Supplier payment can be funded from cleared customer receipts or another lawful, user-approved method.\n   - Clear order acceptance, fulfilment, tracking and returns processes.\n3. Investigate Shopify Collective and other viable UK/EU supplier networks, plus AW Dropship's actual wallet and fallback behaviour. Check provider primary documentation and current fees/eligibility. Do not treat marketing claims as proof.\n4. Model the cash-flow sequence end to end: customer payment → cleared/available funds → supplier payment → fulfilment → tracking → customer notification. Identify settlement delays, reserve/chargeback exposure, VAT, shipping, fees and working-capital gaps.\n5. Select the best feasible option using evidence and a comparison matrix. If no route meets the no-card/£0-upfront constraints, state the blocker and present the smallest user-approved change needed. Do not bypass payment controls.\n6. Implement the selected route in ULTRON with safe configuration, idempotent order handling, stock/price checks, payment-state checks, retry/backoff, failure alerts, reconciliation and audit logs. Keep secrets in approved secret storage; never put credentials in code, issues, logs or chat.\n7. Add automated tests for successful order, insufficient supplier funds, duplicate webhook, delayed payout, stock change, failed supplier payment, cancellation/refund and tracking update.\n8. Build a dry-run/sandbox verification path first. Keep live fulfilment, product publication, customer messaging, supplier payments, payment-setting changes and any spending disabled pending explicit user approval.\n9. Produce evidence: provider documentation links, dated fee/eligibility findings, code changes, test output, workflow run links, sample redacted logs and a clear READY/RUNNING/VERIFIED/BLOCKED status.\n\n## Non-negotiable operating controls\n- £0 upfront by default. No subscriptions, paid credits, ads, purchases, transfers, loans, deposits or supplier orders without specific approval.\n- Never request or store card details, passwords or API secrets in chat.\n- Do not publish listings, enable automatic live fulfilment, charge customers, pay suppliers, or change payout/bank settings without explicit approval.\n- No fictional results. Mark anything not proven as NOT VERIFIED or ACCESS UNAVAILABLE.\n- Do not claim 46 agents are active unless the repository and runtime prove it.\n- Follow: CORRECT → COMPLETE → CONNECTED → WORKING → LIVE → MEASURED → EVIDENCE CAPTURED.\n\n## Definition of done\nA documented and tested supplier route that can accept a real customer order and fulfil it without an unapproved payment method or hidden upfront spend; OR a precise evidence-backed BLOCKED result identifying the exact remaining requirement. Live operation must remain approval-gated.",
+    "reactions": {
+      "url": "https://api.github.com/repos/cloyboy0904360-ai/Ultron/issues/51/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/cloyboy0904360-ai/Ultron/issues/51/timeline",
+    "performed_via_github_app": {
+      "id": 1144995,
+      "client_id": "Iv23liVemv8A9if9v0F2",
+      "slug": "chatgpt-codex-connector",
+      "node_id": "A_kwHOAOQ6Gs4AEXij",
+      "owner": {
+        "login": "openai",
+        "id": 14957082,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjE0OTU3MDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/14957082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/openai",
+        "html_url": "https://github.com/openai",
+        "followers_url": "https://api.github.com/users/openai/followers",
+        "following_url": "https://api.github.com/users/openai/following{/other_user}",
+        "gists_url": "https://api.github.com/users/openai/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/openai/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/openai/subscriptions",
+        "organizations_url": "https://api.github.com/users/openai/orgs",
+        "repos_url": "https://api.github.com/users/openai/repos",
+        "events_url": "https://api.github.com/users/openai/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/openai/received_events",
+        "type": "Organization",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "name": "ChatGPT Codex Connector",
+      "description": "Bring ChatGPT and Codex to your GitHub repositories.",
+      "external_url": "https://www.chatgpt.com",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "created_at": "2025-02-14T01:37:05Z",
+      "updated_at": "2026-09-23T18:52:59Z",
+      "permissions": {
+        "actions": "write",
+        "checks": "read",
+        "contents": "write",
+        "emails": "read",
+        "issues": "write",
+        "metadata": "read",
+        "pull_requests": "write",
+        "statuses": "read",
+        "workflows": "write"
+      },
+      "events": [
+        "check_run",
+        "check_suite",
+        "commit_comment",
+        "issues",
+        "issue_comment",
+        "pull_request",
+        "pull_request_review",
+        "pull_request_review_comment",
+        "pull_request_review_thread",
+        "repository",
+        "status",
+        "sub_issues"
+      ]
+    },
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "cloyboy0904360-ai",
+      "text": "## ULTRON probe — 2026-11-21\n\n**Result: BLOCKED for autonomous supplier research.** The issue-opened event did trigger the Six-Agent Runtime (run 44881640733), and all six worker jobs exited successfully. However, the NOVA job log explicitly reports `{\"agent\":\"NOVA\",\"status\":\"IDLE\",\"processed\":0}`. No agent acquired this task and no supplier research or implementation occurred.\n\n**Root causes verified in repository code:**\n- `ultron/github_queue.py` only accepts issues carrying exactly one `agent:<name>` label plus `status:ready`.\n- This issue currently has only the `enhancement` label, so it is not eligible for the queue.\n- `ultron/worker.py` requires an `ultron-task` fenced JSON block.\n- `ultron/agents.py` only implements six deterministic local operations: `break_down_objective`, `code_review_checklist`, `draft_reply`, `fulfilment_readiness`, `calculate_margin`, and `draft_product_listing`. It has no external web search, supplier discovery, provider API, or integration-build operation.\n\n**Required next engineering work:** add a controlled research capability with evidence capture (source URL, date, price/fee, UK eligibility, payment timing, fulfilment and returns), a supplier adapter interface, and a sandbox-first fulfilment flow. Route a research task only after the handler and tests exist. Keep all spending, customer publication, supplier payments and live fulfilment approval-gated. Do not mark this mission verified until a supplier route is actually proven end-to-end.",
+      "at": "2026-11-21T07:57:08Z",
+      "url": "https://github.com/cloyboy0904360-ai/Ultron/issues/51#issuecomment-7059588191"
+    },
+    {
+      "author": "cloyboy0904360-ai",
+      "text": "## Supplier route findings — 2026-11-21\n\n**Best route to test first: Shopify Collective**, not AW Dropship.\n\nShopify's current official documentation says Collective has no extra charge for automatic supplier payments. When both retailer and supplier are eligible and have Shopify Payments configured in the same supported country/currency, the supplier cost is debited from the retailer's Shopify Payments balance and transferred to the supplier when the supplier marks the order fulfilled. This is the closest fit to avoiding a prepaid supplier wallet or saved card, but it is conditional on eligibility and sufficient available funds. Sources: https://help.shopify.com/en/manual/online-sales-channels/shopify-collective/retailers/payments and https://help.shopify.com/en/manual/online-sales-channels/shopify-collective/suppliers/payments\n\nA live Collective candidate search for the connected UK store returned importable products (merchant must import; no import was performed):\n- JMG London industrial shoe cabinet, 2 flip drawers: £67.05 supplier price, displayed margin 25%, candidate ID 223822725.\n- JMG London 12-shoe flip-drawer cabinet: £90.06 supplier price, displayed margin 25%, candidate ID 223819452.\n- THREE ARROWS UK LTD 8-drawer storage chest: £35.00 supplier price, displayed margin 19%, candidate ID 213652980.\n\nThe Shopify Collective shelf was rendered for merchant review. These candidate prices/margins are catalogue data, not verified final checkout costs or profit. UK stock, dispatch promise, shipping, returns terms, supplier responsiveness, retailer eligibility, Shopify Payments status, and a completed paid/fulfilled test order remain NOT VERIFIED.\n\nAW Dropship remains unsuitable for zero-card automatic fulfilment in its current documented model: connected-store orders use account balance then a saved card; PayPal cannot be saved as the automatic fallback. Source: https://www.aw-dropship.eu/docs/payment-cards-and-options\n\n**ULTRON execution blocker remains:** the current repository runtime cannot conduct this research itself. Add a tested web-research/provider-adapter capability before claiming autonomous supplier sourcing. No product was imported, published, purchased, or ordered.",
+      "at": "2026-11-21T07:57:25Z",
+      "url": "https://github.com/cloyboy0904360-ai/Ultron/issues/51#issuecomment-7059591016"
+    },
+    {
+      "author": "cloyboy0904360-ai",
+      "text": "## Alternative supplier comparison — additional verification\n\n**Dropora** is free to join with no monthly fee and offers Shopify, eBay UK, WooCommerce, BigCommerce, Wix, TikTok Shop, Etsy, OnBuy, feeds, API and webhooks. However, its own FAQ says the wallet is the only way to pay orders and the minimum top-up is **£200 by card or bank transfer**. Automatic order import also pays from that prepaid wallet; insufficient balance leaves the order waiting. This fails the £0-upfront/no-card requirement and is not the first route. Sources: https://dropora.uk/faqs/ and https://dropora.uk/integrations/\n\n**Shopify Collective remains the lead candidate** because its documented automatic supplier payment is deducted from the retailer's Shopify Payments balance, rather than a supplier-specific prepaid wallet. The Shopify connector cannot currently verify this store's Shopify Payments account: Admin API query returned access denied for missing `read_shopify_payments` / `read_shopify_payments_accounts` scope. Treat Payments activation and eligibility as NOT VERIFIED until checked in Shopify admin or with the required read scope.\n\nCurrent recommendation: validate Collective eligibility and Shopify Payments first; only then proceed to supplier terms/stock checks and a sandbox/test order. Do not top up Dropora or save a card for AW Dropship.",
+      "at": "2026-11-21T07:57:43Z",
+      "url": "https://github.com/cloyboy0904360-ai/Ultron/issues/51#issuecomment-7059593951"
+    }
+  ],
+  "comments_complete": true
+}

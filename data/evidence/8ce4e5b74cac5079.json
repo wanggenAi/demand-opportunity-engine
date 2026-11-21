@@ -1,0 +1,113 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/44720",
+  "collected_at": "2026-11-21T09:44:48.255855+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/44720",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/44720/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/44720/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/44720/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/44720",
+    "id": 6516472051,
+    "node_id": "I_kwDOC4Q8Qs8AAAABhGl48w",
+    "number": 44720,
+    "title": "Cancelling a queued execution starts another one above N8N_CONCURRENCY_PRODUCTION_LIMIT",
+    "user": {
+      "login": "HakeemTheEmperor",
+      "id": 105439013,
+      "node_id": "U_kgDOBkjfJQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/105439013?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/HakeemTheEmperor",
+      "html_url": "https://github.com/HakeemTheEmperor",
+      "followers_url": "https://api.github.com/users/HakeemTheEmperor/followers",
+      "following_url": "https://api.github.com/users/HakeemTheEmperor/following{/other_user}",
+      "gists_url": "https://api.github.com/users/HakeemTheEmperor/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/HakeemTheEmperor/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/HakeemTheEmperor/subscriptions",
+      "organizations_url": "https://api.github.com/users/HakeemTheEmperor/orgs",
+      "repos_url": "https://api.github.com/users/HakeemTheEmperor/repos",
+      "events_url": "https://api.github.com/users/HakeemTheEmperor/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/HakeemTheEmperor/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 3,
+    "created_at": "2026-11-20T17:30:57Z",
+    "updated_at": "2026-11-21T06:38:15Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nWhen production concurrency control is enabled (`N8N_CONCURRENCY_PRODUCTION_LIMIT`), cancelling or deleting a **queued** execution causes the next queued execution to start immediately, even though all running slots are still occupied. The instance then runs more production executions than the configured limit. Each cancelled or deleted queued execution lets one more execution through, so the overshoot grows with the number of queued executions that are removed.\n\nFor example, with `N8N_CONCURRENCY_PRODUCTION_LIMIT=1`, one execution running and two queued, cancelling the first queued execution starts the second one straight away. Two executions are then running at the same time while the limit is 1.\n\n**Cause**\n\n[`ConcurrencyQueue.remove()`](https://github.com/n8n-io/n8n/blob/5bd8e21ac6fa6a15d56671af962915758549d905/packages/cli/src/concurrency/concurrency-queue.ts#L44-L54) calls `resolveNext()` after taking the execution out of the queue:\n\n```ts\nremove(executionId: string) {\n\tconst index = this.queue.findIndex((item) => item.executionId === executionId);\n\tif (index > -1) {\n\t\tthis.queue.splice(index, 1);\n\t\tthis.capacity++;\n\t\tthis.resolveNext();\n\t}\n}\n```\n\nA queued execution hasn't started, so removing it frees no running slot. Incrementing `capacity` is correct, because it returns the place the waiting execution had reserved. But `resolveNext()` should only run when a running execution finishes, as in `dequeue()`. Here it releases a waiting execution while every running slot is still taken.\n\nThis is reached through `ConcurrencyControlService.remove()`, which runs when a queued execution is stopped (`ExecutionService.stopInRegularMode()`) or when an execution with status `new` is deleted.\n\nThe existing unit test [`should limit concurrency`](https://github.com/n8n-io/n8n/blob/5bd8e21ac6fa6a15d56671af962915758549d905/packages/cli/src/concurrency/__tests__/concurrency-queue.test.ts#L52-L56) uses a limit of 1, but after `queue.remove('4')` it expects executions 3 and 5 to both be `started`. That's two executions running at once, so the test currently asserts the incorrect behaviour.\n\nI'd like to submit a fix: drop the `resolveNext()` call from `remove()`, correct the existing test, and add a regression test.\n\n### To Reproduce\n\n1. Start n8n in regular mode with `N8N_CONCURRENCY_PRODUCTION_LIMIT=1`.\n2. Import this workflow and activate it (Webhook responding immediately, then a 30-second Wait):\n\n<paste the workflow JSON from earlier inside a ```json block>\n\n3. Trigger it three times at once:\n   `for i in 1 2 3; do curl -s http://localhost:5678/webhook/concurrency-test & done`\n4. In the workflow's Executions tab, confirm 1 execution is Running and 2 are Queued.\n5. Cancel the older of the two queued executions.\n6. The remaining queued execution starts immediately, while the first one is still running.\n\n### Expected behavior\n\nCancelling or deleting a queued execution should only remove it from the queue. The remaining queued execution should stay queued until the running execution finishes, so the number of running production executions never exceeds `N8N_CONCURRENCY_PRODUCTION_LIMIT`.\n\n### Debug Info\n\n# Debug info\n\n## core\n\n- n8nVersion: 2.48.7\n- platform: npm\n- nodeJsVersion: 24.20.0\n- nodeEnv: undefined\n- database: sqlite\n- executionMode: regular\n- concurrency: 1\n- license: community\n- consumerId: unknown\n\n## storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n## pruning\n\n- enabled: true\n- maxAge: 336 hours\n- maxCount: 10000 executions\n\n## client\n\n- userAgent: mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/158.0.0.0 safari/537.36\n- isTouchDevice: false\n\n## cluster\n\n- instanceCount: 1\n- versions: 2.48.7\n- instances:\n  - instanceKey: d1efc002-a7ec-438b-9f67-5bf0069d9089, hostId: main-WiyIq9cyXbUSPJdN, instanceType: main, instanceRole: leader, version: 2.48.7\n- checks:\n  - check: hostid-clash, status: succeeded, warnings: -\n  - check: lifecycle, status: succeeded, warnings: -\n  - check: split-brain, status: succeeded, warnings: -\n  - check: version-mismatch, status: succeeded, warnings: -\n\nGenerated at: 2026-11-20T17:29:01.075Z\n\n### Operating System\n\nWindows\n\n### n8n Version\n\n2.48.7\n\n### Node.js Version\n\n24.20.0\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/44720/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/44720/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @HakeemTheEmperor,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9826\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9826](https://linear.app/n8n/issue/GHC-9826)",
+      "at": "2026-11-20T17:31:10Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44720#issuecomment-7046200972"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "I checked the cited queue implementation and unit test at the referenced commit. `remove()` increments capacity and then calls `resolveNext()`, while `dequeue()` also resolves the next waiter when a running execution releases a slot. In the limit-1 test, execution 3 is still running when removing queued execution 4 causes execution 5 to start; the test currently expects that oversubscription. A regression assertion should keep 5 queued after the removal and release it only after 3 calls `dequeue()`.",
+      "at": "2026-11-21T03:05:36Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44720#issuecomment-7056364869"
+    },
+    {
+      "author": "HakeemTheEmperor",
+      "text": "Thanks for verifying. #44724 makes exactly that change: remove() no longer calls resolveNext(), and the test now keeps 5 queued after removing 4 and only starts it once 3 calls dequeue().",
+      "at": "2026-11-21T06:38:15Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44720#issuecomment-7058735086"
+    }
+  ],
+  "comments_complete": true
+}

@@ -1,0 +1,119 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/44752",
+  "collected_at": "2026-11-21T09:44:48.255855+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/44752",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/44752/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/44752/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/44752/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/44752",
+    "id": 6524947085,
+    "node_id": "I_kwDOC4Q8Qs8AAAABhOrKjQ",
+    "number": 44752,
+    "title": "Workflow checksum differs for a null description versus a missing one",
+    "user": {
+      "login": "indexGin",
+      "id": 166748424,
+      "node_id": "U_kgDOCfBhCA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/166748424?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/indexGin",
+      "html_url": "https://github.com/indexGin",
+      "followers_url": "https://api.github.com/users/indexGin/followers",
+      "following_url": "https://api.github.com/users/indexGin/following{/other_user}",
+      "gists_url": "https://api.github.com/users/indexGin/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/indexGin/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/indexGin/subscriptions",
+      "organizations_url": "https://api.github.com/users/indexGin/orgs",
+      "repos_url": "https://api.github.com/users/indexGin/repos",
+      "events_url": "https://api.github.com/users/indexGin/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/indexGin/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 4,
+    "created_at": "2026-11-21T05:29:43Z",
+    "updated_at": "2026-11-21T09:29:13Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Description\n\n`calculateWorkflowChecksum()` in `packages/workflow/src/workflow-checksum.ts` builds the SHA-256 payload by copying every field listed in `WORKFLOW_CHECKSUM_FIELDS` unless the value is `undefined`:\n\n```\nfor (const field of WORKFLOW_CHECKSUM_FIELDS) {\n\tconst value = workflow[field];\n\tif (value !== undefined) {\n\t\tchecksumPayload[field] = value;\n\t}\n}\n```\n\nTwo of those fields are declared as nullable in `WorkflowSnapshot`: `description?: string | null` and `activeVersionId?: string | null`. A field that is absent (`undefined`) is skipped, but the same field set explicitly to `null` is copied into the payload and serialized as `\"description\":null` (or `\"activeVersionId\":null`). Two snapshots with otherwise identical content therefore produce different hashes.\n\nThe function is documented as calculating a checksum of workflow content fields for conflict detection. With the current logic, a snapshot where a nullable field is `null` and a snapshot where that field is simply missing are seen as different content, so conflict detection reports a difference even though the workflow itself has not changed.\n\nThis is inconsistent with the rest of the package. `normalizeNodeShape()` in `packages/workflow/src/schemas.ts` is documented with \"Top-level keys that are `.optional()` but not `.nullable()` — `null` must be omitted.\" and deletes those keys. The existing test `should generate same checksum when a setting is undefined i.e. missing` in `packages/workflow/test/workflow-checksum.test.ts` states \"undefined fields should be ignored, so checksums should be the same\". A nullable top-level field should be normalized the same way.\n\n### To Reproduce\n\nCompare two snapshots that differ only in how the absent description is represented:\n\n```\nconst missing = { name: 'Sync', nodes: [], connections: {} };\nconst cleared = { name: 'Sync', nodes: [], connections: {}, description: null };\n\nawait calculateWorkflowChecksum(missing);\nawait calculateWorkflowChecksum(cleared);\n```\n\nActual result: the two calls return different 64-character hex hashes, because `cleared` includes `\"description\":null` in the serialized payload while `missing` does not.\n\nThe same happens for `activeVersionId: null`.\n\n### Expected behavior\n\nBoth calls should return the same hash, because a `null` description or `activeVersionId` represents the same \"no description / no active version\" content as an absent field. A real value (for example `description: 'Nightly sync'` or `activeVersionId: 'v-42'`) must still change the checksum, and a nested `null` inside `meta` or `settings` must remain significant.\n\n### Notes\n\nOnly the top-level fields iterated by `calculateWorkflowChecksum()` are affected; the recursive key sorting performed by `sortObjectKeys()` is unchanged.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/44752/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/44752/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @indexGin,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9828\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9828](https://linear.app/n8n/issue/GHC-9828)",
+      "at": "2026-11-21T05:29:59Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44752#issuecomment-7057959018"
+    },
+    {
+      "author": "grinem",
+      "text": "The mismatch happens because `undefined` properties are omitted during `JSON.stringify`, while explicit `null` values serialize into the payload string and produce a different SHA-256 hash.\n\nSince `null` and `undefined` represent the absence of a value for nullable top-level fields in `WORKFLOW_CHECKSUM_FIELDS`, filtering both at the root payload builder keeps the checksum consistent.\n\nFix in `packages/workflow/src/workflow-checksum.ts`:\n\n**Patch Preview (First 3 lines of verified fix):**\n```typescript\nfor (const field of WORKFLOW_CHECKSUM_FIELDS) {\n\tconst value = workflow[field];\n\tif (value != null) {\n# ... [TRUNCATED — Full production patch & verification steps locked below]\n```",
+      "at": "2026-11-21T05:52:15Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44752#issuecomment-7058227967"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "I checked the current implementation: the root payload builder skips only `undefined`, so an explicit `null` for `description` or `activeVersionId` is serialized and changes the hash. One detail to pin down before treating null as equivalent to missing: these fields are typed `string | null`, so does the workflow persistence/API layer guarantee that `null` means “unset” for both? If so, normalizing null at this top-level field loop would address the reported case without changing nested null handling; otherwise the checksum may be preserving a meaningful cleared value.",
+      "at": "2026-11-21T06:05:45Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44752#issuecomment-7058372489"
+    },
+    {
+      "author": "grinem",
+      "text": "In the API and export serialization layers, missing keys and explicit `null` are already treated the same way for root workflow metadata (both map to empty/null states in TypeORM without functional differences).\n\nHandling it right in the root checksum loop makes sense so we don't break nested node parameters, where `null` could actually be intentional user input:\n\n```ts\n// In the root checksum serializer loop:\nif (value === undefined || (isRootMetadataField(key) && value === null)) continue;\n```\n\nRestricting the normalization to top-level metadata fields like `description` should resolve the hash mismatch cleanly without unexpected side effects.\n",
+      "at": "2026-11-21T09:29:13Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44752#issuecomment-7060603778"
+    }
+  ],
+  "comments_complete": true
+}

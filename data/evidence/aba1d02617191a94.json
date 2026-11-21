@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50575755",
+  "collected_at": "2026-11-21T09:44:48.255855+00:00",
+  "source": {
+    "author": "zachtgray",
+    "children": [],
+    "created_at": "2026-11-20T15:10:53.000Z",
+    "created_at_i": 1795187453,
+    "id": 50575755,
+    "options": [],
+    "parent_id": null,
+    "points": 1,
+    "story_id": 50575755,
+    "text": "HyprMac is an app organizer and workspace manager for macOS, inspired by Hyprland on Linux. Every time I open a new app, it instantly positions itself nicely in a tiled layout alongside my other apps on screen. By repurposing the Caps Lock key (who, let&#x27;s face it, never got much use anyways) into the Hypr key, I now can use that one button to traverse across windows, swap apps around, switch workspaces, and a ton of other awesome stuff. If you ever forget a shortcut, Hypr + K shows you the whole list.<p>On top of that, there are a few extras I&#x27;ve come to rely on. An overview shows all your workspaces at once. A scratchpad holds apps you want nearby but out of the way. Apps that don&#x27;t tile revert to the typical macOS behavior, which we call &#x27;floating windows.&#x27; These sit on top of the tiled apps and are free to drag around on top of workspaces. It also features a real settings UI, accessible from the menu bar, so you don&#x27;t spend time digging around for config files.<p>I&#x27;m a software developer and a macOS power user. For the last 15 years, I&#x27;ve pretty much only used a Mac for everything. I&#x27;ve tried Windows here and there, but these days I also have a Linux PC alongside my Mac. I went through a few distributions before I came across Omarchy (amazing distro btw), which uses Hyprland to automatically tile windows. By just learning a few shortcuts you can completely manage all your apps across a number of workspaces instantly. I fell in love, and I knew I had to have that experience on my Mac. I poked around at a few of the options, but none of them really did exactly what I had in mind. Thus, HyprMac was born.<p>To install HyprMac, follow the guide at <a href=\"https:&#x2F;&#x2F;hyprmac.app&#x2F;guides&#x2F;install&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;hyprmac.app&#x2F;guides&#x2F;install&#x2F;</a> (Homebrew or the DMG).<p>There is, though, the harsh reality of macOS. All window managers that keep SIP enabled, HyprMac included, play under the same constraints of fighting the native macOS window manager. There are some edge cases where macOS doesn&#x27;t play nicely with it. Hypr + P will be your friend here, to toggle tiling so you can quickly do what needs to be done before resuming again. There are built in safeguards to help with this, like HyprMac remembering which apps don&#x27;t tile, and the ability to manually prevent certain apps from ever trying to tile.<p>Any and all bug reports, PRs, GitHub issues, hate mail, are welcome! I really hope you enjoy what I, alongside many kind developers on GitHub who are always sharing ideas and code, have built!",
+    "title": "Show HN: HyprMac: Keyboard-driven tiling window manager for macOS",
+    "type": "story",
+    "url": "https://hyprmac.app/"
+  },
+  "comments": [],
+  "comments_complete": true
+}

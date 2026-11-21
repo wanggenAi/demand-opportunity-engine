@@ -1,0 +1,962 @@
+{
+  "source_api_url": "https://community.shopify.com/t/720246.json",
+  "collected_at": "2026-11-21T09:44:48.255855+00:00",
+  "source": {
+    "post_stream": {
+      "posts": [
+        {
+          "id": 1946656,
+          "username": "mengxianying",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/m/f1d935/{size}.png",
+          "created_at": "2026-11-21T08:40:40.512Z",
+          "cooked": "<p>If a Shopify Payments payout looks different from the bank deposit, start with the payout’s transaction export and the matching bank entry. Compare the payout reference, date and currency before comparing amounts.</p>\n<p>Here’s a fictional example:</p>\n<p>Two charges: $60 and $40</p>\n<p>Partial refund: -$20</p>\n<p>Processing fees: -$3</p>\n<p>Transaction net: $77</p>\n<p>If the corresponding bank deposit is $75, there is a $2 difference to investigate. First confirm that the bank entry belongs to that payout. Then check the export for refunds, adjustments and other transaction types. Keep the original transactions intact and ask your bookkeeper how the difference should be treated.</p>\n<p>For a paper trail, retain the payout reference and date, currency, transaction CSV, matching bank entry and an explanation of any unresolved difference. Shopify explains how to export payout transactions and the Amount, Fee and Net fields here: <a href=\"https://help.shopify.com/en/manual/payments/shopify-payments/payouts/view-details\" class=\"inline-onebox\">Shopify Help Center | Viewing and exporting Shopify Payments payout details</a></p>\n<p>This example uses fictional data. Does your bookkeeper need any other detail to file each payout?</p>",
+          "post_number": 1,
+          "post_type": 1,
+          "posts_count": 1,
+          "updated_at": "2026-11-21T08:40:40.512Z",
+          "reply_count": 0,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 3,
+          "readers_count": 2,
+          "score": 0.6,
+          "yours": false,
+          "topic_id": 720246,
+          "topic_slug": "why-doesnt-the-bank-deposit-match-the-payout-csv",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "link_counts": [
+            {
+              "url": "https://help.shopify.com/en/manual/payments/shopify-payments/payouts/view-details",
+              "internal": false,
+              "reflection": false,
+              "title": "Shopify Help Center | Viewing and exporting Shopify Payments payout details",
+              "clicks": 0
+            }
+          ],
+          "read": true,
+          "user_title": null,
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1652543,
+          "hidden": false,
+          "trust_level": 0,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/why-doesnt-the-bank-deposit-match-the-payout-csv/720246/1",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "calendar_details": [],
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null,
+          "can_vote": false
+        }
+      ],
+      "stream": [
+        1946656
+      ]
+    },
+    "timeline_lookup": [
+      [
+        1,
+        0
+      ]
+    ],
+    "user_badges": {
+      "users": {},
+      "badges": {
+        "131": {
+          "id": 131,
+          "name": "1000 Accepted Solutions",
+          "slug": "1000-accepted-solutions",
+          "description": "You're a member of the 1000 accepted solutions club!",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 1
+        },
+        "19": {
+          "id": 19,
+          "name": "Good Topic",
+          "slug": "good-topic",
+          "description": "Received 25 likes on a topic",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 3,
+          "badge_type_id": 2
+        },
+        "7": {
+          "id": 7,
+          "name": "Good Post",
+          "slug": "good-reply",
+          "description": "Received 25 likes on a reply",
+          "icon": "reply",
+          "image_url": null,
+          "badge_grouping_id": 3,
+          "badge_type_id": 2
+        },
+        "112": {
+          "id": 112,
+          "name": "250 Posts",
+          "slug": "250-posts",
+          "description": "250 posts! Thanks for being an engaged member of the Shopify Community",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 2
+        },
+        "110": {
+          "id": 110,
+          "name": "50 Posts",
+          "slug": "50-posts",
+          "description": "Way to go! You've posted 50 times in the Shopify Community",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 3
+        },
+        "114": {
+          "id": 114,
+          "name": "1000 Posts",
+          "slug": "1000-posts",
+          "description": "You're a member of the 1000 posts club!",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 1
+        },
+        "113": {
+          "id": 113,
+          "name": "500 Posts",
+          "slug": "500-posts",
+          "description": "Congratulations on reaching the 500 post milestone!",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 1
+        },
+        "32": {
+          "id": 32,
+          "name": "Gives Back",
+          "slug": "gives-back",
+          "description": "Has 100 liked posts and gave 100 likes",
+          "icon": "heart",
+          "image_url": null,
+          "badge_grouping_id": 2,
+          "badge_type_id": 2
+        },
+        "46": {
+          "id": 46,
+          "name": "Aficionado",
+          "slug": "aficionado",
+          "description": "Visited 100 consecutive days",
+          "icon": "far-eye",
+          "image_url": null,
+          "badge_grouping_id": 2,
+          "badge_type_id": 2
+        },
+        "111": {
+          "id": 111,
+          "name": "100 Posts",
+          "slug": "100-posts",
+          "description": "100 posts! Thanks for being an engaged member of the Shopify Community",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 2
+        },
+        "109": {
+          "id": 109,
+          "name": "25 Posts",
+          "slug": "25-posts",
+          "description": "With 25 posts submitted, you help keep the conversations going",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 3
+        },
+        "120": {
+          "id": 120,
+          "name": "250 Likes",
+          "slug": "250-likes",
+          "description": "Your expertise has earned you 250 likes!",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 2
+        },
+        "122": {
+          "id": 122,
+          "name": "1000 Likes",
+          "slug": "1000-likes",
+          "description": "You're a member of the 1000 likes club!",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 1
+        },
+        "129": {
+          "id": 129,
+          "name": "250 Accepted Solutions",
+          "slug": "250-accepted-solutions",
+          "description": "250 accepted solutions! Thank you for being so helpful",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 2
+        },
+        "121": {
+          "id": 121,
+          "name": "500 Likes",
+          "slug": "500-likes",
+          "description": "Congratulations on obtaining 500 likes!",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 1
+        },
+        "135": {
+          "id": 135,
+          "name": "Power User 2024",
+          "slug": "power-user-2024",
+          "description": "Most participating users within 2024",
+          "icon": "ranking-star",
+          "image_url": null,
+          "badge_grouping_id": 6,
+          "badge_type_id": 3
+        },
+        "126": {
+          "id": 126,
+          "name": "50 Accepted Solutions",
+          "slug": "50-accepted-solutions",
+          "description": "Your knowledge has resulted in 50 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 3
+        },
+        "3": {
+          "id": 3,
+          "name": "Regular",
+          "slug": "regular",
+          "description": "Awarded at Trust Level 3. Recognized for regular contributions as a trusted user.",
+          "icon": "user",
+          "image_url": null,
+          "badge_grouping_id": 4,
+          "badge_type_id": 2
+        },
+        "119": {
+          "id": 119,
+          "name": "100 Likes",
+          "slug": "100-likes",
+          "description": "Your contributions have earned you 100 likes",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 2
+        },
+        "125": {
+          "id": 125,
+          "name": "25 Accepted Solutions",
+          "slug": "25-accepted-solutions",
+          "description": "Your guidance has resulted in 25 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 3
+        },
+        "116": {
+          "id": 116,
+          "name": "10 Likes",
+          "slug": "10-likes",
+          "description": "You've received 10 likes",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 3
+        },
+        "127": {
+          "id": 127,
+          "name": "75 Accepted Solutions",
+          "slug": "75-accepted-solutions",
+          "description": "Your expertise has resulted in 75 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 2
+        },
+        "130": {
+          "id": 130,
+          "name": "500 Accepted Solutions",
+          "slug": "500-accepted-solutions",
+          "description": "Your valuable contributions have resulted in 500 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 1
+        },
+        "118": {
+          "id": 118,
+          "name": "50 Likes",
+          "slug": "50-likes",
+          "description": "Your contributions have earned you 50 likes",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 3
+        },
+        "124": {
+          "id": 124,
+          "name": "10 Accepted Solutions",
+          "slug": "10-accepted-solutions",
+          "description": "10 of your replies have been accepted as solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 3
+        },
+        "128": {
+          "id": 128,
+          "name": "100 Accepted Solutions",
+          "slug": "100-accepted-solutions",
+          "description": "Congratulations! You've provided 100 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 2
+        },
+        "117": {
+          "id": 117,
+          "name": "25 Likes",
+          "slug": "25-likes",
+          "description": "With 25 likes, your posts are popular",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 3
+        },
+        "108": {
+          "id": 108,
+          "name": "10 Posts",
+          "slug": "10-posts",
+          "description": "Thanks for being an active member and posting 10 times",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 3
+        }
+      }
+    },
+    "suggested_topics": [],
+    "tags": [
+      {
+        "id": 3767,
+        "name": "payouts",
+        "slug": "payouts"
+      }
+    ],
+    "tags_descriptions": {},
+    "fancy_title": "Why doesn&rsquo;t the bank deposit match the payout CSV?",
+    "id": 720246,
+    "title": "Why doesn't the bank deposit match the payout CSV?",
+    "posts_count": 1,
+    "created_at": "2026-11-21T08:40:40.339Z",
+    "views": 11,
+    "reply_count": 0,
+    "like_count": 0,
+    "last_posted_at": "2026-11-21T08:40:40.512Z",
+    "visible": true,
+    "closed": false,
+    "archived": false,
+    "has_summary": false,
+    "archetype": "regular",
+    "slug": "why-doesnt-the-bank-deposit-match-the-payout-csv",
+    "category_id": 223,
+    "word_count": 168,
+    "deleted_at": null,
+    "user_id": 1652543,
+    "featured_link": null,
+    "pinned_globally": false,
+    "pinned_at": null,
+    "pinned_until": null,
+    "image_url": null,
+    "slow_mode_seconds": 0,
+    "draft": null,
+    "draft_key": "topic_720246",
+    "draft_sequence": null,
+    "unpinned": null,
+    "pinned": false,
+    "current_post_number": 1,
+    "highest_post_number": 1,
+    "deleted_by": null,
+    "actions_summary": [
+      {
+        "id": 8,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 1002,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 4,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 7,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 1001,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 10,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      }
+    ],
+    "chunk_size": 20,
+    "bookmarked": false,
+    "topic_timer": {
+      "id": 2694,
+      "execute_at": "2027-05-20T08:40:40.578Z",
+      "duration_minutes": 259200,
+      "based_on_last_post": true,
+      "status_type": "close",
+      "category_id": null
+    },
+    "message_bus_last_id": 11,
+    "participant_count": 1,
+    "show_read_indicator": false,
+    "thumbnails": null,
+    "slow_mode_enabled_until": null,
+    "board_memberships": [],
+    "related_topics": [
+      {
+        "fancy_title": "Payout Breakdown + Bank Remittance clarity",
+        "id": 607691,
+        "title": "Payout Breakdown + Bank Remittance clarity",
+        "slug": "payout-breakdown-bank-remittance-clarity",
+        "posts_count": 10,
+        "reply_count": 5,
+        "highest_post_number": 12,
+        "image_url": null,
+        "created_at": "2026-04-14T13:32:40.223Z",
+        "last_posted_at": "2026-08-18T23:52:42.085Z",
+        "bumped": true,
+        "bumped_at": "2026-08-18T23:52:42.085Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Can you share (or describe) a real Shopify Payments payout breakdown example that shows how gross sales, refunds, disputes/chargebacks, and each fee type roll up to the net payout—and which export/report is the ‘source o&hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [],
+        "tags_descriptions": {},
+        "like_count": 1,
+        "views": 1073,
+        "category_id": 321,
+        "featured_link": null,
+        "op_like_count": 0,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 1620054,
+              "username": "S.T",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/s/eada6e/{size}.png",
+              "trust_level": 0
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 118776,
+              "username": "keithdell",
+              "avatar_template": "/user_avatar/community.shopify.com/keithdell/{size}/400676_2.png",
+              "flair_name": "shopifystaff",
+              "flair_group_id": 51,
+              "primary_group_name": "shopifystaff",
+              "trust_level": 3
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 1592922,
+              "username": "Report_Pundit1",
+              "avatar_template": "/user_avatar/community.shopify.com/report_pundit1/{size}/385990_2.png",
+              "trust_level": 2
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": 1634024,
+              "username": "Profenor",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/p/839c29/{size}.png",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 1636812,
+              "username": "alex_payoutfix",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/a/43a26b/{size}.png",
+              "trust_level": 0
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "Shopify payout not showing in bank account",
+        "id": 679996,
+        "title": "Shopify payout not showing in bank account",
+        "slug": "shopify-payout-not-showing-in-bank-account",
+        "posts_count": 7,
+        "reply_count": 4,
+        "highest_post_number": 7,
+        "image_url": null,
+        "created_at": "2026-09-10T22:07:39.822Z",
+        "last_posted_at": "2026-09-13T07:56:03.710Z",
+        "bumped": true,
+        "bumped_at": "2026-09-13T07:56:03.710Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Hi, is anyone else experiencing deposit delays? My payouts are typically shown in my bank balance the same day, around 9am. Todays payout is not showing up and it is the end of the day, this has never happened to me befo&hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [
+          {
+            "id": 3951,
+            "name": "shopify-payments",
+            "slug": "shopify-payments"
+          }
+        ],
+        "tags_descriptions": {},
+        "like_count": 0,
+        "views": 261,
+        "category_id": 95,
+        "featured_link": null,
+        "op_like_count": 0,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 483868,
+              "username": "Abidkhan0121",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/a/eb9ed0/{size}.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 1579312,
+              "username": "Maximus3",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/m/7ab992/{size}.png",
+              "primary_group_name": "shopifystaff",
+              "trust_level": 3
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": 1636360,
+              "username": "Bristan_FARRE",
+              "avatar_template": "/user_avatar/community.shopify.com/bristan_farre/{size}/411076_2.png",
+              "trust_level": 2
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 1300333,
+              "username": "SealSubs-Roan",
+              "avatar_template": "/user_avatar/community.shopify.com/sealsubs-roan/{size}/278057_2.png",
+              "primary_group_name": "merchant",
+              "trust_level": 2
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "Failed payout because bank account name not match",
+        "id": 174640,
+        "title": "Failed payout because bank account name not match",
+        "slug": "failed-payout-because-bank-account-name-not-match",
+        "posts_count": 4,
+        "reply_count": 1,
+        "highest_post_number": 0,
+        "image_url": null,
+        "created_at": "2022-12-08T10:02:22.000Z",
+        "last_posted_at": "2025-01-29T21:17:05.000Z",
+        "bumped": true,
+        "bumped_at": "2025-01-29T21:17:05.000Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Hello, my name is Fiona and I’m having trouble with my payouts start from yesterday. \nI got a failed payout email and stated &quot;Your payout couldn’t be deposited because the bank account details you entered were incorrect.&hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [
+          {
+            "id": 3951,
+            "name": "shopify-payments",
+            "slug": "shopify-payments"
+          }
+        ],
+        "tags_descriptions": {},
+        "like_count": 2,
+        "views": 769,
+        "category_id": 217,
+        "featured_link": null,
+        "op_like_count": 2,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 855128,
+              "username": "Fiona1003",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/f/3ec8ea/{size}.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 566293,
+              "username": "Maz",
+              "avatar_template": "/user_avatar/community.shopify.com/maz/{size}/171101_2.png",
+              "flair_name": "shopifyretired",
+              "flair_group_id": 56,
+              "primary_group_name": "shopifyretired",
+              "trust_level": 2
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": 1446728,
+              "username": "Natechan",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/n/a587f6/{size}.png",
+              "primary_group_name": "shopifystaff",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 1487494,
+              "username": "Sigh1",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/s/6de8d8/{size}.png",
+              "primary_group_name": "shopifystaff",
+              "trust_level": 1
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "Why is there a discrepancy between my total sales and bank payouts?",
+        "id": 251979,
+        "title": "Why is there a discrepancy between my total sales and bank payouts?",
+        "slug": "why-is-there-a-discrepancy-between-my-total-sales-and-bank-payouts",
+        "posts_count": 5,
+        "reply_count": 2,
+        "highest_post_number": 0,
+        "image_url": null,
+        "created_at": "2023-09-19T22:01:19.000Z",
+        "last_posted_at": "2025-03-17T09:11:50.000Z",
+        "bumped": true,
+        "bumped_at": "2025-03-17T09:11:50.000Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Hi everyone, \nWe seem to be having trouble reconciling what we sell on Shopify with the payouts we actually receive in our bank account. Here is one sample day: \nShopify Total Sales: $2,134.24 (this is after discounts, r&hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [
+          {
+            "id": 3767,
+            "name": "payouts",
+            "slug": "payouts"
+          },
+          {
+            "id": 3709,
+            "name": "invoices",
+            "slug": "invoices"
+          },
+          {
+            "id": 2430,
+            "name": "fees",
+            "slug": "fees"
+          },
+          {
+            "id": 587,
+            "name": "reporting",
+            "slug": "reporting"
+          },
+          {
+            "id": 3807,
+            "name": "transaction",
+            "slug": "transaction"
+          }
+        ],
+        "tags_descriptions": {},
+        "like_count": 2,
+        "views": 931,
+        "category_id": 223,
+        "featured_link": null,
+        "op_like_count": 1,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 292213,
+              "username": "bushelandpeck",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/b/f19dbf/{size}.png",
+              "primary_group_name": "shopifyplus",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 142632,
+              "username": "Shay",
+              "avatar_template": "/user_avatar/community.shopify.com/shay/{size}/130171_2.png",
+              "flair_name": "shopifyretired",
+              "flair_group_id": 56,
+              "primary_group_name": "shopifyretired",
+              "trust_level": 2
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": 732258,
+              "username": "sek",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/s/90db22/{size}.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 1079753,
+              "username": "WarwickRalston",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/w/71e660/{size}.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "Will a payout go to the correct bank after updating routing and account numbers?",
+        "id": 257267,
+        "title": "Will a payout go to the correct bank after updating routing and account numbers?",
+        "slug": "will-a-payout-go-to-the-correct-bank-after-updating-routing-and-account-numbers",
+        "posts_count": 4,
+        "reply_count": 2,
+        "highest_post_number": 0,
+        "image_url": null,
+        "created_at": "2023-10-07T21:57:25.000Z",
+        "last_posted_at": "2023-10-10T19:24:42.000Z",
+        "bumped": true,
+        "bumped_at": "2023-10-10T19:24:42.000Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Hello, \nI had updated my banking information (both the routing &amp; account #s) yesterday so that I could capture a payment and have it deposited into my bank account. However, I noticed that the name of the bank to where i&hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [
+          {
+            "id": 3951,
+            "name": "shopify-payments",
+            "slug": "shopify-payments"
+          }
+        ],
+        "tags_descriptions": {},
+        "like_count": 0,
+        "views": 107,
+        "category_id": 217,
+        "featured_link": null,
+        "op_like_count": 0,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 195136,
+              "username": "pasockeye",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/p/f07891/{size}.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 559828,
+              "username": "Imogen_1",
+              "avatar_template": "/user_avatar/community.shopify.com/imogen_1/{size}/131944_2.png",
+              "flair_name": "shopifyretired",
+              "flair_group_id": 56,
+              "primary_group_name": "shopifyretired",
+              "trust_level": 2
+            }
+          }
+        ]
+      }
+    ],
+    "summarizable": true,
+    "has_cached_summary": true,
+    "ai_summary": {
+      "id": 1903031,
+      "summarized_text": "To reconcile a Shopify Payments payout with a bank deposit, compare the payout reference, date, and currency first, then review the transaction export for refunds, fees, adjustments, and other transaction types. The post’s fictional example shows $60 and $40 in charges, a $20 refund, and $3 in processing fees, leaving a $77 transaction net; a corresponding $75 bank deposit would leave $2 to investigate. Confirm that the bank entry matches the payout, preserve the original transactions, and ask a bookkeeper how to account for any unexplained difference. For documentation, retain the payout reference and date, currency, transaction CSV, matching bank entry, and an explanation of any unresolved discrepancy. The post links to Shopify’s guidance on exporting payout transactions and understanding the Amount, Fee, and Net fields. No actual payout discrepancy is resolved; the post ends by asking what additional information a bookkeeper needs.",
+      "algorithm": "gpt-6-luna",
+      "outdated": false,
+      "created_at": "2026-11-21T08:43:15.346Z",
+      "updated_at": "2026-11-21T08:43:15.346Z"
+    },
+    "is_category_expert_question": null,
+    "has_livestream": null,
+    "livestream_chat_active": false,
+    "valid_reactions": [
+      "heart",
+      "+1",
+      "laughing",
+      "open_mouth",
+      "clap",
+      "confetti_ball",
+      "hugs"
+    ],
+    "has_accepted_answer": false,
+    "shared_issue_count": 0,
+    "can_create_shared_issue": false,
+    "shared_issue_visible": true,
+    "can_vote": false,
+    "vote_count": 0,
+    "user_voted": false,
+    "details": {
+      "can_edit": false,
+      "notification_level": 1,
+      "participants": [
+        {
+          "id": 1652543,
+          "username": "mengxianying",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/m/f1d935/{size}.png",
+          "post_count": 1,
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 0
+        }
+      ],
+      "created_by": {
+        "id": 1652543,
+        "username": "mengxianying",
+        "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/m/f1d935/{size}.png"
+      },
+      "last_poster": {
+        "id": 1652543,
+        "username": "mengxianying",
+        "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/m/f1d935/{size}.png"
+      }
+    },
+    "bookmarks": []
+  },
+  "comments": [],
+  "comments_complete": true
+}

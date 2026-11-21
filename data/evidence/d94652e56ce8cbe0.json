@@ -1,0 +1,200 @@
+{
+  "source_api_url": "https://api.github.com/repos/Orbit-xyz/Orbit/issues/305",
+  "collected_at": "2026-11-21T09:44:48.255855+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/Orbit-xyz/Orbit/issues/305",
+    "repository_url": "https://api.github.com/repos/Orbit-xyz/Orbit",
+    "labels_url": "https://api.github.com/repos/Orbit-xyz/Orbit/issues/305/labels{/name}",
+    "comments_url": "https://api.github.com/repos/Orbit-xyz/Orbit/issues/305/comments",
+    "events_url": "https://api.github.com/repos/Orbit-xyz/Orbit/issues/305/events",
+    "html_url": "https://github.com/Orbit-xyz/Orbit/issues/305",
+    "id": 6520507804,
+    "node_id": "I_kwDOUbOVbM8AAAABhKcNnA",
+    "number": 305,
+    "title": "backend: implement database backup snapshot automation and point-in-time recovery health checks",
+    "user": {
+      "login": "Prudentdev-xyz",
+      "id": 148275637,
+      "node_id": "U_kgDOCNaBtQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/148275637?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Prudentdev-xyz",
+      "html_url": "https://github.com/Prudentdev-xyz",
+      "followers_url": "https://api.github.com/users/Prudentdev-xyz/followers",
+      "following_url": "https://api.github.com/users/Prudentdev-xyz/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Prudentdev-xyz/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Prudentdev-xyz/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Prudentdev-xyz/subscriptions",
+      "organizations_url": "https://api.github.com/users/Prudentdev-xyz/orgs",
+      "repos_url": "https://api.github.com/users/Prudentdev-xyz/repos",
+      "events_url": "https://api.github.com/users/Prudentdev-xyz/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Prudentdev-xyz/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 12199510828,
+        "node_id": "LA_kwDOUbOVbM8AAAAC1yXDLA",
+        "url": "https://api.github.com/repos/Orbit-xyz/Orbit/labels/enhancement",
+        "name": "enhancement",
+        "color": "a2eeef",
+        "default": true,
+        "description": "New feature or request",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 12432420436,
+        "node_id": "LA_kwDOUbOVbM8AAAAC5QeuVA",
+        "url": "https://api.github.com/repos/Orbit-xyz/Orbit/labels/difficulty:%20easy",
+        "name": "difficulty: easy",
+        "color": "0e8a16",
+        "default": false,
+        "description": "Small, well-scoped change",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 12432422423,
+        "node_id": "LA_kwDOUbOVbM8AAAAC5Qe2Fw",
+        "url": "https://api.github.com/repos/Orbit-xyz/Orbit/labels/area:%20backend",
+        "name": "area: backend",
+        "color": "1d76db",
+        "default": false,
+        "description": "Merchant API",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 12718070730,
+        "node_id": "LA_kwDOUbOVbM8AAAAC9g5byg",
+        "url": "https://api.github.com/repos/Orbit-xyz/Orbit/labels/Stellar%20Wave",
+        "name": "Stellar Wave",
+        "color": "0075ca",
+        "default": false,
+        "description": "Issues in the Stellar wave program",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [
+      {
+        "login": "Ghoost-404",
+        "id": 277846917,
+        "node_id": "U_kgDOEI-bhQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/277846917?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Ghoost-404",
+        "html_url": "https://github.com/Ghoost-404",
+        "followers_url": "https://api.github.com/users/Ghoost-404/followers",
+        "following_url": "https://api.github.com/users/Ghoost-404/following{/other_user}",
+        "gists_url": "https://api.github.com/users/Ghoost-404/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/Ghoost-404/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/Ghoost-404/subscriptions",
+        "organizations_url": "https://api.github.com/users/Ghoost-404/orgs",
+        "repos_url": "https://api.github.com/users/Ghoost-404/repos",
+        "events_url": "https://api.github.com/users/Ghoost-404/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/Ghoost-404/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      }
+    ],
+    "milestone": null,
+    "comments": 5,
+    "created_at": "2026-11-20T22:09:50Z",
+    "updated_at": "2026-11-20T22:32:37Z",
+    "closed_at": null,
+    "assignee": {
+      "login": "Ghoost-404",
+      "id": 277846917,
+      "node_id": "U_kgDOEI-bhQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/277846917?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Ghoost-404",
+      "html_url": "https://github.com/Ghoost-404",
+      "followers_url": "https://api.github.com/users/Ghoost-404/followers",
+      "following_url": "https://api.github.com/users/Ghoost-404/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Ghoost-404/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Ghoost-404/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Ghoost-404/subscriptions",
+      "organizations_url": "https://api.github.com/users/Ghoost-404/orgs",
+      "repos_url": "https://api.github.com/users/Ghoost-404/repos",
+      "events_url": "https://api.github.com/users/Ghoost-404/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Ghoost-404/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "author_association": "COLLABORATOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Problem\nThe backend database stores critical merchant billing records, scheduled subscriptions, and webhook audit logs. Operators currently have no automated health check monitoring database backup recency and replication lag.\n\n## Task\nImplement backup verification and replication health checks in `apps/backend/`:\n\n1. **Replication Monitor**: Check primary-to-replica WAL replication lag and report errors if lag exceeds 60 seconds.\n2. **Snapshot Verification Script**: Automated script verifying that the daily automated snapshot exists and is non-empty.\n3. **Health Check Endpoint**: Expose `/api/health/storage` reporting database connection count, backup status, and replication delay.\n\n## Acceptance criteria\n- [ ] Health endpoint returns status 200 with JSON metrics when healthy\n- [ ] Returns HTTP 503 if replication lag is critical or connection pool is exhausted\n- [ ] Unit tests cover health check responses under normal and degraded conditions\n- [ ] `npm test` passes in `apps/backend`\n\n## Getting started\nSee [CONTRIBUTING.md](https://github.com/Orbit-xyz/Orbit/blob/main/CONTRIBUTING.md). Run:\n```bash\ncd apps/backend && npm test\n```\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/Orbit-xyz/Orbit/issues/305/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/Orbit-xyz/Orbit/issues/305/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "cashmotor01",
+      "text": "@cashmotor01 has applied to work on this issue as part of the **Stellar Wave Program**'s 11th wave.\n\n<!-- wave:application-id:cfc0f5e0-c2db-4688-af68-ca7113fb75cb -->\n<!-- wave:app-text-start -->\n> I would sincerely love to work on this issue because I have strong experience in working and dealing with complex workflow logic.\n<!-- wave:app-text-end -->\n\nℹ️ **Repo Maintainers**: To accept this application, [review their application](https://www.drips.network/wave/maintainers/issues/750d7c08-32a8-47c0-9354-f2bd738824bf) or assign @cashmotor01 to this issue.",
+      "at": "2026-11-20T22:17:05Z",
+      "url": "https://github.com/Orbit-xyz/Orbit/issues/305#issuecomment-7051950032"
+    },
+    {
+      "author": "TMCIPHER",
+      "text": "@TMCIPHER has applied to work on this issue as part of the **Stellar Wave Program**'s 11th wave.\n\n<!-- wave:application-id:5cd487a7-43f2-40fc-af06-072076b0674a -->\n<!-- wave:app-text-start -->\n> Hello, maintainer!\n> \n> I’d love to work on #515 (Bounty escrow refill can exceed the configured cap) for Refract-Protocol/refract-contracts because enforcing strict cap invariants on escrow refills is critical to preventing overfunding bugs, accounting discrepancies, and locked funds in smart contract protocol\n<!-- wave:app-text-end -->\n\nℹ️ **Repo Maintainers**: To accept this application, [review their application](https://www.drips.network/wave/maintainers/issues/750d7c08-32a8-47c0-9354-f2bd738824bf) or assign @TMCIPHER to this issue.",
+      "at": "2026-11-20T22:17:55Z",
+      "url": "https://github.com/Orbit-xyz/Orbit/issues/305#issuecomment-7051964578"
+    },
+    {
+      "author": "Ghoost-404",
+      "text": "@Ghoost-404 has applied to work on this issue as part of the **Stellar Wave Program**'s 11th wave.\n\n<!-- wave:application-id:54125627-95b5-46a9-ac0f-bedd56f726b9 -->\n<!-- wave:app-text-start -->\n> hello maintainer, i'd like to work on this issue please\n<!-- wave:app-text-end -->\n\nℹ️ **Repo Maintainers**: To accept this application, [review their application](https://www.drips.network/wave/maintainers/issues/750d7c08-32a8-47c0-9354-f2bd738824bf) or assign @Ghoost-404 to this issue.",
+      "at": "2026-11-20T22:23:02Z",
+      "url": "https://github.com/Orbit-xyz/Orbit/issues/305#issuecomment-7052054954"
+    },
+    {
+      "author": "zara59",
+      "text": "@zara59 has applied to work on this issue as part of the **Stellar Wave Program**'s 11th wave.\n\n<!-- wave:application-id:e13cbb2e-d44d-42b8-8e11-392894bccc40 -->\n<!-- wave:app-text-start -->\n> hey i would love to work on this project\n<!-- wave:app-text-end -->\n\nℹ️ **Repo Maintainers**: To accept this application, [review their application](https://www.drips.network/wave/maintainers/issues/750d7c08-32a8-47c0-9354-f2bd738824bf) or assign @zara59 to this issue.",
+      "at": "2026-11-20T22:30:20Z",
+      "url": "https://github.com/Orbit-xyz/Orbit/issues/305#issuecomment-7052187161"
+    },
+    {
+      "author": "drips-wave[bot]",
+      "text": "Congratulations, @Ghoost-404! 🎉 Your application was accepted by the repo's maintainers, and the issue is **due on November 25, 2026**.\n\n**🧑‍💻 @Ghoost-404**: Please resolve the issue such that the repo's maintainers have enough time to review your contribution before the due date. You'll earn Points for completing the issue on-time, which will make you eligible for a share of the **Stellar Wave Program**'s reward pool.\n\n> [!WARNING]\n> When opening a PR, please [link it to this issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue) to ensure it gets tracked accurately. Points are awarded when **this issue is marked as completed** by the maintainer.\n\n**🤠 Repo maintainers**: Please keep an eye on the contributor's progress and review their work before the due date. You can manage this issue, including adjusting its complexity and points, [here](https://www.drips.network/wave/maintainers/issues/750d7c08-32a8-47c0-9354-f2bd738824bf).\n\n🌊 Happy Wave 🌊",
+      "at": "2026-11-20T22:32:36Z",
+      "url": "https://github.com/Orbit-xyz/Orbit/issues/305#issuecomment-7052228949"
+    }
+  ],
+  "comments_complete": true
+}

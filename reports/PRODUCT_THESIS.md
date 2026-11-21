@@ -7,10 +7,10 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## workflow_reliability — UNVALIDATED CLUSTER
 
-- independent_demand_count: 133
+- independent_demand_count: 137
 - payment_evidence_count: 2
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community', 'n8n Community']
-- communities: ['Agenta-AI/agenta', "Ask HN: What's your current AI agentic setup?", 'Ask/Show HN', 'Codeberg.org Not Reachable', 'Commerce operator forum', 'Should governments slow frontier AI? Jacob Coxon and Robin Hanson debate [video]', "Show HN: Glassbrain – Read your agent's brain, know what your agent knows", '[dead]', 'farmmer938-lgtm/autonomous-zero-baht', 'n8n Jobs', 'n8n-io/n8n', 'useagenthq/useagent']
+- communities: ['Agenta-AI/agenta', "Ask HN: What's your current AI agentic setup?", 'Ask/Show HN', 'Codeberg.org Not Reachable', 'Commerce operator forum', 'Nasdaq erases all 2026 gains as AI sell-off dampens Anthropic’s second day', 'Should governments slow frontier AI? Jacob Coxon and Robin Hanson debate [video]', "Show HN: Glassbrain – Read your agent's brain, know what your agent knows", '[dead]', 'farmmer938-lgtm/autonomous-zero-baht', 'n8n Jobs', 'n8n-io/n8n', 'useagenthq/useagent']
 - repeated_pain: Operators cannot trust workflow execution status; triggers, responses or saved definitions fail.
 - current_alternatives: Vendor bug tracker and native fixes (free), internal engineering, n8n support, freelance automation providers.
 - productization_potential: Standardize reproduction, health checks and recovery runbooks; current category still too broad for one packaged product.
@@ -20,16 +20,16 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
-  - https://github.com/n8n-io/n8n/issues/44601
-  - https://github.com/n8n-io/n8n/issues/44587
-  - https://news.ycombinator.com/item?id=50570283
-  - https://news.ycombinator.com/item?id=50568046
-  - https://news.ycombinator.com/item?id=50564979
-  - https://github.com/n8n-io/n8n/issues/44559
+  - https://community.shopify.com/t/shopify-flow-just-got-updated-triggers-for-orders-customers-refunds-and-more/720230
+  - https://news.ycombinator.com/item?id=50586361
+  - https://github.com/n8n-io/n8n/issues/44752
+  - https://github.com/n8n-io/n8n/issues/44720
+  - https://github.com/n8n-io/n8n/issues/44712
+  - https://github.com/n8n-io/n8n/issues/44680
 
 ## supplier_sourcing — UNVALIDATED CLUSTER
 
-- independent_demand_count: 16
+- independent_demand_count: 17
 - payment_evidence_count: 1
 - platforms: ['GitHub', 'Shopify Community']
 - communities: ['AddisonJPratt/CAD-ADE', 'Commerce operator forum', 'n8n-io/n8n', 'zack-hum/coffee-intelligence-v1.1']
