@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50591023",
+  "collected_at": "2026-11-22T09:43:55.147735+00:00",
+  "source": {
+    "author": "roansh",
+    "children": [],
+    "created_at": "2026-11-21T16:46:41.000Z",
+    "created_at_i": 1795279601,
+    "id": 50591023,
+    "options": [],
+    "parent_id": null,
+    "points": 2,
+    "story_id": 50591023,
+    "text": "Hi everyone!<p>Thank you all for the discussions here. They&#x27;re the reason I visit and read HN every day.<p>Big threads are hard to follow. I wanted to see what people are actually talking about before diving in, so I had Opus 5.5 build me a Chrome extension.<p>On a thread page, Hubbub groups the top-level comments into a handful of topics, with a bar showing how much of the discussion each one takes up. Open a topic and you read the real comments btw, no AI summary. Haiku only groups comments, generates labels, and describes a topic in a sentence or two.<p>There&#x27;s a live demo on the landing page: <a href=\"https:&#x2F;&#x2F;hubbub.page\" rel=\"nofollow\">https:&#x2F;&#x2F;hubbub.page</a><p>How it works: a small server makes trees ahead of time for front-page threads with 30+ comments, and refreshes them as the threads grow. Every user downloads the same file, so the server can&#x27;t tell which threads you read. There&#x27;s no account and no analytics, and your read history stays in your browser.<p>Do give it a try, let me know if you spot any bugs, or have any feature requests :)",
+    "title": "Show HN: Hubbub – Read big HN threads by topic",
+    "type": "story",
+    "url": "https://hubbub.page"
+  },
+  "comments": [],
+  "comments_complete": true
+}

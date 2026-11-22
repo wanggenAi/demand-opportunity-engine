@@ -1,0 +1,66 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50589936",
+  "collected_at": "2026-11-22T09:43:55.147735+00:00",
+  "source": {
+    "author": "pvarghav",
+    "children": [
+      {
+        "author": "charliercrvta",
+        "children": [
+          {
+            "author": "pvarghav",
+            "children": [],
+            "created_at": "2026-11-21T16:29:44.000Z",
+            "created_at_i": 1795278584,
+            "id": 50590824,
+            "options": [],
+            "parent_id": 50590636,
+            "points": null,
+            "story_id": 50589936,
+            "text": "Thanks!<p>I agree, the models have gotten really good, and Klistra uses a similar pipeline to Claude + Remotion under the hood. It doesn&#x27;t use Remotion, but it&#x27;s currently running on Opus 5.5.<p>What I tried to do with this project was make it more accessible and integrate all the supporting tooling into one studio with a purpose-built graphical interface.<p>If you&#x27;re a developer who&#x27;s already got your own Claude + Remotion workflow set up, you might not need Klistra. It&#x27;s mainly for people who&#x27;d rather spend the time on the idea than on the setup. That said, I use Klistra myself even though I had the Claude workflow set up before, because the supporting features save me time, and with the Claude connection you get a bit of the best of both worlds.<p>I think the biggest downside to Klistra right now compared to the manual pipeline is the cost. If you already have a Claude subscription, it&#x27;s going to be more expensive, since Klistra has to pay API prices. A first 15–20 second video usually takes 50–150 credits, roughly $2–9 depending on plan. The Claude integration was an attempt to partly fix this, but the builder agent itself still runs on the API.<p>My hope for the future is that models will get better and cheaper, so this won&#x27;t really be an issue. I also have plans to gather my own data and try to fine-tune an open-source model, which could be both better and cheaper, but so far I&#x27;ve focused on getting the product out there.<p>Curious what you mostly make, and where your setup still falls short?",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-21T16:12:10.000Z",
+        "created_at_i": 1795277530,
+        "id": 50590636,
+        "options": [],
+        "parent_id": 50589936,
+        "points": null,
+        "story_id": 50589936,
+        "text": "Hey, very interesting product. I&#x27;ve been making motion graphics as well and absolutely prefer this pathway, deterministic, generally makes less mistakes and most importantly editable and debuggable. That said, I think since the Opus 5.5 drop, the ability of vanilla Claude setup creating motion graphics with remotion, or combining computer use with after effects, has taken agentic motion graphic a major leap and I haven&#x27;t really faced anything major and been able to get most things done within one shot. Anyways, wondering what&#x27;s your thoughts on this and where you see the long term durable advantage as well",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-11-21T15:06:53.000Z",
+    "created_at_i": 1795273613,
+    "id": 50589936,
+    "options": [],
+    "parent_id": null,
+    "points": 1,
+    "story_id": 50589936,
+    "text": "I built Klistra: describe your video idea and add your logo, photos or other assets, Klistra designs and animates a video for you, exported for every screen size, with fonts, media and logos kept exact. Deterministic renders make features exact and isolated, allowing for superior control and iteration compared to diffusion models. Here&#x27;s a short demo render where I made an ad for Klistra itself: <a href=\"https:&#x2F;&#x2F;app.klistra.ai&#x2F;s&#x2F;4EQoWCe37SkYz5nThgegzw\" rel=\"nofollow\">https:&#x2F;&#x2F;app.klistra.ai&#x2F;s&#x2F;4EQoWCe37SkYz5nThgegzw</a><p>As a solo dev with a lot of projects going on, I found myself needing to make short promos or explainer videos. Not being familiar with animation software, I had the idea to use Claude to code up those videos and export them as video files. In the process of creating these clips I stumbled into a bunch of bugs and setup needed to make it work reliably. The list of features I wanted for better control and feedback kept growing and I needed to sign up for a bunch of services to get music, voiceovers and other media into my project. I couldn&#x27;t find an existing service that had everything I wanted. Seeing these hurdles and that the technology was only easily accessible to people already confident with coding agents, I started working on Klistra, and a couple of months later I&#x27;m turning it into a service so you all can use it too.<p>The goal with Klistra was to include everything I missed in the manual workflow in an easy-to-use service with a nice UI, so people could focus on what they wanted the video to look like, not setting up the framework behind it. Klistra includes precise timeline control, media generation, built-in support to make animations match the rhythm of the background music, word extraction from voiceovers or songs, a dedicated iteration &#x2F; feedback tool, website import and much more.<p>Something I knew I needed to get right was making it easy to iterate on small features of the video with precise control of what was being built. I designed Klistra so you first create a specification where you define scenes in detail, describe what you want shown and when, reference media or timestamps in-line, freely drag the timeline around and preview the result before letting a builder agent create the video. If you want to change something, the specification changes and the builder agent gets a diff of what changed. There is also a planner agent built into Klistra that helps create and edit the specification for you (which is what I use the most), while letting you turn to manual fine-tuning when needed.<p>Don&#x27;t think of this as a replacement for diffusion models, if you want photorealistic images or videos they clearly do a better job. Klistra really shines when you need motion design and precise control, exact text with your fonts, media such as logos or voiceovers, animated UI that matches your apps and so on. Klistra does have built-in integrations for generating media from diffusion models, and combining the two technologies usually gets the best results.<p>Everything that costs money to run on Klistra, from machines to AI tokens, is paid for with credits included in a subscription or bought via one-time packs (Pro starts at $25&#x2F;mo ($20 billed yearly) and packs at $12). Being a solo dev without funding, the budget wouldn&#x27;t allow for a free tier with enough monthly credits for a real project. I instead decided to give the first 200 of you who sign up 350 free credits, enough for a simple video (the advanced tutorial used around 250 credits).<p>There is also a Claude Code integration in paid subscriptions, where your agent can act as a planner, convenient if you already have a project built with Claude that has all the context and you need an explainer, ad or social post. It also reduces credit spending if you&#x27;re a heavy planner user.<p>- Tutorial, mostly using the planner: <a href=\"https:&#x2F;&#x2F;klistra.ai&#x2F;docs&#x2F;basic\" rel=\"nofollow\">https:&#x2F;&#x2F;klistra.ai&#x2F;docs&#x2F;basic</a><p>- Advanced features and manual control: <a href=\"https:&#x2F;&#x2F;klistra.ai&#x2F;docs&#x2F;advanced\" rel=\"nofollow\">https:&#x2F;&#x2F;klistra.ai&#x2F;docs&#x2F;advanced</a><p>- More demos: <a href=\"https:&#x2F;&#x2F;klistra.ai&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;klistra.ai&#x2F;</a><p>Happy to hear what you think!",
+    "title": "Show HN: Klistra – Make launch videos and product demos, all in one AI studio",
+    "type": "story",
+    "url": "https://klistra.ai"
+  },
+  "comments": [
+    {
+      "author": "charliercrvta",
+      "text": "Hey, very interesting product. I've been making motion graphics as well and absolutely prefer this pathway, deterministic, generally makes less mistakes and most importantly editable and debuggable. That said, I think since the Opus 5.5 drop, the ability of vanilla Claude setup creating motion graphics with remotion, or combining computer use with after effects, has taken agentic motion graphic a major leap and I haven't really faced anything major and been able to get most things done within one shot. Anyways, wondering what's your thoughts on this and where you see the long term durable advantage as well",
+      "at": "2026-11-21T16:12:10.000Z",
+      "url": "https://news.ycombinator.com/item?id=50590636"
+    },
+    {
+      "author": "pvarghav",
+      "text": "Thanks! I agree, the models have gotten really good, and Klistra uses a similar pipeline to Claude + Remotion under the hood. It doesn't use Remotion, but it's currently running on Opus 5.5. What I tried to do with this project was make it more accessible and integrate all the supporting tooling into one studio with a purpose-built graphical interface. If you're a developer who's already got your own Claude + Remotion workflow set up, you might not need Klistra. It's mainly for people who'd rather spend the time on the idea than on the setup. That said, I use Klistra myself even though I had the Claude workflow set up before, because the supporting features save me time, and with the Claude connection you get a bit of the best of both worlds. I think the biggest downside to Klistra right now compared to the manual pipeline is the cost. If you already have a Claude subscription, it's going to be more expensive, since Klistra has to pay API prices. A first 15–20 second video usually takes 50–150 credits, roughly $2–9 depending on plan. The Claude integration was an attempt to partly fix this, but the builder agent itself still runs on the API. My hope for the future is that models will get better and cheaper, so this won't really be an issue. I also have plans to gather my own data and try to fine-tune an open-source model, which could be both better and cheaper, but so far I've focused on getting the product out there. Curious what you mostly make, and where your setup still falls short?",
+      "at": "2026-11-21T16:29:44.000Z",
+      "url": "https://news.ycombinator.com/item?id=50590824"
+    }
+  ],
+  "comments_complete": true
+}

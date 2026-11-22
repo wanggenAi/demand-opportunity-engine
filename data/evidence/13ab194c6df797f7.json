@@ -1,0 +1,123 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/44759",
+  "collected_at": "2026-11-22T09:43:55.147735+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/44759",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/44759/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/44759/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/44759/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/44759",
+    "id": 6530037012,
+    "node_id": "I_kwDOC4Q8Qs8AAAABhTh1FA",
+    "number": 44759,
+    "title": "Source control export reports file entries by resource name instead of the id-based path it writes",
+    "user": {
+      "login": "Mattenhaim",
+      "id": 279262900,
+      "node_id": "U_kgDOEKU2tA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/279262900?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Mattenhaim",
+      "html_url": "https://github.com/Mattenhaim",
+      "followers_url": "https://api.github.com/users/Mattenhaim/followers",
+      "following_url": "https://api.github.com/users/Mattenhaim/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Mattenhaim/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Mattenhaim/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Mattenhaim/subscriptions",
+      "organizations_url": "https://api.github.com/users/Mattenhaim/orgs",
+      "repos_url": "https://api.github.com/users/Mattenhaim/repos",
+      "events_url": "https://api.github.com/users/Mattenhaim/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Mattenhaim/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 10081993897,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACWO8EqQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:lifecycle",
+        "name": "team:lifecycle",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Lifecycle & Governance team",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-21T14:24:52Z",
+    "updated_at": "2026-11-21T14:33:52Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug description\n\n`SourceControlExportService.exportWorkflowsToWorkFolder` builds `ExportResult.files[].name` via `getWorkflowPath(workflow.name)` and `exportCredentialsToWorkFolder` via `` `${credential.name}.json` ``, while the files on disk are actually written under the resource id (`getWorkflowPath(id)` / `getCredentialsPath(id)`).\n\nNo current caller consumes `files[]` — the push flow only uses `missingIds`, which already keys by id — so there is no behavioral bug today, but every future consumer would receive wrong paths, and the reported entries contradict the written files.\n\n### To reproduce\n\n1. Call `exportWorkflowsToWorkFolder` for a workflow named `Test Workflow` with id `wf-1`.\n2. Inspect the returned `files[0].name`.\n\n### Expected behavior\n\n`files[].name` reports the path actually written, keyed by the resource id (e.g. `<git folder>/workflows/wf-1.json`).\n\n### Actual behavior\n\n`files[].name` is keyed by the resource name (e.g. `<git folder>/workflows/Test Workflow.json`).\n\n### Environment\n\nFound by code reading and reproduced with a unit test against master.",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/44759/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/44759/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @Mattenhaim,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9831\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9831](https://linear.app/n8n/issue/GHC-9831)",
+      "at": "2026-11-21T14:25:01Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44759#issuecomment-7064065428"
+    }
+  ],
+  "comments_complete": true
+}

@@ -1,0 +1,162 @@
+{
+  "source_api_url": "https://api.github.com/repos/SamyrFateh/komerce-backend/issues/5061",
+  "collected_at": "2026-11-22T09:43:55.147735+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/SamyrFateh/komerce-backend/issues/5061",
+    "repository_url": "https://api.github.com/repos/SamyrFateh/komerce-backend",
+    "labels_url": "https://api.github.com/repos/SamyrFateh/komerce-backend/issues/5061/labels{/name}",
+    "comments_url": "https://api.github.com/repos/SamyrFateh/komerce-backend/issues/5061/comments",
+    "events_url": "https://api.github.com/repos/SamyrFateh/komerce-backend/issues/5061/events",
+    "html_url": "https://github.com/SamyrFateh/komerce-backend/issues/5061",
+    "id": 6537579706,
+    "node_id": "I_kwDORwaXn88AAAABhauMug",
+    "number": 5061,
+    "title": "[staging-op] g6-dynamic-fresh-full-M03-KM",
+    "user": {
+      "login": "SamyrFateh",
+      "id": 270944292,
+      "node_id": "U_kgDOECZIJA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/270944292?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/SamyrFateh",
+      "html_url": "https://github.com/SamyrFateh",
+      "followers_url": "https://api.github.com/users/SamyrFateh/followers",
+      "following_url": "https://api.github.com/users/SamyrFateh/following{/other_user}",
+      "gists_url": "https://api.github.com/users/SamyrFateh/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/SamyrFateh/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/SamyrFateh/subscriptions",
+      "organizations_url": "https://api.github.com/users/SamyrFateh/orgs",
+      "repos_url": "https://api.github.com/users/SamyrFateh/repos",
+      "events_url": "https://api.github.com/users/SamyrFateh/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/SamyrFateh/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 4,
+    "created_at": "2026-11-22T02:51:23Z",
+    "updated_at": "2026-11-22T08:58:14Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## G6 M03/KM — nouveau rejeu transactionnel owner-only après correctif #5060\n**Cible :** Railway **staging jetable uniquement** (aucune production commerciale). Contrôle préalable effectué : commit `main` et runtime backend/sourcing `a0dfa0642f6b4c39bd358b296976a5ee079f2f96` tous deux déployés SUCCESS, environnement sans pendingWork, aucun workflow GitHub Actions in_progress au déclenchement.\n\n**Déclenchement officiel** par cette issue exacte : workflow `staging-g6-dynamic-fresh-buyer-cash.yml`, group de concurrency `komerce-g6-canonical-real-transaction`, `cancel-in-progress:false`. **Créer une commande G6-BUYER neuve** pour M03 KM (ne pas réutiliser `KRJVYJX` de #5058). Revalider le SHA réellement servi, le fingerprint PostgreSQL et les droits avant écriture. \n**Chaîne de preuve :** vrai Chromium acheteur/panier 4 lignes (local + 3 fournisseurs dont central Hub), cash Relais, retrait local, engagements explicites des 3 PO et documents, simulation interne d'envoi sans appel fournisseur ; la PO Hub manuel sans prix devis doit maintenant faire saisir explicitement au Hub prix fictif confirmé et devise en confirmation (fix #5060), avec vendeur/justificatif SIM-STAGING, vérification API + PostgreSQL de `confirmed_unit_price` et `supplier_currency`; `supplier_unit_price` initial non inventé. Poursuivre réception physique Hub, sac, KOM-BOX, transit et remise Relais jusqu'à `M03_COLLECTED_FINAL`. Contrôler cohérence vues et aucune deuxième remise.\n**Gardes :** aucune opération fournisseur ou PSP réel, aucun paiement fournisseur non autorisé, pas de SQL de remplissage, pas de reset destructif, conserver artefacts Chromium/API/PG/trace et verdict `BLOCKED` si écart. Ne pas interpréter un workflow success comme PASS métier sans oracle final.\n\nPrécédents : #5050 #5056 #5058 #5059 #5060 et run échec #44976360801 (`CONFIRMED_PRICE_REQUIRED`).",
+    "reactions": {
+      "url": "https://api.github.com/repos/SamyrFateh/komerce-backend/issues/5061/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/SamyrFateh/komerce-backend/issues/5061/timeline",
+    "performed_via_github_app": {
+      "id": 1144995,
+      "client_id": "Iv23liVemv8A9if9v0F2",
+      "slug": "chatgpt-codex-connector",
+      "node_id": "A_kwHOAOQ6Gs4AEXij",
+      "owner": {
+        "login": "openai",
+        "id": 14957082,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjE0OTU3MDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/14957082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/openai",
+        "html_url": "https://github.com/openai",
+        "followers_url": "https://api.github.com/users/openai/followers",
+        "following_url": "https://api.github.com/users/openai/following{/other_user}",
+        "gists_url": "https://api.github.com/users/openai/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/openai/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/openai/subscriptions",
+        "organizations_url": "https://api.github.com/users/openai/orgs",
+        "repos_url": "https://api.github.com/users/openai/repos",
+        "events_url": "https://api.github.com/users/openai/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/openai/received_events",
+        "type": "Organization",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "name": "ChatGPT Codex Connector",
+      "description": "Bring ChatGPT and Codex to your GitHub repositories.",
+      "external_url": "https://www.chatgpt.com",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "created_at": "2025-02-14T01:37:05Z",
+      "updated_at": "2026-09-23T18:52:59Z",
+      "permissions": {
+        "actions": "write",
+        "checks": "read",
+        "contents": "write",
+        "emails": "read",
+        "issues": "write",
+        "metadata": "read",
+        "pull_requests": "write",
+        "statuses": "read",
+        "workflows": "write"
+      },
+      "events": [
+        "check_run",
+        "check_suite",
+        "commit_comment",
+        "issues",
+        "issue_comment",
+        "pull_request",
+        "pull_request_review",
+        "pull_request_review_comment",
+        "pull_request_review_thread",
+        "repository",
+        "status",
+        "sub_issues"
+      ]
+    },
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "SamyrFateh",
+      "text": "## Audit transverse préventif avant 3e rejeu G6 M03 — 22/11/2026\n\n**Verdict du run #44977988771 : BLOCKED** par `PURCHASE_LINE_FROZEN` lorsque la confirmation de la PO Hub MANUAL tentait de modifier `supplier_currency` (devis initial figé). Aucune autorisation de paiement réel, aucun GO M03.\n\n**PR [#5062](https://github.com/SamyrFateh/komerce-backend/pull/5062) — branche en revue, non fusionnée.**\nPoints couverts par audit et correctifs :\n1. Migration additive 425 : `confirmed_currency` distincte de `supplier_currency`, création en confirmation manuelle notifiée, preuve attachée à prix/quantité/horodatage, append-only, sans réécriture du devis ni bypass des triggers 263/414.\n2. Les deux UI (Hub Live, Achats Workspace) doivent exiger prix confirmé + devise explicite si aucune monnaie fournisseur initiale. Pas de fallback retail/budget en production.\n3. Dossier Hub et rapports par marché doivent exposer prix/devis initial ET prix/devise confirmé distinctement.\n4. Shadow financier rapproche sur devise confirmée ; un budget staging sans véritable règlement doit rester **provisoire**, jamais coût réel.\n5. Regressions PostgreSQL : source `central_hub` au lieu d'une fausse identité fournisseur, PO déjà tarifée inchangée même si devise confirmée fournie, verrou DB actif sur toute réécriture, et schémas de tests isolés migrés 425.\n\nLes tests DB ont détecté et permis de corriger les fixtures obsolètes (migration 414/identité Hub, colonne 425). Dernier SHA PR actuellement `6f5cb625`. Portes gouvernance, schéma, backend et dashboard vertes ; Required final en cours sur `44979337253` (preflight et intégration DB fallback). **Interdiction d'initier une nouvelle campagne M03, de fusionner ou de lancer un paiement avant verdict Required vert, revue métier et déploiement staging épinglé.**\n\nSéquence de reprise : Required SUCCESS -> fusion contrôlée de #5062 -> déploiement Railway et probe read-only -> nouvelle fixture owner-only M03/KM Chromium+API+PG jusqu'à `M03_COLLECTED_FINAL`, sinon NOT_PROVEN documenté.",
+      "at": "2026-11-22T03:14:05Z",
+      "url": "https://github.com/SamyrFateh/komerce-backend/issues/5061#issuecomment-7073409587"
+    },
+    {
+      "author": "SamyrFateh",
+      "text": "## Reprise M03 — 22/11/2026 (GPT, propriétaire)\n\n- **PR #5062 fusionnée** sur `main` : squash `68311cf96f6ce31ebd7fea1645251654d2f3aba2`, HEAD PR `6f5cb6256a81fc65239c8e9c1e42dec2c426ed08` ; Required CI #44979337253 : tous les jobs obligatoires SUCCESS, y compris `From-scratch DB + integration + E2E API`.\n- Revue ciblée faite : migration additive 425 (`confirmed_currency` distinct de `supplier_currency` figé), confirmation PO manuelle atomique, preuve de vendeur/prix/devise, deux écrans, rapports Hub, shadow financier sans coût réel fictif. Aucun bypass ni paiement réel.\n- Railway `superb-presence/staging` backend + sourcing a commencé les déploiements automatiques du commit `68311cf9` ; **BUILDING** lors du contrôle, aucun patch staged. **Aucun writer G6 lancé pendant le déploiement**.\n- Prochaine séquence gardée : attendre SUCCESS des deux services sur même SHA + `pendingWork=[]`; créer `g6-prereq-probe-KM` owner-only READ ONLY ; seulement après `M03_READY` créer une **nouvelle** issue propriétaire `[staging-op] g6-dynamic-fresh-full-M03-KM` (verrou unique) pour jouer fixture fraîche Chromium (panier 4 lignes, cash, local + trois PO, confirmations, réception physique Hub, sac/KOM-BOX/transit/relais, retrait final) avec API et PG indépendant. Aucun PASS avant `M03_COLLECTED_FINAL` et oracle final.\n- Le run #44977988771 reste **BLOCKED** (`PURCHASE_LINE_FROZEN`), ce n'est pas un PASS rétroactif. Aucun fournisseur/PSP/prod, paiement fournisseur, SQL fixture ni reset autorisé.",
+      "at": "2026-11-22T08:26:10Z",
+      "url": "https://github.com/SamyrFateh/komerce-backend/issues/5061#issuecomment-7076516509"
+    },
+    {
+      "author": "SamyrFateh",
+      "text": "## Verdict terminal M03/KM après #5062 — 22/11/2026\n\nRun [#45002960039](https://github.com/SamyrFateh/komerce-backend/actions/runs/45002960039), déclenché par #5065, **FAILED/BLOCKED**, artefact #14746144870, SHA staging `68311cf9`, PG `8acbf99fef010c23eac7d252`. Commande neuve `KUQQ4FZ`.\n\n**Acquis prouvés** : parcours client réel, cash/retrait local, engagements et confirmations **3/3 PO** via Chromium et API 200 ; la PO Central Hub MANUAL `7200094c-6e20-476d-a515-20016e9c18e1` a confirmé `10 EUR` dans les nouveaux champs distincts (premier prix/devis fournisseur toujours NULL), justificatif vendeur SIM-STAGING ; aucune autorisation de paiement fournisseur. Le blocage `PURCHASE_LINE_FROZEN` est levé.\n\n**Nouveau blocage métier, première réception physique Hub** : `POST /api/scans/hub/receive` → **HTTP202** et **`quarantined=true`, `reason_code=HUB_SUPPLIER_IDENTITY_UNRESOLVABLE`** (trace réseau Playwright). Une unité `SUPPLIER_PACKAGE` est mise en quarantaine avec incident ; aucun reçu physique certifié. L'oracle stoppe sur `G6_RECEIPT_UI_HTTP_202_`. Ce **202 ne doit jamais être accepté comme PASS**. Cause : la ligne Centrale MANUAL ne possède pas de référence SKU/SOI fournisseur tiers et le snapshot logistique de `services/hub-physical-identity.js` la réclame sans chemin d'identité fondé sur la preuve `manual_purchase_executions`.\n\n**P0 documenté dans [#5066](https://github.com/SamyrFateh/komerce-backend/issues/5066)** : réconcilier l'achat manuel confirmé avec l'identité physique via la preuve d'achat réellement persistée, garder les garde-fous, corriger et rejouer sur fixture nouvelle. **M03 = NOT_PROVEN**, pas de GO physique ni de retrait final.",
+      "at": "2026-11-22T08:33:58Z",
+      "url": "https://github.com/SamyrFateh/komerce-backend/issues/5061#issuecomment-7076596552"
+    },
+    {
+      "author": "SamyrFateh",
+      "text": "## Diagnostic validé — geste canonique retrouvé et PR #5072 ouverte\n\nLe blocage `G6_DYNAMIC_KOM_BOX_PREDECESSOR_INCOMPLETE` après `HUB_CUSTOMER_BAG PASS` est une **étape UI manquante dans le runner M03**, pas une raison d'inventer un colis. Le producteur métier existe : `services/auto-parcel.distributeOrder` via route marché bornée `POST /api/admin/workspaces/operations/market/KM/orders/:reference/distribute`, exposée par le bouton **« Répartir »** sur la ligne exacte dans Hub Live. La doctrine du service crée **un colis client IMPORT par commande**, après que les quantités ont été réellement reçues au Hub, et ne mélange pas les lignes LOCAL_STOCK.\n\n**PR [#5072](https://github.com/SamyrFateh/komerce-backend/pull/5072)** ouverte, implémente dans le stage M03 `HUB_KOM_BOX` un sous-parcours Chromium authentifié Hub :\n- garde SHA, PostgreSQL et bag PACKED et les 3 lignes import reçues ;\n- un vrai clic « Répartir » sur **cette** commande (jamais la route de répartition globale), 1 POST ; refus de replay/doublon ;\n- oracle PG indépendant : 3/3 articles IMPORT, même colis, quantités égales, `parcels.order_id` exact, aucune ligne locale mélangée ;\n- seulement ensuite transmettre l'UUID du vrai colis au runner KOM-BOX et conserver les artefacts.\nTest Playwright du clic individuel ajouté ; pas de nouveau writer backend, SQL direct, bypass ou effet PSP/fournisseur.\n\n**Statut** : CI Required en cours ; pas de fusion ni de relance tant que CI, revue et déploiement épinglé ne sont pas verts. M03 reste NOT_PROVEN sur le run #45004548668.",
+      "at": "2026-11-22T08:58:13Z",
+      "url": "https://github.com/SamyrFateh/komerce-backend/issues/5061#issuecomment-7076847902"
+    }
+  ],
+  "comments_complete": true
+}

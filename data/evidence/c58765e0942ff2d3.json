@@ -1,0 +1,107 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/44778",
+  "collected_at": "2026-11-22T09:43:55.147735+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/44778",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/44778/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/44778/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/44778/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/44778",
+    "id": 6540130094,
+    "node_id": "I_kwDOC4Q8Qs8AAAABhdJ3Lg",
+    "number": 44778,
+    "title": "Multi-main resume-attempt conflicts can leave parent executions waiting or crashed",
+    "user": {
+      "login": "Arin004joshi",
+      "id": 139484606,
+      "node_id": "U_kgDOCFBdvg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/139484606?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Arin004joshi",
+      "html_url": "https://github.com/Arin004joshi",
+      "followers_url": "https://api.github.com/users/Arin004joshi/followers",
+      "following_url": "https://api.github.com/users/Arin004joshi/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Arin004joshi/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Arin004joshi/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Arin004joshi/subscriptions",
+      "organizations_url": "https://api.github.com/users/Arin004joshi/orgs",
+      "repos_url": "https://api.github.com/users/Arin004joshi/repos",
+      "events_url": "https://api.github.com/users/Arin004joshi/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Arin004joshi/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-11-22T08:10:38Z",
+    "updated_at": "2026-11-22T08:16:33Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nTwo narrower multi-main gaps remain after #44765. Both come from code reading only. I run a single main. I did not reproduce them.\n\nGap 1: `claimResumeAttempt` returns one `conflict` outcome for two different cases. The row left `waiting`, or the `resumeAttempts` compare-and-set lost while the row is still `waiting`. Only the second case is safe to retry. `ResumeAttemptService.claim` turns both cases into `ExecutionAlreadyResumingError` with `local: false`. `WaitTracker.claimParent` does not retry that error. The parent can stay `waiting` even when no process resumes it.\n\nGap 2: Set `N8N_EXECUTIONS_MAX_RESUME_ATTEMPTS=1`. The leader's parked-parent sweep can use the only attempt during inspection. A follower that claims the same parent gets `exhausted`. `ResumeAttemptService.claim` marks the parent `crashed` before the sweep releases the attempt.\n\n### To Reproduce\n\nI did not reproduce this on multi-main. The conditions come from code reading.\n\n1. Run multiple mains with PostgreSQL.\n2. Set `N8N_EXECUTIONS_MAX_RESUME_ATTEMPTS` to `2` for gap 1, or `1` for gap 2.\n3. Use a parent workflow with Execute Workflow and **Wait for Sub-Workflow Completion**.\n4. Use a child workflow with a Wait node and `saveDataSuccessExecution: \"none\"`.\n5. Let the child finish while the leader's sweep inspects the parent and a follower handles the child completion.\n6. For gap 1, observe that the parent stays `waiting` and the log shows `Parent execution not claimable`.\n7. For gap 2, observe that the parent is marked `crashed` with the resume-limit warning.\n\n\n### Expected behavior\n\nThe parent resumes exactly once. An attempt-counter conflict must not be treated as another process owning the resume. Sweep inspection must not use the final attempt or mark the parent `crashed` before it releases the attempt.\n\n### Debug Info\n\nCode paths:\n\n- `packages/@n8n/db/src/repositories/execution.repository.ts`: `claimResumeAttempt`, `releaseResumeAttempt`\n- `packages/cli/src/executions/resume-attempt.service.ts`: `claim`\n- `packages/cli/src/wait-tracker.ts`: `claimParent`, `resumeParentsOfFinishedSubExecutions`\n\n\n### Operating System\n\nWindows 11\n\n### n8n Version\n\n2.49.0\n\n### Node.js Version\n\n26.13.0\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/44778/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/44778/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @Arin004joshi,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9836\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9836](https://linear.app/n8n/issue/GHC-9836)",
+      "at": "2026-11-22T08:10:50Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44778#issuecomment-7076358447"
+    },
+    {
+      "author": "Arin004joshi",
+      "text": "Both gaps were reproduced deterministically in a targeted integration test against the real ExecutionRepository and ResumeAttemptService on SQLite (one claimed plus one conflict while the row stayed waiting, and maxResumeAttempts=1 crashing a parent that a sweep still held). They were not reproduced on a live multi-main deployment because my setup is single-main. See #44765 and #44762 for context. @dvystrcil — tagging you for visibility.",
+      "at": "2026-11-22T08:14:29Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44778#issuecomment-7076397060"
+    }
+  ],
+  "comments_complete": true
+}

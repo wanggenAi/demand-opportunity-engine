@@ -1,0 +1,101 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/44779",
+  "collected_at": "2026-11-22T09:43:55.147735+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/44779",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/44779/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/44779/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/44779/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/44779",
+    "id": 6540155642,
+    "node_id": "I_kwDOC4Q8Qs8AAAABhdLa-g",
+    "number": 44779,
+    "title": "IndexOperation lazy promise does not forward execute() rejection (source unchanged in @n8n/db1.47.4)",
+    "user": {
+      "login": "mayankbaba19-max",
+      "id": 355707194,
+      "node_id": "U_kgDOFTOpOg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/355707194?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mayankbaba19-max",
+      "html_url": "https://github.com/mayankbaba19-max",
+      "followers_url": "https://api.github.com/users/mayankbaba19-max/followers",
+      "following_url": "https://api.github.com/users/mayankbaba19-max/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mayankbaba19-max/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mayankbaba19-max/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mayankbaba19-max/subscriptions",
+      "organizations_url": "https://api.github.com/users/mayankbaba19-max/orgs",
+      "repos_url": "https://api.github.com/users/mayankbaba19-max/repos",
+      "events_url": "https://api.github.com/users/mayankbaba19-max/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mayankbaba19-max/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-22T08:13:58Z",
+    "updated_at": "2026-11-22T08:14:13Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nIn a controlled fictional migration fixture using n8n2.44.6, two rows conflicting with a unique signing-key metadata index caused an unhandled QueryFailedError/SQLITE_CONSTRAINT and child termination. No production records were used.\n\nThe installed @n8n/db1.47.4 from n8n2.47.6 has the identical dist/migrations/dsl/indices.js SHA256 C53D3A94BA88079DB74009A8EAD77B03C4048FDCEE5F2C20709296A2C1DDBA63. Its IndexOperation constructor uses super((resolve) => { void this.execute(queryRunner).then(resolve); }); with no rejection forwarding. The full duplicate-data failure has not been rerun against2.47.6; unchanged helper source is the observation, not a new whole-executor failure claim.\n\n### To Reproduce\n\nHistorical controlled fixture, not a fresh2.47.6 reproduction:\n1. Use fictional active signing-key metadata rows with the same type/algorithm, conflicting with the intended unique index.\n2. Apply the selected index migration in the isolated2.44.6 fixture child.\n3. The recorded result was an unhandled QueryFailedError/SQLITE_CONSTRAINT and child termination.\n\nThe complete duplicate-data failure has not been rerun on2.47.6. No production data or private logs are included.\n\n### Expected behavior\n\nCould maintainers confirm the intended rejection handling and identify a maintained fix/release or a supported migration-precondition approach? No vendor code has been patched. Empty-profile startup success does not establish duplicate-data migration recovery.\n\n### Debug Info\n\nManually redacted version/source summary; raw About/debug output is not included.\nHistorical fixture: n8n2.44.6, Node24.22.1, sqlite3 package5.1.7 (SQLite3.44.2).\nCurrent source comparison: n8n2.47.6, @n8n/db1.47.4, @n8n/typeorm0.14.0. Empty-profile smoke used Node24.22.3/SQLite3.44.2; this was not the duplicate-data regression.\nNo account IDs, workflow IDs, private paths, backups, keys or credentials are included.\n\n### Operating System\n\nWindows (local isolated test environment)\n\n### n8n Version\n\n2.44.6 historical fixture;2.47.6 source comparison only\n\n### Node.js Version\n\n24.22.1 historical fixture;24.22.3 empty-profile smoke\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/44779/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/44779/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @mayankbaba19-max,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9837\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9837](https://linear.app/n8n/issue/GHC-9837)",
+      "at": "2026-11-22T08:14:11Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44779#issuecomment-7076394088"
+    }
+  ],
+  "comments_complete": true
+}

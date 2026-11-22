@@ -1,0 +1,107 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/44776",
+  "collected_at": "2026-11-22T09:43:55.147735+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/44776",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/44776/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/44776/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/44776/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/44776",
+    "id": 6539168833,
+    "node_id": "I_kwDOC4Q8Qs8AAAABhcPMQQ",
+    "number": 44776,
+    "title": "Webhook Allowed Origins (CORS) entries after the first are broken when the list contains spaces",
+    "user": {
+      "login": "Mattenhaim",
+      "id": 279262900,
+      "node_id": "U_kgDOEKU2tA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/279262900?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Mattenhaim",
+      "html_url": "https://github.com/Mattenhaim",
+      "followers_url": "https://api.github.com/users/Mattenhaim/followers",
+      "following_url": "https://api.github.com/users/Mattenhaim/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Mattenhaim/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Mattenhaim/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Mattenhaim/subscriptions",
+      "organizations_url": "https://api.github.com/users/Mattenhaim/orgs",
+      "repos_url": "https://api.github.com/users/Mattenhaim/repos",
+      "events_url": "https://api.github.com/users/Mattenhaim/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Mattenhaim/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-11-22T06:08:38Z",
+    "updated_at": "2026-11-22T07:05:56Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "**Bug Description**\n\nThe webhook Allowed Origins (CORS) list is split on commas without trimming whitespace. With the common `https://a.com, https://b.com` spelling (comma followed by a space), every entry after the first keeps a leading space and never matches the request's `Origin` header. The response then carries the first entry instead of the requested origin, and the browser rejects the cross-origin response. Only the first entry of a space-separated list works.\n\nNote: #18528 reported this symptom and was closed as fixed in n8n 1.109.0, but the origin-parsing code is unchanged on current master and the behavior still reproduces.\n\n**To Reproduce**\n\n1. Create a workflow with a Webhook node (any response mode that answers the request, e.g. \"When Last Node Finishes\").\n2. In the node options, set Allowed Origins (CORS) to `https://a.com, https://b.com` — note the space after the comma.\n3. Activate the workflow and call the webhook with the header `Origin: https://b.com`.\n4. Observe the response header: `Access-Control-Allow-Origin: https://a.com` — the second, explicitly allowed origin was not matched and the browser blocks the response.\n5. For comparison, configure the list without the space (`https://a.com,https://b.com`): `https://b.com` is matched and echoed. The whitespace alone changes whether an allowed origin works.\n\n**Expected behavior**\n\nEach comma-separated entry is trimmed before matching, so an origin listed as `https://a.com, https://b.com` matches requests from `https://b.com` and echoes it in `Access-Control-Allow-Origin`.\n\n**Debug Info**\n\n```\nn8nVersion: 2.49.0 (source build, master @ 75fe21cb)\ndatabase: sqlite\nn8n_executions_mode: main\nconsumerId: n/a (local source build)\n```\n\nThe behavior is server-side logic and is not specific to this environment.\n\n## Environment\n\n**Operating System:** Windows 11 (affects all platforms; the issue is in the CORS origin parsing, not platform-specific)\n\n**n8n Version:** master @ 75fe21cb (2026-11-22), still present on current master (bf31087b); also present in the released 1.109.0 line despite #18528 being closed as fixed there\n\n**Node.js Version:** 24.20.0\n\n**Database:** SQLite (default)\n\n**Execution mode:** main (default)\n\n**Hosting:** self hosted\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/44776/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/44776/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @Mattenhaim,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9835\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9835](https://linear.app/n8n/issue/GHC-9835)",
+      "at": "2026-11-22T06:08:47Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44776#issuecomment-7075154273"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "The whitespace issue is in the production webhook handler: `packages/cli/src/webhooks/webhook-request-handler.ts` splits `allowedOrigins` on `,` and then uses `originsList.includes(req.headers.origin)` without trimming. So `https://b.com` cannot match the stored second entry ` https://b.com`; the fallback also uses the untrimmed first entry. Trimming each split entry before both matching and selecting the fallback would address both cases. A regression case for `https://a.com, https://b.com` in the webhook request-handler tests would pin this down.",
+      "at": "2026-11-22T07:05:56Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44776#issuecomment-7075710856"
+    }
+  ],
+  "comments_complete": true
+}

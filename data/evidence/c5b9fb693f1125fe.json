@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/44752",
-  "collected_at": "2026-11-21T09:44:48.255855+00:00",
+  "collected_at": "2026-11-22T09:43:55.147735+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/44752",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -50,9 +50,9 @@
     "locked": false,
     "assignees": [],
     "milestone": null,
-    "comments": 4,
+    "comments": 9,
     "created_at": "2026-11-21T05:29:43Z",
-    "updated_at": "2026-11-21T09:29:13Z",
+    "updated_at": "2026-11-21T22:20:42Z",
     "closed_at": null,
     "assignee": null,
     "author_association": "CONTRIBUTOR",
@@ -113,6 +113,36 @@
       "text": "In the API and export serialization layers, missing keys and explicit `null` are already treated the same way for root workflow metadata (both map to empty/null states in TypeORM without functional differences).\n\nHandling it right in the root checksum loop makes sense so we don't break nested node parameters, where `null` could actually be intentional user input:\n\n```ts\n// In the root checksum serializer loop:\nif (value === undefined || (isRootMetadataField(key) && value === null)) continue;\n```\n\nRestricting the normalization to top-level metadata fields like `description` should resolve the hash mismatch cleanly without unexpected side effects.\n",
       "at": "2026-11-21T09:29:13Z",
       "url": "https://github.com/n8n-io/n8n/issues/44752#issuecomment-7060603778"
+    },
+    {
+      "author": "Arin004joshi",
+      "text": "> The mismatch happens because `undefined` properties are omitted during `JSON.stringify`, while explicit `null` values serialize into the payload string and produce a different SHA-256 hash.\n> \n> Since `null` and `undefined` represent the absence of a value for nullable top-level fields in `WORKFLOW_CHECKSUM_FIELDS`, filtering both at the root payload builder keeps the checksum consistent.\n> \n> Fix in `packages/workflow/src/workflow-checksum.ts`:\n> \n> **Patch Preview (First 3 lines of verified fix):**\n> \n> for (const field of WORKFLOW_CHECKSUM_FIELDS) {\n> \tconst value = workflow[field];\n> \tif (value != null) {\n> # ... [TRUNCATED — Full production patch & verification steps locked below]\n\nHey @grinem, I've gone through the issue and implemented a fix locally. I had one question regarding the implementation approach.\n\nIn `packages/workflow/src/workflow-checksum.ts`, I've introduced the following:\n\n```typescript\ntype WorkflowChecksumField = (typeof WORKFLOW_CHECKSUM_FIELDS)[number];\n\n/**\n * Fields that are nullable on `WorkflowSnapshot`. For these fields `null` has\n * the same meaning as `undefined`: the value is absent. For all other fields\n * `null` is a meaningful value and must stay in the checksum payload.\n */\nconst NULLABLE_CHECKSUM_FIELDS: ReadonlySet<WorkflowChecksumField> = new Set([\n    'description',\n    'activeVersionId',\n]);\n```\n\nSince `WorkflowSnapshot` already declares the nullable fields through its TypeScript types, would you prefer keeping this explicit `ReadonlySet`, or is there an existing convention or a better way to derive this information without maintaining two separate sources of truth?\n\nI'd appreciate your thoughts on which approach would be more appropriate here.",
+      "at": "2026-11-21T15:01:30Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44752#issuecomment-7064548450"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "There is a similar pattern in `schemas.ts`: `optionalNonNullableINodeKeys` is derived from the Zod shape, so the schema stays the source of truth. `WorkflowSnapshot` currently has only a TypeScript interface, though, and its types are erased at runtime. Unless this checksum input gets a runtime schema, an explicit set for the nullable checksum fields seems reasonable; deriving the set from the type alone is not possible at runtime.",
+      "at": "2026-11-21T16:05:37Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44752#issuecomment-7065375233"
+    },
+    {
+      "author": "Arin004joshi",
+      "text": "> There is a similar pattern in `schemas.ts`: `optionalNonNullableINodeKeys` is derived from the Zod shape, so the schema stays the source of truth. `WorkflowSnapshot` currently has only a TypeScript interface, though, and its types are erased at runtime. Unless this checksum input gets a runtime schema, an explicit set for the nullable checksum fields seems reasonable; deriving the set from the type alone is not possible at runtime.\n\nThanks for clarifying! That makes sense. Since `WorkflowSnapshot` is only a TypeScript interface and doesn't provide runtime metadata, I'll keep the explicit `ReadonlySet` for the nullable checksum fields. This also keeps the normalization scoped to the fields where `null` represents an absent value.\nI'll go ahead and raise the PR.",
+      "at": "2026-11-21T16:14:08Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44752#issuecomment-7065488891"
+    },
+    {
+      "author": "grinem",
+      "text": "Since TypeScript types are erased at compile time, you can't introspect `WorkflowSnapshot` at runtime without a runtime schema or decorator metadata, which `packages/workflow` doesn't use here. An explicit runtime set or tuple is the standard way to handle this in n8n.\n\nTo prevent the set from drifting out of sync with the type definition, you can enforce compile-time safety by typing the keys against nullable snapshot properties:\n\n```typescript\ntype NullableKeys<T> = {\n\t[K in keyof T]: null extends T[K] ? K : never;\n}[keyof T];\n\ntype NullableChecksumField = Extract<WorkflowChecksumField, NullableKeys<WorkflowSnapshot>>;\n\nconst NULLABLE_CHECKSUM_FIELDS: ReadonlySet<NullableChecksumField> = new Set([\n\t'description',\n\t'activeVersionId',\n]);\n```\nThat said, it's worth checking whether `null` and `undefined` ever have distinct semantic meanings for *any* field currently in `WORKFLOW_CHECKSUM_FIELDS`. If all checksummed fields treat explicit `null` and omitted (`undefined`) as equivalent absent states, handling `value != null` across all fields would eliminate the need to maintain a separate list altogether.\nsorry for the delay\n",
+      "at": "2026-11-21T21:21:21Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44752#issuecomment-7069414534"
+    },
+    {
+      "author": "Arin004joshi",
+      "text": "> Since TypeScript types are erased at compile time, you can't introspect `WorkflowSnapshot` at runtime without a runtime schema or decorator metadata, which `packages/workflow` doesn't use here. An explicit runtime set or tuple is the standard way to handle this in n8n.\n> \n> To prevent the set from drifting out of sync with the type definition, you can enforce compile-time safety by typing the keys against nullable snapshot properties:\n> \n> type NullableKeys<T> = {\n> \t[K in keyof T]: null extends T[K] ? K : never;\n> }[keyof T];\n> \n> type NullableChecksumField = Extract<WorkflowChecksumField, NullableKeys<WorkflowSnapshot>>;\n> \n> const NULLABLE_CHECKSUM_FIELDS: ReadonlySet<NullableChecksumField> = new Set([\n> \t'description',\n> \t'activeVersionId',\n> ]);\n> That said, it's worth checking whether `null` and `undefined` ever have distinct semantic meanings for _any_ field currently in `WORKFLOW_CHECKSUM_FIELDS`. If all checksummed fields treat explicit `null` and omitted (`undefined`) as equivalent absent states, handling `value != null` across all fields would eliminate the need to maintain a separate list altogether. sorry for the delay\n\nHey @grinem. No worries about the delay, and thanks for taking the time to review this.\n\nI've also opened a PR with the fix here: <https://github.com/n8n-io/n8n/pull/44760>\n\nI kept the explicit `ReadonlySet<WorkflowChecksumField>` containing just `description` and `activeVersionId`. I checked all ten fields in `WORKFLOW_CHECKSUM_FIELDS`: those are the only two declared `| null`. I did not switch to `value != null` for all fields, because `meta` is typed `unknown` (`null extends unknown` is true), so a global filter would also drop a legitimate root-level `meta: null` and broaden the change beyond the reported issue.\n\nI also looked at the `NullableKeys` guard you suggested. With the current `WorkflowSnapshot`, it would evaluate to `'description' | 'activeVersionId' | 'meta'` because `meta?: unknown`, and it only rejects invalid keys — it would not force us to add a newly nullable field later. Given that, I left it out to keep the change minimal, but I'm happy to add it (with `unknown` excluded) if you'd prefer the compile-time guard.\n\nDoes the current approach look good to you, or would you like any changes before this can move forward?",
+      "at": "2026-11-21T22:20:42Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44752#issuecomment-7070114579"
     }
   ],
   "comments_complete": true
