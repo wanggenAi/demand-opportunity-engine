@@ -1,0 +1,107 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/44789",
+  "collected_at": "2026-11-23T10:42:47.411006+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/44789",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/44789/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/44789/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/44789/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/44789",
+    "id": 6553393362,
+    "node_id": "I_kwDOC4Q8Qs8AAAABhpzY0g",
+    "number": 44789,
+    "title": "WriteBinaryFile and ReadWriteFile node tests fail on macOS",
+    "user": {
+      "login": "crimsondhaks",
+      "id": 163077190,
+      "node_id": "U_kgDOCbhcRg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/163077190?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/crimsondhaks",
+      "html_url": "https://github.com/crimsondhaks",
+      "followers_url": "https://api.github.com/users/crimsondhaks/followers",
+      "following_url": "https://api.github.com/users/crimsondhaks/following{/other_user}",
+      "gists_url": "https://api.github.com/users/crimsondhaks/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/crimsondhaks/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/crimsondhaks/subscriptions",
+      "organizations_url": "https://api.github.com/users/crimsondhaks/orgs",
+      "repos_url": "https://api.github.com/users/crimsondhaks/repos",
+      "events_url": "https://api.github.com/users/crimsondhaks/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/crimsondhaks/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-11-23T06:06:59Z",
+    "updated_at": "2026-11-23T10:06:44Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nOn a clean checkout of `master`, two node tests fail on macOS:\n\n- `nodes/WriteBinaryFile/test/WriteBinaryFile.test.ts`\n- `nodes/Files/ReadWriteFile/test/ReadWriteFile.test.ts`\n\nBoth fail the same way: the write node returns no output.\n\n```\nAssertionError: Equality failed for \"nodes/WriteBinaryFile/test/WriteBinaryFile.workflow.json\" at node \"Write Binary File\": expected [ null ] to deeply equal [ [ { …(2) } ] ]\n```\n\nBoth tests write into `NodeTestHarness.temporaryDir`, which is built from `os.tmpdir()`. On macOS that's `/var/folders/...`, and `/var` is a symlink to `/private/var`. Both tests also stub `fs.promises.realpath` to return the path unchanged, so the path is never resolved. The file system helpers then refuse to write, because the parent path has a symlinked component (`assertNoSymlinkInPath` in `file-system-helper-functions.ts`).\n\nIt's a test problem, not a product one. With the real `realpath`, `/var/...` resolves to `/private/var/...` first, and both tests pass on macOS once the stub is removed. CI runs on Linux, where the temp dir isn't behind a symlink, so it never shows up there.\n\n### To Reproduce\n\nOn macOS:\n\n```sh\ncd packages/nodes-base\nnpx vitest run nodes/WriteBinaryFile/test/WriteBinaryFile.test.ts nodes/Files/ReadWriteFile/test/ReadWriteFile.test.ts\n# Tests  2 failed (2)\n\nTMPDIR=$(realpath \"$TMPDIR\") npx vitest run nodes/WriteBinaryFile/test/WriteBinaryFile.test.ts nodes/Files/ReadWriteFile/test/ReadWriteFile.test.ts\n# Tests  2 passed (2)\n```\n\n### Expected behavior\n\nThe node tests pass on macOS as they do on Linux. The harness can create its temp dir under `realpathSync(os.tmpdir())`, which fixes every test that writes there without changing the existing `realpath` stubs. I have that fix ready, with a regression test, and will link a PR.\n\n### Debug Info\n\nNot applicable: this is the unit test suite run from source, not a running instance.\n\n### Operating System\n\nmacOS 27.3 (arm64)\n\n### n8n Version\n\nmaster at 327518f80b (2.49.0)\n\n### Node.js Version\n\n24.5.0\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/44789/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/44789/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @crimsondhaks,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9839\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9839](https://linear.app/n8n/issue/GHC-9839)",
+      "at": "2026-11-23T06:07:10Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44789#issuecomment-7093023833"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "The two tests stub `fs.promises.realpath` to return the input unchanged, while `NodeTestHarness.temporaryDir` is created under `os.tmpdir()`. On macOS, `/var/folders/...` traverses the `/var` symlink, so the file-system helper’s symlink check rejects the write; the current helper resolves paths with `realpath` before that check. Resolving `tmpdir()` before `mkdtempSync` in the harness looks like a focused fix that keeps the test stubs and covers other harness tests writing into the same directory. A regression assertion for the canonical temp path would help guard this across macOS runners.",
+      "at": "2026-11-23T10:06:44Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44789#issuecomment-7097509608"
+    }
+  ],
+  "comments_complete": true
+}

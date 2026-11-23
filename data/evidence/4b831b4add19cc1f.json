@@ -1,6 +1,6 @@
 {
   "source_url": "https://community.shopify.com/t/679097.json",
-  "collected_at": "2026-11-15T09:19:17.933130+00:00",
+  "collected_at": "2026-11-23T10:42:47.411006+00:00",
   "source": {
     "post_stream": {
       "posts": [
@@ -12,15 +12,15 @@
           "cooked": "<p>I heard that shopify has officially made b2b features for other plans after it was exclusively for shopify plus.</p>\n<p>Do you still use apps such as BSS, Sami, clay, massy ..etc. ? or they’re dead ?</p>",
           "post_number": 1,
           "post_type": 1,
-          "posts_count": 11,
+          "posts_count": 12,
           "updated_at": "2026-09-08T09:34:24.861Z",
           "reply_count": 0,
           "reply_to_post_number": null,
           "quote_count": 0,
-          "incoming_link_count": 39,
-          "reads": 47,
-          "readers_count": 46,
-          "score": 219.4,
+          "incoming_link_count": 47,
+          "reads": 53,
+          "readers_count": 52,
+          "score": 260.6,
           "yours": false,
           "topic_id": 679097,
           "topic_slug": "are-you-still-using-b2b-wholesale-pricing-apps",
@@ -87,15 +87,15 @@
           "cooked": "<p>Hi <a class=\"mention\" href=\"/u/ishaklekbir\">@ishaklekbir</a> Welcome To Shopify Community So Yes, that’s correct — as of April 2, 2026, Shopify made key B2B features available on Basic, Grow, and Advanced plans, not just Plus. This includes up to 3 active B2B catalogs, company profiles, payment terms, volume pricing, ACH payments (U.S. only), and vaulted credit cards, all at no additional cost. Unlimited catalogs, direct catalog-to-company assignment, partial payments, and deposits are still Plus-only. <a href=\"https://changelog.shopify.com/posts/key-b2b-features-now-available-on-non-plus-plans\">shopifyshopify</a></p>\n<p>As for BSS, Sami, Clay, Massy, etc. — they’re not dead, but their role has shifted. Native B2B now covers the basics well enough that a lot of smaller wholesale setups don’t strictly need an app anymore. Apps like BSS still get chosen when a store needs things native B2B doesn’t do, like:</p>\n<ul>\n<li>More than 3 pricing tiers/catalogs (native is Markets-based and capped at 3)</li>\n<li>Direct per-company or per-customer (not per-market) pricing</li>\n<li>More granular approval workflows, custom registration forms, or tiered discount logic beyond simple volume pricing</li>\n</ul>\n<p>So it’s less “app vs native” now and more “check if native covers your case first, and only install an app for the specific gap it doesn’t fill.” Hope this helps solve your problem, and if it does, don’t forget to like and mark it as the solution. Thank you!</p>",
           "post_number": 2,
           "post_type": 1,
-          "posts_count": 11,
+          "posts_count": 12,
           "updated_at": "2026-09-08T09:42:07.047Z",
           "reply_count": 0,
           "reply_to_post_number": null,
           "quote_count": 0,
           "incoming_link_count": 3,
-          "reads": 42,
-          "readers_count": 41,
-          "score": 23.4,
+          "reads": 48,
+          "readers_count": 47,
+          "score": 24.6,
           "yours": false,
           "topic_id": 679097,
           "topic_slug": "are-you-still-using-b2b-wholesale-pricing-apps",
@@ -122,7 +122,7 @@
             }
           ],
           "read": true,
-          "user_title": "Guidance Counsellor",
+          "user_title": "Know-it-All",
           "title_is_group": false,
           "bookmarked": false,
           "actions_summary": [],
@@ -159,15 +159,15 @@
           "cooked": "<p>Worth adding a practical way to actually test this rather than guessing: since native B2B now covers volume pricing and company profiles reasonably well, the fastest way to check if you can drop an app like BSS or Clay is to look at your actual pricing structure and count your real tiers. If you’re running 3 or fewer distinct wholesale price levels and pricing is genuinely per-market rather than per-individual-customer, native B2B likely covers your case entirely now, and removing the app just saves the monthly cost with no functional loss.</p>\n<p>Where it gets more nuanced: if your current app-based setup uses <strong>customer tags or metafields to assign custom pricing per individual account</strong> (rather than per market/catalog), that’s the exact gap native B2B still doesn’t close, since native pricing tiers are catalog-based, not account-specific. A lot of older wholesale setups were built exactly this way because it was the only option before B2B existed at all, so it’s worth actually checking how your current app assigns pricing internally before assuming a straightforward “just switch to native” migration, since a like-for-like feature comparison sometimes hides a structural difference in how pricing gets assigned underneath.</p>\n<p>One more thing worth flagging for anyone migrating: test the switch on a duplicate/dev theme first if you go this route, since removing a pricing app mid-operation while customers have active carts or saved payment methods tied to the app’s system can cause a rocky transition if done live without a fallback plan.</p>\n<p>Best,<br>\n<a href=\"https://apps.shopify.com/apploy-mobile-app-builder/?utm_campaign=shopcom&amp;utm_medium=signature&amp;utm_source=shopify-community\">Vikash Jha - Apploy</a></p>",
           "post_number": 3,
           "post_type": 1,
-          "posts_count": 11,
+          "posts_count": 12,
           "updated_at": "2026-09-08T12:58:34.155Z",
           "reply_count": 0,
           "reply_to_post_number": null,
           "quote_count": 0,
           "incoming_link_count": 1,
-          "reads": 27,
-          "readers_count": 26,
-          "score": 25.4,
+          "reads": 30,
+          "readers_count": 29,
+          "score": 26.0,
           "yours": false,
           "topic_id": 679097,
           "topic_slug": "are-you-still-using-b2b-wholesale-pricing-apps",
@@ -242,15 +242,15 @@
           "cooked": "<p>Shopify’s native B2B features can be a good fit for stores with relatively straightforward wholesale requirements. However, if you need <strong>customer-specific pricing, tiered/volume discounts, flexible wholesale rules, or different pricing setups for different customers</strong>, a dedicated wholesale pricing app can still be useful.</p>\n<p>One option worth looking at is <strong>B2B Guru – Wholesale Pricing</strong>. It’s designed to help Shopify merchants manage <strong>B2B and retail pricing from the same store</strong>, with features such as customer-specific pricing, tiered pricing, flexible discounts, and custom shipping discounts.</p>\n<p>So I wouldn’t say wholesale pricing apps are obsolete. For simpler B2B setups, Shopify’s native tools may be enough, while merchants with more customized pricing requirements may still benefit from an app like B2B Guru.</p>\n<p>You can take a look at <strong>B2B Guru – Wholesale Pricing</strong> here: <a href=\"https://apps.shopify.com/b2b-guru-wholesale-pricing\" class=\"inline-onebox\">B2B Guru Wholesale Pricing app - Easy B2B Wholesale Pricing Discount, B2B Pricing, B2B ordering | Shopify App Store</a></p>",
           "post_number": 4,
           "post_type": 1,
-          "posts_count": 11,
+          "posts_count": 12,
           "updated_at": "2026-09-09T14:05:19.737Z",
           "reply_count": 0,
           "reply_to_post_number": null,
           "quote_count": 0,
           "incoming_link_count": 1,
-          "reads": 21,
-          "readers_count": 20,
-          "score": 9.2,
+          "reads": 24,
+          "readers_count": 23,
+          "score": 9.8,
           "yours": false,
           "topic_id": 679097,
           "topic_slug": "are-you-still-using-b2b-wholesale-pricing-apps",
@@ -314,15 +314,15 @@
           "cooked": "<p>Good question, and the three answers above cover the pricing side well. One dimension nobody has mentioned: what native B2B covers and what it still does not, once you get past pricing.</p>\n<p>Native now handles company profiles, catalogs, volume pricing and payment terms on every paid plan. What it does not do is act on those payment terms. Shopify records that a company is on Net 30 and shows the order as Overdue once the due date passes, but nothing stops that company placing the next order while it owes you. There is no credit limit field anywhere in Shopify. The only native lever is per company, under Customers &gt; Companies &gt; the company &gt; Checkout &gt; Edit &gt; Submit all orders as drafts for review, and it is manual in both directions: someone turns it on when an account goes bad and has to remember to turn it off when they pay.</p>\n<p>Reminders are half-covered natively: up to five payment reminder emails, sent on the due date or a set number of days after it, using your own notification template. Nothing before the due date.</p>\n<p>So the practical answer to your question depends on which job you are asking about. For pricing, native has genuinely taken over the simple cases, as <a class=\"mention\" href=\"/u/vikashj\">@VikashJ</a> described. For getting paid, native has not, and that is a different shelf of apps from BSS or Sami.</p>\n<p>Disclosure: I build one of those, Credit Guard. It sets a credit limit per company and places a credit hold at checkout when a company is over its limit or has an overdue invoice, with a per-company bypass. It needs companies and payment terms, so it works alongside the native setup rather than replacing a pricing app.</p>",
           "post_number": 5,
           "post_type": 1,
-          "posts_count": 11,
+          "posts_count": 12,
           "updated_at": "2026-09-10T04:33:05.402Z",
           "reply_count": 0,
           "reply_to_post_number": null,
           "quote_count": 0,
           "incoming_link_count": 3,
-          "reads": 20,
-          "readers_count": 19,
-          "score": 79.0,
+          "reads": 23,
+          "readers_count": 22,
+          "score": 79.6,
           "yours": false,
           "topic_id": 679097,
           "topic_slug": "are-you-still-using-b2b-wholesale-pricing-apps",
@@ -387,15 +387,15 @@
           "cooked": "<p>One angle nobody has mentioned yet: the case where distributors need the catalog and <em>their own</em> prices via API, outside your storefront (feeding their own shop or ERP). Native B2B and most pricing apps only apply prices at storefront/checkout level. A pattern that works well is a small middleware in front of the Admin GraphQL API: one scoped API key per partner, pricing rules computed server-side (e.g. % off retail), Shopify stays the system of record, and no partner ever gets an Admin token. Two lessons from running one in production: pin and actively track the Admin API version (we had weight/weightUnit disappear from ProductVariant after a version bump, which broke the catalog endpoint with a generic upstream error), and return money values as strings in JSON. Write-up of the setup, if useful: <a href=\"https://d-side.pro/en/projects/aleta-shopify-b2b-api\" class=\"inline-onebox\" rel=\"noopener nofollow ugc\">Aleta B2B API: a Shopify-Backed Catalog for Swiss Distributors · Bulle, Fribourg | d-side</a> (disclosure: I built it).</p>",
           "post_number": 6,
           "post_type": 1,
-          "posts_count": 11,
+          "posts_count": 12,
           "updated_at": "2026-10-05T12:40:04.176Z",
           "reply_count": 0,
           "reply_to_post_number": null,
           "quote_count": 0,
           "incoming_link_count": 0,
-          "reads": 15,
-          "readers_count": 14,
-          "score": 3.0,
+          "reads": 19,
+          "readers_count": 18,
+          "score": 3.8,
           "yours": false,
           "topic_id": 679097,
           "topic_slug": "are-you-still-using-b2b-wholesale-pricing-apps",
@@ -418,7 +418,7 @@
               "internal": false,
               "reflection": false,
               "title": "Aleta B2B API: a Shopify-Backed Catalog for Swiss Distributors · Bulle, Fribourg | d-side",
-              "clicks": 0
+              "clicks": 1
             }
           ],
           "read": true,
@@ -458,15 +458,15 @@
           "cooked": "<p><a class=\"mention\" href=\"/u/ishaklekbir\">@ishaklekbir</a> Adding one angle the replies haven’t covered yet.</p>\n<p>Native covers the simple cases well, as Mustafa_Ali and VikashJ said. When stores still keep or add an app in 2026, it’s usually for one of these:</p>\n<ol>\n<li>More than 3 price tiers, or per-account pricing below Plus.</li>\n<li>Sales reps ordering for the accounts they manage. Native lets staff place draft orders for company locations from the admin, but there’s no storefront portal where a rep logs in and orders as the customer.</li>\n<li>Credit limits on net terms, as sainthesam described.</li>\n<li>ERP or accounting sync for price lists and orders.</li>\n</ol>\n<p>One more thing to check when you compare apps: several B2B apps cap how many B2B orders each plan includes per month. That’s fine at low volume, but the bill moves with your wholesale growth, so read the plan limits and not just the feature list.</p>\n<p>Disclosure: I work on B2Bridge, which covers those four in one app with no monthly B2B order cap. So to answer your question: not dead, but the reasons to install one have narrowed to the gaps above.</p>",
           "post_number": 7,
           "post_type": 1,
-          "posts_count": 11,
+          "posts_count": 12,
           "updated_at": "2026-10-09T02:48:10.080Z",
           "reply_count": 0,
           "reply_to_post_number": null,
           "quote_count": 0,
           "incoming_link_count": 2,
-          "reads": 14,
-          "readers_count": 13,
-          "score": 12.8,
+          "reads": 18,
+          "readers_count": 17,
+          "score": 13.6,
           "yours": false,
           "topic_id": 679097,
           "topic_slug": "are-you-still-using-b2b-wholesale-pricing-apps",
@@ -514,68 +514,6 @@
           "topic_accepted_answer": null
         },
         {
-          "id": 1922076,
-          "username": "rainline",
-          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/r/5daacb/{size}.png",
-          "created_at": "2026-10-24T07:55:37.170Z",
-          "cooked": "<p>Still using them — but for a narrower slice than in 2025, and the deciding question is how much pricing structure you actually need.</p>\n<p>The replies above cover the native side well: if you run three price levels or fewer and can organize buyers into companies and catalogs, native B2B does that on every paid plan now.</p>\n<p>The slice where a lightweight app still makes sense is the opposite shape: you don’t want to restructure anything into catalogs — you just want one flat wholesale percentage for a defined group, applied automatically at checkout. No codes to send, no price lists to maintain. Two eligibility shapes cover most cases: a customer tag (wholesale customers you approve one by one), or the B2B company itself — buyers checking out in their company context get the discount on each line item.</p>\n<p>We built Wholesale Price Manager for exactly that middle case: one percentage rule, eligibility by customer tag or by B2B company, applied automatically at checkout. Deliberately narrow — no tiered pricing, no multiple price lists, no minimum orders. If you need those, native catalogs or a fuller wholesale suite is the better fit.</p>\n<p>What’s your actual structure — a flat wholesale percentage for a group, or per-account tiers? That decides native versus app more than anything else.</p>",
-          "post_number": 8,
-          "post_type": 1,
-          "posts_count": 11,
-          "updated_at": "2026-10-24T07:55:37.170Z",
-          "reply_count": 0,
-          "reply_to_post_number": null,
-          "quote_count": 0,
-          "incoming_link_count": 0,
-          "reads": 9,
-          "readers_count": 8,
-          "score": 1.8,
-          "yours": false,
-          "topic_id": 679097,
-          "topic_slug": "are-you-still-using-b2b-wholesale-pricing-apps",
-          "primary_group_name": null,
-          "flair_name": null,
-          "flair_url": null,
-          "flair_bg_color": null,
-          "flair_color": null,
-          "flair_group_id": null,
-          "badges_granted": [],
-          "version": 1,
-          "can_edit": false,
-          "can_delete": false,
-          "can_recover": false,
-          "can_see_hidden_post": false,
-          "can_wiki": false,
-          "read": true,
-          "user_title": null,
-          "bookmarked": false,
-          "actions_summary": [],
-          "moderator": false,
-          "admin": false,
-          "staff": false,
-          "user_id": 1630056,
-          "hidden": false,
-          "trust_level": 1,
-          "deleted_at": null,
-          "user_deleted": false,
-          "edit_reason": null,
-          "can_view_edit_history": true,
-          "wiki": false,
-          "post_url": "/t/are-you-still-using-b2b-wholesale-pricing-apps/679097/8",
-          "category_expert_approved_group": null,
-          "needs_category_expert_approval": null,
-          "can_manage_category_expert_posts": false,
-          "event": null,
-          "reactions": [],
-          "current_user_reaction": null,
-          "reaction_users_count": 0,
-          "current_user_used_main_reaction": false,
-          "can_accept_answer": false,
-          "can_unaccept_answer": false,
-          "accepted_answer": false,
-          "topic_accepted_answer": null
-        },
-        {
           "id": 1930447,
           "username": "DavidVu",
           "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/d/da6949/{size}.png",
@@ -583,15 +521,15 @@
           "cooked": "<p>Short answer: it depends on how many price levels you really have.</p>\n<p>Native B2B on Basic, Grow and Advanced gives you 3 active catalogs, shared across all your B2B markets, and catalogs attach to markets, not to companies. So:</p>\n<ul>\n<li>1 to 3 price levels, same for every buyer in a market: native catalogs are enough. Don’t add an app.</li>\n<li>4+ levels, or one big account that negotiated its own prices: you hit the limit. Your options are Plus (direct catalog assignment to companies), or an app that prices on top of Companies.</li>\n</ul>\n<p>If you go the app route, check two things: does it read native Companies and locations (not just customer tags), and can you see what a given buyer will pay before they order.</p>\n<p>Disclosure: I built Pactly, which adds price tiers on top of native Companies for non-Plus stores. Happy to answer questions either way.</p>",
           "post_number": 9,
           "post_type": 1,
-          "posts_count": 11,
+          "posts_count": 12,
           "updated_at": "2026-11-04T06:20:26.127Z",
           "reply_count": 0,
           "reply_to_post_number": null,
           "quote_count": 0,
-          "incoming_link_count": 3,
-          "reads": 5,
-          "readers_count": 4,
-          "score": 16.0,
+          "incoming_link_count": 4,
+          "reads": 9,
+          "readers_count": 8,
+          "score": 21.8,
           "yours": false,
           "topic_id": 679097,
           "topic_slug": "are-you-still-using-b2b-wholesale-pricing-apps",
@@ -645,15 +583,15 @@
           "cooked": "<p>One case the replies haven’t covered: products sold in many sizes and colors, like apparel, shoes and yarn.</p>\n<p>Native volume pricing is set per variant. Shopify’s own help example: the buyer needs 20 blue hats to get<br>\nthe blue hat break, and grey hats don’t count toward it. That’s fine for a single-SKU product. It breaks when<br>\na boutique orders a style as 4 S, 8 M, 8 L and 4 XL across two colors. That’s 24 units of one style, but no<br>\nsingle variant reaches a break of 12, so they pay full wholesale on everything. Quantity rules (minimum and<br>\nincrement) are per variant too, so “minimum 12 of this style, any mix” can’t be expressed natively either.</p>\n<p>What native does give you is the Quick order list section: buyers can type quantities for every variant of<br>\none product on its page instead of adding them one by one. For a lot of stores that, plus per-variant<br>\nbreaks set low enough, is enough.</p>\n<p>If it isn’t, the native workaround I’ve seen work: automatic “amount off products” discounts with a<br>\nminimum quantity on that product, one per tier (say 12+, 24+ and 48+ units), set not to combine with each<br>\nother so the best one applies. The minimum counts every variant of the product together. Check that the<br>\ndiscount eligibility matches who your wholesale buyers are before relying on it.</p>\n<p>When that gets unwieldy (dozens of styles, tiers that differ per collection, or a size-by-color grid<br>\nbuyers can fill in one go), that’s the slice where an app still earns its place, even with native B2B on<br>\nevery plan.</p>",
           "post_number": 10,
           "post_type": 1,
-          "posts_count": 11,
+          "posts_count": 12,
           "updated_at": "2026-11-13T02:51:41.046Z",
           "reply_count": 0,
           "reply_to_post_number": null,
           "quote_count": 0,
-          "incoming_link_count": 0,
-          "reads": 7,
-          "readers_count": 6,
-          "score": 1.4,
+          "incoming_link_count": 1,
+          "reads": 10,
+          "readers_count": 9,
+          "score": 7.0,
           "yours": false,
           "topic_id": 679097,
           "topic_slug": "are-you-still-using-b2b-wholesale-pricing-apps",
@@ -700,22 +638,22 @@
           "topic_accepted_answer": null
         },
         {
-          "id": 1940450,
-          "username": "zhenjun",
-          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/z/b19c9b/{size}.png",
-          "created_at": "2026-11-15T06:52:33.964Z",
-          "cooked": "<p>Hi <a class=\"mention\" href=\"/u/ishaklekbir\">@ishaklekbir</a>, great question. Shopify has indeed expanded B2B features to Basic, Grow, and Advanced plans as of April 2026, which has changed the landscape significantly.</p>\n<p>Here are 3 things to consider before deciding whether you still need a dedicated wholesale app:</p>\n<ol>\n<li>\n<p>Native B2B covers the basics well: company profiles, volume pricing, and customer-specific pricing for up to 3 markets/catalogs. If your wholesale setup is straightforward, you might be able to drop the app entirely.</p>\n</li>\n<li>\n<p>Apps still shine for complex needs: more than 3 pricing tiers, per-company (not per-market) pricing, custom approval workflows, or tiered discount logic that goes beyond simple volume breaks. If any of these apply to your setup, BSS, Sami, or similar apps are still relevant.</p>\n</li>\n<li>\n<p>Practical test: Before uninstalling any app, try building your wholesale setup with native B2B first on a dev store.</p>\n</li>\n</ol>\n<p>Hope this helps! Happy to chat more about your specific setup if needed.</p>\n<p>Best,</p>\n<p>zhenjun</p>",
-          "post_number": 11,
+          "id": 1942346,
+          "username": "clearstock",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/c/848f3c/{size}.png",
+          "created_at": "2026-11-17T07:03:12.082Z",
+          "cooked": "<p>Native B2B is enough for a lot of stores now, but the split is fairly predictable. If you need per-customer price lists, net terms and company accounts, native B2B on Basic/Grow/Advanced covers the common cases. Apps still earn their place when you need volume tiers counted across a product (native counts per variant), quote/approval flows with custom rules, or price lists that change by tag rather than by catalog. For most stores the answer is ‘native first, app for the specific gap’ rather than replacing the whole stack.</p>",
+          "post_number": 13,
           "post_type": 1,
-          "posts_count": 11,
-          "updated_at": "2026-11-15T06:52:33.964Z",
+          "posts_count": 12,
+          "updated_at": "2026-11-17T07:03:12.082Z",
           "reply_count": 0,
           "reply_to_post_number": null,
           "quote_count": 0,
-          "incoming_link_count": 0,
-          "reads": 1,
-          "readers_count": 0,
-          "score": 0.2,
+          "incoming_link_count": 2,
+          "reads": 3,
+          "readers_count": 2,
+          "score": 10.6,
           "yours": false,
           "topic_id": 679097,
           "topic_slug": "are-you-still-using-b2b-wholesale-pricing-apps",
@@ -739,7 +677,140 @@
           "moderator": false,
           "admin": false,
           "staff": false,
-          "user_id": 1651404,
+          "user_id": 1620061,
+          "hidden": false,
+          "trust_level": 1,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/are-you-still-using-b2b-wholesale-pricing-apps/679097/13",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        },
+        {
+          "id": 1947533,
+          "username": "pipelabs",
+          "avatar_template": "/user_avatar/community.shopify.com/pipelabs/{size}/420654_2.png",
+          "created_at": "2026-11-23T05:38:25.417Z",
+          "cooked": "<p>(post deleted by author)</p>",
+          "post_number": 14,
+          "post_type": 1,
+          "posts_count": 12,
+          "updated_at": "2026-11-23T05:38:36.789Z",
+          "reply_count": 0,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 1,
+          "readers_count": 0,
+          "score": 0.2,
+          "yours": false,
+          "topic_id": 679097,
+          "topic_slug": "are-you-still-using-b2b-wholesale-pricing-apps",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 2,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": null,
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1652159,
+          "hidden": false,
+          "trust_level": 0,
+          "deleted_at": null,
+          "user_deleted": true,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/are-you-still-using-b2b-wholesale-pricing-apps/679097/14",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        },
+        {
+          "id": 1947534,
+          "username": "pipelabs",
+          "avatar_template": "/user_avatar/community.shopify.com/pipelabs/{size}/420654_2.png",
+          "created_at": "2026-11-23T05:40:13.170Z",
+          "cooked": "<p>Agree with the “native first, app for the specific gap” view. Two gaps we see a lot with merchants on Shopify B2B that haven’t come up yet:</p>\n<ol>\n<li>Pricing that lives in the ERP. Customer-specific contract rates and price breaks need to stay in sync, and maintaining them by hand in catalogs gets painful quickly.</li>\n<li>Approval rules on the buyer’s side, so a purchaser’s order can be held for sign-off before it reaches you.</li>\n</ol>\n<p>FYI: I’m at Pipelabs and we are a Shopify Plus Partner, and we have built a product, Pocketknife which is a B2B layer for Shopify Plus that covers both (along with quick order, PunchOut and POS). Worth saying it’s built for Plus, so it won’t help on Basic, Grow or Advanced. Details are here if useful: <a href=\"https://getpocketknife.io/\" rel=\"noopener nofollow ugc\">[link: /shopify-b2b-portal]</a>. Happy to answer questions either way!</p>",
+          "post_number": 15,
+          "post_type": 1,
+          "posts_count": 12,
+          "updated_at": "2026-11-23T05:40:13.170Z",
+          "reply_count": 0,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 2,
+          "readers_count": 1,
+          "score": 0.4,
+          "yours": false,
+          "topic_id": 679097,
+          "topic_slug": "are-you-still-using-b2b-wholesale-pricing-apps",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "link_counts": [
+            {
+              "url": "https://getpocketknife.io/",
+              "internal": false,
+              "reflection": false,
+              "title": "Pocketknife | Enterprise B2B Commerce for Shopify Plus",
+              "clicks": 0
+            }
+          ],
+          "read": true,
+          "user_title": null,
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1652159,
           "hidden": false,
           "trust_level": 0,
           "deleted_at": null,
@@ -747,7 +818,7 @@
           "edit_reason": null,
           "can_view_edit_history": true,
           "wiki": false,
-          "post_url": "/t/are-you-still-using-b2b-wholesale-pricing-apps/679097/11",
+          "post_url": "/t/are-you-still-using-b2b-wholesale-pricing-apps/679097/15",
           "category_expert_approved_group": null,
           "needs_category_expert_approval": null,
           "can_manage_category_expert_posts": false,
@@ -770,44 +841,45 @@
         1885488,
         1906098,
         1909889,
-        1922076,
         1930447,
         1938952,
-        1940450
+        1942346,
+        1947533,
+        1947534
       ]
     },
     "timeline_lookup": [
       [
         1,
-        68
+        76
       ],
       [
         4,
-        67
+        75
       ],
       [
         5,
-        66
+        74
       ],
       [
         6,
-        41
+        49
       ],
       [
         7,
-        37
+        45
       ],
       [
         8,
-        22
+        19
       ],
       [
         9,
-        11
+        10
       ],
       [
         10,
-        2
+        6
       ],
       [
         11,
@@ -838,16 +910,15 @@
             126
           ]
         },
+        "1620061": {
+          "id": 1620061,
+          "badge_ids": [
+            109
+          ]
+        },
         "1621457": {
           "id": 1621457,
           "badge_ids": [
-            116
-          ]
-        },
-        "1630056": {
-          "id": 1630056,
-          "badge_ids": [
-            110,
             116
           ]
         },
@@ -899,21 +970,21 @@
           "badge_grouping_id": 7,
           "badge_type_id": 2
         },
-        "32": {
-          "id": 32,
-          "name": "Gives Back",
-          "slug": "gives-back",
-          "description": "Has 100 liked posts and gave 100 likes",
-          "icon": "heart",
-          "image_url": null,
-          "badge_grouping_id": 2,
-          "badge_type_id": 2
-        },
         "110": {
           "id": 110,
           "name": "50 Posts",
           "slug": "50-posts",
           "description": "Way to go! You've posted 50 times in the Shopify Community",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 3
+        },
+        "109": {
+          "id": 109,
+          "name": "25 Posts",
+          "slug": "25-posts",
+          "description": "With 25 posts submitted, you help keep the conversations going",
           "icon": "file-signature",
           "image_url": null,
           "badge_grouping_id": 7,
@@ -939,6 +1010,16 @@
           "badge_grouping_id": 7,
           "badge_type_id": 1
         },
+        "32": {
+          "id": 32,
+          "name": "Gives Back",
+          "slug": "gives-back",
+          "description": "Has 100 liked posts and gave 100 likes",
+          "icon": "heart",
+          "image_url": null,
+          "badge_grouping_id": 2,
+          "badge_type_id": 2
+        },
         "46": {
           "id": 46,
           "name": "Aficionado",
@@ -958,16 +1039,6 @@
           "image_url": null,
           "badge_grouping_id": 7,
           "badge_type_id": 2
-        },
-        "109": {
-          "id": 109,
-          "name": "25 Posts",
-          "slug": "25-posts",
-          "description": "With 25 posts submitted, you help keep the conversations going",
-          "icon": "file-signature",
-          "image_url": null,
-          "badge_grouping_id": 7,
-          "badge_type_id": 3
         },
         "120": {
           "id": 120,
@@ -1029,14 +1100,14 @@
           "badge_grouping_id": 9,
           "badge_type_id": 3
         },
-        "3": {
-          "id": 3,
-          "name": "Regular",
-          "slug": "regular",
-          "description": "Awarded at Trust Level 3. Recognized for regular contributions as a trusted user.",
-          "icon": "user",
+        "119": {
+          "id": 119,
+          "name": "100 Likes",
+          "slug": "100-likes",
+          "description": "Your contributions have earned you 100 likes",
+          "icon": "thumbs-up",
           "image_url": null,
-          "badge_grouping_id": 4,
+          "badge_grouping_id": 8,
           "badge_type_id": 2
         },
         "125": {
@@ -1049,15 +1120,25 @@
           "badge_grouping_id": 9,
           "badge_type_id": 3
         },
-        "119": {
-          "id": 119,
-          "name": "100 Likes",
-          "slug": "100-likes",
-          "description": "Your contributions have earned you 100 likes",
+        "3": {
+          "id": 3,
+          "name": "Regular",
+          "slug": "regular",
+          "description": "Awarded at Trust Level 3. Recognized for regular contributions as a trusted user.",
+          "icon": "user",
+          "image_url": null,
+          "badge_grouping_id": 4,
+          "badge_type_id": 2
+        },
+        "116": {
+          "id": 116,
+          "name": "10 Likes",
+          "slug": "10-likes",
+          "description": "You've received 10 likes",
           "icon": "thumbs-up",
           "image_url": null,
           "badge_grouping_id": 8,
-          "badge_type_id": 2
+          "badge_type_id": 3
         },
         "127": {
           "id": 127,
@@ -1089,25 +1170,15 @@
           "badge_grouping_id": 8,
           "badge_type_id": 3
         },
-        "116": {
-          "id": 116,
-          "name": "10 Likes",
-          "slug": "10-likes",
-          "description": "You've received 10 likes",
-          "icon": "thumbs-up",
-          "image_url": null,
-          "badge_grouping_id": 8,
-          "badge_type_id": 3
-        },
-        "128": {
-          "id": 128,
-          "name": "100 Accepted Solutions",
-          "slug": "100-accepted-solutions",
-          "description": "Congratulations! You've provided 100 accepted solutions",
+        "124": {
+          "id": 124,
+          "name": "10 Accepted Solutions",
+          "slug": "10-accepted-solutions",
+          "description": "10 of your replies have been accepted as solutions",
           "icon": "check",
           "image_url": null,
           "badge_grouping_id": 9,
-          "badge_type_id": 2
+          "badge_type_id": 3
         },
         "108": {
           "id": 108,
@@ -1119,15 +1190,15 @@
           "badge_grouping_id": 7,
           "badge_type_id": 3
         },
-        "124": {
-          "id": 124,
-          "name": "10 Accepted Solutions",
-          "slug": "10-accepted-solutions",
-          "description": "10 of your replies have been accepted as solutions",
+        "128": {
+          "id": 128,
+          "name": "100 Accepted Solutions",
+          "slug": "100-accepted-solutions",
+          "description": "Congratulations! You've provided 100 accepted solutions",
           "icon": "check",
           "image_url": null,
           "badge_grouping_id": 9,
-          "badge_type_id": 3
+          "badge_type_id": 2
         },
         "117": {
           "id": 117,
@@ -1163,12 +1234,12 @@
     "fancy_title": "Are you still using B2B wholesale pricing apps?",
     "id": 679097,
     "title": "Are you still using B2B wholesale pricing apps?",
-    "posts_count": 11,
+    "posts_count": 12,
     "created_at": "2026-09-08T09:34:24.679Z",
-    "views": 501,
+    "views": 602,
     "reply_count": 0,
     "like_count": 3,
-    "last_posted_at": "2026-11-15T06:52:33.964Z",
+    "last_posted_at": "2026-11-23T05:40:13.170Z",
     "visible": true,
     "closed": false,
     "archived": false,
@@ -1176,7 +1247,7 @@
     "archetype": "regular",
     "slug": "are-you-still-using-b2b-wholesale-pricing-apps",
     "category_id": 186,
-    "word_count": 2127,
+    "word_count": 2001,
     "deleted_at": null,
     "user_id": 1621457,
     "featured_link": null,
@@ -1191,7 +1262,7 @@
     "unpinned": null,
     "pinned": false,
     "current_post_number": 1,
-    "highest_post_number": 11,
+    "highest_post_number": 15,
     "deleted_by": null,
     "actions_summary": [
       {
@@ -1241,7 +1312,7 @@
       "status_type": "close",
       "category_id": null
     },
-    "message_bus_last_id": 8,
+    "message_bus_last_id": 32,
     "participant_count": 11,
     "show_read_indicator": false,
     "thumbnails": null,
@@ -1280,7 +1351,7 @@
         ],
         "tags_descriptions": {},
         "like_count": 0,
-        "views": 190,
+        "views": 194,
         "category_id": 133,
         "featured_link": null,
         "op_like_count": 0,
@@ -1305,6 +1376,109 @@
               "username": "Eric-HAN",
               "avatar_template": "/user_avatar/community.shopify.com/eric-han/{size}/142735_2.png",
               "primary_group_name": "shopifypartner",
+              "trust_level": 2
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "How to set up B2B selling without using Shopify Plus?",
+        "id": 281450,
+        "title": "How to set up B2B selling without using Shopify Plus?",
+        "slug": "how-to-set-up-b2b-selling-without-using-shopify-plus",
+        "posts_count": 28,
+        "reply_count": 14,
+        "highest_post_number": 29,
+        "image_url": null,
+        "created_at": "2024-01-02T14:29:00.000Z",
+        "last_posted_at": "2026-06-23T10:37:54.350Z",
+        "bumped": true,
+        "bumped_at": "2026-06-23T10:37:54.350Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Hi guys, \nI’m having a hard time figuring out which apps or custom code is best to accomplish what I want for my cliënt, who wants to sell B2B only without the use of Shopify Plus (too expensive). \nIt doesn’t have to be &hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [
+          {
+            "id": 4404,
+            "name": "apps",
+            "slug": "apps"
+          },
+          {
+            "id": 3866,
+            "name": "b2b",
+            "slug": "b2b"
+          },
+          {
+            "id": 438,
+            "name": "wholesale",
+            "slug": "wholesale"
+          }
+        ],
+        "tags_descriptions": {},
+        "like_count": 11,
+        "views": 3191,
+        "category_id": 286,
+        "featured_link": null,
+        "op_like_count": 3,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 741031,
+              "username": "IMYOURGIRL",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/i/b5ac83/{size}.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 2
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 690746,
+              "username": "josiah_helium",
+              "avatar_template": "/user_avatar/community.shopify.com/josiah_helium/{size}/201025_2.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 2
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 1260333,
+              "username": "AaronMoss",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/a/dfb087/{size}.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": 1627180,
+              "username": "intake",
+              "avatar_template": "/user_avatar/community.shopify.com/intake/{size}/405268_2.png",
+              "trust_level": 0
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 1610649,
+              "username": "Pixlwrk5",
+              "avatar_template": "/user_avatar/community.shopify.com/pixlwrk5/{size}/394300_2.png",
               "trust_level": 2
             }
           }
@@ -1342,7 +1516,7 @@
         ],
         "tags_descriptions": {},
         "like_count": 0,
-        "views": 359,
+        "views": 370,
         "category_id": 186,
         "featured_link": null,
         "op_like_count": 0,
@@ -1405,23 +1579,23 @@
         ]
       },
       {
-        "fancy_title": "How to set up B2B selling without using Shopify Plus?",
-        "id": 281450,
-        "title": "How to set up B2B selling without using Shopify Plus?",
-        "slug": "how-to-set-up-b2b-selling-without-using-shopify-plus",
-        "posts_count": 28,
-        "reply_count": 14,
-        "highest_post_number": 29,
+        "fancy_title": "Best B2B Wholesale app for Shopify (Food Business)",
+        "id": 590370,
+        "title": "Best B2B Wholesale app for Shopify (Food Business)",
+        "slug": "best-b2b-wholesale-app-for-shopify-food-business",
+        "posts_count": 8,
+        "reply_count": 1,
+        "highest_post_number": 11,
         "image_url": null,
-        "created_at": "2024-01-02T14:29:00.000Z",
-        "last_posted_at": "2026-06-23T10:37:54.350Z",
+        "created_at": "2026-03-02T05:10:01.643Z",
+        "last_posted_at": "2026-10-06T03:46:02.951Z",
         "bumped": true,
-        "bumped_at": "2026-06-23T10:37:54.350Z",
+        "bumped_at": "2026-10-06T03:46:02.951Z",
         "archetype": "regular",
         "unseen": false,
         "pinned": false,
         "unpinned": null,
-        "excerpt": "Hi guys, \nI’m having a hard time figuring out which apps or custom code is best to accomplish what I want for my cliënt, who wants to sell B2B only without the use of Shopify Plus (too expensive). \nIt doesn’t have to be &hellip;",
+        "excerpt": "We’re looking for the best B2B wholesale app for Shopify that can support the following: \n\n\nCreate discount groups (e.g., Restaurants, Food Service, Retail etc) \n\n\nSet custom pricing per group (not just a flat % discount&hellip;",
         "visible": true,
         "closed": false,
         "archived": false,
@@ -1429,59 +1603,48 @@
         "liked": null,
         "tags": [
           {
-            "id": 4404,
-            "name": "apps",
-            "slug": "apps"
-          },
-          {
-            "id": 3866,
-            "name": "b2b",
-            "slug": "b2b"
-          },
-          {
-            "id": 438,
-            "name": "wholesale",
-            "slug": "wholesale"
+            "id": 4775,
+            "name": "shopify-apps",
+            "slug": "shopify-apps"
           }
         ],
         "tags_descriptions": {},
-        "like_count": 11,
-        "views": 3144,
-        "category_id": 286,
+        "like_count": 1,
+        "views": 437,
+        "category_id": 186,
         "featured_link": null,
-        "op_like_count": 3,
+        "op_like_count": 1,
         "has_accepted_answer": false,
         "posters": [
           {
             "extras": null,
             "description": "Original Poster",
             "user": {
-              "id": 741031,
-              "username": "IMYOURGIRL",
-              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/i/b5ac83/{size}.png",
+              "id": 1242857,
+              "username": "mel_j3",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/m/50afbb/{size}.png",
               "primary_group_name": "shopifypartner",
-              "trust_level": 2
+              "trust_level": 1
             }
           },
           {
             "extras": null,
             "description": "Frequent Poster",
             "user": {
-              "id": 690746,
-              "username": "josiah_helium",
-              "avatar_template": "/user_avatar/community.shopify.com/josiah_helium/{size}/201025_2.png",
+              "id": 100539,
+              "username": "Pratham_Jani",
+              "avatar_template": "/user_avatar/community.shopify.com/pratham_jani/{size}/80045_2.png",
               "primary_group_name": "shopifypartner",
-              "trust_level": 2
+              "trust_level": 1
             }
           },
           {
             "extras": null,
             "description": "Frequent Poster",
             "user": {
-              "id": 1260333,
-              "username": "AaronMoss",
-              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/a/dfb087/{size}.png",
-              "primary_group_name": "merchant",
+              "id": 1616099,
+              "username": "ecommercehulk",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/e/b2d939/{size}.png",
               "trust_level": 1
             }
           },
@@ -1489,20 +1652,22 @@
             "extras": null,
             "description": "Recent Poster",
             "user": {
-              "id": 1627180,
-              "username": "intake",
-              "avatar_template": "/user_avatar/community.shopify.com/intake/{size}/405268_2.png",
-              "trust_level": 0
+              "id": 708293,
+              "username": "Sachin_3",
+              "avatar_template": "/user_avatar/community.shopify.com/sachin_3/{size}/372031_2.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 2
             }
           },
           {
             "extras": "latest",
             "description": "Most Recent Poster",
             "user": {
-              "id": 1610649,
-              "username": "Pixlwrk5",
-              "avatar_template": "/user_avatar/community.shopify.com/pixlwrk5/{size}/394300_2.png",
-              "trust_level": 2
+              "id": 1512516,
+              "username": "Hien_Simicart",
+              "avatar_template": "/user_avatar/community.shopify.com/hien_simicart/{size}/416357_2.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 1
             }
           }
         ]
@@ -1595,106 +1760,17 @@
             }
           }
         ]
-      },
-      {
-        "fancy_title": "B2B order processing without a Wholesale area",
-        "id": 332292,
-        "title": "B2B order processing without a Wholesale area",
-        "slug": "b2b-order-processing-without-a-wholesale-area",
-        "posts_count": 7,
-        "reply_count": 3,
-        "highest_post_number": 7,
-        "image_url": null,
-        "created_at": "2024-06-17T16:21:40.000Z",
-        "last_posted_at": "2025-11-08T20:18:18.690Z",
-        "bumped": true,
-        "bumped_at": "2025-11-08T20:18:18.690Z",
-        "archetype": "regular",
-        "unseen": false,
-        "pinned": false,
-        "unpinned": null,
-        "excerpt": "Hello out there!! I hope someone will be able to help me. \nWe have a B2C shopify store which works great but we also have wholesale customers (B2B). We have been processing our B2B orders outside of Shopify in a rather o&hellip;",
-        "visible": true,
-        "closed": false,
-        "archived": false,
-        "bookmarked": null,
-        "liked": null,
-        "tags": [
-          {
-            "id": 4021,
-            "name": "troubleshooting",
-            "slug": "troubleshooting"
-          },
-          {
-            "id": 4770,
-            "name": "shop-performance",
-            "slug": "shop-performance"
-          }
-        ],
-        "tags_descriptions": {},
-        "like_count": 1,
-        "views": 441,
-        "category_id": 95,
-        "featured_link": null,
-        "op_like_count": 0,
-        "has_accepted_answer": false,
-        "posters": [
-          {
-            "extras": null,
-            "description": "Original Poster",
-            "user": {
-              "id": 1335920,
-              "username": "Want2Know",
-              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/w/50afbb/{size}.png",
-              "primary_group_name": "shopifystaff",
-              "trust_level": 1
-            }
-          },
-          {
-            "extras": null,
-            "description": "Frequent Poster",
-            "user": {
-              "id": 953318,
-              "username": "Brett_Helium",
-              "avatar_template": "/user_avatar/community.shopify.com/brett_helium/{size}/362190_2.png",
-              "primary_group_name": "shopifypartner",
-              "trust_level": 2
-            }
-          },
-          {
-            "extras": null,
-            "description": "Recent Poster",
-            "user": {
-              "id": 775570,
-              "username": "tobebuilds",
-              "avatar_template": "/user_avatar/community.shopify.com/tobebuilds/{size}/178678_2.png",
-              "primary_group_name": "shopifypartner",
-              "trust_level": 2
-            }
-          },
-          {
-            "extras": "latest",
-            "description": "Most Recent Poster",
-            "user": {
-              "id": 1108328,
-              "username": "Maxime_Obius",
-              "avatar_template": "/user_avatar/community.shopify.com/maxime_obius/{size}/372677_2.png",
-              "primary_group_name": "shopifypartner",
-              "trust_level": 2
-            }
-          }
-        ]
       }
     ],
     "summarizable": true,
     "has_cached_summary": true,
     "ai_summary": {
-      "id": 1776785,
-      "summarized_text": "Shopify’s expansion of native B2B features to Basic, Grow, and Advanced plans has made wholesale apps less necessary for simpler stores. The discussion says native tools include company profiles, up to three active catalogs, volume pricing, and payment terms; Plus retains features such as unlimited catalogs and assigning catalogs directly to companies.\n\nWhether to keep an app depends on the setup. Native catalogs may suffice for up to three market-based price levels, but apps can still help with more tiers, account-specific pricing, approval workflows, flat tag-based discounts, or mixed-size/color quantity breaks. Other gaps raised include credit limits and overdue-invoice holds, sales-rep ordering portals, ERP/accounting integrations, and exposing partner-specific prices through an API. App order caps and compatibility with Shopify Companies are also worth checking.\n\nThe practical advice is to compare actual pricing rules with native capabilities and test any migration in a development store before uninstalling an app. No single choice is recommended for all merchants; the discussion remains open, with the main conclusion that apps are not obsolete, but their value is now concentrated in specialized requirements.",
+      "id": 1902366,
+      "summarized_text": "Shopify’s expanded native B2B tools on Basic, Grow, and Advanced plans cover common wholesale needs, including company profiles, payment terms, volume pricing, and up to three active catalogs. The main consensus is “native first, apps for specific gaps,” rather than wholesale apps being obsolete. Plus-only features include unlimited catalogs and assigning catalogs directly to companies.\n\nApps may still be useful for more than three price levels, account-specific or ERP-driven pricing, complex approval and registration workflows, credit limits and overdue-payment holds, sales-rep ordering portals, or ERP/accounting integrations. A notable pricing limitation is that native volume discounts and quantity rules count per product variant, which can make mixed-size or mixed-color orders difficult to discount as a single style. Some merchants may manage this with product-level automatic discounts, though that can become cumbersome.\n\nOne reply also notes that storefront pricing tools may not provide partner-specific catalogs through an API. Merchants considering a switch are advised to check how their current pricing is assigned and test migration before removing an app. The discussion remains open; the best choice depends on each store’s pricing, ordering, and payment requirements.",
       "algorithm": "gpt-6-luna",
       "outdated": false,
-      "created_at": "2026-09-08T09:35:39.854Z",
-      "updated_at": "2026-11-15T06:54:34.845Z"
+      "created_at": "2026-11-20T21:12:28.135Z",
+      "updated_at": "2026-11-23T05:45:54.138Z"
     },
     "is_category_expert_question": null,
     "has_livestream": null,
@@ -1720,6 +1796,19 @@
       "notification_level": 1,
       "participants": [
         {
+          "id": 1652159,
+          "username": "pipelabs",
+          "avatar_template": "/user_avatar/community.shopify.com/pipelabs/{size}/420654_2.png",
+          "post_count": 2,
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 0
+        },
+        {
           "id": 1644728,
           "username": "dmrrlc",
           "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/d/898d66/{size}.png",
@@ -1744,19 +1833,6 @@
           "flair_bg_color": null,
           "flair_group_id": null,
           "trust_level": 2
-        },
-        {
-          "id": 1630056,
-          "username": "rainline",
-          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/r/5daacb/{size}.png",
-          "post_count": 1,
-          "primary_group_name": null,
-          "flair_name": null,
-          "flair_url": null,
-          "flair_color": null,
-          "flair_bg_color": null,
-          "flair_group_id": null,
-          "trust_level": 1
         },
         {
           "id": 134173,
@@ -1785,9 +1861,9 @@
           "trust_level": 1
         },
         {
-          "id": 1651404,
-          "username": "zhenjun",
-          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/z/b19c9b/{size}.png",
+          "id": 1620061,
+          "username": "clearstock",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/c/848f3c/{size}.png",
           "post_count": 1,
           "primary_group_name": null,
           "flair_name": null,
@@ -1795,20 +1871,7 @@
           "flair_color": null,
           "flair_bg_color": null,
           "flair_group_id": null,
-          "trust_level": 0
-        },
-        {
-          "id": 1649690,
-          "username": "DavidVu",
-          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/d/da6949/{size}.png",
-          "post_count": 1,
-          "primary_group_name": null,
-          "flair_name": null,
-          "flair_url": null,
-          "flair_color": null,
-          "flair_bg_color": null,
-          "flair_group_id": null,
-          "trust_level": 0
+          "trust_level": 1
         },
         {
           "id": 708293,
@@ -1861,6 +1924,19 @@
           "flair_bg_color": null,
           "flair_group_id": null,
           "trust_level": 1
+        },
+        {
+          "id": 1649690,
+          "username": "DavidVu",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/d/da6949/{size}.png",
+          "post_count": 1,
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 0
         }
       ],
       "created_by": {
@@ -1869,9 +1945,9 @@
         "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/i/97f17d/{size}.png"
       },
       "last_poster": {
-        "id": 1651404,
-        "username": "zhenjun",
-        "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/z/b19c9b/{size}.png"
+        "id": 1652159,
+        "username": "pipelabs",
+        "avatar_template": "/user_avatar/community.shopify.com/pipelabs/{size}/420654_2.png"
       },
       "links": [
         {
@@ -1895,6 +1971,17 @@
           "user_id": 134173,
           "domain": "apps.shopify.com",
           "root_domain": "shopify.com"
+        },
+        {
+          "url": "https://d-side.pro/en/projects/aleta-shopify-b2b-api",
+          "title": "Aleta B2B API: a Shopify-Backed Catalog for Swiss Distributors · Bulle, Fribourg | d-side",
+          "internal": false,
+          "attachment": false,
+          "reflection": false,
+          "clicks": 1,
+          "user_id": 1644728,
+          "domain": "d-side.pro",
+          "root_domain": "d-side.pro"
         }
       ]
     },

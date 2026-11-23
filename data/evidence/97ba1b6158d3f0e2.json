@@ -1,0 +1,44 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50601881",
+  "collected_at": "2026-11-23T10:42:47.411006+00:00",
+  "source": {
+    "author": "pkuki",
+    "children": [
+      {
+        "author": "jauntywundrkind",
+        "children": [],
+        "created_at": "2026-11-22T20:26:52.000Z",
+        "created_at_i": 1795379212,
+        "id": 50603542,
+        "options": [],
+        "parent_id": 50601881,
+        "points": null,
+        "story_id": 50601881,
+        "text": "It was fun to see this in the comments, having done something less ambitious but having started in a similar spot. <a href=\"https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50571790\">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50571790</a><p>Great project, very fun!",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-11-22T17:38:28.000Z",
+    "created_at_i": 1795369108,
+    "id": 50601881,
+    "options": [],
+    "parent_id": null,
+    "points": 4,
+    "story_id": 50601881,
+    "text": "Hi HN!<p>I want to show you a project which I&#x27;m using myself to save time on worktrees creation and management.\nMy case is a bit specific because I&#x27;m normally working on a really big monorepo, where creation of a worktree takes around a minute and 20+GB of disk space.\nPreviously I was using a pool of worktrees which were managed by my own sessions manager. It worked, but was a bit clunky and sometimes I was running out of the worktrees anyway.<p>As a fun side-project I decided to create a VFS for serving git branches directly from the git object store, with only one real checkout needed.\nI started with read only version to speed-up the reviews (I often checkout the PRs code to get LLM support) and that is very easy to do with FUSE, but it would not let me fully replace my old solution.\nAdding write capabilities was a bit more involved, and writing without full kernel passthrough turned out to be a few times slower.\nBut interestingly for my workflows it does not matter. I was also running some external tests like full Linux kernel build (allmodconfig) and the performance hit vs a native build was around 2.5%.\nSo far so good!<p>After building the core I realised that having VFS allows me to play with other interesting features.\nAnd I implemented a few:<p>- tree structure of branch dependencies; you can e.g. have branch &#x27;api&#x27;, on which &#x27;store&#x27; and &#x27;ui&#x27; depend. When you add or fetch new commits to &#x27;api&#x27;, whole tree rebases automatically<p>- read only views showing &quot;merged&quot; state of each node in the tree from the previous point; e.g. you can check how &#x27;api&#x27; branch would look like, if both &#x27;store&#x27; and &#x27;ui&#x27; would be merged as is; currently it has two modes: only committed or all changes<p>- command for showing conflicts between current worktree and all other open worktrees<p>- command for showing all worktrees touching given file of interest<p>- agents getting real time notifications about potential conflicts<p>What is also important is that it works without an issue with all native git commands. Git sees those workspaces as normal worktrees.\nSo you can e.g. normally rebase every such worktree separately (which is one of the main differences compared to overlayfs).\nI&#x27;m sure some people will think this project is very similar to GitFS, EdenFS, OverlayFS, ArtifactFS, etc... spoiler alert: it is not.\nMost of those projects are focusing on fetching objects from remote git server lazily. Which I can imagine is very useful if you need a fresh checkout on a new instance (eg. in a CI).\nBut that is not my use case. I have a full local checkout, and need to be able to create and delete on demand a lot of worktrees. That is it :)\nBut I also prepared a full comparison, just in case: <a href=\"https:&#x2F;&#x2F;github.com&#x2F;pkukielka&#x2F;gitfold&#x2F;blob&#x2F;main&#x2F;docs&#x2F;comparison.md\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;pkukielka&#x2F;gitfold&#x2F;blob&#x2F;main&#x2F;docs&#x2F;comparis...</a><p>I&#x27;m happy to answer any questions!",
+    "title": "Show HN: Gitfold – every Git branch as a folder, ready in a second",
+    "type": "story",
+    "url": "https://github.com/pkukielka/gitfold"
+  },
+  "comments": [
+    {
+      "author": "jauntywundrkind",
+      "text": "It was fun to see this in the comments, having done something less ambitious but having started in a similar spot.  https://news.ycombinator.com/item?id=50571790  Great project, very fun!",
+      "at": "2026-11-22T20:26:52.000Z",
+      "url": "https://news.ycombinator.com/item?id=50603542"
+    }
+  ],
+  "comments_complete": true
+}

@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/44776",
-  "collected_at": "2026-11-22T09:43:55.147735+00:00",
+  "collected_at": "2026-11-23T10:42:47.411006+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/44776",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -50,9 +50,9 @@
     "locked": false,
     "assignees": [],
     "milestone": null,
-    "comments": 2,
+    "comments": 3,
     "created_at": "2026-11-22T06:08:38Z",
-    "updated_at": "2026-11-22T07:05:56Z",
+    "updated_at": "2026-11-22T20:48:43Z",
     "closed_at": null,
     "assignee": null,
     "author_association": "CONTRIBUTOR",
@@ -101,6 +101,12 @@
       "text": "The whitespace issue is in the production webhook handler: `packages/cli/src/webhooks/webhook-request-handler.ts` splits `allowedOrigins` on `,` and then uses `originsList.includes(req.headers.origin)` without trimming. So `https://b.com` cannot match the stored second entry ` https://b.com`; the fallback also uses the untrimmed first entry. Trimming each split entry before both matching and selecting the fallback would address both cases. A regression case for `https://a.com, https://b.com` in the webhook request-handler tests would pin this down.",
       "at": "2026-11-22T07:05:56Z",
       "url": "https://github.com/n8n-io/n8n/issues/44776#issuecomment-7075710856"
+    },
+    {
+      "author": "grinem",
+      "text": "Confirmed on master. The origins string is parsed via `.split(',')` without trimming elements, leaving subsequent entries with a leading space that fails strict equality against incoming `Origin` headers (falling back to returning the first entry).\n\nWorkaround for now is dropping spaces completely in the node parameter:\n`[https]://a[.]com,[https]://b[.]com`\n\nA PR fixing this just needs `.split(',').map((o) => o.trim()).filter(Boolean)` in the webhook handler options parser, ideally with a test covering spaces and tabs around separators.\n",
+      "at": "2026-11-22T20:48:43Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44776#issuecomment-7085563793"
     }
   ],
   "comments_complete": true

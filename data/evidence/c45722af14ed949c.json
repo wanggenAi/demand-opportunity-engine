@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50589936",
-  "collected_at": "2026-11-22T09:43:55.147735+00:00",
+  "collected_at": "2026-11-23T10:42:47.411006+00:00",
   "source": {
     "author": "pvarghav",
     "children": [
@@ -9,7 +9,23 @@
         "children": [
           {
             "author": "pvarghav",
-            "children": [],
+            "children": [
+              {
+                "author": "charliercrvta",
+                "children": [],
+                "created_at": "2026-11-22T11:10:36.000Z",
+                "created_at_i": 1795345836,
+                "id": 50598514,
+                "options": [],
+                "parent_id": 50590824,
+                "points": null,
+                "story_id": 50589936,
+                "text": "Ahh I see, if it isn&#x27;t proprietary and you don&#x27;t mind sharing, what are the list of the support tooling that you find best for creating these videos?<p>I make multiple random videos, from feature launches and because things are cheap, we can now actually customize videos for investors, clients to the level that we customize videos for each clients, so we do have an internal workflow that kinda takes a prompt and produce many videos. Other than that, things like employee training video, or product training. Claude is really great in narrating through live product video screenshots as well.<p>Hmm where it falls short actually is 2 places: one is that we are mixing diffusion models for some parts of the videos, that remains to be a lottery machine, and second is the voice model because we&#x27;d have to produce the videos in multiple languages and it sometimes still mispronounce some words, like maybe 1 or 2 word out of a 3 minute video. Its small error, but annoying. Nothing major on the overall level, but little thing that prevents the one-shot performance.",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
             "created_at": "2026-11-21T16:29:44.000Z",
             "created_at_i": 1795278584,
             "id": 50590824,
@@ -60,6 +76,12 @@
       "text": "Thanks! I agree, the models have gotten really good, and Klistra uses a similar pipeline to Claude + Remotion under the hood. It doesn't use Remotion, but it's currently running on Opus 5.5. What I tried to do with this project was make it more accessible and integrate all the supporting tooling into one studio with a purpose-built graphical interface. If you're a developer who's already got your own Claude + Remotion workflow set up, you might not need Klistra. It's mainly for people who'd rather spend the time on the idea than on the setup. That said, I use Klistra myself even though I had the Claude workflow set up before, because the supporting features save me time, and with the Claude connection you get a bit of the best of both worlds. I think the biggest downside to Klistra right now compared to the manual pipeline is the cost. If you already have a Claude subscription, it's going to be more expensive, since Klistra has to pay API prices. A first 15–20 second video usually takes 50–150 credits, roughly $2–9 depending on plan. The Claude integration was an attempt to partly fix this, but the builder agent itself still runs on the API. My hope for the future is that models will get better and cheaper, so this won't really be an issue. I also have plans to gather my own data and try to fine-tune an open-source model, which could be both better and cheaper, but so far I've focused on getting the product out there. Curious what you mostly make, and where your setup still falls short?",
       "at": "2026-11-21T16:29:44.000Z",
       "url": "https://news.ycombinator.com/item?id=50590824"
+    },
+    {
+      "author": "charliercrvta",
+      "text": "Ahh I see, if it isn't proprietary and you don't mind sharing, what are the list of the support tooling that you find best for creating these videos? I make multiple random videos, from feature launches and because things are cheap, we can now actually customize videos for investors, clients to the level that we customize videos for each clients, so we do have an internal workflow that kinda takes a prompt and produce many videos. Other than that, things like employee training video, or product training. Claude is really great in narrating through live product video screenshots as well. Hmm where it falls short actually is 2 places: one is that we are mixing diffusion models for some parts of the videos, that remains to be a lottery machine, and second is the voice model because we'd have to produce the videos in multiple languages and it sometimes still mispronounce some words, like maybe 1 or 2 word out of a 3 minute video. Its small error, but annoying. Nothing major on the overall level, but little thing that prevents the one-shot performance.",
+      "at": "2026-11-22T11:10:36.000Z",
+      "url": "https://news.ycombinator.com/item?id=50598514"
     }
   ],
   "comments_complete": true

@@ -1,0 +1,198 @@
+{
+  "source_api_url": "https://api.github.com/repos/threeswordz/cinder-grind/issues/414",
+  "collected_at": "2026-11-23T10:42:47.411006+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/threeswordz/cinder-grind/issues/414",
+    "repository_url": "https://api.github.com/repos/threeswordz/cinder-grind",
+    "labels_url": "https://api.github.com/repos/threeswordz/cinder-grind/issues/414/labels{/name}",
+    "comments_url": "https://api.github.com/repos/threeswordz/cinder-grind/issues/414/comments",
+    "events_url": "https://api.github.com/repos/threeswordz/cinder-grind/issues/414/events",
+    "html_url": "https://github.com/threeswordz/cinder-grind/issues/414",
+    "id": 6555240595,
+    "node_id": "I_kwDOUre7ns8AAAABhrkIkw",
+    "number": 414,
+    "title": "LIVE ERP FULL-COMPLETION CLOCK — 1,900 forecast hours / 112 requirements / eight roles / M4→GL10",
+    "user": {
+      "login": "threeswordz",
+      "id": 23411748,
+      "node_id": "MDQ6VXNlcjIzNDExNzQ4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/23411748?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/threeswordz",
+      "html_url": "https://github.com/threeswordz",
+      "followers_url": "https://api.github.com/users/threeswordz/followers",
+      "following_url": "https://api.github.com/users/threeswordz/following{/other_user}",
+      "gists_url": "https://api.github.com/users/threeswordz/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/threeswordz/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/threeswordz/subscriptions",
+      "organizations_url": "https://api.github.com/users/threeswordz/orgs",
+      "repos_url": "https://api.github.com/users/threeswordz/repos",
+      "events_url": "https://api.github.com/users/threeswordz/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/threeswordz/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 10,
+    "created_at": "2026-11-23T08:21:56Z",
+    "updated_at": "2026-11-23T10:31:04Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Canonical full-use, 8-role, all-112-requirements delivery clock\n\n**Owner request (23 Nov 2026):** Every response to **\"continue the recommended sequence\"**, **\"check the recommended sequence\"** or **\"live position\"** must start with the same current GitHub-backed hour-by-hour roadmap, then state and execute or recommend the exact next unblocked task. This issue is the dashboard index. The complete ledger is immutable until a documented evidence-backed revision, not an unattended background monitor.\n\n### Open the live planning records\n\n- [**Dashboard, all 60 packages and acceptance exits**](https://github.com/threeswordz/cinder-grind/blob/docs-erp-full-use-1900h-hourly-ledger-20261123/docs/ERP-FULL-USE-LIVE-CLOCK.md)\n- [**H0001–H1900, one forecast-hour row each (CSV)**](https://github.com/threeswordz/cinder-grind/blob/docs-erp-full-use-1900h-hourly-ledger-20261123/docs/ERP-FULL-USE-HOURLY-1900.csv)\n- [**Machine-readable ledger: packages/status/verified hours**](https://github.com/threeswordz/cinder-grind/blob/docs-erp-full-use-1900h-hourly-ledger-20261123/docs/ERP-FULL-USE-WORKPACKAGES.json)\n\n**Anchored planning snapshot:** 2026-11-23 16:17:49 SGT, `main` at `3a441b1fa389a9a274e6ca82413740a3ffa2f51b`. The branch changes only documentation and is **NOT merged**; it does not trigger any GitHub Actions or full CI. No source, main, Mac, retained HR/Finance data, Production or role grants touched.\n\n| Live counter (baseline only; refresh on each request) | Initial checkpoint |\n|---|---|\n| Official prototype outcomes | **4/8** complete (milestones 1,2,3,5) |\n| Official production readiness gates | **3/10** complete (GL-01–03) |\n| Current forecast work cursor | **H0001–H0020, M4-01: reconcile 112 real requirements; M4 total H0001–H0170** |\n| Forecast remaining budget at anchor | **1,900 productive engineering hours** |\n| Verified work hours retired *after this baseline* | **0 hours**, intentionally, because existing tested code/PRs were reflected in the 1,900-hour net forecast, not fresh earned credit |\n| Actual measured worker hours | **UNKNOWN** until timesheets/work logs exist; never invent |\n| Baseline (one 35 productive-hour/week workstream) | **~54.3 work weeks, ~8 December 2027**, assumes no external delays |\n| Parallel 65 productive-hour/week scenario | **~29.2 work weeks, ~15 June 2027**, requires actual staffing |\n| Forecast sensitivity | **1,100–3,300h** remaining; HR/Accounting legal/policy, real roles and #245 scope high uncertainty |\n\n### Required universal dashboard format\n\n**Every check must display:** (1) SGT now, latest main/PR/run; (2) official M?/8 and GL?/10, do not call them percentage of project effort; (3) current hour range Hxxxx–Hyyyy and work-package ID, status, acceptance dependency; (4) `verified planned-hours retired / revised remaining hours` and **% of forward work budget**, with a horizontal bar; (5) updated ETAs at 35h/week and 65h/week **recalculated from today's SGT date**, plus risk; (6) exact evidence newly accepted, no false credit for speculative time or partial tests; (7) next authorized action, Owner-only gates and no repeated full CI. If nothing changed, state **\"No newly earned work-hours; estimate unchanged\"** instead of silently subtracting elapsed time.\n\n**Planning cursor, not wall-clock:** CSV's H0001–H1900 are one-hour units in a forecast, not fixed appointments; progress uses exit-verified acceptance of numbered work packages, not commit counts, CI runtime or waiting hours. The official milestone count changes only at its real Owner/GitHub exit gates. An approved scope increase changes the baseline in an explicitly recorded revision; do not hide it by manipulating a percentage.\n\n### Stage totals (baseline only)\n\n| Order | Work category | Hour numbers | Increment |\n|---|---|---:|---:|\n| 1 | Prototype Milestone 4 → 5/8 | H0001–H0170 | 170h |\n| 2 | Prototype Milestone 6 → 6/8 | H0171–H0290 | 120h |\n| 3 | Prototype Milestone 7 → 7/8 | H0291–H0340 | 50h |\n| 4 | Prototype Milestone 8 → 8/8 | H0341–H0405 | 65h |\n| 5 | GL-05 full HR, OT, leave, payroll | H0406–H0705 | 300h |\n| 6 | GL-06 full Accounting, tax, banking, GL | H0706–H1185 | 480h |\n| 7 | #245 plus budget/exception scope | H1186–H1315 | 130h |\n| 8 | GL-04 complete eight-role operational acceptance | H1316–H1435 | 120h |\n| 9 | GL-07 release security | H1436–H1530 | 95h |\n| 10 | GL-08 actual Production hosting/recovery | H1531–H1640 | 110h |\n| 11 | GL-09 real data/roles/onboarding | H1641–H1750 | 110h |\n| 12 | GL-10 comprehensive eight-role UAT, cutover and acceptance | H1751–H1900 | 150h |\n\n*Not a promise of chronological independence: HR, GL, governance, infrastructure and data preparation may overlap where authorized, but the cumulative hour forecast uses a serial 35-hour/week baseline. No full-completion claim while any of 112 requirements, all eight-role workflows, Accounting/HR or actual Production remains unresolved.*\n\n**Owners and protection:** #305 milestone board, #278 GL board, #304 requirement reconciliations and #384 no-waste-full-CI rule are controlling. No Ready, protected-main merge or mandatory full CI without its special authorization; no Production without separate explicit Owner authority. The ledger is planning-only, not approval for accounting/payroll policies, host credentials, data migration or cutover.\n\n### Update discipline\n\nOn every substantive new acceptance, append dated exact-SHA/PR/CI/role proof to this issue and update the package/forecast state on a docs-only planning branch (or its eventual approved merged successor). Deduct only verified *remaining-hours estimate* of completed packages; actual work hours stay separate. If a forecast changes, add a signed delta and explain why. Checking does not trigger CI. This provides persistent evidence across new chats rather than relying solely on conversation memory.",
+    "reactions": {
+      "url": "https://api.github.com/repos/threeswordz/cinder-grind/issues/414/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/threeswordz/cinder-grind/issues/414/timeline",
+    "performed_via_github_app": {
+      "id": 1144995,
+      "client_id": "Iv23liVemv8A9if9v0F2",
+      "slug": "chatgpt-codex-connector",
+      "node_id": "A_kwHOAOQ6Gs4AEXij",
+      "owner": {
+        "login": "openai",
+        "id": 14957082,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjE0OTU3MDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/14957082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/openai",
+        "html_url": "https://github.com/openai",
+        "followers_url": "https://api.github.com/users/openai/followers",
+        "following_url": "https://api.github.com/users/openai/following{/other_user}",
+        "gists_url": "https://api.github.com/users/openai/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/openai/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/openai/subscriptions",
+        "organizations_url": "https://api.github.com/users/openai/orgs",
+        "repos_url": "https://api.github.com/users/openai/repos",
+        "events_url": "https://api.github.com/users/openai/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/openai/received_events",
+        "type": "Organization",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "name": "ChatGPT Codex Connector",
+      "description": "Bring ChatGPT and Codex to your GitHub repositories.",
+      "external_url": "https://www.chatgpt.com",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "created_at": "2025-02-14T01:37:05Z",
+      "updated_at": "2026-09-23T18:52:59Z",
+      "permissions": {
+        "actions": "write",
+        "checks": "read",
+        "contents": "write",
+        "emails": "read",
+        "issues": "write",
+        "metadata": "read",
+        "pull_requests": "write",
+        "statuses": "read",
+        "workflows": "write"
+      },
+      "events": [
+        "check_run",
+        "check_suite",
+        "commit_comment",
+        "issues",
+        "issue_comment",
+        "pull_request",
+        "pull_request_review",
+        "pull_request_review_comment",
+        "pull_request_review_thread",
+        "repository",
+        "status",
+        "sub_issues"
+      ]
+    },
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "threeswordz",
+      "text": "### Actual M4-01 continuation — 23 Nov 2026 16:25 SGT\n\n**Forecast-hour cursor H0001–H0020 now `IN_PROGRESS`, 0/20h earned.** Docs-only branch [full-use clock](https://github.com/threeswordz/cinder-grind/blob/docs-erp-full-use-1900h-hourly-ledger-20261123/docs/ERP-FULL-USE-LIVE-CLOCK.md) exact `60fb8b18a96b08b612d28970a4804530c9fbf204` now includes [per-ID 112-row technical/role/future-stage matrix](https://github.com/threeswordz/cinder-grind/blob/docs-erp-full-use-1900h-hourly-ledger-20261123/docs/ERP-M4-01-112-ID-GATES.csv) and [bounded M4-01 exit audit](https://github.com/threeswordz/cinder-grind/blob/docs-erp-full-use-1900h-hourly-ledger-20261123/docs/ERP-M4-01-112-EXIT-AUDIT.md). Exact latest requirement crosswalk source [#411](https://github.com/threeswordz/cinder-grind/pull/411) `ffdd823567a4db0d50201af38dc58c4fa1bc7297`; **112 IDs /112 distinct** preserved. Original lane count verifies 51 current operational + 6 existing controls + 4 stock counts + 5 mixed + 3 HR1-A + 4 future gated + 1 policy unknown + 14 future HR + 24 Accounting =112. Previously accepted browser #45132932414 covers only 3 operational UI IDs; native PM02 #45127724396 is a prior-head PASS, not new source.\n\n**New dependency reconciliation:** [Draft #412](https://github.com/threeswordz/cinder-grind/pull/412) at `b55f5887b300921dfd0288d51ef16673a1e307a6` has a NEW **unrun** PO-submit provenance guard; [Draft #413](https://github.com/threeswordz/cinder-grind/pull/413) at `2e4ea1f7eda3e3a6ca6952926153ca3be10a1619` stages PUR04 nine commercial/delivery header fields, also **unrun/unreviewed**. Preserve both as pending source, not tests PASSED. Identified genuine functional gaps PUR01 quote-count, PUR07 supplier PDF/manual dispatch, PUR12 K-/T- identity and PUR10 routed cancellation; Finance/#245/HR remain future approved gates, no implicit authority.\n\n**Clock after this check:** official prototype **4/8**, real GL **3/10**, package **M4-01 IN_PROGRESS**, **0/1,900 forecast-hours retired and 1,900h remaining**. Actual employee/agent effort **unknown**, no time inferred from commits. H0001–H0020 **not exited** until current retained-role scopes/actual missing functionality are resolved or correctly separated; source classification alone earns no hours.\n\n**Next unblocked action:** review latest #413 commercial-field patch + current #412 provenance proof source, reconcile any source defects before *one* necessary focused check; then implement dependent PUR01 quote-threshold rule without repeating completed PM02 or browser suites. No full CI, Mac/browser replays, Codex, protected-main merge, accounting/payroll role activation or Production action was performed by this tracker update.",
+      "at": "2026-11-23T08:29:16Z",
+      "url": "https://github.com/threeswordz/cinder-grind/issues/414#issuecomment-7095505622"
+    },
+    {
+      "author": "threeswordz",
+      "text": "**Owner requested a progressive percentage column immediately after Status. Implemented on the canonical docs-only live clock** at commit `a3f49e4747c36a521591146f571822425c8d03a2`: [M4 progress-by-checkpoint dashboard](https://github.com/threeswordz/cinder-grind/blob/docs-erp-full-use-1900h-hourly-ledger-20261123/docs/ERP-FULL-USE-LIVE-CLOCK.md#mi4-progressive-work-dashboard--status-then-progress-23-nov-2026-1636-sgt).\n\nCurrent eight M4 packages: **M4-01 50% (2/4), M4-02 25% (1/4), M4-03 25% (1/4), M4-04 25% (1/4), M4-05 50% (2/4), M4-06 0% (0/4), M4-07 25% (1/4), M4-08 0% (0/4)**. Overall **8/32 = 25.0% identifiable checkpoints**, not percentage engineering effort, 170h forecast retired, or accepted functionality. Source-authored checkpoints (PUR04) explicitly marked STAGED; PM02 new negative and PUR04 migrations/API/Web tests still UNRUN. 100% reserved for all required package acceptance gates verified and accounted. **Accepted planning-hour credit still 0/1,900; official prototype 4/8, GL3/10.**\n\nFormat for future responses: `Status → Progress (percentage + x/y) → remaining acceptance`, with evidence-linked changes only. No full CI, Mac rerun, main merge, retained role/data change or Production.",
+      "at": "2026-11-23T08:41:43Z",
+      "url": "https://github.com/threeswordz/cinder-grind/issues/414#issuecomment-7095741283"
+    },
+    {
+      "author": "threeswordz",
+      "text": "### 23 Nov 2026 SGT — actual source continuation for M4-04 / M4-05, forecast clock unchanged\n\n**Current clock:** official M4 **4/8**, GL **3/10**, H0001–H0020 M4-01 still in progress; concurrently **H0065–H0090 M4-04** and **H0091–H0120 M4-05** source in progress. **0/1,900 post-baseline forecast-hours retired, 1,900h remaining**, actual worker hours unknown. This is not 0% system functionality.\n\n**New actual code:** [Draft #415](https://github.com/threeswordz/cinder-grind/pull/415), head `b1ba925836a8da850f38f9f2374ee9334eed54c4`, stacked on [PUR04 Draft #413](https://github.com/threeswordz/cinder-grind/pull/413), itself on PM02 Draft #412. Added forward-only exception reason, THB whole-PO quote count from discount+freight+charges excluding VAT (1 at ≤฿10k, 2 at >฿10k–≤฿50k, 3 at >฿50k), full-line comparable active THB supplier quotation count, selected award THB/quantity provenance, reasoned independent MANAGEMENT review for shortage, UI/contract, new-quote THB-only provenance and isolated unit test. No new Accounting/HR/#245, no Production or retained grants.\n\n**Exact focused evidence:**\n- [#45140450091](https://github.com/threeswordz/cinder-grind/actions/runs/45140450091): migration+API build+Web typecheck+PUR01 pure threshold/comparability PASS; entire job **FAIL** at the new PM02 negative fixture, which attempted to insert a forged A-award/B-returned line. Canonical PostgreSQL source-traceability trigger correctly blocked the invalid fixture; this is a test setup failure, not proof the PO source was corrupted.\n- Corrected source `b1ba9258` asserts that **database denial** without privileged trigger bypass, and deliberately does not claim a separate corrupted-data PO-submit test PASS.\n- [Corrected narrow PG proof #45140977184](https://github.com/threeswordz/cinder-grind/actions/runs/45140977184) initiated for ONLY the changed PM02 negative actor source and previously unrun PUR04 PG header test (no successful pure/Web repeat). This comment records initiation, **not result or accepted M4 code**.\n\n**Still missing:** approved exact-head changed-path native PASS, actual 2/3-supplier exception real-PG actor test and real purchaser UI/retained named roles, final source review and Owner-governed integration. No full CI, older Mac or already-passed Chrome reruns, Codex, main merge, Production. Baseline 1,900h is a forecast, not an accrued timesheet.",
+      "at": "2026-11-23T08:44:48Z",
+      "url": "https://github.com/threeswordz/cinder-grind/issues/414#issuecomment-7095799060"
+    },
+    {
+      "author": "threeswordz",
+      "text": "**23 Nov 2026 16:45 SGT — verified M4 progress, persistent hour clock (new code and scoped tests, no full CI).**\n\n- Updated [canonical hour-ledger branch](https://github.com/threeswordz/cinder-grind/blob/docs-erp-full-use-1900h-hourly-ledger-20261123/docs/ERP-FULL-USE-LIVE-CLOCK.md) SHA `adad3f523689305307cd4911c4d85fcfaf07329e`: **M4 technical checkpoints 10/32 = 31.25%**, up from 8/32 due to actual PUR01 quote-basis/nominal supplier proof and PUR04 PG/API/Web validation. These are evidence checkpoints **not** labor-hour or functionality acceptance percentages. H0001–H0020 M4-01 / H0065–H0090 M4-04 / H0091–H0120 M4-05 remain IN_PROGRESS; 0 accepted packages, **0/1,900 forecast-hours retired, 1,900h still planned**; official **prototype4/8, GL3/10**, actual logged effort UNKNOWN.\n- New [Draft #415](https://github.com/threeswordz/cinder-grind/pull/415), source `b1ba925836a8da850f38f9f2374ee9334eed54c4`, stacked on PUR04 [#413](https://github.com/threeswordz/cinder-grind/pull/413) and PM02 [#412](https://github.com/threeswordz/cinder-grind/pull/412). Staged Owner-confirmed THB whole-PO 1/2/3 supplier thresholds, net-after-discount/freight/charges excluding VAT, comparable quotes for all PO RFQ lines, selected award THB provenance, documented shortfall/independent MANAGEMENT approver and draft UI. New Supplier Quotation THB-only capture never retroactively relabels historical UNKNOWN currency.\n- [First focused #45140450091](https://github.com/threeswordz/cinder-grind/actions/runs/45140450091) **FAILED** overall on a new PM02 negative **test fixture**: PostgreSQL correctly rejected a forged returned-line/award association. Forward-only migrations, API/Web typecheck and PUR01 pure policy tests **passed** before this failure. Fixture corrected to assert database rejection (not bypass triggers), without changing production business guard.\n- [Corrected focused #45140977184](https://github.com/threeswordz/cinder-grind/actions/runs/45140977184) **SUCCESS** on disposable PG17.11, API build, exactly two targeted native tests: PM02 actor/denial 1 PASS/0 FAIL, PUR04 commercial header/audit 1 PASS/0 FAIL. Successful pure and Web checks were NOT rerun; completed Mac/Chrome suites were NOT rerun.\n- **Next unclosed**: actual 2/3-supplier and shortfall/Ben real-actor proof, PM02/FM01/BEN04/PM16 real browser and retained roles, 59 precise operational scope decisions, final independent review, governed integration and Owner #384-specific full release CI authorization. Do not infer 5/8, 8-role human UAT, GL completion, production or 26 earned hours. All sources remain Draft / main unchanged `3a441b1fa389a9a274e6ca82413740a3ffa2f51b`.",
+      "at": "2026-11-23T08:47:57Z",
+      "url": "https://github.com/threeswordz/cinder-grind/issues/414#issuecomment-7095859650"
+    },
+    {
+      "author": "threeswordz",
+      "text": "## 23 Nov 2026 16:57 SGT — PUR01 multi-supplier + Ben native actor proof completed\n\n**Live ERP clock** [dashboard](https://github.com/threeswordz/cinder-grind/blob/docs-erp-full-use-1900h-hourly-ledger-20261123/docs/ERP-FULL-USE-LIVE-CLOCK.md) evidence HEAD `d5dfd97d22ac382c0e695b8e8a98424ba8024544`, [Issue #414](https://github.com/threeswordz/cinder-grind/issues/414): **M4 technical 11/32 = 34.375%** (from 10/32); **M4-04 PUR01 H0065–H0090 is 3/4=75%**. M4-01 H0001–20 and M4-05 H0091–120 still in progress; forecast hours retired **0/1,900** (no complete package signoff), full-use central estimate remaining **1,900h**, actual labor-hours unknown. **Official prototype 4/8, GL3/10**, protected `main` `3a441b1fa389a9a274e6ca82413740a3ffa2f51b` unchanged.\n\n**Actual new changed-scope proof:** [Draft PUR01 #415](https://github.com/threeswordz/cinder-grind/pull/415) application+test SHA `1b06cd9881400af5dcb6046dddb6575da019108d`; one isolated [PostgreSQL17.11 run #45142678279 **SUCCESS**](https://github.com/threeswordz/cinder-grind/actions/runs/45142678279), 1 isolated native test PASS/0 FAIL. Real sourcing/PR/PO actor journey showed **two** full comparable THB bids required above ฿10,000; **three** above ฿50,000; partial bids denied; reasonless special supplier denied; specific maker exception reason accepted only with independent **MANAGEMENT** approver; buyer self-approval and non-Management configured delegate denied. Exact source/role evidence is **synthetic**, not actual retained Ben/Jai user grants.\n\n**Honest failure history:** [first new-test #45142379680](https://github.com/threeswordz/cinder-grind/actions/runs/45142379680) failed *before actor execution* due new test fixture TS2322 tuple typing. Fix was `as const` **in the test file only**, no business logic/DB/Production change. Corrected new-test source is the passing run. The previous successful PM02/PUR04, pure math/Web checks, populated Mac, real Chromium operational proof were **not rerun**; no full CI, Codex, protected merge or Production.\n\n**Next sequence:** Finish required distinct actual authenticated PM02/PUR01 purchase interface and named retained-role checks (M4-02 / final checkpoint M4-04), plus FM01/BEN04/PM16 real browser (M4-03). Continue true gaps PUR07 supplier PO PDF and PUR12 K-/T- document ID source; conserve independent review until consolidated candidate. Fresh specific Owner authorization is still required for final mandatory release CI per #384. No earned forecast hours until a whole package exit is proven.",
+      "at": "2026-11-23T08:59:56Z",
+      "url": "https://github.com/threeswordz/cinder-grind/issues/414#issuecomment-7096093707"
+    },
+    {
+      "author": "threeswordz",
+      "text": "### Corrected live checkpoint — 23 Nov 2026 SGT\n**The canonical 17:20 SGT planning branch and #45145803345 evidence supersede the stale 16:57 comment snapshot.** Current technical M4 **12/32 = 37.5%**; M4-02 **2/4 = 50%** (real authenticated PM02 Chrome test step already passed in [#45145803345](https://github.com/threeswordz/cinder-grind/actions/runs/45145803345), though overall workflow failed on unrelated final echo). Other package counts unchanged. Protected main remains `3a441b1fa389a9a274e6ca82413740a3ffa2f51b`, prototype **4/8**, GL **3/10**, accepted planned-hour credit **0/1,900**, central estimate remaining **1,900h**; actual worker hours unknown.\n\nThis continuation committed a *new* Chrome nonlocal-request fail-closed guard to Draft [#416](https://github.com/threeswordz/cinder-grind/pull/416) at `cb14f8d6364e31cb6a53f494df26eccad4bece24`. Its isolated one-shot workflow [#45147124712](https://github.com/threeswordz/cinder-grind/actions/runs/45147124712) **SUCCESS** across PG17 migration, API build and actual PM02 browser. **Important: this repeats the previously PASS business journey; no extra technical checkpoint or hour credit.** This duplication resulted from reading the issue comments without first checking the more recently updated planning file; it should not recur. Do not rerun #451458/#451471/#451329 or the previously successful Mac/native suites.\n\nNext genuinely untested M4 work: distinct FM01/BEN04/PM16 authenticated browser paths, PUR01/PUR04 real PO UI, PUR07 PO PDF/dispatch, PUR12 K-/T- numbering, separate PM02 PO-submit service negative, 59 operational requirement scope/role dispositions; final independent review and specific Owner-authorized release CI/merge. No Production.",
+      "at": "2026-11-23T09:27:58Z",
+      "url": "https://github.com/threeswordz/cinder-grind/issues/414#issuecomment-7096684477"
+    },
+    {
+      "author": "threeswordz",
+      "text": "### Live clock display change — 23 November 2026 SGT (documentation only)\n\n**Owner requested an explicit `x / 1900` counter and hours-left countdown on all 1,900 forecast-hour rows. Implemented and verified on docs-only branch `docs-erp-full-use-1900h-hourly-ledger-20261123` at commit [`c10ab235`](https://github.com/threeswordz/cinder-grind/commit/c10ab23513447181b4e3d9acc908f2c8cf3e2e9d).**\n\n- [Full live dashboard](https://github.com/threeswordz/cinder-grind/blob/docs-erp-full-use-1900h-hourly-ledger-20261123/docs/ERP-FULL-USE-LIVE-CLOCK.md): **actual verified counter `0 / 1900`, `1900h left`**, a stage-by-stage exit/countdown table, and explicit update rule.\n- [Hourly CSV — exactly H0001–H1900](https://github.com/threeswordz/cinder-grind/blob/docs-erp-full-use-1900h-hourly-ledger-20261123/docs/ERP-FULL-USE-HOURLY-1900.csv): new adjacent columns `hour_out_of_1900` and `planned_hours_left_if_this_hour_completed`. Examples: row 1 **`1 / 1900` → 1899h**; row 170 **`170 / 1900` → 1730h**; row 1900 **`1900 / 1900` → 0h**. These are **hypothetical planned positions**, not real earned credits.\n- [Machine-readable package ledger](https://github.com/threeswordz/cinder-grind/blob/docs-erp-full-use-1900h-hourly-ledger-20261123/docs/ERP-FULL-USE-WORKPACKAGES.json): synchronized tracking `displayCounter`, `countdownHoursLeft`, and stage exit balance fields. Original M4 **12/32 = 37.5% technical checkpoints**, official prototype **4/8**, GL **3/10** and net future budget **1900h** all unchanged. Actual worker logged hours remain unknown; **0h retired from accepted full work-package exits**.\n- **Important:** Only a complete evidence-accepted work package or explicitly revised estimate advances the real countdown. Do not confuse per-row hypothetical `hours_left` with actual hours left now; do not tick down on clock time, partial tests or CI runtime. On every future live-position request refresh the current GitHub ledger.\n- No application, schema, retained data, Mac, Production, protected-main merge or full CI involved. The planning branch remains **unmerged**, and the countdown change does not imply milestone or go-live closure.",
+      "at": "2026-11-23T09:35:11Z",
+      "url": "https://github.com/threeswordz/cinder-grind/issues/414#issuecomment-7096840360"
+    },
+    {
+      "author": "threeswordz",
+      "text": "### PUR12 new-source continuation — 23 Nov 2026 SGT (honest scope)\n[Draft #417](https://github.com/threeswordz/cinder-grind/pull/417) stages actual Company PO display source, partner short names and additive immutable snapshot migration. [One new focused run #45149778502](https://github.com/threeswordz/cinder-grind/actions/runs/45149778502): disposable PostgreSQL17.11 migration PASS; Nest API compile PASS; React/Web TS PASS; new identity 2/2 pure PASS; **overall workflow FAIL** after these on optional `psql` URL parser (`?schema` unsupported). No duplicate full-suite/Mac/proven-browser rerun. SQL trigger negative and real PO Company/revision/native roles still need evidence.\n\nCanonical [planning branch](https://github.com/threeswordz/cinder-grind/blob/docs-erp-full-use-1900h-hourly-ledger-20261123/docs/ERP-FULL-USE-LIVE-CLOCK.md) now records **M4-07 50% (2/4) source/proof checkpoints and M4 13/32 = 40.625%**, no full package accepted. Actual forecast budget **0 / 1900 retired; 1900h left**; official prototype **4/8**, GL **3/10**. No protected-main merge, Ready release, Codex independent review, retained grant, human UAT or Production. Next new functional lane PUR07 supplier PO PDF/manual dispatch, plus PUR12 actual MKE/TCJ PO/SQL negative acceptance, before final M4 freeze and Owner-specific release CI approval.",
+      "at": "2026-11-23T09:47:40Z",
+      "url": "https://github.com/threeswordz/cinder-grind/issues/414#issuecomment-7097102375"
+    },
+    {
+      "author": "threeswordz",
+      "text": "### 23 Nov 2026 SGT — actual PUR12 native PO proof completed, next PUR07\n[Draft #417](https://github.com/threeswordz/cinder-grind/pull/417) now includes its new synthetic MKE/TCJ real-PostgreSQL actor spec, source `f74a2bbb14cb49047edf3510066c3e4a4f024ebe`. Focused one-shot [#45150538123](https://github.com/threeswordz/cinder-grind/actions/runs/45150538123) SUCCESS: migrations and API compile, 1 new native test PASS (real approved PR→RFQ→award→PO, company K/T prefixes, preserved short-name+revision, missing-name denial before increment, direct SQL immutability, cross-Company rejection). No past PUR01/PM02/native, browser or Mac rerun; no broad CI. Prior #45149778502 overall failed ONLY in trailing psql URL inspection after migrations/API/Web/pure PASS; the failure remains disclosed.\n\nCanonical progress documents updated: **M4-07 3/4 = 75%; M4 14/32 = 43.75% bounded technical checkpoints**. The true package/forecast credit remains **0 / 1900 completed, 1900h left** because final package exit/roles/review/Owner signoff are pending. Prototype **4/8**, go-live **3/10**; `main` unchanged `3a441b1f`. Next unblocked feature **PUR07 approved PO PDF with deterministic supplier-short-name filename and audited manual external delivery record**; finish remaining M4 role/112-ID gates before any approved full CI/merge. No production.",
+      "at": "2026-11-23T09:52:03Z",
+      "url": "https://github.com/threeswordz/cinder-grind/issues/414#issuecomment-7097194151"
+    },
+    {
+      "author": "threeswordz",
+      "text": "### PUR07 new functionality advancement — 23 Nov 2026 SGT\n- [Draft PR #418](https://github.com/threeswordz/cinder-grind/pull/418) stacked privately on [PUR12 #417](https://github.com/threeswordz/cinder-grind/pull/417), not protected main. Approved-only Latin PDF/short-name filename and Thai browser Print fallback (Unicode automated PDF NOT YET), with append-only **self-reported** Jai email/LINE dispatch+ack evidence. No message sent.\n- [First #45155536353](https://github.com/threeswordz/cinder-grind/actions/runs/45155536353): disposable PG17 migration PASS; API compile FAILED on new nullable ref, fixed.\n- [New focused #45155841629 SUCCESS](https://github.com/threeswordz/cinder-grind/actions/runs/45155841629): disposable PG17 migration/API build/Web typecheck PASS; **4 new tests PASS / 0 FAIL**, including approved source-backed PO PDF/Jai send+ack, unauthorized actor and forged source denials, SQL immutability, cross-Company access. No old Chrome/Mac/native suites re-run. Tests cover `3c6e89ac`; current #418 HEAD `378d265c` includes two subsequent **UNRUN** metadata privacy/filename fallback corrections, not claimed exact-head PASS.\n- [Canonical 1,900h roadmap](https://github.com/threeswordz/cinder-grind/blob/docs-erp-full-use-1900h-hourly-ledger-20261123/docs/ERP-FULL-USE-LIVE-CLOCK.md) now marks **M4-06 PUR07 2/4=50%** and aggregate **M4 16/32=50% bounded technical checkpoints**. Official **4/8 prototype, 3/10 GL**, and **0 / 1900 planned hours retired; 1,900h countdown left**, as zero **complete packages** have passed final acceptance. This does not mean zero engineering effort already spent; actual timesheet unknown.\n- Next missing acceptance: Unicode/Thai-safe actual automated PDF, visual browser output and real role scope, separate FM01/BEN04/PM16 authenticated browser paths, remaining M4-01 source/retained permissions and integrated draft stack. Keep final full CI under #384 Owner-specific approval, no self-review or Production.",
+      "at": "2026-11-23T10:31:04Z",
+      "url": "https://github.com/threeswordz/cinder-grind/issues/414#issuecomment-7098089902"
+    }
+  ],
+  "comments_complete": true
+}

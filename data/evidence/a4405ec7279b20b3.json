@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50586361",
-  "collected_at": "2026-11-22T09:43:55.147735+00:00",
+  "collected_at": "2026-11-23T10:42:47.411006+00:00",
   "source": {
     "author": "jvanderbot",
     "children": [
@@ -40,6 +40,36 @@
                 "title": null,
                 "type": "comment",
                 "url": null
+              },
+              {
+                "author": "rolandog",
+                "children": [],
+                "created_at": "2026-11-22T16:22:07.000Z",
+                "created_at_i": 1795364527,
+                "id": 50601014,
+                "options": [],
+                "parent_id": 50589726,
+                "points": null,
+                "story_id": 50574383,
+                "text": "&gt; But agentic tools are not that. They DO allow all that. In fact software engineering has always been about automating things, and agentic tools just allow more people to automate more things, AND create more software the way they want it<p>Lucky for us that a GPU and RAM cartel did not spring up and limit people&#x27;s ability to adopt the trade or compete, otherwise your point might be moot.",
+                "title": null,
+                "type": "comment",
+                "url": null
+              },
+              {
+                "author": "vickychijwani",
+                "children": [],
+                "created_at": "2026-11-23T05:34:46.000Z",
+                "created_at_i": 1795412086,
+                "id": 50607856,
+                "options": [],
+                "parent_id": 50589726,
+                "points": null,
+                "story_id": 50574383,
+                "text": "I feel the same way. Apart from accessibility and generalization, there is another important difference in marginal costs - unlike physical goods, mass production of software doesn’t require the programmer to churn away at the tools (LLMs) to produce more copies of them.<p>Mass production of physical goods carried a marginal cost in inputs AND time for those workers. Software carries negligible marginal costs (e.g., direct serving costs) - except of course a small subset of software that uses LLMs at runtime, which again carries non-trivial marginal power costs, at least as of 2026.",
+                "title": null,
+                "type": "comment",
+                "url": null
               }
             ],
             "created_at": "2026-11-21T14:47:26.000Z",
@@ -75,7 +105,23 @@
             "children": [
               {
                 "author": "Teever",
-                "children": [],
+                "children": [
+                  {
+                    "author": "c22",
+                    "children": [],
+                    "created_at": "2026-11-22T16:28:36.000Z",
+                    "created_at_i": 1795364916,
+                    "id": 50601077,
+                    "options": [],
+                    "parent_id": 50592518,
+                    "points": null,
+                    "story_id": 50574383,
+                    "text": "Unfortunately there&#x27;s no middle ground on this one, either we slow down to avoid ecological collapse (probably already too late) or we embrace acceleration and try to shovel our way out of this hole before it collapses around us.",
+                    "title": null,
+                    "type": "comment",
+                    "url": null
+                  }
+                ],
                 "created_at": "2026-11-21T19:07:29.000Z",
                 "created_at_i": 1795288049,
                 "id": 50592518,
@@ -202,7 +248,23 @@
                 "children": [
                   {
                     "author": "ifwinterco",
-                    "children": [],
+                    "children": [
+                      {
+                        "author": "rileymat2",
+                        "children": [],
+                        "created_at": "2026-11-22T20:04:24.000Z",
+                        "created_at_i": 1795377864,
+                        "id": 50603352,
+                        "options": [],
+                        "parent_id": 50590588,
+                        "points": null,
+                        "story_id": 50574383,
+                        "text": "Yes, the second one is fraught.  Does the LLM move the production constraints out of its context and decide the best course of action is to reinstall the database and wipe the data?  Who knows? You can never be sure, unless it does not have that ability.  But then scoping the abilities correctly is a proper hard engineering problem. Then once you start removing abilities you remove avenues for it to fix the issue.",
+                        "title": null,
+                        "type": "comment",
+                        "url": null
+                      }
+                    ],
                     "created_at": "2026-11-21T16:06:24.000Z",
                     "created_at_i": 1795277184,
                     "id": 50590588,
@@ -369,6 +431,18 @@
       "url": "https://news.ycombinator.com/item?id=50594408"
     },
     {
+      "author": "rolandog",
+      "text": "> But agentic tools are not that. They DO allow all that. In fact software engineering has always been about automating things, and agentic tools just allow more people to automate more things, AND create more software the way they want it Lucky for us that a GPU and RAM cartel did not spring up and limit people's ability to adopt the trade or compete, otherwise your point might be moot.",
+      "at": "2026-11-22T16:22:07.000Z",
+      "url": "https://news.ycombinator.com/item?id=50601014"
+    },
+    {
+      "author": "vickychijwani",
+      "text": "I feel the same way. Apart from accessibility and generalization, there is another important difference in marginal costs - unlike physical goods, mass production of software doesn’t require the programmer to churn away at the tools (LLMs) to produce more copies of them. Mass production of physical goods carried a marginal cost in inputs AND time for those workers. Software carries negligible marginal costs (e.g., direct serving costs) - except of course a small subset of software that uses LLMs at runtime, which again carries non-trivial marginal power costs, at least as of 2026.",
+      "at": "2026-11-23T05:34:46.000Z",
+      "url": "https://news.ycombinator.com/item?id=50607856"
+    },
+    {
       "author": "CamperBob2",
       "text": "I think the Luddites' beef was more about losing options, as they watched their sense of agency in their lives and careers slip away.  They couldn't rent their own automated looms for the equivalent of $20/month.  Those things were expensive, exotic machines usable only in industrial settings, more like NVL72 racks than RTX 5090s.  But with AI, we are as you suggest  gaining  options, so any comparison with Luddism fails from the get-go. Obviously the correct way to view the arrival of AI is as an empowering tool for the ultimate benefit of us all, but just as obviously there are a lot of people who simply don't seem capable of understanding that.  Obviously the correct way to react to the arrival of AI is to severely regulate the monopolists and oligarchs rather than the technology itself, but... see above. Unfortunately there is no obvious way to deal with people who think the Luddites were somehow morally superior, or who otherwise want to rehabilitate or emulate them.  It's like flashing back to late 2019, watching news reports come in about some sort of weird, unusually-severe flu that seemed to be spreading.  Nobody knew for sure what to do then, and I don't think anyone does now.  But we are going to have to do  something  to keep those people from dragging us backward with the self-centered psychological pandemic they are trying to spread.",
       "at": "2026-11-21T07:17:14.000Z",
@@ -385,6 +459,12 @@
       "text": "What if the technology that we developed since the industrial revolution and how we used them leads to an ecological collapse before we get off the planet? Wouldn't it be ironic that the drive for technology that you advocate for leads to the downfall of civilization? Luddites may be wrong, but the position you advocate for may be as well and the correct course of action is somewhere in the middle.",
       "at": "2026-11-21T19:07:29.000Z",
       "url": "https://news.ycombinator.com/item?id=50592518"
+    },
+    {
+      "author": "c22",
+      "text": "Unfortunately there's no middle ground on this one, either we slow down to avoid ecological collapse (probably already too late) or we embrace acceleration and try to shovel our way out of this hole before it collapses around us.",
+      "at": "2026-11-22T16:28:36.000Z",
+      "url": "https://news.ycombinator.com/item?id=50601077"
     },
     {
       "author": "wankwankwank",
@@ -439,6 +519,12 @@
       "text": "Exactly there are two problems here: - knowing that you need monitoring and alerting, knowing how monitoring and alerting best practices are generally done and how that applies to this specific service so you can prompt Claude, because by default it won't do it if you just ask it to bash out features - trusting Claude to change the code handling payments in production with no human review First one is the easier issue, maybe there is some way a non-technical person could get there by blindly following some generic guidance and feeding it into tickets. Second one I would not be happy with as a customer or shareholder of a business",
       "at": "2026-11-21T16:06:24.000Z",
       "url": "https://news.ycombinator.com/item?id=50590588"
+    },
+    {
+      "author": "rileymat2",
+      "text": "Yes, the second one is fraught.  Does the LLM move the production constraints out of its context and decide the best course of action is to reinstall the database and wipe the data?  Who knows? You can never be sure, unless it does not have that ability.  But then scoping the abilities correctly is a proper hard engineering problem. Then once you start removing abilities you remove avenues for it to fix the issue.",
+      "at": "2026-11-22T20:04:24.000Z",
+      "url": "https://news.ycombinator.com/item?id=50603352"
     },
     {
       "author": "jvanderbot",

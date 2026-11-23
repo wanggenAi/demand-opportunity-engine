@@ -7,7 +7,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## workflow_reliability — UNVALIDATED CLUSTER
 
-- independent_demand_count: 141
+- independent_demand_count: 143
 - payment_evidence_count: 3
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community', 'n8n Community']
 - communities: ['Agenta-AI/agenta', "Ask HN: What's your current AI agentic setup?", 'Ask/Show HN', 'Codeberg.org Not Reachable', 'Commerce operator forum', 'Nasdaq erases all 2026 gains as AI sell-off dampens Anthropic’s second day', 'Should governments slow frontier AI? Jacob Coxon and Robin Hanson debate [video]', "Show HN: Glassbrain – Read your agent's brain, know what your agent knows", '[dead]', 'farmmer938-lgtm/autonomous-zero-baht', 'n8n Jobs', 'n8n-io/n8n', 'useagenthq/useagent']
@@ -20,12 +20,12 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://github.com/n8n-io/n8n/issues/44789
+  - https://news.ycombinator.com/item?id=50601879
   - https://github.com/n8n-io/n8n/issues/44779
   - https://github.com/n8n-io/n8n/issues/44778
   - https://github.com/n8n-io/n8n/issues/44774
   - https://github.com/farmmer938-lgtm/autonomous-zero-baht/issues/45
-  - https://github.com/n8n-io/n8n/issues/44762
-  - https://community.shopify.com/t/shopify-flow-just-got-updated-triggers-for-orders-customers-refunds-and-more/720230
 
 ## supplier_sourcing — UNVALIDATED CLUSTER
 
