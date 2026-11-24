@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/44775",
-  "collected_at": "2026-11-23T10:42:47.411006+00:00",
+  "collected_at": "2026-11-24T12:25:23.472626+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/44775",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -50,14 +50,15 @@
     "locked": false,
     "assignees": [],
     "milestone": null,
-    "comments": 4,
+    "comments": 6,
     "created_at": "2026-11-22T06:08:33Z",
-    "updated_at": "2026-11-23T02:05:37Z",
+    "updated_at": "2026-11-24T09:40:20Z",
     "closed_at": null,
     "assignee": null,
     "author_association": "CONTRIBUTOR",
     "issue_field_values": [],
     "type": null,
+    "status": null,
     "active_lock_reason": null,
     "sub_issues_summary": {
       "total": 0,
@@ -113,6 +114,18 @@
       "text": "I checked the current source and found a concrete distinction from the proposed early-middleware diagnosis. `WebhookRequestHandler.setupCorsHeaders()` calls `findAccessControlOptions(path, method)`, and `LiveWebhooks.findAccessControlOptions()` resolves the webhook first, then still selects its node with `parameters.path === path`. A concrete path such as `user/123` therefore does not match the registered template `user/:id`. This method also dereferences `webhook.workflowId` without handling a missing result, so it is worth confirming whether the production request reaches this path or an earlier middleware in the reported setup. If it does, selecting the node from the resolved webhook registration (rather than comparing the template to the request path) appears to address the allowlist miss; separately verify whether the reflected-origin behavior comes from this handler or another CORS layer.",
       "at": "2026-11-23T02:05:37Z",
       "url": "https://github.com/n8n-io/n8n/issues/44775#issuecomment-7089657620"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "I checked the current source: `findAccessControlOptions()` resolves the webhook, but then matches the workflow node with `parameters.path === path`. For a concrete request such as `user/123`, that cannot match the configured template `user/:id`, so the node options (including its allowlist) are missed. The request handler then leaves CORS handling without those options. Can the lookup use the resolved webhook registration’s node identity rather than comparing the template with the request path? That would also avoid relying on path parsing a second time.",
+      "at": "2026-11-24T00:05:27Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44775#issuecomment-7117691554"
+    },
+    {
+      "author": "Mattenhaim",
+      "text": "Thanks @goutham-valugula, that matches what I found. #44772 implements exactly this:\n\n- `LiveWebhooks.findAccessControlOptions` matches the node by the resolved registration's `webhookId` for dynamic rows, instead of comparing the configured path with the request path.\n- `TestWebhooks.findAccessControlOptions` resolves the registration through the dynamic-path matcher and selects the node by the registration's node name.\n\nBoth cases have tests that fail on master. The missing-webhook dereference you mentioned is a separate, pre-existing issue, so I kept it out of this PR.",
+      "at": "2026-11-24T09:39:29Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44775#issuecomment-7127710606"
     }
   ],
   "comments_complete": true

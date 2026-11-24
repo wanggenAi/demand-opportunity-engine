@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/44778",
-  "collected_at": "2026-11-23T10:42:47.411006+00:00",
+  "collected_at": "2026-11-24T12:25:23.472626+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/44778",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -50,14 +50,15 @@
     "locked": false,
     "assignees": [],
     "milestone": null,
-    "comments": 7,
+    "comments": 8,
     "created_at": "2026-11-22T08:10:38Z",
-    "updated_at": "2026-11-22T22:03:56Z",
+    "updated_at": "2026-11-23T22:05:32Z",
     "closed_at": null,
     "assignee": null,
     "author_association": "CONTRIBUTOR",
     "issue_field_values": [],
     "type": null,
+    "status": null,
     "active_lock_reason": null,
     "sub_issues_summary": {
       "total": 0,
@@ -131,6 +132,12 @@
       "text": "Overall the split into `version_conflict` plus a dedicated sweep lease is the right architecture, and using raw `ALTER TABLE` to avoid SQLite table rebuilds on `execution_entity` makes sense. A few concrete edge cases worth tightening before opening the PR:\n\n**1. `version_conflict` retry direction (`claimResumeAttempt` + `ResumeAttemptService.claim`)**\nRetrying any `version_conflict` where `status === 'waiting'` has a dangerous asymmetry depending on which way `resumeAttempts` moved:\n- **Count decreased (`current < expected`)**: another process just released its attempt (rollback or sweep release), so nobody owns the row and retrying is safe.\n- **Count increased (`current > expected`)**: another main *just won the claim* and is actively loading `execution_data` while the row is still `waiting` during `findSingleExecution`. If the loser retries right away with `maxResumeAttempts=1` (or on the final slot), the next `claimResumeAttempt()` reads `attempts >= maxAttempts`, returns `exhausted`, and `ResumeAttemptService.claim()` calls `markAsCrashedFrom(..., 'resume-limit')` on an execution the winning main is actively resuming. Even with `maxResumeAttempts=2`, retrying an upward CAS loss lets two mains load the same `execution_data` concurrently and burns an extra attempt.\n\nReturning `version_conflict` only when `current.resumeAttempts < expectedAttempts` (and keeping `conflict` when `current.resumeAttempts > expectedAttempts`) prevents both the false `exhausted` crash and duplicate concurrent loads. Adding small jitter to the backoff is also worth doing so colliding mains do not retry in lockstep.\n\n**2. OOM poison-pill regression on the parked-parent sweep**\nIn `WaitTracker.resumeParentIfChildFinished()`, the sweep originally called `resumeAttemptService.claim()` specifically because `patchParentWithFinishedChild()` loads the full parent bundle (`includeData: true, unflattenData: true`). With a pure 5-minute TTL lease that never touches `resumeAttempts`, an oversized or corrupt parent that OOM-kills the leader during sweep load will simply expire its lease every 5 minutes and crash the leader in an infinite loop.\n\nOne clean way to keep both guarantees (`maxResumeAttempts=1` safety and poison-pill protection): normal acquire/release leaves `resumeAttempts` untouched, while taking over an *already-expired* non-null lease (`parkedParentLeaseExpiresAt <= now`) counts as a strike (or increments `resumeAttempts` once before re-attempting the load). At minimum, call this tradeoff out explicitly in the PR description so maintainers can sign off on it.\n\n**3. SQLite date comparison, `@goutham-valugula`'s fencing point, and migration**\n- **SQLite TypeORM date trap**: `execution.repository.ts` already works around TypeORM #2286 in `getWaitingExecutions()` and `findParkedOnSubExecution()` using `DateUtils.mixedDateToUtcDatetimeString(...)` on SQLite. Make sure both lease acquire (`<= now`) and conditional release (`= expectedExpiry`) use that exact same UTC string formatting on SQLite, otherwise `WHERE parkedParentLeaseExpiresAt = :expectedExpiry` can silently affect `0` rows due to `T`/`Z` vs space-separated timestamp formatting.\n- **Fencing and clock skew**: `@goutham-valugula`'s point about a >5m pause is valid. Having `releaseParkedParentLease()` return a boolean (`affected > 0`) and gating `claimParent()` on `released === true` is a low-cost guard against a stale worker triggering a duplicate resume after takeover. If you also want to fence `patchParentWithFinishedChild()` (and avoid multi-main clock skew or sub-millisecond timestamp truncation on `= expectedExpiry`), comparing against DB time on acquire or pairing the expiry with a short lease token checked before writing the patch closes that cleanly.\n- **Migration check**: make sure the raw `ALTER TABLE` respects the configured `tablePrefix`, and verify that `down()` (`DROP COLUMN`) matches n8n's minimum supported SQLite version (3.35+).\nSorry for the delay",
       "at": "2026-11-22T22:03:56Z",
       "url": "https://github.com/n8n-io/n8n/issues/44778#issuecomment-7086523646"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "One important distinction for the retry logic: a `version_conflict` should not automatically be retried whenever the row is still `waiting`. If `resumeAttempts` increased, another main may already own the claim and be loading the execution; retrying can load it concurrently, and at the limit can turn the winner’s active execution into `crashed`. Retrying only when the count decreased (a released attempt) avoids that case. The sweep lease also should not be a pure expiring lock with unlimited retries: a poison-pill parent that repeatedly kills the inspector would otherwise be retried forever. Consider recording expired-lease takeovers as strikes while keeping ordinary sweep inspection outside the resume budget. Finally, gate the post-inspection patch/resume on still owning the lease (ideally a fencing token); matching expiry only during release does not stop a paused former owner from continuing after takeover.",
+      "at": "2026-11-23T22:05:32Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44778#issuecomment-7115313549"
     }
   ],
   "comments_complete": true

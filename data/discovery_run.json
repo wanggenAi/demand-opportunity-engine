@@ -1,11 +1,11 @@
 {
-  "observed_at": "2026-11-23T10:42:47.411006+00:00",
+  "observed_at": "2026-11-24T12:25:23.472626+00:00",
   "config": "data/discovery_config.json",
   "adapters": [
     {
       "source": "Hacker News",
       "refreshed": true,
-      "collected": 27,
+      "collected": 31,
       "errors": []
     },
     {
@@ -32,15 +32,15 @@
         "Last activity is not publication time. Only substantive buyer-authored follow-ups can renew a lead."
       ],
       "evidence_snapshots": [
-        "data/evidence/f5663f332d6bc9b1.json#sha256=b69b7ee68091d089db233f25e3677d9db2d2b2773db8b5563512f6ee25d61f2a",
-        "data/evidence/d9f0be47fa047f2c.json#sha256=967a8f2f9b0e75bc0450595ccecb0db4a78287086fad6a68b4c246a0917cb4f8"
+        "data/evidence/f5663f332d6bc9b1.json#sha256=4fce297c18290b083d8d7ec8d0f0f05d82cd16b5612a3959c768b7457e296d2a",
+        "data/evidence/d9f0be47fa047f2c.json#sha256=a3bfb326cec01f84db5d9dc9c3bb59597b3cebec15f7534224f0d8cd47c9c14d"
       ]
     },
     {
       "source_family": "public freelance/job listings",
       "access_method": "Remotive public JSON API; attributed source links",
       "url": "https://remotive.com/api/remote-jobs?search=automation&limit=20",
-      "records_inspected": 16,
+      "records_inspected": 15,
       "primary_pages_opened": 0,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
@@ -51,7 +51,7 @@
         "Legal warning - Hey, thanks for using Remotive's API, we appreciate it! Please note that API documentation and access is granted so that developers can share our jobs further. Please do not submit Remotive jobs to third Party websites, including but not limited to: Jooble, Neuvoo, Google Jobs, LinkedIn Jobs. Please link back to the URL found on Remotive AND mention Remotive as a source in order to Remotive to get traffic from your listing. If you don't do that, we'll terminate your API access, sorry! Jobs displayed are delayed by 24 hours, the goal being that jobs are attributed to Remotive on various platforms. Displaying our jobs in order to collect signups/email addresses to show a listing constitutes a breach of our terms of services. We offer a private, paid-for API, please email us at hello(at)remotive(dot)io for more information (starting budget is $5k/mo). Please find out terms of services on https://remotive.com/api-documentation. Please note that there is absolutely no need to request Remotive Job data too frequently. Typically, you only need to GET Remotive job data through this API a couple of times a day (we advise max. 4 times a day). Our data is not changing much faster than that anyway. Note that excessive requests will be blocked. Many thanks (Rodolphe & the Remotive team!)"
       ],
       "evidence_snapshots": [
-        "data/evidence/071898d5d7cef09e.json#sha256=b93e8d1eda23a1f43ac7b38aa10ab0d54f50d8a23567d4d88614cd99a265d0aa"
+        "data/evidence/071898d5d7cef09e.json#sha256=32a641cba4d1143d06fc001a3c4ca3a87b778c986eb2ef6c566399485bd60003"
       ]
     },
     {
@@ -65,15 +65,15 @@
       "collected": 0,
       "errors": [
         {
+          "url": "https://www.contractsfinder.service.gov.uk/notice/88f84b72-7275-44df-9998-78303150bf40",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        },
+        {
+          "url": "https://www.contractsfinder.service.gov.uk/notice/0211da5c-4889-4c4f-98f6-00dc7cc1b7c8",
+          "error": "HTTPError: HTTP Error 403: Forbidden"
+        },
+        {
           "url": "https://www.contractsfinder.service.gov.uk/notice/3f0945d1-6cf6-4244-ad3b-da605b45809d",
-          "error": "HTTPError: HTTP Error 403: Forbidden"
-        },
-        {
-          "url": "https://www.contractsfinder.service.gov.uk/notice/60b0ef0e-dc74-4612-9a82-27bd435143ce",
-          "error": "HTTPError: HTTP Error 403: Forbidden"
-        },
-        {
-          "url": "https://www.contractsfinder.service.gov.uk/notice/f075e29c-9077-44f9-82a0-364f1c9faf35",
           "error": "HTTPError: HTTP Error 403: Forbidden"
         }
       ],
@@ -81,7 +81,7 @@
         "Search returned procurement notices; up to three detail pages attempted. No buyer request promoted: eligibility, exact remote scope, submission deadline and award status require manual verification."
       ],
       "evidence_snapshots": [
-        "data/evidence/50e3af0542f19c3a.json#sha256=466b89158307a2f5a20e36b5c5c82215bfded20733624aa1f4c8bcbcbc6f1901"
+        "data/evidence/50e3af0542f19c3a.json#sha256=27912ca01d3465cc6aec39f99118f4b69e963f3eaacbcdbbda853fffd0269c6e"
       ]
     },
     {
@@ -134,7 +134,7 @@
         "No structured primary buyer requests extracted; static shell is not commercial proof. No login or anti-bot evasion."
       ],
       "evidence_snapshots": [
-        "data/evidence/b5d67d420401a4bb.json#sha256=48e0b867ecc2e1e4876fcd71aaabbaa0f2f5a02c5ddd390a17ee3b822d0ba908"
+        "data/evidence/b5d67d420401a4bb.json#sha256=087e9bf6993574b87990a77836b4f28b3426d769a549c7cdc0a51208ab4ac205"
       ]
     },
     {
@@ -151,21 +151,21 @@
         "Public bidCount includes competitors; only first 20 proposals may be visible. Employer identity often unresolved. Task budget is not agreement to our pilot."
       ],
       "evidence_snapshots": [
-        "data/evidence/abf73d1fa5782498.json#sha256=a11fb502419a7fd27addb2a62c716bd7428da320369362e1f45be6fafbe07ee0"
+        "data/evidence/abf73d1fa5782498.json#sha256=61cd2116928738486804cd161fdd885dbf8618fdc0f1353a346814ad55ae596f"
       ],
       "records": [],
       "opportunity_ids": [],
       "inspected_keys": [
+        "/projects/delivery/local-shopping-assistance-singapore",
         "/projects/sourcing/hong-kong-based-sourcing-agent",
-        "/projects/graphic-design/home-finish-selection-guidance",
         "/projects/amazon/amazon-product-arbitrage-research-needed",
         "/projects/nutrition/electrolyte-powder-formulation-for-human",
+        "/projects/amazon/build-amazon-business-arbitrage-first",
         "/projects/shopify-site/launch-shopify-amazon-dropshipping-store",
         "/projects/product-sourcing/local-personal-assistant-required",
         "/projects/sourcing/finder-fee-introduce-rare-nike",
         "/projects/sourcing/sourcer-for-rare-discontinued-nike",
         "/projects/inspections/want-freelancer-part-time-quality",
-        "/projects/data-entry/stock-ordering-sourcing-assistant",
         "/projects/product-sourcing/project-40823595"
       ]
     },
@@ -173,7 +173,7 @@
       "source_family": "freelance project marketplace (Freelancer)",
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://www.freelancer.com/jobs/api-integration/",
-      "records_inspected": 50,
+      "records_inspected": 49,
       "primary_pages_opened": 0,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
@@ -183,11 +183,28 @@
         "A different query/category on Freelancer does not count as another independent family."
       ],
       "evidence_snapshots": [
-        "data/evidence/eb34b643617bda88.json#sha256=aea954d71b227a221098f03201c40f742575d4cfa12a4704b3a286b88e0cacac"
+        "data/evidence/eb34b643617bda88.json#sha256=c0f4f1a02855417f968a242493fde9354a46f63dce62a3b066c659eaeb98e5ef"
       ],
       "records": [],
       "opportunity_ids": [],
       "inspected_keys": [
+        "/projects/api-integration/configure-paypal-for-freelance-payments-40833226",
+        "/projects/api-integration/tally-sync-dashboard-cloud-deployment",
+        "/projects/api-integration/configure-paypal-for-freelance-payments",
+        "/projects/zapier/zapier-integration-for-seedance-videos",
+        "/projects/full-stack-development/revamp-criclive-for-speed-seo",
+        "/projects/android-app-development/criclive-android-app-development-40832850",
+        "/projects/shopify-site/shopify-amazon-walmart-integration",
+        "/projects/data-management/profit-share-tracking-system-setup",
+        "/projects/microsoft-365/complete-freescout-helpdesk",
+        "/projects/ai-automation/sales-lead-automation-partner",
+        "/projects/woocommerce/woocommerce-multi-vendor-marketplace",
+        "/projects/ai-chatbot-development/powered-company-wiki",
+        "/projects/selenium/selenium-cookie-persistence-fix",
+        "/projects/api-integration/classical-ensemble-calendar-upgrade",
+        "/projects/payment-gateway-integration/integrate-phonepe-gateway-php",
+        "/projects/android-app-development/build-criclive-android-ios-apps-40831821",
+        "/projects/api-integration/french-oracle-flexcube-interview",
         "/projects/android-app-development/build-criclive-android-ios-apps",
         "/projects/chatbot/creating-chatbot-for-doctor-office",
         "/projects/shopify-site/shopify-amazon-flipkart-sync-integration",
@@ -195,7 +212,6 @@
         "/projects/android-app-development/criclive-android-app-development",
         "/projects/frontend-development/modern-frontend-chatbot-development",
         "/projects/flutter/commerce-website-cross-platform-app",
-        "/projects/web-development/wordpress-search-page-phase-build",
         "/projects/git/creation-complex-websites-low-cost",
         "/projects/technical-writing/polish-technical-project-listing",
         "/projects/web-development/long-term-web-mobile-development",
@@ -220,91 +236,35 @@
         "/projects/api-integration/revolut-business-api-integration",
         "/projects/web-development/clinic-queue-whatsapp-feedback",
         "/projects/ai-chatbot/chatbot-web-whatsapp",
-        "/projects/api-integration/uidai-ovse-api-setu-integration",
-        "/projects/unity/interactive-kids-donation-experience",
-        "/projects/shipping/square-retail-shipping-rules-fix",
-        "/projects/ai-development/callyser-api-integration-with-claude",
-        "/projects/ios-development/convert-education-web-app-ios",
-        "/projects/ai-chatbot-development/driven-customer-reply-automation",
-        "/projects/ai-automation/whatsapp-support",
-        "/projects/web-development/traffic-pro-deployment",
-        "/projects/openai/openai-email-auto-reply",
-        "/projects/api-integration/whatsapp-email",
-        "/projects/woocommerce/commerce-website-development-wordpress-40826518",
-        "/projects/android-app-development/android-app-developer-needed-for-40826486",
-        "/projects/ai-chatbot-development/live-chat-assistant",
-        "/projects/trading/dhan-autotrading-bot-development",
-        "/projects/ai-chatbot/multi-channel-chatbot-automation",
-        "/projects/scripting/ftp-network-integration-specialist",
-        "/projects/artificial-intelligence/voice-receptionist-development-for",
-        "/projects/zoho-crm/zoho-crm-automation-integration-40825600"
+        "/projects/api-integration/uidai-ovse-api-setu-integration"
       ]
     },
     {
       "source_family": "commerce operator community (Shopify)",
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://community.shopify.com/latest.json",
-      "records_inspected": 30,
-      "primary_pages_opened": 4,
+      "records_inspected": 0,
+      "primary_pages_opened": 0,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
-      "collected": 4,
-      "errors": [],
-      "limitations": [
-        "Latest activity is not original publication; support questions are PRODUCT_SIGNAL, not SALES. No more than four primary topics per run."
+      "collected": 0,
+      "errors": [
+        {
+          "url": "https://community.shopify.com/latest.json",
+          "error": "HTTPError: HTTP Error 429: Too Many Requests"
+        }
       ],
-      "evidence_snapshots": [
-        "data/evidence/bda5dc3c1eb46ea5.json#sha256=e07a4c3154896d673efa4c0e37e46e0cb6435fd2f7812561c4efff112636ca60",
-        "data/evidence/cc503cbb45cb8597.json#sha256=8c8adc02a3a1aa072d6004c9990b5bd96c30da8a163f11207f4730eb793b4395",
-        "data/evidence/3a4adcd5c138f620.json#sha256=0a4fbb33db1bdf34403f7b681d03a1bb7c270cbfe3ee70e264496c7af46bdbb1",
-        "data/evidence/8eac8077525fd1fc.json#sha256=bbcd1ceb3d34259642978b546fa9a93a43ce496c9a41d65a74f7d10090a7bbda",
-        "data/evidence/4b831b4add19cc1f.json#sha256=5b0bb16b6ca770f2c02ccfbddd48eff6e83d97a3da19142e53cfb8b34769630b"
-      ],
+      "limitations": [],
+      "evidence_snapshots": [],
       "records": [],
-      "opportunity_ids": [
-        "4e59e391f6f69d97",
-        "f993190563a14723",
-        "7d6d4b37434e23b6",
-        "559d3a94fd935f92"
-      ],
-      "inspected_keys": [
-        "355460",
-        "720684",
-        "720710",
-        "720457",
-        "714773",
-        "720822",
-        "715425",
-        "719652",
-        "714098",
-        "720791",
-        "397642",
-        "555921",
-        "720339",
-        "720773",
-        "712425",
-        "720829",
-        "720474",
-        "720792",
-        "717576",
-        "719625",
-        "679097",
-        "646221",
-        "666212",
-        "650480",
-        "637085",
-        "713813",
-        "717130",
-        "654028",
-        "720804",
-        "692342"
-      ]
+      "opportunity_ids": [],
+      "inspected_keys": []
     },
     {
       "source_family": "founder community (Indie Hackers)",
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://www.indiehackers.com/",
-      "records_inspected": 21,
+      "records_inspected": 25,
       "primary_pages_opened": 0,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
@@ -314,98 +274,58 @@
         "Only server-rendered public pages. robots disallows /api/ and sign-in; neither used. Founder self-promotion is not a buyer."
       ],
       "evidence_snapshots": [
-        "data/evidence/6548833164b0e7c9.json#sha256=322b97a46c7ccc26830a63fc3fec1fd41ded85ac20874825f35b5674aeebfa3b"
+        "data/evidence/6548833164b0e7c9.json#sha256=3cc81509a8f989fe6313df64fb4398b40983d3d7d530894b748d1c57042023ee"
       ],
       "records": [],
       "opportunity_ids": [],
       "inspected_keys": [
-        "/post/i-built-an-ai-support-bot-for-9-channels-no-customers-yet-heres-what-i-ve-learned-OZMjGhZPTBRugO3PMt8i",
-        "/post/day-17-no-go-785-on-youtube-ads-24-trials-0-sales-YpJxicdqxrXfZVb6xEcs",
-        "/post/4-months-3-advanced-llms-and-0-mrr-my-brutal-reality-check-on-building-with-ai-o8bpjcSAdpqZLu2BUbLF",
+        "/post/we-kept-hearing-the-same-thing-from-users-so-we-built-templates-we-call-them-recipes-zMUiWZGjbhQMjQlakJRn",
         "/post/we-cut-our-free-trial-from-7-days-to-3-every-paying-customer-had-paid-within-3-days-anyway-XTUjvKXVEbzA5OPXcQWH",
+        "/post/day-17-no-go-785-on-youtube-ads-24-trials-0-sales-YpJxicdqxrXfZVb6xEcs",
+        "/post/monday-what-are-you-building-and-shipping-this-week-Td4zLiywb26MCTQbgjEg",
+        "/post/831-signups-58-paying-4-160-mrr-we-ran-the-cut-we-promised-and-the-second-platform-story-didnt-survive-it-pwkmA2P52udXMBf5Yf0S",
+        "/post/4-months-3-advanced-llms-and-0-mrr-my-brutal-reality-check-on-building-with-ai-o8bpjcSAdpqZLu2BUbLF",
+        "/post/i-built-an-ai-support-bot-for-9-channels-no-customers-yet-heres-what-i-ve-learned-OZMjGhZPTBRugO3PMt8i",
         "/post/7-founders-told-me-what-would-stop-them-trying-my-product-heres-the-list-vQ3bhRKMriUo14vX281j",
-        "/post/after-an-ai-agent-run-how-do-you-know-what-it-actually-did-zAcGU57wUl2GnIf2QwSa",
-        "/post/what-worked-and-what-didnt-in-the-first-stretch-after-launching-a-tool-for-freelancers-uw7Bz7aEhPfuh9mZXmHe",
-        "/post/week-4-of-a-solo-mac-studio-with-no-ad-budget-133-to-198-on-the-list-and-not-one-sign-up-from-a-social-link-Y7LVMx2sWdrjGqZISdNg",
+        "/post/numbers/marc-lous-hackathon-leader-shows-more-revenue-than-the-next-four-combined-6TxsArkSEHr8WDbqEKeI",
+        "/post/launches/googles-gemini-api-now-bills-only-for-the-parts-of-a-file-you-pick-sy3tBSoqoHo8rYgVUQGp",
+        "/post/launches/anthropic-now-lets-claude-approve-pull-requests-your-teams-policy-allows-HebbTKZ8EHobyprvmgz3",
+        "/post/news/aws-had-an-outage-its-status-page-stayed-quiet-for-93-minutes-PVOLbJD6gwepoIeit1zH",
         "/post/takes/a-founder-is-rebuilding-his-core-tools-with-ai-critics-warn-of-upkeep-BqRrzb1G6D1tjMuaIJM4",
         "/post/numbers/marc-lous-hackathon-disqualified-its-top-product-its-maker-leads-again-EaLZfaWVATQD96kYnSXq",
-        "/post/numbers/three-entrants-pass-1-000-on-marc-lous-hackathon-revenue-board-TAkfI4Z0e2JCpblmMqpZ",
-        "/post/launches/a-global-hackathon-gives-builders-90-minutes-to-ship-TdPeW18ECVgg0Fcf1adv",
-        "/post/launches/google-opens-its-world-building-ai-to-developers-2SoTZgUgP5eSJclgBuag",
-        "/post/news/marc-lou-disqualifies-the-entry-leading-his-100k-hackathon-Q3pysV6F4F7SgWiVSCpU",
+        "/post/test-my-platform-for-10-minutes-and-tell-me-honestly-whats-wrong-S64yvRh4zEGMRtE0hIRI",
+        "/post/most-users-are-perceiving-the-circlesaas-idea-completely-wrong-zZJstkz0fwMiy2Lc9Bjz",
+        "/post/i-read-the-code-of-5-ai-built-apps-in-public-129-alerts-1-fix-that-mattered-0-paid-orders-so-far-MECeH22rrgE0sgy8Bbpx",
+        "/post/from-4-countries-to-11-plus-a-direct-api-still-0-revenue-XlMfmFGriJs1vrOGyLD0",
+        "/post/day-170-of-building-a-european-crosslisting-app-for-secondhand-marketplaces-QOlKk5aCXYZz8c4UAYhH",
+        "/post/what-one-hour-of-video-really-costs-us-to-process-Vsgjihw2dzQkMApLvHld",
+        "/post/i-built-a-deterministic-zero-row-ai-database-engineer-on-my-ssdo-homepage-0-llm-cost-150ms-zero-hallucinations-oozFhSrlHq4AI0hd3KOp",
         "/post/circlesaas-is-now-a-one-time-payment-not-a-subscription-kjXak9XdFrJUJssArwHO",
-        "/post/831-signups-58-paying-4-160-mrr-we-ran-the-cut-we-promised-and-the-second-platform-story-didnt-survive-it-pwkmA2P52udXMBf5Yf0S",
-        "/post/i-built-an-seo-reporting-tool-but-not-with-stupid-expansive-tiers-GPZTSNOrL1YEf3vdXOzX",
-        "/post/a-reader-did-the-arithmetic-on-my-numbers-six-weeks-of-near-daily-posts-for-about-eight-extra-users-three-reasons-it-might-be-wrong-mfnC62eV3eUuYmJpHMWY",
+        "/post/tech/starting-from-scratch-and-hitting-9-5k-mrr-in-two-months-j5pMaED5FEbKw8qmeyj9",
         "/post/tech/building-a-3m-yr-company-without-launching-publicly-tacryeGIH66SCtD2an4r",
-        "/post/tech/using-custom-infrastructure-as-a-competitive-advantage-and-hitting-31k-mrr-KgfHz813vyyWeszqJMIi",
-        "/post/launches/a-new-tool-from-pieter-levels-lets-anyone-block-3-728-x-accounts-he-says-post-ai-replies-8sgOq6YhwgahokzyznK6"
+        "/post/tech/ahrefs-new-backlink-score-drops-a-notion-hosted-site-from-92-to-0-wuMETmw9YkOACYjkO3cW"
       ]
     },
     {
       "source_family": "international physical-goods RFQ (TradeKey)",
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://www1.tradekey.com/buyoffer_search/start_date/3/page_no/3.htm",
-      "records_inspected": 25,
-      "primary_pages_opened": 2,
-      "verified_buyer_requests": 2,
-      "explicit_commercial_signals": 2,
+      "records_inspected": 0,
+      "primary_pages_opened": 0,
+      "verified_buyer_requests": 0,
+      "explicit_commercial_signals": 0,
       "collected": 0,
-      "errors": [],
-      "limitations": [
-        "Physical goods buyers do not automatically buy research. Contact requires platform sign-in; no access bypass. No bid-count visibility => UNKNOWN."
-      ],
-      "evidence_snapshots": [
-        "data/evidence/3914e4f508c84945.json#sha256=f77c63926f1e43ab1654e9c41c4d9d2a92766b8cbad0c0f6f9d98f2e434b732e",
-        "data/evidence/6d50b467b8e4ded4.json#sha256=2765cf322db72897bbeb5ee8de69cc9dce4611948fbd20c753bbe4c880115254",
-        "data/evidence/8ab7394f90b47f53.json#sha256=a918e51a65e3492ec5e6134306fbf93eda4d8fc81f3b586fd009d59ffe6aca42"
-      ],
-      "records": [
+      "errors": [
         {
-          "url": "https://importer1.tradekey.com/buyoffer/Frozen-Whole-Round-Fish-Supply-Inquiry-3879531.html",
-          "primary_excerpt": "Last Updated: Posted on: 20 Nov 2026 Time Left: 26D 13H Payment Terms: T/T, L/C, D/A, D/P, Western Union, Money Gram Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details Hello, I am sourcing frozen whole round fish. Please specify the species, catch area, size grade, freezing method, storage temperature, glazing percentage and packing details. Share the available volume, health or export certificates, shelf life, shipment lead time and quotation so I can evaluate supply. Regards, Andrew Jimbo Navarro Refine by popular tags frozen whole fish whole round fish frozen seafood Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.07636 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French Guiana French Polynesia Gabon Gambia Georgia Germany Ghana Gibraltar Greece Greenland Grenada Guadeloupe Guam Guatemala Guernsey Guinea Guinea-Bissau Gu",
-          "decision": "Physical goods RFQ; not a commissioned China research service; contact gated and competition unknown",
-          "buyer": true,
-          "published_at": "2026-11-20T00:00:00+00:00",
-          "date_precision": "day; original posted date, not crawl date"
-        },
-        {
-          "url": "https://importer1.tradekey.com/buyoffer/Cotton-Waste-For-Industrial-Buyers-3879529.html",
-          "primary_excerpt": "Last Updated: Posted on: 20 Nov 2026 Time Left: 26D 13H Payment Terms: T/T, L/C, D/A, D/P, Western Union, Money Gram Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details I need cotton waste. Please send the grade, fiber content, contamination level, bale weight, available quantity and price. Regards, Suresh Refine by popular tags cotton waste cotton fiber waste textile waste Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.06975 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French Guiana French Polynesia Gabon Gambia Georgia Germany Ghana Gibraltar Greece Greenland Grenada Guadeloupe Guam Guatemala Guernsey Guinea Guinea-Bissau Guyana Haiti Honduras Hong Kong Hungary Iceland India Indonesia Iraq Ireland Isle of Man Israel Italy Jamaica Japan Jersey Jordan Kazakhstan Kenya Kiribati Kuwait Kyrgyzstan Laos Latvia Lebanon Lesotho L",
-          "decision": "Physical goods RFQ; not a commissioned China research service; contact gated and competition unknown",
-          "buyer": true,
-          "published_at": "2026-11-20T00:00:00+00:00",
-          "date_precision": "day; original posted date, not crawl date"
+          "url": "https://www1.tradekey.com/buyoffer_search/start_date/3/page_no/3.htm",
+          "error": "URLError: <urlopen error timed out>"
         }
       ],
+      "limitations": [],
+      "evidence_snapshots": [],
+      "records": [],
       "opportunity_ids": [],
-      "inspected_keys": [
-        "https://importer1.tradekey.com/buyoffer/Frozen-Whole-Round-Fish-Supply-Inquiry-3879531.html",
-        "https://importer1.tradekey.com/buyoffer/Cotton-Waste-For-Industrial-Buyers-3879529.html",
-        "https://importer1.tradekey.com/buyoffer/Kava-Powder-With-Origin-And-Quality-Data-3879527.html",
-        "https://importer1.tradekey.com/buyoffer/Premium-Perfumed-Incense-Sticks-3879525.html",
-        "https://importer1.tradekey.com/buyoffer/Soap-Making-Raw-Material-Offers-3879521.html",
-        "https://importer1.tradekey.com/buyoffer/Gum-Arabic-For-Commercial-Supply-3879513.html",
-        "https://importer1.tradekey.com/buyoffer/Goat-Milk-Powder-With-Product-Specifications-3879511.html",
-        "https://importer1.tradekey.com/buyoffer/Bulk-Winter-Wear-Collection-3879509.html",
-        "https://importer1.tradekey.com/buyoffer/Jewelry-Suppliers-Requested-3879507.html",
-        "https://importer1.tradekey.com/buyoffer/Porcelain-ceramic-Floor-And-Wall-Tiles-gres-Porcellanato--3879503.html",
-        "https://importer1.tradekey.com/buyoffer/Assorted-Winter-Wear-For-Wholesale-Supply-3879501.html",
-        "https://importer1.tradekey.com/buyoffer/60-Tons-Of-15-GSM-Three-Ply-Jumbo-Toilet-Tissue-3879499.html",
-        "https://importer1.tradekey.com/buyoffer/Mixed-Clothing-For-Wholesale-Resale-3879497.html",
-        "https://importer1.tradekey.com/buyoffer/Graded-Used-Mobile-Phones-In-Wholesale-Lots-3879495.html",
-        "https://importer1.tradekey.com/buyoffer/Wholesale-T-Shirts-3879493.html",
-        "https://importer1.tradekey.com/buyoffer/Mobile-Phones-For-Wholesale-Distribution-3879489.html",
-        "https://importer1.tradekey.com/buyoffer/Fashion-Handbags-For-Retail-Assortments-3879481.html",
-        "https://importer1.tradekey.com/buyoffer/Retail-Skin-Cream-With-Complete-Product-Documentation-3879479.html",
-        "https://importer1.tradekey.com/buyoffer/Soybean-Seed-With-Quality-And-Origin-Data-3879477.html",
-        "https://importer1.tradekey.com/buyoffer/DIY-Garden-Tools-And-Home-Gardening-Supplies-3879475.html",
-        "https://importer1.tradekey.com/buyoffer/Commercial-Aluminium-Products-3879471.html",
-        "https://importer1.tradekey.com/buyoffer/Milk-Silk-And-Ice-Silk-T-Shirts-3879469.html",
-        "https://importer1.tradekey.com/buyoffer/Medical-Scrub-Sets-For-Professional-Use-3879465.html",
-        "https://importer1.tradekey.com/buyoffer/Household-And-Commercial-Detergents-3879459.html",
-        "https://importer1.tradekey.com/buyoffer/Furniture-Range-For-Commercial-Purchase-3879457.html"
-      ]
+      "inspected_keys": []
     }
   ],
   "unique_refreshed": 68,
@@ -413,14 +333,14 @@
     {
       "id": "5409f529cb2b0f7b",
       "url": "https://community.n8n.io/t/assistant-credits-top-up-now-available/318075",
-      "checked_at": "2026-11-23T10:42:47.411006+00:00",
+      "checked_at": "2026-11-24T12:25:23.472626+00:00",
       "refreshed": false,
       "reason": "event expired; no publication rejuvenation"
     },
     {
       "id": "edge-haiku-2026-10-07",
       "url": "https://www.anthropic.com/claude-haiku-5-5",
-      "checked_at": "2026-11-23T10:42:47.411006+00:00",
+      "checked_at": "2026-11-24T12:25:23.472626+00:00",
       "refreshed": false,
       "reason": "event expired; no publication rejuvenation"
     }
