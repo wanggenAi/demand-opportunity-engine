@@ -1,0 +1,194 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50629936",
+  "collected_at": "2026-11-25T11:13:51.235741+00:00",
+  "source": {
+    "author": "abelanger",
+    "children": [
+      {
+        "author": "christianbasile",
+        "children": [
+          {
+            "author": "abelanger",
+            "children": [],
+            "created_at": "2026-11-24T23:28:09.000Z",
+            "created_at_i": 1795562889,
+            "id": 50636324,
+            "options": [],
+            "parent_id": 50635663,
+            "points": null,
+            "story_id": 50629936,
+            "text": "Thanks! Many sandbox providers support snapshots through various mechanisms: filesystem snapshots and even full memory. The snapshot mechanism here is very simple, it just streams tars to S3, though we&#x27;ve been playing around a lot with OverlayFS which will likely be the next iteration.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-24T22:24:08.000Z",
+        "created_at_i": 1795559048,
+        "id": 50635663,
+        "options": [],
+        "parent_id": 50629936,
+        "points": null,
+        "story_id": 50629936,
+        "text": "this is a very interresting concept; the first time i am reading about snapshots and, in brickie&#x27;s case, persistent filesystem snapshots - very cool.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "d1algo12",
+        "children": [
+          {
+            "author": "abelanger",
+            "children": [],
+            "created_at": "2026-11-24T22:41:51.000Z",
+            "created_at_i": 1795560111,
+            "id": 50635841,
+            "options": [],
+            "parent_id": 50635765,
+            "points": null,
+            "story_id": 50629936,
+            "text": "You can use it for that, yes. Note this is designed more for people building agent products who want to add a sandbox to their agent, not for developers running coding agents remotely.<p>Generally the two approaches to agents with sandboxes are to run your agent &quot;inside the sandbox,&quot; where the entire agent process runs in the sandbox, or &quot;outside the sandbox&quot; where the agent uses the sandbox as tool calls. We usually recommend the latter though both are possible.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-24T22:33:04.000Z",
+        "created_at_i": 1795559584,
+        "id": 50635765,
+        "options": [],
+        "parent_id": 50629936,
+        "points": null,
+        "story_id": 50629936,
+        "text": "is this useful to run ai agents in their own sandbox?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "pratikgcet1985",
+        "children": [],
+        "created_at": "2026-11-24T23:04:29.000Z",
+        "created_at_i": 1795561469,
+        "id": 50636088,
+        "options": [],
+        "parent_id": 50629936,
+        "points": null,
+        "story_id": 50629936,
+        "text": "Very interesting!",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "vivzkestrel",
+        "children": [
+          {
+            "author": "aditi805",
+            "children": [],
+            "created_at": "2026-11-25T05:06:59.000Z",
+            "created_at_i": 1795583219,
+            "id": 50638725,
+            "options": [],
+            "parent_id": 50637990,
+            "points": null,
+            "story_id": 50629936,
+            "text": "I have found firecracker vms to be the most lightweight generally. e2b provides a good orchestration of these and you dont have to pay for idle sessions.<p>an untrusted code running on your VPC directly would never be safe anyway, and I&#x27;ll probably just isolate that environment as the first safety step!",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-25T03:18:19.000Z",
+        "created_at_i": 1795576699,
+        "id": 50637990,
+        "options": [],
+        "parent_id": 50629936,
+        "points": null,
+        "story_id": 50629936,
+        "text": "- what is the difference between e2b, daytona, modal, firecracker vm, docker and your sandbox<p>- i want to run untrusted code inside ec2 submitted by users<p>- what are my options?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "ShintaroHara",
+        "children": [],
+        "created_at": "2026-11-25T09:15:57.000Z",
+        "created_at_i": 1795598157,
+        "id": 50640221,
+        "options": [],
+        "parent_id": 50629936,
+        "points": null,
+        "story_id": 50629936,
+        "text": "That sounds good! \nShould I think of this as the addition of state saving and the ability to retry actions to the agent-sandbox?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-11-24T15:48:34.000Z",
+    "created_at_i": 1795535314,
+    "id": 50629936,
+    "options": [],
+    "parent_id": null,
+    "points": 31,
+    "story_id": 50629936,
+    "text": "Hey HN, this is Alexander from Hatchet (<a href=\"https:&#x2F;&#x2F;github.com&#x2F;hatchet-dev&#x2F;hatchet\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;hatchet-dev&#x2F;hatchet</a>). We’re releasing a new open-source project today called Brickie. Brickie lets you run sandboxes in your own cloud account, primarily targeting EKS on AWS.<p>Sandboxes are an incredibly useful primitive for agentic applications. They serve two main functions: (1) a way for the agent to safely execute untrusted code, and (2) a durable filesystem for agents to preserve their state via snapshots.<p>We decided to start building this after we started on a package called `@hatchet-dev&#x2F;sandbox` to integrate more directly with various sandbox providers, like E2B, Daytona, Archil, and Modal. We discovered that a lot of users had a requirement to self-host their sandbox infra for part of (or all of) their stack, due to a self-host requirement for enterprises. We searched around for the easiest way for users to self-host a sandbox stack and agent-sandbox (<a href=\"https:&#x2F;&#x2F;agent-sandbox.sigs.k8s.io\" rel=\"nofollow\">https:&#x2F;&#x2F;agent-sandbox.sigs.k8s.io</a>) was the closest thing to what we had in mind: it’s a kubernetes-sigs project implementing a Kubernetes operator which spawns sandboxes as pods on supported isolation layers like Firecracker, gVisor, and Kata Containers. We learned that many platform teams were adopting this because it&#x27;s a standard k8s-based deployment model and is pretty easy to customize the isolation layer, network config, etc.<p>However, it was missing some necessary features. brickie builds on top of the agent-sandbox project and extends it to support proper sandbox (filesystem-based) snapshots, fork, pause, and resume, all while bundling a proper orchestration and observability layer via Hatchet.<p>Zooming out a bit, Hatchet is an orchestration engine which supports durable execution (<a href=\"https:&#x2F;&#x2F;hatchet.run&#x2F;blog&#x2F;durable-execution\">https:&#x2F;&#x2F;hatchet.run&#x2F;blog&#x2F;durable-execution</a>). Throughout 2026, we saw high adoption from users building agents using durable workflows as the statefulness layer and execution model. But as sandboxes became more popular, something didn’t sit right with us. Sandboxes _also_ provide a durability layer, but at the filesystem level, and it became important to disambiguate what we call <i>session state</i> from <i>filesystem state</i>. I wrote a lot more about this here: <a href=\"https:&#x2F;&#x2F;hatchet.run&#x2F;blog&#x2F;agent-statefulness\">https:&#x2F;&#x2F;hatchet.run&#x2F;blog&#x2F;agent-statefulness</a>.<p>The problem with having state in multiple places is that it needs coordination, which adds complexity to your application. This was part of the motivation behind `@hatchet-dev&#x2F;sandbox`: we wanted to provide an easy way to take coordinated snapshots of agent state, even when using an external sandbox provider.<p>So when we started looking at self-hosted sandbox options, it was critical that this architecture was supported well. We decided to support this in brickie using a pretty simple snapshotting mechanism which tars and stores snapshots in an object store (S3). This is something we’re actively working to improve and make more performant.<p>Brickie is early and in beta, we&#x27;re looking for testers, contributors, and feedback on the deployment model. Thanks in advance!",
+    "title": "Show HN: Brickie – Deploy sandboxes in your own AWS account",
+    "type": "story",
+    "url": "https://github.com/hatchet-dev/brickie"
+  },
+  "comments": [
+    {
+      "author": "christianbasile",
+      "text": "this is a very interresting concept; the first time i am reading about snapshots and, in brickie's case, persistent filesystem snapshots - very cool.",
+      "at": "2026-11-24T22:24:08.000Z",
+      "url": "https://news.ycombinator.com/item?id=50635663"
+    },
+    {
+      "author": "abelanger",
+      "text": "Thanks! Many sandbox providers support snapshots through various mechanisms: filesystem snapshots and even full memory. The snapshot mechanism here is very simple, it just streams tars to S3, though we've been playing around a lot with OverlayFS which will likely be the next iteration.",
+      "at": "2026-11-24T23:28:09.000Z",
+      "url": "https://news.ycombinator.com/item?id=50636324"
+    },
+    {
+      "author": "d1algo12",
+      "text": "is this useful to run ai agents in their own sandbox?",
+      "at": "2026-11-24T22:33:04.000Z",
+      "url": "https://news.ycombinator.com/item?id=50635765"
+    },
+    {
+      "author": "abelanger",
+      "text": "You can use it for that, yes. Note this is designed more for people building agent products who want to add a sandbox to their agent, not for developers running coding agents remotely. Generally the two approaches to agents with sandboxes are to run your agent \"inside the sandbox,\" where the entire agent process runs in the sandbox, or \"outside the sandbox\" where the agent uses the sandbox as tool calls. We usually recommend the latter though both are possible.",
+      "at": "2026-11-24T22:41:51.000Z",
+      "url": "https://news.ycombinator.com/item?id=50635841"
+    },
+    {
+      "author": "pratikgcet1985",
+      "text": "Very interesting!",
+      "at": "2026-11-24T23:04:29.000Z",
+      "url": "https://news.ycombinator.com/item?id=50636088"
+    },
+    {
+      "author": "vivzkestrel",
+      "text": "- what is the difference between e2b, daytona, modal, firecracker vm, docker and your sandbox - i want to run untrusted code inside ec2 submitted by users - what are my options?",
+      "at": "2026-11-25T03:18:19.000Z",
+      "url": "https://news.ycombinator.com/item?id=50637990"
+    },
+    {
+      "author": "aditi805",
+      "text": "I have found firecracker vms to be the most lightweight generally. e2b provides a good orchestration of these and you dont have to pay for idle sessions. an untrusted code running on your VPC directly would never be safe anyway, and I'll probably just isolate that environment as the first safety step!",
+      "at": "2026-11-25T05:06:59.000Z",
+      "url": "https://news.ycombinator.com/item?id=50638725"
+    },
+    {
+      "author": "ShintaroHara",
+      "text": "That sounds good! \nShould I think of this as the addition of state saving and the ability to retry actions to the agent-sandbox?",
+      "at": "2026-11-25T09:15:57.000Z",
+      "url": "https://news.ycombinator.com/item?id=50640221"
+    }
+  ],
+  "comments_complete": true
+}

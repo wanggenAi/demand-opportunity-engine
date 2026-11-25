@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50628489",
+  "collected_at": "2026-11-25T11:13:51.235741+00:00",
+  "source": {
+    "author": "emiliospme",
+    "children": [],
+    "created_at": "2026-11-24T14:13:10.000Z",
+    "created_at_i": 1795529590,
+    "id": 50628489,
+    "options": [],
+    "parent_id": null,
+    "points": 1,
+    "story_id": 50628489,
+    "text": "<a href=\"https:&#x2F;&#x2F;github.com&#x2F;emilioSp&#x2F;pi-maestro\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;emilioSp&#x2F;pi-maestro</a><p>Pi Maestro started from my need to use an engineering method when working with agents. With simple prompts or the &quot;let’s write a plan&quot; approach, I would sometimes reach dead ends and have to start over. Agents would say the work was complete too early, without checking the result enough.<p>Spec-driven development seemed suitable for this problem.<p>So I tried to turn it into a workflow that worked in practice: define the expected behavior, ask one agent to implement it, and ask another to check it independently.<p>At first, I tried to do everything through skills. However, I noticed that agents would skip steps in the protocol described in the Markdown files. My impression was that following the workflow required too much attention compared to the assigned task.<p>So I introduced deterministic tools that control transitions and check the reports produced by agents. Basically, I built a finite state machine where each step requires a structured handoff. This handoff also becomes the starting point for the next agent.<p>Taking inspiration from OpenSpec and GitHub Spec Kit, I adopted the concepts that suited the way I work:<p>proposal.md for the context, goal, and scope of the change.<p>spec.md for requirements in the form &quot;actor MUST…&quot; and acceptance criteria using GIVEN, WHEN, THEN and concrete examples.<p>design.md when important technical decisions are needed.<p>Once the spec is written and approved, the Maestro (orchestrator) starts coordinating a sequence of agents:<p>Builder, responsible for implementation.<p>Verifier, responsible for checking that everything works as specified.<p>Simplifier, responsible for simplifying the code to make it clearer.<p>I have chosen Pi because it provides events to control the runtime. This made it easy to add the maestro without going through an MCP server.<p>Pi also works with different LLM models. Using different models for each role allows for a more critical view of the spec: a builder and a verifier from the same &quot;family&quot; will approach the problem in similar ways.<p>I&#x27;d like to have your feedback on it and in general on the spec-driven development.<p>Do you use spec-driven development? If Yes, which workflow best suit for your needs?",
+    "title": "Show HN: Pi-maestro – spec driven development for Pi",
+    "type": "story",
+    "url": "https://github.com/emilioSp/pi-maestro"
+  },
+  "comments": [],
+  "comments_complete": true
+}

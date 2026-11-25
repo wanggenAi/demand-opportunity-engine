@@ -1,6 +1,6 @@
 # DAILY MONEY PORTFOLIO
 
-Generated: 2026-11-24T12:25:23.472626+00:00
+Generated: 2026-11-25T11:13:51.235741+00:00
 
 MANY VALIDATIONS, FEW HEAVY COMMITMENTS
 Current acquisition budget = 0. No quota filling. Only verified free-contact qualified buyers enter CONTACT_TODAY.
@@ -19,7 +19,7 @@ None. No verified qualifying record; no invented action.
 ### workflow_reliability
 
 - cluster_name: workflow_reliability
-- independent_demand_count: 145
+- independent_demand_count: 146
 - payment_evidence_count: 3
 - platforms: ["GitHub", "Hacker News", "Shopify Community", "n8n Community"]
 - communities: ["Agenta-AI/agenta", "Ask HN: What's your current AI agentic setup?", "Ask/Show HN", "BuidlGuidl/ethevals", "Codeberg.org Not Reachable", "Commerce operator forum", "Nasdaq erases all 2026 gains as AI sell-off dampens Anthropic’s second day", "Should governments slow frontier AI? Jacob Coxon and Robin Hanson debate [video]", "Show HN: Glassbrain – Read your agent's brain, know what your agent knows", "[dead]", "farmmer938-lgtm/autonomous-zero-baht", "n8n Jobs", "n8n-io/n8n", "useagenthq/useagent"]
@@ -133,7 +133,7 @@ None. No verified qualifying record; no invented action.
 - payment_evidence: `contracts/dex-periphery/ProtocolFeeCollector.sol:85-108` — `collect()` sends every pool's fees to `revenue`, regardless of token:
 - published_at: 2026-11-14T14:29:51Z
 - buyer_activity_at: None
-- freshness_days: 9.91
+- freshness_days: 10.86
 - competition: LOW
 - competition_evidence: []
 - fit: REMOTE_NOW
@@ -152,7 +152,7 @@ None. No verified qualifying record; no invented action.
 - expected_value: {"currency": "USD", "amount": null, "basis": "UNKNOWN; no realized USD sales history"}
 - probability_of_conversion: None
 - structural_advantage: {"china_local_advantage": "NONE", "language_advantage": "NONE", "technical_advantage": "MEDIUM", "direct_contactability": "MEDIUM", "evidence": "Task explicitly mentions remote software work", "controlled_scope": "Chinese web research, translation drafts, evidence comparison; authorized remote code/tests only", "location_limit": "Desk research only; physical China location, field access and qualifications are not verified", "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"}
-- repeatability: 145
+- repeatability: 146
 - portfolio_priority: 16.103
 - priority_basis: relative allocation index, not promised revenue; neutral financial factors without history
 - learned_quote_ranges: {}
@@ -170,7 +170,7 @@ None. No verified qualifying record; no invented action.
 - payment_evidence: **This is a `zero-bounty` task: $0.** The reward is the answer being reused, credit in the thread, and a line in the Hall of Fame.
 - published_at: 2026-11-20T15:50:37Z
 - buyer_activity_at: None
-- freshness_days: 3.86
+- freshness_days: 4.81
 - competition: LOW
 - competition_evidence: []
 - fit: REMOTE_NOW
@@ -189,7 +189,7 @@ None. No verified qualifying record; no invented action.
 - expected_value: {"currency": "USD", "amount": null, "basis": "UNKNOWN; no realized USD sales history"}
 - probability_of_conversion: None
 - structural_advantage: {"china_local_advantage": "NONE", "language_advantage": "NONE", "technical_advantage": "MEDIUM", "direct_contactability": "MEDIUM", "evidence": "Task explicitly mentions remote software work", "controlled_scope": "Chinese web research, translation drafts, evidence comparison; authorized remote code/tests only", "location_limit": "Desk research only; physical China location, field access and qualifications are not verified", "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"}
-- repeatability: 145
+- repeatability: 146
 - portfolio_priority: 16.103
 - priority_basis: relative allocation index, not promised revenue; neutral financial factors without history
 - learned_quote_ranges: {}
@@ -207,7 +207,7 @@ None. No verified qualifying record; no invented action.
 - payment_evidence: **This is a `zero-bounty` task: $0.** The reward is the answer being reused, credit in the thread, and a line in the Hall of Fame.
 - published_at: 2026-11-19T16:06:02Z
 - buyer_activity_at: None
-- freshness_days: 4.85
+- freshness_days: 5.8
 - competition: LOW
 - competition_evidence: []
 - fit: REMOTE_NOW
@@ -226,7 +226,7 @@ None. No verified qualifying record; no invented action.
 - expected_value: {"currency": "USD", "amount": null, "basis": "UNKNOWN; no realized USD sales history"}
 - probability_of_conversion: None
 - structural_advantage: {"china_local_advantage": "NONE", "language_advantage": "NONE", "technical_advantage": "MEDIUM", "direct_contactability": "MEDIUM", "evidence": "Task explicitly mentions remote software work", "controlled_scope": "Chinese web research, translation drafts, evidence comparison; authorized remote code/tests only", "location_limit": "Desk research only; physical China location, field access and qualifications are not verified", "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"}
-- repeatability: 145
+- repeatability: 146
 - portfolio_priority: 16.103
 - priority_basis: relative allocation index, not promised revenue; neutral financial factors without history
 - learned_quote_ranges: {}
@@ -244,7 +244,7 @@ None. No verified qualifying record; no invented action.
 - payment_evidence: PR #5056 a débloqué la PO centrale Hub : PO `ee9afce6-bc59-46b1-887b-4e59aa4a4a7b` ; Directrice `purchase_commitment HTTP201`, coût de budget `10 EUR` provenant du candidat `KSC-000817`, justificatif `SIMULATED-STAGING-BUDGET-...` et readback PG, soumission Hub HTTP200 ; aucun paiement fournisseur.
 - published_at: 2026-11-22T02:35:57Z
 - buyer_activity_at: None
-- freshness_days: 2.41
+- freshness_days: 3.36
 - competition: LOW
 - competition_evidence: []
 - fit: REMOTE_NOW
@@ -281,7 +281,7 @@ None. No verified qualifying record; no invented action.
 - payment_evidence: [Bounty][$0][i18n] lessons/en 镜像：20 篇确认过期、43 篇没有来源，并补一道门禁
 - published_at: 2026-11-14T06:40:50Z
 - buyer_activity_at: None
-- freshness_days: 10.24
+- freshness_days: 11.19
 - competition: LOW
 - competition_evidence: []
 - fit: REMOTE_NOW
@@ -300,7 +300,7 @@ None. No verified qualifying record; no invented action.
 - expected_value: {"currency": "USD", "amount": null, "basis": "UNKNOWN; no realized USD sales history"}
 - probability_of_conversion: None
 - structural_advantage: {"china_local_advantage": "NONE", "language_advantage": "NONE", "technical_advantage": "MEDIUM", "direct_contactability": "MEDIUM", "evidence": "Task explicitly mentions remote software work", "controlled_scope": "Chinese web research, translation drafts, evidence comparison; authorized remote code/tests only", "location_limit": "Desk research only; physical China location, field access and qualifications are not verified", "cannot_promise": "Factory inspection, product safety/certification, legal/customs, freight/DDP, warehousing, supplier quality guarantees, or unverified case studies"}
-- repeatability: 145
+- repeatability: 146
 - portfolio_priority: 16.103
 - priority_basis: relative allocation index, not promised revenue; neutral financial factors without history
 - learned_quote_ranges: {}
@@ -309,7 +309,7 @@ None. No verified qualifying record; no invented action.
 
 ## SKIP / WATCH
 
-Direct SKIP: 102; product WATCH: 2; info WATCH: 2.
+Direct SKIP: 105; product WATCH: 2; info WATCH: 2.
 Full records and rejection reasons: DAILY_PORTFOLIO.json. WATCH has no forced quota and consumes no active validation time.
 
 ## G. TODAY ACTION PLAN
@@ -328,6 +328,6 @@ Full records and rejection reasons: DAILY_PORTFOLIO.json. WATCH has no forced qu
 Total estimated human time: 230 minutes.
 Expected revenue exposure: UNKNOWN; proposals are not revenue. No dollar forecast without real sales history.
 Highest priority: qualified free buyer contacts, then due follow-ups, then bounded product/edge validations. Empty contacts mean no qualified buyer, not permission to invent one.
-Open quotes: 0; WIP overflow: {'VALIDATE_FIRST': 21}.
+Open quotes: 0; WIP overflow: {'VALIDATE_FIRST': 20}.
 Real WON with delivery status unreported: [].
 Active builds require verified tester commitment, prices, repeated cross-platform paying demand and explicit human active state. Active deliveries require real WON and explicit active state.

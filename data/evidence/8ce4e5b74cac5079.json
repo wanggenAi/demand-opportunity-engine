@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/44720",
-  "collected_at": "2026-11-24T12:25:23.472626+00:00",
+  "collected_at": "2026-11-25T11:13:51.235741+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/44720",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -90,25 +90,6 @@
     "pinned_comment": null,
     "score": 1.0
   },
-  "comments": [
-    {
-      "author": "n8n-assistant[bot]",
-      "text": "Hey @HakeemTheEmperor,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9826\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9826](https://linear.app/n8n/issue/GHC-9826)",
-      "at": "2026-11-20T17:31:10Z",
-      "url": "https://github.com/n8n-io/n8n/issues/44720#issuecomment-7046200972"
-    },
-    {
-      "author": "goutham-valugula",
-      "text": "I checked the cited queue implementation and unit test at the referenced commit. `remove()` increments capacity and then calls `resolveNext()`, while `dequeue()` also resolves the next waiter when a running execution releases a slot. In the limit-1 test, execution 3 is still running when removing queued execution 4 causes execution 5 to start; the test currently expects that oversubscription. A regression assertion should keep 5 queued after the removal and release it only after 3 calls `dequeue()`.",
-      "at": "2026-11-21T03:05:36Z",
-      "url": "https://github.com/n8n-io/n8n/issues/44720#issuecomment-7056364869"
-    },
-    {
-      "author": "HakeemTheEmperor",
-      "text": "Thanks for verifying. #44724 makes exactly that change: remove() no longer calls resolveNext(), and the test now keeps 5 queued after removing 4 and only starts it once 3 calls dequeue().",
-      "at": "2026-11-21T06:38:15Z",
-      "url": "https://github.com/n8n-io/n8n/issues/44720#issuecomment-7058735086"
-    }
-  ],
-  "comments_complete": true
+  "comments": [],
+  "comments_complete": false
 }

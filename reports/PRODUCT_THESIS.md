@@ -7,7 +7,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## workflow_reliability — UNVALIDATED CLUSTER
 
-- independent_demand_count: 145
+- independent_demand_count: 146
 - payment_evidence_count: 3
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community', 'n8n Community']
 - communities: ['Agenta-AI/agenta', "Ask HN: What's your current AI agentic setup?", 'Ask/Show HN', 'BuidlGuidl/ethevals', 'Codeberg.org Not Reachable', 'Commerce operator forum', 'Nasdaq erases all 2026 gains as AI sell-off dampens Anthropic’s second day', 'Should governments slow frontier AI? Jacob Coxon and Robin Hanson debate [video]', "Show HN: Glassbrain – Read your agent's brain, know what your agent knows", '[dead]', 'farmmer938-lgtm/autonomous-zero-baht', 'n8n Jobs', 'n8n-io/n8n', 'useagenthq/useagent']

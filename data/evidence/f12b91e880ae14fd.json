@@ -1,0 +1,99 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/45022",
+  "collected_at": "2026-11-25T11:13:51.235741+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/45022",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/45022/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/45022/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/45022/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/45022",
+    "id": 6583255504,
+    "node_id": "I_kwDOC4Q8Qs8AAAABiGSB0A",
+    "number": 45022,
+    "title": "MCP: setNodeParameter with a nested path duplicates the parent key instead of replacing it",
+    "user": {
+      "login": "lordraiden",
+      "id": 17175395,
+      "node_id": "MDQ6VXNlcjE3MTc1Mzk1",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17175395?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lordraiden",
+      "html_url": "https://github.com/lordraiden",
+      "followers_url": "https://api.github.com/users/lordraiden/followers",
+      "following_url": "https://api.github.com/users/lordraiden/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lordraiden/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lordraiden/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lordraiden/subscriptions",
+      "organizations_url": "https://api.github.com/users/lordraiden/orgs",
+      "repos_url": "https://api.github.com/users/lordraiden/repos",
+      "events_url": "https://api.github.com/users/lordraiden/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lordraiden/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-11-24T13:48:37Z",
+    "updated_at": "2026-11-24T20:06:39Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "status": {
+      "id": 2,
+      "name": "Backlog",
+      "category": "backlog"
+    },
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Summary\n\nThe `update_workflow` MCP tool's `setNodeParameter` operation, given a **nested** JSON Pointer path such as `/parameters/jsCode`, does not replace the value at that path. It **appends a second `parameters` key** to the node object and leaves the original in place. The node then carries two `parameters` keys; JSON parsers keep the first, so the old value keeps running while the tool reports success.\n\n## Reproduction\n\n1. Take a workflow with a Code node whose `parameters.jsCode` is `\"old\"`.\n2. Call `update_workflow`:\n\n```json\n{\n  \"workflowId\": \"<id>\",\n  \"operations\": [\n    { \"type\": \"setNodeParameter\", \"nodeName\": \"My Code Node\", \"path\": \"/parameters/jsCode\", \"value\": \"new\" }\n  ]\n}\n```\n\n3. The tool returns `appliedOperations: 1` and no warning.\n4. `get_workflow_details` shows the node as:\n\n```json\n{\n  \"parameters\": { \"jsCode\": \"old\" },\n  \"parameters\": { \"jsCode\": \"new\" }\n}\n```\n\n5. Executing the workflow runs `\"old\"`.\n\n## Expected\n\nThe value at `/parameters/jsCode` is replaced and the node keeps a single `parameters` object.\n\n## Actual\n\nA duplicate `parameters` key is appended. The first (old) one wins at parse time, so the edit is silently ineffective.\n\n## Impact\n\nSilent no-op on any nested-path edit. It cost a debugging cycle on a production notification hub: the edit looked applied, the workflow kept running the old code, and only a live execution revealed it.\n\n## Workaround\n\nUse `updateNodeParameters` with `replace: true` and the whole `parameters` object:\n\n```json\n{ \"type\": \"updateNodeParameters\", \"nodeName\": \"My Code Node\", \"replace\": true, \"parameters\": { \"jsCode\": \"new\" } }\n```\n\n## Environment\n\n- n8n: `docker.n8n.io/n8nio/n8n:latest`, self-hosted on Docker\n- MCP: the bundled n8n MCP server (`update_workflow` tool)\n- Client: DeepSeek Harness\n\n## Note\n\nThe same class of bug shows up with a top-level path: `setNodeParameter` with `/parameters/command` produced a nested `parameters.parameters.command`. Both point at one root cause: the path is applied by assignment into a fresh object instead of merging into the existing one.",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/45022/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/45022/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [],
+  "comments_complete": false
+}
