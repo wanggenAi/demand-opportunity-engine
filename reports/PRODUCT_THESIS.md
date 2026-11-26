@@ -7,7 +7,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## workflow_reliability — UNVALIDATED CLUSTER
 
-- independent_demand_count: 146
+- independent_demand_count: 147
 - payment_evidence_count: 3
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community', 'n8n Community']
 - communities: ['Agenta-AI/agenta', "Ask HN: What's your current AI agentic setup?", 'Ask/Show HN', 'BuidlGuidl/ethevals', 'Codeberg.org Not Reachable', 'Commerce operator forum', 'Nasdaq erases all 2026 gains as AI sell-off dampens Anthropic’s second day', 'Should governments slow frontier AI? Jacob Coxon and Robin Hanson debate [video]', "Show HN: Glassbrain – Read your agent's brain, know what your agent knows", '[dead]', 'farmmer938-lgtm/autonomous-zero-baht', 'n8n Jobs', 'n8n-io/n8n', 'useagenthq/useagent']
@@ -20,12 +20,12 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://github.com/n8n-io/n8n/issues/45283
+  - https://github.com/n8n-io/n8n/issues/45241
   - https://news.ycombinator.com/item?id=50626772
   - https://github.com/BuidlGuidl/ethevals/issues/122
   - https://github.com/n8n-io/n8n/issues/44789
   - https://news.ycombinator.com/item?id=50601879
-  - https://github.com/n8n-io/n8n/issues/44779
-  - https://github.com/n8n-io/n8n/issues/44778
 
 ## supplier_sourcing — UNVALIDATED CLUSTER
 
@@ -51,7 +51,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## browser_automation — UNVALIDATED CLUSTER
 
-- independent_demand_count: 14
+- independent_demand_count: 15
 - payment_evidence_count: 1
 - platforms: ['GitHub', 'Hacker News', 'Shopify Community']
 - communities: ['Commerce operator forum', 'Understanding Email Encryption (2025)', 'datnguyenquy94/news-radar', 'n8n-io/n8n', 'useagenthq/useagent', 'yaojiejia/agents-radar']
@@ -64,12 +64,12 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Action: WATCH (no standardized product build authorized by evidence)
 - Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
 - Representative evidence:
+  - https://community.shopify.com/t/product-page-shows-old-inventory-quantity-for-30-min-after-an-order-admin-is-correct/722750
   - https://github.com/n8n-io/n8n/issues/44776
   - https://github.com/n8n-io/n8n/issues/44603
   - https://github.com/n8n-io/n8n/issues/43958
   - https://github.com/n8n-io/n8n/issues/43947
   - https://github.com/yaojiejia/agents-radar/issues/462
-  - https://github.com/datnguyenquy94/news-radar/issues/1009
 
 ## lead_research — UNVALIDATED CLUSTER
 

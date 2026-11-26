@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/45022",
-  "collected_at": "2026-11-25T11:13:51.235741+00:00",
+  "collected_at": "2026-11-26T10:49:44.795598+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/45022",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -94,6 +94,19 @@
     "pinned_comment": null,
     "score": 1.0
   },
-  "comments": [],
-  "comments_complete": false
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @lordraiden,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9840\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9840](https://linear.app/n8n/issue/GHC-9840)",
+      "at": "2026-11-24T13:48:50Z",
+      "url": "https://github.com/n8n-io/n8n/issues/45022#issuecomment-7133375095"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "The path is applied relative to the node’s `parameters` object, not to the whole node. In the current implementation, `handleSetNodeParameter` passes `node.parameters` to `setAtPointer`; the operation schema also describes paths like `/options/systemMessage`. So for `parameters.jsCode`, the path should be `/jsCode`. Using `/parameters/jsCode` asks the updater to create a nested `parameters.parameters.jsCode`, which matches the reported output but is not a duplicate JSON key. The existing nested-object test in `packages/cli/src/modules/mcp/__tests__/workflow-operations.test.ts` covers this relative-path behavior. If the MCP tool documentation or an example led you to use a node-root JSON Pointer, it would be useful to identify that example so the docs can be corrected.",
+      "at": "2026-11-24T20:06:39Z",
+      "url": "https://github.com/n8n-io/n8n/issues/45022#issuecomment-7143054948"
+    }
+  ],
+  "comments_complete": true
 }

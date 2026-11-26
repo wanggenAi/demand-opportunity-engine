@@ -1,12 +1,123 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50624684",
-  "collected_at": "2026-11-25T11:13:51.235741+00:00",
+  "collected_at": "2026-11-26T10:49:44.795598+00:00",
   "source": {
     "author": "kevinsync",
     "children": [
       {
         "author": "kevinsync",
-        "children": [],
+        "children": [
+          {
+            "author": "bad_username",
+            "children": [
+              {
+                "author": "kevinsync",
+                "children": [
+                  {
+                    "author": "mdaniel",
+                    "children": [
+                      {
+                        "author": "kevinsync",
+                        "children": [],
+                        "created_at": "2026-11-26T01:47:01.000Z",
+                        "created_at_i": 1795657621,
+                        "id": 50650359,
+                        "options": [],
+                        "parent_id": 50649644,
+                        "points": null,
+                        "story_id": 50624684,
+                        "text": "I guess I approached it from the perspective that everything is an untrusted input, just because who the hell knows what they might have downloaded in 1997 lol. Or what if you&#x27;re using the portable version as a technician and moving from machine to machine, etc.<p>In RCHIVE right now, I added that for when the app inspects zip-based Office files for tracked changes and other revision evidence (so like, docx, xlsx, pptx, odt files). You just never know, and I figured it would be nice to quietly prevent some rando file forcing enough memory allocation to crash the app. I also have bounding safeguards for inspecting PDFs, PSD&#x2F;PSB, media containers, etc.<p>Definitely haven&#x27;t hand-rolled archive support, currently I&#x27;m not doing any deep inspections or anything like that beyond what ExifTool provides by default. I just have been considering adding future support for being able to find stuff inside of stuff, and will be looking for something like libarchive when the time comes.",
+                        "title": null,
+                        "type": "comment",
+                        "url": null
+                      }
+                    ],
+                    "created_at": "2026-11-26T00:19:01.000Z",
+                    "created_at_i": 1795652341,
+                    "id": 50649644,
+                    "options": [],
+                    "parent_id": 50649247,
+                    "points": null,
+                    "story_id": 50624684,
+                    "text": "&gt; avoiding zip bombs<p>Isn&#x27;t that risk for <i>untrusted</i> inputs, and not &quot;I want to remember which file _on my drive_ contains thing.txt&quot;?<p>Also, I would hope you wouldn&#x27;t hand-roll support for archives when <a href=\"https:&#x2F;&#x2F;github.com&#x2F;libarchive&#x2F;libarchive&#x2F;wiki&#x2F;LibarchiveFormats\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;libarchive&#x2F;libarchive&#x2F;wiki&#x2F;LibarchiveForm...</a> exists <i>(BSD-2-Clause)</i>. Given that they claim support for opening archives in memory, I&#x27;d bet that `tar -czf foo.tar.gz README.md ; zip bar.zip foo.tar.gz` would work out, too",
+                    "title": null,
+                    "type": "comment",
+                    "url": null
+                  }
+                ],
+                "created_at": "2026-11-25T23:35:40.000Z",
+                "created_at_i": 1795649740,
+                "id": 50649247,
+                "options": [],
+                "parent_id": 50647194,
+                "points": null,
+                "story_id": 50624684,
+                "text": "Not currently, but I&#x27;ve made notes over the last year about deep inspection &#x2F; archival format handling. I&#x27;m still figuring out what kind of special zip&#x2F;tar&#x2F;rar&#x2F;7z&#x2F;gz&#x2F;etc&#x2F;blah handling would be generally useful. I&#x27;ve built in support for some defensive stuff like detecting and avoiding zip bombs, that sort of thing, but haven&#x27;t gotten to probing and analysis of files-within-files. Yet!",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-11-25T20:38:28.000Z",
+            "created_at_i": 1795639108,
+            "id": 50647194,
+            "options": [],
+            "parent_id": 50631485,
+            "points": null,
+            "story_id": 50624684,
+            "text": "Does RCHIVE support finding files in TARballs inside zip archives inside rar archives?  Including broken partially readable archives e.g. recovered from 90s CDROMs?",
+            "title": null,
+            "type": "comment",
+            "url": null
+          },
+          {
+            "author": "layer8",
+            "children": [
+              {
+                "author": "kevinsync",
+                "children": [
+                  {
+                    "author": "layer8",
+                    "children": [],
+                    "created_at": "2026-11-25T22:33:14.000Z",
+                    "created_at_i": 1795645994,
+                    "id": 50648589,
+                    "options": [],
+                    "parent_id": 50648366,
+                    "points": null,
+                    "story_id": 50624684,
+                    "text": "Thanks, it’s good to see it being taken seriously.",
+                    "title": null,
+                    "type": "comment",
+                    "url": null
+                  }
+                ],
+                "created_at": "2026-11-25T22:15:34.000Z",
+                "created_at_i": 1795644934,
+                "id": 50648366,
+                "options": [],
+                "parent_id": 50647425,
+                "points": null,
+                "story_id": 50624684,
+                "text": "I don&#x27;t have 100% keyboard coverage yet, but it&#x27;s on the way. Quite a lot of navigation, expand&#x2F;collapse, search&#x2F;filter, tabbing, etc is in place already though.",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-11-25T20:57:17.000Z",
+            "created_at_i": 1795640237,
+            "id": 50647425,
+            "options": [],
+            "parent_id": 50631485,
+            "points": null,
+            "story_id": 50624684,
+            "text": "Can the UI be fully operated by keyboard?",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
         "created_at": "2026-11-24T17:30:48.000Z",
         "created_at_i": 1795541448,
         "id": 50631485,
@@ -18,6 +129,268 @@
         "title": null,
         "type": "comment",
         "url": null
+      },
+      {
+        "author": "profsummergig",
+        "children": [
+          {
+            "author": "kevinsync",
+            "children": [],
+            "created_at": "2026-11-25T22:25:37.000Z",
+            "created_at_i": 1795645537,
+            "id": 50648500,
+            "options": [],
+            "parent_id": 50647312,
+            "points": null,
+            "story_id": 50624684,
+            "text": "Cathy is really great. Everything is also awesome. I&#x27;ve used both plenty, and my whack at the concept definitely isn&#x27;t the final word in disk cataloging.<p>I actually am a bit wistful I haven&#x27;t been able to reduce some of the remaining overhead &#x2F; heft of RCHIVE yet, but given the amount of other stuff it handles, it&#x27;s gonna be a journey to get it as lean and mean as I want it to be.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-25T20:48:30.000Z",
+        "created_at_i": 1795639710,
+        "id": 50647312,
+        "options": [],
+        "parent_id": 50624684,
+        "points": null,
+        "story_id": 50624684,
+        "text": "Anyone here use Cathy?<p>It&#x27;s an amazing concept. It stores just all the filenames and the hierarchical folder structure of an external drive in a tiny portable file.<p>And the app is a Windows portable app.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "RunSet",
+        "children": [],
+        "created_at": "2026-11-25T21:25:31.000Z",
+        "created_at_i": 1795641931,
+        "id": 50647765,
+        "options": [],
+        "parent_id": 50624684,
+        "points": null,
+        "story_id": 50624684,
+        "text": "<a href=\"https:&#x2F;&#x2F;www.fsoft.it&#x2F;VVV&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;www.fsoft.it&#x2F;VVV&#x2F;</a>",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "netsharc",
+        "children": [
+          {
+            "author": "kube-system",
+            "children": [],
+            "created_at": "2026-11-25T21:30:15.000Z",
+            "created_at_i": 1795642215,
+            "id": 50647832,
+            "options": [],
+            "parent_id": 50647774,
+            "points": null,
+            "story_id": 50624684,
+            "text": "And what if I want to use it with a &quot;disc&quot;?<p>Clearly they need to:<p><pre><code>    sed &#x27;s&#x2F;drive&#x2F;storage medium&#x2F;g&#x27;</code></pre>",
+            "title": null,
+            "type": "comment",
+            "url": null
+          },
+          {
+            "author": "kevinsync",
+            "children": [],
+            "created_at": "2026-11-25T22:19:07.000Z",
+            "created_at_i": 1795645147,
+            "id": 50648415,
+            "options": [],
+            "parent_id": 50647774,
+            "points": null,
+            "story_id": 50624684,
+            "text": "lol while I do appreciate the sick burn, you bring up a solid point. Currently if you scan removable media (optical, disk, <i>diskette</i>, tape, whatever) RCHIVE treats the source as the drive, not the specific piece of media. Support is coming to catalog discrete pieces of media individually, and attached to the drive though. It&#x27;s mostly done but needs more testing before release!",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-25T21:26:09.000Z",
+        "created_at_i": 1795641969,
+        "id": 50647774,
+        "options": [],
+        "parent_id": 50624684,
+        "points": null,
+        "story_id": 50624684,
+        "text": "Hey Claude, please update the website and use the proper term &quot;disk&quot; instead of &quot;drive&quot;. And next, do it for the app too.<p>I can have a hundred 3.5&quot; disks and 1 floppy drive... am I looking for my data in the disks or the drive?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "nologic98",
+        "children": [
+          {
+            "author": "yesthisisme",
+            "children": [],
+            "created_at": "2026-11-26T02:34:29.000Z",
+            "created_at_i": 1795660469,
+            "id": 50650724,
+            "options": [],
+            "parent_id": 50648347,
+            "points": null,
+            "story_id": 50624684,
+            "text": "Hey!\nThis is exactly my problem!<p>I have thought about building something to help me fix tjis for years.\nHow did you index your files and what did you in the end?",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-25T22:13:51.000Z",
+        "created_at_i": 1795644831,
+        "id": 50648347,
+        "options": [],
+        "parent_id": 50624684,
+        "points": null,
+        "story_id": 50624684,
+        "text": "Cool. I built my own version of this, to index old hard drives before I threw them away, and figure out if there’s anything valuable on them. Mostly they were just backup, so I thought the key use case was to confirm I have everything in one current place.  I ran into some messy problems:<p>1. Ignoring 90% of files that aren’t important to me (defining these is the hard part)<p>2. Backups were never complete or comprehensive and full of [near] duplicates, mostly things I dragged or duplicated at one point or another, such as around the time I migrated to a new computer and kept an image of the old one (intended to be temporary).<p>3. Reckoning per file wasn’t enough. Folders tended to matter - for grouping and the nested folder structure held important clues.   Sometimes the old copy of the folder contained important items that were missing today. Other times, today’s copy was the curated one and the archive was full of rejects (Or some documents were partials of another, or sidecars)  Worse, sometimes all at once!  It’s very laborious to figure out the difference.<p>My use case was a bit harder than “find the thing even if it’s offline” - it’s: know when we’ve preserved everything and can discard a drive.  I guess that’s a different problem and I didn’t see a solution worth the effort.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "ahofmann",
+        "children": [
+          {
+            "author": "kevinsync",
+            "children": [],
+            "created_at": "2026-11-25T23:05:29.000Z",
+            "created_at_i": 1795647929,
+            "id": 50648927,
+            "options": [],
+            "parent_id": 50648610,
+            "points": null,
+            "story_id": 50624684,
+            "text": "Love it, I use ncdu mostly when I&#x27;m SSH&#x27;d into headless machines alongside <i>find</i> and it&#x27;s clunky as hell. I dig putting actual search into it, definitely gonna check it out!<p>My take on ncdu-in-a-GUI is <a href=\"https:&#x2F;&#x2F;www.rchive.computer&#x2F;examiner\" rel=\"nofollow\">https:&#x2F;&#x2F;www.rchive.computer&#x2F;examiner</a> -- also a shameless plug, but I&#x27;m already out here shilling, so...",
+            "title": null,
+            "type": "comment",
+            "url": null
+          },
+          {
+            "author": "InsidiousWombat",
+            "children": [],
+            "created_at": "2026-11-26T01:20:22.000Z",
+            "created_at_i": 1795656022,
+            "id": 50650164,
+            "options": [],
+            "parent_id": 50648610,
+            "points": null,
+            "story_id": 50624684,
+            "text": "You might be interested in plocate&#x2F;mlocate, the general idea of those tools is to scan disks periodically and then just keep index of files to look up near-instantly on demand.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-25T22:35:31.000Z",
+        "created_at_i": 1795646131,
+        "id": 50648610,
+        "options": [],
+        "parent_id": 50624684,
+        "points": null,
+        "story_id": 50624684,
+        "text": "Shameless plug: I (well, fable) added a search function to ncdu and call the result icdu (interactive ncdu, you can search the tree while icdu is scanning).<p>It&#x27;s my solution for the question &quot;where the f.. is this file?&quot; and it also works for unattached&#x2F;unmounted storage because it&#x27;s a drop in replacement for ncdu and can therefore write an index file.<p><a href=\"https:&#x2F;&#x2F;github.com&#x2F;anhofmann&#x2F;icdu\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;anhofmann&#x2F;icdu</a><p>I use it myself and I&#x27;m very happy with it and I&#x27;m also very happy for feature requests, bug reports etc.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "doodlebugging",
+        "children": [
+          {
+            "author": "kevinsync",
+            "children": [],
+            "created_at": "2026-11-26T00:16:32.000Z",
+            "created_at_i": 1795652192,
+            "id": 50649626,
+            "options": [],
+            "parent_id": 50649473,
+            "points": null,
+            "story_id": 50624684,
+            "text": "Awesome! Feel free to email hello@rchive.computer if you run into any bugs, issues, or if something about your use-case could benefit from something RCHIVE is missing.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-25T23:58:06.000Z",
+        "created_at_i": 1795651086,
+        "id": 50649473,
+        "options": [],
+        "parent_id": 50624684,
+        "points": null,
+        "story_id": 50624684,
+        "text": "Thanks for making this and for making it inexpensive and available as a one-time purchase. I am almost completely done with cancelling all subscription-based software and services over the last few months.<p>This looks like the perfect set of tools for someone like myself who still has hardware dating to the late 1980&#x27;s including disks, diskettes, tapes, drives, etc because I could never be sure that I had managed to backup everything that had been important on that media. Somewhere I know that I have two years of rainfall data but I have no idea which backup contains it. I do still have the media that I used though so there is a chance with a toolset like this to find it and incorporate it in my existing spreadsheet.<p>I&#x27;m gonna give this a whirl and see what happens with a couple of disks containing data that is well-documented before spinning up some of the old drives and tapes.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "zergrush",
+        "children": [
+          {
+            "author": "kevinsync",
+            "children": [],
+            "created_at": "2026-11-26T01:15:12.000Z",
+            "created_at_i": 1795655712,
+            "id": 50650115,
+            "options": [],
+            "parent_id": 50649741,
+            "points": null,
+            "story_id": 50624684,
+            "text": "Not in the derogatory sense! I definitely have leveraged a variety of models for AI-assisted development though. Is that still considered gauche? Man&#x27;s gotta do what a man&#x27;s gotta do to achieve the vision, right? lol<p>Anyways, I started building RCHIVE in July 2025 and it&#x27;s been a one-man show, and practically full-time since then for all aspects of it (design, implementation, UI, UX, marketing, customer service, etc). I guess in aggregate, I&#x27;ve made the robots do my bidding for as much as I&#x27;ve hand-rolled and hand-designed.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-26T00:30:29.000Z",
+        "created_at_i": 1795653029,
+        "id": 50649741,
+        "options": [],
+        "parent_id": 50624684,
+        "points": null,
+        "story_id": 50624684,
+        "text": "was this vibe coded ?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "ThrowawayTestr",
+        "children": [
+          {
+            "author": "kevinsync",
+            "children": [],
+            "created_at": "2026-11-26T01:32:14.000Z",
+            "created_at_i": 1795656734,
+            "id": 50650247,
+            "options": [],
+            "parent_id": 50650198,
+            "points": null,
+            "story_id": 50624684,
+            "text": "Everything is a fantastic lil Windows program that indexes your disks and lets you find files fast. RCHIVE is a fantastic lil cross-platform program that does that and a whole lot more.<p>I made a comparison page here if you&#x27;re interested: <a href=\"https:&#x2F;&#x2F;www.rchive.computer&#x2F;compare&#x2F;everything&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;www.rchive.computer&#x2F;compare&#x2F;everything&#x2F;</a>",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-26T01:25:52.000Z",
+        "created_at_i": 1795656352,
+        "id": 50650198,
+        "options": [],
+        "parent_id": 50624684,
+        "points": null,
+        "story_id": 50624684,
+        "text": "How is this different from Everything?",
+        "title": null,
+        "type": "comment",
+        "url": null
       }
     ],
     "created_at": "2026-11-24T07:03:33.000Z",
@@ -25,7 +398,7 @@
     "id": 50624684,
     "options": [],
     "parent_id": null,
-    "points": 2,
+    "points": 47,
     "story_id": 50624684,
     "text": "RCHIVE is a cross-platform desktop app for cataloging, searching and reorganizing files on your computers and drives. Like, all of &#x27;em: internal, external, network shares, USB sticks, loose SD cards, weird CD-R&#x27;s, DVDs, floppy disks, Zip disks, and everything in between.<p>I built this thing because my digital archives are an embarrassment! 30 years of getting a new hard drive whenever capacity quadrupled and dragging the old one to it into a folder titled &quot;BACKUP - TO SORT&quot; will do that to you lol, especially when you know deep down that &quot;sorting&quot; will never happen. To try to deal with that growing mess on a daily basis, I&#x27;ve tried a patchwork of all of our favorites in the past -- Everything, grep, custom scripts, you name it. And don&#x27;t get me started on built-in OS defaults like Windows Explorer, Finder, Spotlight. I figured it was time to make something better-suited to my tastes, and 4200 commits later here we are!<p>RCHIVE scans as many different sources as you throw at it, gives you unified deep search across the entire catalog (with drives connected or disconnected), allows you to virtually organize and clean up giant archives of digital stuff by applying recipes and transformations, resiliently copies or moves files when you&#x27;re ready to actually restructure on disk, or just lets you quickly pop in to find something or browse everything with previews, metadata, etc.<p>It works on Windows, Mac or Linux, works offline, has zero telemetry, deletes nothing, and is fully deterministic in operation. So, no wacky AI integrations for decision making or classification, everything is predictable and repeatable, you can even run portable versions off of a USB drive if you don&#x27;t want to install it.<p>I&#x27;ve been using it all day every day for a year and am just stoked to have it out there, get some users, get some feedback (good or bad), and see what people think. There&#x27;s a free trial, no email address or anything needed.<p>The website is also full of videos, features, comparisons, all that stuff, as well as a <i>ncdu</i>-like companion app for figuring out where the hell all your disk space went.<p>Anyways, check it out! Should come in handy if you&#x27;re ever in Grand Central trying to find a garbage file left on some dude&#x27;s Gibson.<p><a href=\"https:&#x2F;&#x2F;www.rchive.computer\" rel=\"nofollow\">https:&#x2F;&#x2F;www.rchive.computer</a>",
     "title": "Show HN: Rchive – Every drive I've owned since the 90s, searchable in one window",
@@ -38,6 +411,150 @@
       "text": "I posted this and went to bed, and now figure I probably ought to at least write up some of the actual tech, implementation and features, and there's so much that I don't even know where to begin lol. RCHIVE does indeed use Electron. I know that's probably going to catch a lot of flak, but I chose it intentionally due to things I wanted to do in the UI that, hate to say it, Chromium does out of the box that would become a whole sidequest trying to do in Qt or Swift. The front end is underpinned by a variety of daemons and services written in Rust that handle scan coordination and watching, shared platform primitives, executing copy jobs, handling offline geography, decoding media (using OS-native decoders and handling legacy formats), etc. There are other coordinators and workers in Node as well. Database is SQLite, which manages your catalog and executes searches via regular indexes and FTS5 trigram indexes. There's a whole gang of stuff in there to optimize and facilitate searches based on filename/path substrings, scanned metadata, etc. Will be releasing an update with indexing and searching of actual file contents soon. Different people will use RCHIVE for different purposes: - Search/Find: you can see the most recently-changed files, deep-search across all sources, filter based on a bunch of different parameters, etc. You can get just a list of results, or see everything hierarchically in File Browser. Every file that can generate a preview gets one, and there's contextual clustering that happens where appropriate (ex. RCHIVE looks for evidence in sibling files to make decisions based on consensus, such as \"folder with 20 MP3s all tagged appropriately, and a couple stray JPGs of unknown provenance -- these very likely all belong together\"). Filters are combinatorial and have their own structured syntax, so you can type them out if you want, or use the UI. Previews show images, animated video frames, rendered PDF pages, etc, so you can zip through a bunch of  IMG_0XXX  files super fast. There's also a \"Mini Mode\" that's  just  a search box, so you can start the app, minimize to system tray, then hotkey to search from any other app. Ctrl-shift-R, type, enter, keyboard search, enter to open. Just as easy as Spotlight et al. - Organize: you can take a massive, disparate catalog and apply Recipes (to filter/reduce the dataset) and Transformations (to group and restructure the file tree) to virtually build an organized filesystem, which you can then simply browse, or copy/move some-or-all of it from its messy origin to a tidy destination (new drive, NAS, whatever) -- both recipes and transformations are JSON, so while RCHIVE ships with a ton of presets, you can write your own to basically do whatever you want. The recipe engine is composible and honestly really neat, because you can end up crafting really specific, reusable combination views of all your shit (which then stay updated if you manually rescan, or turn background scanning on). Tagging is also very comprehensive; descendants inherit them by default, but can disinherit granularly. Makes it really easy to tag large swaths of things from a parent - Copy/Move: granular jobs get created which then are executed via rchive-runner (either on CLI or in-app) -- every individual filesystem action is tracked and able to resume/rerun, so if you're copying 10TB of stuff, your power can go out and you don't have to start over. You can pause and come back days later. Care is taken to ensure that stuff like a file \"move\" isn't marked complete and source isn't removed until file is copied and verified at the destination (either simple verification, or full SHA256 hash checks if needed) There's all kinds of other random useful stuff in there: - all geo/location functions use H3, GeoNames data, and some custom projections and custom data, all offline/on-device. I handle Earth like a truncated icosahedron at varying levels of resolutions, and it rips through locations by bucketing everything into 3D hexagonal tiles which makes lookups easy and fast - you can take a photo of each source for quick identification (ex. \"that yellow thumb drive\") -- you just click the source, scan a QR code that pops up with your phone, take the photo with your phone, submit - you can \"cold copy\" paths/drives without cataloging them, like if you simply want to run a job from point A to B - there's pretty comprehensive keyboard support, complex selections, undo/redo, etc - you can make complex selections and then \"isolate\" the selection, so you're only working with a chosen subset of your catalog - when scanning files, we also look for duplicates, files that are \"broken\" (a JPG that's actually MP3 data), etc\n-- for instance, I had a drive from 2002 that I guess had some bad sectors, and I copied it off back then and have carried it ever since. I didn't realize a few of the photos \"copied\" but the drive head actually read from another area that had some music files, and only found out when they got surfaced during an RCHIVE scan 24 years later. Long story short, Winamp plays those JPGs just fine lol - I also integrated PairDrop into it, so you can pretty easily fire off files or selections of files from inside the app directly to your phone or other devices Anyways, that's just a bit more background about what it all is. Happy to discuss further if anybody has any thoughts or questions!",
       "at": "2026-11-24T17:30:48.000Z",
       "url": "https://news.ycombinator.com/item?id=50631485"
+    },
+    {
+      "author": "bad_username",
+      "text": "Does RCHIVE support finding files in TARballs inside zip archives inside rar archives?  Including broken partially readable archives e.g. recovered from 90s CDROMs?",
+      "at": "2026-11-25T20:38:28.000Z",
+      "url": "https://news.ycombinator.com/item?id=50647194"
+    },
+    {
+      "author": "kevinsync",
+      "text": "Not currently, but I've made notes over the last year about deep inspection / archival format handling. I'm still figuring out what kind of special zip/tar/rar/7z/gz/etc/blah handling would be generally useful. I've built in support for some defensive stuff like detecting and avoiding zip bombs, that sort of thing, but haven't gotten to probing and analysis of files-within-files. Yet!",
+      "at": "2026-11-25T23:35:40.000Z",
+      "url": "https://news.ycombinator.com/item?id=50649247"
+    },
+    {
+      "author": "mdaniel",
+      "text": "> avoiding zip bombs Isn't that risk for  untrusted  inputs, and not \"I want to remember which file _on my drive_ contains thing.txt\"? Also, I would hope you wouldn't hand-roll support for archives when  https://github.com/libarchive/libarchive/wiki/LibarchiveForm...  exists  (BSD-2-Clause) . Given that they claim support for opening archives in memory, I'd bet that `tar -czf foo.tar.gz README.md ; zip bar.zip foo.tar.gz` would work out, too",
+      "at": "2026-11-26T00:19:01.000Z",
+      "url": "https://news.ycombinator.com/item?id=50649644"
+    },
+    {
+      "author": "kevinsync",
+      "text": "I guess I approached it from the perspective that everything is an untrusted input, just because who the hell knows what they might have downloaded in 1997 lol. Or what if you're using the portable version as a technician and moving from machine to machine, etc. In RCHIVE right now, I added that for when the app inspects zip-based Office files for tracked changes and other revision evidence (so like, docx, xlsx, pptx, odt files). You just never know, and I figured it would be nice to quietly prevent some rando file forcing enough memory allocation to crash the app. I also have bounding safeguards for inspecting PDFs, PSD/PSB, media containers, etc. Definitely haven't hand-rolled archive support, currently I'm not doing any deep inspections or anything like that beyond what ExifTool provides by default. I just have been considering adding future support for being able to find stuff inside of stuff, and will be looking for something like libarchive when the time comes.",
+      "at": "2026-11-26T01:47:01.000Z",
+      "url": "https://news.ycombinator.com/item?id=50650359"
+    },
+    {
+      "author": "layer8",
+      "text": "Can the UI be fully operated by keyboard?",
+      "at": "2026-11-25T20:57:17.000Z",
+      "url": "https://news.ycombinator.com/item?id=50647425"
+    },
+    {
+      "author": "kevinsync",
+      "text": "I don't have 100% keyboard coverage yet, but it's on the way. Quite a lot of navigation, expand/collapse, search/filter, tabbing, etc is in place already though.",
+      "at": "2026-11-25T22:15:34.000Z",
+      "url": "https://news.ycombinator.com/item?id=50648366"
+    },
+    {
+      "author": "layer8",
+      "text": "Thanks, it’s good to see it being taken seriously.",
+      "at": "2026-11-25T22:33:14.000Z",
+      "url": "https://news.ycombinator.com/item?id=50648589"
+    },
+    {
+      "author": "profsummergig",
+      "text": "Anyone here use Cathy? It's an amazing concept. It stores just all the filenames and the hierarchical folder structure of an external drive in a tiny portable file. And the app is a Windows portable app.",
+      "at": "2026-11-25T20:48:30.000Z",
+      "url": "https://news.ycombinator.com/item?id=50647312"
+    },
+    {
+      "author": "kevinsync",
+      "text": "Cathy is really great. Everything is also awesome. I've used both plenty, and my whack at the concept definitely isn't the final word in disk cataloging. I actually am a bit wistful I haven't been able to reduce some of the remaining overhead / heft of RCHIVE yet, but given the amount of other stuff it handles, it's gonna be a journey to get it as lean and mean as I want it to be.",
+      "at": "2026-11-25T22:25:37.000Z",
+      "url": "https://news.ycombinator.com/item?id=50648500"
+    },
+    {
+      "author": "RunSet",
+      "text": "https://www.fsoft.it/VVV/",
+      "at": "2026-11-25T21:25:31.000Z",
+      "url": "https://news.ycombinator.com/item?id=50647765"
+    },
+    {
+      "author": "netsharc",
+      "text": "Hey Claude, please update the website and use the proper term \"disk\" instead of \"drive\". And next, do it for the app too. I can have a hundred 3.5\" disks and 1 floppy drive... am I looking for my data in the disks or the drive?",
+      "at": "2026-11-25T21:26:09.000Z",
+      "url": "https://news.ycombinator.com/item?id=50647774"
+    },
+    {
+      "author": "kube-system",
+      "text": "And what if I want to use it with a \"disc\"? Clearly they need to:       sed 's/drive/storage medium/g'",
+      "at": "2026-11-25T21:30:15.000Z",
+      "url": "https://news.ycombinator.com/item?id=50647832"
+    },
+    {
+      "author": "kevinsync",
+      "text": "lol while I do appreciate the sick burn, you bring up a solid point. Currently if you scan removable media (optical, disk,  diskette , tape, whatever) RCHIVE treats the source as the drive, not the specific piece of media. Support is coming to catalog discrete pieces of media individually, and attached to the drive though. It's mostly done but needs more testing before release!",
+      "at": "2026-11-25T22:19:07.000Z",
+      "url": "https://news.ycombinator.com/item?id=50648415"
+    },
+    {
+      "author": "nologic98",
+      "text": "Cool. I built my own version of this, to index old hard drives before I threw them away, and figure out if there’s anything valuable on them. Mostly they were just backup, so I thought the key use case was to confirm I have everything in one current place.  I ran into some messy problems: 1. Ignoring 90% of files that aren’t important to me (defining these is the hard part) 2. Backups were never complete or comprehensive and full of [near] duplicates, mostly things I dragged or duplicated at one point or another, such as around the time I migrated to a new computer and kept an image of the old one (intended to be temporary). 3. Reckoning per file wasn’t enough. Folders tended to matter - for grouping and the nested folder structure held important clues.   Sometimes the old copy of the folder contained important items that were missing today. Other times, today’s copy was the curated one and the archive was full of rejects (Or some documents were partials of another, or sidecars)  Worse, sometimes all at once!  It’s very laborious to figure out the difference. My use case was a bit harder than “find the thing even if it’s offline” - it’s: know when we’ve preserved everything and can discard a drive.  I guess that’s a different problem and I didn’t see a solution worth the effort.",
+      "at": "2026-11-25T22:13:51.000Z",
+      "url": "https://news.ycombinator.com/item?id=50648347"
+    },
+    {
+      "author": "yesthisisme",
+      "text": "Hey!\nThis is exactly my problem! I have thought about building something to help me fix tjis for years.\nHow did you index your files and what did you in the end?",
+      "at": "2026-11-26T02:34:29.000Z",
+      "url": "https://news.ycombinator.com/item?id=50650724"
+    },
+    {
+      "author": "ahofmann",
+      "text": "Shameless plug: I (well, fable) added a search function to ncdu and call the result icdu (interactive ncdu, you can search the tree while icdu is scanning). It's my solution for the question \"where the f.. is this file?\" and it also works for unattached/unmounted storage because it's a drop in replacement for ncdu and can therefore write an index file.  https://github.com/anhofmann/icdu  I use it myself and I'm very happy with it and I'm also very happy for feature requests, bug reports etc.",
+      "at": "2026-11-25T22:35:31.000Z",
+      "url": "https://news.ycombinator.com/item?id=50648610"
+    },
+    {
+      "author": "kevinsync",
+      "text": "Love it, I use ncdu mostly when I'm SSH'd into headless machines alongside  find  and it's clunky as hell. I dig putting actual search into it, definitely gonna check it out! My take on ncdu-in-a-GUI is  https://www.rchive.computer/examiner  -- also a shameless plug, but I'm already out here shilling, so...",
+      "at": "2026-11-25T23:05:29.000Z",
+      "url": "https://news.ycombinator.com/item?id=50648927"
+    },
+    {
+      "author": "InsidiousWombat",
+      "text": "You might be interested in plocate/mlocate, the general idea of those tools is to scan disks periodically and then just keep index of files to look up near-instantly on demand.",
+      "at": "2026-11-26T01:20:22.000Z",
+      "url": "https://news.ycombinator.com/item?id=50650164"
+    },
+    {
+      "author": "doodlebugging",
+      "text": "Thanks for making this and for making it inexpensive and available as a one-time purchase. I am almost completely done with cancelling all subscription-based software and services over the last few months. This looks like the perfect set of tools for someone like myself who still has hardware dating to the late 1980's including disks, diskettes, tapes, drives, etc because I could never be sure that I had managed to backup everything that had been important on that media. Somewhere I know that I have two years of rainfall data but I have no idea which backup contains it. I do still have the media that I used though so there is a chance with a toolset like this to find it and incorporate it in my existing spreadsheet. I'm gonna give this a whirl and see what happens with a couple of disks containing data that is well-documented before spinning up some of the old drives and tapes.",
+      "at": "2026-11-25T23:58:06.000Z",
+      "url": "https://news.ycombinator.com/item?id=50649473"
+    },
+    {
+      "author": "kevinsync",
+      "text": "Awesome! Feel free to email hello@rchive.computer if you run into any bugs, issues, or if something about your use-case could benefit from something RCHIVE is missing.",
+      "at": "2026-11-26T00:16:32.000Z",
+      "url": "https://news.ycombinator.com/item?id=50649626"
+    },
+    {
+      "author": "zergrush",
+      "text": "was this vibe coded ?",
+      "at": "2026-11-26T00:30:29.000Z",
+      "url": "https://news.ycombinator.com/item?id=50649741"
+    },
+    {
+      "author": "kevinsync",
+      "text": "Not in the derogatory sense! I definitely have leveraged a variety of models for AI-assisted development though. Is that still considered gauche? Man's gotta do what a man's gotta do to achieve the vision, right? lol Anyways, I started building RCHIVE in July 2025 and it's been a one-man show, and practically full-time since then for all aspects of it (design, implementation, UI, UX, marketing, customer service, etc). I guess in aggregate, I've made the robots do my bidding for as much as I've hand-rolled and hand-designed.",
+      "at": "2026-11-26T01:15:12.000Z",
+      "url": "https://news.ycombinator.com/item?id=50650115"
+    },
+    {
+      "author": "ThrowawayTestr",
+      "text": "How is this different from Everything?",
+      "at": "2026-11-26T01:25:52.000Z",
+      "url": "https://news.ycombinator.com/item?id=50650198"
+    },
+    {
+      "author": "kevinsync",
+      "text": "Everything is a fantastic lil Windows program that indexes your disks and lets you find files fast. RCHIVE is a fantastic lil cross-platform program that does that and a whole lot more. I made a comparison page here if you're interested:  https://www.rchive.computer/compare/everything/",
+      "at": "2026-11-26T01:32:14.000Z",
+      "url": "https://news.ycombinator.com/item?id=50650247"
     }
   ],
   "comments_complete": true

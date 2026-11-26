@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/44774",
-  "collected_at": "2026-11-25T11:13:51.235741+00:00",
+  "collected_at": "2026-11-26T10:49:44.795598+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/44774",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -112,6 +112,19 @@
     "pinned_comment": null,
     "score": 1.0
   },
-  "comments": [],
-  "comments_complete": false
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @Mattenhaim,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9833\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9833](https://linear.app/n8n/issue/GHC-9833)",
+      "at": "2026-11-22T06:08:40Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44774#issuecomment-7075153055"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "I checked the current `variables.service.ee.ts`: `update()` computes the destination project, but calls `validateUniqueVariable()` only inside `if (variable.key)`. A PATCH with only `projectId` therefore skips the duplicate check even when moving into a scope with the same key, which matches this report. The check needs to use the effective key (`variable.key ?? existingVariable.key`) when the key or scope changes, while excluding the current variable ID.",
+      "at": "2026-11-22T16:06:02Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44774#issuecomment-7081812064"
+    }
+  ],
+  "comments_complete": true
 }

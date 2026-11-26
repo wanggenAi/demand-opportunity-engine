@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/44789",
-  "collected_at": "2026-11-25T11:13:51.235741+00:00",
+  "collected_at": "2026-11-26T10:49:44.795598+00:00",
   "source": {
     "url": "https://api.github.com/repos/n8n-io/n8n/issues/44789",
     "repository_url": "https://api.github.com/repos/n8n-io/n8n",
@@ -90,6 +90,19 @@
     "pinned_comment": null,
     "score": 1.0
   },
-  "comments": [],
-  "comments_complete": false
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @crimsondhaks,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9839\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9839](https://linear.app/n8n/issue/GHC-9839)",
+      "at": "2026-11-23T06:07:10Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44789#issuecomment-7093023833"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "The two tests stub `fs.promises.realpath` to return the input unchanged, while `NodeTestHarness.temporaryDir` is created under `os.tmpdir()`. On macOS, `/var/folders/...` traverses the `/var` symlink, so the file-system helper’s symlink check rejects the write; the current helper resolves paths with `realpath` before that check. Resolving `tmpdir()` before `mkdtempSync` in the harness looks like a focused fix that keeps the test stubs and covers other harness tests writing into the same directory. A regression assertion for the canonical temp path would help guard this across macOS runners.",
+      "at": "2026-11-23T10:06:44Z",
+      "url": "https://github.com/n8n-io/n8n/issues/44789#issuecomment-7097509608"
+    }
+  ],
+  "comments_complete": true
 }

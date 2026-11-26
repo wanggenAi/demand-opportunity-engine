@@ -1,0 +1,134 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/45283",
+  "collected_at": "2026-11-26T10:49:44.795598+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/45283",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/45283/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/45283/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/45283/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/45283",
+    "id": 6623228397,
+    "node_id": "I_kwDOC4Q8Qs8AAAABisZx7Q",
+    "number": 45283,
+    "title": "Mautic node: opening a Contact / Create node downloads every company and can crash the n8n main process",
+    "user": {
+      "login": "lelesrc",
+      "id": 217104,
+      "node_id": "MDQ6VXNlcjIxNzEwNA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/217104?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lelesrc",
+      "html_url": "https://github.com/lelesrc",
+      "followers_url": "https://api.github.com/users/lelesrc/followers",
+      "following_url": "https://api.github.com/users/lelesrc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lelesrc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lelesrc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lelesrc/subscriptions",
+      "organizations_url": "https://api.github.com/users/lelesrc/orgs",
+      "repos_url": "https://api.github.com/users/lelesrc/repos",
+      "events_url": "https://api.github.com/users/lelesrc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lelesrc/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582010757,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cXhQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:nodes",
+        "name": "team:nodes",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Nodes team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-11-26T09:07:34Z",
+    "updated_at": "2026-11-26T10:05:26Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "status": {
+      "id": 2,
+      "name": "Backlog",
+      "category": "backlog"
+    },
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nIn the Mautic node, Contact / Create shows a top-level Primary Company dropdown. It is filled by the `getCompanies` load-options method, which calls `mauticApiRequestAllItems` and pages through all companies in Mautic, 30 per request, with no cap (`packages/nodes-base/nodes/Mautic/Mautic.node.ts`, `GenericFunctions.ts`). The Contact / Update \"Primary Company\" field uses the same method.\n\nMautic instances commonly have thousands of companies. In that case:\n\n- Opening a Contact / Create node in the editor makes the n8n server get all company records.\n- The load keeps going on the server even after the node is closed.\n- When opening different nodes, the loads add up. On our instance, it caused a crash and a restart.\n\n### To Reproduce\n\n1. Use a Mautic instance (we use 4.4) with a few thousand companies, and a Mautic credential in n8n.\n2. Create a workflow with a Mautic node: Resource **Contact**, Operation **Create**. Leave JSON Parameters off and save.\n3. Close the node, then open it again. Do not touch the Primary Company field.\n4. Watch the Mautic web server access log, or n8n memory and CPU. n8n issues `GET /api/companies?limit=30&start=0`, then `start=30`, `start=60` and so on until every company has been fetched. The requests continue after the node is closed.\n5. Open several Contact / Create nodes in a row. n8n memory grows with each overlapping load and can exceed the heap limit.\n\n### Expected behavior\n\nOpening the node should not download the whole company table. The field should load on demand, as a searchable, paginated list, like other nodes with large record sets (for example the Salesforce Account selector, #31277).\n\n### Debug Info\n\n```\n# Debug info\n\n## core\n\n- n8nVersion: 2.47.7\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.13.0\n- nodeEnv: production\n- database: sqlite\n- executionMode: regular\n- concurrency: -1\n- license: [redacted]\n- consumerId: [redacted]\n\n## storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n## pruning\n\n- enabled: false\n\n## client\n\n- userAgent: mozilla/5.0 (macintosh; intel mac os x 10_15_7) applewebkit/537.36 (khtml, like gecko) chrome/157.0.0.0 safari/537.36\n- isTouchDevice: false\n\n## cluster\n\n- instanceCount: 1\n- versions: 2.47.7\n- instances:\n  - instanceKey: [redacted], hostId: [redacted], instanceType: main, instanceRole: leader, version: 2.47.7\n- checks:\n  - check: hostid-clash, status: succeeded, warnings: -\n  - check: lifecycle, status: succeeded, warnings: -\n  - check: split-brain, status: succeeded, warnings: -\n  - check: version-mismatch, status: succeeded, warnings: -\n\nGenerated at: 2026-11-26T09:05:35.708Z\n```\n\n### Operating System\n\nUbuntu 26.04 LTS (Docker host)\n\n### n8n Version\n\n2.47.7. The code is unchanged on `master`.\n\n### Node.js Version\n\n26.13.0 (official n8n Docker image)\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/45283/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/45283/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @lelesrc,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9846\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9846](https://linear.app/n8n/issue/GHC-9846)",
+      "at": "2026-11-26T09:07:48Z",
+      "url": "https://github.com/n8n-io/n8n/issues/45283#issuecomment-7187467565"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "The source confirms `getCompanies` calls the unbounded `mauticApiRequestAllItems` helper (30 records per page), and returns `companyname` as both the label and value. Besides fetching every page, that makes same-named companies indistinguishable in the selector. If this is changed to a searchable/paginated selector, using the company ID as its value would avoid that ambiguity; please also account for existing workflows that may have saved company names.",
+      "at": "2026-11-26T10:05:26Z",
+      "url": "https://github.com/n8n-io/n8n/issues/45283#issuecomment-7188894070"
+    }
+  ],
+  "comments_complete": true
+}

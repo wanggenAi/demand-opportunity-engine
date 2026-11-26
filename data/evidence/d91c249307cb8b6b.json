@@ -1,0 +1,118 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/45158",
+  "collected_at": "2026-11-26T10:49:44.795598+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/45158",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/45158/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/45158/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/45158/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/45158",
+    "id": 6604972859,
+    "node_id": "I_kwDOC4Q8Qs8AAAABia_jOw",
+    "number": 45158,
+    "title": "MCP server OAuth puts N8N_PATH value at the end rather than at the front",
+    "user": {
+      "login": "jelleholtkamp",
+      "id": 15068745,
+      "node_id": "MDQ6VXNlcjE1MDY4NzQ1",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15068745?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/jelleholtkamp",
+      "html_url": "https://github.com/jelleholtkamp",
+      "followers_url": "https://api.github.com/users/jelleholtkamp/followers",
+      "following_url": "https://api.github.com/users/jelleholtkamp/following{/other_user}",
+      "gists_url": "https://api.github.com/users/jelleholtkamp/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/jelleholtkamp/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/jelleholtkamp/subscriptions",
+      "organizations_url": "https://api.github.com/users/jelleholtkamp/orgs",
+      "repos_url": "https://api.github.com/users/jelleholtkamp/repos",
+      "events_url": "https://api.github.com/users/jelleholtkamp/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/jelleholtkamp/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 3,
+    "created_at": "2026-11-25T12:56:00Z",
+    "updated_at": "2026-11-25T16:18:13Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "status": {
+      "id": 2,
+      "name": "Backlog",
+      "category": "backlog"
+    },
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nTitle: Native MCP OAuth discovery fails when n8n is mounted under N8N_PATH=/somepath/\n\nDescribe the bug\n\nI feel like this is a bug, but it may also be intended. But if it is intended, it doesn't really make sense to me. We run n8n self hosted behind a reverse proxy. Our reverse proxy routes based on path. For example /somepath. To accomodate this, n8n has the N8N_PATH env var. But this ends up with an advertises protected-resource url of https://example.com/.well-known/oauth-protected-resource/somepath/mcp-server/http. This doesn't fit the reverse proxy's routing rule. I would expect the url to be https://example.com/somepath/.well-known/oauth-protected-resource/mcp-server/http. So I think there's an issue with the URL construction.\n\n#### EDIT: the consent url /oauth/consent also does not respect N8N_PATH at all.\n\n### To Reproduce\n\nTo reproduce\n1. Set N8N_PATH=/somepath/ and N8N_EDITOR_BASE_URL=https://example.com/somepath/. Enable instance-level MCP and route /somepath/* to n8n.\n2. Send an unauthenticated HEAD request to https://example.com/somepath/mcp-server/http. n8n returns the expected 401 and advertises:\n   https://example.com/.well-known/oauth-protected-resource/somepath/mcp-server/http\n3. Send a GET to that advertised URL. It falls through to the default backend instead of returning metadata.\n4. Send a GET to https://example.com/somepath/.well-known/oauth-protected-resource/somepath/mcp-server/http. It returns 200 with JSON, and the resource field matches https://example.com/somepath/mcp-server/http.\nExpected behavior\n\n\n### Expected behavior\n\nThe URL in WWW-Authenticate: resource_metadata=… should return metadata JSON for the MCP endpoint. The advertised URL follows [RFC 9728 §3.1](https://www.rfc-editor.org/rfc/rfc9728.html#section-3.1); the issue is that the document is served at a different path. If subpath installs require an explicit root-level proxy route, please document it in the native MCP setup instructions.\n\n### Debug Info\n\n# Debug info\n\n## core\n\n- n8nVersion: 2.45.4\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.12.1\n- nodeEnv: production\n- database: postgres\n- executionMode: regular\n- concurrency: -1\n- license: enterprise (production)\n- consumerId: 3d70e264-1671-4c68-a2e4-4249540feb5d\n\n## storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: database\n\n## pruning\n\n- enabled: true\n- maxAge: 336 hours\n- maxCount: 100000 executions\n\n## client\n\n- userAgent: mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/158.0.0.0 safari/537.36 edg/158.0.0.0\n- isTouchDevice: false\n\n\nGenerated at: 2026-11-25T12:54:45.690Z\n\n### Operating System\n\ndocker (self-hosted)\n\n### n8n Version\n\n2.45.4\n\n### Node.js Version\n\n26.12.1\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/45158/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/45158/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @jelleholtkamp,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9842\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9842](https://linear.app/n8n/issue/GHC-9842)",
+      "at": "2026-11-25T12:56:09Z",
+      "url": "https://github.com/n8n-io/n8n/issues/45158#issuecomment-7163060306"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "I traced the discovery URL to `McpProtectedResource.getProtectedResourceMetadataUrl()` in `packages/cli/src/modules/mcp/mcp-protected-resource.ts`. It builds the URL from `url.origin` plus `/.well-known/oauth-protected-resource` and `url.pathname`, so a base-path prefix on the resource URL is placed after `.well-known` instead of before it. That matches the mismatch in your reproduction. Preserving the instance mount prefix in the well-known route, with a regression case for a non-root `N8N_PATH`, should cover the `WWW-Authenticate` metadata URL; the `/oauth/consent` path would need its own check.",
+      "at": "2026-11-25T14:05:53Z",
+      "url": "https://github.com/n8n-io/n8n/issues/45158#issuecomment-7164752692"
+    },
+    {
+      "author": "Arin004joshi",
+      "text": "> ### Bug Description\n> Title: Native MCP OAuth discovery fails when n8n is mounted under N8N_PATH=/somepath/\n> \n> Describe the bug\n> \n> I feel like this is a bug, but it may also be intended. But if it is intended, it doesn't really make sense to me. We run n8n self hosted behind a reverse proxy. Our reverse proxy routes based on path. For example /somepath. To accomodate this, n8n has the N8N_PATH env var. But this ends up with an advertises protected-resource url of https://example.com/.well-known/oauth-protected-resource/somepath/mcp-server/http. This doesn't fit the reverse proxy's routing rule. I would expect the url to be https://example.com/somepath/.well-known/oauth-protected-resource/mcp-server/http. So I think there's an issue with the URL construction.\n> \n> #### EDIT: the consent url /oauth/consent also does not respect N8N_PATH at all.\n> ### To Reproduce\n> To reproduce\n> \n> 1. Set N8N_PATH=/somepath/ and N8N_EDITOR_BASE_URL=https://example.com/somepath/. Enable instance-level MCP and route /somepath/* to n8n.\n> 2. Send an unauthenticated HEAD request to https://example.com/somepath/mcp-server/http. n8n returns the expected 401 and advertises:\n>    https://example.com/.well-known/oauth-protected-resource/somepath/mcp-server/http\n> 3. Send a GET to that advertised URL. It falls through to the default backend instead of returning metadata.\n> 4. Send a GET to https://example.com/somepath/.well-known/oauth-protected-resource/somepath/mcp-server/http. It returns 200 with JSON, and the resource field matches https://example.com/somepath/mcp-server/http.\n>    Expected behavior\n> \n> ### Expected behavior\n> The URL in WWW-Authenticate: resource_metadata=… should return metadata JSON for the MCP endpoint. The advertised URL follows [RFC 9728 §3.1](https://www.rfc-editor.org/rfc/rfc9728.html#section-3.1); the issue is that the document is served at a different path. If subpath installs require an explicit root-level proxy route, please document it in the native MCP setup instructions.\n> \n> ### Debug Info\n> # Debug info\n> ## core\n> * n8nVersion: 2.45.4\n> * platform: docker (self-hosted)\n> * nodeJsVersion: 26.12.1\n> * nodeEnv: production\n> * database: postgres\n> * executionMode: regular\n> * concurrency: -1\n> * license: enterprise (production)\n> * consumerId: 3d70e264-1671-4c68-a2e4-4249540feb5d\n> \n> ## storage\n> * success: all\n> * error: all\n> * progress: false\n> * manual: true\n> * binaryMode: database\n> \n> ## pruning\n> * enabled: true\n> * maxAge: 336 hours\n> * maxCount: 100000 executions\n> \n> ## client\n> * userAgent: mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/158.0.0.0 safari/537.36 edg/158.0.0.0\n> * isTouchDevice: false\n> \n> Generated at: 2026-11-25T12:54:45.690Z\n> \n> ### Operating System\n> docker (self-hosted)\n> \n> ### n8n Version\n> 2.45.4\n> \n> ### Node.js Version\n> 26.12.1\n> \n> ### Database\n> PostgreSQL\n> \n> ### Execution mode\n> main (default)\n> \n> ### Hosting\n> self hosted\n\nHey @jelleholtkamp. I reproduced this issue and it came out to be valid. N8N_PATH is a public URL prefix only: n8n mounts routes at /, and the reverse proxy strips /somepath before forwarding. Today:\n- Metadata URL is built as origin/.well-known/oauth-protected-resource/<full path>, so with N8N_PATH=/somepath it advertises https://example.com/.well-known/oauth-protected-resource/somepath/mcp-server/http. That URL is outside the proxy's /somepath route and is unreachable.\n- Consent redirect is root-relative: /oauth/consent?flow=…, so it drops the public path too.\n- The same metadata-URL construction is duplicated in MCP, the bearer driver, and the workflow OAuth helper.",
+      "at": "2026-11-25T16:18:12Z",
+      "url": "https://github.com/n8n-io/n8n/issues/45158#issuecomment-7167769348"
+    }
+  ],
+  "comments_complete": true
+}

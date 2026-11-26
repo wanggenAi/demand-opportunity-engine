@@ -1,0 +1,112 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/45241",
+  "collected_at": "2026-11-26T10:49:44.795598+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/45241",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/45241/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/45241/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/45241/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/45241",
+    "id": 6619152950,
+    "node_id": "I_kwDOC4Q8Qs8AAAABiohCNg",
+    "number": 45241,
+    "title": "HTTP Request Tool (legacy) with Digest Auth fails with \"Credentials not found\"",
+    "user": {
+      "login": "chuenchen309",
+      "id": 48723787,
+      "node_id": "MDQ6VXNlcjQ4NzIzNzg3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/48723787?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/chuenchen309",
+      "html_url": "https://github.com/chuenchen309",
+      "followers_url": "https://api.github.com/users/chuenchen309/followers",
+      "following_url": "https://api.github.com/users/chuenchen309/following{/other_user}",
+      "gists_url": "https://api.github.com/users/chuenchen309/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/chuenchen309/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/chuenchen309/subscriptions",
+      "organizations_url": "https://api.github.com/users/chuenchen309/orgs",
+      "repos_url": "https://api.github.com/users/chuenchen309/repos",
+      "events_url": "https://api.github.com/users/chuenchen309/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/chuenchen309/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-11-26T03:55:40Z",
+    "updated_at": "2026-11-26T07:05:54Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "status": {
+      "id": 2,
+      "name": "Backlog",
+      "category": "backlog"
+    },
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nThe legacy HTTP Request Tool (`@n8n/n8n-nodes-langchain.toolHttpRequest`) cannot use a Digest Auth credential. When Generic Auth Type is Digest Auth, the tool reads the credential with the wrong type:\n\n```ts\n// packages/@n8n/nodes-langchain/nodes/tools/ToolHttpRequest/utils.ts\nif (genericType === 'httpBasicAuth' || genericType === 'httpDigestAuth') {\n\tconst basicAuth = await ctx.getCredentials('httpBasicAuth', itemIndex);\n```\n\nThe node stores the selected credential under `httpDigestAuth`, so `node.credentials.httpBasicAuth` is not set. The HTTP Request Tool is a full-access node type, and `_getCredentials` in `node-execution-context.ts` throws `Credentials not found` for a full-access node that requests a type it does not have. The tool never sends the request.\n\nThe HTTP Request node reads `getCredentials('httpDigestAuth', itemIndex)` for the same option. #43544 and #43617 recently added Bearer Auth and Multiple Headers Auth to this function. Digest Auth is the remaining generic type that does not work.\n\n### To Reproduce\n\n1. Open a workflow that has an AI Agent with the legacy HTTP Request Tool (v1 or v1.1). The node is hidden in the node panel, so use an existing workflow or import one.\n2. Set Authentication to Generic Credential Type and Generic Auth Type to Digest Auth. Select a Digest Auth credential.\n3. Run the agent so that it calls the tool.\n4. The tool call fails with `Credentials not found`.\n\nI did not run these steps in a running instance. I ran `NodeExecutionContext._getCredentials` from `packages/core` against `master` (`113d2c7013`), for a `toolHttpRequest` node whose `credentials` is `{ httpDigestAuth: … }`:\n\n```\ngetCredentials('httpBasicAuth')  -> rejected: Credentials not found\ngetCredentials('httpDigestAuth') -> resolved {\"user\":\"u\",\"password\":\"p\"}\n```\n\n### Expected behavior\n\nThe tool reads the `httpDigestAuth` credential and sends the request with Digest authentication (`sendImmediately: false`), as the HTTP Request node does.\n\n### Debug Info\n\nFound by reading the code, not from a user report. A fix with a regression test follows in a PR linked to this issue.\n\n### Operating System\n\nUbuntu 26.04.1 LTS (WSL2)\n\n### n8n Version\n\n`master` at `113d2c7013`\n\n### Node.js Version\n\n26.13.0\n\n### Database\n\nNot applicable: reproduced at unit level, not in a running instance\n\n### Execution mode\n\nNot applicable: reproduced at unit level, not in a running instance\n\n### Hosting\n\nself hosted (local checkout)\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/45241/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/45241/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @chuenchen309,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9845\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9845](https://linear.app/n8n/issue/GHC-9845)",
+      "at": "2026-11-26T03:55:52Z",
+      "url": "https://github.com/n8n-io/n8n/issues/45241#issuecomment-7182146169"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "I checked the current `utils.ts`: the Basic/Digest branch still calls `getCredentials(\"httpBasicAuth\", itemIndex)` for both options. The request path already keeps `sendImmediately: false` for Digest, so the credential lookup is the mismatch. Fetching with `genericType` (or selecting `httpDigestAuth` in the Digest branch) should let the existing username/password handling work for both credential types while preserving the domain check. A focused test could assert the requested credential type for each option and that Digest still sends with `sendImmediately: false`.",
+      "at": "2026-11-26T07:05:54Z",
+      "url": "https://github.com/n8n-io/n8n/issues/45241#issuecomment-7185093417"
+    }
+  ],
+  "comments_complete": true
+}

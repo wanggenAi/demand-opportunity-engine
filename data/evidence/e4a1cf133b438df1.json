@@ -1,0 +1,1314 @@
+{
+  "source_url": "https://community.shopify.com/t/722750.json",
+  "collected_at": "2026-11-26T10:49:44.795598+00:00",
+  "source": {
+    "post_stream": {
+      "posts": [
+        {
+          "id": 1950252,
+          "username": "LearnCurve",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/l/6f9a4e/{size}.png",
+          "created_at": "2026-11-25T17:02:35.914Z",
+          "cooked": "<p>Hello!! On our clients Online Store 2.0 theme (Dawn), a product page keeps showing the stock from before the latest order.</p>\n<p>What happens:<br>\nSingle-variant product, inventory tracked, one location, “Sell when out of stock” off. An order took 3 units. Admin then showed Available 14, Committed 0, On hand 14, and the adjustment history logs the order correctly.</p>\n<p>The product page kept rendering variant.inventory_quantity as 17 (the value before that order) for more than 30 minutes.</p>\n<p>Checked in a private window and with fresh requests, so it isn’t the browser cache.<br>\nRe-saving the product in admin (no real change) fixed it within a few minutes.</p>\n<p>The Liquid is simple:</p>\n<p>{%- assign left = product.selected_or_first_available_variant.inventory_quantity | at_least: 0 -%}<br>\n{{ left }} of {{ capacity }} left</p>\n<p>Is this normal storefront caching? How long can a product page keep old inventory after an order?</p>\n<p>Is there a supported way to make the page refresh after an order, without a manual save?<br>\n(Does a save from Flow or the Admin API do it, or only a save in admin?)</p>\n<p>What’s the recommended way to show an accurate “X left” count on a Liquid theme: Storefront API quantityAvailable, or something else?</p>\n<p>This is the store where I previously reported the issue on Safari caching problems.</p>\n<p>All of these issues started after we built a custom event feature to showcase events as products in Shopify, without using a dedicated app.</p>",
+          "post_number": 1,
+          "post_type": 1,
+          "posts_count": 5,
+          "updated_at": "2026-11-25T17:02:35.914Z",
+          "reply_count": 0,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 13,
+          "reads": 19,
+          "readers_count": 18,
+          "score": 158.8,
+          "yours": false,
+          "topic_id": 722750,
+          "topic_slug": "product-page-shows-old-inventory-quantity-for-30-min-after-an-order-admin-is-correct",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": null,
+          "bookmarked": false,
+          "actions_summary": [
+            {
+              "id": 2,
+              "count": 6
+            }
+          ],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1644792,
+          "hidden": false,
+          "trust_level": 1,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/product-page-shows-old-inventory-quantity-for-30-min-after-an-order-admin-is-correct/722750/1",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "calendar_details": [],
+          "reactions": [
+            {
+              "id": "heart",
+              "type": "emoji",
+              "count": 6
+            }
+          ],
+          "current_user_reaction": null,
+          "reaction_users_count": 6,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null,
+          "can_vote": false
+        },
+        {
+          "id": 1950260,
+          "username": "waqarsheikh07",
+          "avatar_template": "/user_avatar/community.shopify.com/waqarsheikh07/{size}/417744_2.png",
+          "created_at": "2026-11-25T17:14:11.793Z",
+          "cooked": "<p>That’s the storefront page cache, not your Liquid. Shopify caches the rendered product page, and saving the product clears it, which is why your re-save fixed it. An inventory change from an order doesn’t reliably clear it, and Shopify doesn’t document how long the old number can stay.</p>\n<p>I wouldn’t build around forcing a save after every order through Flow or the API. It relies on cache behavior Shopify doesn’t document, and on a busy event it fires on every sale.</p>\n<p>What I’d do for an accurate “X left”:</p>\n<ol>\n<li>Keep the Liquid number as the first render, so the spot is never blank.</li>\n<li>After the page loads, fetch the live number from the Storefront API: <code>quantityAvailable</code> on the variant. It needs the <code>unauthenticated_read_product_inventory</code> permission, which you can turn on for a public token in the Headless channel (or a custom app).</li>\n<li>Swap the number on the page with that result.</li>\n</ol>\n<p>Also worth knowing: with “Sell when out of stock” off, checkout checks real stock, so the stale count won’t oversell your events. It only shows the wrong number.</p>",
+          "post_number": 2,
+          "post_type": 1,
+          "posts_count": 5,
+          "updated_at": "2026-11-25T17:14:11.793Z",
+          "reply_count": 0,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 15,
+          "readers_count": 14,
+          "score": 33.0,
+          "yours": false,
+          "topic_id": 722750,
+          "topic_slug": "product-page-shows-old-inventory-quantity-for-30-min-after-an-order-admin-is-correct",
+          "primary_group_name": "shopifypartner",
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": "Shopify Partner",
+          "title_is_group": true,
+          "bookmarked": false,
+          "actions_summary": [
+            {
+              "id": 2,
+              "count": 2
+            }
+          ],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 520451,
+          "hidden": false,
+          "trust_level": 1,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/product-page-shows-old-inventory-quantity-for-30-min-after-an-order-admin-is-correct/722750/2",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [
+            {
+              "id": "+1",
+              "type": "emoji",
+              "count": 1
+            },
+            {
+              "id": "heart",
+              "type": "emoji",
+              "count": 1
+            }
+          ],
+          "current_user_reaction": null,
+          "reaction_users_count": 2,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        },
+        {
+          "id": 1950433,
+          "username": "RyoheiMizuno",
+          "avatar_template": "/user_avatar/community.shopify.com/ryoheimizuno/{size}/420832_2.png",
+          "created_at": "2026-11-26T05:05:32.658Z",
+          "cooked": "<ul>\n<li><strong>Capture the mismatch before re-saving the product.</strong> Confirm that Shopify Admin shows 14 available units for the same variant. In DevTools, compare the stock count in <strong>Network → Document → Response</strong> with the count shown under <strong>Elements</strong>.</li>\n<li><strong>If the HTML says 14 and the page shows 17</strong>, check whether the custom event JavaScript overwrites the count after load. Inspect any JSON or network response that supplies that value.</li>\n<li><strong>If the HTML already says 17</strong>, request the product section separately for the same variant and compare the two responses. If the section says 14, the full page and section are returning different values. If both say 17 while Admin says 14, record the timestamp, variant ID, and all three values for Shopify Support.</li>\n</ul>",
+          "post_number": 3,
+          "post_type": 1,
+          "posts_count": 5,
+          "updated_at": "2026-11-26T05:05:32.658Z",
+          "reply_count": 0,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 8,
+          "readers_count": 7,
+          "score": 31.6,
+          "yours": false,
+          "topic_id": 722750,
+          "topic_slug": "product-page-shows-old-inventory-quantity-for-30-min-after-an-order-admin-is-correct",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": null,
+          "bookmarked": false,
+          "actions_summary": [
+            {
+              "id": 2,
+              "count": 2
+            }
+          ],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1653172,
+          "hidden": false,
+          "trust_level": 1,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/product-page-shows-old-inventory-quantity-for-30-min-after-an-order-admin-is-correct/722750/3",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [
+            {
+              "id": "heart",
+              "type": "emoji",
+              "count": 2
+            }
+          ],
+          "current_user_reaction": null,
+          "reaction_users_count": 2,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        },
+        {
+          "id": 1950489,
+          "username": "Jennifer_Lawrence",
+          "avatar_template": "/user_avatar/community.shopify.com/jennifer_lawrence/{size}/417848_2.png",
+          "created_at": "2026-11-26T07:35:54.858Z",
+          "cooked": "<p><a class=\"mention\" href=\"/u/learncurve\">@LearnCurve</a> the rendered Liquid is what gets cached, so fetch the count after load instead: call ProductVariant.quantityAvailable from the Storefront API client-side rather than printing inventory_quantity in Liquid.</p>",
+          "post_number": 4,
+          "post_type": 1,
+          "posts_count": 5,
+          "updated_at": "2026-11-26T07:35:54.858Z",
+          "reply_count": 0,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 6,
+          "readers_count": 5,
+          "score": 1.2,
+          "yours": false,
+          "topic_id": 722750,
+          "topic_slug": "product-page-shows-old-inventory-quantity-for-30-min-after-an-order-admin-is-correct",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": null,
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1647609,
+          "hidden": false,
+          "trust_level": 2,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/product-page-shows-old-inventory-quantity-for-30-min-after-an-order-admin-is-correct/722750/4",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        },
+        {
+          "id": 1950501,
+          "username": "XtprismStudio",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/x/b9e5f3/{size}.png",
+          "created_at": "2026-11-26T08:06:19.843Z",
+          "cooked": "<p>This post was flagged by the community and is temporarily hidden.</p>",
+          "cooked_hidden": true,
+          "post_number": 5,
+          "post_type": 1,
+          "posts_count": 5,
+          "updated_at": "2026-11-26T08:06:50.586Z",
+          "reply_count": 0,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 5,
+          "readers_count": 4,
+          "score": 1.0,
+          "yours": false,
+          "topic_id": 722750,
+          "topic_slug": "product-page-shows-old-inventory-quantity-for-30-min-after-an-order-admin-is-correct",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": null,
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1653370,
+          "hidden": true,
+          "hidden_reason_id": 1,
+          "trust_level": 1,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": false,
+          "wiki": false,
+          "post_url": "/t/product-page-shows-old-inventory-quantity-for-30-min-after-an-order-admin-is-correct/722750/5",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        }
+      ],
+      "stream": [
+        1950252,
+        1950260,
+        1950433,
+        1950489,
+        1950501
+      ]
+    },
+    "timeline_lookup": [
+      [
+        1,
+        1
+      ],
+      [
+        3,
+        0
+      ]
+    ],
+    "user_badges": {
+      "users": {
+        "520451": {
+          "id": 520451,
+          "badge_ids": [
+            108,
+            116
+          ]
+        },
+        "1644792": {
+          "id": 1644792,
+          "badge_ids": [
+            116
+          ]
+        },
+        "1647609": {
+          "id": 1647609,
+          "badge_ids": [
+            108
+          ]
+        },
+        "1653172": {
+          "id": 1653172,
+          "badge_ids": [
+            108
+          ]
+        }
+      },
+      "badges": {
+        "131": {
+          "id": 131,
+          "name": "1000 Accepted Solutions",
+          "slug": "1000-accepted-solutions",
+          "description": "You're a member of the 1000 accepted solutions club!",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 1
+        },
+        "19": {
+          "id": 19,
+          "name": "Good Topic",
+          "slug": "good-topic",
+          "description": "Received 25 likes on a topic",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 3,
+          "badge_type_id": 2
+        },
+        "7": {
+          "id": 7,
+          "name": "Good Post",
+          "slug": "good-reply",
+          "description": "Received 25 likes on a reply",
+          "icon": "reply",
+          "image_url": null,
+          "badge_grouping_id": 3,
+          "badge_type_id": 2
+        },
+        "112": {
+          "id": 112,
+          "name": "250 Posts",
+          "slug": "250-posts",
+          "description": "250 posts! Thanks for being an engaged member of the Shopify Community",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 2
+        },
+        "110": {
+          "id": 110,
+          "name": "50 Posts",
+          "slug": "50-posts",
+          "description": "Way to go! You've posted 50 times in the Shopify Community",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 3
+        },
+        "109": {
+          "id": 109,
+          "name": "25 Posts",
+          "slug": "25-posts",
+          "description": "With 25 posts submitted, you help keep the conversations going",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 3
+        },
+        "114": {
+          "id": 114,
+          "name": "1000 Posts",
+          "slug": "1000-posts",
+          "description": "You're a member of the 1000 posts club!",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 1
+        },
+        "113": {
+          "id": 113,
+          "name": "500 Posts",
+          "slug": "500-posts",
+          "description": "Congratulations on reaching the 500 post milestone!",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 1
+        },
+        "32": {
+          "id": 32,
+          "name": "Gives Back",
+          "slug": "gives-back",
+          "description": "Has 100 liked posts and gave 100 likes",
+          "icon": "heart",
+          "image_url": null,
+          "badge_grouping_id": 2,
+          "badge_type_id": 2
+        },
+        "46": {
+          "id": 46,
+          "name": "Aficionado",
+          "slug": "aficionado",
+          "description": "Visited 100 consecutive days",
+          "icon": "far-eye",
+          "image_url": null,
+          "badge_grouping_id": 2,
+          "badge_type_id": 2
+        },
+        "111": {
+          "id": 111,
+          "name": "100 Posts",
+          "slug": "100-posts",
+          "description": "100 posts! Thanks for being an engaged member of the Shopify Community",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 2
+        },
+        "120": {
+          "id": 120,
+          "name": "250 Likes",
+          "slug": "250-likes",
+          "description": "Your expertise has earned you 250 likes!",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 2
+        },
+        "122": {
+          "id": 122,
+          "name": "1000 Likes",
+          "slug": "1000-likes",
+          "description": "You're a member of the 1000 likes club!",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 1
+        },
+        "129": {
+          "id": 129,
+          "name": "250 Accepted Solutions",
+          "slug": "250-accepted-solutions",
+          "description": "250 accepted solutions! Thank you for being so helpful",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 2
+        },
+        "121": {
+          "id": 121,
+          "name": "500 Likes",
+          "slug": "500-likes",
+          "description": "Congratulations on obtaining 500 likes!",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 1
+        },
+        "135": {
+          "id": 135,
+          "name": "Power User 2024",
+          "slug": "power-user-2024",
+          "description": "Most participating users within 2024",
+          "icon": "ranking-star",
+          "image_url": null,
+          "badge_grouping_id": 6,
+          "badge_type_id": 3
+        },
+        "126": {
+          "id": 126,
+          "name": "50 Accepted Solutions",
+          "slug": "50-accepted-solutions",
+          "description": "Your knowledge has resulted in 50 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 3
+        },
+        "119": {
+          "id": 119,
+          "name": "100 Likes",
+          "slug": "100-likes",
+          "description": "Your contributions have earned you 100 likes",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 2
+        },
+        "125": {
+          "id": 125,
+          "name": "25 Accepted Solutions",
+          "slug": "25-accepted-solutions",
+          "description": "Your guidance has resulted in 25 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 3
+        },
+        "3": {
+          "id": 3,
+          "name": "Regular",
+          "slug": "regular",
+          "description": "Awarded at Trust Level 3. Recognized for regular contributions as a trusted user.",
+          "icon": "user",
+          "image_url": null,
+          "badge_grouping_id": 4,
+          "badge_type_id": 2
+        },
+        "127": {
+          "id": 127,
+          "name": "75 Accepted Solutions",
+          "slug": "75-accepted-solutions",
+          "description": "Your expertise has resulted in 75 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 2
+        },
+        "130": {
+          "id": 130,
+          "name": "500 Accepted Solutions",
+          "slug": "500-accepted-solutions",
+          "description": "Your valuable contributions have resulted in 500 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 1
+        },
+        "116": {
+          "id": 116,
+          "name": "10 Likes",
+          "slug": "10-likes",
+          "description": "You've received 10 likes",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 3
+        },
+        "118": {
+          "id": 118,
+          "name": "50 Likes",
+          "slug": "50-likes",
+          "description": "Your contributions have earned you 50 likes",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 3
+        },
+        "124": {
+          "id": 124,
+          "name": "10 Accepted Solutions",
+          "slug": "10-accepted-solutions",
+          "description": "10 of your replies have been accepted as solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 3
+        },
+        "117": {
+          "id": 117,
+          "name": "25 Likes",
+          "slug": "25-likes",
+          "description": "With 25 likes, your posts are popular",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 3
+        },
+        "128": {
+          "id": 128,
+          "name": "100 Accepted Solutions",
+          "slug": "100-accepted-solutions",
+          "description": "Congratulations! You've provided 100 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 2
+        },
+        "108": {
+          "id": 108,
+          "name": "10 Posts",
+          "slug": "10-posts",
+          "description": "Thanks for being an active member and posting 10 times",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 3
+        }
+      }
+    },
+    "suggested_topics": [],
+    "tags": [
+      {
+        "id": 4021,
+        "name": "troubleshooting",
+        "slug": "troubleshooting"
+      },
+      {
+        "id": 3921,
+        "name": "shopify-themes",
+        "slug": "shopify-themes"
+      }
+    ],
+    "tags_descriptions": {},
+    "fancy_title": "Product page shows old inventory_quantity for 30+ min after an order (admin is correct)",
+    "id": 722750,
+    "title": "Product page shows old inventory_quantity for 30+ min after an order (admin is correct)",
+    "posts_count": 5,
+    "created_at": "2026-11-25T17:02:35.758Z",
+    "views": 64,
+    "reply_count": 0,
+    "like_count": 10,
+    "last_posted_at": "2026-11-26T08:06:19.843Z",
+    "visible": true,
+    "closed": false,
+    "archived": false,
+    "has_summary": false,
+    "archetype": "regular",
+    "slug": "product-page-shows-old-inventory-quantity-for-30-min-after-an-order-admin-is-correct",
+    "category_id": 133,
+    "word_count": 644,
+    "deleted_at": null,
+    "user_id": 1644792,
+    "featured_link": null,
+    "pinned_globally": false,
+    "pinned_at": null,
+    "pinned_until": null,
+    "image_url": null,
+    "slow_mode_seconds": 0,
+    "draft": null,
+    "draft_key": "topic_722750",
+    "draft_sequence": null,
+    "unpinned": null,
+    "pinned": false,
+    "current_post_number": 1,
+    "highest_post_number": 5,
+    "deleted_by": null,
+    "actions_summary": [
+      {
+        "id": 8,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 1002,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 4,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 7,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 1001,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 10,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      }
+    ],
+    "chunk_size": 20,
+    "bookmarked": false,
+    "topic_timer": {
+      "id": 2800,
+      "execute_at": "2027-05-25T08:06:19.843Z",
+      "duration_minutes": 259200,
+      "based_on_last_post": true,
+      "status_type": "close",
+      "category_id": null
+    },
+    "message_bus_last_id": 88,
+    "participant_count": 5,
+    "show_read_indicator": false,
+    "thumbnails": null,
+    "slow_mode_enabled_until": null,
+    "board_memberships": [],
+    "related_topics": [
+      {
+        "fancy_title": "Clear storefront API cache when updating product",
+        "id": 323578,
+        "title": "Clear storefront API cache when updating product",
+        "slug": "clear-storefront-api-cache-when-updating-product",
+        "posts_count": 1,
+        "reply_count": 0,
+        "highest_post_number": 0,
+        "image_url": null,
+        "created_at": "2024-05-17T08:58:18.000Z",
+        "last_posted_at": "2024-05-17T08:58:18.000Z",
+        "bumped": false,
+        "bumped_at": "2024-05-17T08:58:18.000Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Hello, \nI’m encountering a caching issue with the Storefront API. Specifically, when a product is updated in the Shopify Admin, the Storefront API continues to serve a cached, outdated version of the product for several &hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [
+          {
+            "id": 318,
+            "name": "optimization",
+            "slug": "optimization"
+          },
+          {
+            "id": 1420,
+            "name": "javascript",
+            "slug": "javascript"
+          },
+          {
+            "id": 3203,
+            "name": "third-party-theme",
+            "slug": "third-party-theme"
+          }
+        ],
+        "tags_descriptions": {},
+        "like_count": 2,
+        "views": 205,
+        "category_id": 211,
+        "featured_link": null,
+        "op_like_count": 2,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": "latest single",
+            "description": "Original Poster, Most Recent Poster",
+            "user": {
+              "id": 657311,
+              "username": "Fiischer",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/f/73ab20/{size}.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 1
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "Dawn 2.0 - Adding quantity available to product page",
+        "id": 68004,
+        "title": "Dawn 2.0 - Adding quantity available to product page",
+        "slug": "dawn-2-0-adding-quantity-available-to-product-page",
+        "posts_count": 26,
+        "reply_count": 23,
+        "highest_post_number": 0,
+        "image_url": null,
+        "created_at": "2021-09-25T18:58:09.000Z",
+        "last_posted_at": "2022-05-28T14:57:31.000Z",
+        "bumped": true,
+        "bumped_at": "2022-05-28T14:57:31.000Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "I feel like this really shouldn’t be that difficult. Would anybody have the code that I need to copy and paste into the product page template?",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [],
+        "tags_descriptions": {},
+        "like_count": 13,
+        "views": 570,
+        "category_id": 133,
+        "featured_link": null,
+        "op_like_count": 0,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 555253,
+              "username": "VividFrameworks",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/v/c5a1d2/{size}.png",
+              "primary_group_name": "shopifystaff",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 561777,
+              "username": "mstav2u",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/m/b487fb/{size}.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 558335,
+              "username": "BeholdGames",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/b/b5e925/{size}.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": 603837,
+              "username": "BecEnglishCeram",
+              "avatar_template": "/user_avatar/community.shopify.com/becenglishceram/{size}/123436_2.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 713971,
+              "username": "MyCartridges",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/m/439d5e/{size}.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "Mostrare qtà inventario in pagina prodotto",
+        "id": 45000,
+        "title": "Mostrare qtà inventario in pagina prodotto",
+        "slug": "mostrare-qta-inventario-in-pagina-prodotto",
+        "posts_count": 3,
+        "reply_count": 1,
+        "highest_post_number": 0,
+        "image_url": null,
+        "created_at": "2021-04-29T16:31:15.000Z",
+        "last_posted_at": "2022-03-25T09:40:21.000Z",
+        "bumped": true,
+        "bumped_at": "2022-03-25T09:40:21.000Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Ciao a tutti, continuo a ricevere chat di utenti che chiedono le quantità disponibili dei prodotti, vendendo molti prodotti con disponibilità bassa o unica c’è modo di mostrare direttamente questa informazione nella pagi&hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [
+          {
+            "id": 2781,
+            "name": "inventario",
+            "slug": "inventario"
+          }
+        ],
+        "tags_descriptions": {},
+        "like_count": 1,
+        "views": 135,
+        "category_id": 71,
+        "featured_link": null,
+        "op_like_count": 0,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 470966,
+              "username": "EmanueleM",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/e/82dd89/{size}.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": 458495,
+              "username": "Michela_1",
+              "avatar_template": "/user_avatar/community.shopify.com/michela_1/{size}/224438_2.png",
+              "flair_name": "shopifyretired",
+              "flair_group_id": 56,
+              "primary_group_name": "shopifyretired",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 673749,
+              "username": "fra16",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/f/258eb7/{size}.png",
+              "primary_group_name": "shopifystaff",
+              "trust_level": 1
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "Shopify Product Pages on My Website Sometimes Display Old Prices Even After the Product Has Been Updated",
+        "id": 668308,
+        "title": "Shopify Product Pages on My Website Sometimes Display Old Prices Even After the Product Has Been Updated",
+        "slug": "shopify-product-pages-on-my-website-sometimes-display-old-prices-even-after-the-product-has-been-updated",
+        "posts_count": 11,
+        "reply_count": 0,
+        "highest_post_number": 13,
+        "image_url": null,
+        "created_at": "2026-08-18T21:31:01.581Z",
+        "last_posted_at": "2026-08-31T06:11:17.707Z",
+        "bumped": true,
+        "bumped_at": "2026-08-31T06:11:17.707Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Hello Shopify Community, \nI am currently facing one persistent issue with my Shopify website where some product pages continue displaying an older price even after I have successfully updated the product price in the Sho&hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [
+          {
+            "id": 4021,
+            "name": "troubleshooting",
+            "slug": "troubleshooting"
+          }
+        ],
+        "tags_descriptions": {},
+        "like_count": 2,
+        "views": 278,
+        "category_id": 95,
+        "featured_link": null,
+        "op_like_count": 2,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 1613462,
+              "username": "teeroad22",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/t/b5ac83/{size}.png",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 1077320,
+              "username": "devcoders",
+              "avatar_template": "/user_avatar/community.shopify.com/devcoders/{size}/403479_2.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 3
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 1628311,
+              "username": "Lars_Mayer",
+              "avatar_template": "/user_avatar/community.shopify.com/lars_mayer/{size}/411589_2.png",
+              "flair_name": "shopifypartner",
+              "flair_group_id": 50,
+              "primary_group_name": "shopifypartner",
+              "trust_level": 2
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": 1300333,
+              "username": "SealSubs-Roan",
+              "avatar_template": "/user_avatar/community.shopify.com/sealsubs-roan/{size}/278057_2.png",
+              "primary_group_name": "merchant",
+              "trust_level": 2
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 1638272,
+              "username": "AtifDrishq",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/a/f9ae1b/{size}.png",
+              "trust_level": 1
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "Display Inventory Quantity on the Product Page",
+        "id": 1326,
+        "title": "Display Inventory Quantity on the Product Page",
+        "slug": "display-inventory-quantity-on-the-product-page",
+        "posts_count": 20,
+        "reply_count": 16,
+        "highest_post_number": 0,
+        "image_url": null,
+        "created_at": "2018-02-14T07:16:19.000Z",
+        "last_posted_at": "2023-11-14T20:14:21.000Z",
+        "bumped": true,
+        "bumped_at": "2023-11-14T20:14:21.000Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "I am trying to show inventory quantities on the product page. I’m using the Icon Dolce Theme. is this an easy fix? I have no experience with liquid or modifying Shopify themes.",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [],
+        "tags_descriptions": {},
+        "like_count": 9,
+        "views": 832,
+        "category_id": 133,
+        "featured_link": null,
+        "op_like_count": 0,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 88984,
+              "username": "brad_hembrow",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/b/e56c9b/{size}.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 270020,
+              "username": "krlove80",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/k/9fc348/{size}.png",
+              "primary_group_name": "shopifystaff",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 43635,
+              "username": "BriskDevelopers",
+              "avatar_template": "/user_avatar/community.shopify.com/briskdevelopers/{size}/80941_2.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": 869212,
+              "username": "Infonm2022",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/i/b9bd4f/{size}.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 1151614,
+              "username": "thelittlewolf",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/t/5e9695/{size}.png",
+              "primary_group_name": "shopifystaff",
+              "trust_level": 1
+            }
+          }
+        ]
+      }
+    ],
+    "summarizable": true,
+    "has_cached_summary": true,
+    "ai_summary": {
+      "id": 1910283,
+      "summarized_text": "A Shopify Dawn product page continued showing 17 units for over 30 minutes after an order reduced the Admin inventory to 14. The product tracks inventory at one location, and selling when out of stock is disabled; a no-op product save eventually corrected the display. The original poster ruled out browser caching but asked whether storefront caching is expected and how to show a reliable remaining-stock count.\n\nReplies attribute the stale value to cached rendered product-page output, which an inventory change may not reliably invalidate; Shopify’s cache duration is undocumented. They advise against saving the product after every order through Flow or the Admin API because this depends on undocumented behavior. A suggested approach is to render a Liquid fallback, then replace it after load with the variant’s Storefront API `quantityAvailable` value, requiring the appropriate inventory-read permission.\n\nFor diagnosis, compare Admin inventory with the document HTML and the displayed page, and inspect any JavaScript or network data that may overwrite the count. If Shopify responses remain stale, record the variant ID, timestamp, and values for Support. Checkout still checks actual stock, so the reported issue affects the displayed count, not overselling. No definitive platform fix or cache duration was established.",
+      "algorithm": "gpt-6-luna",
+      "outdated": false,
+      "created_at": "2026-11-25T17:02:52.294Z",
+      "updated_at": "2026-11-26T08:06:52.418Z"
+    },
+    "is_category_expert_question": true,
+    "has_livestream": null,
+    "livestream_chat_active": false,
+    "valid_reactions": [
+      "heart",
+      "+1",
+      "laughing",
+      "open_mouth",
+      "clap",
+      "confetti_ball",
+      "hugs"
+    ],
+    "has_accepted_answer": false,
+    "shared_issue_count": 0,
+    "can_create_shared_issue": false,
+    "shared_issue_visible": true,
+    "can_vote": false,
+    "vote_count": 0,
+    "user_voted": false,
+    "details": {
+      "can_edit": false,
+      "notification_level": 1,
+      "participants": [
+        {
+          "id": 1653172,
+          "username": "RyoheiMizuno",
+          "avatar_template": "/user_avatar/community.shopify.com/ryoheimizuno/{size}/420832_2.png",
+          "post_count": 1,
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 1
+        },
+        {
+          "id": 1644792,
+          "username": "LearnCurve",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/l/6f9a4e/{size}.png",
+          "post_count": 1,
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 1
+        },
+        {
+          "id": 520451,
+          "username": "waqarsheikh07",
+          "avatar_template": "/user_avatar/community.shopify.com/waqarsheikh07/{size}/417744_2.png",
+          "post_count": 1,
+          "primary_group_name": "shopifypartner",
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 1
+        },
+        {
+          "id": 1653370,
+          "username": "XtprismStudio",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/x/b9e5f3/{size}.png",
+          "post_count": 1,
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 1
+        },
+        {
+          "id": 1647609,
+          "username": "Jennifer_Lawrence",
+          "avatar_template": "/user_avatar/community.shopify.com/jennifer_lawrence/{size}/417848_2.png",
+          "post_count": 1,
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 2
+        }
+      ],
+      "created_by": {
+        "id": 1644792,
+        "username": "LearnCurve",
+        "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/l/6f9a4e/{size}.png"
+      },
+      "last_poster": {
+        "id": 1653370,
+        "username": "XtprismStudio",
+        "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/x/b9e5f3/{size}.png"
+      }
+    },
+    "bookmarks": []
+  }
+}

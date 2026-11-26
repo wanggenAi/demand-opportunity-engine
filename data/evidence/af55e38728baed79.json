@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50626772",
-  "collected_at": "2026-11-25T11:13:51.235741+00:00",
+  "collected_at": "2026-11-26T10:49:44.795598+00:00",
   "source": {
     "author": "humbleferret",
     "children": [
@@ -36,7 +36,23 @@
       },
       {
         "author": "FinalAngel",
-        "children": [],
+        "children": [
+          {
+            "author": "drltaidev",
+            "children": [],
+            "created_at": "2026-11-26T10:32:12.000Z",
+            "created_at_i": 1795689132,
+            "id": 50653785,
+            "options": [],
+            "parent_id": 50628706,
+            "points": null,
+            "story_id": 50626772,
+            "text": "So your answer basically assumes much of your data will get leaked anyway... not a true answer to the question but yeah I do agree. I also agree with all the caution in other replies, but after that still assume your data is leaked and stay suspicious. I don&#x27;t like answering calls anyway (it&#x27;s 2026, send me an asynchronous message somehow and let me decide when I reply) so that works well for me.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
         "created_at": "2026-11-24T14:27:10.000Z",
         "created_at_i": 1795530430,
         "id": 50628706,
@@ -142,6 +158,36 @@
         "title": null,
         "type": "comment",
         "url": null
+      },
+      {
+        "author": "sdevonoes",
+        "children": [],
+        "created_at": "2026-11-25T12:26:16.000Z",
+        "created_at_i": 1795609576,
+        "id": 50641506,
+        "options": [],
+        "parent_id": 50626772,
+        "points": null,
+        "story_id": 50626772,
+        "text": "Use fewer services if possible",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "yencabulator",
+        "children": [],
+        "created_at": "2026-11-26T05:19:48.000Z",
+        "created_at_i": 1795670388,
+        "id": 50651760,
+        "options": [],
+        "parent_id": 50626772,
+        "points": null,
+        "story_id": 50626772,
+        "text": "Longer term: make companies financially liable.",
+        "title": null,
+        "type": "comment",
+        "url": null
       }
     ],
     "created_at": "2026-11-24T11:39:11.000Z",
@@ -149,7 +195,7 @@
     "id": 50626772,
     "options": [],
     "parent_id": null,
-    "points": 15,
+    "points": 17,
     "story_id": 50626772,
     "text": "Got another breach email this morning, this travel operator had my passport number and travel history stored. At this point I feel every service we use is going to get dumped eventually.<p>I consider unique passwords and hardware 2FA as no brainers, they stop credential stuffing, but they don&#x27;t help when a service leaks your actual identity. There are just so many services that require personal data like your passport number, phone number etc. And I think the fallout will only get worse as agentic workflows and local models become more mainstream and people start giving them more and more personal data.<p>Assuming every vendor database is basically public eventually, how are you actually limiting the blast radius without turning everyday life into a massive faff?",
     "title": "Ask HN: Everything will get breached. How do you limit the blast radius?",
@@ -174,6 +220,12 @@
       "text": "I'd go the route of not answering calls from numbers I don't know, triaging my emails well and, in general, staying suspicious. Leaked data mostly serves as an attack vector: it gets used to win your trust for social engineering. And to be honest, someone who wants to reach you will find you anyway, through your name on your company's website, social media or some award you once got at school. So be aware, and don't trust anything you haven't confirmed yourself. Cause even if a Vendor says they removed everything from you, I would trust that all traces are removed. There are logs, backups, analytics etc. and you always leave a footprint on the internet.",
       "at": "2026-11-24T14:27:10.000Z",
       "url": "https://news.ycombinator.com/item?id=50628706"
+    },
+    {
+      "author": "drltaidev",
+      "text": "So your answer basically assumes much of your data will get leaked anyway... not a true answer to the question but yeah I do agree. I also agree with all the caution in other replies, but after that still assume your data is leaked and stay suspicious. I don't like answering calls anyway (it's 2026, send me an asynchronous message somehow and let me decide when I reply) so that works well for me.",
+      "at": "2026-11-26T10:32:12.000Z",
+      "url": "https://news.ycombinator.com/item?id=50653785"
     },
     {
       "author": "AnimalMuppet",
@@ -210,6 +262,18 @@
       "text": "Using multiple emails, passwords, and phone numbers, also don't use real names input to online websites, i always use my english name not the real name on passport. It helps.",
       "at": "2026-11-25T06:12:42.000Z",
       "url": "https://news.ycombinator.com/item?id=50639110"
+    },
+    {
+      "author": "sdevonoes",
+      "text": "Use fewer services if possible",
+      "at": "2026-11-25T12:26:16.000Z",
+      "url": "https://news.ycombinator.com/item?id=50641506"
+    },
+    {
+      "author": "yencabulator",
+      "text": "Longer term: make companies financially liable.",
+      "at": "2026-11-26T05:19:48.000Z",
+      "url": "https://news.ycombinator.com/item?id=50651760"
     }
   ],
   "comments_complete": true
