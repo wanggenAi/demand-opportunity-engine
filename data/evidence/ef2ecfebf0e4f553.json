@@ -1,0 +1,99 @@
+{
+  "source_api_url": "https://api.github.com/repos/HuggerHustle/ai-radar/issues/338",
+  "collected_at": "2026-11-27T10:48:33.359480+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/HuggerHustle/ai-radar/issues/338",
+    "repository_url": "https://api.github.com/repos/HuggerHustle/ai-radar",
+    "labels_url": "https://api.github.com/repos/HuggerHustle/ai-radar/issues/338/labels{/name}",
+    "comments_url": "https://api.github.com/repos/HuggerHustle/ai-radar/issues/338/comments",
+    "events_url": "https://api.github.com/repos/HuggerHustle/ai-radar/issues/338/events",
+    "html_url": "https://github.com/HuggerHustle/ai-radar/issues/338",
+    "id": 6639426357,
+    "node_id": "I_kwDOVQjjVs8AAAABi72bNQ",
+    "number": 338,
+    "title": "📈 AI Open Source Trends 2026-11-27",
+    "user": {
+      "login": "github-actions[bot]",
+      "id": 41898282,
+      "node_id": "MDM6Qm90NDE4OTgyODI=",
+      "avatar_url": "https://avatars.githubusercontent.com/in/15368?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/github-actions%5Bbot%5D",
+      "html_url": "https://github.com/apps/github-actions",
+      "followers_url": "https://api.github.com/users/github-actions%5Bbot%5D/followers",
+      "following_url": "https://api.github.com/users/github-actions%5Bbot%5D/following{/other_user}",
+      "gists_url": "https://api.github.com/users/github-actions%5Bbot%5D/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/github-actions%5Bbot%5D/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/github-actions%5Bbot%5D/subscriptions",
+      "organizations_url": "https://api.github.com/users/github-actions%5Bbot%5D/orgs",
+      "repos_url": "https://api.github.com/users/github-actions%5Bbot%5D/repos",
+      "events_url": "https://api.github.com/users/github-actions%5Bbot%5D/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/github-actions%5Bbot%5D/received_events",
+      "type": "Bot",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 12764892311,
+        "node_id": "LA_kwDOVQjjVs8AAAAC-NjMlw",
+        "url": "https://api.github.com/repos/HuggerHustle/ai-radar/labels/trending",
+        "name": "trending",
+        "color": "f9a825",
+        "default": false,
+        "description": null,
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2026-11-27T03:37:11Z",
+    "updated_at": "2026-11-27T03:43:05Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "CONTRIBUTOR",
+    "issue_field_values": [],
+    "type": null,
+    "status": {
+      "id": 2,
+      "name": "Backlog",
+      "category": "backlog"
+    },
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "# AI Open Source Trends 2026-11-27\n\n> Sources: GitHub Trending + GitHub Search API | Generated: 2026-11-27 03:35 UTC\n\n---\n\n# AI Open Source Trends Report — 2026-11-27\n\n## 1. Today's Highlights\n\nToday's trending data is dominated by the **\"agent skills\" meta-layer**: a surge of reusable skill bundles, plugins, and MCP-compatible extensions targeting Claude Code, Codex, Cursor, and Gemini CLI, signaling that the ecosystem is standardizing around portable agent capabilities rather than monolithic agents. Alongside this, **context/memory infrastructure** (compression, persistent memory, knowledge graphs, vectorless RAG) is maturing rapidly, with projects like `headroom`, `claude-mem`, and `PageIndex` attacking the token-cost and retrieval-quality bottlenecks of production agents. **Small-model accessibility** also stands out, with `minimind` (train a 64M LLM in 2 hours) pulling massive cumulative stars, while **vertical AI applications** (video clipping, trading, job search, CI/CD reliability) proliferate as agents move from demo to domain-specific deployment.\n\n---\n\n## 2. Top Projects by Category\n\n### 🔧 AI Infrastructure\n\n| Project | Lang | Stars (total / today) | Summary |\n| :--- | :--- | ---: | :--- |\n| [firecrawl/firecrawl](https://github​.com/firecrawl/firecrawl) | TypeScript | 211,049 (+1,046) | Knowledge infrastructure giving agents search, scrape, and access to 550+ data providers via one API. Its dual appearance on both the trending list and the LLM topic search signals it has become default agent web-access plumbing. |\n| [openvinotoolkit/openvino](https://github​.com/openvinotoolkit/openvino) | C++ | — (+176) | Open-source toolkit for optimizing and deploying AI inference across Intel hardware. Continued daily traction shows edge/inference optimization remains a durable infrastructure concern. |\n| [cursor/plugins](https://github​.com/cursor/plugins) | TypeScript | — (+270) | Cursor's official plugin specification and reference plugins. Its rise reflects editor vendors formalizing extension standards to compete in the agent-tooling layer. |\n| [ollama/ollama](https://github​.com/ollama/ollama) | Go | 188,254 | Local model runner supporting Kimi, GLM, MiniMax, DeepSeek, gpt-oss, Qwen, and Gemma. Remains the de facto local-inference entry point as new open-weight models ship. |\n| [headroomlabs-ai/headroom](https://github​.com/headroomlabs-ai/headroom) | Python | 80,953 | Compresses tool outputs, logs, files, and RAG chunks before they reach the LLM (20% fewer tokens for coding agents, 60–95% for JSON). Token-cost optimization is emerging as its own infrastructure category. |\n| [Mirrowel/LLM-API-Key-Proxy](https://github​.com/Mirrowel/LLM-API-Key-Proxy) | Python | 565 | Universal LLM gateway with OpenAI/Anthropic-compatible endpoints, multi-provider translation, and load-balancing. A lightweight signal that multi-provider routing is now table stakes. |\n\n### 🤖 AI Agents / Workflows\n\n| Project | Lang | Stars (total / today) | Summary |\n| :--- | :--- | ---: | :--- |\n| [obra/superpowers](https://github​.com/obra/superpowers) | Shell | — (+854) | An agentic skills framework and software development methodology. Its high today-stars show developers converging on skills-as-methodology rather than ad-hoc prompting. |\n| [HKUDS/CLI-Anything](https://github​.com/HKUDS/CLI-Anything) | Python | — (+746) | \"Making ALL Software Agent-Native\" via a CLI-Hub for exposing tools to agents. Directly addresses the tool-integration gap that limits real-world agent autonomy. |\n| [affaan-m/ECC](https://github​.com/affaan-m/ECC) | JavaScript | 311,370 | Agent harness performance optimization system covering skills, instincts, memory, and security for Claude Code, Codex, Cursor, and beyond. Its enormous star count marks it as a flagship in the harness-optimization wave. |\n| [NousResearch/hermes-agent](https://github​.com/NousResearch/hermes-agent) | Python | 266,433 | \"The agent that grows with you,\" a general-purpose personal agent. Top-tier star volume reflects sustained appetite for open personal-agent platforms. |\n| [career-ops-hq/career-ops](https://github​.com/career-ops-hq/career-ops) | JavaScript | 85,089 | Open-source AI job-search agent that scans boards, scores jobs against your CV, and tailors ATS-friendly applications. A strong example of agents targeting concrete, high-value personal workflows. |\n| [Tracer-Cloud/opensre](https://github​.com/Tracer-Cloud/opensre) | Python | — (+327) | Open-source agent for CI/CD reliability. Brings agentic automation into SRE/DevOps, a less crowded but high-leverage vertical. |\n| [trycua/cua](https://github​.com/trycua/cua) | Rust | 33,024 | Open-source drivers, cross-OS sandboxes, and benchmarks for computer-use agents. Computer-use 2.0 infrastructure is a notable new frontier appearing in the data. |\n| [CopilotKit/CopilotKit](https://github​.com/CopilotKit/CopilotKit) | TypeScript | 39,004 | Frontend stack for agents and generative UI across React, Angular, Mobile, and Slack; makers of the AG-UI Protocol. Signals the emerging \"agent frontend\" layer. |\n\n### 📦 AI Applications\n\n| Project | Lang | Stars (total / today) | Summary |\n| :--- | :--- | ---: | :--- |\n| [elementalsouls/Claude-BugHunter](https://github​.com/elementalsouls/Claude-BugHunter) | Python | — (+1,597) | Claude Code skill bundle for bug hunting and red-team work with 85 skills and 681 disclosed-report patterns. Today's #1 trending repo, showing security is a breakout agent-skill vertical. |\n| [zhouxiaoka/autoclip](https://github​.com/zhouxiaoka/autoclip) | Python | — (+774) | Local-first AI video clipping tool and MCP server, an open-source OpusClip alternative. Zero-subscription, privacy-first vertical AI continues to attract strong daily stars. |\n| [harry0703/MoneyPrinterTurbo](https://github​.com/harry0703/MoneyPrinterTurbo) | Python | 145,880 | Generates HD short videos from a topic or keyword via an automated AI workflow. A long-running proof that AI content-generation apps sustain mass appeal. |\n| [ZhuLinsen/daily_stock_analysis](https://github​.com/ZhuLinsen/daily_stock_analysis) | Python | 74,872 | LLM-powered multi-market stock analysis with real-time news and automated notifications, runnable at zero cost. Agentic finance is a recurring, fast-growing application cluster. |\n| [HKUDS/DeepTutor](https://github​.com/HKUDS/DeepTutor) | Python | 63,419 | Lifelong personalized tutoring system. Demonstrates education as a durable agent-application domain. |\n| [open-webui/open-webui](https://github​.com/open-webui/open-webui) | Svelte | 159,649 | User-friendly AI interface supporting Ollama and OpenAI APIs. Remains the dominant self-hosted chat front end. |\n| [mjmirza/app-store-compliance](https://github​.com/mjmirza/app-store-compliance) | Shell | — (+562) | Compliance playbook with 125 rejection patterns and an AI coding-agent skill covering EU AI Act, DSA, and COPPA deadlines. Shows regulatory-compliance skills becoming a distinct app niche. |\n| [cathrynlavery/diagram-design](https://github​.com/cathrynlavery/diagram-design) | HTML | — (+955) | Editorial diagram design skill for Claude Code, Codex, Copilot, and Cursor with 52 diagram types. A high-momentum example of design-oriented agent skills. |\n\n### 🧠 LLMs / Training\n\n| Project | Lang | Stars (total / today) | Summary |\n| :--- | :--- | ---: | :--- |\n| [jingyaogong/minimind](https://github​.com/jingyaogong/minimind) | Python | 71,770 (+702) | Train your own 64M LLM from scratch in 2 hours. Its dual trending/topic presence confirms strong demand for accessible from-scratch training education. |\n| [huggingface/transformers](https://github​.com/huggingface/transformers) | Python | 169,383 | The model-definition framework for state-of-the-art text, vision, audio, and multimodal models. Still the canonical backbone of the open model ecosystem. |\n| [rasbt/LLMs-from-scratch](https://github​.com/rasbt/LLMs-from-scratch) | Jupyter Notebook | 109,104 | Step-by-step PyTorch implementation of a ChatGPT-like LLM. Continues to anchor the \"learn by building\" segment. |\n| [skyzh/tiny-llm](https://github​.com/skyzh/tiny-llm) | Python | 5,814 | Learn LLM inference systems on Apple Silicon by building a tiny vLLM + Qwen. A notable new entry targeting inference-systems engineers rather than model trainers. |\n| [open-compass/opencompass](https://github​.com/open-compass/opencompass) | Python | 7,646 | LLM evaluation platform spanning OpenAI, Anthropic, Gemini, Qwen, GLM, and DeepSeek across 100+ datasets. Evaluation rigor is rising in importance as model diversity grows. |\n| [galilai-group/stable-pretraining](https://github​.com/galilai-group/stable-pretraining) | Python | 354 | Reliable, minimal library for pretraining foundation and world models. A small but pointed signal toward world-model pretraining tooling. |\n| [ollama/ollama](https://github​.com/ollama/ollama) | Go | 188,254 | Local runner for Kimi, GLM, MiniMax, DeepSeek, gpt-oss, Qwen, and Gemma. Listed here as the primary distribution channel for open-weight models. |\n\n### 🔍 RAG / Knowledge\n\n| Project | Lang | Stars (total / today) | Summary |\n| :--- | :--- | ---: | :--- |\n| [Graphify-Labs/graphify](https://github​.com/Graphify-Labs/graphify) | Python | 153,896 | Turns any codebase, docs, SQL schemas, and PDFs into a queryable knowledge graph with no vector store. Its explicit \"no vector store\" stance marks the graph-based RAG countercurrent. |\n| [thedotmack/claude-mem](https://github​.com/thedotmack/claude-mem) | TypeScript | 120,024 | Persistent cross-session context for agents, compressing session activity and re-injecting relevant context. Memory persistence is now a first-class RAG concern. |\n| [infiniflow/ragflow](https://github​.com/infiniflow/ragflow) | Go | 94,789 | Agent-native database and RAG engine that evolved into context infrastructure. Reflects RAG engines merging with agent runtime concerns. |\n| [VectifyAI/PageIndex](https://github​.com/VectifyAI/PageIndex) | Python | 40,798 | Document index for vectorless, reasoning-based RAG. Part of the same anti-vector-store trend as graphify, favoring reasoning over embedding similarity. |\n| [mem0ai/mem0](https://github​.com/mem0ai/mem0) | Python | 69,518 | Drop-in memory layer for AI agents with persistent production context. A leading commercial-OSS memory primitive. |\n| [volcengine/OpenViking](https://github​.com/volcengine/OpenViking) | Python | 42,886 | Self-evolving context database unifying agent memory, knowledge RAG, and skills. Notable as a major cloud vendor's bid to own the agent-context layer. |\n| [milvus-io/milvus](https://github​.com/milvus-io/milvus) | Go | 46,748 | High-performance cloud-native vector database for scalable ANN search. Still the reference open vector DB at scale. |\n| [topoteretes/cognee](https://github​.com/topoteretes/cognee) | Python | 33,657 | Open-source AI memory platform giving agents persistent long-term memory with small models. Highlights the small-model-plus-memory cost strategy. |\n\n---\n\n## 3. Trend Signal Analysis\n\nThe clearest explosive signal today is the **agent-skills layer**. Four of the top five trending repos (`Claude-BugHunter`, `superpowers`, `CLI-Anything`, `diagram-design`) are skill bundles or skill frameworks, and topic search adds `stitch-skills`, `last30days-skill`, and `app-store-compliance` — all conforming to a portable \"Agent Skills\" open standard targeting Claude Code, Codex, Cursor, Gemini CLI, and Antigravity. This is the ecosystem's response to a fragmented tool market: skills, not agents, are becoming the unit of reuse.\n\nA second signal is **context economics**. `headroom` (token compression), `claude-mem` (persistent memory), `caveman` (shorter answers, recoverable originals), and `ponytail` (lazy-senior-dev minimalism) all attack the same problem from different angles — agents waste tokens. Expect this \"context efficiency\" layer to consolidate quickly.\n\nThird, **vectorless / graph-based RAG** appears as a genuinely new direction: `graphify` (153k stars, explicitly no vector store) and `PageIndex` (reasoning-based retrieval) challenge embedding-similarity orthodoxy, suggesting the community is questioning whether vector DBs are the right default for code and document retrieval.\n\nFinally, **verticalization is accelerating** — bug bounty, video clipping, trading, job search, CI/CD, and compliance all now have dedicated agent tooling, while `minimind` and `tiny-llm` show parallel demand for small-model and inference-systems literacy.\n\n---\n\n## 4. Community Hot Spots\n\n- **[elementalsouls/Claude-BugHunter](https://github​.com/elementalsouls/Claude-BugHunter)** — Today's #1 trending repo (+1,597). Security/red-team is the breakout agent-skill vertical, and 681 curated vulnerability patterns give it real depth beyond prompt packs.\n- **[obra/superpowers](https://github​.com/obra/superpowers) & [HKUDS/CLI-Anything](https://github​.com/HKUDS/CLI-Anything)** — The skills-framework and tool-integration pair. If skills become the standard unit of agent capability, the frameworks that define and expose them capture the ecosystem's value.\n- **[headroomlabs-ai/headroom](https://github​.com/headroomlabs-ai/headroom)** — Token compression for agents is an underrated, high-leverage infrastructure bet: 60–95% token reduction on JSON is a direct cost win for production deployments.\n- **[Graphify-Labs/graphify](https://github​.com/Graphify-Labs/graphify) & [VectifyAI/PageIndex](https://github​.com/VectifyAI/PageIndex)** — The vectorless-RAG countercurrent. Worth tracking as a potential architectural shift for code and document retrieval.\n- **[jingyaogong/minimind](https://github​.com/jingyaogong/minimind) & [skyzh/tiny-llm](https://github​.com/skyzh/tiny-llm)** — Small-model training and inference-systems education. As agent stacks mature, engineers need systems-level understanding, not just API calls.\n\n---\n*This digest is auto-generated by [ai-radar](https://github​.com/HuggerHustle/ai-radar).*",
+    "reactions": {
+      "url": "https://api.github.com/repos/HuggerHustle/ai-radar/issues/338/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/HuggerHustle/ai-radar/issues/338/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [],
+  "comments_complete": true
+}

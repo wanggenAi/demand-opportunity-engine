@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50655285",
+  "collected_at": "2026-11-27T10:48:33.359480+00:00",
+  "source": {
+    "author": "adityamehta1990",
+    "children": [],
+    "created_at": "2026-11-26T13:49:24.000Z",
+    "created_at_i": 1795700964,
+    "id": 50655285,
+    "options": [],
+    "parent_id": null,
+    "points": 4,
+    "story_id": 50655285,
+    "text": "I wanted to share evalkit - an open source framework for improving agents that we built.<p><a href=\"https:&#x2F;&#x2F;evalkit.inferedge.com&#x2F;\">https:&#x2F;&#x2F;evalkit.inferedge.com&#x2F;</a><p>Like most people, we used phoenix, langfuse, but these are good recording traces, managing datasets etc. But the process around evals, agent improvements, regressions, mapping errors&#x2F;failures to code or prompts has to be hand rolled. We still use self-hosted phoenix, but mainly as a database.<p>Our process was trace mining, converting them into evals, getting them reviewed by an expert, and then re-running datasets to create baseline scores or internal benchmarks for our agents.<p>We found other companies also follow similar processes in-house, but there is no good framework to do everything e2e. So we carved out what we built into evalkit.<p>- evalkit automatically groups similar traces into one issue bucket (similar to how one issue in sentry can link to multiple events)\n- Expert review workflow with simple english rubrics (instead of json)\n- Coding agent first approach - we expect your coding agent to be able to do most steps, and you rarely have to open the UI<p>An example of how we used it in-house: evalkit identified 89 traces in on bucket, suggested 14 cases, which resulted in 4 merged PRs. We saw 90% reduction in failures,  80% reduction in token consumption (and cost), and 45% in time.<p>This is pretty early, and we are adding features every few days. If you feel this is useful, or have any suggestions, reach out to us on evalkit@inferedge.com or join our slack community and give us some love by starring us on github :)",
+    "title": "Show HN: Evalkit for Improving Your Agents",
+    "type": "story",
+    "url": "https://inferedge-ai.github.io/evalkit/"
+  },
+  "comments": [],
+  "comments_complete": true
+}

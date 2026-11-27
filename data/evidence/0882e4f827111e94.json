@@ -1,0 +1,106 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/45389",
+  "collected_at": "2026-11-27T10:48:33.359480+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/45389",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/45389/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/45389/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/45389/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/45389",
+    "id": 6630969419,
+    "node_id": "I_kwDOC4Q8Qs8AAAABizyQSw",
+    "number": 45389,
+    "title": "Agent Builder: MCP Client cannot attach an OAuth2 end-user credential after successful authorization",
+    "user": {
+      "login": "emmaanuel",
+      "id": 4713050,
+      "node_id": "MDQ6VXNlcjQ3MTMwNTA=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4713050?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/emmaanuel",
+      "html_url": "https://github.com/emmaanuel",
+      "followers_url": "https://api.github.com/users/emmaanuel/followers",
+      "following_url": "https://api.github.com/users/emmaanuel/following{/other_user}",
+      "gists_url": "https://api.github.com/users/emmaanuel/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/emmaanuel/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/emmaanuel/subscriptions",
+      "organizations_url": "https://api.github.com/users/emmaanuel/orgs",
+      "repos_url": "https://api.github.com/users/emmaanuel/repos",
+      "events_url": "https://api.github.com/users/emmaanuel/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/emmaanuel/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-26T16:29:09Z",
+    "updated_at": "2026-11-26T16:29:23Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "status": {
+      "id": 2,
+      "name": "Backlog",
+      "category": "backlog"
+    },
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nIn the new standalone Agent Builder, I can create an MCP OAuth2 API\ncredential of type **End-user credential** and complete OAuth authorization\nsuccessfully. However, when I return to the MCP Client tool configuration,\nthe credential is not attached. The required credential field still shows\n**Connect to**, and saving the tool fails.\n\nThe credential is persisted: the same credential created from Agent Builder\nis listed and selectable in **MCP Client Tool** connected to an **AI Agent**\nnode in the classic workflow editor, using the same HTTPS MCP endpoint.\n\n\n### To Reproduce\n\n1. On an n8n Enterprise instance with instance-level MCP enabled, create a\n   standalone agent in a team project.\n2. Add an **MCP Client** tool in **Agent Builder**.\n3. Enter the instance-level MCP endpoint (`/mcp-server/http`), select\n   **HTTP Streamable**, and choose **MCP OAuth2** authentication.\n4. Click **Connect to**. In the credential dialog, select **End-user\n   credential**, enter the server URL, and save the credential.\n5. Click **Connect** and complete the OAuth consent flow. Authorization\n   reports success.\n6. Return to the MCP Client tool configuration and click **Save**.\n\nThe required **Credential for MCP OAuth2 API** field still shows **Connect\nto**. Clicking **Save** displays: “Fix the highlighted fields before saving.”\n\nAs a comparison, the credential created in step 4 appears in the credential\nselector of the classic workflow editor, where it is labeled\n**End-user credential**.\n\n### Expected behavior\n\nIf end-user credentials are supported in the standalone Agent Builder, the\nMCP Client tool should attach the credential after OAuth authorization, or let\nme select the existing credential, and then allow me to save the tool.\n\nIf this credential type is not supported there, the UI should say so before\nletting me create and authorize it.\n\n### Impact\n\nI want a shared agent to create workflow drafts using each caller's own n8n\npermissions. A fixed credential would make the tool use the same account for\nall callers, so it is not equivalent for this use case.\n\n### Debug Info\n\n- n8nVersion: 2.49.6\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.13.0\n- nodeEnv: development\n- database: postgres\n- executionMode: regular\n- concurrency: -1\n- license: enterprise (production)\n\n### Operating System\n\ndocker\n\n### n8n Version\n\n2.49.6\n\n### Node.js Version\n\n26.13.0\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/45389/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/45389/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @emmaanuel,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9852\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9852](https://linear.app/n8n/issue/GHC-9852)",
+      "at": "2026-11-26T16:29:21Z",
+      "url": "https://github.com/n8n-io/n8n/issues/45389#issuecomment-7197711236"
+    }
+  ],
+  "comments_complete": true
+}

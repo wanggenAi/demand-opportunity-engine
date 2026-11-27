@@ -1,0 +1,118 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/45427",
+  "collected_at": "2026-11-27T10:48:33.359480+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/45427",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/45427/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/45427/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/45427/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/45427",
+    "id": 6638100968,
+    "node_id": "I_kwDOC4Q8Qs8AAAABi6lh6A",
+    "number": 45427,
+    "title": "Clicking a tag chip in the workflow list sends `tags:[null]` → 500 \"Parsed filter does not fit the schema\" (still present in 2.47.7, see #24427)",
+    "user": {
+      "login": "ratheesh-aot",
+      "id": 108045773,
+      "node_id": "U_kgDOBnClzQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/108045773?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/ratheesh-aot",
+      "html_url": "https://github.com/ratheesh-aot",
+      "followers_url": "https://api.github.com/users/ratheesh-aot/followers",
+      "following_url": "https://api.github.com/users/ratheesh-aot/following{/other_user}",
+      "gists_url": "https://api.github.com/users/ratheesh-aot/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/ratheesh-aot/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/ratheesh-aot/subscriptions",
+      "organizations_url": "https://api.github.com/users/ratheesh-aot/orgs",
+      "repos_url": "https://api.github.com/users/ratheesh-aot/repos",
+      "events_url": "https://api.github.com/users/ratheesh-aot/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/ratheesh-aot/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 3,
+    "created_at": "2026-11-27T01:34:03Z",
+    "updated_at": "2026-11-27T05:06:04Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "status": {
+      "id": 2,
+      "name": "Backlog",
+      "category": "backlog"
+    },
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nClicking a tag chip on a workflow card in the Workflows list fails with the toast **\"Error fetching workflows — Parsed filter does not fit the schema\"**.\n\nThis is the same bug as #24427, which was auto-closed as stale without a fix (the linked PR #24489 was closed unmerged). It still reproduces on **2.47.7**.\n\n### Request\n```\nGET /rest/workflows?includeScopes=true&filter={\"isArchived\":false,\"tags\":[null,null],\"projectId\":\"<id>\"}&skip=0&take=50&sortBy=updatedAt:desc\n→ 500 Internal Server Error\n{\"code\":0,\"message\":\"Parsed filter does not fit the schema\"}\n```\n\nThe tag IDs in the `filter` query param are serialized as `null`, so the chip click handler appears to be reading an undefined `id` from the card's tag objects. The backend filter schema expects an array of strings and rejects it, but returns 500 rather than 400.\n\n### Screenshots\n\n<img width=\"547\" height=\"137\" alt=\"image\" src=\"https://github.com/user-attachments/assets/cb469070-179b-4cc7-be92-dfa7f79e8650\" />\n<img width=\"392\" height=\"107\" alt=\"image\" src=\"https://github.com/user-attachments/assets/b7f5763e-6b1f-4db6-8ae7-2d52d2278073\" />\n<img width=\"685\" height=\"221\" alt=\"image\" src=\"https://github.com/user-attachments/assets/2f8def8b-404d-4479-989a-92e689bc7a76\" />\n<img width=\"586\" height=\"212\" alt=\"image\" src=\"https://github.com/user-attachments/assets/665320da-8421-4f5f-b75a-8930cec0b7a3\" />\n\n### To Reproduce\n\n1. Open a project's Workflows list\n2. Click a tag chip on any tagged workflow card\n3. Error toast \"Error fetching workflows — Parsed filter does not fit the schema\"\n4. In DevTools > Network, the `/rest/workflows` request has `\"tags\":[null,...]` in the `filter` param and returns 500\n\n### Expected behavior\n\nClicking a tag chip filters the workflow list to workflows with that tag.\n\nAdditionally, an invalid filter should return a 400 instead of a 500.\n\n### Debug Info\n\n# Debug info\n\n## core\n\n- n8nVersion: 2.47.7\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.13.0\n- nodeEnv: production\n- database: postgres\n- executionMode: scaling (multi-main)\n- concurrency: -1\n\n### Operating System\n\nLinux (Docker)\n\n### n8n Version\n\n2.47.7\n\n### Node.js Version\n\n26.13.0\n\n### Database\n\nPostgreSQL\n\n### Execution mode\n\nqueue\n\n### Hosting\n\nself hosted",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/45427/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/45427/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @ratheesh-aot,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9856\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9856](https://linear.app/n8n/issue/GHC-9856)",
+      "at": "2026-11-27T01:34:14Z",
+      "url": "https://github.com/n8n-io/n8n/issues/45427#issuecomment-7207395516"
+    },
+    {
+      "author": "Murad-khan-professional",
+      "text": "Hi! I'd like to work on this if it's open for a community contribution.\n\nI traced it on current `master`:\n\n- `onClickTag` (`packages/frontend/editor-ui/src/app/views/WorkflowsView.vue` ~L1065) pushes the tag **id** into `filters.tags` and calls `fetchWorkflows()`.\n- `fetchWorkflows` (~L910) converts ids to names with `tagsStore.tagsById[tagId]?.name`. If the tags store hasn't been loaded, that yields `undefined`, which serializes as `null` → `\"tags\":[null]` → the backend schema rejects it with a 500.\n- The store is only loaded via `tagsStore.fetchAll()` in the query-string path (~L1155, when the page is opened with `?tags=` in the URL), so clicking a chip on a fresh load hits the empty store. That also explains why the old fix in #24489 (filtering out `undefined`) wasn't right: it would hide the error but silently drop the filter.\n\nPlan:\n1. Make sure the tag name is resolved before fetching: load the tags store in `onClickTag` (it's cached, so cheap), and ideally fall back to the tag name from the clicked workflow card, which already has it.\n2. Never send `null`/`undefined` entries in the `tags` filter.\n3. Add regression tests in `WorkflowsView.test.ts`: clicking a tag chip with an empty tags store sends the tag name (not `null`), and the URL `?tags=` path still works.\n\nOne question: `tagsStore.fetchAll()` returns `[]` when the user lacks the global `tag:list` scope (`tags.store.ts` ~L98). Is a project member without that scope expected to filter by tag here? If so, using the name from the workflow card (step 1 fallback) is what would make it work for them, so I'd include that unless you prefer otherwise.\n",
+      "at": "2026-11-27T03:49:16Z",
+      "url": "https://github.com/n8n-io/n8n/issues/45427#issuecomment-7209297456"
+    },
+    {
+      "author": "goutham-valugula",
+      "text": "One detail for the proposed fix: `tagsStore.fetchAll()` returns `[]` when the viewer lacks the `tag:list` scope, so loading it in `onClickTag` would still leave the clicked ID unresolved for those viewers. `WorkflowCard.vue` already has the tag objects but currently emits only `tagId` in its `click:tag` event. Passing the clicked tag name along with its ID would let `WorkflowsView` build the API filter from the card data without requiring `tag:list`; the filter should still avoid sending unresolved entries.",
+      "at": "2026-11-27T05:06:04Z",
+      "url": "https://github.com/n8n-io/n8n/issues/45427#issuecomment-7210348828"
+    }
+  ],
+  "comments_complete": true
+}

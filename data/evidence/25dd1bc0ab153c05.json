@@ -1,0 +1,134 @@
+{
+  "source_api_url": "https://api.github.com/repos/n8n-io/n8n/issues/45343",
+  "collected_at": "2026-11-27T10:48:33.359480+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/n8n-io/n8n/issues/45343",
+    "repository_url": "https://api.github.com/repos/n8n-io/n8n",
+    "labels_url": "https://api.github.com/repos/n8n-io/n8n/issues/45343/labels{/name}",
+    "comments_url": "https://api.github.com/repos/n8n-io/n8n/issues/45343/comments",
+    "events_url": "https://api.github.com/repos/n8n-io/n8n/issues/45343/events",
+    "html_url": "https://github.com/n8n-io/n8n/issues/45343",
+    "id": 6626831160,
+    "node_id": "I_kwDOC4Q8Qs8AAAABiv1rOA",
+    "number": 45343,
+    "title": "MCP Client Tool sends empty arguments for some tool schemas",
+    "user": {
+      "login": "mufasil",
+      "id": 22917708,
+      "node_id": "MDQ6VXNlcjIyOTE3NzA4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22917708?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mufasil",
+      "html_url": "https://github.com/mufasil",
+      "followers_url": "https://api.github.com/users/mufasil/followers",
+      "following_url": "https://api.github.com/users/mufasil/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mufasil/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mufasil/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mufasil/subscriptions",
+      "organizations_url": "https://api.github.com/users/mufasil/orgs",
+      "repos_url": "https://api.github.com/users/mufasil/repos",
+      "events_url": "https://api.github.com/users/mufasil/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mufasil/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 8582010757,
+        "node_id": "LA_kwDOC4Q8Qs8AAAAB_4cXhQ",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/team:nodes",
+        "name": "team:nodes",
+        "color": "7A36AC",
+        "default": false,
+        "description": "Issue is with the Nodes team",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542225587,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLOsw",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:in-linear",
+        "name": "status:in-linear",
+        "color": "fef2c0",
+        "default": false,
+        "description": "Issue or PR is now in Linear",
+        "archived_at": null,
+        "archived_by": null
+      },
+      {
+        "id": 9542227923,
+        "node_id": "LA_kwDOC4Q8Qs8AAAACOMLX0w",
+        "url": "https://api.github.com/repos/n8n-io/n8n/labels/status:team-assigned",
+        "name": "status:team-assigned",
+        "color": "d93f0b",
+        "default": false,
+        "description": "A team has been assigned the issue or PR",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2026-11-26T12:39:26Z",
+    "updated_at": "2026-11-26T12:59:48Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "status": {
+      "id": 2,
+      "name": "Backlog",
+      "category": "backlog"
+    },
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Bug Description\n\nI'm seeing arguments disappear when an AI Agent calls certain tools through MCP Client Tool. A tool with a simple object schema and top-level `properties` works as expected. With the schemas below, though, the MCP server receives `{}` instead of the arguments the model sent. n8n doesn't report an error when it drops them.\n\nThis affects these valid JSON Schema object shapes:\n\n- A map with typed values, such as `{\"type\":\"object\",\"additionalProperties\":{\"type\":\"string\"}}`.\n- A schema using `oneOf` or `anyOf`, such as a tool that accepts either an ID or an email address.\n- A plain `{\"type\":\"object\"}` schema.\n\nn8n also adds a `value` parameter to the schema it shows the model. The MCP server never declared that parameter.\n\n**Where it happens in the code**\n\nThere are two parts to this:\n\n1. In `packages/@n8n/nodes-langchain/nodes/mcp/McpClientTool/utils.ts`, `mcpToolToDynamicTool` wraps the schema in `z.object({ value: ... })` when it doesn't convert to a Zod object. That's where the extra `value` parameter comes from.\n2. In `packages/@n8n/nodes-langchain/nodes/mcp/shared/runtime.ts`, `runToolCall` filters the arguments with `pick(toolArguments, Object.keys(schema.properties ?? {}))`, unless `additionalProperties` is exactly `true`. These schemas don't have top-level `properties`, so every key gets removed, including `value`.\n\nThis prevents tools using these schemas from working correctly through the AI Agent. A map-style tool can end up doing nothing because it receives no entries. A tool using `oneOf` can fail because its required key is missing.\n\nI'm happy to work on a fix and open a PR for this.\n\n**Duplicate check (November 26)**\n\nI checked for duplicates with eight searches and didn't find a matching report. These looked related, but describe different issues:\n\n- #43911 is the reverse problem: trigger data gets included in the tool arguments.\n- #21500 (closed) was about n8n sending an extra argument (`toolCallId`) the server didn't expect. This report is the opposite: the arguments the tool needs are removed.\n- #33685, merged in July, concerns `value` wrapping caused by two copies of Zod. That's a different cause from the one here.\n\n### To Reproduce\n\n1. Create an MCP server using the official MCP TypeScript SDK's low-level `Server`. Register the following tools and have each one return the arguments it receives:\n\n   ```js\n   const tools = [\n     { name: 'search_notes', description: 'Search notes.',\n       inputSchema: { type: 'object', properties: { query: { type: 'string' } }, required: ['query'] } },\n     { name: 'set_labels', description: 'Set labels. Pass each label as a key with a string value.',\n       inputSchema: { type: 'object', additionalProperties: { type: 'string' } } },\n     { name: 'find_user', description: 'Find a user by id or by email.',\n       inputSchema: { type: 'object', oneOf: [\n         { properties: { id: { type: 'string' } }, required: ['id'] },\n         { properties: { email: { type: 'string' } }, required: ['email'] } ] } },\n   ];\n   server.setRequestHandler(ListToolsRequestSchema, async () => ({ tools }));\n   server.setRequestHandler(CallToolRequestSchema, async (request) => ({\n     content: [{ type: 'text', text: `${request.params.name} received: ${JSON.stringify(request.params.arguments ?? null)}` }],\n   }));\n   ```\n\n2. Set up a workflow with **Chat Trigger → AI Agent**, connect a chat model, and attach **MCP Client Tool** to the agent. Point it at the server above, use **HTTP Streamable**, and set **Tools to Include** to **All**.\n3. Ask the agent to call `set_labels` with `env = prod` and `team = core`, and `find_user` with `email = a@example.com`. Use `search_notes` with `query = hello` as the control.\n4. Check what reaches the server:\n\n   ```\n   tools/call search_notes arguments as received: {\"query\":\"hello\"}\n   tools/call set_labels arguments as received: {}\n   tools/call find_user arguments as received: {}\n   ```\n\n**What n8n sends to the model**\n\nThe `tools` field in the chat completions request contains these schemas:\n\n```\nMCP_Client_search_notes  {\"type\":\"object\",\"properties\":{\"query\":{\"type\":\"string\"}},\"required\":[\"query\"],...}\nMCP_Client_set_labels    {\"type\":\"object\",\"properties\":{\"value\":{\"type\":\"object\",\"additionalProperties\":{\"type\":\"string\"}}},\"required\":[\"value\"],...}\nMCP_Client_find_user     {\"type\":\"object\",\"properties\":{\"value\":{\"allOf\":[{\"type\":\"object\",\"additionalProperties\":{}},{}]}},\"required\":[\"value\"],...}\n```\n\nI tested both argument shapes for `set_labels`. Sending the original arguments, `{\"env\":\"prod\",\"team\":\"core\"}`, results in `{}` at the server. Sending the shape n8n asks for, `{\"value\":{\"env\":\"prod\",\"team\":\"core\"}}`, also results in `{}`. The `search_notes` control works correctly.\n\n**How I tested this**\n\nI used a local fake OpenAI-compatible model to take model randomness out of the test. It always returns the specified tool call and logs the `tools` schema n8n sends it. The arguments are removed inside n8n, after the model response comes back, so I'd expect the same result with a real model returning those arguments.\n\n### Expected behavior\n\nThe MCP server should receive the tool arguments the model provided. For example, `set_labels` should receive `{\"env\":\"prod\",\"team\":\"core\"}`, and `find_user` should receive `{\"email\":\"a@example.com\"}`.\n\nThe model should also see the tool's original schema, without an added `value` parameter.\n\n### Debug Info\n\n# Debug info\n\n## core\n\n- n8nVersion: 2.49.7\n- platform: docker (self-hosted)\n- nodeJsVersion: 26.13.0\n- nodeEnv: production\n- database: sqlite\n- executionMode: regular\n- concurrency: -1\n- license: community\n- consumerId: unknown\n\n## storage\n\n- success: all\n- error: all\n- progress: false\n- manual: true\n- binaryMode: filesystem\n\n## pruning\n\n- enabled: true\n- maxAge: 336 hours\n- maxCount: 10000 executions\n\n## client\n\n- userAgent: mozilla/5.0 (x11; linux x86_64) applewebkit/537.36 (khtml, like gecko) chrome/147.0.0.0 safari/537.36\n- isTouchDevice: false\n\n## security\n\n- secureCookie: false\n\n## cluster\n\n- instanceCount: 1\n- versions: 2.49.7\n- instances:\n  - instanceKey: 02fc049e-901f-49ab-9de4-424d3a0e786a, hostId: main-df613e671ea4, instanceType: main, instanceRole: leader, version: 2.49.7\n- checks:\n  - check: hostid-clash, status: succeeded, warnings: -\n  - check: lifecycle, status: succeeded, warnings: -\n  - check: split-brain, status: succeeded, warnings: -\n  - check: version-mismatch, status: succeeded, warnings: -\n\nGenerated at: 2026-11-26T12:38:17.297Z\n\n### Operating System\n\nLinux (Docker)\n\n### n8n Version\n\n2.49.7\n\n### Node.js Version\n\n26.13.0\n\n### Database\n\nSQLite (default)\n\n### Execution mode\n\nmain (default)\n\n### Hosting\n\nself hosted\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/n8n-io/n8n/issues/45343/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/n8n-io/n8n/issues/45343/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "n8n-assistant[bot]",
+      "text": "Hey @mufasil,\n\nThank you for reaching out! We’ve received your issue and are looking into it. To help us track this internally, we’ve created a Linear ticket with the reference: \"GHC-9849\".\n\nWe’ll keep you updated as we make progress, but if you have any additional details or context to share, feel free to add them here - it’s always helpful!\n\nThanks for your patience and for bringing this to our attention.\n\n---\n> For *INTERNAL* use only: [GHC-9849](https://linear.app/n8n/issue/GHC-9849)",
+      "at": "2026-11-26T12:39:36Z",
+      "url": "https://github.com/n8n-io/n8n/issues/45343#issuecomment-7192291226"
+    },
+    {
+      "author": "mufasil",
+      "text": "I've opened #45347 with a fix. It unwraps `value` and sends the arguments inside it to the MCP server, on both the tool `func` path and the Agent V3 path.",
+      "at": "2026-11-26T12:59:48Z",
+      "url": "https://github.com/n8n-io/n8n/issues/45343#issuecomment-7192733687"
+    }
+  ],
+  "comments_complete": true
+}

@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50629936",
-  "collected_at": "2026-11-26T10:49:44.795598+00:00",
+  "collected_at": "2026-11-27T10:48:33.359480+00:00",
   "source": {
     "author": "abelanger",
     "children": [
@@ -98,6 +98,21 @@
             "title": null,
             "type": "comment",
             "url": null
+          },
+          {
+            "author": "mnafees",
+            "children": [],
+            "created_at": "2026-11-26T14:12:31.000Z",
+            "created_at_i": 1795702351,
+            "id": 50655505,
+            "options": [],
+            "parent_id": 50637990,
+            "points": null,
+            "story_id": 50629936,
+            "text": "Hey, I am Nafees and I work on Brickie at Hatchet among other things.<p>The difference between Brickie and solutions like E2B and Daytona is, quite simply, being able to run sandboxes in your own Kubernetes cluster. Brickie implements all of the primitives like egress control, snapshotting, and warm pools like the hosted solutions out there. There&#x27;s also the option to use any underlying runtime including Kata for microVMs, gVisor for user-space kernel isolation, as well as using EKS Nitro if you&#x27;re already using it in your AWS deployments. The Docker driver that Brickie implements is intended for local testing only since it does not implement hard firewall guarantees. To be specific, we started with Docker sandboxes in the beginning but were not convinced of the maturity of its DX and the features we wanted from it.<p>If you are looking to run sandboxes in EC2 I&#x27;d recommend looking into the native tooling that was just launched by AWS for its Nitro Sandbox feature.",
+            "title": null,
+            "type": "comment",
+            "url": null
           }
         ],
         "created_at": "2026-11-25T03:18:19.000Z",
@@ -114,7 +129,39 @@
       },
       {
         "author": "ShintaroHara",
-        "children": [],
+        "children": [
+          {
+            "author": "mnafees",
+            "children": [
+              {
+                "author": "ShintaroHara",
+                "children": [],
+                "created_at": "2026-11-26T23:58:15.000Z",
+                "created_at_i": 1795737495,
+                "id": 50661186,
+                "options": [],
+                "parent_id": 50655538,
+                "points": null,
+                "story_id": 50629936,
+                "text": "I understand. If it runs fast enough, more developers like me, who haven&#x27;t thought about using sandboxes, might use this for running AI agents as their development infrastructure.",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-11-26T14:15:53.000Z",
+            "created_at_i": 1795702553,
+            "id": 50655538,
+            "options": [],
+            "parent_id": 50640221,
+            "points": null,
+            "story_id": 50629936,
+            "text": "Brickie is indeed built on top of agent-sandbox. And as you already note, it extends its capability with filesystem snapshots, durability via Hatchet tasks including its replay mechanism, but also mTLS communication between the provider and all sandbox pods. The SDK also has built in support for OTel. The idea is to use Hatchet as the application orchestrator for spawning sandboxes and Kubernetes via agent-sandbox as the sandbox infra orchestrator.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
         "created_at": "2026-11-25T09:15:57.000Z",
         "created_at_i": 1795598157,
         "id": 50640221,
@@ -129,7 +176,23 @@
       },
       {
         "author": "aditi805",
-        "children": [],
+        "children": [
+          {
+            "author": "mnafees",
+            "children": [],
+            "created_at": "2026-11-26T14:18:26.000Z",
+            "created_at_i": 1795702706,
+            "id": 50655569,
+            "options": [],
+            "parent_id": 50651801,
+            "points": null,
+            "story_id": 50629936,
+            "text": "We do not intend to solve all problems around running sandboxes. Brickie provides a clear pathway to a sandbox platform that you can host in your own Kubernetes cluster. There still needs to be some care around how the cluster&#x27;s attack surface is tightened with NetworkPolicies and such.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
         "created_at": "2026-11-26T05:26:44.000Z",
         "created_at_i": 1795670804,
         "id": 50651801,
@@ -148,7 +211,7 @@
     "id": 50629936,
     "options": [],
     "parent_id": null,
-    "points": 32,
+    "points": 35,
     "story_id": 50629936,
     "text": "Hey HN, this is Alexander from Hatchet (<a href=\"https:&#x2F;&#x2F;github.com&#x2F;hatchet-dev&#x2F;hatchet\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;hatchet-dev&#x2F;hatchet</a>). We’re releasing a new open-source project today called Brickie. Brickie lets you run sandboxes in your own cloud account, primarily targeting EKS on AWS.<p>Sandboxes are an incredibly useful primitive for agentic applications. They serve two main functions: (1) a way for the agent to safely execute untrusted code, and (2) a durable filesystem for agents to preserve their state via snapshots.<p>We decided to start building this after we started on a package called `@hatchet-dev&#x2F;sandbox` to integrate more directly with various sandbox providers, like E2B, Daytona, Archil, and Modal. We discovered that a lot of users had a requirement to self-host their sandbox infra for part of (or all of) their stack, due to a self-host requirement for enterprises. We searched around for the easiest way for users to self-host a sandbox stack and agent-sandbox (<a href=\"https:&#x2F;&#x2F;agent-sandbox.sigs.k8s.io\" rel=\"nofollow\">https:&#x2F;&#x2F;agent-sandbox.sigs.k8s.io</a>) was the closest thing to what we had in mind: it’s a kubernetes-sigs project implementing a Kubernetes operator which spawns sandboxes as pods on supported isolation layers like Firecracker, gVisor, and Kata Containers. We learned that many platform teams were adopting this because it&#x27;s a standard k8s-based deployment model and is pretty easy to customize the isolation layer, network config, etc.<p>However, it was missing some necessary features. brickie builds on top of the agent-sandbox project and extends it to support proper sandbox (filesystem-based) snapshots, fork, pause, and resume, all while bundling a proper orchestration and observability layer via Hatchet.<p>Zooming out a bit, Hatchet is an orchestration engine which supports durable execution (<a href=\"https:&#x2F;&#x2F;hatchet.run&#x2F;blog&#x2F;durable-execution\">https:&#x2F;&#x2F;hatchet.run&#x2F;blog&#x2F;durable-execution</a>). Throughout 2026, we saw high adoption from users building agents using durable workflows as the statefulness layer and execution model. But as sandboxes became more popular, something didn’t sit right with us. Sandboxes _also_ provide a durability layer, but at the filesystem level, and it became important to disambiguate what we call <i>session state</i> from <i>filesystem state</i>. I wrote a lot more about this here: <a href=\"https:&#x2F;&#x2F;hatchet.run&#x2F;blog&#x2F;agent-statefulness\">https:&#x2F;&#x2F;hatchet.run&#x2F;blog&#x2F;agent-statefulness</a>.<p>The problem with having state in multiple places is that it needs coordination, which adds complexity to your application. This was part of the motivation behind `@hatchet-dev&#x2F;sandbox`: we wanted to provide an easy way to take coordinated snapshots of agent state, even when using an external sandbox provider.<p>So when we started looking at self-hosted sandbox options, it was critical that this architecture was supported well. We decided to support this in brickie using a pretty simple snapshotting mechanism which tars and stores snapshots in an object store (S3). This is something we’re actively working to improve and make more performant.<p>Brickie is early and in beta, we&#x27;re looking for testers, contributors, and feedback on the deployment model. Thanks in advance!",
     "title": "Show HN: Brickie – Deploy sandboxes in your own AWS account",
@@ -199,16 +262,40 @@
       "url": "https://news.ycombinator.com/item?id=50638725"
     },
     {
+      "author": "mnafees",
+      "text": "Hey, I am Nafees and I work on Brickie at Hatchet among other things. The difference between Brickie and solutions like E2B and Daytona is, quite simply, being able to run sandboxes in your own Kubernetes cluster. Brickie implements all of the primitives like egress control, snapshotting, and warm pools like the hosted solutions out there. There's also the option to use any underlying runtime including Kata for microVMs, gVisor for user-space kernel isolation, as well as using EKS Nitro if you're already using it in your AWS deployments. The Docker driver that Brickie implements is intended for local testing only since it does not implement hard firewall guarantees. To be specific, we started with Docker sandboxes in the beginning but were not convinced of the maturity of its DX and the features we wanted from it. If you are looking to run sandboxes in EC2 I'd recommend looking into the native tooling that was just launched by AWS for its Nitro Sandbox feature.",
+      "at": "2026-11-26T14:12:31.000Z",
+      "url": "https://news.ycombinator.com/item?id=50655505"
+    },
+    {
       "author": "ShintaroHara",
       "text": "That sounds good! \nShould I think of this as the addition of state saving and the ability to retry actions to the agent-sandbox?",
       "at": "2026-11-25T09:15:57.000Z",
       "url": "https://news.ycombinator.com/item?id=50640221"
     },
     {
+      "author": "mnafees",
+      "text": "Brickie is indeed built on top of agent-sandbox. And as you already note, it extends its capability with filesystem snapshots, durability via Hatchet tasks including its replay mechanism, but also mTLS communication between the provider and all sandbox pods. The SDK also has built in support for OTel. The idea is to use Hatchet as the application orchestrator for spawning sandboxes and Kubernetes via agent-sandbox as the sandbox infra orchestrator.",
+      "at": "2026-11-26T14:15:53.000Z",
+      "url": "https://news.ycombinator.com/item?id=50655538"
+    },
+    {
+      "author": "ShintaroHara",
+      "text": "I understand. If it runs fast enough, more developers like me, who haven't thought about using sandboxes, might use this for running AI agents as their development infrastructure.",
+      "at": "2026-11-26T23:58:15.000Z",
+      "url": "https://news.ycombinator.com/item?id=50661186"
+    },
+    {
       "author": "aditi805",
       "text": "Would love to get a read on how you are solving the Network security aspect of running sandboxes on the execution layer. Based on my experience so far, firecracker and gVisor could still leave your systems vulnerable and it takes a network engineer / SRE to set it up properly.",
       "at": "2026-11-26T05:26:44.000Z",
       "url": "https://news.ycombinator.com/item?id=50651801"
+    },
+    {
+      "author": "mnafees",
+      "text": "We do not intend to solve all problems around running sandboxes. Brickie provides a clear pathway to a sandbox platform that you can host in your own Kubernetes cluster. There still needs to be some care around how the cluster's attack surface is tightened with NetworkPolicies and such.",
+      "at": "2026-11-26T14:18:26.000Z",
+      "url": "https://news.ycombinator.com/item?id=50655569"
     }
   ],
   "comments_complete": true

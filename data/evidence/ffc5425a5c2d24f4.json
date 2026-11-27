@@ -1,0 +1,44 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50659983",
+  "collected_at": "2026-11-27T10:48:33.359480+00:00",
+  "source": {
+    "author": "Austin_Conlon",
+    "children": [
+      {
+        "author": "super256",
+        "children": [],
+        "created_at": "2026-11-26T21:59:21.000Z",
+        "created_at_i": 1795730361,
+        "id": 50660274,
+        "options": [],
+        "parent_id": 50659983,
+        "points": null,
+        "story_id": 50659983,
+        "text": "I&#x27;ve used plenty of gpt-5.3-codex-spark, which was basically what&#x27;s now ultrafast for newer models.<p>I have a library which relies on daily changing third party APIs from a website, and I&#x27;ve used ultrafast for automatically downloading the newest web bundle and checking if anything regarding the APIs changed, then automatically patched my own protobuf definitions if necessary. Basically what people now call &quot;software factories&quot;. If the website changed something, my library would automatically patch itself within very few minutes.",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-11-26T21:24:25.000Z",
+    "created_at_i": 1795728265,
+    "id": 50659983,
+    "options": [],
+    "parent_id": null,
+    "points": 1,
+    "story_id": 50659983,
+    "text": null,
+    "title": "Ask HN: People who use Codex ultrafast, what workflows do you use it for?",
+    "type": "story",
+    "url": null
+  },
+  "comments": [
+    {
+      "author": "super256",
+      "text": "I've used plenty of gpt-5.3-codex-spark, which was basically what's now ultrafast for newer models. I have a library which relies on daily changing third party APIs from a website, and I've used ultrafast for automatically downloading the newest web bundle and checking if anything regarding the APIs changed, then automatically patched my own protobuf definitions if necessary. Basically what people now call \"software factories\". If the website changed something, my library would automatically patch itself within very few minutes.",
+      "at": "2026-11-26T21:59:21.000Z",
+      "url": "https://news.ycombinator.com/item?id=50660274"
+    }
+  ],
+  "comments_complete": true
+}
