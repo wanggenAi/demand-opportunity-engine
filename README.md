@@ -47,3 +47,20 @@ PYTHONPATH=src python3 -m unittest discover -s tests -v
 ~~~
 
 V1 data/opportunities.json is an audit seed; live ranking uses data/live_opportunities.json. See reports/SCORING_POLICY.md for hard gates and score weights.
+
+## Independent world-shift research (V1)
+
+A separate evidence-first macro research loop covers technology, demand, company actions,
+procurement, policy and market baselines. It never writes the money portfolio, buyer scores,
+outcomes or the separate `china-partner-opportunity-engine` repository. No paid APIs or LLMs.
+See [WORLD_SHIFT_V1.md](WORLD_SHIFT_V1.md) for audit, limitations and reproducible commands.
+
+```sh
+PYTHONPATH=src python3 -m demand_opportunity_engine.world_shift collect
+PYTHONPATH=src python3 -m demand_opportunity_engine.world_shift report --review data/world_shift/review_2026-11-03.json
+```
+
+Research reports: [daily](reports/world_shift/WORLD_SHIFT_DAILY.md),
+[early signals](reports/world_shift/EARLY_SIGNALS.md),
+[hypotheses](reports/world_shift/OPPORTUNITY_HYPOTHESES.md),
+[source health](reports/world_shift/SOURCE_HEALTH.md).

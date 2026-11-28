@@ -1,0 +1,29 @@
+name: World shift research (manual only)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: world-shift-research
+  cancel-in-progress: false
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Unit and offline end-to-end checks
+        run: PYTHONPATH=src python -m unittest discover -s tests -q
+      - name: Bounded free public collection
+        run: PYTHONPATH=src python -m demand_opportunity_engine.world_shift collect
+      - name: Preserve evidence, failures and reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: world-shift-research
+          path: |
+            data/world_shift/
+            reports/world_shift/
