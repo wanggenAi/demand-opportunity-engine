@@ -1,0 +1,1462 @@
+{
+  "source_url": "https://community.shopify.com/t/576186.json",
+  "collected_at": "2026-11-28T10:20:10.758097+00:00",
+  "source": {
+    "post_stream": {
+      "posts": [
+        {
+          "id": 1705844,
+          "username": "DM_7",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/d/71c47a/{size}.png",
+          "created_at": "2025-11-18T21:37:01.996Z",
+          "cooked": "<p>We currently spend alot of time going through our amazon SC FBA orders, to get their inventory synced with what Amazon sells to what our Shopify Sells, and it is very tedious and overwhelming. What is the easy way to have orders imported from Amazon to Shopify, so that Inventory is reflected once they are sold on Amazon? We have used Marketplace connections, but the inventory does not sync for FBA orders, and importing the orders does not have an affect on the linked products we have on the Shopify store when they are sold on Amazon. I hope this makes sense.</p>",
+          "post_number": 1,
+          "post_type": 1,
+          "posts_count": 7,
+          "updated_at": "2025-11-18T21:37:01.996Z",
+          "reply_count": 0,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 70,
+          "reads": 20,
+          "readers_count": 19,
+          "score": 369.0,
+          "yours": false,
+          "topic_id": 576186,
+          "topic_slug": "how-to-get-real-time-inventory-sync-with-shopify-and-amazon-fba-for-amazon-fba-orders",
+          "primary_group_name": "merchant",
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": "Merchant",
+          "title_is_group": true,
+          "bookmarked": false,
+          "actions_summary": [
+            {
+              "id": 2,
+              "count": 1
+            }
+          ],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 756113,
+          "hidden": false,
+          "trust_level": 1,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/how-to-get-real-time-inventory-sync-with-shopify-and-amazon-fba-for-amazon-fba-orders/576186/1",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "calendar_details": [],
+          "reactions": [
+            {
+              "id": "heart",
+              "type": "emoji",
+              "count": 1
+            }
+          ],
+          "current_user_reaction": null,
+          "reaction_users_count": 1,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null,
+          "can_vote": false
+        },
+        {
+          "id": 1705964,
+          "username": "PieLab",
+          "avatar_template": "/user_avatar/community.shopify.com/pielab/{size}/354492_2.png",
+          "created_at": "2025-11-19T04:46:34.622Z",
+          "cooked": "<p>Hi <a class=\"mention\" href=\"/u/dm_7\">@DM_7</a></p>\n<p>Connector apps often treat FBA inventory separately, causing sync issues. You need a dedicated multi-channel inventory app, not just a connector.</p>\n<p>The easiest solution is to use Trunk. It connects to both Shopify and Amazon, acting as a central “brain.” When an item sells on Amazon FBA, Trunk instantly detects it and updates your Shopify inventory in real-time to match.</p>\n<p>If you specifically need to import FBA orders into Shopify for reporting, use Amazon FBA Shipping (ByteStand). It is built for FBA logistics and will sync your Amazon stock levels back to your Shopify products automatically.</p>\n<p>Hope this helps!</p>",
+          "post_number": 2,
+          "post_type": 1,
+          "posts_count": 7,
+          "updated_at": "2025-11-19T04:46:34.622Z",
+          "reply_count": 1,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 1,
+          "reads": 18,
+          "readers_count": 17,
+          "score": 28.6,
+          "yours": false,
+          "topic_id": 576186,
+          "topic_slug": "how-to-get-real-time-inventory-sync-with-shopify-and-amazon-fba-for-amazon-fba-orders",
+          "primary_group_name": "shopifypartner",
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": "Shopify Partner",
+          "title_is_group": true,
+          "bookmarked": false,
+          "actions_summary": [
+            {
+              "id": 2,
+              "count": 1
+            }
+          ],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1549387,
+          "hidden": false,
+          "trust_level": 2,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/how-to-get-real-time-inventory-sync-with-shopify-and-amazon-fba-for-amazon-fba-orders/576186/2",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [
+            {
+              "id": "heart",
+              "type": "emoji",
+              "count": 1
+            }
+          ],
+          "current_user_reaction": null,
+          "reaction_users_count": 1,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        },
+        {
+          "id": 1706145,
+          "username": "Guhip",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/g/919ad9/{size}.png",
+          "created_at": "2025-11-19T10:49:09.323Z",
+          "cooked": "<p>Amazon refund money customer support:099578-92945..Locate the order. Select “Return or Replace items” or “Return items” option as applicable. Select the reason from the drop-down list under why are you returning this. Select the refund option under How can we make it right.</p>",
+          "post_number": 3,
+          "post_type": 1,
+          "posts_count": 7,
+          "updated_at": "2025-11-19T10:49:09.323Z",
+          "reply_count": 0,
+          "reply_to_post_number": 2,
+          "quote_count": 0,
+          "incoming_link_count": 3,
+          "reads": 13,
+          "readers_count": 12,
+          "score": 17.6,
+          "yours": false,
+          "topic_id": 576186,
+          "topic_slug": "how-to-get-real-time-inventory-sync-with-shopify-and-amazon-fba-for-amazon-fba-orders",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": null,
+          "reply_to_user": {
+            "id": 1549387,
+            "username": "PieLab",
+            "avatar_template": "/user_avatar/community.shopify.com/pielab/{size}/354492_2.png"
+          },
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1600364,
+          "hidden": false,
+          "trust_level": 0,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "user_suspended": true,
+          "post_url": "/t/how-to-get-real-time-inventory-sync-with-shopify-and-amazon-fba-for-amazon-fba-orders/576186/3",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        },
+        {
+          "id": 1706147,
+          "username": "Guhip",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/g/919ad9/{size}.png",
+          "created_at": "2025-11-19T10:49:40.208Z",
+          "cooked": "<p>Amazon refund money customer support:099578-92945..Locate the order. Select “Return or Replace items” or “Return items” option as applicable. Select the reason from the drop-down list under why are you returning this. Select the refund option under How can we make it right. Amazon refund money customer support:099578-92945..Locate the order. Select “Return or Replace items” or “Return items” option as applicable. Select the reason from the drop-down list under why are you returning this. Select the refund option under How can we make it right.</p>",
+          "post_number": 4,
+          "post_type": 1,
+          "posts_count": 7,
+          "updated_at": "2025-11-19T10:49:40.208Z",
+          "reply_count": 0,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 1,
+          "reads": 13,
+          "readers_count": 12,
+          "score": 7.6,
+          "yours": false,
+          "topic_id": 576186,
+          "topic_slug": "how-to-get-real-time-inventory-sync-with-shopify-and-amazon-fba-for-amazon-fba-orders",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": null,
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1600364,
+          "hidden": false,
+          "trust_level": 0,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "user_suspended": true,
+          "post_url": "/t/how-to-get-real-time-inventory-sync-with-shopify-and-amazon-fba-for-amazon-fba-orders/576186/4",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        },
+        {
+          "id": 1706148,
+          "username": "Guhip",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/g/919ad9/{size}.png",
+          "created_at": "2025-11-19T10:50:19.288Z",
+          "cooked": "<p>Amazon refund money customer support:099578-92945..Locate the order. Select “Return or Replace items” or “Return items” option as applicable. Select the reason from the drop-down list under why are you returning this. Select the refund option under How can we make it right.How to get Amazon refund money?</p>",
+          "post_number": 5,
+          "post_type": 1,
+          "posts_count": 7,
+          "updated_at": "2025-11-19T10:50:19.288Z",
+          "reply_count": 0,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 3,
+          "reads": 13,
+          "readers_count": 12,
+          "score": 17.6,
+          "yours": false,
+          "topic_id": 576186,
+          "topic_slug": "how-to-get-real-time-inventory-sync-with-shopify-and-amazon-fba-for-amazon-fba-orders",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": null,
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1600364,
+          "hidden": false,
+          "trust_level": 0,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "user_suspended": true,
+          "post_url": "/t/how-to-get-real-time-inventory-sync-with-shopify-and-amazon-fba-for-amazon-fba-orders/576186/5",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        },
+        {
+          "id": 1736873,
+          "username": "Gabe_Stillwater",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/g/e480ec/{size}.png",
+          "created_at": "2026-01-30T17:35:34.468Z",
+          "cooked": "<p><a class=\"mention\" href=\"/u/dm_7\">@DM_7</a> I developed a Shopify Flow that manages the FBA inventory when using Marketplace Connect, here’s a link: <a href=\"https://community.shopify.com/t/automatically-reconciling-shopify-inventory-for-amazon-fba-orders-using-shopify-flow/582916/3\" class=\"inline-onebox\">Automatically reconciling Shopify inventory for Amazon FBA orders using Shopify Flow - #3 by Gabe_Stillwater</a></p>",
+          "post_number": 6,
+          "post_type": 1,
+          "posts_count": 7,
+          "updated_at": "2026-01-30T17:35:34.468Z",
+          "reply_count": 0,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 2,
+          "reads": 5,
+          "readers_count": 4,
+          "score": 11.0,
+          "yours": false,
+          "topic_id": 576186,
+          "topic_slug": "how-to-get-real-time-inventory-sync-with-shopify-and-amazon-fba-for-amazon-fba-orders",
+          "primary_group_name": "shopifyplus",
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "link_counts": [
+            {
+              "url": "https://community.shopify.com/t/automatically-reconciling-shopify-inventory-for-amazon-fba-orders-using-shopify-flow/582916/3",
+              "internal": true,
+              "reflection": false,
+              "title": "Automatically reconciling Shopify inventory for Amazon FBA orders using Shopify Flow",
+              "clicks": 6
+            }
+          ],
+          "read": true,
+          "user_title": "Shopify Plus",
+          "title_is_group": true,
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 514081,
+          "hidden": false,
+          "trust_level": 2,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/how-to-get-real-time-inventory-sync-with-shopify-and-amazon-fba-for-amazon-fba-orders/576186/6",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        },
+        {
+          "id": 1952412,
+          "username": "Smrithi",
+          "avatar_template": "/user_avatar/community.shopify.com/smrithi/{size}/421102_2.png",
+          "created_at": "2026-11-28T05:01:59.113Z",
+          "cooked": "<p>FBA sales often aren’t reduced in Shopify because the connector treats FBA stock separately. Decide whether FBA units should be sold on Shopify at all. If yes, you need a tool that imports FBA orders and updates Shopify stock; if no, keep FBA stock out of Shopify’s available count.</p>",
+          "post_number": 8,
+          "post_type": 1,
+          "posts_count": 7,
+          "updated_at": "2026-11-28T05:01:59.113Z",
+          "reply_count": 0,
+          "reply_to_post_number": null,
+          "quote_count": 0,
+          "incoming_link_count": 0,
+          "reads": 1,
+          "readers_count": 0,
+          "score": 0.2,
+          "yours": false,
+          "topic_id": 576186,
+          "topic_slug": "how-to-get-real-time-inventory-sync-with-shopify-and-amazon-fba-for-amazon-fba-orders",
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_bg_color": null,
+          "flair_color": null,
+          "flair_group_id": null,
+          "badges_granted": [],
+          "version": 1,
+          "can_edit": false,
+          "can_delete": false,
+          "can_recover": false,
+          "can_see_hidden_post": false,
+          "can_wiki": false,
+          "read": true,
+          "user_title": null,
+          "bookmarked": false,
+          "actions_summary": [],
+          "moderator": false,
+          "admin": false,
+          "staff": false,
+          "user_id": 1653680,
+          "hidden": false,
+          "trust_level": 0,
+          "deleted_at": null,
+          "user_deleted": false,
+          "edit_reason": null,
+          "can_view_edit_history": true,
+          "wiki": false,
+          "post_url": "/t/how-to-get-real-time-inventory-sync-with-shopify-and-amazon-fba-for-amazon-fba-orders/576186/8",
+          "category_expert_approved_group": null,
+          "needs_category_expert_approval": null,
+          "can_manage_category_expert_posts": false,
+          "event": null,
+          "reactions": [],
+          "current_user_reaction": null,
+          "reaction_users_count": 0,
+          "current_user_used_main_reaction": false,
+          "can_accept_answer": false,
+          "can_unaccept_answer": false,
+          "accepted_answer": false,
+          "topic_accepted_answer": null
+        }
+      ],
+      "stream": [
+        1705844,
+        1705964,
+        1706145,
+        1706147,
+        1706148,
+        1736873,
+        1952412
+      ]
+    },
+    "timeline_lookup": [
+      [
+        1,
+        375
+      ],
+      [
+        2,
+        374
+      ],
+      [
+        6,
+        302
+      ],
+      [
+        7,
+        0
+      ]
+    ],
+    "user_badges": {
+      "users": {
+        "514081": {
+          "id": 514081,
+          "badge_ids": [
+            19,
+            110,
+            119
+          ]
+        },
+        "756113": {
+          "id": 756113,
+          "badge_ids": [
+            110,
+            116
+          ]
+        },
+        "1549387": {
+          "id": 1549387,
+          "badge_ids": [
+            113,
+            120,
+            126
+          ]
+        }
+      },
+      "badges": {
+        "131": {
+          "id": 131,
+          "name": "1000 Accepted Solutions",
+          "slug": "1000-accepted-solutions",
+          "description": "You're a member of the 1000 accepted solutions club!",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 1
+        },
+        "19": {
+          "id": 19,
+          "name": "Good Topic",
+          "slug": "good-topic",
+          "description": "Received 25 likes on a topic",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 3,
+          "badge_type_id": 2
+        },
+        "7": {
+          "id": 7,
+          "name": "Good Post",
+          "slug": "good-reply",
+          "description": "Received 25 likes on a reply",
+          "icon": "reply",
+          "image_url": null,
+          "badge_grouping_id": 3,
+          "badge_type_id": 2
+        },
+        "112": {
+          "id": 112,
+          "name": "250 Posts",
+          "slug": "250-posts",
+          "description": "250 posts! Thanks for being an engaged member of the Shopify Community",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 2
+        },
+        "111": {
+          "id": 111,
+          "name": "100 Posts",
+          "slug": "100-posts",
+          "description": "100 posts! Thanks for being an engaged member of the Shopify Community",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 2
+        },
+        "114": {
+          "id": 114,
+          "name": "1000 Posts",
+          "slug": "1000-posts",
+          "description": "You're a member of the 1000 posts club!",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 1
+        },
+        "113": {
+          "id": 113,
+          "name": "500 Posts",
+          "slug": "500-posts",
+          "description": "Congratulations on reaching the 500 post milestone!",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 1
+        },
+        "32": {
+          "id": 32,
+          "name": "Gives Back",
+          "slug": "gives-back",
+          "description": "Has 100 liked posts and gave 100 likes",
+          "icon": "heart",
+          "image_url": null,
+          "badge_grouping_id": 2,
+          "badge_type_id": 2
+        },
+        "46": {
+          "id": 46,
+          "name": "Aficionado",
+          "slug": "aficionado",
+          "description": "Visited 100 consecutive days",
+          "icon": "far-eye",
+          "image_url": null,
+          "badge_grouping_id": 2,
+          "badge_type_id": 2
+        },
+        "109": {
+          "id": 109,
+          "name": "25 Posts",
+          "slug": "25-posts",
+          "description": "With 25 posts submitted, you help keep the conversations going",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 3
+        },
+        "110": {
+          "id": 110,
+          "name": "50 Posts",
+          "slug": "50-posts",
+          "description": "Way to go! You've posted 50 times in the Shopify Community",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 3
+        },
+        "120": {
+          "id": 120,
+          "name": "250 Likes",
+          "slug": "250-likes",
+          "description": "Your expertise has earned you 250 likes!",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 2
+        },
+        "122": {
+          "id": 122,
+          "name": "1000 Likes",
+          "slug": "1000-likes",
+          "description": "You're a member of the 1000 likes club!",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 1
+        },
+        "129": {
+          "id": 129,
+          "name": "250 Accepted Solutions",
+          "slug": "250-accepted-solutions",
+          "description": "250 accepted solutions! Thank you for being so helpful",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 2
+        },
+        "121": {
+          "id": 121,
+          "name": "500 Likes",
+          "slug": "500-likes",
+          "description": "Congratulations on obtaining 500 likes!",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 1
+        },
+        "135": {
+          "id": 135,
+          "name": "Power User 2024",
+          "slug": "power-user-2024",
+          "description": "Most participating users within 2024",
+          "icon": "ranking-star",
+          "image_url": null,
+          "badge_grouping_id": 6,
+          "badge_type_id": 3
+        },
+        "126": {
+          "id": 126,
+          "name": "50 Accepted Solutions",
+          "slug": "50-accepted-solutions",
+          "description": "Your knowledge has resulted in 50 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 3
+        },
+        "125": {
+          "id": 125,
+          "name": "25 Accepted Solutions",
+          "slug": "25-accepted-solutions",
+          "description": "Your guidance has resulted in 25 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 3
+        },
+        "3": {
+          "id": 3,
+          "name": "Regular",
+          "slug": "regular",
+          "description": "Awarded at Trust Level 3. Recognized for regular contributions as a trusted user.",
+          "icon": "user",
+          "image_url": null,
+          "badge_grouping_id": 4,
+          "badge_type_id": 2
+        },
+        "119": {
+          "id": 119,
+          "name": "100 Likes",
+          "slug": "100-likes",
+          "description": "Your contributions have earned you 100 likes",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 2
+        },
+        "116": {
+          "id": 116,
+          "name": "10 Likes",
+          "slug": "10-likes",
+          "description": "You've received 10 likes",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 3
+        },
+        "127": {
+          "id": 127,
+          "name": "75 Accepted Solutions",
+          "slug": "75-accepted-solutions",
+          "description": "Your expertise has resulted in 75 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 2
+        },
+        "130": {
+          "id": 130,
+          "name": "500 Accepted Solutions",
+          "slug": "500-accepted-solutions",
+          "description": "Your valuable contributions have resulted in 500 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 1
+        },
+        "118": {
+          "id": 118,
+          "name": "50 Likes",
+          "slug": "50-likes",
+          "description": "Your contributions have earned you 50 likes",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 3
+        },
+        "124": {
+          "id": 124,
+          "name": "10 Accepted Solutions",
+          "slug": "10-accepted-solutions",
+          "description": "10 of your replies have been accepted as solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 3
+        },
+        "128": {
+          "id": 128,
+          "name": "100 Accepted Solutions",
+          "slug": "100-accepted-solutions",
+          "description": "Congratulations! You've provided 100 accepted solutions",
+          "icon": "check",
+          "image_url": null,
+          "badge_grouping_id": 9,
+          "badge_type_id": 2
+        },
+        "108": {
+          "id": 108,
+          "name": "10 Posts",
+          "slug": "10-posts",
+          "description": "Thanks for being an active member and posting 10 times",
+          "icon": "file-signature",
+          "image_url": null,
+          "badge_grouping_id": 7,
+          "badge_type_id": 3
+        },
+        "117": {
+          "id": 117,
+          "name": "25 Likes",
+          "slug": "25-likes",
+          "description": "With 25 likes, your posts are popular",
+          "icon": "thumbs-up",
+          "image_url": null,
+          "badge_grouping_id": 8,
+          "badge_type_id": 3
+        }
+      }
+    },
+    "suggested_topics": [],
+    "tags": [
+      {
+        "id": 4021,
+        "name": "troubleshooting",
+        "slug": "troubleshooting"
+      }
+    ],
+    "tags_descriptions": {},
+    "fancy_title": "How to get real time inventory sync with shopify and Amazon FBA for Amazon FBA orders?",
+    "id": 576186,
+    "title": "How to get real time inventory sync with shopify and Amazon FBA for Amazon FBA orders?",
+    "posts_count": 7,
+    "created_at": "2025-11-18T21:37:01.859Z",
+    "views": 234,
+    "reply_count": 1,
+    "like_count": 2,
+    "last_posted_at": "2026-11-28T05:01:59.113Z",
+    "visible": true,
+    "closed": false,
+    "archived": false,
+    "has_summary": false,
+    "archetype": "regular",
+    "slug": "how-to-get-real-time-inventory-sync-with-shopify-and-amazon-fba-for-amazon-fba-orders",
+    "category_id": 95,
+    "word_count": 485,
+    "deleted_at": null,
+    "user_id": 756113,
+    "featured_link": null,
+    "pinned_globally": false,
+    "pinned_at": null,
+    "pinned_until": null,
+    "image_url": null,
+    "slow_mode_seconds": 0,
+    "draft": null,
+    "draft_key": "topic_576186",
+    "draft_sequence": null,
+    "unpinned": null,
+    "pinned": false,
+    "current_post_number": 1,
+    "highest_post_number": 8,
+    "deleted_by": null,
+    "actions_summary": [
+      {
+        "id": 8,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 1002,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 4,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 7,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 1001,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      },
+      {
+        "id": 10,
+        "count": 0,
+        "hidden": false,
+        "can_act": false
+      }
+    ],
+    "chunk_size": 20,
+    "bookmarked": false,
+    "topic_timer": null,
+    "message_bus_last_id": 11,
+    "participant_count": 5,
+    "show_read_indicator": false,
+    "thumbnails": null,
+    "slow_mode_enabled_until": null,
+    "board_memberships": [],
+    "related_topics": [
+      {
+        "fancy_title": "Best way to keep Shopify and Amazon inventory in sync?",
+        "id": 561926,
+        "title": "Best way to keep Shopify and Amazon inventory in sync?",
+        "slug": "best-way-to-keep-shopify-and-amazon-inventory-in-sync",
+        "posts_count": 11,
+        "reply_count": 1,
+        "highest_post_number": 12,
+        "image_url": null,
+        "created_at": "2025-08-29T17:17:36.863Z",
+        "last_posted_at": "2026-11-01T09:28:33.647Z",
+        "bumped": true,
+        "bumped_at": "2026-11-01T09:28:33.647Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Hey everyone, \nWe sell on both Shopify and Amazon and keeping the inventory matched up is turning into a real headache. \nA sale goes through on Amazon and Shopify doesn’t update fast enough… then the same item sells on S&hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [
+          {
+            "id": 4775,
+            "name": "shopify-apps",
+            "slug": "shopify-apps"
+          }
+        ],
+        "tags_descriptions": {},
+        "like_count": 7,
+        "views": 1294,
+        "category_id": 186,
+        "featured_link": null,
+        "op_like_count": 1,
+        "has_accepted_answer": true,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 1589024,
+              "username": "mimi_17",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/m/b3f665/{size}.png",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Accepted Answer",
+            "user": {
+              "id": 1585160,
+              "username": "Shopifymerchant01",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/s/ec9cab/{size}.png",
+              "trust_level": 2
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 1638835,
+              "username": "akber",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/a/ed655f/{size}.png",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 1573052,
+              "username": "Bhoomisingh29",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/b/87869e/{size}.png",
+              "primary_group_name": "shopifystaff",
+              "trust_level": 2
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 1649154,
+              "username": "TradBridgeStudio",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/t/45deac/{size}.png",
+              "trust_level": 0
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "Synchronizing Shopify Stock with Amazon FBA",
+        "id": 378346,
+        "title": "Synchronizing Shopify Stock with Amazon FBA",
+        "slug": "synchronizing-shopify-stock-with-amazon-fba",
+        "posts_count": 5,
+        "reply_count": 0,
+        "highest_post_number": 5,
+        "image_url": null,
+        "created_at": "2024-12-03T07:40:21.000Z",
+        "last_posted_at": "2026-01-30T17:38:04.834Z",
+        "bumped": true,
+        "bumped_at": "2026-01-30T17:38:04.834Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Hi there, \nI’m currently transitioning to using Amazon FBA to handle all my logistics in Europe. I sell the same products on both Amazon and Shopify, but the images, descriptions, titles, and prices are different across &hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [
+          {
+            "id": 4770,
+            "name": "shop-performance",
+            "slug": "shop-performance"
+          }
+        ],
+        "tags_descriptions": {},
+        "like_count": 6,
+        "views": 455,
+        "category_id": 95,
+        "featured_link": null,
+        "op_like_count": 2,
+        "has_accepted_answer": true,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 1346977,
+              "username": "Milords",
+              "avatar_template": "/user_avatar/community.shopify.com/milords/{size}/244112_2.png",
+              "primary_group_name": "shopifystaff",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster, Accepted Answer",
+            "user": {
+              "id": 71460,
+              "username": "JoesIdeas",
+              "avatar_template": "/user_avatar/community.shopify.com/joesideas/{size}/417460_2.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 2
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 1355337,
+              "username": "abhishekshop",
+              "avatar_template": "/user_avatar/community.shopify.com/abhishekshop/{size}/34758_2.png",
+              "primary_group_name": "shopifystaff",
+              "trust_level": 2
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 1451981,
+              "username": "chilblains",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/c/f1d935/{size}.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 514081,
+              "username": "Gabe_Stillwater",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/g/e480ec/{size}.png",
+              "primary_group_name": "shopifyplus",
+              "trust_level": 2
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "App or procedure for importing Amazon FBA order info into Shopify",
+        "id": 636594,
+        "title": "App or procedure for importing Amazon FBA order info into Shopify",
+        "slug": "app-or-procedure-for-importing-amazon-fba-order-info-into-shopify",
+        "posts_count": 11,
+        "reply_count": 1,
+        "highest_post_number": 12,
+        "image_url": null,
+        "created_at": "2026-06-12T20:06:07.368Z",
+        "last_posted_at": "2026-11-09T13:14:40.937Z",
+        "bumped": true,
+        "bumped_at": "2026-11-03T14:35:30.376Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Hi, I need a way to import Amazon FBA sales into Shopify without disrupting or duplicating my existing Shopify or Amazon listings. I am looking for either an app or a general procedure. \nWe manufacture our own products a&hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [
+          {
+            "id": 4775,
+            "name": "shopify-apps",
+            "slug": "shopify-apps"
+          }
+        ],
+        "tags_descriptions": {},
+        "like_count": 0,
+        "views": 363,
+        "category_id": 95,
+        "featured_link": null,
+        "op_like_count": 0,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 1307729,
+              "username": "primarytrainer",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/p/8797f3/{size}.png",
+              "primary_group_name": "shopifyplus",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 1626681,
+              "username": "Pipokx",
+              "avatar_template": "/user_avatar/community.shopify.com/pipokx/{size}/404947_2.png",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 1627052,
+              "username": "yaneriti",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/y/8edcca/{size}.png",
+              "trust_level": 0
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": 1649552,
+              "username": "yuhan",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/y/919ad9/{size}.png",
+              "trust_level": 0
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 87299,
+              "username": "Thomas_Lang1",
+              "avatar_template": "/user_avatar/community.shopify.com/thomas_lang1/{size}/162574_2.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 2
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "Sync FBA inventory from multiple Amazon Accounts to 1 Shopify store?",
+        "id": 126685,
+        "title": "Sync FBA inventory from multiple Amazon Accounts to 1 Shopify store?",
+        "slug": "sync-fba-inventory-from-multiple-amazon-accounts-to-1-shopify-store",
+        "posts_count": 3,
+        "reply_count": 0,
+        "highest_post_number": 0,
+        "image_url": null,
+        "created_at": "2022-06-07T20:04:39.000Z",
+        "last_posted_at": "2022-08-22T18:10:32.000Z",
+        "bumped": true,
+        "bumped_at": "2022-08-22T18:10:32.000Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Hello my company owns and manages 3 different Amazon accounts with FBA inventory stored in all of them. We would like to know if there is an app or other solution to consider that would allow us to sync FBA inventory to &hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [],
+        "tags_descriptions": {},
+        "like_count": 0,
+        "views": 98,
+        "category_id": 186,
+        "featured_link": null,
+        "op_like_count": 0,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 704764,
+              "username": "GreatCircleUS",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/g/b5a626/{size}.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": 683917,
+              "username": "feedonomics",
+              "avatar_template": "/user_avatar/community.shopify.com/feedonomics/{size}/16853_2.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 768009,
+              "username": "DonnaS",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/d/b4bc9f/{size}.png",
+              "primary_group_name": "merchant",
+              "trust_level": 1
+            }
+          }
+        ]
+      },
+      {
+        "fancy_title": "Amazon integration",
+        "id": 276452,
+        "title": "Amazon integration",
+        "slug": "amazon-integration",
+        "posts_count": 4,
+        "reply_count": 0,
+        "highest_post_number": 0,
+        "image_url": null,
+        "created_at": "2023-12-11T20:01:05.000Z",
+        "last_posted_at": "2023-12-22T12:28:23.000Z",
+        "bumped": true,
+        "bumped_at": "2023-12-22T12:28:23.000Z",
+        "archetype": "regular",
+        "unseen": false,
+        "pinned": false,
+        "unpinned": null,
+        "excerpt": "Hello, I’m looking for a a connector to integrate my store to AMAZON USA FULFILLMENT \nI’d like to integrate products, orders, etc \nAs I looked, Shopify has a lot of apps and I’m a little bit confuse which one I need to a&hellip;",
+        "visible": true,
+        "closed": false,
+        "archived": false,
+        "bookmarked": null,
+        "liked": null,
+        "tags": [],
+        "tags_descriptions": {},
+        "like_count": 0,
+        "views": 335,
+        "category_id": 103,
+        "featured_link": null,
+        "op_like_count": 0,
+        "has_accepted_answer": false,
+        "posters": [
+          {
+            "extras": null,
+            "description": "Original Poster",
+            "user": {
+              "id": 1176684,
+              "username": "B7BR",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/b/ce73a5/{size}.png",
+              "primary_group_name": "shopifystaff",
+              "trust_level": 1
+            }
+          },
+          {
+            "extras": null,
+            "description": "Frequent Poster",
+            "user": {
+              "id": 71460,
+              "username": "JoesIdeas",
+              "avatar_template": "/user_avatar/community.shopify.com/joesideas/{size}/417460_2.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 2
+            }
+          },
+          {
+            "extras": null,
+            "description": "Recent Poster",
+            "user": {
+              "id": 720214,
+              "username": "Codisto",
+              "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/c/3be4f8/{size}.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 2
+            }
+          },
+          {
+            "extras": "latest",
+            "description": "Most Recent Poster",
+            "user": {
+              "id": 44858,
+              "username": "abhishek_jain",
+              "avatar_template": "/user_avatar/community.shopify.com/abhishek_jain/{size}/243790_2.png",
+              "primary_group_name": "shopifypartner",
+              "trust_level": 1
+            }
+          }
+        ]
+      }
+    ],
+    "summarizable": true,
+    "has_cached_summary": true,
+    "ai_summary": {
+      "id": 677413,
+      "summarized_text": "The store’s central problem is that Amazon FBA sales do not automatically reduce linked Shopify inventory, even when orders are imported through a marketplace connector. This makes manual reconciliation time-consuming and risks inaccurate stock levels.\n\nSuggested approaches include using a dedicated multi-channel inventory app such as Trunk to sync stock between Amazon and Shopify, or ByteStand’s Amazon FBA Shipping app if importing FBA orders into Shopify is also needed for reporting. A later reply offers a Shopify Flow designed to manage FBA inventory when using Marketplace Connect. Another response emphasizes first deciding whether FBA units should be available for sale through Shopify: if so, a tool must import orders and adjust Shopify stock; otherwise, FBA inventory should be excluded from Shopify’s available quantity.\n\nNo solution is confirmed as implemented, and the discussion leaves open which setup best fits the store’s needs. Several unrelated repeated posts about Amazon refunds do not address the inventory issue.",
+      "algorithm": "gpt-6-luna",
+      "outdated": false,
+      "created_at": "2025-12-11T08:54:45.242Z",
+      "updated_at": "2026-11-28T05:06:46.517Z"
+    },
+    "is_category_expert_question": null,
+    "has_livestream": null,
+    "livestream_chat_active": false,
+    "valid_reactions": [
+      "heart",
+      "+1",
+      "laughing",
+      "open_mouth",
+      "clap",
+      "confetti_ball",
+      "hugs"
+    ],
+    "has_accepted_answer": false,
+    "shared_issue_count": 0,
+    "can_create_shared_issue": false,
+    "shared_issue_visible": true,
+    "can_vote": false,
+    "vote_count": 0,
+    "user_voted": false,
+    "details": {
+      "can_edit": false,
+      "notification_level": 1,
+      "participants": [
+        {
+          "id": 1600364,
+          "username": "Guhip",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/g/919ad9/{size}.png",
+          "post_count": 3,
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 0
+        },
+        {
+          "id": 756113,
+          "username": "DM_7",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/d/71c47a/{size}.png",
+          "post_count": 1,
+          "primary_group_name": "merchant",
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 1
+        },
+        {
+          "id": 514081,
+          "username": "Gabe_Stillwater",
+          "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/g/e480ec/{size}.png",
+          "post_count": 1,
+          "primary_group_name": "shopifyplus",
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 2
+        },
+        {
+          "id": 1549387,
+          "username": "PieLab",
+          "avatar_template": "/user_avatar/community.shopify.com/pielab/{size}/354492_2.png",
+          "post_count": 1,
+          "primary_group_name": "shopifypartner",
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 2
+        },
+        {
+          "id": 1653680,
+          "username": "Smrithi",
+          "avatar_template": "/user_avatar/community.shopify.com/smrithi/{size}/421102_2.png",
+          "post_count": 1,
+          "primary_group_name": null,
+          "flair_name": null,
+          "flair_url": null,
+          "flair_color": null,
+          "flair_bg_color": null,
+          "flair_group_id": null,
+          "trust_level": 0
+        }
+      ],
+      "created_by": {
+        "id": 756113,
+        "username": "DM_7",
+        "avatar_template": "https://avatars.discourse-cdn.com/v4/letter/d/71c47a/{size}.png"
+      },
+      "last_poster": {
+        "id": 1653680,
+        "username": "Smrithi",
+        "avatar_template": "/user_avatar/community.shopify.com/smrithi/{size}/421102_2.png"
+      },
+      "links": [
+        {
+          "url": "https://community.shopify.com/t/automatically-reconciling-shopify-inventory-for-amazon-fba-orders-using-shopify-flow/582916/3",
+          "title": "Automatically reconciling Shopify inventory for Amazon FBA orders using Shopify Flow",
+          "internal": true,
+          "attachment": false,
+          "reflection": false,
+          "clicks": 6,
+          "user_id": 514081,
+          "domain": "community.shopify.com",
+          "root_domain": "shopify.com"
+        }
+      ]
+    },
+    "bookmarks": []
+  }
+}

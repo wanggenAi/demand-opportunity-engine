@@ -1,0 +1,94 @@
+{
+  "source_api_url": "https://api.github.com/repos/elementalsouls/Claude-BugHunter/issues/281",
+  "collected_at": "2026-11-28T10:20:10.758097+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/elementalsouls/Claude-BugHunter/issues/281",
+    "repository_url": "https://api.github.com/repos/elementalsouls/Claude-BugHunter",
+    "labels_url": "https://api.github.com/repos/elementalsouls/Claude-BugHunter/issues/281/labels{/name}",
+    "comments_url": "https://api.github.com/repos/elementalsouls/Claude-BugHunter/issues/281/comments",
+    "events_url": "https://api.github.com/repos/elementalsouls/Claude-BugHunter/issues/281/events",
+    "html_url": "https://github.com/elementalsouls/Claude-BugHunter/issues/281",
+    "id": 6655010902,
+    "node_id": "I_kwDOSUzdDM8AAAABjKtoVg",
+    "number": 281,
+    "title": "[bug] small fixes: cve-refresh template exit code, get_report undocumented, dead skill names, symlinked cbh",
+    "user": {
+      "login": "speto2",
+      "id": 21031558,
+      "node_id": "MDQ6VXNlcjIxMDMxNTU4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/21031558?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/speto2",
+      "html_url": "https://github.com/speto2",
+      "followers_url": "https://api.github.com/users/speto2/followers",
+      "following_url": "https://api.github.com/users/speto2/following{/other_user}",
+      "gists_url": "https://api.github.com/users/speto2/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/speto2/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/speto2/subscriptions",
+      "organizations_url": "https://api.github.com/users/speto2/orgs",
+      "repos_url": "https://api.github.com/users/speto2/repos",
+      "events_url": "https://api.github.com/users/speto2/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/speto2/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-27T21:51:01Z",
+    "updated_at": "2026-11-27T23:04:33Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "status": {
+      "id": 2,
+      "name": "Backlog",
+      "category": "backlog"
+    },
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Which skill / command?\n\nA few small, unrelated ones bundled together so they're one review:\n\n1. `docs/automation/cve-refresh.yml.template`\n2. HackerOne MCP docs (`mcp/hackerone/README.md`, `server.py` docstring, `commands/intel.md`)\n3. Dead skill names in `skills/` and `docs/`\n4. `scripts/cbh.py` symlink install (`docs/cbh-cli.md:41`)\n\n### What did you expect to happen? / What actually happened?\n\n1. **cve-refresh template never reaches the issue step.** Lines 34-35 do `OUTPUT=$(scripts/refresh-cve-index.py ...)` then `EXIT=$?`. Actions runs `run:` with `bash -e`, and the script exits 1 when it finds gaps, so the step dies before `EXIT` is set and the \"open an issue on gaps\" step never runs. With a stub that exits 1, the old block exits 1 and writes nothing to `$GITHUB_OUTPUT`; with `EXIT=0; OUTPUT=$(...) || EXIT=$?` it writes `exit_status=1`.\n2. **`get_report` isn't documented.** The server registers it (`server.py:371`) but the README table, the module docstring and `/intel` only list the other three tools.\n3. **Dead skill names.** `hunt-cache-poisoning` (real name `hunt-cache-poison`) in `skills/bug-bounty/SKILL.md:1570` and `docs/disclosed-reports/hunt-idor.md:125`; `hunt-subdomain-takeover` (real name `hunt-subdomain`) in `skills/hunt-auth-bypass/SKILL.md:409` and `docs/verification/recon-hackerone-vdp.md:136`.\n4. **Symlinked `cbh` can't import itself.** `scripts/cbh.py` uses `os.path.abspath(__file__)`, which doesn't follow symlinks, so after `ln -sf \"$(pwd)/scripts/cbh.py\" /usr/local/bin/cbh` it looks for the repo next to the link:\n\n```\n$ ln -s \"$PWD/scripts/cbh.py\" /tmp/bin/cbh && cd /tmp && env -u PYTHONPATH python3 /tmp/bin/cbh --help\nModuleNotFoundError: No module named 'cbh.cli'; 'cbh' is not a package\n```\n\n`os.path.realpath` fixes it. The patch adds `tests/test_cbh_symlink.py` (fails before, passes after; skipped on Windows). Note: open PR #257 rewrites the same line in `scripts/cbh.py`, so whichever lands second needs a one-word rebase.\n\nPatch for all four below. `lint_skills.py`: 0 errors / 11 warnings (unchanged), `gen_skill_index.py --check` and `check_doc_counts.py` pass, tests suite OK.\n\n<details><summary>patch</summary>\n\n```diff\ndiff --git a/commands/intel.md b/commands/intel.md\nindex bf501e2..0077dfb 100644\n--- a/commands/intel.md\n+++ b/commands/intel.md\n@@ -12,7 +12,7 @@ Fetch actionable intelligence for a target.\n 1. Looks up CVEs and advisories matching the target's tech stack (NVD + GitHub\n    Advisory via web search; `learn.py` is used as an accelerator only if present)\n 2. Fetches HackerOne Hacktivity for the target (via the HackerOne MCP's\n-   `search_disclosed_reports`, `get_program` and `get_program_scope` if connected — see `mcp/hackerone/`)\n+   `search_disclosed_reports`, `get_program`, `get_program_scope` and `get_report` if connected — see `mcp/hackerone/`)\n    and cross-references the bundled `docs/disclosed-reports/`\n 3. Cross-references with hunt memory — flags untested CVEs and new endpoints\n 4. Outputs prioritized intel with hunt recommendations\ndiff --git a/docs/automation/cve-refresh.yml.template b/docs/automation/cve-refresh.yml.template\nindex d74771f..90f9c5b 100644\n--- a/docs/automation/cve-refresh.yml.template\n+++ b/docs/automation/cve-refresh.yml.template\n@@ -31,8 +31,8 @@ jobs:\n         id: cve_check\n         run: |\n           # 90-day lookback window — newer entries are higher priority\n-          OUTPUT=$(scripts/refresh-cve-index.py --days 90 --max 30 2>&1)\n-          EXIT=$?\n+          EXIT=0\n+          OUTPUT=$(scripts/refresh-cve-index.py --days 90 --max 30 2>&1) || EXIT=$?\n           echo \"$OUTPUT\"\n           {\n             echo \"report<<EOF\"\ndiff --git a/docs/disclosed-reports/hunt-idor.md b/docs/disclosed-reports/hunt-idor.md\nindex e3b32ba..0f27cbc 100644\n--- a/docs/disclosed-reports/hunt-idor.md\n+++ b/docs/disclosed-reports/hunt-idor.md\n@@ -122,7 +122,7 @@ IDOR is the workhorse of bug bounty. It pays consistently because the proof is d\n - **When to suspect:** Response cached at a layer that doesn't account for user identity (cache key omits the user dimension). A user fetches `/api/profile`, response cached, second user fetches same URL, gets first user's data.\n - **Test:** Two concurrent users, identical URL, observe `Cache-Control` and `Vary` headers in responses. If `Vary` lacks user-distinguishing headers (`Authorization` or session cookies), the cache can poison cross-user.\n - **Validation:** Second user sees first user's data without authentication context.\n-- **Pay-grade rationale:** Critical when reproducible. See also `hunt-cache-poisoning`.\n+- **Pay-grade rationale:** Critical when reproducible. See also `hunt-cache-poison`.\n \n ---\n \ndiff --git a/docs/verification/recon-hackerone-vdp.md b/docs/verification/recon-hackerone-vdp.md\nindex 5662c00..a992e01 100644\n--- a/docs/verification/recon-hackerone-vdp.md\n+++ b/docs/verification/recon-hackerone-vdp.md\n@@ -133,7 +133,7 @@ Result: **8 HTTP-live hosts** in **14 seconds**:\n \n ### What the recon walk surfaced\n \n-1. **MTA-STS records on GitHub Pages.** Three `mta-sts.*` subdomains return GitHub Pages' \"Page not found\" — meaning a GitHub Pages site is configured but no `mta-sts.txt` file is served. Per `hunt-subdomain-takeover` fingerprint table:\n+1. **MTA-STS records on GitHub Pages.** Three `mta-sts.*` subdomains return GitHub Pages' \"Page not found\" — meaning a GitHub Pages site is configured but no `mta-sts.txt` file is served. Per the `hunt-subdomain` fingerprint table:\n \n    - \"There isn't a GitHub Pages site here\" → takeover vector (repo deleted)\n    - \"Page not found · GitHub Pages\" → repo exists, just returning 404 — **NOT a takeover**\ndiff --git a/mcp/hackerone/README.md b/mcp/hackerone/README.md\nindex 6b45af5..30bb269 100644\n--- a/mcp/hackerone/README.md\n+++ b/mcp/hackerone/README.md\n@@ -11,6 +11,7 @@ standard library and reuses the HackerOne GraphQL client shape from\n | `search_disclosed_reports` | No | Disclosed Hacktivity reports for a query and/or program: title, URL, severity, CWE, bounty, votes. Use it to check for duplicates before reporting. |\n | `get_program` | No | A public program's base bounty, average bounty range, resolved report count, launch date and state. |\n | `get_program_scope` | No | A public program's structured scope (in-scope and out-of-scope assets, bounty eligibility, max severity, instructions) and policy text. |\n+| `get_report` | No | A disclosed report's write-up body and public metadata (id, URL, title, severity, state, disclosure date, bounty when there is one). Takes exactly one of `id` or `url`. Adds a note when the public body is thin or empty. |\n | `list_my_programs` | Yes | Programs your account can see, private invitations included. |\n | `get_my_program` | Yes | One program's policy and full scope as your account sees it. |\n | `list_my_reports` | Yes | Your own reports and their state, optionally for one program. |\ndiff --git a/mcp/hackerone/server.py b/mcp/hackerone/server.py\nindex 4da428d..e83c2d6 100644\n--- a/mcp/hackerone/server.py\n+++ b/mcp/hackerone/server.py\n@@ -6,6 +6,7 @@ Public tools (no key, HackerOne's public GraphQL):\n   search_disclosed_reports  Hacktivity search for duplicate checks and technique research\n   get_program               bounty ranges, resolved count, launch date, state\n   get_program_scope         policy text and structured scope (in-scope assets, severity caps)\n+  get_report                a disclosed report's write-up body and public metadata; takes exactly one of id or url\n \n Logged-in tools (listed only when HACKERONE_API_USERNAME and HACKERONE_API_TOKEN are set;\n HackerOne Hacker API, read-only — nothing here submits or changes anything):\ndiff --git a/scripts/cbh.py b/scripts/cbh.py\nindex 3ae781f..4da83f8 100644\n--- a/scripts/cbh.py\n+++ b/scripts/cbh.py\n@@ -8,7 +8,7 @@ the pip console-script entry point (`cbh`). See docs/cbh-cli.md.\n import os\n import sys\n \n-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))\n+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.realpath(__file__))))\n from cbh.cli import main  # noqa: E402\n \n if __name__ == \"__main__\":\ndiff --git a/skills/bug-bounty/SKILL.md b/skills/bug-bounty/SKILL.md\nindex 1962cba..7a0356b 100644\n--- a/skills/bug-bounty/SKILL.md\n+++ b/skills/bug-bounty/SKILL.md\n@@ -1567,7 +1567,7 @@ Then this skill loads automatically when you ask about bug bounty, recon, or vul\n \n ### When to use the orchestrator vs a direct skill\n \n-The orchestrator (this skill) is for the \"I don't yet know what bug class to hunt for\" case. If you've already identified the candidate — \"the response reflects my Host header into a JavaScript src URL, that's cache poisoning\" — load `hunt-cache-poisoning` directly. The orchestrator's value is the initial routing from a fuzzy intent (\"there's a chatbot, what should I test\") to a concrete skill set (`hunt-llm-ai` + `hunt-api-misconfig`).\n+The orchestrator (this skill) is for the \"I don't yet know what bug class to hunt for\" case. If you've already identified the candidate — \"the response reflects my Host header into a JavaScript src URL, that's cache poisoning\" — load `hunt-cache-poison` directly. The orchestrator's value is the initial routing from a fuzzy intent (\"there's a chatbot, what should I test\") to a concrete skill set (`hunt-llm-ai` + `hunt-api-misconfig`).\n \n When in doubt: open the orchestrator FIRST on any new target, let it route, then close the orchestrator and work in the loaded skills. Don't keep the orchestrator loaded all session — it occupies context window that could hold actual probe results.\n \ndiff --git a/skills/hunt-auth-bypass/SKILL.md b/skills/hunt-auth-bypass/SKILL.md\nindex 3a03d38..fc5dcd3 100644\n--- a/skills/hunt-auth-bypass/SKILL.md\n+++ b/skills/hunt-auth-bypass/SKILL.md\n@@ -406,7 +406,7 @@ No Duende.BFF-direct CVE exists. The three classes are exploitable via real-worl\n \n Cross-references for the chain:\n - `hunt-csrf` — the role-partitioned antiforgery class (the CSRF angle on the same BFF surface).\n-- `hunt-subdomain-takeover` / `hunt-subdomain` — required primitive for the cookie-domain attack.\n+- `hunt-subdomain` — required primitive for the cookie-domain attack.\n \n ---\n \ndiff --git a/tests/test_cbh_symlink.py b/tests/test_cbh_symlink.py\nnew file mode 100644\nindex 0000000..ee2d9b1\n--- /dev/null\n+++ b/tests/test_cbh_symlink.py\n@@ -0,0 +1,29 @@\n+\"\"\"scripts/cbh.py must work when run through a symlink (docs/cbh-cli.md installs\n+`ln -sf .../scripts/cbh.py /usr/local/bin/cbh`). abspath() does not follow the link,\n+so the repo root was resolved next to the symlink and `cbh.cli` failed to import.\"\"\"\n+import os\n+import subprocess\n+import sys\n+import tempfile\n+import unittest\n+\n+SCRIPT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), \"scripts\", \"cbh.py\")\n+\n+\n+@unittest.skipIf(os.name == \"nt\", \"symlink install is POSIX-only\")\n+class CbhSymlinkTests(unittest.TestCase):\n+    def test_help_via_symlink(self):\n+        with tempfile.TemporaryDirectory() as bindir, tempfile.TemporaryDirectory() as cwd:\n+            link = os.path.join(bindir, \"cbh\")\n+            try:\n+                os.symlink(SCRIPT, link)\n+            except (OSError, NotImplementedError):\n+                self.skipTest(\"symlinks not supported\")\n+            env = {k: v for k, v in os.environ.items() if k != \"PYTHONPATH\"}\n+            r = subprocess.run([sys.executable, link, \"--help\"], cwd=cwd, env=env,\n+                               capture_output=True, text=True)\n+            self.assertEqual(r.returncode, 0, r.stderr)\n+\n+\n+if __name__ == \"__main__\":\n+    unittest.main()\n```\n\n</details>\n\n### Environment\n\nLinux, Python 3, main at 9b7fc8d.\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/elementalsouls/Claude-BugHunter/issues/281/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/elementalsouls/Claude-BugHunter/issues/281/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "airdropia",
+      "text": "I would like to work on this. I will open a pull request that addresses the acceptance criteria.",
+      "at": "2026-11-27T23:04:33Z",
+      "url": "https://github.com/elementalsouls/Claude-BugHunter/issues/281#issuecomment-7229850201"
+    }
+  ],
+  "comments_complete": true
+}

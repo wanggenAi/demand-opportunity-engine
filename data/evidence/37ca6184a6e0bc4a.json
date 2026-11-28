@@ -1,6 +1,6 @@
 {
   "source_api_url": "https://hn.algolia.com/api/v1/items/50657070",
-  "collected_at": "2026-11-27T10:48:33.359480+00:00",
+  "collected_at": "2026-11-28T10:20:10.758097+00:00",
   "source": {
     "author": "rxliuli",
     "children": [
@@ -115,7 +115,23 @@
       },
       {
         "author": "saagarjha",
-        "children": [],
+        "children": [
+          {
+            "author": "rxliuli",
+            "children": [],
+            "created_at": "2026-11-27T17:48:39.000Z",
+            "created_at_i": 1795801719,
+            "id": 50669590,
+            "options": [],
+            "parent_id": 50660106,
+            "points": null,
+            "story_id": 50657070,
+            "text": "Honestly, File Provider was just much simpler to get working...",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
         "created_at": "2026-11-26T21:39:41.000Z",
         "created_at_i": 1795729181,
         "id": 50660106,
@@ -130,7 +146,71 @@
       },
       {
         "author": "ChrisMarshallNY",
-        "children": [],
+        "children": [
+          {
+            "author": "rxliuli",
+            "children": [
+              {
+                "author": "ChrisMarshallNY",
+                "children": [
+                  {
+                    "author": "rxliuli",
+                    "children": [
+                      {
+                        "author": "ChrisMarshallNY",
+                        "children": [],
+                        "created_at": "2026-11-27T18:52:07.000Z",
+                        "created_at_i": 1795805527,
+                        "id": 50670358,
+                        "options": [],
+                        "parent_id": 50670268,
+                        "points": null,
+                        "story_id": 50657070,
+                        "text": "In any case, it’s cool, and thanks for sharing it!",
+                        "title": null,
+                        "type": "comment",
+                        "url": null
+                      }
+                    ],
+                    "created_at": "2026-11-27T18:43:54.000Z",
+                    "created_at_i": 1795805034,
+                    "id": 50670268,
+                    "options": [],
+                    "parent_id": 50670229,
+                    "points": null,
+                    "story_id": 50657070,
+                    "text": "Yeah, this is just a small tool, just to make it convenient for me to use Finder to transfer files into the iPhone Duo simulator. Of course, you can choose other ways to do something similar.",
+                    "title": null,
+                    "type": "comment",
+                    "url": null
+                  }
+                ],
+                "created_at": "2026-11-27T18:40:28.000Z",
+                "created_at_i": 1795804828,
+                "id": 50670229,
+                "options": [],
+                "parent_id": 50669345,
+                "points": null,
+                "story_id": 50657070,
+                "text": "Not really, but I confess to being hesitant to install yet another background-running app, when I could just use aliases to do the same thing.<p>I guess the convenience is that the sidebar only shows running simulators",
+                "title": null,
+                "type": "comment",
+                "url": null
+              }
+            ],
+            "created_at": "2026-11-27T17:28:05.000Z",
+            "created_at_i": 1795800485,
+            "id": 50669345,
+            "options": [],
+            "parent_id": 50662064,
+            "points": null,
+            "story_id": 50657070,
+            "text": "It is indeed a two-way file manager; you can read and write the emulator&#x27;s Downloads and gallery directories, although I hardly use the other directories so I haven&#x27;t exposed them—any thoughts?",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
         "created_at": "2026-11-27T02:26:19.000Z",
         "created_at_i": 1795746379,
         "id": 50662064,
@@ -145,7 +225,23 @@
       },
       {
         "author": "tacie",
-        "children": [],
+        "children": [
+          {
+            "author": "rxliuli",
+            "children": [],
+            "created_at": "2026-11-27T17:32:16.000Z",
+            "created_at_i": 1795800736,
+            "id": 50669400,
+            "options": [],
+            "parent_id": 50662532,
+            "points": null,
+            "story_id": 50657070,
+            "text": "No, by default dragging an image only copies it. If you want to delete it, you can select it and choose Move to Trash, or use the shortcut Cmd+Backspace.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
         "created_at": "2026-11-27T03:44:14.000Z",
         "created_at_i": 1795751054,
         "id": 50662532,
@@ -157,6 +253,21 @@
         "title": null,
         "type": "comment",
         "url": null
+      },
+      {
+        "author": "isaac_c_lee",
+        "children": [],
+        "created_at": "2026-11-28T08:09:24.000Z",
+        "created_at_i": 1795853364,
+        "id": 50675704,
+        "options": [],
+        "parent_id": 50657070,
+        "points": null,
+        "story_id": 50657070,
+        "text": "Interesting. Does it detect changes and send notifications whenever the simulator files are updated?",
+        "title": null,
+        "type": "comment",
+        "url": null
       }
     ],
     "created_at": "2026-11-26T16:51:38.000Z",
@@ -164,7 +275,7 @@
     "id": 50657070,
     "options": [],
     "parent_id": null,
-    "points": 47,
+    "points": 62,
     "story_id": 50657070,
     "text": "Hi HN, I made a small macOS utility for my own iOS simulator workflow.<p>I kept running into two annoyances: getting config files in and out of a simulator is clunky (digging into CoreSimulator UUID folders or running simctl), and on the iPhone Duo simulator I couldn&#x27;t even drag and drop images onto the window at all.<p>SimDrop puts every running iOS simulator in Finder&#x27;s sidebar (under Locations) with two folders:<p>- Downloads&#x2F; (Files app &gt; On My iPhone &gt; Downloads)\n- Photos and Videos&#x2F; (the simulator&#x27;s Photos library)<p>Simulators appear when they boot and disappear when they shut down. Everything is also reachable from the terminal under ~&#x2F;Library&#x2F;CloudStorage&#x2F;SimDrop-SimDrop&#x2F;.<p>A couple of caveats up front:\n- Dragging moves files by default (same as iCloud Drive, because it uses File Provider on the startup volume)—hold Option to copy.\n- macOS 15+ and iOS simulators only (not physical devices).<p>It&#x27;s free, open source (GPL-3.0), signed and notarized, and installable via Homebrew:<p><pre><code>  brew install --cask rxliuli&#x2F;tap&#x2F;sim-drop\n</code></pre>\nJust sharing in case others run into the same friction—feedback or PRs welcome!",
     "title": "Show HN: SimDrop – Running iOS simulators in the macOS Finder sidebar",
@@ -221,16 +332,58 @@
       "url": "https://news.ycombinator.com/item?id=50660106"
     },
     {
+      "author": "rxliuli",
+      "text": "Honestly, File Provider was just much simpler to get working...",
+      "at": "2026-11-27T17:48:39.000Z",
+      "url": "https://news.ycombinator.com/item?id=50669590"
+    },
+    {
       "author": "ChrisMarshallNY",
       "text": "That's pretty cool! With simulators, I guess it really just drops them in the Xcode dev directory that holds the simulator runtime, so I guess this is really a file copy/move? I would like it as an easy way to browse the simulator files, sort of like iMazing.",
       "at": "2026-11-27T02:26:19.000Z",
       "url": "https://news.ycombinator.com/item?id=50662064"
     },
     {
+      "author": "rxliuli",
+      "text": "It is indeed a two-way file manager; you can read and write the emulator's Downloads and gallery directories, although I hardly use the other directories so I haven't exposed them—any thoughts?",
+      "at": "2026-11-27T17:28:05.000Z",
+      "url": "https://news.ycombinator.com/item?id=50669345"
+    },
+    {
+      "author": "ChrisMarshallNY",
+      "text": "Not really, but I confess to being hesitant to install yet another background-running app, when I could just use aliases to do the same thing. I guess the convenience is that the sidebar only shows running simulators",
+      "at": "2026-11-27T18:40:28.000Z",
+      "url": "https://news.ycombinator.com/item?id=50670229"
+    },
+    {
+      "author": "rxliuli",
+      "text": "Yeah, this is just a small tool, just to make it convenient for me to use Finder to transfer files into the iPhone Duo simulator. Of course, you can choose other ways to do something similar.",
+      "at": "2026-11-27T18:43:54.000Z",
+      "url": "https://news.ycombinator.com/item?id=50670268"
+    },
+    {
+      "author": "ChrisMarshallNY",
+      "text": "In any case, it’s cool, and thanks for sharing it!",
+      "at": "2026-11-27T18:52:07.000Z",
+      "url": "https://news.ycombinator.com/item?id=50670358"
+    },
+    {
       "author": "tacie",
       "text": "Does dragging a photo out of the sim also delete it there? For test fixtures I'd want copy both ways, so a toggle would be nice.",
       "at": "2026-11-27T03:44:14.000Z",
       "url": "https://news.ycombinator.com/item?id=50662532"
+    },
+    {
+      "author": "rxliuli",
+      "text": "No, by default dragging an image only copies it. If you want to delete it, you can select it and choose Move to Trash, or use the shortcut Cmd+Backspace.",
+      "at": "2026-11-27T17:32:16.000Z",
+      "url": "https://news.ycombinator.com/item?id=50669400"
+    },
+    {
+      "author": "isaac_c_lee",
+      "text": "Interesting. Does it detect changes and send notifications whenever the simulator files are updated?",
+      "at": "2026-11-28T08:09:24.000Z",
+      "url": "https://news.ycombinator.com/item?id=50675704"
     }
   ],
   "comments_complete": true

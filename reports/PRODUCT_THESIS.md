@@ -29,7 +29,7 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 
 ## supplier_sourcing — UNVALIDATED CLUSTER
 
-- independent_demand_count: 18
+- independent_demand_count: 19
 - payment_evidence_count: 1
 - platforms: ['GitHub', 'Shopify Community']
 - communities: ['AddisonJPratt/CAD-ADE', 'Commerce operator forum', 'Luminous-Dynamics/symtropy', 'n8n-io/n8n', 'zack-hum/coffee-intelligence-v1.1']
@@ -71,6 +71,25 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
   - https://github.com/n8n-io/n8n/issues/43947
   - https://github.com/yaojiejia/agents-radar/issues/462
 
+## voice_agent_qa — UNVALIDATED CLUSTER
+
+- independent_demand_count: 3
+- payment_evidence_count: 0
+- platforms: ['GitHub']
+- communities: ['HuggerHustle/ai-radar', 'datnguyenquy94/news-radar', 'diclogic/ai-daily-digest']
+- repeated_pain: Test an existing voice agent's failure paths before client demonstration.
+- current_alternatives: Manual call tests, platform logs, voice-agent test services and freelancers.
+- productization_potential: One-agent test matrix and evidence report; repeat paid buyers not yet established.
+- suggested_product_form: Workflow + Service package
+- distribution: Only buyer-invited QA requests; no proven scalable channel yet
+- Promotion blockers: fewer than 5 independent observations; fewer than 2 primary payment/commercial signals; paid-market proof not independently verified
+- Action: WATCH (no standardized product build authorized by evidence)
+- Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
+- Representative evidence:
+  - https://github.com/diclogic/ai-daily-digest/issues/227
+  - https://github.com/HuggerHustle/ai-radar/issues/46
+  - https://github.com/datnguyenquy94/news-radar/issues/777
+
 ## lead_research — UNVALIDATED CLUSTER
 
 - independent_demand_count: 2
@@ -88,24 +107,6 @@ Small desk/interview validations run in parallel in DAILY_MONEY_PORTFOLIO.md, ev
 - Representative evidence:
   - https://community.n8n.io/t/hiring-multi-agent-b2b-lead-gen-system-n8n-langgraph-energy-storage-na-li-battery/317073
   - https://community.n8n.io/t/looking-for-1-2-n8n-builders-for-long-term-collaboration/316792
-
-## voice_agent_qa — UNVALIDATED CLUSTER
-
-- independent_demand_count: 2
-- payment_evidence_count: 0
-- platforms: ['GitHub']
-- communities: ['HuggerHustle/ai-radar', 'datnguyenquy94/news-radar']
-- repeated_pain: Test an existing voice agent's failure paths before client demonstration.
-- current_alternatives: Manual call tests, platform logs, voice-agent test services and freelancers.
-- productization_potential: One-agent test matrix and evidence report; repeat paid buyers not yet established.
-- suggested_product_form: Workflow + Service package
-- distribution: Only buyer-invited QA requests; no proven scalable channel yet
-- Promotion blockers: fewer than 5 independent observations; fewer than 2 primary payment/commercial signals; paid-market proof not independently verified
-- Action: WATCH (no standardized product build authorized by evidence)
-- Pre-build validation: Ask consenting operators to purchase one scoped diagnostic/verification pilot; record quotes and outcomes before building any product.
-- Representative evidence:
-  - https://github.com/HuggerHustle/ai-radar/issues/46
-  - https://github.com/datnguyenquy94/news-radar/issues/777
 
 ## supplier_verification — UNVALIDATED CLUSTER
 

@@ -1,0 +1,21 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50669511",
+  "collected_at": "2026-11-28T10:20:10.758097+00:00",
+  "source": {
+    "author": "JohnGorp",
+    "children": [],
+    "created_at": "2026-11-27T17:40:46.000Z",
+    "created_at_i": 1795801246,
+    "id": 50669511,
+    "options": [],
+    "parent_id": null,
+    "points": 1,
+    "story_id": 50669511,
+    "text": "I&#x27;m currently a CS student, so that means a lot of file uploads to my university&#x27;s janky website. I hated having to sort through the file picker just to attach an assignment open the next tab over. Pasteup is a Chrome extension that lets you press Cmd+V &#x2F; Ctrl+V on the page instead, it finds the corresponding file box and attaches them automatically (if there are multiple it opens a picker).<p>Moreover I added an automatic file converter, so for things like CSV, txt, and code, it automatically converts it to the right format. This means my workflow went from going to the assignment sorting through 15 finder folders and uploading to ctrl a ctrl c ctrl v.<p>The file converter is pretty smart, and supports a lot of formats. If the field only takes PDF or JPG, it converts the file before uploading. It also turns copied spreadsheet cells into a CSV, JSON into a .json, and Figma&#x27;s &quot;Copy as SVG&quot; into an image.<p>If you&#x27;re already in any text boxes or editors it does nothing. If the site handles paste itself (FilePond, chat apps), it goes first, and Pasteup does nothing.<p>It runs entirely locally: no servers, no analytics, no network requests, no third-party libraries.<p>I&#x27;d love to hear about sites where it picks the wrong field or gets in the way or just any feedback in general!",
+    "title": "Show HN: Pasteup – Paste screenshots into file upload fields",
+    "type": "story",
+    "url": "https://chromewebstore.google.com/detail/pasteup-paste-screenshots/lbmbeemclenmfgdogpmgoofecpajclkd"
+  },
+  "comments": [],
+  "comments_complete": true
+}

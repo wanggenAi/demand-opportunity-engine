@@ -1,0 +1,94 @@
+{
+  "source_api_url": "https://api.github.com/repos/ErgoDevs/Ergo-Bounties/issues/196",
+  "collected_at": "2026-11-28T10:20:10.758097+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/ErgoDevs/Ergo-Bounties/issues/196",
+    "repository_url": "https://api.github.com/repos/ErgoDevs/Ergo-Bounties",
+    "labels_url": "https://api.github.com/repos/ErgoDevs/Ergo-Bounties/issues/196/labels{/name}",
+    "comments_url": "https://api.github.com/repos/ErgoDevs/Ergo-Bounties/issues/196/comments",
+    "events_url": "https://api.github.com/repos/ErgoDevs/Ergo-Bounties/issues/196/events",
+    "html_url": "https://github.com/ErgoDevs/Ergo-Bounties/issues/196",
+    "id": 6652785283,
+    "node_id": "I_kwDONqv6L88AAAABjIlygw",
+    "number": 196,
+    "title": "Submission triage auto-closes valid JSON when raw file download returns HTTP 504",
+    "user": {
+      "login": "ocakciomursel-pixel",
+      "id": 276599321,
+      "node_id": "U_kgDOEHySGQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/276599321?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/ocakciomursel-pixel",
+      "html_url": "https://github.com/ocakciomursel-pixel",
+      "followers_url": "https://api.github.com/users/ocakciomursel-pixel/followers",
+      "following_url": "https://api.github.com/users/ocakciomursel-pixel/following{/other_user}",
+      "gists_url": "https://api.github.com/users/ocakciomursel-pixel/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/ocakciomursel-pixel/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/ocakciomursel-pixel/subscriptions",
+      "organizations_url": "https://api.github.com/users/ocakciomursel-pixel/orgs",
+      "repos_url": "https://api.github.com/users/ocakciomursel-pixel/repos",
+      "events_url": "https://api.github.com/users/ocakciomursel-pixel/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/ocakciomursel-pixel/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-27T18:56:00Z",
+    "updated_at": "2026-11-27T19:16:54Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "status": {
+      "id": 2,
+      "name": "Backlog",
+      "category": "backlog"
+    },
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "The scheduled triage run [46050313001](https://github.com/ErgoDevs/Ergo-Bounties/actions/runs/46050313001) closed 22 of my existing submission PRs on 2026-11-27 at 18:45–18:47 UTC. Every closure comment reports `cannot parse JSON: HTTP Error 504: Gateway Time-out` rather than a JSON decoding error.\n\nI fetched all 22 exact submission files at their recorded PR head SHAs through the authenticated GitHub Contents API: all parse successfully. An offline check with the current `validate_submission` function, using the live linked PR states and a stub for issue-author lookup, found no field-validation errors. All 22 linked work PRs remain open; submissions are `in-progress`, with `expected_completion: 2026-12-31`. This is a reservation-recovery request, not a request to mark unmerged work as payment-ready.\n\n## Cause\n\nIn [read_submission](https://github.com/ErgoDevs/Ergo-Bounties/blob/main/scripts/triage_submission_prs.py#L134), `raw_url` is downloaded without authentication or retry. The broad exception handler converts an HTTP fetch failure into `cannot parse JSON`. This produces `invalid-json`, which `should_close_invalid` treats as grounds for automatic closure. A transient network failure therefore closes an otherwise parseable reservation.\n\nExample: [#186 bot comment](https://github.com/ErgoDevs/Ergo-Bounties/pull/186#issuecomment-6805767216). Its submission at head `491532cb0179aeca87d629efd86028e0710889b8` parses successfully through the Contents API.\n\n## Requested handling\n\n- Distinguish download/authentication/HTTP failures from JSON decoding and schema errors; skip destructive closing on transient infrastructure failures.\n- Retry transient failures and use an authenticated Contents API fallback at the exact head SHA (and head repository for fork PRs).\n- Re-triage recovered reservations after the reader is fixed, removing stale invalid labels when checks succeed. Please preserve the original claim history.\n\nI attempted to reopen all 22 existing affected PRs after validating their files and linked work. GitHub rejected every attempt with HTTP 422 `Validation Failed` and an empty `errors` array. The source branch for #125 still exists at the recorded SHA; the authenticated browser also offers no reopen control. All 22 remain closed. Please reopen the original reservations from the maintainer side after correcting the reader. No replacement or duplicate claims were created.\n\n| Submission | Bounty | Linked work (open) |\n|---|---|---|\n| #125 | ergoplatform/ergo#1363 | https://github.com/ergoplatform/ergo/pull/2770 |\n| #126 | ergoplatform/ergo#1154 | https://github.com/ergoplatform/ergo/pull/2771 |\n| #131 | ergoplatform/ergo#2213 | https://github.com/ergoplatform/ergo/pull/2776 |\n| #133 | ergoplatform/sigmastate-interpreter#1181 | https://github.com/ergoplatform/sigmastate-interpreter/pull/1202 |\n| #134 | ergoplatform/sigmastate-interpreter#1075 | https://github.com/ergoplatform/sigmastate-interpreter/pull/1203 |\n| #140 | ergoplatform/ergo#878 | https://github.com/ergoplatform/ergo/pull/2870 |\n| #141 | BetterMoneyLabs/chaincash-rs#58 | https://github.com/BetterMoneyLabs/chaincash-rs/pull/69 |\n| #142 | ergoplatform/ergo#1443 | https://github.com/ergoplatform/ergo/pull/2874 |\n| #143 | ergoplatform/ergo#2210 | https://github.com/ergoplatform/ergo/pull/2875 |\n| #144 | ergoplatform/ergo#1588 | https://github.com/ergoplatform/ergo/pull/2876 |\n| #145 | BetterMoneyLabs/chaincash-rs#51 | https://github.com/BetterMoneyLabs/chaincash-rs/pull/70 |\n| #146 | ergoplatform/explorer-backend#263 | https://github.com/ergoplatform/explorer-backend/pull/290 |\n| #147 | rosen-bridge/ui#13 | https://github.com/rosen-bridge/ui/pull/39 |\n| #172 | ergoplatform/ergo#1598 | https://github.com/ergoplatform/ergo/pull/2744 |\n| #173 | ergoplatform/ergo#2092 | https://github.com/ergoplatform/ergo/pull/2745 |\n| #174 | ergoplatform/sigma-rust#828 | https://github.com/ergoplatform/sigma-rust/pull/982 |\n| #175 | ergoplatform/ergo#1722 | https://github.com/ergoplatform/ergo/pull/2752 |\n| #176 | ergoplatform/ergo#1125 | https://github.com/ergoplatform/ergo/pull/2755 |\n| #177 | ergoplatform/ergo#2232 | https://github.com/ergoplatform/ergo/pull/2763 |\n| #182 | ergoplatform/sigmastate-interpreter#1111 | https://github.com/ergoplatform/sigmastate-interpreter/pull/1221 |\n| #185 | ergoplatform/ergo#1156 | https://github.com/ergoplatform/ergo/pull/2753 |\n| #186 | ergoplatform/ergo#1551 | https://github.com/ergoplatform/ergo/pull/2754 |\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/ErgoDevs/Ergo-Bounties/issues/196/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/ErgoDevs/Ergo-Bounties/issues/196/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "ocakciomursel-pixel",
+      "text": "<!-- claim-recovery-maintainer-handoff-20261127 -->\n@cannonQ @glasgowm148 Could you please review this automation failure and restore the 22 original reservation PRs listed above? All 22 exact-head submission files parse, their in-progress dates are current, and all linked implementation PRs are still open.\n\nThe authenticated contributor cannot complete recovery: reopening all 22 via the Pull Requests API returned HTTP 422 `Validation Failed` (empty `errors`); the Issues API also rejected #125, whose source branch still exists. The browser offers no reopen control. I verified afterward that all 22 remain closed. Please distinguish the raw-download 504 from an actual JSON error before re-triaging so restored reservations are not closed again. No new or duplicate claims have been filed.",
+      "at": "2026-11-27T18:58:47Z",
+      "url": "https://github.com/ErgoDevs/Ergo-Bounties/issues/196#issuecomment-7226065337"
+    }
+  ],
+  "comments_complete": true
+}

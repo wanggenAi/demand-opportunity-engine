@@ -1,11 +1,11 @@
 {
-  "observed_at": "2026-11-27T10:48:33.359480+00:00",
+  "observed_at": "2026-11-28T10:20:10.758097+00:00",
   "config": "data/discovery_config.json",
   "adapters": [
     {
       "source": "Hacker News",
       "refreshed": true,
-      "collected": 26,
+      "collected": 24,
       "errors": []
     },
     {
@@ -21,26 +21,26 @@
       "source_family": "public founder/operator job community",
       "access_method": "Discourse public category/topic JSON",
       "url": "https://community.n8n.io/c/jobs/13.json?order=created",
-      "records_inspected": 19,
-      "primary_pages_opened": 13,
-      "verified_buyer_requests": 9,
-      "explicit_commercial_signals": 9,
-      "collected": 13,
+      "records_inspected": 18,
+      "primary_pages_opened": 12,
+      "verified_buyer_requests": 8,
+      "explicit_commercial_signals": 8,
+      "collected": 12,
       "errors": [],
       "limitations": [
         "Two newest-topic pages, not complete market coverage; max 200 extra replies per topic. Incomplete competition remains UNKNOWN unless observed high.",
         "Last activity is not publication time. Only substantive buyer-authored follow-ups can renew a lead."
       ],
       "evidence_snapshots": [
-        "data/evidence/f5663f332d6bc9b1.json#sha256=e7f03f8c71a2e0d22e92eb9efcc5e6846a3a64d9895073ffdb43f22cc4d855ce",
-        "data/evidence/d9f0be47fa047f2c.json#sha256=146243a32ce175ed318e36bb10b87d0535d38021136793cfd8eb2e7f1641ad57"
+        "data/evidence/f5663f332d6bc9b1.json#sha256=a8f714eedd623b0fa6697131b8faf82f921be6d5702ce3209d143ee6dc76f136",
+        "data/evidence/d9f0be47fa047f2c.json#sha256=bb58aa66858d6c1c3cbee072349ce45c9af96e553edee835bb18398747ded17b"
       ]
     },
     {
       "source_family": "public freelance/job listings",
       "access_method": "Remotive public JSON API; attributed source links",
       "url": "https://remotive.com/api/remote-jobs?search=automation&limit=20",
-      "records_inspected": 17,
+      "records_inspected": 16,
       "primary_pages_opened": 0,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
@@ -51,7 +51,7 @@
         "Legal warning - Hey, thanks for using Remotive's API, we appreciate it! Please note that API documentation and access is granted so that developers can share our jobs further. Please do not submit Remotive jobs to third Party websites, including but not limited to: Jooble, Neuvoo, Google Jobs, LinkedIn Jobs. Please link back to the URL found on Remotive AND mention Remotive as a source in order to Remotive to get traffic from your listing. If you don't do that, we'll terminate your API access, sorry! Jobs displayed are delayed by 24 hours, the goal being that jobs are attributed to Remotive on various platforms. Displaying our jobs in order to collect signups/email addresses to show a listing constitutes a breach of our terms of services. We offer a private, paid-for API, please email us at hello(at)remotive(dot)io for more information (starting budget is $5k/mo). Please find out terms of services on https://remotive.com/api-documentation. Please note that there is absolutely no need to request Remotive Job data too frequently. Typically, you only need to GET Remotive job data through this API a couple of times a day (we advise max. 4 times a day). Our data is not changing much faster than that anyway. Note that excessive requests will be blocked. Many thanks (Rodolphe & the Remotive team!)"
       ],
       "evidence_snapshots": [
-        "data/evidence/071898d5d7cef09e.json#sha256=a1284b6bd894b81ebf9398e11a3d149b0f169c9c127ae466721af4c2f8ba3d27"
+        "data/evidence/071898d5d7cef09e.json#sha256=da6fbdc65d8365812a5698625c6ae01690f3ae3746c164ca8bd421e46f60b84b"
       ]
     },
     {
@@ -65,15 +65,15 @@
       "collected": 0,
       "errors": [
         {
-          "url": "https://www.contractsfinder.service.gov.uk/notice/a85cfac7-7627-45e6-86b3-f648309f3e31",
+          "url": "https://www.contractsfinder.service.gov.uk/notice/2b632402-d1e8-4629-af69-0f2353358a76",
           "error": "HTTPError: HTTP Error 403: Forbidden"
         },
         {
-          "url": "https://www.contractsfinder.service.gov.uk/notice/e3d372a7-e14d-448d-887a-46a46c0d08bd",
+          "url": "https://www.contractsfinder.service.gov.uk/notice/d311c7b6-087f-4e73-86ba-2416fb4cbf86",
           "error": "HTTPError: HTTP Error 403: Forbidden"
         },
         {
-          "url": "https://www.contractsfinder.service.gov.uk/notice/55c74915-58c1-4e6d-bf5c-e830a617370c",
+          "url": "https://www.contractsfinder.service.gov.uk/notice/7e327ed7-0e06-49db-b197-a2a46073f209",
           "error": "HTTPError: HTTP Error 403: Forbidden"
         }
       ],
@@ -81,7 +81,7 @@
         "Search returned procurement notices; up to three detail pages attempted. No buyer request promoted: eligibility, exact remote scope, submission deadline and award status require manual verification."
       ],
       "evidence_snapshots": [
-        "data/evidence/50e3af0542f19c3a.json#sha256=fb3cf416deedb7bba633894861c899fff58f5d7c4ba5996b81e37236398d6970"
+        "data/evidence/50e3af0542f19c3a.json#sha256=d93f6dd8b5d46e689bd840e83fb1f78ea809e53c37c8c7fbdae60e9623fa1e95"
       ]
     },
     {
@@ -134,14 +134,14 @@
         "No structured primary buyer requests extracted; static shell is not commercial proof. No login or anti-bot evasion."
       ],
       "evidence_snapshots": [
-        "data/evidence/b5d67d420401a4bb.json#sha256=ab0aec8edf418fdccf0600c5d5a06c7a5d6758c40ca219179d9b377e496be28b"
+        "data/evidence/b5d67d420401a4bb.json#sha256=c6b8177fcce0076e025e6961264c65df54226b99c2b59272a875dba738a23e61"
       ]
     },
     {
       "source_family": "freelance project marketplace (Freelancer)",
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://www.freelancer.com/jobs/product-sourcing/",
-      "records_inspected": 11,
+      "records_inspected": 12,
       "primary_pages_opened": 2,
       "verified_buyer_requests": 2,
       "explicit_commercial_signals": 2,
@@ -151,9 +151,9 @@
         "Public bidCount includes competitors; only first 20 proposals may be visible. Employer identity often unresolved. Task budget is not agreement to our pilot."
       ],
       "evidence_snapshots": [
-        "data/evidence/abf73d1fa5782498.json#sha256=7ee4275ad6f2aee569baa851d0bfee3daefb1521729db53b51475ae3c4825932",
-        "data/evidence/7c1bee5749b7a01d.json#sha256=1235cae3fdd45a4d75b6d09128e30b09a6935b4fad3aef30b0120309c61d4cb7",
-        "data/evidence/4c2cbddb671ef97a.json#sha256=ab0a4a23fde75735e79acc9d0ae9db63e208404ebac8a79dd40cc060f43624f4"
+        "data/evidence/abf73d1fa5782498.json#sha256=8ddd48d1eb217a6ef5e1afaeeaa02bd35b7fc350b2c3be5a479bf32ac54738a1",
+        "data/evidence/7c1bee5749b7a01d.json#sha256=f1956d9184b828ed7213fdf135dbf0a3696602cf6ec9f76a716c418499606a79",
+        "data/evidence/4c2cbddb671ef97a.json#sha256=60eee1014f36b91935a4ce34241faa6c2274e809e06c80da076e031f95607325"
       ],
       "records": [],
       "opportunity_ids": [
@@ -161,17 +161,18 @@
         "4c2cbddb671ef97a"
       ],
       "inspected_keys": [
-        "/projects/sourcing/part-time-used-test-measurement",
-        "/projects/procurement/part-time-used-test-measurement",
+        "/projects/sourcing/bilingual-sourcing-agent",
         "/projects/recruitment/china-pcb-sourcing-recruiter",
+        "/projects/product-sourcing/source-ship-cereals-from-panama",
+        "/projects/sourcing/part-time-used-test-measurement",
+        "/projects/shopify-site/launch-shopify-amazon-dropshipping-store",
+        "/projects/procurement/part-time-used-test-measurement",
         "/projects/dropshipping/ebay-dropshipping-store-partner",
         "/projects/manufacturing/china-hotel-playground-equipment",
-        "/projects/shopify-site/launch-shopify-amazon-dropshipping-store",
         "/projects/technical-support/battery-replacement-denton",
         "/projects/sourcing/hong-kong-based-sourcing-agent",
         "/projects/amazon/amazon-product-arbitrage-research-needed",
-        "/projects/nutrition/electrolyte-powder-formulation-for-human",
-        "/projects/amazon/build-amazon-business-arbitrage-first"
+        "/projects/nutrition/electrolyte-powder-formulation-for-human"
       ]
     },
     {
@@ -188,13 +189,22 @@
         "A different query/category on Freelancer does not count as another independent family."
       ],
       "evidence_snapshots": [
-        "data/evidence/eb34b643617bda88.json#sha256=91a45fec56493c1b75cbaa5a280808b424a7de2c17e318c1d0577a04aea9b705"
+        "data/evidence/eb34b643617bda88.json#sha256=6384ff74ba3152962b262b378d9f6dd31ce3662df3622030fe58bc5e423db29b"
       ],
       "records": [],
       "opportunity_ids": [],
       "inspected_keys": [
-        "/projects/web-development/build-modern-commerce-store",
+        "/projects/php/long-term-investment-platform-technical",
+        "/projects/api-integration/build-idx-real-estate-platform",
+        "/projects/api-integration/claude-agents-for-crm-automation",
+        "/projects/android-app-development/android-vedic-astrology-app",
+        "/projects/magento/magento-cursor-assisted-developer",
+        "/projects/bigcommerce/bigcommerce-facebook-pixel-capi",
         "/projects/web-design/finish-unfinished-wordpress-business",
+        "/projects/google-maps-api/whatsapp-restaurant-ordering-platform",
+        "/projects/ai-chatbot-development/telegram-support-chatbot-build",
+        "/projects/desktop-application/desktop-thermometer-app-field-trial",
+        "/projects/web-development/build-modern-commerce-store",
         "/projects/ios-development/complete-swiftui-ride-hailing-ios",
         "/projects/kotlin/finalize-ride-hailing-android-apps",
         "/projects/payment-processing/escrow-style-freelancer-payment-system",
@@ -228,48 +238,78 @@
         "/projects/api-integration/mortgage-lead-gen-platform-pilot",
         "/projects/web-development/multi-city-product-availability",
         "/projects/sap/sap-integration-specialist-needed",
-        "/projects/web-development/website-enhancement-specialist-needed-40833545",
         "/projects/api-integration/live-gold-silver-rates-website",
         "/projects/api-integration/configure-paypal-for-freelance-payments-40833226",
         "/projects/zapier/zapier-integration-for-seedance-videos",
-        "/projects/shopify-site/shopify-amazon-walmart-integration",
-        "/projects/microsoft-365/complete-freescout-helpdesk",
-        "/projects/ai-automation/sales-lead-automation-partner",
-        "/projects/ai-chatbot-development/powered-company-wiki",
-        "/projects/payment-gateway-integration/integrate-phonepe-gateway-php",
-        "/projects/api-integration/french-oracle-flexcube-interview",
-        "/projects/chatbot/creating-chatbot-for-doctor-office",
-        "/projects/shopify-site/shopify-amazon-flipkart-sync-integration",
-        "/projects/ai-chatbot-development/whatsapp-website-automation"
+        "/projects/shopify-site/shopify-amazon-walmart-integration"
       ]
     },
     {
       "source_family": "commerce operator community (Shopify)",
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://community.shopify.com/latest.json",
-      "records_inspected": 0,
-      "primary_pages_opened": 0,
+      "records_inspected": 30,
+      "primary_pages_opened": 4,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
-      "collected": 0,
-      "errors": [
-        {
-          "url": "https://community.shopify.com/latest.json",
-          "error": "HTTPError: HTTP Error 429: Too Many Requests"
-        }
+      "collected": 4,
+      "errors": [],
+      "limitations": [
+        "Latest activity is not original publication; support questions are PRODUCT_SIGNAL, not SALES. No more than four primary topics per run."
       ],
-      "limitations": [],
-      "evidence_snapshots": [],
+      "evidence_snapshots": [
+        "data/evidence/bda5dc3c1eb46ea5.json#sha256=6b90a38027b29dfad29e686821964f2d215bcf42d3eabffe1a474dc083a48b76",
+        "data/evidence/2941e10ebb132f39.json#sha256=553e7cd3b43aff3b33da693df2c8f59feab20280046c01690b39ba2e58b40282",
+        "data/evidence/3f29c8e45c8f2f9e.json#sha256=ad857d060946271bb7c636c3ba5d7175579f5f2364fd86a4632fd5ba02e9a9df",
+        "data/evidence/040661c779d5ff01.json#sha256=80c2379579ca3fef865396f35466faf5532cb468845159e7f33640ceba2d3093",
+        "data/evidence/b596ab141961f715.json#sha256=8bb6474d26ef2bf3aa13b6865ce5cf3e6553bc8949695f27b034f587d93ac7bf"
+      ],
       "records": [],
-      "opportunity_ids": [],
-      "inspected_keys": []
+      "opportunity_ids": [
+        "f8cb0cc1b532cd6a",
+        "292f179830a9eb45",
+        "199f7da354fb9441",
+        "889c862b8ce47f4e"
+      ],
+      "inspected_keys": [
+        "355460",
+        "724206",
+        "11963",
+        "721916",
+        "721934",
+        "720303",
+        "723614",
+        "724156",
+        "723551",
+        "723582",
+        "724254",
+        "710777",
+        "722812",
+        "170106",
+        "608150",
+        "724207",
+        "724108",
+        "717658",
+        "694201",
+        "724092",
+        "723601",
+        "721481",
+        "650432",
+        "723611",
+        "577311",
+        "576186",
+        "669137",
+        "628799",
+        "666280",
+        "629052"
+      ]
     },
     {
       "source_family": "founder community (Indie Hackers)",
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://www.indiehackers.com/",
       "records_inspected": 28,
-      "primary_pages_opened": 0,
+      "primary_pages_opened": 1,
       "verified_buyer_requests": 0,
       "explicit_commercial_signals": 0,
       "collected": 0,
@@ -278,39 +318,78 @@
         "Only server-rendered public pages. robots disallows /api/ and sign-in; neither used. Founder self-promotion is not a buyer."
       ],
       "evidence_snapshots": [
-        "data/evidence/6548833164b0e7c9.json#sha256=f1e91f02b8fcbf3ddb2e5eaa94d6fbbe3bf66f0138c1df9d7db7fca58828b4c1"
+        "data/evidence/6548833164b0e7c9.json#sha256=1d98ccb889b827b1969d208f6593b3571e6eb22b90aa70d208310883323f2d5c",
+        "data/evidence/c860f107bd7b4327.json#sha256=8c2a07bd490c8e273bb05a5d96393186b841c312f471456dbb3fc3cfc7c6916a"
       ],
-      "records": [],
+      "records": [
+        {
+          "url": "https://www.indiehackers.com/post/a-60-second-ai-video-can-need-180-seconds-of-generation-heres-how-to-brief-it-9R9l66ZosHug0dEitgGq",
+          "author_body": "Author body unresolved; no buyer promotion",
+          "metadata": [
+            {
+              "@context": "https://schema.org",
+              "@type": "Article",
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://www.indiehackers.com/post/a-60-second-ai-video-can-need-180-seconds-of-generation-heres-how-to-brief-it-9R9l66ZosHug0dEitgGq"
+              },
+              "headline": "A 60-second AI video can need 180 seconds of generation. Here's how to brief it.",
+              "datePublished": "2026-11-27T10:43:14.926Z",
+              "dateModified": "2026-11-27T10:43:14.926Z",
+              "author": [
+                {
+                  "@type": "Person",
+                  "name": "Haerang Yoo",
+                  "sameAs": [
+                    "https://www.indiehackers.com/HaerangYoo"
+                  ]
+                }
+              ],
+              "publisher": {
+                "@type": "Organization",
+                "name": "Indie Hackers",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://www.indiehackers.com/images/logos/apple-touch-icon.png",
+                  "width": 152,
+                  "height": 152
+                }
+              }
+            }
+          ],
+          "decision": "Discussion/seller/product research only; no paid buyer or complete competition/contact evidence"
+        }
+      ],
       "opportunity_ids": [],
       "inspected_keys": [
-        "/post/i-wrote-to-15-founders-i-didnt-even-get-a-no-SZXQhDekmDRPjflK52Sf",
-        "/post/300-visitors-in-24-hours-but-zero-conversions-what-went-wrong-yf4UjXpmlAdxnnYaPpfD",
-        "/post/we-rank-80-on-google-for-our-own-main-keyword-turns-out-our-best-sales-channel-is-telling-people-things-before-we-have-to-LnIIwoW7pQeq5RGih2m3",
-        "/post/i-put-the-refund-rules-on-our-pricing-page-not-just-the-prices-LkG6UwsUnFVJaEXJdqHp",
-        "/post/i-have-three-saas-ideas-every-one-already-has-competitors-should-i-still-build-one-SYbQxT79gTa6UH2enKDa",
-        "/post/128-visits-14-editor-opens-0-4-conversion-leaks-we-found-fixed-in-our-browser-only-app-store-screenshot-tool-uwEONEZjh931CZYjQw4s",
-        "/post/ga4-counted-1-704-users-on-my-tiny-site-in-one-day-almost-none-of-them-stayed-a-single-second-fGQdH7VK7eUCGPufhGC7",
-        "/post/a-month-after-launch-98-of-my-traffic-is-still-bots-uxexY1nxeJHNTjEaTH66",
-        "/post/the-run-that-quietly-did-nothing-dk7TpVUE85SyXNhO0dRI",
-        "/post/news/google-play-developers-must-say-by-february-1-if-theyre-a-business-IjfMlLNaXzf9RidBgVjq",
-        "/post/numbers/the-lead-in-marc-lous-100k-hackathon-changed-hands-twice-in-a-day-ldsQ7GKnaBBPhyRfVUCN",
-        "/post/takes/pieter-levels-says-anthropic-or-openai-should-buy-zapier-SKo8qQHxy0xgFHf7fmOH",
-        "/post/numbers/a-mac-app-for-tiktok-marketers-tops-marc-lous-hackathon-board-by-5-xzBkx5UdK7QmCS7Iv5KE",
-        "/post/numbers/an-open-source-ai-agent-app-says-its-mrr-went-from-120-to-over-5k-in-a-month-XloVSrMxZEkHGrTLGUP6",
-        "/post/news/a-media-founder-who-says-vc-backed-media-works-out-never-raised-17-5m-cF04du7lgD3EKIA8GFbS",
-        "/post/building-for-developers-great-market-or-worst-customers-whats-your-take-hpRdrVPU8FsiAf45zz4n",
-        "/post/numbers/marc-lou-says-his-newsletter-tool-grew-faster-than-his-analytics-tool-s9goWpov6eccRhIql46p",
         "/post/chatgpt-recommends-8-tools-for-my-exact-problem-mine-isnt-one-of-them-AQykyNTtBS5CdTjZOx7P",
         "/post/i-built-a-local-first-jira-gantt-sprint-forecasting-tool-because-getting-a-marketplace-plugin-past-jira-admins-and-infosec-takes-months-tzhm3BLsOrGis09Nd9P1",
-        "/post/numbers/a-screenshot-api-is-losing-mrr-its-founder-says-he-stopped-marketing-SFxavtH0wA0ueQYdGbVK",
-        "/post/numbers/b2b-startups-on-marc-lous-site-are-likelier-than-b2c-ones-to-make-10k-a-month-hkywOxO1TnwQ8YiKfS94",
-        "/post/pricing/gpt-6-2-astra-now-uses-up-chatgpt-plan-limits-40-faster-than-last-week-3aiobEfq6zQmIoLxFgVh",
+        "/post/i-wrote-to-15-founders-i-didnt-even-get-a-no-SZXQhDekmDRPjflK52Sf",
+        "/post/video-editing-shouldnt-feel-like-passing-files-around-all-day-so-we-built-teams-on-cardboard-and-now-it-feels-like-a-sport-6yAOvDAm9JiKZmDYtvzS",
+        "/post/300-visitors-in-24-hours-but-zero-conversions-what-went-wrong-yf4UjXpmlAdxnnYaPpfD",
+        "/post/i-put-the-refund-rules-on-our-pricing-page-not-just-the-prices-LkG6UwsUnFVJaEXJdqHp",
+        "/post/ga4-counted-1-704-users-on-my-tiny-site-in-one-day-almost-none-of-them-stayed-a-single-second-fGQdH7VK7eUCGPufhGC7",
+        "/post/i-have-three-saas-ideas-every-one-already-has-competitors-should-i-still-build-one-SYbQxT79gTa6UH2enKDa",
+        "/post/we-rank-80-on-google-for-our-own-main-keyword-turns-out-our-best-sales-channel-is-telling-people-things-before-we-have-to-LnIIwoW7pQeq5RGih2m3",
+        "/post/news/second-place-in-marc-lous-hackathon-disqualifies-himself-over-old-code-Gvc0jUUkOsjIkqXnhfPj",
+        "/post/launches/openai-offers-ai-experts-up-to-8-000-a-month-to-help-small-businesses-pv8eZSF4bzynYYrebDjx",
+        "/post/news/marc-lous-100k-hackathon-now-has-150-000-in-cash-prizes-58os9aTVSogVcbpq2fBY",
+        "/post/trends/three-founders-are-swapping-hosted-tools-for-their-own-servers-1FNsWUqmJo0CamQ4oEc3",
+        "/post/numbers/an-ai-seo-tool-has-made-4m-one-cofounder-had-failed-at-saas-twice-cj7TLKYdsCzbHp2zCIF3",
+        "/post/launches/a-high-school-for-teenage-founders-is-running-a-1m-scholarship-contest-4rbbpPJZJOI3oVkKKbqd",
+        "/post/picking-a-domain-for-a-side-project-look-at-the-3-year-cost-not-the-first-year-price-HbPlOWbyChRUSbRncHCO",
+        "/post/i-missed-my-own-seo-checkpoint-still-2-clicks-c5GayAp4YV1PCg9fhz7q",
+        "/post/why-my-product-asks-users-for-shipping-costs-before-showing-any-profit-2Iu12fFrHIC9nybVHzNF",
+        "/post/ive-built-ghostai-a-job-search-operating-system-WPzgLSPm4o0dwbyzolRQ",
+        "/post/has-chatgpt-ever-recommended-your-product-and-do-you-know-why-G4HxM4A1Cz4BF18OS374",
+        "/post/a-60-second-ai-video-can-need-180-seconds-of-generation-heres-how-to-brief-it-9R9l66ZosHug0dEitgGq",
+        "/post/what-should-stay-editable-after-you-stop-recording-a-product-demo-CI7BR0oOeSmGIgKLEODm",
+        "/post/my-30-minute-reddit-g2-research-playbook-to-validate-a-b2b-idea-before-buying-a-domain-xmqnxA6VfNxPBd5TWeZH",
+        "/post/building-for-developers-great-market-or-worst-customers-whats-your-take-hpRdrVPU8FsiAf45zz4n",
         "/post/turn-your-rejected-freelance-proposals-into-useful-feedback-with-ai-k3UCoFffqTUHbXAckvJJ",
-        "/post/news/a-coding-app-stops-using-claude-and-codex-sign-in-files-to-count-users-3BYT5WHmfqtQZxUEmX8O",
-        "/post/one-line-in-the-work-log-was-never-requested-did-the-ai-s-report-mention-it-enYk4mvZ0D5jAeZcwOlf",
-        "/post/launches/a-new-tool-from-pieter-levels-lets-anyone-block-3-728-x-accounts-he-says-post-ai-replies-8sgOq6YhwgahokzyznK6",
-        "/post/launches/anthropic-can-now-bill-your-apps-users-directly-for-their-claude-usage-vf3PePdJJMVf272QMZ3l",
-        "/post/takes/did-claude-opus-5-5-get-worse-a-coding-app-ceo-sees-no-sign-of-it-BQwm4QaX7cUZykFYvo1j"
+        "/post/launches/googles-new-gemini-ties-claude-opus-5-5-on-a-coding-test-at-about-half-the-cost-RAIcAVLjvmyfJVMbG4PM",
+        "/post/shutdowns/lemon-squeezy-is-closing-its-stripe-replacement-doesnt-deliver-files-tro66hRkWRwuH0PwycFI",
+        "/post/numbers/gemini-4s-cheapest-model-at-full-effort-can-cost-more-than-a-pricier-one-4NtKgYVOIRsN5iqmqgHA"
       ]
     },
     {
@@ -318,80 +397,70 @@
       "access_method": "bounded public HTTP/JSON; no authenticated endpoint",
       "url": "https://www1.tradekey.com/buyoffer_search/start_date/3/page_no/3.htm",
       "records_inspected": 25,
-      "primary_pages_opened": 2,
-      "verified_buyer_requests": 2,
-      "explicit_commercial_signals": 2,
+      "primary_pages_opened": 0,
+      "verified_buyer_requests": 0,
+      "explicit_commercial_signals": 0,
       "collected": 0,
-      "errors": [],
+      "errors": [
+        {
+          "url": "https://importer1.tradekey.com/buyoffer/Bananas-For-Supply-3879849.html",
+          "error": "HTTPError: HTTP Error 503: Service Unavailable"
+        },
+        {
+          "url": "https://importer1.tradekey.com/buyoffer/Dump-Trucks-3879847.html",
+          "error": "HTTPError: HTTP Error 503: Service Unavailable"
+        }
+      ],
       "limitations": [
         "Physical goods buyers do not automatically buy research. Contact requires platform sign-in; no access bypass. No bid-count visibility => UNKNOWN."
       ],
       "evidence_snapshots": [
-        "data/evidence/3914e4f508c84945.json#sha256=c5c0d50bb12ea4bb83022f97d4b886e7432e5b2dc0b4253329d790821ef7e65b",
-        "data/evidence/fb01d9a07d7ceb10.json#sha256=9ba7b8dd675c09d2d282d952b766b7380228e2ad59470094ce5e21195d47909c",
-        "data/evidence/849466fa20d3523e.json#sha256=1576f48b0986bcca83e0b1929361020271d1da8fc8eeba565655bfdab0d58b59"
+        "data/evidence/3914e4f508c84945.json#sha256=6fde4b02c08c88a0c4f74cee4bc5adde186d8890d01581d557166eaf3e3bea91"
       ],
-      "records": [
-        {
-          "url": "https://importer1.tradekey.com/buyoffer/Aquarium-Products-3879795.html",
-          "primary_excerpt": "Last Updated: Posted on: 26 Nov 2026 Time Left: 12M 3D Buying Frequency: Monthly Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details Aquarium filter and accessories Refine by popular tags Aquarium products Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.08746 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French Guiana French Polynesia Gabon Gambia Georgia Germany Ghana Gibraltar Greece Greenland Grenada Guadeloupe Guam Guatemala Guernsey Guinea Guinea-Bissau Guyana Haiti Honduras Hong Kong Hungary Iceland India Indonesia Iraq Ireland Isle of Man Israel Italy Jamaica Japan Jersey Jordan Kazakhstan Kenya Kiribati Kuwait Kyrgyzstan Laos Latvia Lebanon Lesotho Liberia Libya Liechtenstein Lithuania Luxembourg Macao SAR Macedonia Madagascar Malawi Malaysia Maldives Mali Malta Marshall Islands Martinique Mauritania Mauritius Mayotte",
-          "decision": "Physical goods RFQ; not a commissioned China research service; contact gated and competition unknown",
-          "buyer": true,
-          "published_at": "2026-11-26T00:00:00+00:00",
-          "date_precision": "day; original posted date, not crawl date"
-        },
-        {
-          "url": "https://importer1.tradekey.com/buyoffer/Question-3879793.html",
-          "primary_excerpt": "Last Updated: Posted on: 26 Nov 2026 Time Left: 28D 13H Buying Frequency: Monthly Payment Terms: Western Union, Money Gram Destination Port: Worldwide Quote Now Buyer Information To view this buyer's contact information please Sign In Now! Not a member yet? It takes less than a minute to Join FREE now! RFQ Details We are currently looking to connect with experienced and qualified individuals, investment professionals, and project operators who have the expertise to manage investments and portfolios involving substantial capital, as well as those with significant international investment interests. Refine by popular tags a Home Premium Services Sell Offers Tradeshows Buyers About Sitemap Products Advertise Companies Country Search Trade Alerts Contact Us Adhesive Tapes Connect with us: Privacy Policy - Terms of Service - Intellectual Property Policy Copyright © 2026 TradeKey.com Created in 0.09961 seconds Join Free Already on TradeKey? Sign In * Required Fields * I am a: Buyer Seller * Name: * Email: Your email will be used to sign-in to TradeKey.com * Password: Show Password (6 - 20 characters) * Company Name: * Country: Select Country Afghanistan Aland Islands Albania Algeria American Samoa Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Herzegovina Botswana Brazil British Virgin Islands Brunei Bulgaria Burkina Faso Burundi Cambodia Cameroon Canada Cape Verde Cayman Islands Central African Republic Chad Chile China Christmas Island Colombia Comoros Congo Congo (DRC) Cook Islands Costa Rica Cote d'Ivoire Croatia Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic East Timor Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Falkland Islands Faroe Islands Fiji Finland France French Guiana French Polynesia Gabon Gambia Georgia Germany Ghana Gibraltar Greece Greenland Grenada Guadeloupe Guam Guatemala Guernsey Guinea Guinea-Bissau Guyana Haiti Honduras Hong Kong Hungary Iceland India Indonesia",
-          "decision": "Physical goods RFQ; not a commissioned China research service; contact gated and competition unknown",
-          "buyer": true,
-          "published_at": "2026-11-26T00:00:00+00:00",
-          "date_precision": "day; original posted date, not crawl date"
-        }
-      ],
+      "records": [],
       "opportunity_ids": [],
       "inspected_keys": [
-        "https://importer1.tradekey.com/buyoffer/Aquarium-Products-3879795.html",
-        "https://importer1.tradekey.com/buyoffer/Question-3879793.html",
-        "https://importer1.tradekey.com/buyoffer/Olive-Pits-Crushed-Olive-Stones-For-Biomass-Fuel-20-000-MT-Year-3879789.html",
-        "https://importer1.tradekey.com/buyoffer/I-NEED-FSG-CASTOR-OIL-3879785.html",
-        "https://importer1.tradekey.com/buyoffer/Gold-Bars-3879779.html",
-        "https://importer1.tradekey.com/buyoffer/Black-Tea-Wholesale-Tea-Bulk-Tea-Tea-Bags-Tea-Exporters-Tea-Prod-3879777.html",
-        "https://importer1.tradekey.com/buyoffer/Perfumes-And-Beauty-Products-For-Resale-3879775.html",
-        "https://importer1.tradekey.com/buyoffer/Spring-Nuts-For-Channel-Support-Systems-3879773.html",
-        "https://importer1.tradekey.com/buyoffer/Steel-Pipe-Fittings-For-Trade-Supply-3879771.html",
-        "https://importer1.tradekey.com/buyoffer/G-Shaped-LED-Charging-Speakers-Required-3879769.html",
-        "https://importer1.tradekey.com/buyoffer/Petroleum-Wax-Supply-Inquiry-3879767.html",
-        "https://importer1.tradekey.com/buyoffer/Chicken-Paws-For-Export-Supply-Needed-3879765.html",
-        "https://importer1.tradekey.com/buyoffer/Brand-New-EPOCH-650-Flaw-Detector-Required-3879763.html",
-        "https://importer1.tradekey.com/buyoffer/Perfume-Or-Cologne-3879761.html",
-        "https://importer1.tradekey.com/buyoffer/We-Consume-8500m3-Of-White-Peat-A-Year-Need-Supplier-For-Long-Term-3879757.html",
-        "https://importer1.tradekey.com/buyoffer/Salt-Tablet-3879755.html",
-        "https://importer1.tradekey.com/buyoffer/Ricksha-Tire-3879741.html",
-        "https://importer1.tradekey.com/buyoffer/Professional-Custom-Basketball-Practice-Jerseys-Wholesale-amp-OEM--3879739.html",
-        "https://importer1.tradekey.com/buyoffer/Industrial-Used-Lube-Bulk-3879737.html",
-        "https://importer1.tradekey.com/buyoffer/Looking-For-Excess-Inventory-EOL-Electronic-Components-We-Buy-amp-Con-3879735.html",
-        "https://importer1.tradekey.com/buyoffer/Looking-For-Himalayan-Pink-Salt-Supplier-From-Pakistan-Food-Grade--3879733.html",
-        "https://importer1.tradekey.com/buyoffer/Through-Boring-Machine-Requirement-3879731.html",
-        "https://importer1.tradekey.com/buyoffer/EN590-Jet-Fuel-And-LPG-Supply-Inquiry-3879729.html",
-        "https://importer1.tradekey.com/buyoffer/Vanilla-For-Commercial-Supply-3879727.html",
-        "https://importer1.tradekey.com/buyoffer/Wholesale-Jackets-Required-3879725.html"
+        "https://importer1.tradekey.com/buyoffer/Bananas-For-Supply-3879849.html",
+        "https://importer1.tradekey.com/buyoffer/Dump-Trucks-3879847.html",
+        "https://importer1.tradekey.com/buyoffer/Tile-Adhesive-And-Grout-3879845.html",
+        "https://importer1.tradekey.com/buyoffer/Dried-Fruits-3879843.html",
+        "https://importer1.tradekey.com/buyoffer/Waste-Wool-3879841.html",
+        "https://importer1.tradekey.com/buyoffer/Women-s-Boutique-Apparel-3879839.html",
+        "https://importer1.tradekey.com/buyoffer/Heat-Detectors-3879837.html",
+        "https://importer1.tradekey.com/buyoffer/Coconut-Charcoal-3879835.html",
+        "https://importer1.tradekey.com/buyoffer/Tread-Rubber-3879833.html",
+        "https://importer1.tradekey.com/buyoffer/Organic-Baby-Diapers-3879831.html",
+        "https://importer1.tradekey.com/buyoffer/Copper-Concentrate-3879829.html",
+        "https://importer1.tradekey.com/buyoffer/Meat-Products-For-Sourcing-3879827.html",
+        "https://importer1.tradekey.com/buyoffer/Automotive-Filtration-Media-3879825.html",
+        "https://importer1.tradekey.com/buyoffer/EMT-Electrical-Conduit-3879823.html",
+        "https://importer1.tradekey.com/buyoffer/Cotton-Waste-For-Processing-3879821.html",
+        "https://importer1.tradekey.com/buyoffer/Cooking-Oil-Supply-3879819.html",
+        "https://importer1.tradekey.com/buyoffer/API-5L-Pipe-Couplings-3879817.html",
+        "https://importer1.tradekey.com/buyoffer/Roasted-Sesame-Seeds-From-Sudan-Or-Ethiopia-3879815.html",
+        "https://importer1.tradekey.com/buyoffer/ECO-Brake-Pads-KP0861-3879813.html",
+        "https://importer1.tradekey.com/buyoffer/EN590-Diesel-Fuel-3879811.html",
+        "https://importer1.tradekey.com/buyoffer/Chicken-Egg-Incubator-Or-Hatcher-3879809.html",
+        "https://importer1.tradekey.com/buyoffer/Stockfish-For-Supply-3879807.html",
+        "https://importer1.tradekey.com/buyoffer/Used-Japanese-Mattresses-And-Futons-3879805.html",
+        "https://importer1.tradekey.com/buyoffer/Piston-Rings-And-Engine-Liners-3879803.html",
+        "https://importer1.tradekey.com/buyoffer/Sugar-Palm-Fruit-3879801.html"
       ]
     }
   ],
-  "unique_refreshed": 65,
+  "unique_refreshed": 66,
   "info_edge_refresh": [
     {
       "id": "5409f529cb2b0f7b",
       "url": "https://community.n8n.io/t/assistant-credits-top-up-now-available/318075",
-      "checked_at": "2026-11-27T10:48:33.359480+00:00",
+      "checked_at": "2026-11-28T10:20:10.758097+00:00",
       "refreshed": false,
       "reason": "event expired; no publication rejuvenation"
     },
     {
       "id": "edge-haiku-2026-10-07",
       "url": "https://www.anthropic.com/claude-haiku-5-5",
-      "checked_at": "2026-11-27T10:48:33.359480+00:00",
+      "checked_at": "2026-11-28T10:20:10.758097+00:00",
       "refreshed": false,
       "reason": "event expired; no publication rejuvenation"
     }

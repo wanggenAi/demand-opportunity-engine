@@ -1,0 +1,94 @@
+{
+  "source_api_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/4862",
+  "collected_at": "2026-11-28T10:20:10.758097+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/4862",
+    "repository_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid",
+    "labels_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/4862/labels{/name}",
+    "comments_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/4862/comments",
+    "events_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/4862/events",
+    "html_url": "https://github.com/limitlessprojects/Go-Hybrid/issues/4862",
+    "id": 6649872394,
+    "node_id": "I_kwDOVFB-j88AAAABjF0ACg",
+    "number": 4862,
+    "title": "[tooling] deliberate-close freezes queue_snapshot via mtime check; pr_triage_runner skips live label/CI/mergeable checks, truncates pagination, fails open on config, and ignores --label-only",
+    "user": {
+      "login": "Urius-beta",
+      "id": 362006745,
+      "node_id": "U_kgDOFZPI2Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/362006745?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Urius-beta",
+      "html_url": "https://github.com/Urius-beta",
+      "followers_url": "https://api.github.com/users/Urius-beta/followers",
+      "following_url": "https://api.github.com/users/Urius-beta/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Urius-beta/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Urius-beta/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Urius-beta/subscriptions",
+      "organizations_url": "https://api.github.com/users/Urius-beta/orgs",
+      "repos_url": "https://api.github.com/users/Urius-beta/repos",
+      "events_url": "https://api.github.com/users/Urius-beta/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Urius-beta/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2026-11-27T15:57:49Z",
+    "updated_at": "2026-11-27T16:43:04Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [],
+    "type": null,
+    "status": {
+      "id": 2,
+      "name": "Backlog",
+      "category": "backlog"
+    },
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Summary\n\nOn `main` @ `67ba97f` (introduced in `4af599f` and `ab965a1`), the live `deliberate-close` automation pipeline has two compounding fail-open defects that violate Hard Rules 2 & 3 of `tools/pr_triage_runner.py` and `.github/workflows/deliberate-close.yml`. *(Note: these are distinct from #4825, which covers `mergeable: null` mapping in `queue_snapshot.py` and `decide()`'s `bot:*` labels.)*\n\n---\n\n## 1. `.github/workflows/deliberate-close.yml`: freshness check always sees `mtime = now()`, freezing the snapshot indefinitely (observed in production)\n\nIn `.github/workflows/deliberate-close.yml` lines 63–70:\n\n```bash\ngit fetch origin automation/state --depth=1 2>/dev/null || true\ngit show FETCH_HEAD:tools/state/queue_snapshot.json > /tmp/tick/branch_snapshot.json 2>/dev/null || true\nif [ -s /tmp/tick/branch_snapshot.json ] && [ -z \"$(find /tmp/tick/branch_snapshot.json -mmin +1440)\" ]; then\n  echo \"snapshot: automation/state copy is fresh (<24h) — reusing\"\n  mv /tmp/tick/branch_snapshot.json /tmp/tick/queue_snapshot.json\nelif [ -s tools/state/queue_snapshot.json ] && [ -z \"$(find tools/state/queue_snapshot.json -mmin +1440)\" ]; then\n```\n\n- `git show ... > /tmp/tick/branch_snapshot.json` writes a brand-new file at `now()`, so its `mtime` is always ~0s old and `find ... -mmin +1440` is unconditionally empty.\n- The `elif` branch has the same flaw: `actions/checkout@v4` creates `tools/state/queue_snapshot.json` with `mtime = now()`.\n- As a result, the `else` branch (`python3 tools/queue_snapshot.py`) is unreachable whenever either branch holds a non-empty snapshot, and every subsequent tick re-commits the same frozen snapshot back to `automation/state`.\n- **Live production verification:** Run `45968227452` (`51f224a`, `2026-11-27T09:19:42Z`) ran **24h 50m** after the `2026-11-26T08:29:08Z` snapshot on `main`, yet `automation/state:tools/state/queue_snapshot.json` has the byte-identical blob SHA `e967f0561c03c74e429243ea3520b321a7b9bf37` (`828884` bytes).\n- **Secondary workflow issue (lines 119–132):** Step 3 appends to `main`'s checked-out `tools/state/heartbeat.log` and force-pushes `HEAD:refs/heads/automation/state` without first restoring `FETCH_HEAD:tools/state/heartbeat.log`, erasing prior `automation/state` heartbeat lines on the next tick.\n\n### Suggested workflow fix (not included in our PR because our contributor token omits `workflow` scope)\n\nCheck the snapshot's actual commit timestamp (or embedded timestamp) instead of filesystem `mtime`, and preserve `FETCH_HEAD:tools/state/heartbeat.log` before appending:\n\n```bash\nBRANCH_TS=$(git log -1 --format=%ct FETCH_HEAD -- tools/state/queue_snapshot.json 2>/dev/null || echo 0)\nMAIN_TS=$(git log -1 --format=%ct HEAD -- tools/state/queue_snapshot.json 2>/dev/null || echo 0)\nNOW_TS=$(date +%s)\nif [ -s /tmp/tick/branch_snapshot.json ] && [ $((NOW_TS - BRANCH_TS)) -lt 86400 ]; then\n  ...\nelif [ -s tools/state/queue_snapshot.json ] && [ $((NOW_TS - MAIN_TS)) -lt 86400 ]; then\n  ...\n```\n\n---\n\n## 2. `tools/pr_triage_runner.py`: five safety-guard defects amplified by stale snapshots\n\n1. **Stale labels, title, CI, and mergeability never re-verified live before closing (lines 254–274):** `main()` fetches `GET /repos/{REPO}/issues/{num}` and checks only `live.get(\"state\") != \"open\"`. A PR that received `triage:keep` / `triage:pareto` / `triage:wildcard-hold`, was renamed to include `wildcard`, had its CI turn green/pending, or had its conflict resolved after the snapshot is still closed `not_planned`.\n2. **Fail-open `config_protected()` (lines 63–75):** Missing, unreadable, or malformed `triage_config.json` prints a note and returns `set()`, silently disabling `wildcard_holds` and `drafts_parked` protection.\n3. **Single-page truncation in `reopened_recently()` and `author_recently_active()` (lines 127, 155):** Both endpoints query only `?per_page=100` (oldest 100 items, no pagination). On PRs with >100 events or comments, recent reopens and recent author replies on page 2+ are invisible — reintroducing the #1525 bug already pinned in `tools/test_queue_sweeper.py`.\n4. **`--label-only` silently ignored (line 215):** Passing `--execute --label-only` still posts close comments and closes PRs.\n5. **Import-time `sys.exit(\"GH_TOKEN missing\")` (lines 41–42) and inconsistent `decide()` return type (line 200):** Prevents offline unit testing of `pr_triage_runner.py` without env mutation.\n\n## Fix & Verification\n\nOpening a companion PR fixing all five `tools/pr_triage_runner.py` issues with 9 new offline regression tests in `tools/test_queue_sweeper.py` (already registered in `.github/workflows/ci.yml`; `python3 tools/check_test_registration.py` stays green).\n\n**Bounty payout address (Base USDC per `BOUNTY.md`):** `0x0FB9EaDB927EEc055F96d1E30880fff13C609F60`",
+    "reactions": {
+      "url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/4862/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/limitlessprojects/Go-Hybrid/issues/4862/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "Urius-beta",
+      "text": "Companion fix PR opened: #4863 (fixes all five `tools/pr_triage_runner.py` issues with 9 new offline regression tests in `tools/test_queue_sweeper.py`, 24/24 passing + all CI guards green).",
+      "at": "2026-11-27T15:59:06Z",
+      "url": "https://github.com/limitlessprojects/Go-Hybrid/issues/4862#issuecomment-7222717485"
+    }
+  ],
+  "comments_complete": true
+}

@@ -1,0 +1,187 @@
+{
+  "source_api_url": "https://api.github.com/repos/heatwaveqc/Too-Much-Magic-Modpack/issues/822",
+  "collected_at": "2026-11-28T10:20:10.758097+00:00",
+  "source": {
+    "url": "https://api.github.com/repos/heatwaveqc/Too-Much-Magic-Modpack/issues/822",
+    "repository_url": "https://api.github.com/repos/heatwaveqc/Too-Much-Magic-Modpack",
+    "labels_url": "https://api.github.com/repos/heatwaveqc/Too-Much-Magic-Modpack/issues/822/labels{/name}",
+    "comments_url": "https://api.github.com/repos/heatwaveqc/Too-Much-Magic-Modpack/issues/822/comments",
+    "events_url": "https://api.github.com/repos/heatwaveqc/Too-Much-Magic-Modpack/issues/822/events",
+    "html_url": "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/822",
+    "id": 6650234230,
+    "node_id": "I_kwDOVtyV-c8AAAABjGKFdg",
+    "number": 822,
+    "title": "Tentative Progression design: Hearth Fae transformation, Hearthkeeper and Beastfriend Paths",
+    "user": {
+      "login": "heatwaveqc",
+      "id": 22598785,
+      "node_id": "MDQ6VXNlcjIyNTk4Nzg1",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22598785?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/heatwaveqc",
+      "html_url": "https://github.com/heatwaveqc",
+      "followers_url": "https://api.github.com/users/heatwaveqc/followers",
+      "following_url": "https://api.github.com/users/heatwaveqc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/heatwaveqc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/heatwaveqc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/heatwaveqc/subscriptions",
+      "organizations_url": "https://api.github.com/users/heatwaveqc/orgs",
+      "repos_url": "https://api.github.com/users/heatwaveqc/repos",
+      "events_url": "https://api.github.com/users/heatwaveqc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/heatwaveqc/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 13210104519,
+        "node_id": "LA_kwDOVtyV-c8AAAADE2Iyxw",
+        "url": "https://api.github.com/repos/heatwaveqc/Too-Much-Magic-Modpack/labels/status:%20needs-decision",
+        "name": "status: needs-decision",
+        "color": "ededed",
+        "default": false,
+        "description": null,
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 5,
+    "created_at": "2026-11-27T16:18:35Z",
+    "updated_at": "2026-11-28T04:24:41Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "issue_field_values": [],
+    "type": null,
+    "status": {
+      "id": 2,
+      "name": "Backlog",
+      "category": "backlog"
+    },
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "## Owner direction — 2026-11-27\nTentative design targets, **not implementation authorization or a Christmas alpha commitment**. Make the Horse Girl/comfycore lifestyle a mechanically rewarding alternative to combat and mining, without restricting players to a benevolent aesthetic. Distinct transformation and two independently selectable Paths; compatibility matrix and enrollment rules remain to be decided. Related: #415 (other new forms), #742 (companion quest chapters), #768 (Unicorn Academy bond events), #475 (XP), #431 (canonical work ledger). Preserve the existing Newbie companion access decision; no global MXP for Newbies.\n\n### HF-01 — Hearth Fae transformation (proposal)\nFae of hospitality, companionship and the relationship between civilization and nature, rather than a Dryad's wilderness or Forest Dragon's physiology.\n- Candidate cosmetic wings/ears, passive animal attraction, improved taming/breeding, affinity with friendly Fae, benefits from cooked food/sweets/tea/recreational drinks, regeneration near home/domesticated animals, slow falling rather than free creative flight, and possible cold-iron vulnerability.\n- Preserve the reason to use horses and mounts. Acquisition, diet, vulnerabilities, cosmetics, and Path compatibility need owner decisions; no assumed values.\n\n### HK-01 — Hearthkeeper Path (tentative target; owner-specific requirement)\n- Cottage, cooking, gardening, brewing, hospitality, comfort magic and domestic enchantment; candidate experience sources from productive domestic activities.\n- **Food prepared by a skilled Hearthkeeper restores more hunger and carries extended potion-effect duration. Enhancements attach to the produced item stack, NOT to the consumer or a buff triggered by the Hearthkeeper eating it.** Another player can receive, trade for, store and consume the enhanced food with its benefits intact.\n- Consider food and potion-bearing consumable production across supported providers; distinguish native recipe effects from externally applied effects. Research persistent item data/components, producer attribution, stack merging, recipe reprocessing, automated production and transfers without repeated enhancement or duplication. Test non-Hearthkeeper consumption and ordinary unenhanced food; decide precise eligible processes, bonuses and caps with owner.\n\n### BF-01 — Beastfriend Path (tentative target; owner-specific requirement)\n- Taming, breeding, riding, healing, discovery and adventuring alongside companions; candidate skills for mounted speed/jump, healing, recall, protection/sanctuary, breeding, expanded eligible taming and defending companions.\n- **Extremely strong buffs to ALL owned pets, including undead and other non-cute companions.** No species or morality exclusion merely because the Path is cozy-themed. Secret necromancer class: a Beastfriend with an army of undead should be an intended viable fantasy, not a loophole.\n- Research ownership attribution, native tameables, summoned/controlled undead and magical companions via provider-specific adapters where necessary; do not silently override native summoning caps or treat arbitrary friendly mobs as pets. Determine scope of temporary summons and existing provider ownership, buff types/magnitude, stacking, lifecycle, offline owners, and multiplayer attribution. Verify both an ordinary pet/mount and a player-owned undead companion receive substantial benefits under the same generic ownership rules.\n- Reuse #768 bond milestone research, existing generic charm/taming, and companion chapter coverage rather than duplicating hooks. Candidate XP safeguards must avoid repeat-tame/breed/recall farming while allowing genuinely noncombat progression.\n\n## Work management\nAll three slices: `status: needs-decision`. Decision owner: pack owner. Exact open questions above; next action: owner design review and technical decomposition, not a coding claim. Design acceptance: settle form acquisition/compatibility, eligible producer/companion ownership scope, XP and tree mechanics, and balance; then promote bounded approved slices independently. No PR, no implementation or QA evidence, no build requested. No sprint deadline assigned.\nExecutable behavior belongs solely to compat/progression; future Paths are config-only, with reusable engine capabilities meeting the Level 3/Nonsense Test standard and optional native adapters. Future source and gameplay acceptance must follow normal Progression integration and QA gates. No new dependencies or native restrictions approved by this issue.",
+    "reactions": {
+      "url": "https://api.github.com/repos/heatwaveqc/Too-Much-Magic-Modpack/issues/822/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/heatwaveqc/Too-Much-Magic-Modpack/issues/822/timeline",
+    "performed_via_github_app": {
+      "id": 1144995,
+      "client_id": "Iv23liVemv8A9if9v0F2",
+      "slug": "chatgpt-codex-connector",
+      "node_id": "A_kwHOAOQ6Gs4AEXij",
+      "owner": {
+        "login": "openai",
+        "id": 14957082,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjE0OTU3MDgy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/14957082?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/openai",
+        "html_url": "https://github.com/openai",
+        "followers_url": "https://api.github.com/users/openai/followers",
+        "following_url": "https://api.github.com/users/openai/following{/other_user}",
+        "gists_url": "https://api.github.com/users/openai/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/openai/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/openai/subscriptions",
+        "organizations_url": "https://api.github.com/users/openai/orgs",
+        "repos_url": "https://api.github.com/users/openai/repos",
+        "events_url": "https://api.github.com/users/openai/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/openai/received_events",
+        "type": "Organization",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "name": "ChatGPT Codex Connector",
+      "description": "Bring ChatGPT and Codex to your GitHub repositories.",
+      "external_url": "https://www.chatgpt.com",
+      "html_url": "https://github.com/apps/chatgpt-codex-connector",
+      "created_at": "2025-02-14T01:37:05Z",
+      "updated_at": "2026-09-23T18:52:59Z",
+      "permissions": {
+        "actions": "write",
+        "checks": "read",
+        "contents": "write",
+        "emails": "read",
+        "issues": "write",
+        "metadata": "read",
+        "pull_requests": "write",
+        "statuses": "read",
+        "workflows": "write"
+      },
+      "events": [
+        "check_run",
+        "check_suite",
+        "commit_comment",
+        "issues",
+        "issue_comment",
+        "pull_request",
+        "pull_request_review",
+        "pull_request_review_comment",
+        "pull_request_review_thread",
+        "repository",
+        "status",
+        "sub_issues"
+      ]
+    },
+    "state_reason": null,
+    "pinned_comment": null,
+    "score": 1.0
+  },
+  "comments": [
+    {
+      "author": "heatwaveqc",
+      "text": "## HF-01 owner design refinement — 2026-11-27\n- Sage skill: greatly extend duration and effective radius of burning Sage; verify actual Hexerei provider/ownership and configurable duration/range hooks before specifying numbers. No global buff to unrelated players' Sage by default (implementation proposal, not locked).\n- **Hurry Home**: teleport to the player's bed. Safe destination validation, missing/obstructed bed handling, dimensions, activation/cooldown and combat behavior remain design questions. Do not restore arbitrary `/home` access.\n- **Diet: only processed foods made from combined ingredient sources.** Supersedes the previous broad cooked-food affinity proposal: raw foods and merely cooking a single source do not qualify. Reuse shared recipe-provenance/tag-based physiology engine (#444); distinct source families vs ingredients, bread/dough, drinks, magical foods and other edge cases require owner decisions. No assumed exceptions.\n- Substantial Feywild integrations, explicitly including better flight. Audit actual pinned Feywild capabilities/wing tiers and native gate coexistence (#330); earlier slow-fall-only candidate does not limit eventual enhanced Feywild flight. Exact upgrade mechanics and native interactions TBD; no free baseline creative flight approved.\nAll are tentative design targets, not coding or build authorization. HF-01 remains needs-decision; #431 already tracks the parent. Suggested acceptance once specified: compare Sage duration/radius to native baseline; own-bed teleport valid/invalid cases; reject raw/single-source cooked and accept verified multi-source dishes; demonstrate Feywild flight improvements with no native progression bypass unless explicitly approved.",
+      "at": "2026-11-27T16:23:51Z",
+      "url": "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/822#issuecomment-7223212362"
+    },
+    {
+      "author": "heatwaveqc",
+      "text": "## HF-01 — Hurry Home owner decision (2026-11-27)\nHurry Home must match the actual configured FTB /home functionality, except its destination is always the player's bed rather than an arbitrary /sethome location. Cross-dimensional travel is available from the initial unlock; no separate dimensional upgrade or rank gate. Follow existing FTB Home behavior/restrictions for activation, cooldown, warmup, safety and other relevant mechanics as applicable; verify actual installed provider/config before implementing, and define bed-missing/invalid handling consistently. Do not grant ordinary /sethome or arbitrary home destinations. This supersedes the prior open dimensional question. Remaining Hearth Fae design remains tentative; no coding/build authorization or status promotion.",
+      "at": "2026-11-27T16:25:43Z",
+      "url": "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/822#issuecomment-7223249174"
+    },
+    {
+      "author": "heatwaveqc",
+      "text": "## HF-01 — Atlas-backed first design pass and owner flower physiology decision (2026-11-27)\n**Owner requirement:** Proximity to actual planted flowers provides regeneration and small amounts of saturation. Potted flowers do NOT qualify. Use reusable server-side environmental predicates (configurable flower tags, bounded nearby checks, explicit non-potted eligibility); exact radius, frequency, regeneration strength and saturation increment/cap remain balance decisions. Avoid replacing the combined-source diet with full passive feeding. Test actual planted vs potted, no flowers, removal/movement, and modded flowers.\n\n**Verified native findings:** [Feywild 5.6.4 Atlas](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/test/full-integration/docs/mod-capabilities/mods/feywild.md), PR #701, SHA1 e59b68dd85b92ebbdbde478ea4e52fdb8b84c9d0; [Hexerei 0.5.0.3 Atlas](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/test/full-integration/docs/mod-capabilities/mods/hexerei.md), PR #683, SHA512 6ad9f14ad23e84e693c8a02fa210871f7f9f7abb34acb342d9c72aacaa822dc4d06d203d78803ab40dd5eb334344961586a3f223ae877c362f1788b7be1dad6a. Both match checked Packwiz pins. Prior exact-JAR research, not gameplay acceptance.\n\n### Candidate racial branches (suggestions, not approved numbers or implementation)\n- Seasonal Pixies: Spring breeds nearby eligible animals without feeding (8-block AABB); Summer grows eligible CropBlocks (±8 cube); Autumn resets mature crops and drops clone item, not full harvest loot (±8); Winter produces animal loot then damages adult eligible animals (8-block AABB, excludes certain tamed entities, may kill). Consider Spring frequency/range, Summer frequency/area, Autumn frequency/yield, Winter yield, preserving native eligibility/ownership and avoiding accidental loot multiplication. All require active ability, same-level owner and ticking entities; no offline automation assumption.\n- Lesser Fey: Mandragora flower growth frequency/range; Shroomling controlled mushroom-cow conversion; Bee Knight defensive abilities; Bellsnickel barter/book-copy costs (respect existing enchantment economy); Ent blessing range/strength and mounted mobility. Keep generic pet combat buffs in Beastfriend.\n- Racial flight candidates: Featherlight slow fall, Pixie Wings native-style glide/visible wings, Greater Wings speed/control, True Fae innate creative flight after legitimate native functional tiara acquisition, Swift Wings creative-flight speed. Native base Wing Tiara is non-flight, guaranteed normal loot from each of four 300HP sovereigns (Oberon, Titania, Ashen Lord, Mab); all six functional variants use base tiara + Elytra + Nether Star + Fey Dust + matching seasonal scroll or Blaze Rod/Echo Shard, no ongoing fuel/durability. Do not assume tiered native flight; preserve #330 provider ownership/coexistence and native progression unless owner revises.\n- Hearth magic: Sage Plate native configured range48, ~63 minutes loaded/lit, only natural monster spawning; candidate radius96 and 4x duration (~4h12m), per-skilled-owner/item applicability rather than global config. Potion candles reach AABB inflated5 and up20, refresh every160t with 200t base effect; candidate range/duration upgrades. Growth candles attempt three crop bonemeals periodically; candidate frequency/coverage. Ordinary candle burn extension; weather candle remains native global level effect, not a proposed buff. Hurry Home follows already recorded owner decision: bed-only equivalent of FTB /home, cross-dimensional from initial unlock.\n- Transformation ritual candidate: custom five-input Fey Altar scroll, Fey Gem + Blank Summoning Scroll + Cake + Dried Sage Bundle + Spring Pixie Summoning Scroll; altar supports five-input unordered recipes, but player transformation is custom, not native. Early noncombat acquisition proposal.\n- Other physiology candidates: combined-source food-only (owner requirement already recorded), cosmetic wings/ears, iron weapon vulnerability (native Fey iron-sensitive blocking is precedent, not a native player vulnerability), friendly nonboss Fey affinity, regeneration near bed (prior proposal; flower-based regeneration/saturation now explicit).\n- Candidate racial MXP: summon Fey, native quest completion, discover/grow seasonal flora, trade, craft/light Sage/candles, discover eligible dishes, one-time four sovereign victories; validate event attribution and dedup/anti-farming. Independent of Hearthkeeper production and Beastfriend general companion bonuses.\n\n**Status:** HF-01 remains needs-decision; owner decides acquisition, flight gates, skill balance and progression sources; engineering writer to decompose reusable capabilities after decisions. #431 canonical ledger already links #822. No code, recipe, config, PR, build or gameplay changes.",
+      "at": "2026-11-28T03:58:09Z",
+      "url": "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/822#issuecomment-7233557497"
+    },
+    {
+      "author": "heatwaveqc",
+      "text": "## HF-01 — owner flower balance and four-stage flight refinement (2026-11-27)\n**Flower proximity:** while within three blocks of an actually planted flower (not potted), restore 1 hunger point and 1 saturation point every minute. Small bonus; ordinary food/saturation caps, no multiplication by number of flowers proposed, no banked offline ticks. Previously requested regeneration remains, strength/cadence TBD. One hunger point = half a shank, not one full icon; 60 seconds = 1200 ticks nominal. Exact distance metric and modded flower eligibility to verify. Supersedes earlier unspecified nutrition radius/rate.\n**Flight design direction:** (I) overworld-achievable early slow manual flight via midair jumps, mild slow fall and fall damage protection; (II) on finding/acquiring an Elytra, unlock toggleable innate Elytra flight; (III) on personally defeating a Fey sovereign, unlock normal-speed full creative flight, no wing-tiara crafting gate; (IV) on crafting any functional upgraded Feywild Wing Tiara, unlock fast creative flight. Supersedes prior proposal requiring a functional tiara for ordinary creative flight. Suggested toggle of speed boost for building, not owner-locked. Reuse shared Progression flight/jump/attribute providers, #330 ownership coexistence, verified boss and recipe acquisition events; avoid native wing flag clobber and keep server-authoritative ownership/reset. Exact stage I acquisition, jump tuning and fall protection semantics, stage II legitimate acquisition event, stage III verified kill credit, stage IV native crafting attribution, speed multiplier/toggle and earlier skill interaction remain to settle. No equipment sacrifice beyond actual native tier-IV recipe assumed. Tentative design record, no coding or build authorization; HF-01 remains needs-decision and tracked by #431.",
+      "at": "2026-11-28T04:22:43Z",
+      "url": "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/822#issuecomment-7233985218"
+    },
+    {
+      "author": "heatwaveqc",
+      "text": "## HF-01 — complete Hearth Fae tree proposal v1 (owner requested; 2026-11-27)\nDesign only. Monk reference #721, live dev/progression monk.json blob 86f8282895c3fa9f705bcdf2f5344899ddad369f, Classic #722 README; newer Sea Dragon #831 shows 100 one-point ranks, free qualitative deeds, native baseline. Apply one point/rank, additive meaningful increments, one purchase per numerical stat/context, no filler, no duplicate Core stats; no mandatory purchase ordering proposed. The 100-point budget is a candidate, not a universal mandate or approved balance. No Classic/Unlimited split for this equipment-using form. Existing #822 owner decisions control.\n\n### Enrollment and innate physiology\nCandidate Blessing of the Hearth: custom 5-input Fey Altar scroll (Fey Gem, Blank Summoning Scroll, Cake, Dried Sage Bundle, Spring Pixie Summoning Scroll), use personally after graduation with legal native/Path compatibility; ritual/cure and visual hooks require approval. Owner: only combined-source processed food; actual planted flowers within 3 blocks restore 1 hunger and 1 saturation per 60 seconds, no stacking by flowers proposed, ordinary caps; regeneration near planted flowers is innate, magnitude unresolved (candidate +0.1 HP/s while near flowers). Candidate innate cosmetic wings/ears, non-boss Fey friendliness, iron vulnerability (exact interaction and severity TBD). No paid physiology, blanket pet combat or crafted-food enhancements; Beastfriend and Hearthkeeper retain those niches.\n\n### Free challenge entitlements (0 points, 0 automatic challenge XP; separate ordinary MXP awards)\n1. Fledgling Wings: personally summon an eligible seasonal Pixie after enrollment (candidate Overworld deed). Grant slow repeatable midair jump/manual flight, mild slow fall and fall damage protection as one flight capability; no creative hover. Tuning candidate repeated upward impulses capped below normal creative speed, no stacking with other providers.\n2. Greater Wings: legitimately acquire an Elytra after qualifying for I; toggleable innate Elytra glide. Verify legitimate acquisition and policy for prior possessions, no arbitrary advancement bypass.\n3. True Fae: personally defeat any Fey sovereign (Oberon, Titania, Ashen Lord, Mab). Full normal-speed creative flight; no functional tiara or Elytra required for this boss gate itself; stage II is the proposed previous progression stage, preserve any native provider independent entitlement. Settle whether out-of-order legitimate receipts activate immediately or wait for previous stage; propose record after enrollment and activate in stage order. \n4. Sovereign Wings: personally craft any of six native functional wing tiaras; fast creative flight, proposed 2× native flying speed toggle, default normal speed in precision builds. Do not count acquisition of someone else's crafted item. Verify recipe output event, full native costs, ownership reset, #330 provider coexistence.\n5. Hurry Home: candidate separate challenge personally sleep in own bed after enrollment; FTB /home equivalent with current bed-only destination and cross-dimension from initial unlock, exact configured warmup/cooldown/safety. No arbitrary home command entitlement.\nUse readable challenge HUD; one qualitative reward per deed (compound mechanics of Fledgling Wings are deliberately a single flight package). No purchase ranks for flight stages; optional keybinds use existing generic activation/Controls. No synthetic MXP/points awarded by deeds.\n\n### Purchased tree — 20 skills, 100 ranks (all one point)\n#### Seasonal Court (40 points)\n| ID | Skill | Ranks | Candidate additive increment/endpoint |\n|---|---|---:|---|\n| spring_rhythm | Spring Rhythm | 5 | +20% of native eligible goal-start rate/rank (2× at max); preserve breeding cooldown |\n| spring_reach | Spring Reach | 5 | +1 block native search radius/rank (8→13) |\n| summer_rhythm | Summer Rhythm | 5 | +20% of native eligible goal-start rate/rank (2×) |\n| summer_reach | Summer Reach | 5 | +1 block cube half-width/rank (8→13); bounded scan work |\n| autumn_reach | Autumn Reach | 5 | +1 block cube half-width/rank (8→13); bounded scan work |\n| autumn_bounty | Autumn Bounty | 5 | +20 percentage points chance of one extra native clone-output stack per successful harvest/rank (100% max; not full loot) |\n| winter_reach | Winter Reach | 5 | +1 block search radius/rank (8→13) |\n| winter_bounty | Winter Bounty | 5 | +20 percentage points chance of one extra eligible native generated loot result/rank (100% max); preserve actual animal damage and exclusions; no duplicated boss/protected drops |\n\n#### Hearthcraft (30 points)\n| ID | Skill | Ranks | Candidate additive increment/endpoint |\n|---|---|---:|---|\n| sage_reach | Sacred Ground | 5 | +9.6 blocks effective radius/rank (48→96 nominal; integer rounding and exact native distance predicate verified later) |\n| sage_endurance | Everlasting Sage | 5 | +60% of native duration/rank (4× at max; ~252 loaded minutes) |\n| candle_burn | Everlasting Flame | 5 | +40% native burn duration/rank (3× max) |\n| candle_reach | Candle Circle | 5 | +1 block horizontal AABB reach/rank (5→10); leave native vertical reach unchanged |\n| candle_duration | Lingering Light | 5 | +40 ticks to finite native candle effect duration/rank (200→400 ticks); instant effects excluded |\n| growth_rhythm | Garden Lights | 5 | -10 percentage points of native growth-candle pulse interval/rank (160→80 ticks at default; minimum interval guard) |\n\n#### Lesser Fey & Ents (30 points)\n| ID | Skill | Ranks | Candidate additive increment/endpoint |\n|---|---|---:|---|\n| mandragora_rhythm | Flowersong | 5 | +20% of native eligible flower-placement goal rate/rank (2×) |\n| mandragora_reach | Flower Garden | 5 | +1 block eligible placement search radius/rank; actual baseline and safe placement audit needed |\n| fey_barter | Fairy Bargain | 5 | +10 percentage points chance of one additional eligible non-book barter output/rank (50%); exclude protected loot and book copying |\n| ent_blessing_reach | Sheltering Boughs | 5 | +0.75 blocks seasonal blessing repulsion radius/rank (+3.75) |\n| ent_blessing_force | Stalwart Grove | 5 | +0.15 native repulsion strength/rank (1.5→2.25), preserve native target filter |\n| ent_mount_speed | Wind in the Leaves | 5 | +10% of native Ent mounted speed/rank (1.5× at max); additive with applicable native/Beastfriend mount bonuses subject to safe cap |\nRanks are proposed tuning, not runtime-supported claims. Native 5.6.4 Feywild and 0.5.0.3 Hexerei reference #701/#683 and prior #822 Atlas comment; effective configured pack values and legal gear stacking require verification. Use baseline-relative additive increases, not compounding; rate is not promised actual throughput; use bounded owner-attributed queries and no force-loading. For Sage/Candles propose capture qualified player's bonuses at lighting/placement or producer interaction as appropriate, not server-global config; clarify lifecycle and shared ownership. Do not extend weather candle scope or amplify instant potions. Preserve native Autumn clone output and Winter damage/eligibility; all output buffs need economy/replication audit. No duplicate book copying discount or broad pet damage/HP stats; Shroomling variant controls and Bee Knight defensive changes remain optional qualitative design candidates, no filler purchases.\n\n### MXP proposal (not final rates)\nUse existing configurable XP channel/routing, no parallel currency by default. Personal completed native Fey quests and first unique Fey summons/seasonal flora/dish discoveries as one-time ordinary source receipts (candidate 100 base MXP each); meaningful repeatable successful Fey altar crafting, personal garden harvest, legitimate gem barter, placing/lighting new valid Sage or potion/growth candles (candidate 5–20 base MXP per verified productive action, calibrate). Sovereign victory through existing verified boss/advancement policy, no double payout for challenge receipt. No reclick, relight, place/break, dismiss/resummon, self-trade or offline tick XP loops; don't count unattended ambient Pixie actions as direct player XP by default. Noncombat progression must remain viable; calibrate actual earn rates and growth. Prefer native tags and source-provenance categories, no hardcoded path logic.\n\n### Engine handoff and decision holds\nExisting engine patterns: native attribute/mode/achievement/strict challenge/XP machinery, verified acquisition and recipe events to audit rather than assume. Missing or unverified reusable capabilities: custom transformation/eligibility and cosmetic persistence; processed-food permission using #444; bounded planted-flower environmental nutrition/regen; aerial jump/fall/flight lifecycle; bed-only teleport using FTB configured rules; Feywild owner-scoped goal/loot/blessing/mount adapters; Hexerei owner-attributed burn/range/duration adapters; native Fey quest/recipe/boss event evidence. All runtime code belongs to compat/progression, form data config-only. Each adapter must pass Nonsense Test, validate actual pinned provider ABI, multiplayer ownership, respec/cure and reload, absence of optional provider, no duplicate bonuses; no new dependencies.\nOwner review: proposed 100 rank allocation, acquisition/cure and Path compatibility, order of flight receipt activation, regeneration, cold iron, stage I tuning, stage IV speed/toggle, exact XP rates and native integration economy limits. HF-01 remains needs-decision; #431 canonical ledger already tracks #822; no coding claim, no live path JSON, no PR, no runtime acceptance/build. Next: owner review, then split settled bounded requirements from engine investigation.",
+      "at": "2026-11-28T04:24:41Z",
+      "url": "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/822#issuecomment-7234019027"
+    }
+  ],
+  "comments_complete": true
+}

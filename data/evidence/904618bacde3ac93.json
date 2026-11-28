@@ -1,0 +1,109 @@
+{
+  "source_api_url": "https://hn.algolia.com/api/v1/items/50665796",
+  "collected_at": "2026-11-28T10:20:10.758097+00:00",
+  "source": {
+    "author": "legend-of-alan",
+    "children": [
+      {
+        "author": "antoineMoPa",
+        "children": [
+          {
+            "author": "legend-of-alan",
+            "children": [],
+            "created_at": "2026-11-27T13:35:30.000Z",
+            "created_at_i": 1795786530,
+            "id": 50666763,
+            "options": [],
+            "parent_id": 50666533,
+            "points": null,
+            "story_id": 50665796,
+            "text": "Sure thing! I like the shopping analogy usually, but I’ll illustrate the batch savings in more concrete terms maybe?<p>Especially for dependent calls, the savings are more obvious than the shopping analogy suggests.<p>So in code, this is roughly the difference between:<p><pre><code>  # old:\n  loop x4:\n      next_tool = ask_llm(context)\n      result = call_tool(next_tool)\n      context.append(result)\n\n  # do something with the result\n</code></pre>\nAnd<p><pre><code>  # new (no loop!)\n  script_to_run = ask_llm(my_tools_list)\n  result = run_sandbox(script_to_run)\n  \n  # do something with the result\n</code></pre>\nIn the new version we’ve mostly eliminated the need for the loop, and you’ll notice we only needed to call ask_llm() once! The LLM is batching multiple dependent tool calls into a little script that you run in a secure sandbox so you don’t have to go to the oracle of Delphi every time you need to call a tool.<p>In practice it allows the LLM to “think” in workflows instead of in terms of individual function calls. Not only does it save LLM calls, but it saves context because the LLM doesn’t often need to know every intermediate result.<p>Another example is from the README. In code mode, the LLM generates this script. It’s one call to the LLM and never leaves your pc. In contrast, normal tool calling would turn each of these calls into a call to the LLM.<p><pre><code>  # 4-step process\n  pr = get_pull_request(number=42)\n  runs = list_runs(commit=pr[&quot;head_sha&quot;])\n  failed = [run for run in runs if run[&quot;conclusion&quot;] == &quot;failure&quot;]\n  [{&quot;check&quot;: run[&quot;name&quot;], &quot;log&quot;: get_log(run_id=run[&quot;id&quot;])[-500:]} for run in failed]</code></pre>",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-27T13:11:14.000Z",
+        "created_at_i": 1795785074,
+        "id": 50666533,
+        "options": [],
+        "parent_id": 50665796,
+        "points": null,
+        "story_id": 50665796,
+        "text": "&gt; by having the agent write code against its tools instead of loading every tool definition up front<p>what does &quot;write code against its tools&quot; mean in practice?",
+        "title": null,
+        "type": "comment",
+        "url": null
+      },
+      {
+        "author": "drakmail",
+        "children": [
+          {
+            "author": "legend-of-alan",
+            "children": [],
+            "created_at": "2026-11-27T14:33:31.000Z",
+            "created_at_i": 1795790011,
+            "id": 50667404,
+            "options": [],
+            "parent_id": 50667258,
+            "points": null,
+            "story_id": 50665796,
+            "text": "Thats mostly correct, but there’s two distinctions between what they’re doing and what I built here where the savings come from.<p>1) this is a tool for people writing and building harnesses. Codex has their own implementation likely, but that doesn’t mean anybody building a SaaS or other agent application has access to that tech easily (until now).<p>2) what they’re doing is often not “code mode.” Yes, Claude code and codex can write scripts, but they can’t execute MCP or other (remote) tool calls directly from those scripts. They <i>can</i> write a script that replaces strings and uses on-system library and so forth. They (well big harnesses like Claude code are starting to do this experimentally) can’t write a script that pauses mid-execution, asks the machine to make an MCP or other call on its behalf (without installing a library or other tool), and comes back to execution after. The scripts you see codex and Claude code make are unable to reach out to MCP servers and mostly can’t do anything that “vanilla” python can’t. If you’re cloudflare and have 10,000 mcp servers you have to talk to, the python scripts that codex generates aren’t saving you many calls at all.",
+            "title": null,
+            "type": "comment",
+            "url": null
+          }
+        ],
+        "created_at": "2026-11-27T14:19:07.000Z",
+        "created_at_i": 1795789147,
+        "id": 50667258,
+        "options": [],
+        "parent_id": 50665796,
+        "points": null,
+        "story_id": 50665796,
+        "text": "Hm, my claude code and codex always write scripts in python or js, depends on project, without any ghost modes...",
+        "title": null,
+        "type": "comment",
+        "url": null
+      }
+    ],
+    "created_at": "2026-11-27T11:51:03.000Z",
+    "created_at_i": 1795780263,
+    "id": 50665796,
+    "options": [],
+    "parent_id": null,
+    "points": 3,
+    "story_id": 50665796,
+    "text": "For those who are tracking, Anthropic released an announcement last week about their experimental code mode for Claude Code, claiming some bonkers token savings when it comes to tool calls (95% on some workloads(1)). I haven&#x27;t benchmarked it myself, but independent studies come in somewhere closer to 60~70% savings (2), but I digress. TLDR; I built an open-source version for the community.<p>Context: I&#x27;m writing an AI RPG engine called Spookery, and I immediately wanted to try this technique for myself when I heard of it. Agent deployment is currently dominated by token costs, especially during tool calling (single prompt generating tens or hundreds of tool calls). Unfortunately, it looks like the only ones who are doing this seriously are big agentic products like Claude Code and Codex. So, I thought it&#x27;d be fun to try it myself and bring it to you all!<p>The idea of Code Mode is simple but powerful. Instead of passing back tool call results back to the LLM one at a time, let the LLM batch calls by letting it write a short script using your tools. Basically taking 30 trips to the grocery store for 30 items and turning it into one trip to the store with a list in-hand.<p>There&#x27;s a few near-ish open-source options, but they used TypeScript backends, we&#x27;re a little boilerplate heavy, and I wanted to have something a little faster and Rust friendly for my game engine. Pydantic&#x27;s Monty seemed a good candidate--their self-reports are around 5x faster on execution and 100x faster on startup (3). I wouldn&#x27;t take the numbers to the bank, but it&#x27;s written on a Rust framework and the python backend is entirely built from Rust too.<p>Anyway, I had a couple of days off unexpectedly. So, I went temporarily insane and built a Rust tool to bring code mode to the greater community for free. In enough days to fit on one hand (and just as many hours of sleep), I came up with the implementation linked. I call it Ghost Mode. It&#x27;s MIT licensed. It&#x27;s a drop-in for your agent that already makes traditional tool calls. With ~20 lines of setup, you can convert your existing agent to a Code Mode agent.<p>I hope you get something out of this, and maybe I can save you some money. Considering how limiting token economics are right now, I think this could be a game changer for the industry. If there&#x27;s interest, I can imagine we can build also add some great new features, language compatibility, and other great things. Thanks for reading :)<p>Sources:\n(1) <a href=\"https:&#x2F;&#x2F;www.marktechpost.com&#x2F;2026&#x2F;11&#x2F;17&#x2F;anthropic-claude-code-code-mode-javascript-tool-calls&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;www.marktechpost.com&#x2F;2026&#x2F;11&#x2F;17&#x2F;anthropic-claude-cod...</a>\n(2) <a href=\"https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2611.19123\" rel=\"nofollow\">https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2611.19123</a>\n(3) <a href=\"https:&#x2F;&#x2F;pydantic.dev&#x2F;docs&#x2F;monty&#x2F;get-started&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;pydantic.dev&#x2F;docs&#x2F;monty&#x2F;get-started&#x2F;</a>",
+    "title": "Show HN: Open-Sourced Code Mode to Cut ~60% of My Rust Agent's Token Burn",
+    "type": "story",
+    "url": "https://github.com/legend-of-alan/ghostmode"
+  },
+  "comments": [
+    {
+      "author": "antoineMoPa",
+      "text": "> by having the agent write code against its tools instead of loading every tool definition up front what does \"write code against its tools\" mean in practice?",
+      "at": "2026-11-27T13:11:14.000Z",
+      "url": "https://news.ycombinator.com/item?id=50666533"
+    },
+    {
+      "author": "legend-of-alan",
+      "text": "Sure thing! I like the shopping analogy usually, but I’ll illustrate the batch savings in more concrete terms maybe? Especially for dependent calls, the savings are more obvious than the shopping analogy suggests. So in code, this is roughly the difference between:     # old:\n  loop x4:\n      next_tool = ask_llm(context)\n      result = call_tool(next_tool)\n      context.append(result)\n\n  # do something with the result\n  \nAnd     # new (no loop!)\n  script_to_run = ask_llm(my_tools_list)\n  result = run_sandbox(script_to_run)\n  \n  # do something with the result\n  \nIn the new version we’ve mostly eliminated the need for the loop, and you’ll notice we only needed to call ask_llm() once! The LLM is batching multiple dependent tool calls into a little script that you run in a secure sandbox so you don’t have to go to the oracle of Delphi every time you need to call a tool. In practice it allows the LLM to “think” in workflows instead of in terms of individual function calls. Not only does it save LLM calls, but it saves context because the LLM doesn’t often need to know every intermediate result. Another example is from the README. In code mode, the LLM generates this script. It’s one call to the LLM and never leaves your pc. In contrast, normal tool calling would turn each of these calls into a call to the LLM.     # 4-step process\n  pr = get_pull_request(number=42)\n  runs = list_runs(commit=pr[\"head_sha\"])\n  failed = [run for run in runs if run[\"conclusion\"] == \"failure\"]\n  [{\"check\": run[\"name\"], \"log\": get_log(run_id=run[\"id\"])[-500:]} for run in failed]",
+      "at": "2026-11-27T13:35:30.000Z",
+      "url": "https://news.ycombinator.com/item?id=50666763"
+    },
+    {
+      "author": "drakmail",
+      "text": "Hm, my claude code and codex always write scripts in python or js, depends on project, without any ghost modes...",
+      "at": "2026-11-27T14:19:07.000Z",
+      "url": "https://news.ycombinator.com/item?id=50667258"
+    },
+    {
+      "author": "legend-of-alan",
+      "text": "Thats mostly correct, but there’s two distinctions between what they’re doing and what I built here where the savings come from. 1) this is a tool for people writing and building harnesses. Codex has their own implementation likely, but that doesn’t mean anybody building a SaaS or other agent application has access to that tech easily (until now). 2) what they’re doing is often not “code mode.” Yes, Claude code and codex can write scripts, but they can’t execute MCP or other (remote) tool calls directly from those scripts. They  can  write a script that replaces strings and uses on-system library and so forth. They (well big harnesses like Claude code are starting to do this experimentally) can’t write a script that pauses mid-execution, asks the machine to make an MCP or other call on its behalf (without installing a library or other tool), and comes back to execution after. The scripts you see codex and Claude code make are unable to reach out to MCP servers and mostly can’t do anything that “vanilla” python can’t. If you’re cloudflare and have 10,000 mcp servers you have to talk to, the python scripts that codex generates aren’t saving you many calls at all.",
+      "at": "2026-11-27T14:33:31.000Z",
+      "url": "https://news.ycombinator.com/item?id=50667404"
+    }
+  ],
+  "comments_complete": true
+}
